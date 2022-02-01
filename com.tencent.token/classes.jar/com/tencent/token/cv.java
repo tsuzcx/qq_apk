@@ -8,7 +8,7 @@ import com.tencent.token.utils.UserTask;
 public class cv
   extends cu
 {
-  static cv a = null;
+  static cv a;
   
   private cv()
   {
@@ -34,36 +34,35 @@ public class cv
     {
       public e a(String... paramAnonymousVarArgs)
       {
-        Object localObject = new e();
+        paramAnonymousVarArgs = new e();
         cr localcr = cr.a();
         cv localcv = cv.a();
         if (!localcr.o())
         {
-          paramAnonymousVarArgs = localcr.q();
-          localObject = paramAnonymousVarArgs;
-          if (paramAnonymousVarArgs.b()) {}
+          e locale = localcr.q();
+          paramAnonymousVarArgs = locale;
+          if (!locale.b()) {
+            return locale;
+          }
         }
-        do
+        if (localcr.e() == null)
         {
-          do
-          {
+          paramAnonymousVarArgs.b(103);
+          return paramAnonymousVarArgs;
+        }
+        if (localcr.k() == null)
+        {
+          paramAnonymousVarArgs = localcr.r();
+          if (!paramAnonymousVarArgs.b()) {
             return paramAnonymousVarArgs;
-            if (localcr.e() == null)
-            {
-              ((e)localObject).b(103);
-              return localObject;
-            }
-            if (localcr.k() != null) {
-              break;
-            }
-            localObject = localcr.r();
-            paramAnonymousVarArgs = (String[])localObject;
-          } while (!((e)localObject).b());
-          localObject = localcv.a(paramByte);
-          paramAnonymousVarArgs = (String[])localObject;
-        } while (!((e)localObject).b());
-        ((e)localObject).c();
-        return localObject;
+          }
+        }
+        paramAnonymousVarArgs = localcv.a(paramByte);
+        if (!paramAnonymousVarArgs.b()) {
+          return paramAnonymousVarArgs;
+        }
+        paramAnonymousVarArgs.c();
+        return paramAnonymousVarArgs;
       }
       
       public void a(e paramAnonymouse)

@@ -58,7 +58,10 @@ public final class SQLiteDirectCursorDriver
   
   public String toString()
   {
-    return "SQLiteDirectCursorDriver: " + this.mSql;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SQLiteDirectCursorDriver: ");
+    localStringBuilder.append(this.mSql);
+    return localStringBuilder.toString();
   }
 }
 

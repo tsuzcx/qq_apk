@@ -44,8 +44,9 @@ public class r
   
   public eg a(int paramInt1, int paramInt2)
   {
+    boolean bool = c(paramInt2);
     eg localeg = null;
-    if (c(paramInt2)) {
+    if (bool) {
       return z.a().a(paramInt1, null);
     }
     synchronized (this.g)
@@ -91,15 +92,13 @@ public class r
   
   public void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, eg parameg)
   {
-    if (parameg == null) {
-      throw new NullPointerException();
-    }
-    if (c(paramInt2)) {
-      z.a().a(paramInt2, paramInt1, paramJceStruct, parameg);
-    }
-    for (;;)
+    if (parameg != null)
     {
-      return;
+      if (c(paramInt2))
+      {
+        z.a().a(paramInt2, paramInt1, paramJceStruct, parameg);
+        return;
+      }
       Object localObject = null;
       synchronized (this.g)
       {
@@ -107,20 +106,31 @@ public class r
         {
           this.g.put(Integer.valueOf(paramInt1), new Pair(paramJceStruct, parameg));
           paramJceStruct = localObject;
-          if (paramJceStruct == null) {
-            continue;
-          }
-          throw paramJceStruct;
         }
-        paramJceStruct = new ClassCastException();
+        else
+        {
+          paramJceStruct = new ClassCastException();
+        }
+        if (paramJceStruct == null) {
+          return;
+        }
+        throw paramJceStruct;
       }
     }
+    throw new NullPointerException();
   }
   
   public void a(g paramg, boolean paramBoolean)
   {
-    new StringBuilder().append("pid: ").append(Process.myPid()).append("SharkProtocolQueue init()").toString();
-    new StringBuilder().append("init is Test server : ").append(paramBoolean).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pid: ");
+    localStringBuilder.append(Process.myPid());
+    localStringBuilder.append("SharkProtocolQueue init()");
+    localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("init is Test server : ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.toString();
     this.e = new o(tmsdk.common.a.a(), paramg, paramBoolean);
     z.a().a(paramg, paramBoolean);
     this.f = Executors.newSingleThreadExecutor();
@@ -129,7 +139,10 @@ public class r
   
   public void a(boolean paramBoolean)
   {
-    new StringBuilder().append("setIsTest is Test server : ").append(paramBoolean).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setIsTest is Test server : ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.toString();
     z.a().a(paramBoolean);
     this.e.a(paramBoolean);
   }

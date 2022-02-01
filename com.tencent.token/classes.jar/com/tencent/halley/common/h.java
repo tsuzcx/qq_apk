@@ -22,44 +22,44 @@ public final class h
   
   private static String a(Context paramContext)
   {
-    int i = 1;
-    for (;;)
+    try
     {
-      try
-      {
-        paramContext = a;
-        if (paramContext != null) {
-          continue;
+      paramContext = a;
+      i = 1;
+      if (paramContext != null) {
+        if (paramContext.trim().length() != 0) {
+          break label78;
         }
-        if (i != 0)
-        {
-          paramContext = f.a();
-          if (paramContext != null)
-          {
-            paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-            if (paramContext != null)
-            {
-              String str = paramContext.getDeviceId();
-              paramContext = str;
-              if (str == null) {
-                paramContext = "";
-              }
-              a = paramContext;
-            }
-          }
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        int j;
-        continue;
-      }
-      return a;
-      j = paramContext.trim().length();
-      if (j != 0) {
-        i = 0;
       }
     }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        String str;
+        continue;
+        label78:
+        int i = 0;
+      }
+    }
+    if (i != 0)
+    {
+      paramContext = f.a();
+      if (paramContext != null)
+      {
+        paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+        if (paramContext != null)
+        {
+          str = paramContext.getDeviceId();
+          paramContext = str;
+          if (str == null) {
+            paramContext = "";
+          }
+          a = paramContext;
+        }
+      }
+    }
+    return a;
   }
   
   public static String a(String paramString, boolean paramBoolean)
@@ -79,30 +79,34 @@ public final class h
       paramString = URLEncoder.encode(str);
       return paramString;
     }
-    catch (Throwable paramString) {}
+    catch (Throwable paramString)
+    {
+      label42:
+      break label42;
+    }
     return "";
   }
   
   public static String a(byte[] paramArrayOfByte)
   {
-    Object localObject;
-    if (paramArrayOfByte == null)
-    {
-      localObject = "";
-      return localObject;
+    if (paramArrayOfByte == null) {
+      return "";
     }
     String str = "";
     int i = 0;
-    for (;;)
+    while (i < paramArrayOfByte.length)
     {
-      localObject = str;
-      if (i >= paramArrayOfByte.length) {
-        break;
-      }
-      str = str + Integer.toHexString(paramArrayOfByte[i] >> 4 & 0xF);
-      str = str + Integer.toHexString(paramArrayOfByte[i] & 0xF);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(Integer.toHexString(paramArrayOfByte[i] >> 4 & 0xF));
+      str = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(Integer.toHexString(paramArrayOfByte[i] & 0xF));
+      str = localStringBuilder.toString();
       i += 1;
     }
+    return str;
   }
   
   public static boolean a()
@@ -112,11 +116,10 @@ public final class h
   
   public static boolean a(String paramString)
   {
-    if (paramString == null) {}
-    while (paramString.trim().length() == 0) {
+    if (paramString == null) {
       return true;
     }
-    return false;
+    return paramString.trim().length() == 0;
   }
   
   public static int b()
@@ -126,48 +129,48 @@ public final class h
   
   private static String b(Context paramContext)
   {
-    int i = 1;
-    for (;;)
+    try
     {
-      try
-      {
-        paramContext = b;
-        if (paramContext != null) {
-          continue;
+      paramContext = b;
+      i = 1;
+      if (paramContext != null) {
+        if (paramContext.trim().length() != 0) {
+          break label87;
         }
-        if (i != 0)
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        String str;
+        continue;
+        label87:
+        int i = 0;
+      }
+    }
+    if (i != 0)
+    {
+      paramContext = f.a();
+      if (paramContext != null)
+      {
+        paramContext = (WifiManager)paramContext.getSystemService("wifi");
+        if (paramContext != null)
         {
-          paramContext = f.a();
+          paramContext = paramContext.getConnectionInfo();
           if (paramContext != null)
           {
-            paramContext = (WifiManager)paramContext.getSystemService("wifi");
-            if (paramContext != null)
-            {
-              paramContext = paramContext.getConnectionInfo();
-              if (paramContext != null)
-              {
-                String str = paramContext.getMacAddress();
-                paramContext = str;
-                if (str == null) {
-                  paramContext = "";
-                }
-                b = paramContext;
-              }
+            str = paramContext.getMacAddress();
+            paramContext = str;
+            if (str == null) {
+              paramContext = "";
             }
+            b = paramContext;
           }
         }
       }
-      catch (Throwable paramContext)
-      {
-        int j;
-        continue;
-      }
-      return b;
-      j = paramContext.trim().length();
-      if (j != 0) {
-        i = 0;
-      }
     }
+    return b;
   }
   
   public static String b(String paramString)
@@ -180,7 +183,11 @@ public final class h
       paramString = URLEncoder.encode(paramString);
       return paramString;
     }
-    catch (Throwable paramString) {}
+    catch (Throwable paramString)
+    {
+      label17:
+      break label17;
+    }
     return "";
   }
   
@@ -210,17 +217,19 @@ public final class h
       return null;
     }
     Object localObject = f.a();
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((Context)localObject).getPackageName()) {
-      try
-      {
-        localObject = localContext.getPackageManager().getPackageInfo((String)localObject, 0).versionName;
-        return localObject;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = ((Context)localObject).getPackageName();
+    }
+    try
+    {
+      localObject = localContext.getPackageManager().getPackageInfo((String)localObject, 0).versionName;
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
     return null;
   }
@@ -232,17 +241,19 @@ public final class h
       return 0;
     }
     Object localObject = f.a();
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((Context)localObject).getPackageName()) {
-      try
-      {
-        int i = localContext.getPackageManager().getPackageInfo((String)localObject, 0).versionCode;
-        return i;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = ((Context)localObject).getPackageName();
+    }
+    try
+    {
+      int i = localContext.getPackageManager().getPackageInfo((String)localObject, 0).versionCode;
+      return i;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
     return 0;
   }

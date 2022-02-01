@@ -20,63 +20,127 @@ public final class PhoneUtil
   
   public static String getCellXml(List<CellInfo> paramList)
   {
-    Object localObject;
-    if ((paramList == null) || (paramList.size() <= 0))
-    {
-      localObject = "";
-      return localObject;
-    }
     String str = "";
-    int i = 0;
-    for (;;)
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      localObject = str;
-      if (i >= paramList.size()) {
-        break;
+      int i = 0;
+      while (i < paramList.size())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("<cell ");
+        str = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("mcc=\"");
+        localStringBuilder.append(((CellInfo)paramList.get(i)).mcc);
+        localStringBuilder.append("\" ");
+        str = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("mnc=\"");
+        localStringBuilder.append(((CellInfo)paramList.get(i)).mnc);
+        localStringBuilder.append("\" ");
+        str = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("lac=\"");
+        localStringBuilder.append(((CellInfo)paramList.get(i)).lac);
+        localStringBuilder.append("\" ");
+        str = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("type=\"");
+        localStringBuilder.append(((CellInfo)paramList.get(i)).type);
+        localStringBuilder.append("\" ");
+        str = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("stationId=\"");
+        localStringBuilder.append(((CellInfo)paramList.get(i)).stationId);
+        localStringBuilder.append("\" ");
+        str = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("networkId=\"");
+        localStringBuilder.append(((CellInfo)paramList.get(i)).networkId);
+        localStringBuilder.append("\" ");
+        str = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("systemId=\"");
+        localStringBuilder.append(((CellInfo)paramList.get(i)).systemId);
+        localStringBuilder.append("\" ");
+        str = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("dbm=\"");
+        localStringBuilder.append(((CellInfo)paramList.get(i)).dbm);
+        localStringBuilder.append("\" ");
+        str = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(" >");
+        str = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(((CellInfo)paramList.get(i)).cellid);
+        str = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("</cell>");
+        str = localStringBuilder.toString();
+        i += 1;
       }
-      str = str + "<cell ";
-      str = str + "mcc=\"" + ((CellInfo)paramList.get(i)).mcc + "\" ";
-      str = str + "mnc=\"" + ((CellInfo)paramList.get(i)).mnc + "\" ";
-      str = str + "lac=\"" + ((CellInfo)paramList.get(i)).lac + "\" ";
-      str = str + "type=\"" + ((CellInfo)paramList.get(i)).type + "\" ";
-      str = str + "stationId=\"" + ((CellInfo)paramList.get(i)).stationId + "\" ";
-      str = str + "networkId=\"" + ((CellInfo)paramList.get(i)).networkId + "\" ";
-      str = str + "systemId=\"" + ((CellInfo)paramList.get(i)).systemId + "\" ";
-      str = str + "dbm=\"" + ((CellInfo)paramList.get(i)).dbm + "\" ";
-      str = str + " >";
-      str = str + ((CellInfo)paramList.get(i)).cellid;
-      str = str + "</cell>";
-      i += 1;
+      return str;
     }
+    return "";
   }
   
   public static String getMacXml(List<MacInfo> paramList)
   {
-    String str1 = "";
-    String str2;
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      str2 = "";
-    }
-    int i;
-    do
+    Object localObject1 = "";
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      return str2;
-      i = 0;
-      str2 = str1;
-    } while (i >= paramList.size());
-    if ((paramList.get(i) != null) && (((MacInfo)paramList.get(i)).mac.length() == aI))
-    {
-      str1 = str1 + "<mac ";
-      str1 = str1 + "macDbm=\"" + ((MacInfo)paramList.get(i)).dbm + "\"";
-      str1 = str1 + ">";
-      str1 = str1 + ((MacInfo)paramList.get(i)).mac;
-      str1 = str1 + "</mac>";
+      int i = 0;
+      while (i < paramList.size())
+      {
+        Object localObject2 = localObject1;
+        if (paramList.get(i) != null)
+        {
+          localObject2 = localObject1;
+          if (((MacInfo)paramList.get(i)).mac.length() == aI)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ((StringBuilder)localObject2).append("<mac ");
+            localObject1 = ((StringBuilder)localObject2).toString();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ((StringBuilder)localObject2).append("macDbm=\"");
+            ((StringBuilder)localObject2).append(((MacInfo)paramList.get(i)).dbm);
+            ((StringBuilder)localObject2).append("\"");
+            localObject1 = ((StringBuilder)localObject2).toString();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ((StringBuilder)localObject2).append(">");
+            localObject1 = ((StringBuilder)localObject2).toString();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ((StringBuilder)localObject2).append(((MacInfo)paramList.get(i)).mac);
+            localObject1 = ((StringBuilder)localObject2).toString();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ((StringBuilder)localObject2).append("</mac>");
+            localObject2 = ((StringBuilder)localObject2).toString();
+          }
+        }
+        i += 1;
+        localObject1 = localObject2;
+      }
+      return localObject1;
     }
-    for (;;)
-    {
-      i += 1;
-      break;
-    }
+    return "";
   }
   
   public static void getSignalStrength(Context paramContext)

@@ -46,11 +46,19 @@ public class MTimerHandler
   
   public void handleMessage(Message paramMessage)
   {
-    if ((paramMessage.what != this.ad) || (this.ax == null)) {}
-    while ((!this.ax.onTimerExpired()) || (!this.av)) {
-      return;
+    if (paramMessage.what == this.ad)
+    {
+      paramMessage = this.ax;
+      if (paramMessage == null) {
+        return;
+      }
+      if (!paramMessage.onTimerExpired()) {
+        return;
+      }
+      if (this.av) {
+        sendEmptyMessageDelayed(this.ad, this.aw);
+      }
     }
-    sendEmptyMessageDelayed(this.ad, this.aw);
   }
   
   public void startTimer(long paramLong)

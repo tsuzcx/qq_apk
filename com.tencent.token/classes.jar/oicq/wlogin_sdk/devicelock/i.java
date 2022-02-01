@@ -41,11 +41,10 @@ public class i
     System.arraycopy(this._buf, j, this.f, 0, i);
     i = j + i;
     this.c = util.buf_to_int16(this._buf, i);
-    j = i + 2;
-    i = util.buf_to_int16(this._buf, j);
-    j += 2;
-    this.g = new byte[i];
-    System.arraycopy(this._buf, j, this.g, 0, i);
+    i += 2;
+    j = util.buf_to_int16(this._buf, i);
+    this.g = new byte[j];
+    System.arraycopy(this._buf, i + 2, this.g, 0, j);
   }
 }
 

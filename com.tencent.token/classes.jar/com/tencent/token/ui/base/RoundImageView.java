@@ -37,45 +37,54 @@ public class RoundImageView
   protected void onDraw(Canvas paramCanvas)
   {
     Drawable localDrawable = getDrawable();
-    if (localDrawable == null) {}
-    label244:
-    for (;;)
-    {
+    if (localDrawable == null) {
       return;
-      if ((localDrawable instanceof BitmapDrawable)) {}
-      for (Bitmap localBitmap1 = ((BitmapDrawable)localDrawable).getBitmap();; localBitmap1 = null)
-      {
-        if (localDrawable.getCurrent() == null) {
-          break label244;
-        }
-        Bitmap localBitmap2 = localBitmap1;
-        if (localBitmap1 == null)
-        {
-          localBitmap2 = localBitmap1;
-          if ((localDrawable.getCurrent() instanceof BitmapDrawable)) {
-            localBitmap2 = ((BitmapDrawable)localDrawable.getCurrent()).getBitmap();
-          }
-        }
-        if ((localBitmap2 != null) && ((this.f == null) || (this.g == null) || (this.f != localBitmap2)))
-        {
-          this.f = localBitmap2;
-          if ((this.c > 0) && (this.d > 0)) {
-            this.g = Bitmap.createScaledBitmap(localBitmap2, this.c, this.d, true);
-          }
-        }
-        if (this.g == null) {
-          break;
-        }
-        paramCanvas.saveLayerAlpha(this.h, 255, 31);
-        this.e.reset();
-        this.e.setAntiAlias(true);
-        paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
-        paramCanvas.drawCircle(this.i, this.i, this.i, this.e);
-        this.e.setXfermode(this.j);
-        paramCanvas.drawBitmap(this.g, 0.0F, 0.0F, this.e);
-        this.e.setXfermode(null);
-        return;
+    }
+    Bitmap localBitmap1;
+    if ((localDrawable instanceof BitmapDrawable)) {
+      localBitmap1 = ((BitmapDrawable)localDrawable).getBitmap();
+    } else {
+      localBitmap1 = null;
+    }
+    if (localDrawable.getCurrent() == null) {
+      return;
+    }
+    Bitmap localBitmap2 = localBitmap1;
+    if (localBitmap1 == null)
+    {
+      localBitmap2 = localBitmap1;
+      if ((localDrawable.getCurrent() instanceof BitmapDrawable)) {
+        localBitmap2 = ((BitmapDrawable)localDrawable.getCurrent()).getBitmap();
       }
+    }
+    int k;
+    if (localBitmap2 != null)
+    {
+      localBitmap1 = this.f;
+      if ((localBitmap1 == null) || (this.g == null) || (localBitmap1 != localBitmap2))
+      {
+        this.f = localBitmap2;
+        k = this.c;
+        if (k > 0)
+        {
+          int m = this.d;
+          if (m > 0) {
+            this.g = Bitmap.createScaledBitmap(localBitmap2, k, m, true);
+          }
+        }
+      }
+    }
+    if (this.g != null)
+    {
+      paramCanvas.saveLayerAlpha(this.h, 255, 31);
+      this.e.reset();
+      this.e.setAntiAlias(true);
+      paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
+      k = this.i;
+      paramCanvas.drawCircle(k, k, k, this.e);
+      this.e.setXfermode(this.j);
+      paramCanvas.drawBitmap(this.g, 0.0F, 0.0F, this.e);
+      this.e.setXfermode(null);
     }
   }
   

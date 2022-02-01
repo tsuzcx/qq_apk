@@ -34,7 +34,10 @@ public class ProtoFacePK
       this.a.b(104);
       return null;
     }
-    return c.e() + "/cn/mbtoken3/mbtoken3_face_pk";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c.e());
+    localStringBuilder.append("/cn/mbtoken3/mbtoken3_face_pk");
+    return localStringBuilder.toString();
   }
   
   protected void a(do paramdo)
@@ -58,7 +61,12 @@ public class ProtoFacePK
       if (i != this.e)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.e);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.e);
+        g.c(paramJSONObject.toString());
         return;
       }
       i = paramJSONObject.getInt("err");
@@ -73,8 +81,11 @@ public class ProtoFacePK
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   public do b(do paramdo)
@@ -88,9 +99,10 @@ public class ProtoFacePK
     paramdo.n.put("img_data", str);
     paramdo.n.put("op_time", Integer.valueOf((int)(cc.c().s() / 1000L)));
     paramdo.n.put("seq_id", Integer.valueOf(i));
-    if (this.f != null)
+    str = this.f;
+    if (str != null)
     {
-      str = b.a(l.c(m.a(this.f))).replace('+', '-').replace('=', '_');
+      str = b.a(l.c(m.a(str))).replace('+', '-').replace('=', '_');
       paramdo.n.put("live_video_data", str);
     }
     this.g = null;

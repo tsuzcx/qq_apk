@@ -80,18 +80,22 @@ public class ActivityOptionsCompat
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      android.util.Pair[] arrayOfPair = null;
+      Object localObject = null;
       if (paramVarArgs != null)
       {
-        arrayOfPair = new android.util.Pair[paramVarArgs.length];
+        android.util.Pair[] arrayOfPair = new android.util.Pair[paramVarArgs.length];
         int i = 0;
-        while (i < paramVarArgs.length)
+        for (;;)
         {
+          localObject = arrayOfPair;
+          if (i >= paramVarArgs.length) {
+            break;
+          }
           arrayOfPair[i] = android.util.Pair.create(paramVarArgs[i].first, paramVarArgs[i].second);
           i += 1;
         }
       }
-      return createImpl(ActivityOptions.makeSceneTransitionAnimation(paramActivity, arrayOfPair));
+      return createImpl(ActivityOptions.makeSceneTransitionAnimation(paramActivity, localObject));
     }
     return new ActivityOptionsCompat();
   }

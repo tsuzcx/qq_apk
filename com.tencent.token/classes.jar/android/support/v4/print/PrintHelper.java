@@ -1,10 +1,8 @@
 package android.support.v4.print;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
@@ -32,8 +30,6 @@ import android.print.PrintManager;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -178,14 +174,17 @@ public final class PrintHelper
     private Matrix getMatrix(int paramInt1, int paramInt2, RectF paramRectF, int paramInt3)
     {
       Matrix localMatrix = new Matrix();
-      float f = paramRectF.width() / paramInt1;
-      if (paramInt3 == 2) {}
-      for (f = Math.max(f, paramRectF.height() / paramInt2);; f = Math.min(f, paramRectF.height() / paramInt2))
-      {
-        localMatrix.postScale(f, f);
-        localMatrix.postTranslate((paramRectF.width() - paramInt1 * f) / 2.0F, (paramRectF.height() - f * paramInt2) / 2.0F);
-        return localMatrix;
+      float f1 = paramRectF.width();
+      float f2 = paramInt1;
+      f1 /= f2;
+      if (paramInt3 == 2) {
+        f1 = Math.max(f1, paramRectF.height() / paramInt2);
+      } else {
+        f1 = Math.min(f1, paramRectF.height() / paramInt2);
       }
+      localMatrix.postScale(f1, f1);
+      localMatrix.postTranslate((paramRectF.width() - f2 * f1) / 2.0F, (paramRectF.height() - paramInt2 * f1) / 2.0F);
+      return localMatrix;
     }
     
     private static boolean isPortrait(Bitmap paramBitmap)
@@ -193,456 +192,504 @@ public final class PrintHelper
       return paramBitmap.getWidth() <= paramBitmap.getHeight();
     }
     
+    /* Error */
     private Bitmap loadBitmap(Uri paramUri, BitmapFactory.Options paramOptions)
     {
-      localUri = null;
-      if ((paramUri == null) || (this.mContext == null)) {
-        throw new IllegalArgumentException("bad argument to loadBitmap");
-      }
-      try
-      {
-        paramUri = this.mContext.getContentResolver().openInputStream(paramUri);
-        localUri = paramUri;
-        paramOptions = BitmapFactory.decodeStream(paramUri, null, paramOptions);
-        if (paramUri != null) {}
-        try
-        {
-          paramUri.close();
-          return paramOptions;
-        }
-        catch (IOException paramUri)
-        {
-          Log.w("PrintHelperApi19", "close fail ", paramUri);
-          return paramOptions;
-        }
-        try
-        {
-          localUri.close();
-          throw paramUri;
-        }
-        catch (IOException paramOptions)
-        {
-          for (;;)
-          {
-            Log.w("PrintHelperApi19", "close fail ", paramOptions);
-          }
-        }
-      }
-      finally
-      {
-        if (localUri == null) {}
-      }
+      // Byte code:
+      //   0: aload_1
+      //   1: ifnull +89 -> 90
+      //   4: aload_0
+      //   5: getfield 59	android/support/v4/print/PrintHelper$PrintHelperApi19:mContext	Landroid/content/Context;
+      //   8: astore 4
+      //   10: aload 4
+      //   12: ifnull +78 -> 90
+      //   15: aconst_null
+      //   16: astore_3
+      //   17: aload 4
+      //   19: invokevirtual 179	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+      //   22: aload_1
+      //   23: invokevirtual 185	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+      //   26: astore_1
+      //   27: aload_1
+      //   28: aconst_null
+      //   29: aload_2
+      //   30: invokestatic 191	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+      //   33: astore_2
+      //   34: aload_1
+      //   35: ifnull +19 -> 54
+      //   38: aload_1
+      //   39: invokevirtual 196	java/io/InputStream:close	()V
+      //   42: aload_2
+      //   43: areturn
+      //   44: astore_1
+      //   45: ldc 25
+      //   47: ldc 198
+      //   49: aload_1
+      //   50: invokestatic 204	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+      //   53: pop
+      //   54: aload_2
+      //   55: areturn
+      //   56: astore_3
+      //   57: aload_1
+      //   58: astore_2
+      //   59: aload_3
+      //   60: astore_1
+      //   61: goto +6 -> 67
+      //   64: astore_1
+      //   65: aload_3
+      //   66: astore_2
+      //   67: aload_2
+      //   68: ifnull +20 -> 88
+      //   71: aload_2
+      //   72: invokevirtual 196	java/io/InputStream:close	()V
+      //   75: goto +13 -> 88
+      //   78: astore_2
+      //   79: ldc 25
+      //   81: ldc 198
+      //   83: aload_2
+      //   84: invokestatic 204	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+      //   87: pop
+      //   88: aload_1
+      //   89: athrow
+      //   90: new 206	java/lang/IllegalArgumentException
+      //   93: dup
+      //   94: ldc 208
+      //   96: invokespecial 211	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+      //   99: athrow
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	100	0	this	PrintHelperApi19
+      //   0	100	1	paramUri	Uri
+      //   0	100	2	paramOptions	BitmapFactory.Options
+      //   16	1	3	localObject1	Object
+      //   56	10	3	localObject2	Object
+      //   8	10	4	localContext	Context
+      // Exception table:
+      //   from	to	target	type
+      //   38	42	44	java/io/IOException
+      //   27	34	56	finally
+      //   17	27	64	finally
+      //   71	75	78	java/io/IOException
     }
     
     /* Error */
     private Bitmap loadConstrainedBitmap(Uri paramUri)
     {
       // Byte code:
-      //   0: iconst_1
-      //   1: istore_2
-      //   2: aload_1
-      //   3: ifnull +10 -> 13
-      //   6: aload_0
-      //   7: getfield 59	android/support/v4/print/PrintHelper$PrintHelperApi19:mContext	Landroid/content/Context;
-      //   10: ifnonnull +13 -> 23
-      //   13: new 175	java/lang/IllegalArgumentException
-      //   16: dup
-      //   17: ldc 213
-      //   19: invokespecial 180	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
-      //   22: athrow
-      //   23: new 215	android/graphics/BitmapFactory$Options
-      //   26: dup
-      //   27: invokespecial 216	android/graphics/BitmapFactory$Options:<init>	()V
-      //   30: astore 6
-      //   32: aload 6
-      //   34: iconst_1
-      //   35: putfield 219	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-      //   38: aload_0
-      //   39: aload_1
-      //   40: aload 6
-      //   42: invokespecial 221	android/support/v4/print/PrintHelper$PrintHelperApi19:loadBitmap	(Landroid/net/Uri;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-      //   45: pop
-      //   46: aload 6
-      //   48: getfield 224	android/graphics/BitmapFactory$Options:outWidth	I
-      //   51: istore 4
-      //   53: aload 6
-      //   55: getfield 227	android/graphics/BitmapFactory$Options:outHeight	I
-      //   58: istore 5
+      //   0: aload_1
+      //   1: ifnull +219 -> 220
+      //   4: aload_0
+      //   5: getfield 59	android/support/v4/print/PrintHelper$PrintHelperApi19:mContext	Landroid/content/Context;
+      //   8: ifnull +212 -> 220
+      //   11: new 213	android/graphics/BitmapFactory$Options
+      //   14: dup
+      //   15: invokespecial 214	android/graphics/BitmapFactory$Options:<init>	()V
+      //   18: astore 6
+      //   20: aload 6
+      //   22: iconst_1
+      //   23: putfield 217	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+      //   26: aload_0
+      //   27: aload_1
+      //   28: aload 6
+      //   30: invokespecial 219	android/support/v4/print/PrintHelper$PrintHelperApi19:loadBitmap	(Landroid/net/Uri;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+      //   33: pop
+      //   34: aload 6
+      //   36: getfield 222	android/graphics/BitmapFactory$Options:outWidth	I
+      //   39: istore 4
+      //   41: aload 6
+      //   43: getfield 225	android/graphics/BitmapFactory$Options:outHeight	I
+      //   46: istore 5
+      //   48: iload 4
+      //   50: ifle +168 -> 218
+      //   53: iload 5
+      //   55: ifgt +5 -> 60
+      //   58: aconst_null
+      //   59: areturn
       //   60: iload 4
-      //   62: ifle +8 -> 70
-      //   65: iload 5
-      //   67: ifgt +5 -> 72
-      //   70: aconst_null
-      //   71: areturn
-      //   72: iload 4
-      //   74: iload 5
-      //   76: invokestatic 230	java/lang/Math:max	(II)I
-      //   79: istore_3
-      //   80: iload_3
-      //   81: sipush 3500
-      //   84: if_icmple +14 -> 98
-      //   87: iload_3
-      //   88: iconst_1
-      //   89: iushr
-      //   90: istore_3
-      //   91: iload_2
-      //   92: iconst_1
-      //   93: ishl
-      //   94: istore_2
-      //   95: goto -15 -> 80
-      //   98: iload_2
-      //   99: ifle -29 -> 70
-      //   102: iload 4
-      //   104: iload 5
-      //   106: invokestatic 232	java/lang/Math:min	(II)I
-      //   109: iload_2
-      //   110: idiv
-      //   111: ifle -41 -> 70
-      //   114: aload_0
-      //   115: getfield 49	android/support/v4/print/PrintHelper$PrintHelperApi19:mLock	Ljava/lang/Object;
-      //   118: astore 6
-      //   120: aload 6
-      //   122: monitorenter
-      //   123: aload_0
-      //   124: new 215	android/graphics/BitmapFactory$Options
-      //   127: dup
-      //   128: invokespecial 216	android/graphics/BitmapFactory$Options:<init>	()V
-      //   131: putfield 47	android/support/v4/print/PrintHelper$PrintHelperApi19:mDecodeOptions	Landroid/graphics/BitmapFactory$Options;
+      //   62: iload 5
+      //   64: invokestatic 228	java/lang/Math:max	(II)I
+      //   67: istore_3
+      //   68: iconst_1
+      //   69: istore_2
+      //   70: iload_3
+      //   71: sipush 3500
+      //   74: if_icmple +14 -> 88
+      //   77: iload_3
+      //   78: iconst_1
+      //   79: iushr
+      //   80: istore_3
+      //   81: iload_2
+      //   82: iconst_1
+      //   83: ishl
+      //   84: istore_2
+      //   85: goto -15 -> 70
+      //   88: iload_2
+      //   89: ifle +127 -> 216
+      //   92: iload 4
+      //   94: iload 5
+      //   96: invokestatic 230	java/lang/Math:min	(II)I
+      //   99: iload_2
+      //   100: idiv
+      //   101: ifgt +5 -> 106
+      //   104: aconst_null
+      //   105: areturn
+      //   106: aload_0
+      //   107: getfield 49	android/support/v4/print/PrintHelper$PrintHelperApi19:mLock	Ljava/lang/Object;
+      //   110: astore 6
+      //   112: aload 6
+      //   114: monitorenter
+      //   115: aload_0
+      //   116: new 213	android/graphics/BitmapFactory$Options
+      //   119: dup
+      //   120: invokespecial 214	android/graphics/BitmapFactory$Options:<init>	()V
+      //   123: putfield 47	android/support/v4/print/PrintHelper$PrintHelperApi19:mDecodeOptions	Landroid/graphics/BitmapFactory$Options;
+      //   126: aload_0
+      //   127: getfield 47	android/support/v4/print/PrintHelper$PrintHelperApi19:mDecodeOptions	Landroid/graphics/BitmapFactory$Options;
+      //   130: iconst_1
+      //   131: putfield 233	android/graphics/BitmapFactory$Options:inMutable	Z
       //   134: aload_0
       //   135: getfield 47	android/support/v4/print/PrintHelper$PrintHelperApi19:mDecodeOptions	Landroid/graphics/BitmapFactory$Options;
-      //   138: iconst_1
-      //   139: putfield 235	android/graphics/BitmapFactory$Options:inMutable	Z
+      //   138: iload_2
+      //   139: putfield 236	android/graphics/BitmapFactory$Options:inSampleSize	I
       //   142: aload_0
       //   143: getfield 47	android/support/v4/print/PrintHelper$PrintHelperApi19:mDecodeOptions	Landroid/graphics/BitmapFactory$Options;
-      //   146: iload_2
-      //   147: putfield 238	android/graphics/BitmapFactory$Options:inSampleSize	I
-      //   150: aload_0
-      //   151: getfield 47	android/support/v4/print/PrintHelper$PrintHelperApi19:mDecodeOptions	Landroid/graphics/BitmapFactory$Options;
-      //   154: astore 7
-      //   156: aload 6
-      //   158: monitorexit
-      //   159: aload_0
-      //   160: aload_1
-      //   161: aload 7
-      //   163: invokespecial 221	android/support/v4/print/PrintHelper$PrintHelperApi19:loadBitmap	(Landroid/net/Uri;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-      //   166: astore 6
-      //   168: aload_0
-      //   169: getfield 49	android/support/v4/print/PrintHelper$PrintHelperApi19:mLock	Ljava/lang/Object;
-      //   172: astore_1
-      //   173: aload_1
-      //   174: monitorenter
-      //   175: aload_0
-      //   176: aconst_null
-      //   177: putfield 47	android/support/v4/print/PrintHelper$PrintHelperApi19:mDecodeOptions	Landroid/graphics/BitmapFactory$Options;
-      //   180: aload_1
-      //   181: monitorexit
-      //   182: aload 6
-      //   184: areturn
-      //   185: astore 6
-      //   187: aload_1
-      //   188: monitorexit
-      //   189: aload 6
-      //   191: athrow
-      //   192: astore_1
-      //   193: aload 6
-      //   195: monitorexit
-      //   196: aload_1
-      //   197: athrow
-      //   198: astore 6
-      //   200: aload_0
-      //   201: getfield 49	android/support/v4/print/PrintHelper$PrintHelperApi19:mLock	Ljava/lang/Object;
-      //   204: astore_1
+      //   146: astore 7
+      //   148: aload 6
+      //   150: monitorexit
+      //   151: aload_0
+      //   152: aload_1
+      //   153: aload 7
+      //   155: invokespecial 219	android/support/v4/print/PrintHelper$PrintHelperApi19:loadBitmap	(Landroid/net/Uri;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+      //   158: astore 6
+      //   160: aload_0
+      //   161: getfield 49	android/support/v4/print/PrintHelper$PrintHelperApi19:mLock	Ljava/lang/Object;
+      //   164: astore_1
+      //   165: aload_1
+      //   166: monitorenter
+      //   167: aload_0
+      //   168: aconst_null
+      //   169: putfield 47	android/support/v4/print/PrintHelper$PrintHelperApi19:mDecodeOptions	Landroid/graphics/BitmapFactory$Options;
+      //   172: aload_1
+      //   173: monitorexit
+      //   174: aload 6
+      //   176: areturn
+      //   177: astore 6
+      //   179: aload_1
+      //   180: monitorexit
+      //   181: aload 6
+      //   183: athrow
+      //   184: astore 6
+      //   186: aload_0
+      //   187: getfield 49	android/support/v4/print/PrintHelper$PrintHelperApi19:mLock	Ljava/lang/Object;
+      //   190: astore_1
+      //   191: aload_1
+      //   192: monitorenter
+      //   193: aload_0
+      //   194: aconst_null
+      //   195: putfield 47	android/support/v4/print/PrintHelper$PrintHelperApi19:mDecodeOptions	Landroid/graphics/BitmapFactory$Options;
+      //   198: aload_1
+      //   199: monitorexit
+      //   200: aload 6
+      //   202: athrow
+      //   203: astore 6
       //   205: aload_1
-      //   206: monitorenter
-      //   207: aload_0
-      //   208: aconst_null
-      //   209: putfield 47	android/support/v4/print/PrintHelper$PrintHelperApi19:mDecodeOptions	Landroid/graphics/BitmapFactory$Options;
-      //   212: aload_1
+      //   206: monitorexit
+      //   207: aload 6
+      //   209: athrow
+      //   210: astore_1
+      //   211: aload 6
       //   213: monitorexit
-      //   214: aload 6
-      //   216: athrow
-      //   217: astore 6
-      //   219: aload_1
-      //   220: monitorexit
-      //   221: aload 6
-      //   223: athrow
+      //   214: aload_1
+      //   215: athrow
+      //   216: aconst_null
+      //   217: areturn
+      //   218: aconst_null
+      //   219: areturn
+      //   220: new 206	java/lang/IllegalArgumentException
+      //   223: dup
+      //   224: ldc 238
+      //   226: invokespecial 211	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+      //   229: athrow
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	224	0	this	PrintHelperApi19
-      //   0	224	1	paramUri	Uri
-      //   1	146	2	i	int
-      //   79	12	3	j	int
-      //   51	52	4	k	int
-      //   58	47	5	m	int
-      //   30	153	6	localObject1	Object
-      //   185	9	6	localObject2	Object
-      //   198	17	6	localObject3	Object
-      //   217	5	6	localObject4	Object
-      //   154	8	7	localOptions	BitmapFactory.Options
+      //   0	230	0	this	PrintHelperApi19
+      //   0	230	1	paramUri	Uri
+      //   69	70	2	i	int
+      //   67	14	3	j	int
+      //   39	54	4	k	int
+      //   46	49	5	m	int
+      //   18	157	6	localObject1	Object
+      //   177	5	6	localObject2	Object
+      //   184	17	6	localObject3	Object
+      //   203	9	6	localObject4	Object
+      //   146	8	7	localOptions	BitmapFactory.Options
       // Exception table:
       //   from	to	target	type
-      //   175	182	185	finally
-      //   187	189	185	finally
-      //   123	159	192	finally
-      //   193	196	192	finally
-      //   159	168	198	finally
-      //   207	214	217	finally
-      //   219	221	217	finally
+      //   167	174	177	finally
+      //   179	181	177	finally
+      //   151	160	184	finally
+      //   193	200	203	finally
+      //   205	207	203	finally
+      //   115	151	210	finally
+      //   211	214	210	finally
     }
     
     private void writeBitmap(final PrintAttributes paramPrintAttributes, final int paramInt, final Bitmap paramBitmap, final ParcelFileDescriptor paramParcelFileDescriptor, final CancellationSignal paramCancellationSignal, final PrintDocumentAdapter.WriteResultCallback paramWriteResultCallback)
     {
-      if (this.mIsMinMarginsHandlingCorrect) {}
-      for (final PrintAttributes localPrintAttributes = paramPrintAttributes;; localPrintAttributes = copyAttributes(paramPrintAttributes).setMinMargins(new PrintAttributes.Margins(0, 0, 0, 0)).build())
-      {
-        new AsyncTask()
-        {
-          /* Error */
-          protected Throwable doInBackground(Void... paramAnonymousVarArgs)
-          {
-            // Byte code:
-            //   0: aload_0
-            //   1: getfield 34	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$cancellationSignal	Landroid/os/CancellationSignal;
-            //   4: invokevirtual 67	android/os/CancellationSignal:isCanceled	()Z
-            //   7: ifeq +5 -> 12
-            //   10: aconst_null
-            //   11: areturn
-            //   12: new 69	android/print/pdf/PrintedPdfDocument
-            //   15: dup
-            //   16: aload_0
-            //   17: getfield 32	android/support/v4/print/PrintHelper$PrintHelperApi19$2:this$0	Landroid/support/v4/print/PrintHelper$PrintHelperApi19;
-            //   20: getfield 73	android/support/v4/print/PrintHelper$PrintHelperApi19:mContext	Landroid/content/Context;
-            //   23: aload_0
-            //   24: getfield 36	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$pdfAttributes	Landroid/print/PrintAttributes;
-            //   27: invokespecial 76	android/print/pdf/PrintedPdfDocument:<init>	(Landroid/content/Context;Landroid/print/PrintAttributes;)V
-            //   30: astore 4
-            //   32: aload_0
-            //   33: getfield 32	android/support/v4/print/PrintHelper$PrintHelperApi19$2:this$0	Landroid/support/v4/print/PrintHelper$PrintHelperApi19;
-            //   36: aload_0
-            //   37: getfield 38	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$bitmap	Landroid/graphics/Bitmap;
-            //   40: aload_0
-            //   41: getfield 36	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$pdfAttributes	Landroid/print/PrintAttributes;
-            //   44: invokevirtual 82	android/print/PrintAttributes:getColorMode	()I
-            //   47: invokestatic 86	android/support/v4/print/PrintHelper$PrintHelperApi19:access$100	(Landroid/support/v4/print/PrintHelper$PrintHelperApi19;Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
-            //   50: astore_3
-            //   51: aload_0
-            //   52: getfield 34	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$cancellationSignal	Landroid/os/CancellationSignal;
-            //   55: invokevirtual 67	android/os/CancellationSignal:isCanceled	()Z
-            //   58: istore_2
-            //   59: iload_2
-            //   60: ifne +329 -> 389
-            //   63: aload 4
-            //   65: iconst_1
-            //   66: invokevirtual 90	android/print/pdf/PrintedPdfDocument:startPage	(I)Landroid/graphics/pdf/PdfDocument$Page;
-            //   69: astore 5
-            //   71: aload_0
-            //   72: getfield 32	android/support/v4/print/PrintHelper$PrintHelperApi19$2:this$0	Landroid/support/v4/print/PrintHelper$PrintHelperApi19;
-            //   75: getfield 94	android/support/v4/print/PrintHelper$PrintHelperApi19:mIsMinMarginsHandlingCorrect	Z
-            //   78: ifeq +120 -> 198
-            //   81: new 96	android/graphics/RectF
-            //   84: dup
-            //   85: aload 5
-            //   87: invokevirtual 102	android/graphics/pdf/PdfDocument$Page:getInfo	()Landroid/graphics/pdf/PdfDocument$PageInfo;
-            //   90: invokevirtual 108	android/graphics/pdf/PdfDocument$PageInfo:getContentRect	()Landroid/graphics/Rect;
-            //   93: invokespecial 111	android/graphics/RectF:<init>	(Landroid/graphics/Rect;)V
-            //   96: astore_1
-            //   97: aload_0
-            //   98: getfield 32	android/support/v4/print/PrintHelper$PrintHelperApi19$2:this$0	Landroid/support/v4/print/PrintHelper$PrintHelperApi19;
-            //   101: aload_3
-            //   102: invokevirtual 116	android/graphics/Bitmap:getWidth	()I
-            //   105: aload_3
-            //   106: invokevirtual 119	android/graphics/Bitmap:getHeight	()I
-            //   109: aload_1
-            //   110: aload_0
-            //   111: getfield 42	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fittingMode	I
-            //   114: invokestatic 123	android/support/v4/print/PrintHelper$PrintHelperApi19:access$200	(Landroid/support/v4/print/PrintHelper$PrintHelperApi19;IILandroid/graphics/RectF;I)Landroid/graphics/Matrix;
-            //   117: astore 6
-            //   119: aload_0
-            //   120: getfield 32	android/support/v4/print/PrintHelper$PrintHelperApi19$2:this$0	Landroid/support/v4/print/PrintHelper$PrintHelperApi19;
-            //   123: getfield 94	android/support/v4/print/PrintHelper$PrintHelperApi19:mIsMinMarginsHandlingCorrect	Z
-            //   126: ifeq +169 -> 295
-            //   129: aload 5
-            //   131: invokevirtual 127	android/graphics/pdf/PdfDocument$Page:getCanvas	()Landroid/graphics/Canvas;
-            //   134: aload_3
-            //   135: aload 6
-            //   137: aconst_null
-            //   138: invokevirtual 133	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Matrix;Landroid/graphics/Paint;)V
-            //   141: aload 4
-            //   143: aload 5
-            //   145: invokevirtual 137	android/print/pdf/PrintedPdfDocument:finishPage	(Landroid/graphics/pdf/PdfDocument$Page;)V
-            //   148: aload_0
-            //   149: getfield 34	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$cancellationSignal	Landroid/os/CancellationSignal;
-            //   152: invokevirtual 67	android/os/CancellationSignal:isCanceled	()Z
-            //   155: istore_2
-            //   156: iload_2
-            //   157: ifeq +165 -> 322
-            //   160: aload 4
-            //   162: invokevirtual 140	android/print/pdf/PrintedPdfDocument:close	()V
-            //   165: aload_0
-            //   166: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
-            //   169: astore_1
-            //   170: aload_1
-            //   171: ifnull +10 -> 181
-            //   174: aload_0
-            //   175: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
-            //   178: invokevirtual 143	android/os/ParcelFileDescriptor:close	()V
-            //   181: aload_3
-            //   182: aload_0
-            //   183: getfield 38	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$bitmap	Landroid/graphics/Bitmap;
-            //   186: if_acmpeq +203 -> 389
-            //   189: aload_3
-            //   190: invokevirtual 146	android/graphics/Bitmap:recycle	()V
-            //   193: aconst_null
-            //   194: areturn
-            //   195: astore_1
-            //   196: aload_1
-            //   197: areturn
-            //   198: new 69	android/print/pdf/PrintedPdfDocument
-            //   201: dup
-            //   202: aload_0
-            //   203: getfield 32	android/support/v4/print/PrintHelper$PrintHelperApi19$2:this$0	Landroid/support/v4/print/PrintHelper$PrintHelperApi19;
-            //   206: getfield 73	android/support/v4/print/PrintHelper$PrintHelperApi19:mContext	Landroid/content/Context;
-            //   209: aload_0
-            //   210: getfield 40	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$attributes	Landroid/print/PrintAttributes;
-            //   213: invokespecial 76	android/print/pdf/PrintedPdfDocument:<init>	(Landroid/content/Context;Landroid/print/PrintAttributes;)V
-            //   216: astore 6
-            //   218: aload 6
-            //   220: iconst_1
-            //   221: invokevirtual 90	android/print/pdf/PrintedPdfDocument:startPage	(I)Landroid/graphics/pdf/PdfDocument$Page;
-            //   224: astore 7
-            //   226: new 96	android/graphics/RectF
-            //   229: dup
-            //   230: aload 7
-            //   232: invokevirtual 102	android/graphics/pdf/PdfDocument$Page:getInfo	()Landroid/graphics/pdf/PdfDocument$PageInfo;
-            //   235: invokevirtual 108	android/graphics/pdf/PdfDocument$PageInfo:getContentRect	()Landroid/graphics/Rect;
-            //   238: invokespecial 111	android/graphics/RectF:<init>	(Landroid/graphics/Rect;)V
-            //   241: astore_1
-            //   242: aload 6
-            //   244: aload 7
-            //   246: invokevirtual 137	android/print/pdf/PrintedPdfDocument:finishPage	(Landroid/graphics/pdf/PdfDocument$Page;)V
-            //   249: aload 6
-            //   251: invokevirtual 140	android/print/pdf/PrintedPdfDocument:close	()V
-            //   254: goto -157 -> 97
-            //   257: astore_1
-            //   258: aload 4
-            //   260: invokevirtual 140	android/print/pdf/PrintedPdfDocument:close	()V
-            //   263: aload_0
-            //   264: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
-            //   267: astore 4
-            //   269: aload 4
-            //   271: ifnull +10 -> 281
-            //   274: aload_0
-            //   275: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
-            //   278: invokevirtual 143	android/os/ParcelFileDescriptor:close	()V
-            //   281: aload_3
-            //   282: aload_0
-            //   283: getfield 38	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$bitmap	Landroid/graphics/Bitmap;
-            //   286: if_acmpeq +7 -> 293
-            //   289: aload_3
-            //   290: invokevirtual 146	android/graphics/Bitmap:recycle	()V
-            //   293: aload_1
-            //   294: athrow
-            //   295: aload 6
-            //   297: aload_1
-            //   298: getfield 150	android/graphics/RectF:left	F
-            //   301: aload_1
-            //   302: getfield 153	android/graphics/RectF:top	F
-            //   305: invokevirtual 159	android/graphics/Matrix:postTranslate	(FF)Z
-            //   308: pop
-            //   309: aload 5
-            //   311: invokevirtual 127	android/graphics/pdf/PdfDocument$Page:getCanvas	()Landroid/graphics/Canvas;
-            //   314: aload_1
-            //   315: invokevirtual 163	android/graphics/Canvas:clipRect	(Landroid/graphics/RectF;)Z
-            //   318: pop
-            //   319: goto -190 -> 129
-            //   322: aload 4
-            //   324: new 165	java/io/FileOutputStream
-            //   327: dup
-            //   328: aload_0
-            //   329: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
-            //   332: invokevirtual 169	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
-            //   335: invokespecial 172	java/io/FileOutputStream:<init>	(Ljava/io/FileDescriptor;)V
-            //   338: invokevirtual 176	android/print/pdf/PrintedPdfDocument:writeTo	(Ljava/io/OutputStream;)V
-            //   341: aload 4
-            //   343: invokevirtual 140	android/print/pdf/PrintedPdfDocument:close	()V
-            //   346: aload_0
-            //   347: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
-            //   350: astore_1
-            //   351: aload_1
-            //   352: ifnull +10 -> 362
-            //   355: aload_0
-            //   356: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
-            //   359: invokevirtual 143	android/os/ParcelFileDescriptor:close	()V
-            //   362: aload_3
-            //   363: aload_0
-            //   364: getfield 38	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$bitmap	Landroid/graphics/Bitmap;
-            //   367: if_acmpeq +22 -> 389
-            //   370: aload_3
-            //   371: invokevirtual 146	android/graphics/Bitmap:recycle	()V
-            //   374: aconst_null
-            //   375: areturn
-            //   376: astore 4
-            //   378: goto -97 -> 281
-            //   381: astore_1
-            //   382: goto -20 -> 362
-            //   385: astore_1
-            //   386: goto -205 -> 181
-            //   389: aconst_null
-            //   390: areturn
-            // Local variable table:
-            //   start	length	slot	name	signature
-            //   0	391	0	this	2
-            //   0	391	1	paramAnonymousVarArgs	Void[]
-            //   58	99	2	bool	boolean
-            //   50	321	3	localBitmap	Bitmap
-            //   30	312	4	localObject1	Object
-            //   376	1	4	localIOException	IOException
-            //   69	241	5	localPage1	android.graphics.pdf.PdfDocument.Page
-            //   117	179	6	localObject2	Object
-            //   224	21	7	localPage2	android.graphics.pdf.PdfDocument.Page
-            // Exception table:
-            //   from	to	target	type
-            //   0	10	195	java/lang/Throwable
-            //   12	59	195	java/lang/Throwable
-            //   160	170	195	java/lang/Throwable
-            //   174	181	195	java/lang/Throwable
-            //   181	193	195	java/lang/Throwable
-            //   258	269	195	java/lang/Throwable
-            //   274	281	195	java/lang/Throwable
-            //   281	293	195	java/lang/Throwable
-            //   293	295	195	java/lang/Throwable
-            //   341	351	195	java/lang/Throwable
-            //   355	362	195	java/lang/Throwable
-            //   362	374	195	java/lang/Throwable
-            //   63	97	257	finally
-            //   97	129	257	finally
-            //   129	156	257	finally
-            //   198	254	257	finally
-            //   295	319	257	finally
-            //   322	341	257	finally
-            //   274	281	376	java/io/IOException
-            //   355	362	381	java/io/IOException
-            //   174	181	385	java/io/IOException
-          }
-          
-          protected void onPostExecute(Throwable paramAnonymousThrowable)
-          {
-            if (paramCancellationSignal.isCanceled())
-            {
-              paramWriteResultCallback.onWriteCancelled();
-              return;
-            }
-            if (paramAnonymousThrowable == null)
-            {
-              paramWriteResultCallback.onWriteFinished(new PageRange[] { PageRange.ALL_PAGES });
-              return;
-            }
-            Log.e("PrintHelperApi19", "Error writing printed content", paramAnonymousThrowable);
-            paramWriteResultCallback.onWriteFailed(null);
-          }
-        }.execute(new Void[0]);
-        return;
+      final PrintAttributes localPrintAttributes;
+      if (this.mIsMinMarginsHandlingCorrect) {
+        localPrintAttributes = paramPrintAttributes;
+      } else {
+        localPrintAttributes = copyAttributes(paramPrintAttributes).setMinMargins(new PrintAttributes.Margins(0, 0, 0, 0)).build();
       }
+      new AsyncTask()
+      {
+        /* Error */
+        protected Throwable doInBackground(Void... paramAnonymousVarArgs)
+        {
+          // Byte code:
+          //   0: aload_0
+          //   1: getfield 34	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$cancellationSignal	Landroid/os/CancellationSignal;
+          //   4: invokevirtual 67	android/os/CancellationSignal:isCanceled	()Z
+          //   7: ifeq +5 -> 12
+          //   10: aconst_null
+          //   11: areturn
+          //   12: new 69	android/print/pdf/PrintedPdfDocument
+          //   15: dup
+          //   16: aload_0
+          //   17: getfield 32	android/support/v4/print/PrintHelper$PrintHelperApi19$2:this$0	Landroid/support/v4/print/PrintHelper$PrintHelperApi19;
+          //   20: getfield 73	android/support/v4/print/PrintHelper$PrintHelperApi19:mContext	Landroid/content/Context;
+          //   23: aload_0
+          //   24: getfield 36	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$pdfAttributes	Landroid/print/PrintAttributes;
+          //   27: invokespecial 76	android/print/pdf/PrintedPdfDocument:<init>	(Landroid/content/Context;Landroid/print/PrintAttributes;)V
+          //   30: astore 4
+          //   32: aload_0
+          //   33: getfield 32	android/support/v4/print/PrintHelper$PrintHelperApi19$2:this$0	Landroid/support/v4/print/PrintHelper$PrintHelperApi19;
+          //   36: aload_0
+          //   37: getfield 38	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$bitmap	Landroid/graphics/Bitmap;
+          //   40: aload_0
+          //   41: getfield 36	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$pdfAttributes	Landroid/print/PrintAttributes;
+          //   44: invokevirtual 82	android/print/PrintAttributes:getColorMode	()I
+          //   47: invokestatic 86	android/support/v4/print/PrintHelper$PrintHelperApi19:access$100	(Landroid/support/v4/print/PrintHelper$PrintHelperApi19;Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
+          //   50: astore_3
+          //   51: aload_0
+          //   52: getfield 34	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$cancellationSignal	Landroid/os/CancellationSignal;
+          //   55: invokevirtual 67	android/os/CancellationSignal:isCanceled	()Z
+          //   58: istore_2
+          //   59: iload_2
+          //   60: ifeq +5 -> 65
+          //   63: aconst_null
+          //   64: areturn
+          //   65: aload 4
+          //   67: iconst_1
+          //   68: invokevirtual 90	android/print/pdf/PrintedPdfDocument:startPage	(I)Landroid/graphics/pdf/PdfDocument$Page;
+          //   71: astore 5
+          //   73: aload_0
+          //   74: getfield 32	android/support/v4/print/PrintHelper$PrintHelperApi19$2:this$0	Landroid/support/v4/print/PrintHelper$PrintHelperApi19;
+          //   77: getfield 94	android/support/v4/print/PrintHelper$PrintHelperApi19:mIsMinMarginsHandlingCorrect	Z
+          //   80: ifeq +22 -> 102
+          //   83: new 96	android/graphics/RectF
+          //   86: dup
+          //   87: aload 5
+          //   89: invokevirtual 102	android/graphics/pdf/PdfDocument$Page:getInfo	()Landroid/graphics/pdf/PdfDocument$PageInfo;
+          //   92: invokevirtual 108	android/graphics/pdf/PdfDocument$PageInfo:getContentRect	()Landroid/graphics/Rect;
+          //   95: invokespecial 111	android/graphics/RectF:<init>	(Landroid/graphics/Rect;)V
+          //   98: astore_1
+          //   99: goto +59 -> 158
+          //   102: new 69	android/print/pdf/PrintedPdfDocument
+          //   105: dup
+          //   106: aload_0
+          //   107: getfield 32	android/support/v4/print/PrintHelper$PrintHelperApi19$2:this$0	Landroid/support/v4/print/PrintHelper$PrintHelperApi19;
+          //   110: getfield 73	android/support/v4/print/PrintHelper$PrintHelperApi19:mContext	Landroid/content/Context;
+          //   113: aload_0
+          //   114: getfield 40	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$attributes	Landroid/print/PrintAttributes;
+          //   117: invokespecial 76	android/print/pdf/PrintedPdfDocument:<init>	(Landroid/content/Context;Landroid/print/PrintAttributes;)V
+          //   120: astore 6
+          //   122: aload 6
+          //   124: iconst_1
+          //   125: invokevirtual 90	android/print/pdf/PrintedPdfDocument:startPage	(I)Landroid/graphics/pdf/PdfDocument$Page;
+          //   128: astore 7
+          //   130: new 96	android/graphics/RectF
+          //   133: dup
+          //   134: aload 7
+          //   136: invokevirtual 102	android/graphics/pdf/PdfDocument$Page:getInfo	()Landroid/graphics/pdf/PdfDocument$PageInfo;
+          //   139: invokevirtual 108	android/graphics/pdf/PdfDocument$PageInfo:getContentRect	()Landroid/graphics/Rect;
+          //   142: invokespecial 111	android/graphics/RectF:<init>	(Landroid/graphics/Rect;)V
+          //   145: astore_1
+          //   146: aload 6
+          //   148: aload 7
+          //   150: invokevirtual 115	android/print/pdf/PrintedPdfDocument:finishPage	(Landroid/graphics/pdf/PdfDocument$Page;)V
+          //   153: aload 6
+          //   155: invokevirtual 118	android/print/pdf/PrintedPdfDocument:close	()V
+          //   158: aload_0
+          //   159: getfield 32	android/support/v4/print/PrintHelper$PrintHelperApi19$2:this$0	Landroid/support/v4/print/PrintHelper$PrintHelperApi19;
+          //   162: aload_3
+          //   163: invokevirtual 123	android/graphics/Bitmap:getWidth	()I
+          //   166: aload_3
+          //   167: invokevirtual 126	android/graphics/Bitmap:getHeight	()I
+          //   170: aload_1
+          //   171: aload_0
+          //   172: getfield 42	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fittingMode	I
+          //   175: invokestatic 130	android/support/v4/print/PrintHelper$PrintHelperApi19:access$200	(Landroid/support/v4/print/PrintHelper$PrintHelperApi19;IILandroid/graphics/RectF;I)Landroid/graphics/Matrix;
+          //   178: astore 6
+          //   180: aload_0
+          //   181: getfield 32	android/support/v4/print/PrintHelper$PrintHelperApi19$2:this$0	Landroid/support/v4/print/PrintHelper$PrintHelperApi19;
+          //   184: getfield 94	android/support/v4/print/PrintHelper$PrintHelperApi19:mIsMinMarginsHandlingCorrect	Z
+          //   187: ifeq +6 -> 193
+          //   190: goto +27 -> 217
+          //   193: aload 6
+          //   195: aload_1
+          //   196: getfield 134	android/graphics/RectF:left	F
+          //   199: aload_1
+          //   200: getfield 137	android/graphics/RectF:top	F
+          //   203: invokevirtual 143	android/graphics/Matrix:postTranslate	(FF)Z
+          //   206: pop
+          //   207: aload 5
+          //   209: invokevirtual 147	android/graphics/pdf/PdfDocument$Page:getCanvas	()Landroid/graphics/Canvas;
+          //   212: aload_1
+          //   213: invokevirtual 153	android/graphics/Canvas:clipRect	(Landroid/graphics/RectF;)Z
+          //   216: pop
+          //   217: aload 5
+          //   219: invokevirtual 147	android/graphics/pdf/PdfDocument$Page:getCanvas	()Landroid/graphics/Canvas;
+          //   222: aload_3
+          //   223: aload 6
+          //   225: aconst_null
+          //   226: invokevirtual 157	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Matrix;Landroid/graphics/Paint;)V
+          //   229: aload 4
+          //   231: aload 5
+          //   233: invokevirtual 115	android/print/pdf/PrintedPdfDocument:finishPage	(Landroid/graphics/pdf/PdfDocument$Page;)V
+          //   236: aload_0
+          //   237: getfield 34	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$cancellationSignal	Landroid/os/CancellationSignal;
+          //   240: invokevirtual 67	android/os/CancellationSignal:isCanceled	()Z
+          //   243: istore_2
+          //   244: iload_2
+          //   245: ifeq +38 -> 283
+          //   248: aload 4
+          //   250: invokevirtual 118	android/print/pdf/PrintedPdfDocument:close	()V
+          //   253: aload_0
+          //   254: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
+          //   257: astore_1
+          //   258: aload_1
+          //   259: ifnull +10 -> 269
+          //   262: aload_0
+          //   263: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
+          //   266: invokevirtual 160	android/os/ParcelFileDescriptor:close	()V
+          //   269: aload_3
+          //   270: aload_0
+          //   271: getfield 38	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$bitmap	Landroid/graphics/Bitmap;
+          //   274: if_acmpeq +7 -> 281
+          //   277: aload_3
+          //   278: invokevirtual 163	android/graphics/Bitmap:recycle	()V
+          //   281: aconst_null
+          //   282: areturn
+          //   283: aload 4
+          //   285: new 165	java/io/FileOutputStream
+          //   288: dup
+          //   289: aload_0
+          //   290: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
+          //   293: invokevirtual 169	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+          //   296: invokespecial 172	java/io/FileOutputStream:<init>	(Ljava/io/FileDescriptor;)V
+          //   299: invokevirtual 176	android/print/pdf/PrintedPdfDocument:writeTo	(Ljava/io/OutputStream;)V
+          //   302: aload 4
+          //   304: invokevirtual 118	android/print/pdf/PrintedPdfDocument:close	()V
+          //   307: aload_0
+          //   308: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
+          //   311: astore_1
+          //   312: aload_1
+          //   313: ifnull +10 -> 323
+          //   316: aload_0
+          //   317: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
+          //   320: invokevirtual 160	android/os/ParcelFileDescriptor:close	()V
+          //   323: aload_3
+          //   324: aload_0
+          //   325: getfield 38	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$bitmap	Landroid/graphics/Bitmap;
+          //   328: if_acmpeq +63 -> 391
+          //   331: aload_3
+          //   332: invokevirtual 163	android/graphics/Bitmap:recycle	()V
+          //   335: aconst_null
+          //   336: areturn
+          //   337: astore_1
+          //   338: aload 4
+          //   340: invokevirtual 118	android/print/pdf/PrintedPdfDocument:close	()V
+          //   343: aload_0
+          //   344: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
+          //   347: astore 4
+          //   349: aload 4
+          //   351: ifnull +10 -> 361
+          //   354: aload_0
+          //   355: getfield 44	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$fileDescriptor	Landroid/os/ParcelFileDescriptor;
+          //   358: invokevirtual 160	android/os/ParcelFileDescriptor:close	()V
+          //   361: aload_3
+          //   362: aload_0
+          //   363: getfield 38	android/support/v4/print/PrintHelper$PrintHelperApi19$2:val$bitmap	Landroid/graphics/Bitmap;
+          //   366: if_acmpeq +7 -> 373
+          //   369: aload_3
+          //   370: invokevirtual 163	android/graphics/Bitmap:recycle	()V
+          //   373: aload_1
+          //   374: athrow
+          //   375: astore_1
+          //   376: aload_1
+          //   377: areturn
+          //   378: astore_1
+          //   379: goto -110 -> 269
+          //   382: astore_1
+          //   383: goto -60 -> 323
+          //   386: astore 4
+          //   388: goto -27 -> 361
+          //   391: aconst_null
+          //   392: areturn
+          // Local variable table:
+          //   start	length	slot	name	signature
+          //   0	393	0	this	2
+          //   0	393	1	paramAnonymousVarArgs	Void[]
+          //   58	187	2	bool	boolean
+          //   50	320	3	localBitmap	Bitmap
+          //   30	320	4	localObject1	Object
+          //   386	1	4	localIOException	java.io.IOException
+          //   71	161	5	localPage1	android.graphics.pdf.PdfDocument.Page
+          //   120	104	6	localObject2	Object
+          //   128	21	7	localPage2	android.graphics.pdf.PdfDocument.Page
+          // Exception table:
+          //   from	to	target	type
+          //   65	99	337	finally
+          //   102	158	337	finally
+          //   158	190	337	finally
+          //   193	217	337	finally
+          //   217	244	337	finally
+          //   283	302	337	finally
+          //   0	10	375	java/lang/Throwable
+          //   12	59	375	java/lang/Throwable
+          //   248	258	375	java/lang/Throwable
+          //   262	269	375	java/lang/Throwable
+          //   269	281	375	java/lang/Throwable
+          //   302	312	375	java/lang/Throwable
+          //   316	323	375	java/lang/Throwable
+          //   323	335	375	java/lang/Throwable
+          //   338	349	375	java/lang/Throwable
+          //   354	361	375	java/lang/Throwable
+          //   361	373	375	java/lang/Throwable
+          //   373	375	375	java/lang/Throwable
+          //   262	269	378	java/io/IOException
+          //   316	323	382	java/io/IOException
+          //   354	361	386	java/io/IOException
+        }
+        
+        protected void onPostExecute(Throwable paramAnonymousThrowable)
+        {
+          if (paramCancellationSignal.isCanceled())
+          {
+            paramWriteResultCallback.onWriteCancelled();
+            return;
+          }
+          if (paramAnonymousThrowable == null)
+          {
+            paramWriteResultCallback.onWriteFinished(new PageRange[] { PageRange.ALL_PAGES });
+            return;
+          }
+          Log.e("PrintHelperApi19", "Error writing printed content", paramAnonymousThrowable);
+          paramWriteResultCallback.onWriteFailed(null);
+        }
+      }.execute(new Void[0]);
     }
     
     protected PrintAttributes.Builder copyAttributes(PrintAttributes paramPrintAttributes)
@@ -661,10 +708,11 @@ public final class PrintHelper
     
     public int getOrientation()
     {
-      if (this.mOrientation == 0) {
+      int i = this.mOrientation;
+      if (i == 0) {
         return 1;
       }
-      return this.mOrientation;
+      return i;
     }
     
     public int getScaleMode()
@@ -679,42 +727,35 @@ public final class PrintHelper
       }
       final int i = this.mScaleMode;
       PrintManager localPrintManager = (PrintManager)this.mContext.getSystemService("print");
-      if (isPortrait(paramBitmap)) {}
-      for (Object localObject = PrintAttributes.MediaSize.UNKNOWN_PORTRAIT;; localObject = PrintAttributes.MediaSize.UNKNOWN_LANDSCAPE)
-      {
-        localObject = new PrintAttributes.Builder().setMediaSize((PrintAttributes.MediaSize)localObject).setColorMode(this.mColorMode).build();
-        localPrintManager.print(paramString, new PrintDocumentAdapter()
-        {
-          private PrintAttributes mAttributes;
-          
-          public void onFinish()
-          {
-            if (paramOnPrintFinishCallback != null) {
-              paramOnPrintFinishCallback.onFinish();
-            }
-          }
-          
-          public void onLayout(PrintAttributes paramAnonymousPrintAttributes1, PrintAttributes paramAnonymousPrintAttributes2, CancellationSignal paramAnonymousCancellationSignal, PrintDocumentAdapter.LayoutResultCallback paramAnonymousLayoutResultCallback, Bundle paramAnonymousBundle)
-          {
-            boolean bool = true;
-            this.mAttributes = paramAnonymousPrintAttributes2;
-            paramAnonymousCancellationSignal = new PrintDocumentInfo.Builder(paramString).setContentType(1).setPageCount(1).build();
-            if (!paramAnonymousPrintAttributes2.equals(paramAnonymousPrintAttributes1)) {}
-            for (;;)
-            {
-              paramAnonymousLayoutResultCallback.onLayoutFinished(paramAnonymousCancellationSignal, bool);
-              return;
-              bool = false;
-            }
-          }
-          
-          public void onWrite(PageRange[] paramAnonymousArrayOfPageRange, ParcelFileDescriptor paramAnonymousParcelFileDescriptor, CancellationSignal paramAnonymousCancellationSignal, PrintDocumentAdapter.WriteResultCallback paramAnonymousWriteResultCallback)
-          {
-            PrintHelper.PrintHelperApi19.this.writeBitmap(this.mAttributes, i, paramBitmap, paramAnonymousParcelFileDescriptor, paramAnonymousCancellationSignal, paramAnonymousWriteResultCallback);
-          }
-        }, (PrintAttributes)localObject);
-        return;
+      if (isPortrait(paramBitmap)) {
+        localObject = PrintAttributes.MediaSize.UNKNOWN_PORTRAIT;
+      } else {
+        localObject = PrintAttributes.MediaSize.UNKNOWN_LANDSCAPE;
       }
+      Object localObject = new PrintAttributes.Builder().setMediaSize((PrintAttributes.MediaSize)localObject).setColorMode(this.mColorMode).build();
+      localPrintManager.print(paramString, new PrintDocumentAdapter()
+      {
+        private PrintAttributes mAttributes;
+        
+        public void onFinish()
+        {
+          PrintHelper.OnPrintFinishCallback localOnPrintFinishCallback = paramOnPrintFinishCallback;
+          if (localOnPrintFinishCallback != null) {
+            localOnPrintFinishCallback.onFinish();
+          }
+        }
+        
+        public void onLayout(PrintAttributes paramAnonymousPrintAttributes1, PrintAttributes paramAnonymousPrintAttributes2, CancellationSignal paramAnonymousCancellationSignal, PrintDocumentAdapter.LayoutResultCallback paramAnonymousLayoutResultCallback, Bundle paramAnonymousBundle)
+        {
+          this.mAttributes = paramAnonymousPrintAttributes2;
+          paramAnonymousLayoutResultCallback.onLayoutFinished(new PrintDocumentInfo.Builder(paramString).setContentType(1).setPageCount(1).build(), paramAnonymousPrintAttributes2.equals(paramAnonymousPrintAttributes1) ^ true);
+        }
+        
+        public void onWrite(PageRange[] paramAnonymousArrayOfPageRange, ParcelFileDescriptor paramAnonymousParcelFileDescriptor, CancellationSignal paramAnonymousCancellationSignal, PrintDocumentAdapter.WriteResultCallback paramAnonymousWriteResultCallback)
+        {
+          PrintHelper.PrintHelperApi19.this.writeBitmap(this.mAttributes, i, paramBitmap, paramAnonymousParcelFileDescriptor, paramAnonymousCancellationSignal, paramAnonymousWriteResultCallback);
+        }
+      }, (PrintAttributes)localObject);
     }
     
     public void printBitmap(final String paramString, final Uri paramUri, final PrintHelper.OnPrintFinishCallback paramOnPrintFinishCallback)
@@ -742,22 +783,24 @@ public final class PrintHelper
         {
           super.onFinish();
           cancelLoad();
-          if (this.mLoadBitmap != null) {
-            this.mLoadBitmap.cancel(true);
+          Object localObject = this.mLoadBitmap;
+          if (localObject != null) {
+            ((AsyncTask)localObject).cancel(true);
           }
-          if (paramOnPrintFinishCallback != null) {
-            paramOnPrintFinishCallback.onFinish();
+          localObject = paramOnPrintFinishCallback;
+          if (localObject != null) {
+            ((PrintHelper.OnPrintFinishCallback)localObject).onFinish();
           }
-          if (this.mBitmap != null)
+          localObject = this.mBitmap;
+          if (localObject != null)
           {
-            this.mBitmap.recycle();
+            ((Bitmap)localObject).recycle();
             this.mBitmap = null;
           }
         }
         
         public void onLayout(final PrintAttributes paramAnonymousPrintAttributes1, final PrintAttributes paramAnonymousPrintAttributes2, final CancellationSignal paramAnonymousCancellationSignal, final PrintDocumentAdapter.LayoutResultCallback paramAnonymousLayoutResultCallback, Bundle paramAnonymousBundle)
         {
-          boolean bool = true;
           try
           {
             this.mAttributes = paramAnonymousPrintAttributes2;
@@ -766,101 +809,94 @@ public final class PrintHelper
               paramAnonymousLayoutResultCallback.onLayoutCancelled();
               return;
             }
-          }
-          finally {}
-          if (this.mBitmap != null)
-          {
-            paramAnonymousCancellationSignal = new PrintDocumentInfo.Builder(paramString).setContentType(1).setPageCount(1).build();
-            if (!paramAnonymousPrintAttributes2.equals(paramAnonymousPrintAttributes1)) {}
-            for (;;)
+            if (this.mBitmap != null)
             {
-              paramAnonymousLayoutResultCallback.onLayoutFinished(paramAnonymousCancellationSignal, bool);
+              paramAnonymousLayoutResultCallback.onLayoutFinished(new PrintDocumentInfo.Builder(paramString).setContentType(1).setPageCount(1).build(), paramAnonymousPrintAttributes2.equals(paramAnonymousPrintAttributes1) ^ true);
               return;
-              bool = false;
             }
-          }
-          this.mLoadBitmap = new AsyncTask()
-          {
-            protected Bitmap doInBackground(Uri... paramAnonymous2VarArgs)
+            this.mLoadBitmap = new AsyncTask()
             {
-              try
-              {
-                paramAnonymous2VarArgs = PrintHelper.PrintHelperApi19.this.loadConstrainedBitmap(PrintHelper.PrintHelperApi19.3.this.val$imageFile);
-                return paramAnonymous2VarArgs;
-              }
-              catch (FileNotFoundException paramAnonymous2VarArgs) {}
-              return null;
-            }
-            
-            protected void onCancelled(Bitmap paramAnonymous2Bitmap)
-            {
-              paramAnonymousLayoutResultCallback.onLayoutCancelled();
-              PrintHelper.PrintHelperApi19.3.this.mLoadBitmap = null;
-            }
-            
-            protected void onPostExecute(Bitmap paramAnonymous2Bitmap)
-            {
-              boolean bool = true;
-              super.onPostExecute(paramAnonymous2Bitmap);
-              Object localObject = paramAnonymous2Bitmap;
-              if (paramAnonymous2Bitmap != null) {
-                if (PrintHelper.PrintHelperApi19.this.mPrintActivityRespectsOrientation)
-                {
-                  localObject = paramAnonymous2Bitmap;
-                  if (PrintHelper.PrintHelperApi19.this.mOrientation != 0) {
-                    break label110;
-                  }
-                }
-              }
-              for (;;)
+              protected Bitmap doInBackground(Uri... paramAnonymous2VarArgs)
               {
                 try
                 {
-                  PrintAttributes.MediaSize localMediaSize = PrintHelper.PrintHelperApi19.3.this.mAttributes.getMediaSize();
-                  localObject = paramAnonymous2Bitmap;
-                  if (localMediaSize != null)
+                  paramAnonymous2VarArgs = PrintHelper.PrintHelperApi19.this.loadConstrainedBitmap(PrintHelper.PrintHelperApi19.3.this.val$imageFile);
+                  return paramAnonymous2VarArgs;
+                }
+                catch (FileNotFoundException paramAnonymous2VarArgs)
+                {
+                  label20:
+                  break label20;
+                }
+                return null;
+              }
+              
+              protected void onCancelled(Bitmap paramAnonymous2Bitmap)
+              {
+                paramAnonymousLayoutResultCallback.onLayoutCancelled();
+                PrintHelper.PrintHelperApi19.3.this.mLoadBitmap = null;
+              }
+              
+              protected void onPostExecute(Bitmap paramAnonymous2Bitmap)
+              {
+                super.onPostExecute(paramAnonymous2Bitmap);
+                Object localObject = paramAnonymous2Bitmap;
+                if (paramAnonymous2Bitmap != null) {
+                  if (PrintHelper.PrintHelperApi19.this.mPrintActivityRespectsOrientation)
                   {
                     localObject = paramAnonymous2Bitmap;
-                    if (localMediaSize.isPortrait() != PrintHelper.PrintHelperApi19.isPortrait(paramAnonymous2Bitmap))
-                    {
-                      localObject = new Matrix();
-                      ((Matrix)localObject).postRotate(90.0F);
-                      localObject = Bitmap.createBitmap(paramAnonymous2Bitmap, 0, 0, paramAnonymous2Bitmap.getWidth(), paramAnonymous2Bitmap.getHeight(), (Matrix)localObject, true);
-                    }
+                    if (PrintHelper.PrintHelperApi19.this.mOrientation != 0) {}
                   }
-                  label110:
-                  PrintHelper.PrintHelperApi19.3.this.mBitmap = ((Bitmap)localObject);
-                  if (localObject == null) {
-                    break label190;
-                  }
-                  paramAnonymous2Bitmap = new PrintDocumentInfo.Builder(PrintHelper.PrintHelperApi19.3.this.val$jobName).setContentType(1).setPageCount(1).build();
-                  if (!paramAnonymousPrintAttributes2.equals(paramAnonymousPrintAttributes1))
+                  else
                   {
-                    paramAnonymousLayoutResultCallback.onLayoutFinished(paramAnonymous2Bitmap, bool);
-                    PrintHelper.PrintHelperApi19.3.this.mLoadBitmap = null;
-                    return;
+                    try
+                    {
+                      PrintAttributes.MediaSize localMediaSize = PrintHelper.PrintHelperApi19.3.this.mAttributes.getMediaSize();
+                      localObject = paramAnonymous2Bitmap;
+                      if (localMediaSize != null)
+                      {
+                        localObject = paramAnonymous2Bitmap;
+                        if (localMediaSize.isPortrait() != PrintHelper.PrintHelperApi19.isPortrait(paramAnonymous2Bitmap))
+                        {
+                          localObject = new Matrix();
+                          ((Matrix)localObject).postRotate(90.0F);
+                          localObject = Bitmap.createBitmap(paramAnonymous2Bitmap, 0, 0, paramAnonymous2Bitmap.getWidth(), paramAnonymous2Bitmap.getHeight(), (Matrix)localObject, true);
+                        }
+                      }
+                    }
+                    finally {}
                   }
                 }
-                finally {}
-                bool = false;
-                continue;
-                label190:
-                paramAnonymousLayoutResultCallback.onLayoutFailed(null);
-              }
-            }
-            
-            protected void onPreExecute()
-            {
-              paramAnonymousCancellationSignal.setOnCancelListener(new CancellationSignal.OnCancelListener()
-              {
-                public void onCancel()
+                paramAnonymous2Bitmap = PrintHelper.PrintHelperApi19.3.this;
+                paramAnonymous2Bitmap.mBitmap = ((Bitmap)localObject);
+                if (localObject != null)
                 {
-                  PrintHelper.PrintHelperApi19.3.this.cancelLoad();
-                  PrintHelper.PrintHelperApi19.3.1.this.cancel(false);
+                  paramAnonymous2Bitmap = new PrintDocumentInfo.Builder(paramAnonymous2Bitmap.val$jobName).setContentType(1).setPageCount(1).build();
+                  boolean bool = paramAnonymousPrintAttributes2.equals(paramAnonymousPrintAttributes1);
+                  paramAnonymousLayoutResultCallback.onLayoutFinished(paramAnonymous2Bitmap, true ^ bool);
                 }
-              });
-            }
-          }.execute(new Uri[0]);
+                else
+                {
+                  paramAnonymousLayoutResultCallback.onLayoutFailed(null);
+                }
+                PrintHelper.PrintHelperApi19.3.this.mLoadBitmap = null;
+              }
+              
+              protected void onPreExecute()
+              {
+                paramAnonymousCancellationSignal.setOnCancelListener(new CancellationSignal.OnCancelListener()
+                {
+                  public void onCancel()
+                  {
+                    PrintHelper.PrintHelperApi19.3.this.cancelLoad();
+                    PrintHelper.PrintHelperApi19.3.1.this.cancel(false);
+                  }
+                });
+              }
+            }.execute(new Uri[0]);
+            return;
+          }
+          finally {}
         }
         
         public void onWrite(PageRange[] paramAnonymousArrayOfPageRange, ParcelFileDescriptor paramAnonymousParcelFileDescriptor, CancellationSignal paramAnonymousCancellationSignal, PrintDocumentAdapter.WriteResultCallback paramAnonymousWriteResultCallback)
@@ -871,17 +907,17 @@ public final class PrintHelper
       paramOnPrintFinishCallback = (PrintManager)this.mContext.getSystemService("print");
       PrintAttributes.Builder localBuilder = new PrintAttributes.Builder();
       localBuilder.setColorMode(this.mColorMode);
-      if ((this.mOrientation == 1) || (this.mOrientation == 0)) {
-        localBuilder.setMediaSize(PrintAttributes.MediaSize.UNKNOWN_LANDSCAPE);
-      }
-      for (;;)
+      int i = this.mOrientation;
+      if ((i != 1) && (i != 0))
       {
-        paramOnPrintFinishCallback.print(paramString, paramUri, localBuilder.build());
-        return;
-        if (this.mOrientation == 2) {
+        if (i == 2) {
           localBuilder.setMediaSize(PrintAttributes.MediaSize.UNKNOWN_PORTRAIT);
         }
       }
+      else {
+        localBuilder.setMediaSize(PrintAttributes.MediaSize.UNKNOWN_LANDSCAPE);
+      }
+      paramOnPrintFinishCallback.print(paramString, paramUri, localBuilder.build());
     }
     
     public void setColorMode(int paramInt)

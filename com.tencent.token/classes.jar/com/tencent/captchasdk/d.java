@@ -48,29 +48,8 @@ class d
             paramAnonymousWebView.removeJavascriptInterface("accessibility");
             paramAnonymousWebView.removeJavascriptInterface("accessibilityTraversal");
           }
-          for (;;)
+          else
           {
-            paramAnonymousWebView.setWebViewClient(new WebViewClient()
-            {
-              public boolean shouldOverrideUrlLoading(WebView paramAnonymous2WebView, String paramAnonymous2String)
-              {
-                try
-                {
-                  paramAnonymous2String = new Intent("android.intent.action.VIEW", Uri.parse(paramAnonymous2String));
-                  paramAnonymous2String.addFlags(268435456);
-                  paramAnonymous2WebView.getContext().startActivity(paramAnonymous2String);
-                  return true;
-                }
-                catch (Exception paramAnonymous2WebView)
-                {
-                  paramAnonymous2WebView.printStackTrace();
-                }
-                return true;
-              }
-            });
-            ((WebView.WebViewTransport)paramAnonymousMessage.obj).setWebView(paramAnonymousWebView);
-            paramAnonymousMessage.sendToTarget();
-            return true;
             Method localMethod = paramAnonymousWebView.getClass().getMethod("removeJavascriptInterface", new Class[] { String.class });
             if (localMethod != null)
             {
@@ -82,17 +61,35 @@ class d
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            localException.printStackTrace();
-          }
+          localException.printStackTrace();
         }
+        paramAnonymousWebView.setWebViewClient(new WebViewClient()
+        {
+          public boolean shouldOverrideUrlLoading(WebView paramAnonymous2WebView, String paramAnonymous2String)
+          {
+            try
+            {
+              paramAnonymous2String = new Intent("android.intent.action.VIEW", Uri.parse(paramAnonymous2String));
+              paramAnonymous2String.addFlags(268435456);
+              paramAnonymous2WebView.getContext().startActivity(paramAnonymous2String);
+              return true;
+            }
+            catch (Exception paramAnonymous2WebView)
+            {
+              paramAnonymous2WebView.printStackTrace();
+            }
+            return true;
+          }
+        });
+        ((WebView.WebViewTransport)paramAnonymousMessage.obj).setWebView(paramAnonymousWebView);
+        paramAnonymousMessage.sendToTarget();
         return true;
       }
       catch (Exception paramAnonymousWebView)
       {
         paramAnonymousWebView.printStackTrace();
       }
+      return true;
     }
     
     public void onProgressChanged(WebView paramAnonymousWebView, int paramAnonymousInt) {}
@@ -131,21 +128,17 @@ class d
     this.a = parama;
     this.c = paramString1;
     this.d = paramWebView;
-    if ((paramString2 != null) && (paramString2.length() > 0))
-    {
+    if ((paramString2 != null) && (paramString2.length() > 0)) {
       this.e = paramString2;
-      if (paramInt <= 0) {
-        break label93;
-      }
-    }
-    label93:
-    for (this.f = paramInt;; this.f = 100)
-    {
-      b();
-      return;
+    } else {
       this.e = "";
-      break;
     }
+    if (paramInt > 0) {
+      this.f = paramInt;
+    } else {
+      this.f = 100;
+    }
+    b();
   }
   
   private void a(Uri paramUri)
@@ -187,99 +180,111 @@ class d
     if (paramUri != null) {}
     try
     {
-      if ((this.b != null) && (this.a != null)) {
-        this.a.a(-1001, URLDecoder.decode(paramUri.getQueryParameter("msg"), "utf-8"));
+      if ((this.b == null) || (this.a == null)) {
+        break label60;
       }
+      this.a.a(-1001, URLDecoder.decode(paramUri.getQueryParameter("msg"), "utf-8"));
       return;
     }
     catch (Exception localException)
     {
-      this.a.a(-1001, paramUri.getQueryParameter("msg"));
+      label42:
+      label60:
+      break label42;
     }
+    this.a.a(-1001, paramUri.getQueryParameter("msg"));
   }
   
   private void c(Uri paramUri)
   {
-    if ((Build.VERSION.SDK_INT >= 19) && (this.b != null) && (paramUri != null)) {}
-    try
-    {
-      String str2 = paramUri.getQueryParameter("list");
-      String str1 = paramUri.getQueryParameter("callback");
-      if ((str2 != null) && (paramUri.getQueryParameter("callback") != null) && (Integer.parseInt(str2) > 0))
+    if ((Build.VERSION.SDK_INT >= 19) && (this.b != null) && (paramUri != null)) {
+      try
       {
-        int i = Integer.parseInt(str2);
-        paramUri = new JSONObject();
-        if ((i & 0x1) == 1)
+        Object localObject = paramUri.getQueryParameter("list");
+        String str = paramUri.getQueryParameter("callback");
+        if ((localObject != null) && (paramUri.getQueryParameter("callback") != null) && (Integer.parseInt((String)localObject) > 0))
         {
-          c.a();
-          paramUri.put("cpu_info", c.a);
-          paramUri.put("cpu_hardware", c.b);
-          paramUri.put("cpu_serial", c.c);
-        }
-        if ((i & 0x2) == 2) {
-          paramUri.put("battery_level", c.a(this.b));
-        }
-        if ((i & 0x4) == 4)
-        {
-          paramUri.put("dpi", c.b(this.b));
-          paramUri.put("width", c.c(this.b));
-          paramUri.put("height", c.d(this.b));
-        }
-        if ((i & 0x8) == 8) {
-          paramUri.put("sensor_flag", c.e(this.b));
-        }
-        if ((i & 0x10) == 16)
-        {
-          paramUri.put("network_type", c.a(this.b, 0));
-          paramUri.put("network_operator_name", c.a(this.b, 1));
-          paramUri.put("network_connection_type", c.a(this.b, 2));
-        }
-        if ((i & 0x20) == 32)
-        {
-          paramUri.put("wifi_ssid", c.b(this.b, 0));
-          paramUri.put("wifi_bssid", c.b(this.b, 1));
-          paramUri.put("wifi_connected", c.f(this.b));
-        }
-        if ((i & 0x40) == 64)
-        {
-          paramUri.put("band_version", c.b());
-          paramUri.put("osname", c.e());
-        }
-        if ((i & 0x80) == 128)
-        {
-          paramUri.put("app_name", c.g(this.b));
-          paramUri.put("app_version", c.h(this.b));
-        }
-        if ((i & 0x100) == 256) {
-          paramUri.put("kernel_version", c.f());
-        }
-        if ((i & 0x200) == 512)
-        {
-          paramUri.put("is_emulator", c.c());
-          paramUri.put("is_root", c.d());
-        }
-        if (paramUri.length() > 0)
-        {
-          paramUri.put("platform", "Android");
-          paramUri = "javascript:window." + str1 + "(" + paramUri.toString() + ")";
-          this.d.evaluateJavascript(paramUri, new ValueCallback()
+          int i = Integer.parseInt((String)localObject);
+          paramUri = new JSONObject();
+          if ((i & 0x1) == 1)
           {
-            public void a(String paramAnonymousString) {}
-          });
+            c.a();
+            paramUri.put("cpu_info", c.a);
+            paramUri.put("cpu_hardware", c.b);
+            paramUri.put("cpu_serial", c.c);
+          }
+          if ((i & 0x2) == 2) {
+            paramUri.put("battery_level", c.a(this.b));
+          }
+          if ((i & 0x4) == 4)
+          {
+            paramUri.put("dpi", c.b(this.b));
+            paramUri.put("width", c.c(this.b));
+            paramUri.put("height", c.d(this.b));
+          }
+          if ((i & 0x8) == 8) {
+            paramUri.put("sensor_flag", c.e(this.b));
+          }
+          if ((i & 0x10) == 16)
+          {
+            paramUri.put("network_type", c.a(this.b, 0));
+            paramUri.put("network_operator_name", c.a(this.b, 1));
+            paramUri.put("network_connection_type", c.a(this.b, 2));
+          }
+          if ((i & 0x20) == 32)
+          {
+            paramUri.put("wifi_ssid", c.b(this.b, 0));
+            paramUri.put("wifi_bssid", c.b(this.b, 1));
+            paramUri.put("wifi_connected", c.f(this.b));
+          }
+          if ((i & 0x40) == 64)
+          {
+            paramUri.put("band_version", c.b());
+            paramUri.put("osname", c.e());
+          }
+          if ((i & 0x80) == 128)
+          {
+            paramUri.put("app_name", c.g(this.b));
+            paramUri.put("app_version", c.h(this.b));
+          }
+          if ((i & 0x100) == 256) {
+            paramUri.put("kernel_version", c.f());
+          }
+          if ((i & 0x200) == 512)
+          {
+            paramUri.put("is_emulator", c.c());
+            paramUri.put("is_root", c.d());
+          }
+          if (paramUri.length() > 0)
+          {
+            paramUri.put("platform", "Android");
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("javascript:window.");
+            ((StringBuilder)localObject).append(str);
+            ((StringBuilder)localObject).append("(");
+            ((StringBuilder)localObject).append(paramUri.toString());
+            ((StringBuilder)localObject).append(")");
+            paramUri = ((StringBuilder)localObject).toString();
+            this.d.evaluateJavascript(paramUri, new ValueCallback()
+            {
+              public void a(String paramAnonymousString) {}
+            });
+            return;
+          }
         }
       }
-      return;
-    }
-    catch (Exception paramUri)
-    {
-      paramUri.printStackTrace();
+      catch (Exception paramUri)
+      {
+        paramUri.printStackTrace();
+      }
     }
   }
   
   private void d(Uri paramUri)
   {
-    if (this.a != null) {
-      this.a.a(Integer.parseInt(paramUri.getQueryParameter("width")), Integer.parseInt(paramUri.getQueryParameter("height")));
+    a locala = this.a;
+    if (locala != null) {
+      locala.a(Integer.parseInt(paramUri.getQueryParameter("width")), Integer.parseInt(paramUri.getQueryParameter("height")));
     }
   }
   
@@ -287,15 +292,19 @@ class d
   {
     try
     {
-      if (this.a != null) {
-        this.a.a(URLDecoder.decode(paramUri.getQueryParameter("retJson"), "utf-8"));
+      if (this.a == null) {
+        break label45;
       }
+      this.a.a(URLDecoder.decode(paramUri.getQueryParameter("retJson"), "utf-8"));
       return;
     }
     catch (Exception localException)
     {
-      this.a.a(paramUri.getQueryParameter("retJson"));
+      label29:
+      label45:
+      break label29;
     }
+    this.a.a(paramUri.getQueryParameter("retJson"));
   }
   
   public void a()
@@ -327,63 +336,69 @@ class d
         this.d.removeJavascriptInterface("searchBoxJavaBridge_");
         this.d.removeJavascriptInterface("accessibility");
         this.d.removeJavascriptInterface("accessibilityTraversal");
-        localObject = this.d.getSettings();
+      }
+      else
+      {
+        Method localMethod = this.d.getClass().getMethod("removeJavascriptInterface", new Class[] { String.class });
+        if (localMethod != null)
+        {
+          localMethod.invoke(this.d, new Object[] { "searchBoxJavaBridge_" });
+          localMethod.invoke(this.d, new Object[] { "accessibility" });
+          localMethod.invoke(this.d, new Object[] { "accessibilityTraversal" });
+        }
+      }
+    }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+    }
+    WebSettings localWebSettings = this.d.getSettings();
+    try
+    {
+      localWebSettings.setJavaScriptEnabled(true);
+      localWebSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+      localWebSettings.setSupportMultipleWindows(true);
+      localWebSettings.setNeedInitialFocus(false);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localWebSettings.getUserAgentString());
+      localStringBuilder.append(" TCSDK/1.0.2");
+      localWebSettings.setUserAgentString(localStringBuilder.toString());
+      localWebSettings.setAllowFileAccess(true);
+      localWebSettings.setAppCacheEnabled(true);
+      localWebSettings.setDomStorageEnabled(true);
+      localWebSettings.setDatabaseEnabled(true);
+      CookieManager.getInstance().setAcceptCookie(true);
+      if (Build.VERSION.SDK_INT >= 21) {
+        CookieManager.getInstance().setAcceptThirdPartyCookies(this.d, true);
       }
     }
     catch (Exception localException3)
     {
+      localException3.printStackTrace();
+    }
+    localWebSettings.setBuiltInZoomControls(false);
+    localWebSettings.setSupportZoom(false);
+    if ((Build.VERSION.SDK_INT >= 19) && (a(this.b))) {
       try
       {
-        ((WebSettings)localObject).setJavaScriptEnabled(true);
-        ((WebSettings)localObject).setJavaScriptCanOpenWindowsAutomatically(true);
-        ((WebSettings)localObject).setSupportMultipleWindows(true);
-        ((WebSettings)localObject).setNeedInitialFocus(false);
-        ((WebSettings)localObject).setUserAgentString(((WebSettings)localObject).getUserAgentString() + " TCSDK/1.0.2");
-        ((WebSettings)localObject).setAllowFileAccess(true);
-        ((WebSettings)localObject).setAppCacheEnabled(true);
-        ((WebSettings)localObject).setDomStorageEnabled(true);
-        ((WebSettings)localObject).setDatabaseEnabled(true);
-        CookieManager.getInstance().setAcceptCookie(true);
-        if (Build.VERSION.SDK_INT >= 21) {
-          CookieManager.getInstance().setAcceptThirdPartyCookies(this.d, true);
-        }
-        ((WebSettings)localObject).setBuiltInZoomControls(false);
-        ((WebSettings)localObject).setSupportZoom(false);
-        if ((Build.VERSION.SDK_INT < 19) || (!a(this.b))) {}
+        WebView.setWebContentsDebuggingEnabled(true);
       }
-      catch (Exception localException3)
+      catch (Exception localException2)
       {
-        try
-        {
-          for (;;)
-          {
-            WebView.setWebContentsDebuggingEnabled(true);
-            Object localObject = "file:///android_asset/tcaptcha_webview.html?appid=" + this.c + "&width=" + this.f + "&height=" + this.f + "&map=" + this.e;
-            this.d.loadUrl((String)localObject);
-            return;
-            localObject = this.d.getClass().getMethod("removeJavascriptInterface", new Class[] { String.class });
-            if (localObject != null)
-            {
-              ((Method)localObject).invoke(this.d, new Object[] { "searchBoxJavaBridge_" });
-              ((Method)localObject).invoke(this.d, new Object[] { "accessibility" });
-              ((Method)localObject).invoke(this.d, new Object[] { "accessibilityTraversal" });
-              continue;
-              localException1 = localException1;
-              localException1.printStackTrace();
-            }
-          }
-          localException3 = localException3;
-          localException3.printStackTrace();
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            localException2.printStackTrace();
-          }
-        }
+        localException2.printStackTrace();
       }
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("file:///android_asset/tcaptcha_webview.html?appid=");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append("&width=");
+    ((StringBuilder)localObject).append(this.f);
+    ((StringBuilder)localObject).append("&height=");
+    ((StringBuilder)localObject).append(this.f);
+    ((StringBuilder)localObject).append("&map=");
+    ((StringBuilder)localObject).append(this.e);
+    localObject = ((StringBuilder)localObject).toString();
+    this.d.loadUrl((String)localObject);
   }
   
   public static abstract interface a

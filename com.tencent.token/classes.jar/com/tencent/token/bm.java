@@ -39,156 +39,152 @@ public final class bm
   
   private static ArrayList a(ArrayList paramArrayList, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (paramInt1 >= paramArrayList.size())) {}
-    do
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      return paramArrayList;
+      if (paramInt1 >= paramArrayList.size()) {
+        return paramArrayList;
+      }
       paramInt2 = Math.min(paramInt2, paramArrayList.size() - paramInt1);
-    } while (paramInt2 <= 0);
-    ArrayList localArrayList = new ArrayList(paramInt2);
-    paramArrayList = paramArrayList.subList(paramInt1, paramInt1 + paramInt2);
-    paramInt1 = 0;
-    while (paramInt1 < paramInt2)
-    {
-      ay localay = (ay)paramArrayList.get(paramInt1);
-      localArrayList.add(new ay(localay.a(), localay.b()));
-      paramInt1 += 1;
+      if (paramInt2 <= 0) {
+        return paramArrayList;
+      }
+      ArrayList localArrayList = new ArrayList(paramInt2);
+      paramArrayList = paramArrayList.subList(paramInt1, paramInt1 + paramInt2);
+      paramInt1 = 0;
+      while (paramInt1 < paramInt2)
+      {
+        ay localay = (ay)paramArrayList.get(paramInt1);
+        localArrayList.add(new ay(localay.a(), localay.b()));
+        paramInt1 += 1;
+      }
+      return localArrayList;
     }
-    return localArrayList;
+    return paramArrayList;
   }
   
   public final void a()
   {
+    Object localObject = this.e;
     boolean bool;
-    if ((this.e == null) || (this.e.size() <= 0))
-    {
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
+      bool = false;
+    } else {
       bool = true;
-      this.g = bool;
-      if (this.h != null) {
-        break label167;
-      }
-      bool = true;
-      label33:
-      this.j = bool;
-      b.a("SocketConnectorImpl", "doConnect...");
     }
-    for (;;)
+    this.g = bool;
+    if (this.h == null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.j = bool;
+    b.a("SocketConnectorImpl", "doConnect...");
+    while ((!this.g) || (!this.j))
     {
-      if (((!this.g) || (!this.j)) && (this.n <= this.d))
+      int i1 = this.n;
+      if (i1 > this.d) {
+        break;
+      }
+      this.n = (i1 + 1);
+      long l1;
+      if (bp.c())
       {
-        this.n += 1;
-        if (!bp.c()) {
-          break label172;
-        }
         this.l = bk.a(this.k, this.c);
       }
-      label167:
-      label172:
-      long l1;
-      for (;;)
+      else
       {
-        if ((this.l != null) && (this.l.isConnected()) && (!this.l.isClosed()))
+        if (!this.g)
         {
-          this.q = new ay(this.l.getInetAddress().getHostAddress(), this.l.getPort());
-          this.m = 0;
-          return;
-          bool = false;
-          break;
-          bool = false;
-          break label33;
-          Object localObject;
-          if (!this.g)
+          l1 = System.currentTimeMillis();
+          localObject = a(this.e, this.f, this.a, true);
+          if ((localObject != null) && (((ArrayList)localObject).size() > 0))
           {
-            l1 = System.currentTimeMillis();
-            localObject = a(this.e, this.f, this.a, true);
-            if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-            {
-              this.f += ((ArrayList)localObject).size();
-              if (this.f < this.e.size()) {}
-            }
-            else
-            {
-              this.g = true;
-            }
-            this.l = bk.a((ArrayList)localObject, this.c);
-            this.o = 0;
-            this.p = ((int)(System.currentTimeMillis() - l1));
-            b.a("SocketConnectorImpl", "use IpList, dnsTime: 0 ,connectTime：" + this.p);
+            this.f += ((ArrayList)localObject).size();
+            if (this.f < this.e.size()) {}
           }
           else
           {
-            ArrayList localArrayList = new ArrayList();
-            localObject = localArrayList;
-            if (!this.j)
+            this.g = true;
+          }
+          this.l = bk.a((ArrayList)localObject, this.c);
+          this.o = 0;
+          this.p = ((int)(System.currentTimeMillis() - l1));
+          localObject = new StringBuilder("use IpList, dnsTime: 0 ,connectTime：");
+        }
+        else
+        {
+          ArrayList localArrayList1 = new ArrayList();
+          localObject = localArrayList1;
+          if (!this.j)
+          {
+            ArrayList localArrayList2 = this.h;
+            localObject = localArrayList1;
+            if (localArrayList2 != null)
             {
-              localObject = localArrayList;
-              if (this.h != null)
+              localObject = localArrayList1;
+              if (localArrayList2.size() > 0)
               {
-                localObject = localArrayList;
-                if (this.h.size() > 0)
+                localObject = localArrayList1;
+                if (this.i < this.h.size())
                 {
-                  localObject = localArrayList;
-                  if (this.i < this.h.size())
+                  localArrayList1 = a(this.h, this.i, this.b, true);
+                  localObject = localArrayList1;
+                  if (localArrayList1 != null)
                   {
-                    localArrayList = a(this.h, this.i, this.b, true);
-                    if ((localArrayList == null) || (localArrayList.size() <= 0)) {
-                      break label519;
+                    localObject = localArrayList1;
+                    if (localArrayList1.size() > 0)
+                    {
+                      this.i += localArrayList1.size();
+                      localObject = localArrayList1;
+                      if (this.i < this.h.size()) {
+                        break label380;
+                      }
+                      localObject = localArrayList1;
                     }
-                    this.i += localArrayList.size();
-                    localObject = localArrayList;
-                    if (this.i < this.h.size()) {
-                      break label437;
-                    }
-                    localObject = localArrayList;
                   }
                 }
               }
-              this.j = true;
             }
-            for (;;)
-            {
-              label437:
-              localObject = bk.a((ArrayList)localObject, this.k, this.c);
-              if (localObject != null) {
-                this.l = ((bj)localObject).c();
-              }
-              this.o = bk.a;
-              this.p = bk.b;
-              b.a("SocketConnectorImpl", "use IpList DNS parallel , dnsTime:" + this.o + ",connectTime：" + this.p);
-              break;
-              label519:
-              this.j = true;
-              localObject = localArrayList;
-            }
+            this.j = true;
           }
+          label380:
+          localObject = bk.a((ArrayList)localObject, this.k, this.c);
+          if (localObject != null) {
+            this.l = ((bj)localObject).c();
+          }
+          this.o = bk.a;
+          this.p = bk.b;
+          localObject = new StringBuilder("use IpList DNS parallel , dnsTime:");
+          ((StringBuilder)localObject).append(this.o);
+          ((StringBuilder)localObject).append(",connectTime：");
         }
+        ((StringBuilder)localObject).append(this.p);
+        b.a("SocketConnectorImpl", ((StringBuilder)localObject).toString());
       }
-      if (bp.f())
+      localObject = this.l;
+      if ((localObject != null) && (((Socket)localObject).isConnected()) && (!this.l.isClosed()))
       {
+        this.q = new ay(this.l.getInetAddress().getHostAddress(), this.l.getPort());
+        this.m = 0;
+        return;
+      }
+      if (bp.f()) {
         this.m = -3;
-        l1 = 3000;
       }
-      try
+      for (i1 = 3000;; i1 = 5000)
       {
-        Thread.sleep(l1);
-        for (;;)
+        l1 = i1;
+        try
         {
-          label552:
-          this.l = null;
-          break;
-          this.m = -4;
-          l1 = 5000;
-          try
-          {
-            Thread.sleep(l1);
-          }
-          catch (Exception localException1) {}
+          Thread.sleep(l1);
         }
+        catch (Exception localException)
+        {
+          break;
+        }
+        this.m = -4;
       }
-      catch (Exception localException2)
-      {
-        break label552;
-      }
+      this.l = null;
     }
   }
   

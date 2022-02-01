@@ -11,23 +11,27 @@ public class cs
     try
     {
       byte[] arrayOfByte = a;
-      if (arrayOfByte == null) {}
-      try
-      {
-        a = cd.a(b);
-        paramArrayOfByte = new String(cm.b(paramArrayOfByte, a));
-        return paramArrayOfByte.split("\\n");
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          a = new byte[0];
-        }
-      }
-      return c;
+      if (arrayOfByte != null) {}
     }
-    catch (Throwable paramArrayOfByte) {}
+    catch (Throwable paramArrayOfByte)
+    {
+      label20:
+      label50:
+      break label50;
+    }
+    try
+    {
+      a = cd.a(b);
+    }
+    catch (Exception localException)
+    {
+      break label20;
+    }
+    a = new byte[0];
+    paramArrayOfByte = new String(cm.b(paramArrayOfByte, a));
+    paramArrayOfByte = paramArrayOfByte.split("\\n");
+    return paramArrayOfByte;
+    return c;
   }
 }
 

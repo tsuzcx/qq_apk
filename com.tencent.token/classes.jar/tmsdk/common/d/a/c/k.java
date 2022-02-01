@@ -10,28 +10,31 @@ class k
   
   public void run()
   {
-    for (;;)
+    synchronized (j.a(this.a))
     {
+      Object localObject1 = (LinkedList)j.a(this.a).clone();
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("copy != null ? ");
       boolean bool;
-      synchronized (j.a(this.a))
+      if (localObject1 != null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((StringBuilder)???).append(bool);
+      ((StringBuilder)???).toString();
+      if (localObject1 != null)
       {
-        LinkedList localLinkedList = (LinkedList)j.a(this.a).clone();
-        ??? = new StringBuilder().append("copy != null ? ");
-        if (localLinkedList != null)
-        {
-          bool = true;
-          ((StringBuilder)???).append(bool).toString();
-          if (localLinkedList == null) {
-            break;
-          }
-          new StringBuilder().append("copy.size() : ").append(localLinkedList.size()).toString();
-          ??? = localLinkedList.iterator();
-          if (!((Iterator)???).hasNext()) {
-            break;
-          }
-          ((m)((Iterator)???).next()).o();
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("copy.size() : ");
+        ((StringBuilder)???).append(((LinkedList)localObject1).size());
+        ((StringBuilder)???).toString();
+        localObject1 = ((LinkedList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          ((m)((Iterator)localObject1).next()).o();
         }
       }
+      return;
     }
   }
 }

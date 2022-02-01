@@ -19,7 +19,7 @@ public class db
     byte b1;
     if (paramInt < 15)
     {
-      b1 = (byte)(paramInt << 4 | paramByte);
+      b1 = (byte)(paramByte | paramInt << 4);
       this.a.put(b1);
       return;
     }
@@ -92,168 +92,163 @@ public class db
   
   public void a(Object paramObject, int paramInt)
   {
-    if ((paramObject instanceof Byte)) {
-      b(((Byte)paramObject).byteValue(), paramInt);
-    }
-    for (;;)
+    if ((paramObject instanceof Byte))
     {
+      b(((Byte)paramObject).byteValue(), paramInt);
       return;
-      if ((paramObject instanceof Boolean))
+    }
+    if ((paramObject instanceof Boolean))
+    {
+      a(((Boolean)paramObject).booleanValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Short))
+    {
+      a(((Short)paramObject).shortValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Integer))
+    {
+      a(((Integer)paramObject).intValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Long))
+    {
+      a(((Long)paramObject).longValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Float))
+    {
+      a(((Float)paramObject).floatValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Double))
+    {
+      a(((Double)paramObject).doubleValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof String))
+    {
+      a((String)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof Map))
+    {
+      a((Map)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof List))
+    {
+      a((List)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof break))
+    {
+      a((break)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof byte[]))
+    {
+      a((byte[])paramObject, paramInt);
+      return;
+    }
+    int i;
+    if ((paramObject instanceof boolean[]))
+    {
+      paramObject = (boolean[])paramObject;
+      a(8);
+      a((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        a(((Boolean)paramObject).booleanValue(), paramInt);
-        return;
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
       }
-      if ((paramObject instanceof Short))
+    }
+    if ((paramObject instanceof short[]))
+    {
+      paramObject = (short[])paramObject;
+      a(8);
+      a((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        a(((Short)paramObject).shortValue(), paramInt);
-        return;
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
       }
-      if ((paramObject instanceof Integer))
+    }
+    if ((paramObject instanceof int[]))
+    {
+      paramObject = (int[])paramObject;
+      a(8);
+      a((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        a(((Integer)paramObject).intValue(), paramInt);
-        return;
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
       }
-      if ((paramObject instanceof Long))
+    }
+    if ((paramObject instanceof long[]))
+    {
+      paramObject = (long[])paramObject;
+      a(8);
+      a((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        a(((Long)paramObject).longValue(), paramInt);
-        return;
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
       }
-      if ((paramObject instanceof Float))
+    }
+    if ((paramObject instanceof float[]))
+    {
+      paramObject = (float[])paramObject;
+      a(8);
+      a((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        a(((Float)paramObject).floatValue(), paramInt);
-        return;
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
       }
-      if ((paramObject instanceof Double))
+    }
+    if ((paramObject instanceof double[]))
+    {
+      paramObject = (double[])paramObject;
+      a(8);
+      a((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        a(((Double)paramObject).doubleValue(), paramInt);
-        return;
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
       }
-      if ((paramObject instanceof String))
+    }
+    if (paramObject.getClass().isArray())
+    {
+      paramObject = (Object[])paramObject;
+      a(8);
+      a((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        a((String)paramObject, paramInt);
-        return;
-      }
-      if ((paramObject instanceof Map))
-      {
-        a((Map)paramObject, paramInt);
-        return;
-      }
-      if ((paramObject instanceof List))
-      {
-        a((List)paramObject, paramInt);
-        return;
-      }
-      if ((paramObject instanceof break))
-      {
-        a((break)paramObject, paramInt);
-        return;
-      }
-      if ((paramObject instanceof byte[]))
-      {
-        a((byte[])paramObject, paramInt);
-        return;
-      }
-      int i;
-      if ((paramObject instanceof boolean[]))
-      {
-        paramObject = (boolean[])paramObject;
-        a(8);
-        a((byte)9, paramInt);
-        a(paramObject.length, 0);
-        i = paramObject.length;
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          a(paramObject[paramInt], 0);
-          paramInt += 1;
-        }
-      }
-      else if ((paramObject instanceof short[]))
-      {
-        paramObject = (short[])paramObject;
-        a(8);
-        a((byte)9, paramInt);
-        a(paramObject.length, 0);
-        i = paramObject.length;
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          a(paramObject[paramInt], 0);
-          paramInt += 1;
-        }
-      }
-      else if ((paramObject instanceof int[]))
-      {
-        paramObject = (int[])paramObject;
-        a(8);
-        a((byte)9, paramInt);
-        a(paramObject.length, 0);
-        i = paramObject.length;
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          a(paramObject[paramInt], 0);
-          paramInt += 1;
-        }
-      }
-      else if ((paramObject instanceof long[]))
-      {
-        paramObject = (long[])paramObject;
-        a(8);
-        a((byte)9, paramInt);
-        a(paramObject.length, 0);
-        i = paramObject.length;
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          a(paramObject[paramInt], 0);
-          paramInt += 1;
-        }
-      }
-      else if ((paramObject instanceof float[]))
-      {
-        paramObject = (float[])paramObject;
-        a(8);
-        a((byte)9, paramInt);
-        a(paramObject.length, 0);
-        i = paramObject.length;
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          a(paramObject[paramInt], 0);
-          paramInt += 1;
-        }
-      }
-      else if ((paramObject instanceof double[]))
-      {
-        paramObject = (double[])paramObject;
-        a(8);
-        a((byte)9, paramInt);
-        a(paramObject.length, 0);
-        i = paramObject.length;
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          a(paramObject[paramInt], 0);
-          paramInt += 1;
-        }
-      }
-      else
-      {
-        if (!paramObject.getClass().isArray()) {
-          break;
-        }
-        paramObject = (Object[])paramObject;
-        a(8);
-        a((byte)9, paramInt);
-        a(paramObject.length, 0);
-        i = paramObject.length;
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          a(paramObject[paramInt], 0);
-          paramInt += 1;
-        }
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
       }
     }
     if ((paramObject instanceof Collection))
@@ -261,7 +256,9 @@ public class db
       a((Collection)paramObject, paramInt);
       return;
     }
-    throw new long(paramObject.getClass());
+    StringBuilder localStringBuilder = ci.a("write object error: unsupport type. ");
+    localStringBuilder.append(paramObject.getClass());
+    throw new long(localStringBuilder.toString());
   }
   
   public void a(String paramString, int paramInt)
@@ -273,14 +270,10 @@ public class db
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        paramString = paramString.getBytes();
-      }
-      a((byte)6, paramInt);
-      this.a.put((byte)paramString.length);
-      this.a.put(paramString);
+      label14:
+      break label14;
     }
+    paramString = paramString.getBytes();
     a(paramString.length + 10);
     if (paramString.length > 255)
     {
@@ -289,19 +282,23 @@ public class db
       this.a.put(paramString);
       return;
     }
+    a((byte)6, paramInt);
+    this.a.put((byte)paramString.length);
+    this.a.put(paramString);
   }
   
   public <T> void a(Collection<T> paramCollection, int paramInt)
   {
     a(8);
     a((byte)9, paramInt);
-    if (paramCollection == null) {}
-    for (paramInt = 0;; paramInt = paramCollection.size())
+    if (paramCollection == null) {
+      paramInt = 0;
+    } else {
+      paramInt = paramCollection.size();
+    }
+    a(paramInt, 0);
+    if (paramCollection != null)
     {
-      a(paramInt, 0);
-      if (paramCollection == null) {
-        break;
-      }
       paramCollection = paramCollection.iterator();
       while (paramCollection.hasNext()) {
         a(paramCollection.next(), 0);
@@ -313,13 +310,14 @@ public class db
   {
     a(8);
     a((byte)8, paramInt);
-    if (paramMap == null) {}
-    for (paramInt = 0;; paramInt = paramMap.size())
+    if (paramMap == null) {
+      paramInt = 0;
+    } else {
+      paramInt = paramMap.size();
+    }
+    a(paramInt, 0);
+    if (paramMap != null)
     {
-      a(paramInt, 0);
-      if (paramMap == null) {
-        break;
-      }
       paramMap = paramMap.entrySet().iterator();
       while (paramMap.hasNext())
       {

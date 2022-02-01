@@ -17,12 +17,12 @@ public class WXWebpageObject
   
   public boolean checkArgs()
   {
-    if ((this.webpageUrl == null) || (this.webpageUrl.length() == 0) || (this.webpageUrl.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXWebpageObject", "checkArgs fail, webpageUrl is invalid");
-      return false;
+    String str = this.webpageUrl;
+    if ((str != null) && (str.length() != 0) && (this.webpageUrl.length() <= 10240)) {
+      return true;
     }
-    return true;
+    Log.e("MicroMsg.SDK.WXWebpageObject", "checkArgs fail, webpageUrl is invalid");
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

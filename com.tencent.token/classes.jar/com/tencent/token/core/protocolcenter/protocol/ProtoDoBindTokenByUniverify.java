@@ -33,18 +33,27 @@ public class ProtoDoBindTokenByUniverify
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject = cc.c();
-    ((cc)localObject).m();
-    String str2 = ((cc)localObject).j().replaceAll("-", "");
-    localObject = l.a(new Object[] { "uin", Long.valueOf(this.d), "imei", cc.b(), "token_seq", str2, "token_code", ((cc)localObject).o(), "spp_key", this.f, "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cc.c().s() / 1000L) });
-    str1 = "?aq_base_sid=" + str1 + "&data=" + (String)localObject;
-    return c.e() + "/cn/mbtoken3/mbtoken3_bind_by_univerify" + str1;
+    Object localObject1 = cc.c();
+    ((cc)localObject1).m();
+    Object localObject2 = ((cc)localObject1).j().replaceAll("-", "");
+    localObject1 = l.a(new Object[] { "uin", Long.valueOf(this.d), "imei", cc.b(), "token_seq", localObject2, "token_code", ((cc)localObject1).o(), "spp_key", this.f, "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("?aq_base_sid=");
+    ((StringBuilder)localObject2).append(str);
+    ((StringBuilder)localObject2).append("&data=");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    str = ((StringBuilder)localObject2).toString();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(c.e());
+    ((StringBuilder)localObject1).append("/cn/mbtoken3/mbtoken3_bind_by_univerify");
+    ((StringBuilder)localObject1).append(str);
+    return ((StringBuilder)localObject1).toString();
   }
   
   protected void a(do paramdo)
@@ -70,7 +79,12 @@ public class ProtoDoBindTokenByUniverify
       if (i != this.e)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.e);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.e);
+        g.c(paramJSONObject.toString());
         return;
       }
       long l = paramJSONObject.getLong("server_time");
@@ -79,43 +93,46 @@ public class ProtoDoBindTokenByUniverify
       {
         l = paramJSONObject.getLong("seed_expire_time");
         cc.c().c(l);
-        if (paramJSONObject.getInt("seed_available") == 1)
-        {
-          paramJSONObject = l.d(paramJSONObject.getString("seed"));
-          if (paramJSONObject != null)
-          {
-            cc.c().e();
-            cc.c().a(paramJSONObject);
-            cc.c().i();
-          }
-        }
-        paramJSONObject = cr.a().d(this.d);
-        if (paramJSONObject != null) {
-          cr.a().b(paramJSONObject);
-        }
-        this.a.c();
-        return;
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
+        localJSONException.printStackTrace();
+      }
+      if (paramJSONObject.getInt("seed_available") == 1)
+      {
+        paramJSONObject = l.d(paramJSONObject.getString("seed"));
+        if (paramJSONObject != null)
         {
-          localJSONException.printStackTrace();
+          cc.c().e();
+          cc.c().a(paramJSONObject);
+          cc.c().i();
         }
       }
+      paramJSONObject = cr.a().d(this.d);
+      if (paramJSONObject != null) {
+        cr.a().b(paramJSONObject);
+      }
+      this.a.c();
+      return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()
   {
     if ((!this.b.e) && (this.b.d != null))
     {
-      g.c("handleSuccess" + this.b.f);
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.sendToTarget();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleSuccess");
+      ((StringBuilder)localObject).append(this.b.f);
+      g.c(((StringBuilder)localObject).toString());
+      localObject = this.b.d.obtainMessage(this.b.f);
+      ((Message)localObject).arg1 = 0;
+      ((Message)localObject).sendToTarget();
       this.b.e = true;
     }
   }

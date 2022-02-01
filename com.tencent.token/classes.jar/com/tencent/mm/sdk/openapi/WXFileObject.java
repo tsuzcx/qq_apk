@@ -28,36 +28,46 @@ public class WXFileObject
   
   public boolean checkArgs()
   {
-    if (((this.fileData == null) || (this.fileData.length == 0)) && ((this.filePath == null) || (this.filePath.length() == 0)))
+    Object localObject = this.fileData;
+    if ((localObject == null) || (localObject.length == 0))
     {
-      Log.e("MicroMsg.SDK.WXFileObject", "checkArgs fail, both arguments is null");
-      return false;
+      localObject = this.filePath;
+      if ((localObject == null) || (((String)localObject).length() == 0)) {}
     }
-    if ((this.fileData != null) && (this.fileData.length > 10485760))
+    else
     {
-      Log.e("MicroMsg.SDK.WXFileObject", "checkArgs fail, fileData is too large");
-      return false;
-    }
-    if (this.filePath != null)
-    {
-      Object localObject = this.filePath;
-      int i;
-      if ((localObject == null) || (((String)localObject).length() == 0)) {
-        i = 0;
+      localObject = this.fileData;
+      if ((localObject != null) && (localObject.length > 10485760)) {
+        localObject = "checkArgs fail, fileData is too large";
       }
-      while (i > 10485760)
+    }
+    for (;;)
+    {
+      Log.e("MicroMsg.SDK.WXFileObject", (String)localObject);
+      return false;
+      localObject = this.filePath;
+      if (localObject != null)
       {
-        Log.e("MicroMsg.SDK.WXFileObject", "checkArgs fail, fileSize is too large");
-        return false;
-        localObject = new File((String)localObject);
-        if (!((File)localObject).exists()) {
-          i = 0;
-        } else {
-          i = (int)((File)localObject).length();
+        if ((localObject != null) && (((String)localObject).length() != 0))
+        {
+          localObject = new File((String)localObject);
+          if (((File)localObject).exists())
+          {
+            i = (int)((File)localObject).length();
+            break label113;
+          }
+        }
+        int i = 0;
+        label113:
+        if (i > 10485760)
+        {
+          localObject = "checkArgs fail, fileSize is too large";
+          continue;
         }
       }
+      return true;
+      localObject = "checkArgs fail, both arguments is null";
     }
-    return true;
   }
   
   public void serialize(Bundle paramBundle)

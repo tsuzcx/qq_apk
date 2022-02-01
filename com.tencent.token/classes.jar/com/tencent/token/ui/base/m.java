@@ -32,40 +32,33 @@ public class m
     this.b = ((LayoutInflater)this.a.getSystemService("layout_inflater"));
     if (paramInt == 0)
     {
-      this.c = this.b.inflate(2130968741, null);
+      this.c = this.b.inflate(2131296422, null);
       addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = ((CheckBox)findViewById(2131559200));
+      this.d = ((CheckBox)findViewById(2131165363));
       h.a(paramInt, false);
       this.d.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
       {
         public void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
         {
-          int i = paramInt;
-          if (!paramAnonymousBoolean) {}
-          for (paramAnonymousBoolean = true;; paramAnonymousBoolean = false)
-          {
-            h.a(i, paramAnonymousBoolean);
-            return;
-          }
+          h.a(paramInt, paramAnonymousBoolean ^ true);
         }
       });
     }
-    for (;;)
+    else
     {
-      findViewById(2131559199).setOnClickListener(new View.OnClickListener()
-      {
-        public void onClick(View paramAnonymousView)
-        {
-          m.this.setVisibility(8);
-          if (m.a(m.this) != null) {
-            m.a(m.this).a();
-          }
-        }
-      });
-      return;
-      this.c = this.b.inflate(2130968742, null);
+      this.c = this.b.inflate(2131296423, null);
       addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
     }
+    findViewById(2131165939).setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        m.this.setVisibility(8);
+        if (m.a(m.this) != null) {
+          m.a(m.this).a();
+        }
+      }
+    });
   }
   
   public void setViewListener(a parama)

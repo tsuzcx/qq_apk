@@ -33,71 +33,45 @@ class f
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
-    paramString = paramString.toLowerCase(Locale.ENGLISH);
-    if (paramString.contains("oppo")) {
+    String str = paramString.toLowerCase(Locale.ENGLISH);
+    paramString = null;
+    if (str.contains("oppo")) {
       paramString = a;
+    } else if (str.contains("vivo")) {
+      paramString = b;
+    } else if (str.contains("huawei")) {
+      paramString = c;
+    } else if (str.contains("gionee")) {
+      paramString = e;
+    } else if (str.contains("meizu")) {
+      paramString = f;
+    } else if (str.contains("samsung")) {
+      paramString = d;
+    } else if (str.contains("xiaomi")) {
+      paramString = g;
     }
-    for (;;)
+    if (paramString != null)
     {
-      if (paramString != null)
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
-        int j = paramString.length;
-        int i = 0;
-        for (;;)
+        str = paramString[i];
+        try
         {
-          if (i >= j) {
-            break label197;
-          }
-          String str = paramString[i];
-          try
-          {
-            paramContext.getPackageManager().getPackageInfo(str, 0);
-            h = str;
-            str = h;
-            return str;
-          }
-          catch (Throwable localThrowable)
-          {
-            localThrowable.printStackTrace();
-            i += 1;
-          }
-          if (paramString.contains("vivo"))
-          {
-            paramString = b;
-            break;
-          }
-          if (paramString.contains("huawei"))
-          {
-            paramString = c;
-            break;
-          }
-          if (paramString.contains("gionee"))
-          {
-            paramString = e;
-            break;
-          }
-          if (paramString.contains("meizu"))
-          {
-            paramString = f;
-            break;
-          }
-          if (paramString.contains("samsung"))
-          {
-            paramString = d;
-            break;
-          }
-          if (!paramString.contains("xiaomi")) {
-            break label201;
-          }
-          paramString = g;
-          break;
+          paramContext.getPackageManager().getPackageInfo(str, 0);
+          h = str;
+          str = h;
+          return str;
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
+          i += 1;
         }
       }
-      label197:
-      return h;
-      label201:
-      paramString = null;
     }
+    return h;
   }
   
   private static String a(String paramString)
@@ -112,33 +86,35 @@ class f
   static HashMap<Integer, String> a(Context paramContext)
   {
     HashMap localHashMap = new HashMap(7);
-    String str = bl.b();
-    localHashMap.put(Integer.valueOf(9800), str);
+    Object localObject = bl.b();
+    localHashMap.put(Integer.valueOf(9800), localObject);
     localHashMap.put(Integer.valueOf(9801), a(bl.a()));
     localHashMap.put(Integer.valueOf(9803), a(bl.d()));
     localHashMap.put(Integer.valueOf(9804), bl.a("ro.build.fingerprint"));
     try
     {
       localHashMap.put(Integer.valueOf(9806), paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName);
-      localHashMap.put(Integer.valueOf(9807), a("107022"));
-      localHashMap.put(Integer.valueOf(9808), a("2.0.0"));
-      if (!TextUtils.isEmpty(a(paramContext, str))) {
-        localHashMap.put(Integer.valueOf(9810), a(h));
-      }
-      paramContext = localHashMap.keySet().iterator();
-      while (paramContext.hasNext())
-      {
-        int i = ((Integer)paramContext.next()).intValue();
-        bn.b("TaijiProfile", "profile:" + i + "|" + (String)localHashMap.get(Integer.valueOf(i)));
-      }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        localHashMap.put(Integer.valueOf(9806), "");
-      }
+      localThrowable.printStackTrace();
+      localHashMap.put(Integer.valueOf(9806), "");
+    }
+    localHashMap.put(Integer.valueOf(9807), a("107022"));
+    localHashMap.put(Integer.valueOf(9808), a("2.0.0"));
+    if (!TextUtils.isEmpty(a(paramContext, (String)localObject))) {
+      localHashMap.put(Integer.valueOf(9810), a(h));
+    }
+    paramContext = localHashMap.keySet().iterator();
+    while (paramContext.hasNext())
+    {
+      int i = ((Integer)paramContext.next()).intValue();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("profile:");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("|");
+      ((StringBuilder)localObject).append((String)localHashMap.get(Integer.valueOf(i)));
+      bn.b("TaijiProfile", ((StringBuilder)localObject).toString());
     }
     return localHashMap;
   }
@@ -150,33 +126,34 @@ class f
     try
     {
       localHashMap.put(Integer.valueOf(9805), Integer.valueOf(paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode));
-      localHashMap.put(Integer.valueOf(9809), Integer.valueOf(70));
-      localHashMap.put(Integer.valueOf(9812), Integer.valueOf(2));
-      if (TextUtils.isEmpty(a(paramContext, bl.b()))) {}
     }
     catch (Throwable localThrowable)
     {
+      localThrowable.printStackTrace();
+      localHashMap.put(Integer.valueOf(9805), Integer.valueOf(0));
+    }
+    localHashMap.put(Integer.valueOf(9809), Integer.valueOf(70));
+    localHashMap.put(Integer.valueOf(9812), Integer.valueOf(2));
+    if (!TextUtils.isEmpty(a(paramContext, bl.b()))) {
       try
       {
         localHashMap.put(Integer.valueOf(9811), Integer.valueOf(paramContext.getPackageManager().getPackageInfo(h, 0).versionCode));
-        paramContext = localHashMap.keySet().iterator();
-        while (paramContext.hasNext())
-        {
-          int i = ((Integer)paramContext.next()).intValue();
-          bn.b("TaijiProfile", "profile:" + i + "|" + localHashMap.get(Integer.valueOf(i)));
-          continue;
-          localThrowable = localThrowable;
-          localThrowable.printStackTrace();
-          localHashMap.put(Integer.valueOf(9805), Integer.valueOf(0));
-        }
       }
       catch (Throwable paramContext)
       {
-        for (;;)
-        {
-          paramContext.printStackTrace();
-        }
+        paramContext.printStackTrace();
       }
+    }
+    paramContext = localHashMap.keySet().iterator();
+    while (paramContext.hasNext())
+    {
+      int i = ((Integer)paramContext.next()).intValue();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("profile:");
+      localStringBuilder.append(i);
+      localStringBuilder.append("|");
+      localStringBuilder.append(localHashMap.get(Integer.valueOf(i)));
+      bn.b("TaijiProfile", localStringBuilder.toString());
     }
     return localHashMap;
   }

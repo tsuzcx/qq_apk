@@ -52,41 +52,64 @@ public final class e
   {
     this.g = new ArrayList();
     Object localObject;
-    if ((paramProxy.type() == Proxy.Type.DIRECT) || (paramProxy.type() == Proxy.Type.SOCKS)) {
-      localObject = this.a.a().f();
-    }
-    InetSocketAddress localInetSocketAddress;
-    for (int i = this.a.a().g(); (i < 1) || (i > 65535); i = localInetSocketAddress.getPort())
+    int i;
+    if ((paramProxy.type() != Proxy.Type.DIRECT) && (paramProxy.type() != Proxy.Type.SOCKS))
     {
-      throw new SocketException("No route to " + (String)localObject + ":" + i + "; port is out of range");
       localObject = paramProxy.address();
-      if (!(localObject instanceof InetSocketAddress)) {
-        throw new IllegalArgumentException("Proxy.address() is not an InetSocketAddress: " + localObject.getClass());
+      if ((localObject instanceof InetSocketAddress))
+      {
+        InetSocketAddress localInetSocketAddress = (InetSocketAddress)localObject;
+        localObject = a(localInetSocketAddress);
+        i = localInetSocketAddress.getPort();
       }
-      localInetSocketAddress = (InetSocketAddress)localObject;
-      localObject = a(localInetSocketAddress);
+      else
+      {
+        paramProxy = new StringBuilder();
+        paramProxy.append("Proxy.address() is not an InetSocketAddress: ");
+        paramProxy.append(localObject.getClass());
+        throw new IllegalArgumentException(paramProxy.toString());
+      }
     }
-    if (paramProxy.type() == Proxy.Type.SOCKS) {
-      this.g.add(InetSocketAddress.createUnresolved((String)localObject, i));
-    }
-    for (;;)
+    else
     {
-      return;
+      localObject = this.a.a().f();
+      i = this.a.a().g();
+    }
+    if ((i >= 1) && (i <= 65535))
+    {
+      if (paramProxy.type() == Proxy.Type.SOCKS)
+      {
+        this.g.add(InetSocketAddress.createUnresolved((String)localObject, i));
+        return;
+      }
       this.d.a(this.c, (String)localObject);
       paramProxy = this.a.b().a((String)localObject);
-      if (paramProxy.isEmpty()) {
-        throw new UnknownHostException(this.a.b() + " returned no addresses for " + (String)localObject);
-      }
-      this.d.a(this.c, (String)localObject, paramProxy);
-      int k = paramProxy.size();
-      int j = 0;
-      while (j < k)
+      if (!paramProxy.isEmpty())
       {
-        localObject = (InetAddress)paramProxy.get(j);
-        this.g.add(new InetSocketAddress((InetAddress)localObject, i));
-        j += 1;
+        this.d.a(this.c, (String)localObject, paramProxy);
+        int j = 0;
+        int k = paramProxy.size();
+        while (j < k)
+        {
+          localObject = (InetAddress)paramProxy.get(j);
+          this.g.add(new InetSocketAddress((InetAddress)localObject, i));
+          j += 1;
+        }
+        return;
       }
+      paramProxy = new StringBuilder();
+      paramProxy.append(this.a.b());
+      paramProxy.append(" returned no addresses for ");
+      paramProxy.append((String)localObject);
+      throw new UnknownHostException(paramProxy.toString());
     }
+    paramProxy = new StringBuilder();
+    paramProxy.append("No route to ");
+    paramProxy.append((String)localObject);
+    paramProxy.append(":");
+    paramProxy.append(i);
+    paramProxy.append("; port is out of range");
+    throw new SocketException(paramProxy.toString());
   }
   
   private void a(s params, Proxy paramProxy)
@@ -94,16 +117,18 @@ public final class e
     if (paramProxy != null)
     {
       this.e = Collections.singletonList(paramProxy);
-      this.f = 0;
-      return;
     }
-    params = this.a.g().select(params.a());
-    if ((params != null) && (!params.isEmpty())) {}
-    for (params = fc.a(params);; params = fc.a(new Proxy[] { Proxy.NO_PROXY }))
+    else
     {
+      params = this.a.g().select(params.a());
+      if ((params != null) && (!params.isEmpty())) {
+        params = fc.a(params);
+      } else {
+        params = fc.a(new Proxy[] { Proxy.NO_PROXY });
+      }
       this.e = params;
-      break;
     }
+    this.f = 0;
   }
   
   private boolean c()
@@ -113,15 +138,21 @@ public final class e
   
   private Proxy d()
   {
-    if (!c()) {
-      throw new SocketException("No route to " + this.a.a().f() + "; exhausted proxy configurations: " + this.e);
+    if (c())
+    {
+      localObject = this.e;
+      int i = this.f;
+      this.f = (i + 1);
+      localObject = (Proxy)((List)localObject).get(i);
+      a((Proxy)localObject);
+      return localObject;
     }
-    Object localObject = this.e;
-    int i = this.f;
-    this.f = (i + 1);
-    localObject = (Proxy)((List)localObject).get(i);
-    a((Proxy)localObject);
-    return localObject;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("No route to ");
+    ((StringBuilder)localObject).append(this.a.a().f());
+    ((StringBuilder)localObject).append("; exhausted proxy configurations: ");
+    ((StringBuilder)localObject).append(this.e);
+    throw new SocketException(((StringBuilder)localObject).toString());
   }
   
   public void a(ab paramab, IOException paramIOException)
@@ -139,38 +170,36 @@ public final class e
   
   public a b()
   {
-    if (!a()) {
-      throw new NoSuchElementException();
-    }
-    ArrayList localArrayList = new ArrayList();
-    do
+    if (a())
     {
-      if (!c()) {
-        break;
-      }
-      Proxy localProxy = d();
-      int j = this.g.size();
-      int i = 0;
-      if (i < j)
+      ArrayList localArrayList = new ArrayList();
+      do
       {
-        ab localab = new ab(this.a, localProxy, (InetSocketAddress)this.g.get(i));
-        if (this.b.c(localab)) {
-          this.h.add(localab);
-        }
-        for (;;)
-        {
-          i += 1;
+        if (!c()) {
           break;
-          localArrayList.add(localab);
         }
+        Proxy localProxy = d();
+        int i = 0;
+        int j = this.g.size();
+        while (i < j)
+        {
+          ab localab = new ab(this.a, localProxy, (InetSocketAddress)this.g.get(i));
+          if (this.b.c(localab)) {
+            this.h.add(localab);
+          } else {
+            localArrayList.add(localab);
+          }
+          i += 1;
+        }
+      } while (localArrayList.isEmpty());
+      if (localArrayList.isEmpty())
+      {
+        localArrayList.addAll(this.h);
+        this.h.clear();
       }
-    } while (localArrayList.isEmpty());
-    if (localArrayList.isEmpty())
-    {
-      localArrayList.addAll(this.h);
-      this.h.clear();
+      return new a(localArrayList);
     }
-    return new a(localArrayList);
+    throw new NoSuchElementException();
   }
   
   public static final class a
@@ -190,13 +219,14 @@ public final class e
     
     public ab b()
     {
-      if (!a()) {
-        throw new NoSuchElementException();
+      if (a())
+      {
+        List localList = this.a;
+        int i = this.b;
+        this.b = (i + 1);
+        return (ab)localList.get(i);
       }
-      List localList = this.a;
-      int i = this.b;
-      this.b = (i + 1);
-      return (ab)localList.get(i);
+      throw new NoSuchElementException();
     }
     
     public List<ab> c()

@@ -23,16 +23,18 @@ public class el
   protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
   {
     super.afterExecute(paramRunnable, paramThrowable);
-    if (this.ou != null) {
-      this.ou.afterExecute(paramRunnable, paramThrowable);
+    a locala = this.ou;
+    if (locala != null) {
+      locala.afterExecute(paramRunnable, paramThrowable);
     }
   }
   
   protected void beforeExecute(Thread paramThread, Runnable paramRunnable)
   {
     super.beforeExecute(paramThread, paramRunnable);
-    if (this.ou != null) {
-      this.ou.beforeExecute(paramThread, paramRunnable);
+    a locala = this.ou;
+    if (locala != null) {
+      locala.beforeExecute(paramThread, paramRunnable);
     }
   }
   

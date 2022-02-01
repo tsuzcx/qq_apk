@@ -19,20 +19,21 @@ public class SensorController
   private SensorEventCallBack bb;
   private Sensor bc;
   private final boolean bd;
-  private boolean be = false;
-  private boolean bf = false;
+  private boolean be;
+  private boolean bf;
   
   public SensorController(Context paramContext)
   {
+    boolean bool = false;
+    this.be = false;
+    this.bf = false;
     this.aY = ((SensorManager)paramContext.getSystemService("sensor"));
     this.bc = this.aY.getDefaultSensor(8);
-    if (this.bc != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.bd = bool;
-      this.aZ = (ba + 1.0F);
-      return;
+    if (this.bc != null) {
+      bool = true;
     }
+    this.bd = bool;
+    this.aZ = (ba + 1.0F);
   }
   
   public boolean isSensorEnable()
@@ -61,34 +62,43 @@ public class SensorController
     if (this.be) {
       return;
     }
-    float f = paramSensorEvent.values[0];
-    switch (paramSensorEvent.sensor.getType())
-    {
-    default: 
+    float[] arrayOfFloat = paramSensorEvent.values;
+    boolean bool = false;
+    float f1 = arrayOfFloat[0];
+    if (paramSensorEvent.sensor.getType() != 8) {
       return;
     }
-    if (f < aX)
+    if (f1 < aX)
     {
-      aX = f;
-      ba = 0.5F + f;
+      aX = f1;
+      ba = 0.5F + f1;
     }
-    if ((this.aZ >= ba) && (f < ba)) {
+    float f2 = this.aZ;
+    float f3 = ba;
+    if ((f2 >= f3) && (f1 < f3))
+    {
       if (this.bb != null)
       {
         Log.v("MicroMsg.SensorController", "sensor event false");
-        this.bb.onSensorEvent(false);
+        paramSensorEvent = this.bb;
       }
     }
-    for (;;)
-    {
-      this.aZ = f;
-      return;
-      if ((this.aZ <= ba) && (f > ba) && (this.bb != null))
+    else {
+      for (;;)
       {
+        paramSensorEvent.onSensorEvent(bool);
+        break;
+        f2 = this.aZ;
+        f3 = ba;
+        if ((f2 > f3) || (f1 <= f3) || (this.bb == null)) {
+          break;
+        }
         Log.v("MicroMsg.SensorController", "sensor event true");
-        this.bb.onSensorEvent(true);
+        paramSensorEvent = this.bb;
+        bool = true;
       }
     }
+    this.aZ = f1;
   }
   
   public void removeSensorCallBack()

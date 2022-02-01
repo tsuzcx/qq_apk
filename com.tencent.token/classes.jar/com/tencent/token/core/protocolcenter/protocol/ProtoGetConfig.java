@@ -42,8 +42,8 @@ public class ProtoGetConfig
   
   protected String a()
   {
-    Object localObject1 = null;
     String str = ca.a().b();
+    Object localObject1 = null;
     if (str == null)
     {
       this.a.b(104);
@@ -64,19 +64,31 @@ public class ProtoGetConfig
       ((JSONObject)localObject2).put("screen_height", this.e);
       ((JSONObject)localObject2).put("screen_dpi", this.f);
       localObject2 = ((JSONObject)localObject2).toString();
-      g.a("plain:" + (String)localObject2);
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("plain:");
+      localStringBuilder2.append((String)localObject2);
+      g.a(localStringBuilder2.toString());
       localObject2 = l.b(((String)localObject2).getBytes());
       localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        g.c("JSONException:" + localJSONException.getMessage());
-      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("JSONException:");
+      localStringBuilder2.append(localJSONException.getMessage());
+      g.c(localStringBuilder2.toString());
     }
-    localObject1 = "?aq_base_sid=" + str + "&data=" + (String)localObject1;
-    return c.e() + "/cn/mbtoken3/mbtoken3_get_config_v2" + (String)localObject1;
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("?aq_base_sid=");
+    localStringBuilder1.append(str);
+    localStringBuilder1.append("&data=");
+    localStringBuilder1.append((String)localObject1);
+    localObject1 = localStringBuilder1.toString();
+    localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append(c.e());
+    localStringBuilder1.append("/cn/mbtoken3/mbtoken3_get_config_v2");
+    localStringBuilder1.append((String)localObject1);
+    return localStringBuilder1.toString();
   }
   
   protected void a(do paramdo)
@@ -89,44 +101,69 @@ public class ProtoGetConfig
   protected void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
-    if (i != 0) {
-      a(i, paramJSONObject.getString("info"));
-    }
-    do
+    if (i != 0)
     {
+      a(i, paramJSONObject.getString("info"));
       return;
-      paramJSONObject = l.c(paramJSONObject.getString("data"));
-      if (paramJSONObject == null) {
-        break;
-      }
+    }
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
+    if (paramJSONObject != null)
+    {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      g.a("parseJSON  decodeData=" + paramJSONObject.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseJSON  decodeData=");
+      localStringBuilder.append(paramJSONObject.toString());
+      g.a(localStringBuilder.toString());
       i = paramJSONObject.getInt("seq_id");
       if (i != this.h)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + cb.a().b());
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(cb.a().b());
+        g.c(paramJSONObject.toString());
         return;
       }
       this.g = new ConfigResult(paramJSONObject);
       this.a.c();
       m.c(this.g);
       m.b(this.g);
-    } while (TextUtils.isEmpty(this.g.schemaKey));
+      if (TextUtils.isEmpty(this.g.schemaKey)) {
+        break label382;
+      }
+    }
     try
     {
       paramJSONObject = new String(l.c(this.g.schemaKey));
-      g.b("schemaKey=" + this.g.schemaKey + " save as=" + paramJSONObject);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("schemaKey=");
+      localStringBuilder.append(this.g.schemaKey);
+      localStringBuilder.append(" save as=");
+      localStringBuilder.append(paramJSONObject);
+      g.b(localStringBuilder.toString());
       m.a(paramJSONObject, this.g.schemaTimeout);
       return;
     }
     catch (Exception paramJSONObject)
     {
-      g.b("decode schemakey failed! schemaKey=" + this.g.schemaKey + " key=" + cj.a(cr.a().c()));
-      return;
+      label279:
+      break label279;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("decode schemakey failed! schemaKey=");
+    paramJSONObject.append(this.g.schemaKey);
+    paramJSONObject.append(" key=");
+    paramJSONObject.append(cj.a(cr.a().c()));
+    g.b(paramJSONObject.toString());
+    return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
+    label382:
   }
   
   protected void b()

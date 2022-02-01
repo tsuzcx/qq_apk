@@ -12,8 +12,9 @@ public final class aq
   
   public static ak a()
   {
-    if (c != null) {
-      return c;
+    ak localak = c;
+    if (localak != null) {
+      return localak;
     }
     try
     {
@@ -33,159 +34,193 @@ public final class aq
   public static ak a(android.content.Context paramContext, java.lang.String paramString1, java.lang.String paramString2, java.lang.String paramString3)
   {
     // Byte code:
-    //   0: ldc 46
-    //   2: new 48	java/lang/StringBuilder
-    //   5: dup
-    //   6: ldc 50
-    //   8: invokespecial 53	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   11: aload_0
-    //   12: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   15: ldc 59
-    //   17: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   20: aload_1
-    //   21: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: ldc 64
-    //   26: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: aload_2
-    //   30: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: ldc 66
-    //   35: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: aload_3
-    //   39: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokestatic 74	com/tencent/halley/common/b:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   48: aload_0
-    //   49: ifnull +10 -> 59
-    //   52: aload_1
-    //   53: invokestatic 79	com/tencent/token/bq:a	(Ljava/lang/String;)Z
-    //   56: ifeq +41 -> 97
-    //   59: new 81	com/tencent/halley/common/HalleyInitException
-    //   62: dup
-    //   63: new 48	java/lang/StringBuilder
-    //   66: dup
-    //   67: ldc 83
-    //   69: invokespecial 53	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   72: aload_1
-    //   73: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: ldc 85
-    //   78: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: aload_0
-    //   82: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   85: ldc 87
-    //   87: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   93: invokespecial 88	com/tencent/halley/common/HalleyInitException:<init>	(Ljava/lang/String;)V
-    //   96: athrow
-    //   97: getstatic 21	com/tencent/token/aq:b	Ljava/util/concurrent/locks/Lock;
-    //   100: invokeinterface 93 1 0
-    //   105: getstatic 23	com/tencent/token/aq:c	Lcom/tencent/token/ak;
-    //   108: ifnonnull +173 -> 281
-    //   111: aload_3
-    //   112: invokestatic 79	com/tencent/token/bq:a	(Ljava/lang/String;)Z
-    //   115: ifne +18 -> 133
-    //   118: aload_3
-    //   119: astore 4
-    //   121: aload_3
-    //   122: invokevirtual 98	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   125: ldc 100
-    //   127: invokevirtual 104	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   130: ifeq +95 -> 225
-    //   133: aload_0
-    //   134: ldc 106
-    //   136: iconst_0
-    //   137: invokevirtual 112	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   140: astore 5
-    //   142: aload_3
-    //   143: astore 4
-    //   145: aload 5
-    //   147: ifnull +78 -> 225
-    //   150: aload 5
-    //   152: ldc 114
-    //   154: ldc 116
-    //   156: invokeinterface 122 3 0
-    //   161: astore_3
-    //   162: aload_3
-    //   163: astore 4
-    //   165: aload_3
-    //   166: invokestatic 79	com/tencent/token/bq:a	(Ljava/lang/String;)Z
-    //   169: ifeq +56 -> 225
-    //   172: new 48	java/lang/StringBuilder
-    //   175: dup
-    //   176: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   179: aload_0
-    //   180: invokestatic 126	com/tencent/token/bq:a	(Landroid/content/Context;)Ljava/lang/String;
-    //   183: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   186: ldc 128
-    //   188: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: aload_0
-    //   192: invokestatic 130	com/tencent/token/bq:b	(Landroid/content/Context;)Ljava/lang/String;
-    //   195: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   201: astore 4
-    //   203: aload 5
-    //   205: invokeinterface 134 1 0
-    //   210: ldc 114
-    //   212: aload 4
-    //   214: invokeinterface 140 3 0
-    //   219: invokeinterface 144 1 0
-    //   224: pop
-    //   225: aload_2
-    //   226: astore_3
-    //   227: aload_2
-    //   228: invokestatic 79	com/tencent/token/bq:a	(Ljava/lang/String;)Z
-    //   231: ifeq +6 -> 237
-    //   234: ldc 146
-    //   236: astore_3
-    //   237: aload_0
-    //   238: aload_1
-    //   239: aload_3
-    //   240: aload 4
-    //   242: invokestatic 149	com/tencent/halley/common/f:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   245: aload_0
-    //   246: invokestatic 154	com/tencent/token/bp:a	(Landroid/content/Context;)V
-    //   249: new 156	com/tencent/token/an
-    //   252: dup
-    //   253: aload_1
-    //   254: aload_3
-    //   255: aload 4
-    //   257: invokespecial 159	com/tencent/token/an:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   260: putstatic 23	com/tencent/token/aq:c	Lcom/tencent/token/ak;
-    //   263: new 161	java/lang/Thread
-    //   266: dup
-    //   267: getstatic 23	com/tencent/token/aq:c	Lcom/tencent/token/ak;
-    //   270: checkcast 163	java/lang/Runnable
-    //   273: ldc 165
-    //   275: invokespecial 168	java/lang/Thread:<init>	(Ljava/lang/Runnable;Ljava/lang/String;)V
-    //   278: invokevirtual 171	java/lang/Thread:start	()V
-    //   281: getstatic 21	com/tencent/token/aq:b	Ljava/util/concurrent/locks/Lock;
-    //   284: invokeinterface 174 1 0
-    //   289: getstatic 23	com/tencent/token/aq:c	Lcom/tencent/token/ak;
-    //   292: areturn
-    //   293: astore_0
-    //   294: getstatic 21	com/tencent/token/aq:b	Ljava/util/concurrent/locks/Lock;
-    //   297: invokeinterface 174 1 0
-    //   302: aload_0
-    //   303: athrow
-    //   304: astore_0
-    //   305: goto -24 -> 281
+    //   0: new 45	java/lang/StringBuilder
+    //   3: dup
+    //   4: ldc 47
+    //   6: invokespecial 50	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   9: astore 4
+    //   11: aload 4
+    //   13: aload_0
+    //   14: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   17: pop
+    //   18: aload 4
+    //   20: ldc 56
+    //   22: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: pop
+    //   26: aload 4
+    //   28: aload_1
+    //   29: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: pop
+    //   33: aload 4
+    //   35: ldc 61
+    //   37: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: pop
+    //   41: aload 4
+    //   43: aload_2
+    //   44: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: pop
+    //   48: aload 4
+    //   50: ldc 63
+    //   52: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: pop
+    //   56: aload 4
+    //   58: aload_3
+    //   59: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: pop
+    //   63: ldc 65
+    //   65: aload 4
+    //   67: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   70: invokestatic 73	com/tencent/halley/common/b:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   73: aload_0
+    //   74: ifnull +225 -> 299
+    //   77: aload_1
+    //   78: invokestatic 78	com/tencent/token/bq:a	(Ljava/lang/String;)Z
+    //   81: ifne +218 -> 299
+    //   84: getstatic 20	com/tencent/token/aq:b	Ljava/util/concurrent/locks/Lock;
+    //   87: invokeinterface 83 1 0
+    //   92: getstatic 22	com/tencent/token/aq:c	Lcom/tencent/token/ak;
+    //   95: ifnonnull +181 -> 276
+    //   98: aload_3
+    //   99: invokestatic 78	com/tencent/token/bq:a	(Ljava/lang/String;)Z
+    //   102: ifne +18 -> 120
+    //   105: aload_3
+    //   106: astore 4
+    //   108: aload_3
+    //   109: invokevirtual 88	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   112: ldc 90
+    //   114: invokevirtual 94	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   117: ifeq +103 -> 220
+    //   120: aload_0
+    //   121: ldc 96
+    //   123: iconst_0
+    //   124: invokevirtual 102	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   127: astore 5
+    //   129: aload_3
+    //   130: astore 4
+    //   132: aload 5
+    //   134: ifnull +86 -> 220
+    //   137: aload 5
+    //   139: ldc 104
+    //   141: ldc 106
+    //   143: invokeinterface 112 3 0
+    //   148: astore_3
+    //   149: aload_3
+    //   150: astore 4
+    //   152: aload_3
+    //   153: invokestatic 78	com/tencent/token/bq:a	(Ljava/lang/String;)Z
+    //   156: ifeq +64 -> 220
+    //   159: new 45	java/lang/StringBuilder
+    //   162: dup
+    //   163: invokespecial 113	java/lang/StringBuilder:<init>	()V
+    //   166: astore_3
+    //   167: aload_3
+    //   168: aload_0
+    //   169: invokestatic 116	com/tencent/token/bq:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   172: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   175: pop
+    //   176: aload_3
+    //   177: ldc 118
+    //   179: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: pop
+    //   183: aload_3
+    //   184: aload_0
+    //   185: invokestatic 120	com/tencent/token/bq:b	(Landroid/content/Context;)Ljava/lang/String;
+    //   188: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: pop
+    //   192: aload_3
+    //   193: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   196: astore 4
+    //   198: aload 5
+    //   200: invokeinterface 124 1 0
+    //   205: ldc 104
+    //   207: aload 4
+    //   209: invokeinterface 130 3 0
+    //   214: invokeinterface 134 1 0
+    //   219: pop
+    //   220: aload_2
+    //   221: astore_3
+    //   222: aload_2
+    //   223: invokestatic 78	com/tencent/token/bq:a	(Ljava/lang/String;)Z
+    //   226: ifeq +6 -> 232
+    //   229: ldc 136
+    //   231: astore_3
+    //   232: aload_0
+    //   233: aload_1
+    //   234: aload_3
+    //   235: aload 4
+    //   237: invokestatic 139	com/tencent/halley/common/f:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   240: aload_0
+    //   241: invokestatic 144	com/tencent/token/bp:a	(Landroid/content/Context;)V
+    //   244: new 146	com/tencent/token/an
+    //   247: dup
+    //   248: aload_1
+    //   249: aload_3
+    //   250: aload 4
+    //   252: invokespecial 149	com/tencent/token/an:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   255: putstatic 22	com/tencent/token/aq:c	Lcom/tencent/token/ak;
+    //   258: new 151	java/lang/Thread
+    //   261: dup
+    //   262: getstatic 22	com/tencent/token/aq:c	Lcom/tencent/token/ak;
+    //   265: checkcast 153	java/lang/Runnable
+    //   268: ldc 155
+    //   270: invokespecial 158	java/lang/Thread:<init>	(Ljava/lang/Runnable;Ljava/lang/String;)V
+    //   273: invokevirtual 161	java/lang/Thread:start	()V
+    //   276: getstatic 20	com/tencent/token/aq:b	Ljava/util/concurrent/locks/Lock;
+    //   279: invokeinterface 164 1 0
+    //   284: getstatic 22	com/tencent/token/aq:c	Lcom/tencent/token/ak;
+    //   287: areturn
+    //   288: astore_0
+    //   289: getstatic 20	com/tencent/token/aq:b	Ljava/util/concurrent/locks/Lock;
+    //   292: invokeinterface 164 1 0
+    //   297: aload_0
+    //   298: athrow
+    //   299: new 45	java/lang/StringBuilder
+    //   302: dup
+    //   303: ldc 166
+    //   305: invokespecial 50	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   308: astore_2
+    //   309: aload_2
+    //   310: aload_1
+    //   311: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   314: pop
+    //   315: aload_2
+    //   316: ldc 168
+    //   318: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   321: pop
+    //   322: aload_2
+    //   323: aload_0
+    //   324: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   327: pop
+    //   328: aload_2
+    //   329: ldc 170
+    //   331: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   334: pop
+    //   335: new 172	com/tencent/halley/common/HalleyInitException
+    //   338: dup
+    //   339: aload_2
+    //   340: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   343: invokespecial 173	com/tencent/halley/common/HalleyInitException:<init>	(Ljava/lang/String;)V
+    //   346: athrow
+    //   347: astore_0
+    //   348: goto -72 -> 276
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	308	0	paramContext	android.content.Context
-    //   0	308	1	paramString1	java.lang.String
-    //   0	308	2	paramString2	java.lang.String
-    //   0	308	3	paramString3	java.lang.String
-    //   119	137	4	str	java.lang.String
-    //   140	64	5	localSharedPreferences	android.content.SharedPreferences
+    //   0	351	0	paramContext	android.content.Context
+    //   0	351	1	paramString1	java.lang.String
+    //   0	351	2	paramString2	java.lang.String
+    //   0	351	3	paramString3	java.lang.String
+    //   9	242	4	localObject	Object
+    //   127	72	5	localSharedPreferences	android.content.SharedPreferences
     // Exception table:
     //   from	to	target	type
-    //   105	118	293	finally
-    //   121	133	293	finally
-    //   133	142	293	finally
-    //   150	162	293	finally
-    //   165	225	293	finally
-    //   227	234	293	finally
-    //   237	281	293	finally
-    //   237	281	304	java/lang/Exception
+    //   92	105	288	finally
+    //   108	120	288	finally
+    //   120	129	288	finally
+    //   137	149	288	finally
+    //   152	220	288	finally
+    //   222	229	288	finally
+    //   232	276	288	finally
+    //   232	276	347	java/lang/Exception
   }
 }
 

@@ -27,19 +27,21 @@ public class BackupKit
   public BackupKit(SQLiteDatabase paramSQLiteDatabase, String paramString, byte[] paramArrayOfByte, int paramInt, String[] paramArrayOfString)
   {
     this.mDB = paramSQLiteDatabase;
+    paramSQLiteDatabase = null;
     this.mLastError = null;
-    paramSQLiteDatabase = localObject;
     if (paramArrayOfString != null) {
       paramSQLiteDatabase = (String[])Arrays.copyOf(paramArrayOfString, paramArrayOfString.length);
     }
     this.mTableDesc = paramSQLiteDatabase;
-    if (paramString == null) {
-      throw new IllegalArgumentException();
-    }
-    this.mNativePtr = nativeInit(paramString, paramArrayOfByte, paramInt);
-    if (this.mNativePtr == 0L) {
+    if (paramString != null)
+    {
+      this.mNativePtr = nativeInit(paramString, paramArrayOfByte, paramInt);
+      if (this.mNativePtr != 0L) {
+        return;
+      }
       throw new SQLiteException("Failed initialize backup context.");
     }
+    throw new IllegalArgumentException();
   }
   
   private static native void nativeCancel(long paramLong);
@@ -67,33 +69,36 @@ public class BackupKit
   
   public void onCancel()
   {
-    if (this.mNativePtr != 0L) {
-      nativeCancel(this.mNativePtr);
+    long l = this.mNativePtr;
+    if (l != 0L) {
+      nativeCancel(l);
     }
   }
   
   public void release()
   {
-    if (this.mNativePtr != 0L)
+    long l = this.mNativePtr;
+    if (l != 0L)
     {
-      nativeFinish(this.mNativePtr);
+      nativeFinish(l);
       this.mNativePtr = 0L;
     }
   }
   
   public int run()
   {
-    if (this.mNativePtr == 0L) {
-      throw new IllegalStateException("BackupKit not initialized.");
+    if (this.mNativePtr != 0L)
+    {
+      long l = this.mDB.acquireNativeConnectionHandle("backup", false, false);
+      int i = nativeRun(this.mNativePtr, l, this.mTableDesc);
+      this.mDB.releaseNativeConnection(l, null);
+      this.mStatementCount = nativeStatementCount(this.mNativePtr);
+      this.mLastError = nativeLastError(this.mNativePtr);
+      nativeFinish(this.mNativePtr);
+      this.mNativePtr = 0L;
+      return i;
     }
-    long l = this.mDB.acquireNativeConnectionHandle("backup", false, false);
-    int i = nativeRun(this.mNativePtr, l, this.mTableDesc);
-    this.mDB.releaseNativeConnection(l, null);
-    this.mStatementCount = nativeStatementCount(this.mNativePtr);
-    this.mLastError = nativeLastError(this.mNativePtr);
-    nativeFinish(this.mNativePtr);
-    this.mNativePtr = 0L;
-    return i;
+    throw new IllegalStateException("BackupKit not initialized.");
   }
   
   public int run(CancellationSignal paramCancellationSignal)

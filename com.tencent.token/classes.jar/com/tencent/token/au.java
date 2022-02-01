@@ -13,7 +13,9 @@ final class au
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    b.a("AccessSchedulerTrigger", "onAccessSchedulerTriggered by timer, curTime:" + System.currentTimeMillis());
+    paramContext = new StringBuilder("onAccessSchedulerTriggered by timer, curTime:");
+    paramContext.append(System.currentTimeMillis());
+    b.a("AccessSchedulerTrigger", paramContext.toString());
     a.a().a(new as.a(this.a, (byte)0));
   }
 }

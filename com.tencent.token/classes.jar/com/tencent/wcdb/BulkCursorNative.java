@@ -15,17 +15,13 @@ public abstract class BulkCursorNative
   
   public static IBulkCursor asInterface(IBinder paramIBinder)
   {
-    Object localObject;
     if (paramIBinder == null) {
-      localObject = null;
+      return null;
     }
-    IBulkCursor localIBulkCursor;
-    do
-    {
-      return localObject;
-      localIBulkCursor = (IBulkCursor)paramIBinder.queryLocalInterface("android.content.IBulkCursor");
-      localObject = localIBulkCursor;
-    } while (localIBulkCursor != null);
+    IBulkCursor localIBulkCursor = (IBulkCursor)paramIBinder.queryLocalInterface("android.content.IBulkCursor");
+    if (localIBulkCursor != null) {
+      return localIBulkCursor;
+    }
     return new BulkCursorProxy(paramIBinder);
   }
   
@@ -39,61 +35,63 @@ public abstract class BulkCursorNative
     switch (paramInt1)
     {
     default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      break;
+    case 7: 
+    case 6: 
+    case 5: 
+    case 4: 
+    case 3: 
+    case 2: 
     case 1: 
       try
       {
         paramParcel1.enforceInterface("android.content.IBulkCursor");
-        paramParcel1 = getWindow(paramParcel1.readInt());
+        close();
         paramParcel2.writeNoException();
-        if (paramParcel1 == null)
-        {
-          paramParcel2.writeInt(0);
-          return true;
-        }
+        return true;
       }
       catch (Exception paramParcel1)
       {
         DatabaseUtils.writeExceptionToParcel(paramParcel2, paramParcel1);
         return true;
       }
-      paramParcel2.writeInt(1);
-      paramParcel1.writeToParcel(paramParcel2, 1);
-      return true;
-    case 2: 
       paramParcel1.enforceInterface("android.content.IBulkCursor");
-      deactivate();
+      paramParcel1 = respond(paramParcel1.readBundle(getClass().getClassLoader()));
+      paramParcel2.writeNoException();
+      paramParcel2.writeBundle(paramParcel1);
+      return true;
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      paramParcel1 = getExtras();
+      paramParcel2.writeNoException();
+      paramParcel2.writeBundle(paramParcel1);
+      return true;
+      paramParcel1.enforceInterface("android.content.IBulkCursor");
+      onMove(paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
-    case 7: 
-      paramParcel1.enforceInterface("android.content.IBulkCursor");
-      close();
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
       paramParcel1.enforceInterface("android.content.IBulkCursor");
       paramInt1 = requery(IContentObserver.Stub.asInterface(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       paramParcel2.writeBundle(getExtras());
       return true;
-    case 4: 
       paramParcel1.enforceInterface("android.content.IBulkCursor");
-      onMove(paramParcel1.readInt());
+      deactivate();
       paramParcel2.writeNoException();
       return true;
-    case 5: 
       paramParcel1.enforceInterface("android.content.IBulkCursor");
-      paramParcel1 = getExtras();
+      paramParcel1 = getWindow(paramParcel1.readInt());
       paramParcel2.writeNoException();
-      paramParcel2.writeBundle(paramParcel1);
+      if (paramParcel1 == null)
+      {
+        paramParcel2.writeInt(0);
+        return true;
+      }
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
       return true;
     }
-    paramParcel1.enforceInterface("android.content.IBulkCursor");
-    paramParcel1 = respond(paramParcel1.readBundle(getClass().getClassLoader()));
-    paramParcel2.writeNoException();
-    paramParcel2.writeBundle(paramParcel1);
-    return true;
+    return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
   }
 }
 

@@ -15,27 +15,28 @@ public class h
       SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("sp_name_global", 0).edit();
       if (paramInt == 0) {
         localEditor.putBoolean("scan_tip_next_show", paramBoolean);
-      }
-      for (;;)
-      {
-        localEditor.commit();
-        return;
+      } else {
         localEditor.putBoolean("scan_tip_next_show_2", paramBoolean);
       }
+      localEditor.commit();
       return;
     }
     catch (Exception localException)
     {
-      g.c("SharedPreferences msg " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
   }
   
   public static void a(String paramString1, String paramString2)
   {
-    boolean bool = false;
     try
     {
-      Object localObject = RqdApplication.l().getSharedPreferences("safe_conf_list", 0);
+      Object localObject = RqdApplication.l();
+      boolean bool = false;
+      localObject = ((Context)localObject).getSharedPreferences("safe_conf_list", 0);
       if (localObject != null) {
         bool = true;
       }
@@ -51,7 +52,10 @@ public class h
     }
     catch (Exception paramString1)
     {
-      g.c("getSharedPreferences error=" + paramString1.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append("getSharedPreferences error=");
+      paramString2.append(paramString1.toString());
+      g.c(paramString2.toString());
     }
   }
   
@@ -66,7 +70,10 @@ public class h
     }
     catch (Exception localException)
     {
-      g.c("SharedPreferences msg " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
   }
   
@@ -83,7 +90,10 @@ public class h
     }
     catch (Exception localException)
     {
-      g.c("SharedPreferences msg " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
     return true;
   }
@@ -101,7 +111,10 @@ public class h
     }
     catch (Exception localException)
     {
-      g.c("SharedPreferences msg " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
   }
   
@@ -116,7 +129,10 @@ public class h
     }
     catch (Exception localException)
     {
-      g.c("SharedPreferences msg " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
   }
   
@@ -129,7 +145,10 @@ public class h
     }
     catch (Exception localException)
     {
-      g.c("SharedPreferences msg " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
     return 0;
   }
@@ -143,7 +162,10 @@ public class h
     }
     catch (Exception localException)
     {
-      g.c("SharedPreferences msg " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
     return false;
   }
@@ -157,7 +179,10 @@ public class h
     }
     catch (Exception localException)
     {
-      g.c("SharedPreferences msg " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
     return false;
   }

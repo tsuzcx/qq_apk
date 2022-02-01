@@ -7,9 +7,9 @@ public class BluetoothUtil
 {
   public static boolean startBluetooth(AudioManager paramAudioManager)
   {
-    if (Integer.valueOf(Build.VERSION.SDK).intValue() >= 8)
+    if ((Integer.valueOf(Build.VERSION.SDK).intValue() >= 8) && (paramAudioManager.isBluetoothScoAvailableOffCall()))
     {
-      if ((!paramAudioManager.isBluetoothScoAvailableOffCall()) || (PhoneStatusWatcher.isCalling())) {
+      if (PhoneStatusWatcher.isCalling()) {
         return false;
       }
       paramAudioManager.startBluetoothSco();

@@ -20,27 +20,24 @@ public class a
   
   public a(Context paramContext)
   {
-    float f1 = IndexActivity.S_RES_WIDTH - paramContext.getResources().getDimension(2131296303);
-    float f2 = paramContext.getResources().getDimension(2131296302);
+    float f1 = IndexActivity.S_RES_WIDTH - paramContext.getResources().getDimension(2131034278);
+    float f2 = paramContext.getResources().getDimension(2131034277);
     if (f1 > f2) {
       f1 = f2;
     }
-    for (;;)
-    {
-      this.c = f1;
-      this.d = (3.5F * IndexActivity.S_DENSITY);
-      this.b = new Paint();
-      this.b.setStyle(Paint.Style.FILL);
-      this.b.setColor(-1);
-      return;
-    }
+    this.c = f1;
+    this.d = (IndexActivity.S_DENSITY * 3.5F);
+    this.b = new Paint();
+    this.b.setStyle(Paint.Style.FILL);
+    this.b.setColor(-1);
   }
   
   public void draw(Canvas paramCanvas)
   {
     long l = System.currentTimeMillis() + cc.c().q();
-    int i = (int)(l / 1000L);
-    paramCanvas.drawRect(((int)(l % 1000L) + i % 30 * 1000) * this.c / 30000.0F, 0.0F, 3.0F + this.c, this.d, this.b);
+    float f1 = (int)(l / 1000L) % 30 * 1000 + (int)(l % 1000L);
+    float f2 = this.c;
+    paramCanvas.drawRect(f1 * f2 / 30000.0F, 0.0F, f2 + 3.0F, this.d, this.b);
     if (this.a) {
       invalidateSelf();
     }

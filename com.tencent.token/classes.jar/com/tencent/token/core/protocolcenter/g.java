@@ -12,20 +12,17 @@ public class g
   {
     e locale = bv.a().b();
     if (!locale.b()) {
-      paramdo = locale;
+      return locale;
     }
-    do
+    paramString = b.a(paramString);
+    if (paramString != null)
     {
-      return paramdo;
-      paramString = b.a(paramString);
-      if (paramString == null) {
-        break;
+      paramdo = paramString.c(paramdo);
+      if (paramdo.b()) {
+        ca.a().c();
       }
-      paramString = paramString.c(paramdo);
-      paramdo = paramString;
-    } while (!paramString.b());
-    ca.a().c();
-    return paramString;
+      return paramdo;
+    }
     locale.b(10000);
     return locale;
   }
@@ -36,9 +33,10 @@ public class g
     {
       public e a()
       {
-        e locale = g.b(this.a, this.a.a);
-        this.a.l.a(this.a, locale);
-        return locale;
+        Object localObject = this.a;
+        localObject = g.b((do)localObject, ((do)localObject).a);
+        this.a.l.a(this.a, (e)localObject);
+        return localObject;
       }
     };
   }
@@ -57,23 +55,22 @@ public class g
       if (locald != null)
       {
         locale = locald.c(paramdo);
-        if (!locale.b()) {
-          break label82;
+        if (locale.b())
+        {
+          ca.a().c();
+          return locale;
         }
-        ca.a().c();
+        if (locale.a == 104)
+        {
+          paramdo = a(paramdo, paramString);
+          return paramdo;
+        }
         return locale;
       }
+      locale.b(10000);
+      return locale;
     }
     finally {}
-    locale.b(10000);
-    return locale;
-    label82:
-    if (locale.a == 104)
-    {
-      paramdo = a(paramdo, paramString);
-      return paramdo;
-    }
-    return locale;
   }
 }
 

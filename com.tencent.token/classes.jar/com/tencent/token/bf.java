@@ -51,16 +51,15 @@ public final class bf
   {
     String str = "";
     if (paramInt == 1) {
-      str = "access_cm";
+      return "access_cm";
     }
-    do
-    {
-      return str;
-      if (paramInt == 2) {
-        return "access_uni";
-      }
-    } while (paramInt != 3);
-    return "access_ct";
+    if (paramInt == 2) {
+      return "access_uni";
+    }
+    if (paramInt == 3) {
+      str = "access_ct";
+    }
+    return str;
   }
   
   public final void a()
@@ -76,18 +75,31 @@ public final class bf
       if (TextUtils.isEmpty((CharSequence)localObject2))
       {
         localObject1 = "";
-        if (i != 1) {
-          break label180;
+        if (i == 1) {
+          localObject1 = "183.61.38.168:14000,117.135.171.182:14000";
         }
-        localObject1 = "183.61.38.168:14000,117.135.171.182:14000";
+        for (;;)
+        {
+          break;
+          if (i == 2)
+          {
+            localObject1 = "112.90.140.213:14000,112.90.140.216:14000";
+          }
+          else
+          {
+            if (i != 3) {
+              break;
+            }
+            localObject1 = "14.17.41.159:14000,140.206.160.242:14000";
+          }
+        }
+        localObject2 = new StringBuilder("getDefaultIpListByOpType:");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        b.b("SdkAccessInfo", ((StringBuilder)localObject2).toString());
       }
-      for (;;)
+      localObject1 = ((String)localObject1).split(",");
+      if (localObject1.length > 0)
       {
-        b.b("SdkAccessInfo", "getDefaultIpListByOpType:" + (String)localObject1);
-        localObject1 = ((String)localObject1).split(",");
-        if (localObject1.length <= 0) {
-          break label220;
-        }
         localObject2 = new ArrayList();
         int k = localObject1.length;
         int j = 0;
@@ -100,15 +112,8 @@ public final class bf
           }
           j += 1;
         }
-        label180:
-        if (i == 2) {
-          localObject1 = "112.90.140.213:14000,112.90.140.216:14000";
-        } else if (i == 3) {
-          localObject1 = "14.17.41.159:14000,140.206.160.242:14000";
-        }
+        this.c.put(Integer.valueOf(i), localObject2);
       }
-      this.c.put(Integer.valueOf(i), localObject2);
-      label220:
       i += 1;
     }
   }
@@ -116,27 +121,28 @@ public final class bf
   public final void b()
   {
     SharedPreferences localSharedPreferences = f.a().getSharedPreferences("Access_Preferences", 0);
-    if ((this.c != null) && (this.c.size() > 0))
+    Object localObject1 = this.c;
+    if ((localObject1 != null) && (((Map)localObject1).size() > 0))
     {
-      Iterator localIterator = this.c.keySet().iterator();
-      while (localIterator.hasNext())
+      localObject1 = this.c.keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        Object localObject1 = (Integer)localIterator.next();
-        if (bp.a((Integer)localObject1))
+        Object localObject2 = (Integer)((Iterator)localObject1).next();
+        if (bp.a((Integer)localObject2))
         {
-          String str = a(((Integer)localObject1).intValue());
-          Object localObject2 = (ArrayList)this.c.get(localObject1);
-          if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
+          String str = a(((Integer)localObject2).intValue());
+          Object localObject3 = (ArrayList)this.c.get(localObject2);
+          if ((localObject3 != null) && (((ArrayList)localObject3).size() > 0))
           {
-            localObject2 = new StringBuilder();
-            localObject1 = ((ArrayList)this.c.get(localObject1)).iterator();
-            while (((Iterator)localObject1).hasNext())
+            localObject3 = new StringBuilder();
+            localObject2 = ((ArrayList)this.c.get(localObject2)).iterator();
+            while (((Iterator)localObject2).hasNext())
             {
-              ((StringBuilder)localObject2).append(((ay)((Iterator)localObject1).next()).c());
-              ((StringBuilder)localObject2).append(",");
+              ((StringBuilder)localObject3).append(((ay)((Iterator)localObject2).next()).c());
+              ((StringBuilder)localObject3).append(",");
             }
-            ((StringBuilder)localObject2).deleteCharAt(((StringBuilder)localObject2).length() - 1);
-            localSharedPreferences.edit().putString(str, ((StringBuilder)localObject2).toString()).commit();
+            ((StringBuilder)localObject3).deleteCharAt(((StringBuilder)localObject3).length() - 1);
+            localSharedPreferences.edit().putString(str, ((StringBuilder)localObject3).toString()).commit();
           }
         }
       }
@@ -146,11 +152,12 @@ public final class bf
   
   public final ArrayList c()
   {
-    int k = 0;
     int i = bp.e();
     ArrayList localArrayList1 = new ArrayList();
+    boolean bool = bp.a(Integer.valueOf(i));
+    int k = 0;
     Object localObject;
-    if (bp.a(Integer.valueOf(i)))
+    if (bool)
     {
       localIterator = this.c.keySet().iterator();
       while (localIterator.hasNext())
@@ -174,12 +181,8 @@ public final class bf
       }
       localObject = (Integer)localIterator.next();
     }
-    for (;;)
+    while (j < i)
     {
-      j += 1;
-      if (j >= i) {
-        break;
-      }
       localIterator = this.c.keySet().iterator();
       while (localIterator.hasNext())
       {
@@ -189,6 +192,7 @@ public final class bf
           localArrayList1.add(((ArrayList)localObject).get(j));
         }
       }
+      j += 1;
     }
     return localArrayList1;
   }

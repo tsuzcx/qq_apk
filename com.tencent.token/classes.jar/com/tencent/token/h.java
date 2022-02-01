@@ -98,16 +98,13 @@ public class h
       if (paramString2.has("timestamp"))
       {
         localh.r = paramString2.getLong("timestamp");
-        paramString1 = localh;
+        return localh;
       }
     }
     catch (JSONException paramString1)
     {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-        paramString1 = null;
-      }
+      paramString1.printStackTrace();
+      paramString1 = null;
     }
     return paramString1;
   }
@@ -126,9 +123,11 @@ public class h
   
   private String b(Context paramContext, HashSet<String> paramHashSet)
   {
+    int i1 = a;
+    int i2 = this.d;
     Object localObject1;
     Object localObject2;
-    if (a == this.d)
+    if (i1 == i2)
     {
       localObject1 = this.e.iterator();
       do
@@ -140,7 +139,7 @@ public class h
       } while (((paramHashSet != null) && (paramHashSet.contains(localObject2))) || (a.b(paramContext, (String)localObject2)));
       return localObject2;
     }
-    if (b == this.d)
+    if (b == i2)
     {
       localObject1 = new ArrayList();
       localObject2 = this.e.iterator();
@@ -154,17 +153,15 @@ public class h
       if (((ArrayList)localObject1).size() == 1) {
         return (String)((ArrayList)localObject1).get(0);
       }
-      if (TextUtils.isEmpty(this.q)) {
-        break label278;
+      i1 = -1;
+      if (!TextUtils.isEmpty(this.q))
+      {
+        ((ArrayList)localObject1).remove(this.q);
+        if (((ArrayList)localObject1).size() == 1) {
+          return (String)((ArrayList)localObject1).get(0);
+        }
+        i1 = this.e.indexOf(this.q);
       }
-      ((ArrayList)localObject1).remove(this.q);
-      if (((ArrayList)localObject1).size() == 1) {
-        return (String)((ArrayList)localObject1).get(0);
-      }
-    }
-    label278:
-    for (int i1 = this.e.indexOf(this.q);; i1 = -1)
-    {
       paramContext = ((ArrayList)localObject1).iterator();
       while (paramContext.hasNext())
       {
@@ -176,29 +173,28 @@ public class h
       if (((ArrayList)localObject1).size() > 0) {
         return (String)((ArrayList)localObject1).get(0);
       }
-      return null;
     }
+    return null;
   }
   
   static ArrayList<String> b(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return localArrayList;
-      paramString = paramString.split("\\|");
-      if (paramString != null)
+    }
+    paramString = paramString.split("\\|");
+    if (paramString != null)
+    {
+      int i2 = paramString.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        int i2 = paramString.length;
-        int i1 = 0;
-        while (i1 < i2)
-        {
-          localArrayList.add(paramString[i1]);
-          i1 += 1;
-        }
+        localArrayList.add(paramString[i1]);
+        i1 += 1;
       }
     }
+    return localArrayList;
   }
   
   private String c()
@@ -218,46 +214,40 @@ public class h
   
   public j a(Context paramContext, HashSet<String> paramHashSet)
   {
-    String str1 = null;
-    String str2 = b(paramContext, paramHashSet);
-    if (TextUtils.isEmpty(str2)) {
-      paramContext = str1;
+    paramHashSet = b(paramContext, paramHashSet);
+    if (TextUtils.isEmpty(paramHashSet)) {
+      return null;
     }
-    do
-    {
-      int i1;
-      do
-      {
-        return paramContext;
-        i1 = this.e.indexOf(str2);
-        paramContext = str1;
-      } while (i1 < 0);
-      paramHashSet = new j();
-      paramHashSet.a = str2;
-      paramHashSet.d = a(i1, this.i);
-      paramHashSet.e = a(i1, this.j);
-      paramHashSet.f = a(i1, this.k);
-      paramHashSet.g = a(i1, this.l);
-      paramHashSet.b = a(i1, this.f);
-      paramHashSet.c = a(i1, this.g);
-      paramHashSet.h = new ArrayList();
-      paramContext = a(i1, this.m);
-      if (!TextUtils.isEmpty(paramContext)) {
-        paramHashSet.h.add(paramContext);
-      }
-      paramContext = a(i1, this.n);
-      if (!TextUtils.isEmpty(paramContext)) {
-        paramHashSet.h.add(paramContext);
-      }
-      paramContext = a(i1, this.o);
-      if (!TextUtils.isEmpty(paramContext)) {
-        paramHashSet.h.add(paramContext);
-      }
-      str1 = a(i1, this.p);
-      paramContext = paramHashSet;
-    } while (TextUtils.isEmpty(str1));
-    paramHashSet.h.add(str1);
-    return paramHashSet;
+    int i1 = this.e.indexOf(paramHashSet);
+    if (i1 < 0) {
+      return null;
+    }
+    paramContext = new j();
+    paramContext.a = paramHashSet;
+    paramContext.d = a(i1, this.i);
+    paramContext.e = a(i1, this.j);
+    paramContext.f = a(i1, this.k);
+    paramContext.g = a(i1, this.l);
+    paramContext.b = a(i1, this.f);
+    paramContext.c = a(i1, this.g);
+    paramContext.h = new ArrayList();
+    paramHashSet = a(i1, this.m);
+    if (!TextUtils.isEmpty(paramHashSet)) {
+      paramContext.h.add(paramHashSet);
+    }
+    paramHashSet = a(i1, this.n);
+    if (!TextUtils.isEmpty(paramHashSet)) {
+      paramContext.h.add(paramHashSet);
+    }
+    paramHashSet = a(i1, this.o);
+    if (!TextUtils.isEmpty(paramHashSet)) {
+      paramContext.h.add(paramHashSet);
+    }
+    paramHashSet = a(i1, this.p);
+    if (!TextUtils.isEmpty(paramHashSet)) {
+      paramContext.h.add(paramHashSet);
+    }
+    return paramContext;
   }
   
   public void a(String paramString)
@@ -272,81 +262,86 @@ public class h
   
   public boolean a()
   {
-    if ((this.s > 0L) && (System.currentTimeMillis() - this.r < this.s * 3600000L)) {}
-    while (((this.t > 0L) && (System.currentTimeMillis() < this.t * 1000L)) || ((this.u > 0L) && (System.currentTimeMillis() > this.u * 1000L))) {
+    if ((this.s > 0L) && (System.currentTimeMillis() - this.r < this.s * 3600000L)) {
       return false;
     }
-    return true;
+    if ((this.t > 0L) && (System.currentTimeMillis() < this.t * 1000L)) {
+      return false;
+    }
+    return (this.u <= 0L) || (System.currentTimeMillis() <= this.u * 1000L);
   }
   
   public JSONObject b()
   {
-    JSONObject localJSONObject = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
     try
     {
-      localJSONObject.put("mode", this.d);
+      localJSONObject2.put("mode", this.d);
       if (!TextUtils.isEmpty(this.c)) {
-        localJSONObject.put("scene", this.c);
+        localJSONObject2.put("scene", this.c);
       }
-      String str = c();
-      if (!TextUtils.isEmpty(str)) {
-        localJSONObject.put("pkglist", str);
+      Object localObject = c();
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        localJSONObject2.put("pkglist", localObject);
       }
       if (!TextUtils.isEmpty(this.f)) {
-        localJSONObject.put("img1", this.f);
+        localJSONObject2.put("img1", this.f);
       }
       if (!TextUtils.isEmpty(this.g)) {
-        localJSONObject.put("img2", this.g);
+        localJSONObject2.put("img2", this.g);
       }
       if (!TextUtils.isEmpty(this.h)) {
-        localJSONObject.put("img3", this.h);
+        localJSONObject2.put("img3", this.h);
       }
       if (!TextUtils.isEmpty(this.i)) {
-        localJSONObject.put("text1", this.i);
+        localJSONObject2.put("text1", this.i);
       }
       if (!TextUtils.isEmpty(this.j)) {
-        localJSONObject.put("text2", this.j);
+        localJSONObject2.put("text2", this.j);
       }
       if (!TextUtils.isEmpty(this.k)) {
-        localJSONObject.put("text3", this.k);
+        localJSONObject2.put("text3", this.k);
       }
       if (!TextUtils.isEmpty(this.l)) {
-        localJSONObject.put("text4", this.l);
+        localJSONObject2.put("text4", this.l);
       }
       if (!TextUtils.isEmpty(this.m)) {
-        localJSONObject.put("text5", this.m);
+        localJSONObject2.put("text5", this.m);
       }
       if (!TextUtils.isEmpty(this.n)) {
-        localJSONObject.put("text6", this.n);
+        localJSONObject2.put("text6", this.n);
       }
       if (!TextUtils.isEmpty(this.o)) {
-        localJSONObject.put("text7", this.o);
+        localJSONObject2.put("text7", this.o);
       }
       if (!TextUtils.isEmpty(this.p)) {
-        localJSONObject.put("text8", this.p);
+        localJSONObject2.put("text8", this.p);
       }
       if (!TextUtils.isEmpty(this.q)) {
-        localJSONObject.put("lastpkg", this.q);
+        localJSONObject2.put("lastpkg", this.q);
       }
       if (this.r > 0L) {
-        localJSONObject.put("timestamp", this.r);
+        localJSONObject2.put("timestamp", this.r);
       }
       if (this.s > 0L) {
-        localJSONObject.put("interval", this.s);
+        localJSONObject2.put("interval", this.s);
       }
       if (this.t > 0L) {
-        localJSONObject.put("begin", this.t);
+        localJSONObject2.put("begin", this.t);
       }
-      if (this.u > 0L) {
-        localJSONObject.put("end", this.u);
+      localObject = localJSONObject2;
+      if (this.u > 0L)
+      {
+        localJSONObject2.put("end", this.u);
+        return localJSONObject2;
       }
-      return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
+      JSONObject localJSONObject1 = null;
+      return localJSONObject1;
     }
-    return null;
   }
   
   public String toString()

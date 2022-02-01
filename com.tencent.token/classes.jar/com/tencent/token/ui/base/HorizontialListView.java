@@ -81,30 +81,33 @@ public class HorizontialListView
     
     public boolean onSingleTapConfirmed(MotionEvent paramAnonymousMotionEvent)
     {
-      Rect localRect = new Rect();
+      Object localObject = new Rect();
       int i = 0;
-      for (;;)
+      while (i < HorizontialListView.this.getChildCount())
       {
-        if (i < HorizontialListView.this.getChildCount())
+        View localView = HorizontialListView.this.getChildAt(i);
+        int j = localView.getLeft();
+        int k = localView.getRight();
+        ((Rect)localObject).set(j, localView.getTop(), k, localView.getBottom());
+        if (((Rect)localObject).contains((int)paramAnonymousMotionEvent.getX(), (int)paramAnonymousMotionEvent.getY()))
         {
-          View localView = HorizontialListView.this.getChildAt(i);
-          int j = localView.getLeft();
-          int k = localView.getRight();
-          localRect.set(j, localView.getTop(), k, localView.getBottom());
-          if (!localRect.contains((int)paramAnonymousMotionEvent.getX(), (int)paramAnonymousMotionEvent.getY())) {
-            break label207;
+          if (HorizontialListView.b(HorizontialListView.this) != null)
+          {
+            paramAnonymousMotionEvent = HorizontialListView.b(HorizontialListView.this);
+            localObject = HorizontialListView.this;
+            paramAnonymousMotionEvent.onItemClick((AdapterView)localObject, localView, HorizontialListView.c((HorizontialListView)localObject) + 1 + i, HorizontialListView.this.b.getItemId(HorizontialListView.c(HorizontialListView.this) + 1 + i));
           }
-          if (HorizontialListView.b(HorizontialListView.this) != null) {
-            HorizontialListView.b(HorizontialListView.this).onItemClick(HorizontialListView.this, localView, HorizontialListView.c(HorizontialListView.this) + 1 + i, HorizontialListView.this.b.getItemId(HorizontialListView.c(HorizontialListView.this) + 1 + i));
+          if (HorizontialListView.d(HorizontialListView.this) == null) {
+            break;
           }
-          if (HorizontialListView.d(HorizontialListView.this) != null) {
-            HorizontialListView.d(HorizontialListView.this).onItemSelected(HorizontialListView.this, localView, HorizontialListView.c(HorizontialListView.this) + 1 + i, HorizontialListView.this.b.getItemId(HorizontialListView.c(HorizontialListView.this) + 1 + i));
-          }
+          paramAnonymousMotionEvent = HorizontialListView.d(HorizontialListView.this);
+          localObject = HorizontialListView.this;
+          paramAnonymousMotionEvent.onItemSelected((AdapterView)localObject, localView, HorizontialListView.c((HorizontialListView)localObject) + 1 + i, HorizontialListView.this.b.getItemId(HorizontialListView.c(HorizontialListView.this) + 1 + i));
+          return true;
         }
-        return true;
-        label207:
         i += 1;
       }
+      return true;
     }
   };
   
@@ -137,20 +140,20 @@ public class HorizontialListView
   
   private void a(int paramInt)
   {
-    int i2 = 0;
     View localView = getChildAt(getChildCount() - 1);
-    if (localView != null) {}
-    for (int i1 = localView.getRight();; i1 = 0)
-    {
-      a(i1, paramInt);
-      localView = getChildAt(0);
-      i1 = i2;
-      if (localView != null) {
-        i1 = localView.getLeft();
-      }
-      b(i1, paramInt);
-      return;
+    int i2 = 0;
+    if (localView != null) {
+      i1 = localView.getRight();
+    } else {
+      i1 = 0;
     }
+    a(i1, paramInt);
+    localView = getChildAt(0);
+    int i1 = i2;
+    if (localView != null) {
+      i1 = localView.getLeft();
+    }
+    b(i1, paramInt);
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -213,9 +216,13 @@ public class HorizontialListView
   
   private void b(int paramInt1, int paramInt2)
   {
-    while ((paramInt1 + paramInt2 > 0) && (this.f >= 0))
+    while (paramInt1 + paramInt2 > 0)
     {
-      View localView = this.b.getView(this.f, (View)this.k.poll(), this);
+      int i1 = this.f;
+      if (i1 < 0) {
+        break;
+      }
+      View localView = this.b.getView(i1, (View)this.k.poll(), this);
       a(localView, 0);
       paramInt1 -= localView.getMeasuredWidth();
       this.f -= 1;
@@ -228,15 +235,15 @@ public class HorizontialListView
     if (getChildCount() > 0)
     {
       this.i += paramInt;
-      int i1 = this.i;
-      paramInt = 0;
-      while (paramInt < getChildCount())
+      paramInt = this.i;
+      int i1 = 0;
+      while (i1 < getChildCount())
       {
-        View localView = getChildAt(paramInt);
-        int i2 = localView.getMeasuredWidth();
-        localView.layout(i1, 0, i1 + i2, localView.getMeasuredHeight());
-        i1 += i2;
-        paramInt += 1;
+        View localView = getChildAt(i1);
+        int i2 = localView.getMeasuredWidth() + paramInt;
+        localView.layout(paramInt, 0, i2, localView.getMeasuredHeight());
+        i1 += 1;
+        paramInt = i2;
       }
     }
   }
@@ -273,135 +280,60 @@ public class HorizontialListView
     return null;
   }
   
-  /* Error */
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: iload_1
-    //   4: iload_2
-    //   5: iload_3
-    //   6: iload 4
-    //   8: iload 5
-    //   10: invokespecial 224	android/widget/AdapterView:onLayout	(ZIIII)V
-    //   13: aload_0
-    //   14: getfield 122	com/tencent/token/ui/base/HorizontialListView:b	Landroid/widget/ListAdapter;
-    //   17: astore 6
-    //   19: aload 6
-    //   21: ifnonnull +6 -> 27
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: return
-    //   27: aload_0
-    //   28: getfield 62	com/tencent/token/ui/base/HorizontialListView:n	Z
-    //   31: ifeq +26 -> 57
-    //   34: aload_0
-    //   35: getfield 75	com/tencent/token/ui/base/HorizontialListView:c	I
-    //   38: istore_2
-    //   39: aload_0
-    //   40: invokespecial 72	com/tencent/token/ui/base/HorizontialListView:a	()V
-    //   43: aload_0
-    //   44: invokevirtual 177	com/tencent/token/ui/base/HorizontialListView:removeAllViewsInLayout	()V
-    //   47: aload_0
-    //   48: iload_2
-    //   49: putfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
-    //   52: aload_0
-    //   53: iconst_0
-    //   54: putfield 62	com/tencent/token/ui/base/HorizontialListView:n	Z
-    //   57: aload_0
-    //   58: getfield 88	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
-    //   61: invokevirtual 228	android/widget/Scroller:computeScrollOffset	()Z
-    //   64: ifeq +14 -> 78
-    //   67: aload_0
-    //   68: aload_0
-    //   69: getfield 88	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
-    //   72: invokevirtual 231	android/widget/Scroller:getCurrX	()I
-    //   75: putfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
-    //   78: aload_0
-    //   79: getfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
-    //   82: ifge +16 -> 98
-    //   85: aload_0
-    //   86: iconst_0
-    //   87: putfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
-    //   90: aload_0
-    //   91: getfield 88	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
-    //   94: iconst_1
-    //   95: invokevirtual 204	android/widget/Scroller:forceFinished	(Z)V
-    //   98: aload_0
-    //   99: getfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
-    //   102: aload_0
-    //   103: getfield 51	com/tencent/token/ui/base/HorizontialListView:h	I
-    //   106: if_icmple +19 -> 125
-    //   109: aload_0
-    //   110: aload_0
-    //   111: getfield 51	com/tencent/token/ui/base/HorizontialListView:h	I
-    //   114: putfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
-    //   117: aload_0
-    //   118: getfield 88	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
-    //   121: iconst_1
-    //   122: invokevirtual 204	android/widget/Scroller:forceFinished	(Z)V
-    //   125: aload_0
-    //   126: getfield 75	com/tencent/token/ui/base/HorizontialListView:c	I
-    //   129: aload_0
-    //   130: getfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
-    //   133: isub
-    //   134: istore_2
-    //   135: aload_0
-    //   136: iload_2
-    //   137: invokespecial 233	com/tencent/token/ui/base/HorizontialListView:b	(I)V
-    //   140: aload_0
-    //   141: iload_2
-    //   142: invokespecial 235	com/tencent/token/ui/base/HorizontialListView:a	(I)V
-    //   145: aload_0
-    //   146: iload_2
-    //   147: invokespecial 237	com/tencent/token/ui/base/HorizontialListView:c	(I)V
-    //   150: aload_0
-    //   151: aload_0
-    //   152: getfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
-    //   155: putfield 75	com/tencent/token/ui/base/HorizontialListView:c	I
-    //   158: aload_0
-    //   159: getfield 88	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
-    //   162: invokevirtual 240	android/widget/Scroller:isFinished	()Z
-    //   165: ifne -141 -> 24
-    //   168: aload_0
-    //   169: new 9	com/tencent/token/ui/base/HorizontialListView$2
-    //   172: dup
-    //   173: aload_0
-    //   174: invokespecial 241	com/tencent/token/ui/base/HorizontialListView$2:<init>	(Lcom/tencent/token/ui/base/HorizontialListView;)V
-    //   177: invokevirtual 245	com/tencent/token/ui/base/HorizontialListView:post	(Ljava/lang/Runnable;)Z
-    //   180: pop
-    //   181: goto -157 -> 24
-    //   184: astore 6
-    //   186: aload_0
-    //   187: monitorexit
-    //   188: aload 6
-    //   190: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	191	0	this	HorizontialListView
-    //   0	191	1	paramBoolean	boolean
-    //   0	191	2	paramInt1	int
-    //   0	191	3	paramInt2	int
-    //   0	191	4	paramInt3	int
-    //   0	191	5	paramInt4	int
-    //   17	3	6	localListAdapter	ListAdapter
-    //   184	5	6	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	184	finally
-    //   27	57	184	finally
-    //   57	78	184	finally
-    //   78	98	184	finally
-    //   98	125	184	finally
-    //   125	181	184	finally
+    try
+    {
+      super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+      ListAdapter localListAdapter = this.b;
+      if (localListAdapter == null) {
+        return;
+      }
+      if (this.n)
+      {
+        paramInt1 = this.c;
+        a();
+        removeAllViewsInLayout();
+        this.d = paramInt1;
+        this.n = false;
+      }
+      if (this.e.computeScrollOffset()) {
+        this.d = this.e.getCurrX();
+      }
+      if (this.d < 0)
+      {
+        this.d = 0;
+        this.e.forceFinished(true);
+      }
+      if (this.d > this.h)
+      {
+        this.d = this.h;
+        this.e.forceFinished(true);
+      }
+      paramInt1 = this.c - this.d;
+      b(paramInt1);
+      a(paramInt1);
+      c(paramInt1);
+      this.c = this.d;
+      if (!this.e.isFinished()) {
+        post(new Runnable()
+        {
+          public void run()
+          {
+            HorizontialListView.this.requestLayout();
+          }
+        });
+      }
+      return;
+    }
+    finally {}
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if (this.b != null) {
-      this.b.unregisterDataSetObserver(this.o);
+    ListAdapter localListAdapter = this.b;
+    if (localListAdapter != null) {
+      localListAdapter.unregisterDataSetObserver(this.o);
     }
     this.b = paramListAdapter;
     this.b.registerDataSetObserver(this.o);

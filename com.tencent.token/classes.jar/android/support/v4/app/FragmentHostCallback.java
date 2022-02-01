@@ -30,7 +30,10 @@ public abstract class FragmentHostCallback<E>
     this.mWindowAnimations = paramInt;
   }
   
-  public FragmentHostCallback(Context paramContext, Handler paramHandler, int paramInt) {}
+  public FragmentHostCallback(Context paramContext, Handler paramHandler, int paramInt)
+  {
+    this(localActivity, paramContext, paramHandler, paramInt);
+  }
   
   FragmentHostCallback(FragmentActivity paramFragmentActivity)
   {
@@ -110,18 +113,22 @@ public abstract class FragmentHostCallback<E>
   
   public void onStartActivityFromFragment(Fragment paramFragment, Intent paramIntent, int paramInt, @Nullable Bundle paramBundle)
   {
-    if (paramInt != -1) {
-      throw new IllegalStateException("Starting activity with a requestCode requires a FragmentActivity host");
+    if (paramInt == -1)
+    {
+      this.mContext.startActivity(paramIntent);
+      return;
     }
-    this.mContext.startActivity(paramIntent);
+    throw new IllegalStateException("Starting activity with a requestCode requires a FragmentActivity host");
   }
   
   public void onStartIntentSenderFromFragment(Fragment paramFragment, IntentSender paramIntentSender, int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
   {
-    if (paramInt1 != -1) {
-      throw new IllegalStateException("Starting intent sender with a requestCode requires a FragmentActivity host");
+    if (paramInt1 == -1)
+    {
+      ActivityCompat.startIntentSenderForResult(this.mActivity, paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+      return;
     }
-    ActivityCompat.startIntentSenderForResult(this.mActivity, paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+    throw new IllegalStateException("Starting intent sender with a requestCode requires a FragmentActivity host");
   }
   
   public void onSupportInvalidateOptionsMenu() {}

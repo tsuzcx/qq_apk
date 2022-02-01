@@ -29,8 +29,9 @@ public final class CSAuthDataRes
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.resList != null) {
-      paramJceOutputStream.write(this.resList, 0);
+    ArrayList localArrayList = this.resList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }

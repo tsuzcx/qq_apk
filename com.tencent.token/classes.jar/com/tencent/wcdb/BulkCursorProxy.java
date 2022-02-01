@@ -59,26 +59,26 @@ final class BulkCursorProxy
   
   public Bundle getExtras()
   {
-    Parcel localParcel1;
-    Parcel localParcel2;
     if (this.mExtras == null)
     {
-      localParcel1 = Parcel.obtain();
-      localParcel2 = Parcel.obtain();
+      Parcel localParcel1 = Parcel.obtain();
+      Parcel localParcel2 = Parcel.obtain();
+      try
+      {
+        localParcel1.writeInterfaceToken("android.content.IBulkCursor");
+        this.mRemote.transact(5, localParcel1, localParcel2, 0);
+        DatabaseUtils.readExceptionFromParcel(localParcel2);
+        this.mExtras = localParcel2.readBundle(getClass().getClassLoader());
+        localParcel1.recycle();
+        localParcel2.recycle();
+      }
+      finally
+      {
+        localParcel1.recycle();
+        localParcel2.recycle();
+      }
     }
-    try
-    {
-      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
-      this.mRemote.transact(5, localParcel1, localParcel2, 0);
-      DatabaseUtils.readExceptionFromParcel(localParcel2);
-      this.mExtras = localParcel2.readBundle(getClass().getClassLoader());
-      return this.mExtras;
-    }
-    finally
-    {
-      localParcel1.recycle();
-      localParcel2.recycle();
-    }
+    return this.mExtras;
   }
   
   public CursorWindow getWindow(int paramInt)
@@ -123,70 +123,33 @@ final class BulkCursorProxy
     }
   }
   
-  /* Error */
   public int requery(IContentObserver paramIContentObserver)
   {
-    // Byte code:
-    //   0: invokestatic 29	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore 4
-    //   5: invokestatic 29	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   8: astore 5
-    //   10: aload 4
-    //   12: ldc 31
-    //   14: invokevirtual 35	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   17: aload 4
-    //   19: aload_1
-    //   20: invokevirtual 90	android/os/Parcel:writeStrongInterface	(Landroid/os/IInterface;)V
-    //   23: aload_0
-    //   24: getfield 17	com/tencent/wcdb/BulkCursorProxy:mRemote	Landroid/os/IBinder;
-    //   27: iconst_3
-    //   28: aload 4
-    //   30: aload 5
-    //   32: iconst_0
-    //   33: invokeinterface 41 5 0
-    //   38: istore_3
-    //   39: aload 5
-    //   41: invokestatic 47	com/tencent/wcdb/DatabaseUtils:readExceptionFromParcel	(Landroid/os/Parcel;)V
-    //   44: iload_3
-    //   45: ifne +17 -> 62
-    //   48: iconst_m1
-    //   49: istore_2
-    //   50: aload 4
-    //   52: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   55: aload 5
-    //   57: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   60: iload_2
-    //   61: ireturn
-    //   62: aload 5
-    //   64: invokevirtual 77	android/os/Parcel:readInt	()I
-    //   67: istore_2
-    //   68: aload_0
-    //   69: aload 5
-    //   71: aload_0
-    //   72: invokevirtual 57	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   75: invokevirtual 63	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   78: invokevirtual 67	android/os/Parcel:readBundle	(Ljava/lang/ClassLoader;)Landroid/os/Bundle;
-    //   81: putfield 19	com/tencent/wcdb/BulkCursorProxy:mExtras	Landroid/os/Bundle;
-    //   84: goto -34 -> 50
-    //   87: astore_1
-    //   88: aload 4
-    //   90: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   93: aload 5
-    //   95: invokevirtual 50	android/os/Parcel:recycle	()V
-    //   98: aload_1
-    //   99: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	100	0	this	BulkCursorProxy
-    //   0	100	1	paramIContentObserver	IContentObserver
-    //   49	19	2	i	int
-    //   38	7	3	bool	boolean
-    //   3	86	4	localParcel1	Parcel
-    //   8	86	5	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   10	44	87	finally
-    //   62	84	87	finally
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("android.content.IBulkCursor");
+      localParcel1.writeStrongInterface(paramIContentObserver);
+      boolean bool = this.mRemote.transact(3, localParcel1, localParcel2, 0);
+      DatabaseUtils.readExceptionFromParcel(localParcel2);
+      int i;
+      if (!bool)
+      {
+        i = -1;
+      }
+      else
+      {
+        i = localParcel2.readInt();
+        this.mExtras = localParcel2.readBundle(getClass().getClassLoader());
+      }
+      return i;
+    }
+    finally
+    {
+      localParcel1.recycle();
+      localParcel2.recycle();
+    }
   }
   
   public Bundle respond(Bundle paramBundle)

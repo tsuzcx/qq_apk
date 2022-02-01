@@ -14,17 +14,16 @@ import android.view.accessibility.AccessibilityNodeProvider;
 
 public class AccessibilityDelegateCompat
 {
-  private static final View.AccessibilityDelegate DEFAULT_DELEGATE;
+  private static final View.AccessibilityDelegate DEFAULT_DELEGATE = new View.AccessibilityDelegate();
   private static final AccessibilityDelegateBaseImpl IMPL;
   final View.AccessibilityDelegate mBridge = IMPL.newAccessibilityDelegateBridge(this);
   
   static
   {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (IMPL = new AccessibilityDelegateApi16Impl();; IMPL = new AccessibilityDelegateBaseImpl())
-    {
-      DEFAULT_DELEGATE = new View.AccessibilityDelegate();
-      return;
+    if (Build.VERSION.SDK_INT >= 16) {
+      IMPL = new AccessibilityDelegateApi16Impl();
+    } else {
+      IMPL = new AccessibilityDelegateBaseImpl();
     }
   }
   

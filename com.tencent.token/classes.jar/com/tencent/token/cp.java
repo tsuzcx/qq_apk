@@ -43,143 +43,191 @@ public class cp
   {
     this.b.clear();
     Object localObject1 = new e();
-    Object localObject4 = cr.a();
+    cr localcr = cr.a();
     Object localObject2;
-    if (!((cr)localObject4).o()) {
-      if (!((cr)localObject4).p())
+    if (!localcr.o()) {
+      if (!localcr.p())
       {
-        localObject2 = ((cr)localObject4).q();
+        localObject2 = localcr.q();
         localObject1 = localObject2;
-        if (((e)localObject2).b()) {}
+        if (!((e)localObject2).b()) {
+          return localObject2;
+        }
       }
       else
       {
-        do
-        {
+        localObject2 = localcr.u();
+        localObject1 = localObject2;
+        if (!((e)localObject2).b()) {
           return localObject2;
-          localObject1 = ((cr)localObject4).u();
-          localObject2 = localObject1;
-        } while (!((e)localObject1).b());
-      }
-    }
-    for (;;)
-    {
-      int k;
-      if (paramLong > 0L)
-      {
-        k = 0;
-        for (;;)
-        {
-          if (k < ((cr)localObject4).d())
-          {
-            localObject2 = ((cr)localObject4).a(k);
-            g.c("other app: hash=" + paramLong + ", uin=" + ((QQUser)localObject2).mUin + ", real=" + ((QQUser)localObject2).mRealUin + ", bind=" + ((QQUser)localObject2).mIsBinded);
-            if ((!((QQUser)localObject2).mIsBinded) || (((QQUser)localObject2).mUin != paramLong)) {}
-          }
-          else
-          {
-            if (k != ((cr)localObject4).d()) {
-              break;
-            }
-            ((e)localObject1).b(110);
-            return localObject1;
-          }
-          if ((!((QQUser)localObject2).mIsBinded) && (l.f(((QQUser)localObject2).mRealUin) == paramLong))
-          {
-            ((e)localObject1).b(10029);
-            return localObject1;
-          }
-          k += 1;
         }
       }
-      long l = ((cr)localObject4).f();
-      if ((((cr)localObject4).e() == null) || (l == 0L))
+    }
+    int k;
+    Object localObject3;
+    if (paramLong > 0L)
+    {
+      k = 0;
+      while (k < localcr.d())
+      {
+        localObject2 = localcr.a(k);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("other app: hash=");
+        ((StringBuilder)localObject3).append(paramLong);
+        ((StringBuilder)localObject3).append(", uin=");
+        ((StringBuilder)localObject3).append(((QQUser)localObject2).mUin);
+        ((StringBuilder)localObject3).append(", real=");
+        ((StringBuilder)localObject3).append(((QQUser)localObject2).mRealUin);
+        ((StringBuilder)localObject3).append(", bind=");
+        ((StringBuilder)localObject3).append(((QQUser)localObject2).mIsBinded);
+        g.c(((StringBuilder)localObject3).toString());
+        if ((((QQUser)localObject2).mIsBinded) && (((QQUser)localObject2).mUin == paramLong)) {
+          break;
+        }
+        if ((!((QQUser)localObject2).mIsBinded) && (l.f(((QQUser)localObject2).mRealUin) == paramLong))
+        {
+          ((e)localObject1).b(10029);
+          return localObject1;
+        }
+        k += 1;
+      }
+      if (k == localcr.d())
       {
         ((e)localObject1).b(110);
         return localObject1;
       }
-      if (((cr)localObject4).e().mIsBinded) {
-        l = ((cr)localObject4).e().mUin;
+    }
+    long l = localcr.f();
+    if ((localcr.e() != null) && (l != 0L))
+    {
+      if (localcr.e().mIsBinded) {
+        l = localcr.e().mUin;
       }
       ez localez = new ez();
+      localObject2 = null;
       try
       {
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("uin", l);
+        localObject3 = new JSONObject();
+        ((JSONObject)localObject3).put("uin", l);
         k = cb.a + 1;
         cb.a = k;
         this.j = k;
-        ((JSONObject)localObject2).put("seq_id", this.j);
-        ((JSONObject)localObject2).put("op_time", cc.c().s() / 1000L);
-        ((JSONObject)localObject2).put("tkn_seq", cc.c().j().replaceAll("-", ""));
-        ((JSONObject)localObject2).put("source", paramByte);
-        localObject2 = ((JSONObject)localObject2).toString();
-        g.a("plain:" + (String)localObject2);
-        localObject2 = l.b(((String)localObject2).getBytes());
-        localObject2 = "?aq_base_sid=" + ((cr)localObject4).g() + "&data=" + (String)localObject2;
-        localObject2 = c.e() + "/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2" + (String)localObject2;
-        localObject4 = localez.a((String)localObject2);
-        if (localObject4 == null)
+        ((JSONObject)localObject3).put("seq_id", this.j);
+        ((JSONObject)localObject3).put("op_time", cc.c().s() / 1000L);
+        ((JSONObject)localObject3).put("tkn_seq", cc.c().j().replaceAll("-", ""));
+        ((JSONObject)localObject3).put("source", paramByte);
+        localObject3 = ((JSONObject)localObject3).toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("plain:");
+        localStringBuilder.append((String)localObject3);
+        g.a(localStringBuilder.toString());
+        localObject3 = l.b(((String)localObject3).getBytes());
+        localObject2 = localObject3;
+      }
+      catch (JSONException localJSONException2)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("JSONException:");
+        localStringBuilder.append(localJSONException2.getMessage());
+        g.c(localStringBuilder.toString());
+      }
+      Object localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("?aq_base_sid=");
+      ((StringBuilder)localObject4).append(localcr.g());
+      ((StringBuilder)localObject4).append("&data=");
+      ((StringBuilder)localObject4).append((String)localObject2);
+      localObject2 = ((StringBuilder)localObject4).toString();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append(c.e());
+      ((StringBuilder)localObject4).append("/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2");
+      ((StringBuilder)localObject4).append((String)localObject2);
+      localObject2 = ((StringBuilder)localObject4).toString();
+      localObject4 = localez.a((String)localObject2);
+      if (localObject4 == null)
+      {
+        ((e)localObject1).a(localez.a());
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("client request url: ");
+        ((StringBuilder)localObject4).append((String)localObject2);
+        ((StringBuilder)localObject4).append(" failed, reason: ");
+        ((StringBuilder)localObject4).append(((e)localObject1).a);
+        ((StringBuilder)localObject4).append(":");
+        ((StringBuilder)localObject4).append(((e)localObject1).b);
+        g.c(((StringBuilder)localObject4).toString());
+        return localObject1;
+      }
+      try
+      {
+        localObject2 = new JSONObject(new String((byte[])localObject4));
+        paramByte = ((JSONObject)localObject2).getInt("err");
+        if (paramByte != 0)
         {
-          ((e)localObject1).a(localez.a());
-          g.c("client request url: " + (String)localObject2 + " failed, reason: " + ((e)localObject1).a + ":" + ((e)localObject1).b);
+          localObject2 = ((JSONObject)localObject2).getString("info");
+          ((e)localObject1).a(paramByte, (String)localObject2, (String)localObject2);
           return localObject1;
         }
+        localObject2 = l.c(((JSONObject)localObject2).getString("data"));
+        if (localObject2 != null)
+        {
+          localObject2 = new JSONObject(new String((byte[])localObject2));
+          paramByte = ((JSONObject)localObject2).getInt("seq_id");
+          if (paramByte != this.j)
+          {
+            ((e)localObject1).b(10030);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("parseJSON error seq is wrong seq=");
+            ((StringBuilder)localObject2).append(paramByte);
+            ((StringBuilder)localObject2).append(",right = ");
+            ((StringBuilder)localObject2).append(cb.a().b());
+            g.c(((StringBuilder)localObject2).toString());
+            return localObject1;
+          }
+          localObject2 = ((JSONObject)localObject2).getJSONArray("msgs");
+          if (!a((JSONArray)localObject2, paramLong))
+          {
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("update conf list failed:");
+            ((StringBuilder)localObject4).append(((JSONArray)localObject2).toString());
+            ((e)localObject1).a(10000, ((StringBuilder)localObject4).toString());
+            return localObject1;
+          }
+          cr.a().m();
+          ((e)localObject1).c();
+          return localObject1;
+        }
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("parseJSON error decodeData=");
+        ((StringBuilder)localObject4).append(localObject2);
+        g.c(((StringBuilder)localObject4).toString());
+        ((e)localObject1).a(10022, RqdApplication.l().getString(2131493067));
+        return localObject1;
+      }
+      catch (Exception localException)
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("unknown err: ");
+        ((StringBuilder)localObject4).append(localException.toString());
+        g.c(((StringBuilder)localObject4).toString());
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("JSONException:");
+        ((StringBuilder)localObject4).append(localException.toString());
+        ((e)localObject1).a(10021, ((StringBuilder)localObject4).toString());
+        return localObject1;
       }
       catch (JSONException localJSONException1)
       {
-        Object localObject3;
-        for (;;)
-        {
-          g.c("JSONException:" + localJSONException1.getMessage());
-          localObject3 = null;
-        }
-        try
-        {
-          localObject3 = new JSONObject(new String((byte[])localObject4));
-          paramByte = ((JSONObject)localObject3).getInt("err");
-          if (paramByte != 0)
-          {
-            localObject3 = ((JSONObject)localObject3).getString("info");
-            ((e)localObject1).a(paramByte, (String)localObject3, (String)localObject3);
-          }
-          else
-          {
-            localObject3 = l.c(((JSONObject)localObject3).getString("data"));
-            if (localObject3 != null)
-            {
-              localObject3 = new JSONObject(new String((byte[])localObject3));
-              paramByte = ((JSONObject)localObject3).getInt("seq_id");
-              if (paramByte != this.j)
-              {
-                ((e)localObject1).b(10030);
-                g.c("parseJSON error seq is wrong seq=" + paramByte + ",right = " + cb.a().b());
-                return localObject1;
-              }
-              localObject3 = ((JSONObject)localObject3).getJSONArray("msgs");
-              if (!a((JSONArray)localObject3, paramLong)) {
-                ((e)localObject1).a(10000, "update conf list failed:" + ((JSONArray)localObject3).toString());
-              }
-            }
-          }
-        }
-        catch (JSONException localJSONException2)
-        {
-          g.c("parse json failed: " + localJSONException2.toString());
-          ((e)localObject1).a(10020, "JSONException:" + localJSONException2.toString());
-          break;
-          cr.a().m();
-          ((e)localObject1).c();
-        }
-        catch (Exception localException)
-        {
-          g.c("unknown err: " + localException.toString());
-          ((e)localObject1).a(10021, "JSONException:" + localException.toString());
-        }
-        g.c("parseJSON error decodeData=" + localException);
-        ((e)localObject1).a(10022, RqdApplication.l().getString(2131230925));
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("parse json failed: ");
+        ((StringBuilder)localObject4).append(localJSONException1.toString());
+        g.c(((StringBuilder)localObject4).toString());
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("JSONException:");
+        ((StringBuilder)localObject4).append(localJSONException1.toString());
+        ((e)localObject1).a(10020, ((StringBuilder)localObject4).toString());
+        return localObject1;
       }
     }
+    ((e)localObject1).b(110);
     return localObject1;
   }
   
@@ -191,100 +239,119 @@ public class cp
       localObject = ((Context)localObject).getSharedPreferences("dualmsgtime", 0).edit();
       ((SharedPreferences.Editor)localObject).putLong("time", this.c);
       ((SharedPreferences.Editor)localObject).commit();
-      g.c("save mLastItemTime=" + this.c);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("save mLastItemTime=");
+      ((StringBuilder)localObject).append(this.c);
+      g.c(((StringBuilder)localObject).toString());
       return;
     }
     catch (Exception localException)
     {
-      g.c("SharedPreferences msg " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
   }
   
   public e a(byte paramByte, long paramLong)
   {
-    e locale = b(paramByte, paramLong);
-    if (locale.b()) {}
-    while (locale.a != 104) {
-      return locale;
+    e locale2 = b(paramByte, paramLong);
+    if (locale2.b()) {
+      return locale2;
     }
-    cr.a().n();
-    return b(paramByte, paramLong);
+    e locale1 = locale2;
+    if (locale2.a == 104)
+    {
+      cr.a().n();
+      locale1 = b(paramByte, paramLong);
+    }
+    return locale1;
   }
   
   public boolean a(JSONArray paramJSONArray, long paramLong)
   {
     this.b.clear();
-    if (paramJSONArray != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      g.a(bool);
-      if (paramJSONArray != null) {}
-      for (;;)
+    boolean bool;
+    if (paramJSONArray != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    g.a(bool);
+    if (paramJSONArray != null) {
+      try
       {
-        int k;
-        try
+        if (paramJSONArray.length() > 0)
         {
-          if (paramJSONArray.length() > 0)
+          int k = 0;
+          while (k < paramJSONArray.length())
           {
-            k = 0;
-            if (k < paramJSONArray.length())
+            Object localObject = paramJSONArray.getJSONObject(k);
+            a locala = new a();
+            if (!locala.a((JSONObject)localObject))
             {
-              JSONObject localJSONObject = paramJSONArray.getJSONObject(k);
-              a locala = new a();
-              if (!locala.a(localJSONObject)) {
-                g.c("object item parse failed: " + k);
-              }
-              g.c("server item time=" + locala.e());
-              if (this.c < locala.e())
-              {
-                this.c = locala.e();
-                g.c("get mLastItemTime=" + this.c);
-                e();
-              }
-              if (paramLong == 0L) {
-                this.b.add(locala);
-              } else if ((paramLong > 0L) && (paramLong == locala.c())) {
-                this.b.add(locala);
-              }
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("object item parse failed: ");
+              ((StringBuilder)localObject).append(k);
+              g.c(((StringBuilder)localObject).toString());
             }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("server item time=");
+            ((StringBuilder)localObject).append(locala.e());
+            g.c(((StringBuilder)localObject).toString());
+            if (this.c < locala.e())
+            {
+              this.c = locala.e();
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("get mLastItemTime=");
+              ((StringBuilder)localObject).append(this.c);
+              g.c(((StringBuilder)localObject).toString());
+              e();
+            }
+            if (paramLong == 0L) {
+              this.b.add(locala);
+            } else if ((paramLong > 0L) && (paramLong == locala.c())) {
+              this.b.add(locala);
+            }
+            k += 1;
           }
         }
-        catch (JSONException paramJSONArray)
-        {
-          paramJSONArray.printStackTrace();
-          return false;
-        }
         return true;
-        k += 1;
+      }
+      catch (JSONException paramJSONArray)
+      {
+        paramJSONArray.printStackTrace();
+        return false;
       }
     }
   }
   
   public long c()
   {
-    Context localContext = RqdApplication.l();
+    Object localObject = RqdApplication.l();
+    long l1 = 0L;
     try
     {
-      l = localContext.getSharedPreferences("dualmsgtime", 0).getLong("time", 0L);
-      g.c("SharedPreferences msg " + localException1.getMessage());
+      long l2 = ((Context)localObject).getSharedPreferences("dualmsgtime", 0).getLong("time", 0L);
+      l1 = l2;
+      localObject = new StringBuilder();
+      l1 = l2;
+      ((StringBuilder)localObject).append("load mLastItemTime=");
+      l1 = l2;
+      ((StringBuilder)localObject).append(l2);
+      l1 = l2;
+      g.c(((StringBuilder)localObject).toString());
+      return l2;
     }
-    catch (Exception localException1)
+    catch (Exception localException)
     {
-      try
-      {
-        g.c("load mLastItemTime=" + l);
-        return l;
-      }
-      catch (Exception localException2)
-      {
-        long l;
-        break label50;
-      }
-      localException1 = localException1;
-      l = 0L;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
-    label50:
-    return l;
+    return l1;
   }
   
   public long d()

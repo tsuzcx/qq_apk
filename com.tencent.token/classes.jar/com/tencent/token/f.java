@@ -10,14 +10,15 @@ public class f
   
   public static g a()
   {
-    if (b == null) {}
-    synchronized (a)
-    {
-      if (b == null) {
-        b = new g();
+    if (b == null) {
+      synchronized (a)
+      {
+        if (b == null) {
+          b = new g();
+        }
       }
-      return b;
     }
+    return b;
   }
   
   public static void b()

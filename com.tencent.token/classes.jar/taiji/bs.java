@@ -86,16 +86,17 @@ public class bs
   public Path a()
   {
     this.a.reset();
-    if (this.h != null) {
-      this.a.set(this.h.b());
+    Object localObject = this.h;
+    if (localObject != null) {
+      this.a.set(((x)localObject).b());
     }
     this.b.reset();
     int i = this.e.size() - 1;
     while (i >= 0)
     {
-      br localbr = (br)this.e.get(i);
-      if ((localbr instanceof h)) {
-        this.b.addPath(((h)localbr).a(), this.a);
+      localObject = (br)this.e.get(i);
+      if ((localObject instanceof h)) {
+        this.b.addPath(((h)localObject).a(), this.a);
       }
       i -= 1;
     }
@@ -105,10 +106,11 @@ public class bs
   public void a(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
   {
     this.a.set(paramMatrix);
+    paramMatrix = this.h;
     int i = paramInt;
-    if (this.h != null)
+    if (paramMatrix != null)
     {
-      this.a.preConcat(this.h.b());
+      this.a.preConcat(paramMatrix.b());
       i = (int)(((Integer)this.h.a().b()).intValue() / 100.0F * paramInt / 255.0F * 255.0F);
     }
     paramInt = this.e.size() - 1;
@@ -125,54 +127,44 @@ public class bs
   public void a(RectF paramRectF, Matrix paramMatrix)
   {
     this.a.set(paramMatrix);
-    if (this.h != null) {
-      this.a.preConcat(this.h.b());
+    paramMatrix = this.h;
+    if (paramMatrix != null) {
+      this.a.preConcat(paramMatrix.b());
     }
     this.c.set(0.0F, 0.0F, 0.0F, 0.0F);
     int i = this.e.size() - 1;
-    if (i >= 0)
+    while (i >= 0)
     {
       paramMatrix = (br)this.e.get(i);
       if ((paramMatrix instanceof bt))
       {
         ((bt)paramMatrix).a(this.c, this.a);
-        if (!paramRectF.isEmpty()) {
-          break label117;
+        if (paramRectF.isEmpty()) {
+          paramRectF.set(this.c);
+        } else {
+          paramRectF.set(Math.min(paramRectF.left, this.c.left), Math.min(paramRectF.top, this.c.top), Math.max(paramRectF.right, this.c.right), Math.max(paramRectF.bottom, this.c.bottom));
         }
-        paramRectF.set(this.c);
       }
-      for (;;)
-      {
-        i -= 1;
-        break;
-        label117:
-        paramRectF.set(Math.min(paramRectF.left, this.c.left), Math.min(paramRectF.top, this.c.top), Math.max(paramRectF.right, this.c.right), Math.max(paramRectF.bottom, this.c.bottom));
-      }
+      i -= 1;
     }
   }
   
   public void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
   {
     int i = 0;
-    if (i < this.e.size())
+    while (i < this.e.size())
     {
       br localbr = (br)this.e.get(i);
-      bt localbt;
       if ((localbr instanceof bt))
       {
-        localbt = (bt)localbr;
+        bt localbt = (bt)localbr;
         if ((paramString2 != null) && (!paramString2.equals(localbr.b()))) {
-          break label85;
+          localbt.a(paramString1, paramString2, paramColorFilter);
+        } else {
+          localbt.a(paramString1, null, paramColorFilter);
         }
-        localbt.a(paramString1, null, paramColorFilter);
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label85:
-        localbt.a(paramString1, paramString2, paramColorFilter);
-      }
+      i += 1;
     }
   }
   
@@ -220,8 +212,9 @@ public class bs
   
   Matrix e()
   {
-    if (this.h != null) {
-      return this.h.b();
+    x localx = this.h;
+    if (localx != null) {
+      return localx.b();
     }
     this.a.reset();
     return this.a;

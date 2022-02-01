@@ -3,7 +3,6 @@ package com.tencent.feedback.proguard;
 import android.content.Context;
 import com.tencent.feedback.common.b;
 import com.tencent.feedback.common.c;
-import java.util.Calendar;
 import java.util.Date;
 
 public final class y
@@ -43,54 +42,34 @@ public final class y
     }
   }
   
-  /* Error */
   public static y a(Context paramContext, b paramb, com.tencent.feedback.upload.e parame)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 74	com/tencent/feedback/proguard/y:a	Lcom/tencent/feedback/proguard/y;
-    //   6: ifnonnull +20 -> 26
-    //   9: aload_0
-    //   10: ifnonnull +25 -> 35
-    //   13: new 2	com/tencent/feedback/proguard/y
-    //   16: dup
-    //   17: aload_0
-    //   18: aload_1
-    //   19: aload_2
-    //   20: invokespecial 77	com/tencent/feedback/proguard/y:<init>	(Landroid/content/Context;Lcom/tencent/feedback/common/b;Lcom/tencent/feedback/upload/e;)V
-    //   23: putstatic 74	com/tencent/feedback/proguard/y:a	Lcom/tencent/feedback/proguard/y;
-    //   26: getstatic 74	com/tencent/feedback/proguard/y:a	Lcom/tencent/feedback/proguard/y;
-    //   29: astore_0
-    //   30: ldc 2
-    //   32: monitorexit
-    //   33: aload_0
-    //   34: areturn
-    //   35: aload_0
-    //   36: invokevirtual 83	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   39: astore_3
-    //   40: aload_3
-    //   41: ifnull -28 -> 13
-    //   44: aload_3
-    //   45: astore_0
-    //   46: goto -33 -> 13
-    //   49: astore_0
-    //   50: ldc 2
-    //   52: monitorexit
-    //   53: aload_0
-    //   54: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	55	0	paramContext	Context
-    //   0	55	1	paramb	b
-    //   0	55	2	parame	com.tencent.feedback.upload.e
-    //   39	6	3	localContext	Context
-    // Exception table:
-    //   from	to	target	type
-    //   3	9	49	finally
-    //   13	26	49	finally
-    //   26	30	49	finally
-    //   35	40	49	finally
+    for (;;)
+    {
+      Context localContext;
+      try
+      {
+        if (a == null)
+        {
+          if (paramContext != null)
+          {
+            localContext = paramContext.getApplicationContext();
+            if (localContext != null) {
+              break label56;
+            }
+          }
+          a = new y(paramContext, paramb, parame);
+        }
+        else
+        {
+          paramContext = a;
+          return paramContext;
+        }
+      }
+      finally {}
+      label56:
+      paramContext = localContext;
+    }
   }
   
   private void b(int paramInt)
@@ -152,146 +131,104 @@ public final class y
   
   protected final boolean a(int paramInt)
   {
-    boolean bool2 = true;
-    for (;;)
+    try
     {
-      try
+      Object localObject1 = c.a(this.b);
+      if (localObject1 != null)
       {
-        Object localObject1 = c.a(this.b);
-        if (localObject1 != null)
+        q localq = new q();
+        localq.a(paramInt);
+        localq.a(new Date().getTime());
+        localq.a(this.h);
+        localq.b(((c)localObject1).g());
+        if (a.a(this.b, new q[] { localq }) > 0)
         {
-          q localq = new q();
-          localq.a(paramInt);
-          localq.a(new Date().getTime());
-          localq.a(this.h);
-          localq.b(((c)localObject1).g());
-          if (a.a(this.b, new q[] { localq }) > 0)
+          if (b(this.h) >= this.g)
           {
-            bool1 = bool2;
-            if (b(this.h) >= this.g)
-            {
-              com.tencent.feedback.common.e.b("rqdp{ state max upload}", new Object[0]);
-              localObject1 = g();
-              bool1 = bool2;
-              if (localObject1 != null)
+            com.tencent.feedback.common.e.b("rqdp{ state max upload}", new Object[0]);
+            localObject1 = g();
+            if (localObject1 != null) {
+              ((b)localObject1).a(new Runnable()
               {
-                if (0L > 0L) {
-                  continue;
-                }
-                ((b)localObject1).a(new Runnable()
+                public final void run()
                 {
-                  public final void run()
-                  {
-                    com.tencent.feedback.upload.e locale = y.this.h();
-                    if (locale != null) {
-                      locale.a(new A(y.a(y.this), y.a(), this.a));
-                    }
+                  com.tencent.feedback.upload.e locale = y.this.h();
+                  if (locale != null) {
+                    locale.a(new A(y.a(y.this), y.a(), this.a));
                   }
-                });
-                bool1 = bool2;
-              }
-            }
-            return bool1;
-            bool1 = bool2;
-            if (0L <= 0L) {
-              continue;
-            }
-            ((b)localObject1).a(new Runnable()
-            {
-              public final void run()
-              {
-                com.tencent.feedback.upload.e locale = y.this.h();
-                if (locale != null) {
-                  locale.a(new A(y.a(y.this), y.a(), this.a));
                 }
-              }
-            }, 0L);
-            bool1 = bool2;
-            continue;
+              });
+            }
           }
+          return true;
         }
-        boolean bool1 = false;
       }
-      finally {}
+      return false;
     }
+    finally {}
   }
   
   public final boolean a(long paramLong)
   {
-    paramLong = 60000L;
-    boolean bool2 = true;
-    for (;;)
+    try
     {
-      try
+      if (this.c != null)
       {
-        if (this.c != null)
+        if (!this.e)
         {
-          if (60000L > 30000L)
+          this.f = 60000L;
+          this.e = true;
+          this.c.a(this, 0L);
+          long l1 = f();
+          long l2 = new Date().getTime();
+          paramLong = l1;
+          if (l1 <= l2)
           {
-            if (!this.e)
+            b(e());
+            paramLong = f();
+          }
+          if (paramLong > l2)
+          {
+            b localb = this.c;
+            Runnable local1 = new Runnable()
             {
-              this.f = paramLong;
-              this.e = true;
-              this.c.a(this, 0L);
-              long l1 = f();
-              long l2 = new Date().getTime();
-              paramLong = l1;
-              if (l1 <= l2)
+              public final void run()
               {
-                b(e());
-                paramLong = f();
-              }
-              bool1 = bool2;
-              if (paramLong > l2)
-              {
-                this.c.a(new Runnable()
+                long l2 = y.this.f();
+                long l1 = new Date().getTime();
+                l2 -= l1;
+                b localb = y.this.g();
+                if (localb != null)
                 {
-                  public final void run()
+                  if (l2 > 0L)
                   {
-                    long l2 = y.this.f();
-                    long l1 = new Date().getTime();
-                    l2 -= l1;
-                    b localb = y.this.g();
-                    if (localb != null)
-                    {
-                      if (l2 > 0L) {
-                        localb.a(this, l2 + 1000L);
-                      }
-                    }
-                    else {
-                      return;
-                    }
-                    com.tencent.feedback.common.e.b("rqdp{  next day to upload}", new Object[0]);
-                    y.this.d();
-                    l2 = y.this.e();
-                    y.this.b(l2);
-                    localb.a(this, l2 - l1);
-                    com.tencent.feedback.common.e.b("rqdp{ next day %d}", new Object[] { Long.valueOf(l2 - l1) });
+                    localb.a(this, l2 + 1000L);
+                    return;
                   }
-                }, paramLong - l2);
-                com.tencent.feedback.common.e.b("rqdp{ next day %d}", new Object[] { Long.valueOf(paramLong - l2) });
-                bool1 = bool2;
+                  com.tencent.feedback.common.e.b("rqdp{  next day to upload}", new Object[0]);
+                  y.this.d();
+                  l2 = y.this.e();
+                  y.this.b(l2);
+                  l1 = l2 - l1;
+                  localb.a(this, l1);
+                  com.tencent.feedback.common.e.b("rqdp{ next day %d}", new Object[] { Long.valueOf(l1) });
+                }
               }
-              return bool1;
-            }
+            };
+            paramLong -= l2;
+            localb.a(local1, paramLong);
+            com.tencent.feedback.common.e.b("rqdp{ next day %d}", new Object[] { Long.valueOf(paramLong) });
           }
-          else
-          {
-            paramLong = 30000L;
-            continue;
-          }
-          bool1 = bool2;
-          if (paramLong == this.f) {
-            continue;
-          }
-          this.f = paramLong;
-          bool1 = bool2;
-          continue;
         }
-        boolean bool1 = false;
+        else if (60000L != this.f)
+        {
+          this.f = 60000L;
+        }
+        return true;
       }
-      finally {}
+      return false;
     }
+    finally {}
   }
   
   public final q[] a(String paramString)
@@ -385,30 +322,74 @@ public final class y
     }
   }
   
+  /* Error */
   public final long e()
   {
-    try
-    {
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.set(11, 0);
-      localCalendar.set(12, 0);
-      localCalendar.set(13, 0);
-      localCalendar.add(6, 1);
-      l = localCalendar.getTime().getTime();
-      return l;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (!com.tencent.feedback.common.e.a(localThrowable)) {
-          localThrowable.printStackTrace();
-        }
-        long l = new Date().getTime();
-        l += 86400000L;
-      }
-    }
-    finally {}
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 185	java/util/Calendar:getInstance	()Ljava/util/Calendar;
+    //   5: astore_3
+    //   6: aload_3
+    //   7: bipush 11
+    //   9: iconst_0
+    //   10: invokevirtual 189	java/util/Calendar:set	(II)V
+    //   13: aload_3
+    //   14: bipush 12
+    //   16: iconst_0
+    //   17: invokevirtual 189	java/util/Calendar:set	(II)V
+    //   20: aload_3
+    //   21: bipush 13
+    //   23: iconst_0
+    //   24: invokevirtual 189	java/util/Calendar:set	(II)V
+    //   27: aload_3
+    //   28: bipush 6
+    //   30: iconst_1
+    //   31: invokevirtual 192	java/util/Calendar:add	(II)V
+    //   34: aload_3
+    //   35: invokevirtual 195	java/util/Calendar:getTime	()Ljava/util/Date;
+    //   38: invokevirtual 119	java/util/Date:getTime	()J
+    //   41: lstore_1
+    //   42: aload_0
+    //   43: monitorexit
+    //   44: lload_1
+    //   45: lreturn
+    //   46: astore_3
+    //   47: goto +34 -> 81
+    //   50: astore_3
+    //   51: aload_3
+    //   52: invokestatic 198	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   55: ifne +7 -> 62
+    //   58: aload_3
+    //   59: invokevirtual 201	java/lang/Throwable:printStackTrace	()V
+    //   62: new 115	java/util/Date
+    //   65: dup
+    //   66: invokespecial 116	java/util/Date:<init>	()V
+    //   69: invokevirtual 119	java/util/Date:getTime	()J
+    //   72: lstore_1
+    //   73: aload_0
+    //   74: monitorexit
+    //   75: lload_1
+    //   76: ldc2_w 202
+    //   79: ladd
+    //   80: lreturn
+    //   81: aload_0
+    //   82: monitorexit
+    //   83: aload_3
+    //   84: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	85	0	this	y
+    //   41	35	1	l	long
+    //   5	30	3	localCalendar	java.util.Calendar
+    //   46	1	3	localObject	Object
+    //   50	34	3	localThrowable	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   2	42	46	finally
+    //   51	62	46	finally
+    //   62	73	46	finally
+    //   2	42	50	java/lang/Throwable
   }
   
   public final long f()

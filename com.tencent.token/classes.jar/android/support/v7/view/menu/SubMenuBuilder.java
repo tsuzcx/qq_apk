@@ -40,11 +40,21 @@ public class SubMenuBuilder
   
   public String getActionViewStatesKey()
   {
-    if (this.mItem != null) {}
-    for (int i = this.mItem.getItemId(); i == 0; i = 0) {
+    Object localObject = this.mItem;
+    int i;
+    if (localObject != null) {
+      i = ((MenuItemImpl)localObject).getItemId();
+    } else {
+      i = 0;
+    }
+    if (i == 0) {
       return null;
     }
-    return super.getActionViewStatesKey() + ":" + i;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(super.getActionViewStatesKey());
+    ((StringBuilder)localObject).append(":");
+    ((StringBuilder)localObject).append(i);
+    return ((StringBuilder)localObject).toString();
   }
   
   public MenuItem getItem()

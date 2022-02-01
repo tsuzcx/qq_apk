@@ -16,17 +16,16 @@ class SmoothScrollToPosition22
   public void doScroll(ListView paramListView, int paramInt)
   {
     int i = paramListView.getFirstVisiblePosition();
-    if ((i > paramInt) && (i - paramInt > 10)) {
-      paramListView.setSelection(paramInt + 10);
-    }
-    for (;;)
+    if ((i > paramInt) && (i - paramInt > 10)) {}
+    for (i = paramInt + 10;; i = paramInt - 10)
     {
-      paramListView.smoothScrollToPosition(paramInt);
-      return;
-      if ((i < paramInt) && (paramInt - i > 10)) {
-        paramListView.setSelection(paramInt - 10);
+      paramListView.setSelection(i);
+      break;
+      if ((i >= paramInt) || (paramInt - i <= 10)) {
+        break;
       }
     }
+    paramListView.smoothScrollToPosition(paramInt);
   }
 }
 

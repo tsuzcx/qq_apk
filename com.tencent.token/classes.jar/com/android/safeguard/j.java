@@ -13,8 +13,8 @@ import java.util.List;
 public class j
   extends h
 {
-  static SharedPreferences a = null;
-  static Context b = null;
+  static SharedPreferences a;
+  static Context b;
   static int[] c;
   static String d = "";
   static String[] e = { "Year", "Month", "Date" };
@@ -49,37 +49,39 @@ public class j
     int i1 = 0;
     for (;;)
     {
-      if (i1 >= c.length) {
+      int[] arrayOfInt = c;
+      if (i1 >= arrayOfInt.length) {
         return;
       }
-      c[i1] = 0;
+      arrayOfInt[i1] = 0;
       i1 += 1;
     }
   }
   
   public static void a(Context paramContext, String paramString)
   {
-    if ((b != null) && (b.equals(paramContext))) {}
-    do
-    {
+    Object localObject = b;
+    if ((localObject != null) && (localObject.equals(paramContext))) {
       return;
-      String str;
-      if (paramString != null)
-      {
-        str = paramString;
-        if (paramString.length() != 0) {}
-      }
-      else
-      {
-        str = "preferences";
-      }
-      d = str;
-      b = paramContext;
-      a = b.getSharedPreferences(d, 0);
-    } while (a());
-    c[0] = a.getInt(e[0], 0);
-    c[1] = a.getInt(e[1], 0);
-    c[2] = a.getInt(e[2], 0);
+    }
+    if (paramString != null)
+    {
+      localObject = paramString;
+      if (paramString.length() != 0) {}
+    }
+    else
+    {
+      localObject = "preferences";
+    }
+    d = (String)localObject;
+    b = paramContext;
+    a = b.getSharedPreferences(d, 0);
+    if (!a())
+    {
+      c[0] = a.getInt(e[0], 0);
+      c[1] = a.getInt(e[1], 0);
+      c[2] = a.getInt(e[2], 0);
+    }
   }
   
   public static boolean a()
@@ -101,8 +103,8 @@ public class j
   
   public static String c()
   {
-    boolean bool = true;
     SharedPreferences localSharedPreferences = b.getSharedPreferences("token_save_info", 0);
+    boolean bool = true;
     if (localSharedPreferences != null) {
       bool = localSharedPreferences.getBoolean("token_status", true);
     }

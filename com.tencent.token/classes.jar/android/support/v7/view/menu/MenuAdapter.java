@@ -55,8 +55,13 @@ public class MenuAdapter
   
   public int getCount()
   {
-    if (this.mOverflowOnly) {}
-    for (ArrayList localArrayList = this.mAdapterMenu.getNonActionItems(); this.mExpandedIndex < 0; localArrayList = this.mAdapterMenu.getVisibleItems()) {
+    ArrayList localArrayList;
+    if (this.mOverflowOnly) {
+      localArrayList = this.mAdapterMenu.getNonActionItems();
+    } else {
+      localArrayList = this.mAdapterMenu.getVisibleItems();
+    }
+    if (this.mExpandedIndex < 0) {
       return localArrayList.size();
     }
     return localArrayList.size() - 1;
@@ -69,19 +74,22 @@ public class MenuAdapter
   
   public MenuItemImpl getItem(int paramInt)
   {
-    if (this.mOverflowOnly) {}
-    for (ArrayList localArrayList = this.mAdapterMenu.getNonActionItems();; localArrayList = this.mAdapterMenu.getVisibleItems())
-    {
-      int i = paramInt;
-      if (this.mExpandedIndex >= 0)
-      {
-        i = paramInt;
-        if (paramInt >= this.mExpandedIndex) {
-          i = paramInt + 1;
-        }
-      }
-      return (MenuItemImpl)localArrayList.get(i);
+    ArrayList localArrayList;
+    if (this.mOverflowOnly) {
+      localArrayList = this.mAdapterMenu.getNonActionItems();
+    } else {
+      localArrayList = this.mAdapterMenu.getVisibleItems();
     }
+    int j = this.mExpandedIndex;
+    int i = paramInt;
+    if (j >= 0)
+    {
+      i = paramInt;
+      if (paramInt >= j) {
+        i = paramInt + 1;
+      }
+    }
+    return (MenuItemImpl)localArrayList.get(i);
   }
   
   public long getItemId(int paramInt)
@@ -91,18 +99,16 @@ public class MenuAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    View localView = paramView;
     if (paramView == null) {
-      paramView = this.mInflater.inflate(ITEM_LAYOUT, paramViewGroup, false);
+      localView = this.mInflater.inflate(ITEM_LAYOUT, paramViewGroup, false);
     }
-    for (;;)
-    {
-      paramViewGroup = (MenuView.ItemView)paramView;
-      if (this.mForceShowIcon) {
-        ((ListMenuItemView)paramView).setForceShowIcon(true);
-      }
-      paramViewGroup.initialize(getItem(paramInt), 0);
-      return paramView;
+    paramView = (MenuView.ItemView)localView;
+    if (this.mForceShowIcon) {
+      ((ListMenuItemView)localView).setForceShowIcon(true);
     }
+    paramView.initialize(getItem(paramInt), 0);
+    return localView;
   }
   
   public void notifyDataSetChanged()

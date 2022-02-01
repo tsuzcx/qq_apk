@@ -64,99 +64,91 @@ public class DrawerArrowDrawable
   
   private static float lerp(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return (paramFloat2 - paramFloat1) * paramFloat3 + paramFloat1;
+    return paramFloat1 + (paramFloat2 - paramFloat1) * paramFloat3;
   }
   
   public void draw(Canvas paramCanvas)
   {
     Rect localRect = getBounds();
+    int k = this.mDirection;
+    int j = 0;
     int i;
-    float f1;
-    label137:
-    float f2;
-    switch (this.mDirection)
+    if (k != 3) {
+      i = j;
+    }
+    switch (k)
     {
-    case 2: 
     default: 
-      if (DrawableCompat.getLayoutDirection(this) == 1)
-      {
+      i = j;
+      if (DrawableCompat.getLayoutDirection(this) == 1) {
         i = 1;
-        f1 = (float)Math.sqrt(this.mArrowHeadLength * this.mArrowHeadLength * 2.0F);
-        float f5 = lerp(this.mBarLength, f1, this.mProgress);
-        float f3 = lerp(this.mBarLength, this.mArrowShaftLength, this.mProgress);
-        float f4 = Math.round(lerp(0.0F, this.mMaxCutForBarSize, this.mProgress));
-        float f6 = lerp(0.0F, ARROW_HEAD_ANGLE, this.mProgress);
-        if (i == 0) {
-          break label455;
-        }
-        f1 = 0.0F;
-        if (i == 0) {
-          break label462;
-        }
-        f2 = 180.0F;
-        label145:
-        f1 = lerp(f1, f2, this.mProgress);
-        f2 = (float)Math.round(f5 * Math.cos(f6));
-        f5 = (float)Math.round(f5 * Math.sin(f6));
-        this.mPath.rewind();
-        f6 = lerp(this.mBarGap + this.mPaint.getStrokeWidth(), -this.mMaxCutForBarSize, this.mProgress);
-        float f7 = -f3 / 2.0F;
-        this.mPath.moveTo(f7 + f4, 0.0F);
-        this.mPath.rLineTo(f3 - f4 * 2.0F, 0.0F);
-        this.mPath.moveTo(f7, f6);
-        this.mPath.rLineTo(f2, f5);
-        this.mPath.moveTo(f7, -f6);
-        this.mPath.rLineTo(f2, -f5);
-        this.mPath.close();
-        paramCanvas.save();
-        f2 = this.mPaint.getStrokeWidth();
-        f3 = (int)(localRect.height() - 3.0F * f2 - this.mBarGap * 2.0F) / 4 * 2;
-        f4 = this.mBarGap;
-        paramCanvas.translate(localRect.centerX(), f2 * 1.5F + f4 + f3);
-        if (!this.mSpin) {
-          break label473;
-        }
-        if ((i ^ this.mVerticalMirror) == 0) {
-          break label467;
-        }
-        i = -1;
-        label392:
-        paramCanvas.rotate(i * f1);
+      }
+      break;
+    case 1: 
+      i = 1;
+      break;
+      i = j;
+      if (DrawableCompat.getLayoutDirection(this) == 0) {
+        i = 1;
       }
       break;
     }
-    for (;;)
-    {
-      paramCanvas.drawPath(this.mPath, this.mPaint);
-      paramCanvas.restore();
-      return;
-      i = 0;
-      break;
-      i = 1;
-      break;
-      if (DrawableCompat.getLayoutDirection(this) == 0)
-      {
-        i = 1;
-        break;
-      }
-      i = 0;
-      break;
-      i = 0;
-      break;
-      label455:
+    float f1 = this.mArrowHeadLength;
+    f1 = (float)Math.sqrt(f1 * f1 * 2.0F);
+    float f5 = lerp(this.mBarLength, f1, this.mProgress);
+    float f3 = lerp(this.mBarLength, this.mArrowShaftLength, this.mProgress);
+    float f4 = Math.round(lerp(0.0F, this.mMaxCutForBarSize, this.mProgress));
+    float f6 = lerp(0.0F, ARROW_HEAD_ANGLE, this.mProgress);
+    if (i != 0) {
+      f1 = 0.0F;
+    } else {
       f1 = -180.0F;
-      break label137;
-      label462:
-      f2 = 0.0F;
-      break label145;
-      label467:
-      i = 1;
-      break label392;
-      label473:
-      if (i != 0) {
-        paramCanvas.rotate(180.0F);
-      }
     }
+    if (i != 0) {
+      f2 = 180.0F;
+    } else {
+      f2 = 0.0F;
+    }
+    f1 = lerp(f1, f2, this.mProgress);
+    double d1 = f5;
+    double d2 = f6;
+    double d3 = Math.cos(d2);
+    Double.isNaN(d1);
+    float f2 = (float)Math.round(d3 * d1);
+    d2 = Math.sin(d2);
+    Double.isNaN(d1);
+    f5 = (float)Math.round(d1 * d2);
+    this.mPath.rewind();
+    f6 = lerp(this.mBarGap + this.mPaint.getStrokeWidth(), -this.mMaxCutForBarSize, this.mProgress);
+    float f7 = -f3 / 2.0F;
+    this.mPath.moveTo(f7 + f4, 0.0F);
+    this.mPath.rLineTo(f3 - f4 * 2.0F, 0.0F);
+    this.mPath.moveTo(f7, f6);
+    this.mPath.rLineTo(f2, f5);
+    this.mPath.moveTo(f7, -f6);
+    this.mPath.rLineTo(f2, -f5);
+    this.mPath.close();
+    paramCanvas.save();
+    f2 = this.mPaint.getStrokeWidth();
+    f4 = localRect.height();
+    f3 = this.mBarGap;
+    f4 = (int)(f4 - 3.0F * f2 - 2.0F * f3) / 4 * 2;
+    paramCanvas.translate(localRect.centerX(), f4 + (f2 * 1.5F + f3));
+    if (this.mSpin)
+    {
+      if ((this.mVerticalMirror ^ i)) {
+        i = -1;
+      } else {
+        i = 1;
+      }
+      paramCanvas.rotate(f1 * i);
+    }
+    else if (i != 0)
+    {
+      paramCanvas.rotate(180.0F);
+    }
+    paramCanvas.drawPath(this.mPath, this.mPaint);
+    paramCanvas.restore();
   }
   
   public float getArrowHeadLength()
@@ -267,7 +259,10 @@ public class DrawerArrowDrawable
     if (this.mPaint.getStrokeWidth() != paramFloat)
     {
       this.mPaint.setStrokeWidth(paramFloat);
-      this.mMaxCutForBarSize = ((float)(paramFloat / 2.0F * Math.cos(ARROW_HEAD_ANGLE)));
+      double d1 = paramFloat / 2.0F;
+      double d2 = Math.cos(ARROW_HEAD_ANGLE);
+      Double.isNaN(d1);
+      this.mMaxCutForBarSize = ((float)(d1 * d2));
       invalidateSelf();
     }
   }

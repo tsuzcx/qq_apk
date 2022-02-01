@@ -33,18 +33,22 @@ public final class f
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.a, 0);
-    if (this.b != 0) {
-      paramJceOutputStream.write(this.b, 1);
+    int i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.c != 0) {
-      paramJceOutputStream.write(this.c, 2);
+    i = this.c;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
     paramJceOutputStream.write(this.d, 3);
-    if (this.e != 0) {
-      paramJceOutputStream.write(this.e, 4);
+    i = this.e;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
-    if (this.f != null) {
-      paramJceOutputStream.write(this.f, 5);
+    byte[] arrayOfByte = this.f;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 5);
     }
   }
 }

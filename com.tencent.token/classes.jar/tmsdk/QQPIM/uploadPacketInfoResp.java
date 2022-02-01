@@ -10,16 +10,6 @@ public final class uploadPacketInfoResp
 {
   public int is_succ = 0;
   
-  static
-  {
-    if (!uploadPacketInfoResp.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public uploadPacketInfoResp()
   {
     setIs_succ(this.is_succ);
@@ -37,18 +27,17 @@ public final class uploadPacketInfoResp
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)

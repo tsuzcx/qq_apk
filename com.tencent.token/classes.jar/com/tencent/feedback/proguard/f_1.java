@@ -8,8 +8,8 @@ import java.util.Map;
 public final class f
   extends j
 {
-  private static byte[] k;
-  private static Map<String, String> l;
+  private static byte[] k = null;
+  private static Map<String, String> l = null;
   public short a = 0;
   public int b = 0;
   public String c = null;
@@ -20,18 +20,6 @@ public final class f
   private int h = 0;
   private Map<String, String> i;
   private Map<String, String> j;
-  
-  static
-  {
-    if (!f.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      m = bool;
-      k = null;
-      l = null;
-      return;
-    }
-  }
   
   public final void a(h paramh)
   {
@@ -46,7 +34,7 @@ public final class f
       if (k == null) {
         k = new byte[] { 0 };
       }
-      Object localObject = k;
+      localObject = k;
       this.e = ((byte[])paramh.c(7, true));
       this.h = paramh.a(this.h, 8, true);
       if (l == null)
@@ -68,7 +56,10 @@ public final class f
     catch (Exception paramh)
     {
       paramh.printStackTrace();
-      System.out.println("RequestPacket decode error " + e.a(this.e));
+      Object localObject = System.out;
+      StringBuilder localStringBuilder = new StringBuilder("RequestPacket decode error ");
+      localStringBuilder.append(e.a(this.e));
+      ((PrintStream)localObject).println(localStringBuilder.toString());
       throw new RuntimeException(paramh);
     }
   }
@@ -104,18 +95,20 @@ public final class f
   
   public final Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (m) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (m) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public final boolean equals(Object paramObject)

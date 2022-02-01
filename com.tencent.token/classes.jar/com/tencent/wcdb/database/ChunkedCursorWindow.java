@@ -12,16 +12,18 @@ public class ChunkedCursorWindow
   public ChunkedCursorWindow(int paramInt)
   {
     this.mWindowPtr = nativeCreate(paramInt);
-    if (this.mWindowPtr == 0L) {
-      throw new CursorWindowAllocationException("Cursor window allocation failed.");
+    if (this.mWindowPtr != 0L) {
+      return;
     }
+    throw new CursorWindowAllocationException("Cursor window allocation failed.");
   }
   
   private void dispose()
   {
-    if (this.mWindowPtr != 0L)
+    long l = this.mWindowPtr;
+    if (l != 0L)
     {
-      nativeDispose(this.mWindowPtr);
+      nativeDispose(l);
       this.mWindowPtr = 0L;
     }
   }
@@ -91,18 +93,24 @@ public class ChunkedCursorWindow
   public byte[] getBlob(int paramInt1, int paramInt2)
   {
     long l = getRowUnsafe(paramInt1);
-    if (l == 0L) {
-      throw new IllegalStateException("Couldn't read row " + paramInt1 + ", column " + paramInt2 + " from ChunkedCursorWindow.");
+    if (l != 0L) {
+      try
+      {
+        byte[] arrayOfByte = nativeGetBlob(l, paramInt2);
+        return arrayOfByte;
+      }
+      finally
+      {
+        endRowUnsafe(l);
+      }
     }
-    try
-    {
-      byte[] arrayOfByte = nativeGetBlob(l, paramInt2);
-      return arrayOfByte;
-    }
-    finally
-    {
-      endRowUnsafe(l);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Couldn't read row ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", column ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" from ChunkedCursorWindow.");
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   byte[] getBlobUnsafe(long paramLong, int paramInt)
@@ -113,18 +121,24 @@ public class ChunkedCursorWindow
   public double getDouble(int paramInt1, int paramInt2)
   {
     long l = getRowUnsafe(paramInt1);
-    if (l == 0L) {
-      throw new IllegalStateException("Couldn't read row " + paramInt1 + ", column " + paramInt2 + " from ChunkedCursorWindow.");
+    if (l != 0L) {
+      try
+      {
+        double d = nativeGetDouble(l, paramInt2);
+        return d;
+      }
+      finally
+      {
+        endRowUnsafe(l);
+      }
     }
-    try
-    {
-      double d = nativeGetDouble(l, paramInt2);
-      return d;
-    }
-    finally
-    {
-      endRowUnsafe(l);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Couldn't read row ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", column ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" from ChunkedCursorWindow.");
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   double getDoubleUnsafe(long paramLong, int paramInt)
@@ -135,18 +149,24 @@ public class ChunkedCursorWindow
   public long getLong(int paramInt1, int paramInt2)
   {
     long l1 = getRowUnsafe(paramInt1);
-    if (l1 == 0L) {
-      throw new IllegalStateException("Couldn't read row " + paramInt1 + ", column " + paramInt2 + " from ChunkedCursorWindow.");
+    if (l1 != 0L) {
+      try
+      {
+        long l2 = nativeGetLong(l1, paramInt2);
+        return l2;
+      }
+      finally
+      {
+        endRowUnsafe(l1);
+      }
     }
-    try
-    {
-      long l2 = nativeGetLong(l1, paramInt2);
-      return l2;
-    }
-    finally
-    {
-      endRowUnsafe(l1);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Couldn't read row ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", column ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" from ChunkedCursorWindow.");
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   long getLongUnsafe(long paramLong, int paramInt)
@@ -186,18 +206,24 @@ public class ChunkedCursorWindow
   public String getString(int paramInt1, int paramInt2)
   {
     long l = getRowUnsafe(paramInt1);
-    if (l == 0L) {
-      throw new IllegalStateException("Couldn't read row " + paramInt1 + ", column " + paramInt2 + " from ChunkedCursorWindow.");
+    if (l != 0L) {
+      try
+      {
+        String str = nativeGetString(l, paramInt2);
+        return str;
+      }
+      finally
+      {
+        endRowUnsafe(l);
+      }
     }
-    try
-    {
-      String str = nativeGetString(l, paramInt2);
-      return str;
-    }
-    finally
-    {
-      endRowUnsafe(l);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Couldn't read row ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", column ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" from ChunkedCursorWindow.");
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   String getStringUnsafe(long paramLong, int paramInt)
@@ -208,18 +234,24 @@ public class ChunkedCursorWindow
   public int getType(int paramInt1, int paramInt2)
   {
     long l = getRowUnsafe(paramInt1);
-    if (l == 0L) {
-      throw new IllegalStateException("Couldn't read row " + paramInt1 + ", column " + paramInt2 + " from ChunkedCursorWindow.");
+    if (l != 0L) {
+      try
+      {
+        paramInt1 = nativeGetType(l, paramInt2);
+        return paramInt1;
+      }
+      finally
+      {
+        endRowUnsafe(l);
+      }
     }
-    try
-    {
-      paramInt1 = nativeGetType(l, paramInt2);
-      return paramInt1;
-    }
-    finally
-    {
-      endRowUnsafe(l);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Couldn't read row ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", column ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" from ChunkedCursorWindow.");
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   int getTypeUnsafe(long paramLong, int paramInt)

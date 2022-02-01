@@ -95,11 +95,14 @@ public final class r
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
     int j = a();
+    int i = 0;
     while (i < j)
     {
-      localStringBuilder.append(a(i)).append(": ").append(b(i)).append("\n");
+      localStringBuilder.append(a(i));
+      localStringBuilder.append(": ");
+      localStringBuilder.append(b(i));
+      localStringBuilder.append("\n");
       i += 1;
     }
     return localStringBuilder.toString();
@@ -111,36 +114,46 @@ public final class r
     
     private void d(String paramString1, String paramString2)
     {
-      if (paramString1 == null) {
-        throw new NullPointerException("name == null");
-      }
-      if (paramString1.isEmpty()) {
+      if (paramString1 != null)
+      {
+        if (!paramString1.isEmpty())
+        {
+          int j = paramString1.length();
+          int i = 0;
+          int k;
+          while (i < j)
+          {
+            k = paramString1.charAt(i);
+            if ((k > 32) && (k < 127)) {
+              i += 1;
+            } else {
+              throw new IllegalArgumentException(fc.a("Unexpected char %#04x at %d in header name: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), paramString1 }));
+            }
+          }
+          if (paramString2 != null)
+          {
+            j = paramString2.length();
+            i = 0;
+            while (i < j)
+            {
+              k = paramString2.charAt(i);
+              if (((k > 31) || (k == 9)) && (k < 127)) {
+                i += 1;
+              } else {
+                throw new IllegalArgumentException(fc.a("Unexpected char %#04x at %d in %s value: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), paramString1, paramString2 }));
+              }
+            }
+            return;
+          }
+          paramString2 = new StringBuilder();
+          paramString2.append("value for name ");
+          paramString2.append(paramString1);
+          paramString2.append(" == null");
+          throw new NullPointerException(paramString2.toString());
+        }
         throw new IllegalArgumentException("name is empty");
       }
-      int j = paramString1.length();
-      int i = 0;
-      int k;
-      while (i < j)
-      {
-        k = paramString1.charAt(i);
-        if ((k <= 32) || (k >= 127)) {
-          throw new IllegalArgumentException(fc.a("Unexpected char %#04x at %d in header name: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), paramString1 }));
-        }
-        i += 1;
-      }
-      if (paramString2 == null) {
-        throw new NullPointerException("value for name " + paramString1 + " == null");
-      }
-      j = paramString2.length();
-      i = 0;
-      while (i < j)
-      {
-        k = paramString2.charAt(i);
-        if (((k <= 31) && (k != 9)) || (k >= 127)) {
-          throw new IllegalArgumentException(fc.a("Unexpected char %#04x at %d in %s value: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), paramString1, paramString2 }));
-        }
-        i += 1;
-      }
+      throw new NullPointerException("name == null");
     }
     
     a a(String paramString)

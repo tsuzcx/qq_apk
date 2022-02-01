@@ -44,7 +44,13 @@ class b
     localPath.moveTo(this.f, this.c);
     localPath.lineTo(this.f, this.g);
     localPath.lineTo(this.c, this.g);
-    localPath.arcTo(new RectF(this.f, this.g, this.f + this.c * 2.0F, this.g + this.c * 2.0F), -90.0F, -90.0F);
+    int i = this.f;
+    float f1 = i;
+    int j = this.g;
+    float f2 = j;
+    float f3 = i;
+    float f4 = this.c;
+    localPath.arcTo(new RectF(f1, f2, f3 + f4 * 2.0F, j + f4 * 2.0F), -90.0F, -90.0F);
     localPath.close();
     paramCanvas.drawPath(localPath, this.a);
   }
@@ -55,7 +61,13 @@ class b
     localPath.moveTo(this.f, this.g + this.e - this.c);
     localPath.lineTo(this.f, this.g + this.e);
     localPath.lineTo(this.f + this.c, this.g + this.e);
-    localPath.arcTo(new RectF(this.f, this.g + this.e - this.c * 2.0F, this.f + this.c * 2.0F, this.g + this.e), 90.0F, 90.0F);
+    int i = this.f;
+    float f1 = i;
+    int j = this.g;
+    int k = this.e;
+    float f2 = j + k;
+    float f3 = this.c;
+    localPath.arcTo(new RectF(f1, f2 - f3 * 2.0F, i + f3 * 2.0F, j + k), 90.0F, 90.0F);
     localPath.close();
     paramCanvas.drawPath(localPath, this.a);
   }
@@ -66,7 +78,13 @@ class b
     localPath.moveTo(this.f + this.d - this.c, this.g + this.e);
     localPath.lineTo(this.f + this.d, this.g + this.e);
     localPath.lineTo(this.f + this.d, this.g + this.e - this.c);
-    localPath.arcTo(new RectF(this.f + this.d - this.c * 2.0F, this.g + this.e - this.c * 2.0F, this.f + this.d, this.g + this.e), 0.0F, 90.0F);
+    int i = this.f;
+    int j = this.d;
+    float f1 = i + j;
+    float f2 = this.c;
+    int k = this.g;
+    int m = this.e;
+    localPath.arcTo(new RectF(f1 - f2 * 2.0F, k + m - f2 * 2.0F, i + j, k + m), 0.0F, 90.0F);
     localPath.close();
     paramCanvas.drawPath(localPath, this.a);
   }
@@ -77,7 +95,12 @@ class b
     localPath.moveTo(this.f + this.d, this.g + this.c);
     localPath.lineTo(this.f + this.d, this.g);
     localPath.lineTo(this.f + this.d - this.c, this.g);
-    localPath.arcTo(new RectF(this.f + this.d - this.c * 2.0F, this.g, this.f + this.d, this.g + this.c * 2.0F), -90.0F, 90.0F);
+    int i = this.f;
+    int j = this.d;
+    float f1 = i + j;
+    float f2 = this.c;
+    int k = this.g;
+    localPath.arcTo(new RectF(f1 - f2 * 2.0F, k, i + j, k + f2 * 2.0F), -90.0F, 90.0F);
     localPath.close();
     paramCanvas.drawPath(localPath, this.a);
   }

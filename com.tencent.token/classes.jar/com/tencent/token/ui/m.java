@@ -51,50 +51,51 @@ class m
   private void a(b paramb)
   {
     Object localObject = paramb.f;
-    if ((localObject == null) || (paramb.a == null)) {
-      return;
-    }
-    paramb.e.setVisibility(0);
-    if (((LoginProtectResult.a)localObject).d)
+    if (localObject != null)
     {
-      paramb.d.setVisibility(0);
-      paramb.e.setEnabled(false);
+      if (paramb.a == null) {
+        return;
+      }
+      paramb.e.setVisibility(0);
+      if (((LoginProtectResult.a)localObject).d)
+      {
+        paramb.d.setVisibility(0);
+        paramb.e.setEnabled(false);
+      }
+      else
+      {
+        paramb.d.setVisibility(4);
+        paramb.e.setEnabled(true);
+      }
       paramb.b.setText(((LoginProtectResult.a)localObject).b);
-    }
-    switch (((LoginProtectResult.a)localObject).a)
-    {
-    case 81: 
-    default: 
-      return;
-    case 80: 
+      int i = ((LoginProtectResult.a)localObject).a;
+      if (i != 80)
+      {
+        if (i != 82) {
+          return;
+        }
+        this.d = paramb;
+        if (((LoginProtectResult.a)localObject).c) {
+          paramb.e.a(false, false);
+        } else {
+          paramb.e.a(true, false);
+        }
+        paramb.e.setOnCheckedChangeListener(this.f);
+        paramb.c.setText(2131493754);
+        return;
+      }
       this.c = paramb;
       if (((LoginProtectResult.a)localObject).e) {
         paramb.e.a(false, false);
-      }
-      for (;;)
-      {
-        paramb.c.setOnClickListener(this.e);
-        paramb.e.setOnCheckedChangeListener(this.f);
-        localObject = new SpannableString(this.a.getString(2131231593));
-        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(this.a.getResources().getColor(2131492896)), ((SpannableString)localObject).length() - 7, ((SpannableString)localObject).length(), 33);
-        paramb.c.setText((CharSequence)localObject);
-        return;
-        paramb.d.setVisibility(4);
-        paramb.e.setEnabled(true);
-        break;
+      } else {
         paramb.e.a(true, false);
       }
-    }
-    this.d = paramb;
-    if (((LoginProtectResult.a)localObject).c) {
-      paramb.e.a(false, false);
-    }
-    for (;;)
-    {
+      paramb.c.setOnClickListener(this.e);
       paramb.e.setOnCheckedChangeListener(this.f);
-      paramb.c.setText(2131231610);
+      localObject = new SpannableString(this.a.getString(2131493737));
+      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(this.a.getResources().getColor(2130968627)), ((SpannableString)localObject).length() - 7, ((SpannableString)localObject).length(), 33);
+      paramb.c.setText((CharSequence)localObject);
       return;
-      paramb.e.a(true, false);
     }
   }
   
@@ -104,34 +105,29 @@ class m
     {
       AccountPageActivity.mNeedRefreshEval = true;
       int i = 0;
-      while (i < paramArrayOfInt.length) {
-        switch (paramArrayOfInt[i])
+      while (i < paramArrayOfInt.length)
+      {
+        int j = paramArrayOfInt[i];
+        if (j != 71)
         {
-        default: 
-          i += 1;
+          if (j == 82)
+          {
+            this.d.f.d = false;
+            this.d.f.c ^= true;
+            a(this.d);
+          }
         }
-      }
-      this.d.f.d = false;
-      parame = this.d.f;
-      if (!this.d.f.c) {}
-      for (boolean bool = true;; bool = false)
-      {
-        parame.c = bool;
-        a(this.d);
-        break;
-      }
-      this.c.f.d = false;
-      parame = this.c.f;
-      if (!this.c.f.e) {}
-      for (bool = true;; bool = false)
-      {
-        parame.e = bool;
-        a(this.c);
-        break;
+        else
+        {
+          this.c.f.d = false;
+          this.c.f.e ^= true;
+          a(this.c);
+        }
+        i += 1;
       }
     }
     e.a(this.a.getResources(), parame);
-    this.a.showTipDialog(2131231390, parame.c);
+    this.a.showTipDialog(2131493532, parame.c);
     this.d.f.d = false;
     this.c.f.d = false;
     a(this.c);
@@ -140,10 +136,10 @@ class m
   
   public int getCount()
   {
-    if ((this.a.mLoginProtectResult == null) || (this.a.mLoginProtectResult.mLists.size() == 0)) {
-      return 0;
+    if ((this.a.mLoginProtectResult != null) && (this.a.mLoginProtectResult.mLists.size() != 0)) {
+      return this.a.mLoginProtectResult.mLists.size();
     }
-    return this.a.mLoginProtectResult.mLists.size();
+    return 0;
   }
   
   public Object getItem(int paramInt)
@@ -158,16 +154,21 @@ class m
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    View localView = paramView;
     if (paramView == null) {
-      paramView = this.b.inflate(2130968799, paramViewGroup, false);
+      localView = this.b.inflate(2131296480, paramViewGroup, false);
     }
-    while ((paramView == null) || (this.a.mLoginProtectResult.mLists == null) || (this.a.mLoginProtectResult.mLists.size() == 0) || (paramInt >= this.a.mLoginProtectResult.mLists.size())) {
-      return paramView;
+    if ((localView != null) && (this.a.mLoginProtectResult.mLists != null) && (this.a.mLoginProtectResult.mLists.size() != 0))
+    {
+      if (paramInt >= this.a.mLoginProtectResult.mLists.size()) {
+        return localView;
+      }
+      paramView = new b(localView, (LoginProtectResult.a)this.a.mLoginProtectResult.mLists.get(paramInt));
+      paramView.e.setTag(paramView);
+      a(paramView);
+      return localView;
     }
-    paramViewGroup = new b(paramView, (LoginProtectResult.a)this.a.mLoginProtectResult.mLists.get(paramInt));
-    paramViewGroup.e.setTag(paramViewGroup);
-    a(paramViewGroup);
-    return paramView;
+    return localView;
   }
   
   class a
@@ -179,51 +180,85 @@ class m
     
     public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
     {
-      int i = 1;
       paramCompoundButton = (m.b)paramCompoundButton.getTag();
-      if ((paramCompoundButton == null) || (paramCompoundButton.f == null) || (paramCompoundButton.a == null)) {}
-      do
+      if ((paramCompoundButton != null) && (paramCompoundButton.f != null))
       {
-        do
+        if (paramCompoundButton.a == null) {
+          return;
+        }
+        this.b = paramCompoundButton;
+        if (paramCompoundButton.f.d) {
+          return;
+        }
+        int i = paramCompoundButton.f.a;
+        if (i != 80)
         {
-          do
-          {
-            return;
-            this.b = paramCompoundButton;
-          } while (paramCompoundButton.f.d);
-          switch (paramCompoundButton.f.a)
-          {
-          case 81: 
-          default: 
+          if (i != 82) {
             return;
           }
-        } while (paramBoolean != paramCompoundButton.f.e);
-        if (!paramBoolean) {
-          TMSDKContext.saveActionData(1150077);
-        }
-        for (;;)
-        {
+          if (paramBoolean != paramCompoundButton.f.c) {
+            return;
+          }
           paramCompoundButton.f.d = true;
           m.a(m.this, paramCompoundButton);
-          localObject = m.a(m.this).getItem(82);
-          if ((!paramCompoundButton.f.e) || (!((LoginProtectResult.a)localObject).c)) {
-            break;
+          localObject = m.a(m.this).getItem(80);
+          if ((!paramCompoundButton.f.c) && (!((LoginProtectResult.a)localObject).e))
+          {
+            m.a(m.this).showUserDialog(2131492985, m.a(m.this).getResources().getString(2131493700), 2131493699, 2131493028, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            {
+              public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+              {
+                m.c(m.this).f.d = true;
+                m.a(m.this, m.c(m.this));
+                paramAnonymousInt = m.a.a(m.a.this).f.a;
+                boolean bool = m.a.a(m.a.this).f.c;
+                paramAnonymousDialogInterface = cb.a();
+                String str = m.a(m.this).mA2;
+                Handler localHandler = m.a(m.this).mHandler;
+                paramAnonymousDialogInterface.a(0L, new int[] { paramAnonymousInt, 71 }, new int[] { bool ^ true, 1 }, str, localHandler);
+              }
+            }, new DialogInterface.OnClickListener()
+            {
+              public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+              {
+                m.a.a(m.a.this).f.d = false;
+                m.a(m.this, m.a.a(m.a.this));
+              }
+            });
+            return;
           }
-          m.a(m.this).showUserDialog(2131230843, m.a(m.this).getResources().getString(2131231537), 2131231555, 2131230886, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          i = paramCompoundButton.f.a;
+          paramBoolean = paramCompoundButton.f.c;
+          paramCompoundButton = cb.a();
+          localObject = m.a(m.this).mA2;
+          localHandler = m.a(m.this).mHandler;
+          paramCompoundButton.a(0L, new int[] { i }, new int[] { paramBoolean ^ true }, (String)localObject, localHandler);
+          return;
+        }
+        if (paramBoolean != paramCompoundButton.f.e) {
+          return;
+        }
+        if (!paramBoolean) {
+          TMSDKContext.saveActionData(1150077);
+        } else {
+          TMSDKContext.saveActionData(1150078);
+        }
+        paramCompoundButton.f.d = true;
+        m.a(m.this, paramCompoundButton);
+        Object localObject = m.a(m.this).getItem(82);
+        if ((paramCompoundButton.f.e) && (((LoginProtectResult.a)localObject).c))
+        {
+          m.a(m.this).showUserDialog(2131492985, m.a(m.this).getResources().getString(2131493681), 2131493699, 2131493028, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               m.b(m.this).f.d = true;
               m.a(m.this, m.b(m.this));
-              if (m.a.a(m.a.this).f.e) {}
-              for (paramAnonymousInt = 0;; paramAnonymousInt = 1)
-              {
-                paramAnonymousDialogInterface = cb.a();
-                String str = m.a(m.this).mA2;
-                Handler localHandler = m.a(m.this).mHandler;
-                paramAnonymousDialogInterface.a(0L, new int[] { 71, 82 }, new int[] { paramAnonymousInt, 0 }, str, localHandler);
-                return;
-              }
+              boolean bool = m.a.a(m.a.this).f.e;
+              paramAnonymousDialogInterface = cb.a();
+              String str = m.a(m.this).mA2;
+              Handler localHandler = m.a(m.this).mHandler;
+              paramAnonymousDialogInterface.a(0L, new int[] { 71, 82 }, new int[] { bool ^ true, 0 }, str, localHandler);
             }
           }, new DialogInterface.OnClickListener()
           {
@@ -234,58 +269,14 @@ class m
             }
           });
           return;
-          TMSDKContext.saveActionData(1150078);
         }
-        if (paramCompoundButton.f.e) {}
-        for (i = 0;; i = 1)
-        {
-          paramCompoundButton = cb.a();
-          localObject = m.a(m.this).mA2;
-          localHandler = m.a(m.this).mHandler;
-          paramCompoundButton.a(0L, new int[] { 71 }, new int[] { i }, (String)localObject, localHandler);
-          return;
-        }
-      } while (paramBoolean != paramCompoundButton.f.c);
-      paramCompoundButton.f.d = true;
-      m.a(m.this, paramCompoundButton);
-      Object localObject = m.a(m.this).getItem(80);
-      if ((!paramCompoundButton.f.c) && (!((LoginProtectResult.a)localObject).e))
-      {
-        m.a(m.this).showUserDialog(2131230843, m.a(m.this).getResources().getString(2131231556), 2131231555, 2131230886, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-        {
-          public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            m.c(m.this).f.d = true;
-            m.a(m.this, m.c(m.this));
-            int i = m.a.a(m.a.this).f.a;
-            if (m.a.a(m.a.this).f.c) {}
-            for (paramAnonymousInt = 0;; paramAnonymousInt = 1)
-            {
-              paramAnonymousDialogInterface = cb.a();
-              String str = m.a(m.this).mA2;
-              Handler localHandler = m.a(m.this).mHandler;
-              paramAnonymousDialogInterface.a(0L, new int[] { i, 71 }, new int[] { paramAnonymousInt, 1 }, str, localHandler);
-              return;
-            }
-          }
-        }, new DialogInterface.OnClickListener()
-        {
-          public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            m.a.a(m.a.this).f.d = false;
-            m.a(m.this, m.a.a(m.a.this));
-          }
-        });
+        paramBoolean = paramCompoundButton.f.e;
+        paramCompoundButton = cb.a();
+        localObject = m.a(m.this).mA2;
+        Handler localHandler = m.a(m.this).mHandler;
+        paramCompoundButton.a(0L, new int[] { 71 }, new int[] { paramBoolean ^ true }, (String)localObject, localHandler);
         return;
       }
-      int j = paramCompoundButton.f.a;
-      if (paramCompoundButton.f.c) {
-        i = 0;
-      }
-      paramCompoundButton = cb.a();
-      localObject = m.a(m.this).mA2;
-      Handler localHandler = m.a(m.this).mHandler;
-      paramCompoundButton.a(0L, new int[] { j }, new int[] { i }, (String)localObject, localHandler);
     }
   }
   
@@ -301,14 +292,15 @@ class m
     b(View paramView, LoginProtectResult.a parama)
     {
       this.a = paramView;
-      if (this.a == null) {
+      this$1 = this.a;
+      if (m.this == null) {
         return;
       }
       this.f = parama;
-      this.b = ((TextView)this.a.findViewById(2131559385));
-      this.c = ((TextView)this.a.findViewById(2131559388));
-      this.e = ((SwitchButton)this.a.findViewById(2131559386));
-      this.d = ((ProgressBar)this.a.findViewById(2131559387));
+      this.b = ((TextView)m.this.findViewById(2131165705));
+      this.c = ((TextView)this.a.findViewById(2131165430));
+      this.e = ((SwitchButton)this.a.findViewById(2131165703));
+      this.d = ((ProgressBar)this.a.findViewById(2131165685));
     }
   }
 }

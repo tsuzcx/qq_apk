@@ -25,31 +25,25 @@ public class c
   
   public static String b()
   {
-    str2 = f.a;
+    str1 = f.a;
     try
     {
-      LineNumberReader localLineNumberReader = new LineNumberReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/cpuinfo").getInputStream()));
+      Object localObject = new LineNumberReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/cpuinfo").getInputStream()));
       int i = 1;
-      for (;;)
+      while (i < 100)
       {
-        String str1 = str2;
-        if (i < 100)
-        {
-          String str3 = localLineNumberReader.readLine();
-          str1 = str2;
-          if (str3 != null)
-          {
-            if (str3.indexOf("Serial") <= -1) {
-              break label89;
-            }
-            str1 = str3.substring(str3.indexOf(":") + 1, str3.length()).trim();
-          }
+        String str2 = ((LineNumberReader)localObject).readLine();
+        if (str2 == null) {
+          break;
         }
-        return str1;
-        label89:
+        if (str2.indexOf("Serial") > -1)
+        {
+          localObject = str2.substring(str2.indexOf(":") + 1, str2.length()).trim();
+          return localObject;
+        }
         i += 1;
       }
-      return str2;
+      return str1;
     }
     catch (Exception localException)
     {
@@ -59,31 +53,25 @@ public class c
   
   public static String c()
   {
-    str2 = f.a;
+    str1 = f.a;
     try
     {
-      LineNumberReader localLineNumberReader = new LineNumberReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/cpuinfo").getInputStream()));
+      Object localObject = new LineNumberReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/cpuinfo").getInputStream()));
       int i = 1;
-      for (;;)
+      while (i < 100)
       {
-        String str1 = str2;
-        if (i < 100)
-        {
-          String str3 = localLineNumberReader.readLine();
-          str1 = str2;
-          if (str3 != null)
-          {
-            if (str3.indexOf("Hardware") <= -1) {
-              break label89;
-            }
-            str1 = str3.substring(str3.indexOf(":") + 1, str3.length()).trim();
-          }
+        String str2 = ((LineNumberReader)localObject).readLine();
+        if (str2 == null) {
+          break;
         }
-        return str1;
-        label89:
+        if (str2.indexOf("Hardware") > -1)
+        {
+          localObject = str2.substring(str2.indexOf(":") + 1, str2.length()).trim();
+          return localObject;
+        }
         i += 1;
       }
-      return str2;
+      return str1;
     }
     catch (Exception localException)
     {
@@ -98,31 +86,37 @@ public class c
       int i = new File("/sys/devices/system/cpu/").listFiles(new a()).length;
       return i;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label23:
+      break label23;
+    }
     return 1;
   }
   
   public static String e()
   {
     String str1 = "";
+    String str2;
     try
     {
       InputStream localInputStream = new ProcessBuilder(new String[] { "/system/bin/cat", "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq" }).start().getInputStream();
       byte[] arrayOfByte = new byte[24];
-      while (localInputStream.read(arrayOfByte) != -1) {
-        str1 = str1 + new String(arrayOfByte);
+      while (localInputStream.read(arrayOfByte) != -1)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append(new String(arrayOfByte));
+        str1 = localStringBuilder.toString();
       }
       localInputStream.close();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        String str2 = f.a;
-      }
+      localException.printStackTrace();
+      str2 = f.a;
     }
-    return str1.trim();
+    return str2.trim();
   }
   
   class a

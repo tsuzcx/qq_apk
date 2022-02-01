@@ -72,10 +72,10 @@ public class cm
       {
       default: 
         return Paint.Cap.SQUARE;
-      case 1: 
-        return Paint.Cap.BUTT;
+      case 2: 
+        return Paint.Cap.ROUND;
       }
-      return Paint.Cap.ROUND;
+      return Paint.Cap.BUTT;
     }
   }
   
@@ -89,12 +89,12 @@ public class cm
       {
       default: 
         return null;
-      case 1: 
-        return Paint.Join.BEVEL;
+      case 3: 
+        return Paint.Join.ROUND;
       case 2: 
         return Paint.Join.MITER;
       }
-      return Paint.Join.ROUND;
+      return Paint.Join.BEVEL;
     }
   }
 }

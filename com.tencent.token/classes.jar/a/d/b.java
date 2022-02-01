@@ -16,8 +16,9 @@ public final class b
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.a != null) {
-      paramJceOutputStream.write(this.a, 0);
+    String str = this.a;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }

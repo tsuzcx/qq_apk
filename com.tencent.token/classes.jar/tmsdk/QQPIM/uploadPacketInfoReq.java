@@ -15,16 +15,6 @@ public final class uploadPacketInfoReq
   public String software_id = "";
   public int zip_type = 0;
   
-  static
-  {
-    if (!uploadPacketInfoReq.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public uploadPacketInfoReq()
   {
     setSoftware_id(this.software_id);
@@ -52,18 +42,17 @@ public final class uploadPacketInfoReq
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)

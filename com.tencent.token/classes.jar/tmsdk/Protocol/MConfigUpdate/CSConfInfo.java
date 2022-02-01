@@ -27,8 +27,9 @@ public final class CSConfInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.vecInfo, 0);
-    if (this.updatetype != 0) {
-      paramJceOutputStream.write(this.updatetype, 1);
+    int i = this.updatetype;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
   }
 }

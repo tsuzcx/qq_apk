@@ -14,23 +14,24 @@ public class a
   public static boolean a(Context paramContext, String paramString)
   {
     paramString = new File(paramString);
-    if ((paramString == null) || (!paramString.exists()) || (!paramString.isFile())) {
-      return false;
-    }
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.addFlags(268435456);
-    if (Build.VERSION.SDK_INT >= 24)
+    if ((paramString.exists()) && (paramString.isFile()))
     {
-      paramString = FileProvider.getUriForFile(paramContext, "com.tencent.token.FileProvider", paramString);
-      localIntent.addFlags(1);
-    }
-    for (;;)
-    {
+      Intent localIntent = new Intent("android.intent.action.VIEW");
+      localIntent.addFlags(268435456);
+      if (Build.VERSION.SDK_INT >= 24)
+      {
+        paramString = FileProvider.getUriForFile(paramContext, "com.tencent.token.FileProvider", paramString);
+        localIntent.addFlags(1);
+      }
+      else
+      {
+        paramString = Uri.fromFile(paramString);
+      }
       localIntent.setDataAndType(paramString, "application/vnd.android.package-archive");
       paramContext.startActivity(localIntent);
       return true;
-      paramString = Uri.fromFile(paramString);
     }
+    return false;
   }
   
   public static boolean b(Context paramContext, String paramString)

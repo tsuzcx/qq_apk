@@ -3,7 +3,7 @@ package tmsdk.QQPIM;
 public final class EQueryType
 {
   public static final EQueryType E_QUERY_ALL;
-  public static final EQueryType E_QUERY_MAX;
+  public static final EQueryType E_QUERY_MAX = new EQueryType(4, 4, "E_QUERY_MAX");
   public static final EQueryType E_QUERY_MIN;
   public static final EQueryType E_QUERY_MONEY;
   public static final EQueryType E_QUERY_TRAFFIC;
@@ -12,24 +12,16 @@ public final class EQueryType
   public static final int _E_QUERY_MIN = 0;
   public static final int _E_QUERY_MONEY = 3;
   public static final int _E_QUERY_TRAFFIC = 2;
-  private static EQueryType[] es;
+  private static EQueryType[] es = new EQueryType[5];
   private int eb;
   private String ec = new String();
   
   static
   {
-    if (!EQueryType.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      es = new EQueryType[5];
-      E_QUERY_MIN = new EQueryType(0, 0, "E_QUERY_MIN");
-      E_QUERY_ALL = new EQueryType(1, 1, "E_QUERY_ALL");
-      E_QUERY_TRAFFIC = new EQueryType(2, 2, "E_QUERY_TRAFFIC");
-      E_QUERY_MONEY = new EQueryType(3, 3, "E_QUERY_MONEY");
-      E_QUERY_MAX = new EQueryType(4, 4, "E_QUERY_MAX");
-      return;
-    }
+    E_QUERY_MIN = new EQueryType(0, 0, "E_QUERY_MIN");
+    E_QUERY_ALL = new EQueryType(1, 1, "E_QUERY_ALL");
+    E_QUERY_TRAFFIC = new EQueryType(2, 2, "E_QUERY_TRAFFIC");
+    E_QUERY_MONEY = new EQueryType(3, 3, "E_QUERY_MONEY");
   }
   
   private EQueryType(int paramInt1, int paramInt2, String paramString)
@@ -42,15 +34,16 @@ public final class EQueryType
   public static EQueryType convert(int paramInt)
   {
     int i = 0;
-    while (i < es.length)
+    for (;;)
     {
-      if (es[i].value() == paramInt) {
+      EQueryType[] arrayOfEQueryType = es;
+      if (i >= arrayOfEQueryType.length) {
+        break;
+      }
+      if (arrayOfEQueryType[i].value() == paramInt) {
         return es[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -58,15 +51,16 @@ public final class EQueryType
   public static EQueryType convert(String paramString)
   {
     int i = 0;
-    while (i < es.length)
+    for (;;)
     {
-      if (es[i].toString().equals(paramString)) {
+      EQueryType[] arrayOfEQueryType = es;
+      if (i >= arrayOfEQueryType.length) {
+        break;
+      }
+      if (arrayOfEQueryType[i].toString().equals(paramString)) {
         return es[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }

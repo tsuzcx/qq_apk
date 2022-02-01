@@ -19,106 +19,118 @@ public class ej
   
   public void clear()
   {
-    if (this.oq == null) {
+    SharedPreferences localSharedPreferences = this.oq;
+    if (localSharedPreferences == null) {
       return;
     }
-    this.oq.edit().clear().commit();
+    localSharedPreferences.edit().clear().commit();
   }
   
   public Map<String, ?> getAll()
   {
-    if (this.oq == null) {
+    SharedPreferences localSharedPreferences = this.oq;
+    if (localSharedPreferences == null) {
       return null;
     }
-    return this.oq.getAll();
+    return localSharedPreferences.getAll();
   }
   
   public boolean getBoolean(String paramString, boolean paramBoolean)
   {
-    if (this.oq == null) {
+    SharedPreferences localSharedPreferences = this.oq;
+    if (localSharedPreferences == null) {
       return paramBoolean;
     }
-    return this.oq.getBoolean(paramString, paramBoolean);
+    return localSharedPreferences.getBoolean(paramString, paramBoolean);
   }
   
   public float getFloat(String paramString, float paramFloat)
   {
-    if (this.oq == null) {
+    SharedPreferences localSharedPreferences = this.oq;
+    if (localSharedPreferences == null) {
       return paramFloat;
     }
-    return this.oq.getFloat(paramString, paramFloat);
+    return localSharedPreferences.getFloat(paramString, paramFloat);
   }
   
   public int getInt(String paramString, int paramInt)
   {
-    if (this.oq == null) {
+    SharedPreferences localSharedPreferences = this.oq;
+    if (localSharedPreferences == null) {
       return paramInt;
     }
-    return this.oq.getInt(paramString, paramInt);
+    return localSharedPreferences.getInt(paramString, paramInt);
   }
   
   public long getLong(String paramString, long paramLong)
   {
-    if (this.oq == null) {
+    SharedPreferences localSharedPreferences = this.oq;
+    if (localSharedPreferences == null) {
       return paramLong;
     }
-    return this.oq.getLong(paramString, paramLong);
+    return localSharedPreferences.getLong(paramString, paramLong);
   }
   
   public String getString(String paramString1, String paramString2)
   {
-    if (this.oq == null) {
+    SharedPreferences localSharedPreferences = this.oq;
+    if (localSharedPreferences == null) {
       return paramString2;
     }
-    return this.oq.getString(paramString1, paramString2);
+    return localSharedPreferences.getString(paramString1, paramString2);
   }
   
   public void putBoolean(String paramString, boolean paramBoolean)
   {
-    if (this.oq == null) {
+    Object localObject = this.oq;
+    if (localObject == null) {
       return;
     }
-    SharedPreferences.Editor localEditor = this.oq.edit();
-    localEditor.putBoolean(paramString, paramBoolean);
-    localEditor.commit();
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putBoolean(paramString, paramBoolean);
+    ((SharedPreferences.Editor)localObject).commit();
   }
   
   public void putInt(String paramString, int paramInt)
   {
-    if (this.oq == null) {
+    Object localObject = this.oq;
+    if (localObject == null) {
       return;
     }
-    SharedPreferences.Editor localEditor = this.oq.edit();
-    localEditor.putInt(paramString, paramInt);
-    localEditor.commit();
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putInt(paramString, paramInt);
+    ((SharedPreferences.Editor)localObject).commit();
   }
   
   public void putLong(String paramString, long paramLong)
   {
-    if (this.oq == null) {
+    Object localObject = this.oq;
+    if (localObject == null) {
       return;
     }
-    SharedPreferences.Editor localEditor = this.oq.edit();
-    localEditor.putLong(paramString, paramLong);
-    localEditor.commit();
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putLong(paramString, paramLong);
+    ((SharedPreferences.Editor)localObject).commit();
   }
   
   public void putString(String paramString1, String paramString2)
   {
-    if (this.oq == null) {
+    Object localObject = this.oq;
+    if (localObject == null) {
       return;
     }
-    SharedPreferences.Editor localEditor = this.oq.edit();
-    localEditor.putString(paramString1, paramString2);
-    localEditor.commit();
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putString(paramString1, paramString2);
+    ((SharedPreferences.Editor)localObject).commit();
   }
   
   public void remove(String paramString)
   {
-    if (this.oq == null) {
+    SharedPreferences localSharedPreferences = this.oq;
+    if (localSharedPreferences == null) {
       return;
     }
-    this.oq.edit().remove(paramString).commit();
+    localSharedPreferences.edit().remove(paramString).commit();
   }
 }
 

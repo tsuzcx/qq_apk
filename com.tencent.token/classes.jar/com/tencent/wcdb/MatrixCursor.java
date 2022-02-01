@@ -23,69 +23,77 @@ public class MatrixCursor
   {
     this.columnNames = paramArrayOfString;
     this.columnCount = paramArrayOfString.length;
-    int i = paramInt;
+    int i = 1;
     if (paramInt < 1) {
-      i = 1;
+      paramInt = i;
     }
-    this.data = new Object[this.columnCount * i];
+    this.data = new Object[this.columnCount * paramInt];
   }
   
   private void addRow(ArrayList<?> paramArrayList, int paramInt)
   {
     int j = paramArrayList.size();
-    if (j != this.columnCount) {
-      throw new IllegalArgumentException("columnNames.length = " + this.columnCount + ", columnValues.size() = " + j);
-    }
-    this.rowCount += 1;
-    Object[] arrayOfObject = this.data;
-    int i = 0;
-    while (i < j)
+    if (j == this.columnCount)
     {
-      arrayOfObject[(paramInt + i)] = paramArrayList.get(i);
-      i += 1;
+      this.rowCount += 1;
+      Object[] arrayOfObject = this.data;
+      int i = 0;
+      while (i < j)
+      {
+        arrayOfObject[(paramInt + i)] = paramArrayList.get(i);
+        i += 1;
+      }
+      return;
     }
+    paramArrayList = new StringBuilder();
+    paramArrayList.append("columnNames.length = ");
+    paramArrayList.append(this.columnCount);
+    paramArrayList.append(", columnValues.size() = ");
+    paramArrayList.append(j);
+    throw new IllegalArgumentException(paramArrayList.toString());
   }
   
   private void ensureCapacity(int paramInt)
   {
-    Object[] arrayOfObject;
-    int i;
-    if (paramInt > this.data.length)
+    Object[] arrayOfObject = this.data;
+    if (paramInt > arrayOfObject.length)
     {
-      arrayOfObject = this.data;
-      i = this.data.length * 2;
+      int i = arrayOfObject.length * 2;
       if (i >= paramInt) {
-        break label48;
+        paramInt = i;
       }
-    }
-    for (;;)
-    {
       this.data = new Object[paramInt];
       System.arraycopy(arrayOfObject, 0, this.data, 0, arrayOfObject.length);
-      return;
-      label48:
-      paramInt = i;
     }
   }
   
   private Object get(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.columnCount)) {
-      throw new CursorIndexOutOfBoundsException("Requested column: " + paramInt + ", # of columns: " + this.columnCount);
-    }
-    if (this.mPos < 0) {
+    if ((paramInt >= 0) && (paramInt < this.columnCount))
+    {
+      if (this.mPos >= 0)
+      {
+        if (this.mPos < this.rowCount) {
+          return this.data[(this.mPos * this.columnCount + paramInt)];
+        }
+        throw new CursorIndexOutOfBoundsException("After last row.");
+      }
       throw new CursorIndexOutOfBoundsException("Before first row.");
     }
-    if (this.mPos >= this.rowCount) {
-      throw new CursorIndexOutOfBoundsException("After last row.");
-    }
-    return this.data[(this.mPos * this.columnCount + paramInt)];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Requested column: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", # of columns: ");
+    localStringBuilder.append(this.columnCount);
+    throw new CursorIndexOutOfBoundsException(localStringBuilder.toString());
   }
   
   public void addRow(Iterable<?> paramIterable)
   {
-    int i = this.rowCount * this.columnCount;
-    int j = i + this.columnCount;
+    int i = this.rowCount;
+    int j = this.columnCount;
+    i *= j;
+    j += i;
     ensureCapacity(j);
     if ((paramIterable instanceof ArrayList))
     {
@@ -97,28 +105,43 @@ public class MatrixCursor
     while (paramIterable.hasNext())
     {
       Object localObject = paramIterable.next();
-      if (i == j) {
+      if (i != j)
+      {
+        arrayOfObject[i] = localObject;
+        i += 1;
+      }
+      else
+      {
         throw new IllegalArgumentException("columnValues.size() > columnNames.length");
       }
-      arrayOfObject[i] = localObject;
-      i += 1;
     }
-    if (i != j) {
-      throw new IllegalArgumentException("columnValues.size() < columnNames.length");
+    if (i == j)
+    {
+      this.rowCount += 1;
+      return;
     }
-    this.rowCount += 1;
+    throw new IllegalArgumentException("columnValues.size() < columnNames.length");
   }
   
   public void addRow(Object[] paramArrayOfObject)
   {
-    if (paramArrayOfObject.length != this.columnCount) {
-      throw new IllegalArgumentException("columnNames.length = " + this.columnCount + ", columnValues.length = " + paramArrayOfObject.length);
+    int j = paramArrayOfObject.length;
+    int i = this.columnCount;
+    if (j == i)
+    {
+      j = this.rowCount;
+      this.rowCount = (j + 1);
+      j *= i;
+      ensureCapacity(i + j);
+      System.arraycopy(paramArrayOfObject, 0, this.data, j, this.columnCount);
+      return;
     }
-    int i = this.rowCount;
-    this.rowCount = (i + 1);
-    i *= this.columnCount;
-    ensureCapacity(this.columnCount + i);
-    System.arraycopy(paramArrayOfObject, 0, this.data, i, this.columnCount);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("columnNames.length = ");
+    localStringBuilder.append(this.columnCount);
+    localStringBuilder.append(", columnValues.length = ");
+    localStringBuilder.append(paramArrayOfObject.length);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer) {}
@@ -246,14 +269,15 @@ public class MatrixCursor
     
     public RowBuilder add(Object paramObject)
     {
-      if (this.index == this.endIndex) {
-        throw new CursorIndexOutOfBoundsException("No more columns left.");
+      if (this.index != this.endIndex)
+      {
+        Object[] arrayOfObject = MatrixCursor.this.data;
+        int i = this.index;
+        this.index = (i + 1);
+        arrayOfObject[i] = paramObject;
+        return this;
       }
-      Object[] arrayOfObject = MatrixCursor.this.data;
-      int i = this.index;
-      this.index = (i + 1);
-      arrayOfObject[i] = paramObject;
-      return this;
+      throw new CursorIndexOutOfBoundsException("No more columns left.");
     }
   }
 }

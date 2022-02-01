@@ -18,8 +18,6 @@ import android.view.animation.Animation;
 import android.widget.ListView;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class BackwardSupportUtil
 {
@@ -53,11 +51,11 @@ public class BackwardSupportUtil
     public static Bitmap decodeFile(String paramString, float paramFloat)
     {
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      paramFloat = 160.0F * paramFloat;
-      localOptions.inDensity = ((int)paramFloat);
+      int i = (int)(paramFloat * 160.0F);
+      localOptions.inDensity = i;
       paramString = BitmapFactory.decodeFile(paramString, localOptions);
       if (paramString != null) {
-        paramString.setDensity((int)paramFloat);
+        paramString.setDensity(i);
       }
       return paramString;
     }
@@ -73,7 +71,7 @@ public class BackwardSupportUtil
     public static Bitmap decodeStream(InputStream paramInputStream, float paramFloat)
     {
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inDensity = ((int)(160.0F * paramFloat));
+      localOptions.inDensity = ((int)(paramFloat * 160.0F));
       localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
       return BitmapFactory.decodeStream(paramInputStream, null, localOptions);
     }
@@ -82,30 +80,69 @@ public class BackwardSupportUtil
     {
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
       ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
-      return Math.round(localDisplayMetrics.densityDpi * paramFloat / 160.0F);
+      return Math.round(paramFloat * localDisplayMetrics.densityDpi / 160.0F);
     }
     
+    /* Error */
     public static Bitmap getBitmapFromURL(String paramString)
     {
-      try
-      {
-        Log.d("MicroMsg.SDK.BackwardSupportUtil", "get bitmap from url:" + paramString);
-        paramString = (HttpURLConnection)new URL(paramString).openConnection();
-        paramString.setDoInput(true);
-        paramString.connect();
-        paramString = paramString.getInputStream();
-        Bitmap localBitmap = decodeStream(paramString);
-        paramString.close();
-        return localBitmap;
-      }
-      catch (IOException paramString)
-      {
-        paramString = paramString;
-        Log.e("MicroMsg.SDK.BackwardSupportUtil", "get bitmap from url failed");
-        paramString.printStackTrace();
-        return null;
-      }
-      finally {}
+      // Byte code:
+      //   0: new 88	java/lang/StringBuilder
+      //   3: dup
+      //   4: ldc 90
+      //   6: invokespecial 93	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   9: astore_1
+      //   10: aload_1
+      //   11: aload_0
+      //   12: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   15: pop
+      //   16: ldc 99
+      //   18: aload_1
+      //   19: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   22: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+      //   25: new 111	java/net/URL
+      //   28: dup
+      //   29: aload_0
+      //   30: invokespecial 112	java/net/URL:<init>	(Ljava/lang/String;)V
+      //   33: invokevirtual 116	java/net/URL:openConnection	()Ljava/net/URLConnection;
+      //   36: checkcast 118	java/net/HttpURLConnection
+      //   39: astore_0
+      //   40: aload_0
+      //   41: iconst_1
+      //   42: invokevirtual 122	java/net/HttpURLConnection:setDoInput	(Z)V
+      //   45: aload_0
+      //   46: invokevirtual 125	java/net/HttpURLConnection:connect	()V
+      //   49: aload_0
+      //   50: invokevirtual 129	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+      //   53: astore_0
+      //   54: aload_0
+      //   55: invokestatic 131	com/tencent/mm/sdk/platformtools/BackwardSupportUtil$BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+      //   58: astore_1
+      //   59: aload_0
+      //   60: invokevirtual 136	java/io/InputStream:close	()V
+      //   63: aload_1
+      //   64: areturn
+      //   65: astore_0
+      //   66: goto +17 -> 83
+      //   69: astore_0
+      //   70: ldc 99
+      //   72: ldc 138
+      //   74: invokestatic 141	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   77: aload_0
+      //   78: invokevirtual 144	java/io/IOException:printStackTrace	()V
+      //   81: aconst_null
+      //   82: areturn
+      //   83: aload_0
+      //   84: athrow
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	85	0	paramString	String
+      //   9	55	1	localObject	Object
+      // Exception table:
+      //   from	to	target	type
+      //   0	63	65	finally
+      //   70	81	65	finally
+      //   0	63	69	java/io/IOException
     }
     
     public static String getDisplayDensityType(Context paramContext)
@@ -114,24 +151,37 @@ public class BackwardSupportUtil
       Configuration localConfiguration = paramContext.getResources().getConfiguration();
       if (((DisplayMetrics)localObject).density < 1.0F)
       {
-        paramContext = "" + "LDPI";
-        localObject = new StringBuilder().append(paramContext);
-        if (localConfiguration.orientation != 2) {
-          break label136;
-        }
+        paramContext = new StringBuilder();
+        paramContext.append("");
+        localObject = "LDPI";
       }
-      label136:
-      for (paramContext = "_L";; paramContext = "_P")
+      for (;;)
       {
-        return paramContext;
+        paramContext.append((String)localObject);
+        paramContext = paramContext.toString();
+        break;
         if (((DisplayMetrics)localObject).density >= 1.5F)
         {
-          paramContext = "" + "HDPI";
-          break;
+          paramContext = new StringBuilder();
+          paramContext.append("");
+          localObject = "HDPI";
         }
-        paramContext = "" + "MDPI";
-        break;
+        else
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("");
+          localObject = "MDPI";
+        }
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext);
+      if (localConfiguration.orientation == 2) {
+        paramContext = "_L";
+      } else {
+        paramContext = "_P";
+      }
+      ((StringBuilder)localObject).append(paramContext);
+      return ((StringBuilder)localObject).toString();
     }
   }
   
@@ -142,32 +192,36 @@ public class BackwardSupportUtil
       try
       {
         paramString = new ExifInterface(paramString);
-        int i;
-        if (paramString != null)
-        {
-          i = paramString.getAttributeInt("Orientation", -1);
-          if (i == -1) {}
-        }
-        switch (i)
-        {
-        case 4: 
-        case 5: 
-        case 7: 
-        default: 
-          return 0;
-        }
       }
       catch (IOException paramString)
       {
-        for (;;)
-        {
-          Log.e("MicroMsg.SDK.BackwardSupportUtil", "cannot read exif" + paramString);
-          paramString = null;
-        }
-        return 90;
+        StringBuilder localStringBuilder = new StringBuilder("cannot read exif");
+        localStringBuilder.append(paramString);
+        Log.e("MicroMsg.SDK.BackwardSupportUtil", localStringBuilder.toString());
+        paramString = null;
       }
-      return 180;
-      return 270;
+      if (paramString != null)
+      {
+        int i = paramString.getAttributeInt("Orientation", -1);
+        if (i != -1) {
+          if (i != 3)
+          {
+            if (i != 6)
+            {
+              if (i == 8) {
+                return 270;
+              }
+            }
+            else {
+              return 90;
+            }
+          }
+          else {
+            return 180;
+          }
+        }
+      }
+      return 0;
     }
   }
   

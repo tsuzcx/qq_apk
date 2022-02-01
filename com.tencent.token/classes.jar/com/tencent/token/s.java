@@ -8,15 +8,20 @@ final class s
 {
   public final void onDataConnectionStateChanged(int paramInt)
   {
-    b.a("DownloaderPhoneCallState", "onDataConnectionStateChanged, state:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder("onDataConnectionStateChanged, state:");
+    localStringBuilder.append(paramInt);
+    b.a("DownloaderPhoneCallState", localStringBuilder.toString());
     super.onDataConnectionStateChanged(paramInt);
-    if (paramInt == 3) {}
-    for (boolean bool = true;; bool = false)
-    {
-      r.a(bool);
-      b.a("DownloaderPhoneCallState", "sIsDataSuspend:" + r.c());
-      return;
+    boolean bool;
+    if (paramInt == 3) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    r.a(bool);
+    localStringBuilder = new StringBuilder("sIsDataSuspend:");
+    localStringBuilder.append(r.c());
+    b.a("DownloaderPhoneCallState", localStringBuilder.toString());
   }
 }
 

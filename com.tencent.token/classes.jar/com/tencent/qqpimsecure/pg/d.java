@@ -20,24 +20,24 @@ public class d
   
   private boolean a(int[] paramArrayOfInt)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
-      return false;
-    }
-    int j = paramArrayOfInt.length;
-    int i = 0;
-    for (;;)
+    if (paramArrayOfInt != null)
     {
-      if (i >= j) {
-        break label53;
+      if (paramArrayOfInt.length <= 0) {
+        return false;
       }
-      int k = paramArrayOfInt[i];
-      if (g.a().b(new int[] { k })[0] == 2) {
-        break;
+      int j = paramArrayOfInt.length;
+      int i = 0;
+      while (i < j)
+      {
+        int k = paramArrayOfInt[i];
+        if (g.a().b(new int[] { k })[0] == 2) {
+          return false;
+        }
+        i += 1;
       }
-      i += 1;
+      return true;
     }
-    label53:
-    return true;
+    return false;
   }
   
   public void a(int[] paramArrayOfInt, Activity paramActivity)
@@ -52,8 +52,9 @@ public class d
   
   public void b()
   {
-    if (this.a != null) {
-      b.a(this.a, true);
+    b localb = this.a;
+    if (localb != null) {
+      b.a(localb, true);
     }
   }
   
@@ -80,67 +81,75 @@ public class d
     @TargetApi(11)
     public void run()
     {
-      bn.b("AutoBackHelper", "manual-auto-back-thread start, thread id:" + Thread.currentThread().getId());
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("manual-auto-back-thread start, thread id:");
+      ((StringBuilder)localObject1).append(Thread.currentThread().getId());
+      bn.b("AutoBackHelper", ((StringBuilder)localObject1).toString());
       long l = System.currentTimeMillis();
       for (;;)
       {
         if ((!this.a) && (System.currentTimeMillis() - l < 60000L))
         {
-          int k = 1;
-          Object localObject = g.a().a(this.b);
-          bn.c("AutoBackHelper", "permissions:" + Arrays.toString(this.b));
-          bn.c("AutoBackHelper", "result:" + Arrays.toString((int[])localObject));
+          localObject1 = g.a().a(this.b);
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("permissions:");
+          ((StringBuilder)localObject2).append(Arrays.toString(this.b));
+          bn.c("AutoBackHelper", ((StringBuilder)localObject2).toString());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("result:");
+          ((StringBuilder)localObject2).append(Arrays.toString((int[])localObject1));
+          bn.c("AutoBackHelper", ((StringBuilder)localObject2).toString());
           int i;
-          if (localObject == null)
+          if (localObject1 == null)
           {
             i = 0;
-            if ((i == 0) || (this.a)) {
-              break label275;
-            }
-            bn.b("AutoBackHelper", "manual-auto-back-thread all permissions be granted");
-            if (this.c != null)
-            {
-              localObject = (Activity)this.c.get();
-              if (localObject != null)
-              {
-                ActivityManager localActivityManager = (ActivityManager)((Activity)localObject).getSystemService("activity");
-                if (localActivityManager != null) {
-                  localActivityManager.moveTaskToFront(((Activity)localObject).getTaskId(), 0);
-                }
-              }
-            }
           }
           else
           {
-            int m = localObject.length;
-            int j = 0;
+            int j = localObject1.length;
+            i = 0;
             for (;;)
             {
-              i = k;
-              if (j >= m) {
+              if (i >= j) {
+                break label190;
+              }
+              if (localObject1[i] != 0) {
                 break;
               }
-              if (localObject[j] != 0)
-              {
-                i = 0;
-                break;
-              }
-              j += 1;
+              i += 1;
             }
+            label190:
+            i = 1;
           }
-          bn.b("AutoBackHelper", "activity was recycled!!!");
-        }
-        else
-        {
-          bn.b("AutoBackHelper", "manual-auto-back-thread stop, thread id:" + Thread.currentThread().getId());
-          return;
+          if ((i != 0) && (!this.a))
+          {
+            bn.b("AutoBackHelper", "manual-auto-back-thread all permissions be granted");
+            localObject1 = this.c;
+            if (localObject1 != null)
+            {
+              localObject1 = (Activity)((WeakReference)localObject1).get();
+              if (localObject1 != null)
+              {
+                localObject2 = (ActivityManager)((Activity)localObject1).getSystemService("activity");
+                if (localObject2 != null) {
+                  ((ActivityManager)localObject2).moveTaskToFront(((Activity)localObject1).getTaskId(), 0);
+                }
+                return;
+              }
+            }
+            bn.b("AutoBackHelper", "activity was recycled!!!");
+          }
         }
         try
         {
-          label275:
           Thread.sleep(500L);
         }
         catch (Throwable localThrowable) {}
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("manual-auto-back-thread stop, thread id:");
+        ((StringBuilder)localObject1).append(Thread.currentThread().getId());
+        bn.b("AutoBackHelper", ((StringBuilder)localObject1).toString());
+        return;
       }
     }
   }

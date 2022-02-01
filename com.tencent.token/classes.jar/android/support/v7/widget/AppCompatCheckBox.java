@@ -38,9 +38,10 @@ public class AppCompatCheckBox
   public int getCompoundPaddingLeft()
   {
     int j = super.getCompoundPaddingLeft();
+    AppCompatCompoundButtonHelper localAppCompatCompoundButtonHelper = this.mCompoundButtonHelper;
     int i = j;
-    if (this.mCompoundButtonHelper != null) {
-      i = this.mCompoundButtonHelper.getCompoundPaddingLeft(j);
+    if (localAppCompatCompoundButtonHelper != null) {
+      i = localAppCompatCompoundButtonHelper.getCompoundPaddingLeft(j);
     }
     return i;
   }
@@ -49,8 +50,9 @@ public class AppCompatCheckBox
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public ColorStateList getSupportButtonTintList()
   {
-    if (this.mCompoundButtonHelper != null) {
-      return this.mCompoundButtonHelper.getSupportButtonTintList();
+    AppCompatCompoundButtonHelper localAppCompatCompoundButtonHelper = this.mCompoundButtonHelper;
+    if (localAppCompatCompoundButtonHelper != null) {
+      return localAppCompatCompoundButtonHelper.getSupportButtonTintList();
     }
     return null;
   }
@@ -59,8 +61,9 @@ public class AppCompatCheckBox
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public PorterDuff.Mode getSupportButtonTintMode()
   {
-    if (this.mCompoundButtonHelper != null) {
-      return this.mCompoundButtonHelper.getSupportButtonTintMode();
+    AppCompatCompoundButtonHelper localAppCompatCompoundButtonHelper = this.mCompoundButtonHelper;
+    if (localAppCompatCompoundButtonHelper != null) {
+      return localAppCompatCompoundButtonHelper.getSupportButtonTintMode();
     }
     return null;
   }
@@ -73,24 +76,27 @@ public class AppCompatCheckBox
   public void setButtonDrawable(Drawable paramDrawable)
   {
     super.setButtonDrawable(paramDrawable);
-    if (this.mCompoundButtonHelper != null) {
-      this.mCompoundButtonHelper.onSetButtonDrawable();
+    paramDrawable = this.mCompoundButtonHelper;
+    if (paramDrawable != null) {
+      paramDrawable.onSetButtonDrawable();
     }
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void setSupportButtonTintList(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.mCompoundButtonHelper != null) {
-      this.mCompoundButtonHelper.setSupportButtonTintList(paramColorStateList);
+    AppCompatCompoundButtonHelper localAppCompatCompoundButtonHelper = this.mCompoundButtonHelper;
+    if (localAppCompatCompoundButtonHelper != null) {
+      localAppCompatCompoundButtonHelper.setSupportButtonTintList(paramColorStateList);
     }
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void setSupportButtonTintMode(@Nullable PorterDuff.Mode paramMode)
   {
-    if (this.mCompoundButtonHelper != null) {
-      this.mCompoundButtonHelper.setSupportButtonTintMode(paramMode);
+    AppCompatCompoundButtonHelper localAppCompatCompoundButtonHelper = this.mCompoundButtonHelper;
+    if (localAppCompatCompoundButtonHelper != null) {
+      localAppCompatCompoundButtonHelper.setSupportButtonTintMode(paramMode);
     }
   }
 }

@@ -42,9 +42,11 @@ class MenuWrapperICS
   
   public int addIntentOptions(int paramInt1, int paramInt2, int paramInt3, ComponentName paramComponentName, Intent[] paramArrayOfIntent, Intent paramIntent, int paramInt4, MenuItem[] paramArrayOfMenuItem)
   {
-    MenuItem[] arrayOfMenuItem = null;
+    MenuItem[] arrayOfMenuItem;
     if (paramArrayOfMenuItem != null) {
       arrayOfMenuItem = new MenuItem[paramArrayOfMenuItem.length];
+    } else {
+      arrayOfMenuItem = null;
     }
     paramInt2 = ((SupportMenu)this.mWrappedObject).addIntentOptions(paramInt1, paramInt2, paramInt3, paramComponentName, paramArrayOfIntent, paramIntent, paramInt4, arrayOfMenuItem);
     if (arrayOfMenuItem != null)

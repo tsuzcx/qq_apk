@@ -19,15 +19,25 @@ final class g
         this.a.evaluateJavascript(this.c, null);
         return;
       }
-      catch (Exception localException)
+      catch (Error localError)
       {
-        util.LOGI("evaluateJavascript function can't use:" + Build.VERSION.SDK_INT + " message " + localException.getMessage(), "");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("evaluateJavascript function can't use:");
+        localStringBuilder.append(Build.VERSION.SDK_INT);
+        localStringBuilder.append(" message ");
+        localStringBuilder.append(localError.getMessage());
+        util.LOGI(localStringBuilder.toString(), "");
         this.a.loadUrl(this.c);
         return;
       }
-      catch (Error localError)
+      catch (Exception localException)
       {
-        util.LOGI("evaluateJavascript function can't use:" + Build.VERSION.SDK_INT + " message " + localError.getMessage(), "");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("evaluateJavascript function can't use:");
+        localStringBuilder.append(Build.VERSION.SDK_INT);
+        localStringBuilder.append(" message ");
+        localStringBuilder.append(localException.getMessage());
+        util.LOGI(localStringBuilder.toString(), "");
         this.a.loadUrl(this.c);
         return;
       }

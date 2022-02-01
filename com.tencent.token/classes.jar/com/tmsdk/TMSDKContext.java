@@ -35,27 +35,36 @@ public class TMSDKContext
   static final String TAG_LOG = "TMSDKContext";
   private static final String TCP_SERVER = "mazu.3g.qq.com";
   private static final String TCP_SERVER_TEST = "mazutest.3g.qq.com";
-  static AbsTMSConfig sAbsTMSConfig = null;
+  static AbsTMSConfig sAbsTMSConfig;
   
   public static void SaveStringData(int paramInt, String paramString)
   {
-    TmsLog.d("TMSDKContext", "SaveStringData, modelId:[" + paramInt + "]msg:[" + paramString + "]");
-    String str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SaveStringData, modelId:[");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("]msg:[");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("]");
+    TmsLog.d("TMSDKContext", ((StringBuilder)localObject).toString());
     if (paramString != null)
     {
-      str = paramString;
+      localObject = paramString;
       if (paramString.length() != 0) {}
     }
     else
     {
-      str = " ";
+      localObject = " ";
     }
-    TMSDKBaseContext.SaveStringData(paramInt, str);
+    TMSDKBaseContext.SaveStringData(paramInt, (String)localObject);
   }
   
   public static void c_c(int paramInt)
   {
-    TmsLog.d("TMSDKContext", "c_c, arg:[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("c_c, arg:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    TmsLog.d("TMSDKContext", localStringBuilder.toString());
   }
   
   public static boolean checkLicence()
@@ -78,73 +87,144 @@ public class TMSDKContext
     return "2.0.0 20190827163200";
   }
   
-  /* Error */
   public static boolean init(Context paramContext, AbsTMSConfig paramAbsTMSConfig)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: ldc 51
-    //   5: new 71	java/lang/StringBuilder
-    //   8: dup
-    //   9: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   12: ldc 125
-    //   14: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: aload_0
-    //   18: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   21: ldc 130
-    //   23: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: aload_1
-    //   27: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   30: ldc 85
-    //   32: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   38: invokestatic 95	com/tmsdk/common/util/TmsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   41: aload_0
-    //   42: ifnonnull +17 -> 59
-    //   45: ldc 51
-    //   47: ldc 132
-    //   49: invokestatic 135	com/tmsdk/common/util/TmsLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   52: iconst_0
-    //   53: istore_2
-    //   54: ldc 2
-    //   56: monitorexit
-    //   57: iload_2
-    //   58: ireturn
-    //   59: aload_1
-    //   60: ifnull +23 -> 83
-    //   63: aload_1
-    //   64: putstatic 63	com/tmsdk/TMSDKContext:sAbsTMSConfig	Lcom/tmsdk/AbsTMSConfig;
-    //   67: aload_0
-    //   68: new 8	com/tmsdk/TMSDKContext$2
-    //   71: dup
-    //   72: aload_0
-    //   73: invokespecial 138	com/tmsdk/TMSDKContext$2:<init>	(Landroid/content/Context;)V
-    //   76: invokestatic 141	com/tmsdk/base/TMSDKBaseContext:init	(Landroid/content/Context;Lcom/tmsdk/base/AbsTMSBaseConfig;)Z
-    //   79: istore_2
-    //   80: goto -26 -> 54
-    //   83: new 6	com/tmsdk/TMSDKContext$1
-    //   86: dup
-    //   87: invokespecial 142	com/tmsdk/TMSDKContext$1:<init>	()V
-    //   90: putstatic 63	com/tmsdk/TMSDKContext:sAbsTMSConfig	Lcom/tmsdk/AbsTMSConfig;
-    //   93: goto -26 -> 67
-    //   96: astore_0
-    //   97: ldc 2
-    //   99: monitorexit
-    //   100: aload_0
-    //   101: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	102	0	paramContext	Context
-    //   0	102	1	paramAbsTMSConfig	AbsTMSConfig
-    //   53	27	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   3	41	96	finally
-    //   45	52	96	finally
-    //   63	67	96	finally
-    //   67	80	96	finally
-    //   83	93	96	finally
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init, aContext:[");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("]aConfig:[");
+      localStringBuilder.append(paramAbsTMSConfig);
+      localStringBuilder.append("]");
+      TmsLog.d("TMSDKContext", localStringBuilder.toString());
+      if (paramContext == null)
+      {
+        TmsLog.w("TMSDKContext", "aContext is null");
+        return false;
+      }
+      if (paramAbsTMSConfig != null) {
+        sAbsTMSConfig = paramAbsTMSConfig;
+      } else {
+        sAbsTMSConfig = new AbsTMSConfig() {};
+      }
+      boolean bool = TMSDKBaseContext.init(paramContext, new AbsTMSBaseConfig()
+      {
+        public int getBuildNo()
+        {
+          return j.a;
+        }
+        
+        public String getChannel()
+        {
+          String str = l.m();
+          if ("0000".equals(str)) {
+            return "1001";
+          }
+          return str;
+        }
+        
+        public String getDeviceId1()
+        {
+          return l.b(this.val$aContext);
+        }
+        
+        public String getDeviceId2()
+        {
+          return l.c(this.val$aContext);
+        }
+        
+        public String getDeviceId3()
+        {
+          return TMSDKContext.sAbsTMSConfig.getDeviceId3();
+        }
+        
+        public String getDeviceId4()
+        {
+          return k.b();
+        }
+        
+        public String getLC()
+        {
+          return "C1D4CD9B6187E99C";
+        }
+        
+        public String getOpenIdTicket()
+        {
+          return k.c();
+        }
+        
+        public int getProductId()
+        {
+          return 115;
+        }
+        
+        public String getTCPServerAdd()
+        {
+          String str2 = TMSDKContext.sAbsTMSConfig.getServerAddress();
+          String str1 = str2;
+          if (TextUtils.isEmpty(str2)) {
+            str1 = "mazu.3g.qq.com";
+          }
+          return str1;
+        }
+        
+        public String getTccSoName()
+        {
+          return "Tcc-1.0.1";
+        }
+        
+        public String getVersion()
+        {
+          return j.b;
+        }
+        
+        public boolean isAllowAndroidID()
+        {
+          return ReleaseSetting.isAllowAndroidID();
+        }
+        
+        public boolean isAllowImei()
+        {
+          if (TextUtils.isEmpty(getDeviceId1())) {
+            return true;
+          }
+          return ReleaseSetting.isAllowImei();
+        }
+        
+        public boolean isAllowImsi()
+        {
+          return ReleaseSetting.isAllowImsi();
+        }
+        
+        public boolean isAllowMac()
+        {
+          return ReleaseSetting.isAllowMac();
+        }
+        
+        public boolean isAllowOther()
+        {
+          return ReleaseSetting.isAllowOther();
+        }
+        
+        public boolean isCheckLicence()
+        {
+          return ReleaseSetting.isCheckLicence();
+        }
+        
+        public boolean isJavaTCC()
+        {
+          return ReleaseSetting.isJavaTCC();
+        }
+        
+        public boolean isUseIPList()
+        {
+          return TMSDKContext.sAbsTMSConfig.isUseIPList();
+        }
+      });
+      return bool;
+    }
+    finally {}
   }
   
   public static boolean isInitialized()
@@ -154,7 +234,11 @@ public class TMSDKContext
   
   public static void saveActionData(int paramInt)
   {
-    TmsLog.d("TMSDKContext", "saveActionData, modelId:[" + paramInt + "])");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("saveActionData, modelId:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("])");
+    TmsLog.d("TMSDKContext", localStringBuilder.toString());
     TMSDKBaseContext.saveActionData(paramInt);
   }
   
@@ -165,7 +249,13 @@ public class TMSDKContext
   
   public static void setAutoConnectionSwitch(Context paramContext, boolean paramBoolean)
   {
-    TmsLog.d("TMSDKContext", "setAutoConnectionSwitch, aContext[" + paramContext + "]aAutoConnection:[" + paramBoolean + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setAutoConnectionSwitch, aContext[");
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append("]aAutoConnection:[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    TmsLog.d("TMSDKContext", localStringBuilder.toString());
     TMSDKBaseContext.setAutoConnectionSwitch(paramContext, paramBoolean);
   }
   

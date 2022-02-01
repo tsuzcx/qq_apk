@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import junit.framework.Assert;
 
 public abstract class MAutoStorage<T extends IAutoDBItem>
   extends MStorage
@@ -25,19 +24,20 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
     this.bS = paramISQLiteDatabase;
     this.bT = paramMAutoDBInfo;
     paramMAutoDBInfo = this.bT;
-    if (Util.isNullOrNil(this.bT.primaryKey)) {}
-    int i;
-    for (paramISQLiteDatabase = "rowid";; paramISQLiteDatabase = this.bT.primaryKey)
+    if (Util.isNullOrNil(paramMAutoDBInfo.primaryKey)) {
+      paramISQLiteDatabase = "rowid";
+    } else {
+      paramISQLiteDatabase = this.bT.primaryKey;
+    }
+    paramMAutoDBInfo.primaryKey = paramISQLiteDatabase;
+    this.bU = paramString;
+    paramISQLiteDatabase = getUpdateSQLs(this.bT, getTableName(), this.bS);
+    int j = 0;
+    int i = 0;
+    while (i < paramISQLiteDatabase.size())
     {
-      paramMAutoDBInfo.primaryKey = paramISQLiteDatabase;
-      this.bU = paramString;
-      paramISQLiteDatabase = getUpdateSQLs(this.bT, getTableName(), this.bS);
-      i = 0;
-      while (i < paramISQLiteDatabase.size())
-      {
-        this.bS.execSQL(this.bU, (String)paramISQLiteDatabase.get(i));
-        i += 1;
-      }
+      this.bS.execSQL(this.bU, (String)paramISQLiteDatabase.get(i));
+      i += 1;
     }
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
     {
@@ -52,27 +52,36 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
   
   private static StringBuilder a(ContentValues paramContentValues, String... paramVarArgs)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
+    StringBuilder localStringBuilder1 = new StringBuilder();
     int j = paramVarArgs.length;
     int i = 0;
     while (i < j)
     {
       String str = paramVarArgs[i];
-      localStringBuilder.append(str + " = ? AND ");
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(str);
+      localStringBuilder2.append(" = ? AND ");
+      localStringBuilder1.append(localStringBuilder2.toString());
       if (paramContentValues.get(str) == null) {
         return null;
       }
       i += 1;
     }
-    localStringBuilder.append(" 1=1");
-    return localStringBuilder;
+    localStringBuilder1.append(" 1=1");
+    return localStringBuilder1;
   }
   
   private boolean a(ContentValues paramContentValues)
   {
-    Cursor localCursor = this.bS.query(getTableName(), this.bT.columns, this.bT.primaryKey + " = ?", new String[] { Util.nullAsNil(paramContentValues.getAsString(this.bT.primaryKey)) }, null, null, null);
-    boolean bool = IAutoDBItem.checkIOEqual(paramContentValues, localCursor);
-    localCursor.close();
+    Object localObject = this.bS;
+    String str = getTableName();
+    String[] arrayOfString = this.bT.columns;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.bT.primaryKey);
+    localStringBuilder.append(" = ?");
+    localObject = ((ISQLiteDatabase)localObject).query(str, arrayOfString, localStringBuilder.toString(), new String[] { Util.nullAsNil(paramContentValues.getAsString(this.bT.primaryKey)) }, null, null, null);
+    boolean bool = IAutoDBItem.checkIOEqual(paramContentValues, (Cursor)localObject);
+    ((Cursor)localObject).close();
     return bool;
   }
   
@@ -90,28 +99,42 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
   
   private void f(String paramString)
   {
-    Log.d("MicroMsg.SDK.MAutoStorage", getTableName() + ":" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getTableName());
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramString);
+    Log.d("MicroMsg.SDK.MAutoStorage", localStringBuilder.toString());
   }
   
   private void g(String paramString)
   {
-    Log.e("MicroMsg.SDK.MAutoStorage", getTableName() + ":" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getTableName());
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramString);
+    Log.e("MicroMsg.SDK.MAutoStorage", localStringBuilder.toString());
   }
   
   public static String getCreateSQLs(IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("CREATE TABLE IF NOT EXISTS " + paramString + " ( ");
-    localStringBuilder.append(paramMAutoDBInfo.sql);
-    localStringBuilder.append(");");
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder2.append(paramString);
+    localStringBuilder2.append(" ( ");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(paramMAutoDBInfo.sql);
+    localStringBuilder1.append(");");
+    return localStringBuilder1.toString();
   }
   
   public static List<String> getUpdateSQLs(IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, ISQLiteDatabase paramISQLiteDatabase)
   {
     LinkedList localLinkedList = new LinkedList();
     HashMap localHashMap = new HashMap();
-    paramISQLiteDatabase = paramISQLiteDatabase.rawQuery("PRAGMA table_info( " + paramString + " )", new String[0]);
+    Object localObject1 = new StringBuilder("PRAGMA table_info( ");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(" )");
+    paramISQLiteDatabase = paramISQLiteDatabase.rawQuery(((StringBuilder)localObject1).toString(), new String[0]);
     if (paramISQLiteDatabase == null) {
       return localLinkedList;
     }
@@ -122,21 +145,37 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
     paramMAutoDBInfo = paramMAutoDBInfo.colsMap.entrySet().iterator();
     while (paramMAutoDBInfo.hasNext())
     {
-      Object localObject = (Map.Entry)paramMAutoDBInfo.next();
-      paramISQLiteDatabase = (String)((Map.Entry)localObject).getValue();
-      localObject = (String)((Map.Entry)localObject).getKey();
+      localObject1 = (Map.Entry)paramMAutoDBInfo.next();
+      paramISQLiteDatabase = (String)((Map.Entry)localObject1).getValue();
+      localObject1 = (String)((Map.Entry)localObject1).getKey();
       if ((paramISQLiteDatabase != null) && (paramISQLiteDatabase.length() > 0))
       {
-        String str = (String)localHashMap.get(localObject);
-        if (str == null)
+        Object localObject2 = (String)localHashMap.get(localObject1);
+        if (localObject2 == null)
         {
-          localLinkedList.add("ALTER TABLE " + paramString + " ADD COLUMN " + (String)localObject + " " + paramISQLiteDatabase + ";");
-          localHashMap.remove(localObject);
+          localObject2 = new StringBuilder("ALTER TABLE ");
+          ((StringBuilder)localObject2).append(paramString);
+          ((StringBuilder)localObject2).append(" ADD COLUMN ");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(" ");
+          ((StringBuilder)localObject2).append(paramISQLiteDatabase);
+          ((StringBuilder)localObject2).append(";");
+          localLinkedList.add(((StringBuilder)localObject2).toString());
         }
-        else if (!str.equalsIgnoreCase(paramISQLiteDatabase))
+        for (;;)
         {
-          Log.e("MicroMsg.SDK.MAutoStorage", "conflicting alter table on column: " + (String)localObject + ", " + str + "<o-n>" + paramISQLiteDatabase);
-          localHashMap.remove(localObject);
+          localHashMap.remove(localObject1);
+          break;
+          if (((String)localObject2).equalsIgnoreCase(paramISQLiteDatabase)) {
+            break;
+          }
+          StringBuilder localStringBuilder = new StringBuilder("conflicting alter table on column: ");
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append(", ");
+          localStringBuilder.append((String)localObject2);
+          localStringBuilder.append("<o-n>");
+          localStringBuilder.append(paramISQLiteDatabase);
+          Log.e("MicroMsg.SDK.MAutoStorage", localStringBuilder.toString());
         }
       }
     }
@@ -145,53 +184,58 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
   
   public boolean delete(long paramLong)
   {
-    boolean bool = true;
-    if (this.bS.delete(getTableName(), "rowid = ?", new String[] { String.valueOf(paramLong) }) > 0) {}
-    for (;;)
-    {
-      if (bool) {
-        notify();
-      }
-      return bool;
-      bool = false;
+    ISQLiteDatabase localISQLiteDatabase = this.bS;
+    String str = getTableName();
+    boolean bool = false;
+    if (localISQLiteDatabase.delete(str, "rowid = ?", new String[] { String.valueOf(paramLong) }) > 0) {
+      bool = true;
     }
+    if (bool) {
+      notify();
+    }
+    return bool;
   }
   
   public boolean delete(T paramT, String... paramVarArgs)
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
     paramT = paramT.convertTo();
-    if ((paramT == null) || (paramT.size() <= 0)) {
-      g("delete failed, value.size <= 0");
+    boolean bool = false;
+    Object localObject;
+    if ((paramT != null) && (paramT.size() > 0)) {
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+      {
+        localObject = a(paramT, paramVarArgs);
+        if (localObject == null) {
+          paramT = "delete failed, check keys failed";
+        }
+      }
     }
-    do
+    for (;;)
     {
-      return bool2;
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-        break;
-      }
-      f("delete with primary key");
-      if (this.bS.delete(getTableName(), this.bT.primaryKey + " = ?", new String[] { Util.nullAsNil(paramT.getAsString(this.bT.primaryKey)) }) > 0) {
-        bool1 = true;
-      }
-      bool2 = bool1;
-    } while (!bool1);
-    doNotify();
-    return bool1;
-    StringBuilder localStringBuilder = a(paramT, paramVarArgs);
-    if (localStringBuilder == null)
-    {
-      g("delete failed, check keys failed");
+      g(paramT);
       return false;
+      if (this.bS.delete(getTableName(), ((StringBuilder)localObject).toString(), a(paramVarArgs, paramT)) > 0)
+      {
+        doNotify(this.bT.primaryKey);
+        return true;
+      }
+      paramT = "delete failed";
+      continue;
+      f("delete with primary key");
+      paramVarArgs = this.bS;
+      localObject = getTableName();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.bT.primaryKey);
+      localStringBuilder.append(" = ?");
+      if (paramVarArgs.delete((String)localObject, localStringBuilder.toString(), new String[] { Util.nullAsNil(paramT.getAsString(this.bT.primaryKey)) }) > 0) {
+        bool = true;
+      }
+      if (bool) {
+        doNotify();
+      }
+      return bool;
+      paramT = "delete failed, value.size <= 0";
     }
-    if (this.bS.delete(getTableName(), localStringBuilder.toString(), a(paramVarArgs, paramT)) > 0)
-    {
-      doNotify(this.bT.primaryKey);
-      return true;
-    }
-    g("delete failed");
-    return false;
   }
   
   public boolean get(long paramLong, T paramT)
@@ -210,39 +254,41 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
   public boolean get(T paramT, String... paramVarArgs)
   {
     ContentValues localContentValues = paramT.convertTo();
-    if ((localContentValues == null) || (localContentValues.size() <= 0))
+    if ((localContentValues != null) && (localContentValues.size() > 0))
     {
-      g("get failed, value.size <= 0");
-      return false;
-    }
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
-    {
-      f("get with primary key");
-      paramVarArgs = this.bS.query(getTableName(), this.bT.columns, this.bT.primaryKey + " = ?", new String[] { Util.nullAsNil(localContentValues.getAsString(this.bT.primaryKey)) }, null, null, null);
-      if (paramVarArgs.moveToFirst())
+      Object localObject;
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+      {
+        localObject = a(localContentValues, paramVarArgs);
+        if (localObject == null)
+        {
+          g("get failed, check keys failed");
+          return false;
+        }
+        paramVarArgs = this.bS.query(getTableName(), this.bT.columns, ((StringBuilder)localObject).toString(), a(paramVarArgs, localContentValues), null, null, null);
+        if (!paramVarArgs.moveToFirst()) {}
+      }
+      do
       {
         paramT.convertFrom(paramVarArgs);
         paramVarArgs.close();
         return true;
-      }
+        paramVarArgs.close();
+        f("get failed, not found");
+        return false;
+        f("get with primary key");
+        paramVarArgs = this.bS;
+        localObject = getTableName();
+        String[] arrayOfString = this.bT.columns;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.bT.primaryKey);
+        localStringBuilder.append(" = ?");
+        paramVarArgs = paramVarArgs.query((String)localObject, arrayOfString, localStringBuilder.toString(), new String[] { Util.nullAsNil(localContentValues.getAsString(this.bT.primaryKey)) }, null, null, null);
+      } while (paramVarArgs.moveToFirst());
       paramVarArgs.close();
       return false;
     }
-    StringBuilder localStringBuilder = a(localContentValues, paramVarArgs);
-    if (localStringBuilder == null)
-    {
-      g("get failed, check keys failed");
-      return false;
-    }
-    paramVarArgs = this.bS.query(getTableName(), this.bT.columns, localStringBuilder.toString(), a(paramVarArgs, localContentValues), null, null, null);
-    if (paramVarArgs.moveToFirst())
-    {
-      paramT.convertFrom(paramVarArgs);
-      paramVarArgs.close();
-      return true;
-    }
-    paramVarArgs.close();
-    f("get failed, not found");
+    g("get failed, value.size <= 0");
     return false;
   }
   
@@ -253,13 +299,16 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
   
   public int getCount()
   {
+    Object localObject = new StringBuilder("select count(*) from ");
+    ((StringBuilder)localObject).append(getTableName());
+    localObject = ((StringBuilder)localObject).toString();
     int i = 0;
-    Cursor localCursor = rawQuery("select count(*) from " + getTableName(), new String[0]);
-    if (localCursor != null)
+    localObject = rawQuery((String)localObject, new String[0]);
+    if (localObject != null)
     {
-      localCursor.moveToFirst();
-      i = localCursor.getInt(0);
-      localCursor.close();
+      ((Cursor)localObject).moveToFirst();
+      i = ((Cursor)localObject).getInt(0);
+      ((Cursor)localObject).close();
     }
     return i;
   }
@@ -277,20 +326,19 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
   public boolean insert(T paramT)
   {
     ContentValues localContentValues = paramT.convertTo();
-    if ((localContentValues == null) || (localContentValues.size() <= 0))
+    if ((localContentValues != null) && (localContentValues.size() > 0))
     {
-      g("insert failed, value.size <= 0");
-      return false;
+      paramT.systemRowid = this.bS.insert(getTableName(), this.bT.primaryKey, localContentValues);
+      if (paramT.systemRowid > 0L) {}
     }
-    paramT.systemRowid = this.bS.insert(getTableName(), this.bT.primaryKey, localContentValues);
-    if (paramT.systemRowid <= 0L)
+    for (paramT = "insert failed";; paramT = "insert failed, value.size <= 0")
     {
-      g("insert failed");
+      g(paramT);
       return false;
+      localContentValues.put("rowid", Long.valueOf(paramT.systemRowid));
+      doNotify(localContentValues.getAsString(this.bT.primaryKey));
+      return true;
     }
-    localContentValues.put("rowid", Long.valueOf(paramT.systemRowid));
-    doNotify(localContentValues.getAsString(this.bT.primaryKey));
-    return true;
   }
   
   public Cursor rawQuery(String paramString, String... paramVarArgs)
@@ -300,120 +348,80 @@ public abstract class MAutoStorage<T extends IAutoDBItem>
   
   public boolean replace(T paramT)
   {
-    boolean bool;
-    ContentValues localContentValues;
-    int j;
-    int k;
-    if (!Util.isNullOrNil(this.bT.primaryKey))
-    {
-      bool = true;
-      Assert.assertTrue("replace primaryKey == null", bool);
-      localContentValues = paramT.convertTo();
-      if (localContentValues != null)
-      {
-        j = localContentValues.size();
-        k = paramT.getDBInfo().fields.length;
-        if (!localContentValues.containsKey("rowid")) {
-          break label86;
-        }
-      }
-    }
-    label86:
-    for (int i = 1;; i = 0)
-    {
-      if (j == i + k) {
-        break label91;
-      }
-      g("replace failed, cv.size() != item.fields().length");
-      return false;
-      bool = false;
-      break;
-    }
-    label91:
-    if (a(localContentValues))
-    {
-      f("no need replace , fields no change");
-      return true;
-    }
-    if (this.bS.replace(getTableName(), this.bT.primaryKey, localContentValues) > 0L)
-    {
-      doNotify(this.bT.primaryKey);
-      return true;
-    }
-    g("replace failed");
-    return false;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:632)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:632)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean update(long paramLong, T paramT)
   {
     paramT = paramT.convertTo();
-    boolean bool2;
-    if ((paramT == null) || (paramT.size() <= 0))
+    boolean bool = false;
+    if ((paramT != null) && (paramT.size() > 0))
     {
-      g("update failed, value.size <= 0");
-      bool2 = false;
-      return bool2;
-    }
-    Cursor localCursor = this.bS.query(getTableName(), this.bT.columns, "rowid = ?", new String[] { String.valueOf(paramLong) }, null, null, null);
-    if (IAutoDBItem.checkIOEqual(paramT, localCursor))
-    {
-      localCursor.close();
-      f("no need replace , fields no change");
-      return true;
-    }
-    localCursor.close();
-    if (this.bS.update(getTableName(), paramT, "rowid = ?", new String[] { String.valueOf(paramLong) }) > 0) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      bool2 = bool1;
-      if (!bool1) {
-        break;
+      Cursor localCursor = this.bS.query(getTableName(), this.bT.columns, "rowid = ?", new String[] { String.valueOf(paramLong) }, null, null, null);
+      if (IAutoDBItem.checkIOEqual(paramT, localCursor))
+      {
+        localCursor.close();
+        f("no need replace , fields no change");
+        return true;
       }
-      doNotify();
-      return bool1;
+      localCursor.close();
+      if (this.bS.update(getTableName(), paramT, "rowid = ?", new String[] { String.valueOf(paramLong) }) > 0) {
+        bool = true;
+      }
+      if (bool) {
+        doNotify();
+      }
+      return bool;
     }
+    g("update failed, value.size <= 0");
+    return false;
   }
   
   public boolean update(T paramT, String... paramVarArgs)
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
     paramT = paramT.convertTo();
-    if ((paramT == null) || (paramT.size() <= 0)) {
-      g("update failed, value.size <= 0");
-    }
-    do
-    {
-      return bool2;
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-        break;
+    boolean bool = false;
+    Object localObject;
+    if ((paramT != null) && (paramT.size() > 0)) {
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+      {
+        localObject = a(paramT, paramVarArgs);
+        if (localObject == null) {
+          paramT = "update failed, check keys failed";
+        }
       }
+    }
+    for (;;)
+    {
+      g(paramT);
+      return false;
+      if (this.bS.update(getTableName(), paramT, ((StringBuilder)localObject).toString(), a(paramVarArgs, paramT)) > 0)
+      {
+        doNotify(this.bT.primaryKey);
+        return true;
+      }
+      paramT = "update failed";
+      continue;
       f("update with primary key");
       if (a(paramT))
       {
         f("no need replace , fields no change");
         return true;
       }
-      if (this.bS.update(getTableName(), paramT, this.bT.primaryKey + " = ?", new String[] { Util.nullAsNil(paramT.getAsString(this.bT.primaryKey)) }) > 0) {
-        bool1 = true;
+      paramVarArgs = this.bS;
+      localObject = getTableName();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.bT.primaryKey);
+      localStringBuilder.append(" = ?");
+      if (paramVarArgs.update((String)localObject, paramT, localStringBuilder.toString(), new String[] { Util.nullAsNil(paramT.getAsString(this.bT.primaryKey)) }) > 0) {
+        bool = true;
       }
-      bool2 = bool1;
-    } while (!bool1);
-    doNotify();
-    return bool1;
-    StringBuilder localStringBuilder = a(paramT, paramVarArgs);
-    if (localStringBuilder == null)
-    {
-      g("update failed, check keys failed");
-      return false;
+      if (bool) {
+        doNotify();
+      }
+      return bool;
+      paramT = "update failed, value.size <= 0";
     }
-    if (this.bS.update(getTableName(), paramT, localStringBuilder.toString(), a(paramVarArgs, paramT)) > 0)
-    {
-      doNotify(this.bT.primaryKey);
-      return true;
-    }
-    g("update failed");
-    return false;
   }
 }
 

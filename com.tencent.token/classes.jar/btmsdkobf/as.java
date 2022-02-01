@@ -45,29 +45,37 @@ public final class as
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.bM, 0);
-    if (this.dc != 0) {
-      paramJceOutputStream.write(this.dc, 1);
+    int i = this.dc;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.dd != 0) {
-      paramJceOutputStream.write(this.dd, 2);
+    i = this.dd;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 3);
+    Object localObject = this.data;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 3);
     }
-    if (this.de != 0L) {
-      paramJceOutputStream.write(this.de, 4);
+    long l = this.de;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 4);
     }
-    if (this.df != 0) {
-      paramJceOutputStream.write(this.df, 5);
+    i = this.df;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
-    if (this.dg != 0) {
-      paramJceOutputStream.write(this.dg, 6);
+    i = this.dg;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 6);
     }
-    if (this.dh != null) {
-      paramJceOutputStream.write(this.dh, 7);
+    localObject = this.dh;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.di != 0) {
-      paramJceOutputStream.write(this.di, 8);
+    i = this.di;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 8);
     }
   }
 }

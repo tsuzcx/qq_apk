@@ -37,20 +37,29 @@ public class ProtoGetSMSChannel
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    String str2 = l.a(new Object[] { "seq_id", Integer.valueOf(this.k), "op_time", Long.valueOf(cc.c().s() / 1000L), "uin", Long.valueOf(this.f), "mobile", this.g, "area_code", this.j, "scene", Integer.valueOf(this.i), "is_mb_mobile", Integer.valueOf(this.h) });
-    if (str2 == null)
+    Object localObject = l.a(new Object[] { "seq_id", Integer.valueOf(this.k), "op_time", Long.valueOf(cc.c().s() / 1000L), "uin", Long.valueOf(this.f), "mobile", this.g, "area_code", this.j, "scene", Integer.valueOf(this.i), "is_mb_mobile", Integer.valueOf(this.h) });
+    if (localObject == null)
     {
       this.a.a(10000, "encrypt data failed");
       return null;
     }
-    str1 = "?aq_base_sid=" + str1 + "&data=" + str2;
-    return c.e() + "/cn/mbtoken3/mbtoken3_get_sms_port_v2" + str1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_get_sms_port_v2");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -72,15 +81,24 @@ public class ProtoGetSMSChannel
       return;
     }
     paramJSONObject = l.c(paramJSONObject.getString("data"));
+    StringBuilder localStringBuilder;
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      g.a("ProtoGetSMSChannel result =" + paramJSONObject);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ProtoGetSMSChannel result =");
+      localStringBuilder.append(paramJSONObject);
+      g.a(localStringBuilder.toString());
       m = paramJSONObject.getInt("seq_id");
       if (m != this.k)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + m + ",right = " + this.k);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(m);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.k);
+        g.c(paramJSONObject.toString());
         return;
       }
       d = paramJSONObject.getString("sms_port");
@@ -88,16 +106,19 @@ public class ProtoGetSMSChannel
     try
     {
       e = paramJSONObject.getString("sms_up_code");
-      label153:
+      label169:
       this.a.c();
       return;
-      g.c("parseJSON error decodeData=" + paramJSONObject);
-      a(10022, RqdApplication.l().getString(2131230925));
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseJSON error decodeData=");
+      localStringBuilder.append(paramJSONObject);
+      g.c(localStringBuilder.toString());
+      a(10022, RqdApplication.l().getString(2131493067));
       return;
     }
     catch (Exception paramJSONObject)
     {
-      break label153;
+      break label169;
     }
   }
 }

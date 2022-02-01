@@ -15,16 +15,6 @@ public final class RocketConf
   public int orbit = 0;
   public String pullwording = "";
   
-  static
-  {
-    if (!RocketConf.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public RocketConf() {}
   
   public RocketConf(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
@@ -43,29 +33,47 @@ public final class RocketConf
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (RocketConf)paramObject;
-    } while ((!JceUtil.equals(this.orbit, paramObject.orbit)) || (!JceUtil.equals(this.imageurl, paramObject.imageurl)) || (!JceUtil.equals(this.pullwording, paramObject.pullwording)) || (!JceUtil.equals(this.freewording, paramObject.freewording)) || (!JceUtil.equals(this.bestwording, paramObject.bestwording)));
-    return true;
+    }
+    paramObject = (RocketConf)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.orbit, paramObject.orbit))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.imageurl, paramObject.imageurl))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.pullwording, paramObject.pullwording))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.freewording, paramObject.freewording))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.bestwording, paramObject.bestwording)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

@@ -10,22 +10,25 @@ class WtloginHelper$1
   
   public void Done(Ticket paramTicket)
   {
-    if (this.val$promise != null) {
-      this.val$promise.Done(this.this$0.GetTicket(this.val$userAccount, this.val$appid, this.val$sigType, null, this.val$params));
+    paramTicket = this.val$promise;
+    if (paramTicket != null) {
+      paramTicket.Done(this.this$0.GetTicket(this.val$userAccount, this.val$appid, this.val$sigType, null, this.val$params));
     }
   }
   
   public void Failed(ErrMsg paramErrMsg)
   {
-    if (this.val$promise != null) {
-      this.val$promise.Failed(paramErrMsg);
+    WtTicketPromise localWtTicketPromise = this.val$promise;
+    if (localWtTicketPromise != null) {
+      localWtTicketPromise.Failed(paramErrMsg);
     }
   }
   
   public void Timeout(ErrMsg paramErrMsg)
   {
-    if (this.val$promise != null) {
-      this.val$promise.Timeout(paramErrMsg);
+    WtTicketPromise localWtTicketPromise = this.val$promise;
+    if (localWtTicketPromise != null) {
+      localWtTicketPromise.Timeout(paramErrMsg);
     }
   }
 }

@@ -9,19 +9,22 @@ public class h
   
   public h(r paramr)
   {
-    if (paramr == null) {
-      throw new IllegalArgumentException("delegate == null");
+    if (paramr != null)
+    {
+      this.a = paramr;
+      return;
     }
-    this.a = paramr;
+    throw new IllegalArgumentException("delegate == null");
   }
   
   public final h a(r paramr)
   {
-    if (paramr == null) {
-      throw new IllegalArgumentException("delegate == null");
+    if (paramr != null)
+    {
+      this.a = paramr;
+      return this;
     }
-    this.a = paramr;
-    return this;
+    throw new IllegalArgumentException("delegate == null");
   }
   
   public final r a()

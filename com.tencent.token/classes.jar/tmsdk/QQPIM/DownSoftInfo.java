@@ -118,31 +118,37 @@ public final class DownSoftInfo
     paramJceOutputStream.write(this.softkey, 10);
     paramJceOutputStream.write(this.categoryid, 11);
     paramJceOutputStream.write(this.pos, 12);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 13);
+    String str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
     paramJceOutputStream.write(this.errorcode, 14);
     paramJceOutputStream.write(this.downnettype, 15);
-    if (this.downnetname != null) {
-      paramJceOutputStream.write(this.downnetname, 16);
+    str = this.downnetname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 16);
     }
     paramJceOutputStream.write(this.reportnettype, 17);
-    if (this.reportnetname != null) {
-      paramJceOutputStream.write(this.reportnetname, 18);
+    str = this.reportnetname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 18);
     }
-    if (this.errormsg != null) {
-      paramJceOutputStream.write(this.errormsg, 19);
+    str = this.errormsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 19);
     }
     paramJceOutputStream.write(this.rssi, 20);
     paramJceOutputStream.write(this.sdcardstatus, 21);
     paramJceOutputStream.write(this.filesize, 22);
-    if (this.hostaddress != null) {
-      paramJceOutputStream.write(this.hostaddress, 23);
+    str = this.hostaddress;
+    if (str != null) {
+      paramJceOutputStream.write(str, 23);
     }
     paramJceOutputStream.write(this.isvalid, 24);
     paramJceOutputStream.write(this.Networkstandard, 25);
-    if (this.channelId != null) {
-      paramJceOutputStream.write(this.channelId, 26);
+    str = this.channelId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 26);
     }
   }
 }

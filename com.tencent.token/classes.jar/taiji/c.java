@@ -25,14 +25,17 @@ public final class c
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.a != null) {
-      paramJceOutputStream.write(this.a, 0);
+    String str = this.a;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.b != 0) {
-      paramJceOutputStream.write(this.b, 1);
+    int i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 2);
+    str = this.c;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }

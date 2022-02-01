@@ -18,21 +18,26 @@ public final class dv
   private dv(dv paramdv)
   {
     super(paramdv);
-    if (paramdv.f == null) {
+    int[] arrayOfInt = paramdv.f;
+    if (arrayOfInt == null)
+    {
       this.f = null;
     }
-    for (;;)
+    else
     {
-      this.e = new int[64];
-      return;
-      this.f = new int[paramdv.f.length];
-      System.arraycopy(paramdv.f, 0, this.f, 0, this.f.length);
+      this.f = new int[arrayOfInt.length];
+      paramdv = paramdv.f;
+      arrayOfInt = this.f;
+      System.arraycopy(paramdv, 0, arrayOfInt, 0, arrayOfInt.length);
     }
+    this.e = new int[64];
   }
   
   private static int a(int paramInt)
   {
-    return b(paramInt, 2) ^ b(paramInt, 13) ^ b(paramInt, 22);
+    int i = b(paramInt, 2);
+    int j = b(paramInt, 13);
+    return b(paramInt, 22) ^ i ^ j;
   }
   
   private static int a(int paramInt1, int paramInt2)
@@ -42,7 +47,7 @@ public final class dv
   
   private static int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    return paramInt1 & paramInt2 ^ (paramInt1 ^ 0xFFFFFFFF) & paramInt3;
+    return (paramInt1 ^ 0xFFFFFFFF) & paramInt3 ^ paramInt2 & paramInt1;
   }
   
   static void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
@@ -90,27 +95,33 @@ public final class dv
   
   private static int b(int paramInt)
   {
-    return b(paramInt, 6) ^ b(paramInt, 11) ^ b(paramInt, 25);
+    int i = b(paramInt, 6);
+    int j = b(paramInt, 11);
+    return b(paramInt, 25) ^ i ^ j;
   }
   
   private static int b(int paramInt1, int paramInt2)
   {
-    return paramInt1 >>> paramInt2 | paramInt1 << 32 - paramInt2;
+    return paramInt1 << 32 - paramInt2 | paramInt1 >>> paramInt2;
   }
   
   private static int b(int paramInt1, int paramInt2, int paramInt3)
   {
-    return paramInt1 & paramInt2 ^ paramInt1 & paramInt3 ^ paramInt2 & paramInt3;
+    return paramInt1 & paramInt3 ^ paramInt1 & paramInt2 ^ paramInt2 & paramInt3;
   }
   
   private static int c(int paramInt)
   {
-    return b(paramInt, 7) ^ b(paramInt, 18) ^ a(paramInt, 3);
+    int i = b(paramInt, 7);
+    int j = b(paramInt, 18);
+    return a(paramInt, 3) ^ i ^ j;
   }
   
   private static int d(int paramInt)
   {
-    return b(paramInt, 17) ^ b(paramInt, 19) ^ a(paramInt, 10);
+    int i = b(paramInt, 17);
+    int j = b(paramInt, 19);
+    return a(paramInt, 10) ^ i ^ j;
   }
   
   void a(byte[] paramArrayOfByte, int paramInt)
@@ -119,82 +130,75 @@ public final class dv
     paramInt = 16;
     while (paramInt < 64)
     {
-      this.e[paramInt] = (d(this.e[(paramInt - 2)]) + this.e[(paramInt - 7)] + c(this.e[(paramInt - 15)]) + this.e[(paramInt - 16)]);
+      paramArrayOfByte = this.e;
+      i = d(paramArrayOfByte[(paramInt - 2)]);
+      int[] arrayOfInt = this.e;
+      paramArrayOfByte[paramInt] = (i + arrayOfInt[(paramInt - 7)] + c(arrayOfInt[(paramInt - 15)]) + this.e[(paramInt - 16)]);
       paramInt += 1;
     }
-    paramInt = this.f[0];
-    int i = this.f[1];
-    int n = this.f[2];
-    int i1 = this.f[3];
-    int j = this.f[4];
-    int k = this.f[5];
-    int m = this.f[6];
-    int i3 = this.f[7];
+    paramArrayOfByte = this.f;
+    paramInt = paramArrayOfByte[0];
+    int i = paramArrayOfByte[1];
+    int j = paramArrayOfByte[2];
+    int i1 = paramArrayOfByte[3];
+    int m = paramArrayOfByte[4];
+    int k = paramArrayOfByte[5];
+    int n = paramArrayOfByte[6];
+    int i3 = paramArrayOfByte[7];
     int i2 = 0;
     while (i2 < 64)
     {
-      int i4 = b(j);
-      int i5 = a(j, k, m);
-      int i6 = d[i2];
-      i3 = this.e[i2] + (i3 + i4 + i5 + i6);
-      i4 = a(paramInt);
-      i5 = b(paramInt, i, n);
+      int i4 = i3 + b(m) + a(m, k, n) + d[i2] + this.e[i2];
+      int i5 = a(paramInt);
+      int i6 = b(paramInt, i, j);
       i2 += 1;
-      i1 += i3;
-      i4 = i3 + (i5 + i4);
-      i3 = m;
-      m = k;
-      k = j;
-      j = i1;
-      i1 = n;
-      n = i;
+      i3 = n;
+      n = k;
+      k = m;
+      m = i1 + i4;
+      i1 = j;
+      j = i;
       i = paramInt;
-      paramInt = i4;
+      paramInt = i4 + (i5 + i6);
     }
     paramArrayOfByte = this.f;
-    paramArrayOfByte[0] = (paramInt + paramArrayOfByte[0]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[1] = (i + paramArrayOfByte[1]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[2] = (n + paramArrayOfByte[2]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[3] = (i1 + paramArrayOfByte[3]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[4] = (j + paramArrayOfByte[4]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[5] = (k + paramArrayOfByte[5]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[6] = (m + paramArrayOfByte[6]);
-    paramArrayOfByte = this.f;
-    paramArrayOfByte[7] = (i3 + paramArrayOfByte[7]);
+    paramArrayOfByte[0] += paramInt;
+    paramArrayOfByte[1] += i;
+    paramArrayOfByte[2] += j;
+    paramArrayOfByte[3] += i1;
+    paramArrayOfByte[4] += m;
+    paramArrayOfByte[5] += k;
+    paramArrayOfByte[6] += n;
+    paramArrayOfByte[7] += i3;
   }
   
   void b(byte[] paramArrayOfByte, int paramInt)
   {
     long l = this.b << 3;
     int i = (int)this.b & 0x3F;
-    if (i >= 56) {}
-    for (i = 120 - i;; i = 56 - i)
-    {
-      a(c, 0, i);
-      a((int)(l >>> 32), this.a, 56);
-      a((int)l, this.a, 60);
-      a(this.a, 0);
-      a(this.f, 0, paramArrayOfByte, paramInt, 32);
-      return;
+    if (i >= 56) {
+      i = 120 - i;
+    } else {
+      i = 56 - i;
     }
+    a(c, 0, i);
+    a((int)(l >>> 32), this.a, 56);
+    a((int)l, this.a, 60);
+    a(this.a, 0);
+    a(this.f, 0, paramArrayOfByte, paramInt, 32);
   }
   
   void c()
   {
-    this.f[0] = 1779033703;
-    this.f[1] = -1150833019;
-    this.f[2] = 1013904242;
-    this.f[3] = -1521486534;
-    this.f[4] = 1359893119;
-    this.f[5] = -1694144372;
-    this.f[6] = 528734635;
-    this.f[7] = 1541459225;
+    int[] arrayOfInt = this.f;
+    arrayOfInt[0] = 1779033703;
+    arrayOfInt[1] = -1150833019;
+    arrayOfInt[2] = 1013904242;
+    arrayOfInt[3] = -1521486534;
+    arrayOfInt[4] = 1359893119;
+    arrayOfInt[5] = -1694144372;
+    arrayOfInt[6] = 528734635;
+    arrayOfInt[7] = 1541459225;
   }
   
   public Object clone()

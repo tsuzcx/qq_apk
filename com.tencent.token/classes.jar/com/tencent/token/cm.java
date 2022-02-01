@@ -13,16 +13,6 @@ public class cm
   private Handler d = null;
   private ew e = null;
   
-  static
-  {
-    if (!cm.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      c = bool;
-      return;
-    }
-  }
-  
   public cm()
   {
     d();
@@ -30,10 +20,11 @@ public class cm
   
   public void a()
   {
-    if (this.d == null) {
+    Handler localHandler = this.d;
+    if (localHandler == null) {
       return;
     }
-    this.d.sendEmptyMessage(10);
+    localHandler.sendEmptyMessage(10);
   }
   
   public void a(int paramInt)
@@ -83,10 +74,11 @@ public class cm
   
   public void b()
   {
-    if (this.d == null) {
+    Handler localHandler = this.d;
+    if (localHandler == null) {
       return;
     }
-    this.d.sendEmptyMessage(12);
+    localHandler.sendEmptyMessage(12);
   }
   
   public void b(int paramInt, String paramString)
@@ -118,10 +110,11 @@ public class cm
   
   public void c()
   {
-    if (this.d == null) {
+    Handler localHandler = this.d;
+    if (localHandler == null) {
       return;
     }
-    this.d.sendEmptyMessage(15);
+    localHandler.sendEmptyMessage(15);
   }
   
   public void c(String paramString)
@@ -145,15 +138,18 @@ public class cm
       if ((!c) && (this.e == null)) {
         throw new AssertionError();
       }
+      this.b = new ck(this);
+      this.b.a(this.e);
+      return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      g.c("RESULT_ERROR!!!" + localException.getMessage());
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RESULT_ERROR!!!");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
-    this.b = new ck(this);
-    this.b.a(this.e);
   }
 }
 

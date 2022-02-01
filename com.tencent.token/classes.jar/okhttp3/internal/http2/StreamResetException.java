@@ -9,7 +9,7 @@ public final class StreamResetException
   
   public StreamResetException(ErrorCode paramErrorCode)
   {
-    super("stream was reset: " + paramErrorCode);
+    super(localStringBuilder.toString());
     this.errorCode = paramErrorCode;
   }
 }

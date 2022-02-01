@@ -52,12 +52,13 @@ public abstract class CursorAdapter
   
   public CursorAdapter(Context paramContext, Cursor paramCursor, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      init(paramContext, paramCursor, i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    init(paramContext, paramCursor, i);
   }
   
   public abstract void bindView(View paramView, Context paramContext, Cursor paramCursor);
@@ -80,8 +81,12 @@ public abstract class CursorAdapter
   
   public int getCount()
   {
-    if ((this.mDataValid) && (this.mCursor != null)) {
-      return this.mCursor.getCount();
+    if (this.mDataValid)
+    {
+      Cursor localCursor = this.mCursor;
+      if (localCursor != null) {
+        return localCursor.getCount();
+      }
     }
     return 0;
   }
@@ -121,46 +126,53 @@ public abstract class CursorAdapter
   
   public Object getItem(int paramInt)
   {
-    if ((this.mDataValid) && (this.mCursor != null))
+    if (this.mDataValid)
     {
-      this.mCursor.moveToPosition(paramInt);
-      return this.mCursor;
+      Cursor localCursor = this.mCursor;
+      if (localCursor != null)
+      {
+        localCursor.moveToPosition(paramInt);
+        return this.mCursor;
+      }
     }
     return null;
   }
   
   public long getItemId(int paramInt)
   {
-    long l2 = 0L;
-    long l1 = l2;
     if (this.mDataValid)
     {
-      l1 = l2;
-      if (this.mCursor != null)
+      Cursor localCursor = this.mCursor;
+      if (localCursor != null)
       {
-        l1 = l2;
-        if (this.mCursor.moveToPosition(paramInt)) {
-          l1 = this.mCursor.getLong(this.mRowIDColumn);
+        if (localCursor.moveToPosition(paramInt)) {
+          return this.mCursor.getLong(this.mRowIDColumn);
         }
+        return 0L;
       }
     }
-    return l1;
+    return 0L;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (!this.mDataValid) {
-      throw new IllegalStateException("this should only be called when the cursor is valid");
+    if (this.mDataValid)
+    {
+      if (this.mCursor.moveToPosition(paramInt))
+      {
+        View localView = paramView;
+        if (paramView == null) {
+          localView = newView(this.mContext, this.mCursor, paramViewGroup);
+        }
+        bindView(localView, this.mContext, this.mCursor);
+        return localView;
+      }
+      paramView = new StringBuilder();
+      paramView.append("couldn't move cursor to position ");
+      paramView.append(paramInt);
+      throw new IllegalStateException(paramView.toString());
     }
-    if (!this.mCursor.moveToPosition(paramInt)) {
-      throw new IllegalStateException("couldn't move cursor to position " + paramInt);
-    }
-    View localView = paramView;
-    if (paramView == null) {
-      localView = newView(this.mContext, this.mCursor, paramViewGroup);
-    }
-    bindView(localView, this.mContext, this.mCursor);
-    return localView;
+    throw new IllegalStateException("this should only be called when the cursor is valid");
   }
   
   public boolean hasStableIds()
@@ -170,64 +182,62 @@ public abstract class CursorAdapter
   
   void init(Context paramContext, Cursor paramCursor, int paramInt)
   {
-    boolean bool = true;
-    label23:
-    int i;
+    boolean bool = false;
     if ((paramInt & 0x1) == 1)
     {
       paramInt |= 0x2;
       this.mAutoRequery = true;
-      if (paramCursor == null) {
-        break label139;
-      }
-      this.mCursor = paramCursor;
-      this.mDataValid = bool;
-      this.mContext = paramContext;
-      if (!bool) {
-        break label145;
-      }
-      i = paramCursor.getColumnIndexOrThrow("_id");
-      label54:
-      this.mRowIDColumn = i;
-      if ((paramInt & 0x2) != 2) {
-        break label151;
-      }
-      this.mChangeObserver = new ChangeObserver();
     }
-    for (this.mDataSetObserver = new MyDataSetObserver();; this.mDataSetObserver = null)
+    else
     {
-      if (bool)
-      {
-        if (this.mChangeObserver != null) {
-          paramCursor.registerContentObserver(this.mChangeObserver);
-        }
-        if (this.mDataSetObserver != null) {
-          paramCursor.registerDataSetObserver(this.mDataSetObserver);
-        }
-      }
-      return;
       this.mAutoRequery = false;
-      break;
-      label139:
-      bool = false;
-      break label23;
-      label145:
+    }
+    if (paramCursor != null) {
+      bool = true;
+    }
+    this.mCursor = paramCursor;
+    this.mDataValid = bool;
+    this.mContext = paramContext;
+    int i;
+    if (bool) {
+      i = paramCursor.getColumnIndexOrThrow("_id");
+    } else {
       i = -1;
-      break label54;
-      label151:
+    }
+    this.mRowIDColumn = i;
+    if ((paramInt & 0x2) == 2)
+    {
+      this.mChangeObserver = new ChangeObserver();
+      this.mDataSetObserver = new MyDataSetObserver();
+    }
+    else
+    {
       this.mChangeObserver = null;
+      this.mDataSetObserver = null;
+    }
+    if (bool)
+    {
+      paramContext = this.mChangeObserver;
+      if (paramContext != null) {
+        paramCursor.registerContentObserver(paramContext);
+      }
+      paramContext = this.mDataSetObserver;
+      if (paramContext != null) {
+        paramCursor.registerDataSetObserver(paramContext);
+      }
     }
   }
   
   @Deprecated
   protected void init(Context paramContext, Cursor paramCursor, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      init(paramContext, paramCursor, i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    init(paramContext, paramCursor, i);
   }
   
   public View newDropDownView(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
@@ -239,15 +249,20 @@ public abstract class CursorAdapter
   
   protected void onContentChanged()
   {
-    if ((this.mAutoRequery) && (this.mCursor != null) && (!this.mCursor.isClosed())) {
-      this.mDataValid = this.mCursor.requery();
+    if (this.mAutoRequery)
+    {
+      Cursor localCursor = this.mCursor;
+      if ((localCursor != null) && (!localCursor.isClosed())) {
+        this.mDataValid = this.mCursor.requery();
+      }
     }
   }
   
   public Cursor runQueryOnBackgroundThread(CharSequence paramCharSequence)
   {
-    if (this.mFilterQueryProvider != null) {
-      return this.mFilterQueryProvider.runQuery(paramCharSequence);
+    FilterQueryProvider localFilterQueryProvider = this.mFilterQueryProvider;
+    if (localFilterQueryProvider != null) {
+      return localFilterQueryProvider.runQuery(paramCharSequence);
     }
     return this.mCursor;
   }
@@ -259,27 +274,32 @@ public abstract class CursorAdapter
   
   public Cursor swapCursor(Cursor paramCursor)
   {
-    if (paramCursor == this.mCursor) {
+    Cursor localCursor = this.mCursor;
+    if (paramCursor == localCursor) {
       return null;
     }
-    Cursor localCursor = this.mCursor;
+    Object localObject;
     if (localCursor != null)
     {
-      if (this.mChangeObserver != null) {
-        localCursor.unregisterContentObserver(this.mChangeObserver);
+      localObject = this.mChangeObserver;
+      if (localObject != null) {
+        localCursor.unregisterContentObserver((ContentObserver)localObject);
       }
-      if (this.mDataSetObserver != null) {
-        localCursor.unregisterDataSetObserver(this.mDataSetObserver);
+      localObject = this.mDataSetObserver;
+      if (localObject != null) {
+        localCursor.unregisterDataSetObserver((DataSetObserver)localObject);
       }
     }
     this.mCursor = paramCursor;
     if (paramCursor != null)
     {
-      if (this.mChangeObserver != null) {
-        paramCursor.registerContentObserver(this.mChangeObserver);
+      localObject = this.mChangeObserver;
+      if (localObject != null) {
+        paramCursor.registerContentObserver((ContentObserver)localObject);
       }
-      if (this.mDataSetObserver != null) {
-        paramCursor.registerDataSetObserver(this.mDataSetObserver);
+      localObject = this.mDataSetObserver;
+      if (localObject != null) {
+        paramCursor.registerDataSetObserver((DataSetObserver)localObject);
       }
       this.mRowIDColumn = paramCursor.getColumnIndexOrThrow("_id");
       this.mDataValid = true;
@@ -318,14 +338,16 @@ public abstract class CursorAdapter
     
     public void onChanged()
     {
-      CursorAdapter.this.mDataValid = true;
-      CursorAdapter.this.notifyDataSetChanged();
+      CursorAdapter localCursorAdapter = CursorAdapter.this;
+      localCursorAdapter.mDataValid = true;
+      localCursorAdapter.notifyDataSetChanged();
     }
     
     public void onInvalidated()
     {
-      CursorAdapter.this.mDataValid = false;
-      CursorAdapter.this.notifyDataSetInvalidated();
+      CursorAdapter localCursorAdapter = CursorAdapter.this;
+      localCursorAdapter.mDataValid = false;
+      localCursorAdapter.notifyDataSetInvalidated();
     }
   }
 }

@@ -9,14 +9,15 @@ public class a
   {
     if (5 == paramInt)
     {
-      if (b == null) {}
-      synchronized (a)
-      {
-        if (b == null) {
-          b = new e(0L);
+      if (b == null) {
+        synchronized (a)
+        {
+          if (b == null) {
+            b = new e(0L);
+          }
         }
-        return b;
       }
+      return b;
     }
     return null;
   }

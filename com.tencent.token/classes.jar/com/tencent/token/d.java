@@ -8,14 +8,15 @@ public class d
   
   public static d a()
   {
-    if (b == null) {}
-    synchronized (a)
-    {
-      if (b == null) {
-        b = new d();
+    if (b == null) {
+      synchronized (a)
+      {
+        if (b == null) {
+          b = new d();
+        }
       }
-      return b;
     }
+    return b;
   }
   
   public a b()

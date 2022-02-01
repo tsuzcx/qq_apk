@@ -37,48 +37,49 @@ public class FontResourcesParserCompat
     {
       i = paramXmlPullParser.next();
     } while ((i != 2) && (i != 1));
-    if (i != 2) {
-      throw new XmlPullParserException("No start tag found");
+    if (i == 2) {
+      return readFamilies(paramXmlPullParser, paramResources);
     }
-    return readFamilies(paramXmlPullParser, paramResources);
+    throw new XmlPullParserException("No start tag found");
   }
   
   public static List<List<byte[]>> readCerts(Resources paramResources, @ArrayRes int paramInt)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    TypedArray localTypedArray;
+    Object localObject = null;
+    ArrayList localArrayList = null;
     if (paramInt != 0)
     {
-      localTypedArray = paramResources.obtainTypedArray(paramInt);
-      localObject1 = localObject2;
+      TypedArray localTypedArray = paramResources.obtainTypedArray(paramInt);
+      localObject = localArrayList;
       if (localTypedArray.length() > 0)
       {
-        localObject1 = new ArrayList();
-        if (localTypedArray.getResourceId(0, 0) != 0) {}
-        for (int i = 1;; i = 0)
+        localArrayList = new ArrayList();
+        int i;
+        if (localTypedArray.getResourceId(0, 0) != 0) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if (i != 0)
         {
-          if (i == 0) {
-            break label106;
-          }
           paramInt = 0;
-          while (paramInt < localTypedArray.length())
+          for (;;)
           {
-            ((List)localObject1).add(toByteArrayList(paramResources.getStringArray(localTypedArray.getResourceId(paramInt, 0))));
+            localObject = localArrayList;
+            if (paramInt >= localTypedArray.length()) {
+              break;
+            }
+            localArrayList.add(toByteArrayList(paramResources.getStringArray(localTypedArray.getResourceId(paramInt, 0))));
             paramInt += 1;
           }
         }
+        localArrayList.add(toByteArrayList(paramResources.getStringArray(paramInt)));
+        localObject = localArrayList;
       }
-    }
-    for (;;)
-    {
       localTypedArray.recycle();
-      if (localObject1 == null) {
-        break;
-      }
-      return localObject1;
-      label106:
-      ((List)localObject1).add(toByteArrayList(paramResources.getStringArray(paramInt)));
+    }
+    if (localObject != null) {
+      return localObject;
     }
     return Collections.emptyList();
   }
@@ -131,45 +132,32 @@ public class FontResourcesParserCompat
   private static FontFileResourceEntry readFont(XmlPullParser paramXmlPullParser, Resources paramResources)
   {
     paramResources = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), R.styleable.FontFamilyFont);
-    int j;
-    label49:
-    boolean bool;
-    if (paramResources.hasValue(R.styleable.FontFamilyFont_fontWeight))
-    {
+    if (paramResources.hasValue(R.styleable.FontFamilyFont_fontWeight)) {
       i = R.styleable.FontFamilyFont_fontWeight;
-      j = paramResources.getInt(i, 400);
-      if (!paramResources.hasValue(R.styleable.FontFamilyFont_fontStyle)) {
-        break label119;
-      }
-      i = R.styleable.FontFamilyFont_fontStyle;
-      if (1 != paramResources.getInt(i, 0)) {
-        break label126;
-      }
-      bool = true;
-      label62:
-      if (!paramResources.hasValue(R.styleable.FontFamilyFont_font)) {
-        break label132;
-      }
-    }
-    int k;
-    String str;
-    label132:
-    for (int i = R.styleable.FontFamilyFont_font;; i = R.styleable.FontFamilyFont_android_font)
-    {
-      k = paramResources.getResourceId(i, 0);
-      str = paramResources.getString(i);
-      paramResources.recycle();
-      while (paramXmlPullParser.next() != 3) {
-        skip(paramXmlPullParser);
-      }
+    } else {
       i = R.styleable.FontFamilyFont_android_fontWeight;
-      break;
-      label119:
+    }
+    int j = paramResources.getInt(i, 400);
+    if (paramResources.hasValue(R.styleable.FontFamilyFont_fontStyle)) {
+      i = R.styleable.FontFamilyFont_fontStyle;
+    } else {
       i = R.styleable.FontFamilyFont_android_fontStyle;
-      break label49;
-      label126:
+    }
+    int i = paramResources.getInt(i, 0);
+    boolean bool = true;
+    if (1 != i) {
       bool = false;
-      break label62;
+    }
+    if (paramResources.hasValue(R.styleable.FontFamilyFont_font)) {
+      i = R.styleable.FontFamilyFont_font;
+    } else {
+      i = R.styleable.FontFamilyFont_android_font;
+    }
+    int k = paramResources.getResourceId(i, 0);
+    String str = paramResources.getString(i);
+    paramResources.recycle();
+    while (paramXmlPullParser.next() != 3) {
+      skip(paramXmlPullParser);
     }
     return new FontFileResourceEntry(str, j, bool, k);
   }
@@ -182,11 +170,11 @@ public class FontResourcesParserCompat
       {
       default: 
         break;
-      case 2: 
-        i += 1;
-        break;
       case 3: 
         i -= 1;
+        break;
+      case 2: 
+        i += 1;
       }
     }
   }

@@ -7,20 +7,21 @@ public class cj
     int i = (paramByte & 0xF0) >>> 4;
     paramByte &= 0xF;
     char c1;
-    if (i > 9)
-    {
+    if (i > 9) {
       c1 = (char)(i - 10 + 65);
-      if (paramByte <= 9) {
-        break label77;
-      }
-    }
-    label77:
-    for (char c2 = (char)(paramByte - 10 + 65);; c2 = (char)(paramByte + 48))
-    {
-      return String.valueOf(c1) + String.valueOf(c2);
+    } else {
       c1 = (char)(i + 48);
-      break;
     }
+    char c2;
+    if (paramByte > 9) {
+      c2 = (char)(paramByte - 10 + 65);
+    } else {
+      c2 = (char)(paramByte + 48);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(c1));
+    localStringBuilder.append(String.valueOf(c2));
+    return localStringBuilder.toString();
   }
   
   public static String a(byte[] paramArrayOfByte)
@@ -42,205 +43,197 @@ public class cj
   public static String a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: aconst_null
-    //   4: astore 5
-    //   6: aconst_null
-    //   7: astore_3
-    //   8: ldc 44
-    //   10: astore 4
-    //   12: iload_2
-    //   13: iconst_2
-    //   14: iadd
-    //   15: newarray byte
-    //   17: astore 7
-    //   19: aload 7
-    //   21: iconst_0
-    //   22: iload_2
-    //   23: bipush 8
-    //   25: ishr
-    //   26: i2b
-    //   27: bastore
-    //   28: aload 7
-    //   30: iconst_1
-    //   31: iload_2
-    //   32: i2b
-    //   33: bastore
-    //   34: aload_0
-    //   35: iload_1
-    //   36: aload 7
-    //   38: iconst_2
-    //   39: iload_2
-    //   40: invokestatic 50	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   43: new 52	java/io/ByteArrayInputStream
-    //   46: dup
-    //   47: aload 7
-    //   49: invokespecial 55	java/io/ByteArrayInputStream:<init>	([B)V
-    //   52: astore_0
-    //   53: new 57	java/io/DataInputStream
-    //   56: dup
-    //   57: aload_0
-    //   58: invokespecial 60	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   61: astore_3
-    //   62: aload_3
-    //   63: invokevirtual 63	java/io/DataInputStream:readUTF	()Ljava/lang/String;
-    //   66: astore 5
+    //   0: ldc 44
+    //   2: astore 4
+    //   4: aconst_null
+    //   5: astore 6
+    //   7: aconst_null
+    //   8: astore 7
+    //   10: aconst_null
+    //   11: astore 5
+    //   13: iload_2
+    //   14: iconst_2
+    //   15: iadd
+    //   16: newarray byte
+    //   18: astore_3
+    //   19: aload_3
+    //   20: iconst_0
+    //   21: iload_2
+    //   22: bipush 8
+    //   24: ishr
+    //   25: i2b
+    //   26: bastore
+    //   27: aload_3
+    //   28: iconst_1
+    //   29: iload_2
+    //   30: i2b
+    //   31: bastore
+    //   32: aload_0
+    //   33: iload_1
+    //   34: aload_3
+    //   35: iconst_2
+    //   36: iload_2
+    //   37: invokestatic 50	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   40: new 52	java/io/ByteArrayInputStream
+    //   43: dup
+    //   44: aload_3
+    //   45: invokespecial 55	java/io/ByteArrayInputStream:<init>	([B)V
+    //   48: astore_0
+    //   49: new 57	java/io/DataInputStream
+    //   52: dup
+    //   53: aload_0
+    //   54: invokespecial 60	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   57: astore_3
+    //   58: aload_3
+    //   59: invokevirtual 63	java/io/DataInputStream:readUTF	()Ljava/lang/String;
+    //   62: astore 5
+    //   64: aload_3
+    //   65: invokevirtual 66	java/io/DataInputStream:close	()V
     //   68: aload 5
-    //   70: astore 4
-    //   72: aload_3
-    //   73: ifnull +7 -> 80
-    //   76: aload_3
-    //   77: invokevirtual 66	java/io/DataInputStream:close	()V
-    //   80: aload 4
-    //   82: astore_3
-    //   83: aload_0
-    //   84: ifnull +10 -> 94
-    //   87: aload_0
-    //   88: invokevirtual 67	java/io/ByteArrayInputStream:close	()V
-    //   91: aload 4
-    //   93: astore_3
-    //   94: aload_3
-    //   95: areturn
-    //   96: astore_0
-    //   97: aconst_null
-    //   98: astore 5
-    //   100: aload_3
-    //   101: astore_0
-    //   102: aload 5
-    //   104: astore_3
-    //   105: aload_3
-    //   106: ifnull +7 -> 113
-    //   109: aload_3
-    //   110: invokevirtual 66	java/io/DataInputStream:close	()V
-    //   113: aload 4
-    //   115: astore_3
-    //   116: aload_0
-    //   117: ifnull -23 -> 94
-    //   120: aload_0
-    //   121: invokevirtual 67	java/io/ByteArrayInputStream:close	()V
-    //   124: ldc 44
-    //   126: areturn
-    //   127: astore_0
-    //   128: ldc 44
-    //   130: areturn
-    //   131: astore_0
-    //   132: aconst_null
-    //   133: astore_0
-    //   134: aload 6
-    //   136: astore_3
-    //   137: aload_3
-    //   138: ifnull +7 -> 145
-    //   141: aload_3
-    //   142: invokevirtual 66	java/io/DataInputStream:close	()V
-    //   145: aload 4
-    //   147: astore_3
-    //   148: aload_0
-    //   149: ifnull -55 -> 94
-    //   152: aload_0
-    //   153: invokevirtual 67	java/io/ByteArrayInputStream:close	()V
-    //   156: ldc 44
-    //   158: areturn
-    //   159: astore_0
-    //   160: ldc 44
-    //   162: areturn
-    //   163: astore_3
-    //   164: aconst_null
-    //   165: astore_0
-    //   166: aload 5
-    //   168: astore 4
-    //   170: aload 4
-    //   172: ifnull +8 -> 180
-    //   175: aload 4
-    //   177: invokevirtual 66	java/io/DataInputStream:close	()V
-    //   180: aload_0
-    //   181: ifnull +7 -> 188
-    //   184: aload_0
-    //   185: invokevirtual 67	java/io/ByteArrayInputStream:close	()V
-    //   188: aload_3
-    //   189: athrow
-    //   190: astore_3
-    //   191: goto -111 -> 80
-    //   194: astore_0
-    //   195: aload 4
-    //   197: areturn
-    //   198: astore_3
-    //   199: goto -86 -> 113
-    //   202: astore_3
-    //   203: goto -58 -> 145
-    //   206: astore 4
-    //   208: goto -28 -> 180
+    //   70: astore_3
+    //   71: aload_0
+    //   72: invokevirtual 67	java/io/ByteArrayInputStream:close	()V
+    //   75: aload_3
+    //   76: areturn
+    //   77: astore 5
+    //   79: aload_3
+    //   80: astore 4
+    //   82: aload_0
+    //   83: astore_3
+    //   84: aload 5
+    //   86: astore_0
+    //   87: goto +42 -> 129
+    //   90: goto +67 -> 157
+    //   93: goto +90 -> 183
+    //   96: astore 6
+    //   98: aload 5
+    //   100: astore 4
+    //   102: aload_0
+    //   103: astore_3
+    //   104: aload 6
+    //   106: astore_0
+    //   107: goto +22 -> 129
+    //   110: aload 6
+    //   112: astore_3
+    //   113: goto +44 -> 157
+    //   116: aload 7
+    //   118: astore_3
+    //   119: goto +64 -> 183
+    //   122: astore_0
+    //   123: aconst_null
+    //   124: astore_3
+    //   125: aload 5
+    //   127: astore 4
+    //   129: aload 4
+    //   131: ifnull +11 -> 142
+    //   134: aload 4
+    //   136: invokevirtual 66	java/io/DataInputStream:close	()V
+    //   139: goto +3 -> 142
+    //   142: aload_3
+    //   143: ifnull +7 -> 150
+    //   146: aload_3
+    //   147: invokevirtual 67	java/io/ByteArrayInputStream:close	()V
+    //   150: aload_0
+    //   151: athrow
+    //   152: aconst_null
+    //   153: astore_0
+    //   154: aload 6
+    //   156: astore_3
+    //   157: aload_3
+    //   158: ifnull +10 -> 168
+    //   161: aload_3
+    //   162: invokevirtual 66	java/io/DataInputStream:close	()V
+    //   165: goto +3 -> 168
+    //   168: aload_0
+    //   169: ifnull +35 -> 204
+    //   172: aload 4
+    //   174: astore_3
+    //   175: goto -104 -> 71
+    //   178: aconst_null
+    //   179: astore_0
+    //   180: aload 7
+    //   182: astore_3
+    //   183: aload_3
+    //   184: ifnull +10 -> 194
+    //   187: aload_3
+    //   188: invokevirtual 66	java/io/DataInputStream:close	()V
+    //   191: goto +3 -> 194
+    //   194: aload_0
+    //   195: ifnull +9 -> 204
+    //   198: aload 4
+    //   200: astore_3
+    //   201: goto -130 -> 71
+    //   204: ldc 44
+    //   206: areturn
+    //   207: astore_0
+    //   208: goto -30 -> 178
     //   211: astore_0
-    //   212: goto -24 -> 188
+    //   212: goto -60 -> 152
     //   215: astore_3
-    //   216: aload 5
-    //   218: astore 4
-    //   220: goto -50 -> 170
+    //   216: goto -100 -> 116
+    //   219: astore_3
+    //   220: goto -110 -> 110
     //   223: astore 5
-    //   225: aload_3
-    //   226: astore 4
-    //   228: aload 5
-    //   230: astore_3
-    //   231: goto -61 -> 170
-    //   234: astore_3
-    //   235: aload 6
-    //   237: astore_3
-    //   238: goto -101 -> 137
-    //   241: astore 5
-    //   243: goto -106 -> 137
-    //   246: astore_3
-    //   247: aconst_null
+    //   225: goto -132 -> 93
+    //   228: astore 5
+    //   230: goto -140 -> 90
+    //   233: astore_3
+    //   234: aload 5
+    //   236: astore_3
+    //   237: goto -166 -> 71
+    //   240: astore_0
+    //   241: aload_3
+    //   242: areturn
+    //   243: astore 4
+    //   245: goto -103 -> 142
     //   248: astore_3
-    //   249: goto -144 -> 105
-    //   252: astore 5
-    //   254: goto -149 -> 105
+    //   249: goto -99 -> 150
+    //   252: astore_3
+    //   253: goto -85 -> 168
+    //   256: astore_3
+    //   257: goto -63 -> 194
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	257	0	paramArrayOfByte	byte[]
-    //   0	257	1	paramInt1	int
-    //   0	257	2	paramInt2	int
-    //   7	141	3	localObject1	Object
-    //   163	26	3	localObject2	Object
-    //   190	1	3	localIOException1	java.io.IOException
-    //   198	1	3	localIOException2	java.io.IOException
-    //   202	1	3	localIOException3	java.io.IOException
-    //   215	11	3	localObject3	Object
-    //   230	1	3	localObject4	Object
-    //   234	1	3	localException1	java.lang.Exception
-    //   237	1	3	localObject5	Object
-    //   246	1	3	localIOException4	java.io.IOException
-    //   248	1	3	localObject6	Object
-    //   10	186	4	str1	String
-    //   206	1	4	localIOException5	java.io.IOException
-    //   218	9	4	localObject7	Object
-    //   4	213	5	str2	String
-    //   223	6	5	localObject8	Object
-    //   241	1	5	localException2	java.lang.Exception
-    //   252	1	5	localIOException6	java.io.IOException
-    //   1	235	6	localObject9	Object
-    //   17	31	7	arrayOfByte	byte[]
+    //   0	260	0	paramArrayOfByte	byte[]
+    //   0	260	1	paramInt1	int
+    //   0	260	2	paramInt2	int
+    //   18	183	3	localObject1	Object
+    //   215	1	3	localIOException1	java.io.IOException
+    //   219	1	3	localException1	java.lang.Exception
+    //   233	1	3	localIOException2	java.io.IOException
+    //   236	6	3	localException2	java.lang.Exception
+    //   248	1	3	localIOException3	java.io.IOException
+    //   252	1	3	localIOException4	java.io.IOException
+    //   256	1	3	localIOException5	java.io.IOException
+    //   2	197	4	localObject2	Object
+    //   243	1	4	localIOException6	java.io.IOException
+    //   11	58	5	str	String
+    //   77	49	5	localObject3	Object
+    //   223	1	5	localIOException7	java.io.IOException
+    //   228	7	5	localException3	java.lang.Exception
+    //   5	1	6	localObject4	Object
+    //   96	59	6	localObject5	Object
+    //   8	173	7	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   12	19	96	java/io/IOException
-    //   34	53	96	java/io/IOException
-    //   120	124	127	java/io/IOException
-    //   12	19	131	java/lang/Exception
-    //   34	53	131	java/lang/Exception
-    //   152	156	159	java/io/IOException
-    //   12	19	163	finally
-    //   34	53	163	finally
-    //   76	80	190	java/io/IOException
-    //   87	91	194	java/io/IOException
-    //   109	113	198	java/io/IOException
-    //   141	145	202	java/io/IOException
-    //   175	180	206	java/io/IOException
-    //   184	188	211	java/io/IOException
-    //   53	62	215	finally
-    //   62	68	223	finally
-    //   53	62	234	java/lang/Exception
-    //   62	68	241	java/lang/Exception
-    //   53	62	246	java/io/IOException
-    //   62	68	252	java/io/IOException
+    //   58	64	77	finally
+    //   49	58	96	finally
+    //   13	19	122	finally
+    //   32	49	122	finally
+    //   13	19	207	java/io/IOException
+    //   32	49	207	java/io/IOException
+    //   13	19	211	java/lang/Exception
+    //   32	49	211	java/lang/Exception
+    //   49	58	215	java/io/IOException
+    //   49	58	219	java/lang/Exception
+    //   58	64	223	java/io/IOException
+    //   58	64	228	java/lang/Exception
+    //   64	68	233	java/io/IOException
+    //   71	75	240	java/io/IOException
+    //   134	139	243	java/io/IOException
+    //   146	150	248	java/io/IOException
+    //   161	165	252	java/io/IOException
+    //   187	191	256	java/io/IOException
   }
   
   public static short a(byte[] paramArrayOfByte, int paramInt)
@@ -276,47 +269,53 @@ public class cj
   {
     int i = paramString.length();
     Object localObject = paramString.toUpperCase();
-    if ((i % 2 != 0) || (i == 0)) {
-      return null;
-    }
-    int k = i / 2;
-    paramString = new byte[k];
-    localObject = ((String)localObject).toCharArray();
-    i = 0;
-    if (i < k)
+    if (i % 2 == 0)
     {
-      int j = localObject[(i * 2)];
-      int m = localObject[(i * 2 + 1)];
-      if ((j >= 48) && (j <= 57))
-      {
-        j = (j - 48 << 4) + 0;
-        label83:
-        if ((m < 48) || (m > 57)) {
-          break label146;
-        }
-        j += m - 48;
+      if (i == 0) {
+        return null;
       }
-      for (;;)
+      int k = i / 2;
+      paramString = new byte[k];
+      localObject = ((String)localObject).toCharArray();
+      i = 0;
+      while (i < k)
       {
+        int m = i * 2;
+        int j = localObject[m];
+        m = localObject[(m + 1)];
+        if ((j >= 48) && (j <= 57))
+        {
+          j = (j - 48 << 4) + 0;
+        }
+        else
+        {
+          if ((j < 65) || (j > 70)) {
+            break label177;
+          }
+          j = (j - 65 + 10 << 4) + 0;
+        }
+        if ((m >= 48) && (m <= 57))
+        {
+          j += m - 48;
+        }
+        else
+        {
+          if ((m < 65) || (m > 70)) {
+            break label175;
+          }
+          j += m - 65 + 10;
+        }
         paramString[i] = ((byte)j);
         i += 1;
-        break;
-        if ((j >= 65) && (j <= 70))
-        {
-          j = (j - 65 + 10 << 4) + 0;
-          break label83;
-        }
+        continue;
+        label175:
         return null;
-        label146:
-        if ((m < 65) || (m > 70)) {
-          break label174;
-        }
-        j += m - 65 + 10;
+        label177:
+        return null;
       }
-      label174:
-      return null;
+      return paramString;
     }
-    return paramString;
+    return null;
   }
   
   public static long b(byte[] paramArrayOfByte, int paramInt)
@@ -328,23 +327,22 @@ public class cj
   {
     int k = 0;
     int i = 0;
+    int j;
     for (;;)
     {
-      int j = k;
-      if (i < paramInt2)
-      {
-        if (paramArrayOfByte[(paramInt1 + i)] == 0) {
-          j = 1;
-        }
+      j = k;
+      if (i >= paramInt2) {
+        break;
       }
-      else
+      if (paramArrayOfByte[(paramInt1 + i)] == 0)
       {
-        if ((j == 0) || (i <= 0)) {
-          break;
-        }
-        return a(paramArrayOfByte, paramInt1, i);
+        j = 1;
+        break;
       }
       i += 1;
+    }
+    if ((j != 0) && (i > 0)) {
+      return a(paramArrayOfByte, paramInt1, i);
     }
     return "";
   }

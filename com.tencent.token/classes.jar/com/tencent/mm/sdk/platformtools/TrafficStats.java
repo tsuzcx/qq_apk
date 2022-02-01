@@ -20,38 +20,38 @@ public final class TrafficStats
   
   public static long getMobileRx(long paramLong)
   {
-    long l = paramLong;
-    if (bw > paramLong) {
-      l = bw;
+    long l = bw;
+    if (l > paramLong) {
+      return l;
     }
-    return l;
+    return paramLong;
   }
   
   public static long getMobileTx(long paramLong)
   {
-    long l = paramLong;
-    if (bv > paramLong) {
-      l = bv;
+    long l = bv;
+    if (l > paramLong) {
+      return l;
     }
-    return l;
+    return paramLong;
   }
   
   public static long getWifiRx(long paramLong)
   {
-    long l = paramLong;
-    if (by > paramLong) {
-      l = by;
+    long l = by;
+    if (l > paramLong) {
+      return l;
     }
-    return l;
+    return paramLong;
   }
   
   public static long getWifiTx(long paramLong)
   {
-    long l = paramLong;
-    if (bx > paramLong) {
-      l = bx;
+    long l = bx;
+    if (l > paramLong) {
+      return l;
     }
-    return l;
+    return paramLong;
   }
   
   public static void reset()
@@ -65,129 +65,135 @@ public final class TrafficStats
   
   public static void update()
   {
-    long l4 = 0L;
-    long l3 = 0L;
-    long l2 = 0L;
-    long l1 = 0L;
     for (;;)
     {
+      long l6;
+      long l7;
+      long l8;
       try
       {
-        localScanner = new Scanner(new File("/proc/" + Process.myPid() + "/net/dev"));
-        localScanner.nextLine();
-        localScanner.nextLine();
-        if (!localScanner.hasNext()) {
-          continue;
+        Object localObject = new StringBuilder("/proc/");
+        ((StringBuilder)localObject).append(Process.myPid());
+        ((StringBuilder)localObject).append("/net/dev");
+        localObject = new Scanner(new File(((StringBuilder)localObject).toString()));
+        ((Scanner)localObject).nextLine();
+        ((Scanner)localObject).nextLine();
+        l4 = 0L;
+        l3 = l4;
+        l2 = l3;
+        l1 = l2;
+        if (((Scanner)localObject).hasNext())
+        {
+          String[] arrayOfString = ((Scanner)localObject).nextLine().split("[ :\t]+");
+          if (arrayOfString[0].length() != 0) {
+            break label626;
+          }
+          i = 1;
+          l6 = l4;
+          l5 = l3;
+          if (!arrayOfString[0].equals("lo"))
+          {
+            l6 = l4;
+            l5 = l3;
+            if (arrayOfString[(i + 0)].startsWith("rmnet"))
+            {
+              l6 = l4 + Long.parseLong(arrayOfString[(i + 9)]);
+              l5 = l3 + Long.parseLong(arrayOfString[(i + 1)]);
+            }
+          }
+          int j = i + 0;
+          l7 = l2;
+          l8 = l1;
+          if (arrayOfString[j].equals("lo")) {
+            break label631;
+          }
+          l7 = l2;
+          l8 = l1;
+          if (arrayOfString[j].startsWith("rmnet")) {
+            break label631;
+          }
+          l7 = l2 + Long.parseLong(arrayOfString[(i + 9)]);
+          l8 = l1 + Long.parseLong(arrayOfString[(i + 1)]);
+          break label631;
         }
-        arrayOfString = localScanner.nextLine().split("[ :\t]+");
-        if (arrayOfString[0].length() != 0) {
-          continue;
+        ((Scanner)localObject).close();
+        if (br < 0L)
+        {
+          br = l4;
+          Log.v("MicroMsg.SDK.TrafficStats", "fix loss newMobileTx %d", new Object[] { Long.valueOf(l4) });
         }
-        i = 1;
+        if (bs < 0L)
+        {
+          bs = l3;
+          Log.v("MicroMsg.SDK.TrafficStats", "fix loss newMobileRx %d", new Object[] { Long.valueOf(l3) });
+        }
+        if (bt < 0L)
+        {
+          bt = l2;
+          Log.v("MicroMsg.SDK.TrafficStats", "fix loss newWifiTx %d", new Object[] { Long.valueOf(l2) });
+        }
+        if (bu < 0L)
+        {
+          bu = l1;
+          Log.v("MicroMsg.SDK.TrafficStats", "fix loss newWifiRx %d", new Object[] { Long.valueOf(l1) });
+        }
+        if (l1 - bu < 0L) {
+          Log.v("MicroMsg.SDK.TrafficStats", "minu %d", new Object[] { Long.valueOf(l1 - bu) });
+        }
+        if (l2 - bt < 0L) {
+          Log.v("MicroMsg.SDK.TrafficStats", "minu %d", new Object[] { Long.valueOf(l2 - bt) });
+        }
+        if (l4 < br) {
+          break label649;
+        }
+        l5 = l4 - br;
+        bv = l5;
+        if (l3 < bs) {
+          break label656;
+        }
+        l5 = l3 - bs;
+        bw = l5;
+        if (l2 < bt) {
+          break label663;
+        }
+        l5 = l2 - bt;
+        bx = l5;
+        if (l1 < bu) {
+          break label670;
+        }
+        l5 = l1 - bu;
+        by = l5;
+        br = l4;
+        bs = l3;
+        bt = l2;
+        bu = l1;
       }
       catch (Exception localException)
       {
-        Scanner localScanner;
-        String[] arrayOfString;
-        long l6;
-        long l5;
         localException.printStackTrace();
-        continue;
-        int i = 0;
-        continue;
       }
-      l6 = l3;
-      l5 = l4;
-      if (!arrayOfString[0].equals("lo"))
-      {
-        l6 = l3;
-        l5 = l4;
-        if (arrayOfString[(i + 0)].startsWith("rmnet"))
-        {
-          l5 = l4 + Long.parseLong(arrayOfString[(i + 9)]);
-          l6 = l3 + Long.parseLong(arrayOfString[(i + 1)]);
-        }
-      }
-      l3 = l6;
-      l4 = l5;
-      if (!arrayOfString[(i + 0)].equals("lo"))
-      {
-        l3 = l6;
-        l4 = l5;
-        if (!arrayOfString[(i + 0)].startsWith("rmnet"))
-        {
-          l2 += Long.parseLong(arrayOfString[(i + 9)]);
-          l1 += Long.parseLong(arrayOfString[(i + 1)]);
-          l3 = l6;
-          l4 = l5;
-        }
-      }
-    }
-    localScanner.close();
-    if (br < 0L)
-    {
-      br = l4;
-      Log.v("MicroMsg.SDK.TrafficStats", "fix loss newMobileTx %d", new Object[] { Long.valueOf(l4) });
-    }
-    if (bs < 0L)
-    {
-      bs = l3;
-      Log.v("MicroMsg.SDK.TrafficStats", "fix loss newMobileRx %d", new Object[] { Long.valueOf(l3) });
-    }
-    if (bt < 0L)
-    {
-      bt = l2;
-      Log.v("MicroMsg.SDK.TrafficStats", "fix loss newWifiTx %d", new Object[] { Long.valueOf(l2) });
-    }
-    if (bu < 0L)
-    {
-      bu = l1;
-      Log.v("MicroMsg.SDK.TrafficStats", "fix loss newWifiRx %d", new Object[] { Long.valueOf(l1) });
-    }
-    if (l1 - bu < 0L) {
-      Log.v("MicroMsg.SDK.TrafficStats", "minu %d", new Object[] { Long.valueOf(l1 - bu) });
-    }
-    if (l2 - bt < 0L) {
-      Log.v("MicroMsg.SDK.TrafficStats", "minu %d", new Object[] { Long.valueOf(l2 - bt) });
-    }
-    if (l4 >= br)
-    {
-      l5 = l4 - br;
-      bv = l5;
-      if (l3 < bs) {
-        break label594;
-      }
-      l5 = l3 - bs;
-      label476:
-      bw = l5;
-      if (l2 < bt) {
-        break label601;
-      }
-      l5 = l2 - bt;
-      label496:
-      bx = l5;
-      if (l1 < bu) {
-        break label607;
-      }
-    }
-    label594:
-    label601:
-    label607:
-    for (l5 = l1 - bu;; l5 = l1)
-    {
-      by = l5;
-      br = l4;
-      bs = l3;
-      bt = l2;
-      bu = l1;
       Log.d("MicroMsg.SDK.TrafficStats", "current system traffic: wifi rx/tx=%d/%d, mobile rx/tx=%d/%d", new Object[] { Long.valueOf(by), Long.valueOf(bx), Long.valueOf(bw), Long.valueOf(bv) });
       return;
-      l5 = l4;
-      break;
+      label626:
+      int i = 0;
+      continue;
+      label631:
+      long l4 = l6;
+      long l3 = l5;
+      long l2 = l7;
+      long l1 = l8;
+      continue;
+      label649:
+      long l5 = l4;
+      continue;
+      label656:
       l5 = l3;
-      break label476;
+      continue;
+      label663:
       l5 = l2;
-      break label496;
+      continue;
+      label670:
+      l5 = l1;
     }
   }
   

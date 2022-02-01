@@ -38,23 +38,17 @@ public class s
     if (paramInt < 1) {
       i = 1;
     }
-    int j = 0;
     paramInt = 0;
-    for (;;)
+    int j = 0;
+    while (paramInt < i)
     {
-      if (j < i)
-      {
-        paramInt = b(paramJceStruct);
-        if (paramInt == 0) {
-          paramInt = 0;
-        }
+      j = b(paramJceStruct);
+      if (j == 0) {
+        return 0;
       }
-      else
-      {
-        return paramInt;
-      }
-      j += 1;
+      paramInt += 1;
     }
+    return j;
   }
   
   public void a()
@@ -69,11 +63,13 @@ public class s
   
   public void a(long paramLong)
   {
-    if (this.f == paramLong) {}
-    while (this.h == null) {
+    if (this.f == paramLong) {
       return;
     }
-    this.h.a(paramLong);
+    b localb = this.h;
+    if (localb != null) {
+      localb.a(paramLong);
+    }
   }
   
   public void a(t paramt)
@@ -97,8 +93,9 @@ public class s
       this.h.b();
       return;
     }
-    if (this.h != null) {
-      this.h.d();
+    paramd = this.h;
+    if (paramd != null) {
+      paramd.d();
     }
     this.h = null;
   }
@@ -106,8 +103,12 @@ public class s
   public void b()
   {
     this.c.b();
-    if ((e()) && (this.h != null)) {
-      this.h.d();
+    if (e())
+    {
+      b localb = this.h;
+      if (localb != null) {
+        localb.d();
+      }
     }
   }
   

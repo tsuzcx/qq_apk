@@ -35,14 +35,17 @@ public final class stDetailPath
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.path, 0);
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 1);
+    String str = this.desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.importance != 0) {
-      paramJceOutputStream.write(this.importance, 2);
+    int i = this.importance;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.delDays != 0) {
-      paramJceOutputStream.write(this.delDays, 3);
+    i = this.delDays;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
   }
 }

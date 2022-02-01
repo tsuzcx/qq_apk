@@ -36,16 +36,13 @@ public abstract class a
     public final void a(Runnable paramRunnable)
     {
       if (paramRunnable == null) {}
-      for (;;)
+      try
       {
-        try
-        {
-          b.d("AsyncTaskHandlerAbs", "task runner should not be null");
-          return;
-        }
-        finally {}
-        this.a.execute(paramRunnable);
+        b.d("AsyncTaskHandlerAbs", "task runner should not be null");
+        return;
       }
+      finally {}
+      this.a.execute(paramRunnable);
     }
   }
 }

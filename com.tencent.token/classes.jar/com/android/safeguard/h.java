@@ -26,12 +26,20 @@ public class h
   {
     try
     {
-      this.a = (this.a + paramException.getMessage() + ":");
+      StringBuilder localStringBuilder = new StringBuilder(String.valueOf(this.a));
+      localStringBuilder.append(paramException.getMessage());
+      localStringBuilder.append(":");
+      this.a = localStringBuilder.toString();
       paramException = paramException.getStackTrace();
       if (paramException.length != 0)
       {
         paramException = paramException[0];
-        this.a = (this.a + paramException.getClassName() + "." + paramException.getMethodName() + "\n");
+        localStringBuilder = new StringBuilder(String.valueOf(this.a));
+        localStringBuilder.append(paramException.getClassName());
+        localStringBuilder.append(".");
+        localStringBuilder.append(paramException.getMethodName());
+        localStringBuilder.append("\n");
+        this.a = localStringBuilder.toString();
       }
       return;
     }
@@ -42,12 +50,20 @@ public class h
   {
     try
     {
-      this.a = (this.a + paramThrowable.getMessage() + ":");
+      StringBuilder localStringBuilder = new StringBuilder(String.valueOf(this.a));
+      localStringBuilder.append(paramThrowable.getMessage());
+      localStringBuilder.append(":");
+      this.a = localStringBuilder.toString();
       paramThrowable = paramThrowable.getStackTrace();
       if (paramThrowable.length != 0)
       {
         paramThrowable = paramThrowable[0];
-        this.a = (this.a + paramThrowable.getClassName() + "." + paramThrowable.getMethodName() + "\n");
+        localStringBuilder = new StringBuilder(String.valueOf(this.a));
+        localStringBuilder.append(paramThrowable.getClassName());
+        localStringBuilder.append(".");
+        localStringBuilder.append(paramThrowable.getMethodName());
+        localStringBuilder.append("\n");
+        this.a = localStringBuilder.toString();
       }
       return;
     }
@@ -58,8 +74,12 @@ public class h
   {
     try
     {
-      if (paramString.length() > 0) {
-        this.a = (this.a + paramString + "\n");
+      if (paramString.length() > 0)
+      {
+        StringBuilder localStringBuilder = new StringBuilder(String.valueOf(this.a));
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("\n");
+        this.a = localStringBuilder.toString();
       }
       return;
     }

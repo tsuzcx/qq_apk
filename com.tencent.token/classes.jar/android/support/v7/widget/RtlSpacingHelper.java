@@ -63,39 +63,29 @@ class RtlSpacingHelper
     {
       if (paramBoolean)
       {
-        if (this.mEnd != -2147483648)
-        {
-          i = this.mEnd;
-          this.mLeft = i;
-          if (this.mStart == -2147483648) {
-            break label72;
-          }
-        }
-        label72:
-        for (i = this.mStart;; i = this.mExplicitRight)
-        {
-          this.mRight = i;
-          return;
+        i = this.mEnd;
+        if (i == -2147483648) {
           i = this.mExplicitLeft;
-          break;
         }
-      }
-      if (this.mStart != -2147483648)
-      {
-        i = this.mStart;
         this.mLeft = i;
-        if (this.mEnd == -2147483648) {
-          break label127;
+        i = this.mStart;
+        if (i == -2147483648) {
+          i = this.mExplicitRight;
         }
-      }
-      label127:
-      for (int i = this.mEnd;; i = this.mExplicitRight)
-      {
         this.mRight = i;
         return;
-        i = this.mExplicitLeft;
-        break;
       }
+      int i = this.mStart;
+      if (i == -2147483648) {
+        i = this.mExplicitLeft;
+      }
+      this.mLeft = i;
+      i = this.mEnd;
+      if (i == -2147483648) {
+        i = this.mExplicitRight;
+      }
+      this.mRight = i;
+      return;
     }
     this.mLeft = this.mExplicitLeft;
     this.mRight = this.mExplicitRight;
@@ -115,14 +105,15 @@ class RtlSpacingHelper
         this.mRight = paramInt1;
       }
     }
-    do
+    else
     {
-      return;
       if (paramInt1 != -2147483648) {
         this.mLeft = paramInt1;
       }
-    } while (paramInt2 == -2147483648);
-    this.mRight = paramInt2;
+      if (paramInt2 != -2147483648) {
+        this.mRight = paramInt2;
+      }
+    }
   }
 }
 

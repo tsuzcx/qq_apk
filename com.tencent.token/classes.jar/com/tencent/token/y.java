@@ -18,8 +18,9 @@ public final class y
     synchronized (this.c)
     {
       LinkedList localLinkedList = this.b;
-      byte[] arrayOfByte = new byte[(int)paramLong2];
-      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, (int)paramLong2);
+      int i = (int)paramLong2;
+      byte[] arrayOfByte = new byte[i];
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, i);
       localLinkedList.addLast(new a(paramInt, paramLong1, arrayOfByte, paramLong2));
       this.a += paramLong2;
       return;

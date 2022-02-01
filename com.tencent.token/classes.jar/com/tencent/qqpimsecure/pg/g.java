@@ -1,6 +1,5 @@
 package com.tencent.qqpimsecure.pg;
 
-import Protocol.MGuide.MIntent;
 import Protocol.MGuide.MSolution;
 import Protocol.MMGRAuth.SolutionItem;
 import android.annotation.SuppressLint;
@@ -48,155 +47,188 @@ public class g
   
   private void a(ArrayList<Integer> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
-      return;
-    }
-    Object localObject = new SparseIntArray();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      switch (((Integer)paramArrayList.next()).intValue())
-      {
-      default: 
-        break;
-      case 30002: 
-        ((SparseIntArray)localObject).append(8, ((SparseIntArray)localObject).get(8) | 0x1);
-        break;
-      case 30010: 
-        ((SparseIntArray)localObject).append(2, ((SparseIntArray)localObject).get(2) | 0x1);
-        break;
-      case 30004: 
-        ((SparseIntArray)localObject).append(3, ((SparseIntArray)localObject).get(3) | 0x1);
-        break;
-      case 30017: 
-        ((SparseIntArray)localObject).append(4, ((SparseIntArray)localObject).get(4) | 0x1);
-        break;
-      case 30009: 
-        ((SparseIntArray)localObject).append(5, ((SparseIntArray)localObject).get(5) | 0x1);
-        break;
-      case 30007: 
-        ((SparseIntArray)localObject).append(6, ((SparseIntArray)localObject).get(6) | 0x1);
-        break;
-      case 30011: 
-        ((SparseIntArray)localObject).append(11, ((SparseIntArray)localObject).get(11) | 0x1);
-        break;
-      case 30012: 
-        ((SparseIntArray)localObject).append(14, ((SparseIntArray)localObject).get(14) | 0x1);
-        break;
-      case 30013: 
-        ((SparseIntArray)localObject).append(21, ((SparseIntArray)localObject).get(21) | 0x1);
-        break;
-      case 30014: 
-        ((SparseIntArray)localObject).append(24, ((SparseIntArray)localObject).get(24) | 0x1);
-        break;
-      case 30003: 
-        ((SparseIntArray)localObject).append(25, ((SparseIntArray)localObject).get(25) | 0x1);
-        break;
-      case 30015: 
-        ((SparseIntArray)localObject).append(27, ((SparseIntArray)localObject).get(27) | 0x1);
-        break;
-      case 30016: 
-        ((SparseIntArray)localObject).append(29, ((SparseIntArray)localObject).get(29) | 0x1);
-        break;
-      case 30019: 
-        ((SparseIntArray)localObject).append(30, ((SparseIntArray)localObject).get(30) | 0x1);
-        break;
-      case 30018: 
-        ((SparseIntArray)localObject).append(36, ((SparseIntArray)localObject).get(36) | 0x1);
-        break;
-      case 30020: 
-        ((SparseIntArray)localObject).append(38, ((SparseIntArray)localObject).get(38) | 0x1);
-        break;
-      case 30110: 
-        ((SparseIntArray)localObject).append(2, ((SparseIntArray)localObject).get(2) | 0x2);
-        e.a(this.g, 2);
-        break;
-      case 30104: 
-        ((SparseIntArray)localObject).append(3, ((SparseIntArray)localObject).get(3) | 0x2);
-        e.a(this.g, 3);
-        break;
-      case 30117: 
-        ((SparseIntArray)localObject).append(4, ((SparseIntArray)localObject).get(4) | 0x2);
-        e.a(this.g, 4);
-        break;
-      case 30109: 
-        ((SparseIntArray)localObject).append(5, ((SparseIntArray)localObject).get(5) | 0x2);
-        e.a(this.g, 5);
-        break;
-      case 30107: 
-        ((SparseIntArray)localObject).append(6, ((SparseIntArray)localObject).get(6) | 0x2);
-        e.a(this.g, 6);
-        break;
-      case 30102: 
-        ((SparseIntArray)localObject).append(8, ((SparseIntArray)localObject).get(8) | 0x2);
-        e.a(this.g, 8);
-        break;
-      case 30111: 
-        ((SparseIntArray)localObject).append(11, ((SparseIntArray)localObject).get(11) | 0x2);
-        e.a(this.g, 11);
-        break;
-      case 30112: 
-        ((SparseIntArray)localObject).append(14, ((SparseIntArray)localObject).get(14) | 0x2);
-        e.a(this.g, 14);
-        break;
-      case 30113: 
-        ((SparseIntArray)localObject).append(21, ((SparseIntArray)localObject).get(21) | 0x2);
-        e.a(this.g, 21);
-        break;
-      case 30114: 
-        ((SparseIntArray)localObject).append(24, ((SparseIntArray)localObject).get(24) | 0x2);
-        e.a(this.g, 24);
-        break;
-      case 30103: 
-        ((SparseIntArray)localObject).append(25, ((SparseIntArray)localObject).get(25) | 0x2);
-        e.a(this.g, 25);
-        break;
-      case 30115: 
-        ((SparseIntArray)localObject).append(27, ((SparseIntArray)localObject).get(27) | 0x2);
-        e.a(this.g, 27);
-        break;
-      case 30116: 
-        ((SparseIntArray)localObject).append(29, ((SparseIntArray)localObject).get(29) | 0x2);
-        e.a(this.g, 29);
-        break;
-      case 30119: 
-        ((SparseIntArray)localObject).append(30, ((SparseIntArray)localObject).get(30) | 0x2);
-        e.a(this.g, 30);
-        break;
-      case 30118: 
-        ((SparseIntArray)localObject).append(36, ((SparseIntArray)localObject).get(36) | 0x2);
-        e.a(this.g, 36);
-        break;
-      case 30120: 
-        ((SparseIntArray)localObject).append(38, ((SparseIntArray)localObject).get(38) | 0x2);
-        e.a(this.g, 38);
-      }
-    }
-    try
+    if (paramArrayList != null)
     {
-      if ((this.i != null) && (!this.i.isEmpty()))
+      if (paramArrayList.isEmpty()) {
+        return;
+      }
+      Object localObject1 = new SparseIntArray();
+      Object localObject2 = paramArrayList.iterator();
+      int k;
+      int j;
+      int m;
+      while (((Iterator)localObject2).hasNext())
       {
-        int k = ((SparseIntArray)localObject).size();
-        paramArrayList = new int[k];
-        int[] arrayOfInt = new int[k];
-        int j = 0;
-        while (j < k)
-        {
-          int m = ((SparseIntArray)localObject).keyAt(j);
-          paramArrayList[j] = m;
-          arrayOfInt[j] = ((SparseIntArray)localObject).get(m);
-          j += 1;
-        }
-        localObject = this.i.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          UpdateListener localUpdateListener = (UpdateListener)((Iterator)localObject).next();
-          if (localUpdateListener != null) {
-            localUpdateListener.onCallback(paramArrayList, arrayOfInt);
+        int n = ((Integer)((Iterator)localObject2).next()).intValue();
+        k = 6;
+        j = k;
+        if (n != 30007) {
+          if (n != 30107)
+          {
+            m = 3;
+            k = 25;
+            j = k;
           }
         }
+        switch (n)
+        {
+        default: 
+          switch (n)
+          {
+          default: 
+            switch (n)
+            {
+            default: 
+              switch (n)
+              {
+              default: 
+                break;
+              case 30120: 
+                ((SparseIntArray)localObject1).append(38, ((SparseIntArray)localObject1).get(38) | 0x2);
+                paramArrayList = this.g;
+                j = 38;
+                break;
+              case 30119: 
+                ((SparseIntArray)localObject1).append(30, ((SparseIntArray)localObject1).get(30) | 0x2);
+                paramArrayList = this.g;
+                j = 30;
+                break;
+              case 30118: 
+                ((SparseIntArray)localObject1).append(36, ((SparseIntArray)localObject1).get(36) | 0x2);
+                e.a(this.g, 36);
+                break;
+              case 30117: 
+                ((SparseIntArray)localObject1).append(4, ((SparseIntArray)localObject1).get(4) | 0x2);
+                e.a(this.g, 4);
+                break;
+              case 30116: 
+                ((SparseIntArray)localObject1).append(29, ((SparseIntArray)localObject1).get(29) | 0x2);
+                e.a(this.g, 29);
+                break;
+              case 30115: 
+                ((SparseIntArray)localObject1).append(27, ((SparseIntArray)localObject1).get(27) | 0x2);
+                e.a(this.g, 27);
+                break;
+              case 30114: 
+                ((SparseIntArray)localObject1).append(24, ((SparseIntArray)localObject1).get(24) | 0x2);
+                e.a(this.g, 24);
+                break;
+              case 30113: 
+                ((SparseIntArray)localObject1).append(21, ((SparseIntArray)localObject1).get(21) | 0x2);
+                e.a(this.g, 21);
+                break;
+              case 30112: 
+                ((SparseIntArray)localObject1).append(14, ((SparseIntArray)localObject1).get(14) | 0x2);
+                e.a(this.g, 14);
+                break;
+              case 30111: 
+                ((SparseIntArray)localObject1).append(11, ((SparseIntArray)localObject1).get(11) | 0x2);
+                e.a(this.g, 11);
+                break;
+              case 30110: 
+                ((SparseIntArray)localObject1).append(2, ((SparseIntArray)localObject1).get(2) | 0x2);
+                e.a(this.g, 2);
+                break;
+              case 30109: 
+                ((SparseIntArray)localObject1).append(5, ((SparseIntArray)localObject1).get(5) | 0x2);
+                e.a(this.g, 5);
+              }
+              break;
+            case 30104: 
+              ((SparseIntArray)localObject1).append(3, ((SparseIntArray)localObject1).get(3) | 0x2);
+              paramArrayList = this.g;
+              j = m;
+              e.a(paramArrayList, j);
+              break;
+            case 30103: 
+              ((SparseIntArray)localObject1).append(k, ((SparseIntArray)localObject1).get(k) | 0x2);
+              e.a(this.g, k);
+              break;
+            case 30102: 
+              ((SparseIntArray)localObject1).append(8, ((SparseIntArray)localObject1).get(8) | 0x2);
+              e.a(this.g, 8);
+            }
+            break;
+          case 30020: 
+            j = 38;
+            k = 38;
+            break;
+          case 30019: 
+            j = 30;
+            k = 30;
+            k = ((SparseIntArray)localObject1).get(k);
+            break;
+          case 30018: 
+            ((SparseIntArray)localObject1).append(36, ((SparseIntArray)localObject1).get(36) | 0x1);
+            break;
+          case 30017: 
+            ((SparseIntArray)localObject1).append(4, ((SparseIntArray)localObject1).get(4) | 0x1);
+            break;
+          case 30016: 
+            ((SparseIntArray)localObject1).append(29, ((SparseIntArray)localObject1).get(29) | 0x1);
+            break;
+          case 30015: 
+            ((SparseIntArray)localObject1).append(27, ((SparseIntArray)localObject1).get(27) | 0x1);
+            break;
+          case 30014: 
+            ((SparseIntArray)localObject1).append(24, ((SparseIntArray)localObject1).get(24) | 0x1);
+            break;
+          case 30013: 
+            ((SparseIntArray)localObject1).append(21, ((SparseIntArray)localObject1).get(21) | 0x1);
+            break;
+          case 30012: 
+            ((SparseIntArray)localObject1).append(14, ((SparseIntArray)localObject1).get(14) | 0x1);
+            break;
+          case 30011: 
+            ((SparseIntArray)localObject1).append(11, ((SparseIntArray)localObject1).get(11) | 0x1);
+            break;
+          case 30010: 
+            ((SparseIntArray)localObject1).append(2, ((SparseIntArray)localObject1).get(2) | 0x1);
+            break;
+          case 30009: 
+            ((SparseIntArray)localObject1).append(5, ((SparseIntArray)localObject1).get(5) | 0x1);
+          }
+          break;
+        case 30004: 
+          ((SparseIntArray)localObject1).append(3, ((SparseIntArray)localObject1).get(3) | 0x1);
+          break;
+        case 30003: 
+          ((SparseIntArray)localObject1).append(j, ((SparseIntArray)localObject1).get(j) | 0x1);
+          break;
+        case 30002: 
+          j = 8;
+          k = ((SparseIntArray)localObject1).get(8);
+          ((SparseIntArray)localObject1).append(j, k | 0x1);
+        }
       }
+      try
+      {
+        if ((this.i != null) && (!this.i.isEmpty()))
+        {
+          k = ((SparseIntArray)localObject1).size();
+          paramArrayList = new int[k];
+          localObject2 = new int[k];
+          j = 0;
+          while (j < k)
+          {
+            m = ((SparseIntArray)localObject1).keyAt(j);
+            paramArrayList[j] = m;
+            localObject2[j] = ((SparseIntArray)localObject1).get(m);
+            j += 1;
+          }
+          localObject1 = this.i.iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            UpdateListener localUpdateListener = (UpdateListener)((Iterator)localObject1).next();
+            if (localUpdateListener != null) {
+              localUpdateListener.onCallback(paramArrayList, (int[])localObject2);
+            }
+          }
+        }
+        return;
+      }
+      finally {}
     }
-    finally {}
   }
   
   private void a(int[] paramArrayOfInt, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3, RequestCallback paramRequestCallback)
@@ -217,9 +249,11 @@ public class g
   
   public int a(int paramInt)
   {
-    int j = 0;
+    int j;
     if (b.a(this.g, paramInt) != null) {
       j = 1;
+    } else {
+      j = 0;
     }
     int k = j;
     if (e.a(this.g, paramInt) != null) {
@@ -230,28 +264,7 @@ public class g
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    Context localContext = null;
-    MSolution localMSolution = e.a(this.g, paramInt);
-    Object localObject = localContext;
-    if (localMSolution != null)
-    {
-      localObject = localContext;
-      if (localMSolution.mJumpIntent != null)
-      {
-        localObject = localContext;
-        if (localMSolution.mJumpIntent.mPackage != null) {
-          localObject = localMSolution.mJumpIntent.mPackage;
-        }
-      }
-    }
-    localContext = this.g;
-    int k = bg.b(paramInt);
-    if (paramBoolean) {}
-    for (int j = 1;; j = 0)
-    {
-      a.a(localContext, k, j, f.c(this.g, paramInt), 0, (String)localObject);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void a(Application paramApplication)
@@ -363,29 +376,35 @@ public class g
   
   public int[] a(int... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return null;
-    }
-    int[] arrayOfInt = new int[paramVarArgs.length];
-    int j = 0;
-    while (j < paramVarArgs.length)
+    if ((paramVarArgs != null) && (paramVarArgs.length != 0))
     {
-      arrayOfInt[j] = this.a.checkPermission(paramVarArgs[j]);
-      bn.b("PermissionCheckResultDetail", "permission " + paramVarArgs[j] + " result " + arrayOfInt[j]);
-      if (arrayOfInt[j] != 0)
+      int[] arrayOfInt = new int[paramVarArgs.length];
+      int j = 0;
+      while (j < paramVarArgs.length)
       {
-        final int k = paramVarArgs[j];
-        this.h.post(new Runnable()
+        arrayOfInt[j] = this.a.checkPermission(paramVarArgs[j]);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("permission ");
+        localStringBuilder.append(paramVarArgs[j]);
+        localStringBuilder.append(" result ");
+        localStringBuilder.append(arrayOfInt[j]);
+        bn.b("PermissionCheckResultDetail", localStringBuilder.toString());
+        if (arrayOfInt[j] != 0)
         {
-          public void run()
+          final int k = paramVarArgs[j];
+          this.h.post(new Runnable()
           {
-            g.this.a(k);
-          }
-        });
+            public void run()
+            {
+              g.this.a(k);
+            }
+          });
+        }
+        j += 1;
       }
-      j += 1;
+      return arrayOfInt;
     }
-    return arrayOfInt;
+    return null;
   }
   
   public long b(int paramInt)
@@ -410,18 +429,24 @@ public class g
   
   int[] b(int... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return null;
-    }
-    int[] arrayOfInt = new int[paramVarArgs.length];
-    int j = 0;
-    while (j < paramVarArgs.length)
+    if ((paramVarArgs != null) && (paramVarArgs.length != 0))
     {
-      arrayOfInt[j] = this.a.checkPermission(paramVarArgs[j]);
-      bn.b("PermissionCheckResultDetail", "permission " + paramVarArgs[j] + " result " + arrayOfInt[j]);
-      j += 1;
+      int[] arrayOfInt = new int[paramVarArgs.length];
+      int j = 0;
+      while (j < paramVarArgs.length)
+      {
+        arrayOfInt[j] = this.a.checkPermission(paramVarArgs[j]);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("permission ");
+        localStringBuilder.append(paramVarArgs[j]);
+        localStringBuilder.append(" result ");
+        localStringBuilder.append(arrayOfInt[j]);
+        bn.b("PermissionCheckResultDetail", localStringBuilder.toString());
+        j += 1;
+      }
+      return arrayOfInt;
     }
-    return arrayOfInt;
+    return null;
   }
   
   public long c(int paramInt)

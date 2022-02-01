@@ -18,10 +18,7 @@ public class FileOP
     if (paramInt4 < 2000) {
       paramInt4 = 0;
     }
-    for (;;)
-    {
-      return dz.check(paramInt1, paramString, paramInt3, paramInt2, paramArrayOfByte, paramInt4);
-    }
+    return dz.check(paramInt1, paramString, paramInt3, paramInt2, paramArrayOfByte, paramInt4);
   }
   
   public static boolean copyFile(File paramFile1, File paramFile2)
@@ -47,7 +44,7 @@ public class FileOP
   public static List<String> getStoragePathList()
   {
     StorageManager localStorageManager = (StorageManager)TMSDKBaseContext.getApplicationContext().getSystemService("storage");
-    localArrayList = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     try
     {
       Object[] arrayOfObject = (Object[])localStorageManager.getClass().getMethod("getVolumeList", new Class[0]).invoke(localStorageManager, new Object[0]);
@@ -71,6 +68,7 @@ public class FileOP
       return localArrayList;
     }
     catch (Throwable localThrowable) {}
+    return localArrayList;
   }
   
   public static CommList loadWupObjectFromFile(String paramString1, String paramString2)
@@ -80,39 +78,33 @@ public class FileOP
   
   public static boolean traverseFolder(String paramString, FileFilter paramFileFilter, IFoundListener paramIFoundListener)
   {
-    boolean bool2 = true;
     paramString = new File(paramString);
     if ((paramString.exists()) && (paramIFoundListener != null))
     {
       paramString = paramString.listFiles(paramFileFilter);
-      boolean bool1;
-      if ((paramString == null) || (paramString.length == 0)) {
-        bool1 = false;
-      }
-      int i;
-      File localFile;
-      do
+      if (paramString != null)
       {
-        return bool1;
+        if (paramString.length == 0) {
+          return false;
+        }
         int j = paramString.length;
-        i = 0;
-        if (i >= j) {
-          break label106;
+        int i = 0;
+        while (i < j)
+        {
+          File localFile = paramString[i];
+          if (localFile.isDirectory())
+          {
+            if (traverseFolder(localFile.getAbsolutePath(), paramFileFilter, paramIFoundListener)) {
+              return true;
+            }
+          }
+          else if (paramIFoundListener.onFound(localFile)) {
+            return true;
+          }
+          i += 1;
         }
-        localFile = paramString[i];
-        if (!localFile.isDirectory()) {
-          break;
-        }
-        bool1 = bool2;
-      } while (traverseFolder(localFile.getAbsolutePath(), paramFileFilter, paramIFoundListener));
-      while (!paramIFoundListener.onFound(localFile))
-      {
-        i += 1;
-        break;
       }
-      return true;
     }
-    label106:
     return false;
   }
   

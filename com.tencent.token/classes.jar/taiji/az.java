@@ -28,7 +28,11 @@ public class az
   
   public String toString()
   {
-    return a() + "x" + b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append("x");
+    localStringBuilder.append(b());
+    return localStringBuilder.toString();
   }
 }
 

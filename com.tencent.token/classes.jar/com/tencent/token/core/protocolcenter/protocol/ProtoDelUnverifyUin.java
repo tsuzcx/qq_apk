@@ -22,26 +22,41 @@ public class ProtoDelUnverifyUin
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    String str2 = l.a(new Object[] { "uin", this.d });
-    if ((str1 == null) || (str2 == null))
+    String str = ca.a().b();
+    Object localObject = l.a(new Object[] { "uin", this.d });
+    if ((str != null) && (localObject != null))
     {
-      this.a.b(104);
-      return null;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("?aq_base_sid=");
+      localStringBuilder.append(str);
+      localStringBuilder.append("&data=");
+      localStringBuilder.append((String)localObject);
+      str = localStringBuilder.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(c.e());
+      ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_del_unvfy_uin");
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
     }
-    str1 = "?aq_base_sid=" + str1 + "&data=" + str2;
-    return c.e() + "/cn/mbtoken3/mbtoken3_del_unvfy_uin" + str1;
+    this.a.b(104);
+    return null;
   }
   
   protected void a(do paramdo)
   {
-    this.d = ("" + paramdo.c.get("param.realuin"));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramdo.c.get("param.realuin"));
+    this.d = localStringBuilder.toString();
   }
   
   protected void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
-    g.a("ProtoDelUnverifyUin:errCode" + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ProtoDelUnverifyUin:errCode");
+    localStringBuilder.append(i);
+    g.a(localStringBuilder.toString());
     if (i != 0)
     {
       a(i, paramJSONObject.getString("info"));

@@ -49,8 +49,9 @@ class ThemeUtils
   
   public static int getThemeAttrColor(Context paramContext, int paramInt)
   {
-    TEMP_ARRAY[0] = paramInt;
-    paramContext = TintTypedArray.obtainStyledAttributes(paramContext, null, TEMP_ARRAY);
+    int[] arrayOfInt = TEMP_ARRAY;
+    arrayOfInt[0] = paramInt;
+    paramContext = TintTypedArray.obtainStyledAttributes(paramContext, null, arrayOfInt);
     try
     {
       paramInt = paramContext.getColor(0, 0);
@@ -70,12 +71,13 @@ class ThemeUtils
   
   public static ColorStateList getThemeAttrColorStateList(Context paramContext, int paramInt)
   {
-    TEMP_ARRAY[0] = paramInt;
-    paramContext = TintTypedArray.obtainStyledAttributes(paramContext, null, TEMP_ARRAY);
+    Object localObject1 = TEMP_ARRAY;
+    localObject1[0] = paramInt;
+    paramContext = TintTypedArray.obtainStyledAttributes(paramContext, null, (int[])localObject1);
     try
     {
-      ColorStateList localColorStateList = paramContext.getColorStateList(0);
-      return localColorStateList;
+      localObject1 = paramContext.getColorStateList(0);
+      return localObject1;
     }
     finally
     {

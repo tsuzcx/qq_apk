@@ -19,22 +19,23 @@ public class bf
       if (!paramThrowable.exists()) {
         paramThrowable.mkdirs();
       }
-      paramThrowable = ci.a(new StringBuilder().append(paramThrowable.getAbsolutePath()), File.separator, "2");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramThrowable.getAbsolutePath());
+      paramThrowable = ci.a(localStringBuilder, File.separator, "2");
     }
     catch (Throwable paramThrowable)
     {
-      do
-      {
-        for (;;)
-        {
-          paramThrowable = "";
-        }
-      } while (new File(paramThrowable).exists());
-      new bg(this, paramThrowable, str).start();
+      label74:
+      break label74;
     }
+    paramThrowable = "";
     if (TextUtils.isEmpty(paramThrowable)) {
       return;
     }
+    if (new File(paramThrowable).exists()) {
+      return;
+    }
+    new bg(this, paramThrowable, str).start();
   }
   
   public static final class a

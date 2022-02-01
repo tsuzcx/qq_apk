@@ -25,14 +25,17 @@ public final class MBundle
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mKey != null) {
-      paramJceOutputStream.write(this.mKey, 0);
+    String str = this.mKey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.mValue != null) {
-      paramJceOutputStream.write(this.mValue, 1);
+    str = this.mValue;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.mValueType != 0) {
-      paramJceOutputStream.write(this.mValueType, 2);
+    int i = this.mValueType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
   }
 }

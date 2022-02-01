@@ -9,7 +9,7 @@ import tmsdk.common.d.a.b.r;
 public class a
 {
   public static int a;
-  private static Context b = null;
+  private static Context b;
   
   public static Context a()
   {

@@ -58,7 +58,7 @@ public class SafeMsgItem
       int j = Integer.parseInt(paramString[1]);
       int k = Integer.parseInt(paramString[2]);
       int m = Integer.parseInt(paramString[3]);
-      return (m & 0xFF) + (((i & 0xFF) << 24) + ((j & 0xFF) << 16) + ((k & 0xFF) << 8));
+      return ((i & 0xFF) << 24) + ((j & 0xFF) << 16) + ((k & 0xFF) << 8) + (m & 0xFF);
     }
     catch (Exception paramString) {}
     return 0;
@@ -94,40 +94,40 @@ public class SafeMsgItem
       this.mFlag = paramJSONObject.getInt("flag");
       this.mTextBeforeTable = paramJSONObject.getString("text_before_table");
       this.mTextAfterTable = paramJSONObject.getString("text_after_table");
-      JSONObject localJSONObject = paramJSONObject.getJSONObject("type");
-      if (localJSONObject != null)
+      localObject = paramJSONObject.getJSONObject("type");
+      if (localObject != null)
       {
-        this.mTypea = localJSONObject.getInt("typea");
-        this.mTypeb = localJSONObject.getInt("typeb");
-        this.mTypec = localJSONObject.getInt("typec");
+        this.mTypea = ((JSONObject)localObject).getInt("typea");
+        this.mTypeb = ((JSONObject)localObject).getInt("typeb");
+        this.mTypec = ((JSONObject)localObject).getInt("typec");
       }
-      localJSONObject = paramJSONObject.getJSONObject("action");
-      if (localJSONObject != null)
+      localObject = paramJSONObject.getJSONObject("action");
+      if (localObject != null)
       {
         this.mAction = new MsgAction();
-        this.mAction.mActionType = localJSONObject.getString("action_type");
-        this.mAction.mButtonText = localJSONObject.getString("btn_text");
-        this.mAction.mTargetUrl = localJSONObject.getString("target");
+        this.mAction.mActionType = ((JSONObject)localObject).getString("action_type");
+        this.mAction.mButtonText = ((JSONObject)localObject).getString("btn_text");
+        this.mAction.mTargetUrl = ((JSONObject)localObject).getString("target");
       }
-      localJSONObject = paramJSONObject.getJSONObject("feedback");
-      if (localJSONObject != null)
+      localObject = paramJSONObject.getJSONObject("feedback");
+      if (localObject != null)
       {
         this.mFeedBack = new MsgAction();
-        this.mFeedBack.mActionType = localJSONObject.getString("type");
-        this.mFeedBack.mButtonText = localJSONObject.getString("btn_text");
-        this.mFeedBack.mTargetUrl = localJSONObject.getString("target");
+        this.mFeedBack.mActionType = ((JSONObject)localObject).getString("type");
+        this.mFeedBack.mButtonText = ((JSONObject)localObject).getString("btn_text");
+        this.mFeedBack.mTargetUrl = ((JSONObject)localObject).getString("target");
       }
       this.mTextBeforeTable = paramJSONObject.getString("text_before_table");
       this.mTable = paramJSONObject.getJSONArray("table").toString();
       if (this.mTypea == 1)
       {
         this.mIP = paramJSONObject.getString("ip");
-        localJSONObject = paramJSONObject.getJSONObject("location");
-        if (localJSONObject != null)
+        localObject = paramJSONObject.getJSONObject("location");
+        if (localObject != null)
         {
-          this.mLoc_country_id = localJSONObject.getInt("country_id");
-          this.mLoc_prov_id = localJSONObject.getInt("prov_id");
-          this.mLoc_city_id = localJSONObject.getInt("city_id");
+          this.mLoc_country_id = ((JSONObject)localObject).getInt("country_id");
+          this.mLoc_prov_id = ((JSONObject)localObject).getInt("prov_id");
+          this.mLoc_city_id = ((JSONObject)localObject).getInt("city_id");
         }
       }
       this.mTextAfterTable = paramJSONObject.getString("text_after_table");
@@ -136,7 +136,10 @@ public class SafeMsgItem
     }
     catch (JSONException paramJSONObject)
     {
-      g.c("JSONException: " + paramJSONObject.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("JSONException: ");
+      ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+      g.c(((StringBuilder)localObject).toString());
     }
     return false;
   }

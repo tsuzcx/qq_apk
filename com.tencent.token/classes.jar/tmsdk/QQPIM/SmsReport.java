@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SmsReport
   extends JceStruct
@@ -24,16 +25,6 @@ public final class SmsReport
   public int ucMinusMark = 0;
   public ArrayList<RuleTypeID> vecHitRule = null;
   public ArrayList<UserActionTime> vecUserAction = null;
-  
-  static
-  {
-    if (!SmsReport.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
   
   public SmsReport()
   {
@@ -74,29 +65,75 @@ public final class SmsReport
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (SmsReport)paramObject;
-    } while ((!JceUtil.equals(this.sender, paramObject.sender)) || (!JceUtil.equals(this.sms, paramObject.sms)) || (!JceUtil.equals(this.matchTime, paramObject.matchTime)) || (!JceUtil.equals(this.ucAction, paramObject.ucAction)) || (!JceUtil.equals(this.ucActionReason, paramObject.ucActionReason)) || (!JceUtil.equals(this.ucContentType, paramObject.ucContentType)) || (!JceUtil.equals(this.vecHitRule, paramObject.vecHitRule)) || (!JceUtil.equals(this.ucMinusMark, paramObject.ucMinusMark)) || (!JceUtil.equals(this.vecUserAction, paramObject.vecUserAction)) || (!JceUtil.equals(this.comment, paramObject.comment)) || (!JceUtil.equals(this.smsType, paramObject.smsType)) || (!JceUtil.equals(this.product, paramObject.product)));
-    return true;
+    }
+    paramObject = (SmsReport)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.sender, paramObject.sender))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.sms, paramObject.sms))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.matchTime, paramObject.matchTime))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.ucAction, paramObject.ucAction))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.ucActionReason, paramObject.ucActionReason))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.ucContentType, paramObject.ucContentType))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.vecHitRule, paramObject.vecHitRule))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.ucMinusMark, paramObject.ucMinusMark))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.vecUserAction, paramObject.vecUserAction))
+                    {
+                      bool1 = bool2;
+                      if (JceUtil.equals(this.comment, paramObject.comment))
+                      {
+                        bool1 = bool2;
+                        if (JceUtil.equals(this.smsType, paramObject.smsType))
+                        {
+                          bool1 = bool2;
+                          if (JceUtil.equals(this.product, paramObject.product)) {
+                            bool1 = true;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -274,15 +311,18 @@ public final class SmsReport
     paramJceOutputStream.write(this.ucAction, 3);
     paramJceOutputStream.write(this.ucActionReason, 4);
     paramJceOutputStream.write(this.ucContentType, 5);
-    if (this.vecHitRule != null) {
-      paramJceOutputStream.write(this.vecHitRule, 6);
+    Object localObject = this.vecHitRule;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
     paramJceOutputStream.write(this.ucMinusMark, 7);
-    if (this.vecUserAction != null) {
-      paramJceOutputStream.write(this.vecUserAction, 8);
+    localObject = this.vecUserAction;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 8);
     }
-    if (this.comment != null) {
-      paramJceOutputStream.write(this.comment, 9);
+    localObject = this.comment;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.smsType, 10);
     paramJceOutputStream.write(this.product, 11);

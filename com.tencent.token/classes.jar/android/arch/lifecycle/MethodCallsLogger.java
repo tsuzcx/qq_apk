@@ -13,27 +13,18 @@ public class MethodCallsLogger
   public boolean approveCall(String paramString, int paramInt)
   {
     Integer localInteger = (Integer)this.mCalledMethods.get(paramString);
+    int j = 0;
     int i;
-    if (localInteger != null)
-    {
+    if (localInteger != null) {
       i = localInteger.intValue();
-      if ((i & paramInt) == 0) {
-        break label64;
-      }
-    }
-    label64:
-    for (int j = 1;; j = 0)
-    {
-      this.mCalledMethods.put(paramString, Integer.valueOf(i | paramInt));
-      if (j != 0) {
-        break label70;
-      }
-      return true;
+    } else {
       i = 0;
-      break;
     }
-    label70:
-    return false;
+    if ((i & paramInt) != 0) {
+      j = 1;
+    }
+    this.mCalledMethods.put(paramString, Integer.valueOf(paramInt | i));
+    return j ^ 0x1;
   }
 }
 

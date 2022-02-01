@@ -43,31 +43,28 @@ public abstract interface IContentObserver
     
     public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
     {
-      switch (paramInt1)
+      if (paramInt1 != 1)
       {
-      default: 
-        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-      case 1598968902: 
+        if (paramInt1 != 1598968902) {
+          return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+        }
         paramParcel2.writeString("com.tencent.wcdb.IContentObserver");
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.wcdb.IContentObserver");
       boolean bool;
-      if (paramParcel1.readInt() != 0)
-      {
+      if (paramParcel1.readInt() != 0) {
         bool = true;
-        if (paramParcel1.readInt() == 0) {
-          break label97;
-        }
-      }
-      label97:
-      for (paramParcel1 = (Uri)Uri.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        onChange(bool, paramParcel1);
-        return true;
+      } else {
         bool = false;
-        break;
       }
+      if (paramParcel1.readInt() != 0) {
+        paramParcel1 = (Uri)Uri.CREATOR.createFromParcel(paramParcel1);
+      } else {
+        paramParcel1 = null;
+      }
+      onChange(bool, paramParcel1);
+      return true;
     }
     
     private static class Proxy
@@ -90,68 +87,37 @@ public abstract interface IContentObserver
         return "com.tencent.wcdb.IContentObserver";
       }
       
-      /* Error */
       public void onChange(boolean paramBoolean, Uri paramUri)
       {
-        // Byte code:
-        //   0: iconst_1
-        //   1: istore_3
-        //   2: invokestatic 34	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   5: astore 4
-        //   7: aload 4
-        //   9: ldc 26
-        //   11: invokevirtual 38	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   14: iload_1
-        //   15: ifeq +47 -> 62
-        //   18: aload 4
-        //   20: iload_3
-        //   21: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   24: aload_2
-        //   25: ifnull +42 -> 67
-        //   28: aload 4
-        //   30: iconst_1
-        //   31: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   34: aload_2
-        //   35: aload 4
-        //   37: iconst_0
-        //   38: invokevirtual 48	android/net/Uri:writeToParcel	(Landroid/os/Parcel;I)V
-        //   41: aload_0
-        //   42: getfield 19	com/tencent/wcdb/IContentObserver$Stub$Proxy:mRemote	Landroid/os/IBinder;
-        //   45: iconst_1
-        //   46: aload 4
-        //   48: aconst_null
-        //   49: iconst_1
-        //   50: invokeinterface 54 5 0
-        //   55: pop
-        //   56: aload 4
-        //   58: invokevirtual 57	android/os/Parcel:recycle	()V
-        //   61: return
-        //   62: iconst_0
-        //   63: istore_3
-        //   64: goto -46 -> 18
-        //   67: aload 4
-        //   69: iconst_0
-        //   70: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   73: goto -32 -> 41
-        //   76: astore_2
-        //   77: aload 4
-        //   79: invokevirtual 57	android/os/Parcel:recycle	()V
-        //   82: aload_2
-        //   83: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	84	0	this	Proxy
-        //   0	84	1	paramBoolean	boolean
-        //   0	84	2	paramUri	Uri
-        //   1	63	3	i	int
-        //   5	73	4	localParcel	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   7	14	76	finally
-        //   18	24	76	finally
-        //   28	41	76	finally
-        //   41	56	76	finally
-        //   67	73	76	finally
+        Parcel localParcel = Parcel.obtain();
+        for (;;)
+        {
+          try
+          {
+            localParcel.writeInterfaceToken("com.tencent.wcdb.IContentObserver");
+            if (paramBoolean)
+            {
+              i = 1;
+              localParcel.writeInt(i);
+              if (paramUri != null)
+              {
+                localParcel.writeInt(1);
+                paramUri.writeToParcel(localParcel, 0);
+              }
+              else
+              {
+                localParcel.writeInt(0);
+              }
+              this.mRemote.transact(1, localParcel, null, 1);
+              return;
+            }
+          }
+          finally
+          {
+            localParcel.recycle();
+          }
+          int i = 0;
+        }
       }
     }
   }

@@ -18,16 +18,6 @@ public final class STQuery
   public String nType = "";
   public String strHardinfo = "";
   
-  static
-  {
-    if (!STQuery.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public STQuery() {}
   
   public STQuery(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, stAdditionInfo paramstAdditionInfo)
@@ -48,29 +38,55 @@ public final class STQuery
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (STQuery)paramObject;
-    } while ((!JceUtil.equals(this.nArea, paramObject.nArea)) || (!JceUtil.equals(this.nOperator, paramObject.nOperator)) || (!JceUtil.equals(this.nType, paramObject.nType)) || (!JceUtil.equals(this.nQuerytype, paramObject.nQuerytype)) || (!JceUtil.equals(this.strHardinfo, paramObject.strHardinfo)) || (!JceUtil.equals(this.nSys, paramObject.nSys)) || (!JceUtil.equals(this.additionalInfo, paramObject.additionalInfo)));
-    return true;
+    }
+    paramObject = (STQuery)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.nArea, paramObject.nArea))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.nOperator, paramObject.nOperator))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.nType, paramObject.nType))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.nQuerytype, paramObject.nQuerytype))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.strHardinfo, paramObject.strHardinfo))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.nSys, paramObject.nSys))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.additionalInfo, paramObject.additionalInfo)) {
+                  bool1 = true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -181,12 +197,14 @@ public final class STQuery
     paramJceOutputStream.write(this.nOperator, 1);
     paramJceOutputStream.write(this.nType, 2);
     paramJceOutputStream.write(this.nQuerytype, 3);
-    if (this.strHardinfo != null) {
-      paramJceOutputStream.write(this.strHardinfo, 4);
+    Object localObject = this.strHardinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.nSys, 5);
-    if (this.additionalInfo != null) {
-      paramJceOutputStream.write(this.additionalInfo, 6);
+    localObject = this.additionalInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
   }
 }

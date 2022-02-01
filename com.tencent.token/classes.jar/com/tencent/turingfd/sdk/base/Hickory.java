@@ -55,29 +55,58 @@ public final class Hickory
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (cd) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (cd) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (Hickory)paramObject;
-    } while ((!ce.a(this.dd, paramObject.dd)) || (!ce.a(this.ed, paramObject.ed)) || (!ce.a(this.version, paramObject.version)) || (!ce.a(this.path, paramObject.path)) || (!ce.a(this.gd, paramObject.gd)) || (!ce.a(this.hd, paramObject.hd)) || (!ce.a(this.jd, paramObject.jd)));
-    return true;
+    }
+    paramObject = (Hickory)paramObject;
+    boolean bool1 = bool2;
+    if (ce.a(this.dd, paramObject.dd))
+    {
+      bool1 = bool2;
+      if (ce.a(this.ed, paramObject.ed))
+      {
+        bool1 = bool2;
+        if (ce.a(this.version, paramObject.version))
+        {
+          bool1 = bool2;
+          if (ce.a(this.path, paramObject.path))
+          {
+            bool1 = bool2;
+            if (ce.a(this.gd, paramObject.gd))
+            {
+              bool1 = bool2;
+              if (ce.a(this.hd, paramObject.hd))
+              {
+                bool1 = bool2;
+                if (ce.a(this.jd, paramObject.jd)) {
+                  bool1 = true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()

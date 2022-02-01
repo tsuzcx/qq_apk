@@ -13,28 +13,29 @@ public abstract class y
   
   public static y a(@Nullable u paramu, final byte[] paramArrayOfByte, final int paramInt1, final int paramInt2)
   {
-    if (paramArrayOfByte == null) {
-      throw new NullPointerException("content == null");
-    }
-    fc.a(paramArrayOfByte.length, paramInt1, paramInt2);
-    new y()
+    if (paramArrayOfByte != null)
     {
-      @Nullable
-      public u a()
+      fc.a(paramArrayOfByte.length, paramInt1, paramInt2);
+      new y()
       {
-        return y.this;
-      }
-      
-      public void a(d paramAnonymousd)
-      {
-        paramAnonymousd.c(paramArrayOfByte, paramInt1, paramInt2);
-      }
-      
-      public long b()
-      {
-        return paramInt2;
-      }
-    };
+        @Nullable
+        public u a()
+        {
+          return y.this;
+        }
+        
+        public void a(d paramAnonymousd)
+        {
+          paramAnonymousd.c(paramArrayOfByte, paramInt1, paramInt2);
+        }
+        
+        public long b()
+        {
+          return paramInt2;
+        }
+      };
+    }
+    throw new NullPointerException("content == null");
   }
   
   @Nullable

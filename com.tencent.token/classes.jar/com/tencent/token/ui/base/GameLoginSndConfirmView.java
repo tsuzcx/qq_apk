@@ -132,90 +132,119 @@ public class GameLoginSndConfirmView
     }
     f();
     this.u = (paramCallbackPushStruct.expirtTime + 1 - bw.a(RqdApplication.l()).c());
-    this.a.setText(2131231089);
+    this.a.setText(2131493231);
     if (paramCallbackPushStruct.player.length() > 10)
     {
-      localObject = new StringBuffer(paramCallbackPushStruct.player.substring(0, 10) + "...");
-      if (((StringBuffer)localObject).length() == 0) {
-        break label444;
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramCallbackPushStruct.player.substring(0, 10));
+      ((StringBuilder)localObject1).append("...");
+      localObject1 = new StringBuffer(((StringBuilder)localObject1).toString());
     }
-    label431:
-    label444:
-    for (Object localObject = "(<font color=#df642c>" + localObject + "</font>)";; localObject = "")
+    else
     {
-      localObject = new StringBuffer(l.a(paramCallbackPushStruct.uin) + (String)localObject + this.g.getResources().getString(2131231077) + "<font color=#df642c>" + paramCallbackPushStruct.gameName + "-" + paramCallbackPushStruct.world + "</font>" + this.g.getResources().getString(2131231078));
-      if (paramCallbackPushStruct.schemeFlag == 2)
-      {
-        ((StringBuffer)localObject).append("。");
-        label228:
-        this.b.setText(Html.fromHtml(((StringBuffer)localObject).toString()));
-        this.d.setText(getResources().getString(2131231075) + "(" + this.u + ")");
-        this.e.setText(getResources().getString(2131231086));
-        paramCallbackPushStruct = cr.a().d(Long.parseLong(paramCallbackPushStruct.uin));
-        if (paramCallbackPushStruct == null) {
-          break label431;
-        }
-        this.f.setImageDrawable(com.tencent.token.utils.g.a(paramCallbackPushStruct.b() + "", paramCallbackPushStruct.mUin + ""));
-        this.c.setText(paramCallbackPushStruct.mNickName);
-      }
-      for (;;)
-      {
-        e();
-        return;
-        localObject = new StringBuffer(paramCallbackPushStruct.player);
-        break;
-        ((StringBuffer)localObject).append(this.g.getString(2131231079));
-        break label228;
-        this.c.setText("");
-      }
+      localObject1 = new StringBuffer(paramCallbackPushStruct.player);
     }
+    Object localObject2 = "";
+    if (((StringBuffer)localObject1).length() != 0)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("(<font color=#df642c>");
+      ((StringBuilder)localObject2).append(localObject1);
+      ((StringBuilder)localObject2).append("</font>)");
+      localObject2 = ((StringBuilder)localObject2).toString();
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(l.a(paramCallbackPushStruct.uin));
+    ((StringBuilder)localObject1).append((String)localObject2);
+    ((StringBuilder)localObject1).append(this.g.getResources().getString(2131493219));
+    ((StringBuilder)localObject1).append("<font color=#df642c>");
+    ((StringBuilder)localObject1).append(paramCallbackPushStruct.gameName);
+    ((StringBuilder)localObject1).append("-");
+    ((StringBuilder)localObject1).append(paramCallbackPushStruct.world);
+    ((StringBuilder)localObject1).append("</font>");
+    ((StringBuilder)localObject1).append(this.g.getResources().getString(2131493220));
+    localObject1 = new StringBuffer(((StringBuilder)localObject1).toString());
+    if (paramCallbackPushStruct.schemeFlag == 2) {
+      ((StringBuffer)localObject1).append("。");
+    } else {
+      ((StringBuffer)localObject1).append(this.g.getString(2131493221));
+    }
+    this.b.setText(Html.fromHtml(((StringBuffer)localObject1).toString()));
+    localObject1 = this.d;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(getResources().getString(2131493217));
+    ((StringBuilder)localObject2).append("(");
+    ((StringBuilder)localObject2).append(this.u);
+    ((StringBuilder)localObject2).append(")");
+    ((Button)localObject1).setText(((StringBuilder)localObject2).toString());
+    this.e.setText(getResources().getString(2131493228));
+    paramCallbackPushStruct = cr.a().d(Long.parseLong(paramCallbackPushStruct.uin));
+    if (paramCallbackPushStruct != null)
+    {
+      localObject1 = this.f;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramCallbackPushStruct.b());
+      ((StringBuilder)localObject2).append("");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramCallbackPushStruct.mUin);
+      localStringBuilder.append("");
+      ((ImageView)localObject1).setImageDrawable(com.tencent.token.utils.g.a((String)localObject2, localStringBuilder.toString()));
+      this.c.setText(paramCallbackPushStruct.mNickName);
+    }
+    else
+    {
+      this.c.setText("");
+    }
+    e();
   }
   
   public boolean a(Context paramContext)
   {
-    if ((this.g == null) || ((this.g != null) && (this.g.isFinishing()))) {
-      return false;
-    }
-    this.h = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    this.i = this.h.inflate(2130968640, null);
-    this.i.setVisibility(4);
-    this.j = this.i.findViewById(2131558823);
-    this.k = this.i.findViewById(2131558809);
-    this.l = this.i.findViewById(2131558804);
-    this.m = this.i.findViewById(2131558806);
-    this.n = m.a(this.g.getResources(), 2130837681);
-    this.o = m.a(this.g.getResources(), 2130837680);
-    if (this.n != null) {
-      ((LinearLayout)this.i.findViewById(2131558810)).setBackgroundDrawable(new BitmapDrawable(this.n));
-    }
-    if (this.o != null)
+    Activity localActivity = this.g;
+    if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
     {
-      ((LinearLayout)this.i.findViewById(2131558811)).setBackgroundDrawable(new BitmapDrawable(this.o));
-      ((LinearLayout)this.i.findViewById(2131558812)).setBackgroundDrawable(new BitmapDrawable(this.o));
-    }
-    this.a = ((TextView)this.i.findViewById(2131558816));
-    this.b = ((TextView)this.i.findViewById(2131558817));
-    this.f = ((ImageView)this.i.findViewById(2131558825));
-    this.d = ((Button)this.i.findViewById(2131558821));
-    this.e = ((Button)this.i.findViewById(2131558822));
-    this.c = ((TextView)this.i.findViewById(2131558814));
-    this.d.setOnClickListener(new View.OnClickListener()
-    {
-      public void onClick(View paramAnonymousView)
-      {
-        GameLoginSndConfirmView.a(GameLoginSndConfirmView.this).a(1);
+      this.h = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+      this.i = this.h.inflate(2131296320, null);
+      this.i.setVisibility(4);
+      this.j = this.i.findViewById(2131166258);
+      this.k = this.i.findViewById(2131166245);
+      this.l = this.i.findViewById(2131166259);
+      this.m = this.i.findViewById(2131166246);
+      this.n = m.a(this.g.getResources(), 2131099827);
+      this.o = m.a(this.g.getResources(), 2131099826);
+      if (this.n != null) {
+        ((LinearLayout)this.i.findViewById(2131166239)).setBackgroundDrawable(new BitmapDrawable(this.n));
       }
-    });
-    this.e.setOnClickListener(new View.OnClickListener()
-    {
-      public void onClick(View paramAnonymousView)
+      if (this.o != null)
       {
-        GameLoginSndConfirmView.a(GameLoginSndConfirmView.this).a(2);
+        ((LinearLayout)this.i.findViewById(2131166240)).setBackgroundDrawable(new BitmapDrawable(this.o));
+        ((LinearLayout)this.i.findViewById(2131166241)).setBackgroundDrawable(new BitmapDrawable(this.o));
       }
-    });
-    addView(this.i, new RelativeLayout.LayoutParams(-1, -1));
-    return true;
+      this.a = ((TextView)this.i.findViewById(2131165754));
+      this.b = ((TextView)this.i.findViewById(2131165742));
+      this.f = ((ImageView)this.i.findViewById(2131165745));
+      this.d = ((Button)this.i.findViewById(2131165741));
+      this.e = ((Button)this.i.findViewById(2131165751));
+      this.c = ((TextView)this.i.findViewById(2131165757));
+      this.d.setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          GameLoginSndConfirmView.a(GameLoginSndConfirmView.this).a(1);
+        }
+      });
+      this.e.setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          GameLoginSndConfirmView.a(GameLoginSndConfirmView.this).a(2);
+        }
+      });
+      addView(this.i, new RelativeLayout.LayoutParams(-1, -1));
+      return true;
+    }
+    return false;
   }
   
   public void b()
@@ -232,9 +261,10 @@ public class GameLoginSndConfirmView
   public void d()
   {
     com.tencent.token.global.g.a("game login unregister interval timer");
-    if (this.s != null)
+    AlarmManager localAlarmManager = this.s;
+    if (localAlarmManager != null)
     {
-      this.s.cancel(this.t);
+      localAlarmManager.cancel(this.t);
       this.g.unregisterReceiver(this.w);
       this.s = null;
     }
@@ -247,15 +277,20 @@ public class GameLoginSndConfirmView
     {
       d();
       this.r.b();
-    }
-    long l1;
-    do
-    {
       return;
-      this.d.setText(getResources().getString(2131231075) + "(" + this.u + ")");
-      l1 = System.currentTimeMillis();
-    } while (this.s == null);
-    this.s.set(1, l1 + 1000L, this.t);
+    }
+    Object localObject = this.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getResources().getString(2131493217));
+    localStringBuilder.append("(");
+    localStringBuilder.append(this.u);
+    localStringBuilder.append(")");
+    ((Button)localObject).setText(localStringBuilder.toString());
+    long l1 = System.currentTimeMillis();
+    localObject = this.s;
+    if (localObject != null) {
+      ((AlarmManager)localObject).set(1, l1 + 1000L, this.t);
+    }
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -292,7 +327,7 @@ public class GameLoginSndConfirmView
       this.h = new TranslateAnimation(0.0F, 0.0F, GameLoginSndConfirmView.b(GameLoginSndConfirmView.this), 0.0F);
       this.h.setDuration(400L);
       this.h.setInterpolator(new AccelerateDecelerateInterpolator());
-      this.i = new TranslateAnimation(0.0F, 0.0F, j + -GameLoginSndConfirmView.c(GameLoginSndConfirmView.this), 0.0F);
+      this.i = new TranslateAnimation(0.0F, 0.0F, -GameLoginSndConfirmView.c(GameLoginSndConfirmView.this) + j, 0.0F);
       this.i.setDuration(400L);
       this.i.setInterpolator(new AccelerateDecelerateInterpolator());
       this.f = new TranslateAnimation(0.0F, 0.0F, GameLoginSndConfirmView.b(GameLoginSndConfirmView.this), 0.0F);
@@ -339,7 +374,8 @@ public class GameLoginSndConfirmView
       this.c = paramView2;
       this.d = paramView3;
       this.e = paramView4;
-      this.h = new TranslateAnimation(0.0F, 0.0F, 0.0F, (int)(IndexActivity.S_DENSITY * 40.0F) + -GameLoginSndConfirmView.c(GameLoginSndConfirmView.this));
+      int j = (int)(IndexActivity.S_DENSITY * 40.0F);
+      this.h = new TranslateAnimation(0.0F, 0.0F, 0.0F, -GameLoginSndConfirmView.c(GameLoginSndConfirmView.this) + j);
       this.h.setDuration(600L);
       this.h.setInterpolator(new GameLoginSndConfirmView.d(GameLoginSndConfirmView.this, null));
       this.i = new TranslateAnimation(0.0F, 0.0F, 0.0F, GameLoginSndConfirmView.b(GameLoginSndConfirmView.this));
@@ -389,7 +425,7 @@ public class GameLoginSndConfirmView
     public c(View paramView)
     {
       this.b = paramView;
-      this.c = AnimationUtils.loadAnimation(GameLoginSndConfirmView.g(GameLoginSndConfirmView.this), 2131034137);
+      this.c = AnimationUtils.loadAnimation(GameLoginSndConfirmView.g(GameLoginSndConfirmView.this), 2130771993);
       this.c.setAnimationListener(new Animation.AnimationListener()
       {
         public void onAnimationEnd(Animation paramAnonymousAnimation)

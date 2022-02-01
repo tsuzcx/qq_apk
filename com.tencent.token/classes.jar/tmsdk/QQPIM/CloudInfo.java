@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class CloudInfo
   extends JceStruct
@@ -18,16 +19,6 @@ public final class CloudInfo
   public ArrayList<CloudCmd> cloudcmds = null;
   public TimeCtrl time = null;
   public TipsInfo tips = null;
-  
-  static
-  {
-    if (!CloudInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
   
   public CloudInfo()
   {
@@ -52,29 +43,43 @@ public final class CloudInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (CloudInfo)paramObject;
-    } while ((!JceUtil.equals(this.base, paramObject.base)) || (!JceUtil.equals(this.time, paramObject.time)) || (!JceUtil.equals(this.tips, paramObject.tips)) || (!JceUtil.equals(this.cloudcmds, paramObject.cloudcmds)));
-    return true;
+    }
+    paramObject = (CloudInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.base, paramObject.base))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.time, paramObject.time))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.tips, paramObject.tips))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.cloudcmds, paramObject.cloudcmds)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -162,11 +167,13 @@ public final class CloudInfo
   {
     paramJceOutputStream.write(this.base, 0);
     paramJceOutputStream.write(this.time, 1);
-    if (this.tips != null) {
-      paramJceOutputStream.write(this.tips, 2);
+    Object localObject = this.tips;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.cloudcmds != null) {
-      paramJceOutputStream.write(this.cloudcmds, 3);
+    localObject = this.cloudcmds;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
   }
 }

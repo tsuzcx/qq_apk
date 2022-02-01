@@ -102,21 +102,21 @@ public class DownloadAppActivity
     {
     default: 
       return;
-    case 1: 
-      com.tencent.service.a.a().c(this.mDownloadInfo);
-      return;
-    case 2: 
-    case 3: 
-      com.tencent.service.a.a().b(this.mDownloadInfo);
-      return;
-    case 4: 
-      com.tencent.service.a.a(this, new File(com.tencent.service.a.b(), this.mDownloadInfo.d));
-      return;
-    case 5: 
+    case 7: 
       com.tencent.service.a.a().c(this.mDownloadInfo);
       return;
     case 6: 
       com.tencent.service.a.a().d(this.mDownloadInfo);
+      return;
+    case 5: 
+      com.tencent.service.a.a().c(this.mDownloadInfo);
+      return;
+    case 4: 
+      com.tencent.service.a.a(this, new File(com.tencent.service.a.b(), this.mDownloadInfo.d));
+      return;
+    case 2: 
+    case 3: 
+      com.tencent.service.a.a().b(this.mDownloadInfo);
       return;
     }
     com.tencent.service.a.a().c(this.mDownloadInfo);
@@ -126,17 +126,17 @@ public class DownloadAppActivity
   {
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    setContentView(2130968616);
-    m.a(this, this.mTitleBar, 2131493037);
-    this.mPageTitle = ((TextView)findViewById(2131558682));
-    this.pbProgress = ((ProgressBar)findViewById(2131558688));
-    this.flProgress = ((FrameLayout)findViewById(2131558687));
-    this.tvProgress = ((ProgressTextView)findViewById(2131558689));
-    this.descriptionText = ((TextView)findViewById(2131558684));
-    this.subDescriptionText = ((TextView)findViewById(2131558685));
-    this.centerImage = ((ImageView)findViewById(2131558683));
-    this.ivBack = ((ImageView)findViewById(2131558681));
-    this.tvDownload = ((TextView)findViewById(2131558686));
+    setContentView(2131296296);
+    m.a(this, this.mTitleBar, 2130968771);
+    this.mPageTitle = ((TextView)findViewById(2131165801));
+    this.pbProgress = ((ProgressBar)findViewById(2131165545));
+    this.flProgress = ((FrameLayout)findViewById(2131165544));
+    this.tvProgress = ((ProgressTextView)findViewById(2131165546));
+    this.descriptionText = ((TextView)findViewById(2131166153));
+    this.subDescriptionText = ((TextView)findViewById(2131166155));
+    this.centerImage = ((ImageView)findViewById(2131165621));
+    this.ivBack = ((ImageView)findViewById(2131165543));
+    this.tvDownload = ((TextView)findViewById(2131166154));
     this.tvDownload.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
@@ -201,8 +201,21 @@ public class DownloadAppActivity
     }
     switch (7.a[this.mDownloadInfo.f.ordinal()])
     {
-    case 1: 
     default: 
+    case 6: 
+      this.tvDownload.setVisibility(0);
+      this.flProgress.setVisibility(4);
+      this.tvDownload.setText(getResources().getText(2131493209));
+      return;
+    case 5: 
+      this.tvDownload.setVisibility(0);
+      this.flProgress.setVisibility(4);
+      this.tvDownload.setText(getResources().getText(2131493213));
+      return;
+    case 4: 
+      this.tvDownload.setVisibility(0);
+      this.flProgress.setVisibility(4);
+      this.tvDownload.setText("安装");
       return;
     case 2: 
     case 3: 
@@ -210,22 +223,13 @@ public class DownloadAppActivity
       this.flProgress.setVisibility(0);
       this.tvProgress.setTextWhiteLength(this.mDownloadInfo.e / 100);
       this.pbProgress.setProgress(this.mDownloadInfo.e);
-      this.tvProgress.setText("下载中..." + this.mDownloadInfo.e + "%");
-      return;
-    case 4: 
-      this.tvDownload.setVisibility(0);
-      this.flProgress.setVisibility(4);
-      this.tvDownload.setText("安装");
-      return;
-    case 5: 
-      this.tvDownload.setVisibility(0);
-      this.flProgress.setVisibility(4);
-      this.tvDownload.setText(getResources().getText(2131231071));
-      return;
+      ProgressTextView localProgressTextView = this.tvProgress;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("下载中...");
+      localStringBuilder.append(this.mDownloadInfo.e);
+      localStringBuilder.append("%");
+      localProgressTextView.setText(localStringBuilder.toString());
     }
-    this.tvDownload.setVisibility(0);
-    this.flProgress.setVisibility(4);
-    this.tvDownload.setText(getResources().getText(2131231067));
   }
 }
 

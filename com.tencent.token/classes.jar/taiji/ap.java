@@ -33,7 +33,13 @@ public class ap
   
   public String toString()
   {
-    return "ShapeGroup{name='" + this.a + "' Shapes: " + Arrays.toString(this.b.toArray()) + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ShapeGroup{name='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("' Shapes: ");
+    localStringBuilder.append(Arrays.toString(this.b.toArray()));
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

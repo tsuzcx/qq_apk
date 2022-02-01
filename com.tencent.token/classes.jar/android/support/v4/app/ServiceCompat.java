@@ -21,12 +21,11 @@ public final class ServiceCompat
       paramService.stopForeground(paramInt);
       return;
     }
-    if ((paramInt & 0x1) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramService.stopForeground(bool);
-      return;
+    boolean bool = true;
+    if ((paramInt & 0x1) == 0) {
+      bool = false;
     }
+    paramService.stopForeground(bool);
   }
   
   @Retention(RetentionPolicy.SOURCE)

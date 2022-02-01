@@ -46,63 +46,77 @@ public class ProtoGetDeterminVerifyFactors
   protected String a()
   {
     g.c("upgrade url: ");
-    String str3 = ca.a().b();
-    if (str3 == null)
+    Object localObject4 = ca.a().b();
+    if (localObject4 == null)
     {
       this.a.b(104);
       g.c("upgrade url: ");
       return null;
     }
     g.c("upgrade url: ");
-    String str2 = cc.c().j().replaceAll("-", "");
-    String str1 = "";
+    Object localObject5 = cc.c().j().replaceAll("-", "");
+    Object localObject1 = "";
     DisplayMetrics localDisplayMetrics = RqdApplication.l().getResources().getDisplayMetrics();
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("uin", this.e);
-      localJSONObject.put("seq_id", this.g);
-      localJSONObject.put("op_time", (int)(cc.c().s() / 1000L));
-      localJSONObject.put("scene", this.i);
-      localJSONObject.put("tkn_seq", str2);
-      localJSONObject.put("wtlogin_sig", l.a(this.d));
-      localJSONObject.put("wtlogin_type", Integer.toString(this.h));
-      localJSONObject.put("guid", l.a(bz.a(RqdApplication.l()).b()));
-      localJSONObject.put("android_id", l.a(RqdApplication.l()));
-      localJSONObject.put("mac", l.c(RqdApplication.l()));
-      localJSONObject.put("device_id", l.b(RqdApplication.l()));
-      localJSONObject.put("device_name", URLEncoder.encode(Build.MODEL));
-      localJSONObject.put("imei", l.b(RqdApplication.l()));
-      localJSONObject.put("dev_model", URLEncoder.encode(Build.BRAND));
-      localJSONObject.put("sys_ver", URLEncoder.encode(Build.VERSION.RELEASE));
-      localJSONObject.put("mobile_model", URLEncoder.encode(Build.MODEL));
-      localJSONObject.put("screen_witdh", localDisplayMetrics.widthPixels);
-      localJSONObject.put("screen_height", localDisplayMetrics.heightPixels);
-      localJSONObject.put("screen_dpi", localDisplayMetrics.densityDpi);
-      localJSONObject.put("cpu_count", m.y());
-      localJSONObject.put("cpu_freq", m.z());
-      g.a("mbtoken3_determine_verify_factors plaindata=" + localJSONObject);
-      str2 = l.b(localJSONObject.toString().getBytes());
-      str1 = str2;
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("uin", this.e);
+      ((JSONObject)localObject2).put("seq_id", this.g);
+      ((JSONObject)localObject2).put("op_time", (int)(cc.c().s() / 1000L));
+      ((JSONObject)localObject2).put("scene", this.i);
+      ((JSONObject)localObject2).put("tkn_seq", localObject5);
+      ((JSONObject)localObject2).put("wtlogin_sig", l.a(this.d));
+      ((JSONObject)localObject2).put("wtlogin_type", Integer.toString(this.h));
+      ((JSONObject)localObject2).put("guid", l.a(bz.a(RqdApplication.l()).b()));
+      ((JSONObject)localObject2).put("android_id", l.a(RqdApplication.l()));
+      ((JSONObject)localObject2).put("mac", l.c(RqdApplication.l()));
+      ((JSONObject)localObject2).put("device_id", l.b(RqdApplication.l()));
+      ((JSONObject)localObject2).put("device_name", URLEncoder.encode(Build.MODEL));
+      ((JSONObject)localObject2).put("imei", l.b(RqdApplication.l()));
+      ((JSONObject)localObject2).put("dev_model", URLEncoder.encode(Build.BRAND));
+      ((JSONObject)localObject2).put("sys_ver", URLEncoder.encode(Build.VERSION.RELEASE));
+      ((JSONObject)localObject2).put("mobile_model", URLEncoder.encode(Build.MODEL));
+      ((JSONObject)localObject2).put("screen_witdh", localDisplayMetrics.widthPixels);
+      ((JSONObject)localObject2).put("screen_height", localDisplayMetrics.heightPixels);
+      ((JSONObject)localObject2).put("screen_dpi", localDisplayMetrics.densityDpi);
+      ((JSONObject)localObject2).put("cpu_count", m.y());
+      ((JSONObject)localObject2).put("cpu_freq", m.z());
+      localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append("mbtoken3_determine_verify_factors plaindata=");
+      ((StringBuilder)localObject5).append(localObject2);
+      g.a(((StringBuilder)localObject5).toString());
+      localObject2 = l.b(((JSONObject)localObject2).toString().getBytes());
+      localObject1 = localObject2;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        g.c(localException.getMessage());
-        localException.printStackTrace();
-      }
-      this.a.b(10000);
-      g.c("upgradeDetermin url data is null ");
+      g.c(localException.getMessage());
+      localException.printStackTrace();
     }
-    str2 = "?aq_base_sid=" + str3;
-    if (!TextUtils.isEmpty(str1))
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("?aq_base_sid=");
+    ((StringBuilder)localObject3).append((String)localObject4);
+    localObject3 = ((StringBuilder)localObject3).toString();
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      str1 = str2 + "&data=" + str1;
-      str1 = c.e() + "/cn/mbtoken3/mbtoken3_determine_verify_factors" + str1;
-      g.c("upgrade url: " + str1);
-      return str1;
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append((String)localObject3);
+      ((StringBuilder)localObject4).append("&data=");
+      ((StringBuilder)localObject4).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject4).toString();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(c.e());
+      ((StringBuilder)localObject3).append("/cn/mbtoken3/mbtoken3_determine_verify_factors");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject3).toString();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("upgrade url: ");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      g.c(((StringBuilder)localObject3).toString());
+      return localObject1;
     }
+    this.a.b(10000);
+    g.c("upgradeDetermin url data is null ");
     return null;
   }
   
@@ -121,25 +135,50 @@ public class ProtoGetDeterminVerifyFactors
     if (j != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
-      g.a("error" + paramJSONObject + ",error code =" + j);
-      this.a.a(j, "server errcode=" + j + ":" + paramJSONObject, paramJSONObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("error");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      ((StringBuilder)localObject).append(",error code =");
+      ((StringBuilder)localObject).append(j);
+      g.a(((StringBuilder)localObject).toString());
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("server errcode=");
+      localStringBuilder.append(j);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      ((e)localObject).a(j, localStringBuilder.toString(), paramJSONObject);
       return;
     }
     paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      g.c("mbtoken3_determine_verify_factors=" + paramJSONObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mbtoken3_determine_verify_factors=");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      g.c(((StringBuilder)localObject).toString());
       if (paramJSONObject.getInt("seq_id") != this.g)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + paramJSONObject.getInt("seq_id") + ",right = " + this.g);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parseJSON error seq is wrong seq=");
+        ((StringBuilder)localObject).append(paramJSONObject.getInt("seq_id"));
+        ((StringBuilder)localObject).append(",right = ");
+        ((StringBuilder)localObject).append(this.g);
+        g.c(((StringBuilder)localObject).toString());
         return;
       }
       long l = paramJSONObject.getLong("uin");
       if (this.e != l)
       {
-        this.a.a(10000, "uin not match " + this.e + ":" + l);
+        paramJSONObject = this.a;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("uin not match ");
+        ((StringBuilder)localObject).append(this.e);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(l);
+        paramJSONObject.a(10000, ((StringBuilder)localObject).toString());
         return;
       }
       this.f = new DeterminVerifyFactorsResult(paramJSONObject);
@@ -147,19 +186,19 @@ public class ProtoGetDeterminVerifyFactors
       {
         l = paramJSONObject.getLong("server_time");
         cc.c().b(l);
-        this.a.c();
-        return;
       }
       catch (Exception paramJSONObject)
       {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
+        paramJSONObject.printStackTrace();
       }
+      this.a.c();
+      return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseJSON error decodeData=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    g.c(((StringBuilder)localObject).toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

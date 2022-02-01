@@ -21,15 +21,17 @@ final class b
       paramString1 = paramString3.getString("sig");
       paramString3 = paramString3.optString("input");
       this.a.ptloginCallBack(paramWebView, paramString1, paramString3);
-      return true;
     }
     catch (Exception paramWebView)
     {
-      for (;;)
-      {
-        util.LOGI("onJsPrompt failed message " + paramString2, "");
-      }
+      label54:
+      break label54;
     }
+    paramWebView = new StringBuilder();
+    paramWebView.append("onJsPrompt failed message ");
+    paramWebView.append(paramString2);
+    util.LOGI(paramWebView.toString(), "");
+    return true;
   }
 }
 

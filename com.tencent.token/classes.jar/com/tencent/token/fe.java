@@ -2,12 +2,9 @@ package com.tencent.token;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-import okhttp3.Protocol;
 import okhttp3.aa;
 import okhttp3.r.a;
 import okhttp3.t;
-import okhttp3.t.a;
-import okhttp3.x;
 import okhttp3.z;
 import okhttp3.z.a;
 import okio.c;
@@ -29,23 +26,18 @@ public final class fe
   
   private static okhttp3.r a(okhttp3.r paramr1, okhttp3.r paramr2)
   {
-    int j = 0;
     r.a locala = new r.a();
     int k = paramr1.a();
+    int j = 0;
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       String str1 = paramr1.a(i);
       String str2 = paramr1.b(i);
-      if (("Warning".equalsIgnoreCase(str1)) && (str2.startsWith("1"))) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((b(str1)) || (!a(str1)) || (paramr2.a(str1) == null)) {
-          fa.a.a(locala, str1, str2);
-        }
+      if (((!"Warning".equalsIgnoreCase(str1)) || (!str2.startsWith("1"))) && ((b(str1)) || (!a(str1)) || (paramr2.a(str1) == null))) {
+        fa.a.a(locala, str1, str2);
       }
+      i += 1;
     }
     k = paramr2.a();
     i = j;
@@ -62,12 +54,13 @@ public final class fe
   
   private z a(final ff paramff, z paramz)
   {
-    if (paramff == null) {}
-    do
-    {
+    if (paramff == null) {
       return paramz;
-      localObject = paramff.a();
-    } while (localObject == null);
+    }
+    Object localObject = paramff.a();
+    if (localObject == null) {
+      return paramz;
+    }
     paramff = new q()
     {
       boolean a;
@@ -86,6 +79,9 @@ public final class fe
             }
             return -1L;
           }
+          paramAnonymousc.a(this.d.c(), paramAnonymousc.b() - paramAnonymousLong, paramAnonymousLong);
+          this.d.u();
+          return paramAnonymousLong;
         }
         catch (IOException paramAnonymousc)
         {
@@ -96,9 +92,6 @@ public final class fe
           }
           throw paramAnonymousc;
         }
-        paramAnonymousc.a(this.d.c(), paramAnonymousc.b() - paramAnonymousLong, paramAnonymousLong);
-        this.d.u();
-        return paramAnonymousLong;
       }
       
       public okio.r a()
@@ -116,7 +109,7 @@ public final class fe
         this.b.close();
       }
     };
-    Object localObject = paramz.a("Content-Type");
+    localObject = paramz.a("Content-Type");
     long l = paramz.e().a();
     return paramz.f().a(new fq((String)localObject, l, k.a(paramff))).a();
   }
@@ -144,80 +137,204 @@ public final class fe
     return ("Content-Length".equalsIgnoreCase(paramString)) || ("Content-Encoding".equalsIgnoreCase(paramString)) || ("Content-Type".equalsIgnoreCase(paramString));
   }
   
-  public z a(t.a parama)
+  /* Error */
+  public z a(okhttp3.t.a parama)
   {
-    z localz1;
-    x localx;
-    z localz2;
-    if (this.a != null)
-    {
-      localz1 = this.a.a(parama.a());
-      fg localfg = new fg.a(System.currentTimeMillis(), parama.a(), localz1).a();
-      localx = localfg.a;
-      localz2 = localfg.b;
-      if (this.a != null) {
-        this.a.a(localfg);
-      }
-      if ((localz1 != null) && (localz2 == null)) {
-        fc.a(localz1.e());
-      }
-      if ((localx != null) || (localz2 != null)) {
-        break label163;
-      }
-      parama = new z.a().a(parama.a()).a(Protocol.HTTP_1_1).a(504).a("Unsatisfiable Request (only-if-cached)").a(fc.c).a(-1L).b(System.currentTimeMillis()).a();
-    }
-    label163:
-    label331:
-    do
-    {
-      do
-      {
-        return parama;
-        localz1 = null;
-        break;
-        if (localx == null) {
-          return localz2.f().b(a(localz2)).a();
-        }
-        try
-        {
-          parama = parama.a(localx);
-          if ((parama == null) && (localz1 != null)) {
-            fc.a(localz1.e());
-          }
-          if (localz2 == null) {
-            break label331;
-          }
-          if (parama.b() == 304)
-          {
-            localz1 = localz2.f().a(a(localz2.d(), parama.d())).a(parama.i()).b(parama.j()).b(a(localz2)).a(a(parama)).a();
-            parama.e().close();
-            this.a.a();
-            this.a.a(localz2, localz1);
-            return localz1;
-          }
-        }
-        finally
-        {
-          if ((0 == 0) && (localz1 != null)) {
-            fc.a(localz1.e());
-          }
-        }
-        fc.a(localz2.e());
-        localz1 = parama.f().b(a(localz2)).a(a(parama)).a();
-        parama = localz1;
-      } while (this.a == null);
-      if ((fn.b(localz1)) && (fg.a(localz1, localx))) {
-        return a(this.a.a(localz1), localz1);
-      }
-      parama = localz1;
-    } while (!fo.a(localx.b()));
-    try
-    {
-      this.a.b(localx);
-      return localz1;
-    }
-    catch (IOException parama) {}
-    return localz1;
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 17	com/tencent/token/fe:a	Lcom/tencent/token/fi;
+    //   4: astore_2
+    //   5: aload_2
+    //   6: ifnull +19 -> 25
+    //   9: aload_2
+    //   10: aload_1
+    //   11: invokeinterface 145 1 0
+    //   16: invokeinterface 150 2 0
+    //   21: astore_2
+    //   22: goto +5 -> 27
+    //   25: aconst_null
+    //   26: astore_2
+    //   27: new 152	com/tencent/token/fg$a
+    //   30: dup
+    //   31: invokestatic 157	java/lang/System:currentTimeMillis	()J
+    //   34: aload_1
+    //   35: invokeinterface 145 1 0
+    //   40: aload_2
+    //   41: invokespecial 160	com/tencent/token/fg$a:<init>	(JLokhttp3/x;Lokhttp3/z;)V
+    //   44: invokevirtual 163	com/tencent/token/fg$a:a	()Lcom/tencent/token/fg;
+    //   47: astore 5
+    //   49: aload 5
+    //   51: getfield 168	com/tencent/token/fg:a	Lokhttp3/x;
+    //   54: astore_3
+    //   55: aload 5
+    //   57: getfield 171	com/tencent/token/fg:b	Lokhttp3/z;
+    //   60: astore 4
+    //   62: aload_0
+    //   63: getfield 17	com/tencent/token/fe:a	Lcom/tencent/token/fi;
+    //   66: astore 6
+    //   68: aload 6
+    //   70: ifnull +12 -> 82
+    //   73: aload 6
+    //   75: aload 5
+    //   77: invokeinterface 174 2 0
+    //   82: aload_2
+    //   83: ifnull +15 -> 98
+    //   86: aload 4
+    //   88: ifnonnull +10 -> 98
+    //   91: aload_2
+    //   92: invokevirtual 76	okhttp3/z:e	()Lokhttp3/aa;
+    //   95: invokestatic 179	com/tencent/token/fc:a	(Ljava/io/Closeable;)V
+    //   98: aload_3
+    //   99: ifnonnull +63 -> 162
+    //   102: aload 4
+    //   104: ifnonnull +58 -> 162
+    //   107: new 110	okhttp3/z$a
+    //   110: dup
+    //   111: invokespecial 180	okhttp3/z$a:<init>	()V
+    //   114: aload_1
+    //   115: invokeinterface 145 1 0
+    //   120: invokevirtual 183	okhttp3/z$a:a	(Lokhttp3/x;)Lokhttp3/z$a;
+    //   123: getstatic 189	okhttp3/Protocol:HTTP_1_1	Lokhttp3/Protocol;
+    //   126: invokevirtual 192	okhttp3/z$a:a	(Lokhttp3/Protocol;)Lokhttp3/z$a;
+    //   129: sipush 504
+    //   132: invokevirtual 195	okhttp3/z$a:a	(I)Lokhttp3/z$a;
+    //   135: ldc 197
+    //   137: invokevirtual 200	okhttp3/z$a:a	(Ljava/lang/String;)Lokhttp3/z$a;
+    //   140: getstatic 203	com/tencent/token/fc:c	Lokhttp3/aa;
+    //   143: invokevirtual 113	okhttp3/z$a:a	(Lokhttp3/aa;)Lokhttp3/z$a;
+    //   146: ldc2_w 204
+    //   149: invokevirtual 208	okhttp3/z$a:a	(J)Lokhttp3/z$a;
+    //   152: invokestatic 157	java/lang/System:currentTimeMillis	()J
+    //   155: invokevirtual 210	okhttp3/z$a:b	(J)Lokhttp3/z$a;
+    //   158: invokevirtual 116	okhttp3/z$a:a	()Lokhttp3/z;
+    //   161: areturn
+    //   162: aload_3
+    //   163: ifnonnull +20 -> 183
+    //   166: aload 4
+    //   168: invokevirtual 100	okhttp3/z:f	()Lokhttp3/z$a;
+    //   171: aload 4
+    //   173: invokestatic 212	com/tencent/token/fe:a	(Lokhttp3/z;)Lokhttp3/z;
+    //   176: invokevirtual 215	okhttp3/z$a:b	(Lokhttp3/z;)Lokhttp3/z$a;
+    //   179: invokevirtual 116	okhttp3/z$a:a	()Lokhttp3/z;
+    //   182: areturn
+    //   183: aload_1
+    //   184: aload_3
+    //   185: invokeinterface 216 2 0
+    //   190: astore_1
+    //   191: aload_1
+    //   192: ifnonnull +14 -> 206
+    //   195: aload_2
+    //   196: ifnull +10 -> 206
+    //   199: aload_2
+    //   200: invokevirtual 76	okhttp3/z:e	()Lokhttp3/aa;
+    //   203: invokestatic 179	com/tencent/token/fc:a	(Ljava/io/Closeable;)V
+    //   206: aload 4
+    //   208: ifnull +104 -> 312
+    //   211: aload_1
+    //   212: invokevirtual 218	okhttp3/z:b	()I
+    //   215: sipush 304
+    //   218: if_icmpne +86 -> 304
+    //   221: aload 4
+    //   223: invokevirtual 100	okhttp3/z:f	()Lokhttp3/z$a;
+    //   226: aload 4
+    //   228: invokevirtual 221	okhttp3/z:d	()Lokhttp3/r;
+    //   231: aload_1
+    //   232: invokevirtual 221	okhttp3/z:d	()Lokhttp3/r;
+    //   235: invokestatic 223	com/tencent/token/fe:a	(Lokhttp3/r;Lokhttp3/r;)Lokhttp3/r;
+    //   238: invokevirtual 226	okhttp3/z$a:a	(Lokhttp3/r;)Lokhttp3/z$a;
+    //   241: aload_1
+    //   242: invokevirtual 229	okhttp3/z:i	()J
+    //   245: invokevirtual 208	okhttp3/z$a:a	(J)Lokhttp3/z$a;
+    //   248: aload_1
+    //   249: invokevirtual 232	okhttp3/z:j	()J
+    //   252: invokevirtual 210	okhttp3/z$a:b	(J)Lokhttp3/z$a;
+    //   255: aload 4
+    //   257: invokestatic 212	com/tencent/token/fe:a	(Lokhttp3/z;)Lokhttp3/z;
+    //   260: invokevirtual 215	okhttp3/z$a:b	(Lokhttp3/z;)Lokhttp3/z$a;
+    //   263: aload_1
+    //   264: invokestatic 212	com/tencent/token/fe:a	(Lokhttp3/z;)Lokhttp3/z;
+    //   267: invokevirtual 234	okhttp3/z$a:a	(Lokhttp3/z;)Lokhttp3/z$a;
+    //   270: invokevirtual 116	okhttp3/z$a:a	()Lokhttp3/z;
+    //   273: astore_2
+    //   274: aload_1
+    //   275: invokevirtual 76	okhttp3/z:e	()Lokhttp3/aa;
+    //   278: invokevirtual 237	okhttp3/aa:close	()V
+    //   281: aload_0
+    //   282: getfield 17	com/tencent/token/fe:a	Lcom/tencent/token/fi;
+    //   285: invokeinterface 239 1 0
+    //   290: aload_0
+    //   291: getfield 17	com/tencent/token/fe:a	Lcom/tencent/token/fi;
+    //   294: aload 4
+    //   296: aload_2
+    //   297: invokeinterface 242 3 0
+    //   302: aload_2
+    //   303: areturn
+    //   304: aload 4
+    //   306: invokevirtual 76	okhttp3/z:e	()Lokhttp3/aa;
+    //   309: invokestatic 179	com/tencent/token/fc:a	(Ljava/io/Closeable;)V
+    //   312: aload_1
+    //   313: invokevirtual 100	okhttp3/z:f	()Lokhttp3/z$a;
+    //   316: aload 4
+    //   318: invokestatic 212	com/tencent/token/fe:a	(Lokhttp3/z;)Lokhttp3/z;
+    //   321: invokevirtual 215	okhttp3/z$a:b	(Lokhttp3/z;)Lokhttp3/z$a;
+    //   324: aload_1
+    //   325: invokestatic 212	com/tencent/token/fe:a	(Lokhttp3/z;)Lokhttp3/z;
+    //   328: invokevirtual 234	okhttp3/z$a:a	(Lokhttp3/z;)Lokhttp3/z$a;
+    //   331: invokevirtual 116	okhttp3/z$a:a	()Lokhttp3/z;
+    //   334: astore_1
+    //   335: aload_0
+    //   336: getfield 17	com/tencent/token/fe:a	Lcom/tencent/token/fi;
+    //   339: ifnull +54 -> 393
+    //   342: aload_1
+    //   343: invokestatic 247	com/tencent/token/fn:b	(Lokhttp3/z;)Z
+    //   346: ifeq +27 -> 373
+    //   349: aload_1
+    //   350: aload_3
+    //   351: invokestatic 250	com/tencent/token/fg:a	(Lokhttp3/z;Lokhttp3/x;)Z
+    //   354: ifeq +19 -> 373
+    //   357: aload_0
+    //   358: aload_0
+    //   359: getfield 17	com/tencent/token/fe:a	Lcom/tencent/token/fi;
+    //   362: aload_1
+    //   363: invokeinterface 253 2 0
+    //   368: aload_1
+    //   369: invokespecial 255	com/tencent/token/fe:a	(Lcom/tencent/token/ff;Lokhttp3/z;)Lokhttp3/z;
+    //   372: areturn
+    //   373: aload_3
+    //   374: invokevirtual 260	okhttp3/x:b	()Ljava/lang/String;
+    //   377: invokestatic 263	com/tencent/token/fo:a	(Ljava/lang/String;)Z
+    //   380: ifeq +13 -> 393
+    //   383: aload_0
+    //   384: getfield 17	com/tencent/token/fe:a	Lcom/tencent/token/fi;
+    //   387: aload_3
+    //   388: invokeinterface 266 2 0
+    //   393: aload_1
+    //   394: areturn
+    //   395: astore_1
+    //   396: aload_2
+    //   397: ifnull +10 -> 407
+    //   400: aload_2
+    //   401: invokevirtual 76	okhttp3/z:e	()Lokhttp3/aa;
+    //   404: invokestatic 179	com/tencent/token/fc:a	(Ljava/io/Closeable;)V
+    //   407: aload_1
+    //   408: athrow
+    //   409: astore_2
+    //   410: aload_1
+    //   411: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	412	0	this	fe
+    //   0	412	1	parama	okhttp3.t.a
+    //   4	397	2	localObject	Object
+    //   409	1	2	localIOException	IOException
+    //   54	334	3	localx	okhttp3.x
+    //   60	257	4	localz	z
+    //   47	29	5	localfg	fg
+    //   66	8	6	localfi	fi
+    // Exception table:
+    //   from	to	target	type
+    //   183	191	395	finally
+    //   383	393	409	java/io/IOException
   }
 }
 

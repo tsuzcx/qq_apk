@@ -40,13 +40,19 @@ public class ProtoQryBindNotifyMsg
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
-    localObject1 = "?aq_base_sid=" + str + "&data=" + (String)localObject1;
-    return c.e() + "/cn/mbtoken3/mbtoken3_qry_bind_notify_msg_encrypt" + (String)localObject1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject1);
+    localObject1 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c.e());
+    localStringBuilder.append("/cn/mbtoken3/mbtoken3_qry_bind_notify_msg_encrypt");
+    localStringBuilder.append((String)localObject1);
+    return localStringBuilder.toString();
   }
   
   protected void a(do paramdo) {}
@@ -54,29 +60,30 @@ public class ProtoQryBindNotifyMsg
   protected void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
-    if (i != 0) {
+    if (i != 0)
+    {
       a(i, paramJSONObject.getString("info"));
-    }
-    do
-    {
-      return;
-      paramJSONObject = l.c(paramJSONObject.getString("data"));
-    } while (paramJSONObject == null);
-    paramJSONObject = new JSONObject(new String(paramJSONObject));
-    i = paramJSONObject.getInt("seq_id");
-    if (this.c != i)
-    {
-      this.a.b(10030);
       return;
     }
-    this.d = new a();
-    this.d.a = paramJSONObject.getInt("is_have_msg");
-    if (this.d.a == 1)
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
+    if (paramJSONObject != null)
     {
-      this.d.b = paramJSONObject.getString("content");
-      this.d.c = paramJSONObject.getLong("uin");
+      paramJSONObject = new JSONObject(new String(paramJSONObject));
+      i = paramJSONObject.getInt("seq_id");
+      if (this.c != i)
+      {
+        this.a.b(10030);
+        return;
+      }
+      this.d = new a();
+      this.d.a = paramJSONObject.getInt("is_have_msg");
+      if (this.d.a == 1)
+      {
+        this.d.b = paramJSONObject.getString("content");
+        this.d.c = paramJSONObject.getLong("uin");
+      }
+      this.a.a(this.d.b);
     }
-    this.a.a(this.d.b);
   }
   
   protected void b()

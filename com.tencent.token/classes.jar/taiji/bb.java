@@ -56,43 +56,52 @@ public class bb
   
   private int a(String paramString)
   {
-    if ((Build.VERSION.SDK_INT < 23) || (this.a == null)) {
-      return 0;
+    Context localContext;
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      localContext = this.a;
+      if (localContext == null) {
+        return 0;
+      }
     }
     try
     {
-      int i = this.a.checkCallingOrSelfPermission(paramString);
+      int i = localContext.checkCallingOrSelfPermission(paramString);
       return i;
     }
     catch (Throwable paramString) {}
+    return 0;
     return 0;
   }
   
   private int a(String paramString1, String paramString2)
   {
-    if ((this.a == null) || (this.b == null) || (this.c == null)) {
-      return 0;
-    }
-    try
+    if ((this.a != null) && (this.b != null))
     {
-      paramString1 = AppOpsManager.class.getField(paramString1);
-      if (paramString1 != null)
+      if (this.c == null) {
+        return 0;
+      }
+      try
       {
-        paramString1.setAccessible(true);
-        int i = paramString1.getInt(AppOpsManager.class);
-        i = ((Integer)this.c.invoke(this.b, new Object[] { Integer.valueOf(i), Integer.valueOf(Process.myUid()), this.a.getPackageName() })).intValue();
-        if ((i == this.e) && (!TextUtils.isEmpty(paramString2))) {
-          return this.a.checkCallingOrSelfPermission(paramString2);
-        }
-        int j = this.d;
-        if (i != j) {
-          return -1;
+        paramString1 = AppOpsManager.class.getField(paramString1);
+        if (paramString1 != null)
+        {
+          paramString1.setAccessible(true);
+          int i = paramString1.getInt(AppOpsManager.class);
+          i = ((Integer)this.c.invoke(this.b, new Object[] { Integer.valueOf(i), Integer.valueOf(Process.myUid()), this.a.getPackageName() })).intValue();
+          if ((i == this.e) && (!TextUtils.isEmpty(paramString2))) {
+            return this.a.checkCallingOrSelfPermission(paramString2);
+          }
+          int j = this.d;
+          if (i != j) {
+            return -1;
+          }
         }
       }
-    }
-    catch (Throwable paramString1)
-    {
-      paramString1.printStackTrace();
+      catch (Throwable paramString1)
+      {
+        paramString1.printStackTrace();
+      }
     }
     return 0;
   }
@@ -109,16 +118,19 @@ public class bb
       Log.i("BasePermissionChecker", "Float window state disabled by appops check");
       return -1;
     }
-    if (Build.VERSION.SDK_INT >= 23) {
-      try
+    if (Build.VERSION.SDK_INT >= 23) {}
+    try
+    {
+      if (!Settings.canDrawOverlays(this.a))
       {
-        if (!Settings.canDrawOverlays(this.a))
-        {
-          Log.i("BasePermissionChecker", "Float window state disabled by api check");
-          return -1;
-        }
+        Log.i("BasePermissionChecker", "Float window state disabled by api check");
+        return -1;
       }
-      catch (Throwable localThrowable) {}
+    }
+    catch (Throwable localThrowable)
+    {
+      label50:
+      break label50;
     }
     return 0;
   }
@@ -133,19 +145,23 @@ public class bb
     if (a("OP_POST_NOTIFICATION", "") == -1) {
       return -1;
     }
+    NotificationManager localNotificationManager;
     if (Build.VERSION.SDK_INT >= 24)
     {
-      NotificationManager localNotificationManager = (NotificationManager)this.a.getSystemService("notification");
-      if (localNotificationManager != null) {
-        try
-        {
-          boolean bool = localNotificationManager.areNotificationsEnabled();
-          if (!bool) {
-            return -1;
-          }
-        }
-        catch (Throwable localThrowable) {}
+      localNotificationManager = (NotificationManager)this.a.getSystemService("notification");
+      if (localNotificationManager == null) {}
+    }
+    try
+    {
+      boolean bool = localNotificationManager.areNotificationsEnabled();
+      if (!bool) {
+        return -1;
       }
+    }
+    catch (Throwable localThrowable)
+    {
+      label50:
+      break label50;
     }
     return 0;
   }
@@ -176,10 +192,8 @@ public class bb
       }
       return -1;
     }
-    catch (Throwable localThrowable)
-    {
-      return 0;
-    }
+    catch (Throwable localThrowable) {}
+    return 0;
   }
   
   private int g()
@@ -237,19 +251,28 @@ public class bb
   private int p()
   {
     Log.i("BasePermissionChecker", "checkDefaultPhoneService");
-    if ((Build.VERSION.SDK_INT < 23) || (this.a == null)) {
-      return 0;
-    }
-    String str = this.a.getPackageName();
-    Object localObject = (TelecomManager)this.a.getSystemService("telecom");
-    if (localObject != null) {}
-    for (localObject = ((TelecomManager)localObject).getDefaultDialerPackage();; localObject = "")
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      Log.i("BasePermissionChecker", "packageName:" + str + ", dialerPkg:" + (String)localObject);
-      if ((TextUtils.isEmpty(str)) || (str.equals(localObject))) {
-        break;
+      Object localObject = this.a;
+      if (localObject == null) {
+        return 0;
       }
-      return -1;
+      String str = ((Context)localObject).getPackageName();
+      localObject = (TelecomManager)this.a.getSystemService("telecom");
+      if (localObject != null) {
+        localObject = ((TelecomManager)localObject).getDefaultDialerPackage();
+      } else {
+        localObject = "";
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("packageName:");
+      localStringBuilder.append(str);
+      localStringBuilder.append(", dialerPkg:");
+      localStringBuilder.append((String)localObject);
+      Log.i("BasePermissionChecker", localStringBuilder.toString());
+      if ((!TextUtils.isEmpty(str)) && (!str.equals(localObject))) {
+        return -1;
+      }
     }
     return 0;
   }
@@ -261,21 +284,25 @@ public class bb
   
   private int r()
   {
-    if (Build.VERSION.SDK_INT < 21) {}
-    for (;;)
-    {
+    if (Build.VERSION.SDK_INT < 21) {
       return 0;
-      try
-      {
-        int i = Settings.Secure.getInt(this.a.getContentResolver(), "location_mode");
-        if (i != 0) {}
-        for (i = 1; i == 0; i = 0) {
-          return -1;
-        }
-        return -1;
-      }
-      catch (Exception localException) {}
     }
+    int j = -1;
+    try
+    {
+      int i = Settings.Secure.getInt(this.a.getContentResolver(), "location_mode");
+      if (i != 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0) {
+        j = 0;
+      }
+      return j;
+    }
+    catch (Exception localException) {}
+    return -1;
   }
   
   public int checkPermission(int paramInt)
@@ -283,6 +310,7 @@ public class bb
     if (Build.VERSION.SDK_INT < 19) {
       return 0;
     }
+    String str;
     switch (paramInt)
     {
     case 7: 
@@ -296,84 +324,79 @@ public class bb
     case 48: 
     default: 
       return 0;
-    case 1: 
-      return a("android.permission.READ_PHONE_STATE");
-    case 2: 
-      return a("android.permission.WRITE_EXTERNAL_STORAGE");
-    case 9: 
-      return a("android.permission.PROCESS_OUTGOING_CALLS");
-    case 10: 
-      return a("android.permission.CALL_PHONE");
-    case 11: 
-      return a("android.permission.READ_CALL_LOG");
-    case 12: 
-    case 13: 
-      return a("android.permission.WRITE_CALL_LOG");
-    case 14: 
-      return a("android.permission.READ_SMS");
-    case 16: 
-      return a("android.permission.SEND_SMS");
-    case 21: 
-      return a("android.permission.READ_CONTACTS");
-    case 22: 
-    case 23: 
-      return a("android.permission.WRITE_CONTACTS");
-    case 24: 
-      return a("android.permission.ACCESS_FINE_LOCATION");
-    case 26: 
-      return a("com.android.launcher.permission.INSTALL_SHORTCUT");
-    case 27: 
-      return a("android.permission.READ_CALENDAR");
-    case 28: 
-      return a("android.permission.WRITE_CALENDAR");
-    case 29: 
-      return a("android.permission.CAMERA");
-    case 30: 
-      return a("android.permission.RECORD_AUDIO");
-    case 32: 
-      return a("android.permission.GET_ACCOUNTS");
-    case 33: 
-      return a("android.permission.CHANGE_NETWORK_STATE");
-    case 34: 
-      return a("android.permission.CHANGE_WIFI_STATE");
-    case 35: 
-      return a("android.permission.BLUETOOTH");
-    case 3: 
-      return a();
-    case 4: 
-      return b();
-    case 5: 
-      return c();
-    case 6: 
-      return d();
-    case 8: 
-      return e();
-    case 31: 
-      return g();
-    case 25: 
-      return f();
-    case 36: 
-      return h();
-    case 37: 
-      return i();
-    case 38: 
-      return j();
-    case 39: 
-      return k();
-    case 40: 
-      return l();
-    case 41: 
-      return m();
-    case 43: 
-      return n();
-    case 45: 
-      return o();
-    case 46: 
-      return p();
+    case 49: 
+      return r();
     case 47: 
       return q();
+    case 46: 
+      return p();
+    case 45: 
+      return o();
+    case 43: 
+      return n();
+    case 41: 
+      return m();
+    case 40: 
+      return l();
+    case 39: 
+      return k();
+    case 38: 
+      return j();
+    case 37: 
+      return i();
+    case 36: 
+      return h();
+    case 35: 
+      str = "android.permission.BLUETOOTH";
     }
-    return r();
+    for (;;)
+    {
+      return a(str);
+      str = "android.permission.CHANGE_WIFI_STATE";
+      continue;
+      str = "android.permission.CHANGE_NETWORK_STATE";
+      continue;
+      str = "android.permission.GET_ACCOUNTS";
+      continue;
+      return g();
+      str = "android.permission.RECORD_AUDIO";
+      continue;
+      str = "android.permission.CAMERA";
+      continue;
+      str = "android.permission.WRITE_CALENDAR";
+      continue;
+      str = "android.permission.READ_CALENDAR";
+      continue;
+      str = "com.android.launcher.permission.INSTALL_SHORTCUT";
+      continue;
+      return f();
+      str = "android.permission.ACCESS_FINE_LOCATION";
+      continue;
+      str = "android.permission.WRITE_CONTACTS";
+      continue;
+      str = "android.permission.READ_CONTACTS";
+      continue;
+      str = "android.permission.SEND_SMS";
+      continue;
+      str = "android.permission.READ_SMS";
+      continue;
+      str = "android.permission.WRITE_CALL_LOG";
+      continue;
+      str = "android.permission.READ_CALL_LOG";
+      continue;
+      str = "android.permission.CALL_PHONE";
+      continue;
+      str = "android.permission.PROCESS_OUTGOING_CALLS";
+      continue;
+      return e();
+      return d();
+      return c();
+      return b();
+      return a();
+      str = "android.permission.WRITE_EXTERNAL_STORAGE";
+      continue;
+      str = "android.permission.READ_PHONE_STATE";
+    }
   }
 }
 

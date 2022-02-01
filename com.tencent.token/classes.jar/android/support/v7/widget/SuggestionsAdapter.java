@@ -100,35 +100,39 @@ class SuggestionsAdapter
   private Drawable getActivityIcon(ComponentName paramComponentName)
   {
     Object localObject = this.mContext.getPackageManager();
-    ActivityInfo localActivityInfo;
-    int i;
     try
     {
-      localActivityInfo = ((PackageManager)localObject).getActivityInfo(paramComponentName, 128);
-      i = localActivityInfo.getIconResource();
+      ActivityInfo localActivityInfo = ((PackageManager)localObject).getActivityInfo(paramComponentName, 128);
+      int i = localActivityInfo.getIconResource();
       if (i == 0) {
         return null;
       }
+      localObject = ((PackageManager)localObject).getDrawable(paramComponentName.getPackageName(), i, localActivityInfo.applicationInfo);
+      if (localObject == null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Invalid icon resource ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" for ");
+        ((StringBuilder)localObject).append(paramComponentName.flattenToShortString());
+        Log.w("SuggestionsAdapter", ((StringBuilder)localObject).toString());
+        return null;
+      }
+      return localObject;
     }
     catch (PackageManager.NameNotFoundException paramComponentName)
     {
       Log.w("SuggestionsAdapter", paramComponentName.toString());
-      return null;
     }
-    localObject = ((PackageManager)localObject).getDrawable(paramComponentName.getPackageName(), i, localActivityInfo.applicationInfo);
-    if (localObject == null)
-    {
-      Log.w("SuggestionsAdapter", "Invalid icon resource " + i + " for " + paramComponentName.flattenToShortString());
-      return null;
-    }
-    return localObject;
+    return null;
   }
   
   private Drawable getActivityIconWithCache(ComponentName paramComponentName)
   {
-    Object localObject = null;
     String str = paramComponentName.flattenToShortString();
-    if (this.mOutsideDrawablesCache.containsKey(str))
+    boolean bool = this.mOutsideDrawablesCache.containsKey(str);
+    Object localObject = null;
+    if (bool)
     {
       paramComponentName = (Drawable.ConstantState)this.mOutsideDrawablesCache.get(str);
       if (paramComponentName == null) {
@@ -137,12 +141,13 @@ class SuggestionsAdapter
       return paramComponentName.newDrawable(this.mProviderContext.getResources());
     }
     Drawable localDrawable = getActivityIcon(paramComponentName);
-    if (localDrawable == null) {}
-    for (paramComponentName = localObject;; paramComponentName = localDrawable.getConstantState())
-    {
-      this.mOutsideDrawablesCache.put(str, paramComponentName);
-      return localDrawable;
+    if (localDrawable == null) {
+      paramComponentName = localObject;
+    } else {
+      paramComponentName = localDrawable.getConstantState();
     }
+    this.mOutsideDrawablesCache.put(str, paramComponentName);
+    return localDrawable;
   }
   
   public static String getColumnString(Cursor paramCursor, String paramString)
@@ -164,120 +169,146 @@ class SuggestionsAdapter
     try
     {
       boolean bool = "android.resource".equals(paramUri.getScheme());
-      if (bool) {
-        try
-        {
-          Drawable localDrawable1 = getDrawableFromResourceUri(paramUri);
-          return localDrawable1;
-        }
-        catch (Resources.NotFoundException localNotFoundException)
-        {
-          throw new FileNotFoundException("Resource does not exist: " + paramUri);
-        }
-      }
-      localInputStream = this.mProviderContext.getContentResolver().openInputStream(paramUri);
+      if (!bool) {}
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      Log.w("SuggestionsAdapter", "Icon not found: " + paramUri + ", " + localFileNotFoundException.getMessage());
+      Object localObject1;
+      label23:
+      InputStream localInputStream;
+      StringBuilder localStringBuilder1;
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("Icon not found: ");
+      localStringBuilder2.append(paramUri);
+      localStringBuilder2.append(", ");
+      localStringBuilder2.append(localFileNotFoundException.getMessage());
+      Log.w("SuggestionsAdapter", localStringBuilder2.toString());
       return null;
-    }
-    InputStream localInputStream;
-    if (localInputStream == null) {
-      throw new FileNotFoundException("Failed to open " + paramUri);
     }
     try
     {
-      Drawable localDrawable2 = Drawable.createFromStream(localInputStream, null);
+      localObject1 = getDrawableFromResourceUri(paramUri);
+      return localObject1;
+    }
+    catch (Resources.NotFoundException localNotFoundException)
+    {
+      break label23;
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Resource does not exist: ");
+    ((StringBuilder)localObject1).append(paramUri);
+    throw new FileNotFoundException(((StringBuilder)localObject1).toString());
+    localInputStream = this.mProviderContext.getContentResolver().openInputStream(paramUri);
+    if (localInputStream != null) {
       try
       {
-        localInputStream.close();
-        return localDrawable2;
-      }
-      catch (IOException localIOException1)
-      {
-        Log.e("SuggestionsAdapter", "Error closing icon stream for " + paramUri, localIOException1);
-        return localDrawable2;
-      }
-      try
-      {
-        localIOException1.close();
-        throw localObject;
-      }
-      catch (IOException localIOException2)
-      {
-        for (;;)
+        localObject1 = Drawable.createFromStream(localInputStream, null);
+        StringBuilder localStringBuilder3;
+        try
         {
-          Log.e("SuggestionsAdapter", "Error closing icon stream for " + paramUri, localIOException2);
+          localInputStream.close();
+          return localObject1;
+        }
+        catch (IOException localIOException1)
+        {
+          localStringBuilder3 = new StringBuilder();
+          localStringBuilder3.append("Error closing icon stream for ");
+          localStringBuilder3.append(paramUri);
+          Log.e("SuggestionsAdapter", localStringBuilder3.toString(), localIOException1);
+          return localObject1;
+        }
+        localStringBuilder1 = new StringBuilder();
+      }
+      finally
+      {
+        try
+        {
+          localIOException1.close();
+        }
+        catch (IOException localIOException2)
+        {
+          localStringBuilder3 = new StringBuilder();
+          localStringBuilder3.append("Error closing icon stream for ");
+          localStringBuilder3.append(paramUri);
+          Log.e("SuggestionsAdapter", localStringBuilder3.toString(), localIOException2);
         }
       }
     }
-    finally {}
+    localStringBuilder1.append("Failed to open ");
+    localStringBuilder1.append(paramUri);
+    throw new FileNotFoundException(localStringBuilder1.toString());
   }
   
   private Drawable getDrawableFromResourceValue(String paramString)
   {
-    Object localObject1;
-    if ((paramString == null) || (paramString.isEmpty()) || ("0".equals(paramString))) {
-      localObject1 = null;
+    if ((paramString != null) && (!paramString.isEmpty())) {
+      if ("0".equals(paramString)) {
+        return null;
+      }
     }
-    for (;;)
+    try
     {
-      return localObject1;
-      try
-      {
-        int i = Integer.parseInt(paramString);
-        String str = "android.resource://" + this.mProviderContext.getPackageName() + "/" + i;
-        localDrawable = checkIconCache(str);
-        localObject1 = localDrawable;
-        if (localDrawable == null)
-        {
-          localObject1 = ContextCompat.getDrawable(this.mProviderContext, i);
-          storeInIconCache(str, (Drawable)localObject1);
-          return localObject1;
-        }
+      int i = Integer.parseInt(paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("android.resource://");
+      ((StringBuilder)localObject).append(this.mProviderContext.getPackageName());
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(i);
+      localObject = ((StringBuilder)localObject).toString();
+      Drawable localDrawable = checkIconCache((String)localObject);
+      if (localDrawable != null) {
+        return localDrawable;
       }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        Drawable localDrawable = checkIconCache(paramString);
-        Object localObject2 = localDrawable;
-        if (localDrawable == null)
-        {
-          localObject2 = getDrawable(Uri.parse(paramString));
-          storeInIconCache(paramString, (Drawable)localObject2);
-          return localObject2;
-        }
-      }
-      catch (Resources.NotFoundException localNotFoundException)
-      {
-        Log.w("SuggestionsAdapter", "Icon resource not found: " + paramString);
-      }
+      localDrawable = ContextCompat.getDrawable(this.mProviderContext, i);
+      storeInIconCache((String)localObject, localDrawable);
+      return localDrawable;
     }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      Object localObject;
+      break label144;
+    }
+    catch (Resources.NotFoundException localNotFoundException)
+    {
+      label110:
+      break label110;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Icon resource not found: ");
+    ((StringBuilder)localObject).append(paramString);
+    Log.w("SuggestionsAdapter", ((StringBuilder)localObject).toString());
+    return null;
+    label144:
+    localObject = checkIconCache(paramString);
+    if (localObject != null) {
+      return localObject;
+    }
+    localObject = getDrawable(Uri.parse(paramString));
+    storeInIconCache(paramString, (Drawable)localObject);
+    return localObject;
     return null;
   }
   
   private Drawable getIcon1(Cursor paramCursor)
   {
-    Object localObject;
-    if (this.mIconName1Col == -1) {
-      localObject = null;
+    int i = this.mIconName1Col;
+    if (i == -1) {
+      return null;
     }
-    Drawable localDrawable;
-    do
-    {
-      return localObject;
-      localDrawable = getDrawableFromResourceValue(paramCursor.getString(this.mIconName1Col));
-      localObject = localDrawable;
-    } while (localDrawable != null);
+    Drawable localDrawable = getDrawableFromResourceValue(paramCursor.getString(i));
+    if (localDrawable != null) {
+      return localDrawable;
+    }
     return getDefaultIcon1(paramCursor);
   }
   
   private Drawable getIcon2(Cursor paramCursor)
   {
-    if (this.mIconName2Col == -1) {
+    int i = this.mIconName2Col;
+    if (i == -1) {
       return null;
     }
-    return getDrawableFromResourceValue(paramCursor.getString(this.mIconName2Col));
+    return getDrawableFromResourceValue(paramCursor.getString(i));
   }
   
   private static String getStringOrNull(Cursor paramCursor, int paramInt)
@@ -330,71 +361,66 @@ class SuggestionsAdapter
   
   private void updateSpinnerState(Cursor paramCursor)
   {
-    if (paramCursor != null) {}
-    for (paramCursor = paramCursor.getExtras();; paramCursor = null)
-    {
-      if ((paramCursor != null) && (paramCursor.getBoolean("in_progress"))) {}
-      return;
+    if (paramCursor != null) {
+      paramCursor = paramCursor.getExtras();
+    } else {
+      paramCursor = null;
     }
+    if ((paramCursor != null) && (paramCursor.getBoolean("in_progress"))) {}
   }
   
   public void bindView(View paramView, Context paramContext, Cursor paramCursor)
   {
     paramContext = (ChildViewCache)paramView.getTag();
-    if (this.mFlagsCol != -1) {}
-    for (int i = paramCursor.getInt(this.mFlagsCol);; i = 0)
+    int i = this.mFlagsCol;
+    if (i != -1) {
+      i = paramCursor.getInt(i);
+    } else {
+      i = 0;
+    }
+    if (paramContext.mText1 != null)
     {
-      if (paramContext.mText1 != null)
-      {
-        paramView = getStringOrNull(paramCursor, this.mText1Col);
-        setViewText(paramContext.mText1, paramView);
-      }
-      if (paramContext.mText2 != null)
-      {
-        paramView = getStringOrNull(paramCursor, this.mText2UrlCol);
-        if (paramView == null) {
-          break label215;
-        }
+      paramView = getStringOrNull(paramCursor, this.mText1Col);
+      setViewText(paramContext.mText1, paramView);
+    }
+    if (paramContext.mText2 != null)
+    {
+      paramView = getStringOrNull(paramCursor, this.mText2UrlCol);
+      if (paramView != null) {
         paramView = formatUrl(paramView);
-        if (!TextUtils.isEmpty(paramView)) {
-          break label227;
-        }
+      } else {
+        paramView = getStringOrNull(paramCursor, this.mText2Col);
+      }
+      if (TextUtils.isEmpty(paramView))
+      {
         if (paramContext.mText1 != null)
         {
           paramContext.mText1.setSingleLine(false);
           paramContext.mText1.setMaxLines(2);
         }
       }
-      for (;;)
+      else if (paramContext.mText1 != null)
       {
-        setViewText(paramContext.mText2, paramView);
-        if (paramContext.mIcon1 != null) {
-          setViewDrawable(paramContext.mIcon1, getIcon1(paramCursor), 4);
-        }
-        if (paramContext.mIcon2 != null) {
-          setViewDrawable(paramContext.mIcon2, getIcon2(paramCursor), 8);
-        }
-        if ((this.mQueryRefinement != 2) && ((this.mQueryRefinement != 1) || ((i & 0x1) == 0))) {
-          break label253;
-        }
-        paramContext.mIconRefine.setVisibility(0);
-        paramContext.mIconRefine.setTag(paramContext.mText1.getText());
-        paramContext.mIconRefine.setOnClickListener(this);
-        return;
-        label215:
-        paramView = getStringOrNull(paramCursor, this.mText2Col);
-        break;
-        label227:
-        if (paramContext.mText1 != null)
-        {
-          paramContext.mText1.setSingleLine(true);
-          paramContext.mText1.setMaxLines(1);
-        }
+        paramContext.mText1.setSingleLine(true);
+        paramContext.mText1.setMaxLines(1);
       }
-      label253:
+      setViewText(paramContext.mText2, paramView);
+    }
+    if (paramContext.mIcon1 != null) {
+      setViewDrawable(paramContext.mIcon1, getIcon1(paramCursor), 4);
+    }
+    if (paramContext.mIcon2 != null) {
+      setViewDrawable(paramContext.mIcon2, getIcon2(paramCursor), 8);
+    }
+    int j = this.mQueryRefinement;
+    if ((j != 2) && ((j != 1) || ((i & 0x1) == 0)))
+    {
       paramContext.mIconRefine.setVisibility(8);
       return;
     }
+    paramContext.mIconRefine.setVisibility(0);
+    paramContext.mIconRefine.setTag(paramContext.mText1.getText());
+    paramContext.mIconRefine.setOnClickListener(this);
   }
   
   public void changeCursor(Cursor paramCursor)
@@ -405,28 +431,25 @@ class SuggestionsAdapter
       if (paramCursor != null) {
         paramCursor.close();
       }
-    }
-    for (;;)
-    {
       return;
-      try
+    }
+    try
+    {
+      super.changeCursor(paramCursor);
+      if (paramCursor != null)
       {
-        super.changeCursor(paramCursor);
-        if (paramCursor != null)
-        {
-          this.mText1Col = paramCursor.getColumnIndex("suggest_text_1");
-          this.mText2Col = paramCursor.getColumnIndex("suggest_text_2");
-          this.mText2UrlCol = paramCursor.getColumnIndex("suggest_text_2_url");
-          this.mIconName1Col = paramCursor.getColumnIndex("suggest_icon_1");
-          this.mIconName2Col = paramCursor.getColumnIndex("suggest_icon_2");
-          this.mFlagsCol = paramCursor.getColumnIndex("suggest_flags");
-          return;
-        }
+        this.mText1Col = paramCursor.getColumnIndex("suggest_text_1");
+        this.mText2Col = paramCursor.getColumnIndex("suggest_text_2");
+        this.mText2UrlCol = paramCursor.getColumnIndex("suggest_text_2_url");
+        this.mIconName1Col = paramCursor.getColumnIndex("suggest_icon_1");
+        this.mIconName2Col = paramCursor.getColumnIndex("suggest_icon_2");
+        this.mFlagsCol = paramCursor.getColumnIndex("suggest_flags");
+        return;
       }
-      catch (Exception paramCursor)
-      {
-        Log.e("SuggestionsAdapter", "error changing cursor and caching columns", paramCursor);
-      }
+    }
+    catch (Exception paramCursor)
+    {
+      Log.e("SuggestionsAdapter", "error changing cursor and caching columns", paramCursor);
     }
   }
   
@@ -438,72 +461,92 @@ class SuggestionsAdapter
   
   public CharSequence convertToString(Cursor paramCursor)
   {
-    if (paramCursor == null) {}
-    do
+    if (paramCursor == null) {
+      return null;
+    }
+    String str = getColumnString(paramCursor, "suggest_intent_query");
+    if (str != null) {
+      return str;
+    }
+    if (this.mSearchable.shouldRewriteQueryFromData())
     {
-      do
-      {
-        return null;
-        String str = getColumnString(paramCursor, "suggest_intent_query");
-        if (str != null) {
-          return str;
-        }
-        if (this.mSearchable.shouldRewriteQueryFromData())
-        {
-          str = getColumnString(paramCursor, "suggest_intent_data");
-          if (str != null) {
-            return str;
-          }
-        }
-      } while (!this.mSearchable.shouldRewriteQueryFromText());
+      str = getColumnString(paramCursor, "suggest_intent_data");
+      if (str != null) {
+        return str;
+      }
+    }
+    if (this.mSearchable.shouldRewriteQueryFromText())
+    {
       paramCursor = getColumnString(paramCursor, "suggest_text_1");
-    } while (paramCursor == null);
-    return paramCursor;
+      if (paramCursor != null) {
+        return paramCursor;
+      }
+    }
+    return null;
   }
   
   Drawable getDrawableFromResourceUri(Uri paramUri)
   {
-    String str = paramUri.getAuthority();
-    if (TextUtils.isEmpty(str)) {
-      throw new FileNotFoundException("No authority: " + paramUri);
-    }
-    Resources localResources;
-    List localList;
+    Object localObject = paramUri.getAuthority();
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     try
     {
-      localResources = this.mContext.getPackageManager().getResourcesForApplication(str);
+      localResources = this.mContext.getPackageManager().getResourcesForApplication((String)localObject);
       localList = paramUri.getPathSegments();
-      if (localList == null) {
-        throw new FileNotFoundException("No path: " + paramUri);
+      if (localList != null)
+      {
+        i = localList.size();
+        if (i != 1) {}
       }
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      throw new FileNotFoundException("No package found for authority: " + paramUri);
+      Resources localResources;
+      List localList;
+      int i;
+      label67:
+      break label248;
     }
-    int i = localList.size();
-    if (i == 1) {}
-    for (;;)
+    try
     {
-      try
-      {
-        i = Integer.parseInt((String)localList.get(0));
-        if (i != 0) {
-          break;
-        }
-        throw new FileNotFoundException("No resource found for: " + paramUri);
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        throw new FileNotFoundException("Single path segment is not a resource ID: " + paramUri);
-      }
-      if (i == 2) {
-        i = localResources.getIdentifier((String)localList.get(1), (String)localList.get(0), localNumberFormatException);
-      } else {
-        throw new FileNotFoundException("More than two path segments: " + paramUri);
-      }
+      i = Integer.parseInt((String)localList.get(0));
     }
-    return localResources.getDrawable(i);
+    catch (NumberFormatException localNumberFormatException)
+    {
+      break label67;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Single path segment is not a resource ID: ");
+    ((StringBuilder)localObject).append(paramUri);
+    throw new FileNotFoundException(((StringBuilder)localObject).toString());
+    if (i == 2)
+    {
+      i = localResources.getIdentifier((String)localList.get(1), (String)localList.get(0), (String)localObject);
+      if (i != 0) {
+        return localResources.getDrawable(i);
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("No resource found for: ");
+      ((StringBuilder)localObject).append(paramUri);
+      throw new FileNotFoundException(((StringBuilder)localObject).toString());
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("More than two path segments: ");
+    ((StringBuilder)localObject).append(paramUri);
+    throw new FileNotFoundException(((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("No path: ");
+    ((StringBuilder)localObject).append(paramUri);
+    throw new FileNotFoundException(((StringBuilder)localObject).toString());
+    label248:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("No package found for authority: ");
+    ((StringBuilder)localObject).append(paramUri);
+    throw new FileNotFoundException(((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("No authority: ");
+    ((StringBuilder)localObject).append(paramUri);
+    throw new FileNotFoundException(((StringBuilder)localObject).toString());
   }
   
   public View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -531,13 +574,14 @@ class SuggestionsAdapter
   
   Cursor getSearchManagerSuggestions(SearchableInfo paramSearchableInfo, String paramString, int paramInt)
   {
-    if (paramSearchableInfo == null) {}
-    do
-    {
+    if (paramSearchableInfo == null) {
       return null;
-      localObject = paramSearchableInfo.getSuggestAuthority();
-    } while (localObject == null);
-    Object localObject = new Uri.Builder().scheme("content").authority((String)localObject).query("").fragment("");
+    }
+    Object localObject = paramSearchableInfo.getSuggestAuthority();
+    if (localObject == null) {
+      return null;
+    }
+    localObject = new Uri.Builder().scheme("content").authority((String)localObject).query("").fragment("");
     String str = paramSearchableInfo.getSuggestPath();
     if (str != null) {
       ((Uri.Builder)localObject).appendEncodedPath(str);
@@ -546,19 +590,18 @@ class SuggestionsAdapter
     str = paramSearchableInfo.getSuggestSelection();
     if (str != null)
     {
-      paramSearchableInfo = new String[1];
-      paramSearchableInfo[0] = paramString;
+      paramSearchableInfo = new String[] { paramString };
     }
-    for (;;)
+    else
     {
-      if (paramInt > 0) {
-        ((Uri.Builder)localObject).appendQueryParameter("limit", String.valueOf(paramInt));
-      }
-      paramString = ((Uri.Builder)localObject).build();
-      return this.mContext.getContentResolver().query(paramString, null, str, paramSearchableInfo, null);
       ((Uri.Builder)localObject).appendPath(paramString);
       paramSearchableInfo = null;
     }
+    if (paramInt > 0) {
+      ((Uri.Builder)localObject).appendQueryParameter("limit", String.valueOf(paramInt));
+    }
+    paramString = ((Uri.Builder)localObject).build();
+    return this.mContext.getContentResolver().query(paramString, null, str, paramSearchableInfo, null);
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -614,22 +657,30 @@ class SuggestionsAdapter
   
   public Cursor runQueryOnBackgroundThread(CharSequence paramCharSequence)
   {
-    if (paramCharSequence == null) {}
-    for (paramCharSequence = ""; (this.mSearchView.getVisibility() != 0) || (this.mSearchView.getWindowVisibility() != 0); paramCharSequence = paramCharSequence.toString()) {
-      return null;
+    if (paramCharSequence == null) {
+      paramCharSequence = "";
+    } else {
+      paramCharSequence = paramCharSequence.toString();
     }
-    try
+    if (this.mSearchView.getVisibility() == 0)
     {
-      paramCharSequence = getSearchManagerSuggestions(this.mSearchable, paramCharSequence, 50);
-      if (paramCharSequence != null)
-      {
-        paramCharSequence.getCount();
-        return paramCharSequence;
+      if (this.mSearchView.getWindowVisibility() != 0) {
+        return null;
       }
-    }
-    catch (RuntimeException paramCharSequence)
-    {
-      Log.w("SuggestionsAdapter", "Search suggestions query threw an exception.", paramCharSequence);
+      try
+      {
+        paramCharSequence = getSearchManagerSuggestions(this.mSearchable, paramCharSequence, 50);
+        if (paramCharSequence != null)
+        {
+          paramCharSequence.getCount();
+          return paramCharSequence;
+        }
+      }
+      catch (RuntimeException paramCharSequence)
+      {
+        Log.w("SuggestionsAdapter", "Search suggestions query threw an exception.", paramCharSequence);
+      }
+      return null;
     }
     return null;
   }

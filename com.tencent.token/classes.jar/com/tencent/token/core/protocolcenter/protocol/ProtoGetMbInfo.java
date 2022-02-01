@@ -31,8 +31,8 @@ public class ProtoGetMbInfo
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
@@ -40,9 +40,18 @@ public class ProtoGetMbInfo
     int i = cb.a + 1;
     cb.a = i;
     this.c = i;
-    String str2 = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "op_time", Long.valueOf(cc.c().s() / 1000L) });
-    str1 = "?data=" + str2 + "&aq_base_sid=" + str1;
-    return c.e() + "/cn/mbtoken3/mbtoken3_get_mbinfo_encrypt" + str1;
+    Object localObject = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?data=");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("&aq_base_sid=");
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_get_mbinfo_encrypt");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -66,7 +75,12 @@ public class ProtoGetMbInfo
       if (this.c != i)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.c);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.c);
+        g.c(paramJSONObject.toString());
         return;
       }
       this.d = new MbInfoResult(paramJSONObject.getJSONArray("mb_list"));
@@ -74,8 +88,11 @@ public class ProtoGetMbInfo
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

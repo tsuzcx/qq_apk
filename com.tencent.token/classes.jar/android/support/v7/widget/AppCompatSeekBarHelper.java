@@ -47,34 +47,32 @@ class AppCompatSeekBarHelper
   
   void drawTickMarks(Canvas paramCanvas)
   {
-    int j = 1;
     if (this.mTickMark != null)
     {
       int k = this.mView.getMax();
+      int j = 1;
       if (k > 1)
       {
         int i = this.mTickMark.getIntrinsicWidth();
         int m = this.mTickMark.getIntrinsicHeight();
         if (i >= 0) {
           i /= 2;
-        }
-        for (;;)
-        {
-          if (m >= 0) {
-            j = m / 2;
-          }
-          this.mTickMark.setBounds(-i, -j, i, j);
-          float f = (this.mView.getWidth() - this.mView.getPaddingLeft() - this.mView.getPaddingRight()) / k;
-          j = paramCanvas.save();
-          paramCanvas.translate(this.mView.getPaddingLeft(), this.mView.getHeight() / 2);
-          i = 0;
-          while (i <= k)
-          {
-            this.mTickMark.draw(paramCanvas);
-            paramCanvas.translate(f, 0.0F);
-            i += 1;
-          }
+        } else {
           i = 1;
+        }
+        if (m >= 0) {
+          j = m / 2;
+        }
+        this.mTickMark.setBounds(-i, -j, i, j);
+        float f = (this.mView.getWidth() - this.mView.getPaddingLeft() - this.mView.getPaddingRight()) / k;
+        j = paramCanvas.save();
+        paramCanvas.translate(this.mView.getPaddingLeft(), this.mView.getHeight() / 2);
+        i = 0;
+        while (i <= k)
+        {
+          this.mTickMark.draw(paramCanvas);
+          paramCanvas.translate(f, 0.0F);
+          i += 1;
         }
         paramCanvas.restoreToCount(j);
       }
@@ -110,8 +108,9 @@ class AppCompatSeekBarHelper
   @RequiresApi(11)
   void jumpDrawablesToCurrentState()
   {
-    if (this.mTickMark != null) {
-      this.mTickMark.jumpToCurrentState();
+    Drawable localDrawable = this.mTickMark;
+    if (localDrawable != null) {
+      localDrawable.jumpToCurrentState();
     }
   }
   
@@ -140,8 +139,9 @@ class AppCompatSeekBarHelper
   
   void setTickMark(@Nullable Drawable paramDrawable)
   {
-    if (this.mTickMark != null) {
-      this.mTickMark.setCallback(null);
+    Drawable localDrawable = this.mTickMark;
+    if (localDrawable != null) {
+      localDrawable.setCallback(null);
     }
     this.mTickMark = paramDrawable;
     if (paramDrawable != null)

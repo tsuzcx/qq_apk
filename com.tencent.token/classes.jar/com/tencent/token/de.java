@@ -43,58 +43,46 @@ public class de
   
   public dd.a a(df paramdf, long paramLong)
   {
-    for (;;)
+    synchronized (f)
     {
-      Object localObject1;
-      synchronized (f)
-      {
-        localObject1 = b(paramdf);
-        if (localObject1 != null) {
-          break label109;
-        }
-        paramdf = c(paramdf);
-        if (paramdf == null) {
-          break label107;
-        }
-        localObject1 = new dd.a();
-        long l = System.currentTimeMillis();
-        if ((paramLong > 0L) && (l - paramdf.a > paramLong))
-        {
-          ((dd.a)localObject1).a = true;
-          return localObject1;
-        }
+      a locala2 = b(paramdf);
+      a locala1 = locala2;
+      if (locala2 == null) {
+        locala1 = c(paramdf);
       }
-      ((dd.a)localObject1).a = false;
-      ((dd.a)localObject1).b = paramdf.b;
-      ((dd.a)localObject1).c = paramdf.c;
-      return localObject1;
-      label107:
+      if (locala1 != null)
+      {
+        paramdf = new dd.a();
+        long l = System.currentTimeMillis();
+        if ((paramLong > 0L) && (l - locala1.a > paramLong))
+        {
+          paramdf.a = true;
+          return paramdf;
+        }
+        paramdf.a = false;
+        paramdf.b = locala1.b;
+        paramdf.c = locala1.c;
+        return paramdf;
+      }
       return null;
-      label109:
-      paramdf = (df)localObject1;
     }
   }
   
   void a()
   {
-    File[] arrayOfFile;
-    if ((this.e < 0) || (this.e > 100))
+    int i = this.e;
+    if ((i < 0) || (i > 100))
     {
-      arrayOfFile = this.c.getCacheDir().listFiles(b);
-      if (arrayOfFile != null) {
-        break label35;
+      File[] arrayOfFile = this.c.getCacheDir().listFiles(b);
+      if (arrayOfFile == null) {
+        return;
       }
-    }
-    for (;;)
-    {
-      return;
-      label35:
       int j = arrayOfFile.length;
       this.e = j;
       if (j >= 100)
       {
         Arrays.sort(arrayOfFile, a);
-        int i = 0;
+        i = 0;
         while ((i < j) && (this.e > 75))
         {
           if (arrayOfFile[i].delete()) {
@@ -129,69 +117,83 @@ public class de
   
   a b(df paramdf)
   {
-    paramdf = paramdf.d();
-    Object localObject = (SoftReference)this.d.get(paramdf);
-    if (localObject != null)
+    String str = paramdf.d();
+    paramdf = (SoftReference)this.d.get(str);
+    if (paramdf != null)
     {
-      localObject = (a)((SoftReference)localObject).get();
-      if (localObject == null) {
-        this.d.remove(paramdf);
+      a locala = (a)paramdf.get();
+      paramdf = locala;
+      if (locala == null)
+      {
+        this.d.remove(str);
+        return locala;
       }
-      return localObject;
     }
-    return null;
+    else
+    {
+      paramdf = null;
+    }
+    return paramdf;
   }
   
   void b(df paramdf, a parama)
   {
     a();
-    File localFile = d(paramdf);
-    ObjectOutputStream localObjectOutputStream;
+    Object localObject = d(paramdf);
     try
     {
-      localObjectOutputStream = new ObjectOutputStream(new FileOutputStream(localFile));
+      ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(new FileOutputStream((File)localObject));
       localObjectOutputStream.writeInt(1);
       localObjectOutputStream.writeLong(parama.a);
-      if (parama.b == null) {
-        break label145;
-      }
-      Serializable localSerializable = paramdf.a(parama.b);
-      if (localSerializable == null) {
-        break label107;
-      }
-      localObjectOutputStream.writeBoolean(true);
-      localObjectOutputStream.writeObject(localSerializable);
-    }
-    catch (FileNotFoundException parama)
-    {
-      for (;;)
+      if (parama.b != null)
       {
-        g.c(paramdf.d() + ": can't open cache file to write");
-        return;
+        Serializable localSerializable = paramdf.a(parama.b);
+        if (localSerializable != null)
+        {
+          localObjectOutputStream.writeBoolean(true);
+          localObjectOutputStream.writeObject(localSerializable);
+        }
+        else
+        {
+          localObjectOutputStream.writeBoolean(false);
+        }
+      }
+      else
+      {
         localObjectOutputStream.writeBoolean(false);
       }
+      if (parama.c != null)
+      {
+        localObjectOutputStream.writeBoolean(true);
+        localObjectOutputStream.writeObject(parama.c);
+      }
+      else
+      {
+        localObjectOutputStream.writeBoolean(false);
+      }
+      localObjectOutputStream.flush();
+      return;
     }
     catch (IOException parama)
     {
       parama.printStackTrace();
-      localFile.delete();
-      g.c(paramdf.d() + ": writting error:" + parama);
+      ((File)localObject).delete();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramdf.d());
+      ((StringBuilder)localObject).append(": writting error:");
+      ((StringBuilder)localObject).append(parama);
+      g.c(((StringBuilder)localObject).toString());
+      return;
+      parama = new StringBuilder();
+      parama.append(paramdf.d());
+      parama.append(": can't open cache file to write");
+      g.c(parama.toString());
       return;
     }
-    if (parama.c != null)
+    catch (FileNotFoundException parama)
     {
-      localObjectOutputStream.writeBoolean(true);
-      localObjectOutputStream.writeObject(parama.c);
-    }
-    for (;;)
-    {
-      localObjectOutputStream.flush();
-      return;
-      label107:
-      localObjectOutputStream.writeBoolean(false);
-      break;
-      label145:
-      localObjectOutputStream.writeBoolean(false);
+      label184:
+      break label184;
     }
   }
   
@@ -219,38 +221,36 @@ public class de
       }
       return localObject;
     }
-    catch (StreamCorruptedException paramdf)
+    catch (ClassNotFoundException paramdf)
+    {
+      paramdf.printStackTrace();
+      return null;
+    }
+    catch (IOException paramdf)
     {
       paramdf.printStackTrace();
       return null;
     }
     catch (FileNotFoundException paramdf)
     {
-      for (;;)
-      {
-        paramdf.printStackTrace();
-      }
+      paramdf.printStackTrace();
+      return null;
     }
-    catch (IOException paramdf)
+    catch (StreamCorruptedException paramdf)
     {
-      for (;;)
-      {
-        paramdf.printStackTrace();
-      }
+      paramdf.printStackTrace();
     }
-    catch (ClassNotFoundException paramdf)
-    {
-      for (;;)
-      {
-        paramdf.printStackTrace();
-      }
-    }
+    return null;
   }
   
   File d(df paramdf)
   {
     paramdf = l.b(paramdf.d());
-    return new File(this.c.getCacheDir(), "TOKEN_" + paramdf);
+    File localFile = this.c.getCacheDir();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TOKEN_");
+    localStringBuilder.append(paramdf);
+    return new File(localFile, localStringBuilder.toString());
   }
   
   class a

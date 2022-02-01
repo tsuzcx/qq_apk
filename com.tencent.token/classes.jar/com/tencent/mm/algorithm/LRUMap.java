@@ -50,14 +50,15 @@ public class LRUMap<K, O>
   
   public void clear(OnClearListener<K, O> paramOnClearListener)
   {
-    if (this.c != null)
+    Object localObject = this.c;
+    if (localObject != null)
     {
       if (paramOnClearListener != null)
       {
-        Iterator localIterator = this.c.entrySet().iterator();
-        while (localIterator.hasNext())
+        localObject = ((Map)localObject).entrySet().iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
+          Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
           paramOnClearListener.onClear(localEntry.getKey(), ((TimeVal)localEntry.getValue()).obj);
         }
       }
@@ -85,8 +86,9 @@ public class LRUMap<K, O>
     if (!this.c.containsKey(paramK)) {
       return;
     }
-    if (this.f != null) {
-      this.f.preRemoveCallback(paramK, ((TimeVal)this.c.get(paramK)).obj);
+    PreRemoveCallback localPreRemoveCallback = this.f;
+    if (localPreRemoveCallback != null) {
+      localPreRemoveCallback.preRemoveCallback(paramK, ((TimeVal)this.c.get(paramK)).obj);
     }
     this.c.remove(paramK);
   }
@@ -112,7 +114,6 @@ public class LRUMap<K, O>
   
   public void update(K paramK, O paramO)
   {
-    int i;
     if ((TimeVal)this.c.get(paramK) == null)
     {
       paramO = new TimeVal(paramO);
@@ -121,36 +122,31 @@ public class LRUMap<K, O>
       {
         paramK = new ArrayList(this.c.entrySet());
         Collections.sort(paramK, new LRUMap.1(this));
-        if (this.e > 0) {
-          break label150;
-        }
-        int j = this.d / 10;
-        i = j;
-        if (j <= 0) {
-          i = 1;
+        int j = this.e;
+        int i = j;
+        if (j <= 0)
+        {
+          j = this.d / 10;
+          i = j;
+          if (j <= 0) {
+            i = 1;
+          }
         }
         paramK = paramK.iterator();
+        do
+        {
+          if (!paramK.hasNext()) {
+            break;
+          }
+          remove(((Map.Entry)paramK.next()).getKey());
+          j = i - 1;
+          i = j;
+        } while (j > 0);
       }
+      return;
     }
-    for (;;)
-    {
-      if (paramK.hasNext())
-      {
-        remove(((Map.Entry)paramK.next()).getKey());
-        i -= 1;
-        if (i > 0) {}
-      }
-      else
-      {
-        return;
-        label150:
-        i = this.e;
-        break;
-        ((TimeVal)this.c.get(paramK)).UpTime();
-        ((TimeVal)this.c.get(paramK)).obj = paramO;
-        return;
-      }
-    }
+    ((TimeVal)this.c.get(paramK)).UpTime();
+    ((TimeVal)this.c.get(paramK)).obj = paramO;
   }
   
   public static abstract interface OnClearListener<K, O>

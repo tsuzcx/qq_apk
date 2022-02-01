@@ -23,7 +23,11 @@ public class k
       a(paramInt1, paramString, paramInt2);
       return true;
     }
-    catch (UnsatisfiedLinkError paramContext) {}
+    catch (UnsatisfiedLinkError paramContext)
+    {
+      label30:
+      break label30;
+    }
     return false;
   }
 }

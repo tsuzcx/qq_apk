@@ -23,9 +23,13 @@ final class b
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap(a.length);
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (!localLinkedHashMap.containsKey(a[i].g)) {
+      a[] arrayOfa = a;
+      if (i >= arrayOfa.length) {
+        break;
+      }
+      if (!localLinkedHashMap.containsKey(arrayOfa[i].g)) {
         localLinkedHashMap.put(a[i].g, Integer.valueOf(i));
       }
       i += 1;
@@ -35,13 +39,17 @@ final class b
   
   static ByteString a(ByteString paramByteString)
   {
-    int i = 0;
     int j = paramByteString.g();
+    int i = 0;
     while (i < j)
     {
       int k = paramByteString.a(i);
-      if ((k >= 65) && (k <= 90)) {
-        throw new IOException("PROTOCOL_ERROR response malformed: mixed case name: " + paramByteString.a());
+      if ((k >= 65) && (k <= 90))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("PROTOCOL_ERROR response malformed: mixed case name: ");
+        localStringBuilder.append(paramByteString.a());
+        throw new IOException(localStringBuilder.toString());
       }
       i += 1;
     }
@@ -88,7 +96,9 @@ final class b
           paramInt += 1;
           i -= 1;
         }
-        System.arraycopy(this.a, this.b + 1, this.a, this.b + 1 + paramInt, this.c);
+        a[] arrayOfa = this.a;
+        i = this.b;
+        System.arraycopy(arrayOfa, i + 1, arrayOfa, i + 1 + paramInt, this.c);
         this.b += paramInt;
         i = paramInt;
       }
@@ -103,48 +113,59 @@ final class b
       if (paramInt != -1) {
         i = j - this.a[c(paramInt)].i;
       }
-      if (i > this.h)
+      j = this.h;
+      if (i > j)
       {
         e();
         return;
       }
-      j = a(this.d + i - this.h);
+      j = a(this.d + i - j);
       if (paramInt == -1)
       {
-        if (this.c + 1 > this.a.length)
+        paramInt = this.c;
+        a[] arrayOfa1 = this.a;
+        if (paramInt + 1 > arrayOfa1.length)
         {
-          a[] arrayOfa = new a[this.a.length * 2];
-          System.arraycopy(this.a, 0, arrayOfa, this.a.length, this.a.length);
+          a[] arrayOfa2 = new a[arrayOfa1.length * 2];
+          System.arraycopy(arrayOfa1, 0, arrayOfa2, arrayOfa1.length, arrayOfa1.length);
           this.b = (this.a.length - 1);
-          this.a = arrayOfa;
+          this.a = arrayOfa2;
         }
         paramInt = this.b;
         this.b = (paramInt - 1);
         this.a[paramInt] = parama;
         this.c += 1;
       }
-      for (;;)
+      else
       {
-        this.d = (i + this.d);
-        return;
         int k = c(paramInt);
-        this.a[(j + k + paramInt)] = parama;
+        this.a[(paramInt + (k + j))] = parama;
       }
+      this.d += i;
     }
     
     private void b(int paramInt)
     {
       if (g(paramInt))
       {
-        a locala = b.a[paramInt];
-        this.e.add(locala);
+        localObject = b.a[paramInt];
+        this.e.add(localObject);
         return;
       }
       int i = c(paramInt - b.a.length);
-      if ((i < 0) || (i >= this.a.length)) {
-        throw new IOException("Header index too large " + (paramInt + 1));
+      if (i >= 0)
+      {
+        localObject = this.a;
+        if (i < localObject.length)
+        {
+          this.e.add(localObject[i]);
+          return;
+        }
       }
-      this.e.add(this.a[i]);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Header index too large ");
+      ((StringBuilder)localObject).append(paramInt + 1);
+      throw new IOException(((StringBuilder)localObject).toString());
     }
     
     private int c(int paramInt)
@@ -154,16 +175,17 @@ final class b
     
     private void d()
     {
-      if (this.h < this.d)
+      int i = this.h;
+      int j = this.d;
+      if (i < j)
       {
-        if (this.h == 0) {
+        if (i == 0)
+        {
           e();
+          return;
         }
+        a(j - i);
       }
-      else {
-        return;
-      }
-      a(this.d - this.h);
     }
     
     private void d(int paramInt)
@@ -192,10 +214,17 @@ final class b
         return b.a[paramInt].g;
       }
       int i = c(paramInt - b.a.length);
-      if ((i < 0) || (i >= this.a.length)) {
-        throw new IOException("Header index too large " + (paramInt + 1));
+      if (i >= 0)
+      {
+        localObject = this.a;
+        if (i < localObject.length) {
+          return localObject[i].g;
+        }
       }
-      return this.a[i].g;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Header index too large ");
+      ((StringBuilder)localObject).append(paramInt + 1);
+      throw new IOException(((StringBuilder)localObject).toString());
     }
     
     private void f()
@@ -237,7 +266,7 @@ final class b
         paramInt2 += ((i & 0x7F) << paramInt1);
         paramInt1 += 7;
       }
-      return (i << paramInt1) + paramInt2;
+      return paramInt2 + (i << paramInt1);
     }
     
     void a()
@@ -245,36 +274,47 @@ final class b
       while (!this.f.e())
       {
         int i = this.f.h() & 0xFF;
-        if (i == 128) {
-          throw new IOException("index == 0");
-        }
-        if ((i & 0x80) == 128)
+        if (i != 128)
         {
-          b(a(i, 127) - 1);
-        }
-        else if (i == 64)
-        {
-          g();
-        }
-        else if ((i & 0x40) == 64)
-        {
-          e(a(i, 63) - 1);
-        }
-        else if ((i & 0x20) == 32)
-        {
-          this.h = a(i, 31);
-          if ((this.h < 0) || (this.h > this.g)) {
-            throw new IOException("Invalid dynamic table size update " + this.h);
+          if ((i & 0x80) == 128)
+          {
+            b(a(i, 127) - 1);
           }
-          d();
+          else if (i == 64)
+          {
+            g();
+          }
+          else if ((i & 0x40) == 64)
+          {
+            e(a(i, 63) - 1);
+          }
+          else if ((i & 0x20) == 32)
+          {
+            this.h = a(i, 31);
+            i = this.h;
+            if ((i >= 0) && (i <= this.g))
+            {
+              d();
+            }
+            else
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("Invalid dynamic table size update ");
+              localStringBuilder.append(this.h);
+              throw new IOException(localStringBuilder.toString());
+            }
+          }
+          else if ((i != 16) && (i != 0))
+          {
+            d(a(i, 15) - 1);
+          }
+          else
+          {
+            f();
+          }
         }
-        else if ((i == 16) || (i == 0))
-        {
-          f();
-        }
-        else
-        {
-          d(a(i, 15) - 1);
+        else {
+          throw new IOException("index == 0");
         }
       }
     }
@@ -289,13 +329,14 @@ final class b
     ByteString c()
     {
       int j = h();
-      if ((j & 0x80) == 128) {}
-      for (int i = 1;; i = 0)
-      {
-        j = a(j, 127);
-        if (i == 0) {
-          break;
-        }
+      int i;
+      if ((j & 0x80) == 128) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      j = a(j, 127);
+      if (i != 0) {
         return ByteString.a(i.a().a(this.f.g(j)));
       }
       return this.f.c(j);
@@ -339,24 +380,27 @@ final class b
     private void a(a parama)
     {
       int k = parama.i;
-      if (k > this.b)
+      int m = this.b;
+      if (k > m)
       {
         a();
         return;
       }
-      b(this.f + k - this.b);
-      if (this.e + 1 > this.c.length)
+      b(this.f + k - m);
+      m = this.e;
+      a[] arrayOfa1 = this.c;
+      if (m + 1 > arrayOfa1.length)
       {
-        a[] arrayOfa = new a[this.c.length * 2];
-        System.arraycopy(this.c, 0, arrayOfa, this.c.length, this.c.length);
+        a[] arrayOfa2 = new a[arrayOfa1.length * 2];
+        System.arraycopy(arrayOfa1, 0, arrayOfa2, arrayOfa1.length, arrayOfa1.length);
         this.d = (this.c.length - 1);
-        this.c = arrayOfa;
+        this.c = arrayOfa2;
       }
-      int m = this.d;
+      m = this.d;
       this.d = (m - 1);
       this.c[m] = parama;
       this.e += 1;
-      this.f = (k + this.f);
+      this.f += k;
     }
     
     private int b(int paramInt)
@@ -376,8 +420,12 @@ final class b
           paramInt += 1;
           k -= 1;
         }
-        System.arraycopy(this.c, this.d + 1, this.c, this.d + 1 + paramInt, this.e);
-        Arrays.fill(this.c, this.d + 1, this.d + 1 + paramInt, null);
+        a[] arrayOfa = this.c;
+        k = this.d;
+        System.arraycopy(arrayOfa, k + 1, arrayOfa, k + 1 + paramInt, this.e);
+        arrayOfa = this.c;
+        k = this.d;
+        Arrays.fill(arrayOfa, k + 1, k + 1 + paramInt, null);
         this.d += paramInt;
         k = paramInt;
       }
@@ -386,26 +434,28 @@ final class b
     
     private void b()
     {
-      if (this.b < this.f)
+      int k = this.b;
+      int m = this.f;
+      if (k < m)
       {
-        if (this.b == 0) {
+        if (k == 0)
+        {
           a();
+          return;
         }
+        b(m - k);
       }
-      else {
-        return;
-      }
-      b(this.f - this.b);
     }
     
     void a(int paramInt)
     {
       this.a = paramInt;
       paramInt = Math.min(paramInt, 16384);
-      if (this.b == paramInt) {
+      int k = this.b;
+      if (k == paramInt) {
         return;
       }
-      if (paramInt < this.b) {
+      if (paramInt < k) {
         this.i = Math.min(this.i, paramInt);
       }
       this.j = true;
@@ -417,14 +467,14 @@ final class b
     {
       if (paramInt1 < paramInt2)
       {
-        this.g.b(paramInt3 | paramInt1);
+        this.g.b(paramInt1 | paramInt3);
         return;
       }
       this.g.b(paramInt3 | paramInt2);
       paramInt1 -= paramInt2;
       while (paramInt1 >= 128)
       {
-        this.g.b(paramInt1 & 0x7F | 0x80);
+        this.g.b(0x80 | paramInt1 & 0x7F);
         paramInt1 >>>= 7;
       }
       this.g.b(paramInt1);
@@ -432,10 +482,12 @@ final class b
     
     void a(List<a> paramList)
     {
+      int k;
       if (this.j)
       {
-        if (this.i < this.b) {
-          a(this.i, 31, 32);
+        k = this.i;
+        if (k < this.b) {
+          a(k, 31, 32);
         }
         this.j = false;
         this.i = 2147483647;
@@ -443,101 +495,94 @@ final class b
       }
       int i4 = paramList.size();
       int n = 0;
-      a locala;
-      ByteString localByteString1;
-      ByteString localByteString2;
-      int m;
-      int k;
-      if (n < i4)
+      while (n < i4)
       {
-        locala = (a)paramList.get(n);
-        localByteString1 = locala.g.f();
-        localByteString2 = locala.h;
+        a locala = (a)paramList.get(n);
+        ByteString localByteString1 = locala.g.f();
+        ByteString localByteString2 = locala.h;
         Integer localInteger = (Integer)b.b.get(localByteString1);
-        if (localInteger == null) {
-          break label446;
-        }
-        m = localInteger.intValue() + 1;
-        if ((m <= 1) || (m >= 8)) {
-          break label441;
-        }
-        if (fc.a(b.a[(m - 1)].h, localByteString2)) {
+        int m;
+        if (localInteger != null)
+        {
+          m = localInteger.intValue() + 1;
+          if ((m > 1) && (m < 8))
+          {
+            if (fc.a(b.a[(m - 1)].h, localByteString2))
+            {
+              k = m;
+              break label198;
+            }
+            if (fc.a(b.a[m].h, localByteString2))
+            {
+              k = m;
+              m += 1;
+              break label198;
+            }
+          }
           k = m;
+          m = -1;
         }
-      }
-      for (;;)
-      {
-        label160:
+        else
+        {
+          m = -1;
+          k = -1;
+        }
+        label198:
         int i2 = m;
         int i3 = k;
-        int i1;
-        if (k == -1)
+        if (m == -1)
         {
-          i1 = this.d + 1;
+          int i1 = this.d + 1;
           int i5 = this.c.length;
-          label186:
-          i2 = m;
-          i3 = k;
-          if (i1 < i5)
+          for (;;)
           {
             i2 = m;
-            if (!fc.a(this.c[i1].g, localByteString1)) {
-              break label326;
+            i3 = k;
+            if (i1 >= i5) {
+              break;
             }
-            if (!fc.a(this.c[i1].h, localByteString2)) {
-              break label304;
+            i2 = k;
+            if (fc.a(this.c[i1].g, localByteString1))
+            {
+              if (fc.a(this.c[i1].h, localByteString2))
+              {
+                m = this.d;
+                i2 = b.a.length + (i1 - m);
+                i3 = k;
+                break;
+              }
+              i2 = k;
+              if (k == -1) {
+                i2 = i1 - this.d + b.a.length;
+              }
             }
-            i3 = i1 - this.d + b.a.length;
-            i2 = m;
+            i1 += 1;
+            k = i2;
           }
         }
-        if (i3 != -1) {
-          a(i3, 127, 128);
-        }
-        for (;;)
+        if (i2 != -1)
         {
-          n += 1;
-          break;
-          if (!fc.a(b.a[m].h, localByteString2)) {
-            break label441;
-          }
-          k = m + 1;
-          break label160;
-          label304:
-          i2 = m;
-          if (m == -1) {
-            i2 = i1 - this.d + b.a.length;
-          }
-          label326:
-          i1 += 1;
-          m = i2;
-          break label186;
-          if (i2 == -1)
-          {
-            this.g.b(64);
-            a(localByteString1);
-            a(localByteString2);
-            a(locala);
-          }
-          else if ((localByteString1.a(a.a)) && (!a.f.equals(localByteString1)))
-          {
-            a(i2, 15, 0);
-            a(localByteString2);
-          }
-          else
-          {
-            a(i2, 63, 64);
-            a(localByteString2);
-            a(locala);
-          }
+          a(i2, 127, 128);
         }
-        return;
-        label441:
-        k = -1;
-        continue;
-        label446:
-        m = -1;
-        k = -1;
+        else if (i3 == -1)
+        {
+          this.g.b(64);
+          a(localByteString1);
+          a(localByteString2);
+          a(locala);
+        }
+        else if ((localByteString1.a(a.a)) && (!a.f.equals(localByteString1)))
+        {
+          a(i3, 15, 0);
+          a(localByteString2);
+        }
+        else
+        {
+          a(i3, 63, 64);
+          a(localByteString2);
+          a(locala);
+        }
+        n += 1;
       }
     }
     

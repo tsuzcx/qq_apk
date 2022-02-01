@@ -22,8 +22,9 @@ public final class ActivityReqInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.reqinfo != null) {
-      paramJceOutputStream.write(this.reqinfo, 0);
+    TipsReqInfo localTipsReqInfo = this.reqinfo;
+    if (localTipsReqInfo != null) {
+      paramJceOutputStream.write(localTipsReqInfo, 0);
     }
     paramJceOutputStream.write(this.notifyID, 1);
   }

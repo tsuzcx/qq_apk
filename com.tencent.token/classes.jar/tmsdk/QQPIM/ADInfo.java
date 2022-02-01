@@ -57,8 +57,9 @@ public final class ADInfo
     paramJceOutputStream.write(this.softkey, 3);
     paramJceOutputStream.write(this.description, 4);
     paramJceOutputStream.write(this.adtype, 5);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 6);
+    String str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.jumptype, 7);
     paramJceOutputStream.write(this.categoryid, 8);

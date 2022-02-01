@@ -44,56 +44,57 @@ class AppCompatBackgroundHelper
       localTintInfo.mHasTintMode = true;
       localTintInfo.mTintMode = ((PorterDuff.Mode)localObject);
     }
-    if ((localTintInfo.mHasTintList) || (localTintInfo.mHasTintMode))
-    {
-      AppCompatDrawableManager.tintDrawable(paramDrawable, localTintInfo, this.mView.getDrawableState());
-      return true;
+    if ((!localTintInfo.mHasTintList) && (!localTintInfo.mHasTintMode)) {
+      return false;
     }
-    return false;
+    AppCompatDrawableManager.tintDrawable(paramDrawable, localTintInfo, this.mView.getDrawableState());
+    return true;
   }
   
   private boolean shouldApplyFrameworkTintUsingColorFilter()
   {
     int i = Build.VERSION.SDK_INT;
     if (i > 21) {
-      if (this.mInternalBackgroundTint == null) {}
+      return this.mInternalBackgroundTint != null;
     }
-    while (i == 21)
-    {
-      return true;
-      return false;
-    }
-    return false;
+    return i == 21;
   }
   
   void applySupportBackgroundTint()
   {
     Drawable localDrawable = this.mView.getBackground();
-    if ((localDrawable == null) || ((shouldApplyFrameworkTintUsingColorFilter()) && (applyFrameworkTintUsingColorFilter(localDrawable)))) {}
-    do
+    if (localDrawable != null)
     {
-      return;
-      if (this.mBackgroundTint != null)
-      {
-        AppCompatDrawableManager.tintDrawable(localDrawable, this.mBackgroundTint, this.mView.getDrawableState());
+      if ((shouldApplyFrameworkTintUsingColorFilter()) && (applyFrameworkTintUsingColorFilter(localDrawable))) {
         return;
       }
-    } while (this.mInternalBackgroundTint == null);
-    AppCompatDrawableManager.tintDrawable(localDrawable, this.mInternalBackgroundTint, this.mView.getDrawableState());
+      TintInfo localTintInfo = this.mBackgroundTint;
+      if (localTintInfo != null)
+      {
+        AppCompatDrawableManager.tintDrawable(localDrawable, localTintInfo, this.mView.getDrawableState());
+        return;
+      }
+      localTintInfo = this.mInternalBackgroundTint;
+      if (localTintInfo != null) {
+        AppCompatDrawableManager.tintDrawable(localDrawable, localTintInfo, this.mView.getDrawableState());
+      }
+    }
   }
   
   ColorStateList getSupportBackgroundTintList()
   {
-    if (this.mBackgroundTint != null) {
-      return this.mBackgroundTint.mTintList;
+    TintInfo localTintInfo = this.mBackgroundTint;
+    if (localTintInfo != null) {
+      return localTintInfo.mTintList;
     }
     return null;
   }
   
   PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.mBackgroundTint != null) {
-      return this.mBackgroundTint.mTintMode;
+    TintInfo localTintInfo = this.mBackgroundTint;
+    if (localTintInfo != null) {
+      return localTintInfo.mTintMode;
     }
     return null;
   }
@@ -135,13 +136,14 @@ class AppCompatBackgroundHelper
   void onSetBackgroundResource(int paramInt)
   {
     this.mBackgroundResId = paramInt;
-    if (this.mDrawableManager != null) {}
-    for (ColorStateList localColorStateList = this.mDrawableManager.getTintList(this.mView.getContext(), paramInt);; localColorStateList = null)
-    {
-      setInternalBackgroundTint(localColorStateList);
-      applySupportBackgroundTint();
-      return;
+    Object localObject = this.mDrawableManager;
+    if (localObject != null) {
+      localObject = ((AppCompatDrawableManager)localObject).getTintList(this.mView.getContext(), paramInt);
+    } else {
+      localObject = null;
     }
+    setInternalBackgroundTint((ColorStateList)localObject);
+    applySupportBackgroundTint();
   }
   
   void setInternalBackgroundTint(ColorStateList paramColorStateList)
@@ -151,15 +153,15 @@ class AppCompatBackgroundHelper
       if (this.mInternalBackgroundTint == null) {
         this.mInternalBackgroundTint = new TintInfo();
       }
-      this.mInternalBackgroundTint.mTintList = paramColorStateList;
-      this.mInternalBackgroundTint.mHasTintList = true;
+      TintInfo localTintInfo = this.mInternalBackgroundTint;
+      localTintInfo.mTintList = paramColorStateList;
+      localTintInfo.mHasTintList = true;
     }
-    for (;;)
+    else
     {
-      applySupportBackgroundTint();
-      return;
       this.mInternalBackgroundTint = null;
     }
+    applySupportBackgroundTint();
   }
   
   void setSupportBackgroundTintList(ColorStateList paramColorStateList)
@@ -167,8 +169,9 @@ class AppCompatBackgroundHelper
     if (this.mBackgroundTint == null) {
       this.mBackgroundTint = new TintInfo();
     }
-    this.mBackgroundTint.mTintList = paramColorStateList;
-    this.mBackgroundTint.mHasTintList = true;
+    TintInfo localTintInfo = this.mBackgroundTint;
+    localTintInfo.mTintList = paramColorStateList;
+    localTintInfo.mHasTintList = true;
     applySupportBackgroundTint();
   }
   
@@ -177,8 +180,9 @@ class AppCompatBackgroundHelper
     if (this.mBackgroundTint == null) {
       this.mBackgroundTint = new TintInfo();
     }
-    this.mBackgroundTint.mTintMode = paramMode;
-    this.mBackgroundTint.mHasTintMode = true;
+    TintInfo localTintInfo = this.mBackgroundTint;
+    localTintInfo.mTintMode = paramMode;
+    localTintInfo.mHasTintMode = true;
     applySupportBackgroundTint();
   }
 }

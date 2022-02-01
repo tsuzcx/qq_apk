@@ -28,11 +28,12 @@ public class bd
   {
     Object localObject1 = new HashSet();
     Object localObject2 = this.c.keySet().iterator();
+    Object localObject3;
     while (((Iterator)localObject2).hasNext())
     {
-      Integer localInteger = (Integer)((Iterator)localObject2).next();
-      if (((Integer)this.c.get(localInteger)).intValue() == 0) {
-        ((Set)localObject1).add(localInteger);
+      localObject3 = (Integer)((Iterator)localObject2).next();
+      if (((Integer)this.c.get(localObject3)).intValue() == 0) {
+        ((Set)localObject1).add(localObject3);
       }
     }
     localObject1 = ((Set)localObject1).iterator();
@@ -40,7 +41,10 @@ public class bd
     while (((Iterator)localObject1).hasNext())
     {
       int i = ((Integer)((Iterator)localObject1).next()).intValue();
-      ((StringBuilder)localObject2).append("" + i);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("");
+      ((StringBuilder)localObject3).append(i);
+      ((StringBuilder)localObject2).append(((StringBuilder)localObject3).toString());
       if (((Iterator)localObject1).hasNext()) {
         ((StringBuilder)localObject2).append(",");
       }
@@ -55,12 +59,10 @@ public class bd
   
   public void a(Context paramContext)
   {
-    Object localObject;
-    int i;
     try
     {
       this.c.clear();
-      localObject = b.keySet().iterator();
+      Object localObject = b.keySet().iterator();
       Integer localInteger;
       while (((Iterator)localObject).hasNext()) {
         localInteger = (Integer)((Iterator)localObject).next();
@@ -73,6 +75,7 @@ public class bd
       }
       this.c.putAll(paramContext);
       paramContext = this.d.keySet().iterator();
+      int i;
       while (paramContext.hasNext())
       {
         i = ((Integer)paramContext.next()).intValue();
@@ -81,24 +84,25 @@ public class bd
         }
       }
       paramContext = this.e.keySet().iterator();
+      while (paramContext.hasNext())
+      {
+        i = ((Integer)paramContext.next()).intValue();
+        if (a(i)) {
+          this.c.put(Integer.valueOf(i), this.e.get(Integer.valueOf(i)));
+        }
+      }
+      if (a(Gooseberry.Uj.value))
+      {
+        this.c.put(Integer.valueOf(Gooseberry.nk.value), Integer.valueOf(0));
+        this.c.put(Integer.valueOf(Gooseberry.qk.value), Integer.valueOf(0));
+      }
+      paramContext = this.c.keySet().iterator();
+      while (paramContext.hasNext()) {
+        localObject = (Integer)paramContext.next();
+      }
+      return;
     }
     finally {}
-    while (paramContext.hasNext())
-    {
-      i = ((Integer)paramContext.next()).intValue();
-      if (a(i)) {
-        this.c.put(Integer.valueOf(i), this.e.get(Integer.valueOf(i)));
-      }
-    }
-    if (a(Gooseberry.Uj.value))
-    {
-      this.c.put(Integer.valueOf(Gooseberry.nk.value), Integer.valueOf(0));
-      this.c.put(Integer.valueOf(Gooseberry.qk.value), Integer.valueOf(0));
-    }
-    paramContext = this.c.keySet().iterator();
-    while (paramContext.hasNext()) {
-      localObject = (Integer)paramContext.next();
-    }
   }
   
   public boolean a(int paramInt)
@@ -111,132 +115,120 @@ public class bd
   
   public boolean a(Context paramContext, int paramInt, String paramString1, long paramLong, String paramString2)
   {
-    boolean bool;
-    Object localObject;
-    label488:
-    label501:
-    for (;;)
+    HashMap localHashMap;
+    label144:
+    try
     {
-      HashMap localHashMap;
-      try
-      {
-        long l = bc.a.c(paramContext);
-        paramLong = Math.abs(System.currentTimeMillis() - paramLong);
-        if (paramLong <= l * 1000L)
-        {
-          bool = false;
-          return bool;
-        }
-        localObject = new byte[0];
-        localHashMap = new HashMap();
-        localHashMap.put("1", cv.a);
-        localHashMap.put("101", paramString1);
-        localHashMap.put("2002", bc.a.e(paramContext));
-        localHashMap.put("207", paramString2);
+      long l = bc.a.c(paramContext);
+      paramLong = Math.abs(System.currentTimeMillis() - paramLong);
+      if (paramLong <= l * 1000L) {
+        return false;
       }
-      finally {}
-      try
-      {
-        paramString1 = TuringDIDService.aa.e(cm.e(), paramContext, localHashMap, paramInt);
-        if (cm.a(paramString1) == 0) {
-          continue;
-        }
+      localObject = new byte[0];
+      localHashMap = new HashMap();
+      StringBuilder localStringBuilder = ci.a("");
+      localStringBuilder.append(cv.a);
+      localHashMap.put("1", localStringBuilder.toString());
+      localHashMap.put("101", paramString1);
+      localHashMap.put("2002", bc.a.e(paramContext));
+      localHashMap.put("207", paramString2);
+    }
+    finally {}
+    try
+    {
+      paramString1 = TuringDIDService.aa.e(cm.e(), paramContext, localHashMap, paramInt);
+      if (cm.a(paramString1) != 0) {
         paramString1 = (String)localObject;
-      }
-      catch (Throwable paramString1)
-      {
-        paramString1 = (String)localObject;
-        continue;
-        bool = true;
-      }
-      if (paramString1.length == 0)
-      {
-        break label488;
+      } else {
         paramString1 = cm.b(paramString1);
-      }
-      else
-      {
-        paramString1 = as.a(((ap)this.f).a, paramContext, paramString1, 8119, 18119);
-        if (paramString1.b != 0)
-        {
-          paramString1 = new byte[0];
-          if (paramInt != 1) {
-            continue;
-          }
-        }
-      }
-      try
-      {
-        paramString1 = TuringDIDService.aa.f(cm.e(), paramString1, paramInt);
-        paramString1 = cm.b(paramString1);
-        paramString2 = new Kiwifruit();
-        paramString1 = new cy(paramString1);
-        paramString2.ld = paramString1.a(paramString2.ld, 0, true);
-        paramString2.md = ((Hickory)paramString1.a(Kiwifruit.kd, 1, false));
-        paramString2.Jb = paramString1.a(paramString2.Jb, 2, true);
-        paramInt = paramString2.ld;
-        if (paramInt >= 0) {
-          continue;
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        continue;
-      }
-      paramString1 = null;
-      if (paramString1 != null)
-      {
-        paramString2 = paramString1.gd;
-        localObject = bc.a;
-        if ((paramString2 == null) || (paramString2.size() == 0))
-        {
-          ((bc)localObject).d(paramContext);
-          break label501;
-          paramString1 = paramString1.a();
-          continue;
-          if (paramInt == 0) {
-            continue;
-          }
-          paramString1 = new byte[0];
-          continue;
-          if (paramString2.ld == 1)
-          {
-            paramString1 = new Hickory();
-            continue;
-          }
-          paramString1 = paramString2.md;
-          if (paramString1 == null)
-          {
-            paramString1 = new Hickory();
-            continue;
-          }
-          paramString2 = paramString1.gd.keySet().iterator();
-          while (paramString2.hasNext()) {
-            localObject = (Integer)paramString2.next();
-          }
-          paramString2 = paramString1.jd;
-          if (paramString2 != null) {
-            paramString2 = paramString2.keySet().iterator();
-          }
-        }
-        else
-        {
-          while (paramString2.hasNext())
-          {
-            localObject = (String)paramString2.next();
-            continue;
-            ((bc)localObject).a(paramContext, paramString1);
-            break label501;
-          }
-        }
-        continue;
-      }
-      else
-      {
-        bool = false;
-        continue;
       }
     }
+    catch (Throwable paramString1)
+    {
+      paramString1 = (String)localObject;
+      break label144;
+    }
+    int i = paramString1.length;
+    boolean bool = true;
+    if (i != 0)
+    {
+      paramString1 = as.a(((ap)this.f).a, paramContext, paramString1, 8119, 18119);
+      if (paramString1.b != 0) {
+        paramString1 = new byte[0];
+      } else {
+        paramString1 = paramString1.a();
+      }
+      if (paramInt != 1) {}
+    }
+    try
+    {
+      paramString1 = TuringDIDService.aa.f(cm.e(), paramString1, paramInt);
+      paramString1 = cm.b(paramString1);
+      break label233;
+      if (paramInt != 0) {
+        paramString1 = new byte[0];
+      }
+      label233:
+      paramString2 = new Kiwifruit();
+      paramString1 = new cy(paramString1);
+      paramString2.ld = paramString1.a(paramString2.ld, 0, true);
+      paramString2.md = ((Hickory)paramString1.a(Kiwifruit.kd, 1, false));
+      paramString2.Jb = paramString1.a(paramString2.Jb, 2, true);
+      if (paramString2.ld >= 0)
+      {
+        if (paramString2.ld == 1)
+        {
+          paramString1 = new Hickory();
+          break label451;
+        }
+        paramString2 = paramString2.md;
+        if (paramString2 == null)
+        {
+          paramString1 = new Hickory();
+          break label451;
+        }
+        paramString1 = paramString2.gd.keySet().iterator();
+        while (paramString1.hasNext()) {
+          localObject = (Integer)paramString1.next();
+        }
+        localObject = paramString2.jd;
+        paramString1 = paramString2;
+        if (localObject == null) {
+          break label451;
+        }
+        localObject = ((Map)localObject).keySet().iterator();
+        for (;;)
+        {
+          paramString1 = paramString2;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          paramString1 = (String)((Iterator)localObject).next();
+        }
+      }
+    }
+    catch (Throwable paramString1)
+    {
+      label449:
+      break label449;
+    }
+    paramString1 = null;
+    label451:
+    if (paramString1 == null)
+    {
+      bool = false;
+    }
+    else
+    {
+      paramString2 = paramString1.gd;
+      localObject = bc.a;
+      if ((paramString2 != null) && (paramString2.size() != 0)) {
+        ((bc)localObject).a(paramContext, paramString1);
+      } else {
+        ((bc)localObject).d(paramContext);
+      }
+    }
+    return bool;
   }
   
   public String b(Context paramContext)

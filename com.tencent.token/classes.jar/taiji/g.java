@@ -21,17 +21,18 @@ public class g
   
   public g(cd paramcd)
   {
-    if (Build.VERSION.SDK_INT < 19) {
-      throw new IllegalStateException("Merge paths are not supported pre-KitKat.");
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      this.d = paramcd.a();
+      this.f = paramcd;
+      return;
     }
-    this.d = paramcd.a();
-    this.f = paramcd;
+    throw new IllegalStateException("Merge paths are not supported pre-KitKat.");
   }
   
   @TargetApi(19)
   private void a(Path.Op paramOp)
   {
-    int k = 0;
     this.b.reset();
     this.a.reset();
     int i = this.e.size() - 1;
@@ -39,36 +40,39 @@ public class g
     Path localPath;
     while (i >= 1)
     {
-      localh = (h)this.e.get(i);
-      if ((localh instanceof bs))
+      localObject = (h)this.e.get(i);
+      if ((localObject instanceof bs))
       {
-        localList = ((bs)localh).d();
+        localObject = (bs)localObject;
+        localList = ((bs)localObject).d();
         int j = localList.size() - 1;
         while (j >= 0)
         {
           localPath = ((h)localList.get(j)).a();
-          localPath.transform(((bs)localh).e());
+          localPath.transform(((bs)localObject).e());
           this.b.addPath(localPath);
           j -= 1;
         }
       }
-      this.b.addPath(localh.a());
+      this.b.addPath(((h)localObject).a());
       i -= 1;
     }
-    h localh = (h)this.e.get(0);
-    if ((localh instanceof bs))
+    Object localObject = this.e;
+    i = 0;
+    localObject = (h)((List)localObject).get(0);
+    if ((localObject instanceof bs))
     {
-      localList = ((bs)localh).d();
-      i = k;
+      localObject = (bs)localObject;
+      localList = ((bs)localObject).d();
       while (i < localList.size())
       {
         localPath = ((h)localList.get(i)).a();
-        localPath.transform(((bs)localh).e());
+        localPath.transform(((bs)localObject).e());
         this.a.addPath(localPath);
         i += 1;
       }
     }
-    this.a.set(localh.a());
+    this.a.set(((h)localObject).a());
     this.c.op(this.a, this.b, paramOp);
   }
   
@@ -85,22 +89,27 @@ public class g
   public Path a()
   {
     this.c.reset();
+    Path.Op localOp;
     switch (1.a[this.f.b().ordinal()])
     {
+    default: 
+      break;
+    case 5: 
+      localOp = Path.Op.XOR;
+      break;
+    case 4: 
+      localOp = Path.Op.INTERSECT;
+      break;
+    case 3: 
+      localOp = Path.Op.REVERSE_DIFFERENCE;
+      break;
+    case 2: 
+      localOp = Path.Op.UNION;
+      a(localOp);
+      break;
     }
-    for (;;)
-    {
-      return this.c;
-      c();
-      continue;
-      a(Path.Op.UNION);
-      continue;
-      a(Path.Op.REVERSE_DIFFERENCE);
-      continue;
-      a(Path.Op.INTERSECT);
-      continue;
-      a(Path.Op.XOR);
-    }
+    c();
+    return this.c;
   }
   
   public void a(List<br> paramList1, List<br> paramList2)

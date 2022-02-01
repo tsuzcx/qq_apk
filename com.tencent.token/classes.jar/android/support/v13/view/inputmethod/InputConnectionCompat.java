@@ -27,166 +27,77 @@ public final class InputConnectionCompat
     paramEditorInfo = EditorInfoCompat.getContentMimeTypes(paramEditorInfo);
     int j = paramEditorInfo.length;
     int i = 0;
-    if (i < j) {
-      if (!localClipDescription.hasMimeType(paramEditorInfo[i])) {}
-    }
-    for (i = 1;; i = 0)
+    while (i < j)
     {
-      if (i == 0)
+      if (localClipDescription.hasMimeType(paramEditorInfo[i]))
       {
-        return false;
-        i += 1;
-        break;
+        i = 1;
+        break label55;
       }
-      if (Build.VERSION.SDK_INT >= 25) {
-        return paramInputConnection.commitContent((InputContentInfo)paramInputContentInfoCompat.unwrap(), paramInt, paramBundle);
-      }
-      paramEditorInfo = new Bundle();
-      paramEditorInfo.putParcelable("android.support.v13.view.inputmethod.InputConnectionCompat.CONTENT_URI", paramInputContentInfoCompat.getContentUri());
-      paramEditorInfo.putParcelable("android.support.v13.view.inputmethod.InputConnectionCompat.CONTENT_DESCRIPTION", paramInputContentInfoCompat.getDescription());
-      paramEditorInfo.putParcelable("android.support.v13.view.inputmethod.InputConnectionCompat.CONTENT_LINK_URI", paramInputContentInfoCompat.getLinkUri());
-      paramEditorInfo.putInt("android.support.v13.view.inputmethod.InputConnectionCompat.CONTENT_FLAGS", paramInt);
-      paramEditorInfo.putParcelable("android.support.v13.view.inputmethod.InputConnectionCompat.CONTENT_OPTS", paramBundle);
-      return paramInputConnection.performPrivateCommand("android.support.v13.view.inputmethod.InputConnectionCompat.COMMIT_CONTENT", paramEditorInfo);
+      i += 1;
     }
+    i = 0;
+    label55:
+    if (i == 0) {
+      return false;
+    }
+    if (Build.VERSION.SDK_INT >= 25) {
+      return paramInputConnection.commitContent((InputContentInfo)paramInputContentInfoCompat.unwrap(), paramInt, paramBundle);
+    }
+    paramEditorInfo = new Bundle();
+    paramEditorInfo.putParcelable("android.support.v13.view.inputmethod.InputConnectionCompat.CONTENT_URI", paramInputContentInfoCompat.getContentUri());
+    paramEditorInfo.putParcelable("android.support.v13.view.inputmethod.InputConnectionCompat.CONTENT_DESCRIPTION", paramInputContentInfoCompat.getDescription());
+    paramEditorInfo.putParcelable("android.support.v13.view.inputmethod.InputConnectionCompat.CONTENT_LINK_URI", paramInputContentInfoCompat.getLinkUri());
+    paramEditorInfo.putInt("android.support.v13.view.inputmethod.InputConnectionCompat.CONTENT_FLAGS", paramInt);
+    paramEditorInfo.putParcelable("android.support.v13.view.inputmethod.InputConnectionCompat.CONTENT_OPTS", paramBundle);
+    return paramInputConnection.performPrivateCommand("android.support.v13.view.inputmethod.InputConnectionCompat.COMMIT_CONTENT", paramEditorInfo);
   }
   
   @NonNull
   public static InputConnection createWrapper(@NonNull InputConnection paramInputConnection, @NonNull EditorInfo paramEditorInfo, @NonNull final OnCommitContentListener paramOnCommitContentListener)
   {
-    if (paramInputConnection == null) {
-      throw new IllegalArgumentException("inputConnection must be non-null");
-    }
-    if (paramEditorInfo == null) {
+    if (paramInputConnection != null)
+    {
+      if (paramEditorInfo != null)
+      {
+        if (paramOnCommitContentListener != null)
+        {
+          if (Build.VERSION.SDK_INT >= 25) {
+            new InputConnectionWrapper(paramInputConnection, false)
+            {
+              public boolean commitContent(InputContentInfo paramAnonymousInputContentInfo, int paramAnonymousInt, Bundle paramAnonymousBundle)
+              {
+                if (paramOnCommitContentListener.onCommitContent(InputContentInfoCompat.wrap(paramAnonymousInputContentInfo), paramAnonymousInt, paramAnonymousBundle)) {
+                  return true;
+                }
+                return super.commitContent(paramAnonymousInputContentInfo, paramAnonymousInt, paramAnonymousBundle);
+              }
+            };
+          }
+          if (EditorInfoCompat.getContentMimeTypes(paramEditorInfo).length == 0) {
+            return paramInputConnection;
+          }
+          new InputConnectionWrapper(paramInputConnection, false)
+          {
+            public boolean performPrivateCommand(String paramAnonymousString, Bundle paramAnonymousBundle)
+            {
+              if (InputConnectionCompat.handlePerformPrivateCommand(paramAnonymousString, paramAnonymousBundle, paramOnCommitContentListener)) {
+                return true;
+              }
+              return super.performPrivateCommand(paramAnonymousString, paramAnonymousBundle);
+            }
+          };
+        }
+        throw new IllegalArgumentException("onCommitContentListener must be non-null");
+      }
       throw new IllegalArgumentException("editorInfo must be non-null");
     }
-    if (paramOnCommitContentListener == null) {
-      throw new IllegalArgumentException("onCommitContentListener must be non-null");
-    }
-    Object localObject;
-    if (Build.VERSION.SDK_INT >= 25) {
-      localObject = new InputConnectionWrapper(paramInputConnection, false)
-      {
-        public boolean commitContent(InputContentInfo paramAnonymousInputContentInfo, int paramAnonymousInt, Bundle paramAnonymousBundle)
-        {
-          if (paramOnCommitContentListener.onCommitContent(InputContentInfoCompat.wrap(paramAnonymousInputContentInfo), paramAnonymousInt, paramAnonymousBundle)) {
-            return true;
-          }
-          return super.commitContent(paramAnonymousInputContentInfo, paramAnonymousInt, paramAnonymousBundle);
-        }
-      };
-    }
-    do
-    {
-      return localObject;
-      localObject = paramInputConnection;
-    } while (EditorInfoCompat.getContentMimeTypes(paramEditorInfo).length == 0);
-    new InputConnectionWrapper(paramInputConnection, false)
-    {
-      public boolean performPrivateCommand(String paramAnonymousString, Bundle paramAnonymousBundle)
-      {
-        if (InputConnectionCompat.handlePerformPrivateCommand(paramAnonymousString, paramAnonymousBundle, paramOnCommitContentListener)) {
-          return true;
-        }
-        return super.performPrivateCommand(paramAnonymousString, paramAnonymousBundle);
-      }
-    };
+    throw new IllegalArgumentException("inputConnection must be non-null");
   }
   
-  /* Error */
   static boolean handlePerformPrivateCommand(@Nullable String paramString, @NonNull Bundle paramBundle, @NonNull OnCommitContentListener paramOnCommitContentListener)
   {
-    // Byte code:
-    //   0: ldc 15
-    //   2: aload_0
-    //   3: invokestatic 130	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   6: ifne +5 -> 11
-    //   9: iconst_0
-    //   10: ireturn
-    //   11: aload_1
-    //   12: ifnull -3 -> 9
-    //   15: aload_1
-    //   16: ldc 33
-    //   18: invokevirtual 134	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   21: checkcast 136	android/os/ResultReceiver
-    //   24: astore_0
-    //   25: aload_1
-    //   26: ldc 18
-    //   28: invokevirtual 134	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   31: checkcast 138	android/net/Uri
-    //   34: astore 5
-    //   36: aload_1
-    //   37: ldc 21
-    //   39: invokevirtual 134	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   42: checkcast 61	android/content/ClipDescription
-    //   45: astore 6
-    //   47: aload_1
-    //   48: ldc 27
-    //   50: invokevirtual 134	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   53: checkcast 138	android/net/Uri
-    //   56: astore 7
-    //   58: aload_1
-    //   59: ldc 24
-    //   61: invokevirtual 142	android/os/Bundle:getInt	(Ljava/lang/String;)I
-    //   64: istore_3
-    //   65: aload_1
-    //   66: ldc 30
-    //   68: invokevirtual 134	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   71: checkcast 83	android/os/Bundle
-    //   74: astore_1
-    //   75: aload_2
-    //   76: new 49	android/support/v13/view/inputmethod/InputContentInfoCompat
-    //   79: dup
-    //   80: aload 5
-    //   82: aload 6
-    //   84: aload 7
-    //   86: invokespecial 145	android/support/v13/view/inputmethod/InputContentInfoCompat:<init>	(Landroid/net/Uri;Landroid/content/ClipDescription;Landroid/net/Uri;)V
-    //   89: iload_3
-    //   90: aload_1
-    //   91: invokeinterface 149 4 0
-    //   96: istore 4
-    //   98: aload_0
-    //   99: ifnull +16 -> 115
-    //   102: iload 4
-    //   104: ifeq +14 -> 118
-    //   107: iconst_1
-    //   108: istore_3
-    //   109: aload_0
-    //   110: iload_3
-    //   111: aconst_null
-    //   112: invokevirtual 153	android/os/ResultReceiver:send	(ILandroid/os/Bundle;)V
-    //   115: iload 4
-    //   117: ireturn
-    //   118: iconst_0
-    //   119: istore_3
-    //   120: goto -11 -> 109
-    //   123: astore_1
-    //   124: aconst_null
-    //   125: astore_0
-    //   126: aload_0
-    //   127: ifnull +9 -> 136
-    //   130: aload_0
-    //   131: iconst_0
-    //   132: aconst_null
-    //   133: invokevirtual 153	android/os/ResultReceiver:send	(ILandroid/os/Bundle;)V
-    //   136: aload_1
-    //   137: athrow
-    //   138: astore_1
-    //   139: goto -13 -> 126
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	142	0	paramString	String
-    //   0	142	1	paramBundle	Bundle
-    //   0	142	2	paramOnCommitContentListener	OnCommitContentListener
-    //   64	56	3	i	int
-    //   96	20	4	bool	boolean
-    //   34	47	5	localUri1	android.net.Uri
-    //   45	38	6	localClipDescription	ClipDescription
-    //   56	29	7	localUri2	android.net.Uri
-    // Exception table:
-    //   from	to	target	type
-    //   15	25	123	finally
-    //   25	98	138	finally
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:806)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static abstract interface OnCommitContentListener

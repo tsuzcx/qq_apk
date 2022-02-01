@@ -36,15 +36,26 @@ public class ProtoGeneralVryMobileCode
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    String str2 = l.a(new Object[] { "real_uin", Long.valueOf(this.e), "scene_id", Integer.valueOf(this.g), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L), "mobile_code", this.h, "verify_type_id", Integer.valueOf(this.i) });
-    str1 = "?uin=" + this.d + "&aq_base_sid=" + str1 + "&data=" + str2;
-    return c.e() + "/cn/mbtoken3/mbtoken3_general_verify_mobile_code" + str1;
+    Object localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.e), "scene_id", Integer.valueOf(this.g), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L), "mobile_code", this.h, "verify_type_id", Integer.valueOf(this.i) });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?uin=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("&aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_general_verify_mobile_code");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -69,19 +80,30 @@ public class ProtoGeneralVryMobileCode
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      g.a("mbtoken3_general_verify_mobile_code ret: " + paramJSONObject);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mbtoken3_general_verify_mobile_code ret: ");
+      localStringBuilder.append(paramJSONObject);
+      g.a(localStringBuilder.toString());
       k = paramJSONObject.getInt("seq_id");
       if (k != this.f)
       {
-        g.c("parseJSON error seq is wrong seq=" + k + ",right = " + this.f);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(k);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.f);
+        g.c(paramJSONObject.toString());
         this.a.b(10030);
         return;
       }
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
 }
 

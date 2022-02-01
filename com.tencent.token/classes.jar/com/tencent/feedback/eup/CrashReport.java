@@ -4,7 +4,6 @@ import android.content.Context;
 import com.tencent.feedback.common.c;
 import com.tencent.feedback.common.e;
 import com.tencent.feedback.common.e.a;
-import com.tencent.feedback.eup.jni.NativeExceptionHandler;
 import com.tencent.feedback.eup.jni.NativeExceptionUpload;
 import com.tencent.feedback.proguard.o;
 import com.tencent.feedback.proguard.p;
@@ -24,15 +23,16 @@ public class CrashReport
 {
   public static boolean addPlugin(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return false;
+    if ((paramString1 != null) && (paramString2 != null))
+    {
+      c localc = c.a(paramContext);
+      paramContext = paramString3;
+      if (paramString3 == null) {
+        paramContext = "";
+      }
+      return localc.a(paramString1, paramString2, paramContext);
     }
-    c localc = c.a(paramContext);
-    paramContext = paramString3;
-    if (paramString3 == null) {
-      paramContext = "";
-    }
-    return localc.a(paramString1, paramString2, paramContext);
+    return false;
   }
   
   public static void clearSDKTotalConsume(Context paramContext)
@@ -110,23 +110,26 @@ public class CrashReport
       if (paramBoolean) {
         return paramContext.e;
       }
-      long l = paramContext.d;
-      return paramContext.e + l;
+      return paramContext.d + paramContext.e;
     }
     return -1L;
   }
   
   public static String getUserData(Context paramContext, String paramString)
   {
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return null;
-      if ((paramString != null) && (paramString.trim().length() > 0)) {}
-      for (int i = 0; i == 0; i = 1) {
-        return c.a(paramContext).k(paramString);
-      }
     }
+    int i;
+    if ((paramString != null) && (paramString.trim().length() > 0)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i != 0) {
+      return null;
+    }
+    return c.a(paramContext).k(paramString);
   }
   
   public static int getUserDatasSize(Context paramContext)
@@ -197,7 +200,6 @@ public class CrashReport
       e.a("already inited Native", new Object[0]);
       return;
     }
-    Object localObject;
     if (paramFile != null)
     {
       if (!NativeExceptionUpload.loadRQDNativeLib(paramFile))
@@ -206,57 +208,58 @@ public class CrashReport
         return;
       }
       e.a("load lib sucess from specify!", new Object[0]);
-      localObject = com.tencent.feedback.eup.jni.b.a(paramContext);
-      ((com.tencent.feedback.eup.jni.b)localObject).a(paramString);
-      NativeExceptionUpload.setmHandler((NativeExceptionHandler)localObject);
-      localObject = paramList;
-      if (paramFile != null)
-      {
-        localObject = paramList;
-        if (paramList == null) {
-          localObject = new ArrayList();
-        }
-        ((List)localObject).add(paramFile);
-      }
-      if ((paramContext != null) && (paramString != null)) {
-        break label197;
-      }
-      e.c("rqdp{  nreg param!}", new Object[0]);
     }
-    for (;;)
+    else
     {
-      com.tencent.feedback.common.d.a(paramContext);
-      paramList = com.tencent.feedback.common.d.d();
-      com.tencent.feedback.common.d.a(paramContext);
-      NativeExceptionUpload.registEUP(paramString, paramList, Integer.parseInt(com.tencent.feedback.common.d.c()));
-      NativeExceptionUpload.enableNativeEUP(true);
-      if (!paramBoolean) {
-        break label342;
-      }
-      NativeExceptionUpload.setNativeLogMode(3);
-      return;
       if (!NativeExceptionUpload.loadRQDNativeLib())
       {
         e.d("load lib fail default close native return!", new Object[0]);
         return;
       }
       e.a("load lib sucess default!", new Object[0]);
-      break;
-      label197:
-      paramList = f.l().s();
+    }
+    com.tencent.feedback.eup.jni.b localb = com.tencent.feedback.eup.jni.b.a(paramContext);
+    localb.a(paramString);
+    NativeExceptionUpload.setmHandler(localb);
+    if (paramFile != null)
+    {
+      if (paramList == null) {
+        paramList = new ArrayList();
+      }
+      paramList.add(paramFile);
+    }
+    if ((paramContext != null) && (paramString != null))
+    {
+      paramFile = f.l().s();
       long l1 = com.tencent.feedback.proguard.a.c();
-      long l2 = paramList.getRecordOverDays() * 24 * 3600 * 1000;
-      int i = paramList.getMaxStoredNum();
+      long l2 = paramFile.getRecordOverDays() * 24 * 3600 * 1000;
+      int i = paramFile.getMaxStoredNum();
       t.a(paramContext).a(new com.tencent.feedback.eup.jni.d(paramContext, paramString, l1 - l2, i, "tomb_", ".txt"));
       e.a("add clean task to query listener", new Object[0]);
-      paramList = "/data/data/" + paramContext.getPackageName() + "/lib/";
+      paramFile = new StringBuilder("/data/data/");
+      paramFile.append(paramContext.getPackageName());
+      paramFile.append("/lib/");
+      paramFile = paramFile.toString();
       if (c.a(paramContext).A() == null)
       {
         e.b("no setted SO , query so!", new Object[0]);
-        com.tencent.feedback.common.b.b().a(new com.tencent.feedback.eup.jni.a(paramContext, paramList, (List)localObject));
+        com.tencent.feedback.common.b.b().a(new com.tencent.feedback.eup.jni.a(paramContext, paramFile, paramList));
       }
     }
-    label342:
+    else
+    {
+      e.c("rqdp{  nreg param!}", new Object[0]);
+    }
+    com.tencent.feedback.common.d.a(paramContext);
+    paramList = com.tencent.feedback.common.d.d();
+    com.tencent.feedback.common.d.a(paramContext);
+    NativeExceptionUpload.registEUP(paramString, paramList, Integer.parseInt(com.tencent.feedback.common.d.c()));
+    NativeExceptionUpload.enableNativeEUP(true);
+    if (paramBoolean)
+    {
+      NativeExceptionUpload.setNativeLogMode(3);
+      return;
+    }
     NativeExceptionUpload.setNativeLogMode(5);
   }
   
@@ -267,18 +270,28 @@ public class CrashReport
       e.c("putUserData args context should not be null", new Object[0]);
       return;
     }
-    if ((paramString1 != null) && (paramString1.trim().length() > 0)) {}
-    for (int i = 0; i != 0; i = 1)
+    int i;
+    if ((paramString1 != null) && (paramString1.trim().length() > 0)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i != 0)
     {
       e.c("putUserData args key should not be null", new Object[0]);
       return;
     }
     if (!paramString1.matches("[a-zA-Z[0-9]]+"))
     {
-      e.c("putUserData args key should match [a-zA-Z[0-9]]+  {" + paramString1 + "}", new Object[0]);
+      paramContext = new StringBuilder("putUserData args key should match [a-zA-Z[0-9]]+  {");
+      paramContext.append(paramString1);
+      paramContext.append("}");
+      e.c(paramContext.toString(), new Object[0]);
       return;
     }
-    Object localObject = paramString2;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString2);
+    localObject = ((StringBuilder)localObject).toString();
     paramString2 = (String)localObject;
     if (((String)localObject).length() > 200)
     {
@@ -319,11 +332,11 @@ public class CrashReport
     if (paramContext == null) {
       e.c("removeUserData args context should not be null", new Object[0]);
     }
-    if ((paramString != null) && (paramString.trim().length() > 0)) {}
-    while (i != 0)
-    {
-      return null;
+    if ((paramString == null) || (paramString.trim().length() <= 0)) {
       i = 1;
+    }
+    if (i != 0) {
+      return null;
     }
     return c.a(paramContext).j(paramString);
   }
@@ -350,7 +363,9 @@ public class CrashReport
   public static void setDengta_AppKey(Context paramContext, String paramString)
   {
     c.a(paramContext).e(paramString);
-    e.b("setted beacon appkey %s", new Object[] { paramString });
+    paramContext = new StringBuilder();
+    paramContext.append(paramString);
+    e.b("setted beacon appkey %s", new Object[] { paramContext.toString() });
   }
   
   public static void setDeviceId(Context paramContext, String paramString)
@@ -361,19 +376,22 @@ public class CrashReport
   public static void setDeviceRooted(Context paramContext, boolean paramBoolean)
   {
     c.a(paramContext).a(paramBoolean);
-    e.b("setted isRT %s", new Object[] { paramBoolean });
+    paramContext = new StringBuilder();
+    paramContext.append(paramBoolean);
+    e.b("setted isRT %s", new Object[] { paramContext.toString() });
   }
   
   public static void setLogAble(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramBoolean1) {}
-    for (e.a locala = new e.a();; locala = null)
-    {
-      e.a(locala);
-      if (paramBoolean1) {
-        e.c("'setLogAble(boolean)' is true , so running in debug model , close it when you release!", new Object[0]);
-      }
-      return;
+    e.a locala;
+    if (paramBoolean1) {
+      locala = new e.a();
+    } else {
+      locala = null;
+    }
+    e.a(locala);
+    if (paramBoolean1) {
+      e.c("'setLogAble(boolean)' is true , so running in debug model , close it when you release!", new Object[0]);
     }
   }
   
@@ -385,7 +403,9 @@ public class CrashReport
   public static void setProductID(Context paramContext, String paramString)
   {
     c.a(paramContext).i(paramString);
-    e.b("setted ProductID %s", new Object[] { paramString });
+    paramContext = new StringBuilder();
+    paramContext.append(paramString);
+    e.b("setted ProductID %s", new Object[] { paramContext.toString() });
   }
   
   public static void setProductVersion(Context paramContext, String paramString)

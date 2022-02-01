@@ -31,13 +31,13 @@ public class k
   {
     Object localObject = a(paramContext);
     paramContext = new JSONArray();
-    if ((localObject == null) || (((List)localObject).size() == 0)) {
-      return paramContext;
-    }
-    localObject = ((List)localObject).iterator();
-    for (;;)
+    if (localObject != null)
     {
-      if (((Iterator)localObject).hasNext())
+      if (((List)localObject).size() == 0) {
+        return paramContext;
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
         Sensor localSensor = (Sensor)((Iterator)localObject).next();
         JSONObject localJSONObject = new JSONObject();
@@ -46,29 +46,28 @@ public class k
           localJSONObject.put("name", localSensor.getName());
           localJSONObject.put("version", localSensor.getVersion());
           localJSONObject.put("vender", localSensor.getVendor());
-          paramContext.put(localJSONObject);
         }
         catch (JSONException localJSONException)
         {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
+          localJSONException.printStackTrace();
         }
+        paramContext.put(localJSONObject);
       }
+      return paramContext;
     }
     return paramContext;
   }
   
   public static int c(Context paramContext)
   {
+    int i = 0;
     try
     {
       paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(1);
       if (paramContext != null) {
-        return 1;
+        i = 1;
       }
-      return 0;
+      return i;
     }
     catch (Exception paramContext)
     {
@@ -79,13 +78,14 @@ public class k
   
   public static int d(Context paramContext)
   {
+    int i = 0;
     try
     {
       paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(2);
       if (paramContext != null) {
-        return 1;
+        i = 1;
       }
-      return 0;
+      return i;
     }
     catch (Exception paramContext)
     {
@@ -96,13 +96,14 @@ public class k
   
   public static int e(Context paramContext)
   {
+    int i = 0;
     try
     {
       paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(4);
       if (paramContext != null) {
-        return 1;
+        i = 1;
       }
-      return 0;
+      return i;
     }
     catch (Exception paramContext)
     {
@@ -113,13 +114,14 @@ public class k
   
   public static int f(Context paramContext)
   {
+    int i = 0;
     try
     {
       paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(9);
       if (paramContext != null) {
-        return 1;
+        i = 1;
       }
-      return 0;
+      return i;
     }
     catch (Exception paramContext)
     {
@@ -130,13 +132,14 @@ public class k
   
   public static int g(Context paramContext)
   {
+    int i = 0;
     try
     {
       paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(10);
       if (paramContext != null) {
-        return 1;
+        i = 1;
       }
-      return 0;
+      return i;
     }
     catch (Exception paramContext)
     {
@@ -147,13 +150,14 @@ public class k
   
   public static int h(Context paramContext)
   {
+    int i = 0;
     try
     {
       paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(5);
       if (paramContext != null) {
-        return 1;
+        i = 1;
       }
-      return 0;
+      return i;
     }
     catch (Exception paramContext)
     {
@@ -164,13 +168,14 @@ public class k
   
   public static int i(Context paramContext)
   {
+    int i = 0;
     try
     {
       paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(8);
       if (paramContext != null) {
-        return 1;
+        i = 1;
       }
-      return 0;
+      return i;
     }
     catch (Exception paramContext)
     {
@@ -181,13 +186,14 @@ public class k
   
   public static int j(Context paramContext)
   {
+    int i = 0;
     try
     {
       paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(7);
       if (paramContext != null) {
-        return 1;
+        i = 1;
       }
-      return 0;
+      return i;
     }
     catch (Exception paramContext)
     {
@@ -198,13 +204,14 @@ public class k
   
   public static int k(Context paramContext)
   {
+    int i = 0;
     try
     {
       paramContext = ((SensorManager)paramContext.getSystemService("sensor")).getDefaultSensor(6);
       if (paramContext != null) {
-        return 1;
+        i = 1;
       }
-      return 0;
+      return i;
     }
     catch (Exception paramContext)
     {

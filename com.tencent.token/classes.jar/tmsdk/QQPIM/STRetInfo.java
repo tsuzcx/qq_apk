@@ -58,8 +58,9 @@ public final class STRetInfo
     paramJceOutputStream.write(this.nPaMoney, 5);
     paramJceOutputStream.write(this.ntime, 6);
     paramJceOutputStream.write(this.nStopType, 7);
-    if (this.strMsg != null) {
-      paramJceOutputStream.write(this.strMsg, 8);
+    String str = this.strMsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.specialType, 9);
   }

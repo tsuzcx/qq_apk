@@ -18,27 +18,28 @@ public class LoginMsgMenuDialog
   
   private void a()
   {
-    this.b = ((Button)findViewById(2131558984));
-    this.c = ((Button)findViewById(2131558985));
+    this.b = ((Button)findViewById(2131165727));
+    this.c = ((Button)findViewById(2131165726));
     this.b.setOnClickListener(this.e);
     this.c.setOnClickListener(this.d);
   }
   
   protected void onCreate(Bundle paramBundle)
   {
-    if ((this.a == null) || ((this.a != null) && (this.a.isFinishing())))
+    Activity localActivity = this.a;
+    if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
     {
-      dismiss();
+      super.onCreate(paramBundle);
+      setContentView(2131296363);
+      a();
+      setCanceledOnTouchOutside(true);
+      paramBundle = getWindow();
+      paramBundle.setBackgroundDrawableResource(2131099876);
+      paramBundle.getAttributes().width = -1;
+      paramBundle.setGravity(80);
       return;
     }
-    super.onCreate(paramBundle);
-    setContentView(2130968682);
-    a();
-    setCanceledOnTouchOutside(true);
-    paramBundle = getWindow();
-    paramBundle.setBackgroundDrawableResource(2130837730);
-    paramBundle.getAttributes().width = -1;
-    paramBundle.setGravity(80);
+    dismiss();
   }
   
   public static abstract interface a {}

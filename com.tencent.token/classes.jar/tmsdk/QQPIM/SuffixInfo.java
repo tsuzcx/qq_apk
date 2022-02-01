@@ -31,14 +31,17 @@ public final class SuffixInfo
   {
     paramJceOutputStream.write(this.suffixname, 0);
     paramJceOutputStream.write(this.filecount, 1);
-    if (this.size != 0L) {
-      paramJceOutputStream.write(this.size, 2);
+    long l = this.size;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 2);
     }
-    if (this.maxSize != 0L) {
-      paramJceOutputStream.write(this.maxSize, 3);
+    l = this.maxSize;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 3);
     }
-    if (this.minSize != 0L) {
-      paramJceOutputStream.write(this.minSize, 4);
+    l = this.minSize;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 4);
     }
   }
 }

@@ -14,47 +14,65 @@ public abstract class LiveData<T>
   private static final Object NOT_SET = new Object();
   static final int START_VERSION = -1;
   private int mActiveCount = 0;
-  private volatile Object mData = NOT_SET;
+  private volatile Object mData;
   private final Object mDataLock = new Object();
   private boolean mDispatchInvalidated;
   private boolean mDispatchingValue;
   private SafeIterableMap<Observer<T>, LiveData<T>.ObserverWrapper> mObservers = new SafeIterableMap();
-  private volatile Object mPendingData = NOT_SET;
-  private final Runnable mPostValueRunnable = new Runnable()
+  private volatile Object mPendingData;
+  private final Runnable mPostValueRunnable;
+  private int mVersion;
+  
+  public LiveData()
   {
-    public void run()
+    Object localObject = NOT_SET;
+    this.mData = localObject;
+    this.mPendingData = localObject;
+    this.mVersion = -1;
+    this.mPostValueRunnable = new Runnable()
     {
-      synchronized (LiveData.this.mDataLock)
+      public void run()
       {
-        Object localObject2 = LiveData.this.mPendingData;
-        LiveData.access$102(LiveData.this, LiveData.NOT_SET);
-        LiveData.this.setValue(localObject2);
-        return;
+        synchronized (LiveData.this.mDataLock)
+        {
+          Object localObject2 = LiveData.this.mPendingData;
+          LiveData.access$102(LiveData.this, LiveData.NOT_SET);
+          LiveData.this.setValue(localObject2);
+          return;
+        }
       }
-    }
-  };
-  private int mVersion = -1;
+    };
+  }
   
   private static void assertMainThread(String paramString)
   {
-    if (!ArchTaskExecutor.getInstance().isMainThread()) {
-      throw new IllegalStateException("Cannot invoke " + paramString + " on a background" + " thread");
+    if (ArchTaskExecutor.getInstance().isMainThread()) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot invoke ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" on a background");
+    localStringBuilder.append(" thread");
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   private void considerNotify(LiveData<T>.ObserverWrapper paramLiveData)
   {
-    if (!paramLiveData.mActive) {}
-    do
-    {
+    if (!paramLiveData.mActive) {
       return;
-      if (!paramLiveData.shouldBeActive())
-      {
-        paramLiveData.activeStateChanged(false);
-        return;
-      }
-    } while (paramLiveData.mLastVersion >= this.mVersion);
-    paramLiveData.mLastVersion = this.mVersion;
+    }
+    if (!paramLiveData.shouldBeActive())
+    {
+      paramLiveData.activeStateChanged(false);
+      return;
+    }
+    int i = paramLiveData.mLastVersion;
+    int j = this.mVersion;
+    if (i >= j) {
+      return;
+    }
+    paramLiveData.mLastVersion = j;
     paramLiveData.mObserver.onChanged(this.mData);
   }
   
@@ -66,32 +84,31 @@ public abstract class LiveData<T>
       return;
     }
     this.mDispatchingValue = true;
-    this.mDispatchInvalidated = false;
-    LiveData<T>.ObserverWrapper localLiveData;
-    if (paramLiveData != null)
+    do
     {
-      considerNotify(paramLiveData);
-      localLiveData = null;
-    }
-    for (;;)
-    {
-      paramLiveData = localLiveData;
-      if (this.mDispatchInvalidated) {
-        break;
-      }
-      this.mDispatchingValue = false;
-      return;
-      SafeIterableMap.IteratorWithAdditions localIteratorWithAdditions = this.mObservers.iteratorWithAdditions();
-      do
+      this.mDispatchInvalidated = false;
+      LiveData<T>.ObserverWrapper localLiveData;
+      if (paramLiveData != null)
       {
+        considerNotify(paramLiveData);
+        localLiveData = null;
+      }
+      else
+      {
+        SafeIterableMap.IteratorWithAdditions localIteratorWithAdditions = this.mObservers.iteratorWithAdditions();
+        do
+        {
+          localLiveData = paramLiveData;
+          if (!localIteratorWithAdditions.hasNext()) {
+            break;
+          }
+          considerNotify((ObserverWrapper)((Map.Entry)localIteratorWithAdditions.next()).getValue());
+        } while (!this.mDispatchInvalidated);
         localLiveData = paramLiveData;
-        if (!localIteratorWithAdditions.hasNext()) {
-          break;
-        }
-        considerNotify((ObserverWrapper)((Map.Entry)localIteratorWithAdditions.next()).getValue());
-      } while (!this.mDispatchInvalidated);
-      localLiveData = paramLiveData;
-    }
+      }
+      paramLiveData = localLiveData;
+    } while (this.mDispatchInvalidated);
+    this.mDispatchingValue = false;
   }
   
   @Nullable
@@ -122,17 +139,17 @@ public abstract class LiveData<T>
   @MainThread
   public void observe(@NonNull LifecycleOwner paramLifecycleOwner, @NonNull Observer<T> paramObserver)
   {
-    if (paramLifecycleOwner.getLifecycle().getCurrentState() == Lifecycle.State.DESTROYED) {}
-    LifecycleBoundObserver localLifecycleBoundObserver;
-    do
-    {
+    if (paramLifecycleOwner.getLifecycle().getCurrentState() == Lifecycle.State.DESTROYED) {
       return;
-      localLifecycleBoundObserver = new LifecycleBoundObserver(paramLifecycleOwner, paramObserver);
-      paramObserver = (ObserverWrapper)this.mObservers.putIfAbsent(paramObserver, localLifecycleBoundObserver);
-      if ((paramObserver != null) && (!paramObserver.isAttachedTo(paramLifecycleOwner))) {
-        throw new IllegalArgumentException("Cannot add the same observer with different lifecycles");
-      }
-    } while (paramObserver != null);
+    }
+    LifecycleBoundObserver localLifecycleBoundObserver = new LifecycleBoundObserver(paramLifecycleOwner, paramObserver);
+    paramObserver = (ObserverWrapper)this.mObservers.putIfAbsent(paramObserver, localLifecycleBoundObserver);
+    if ((paramObserver != null) && (!paramObserver.isAttachedTo(paramLifecycleOwner))) {
+      throw new IllegalArgumentException("Cannot add the same observer with different lifecycles");
+    }
+    if (paramObserver != null) {
+      return;
+    }
     paramLifecycleOwner.getLifecycle().addObserver(localLifecycleBoundObserver);
   }
   
@@ -160,18 +177,17 @@ public abstract class LiveData<T>
     {
       synchronized (this.mDataLock)
       {
-        if (this.mPendingData != NOT_SET) {
-          break label47;
-        }
-        i = 1;
-        this.mPendingData = paramT;
-        if (i == 0) {
+        if (this.mPendingData == NOT_SET)
+        {
+          i = 1;
+          this.mPendingData = paramT;
+          if (i == 0) {
+            return;
+          }
+          ArchTaskExecutor.getInstance().postToMainThread(this.mPostValueRunnable);
           return;
         }
       }
-      ArchTaskExecutor.getInstance().postToMainThread(this.mPostValueRunnable);
-      return;
-      label47:
       int i = 0;
     }
   }
@@ -278,42 +294,31 @@ public abstract class LiveData<T>
     
     void activeStateChanged(boolean paramBoolean)
     {
-      int j = 1;
       if (paramBoolean == this.mActive) {
         return;
       }
       this.mActive = paramBoolean;
-      int i;
-      label28:
-      LiveData localLiveData;
-      int k;
-      if (LiveData.this.mActiveCount == 0)
-      {
+      int i = LiveData.this.mActiveCount;
+      int j = 1;
+      if (i == 0) {
         i = 1;
-        localLiveData = LiveData.this;
-        k = localLiveData.mActiveCount;
-        if (!this.mActive) {
-          break label121;
-        }
-      }
-      for (;;)
-      {
-        LiveData.access$302(localLiveData, j + k);
-        if ((i != 0) && (this.mActive)) {
-          LiveData.this.onActive();
-        }
-        if ((LiveData.this.mActiveCount == 0) && (!this.mActive)) {
-          LiveData.this.onInactive();
-        }
-        if (!this.mActive) {
-          break;
-        }
-        LiveData.this.dispatchingValue(this);
-        return;
+      } else {
         i = 0;
-        break label28;
-        label121:
+      }
+      LiveData localLiveData = LiveData.this;
+      int k = localLiveData.mActiveCount;
+      if (!this.mActive) {
         j = -1;
+      }
+      LiveData.access$302(localLiveData, k + j);
+      if ((i != 0) && (this.mActive)) {
+        LiveData.this.onActive();
+      }
+      if ((LiveData.this.mActiveCount == 0) && (!this.mActive)) {
+        LiveData.this.onInactive();
+      }
+      if (this.mActive) {
+        LiveData.this.dispatchingValue(this);
       }
     }
     

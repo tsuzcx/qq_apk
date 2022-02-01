@@ -37,17 +37,14 @@ public class i
     localCamera.save();
     if (this.f) {
       localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
-    }
-    for (;;)
-    {
-      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f3, -f4);
-      paramTransformation.postTranslate(f3, f4);
-      return;
+    } else {
       localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
     }
+    localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
+    localCamera.getMatrix(paramTransformation);
+    localCamera.restore();
+    paramTransformation.preTranslate(-f3, -f4);
+    paramTransformation.postTranslate(f3, f4);
   }
   
   public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)

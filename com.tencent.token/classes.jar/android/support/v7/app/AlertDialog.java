@@ -202,8 +202,9 @@ public class AlertDialog
     
     public Builder setAdapter(ListAdapter paramListAdapter, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.P.mAdapter = paramListAdapter;
-      this.P.mOnClickListener = paramOnClickListener;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mAdapter = paramListAdapter;
+      localAlertParams.mOnClickListener = paramOnClickListener;
       return this;
     }
     
@@ -215,9 +216,10 @@ public class AlertDialog
     
     public Builder setCursor(Cursor paramCursor, DialogInterface.OnClickListener paramOnClickListener, String paramString)
     {
-      this.P.mCursor = paramCursor;
-      this.P.mLabelColumn = paramString;
-      this.P.mOnClickListener = paramOnClickListener;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mCursor = paramCursor;
+      localAlertParams.mLabelColumn = paramString;
+      localAlertParams.mOnClickListener = paramOnClickListener;
       return this;
     }
     
@@ -256,21 +258,24 @@ public class AlertDialog
     
     public Builder setItems(@ArrayRes int paramInt, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.P.mItems = this.P.mContext.getResources().getTextArray(paramInt);
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mItems = localAlertParams.mContext.getResources().getTextArray(paramInt);
       this.P.mOnClickListener = paramOnClickListener;
       return this;
     }
     
     public Builder setItems(CharSequence[] paramArrayOfCharSequence, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.P.mItems = paramArrayOfCharSequence;
-      this.P.mOnClickListener = paramOnClickListener;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mItems = paramArrayOfCharSequence;
+      localAlertParams.mOnClickListener = paramOnClickListener;
       return this;
     }
     
     public Builder setMessage(@StringRes int paramInt)
     {
-      this.P.mMessage = this.P.mContext.getText(paramInt);
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mMessage = localAlertParams.mContext.getText(paramInt);
       return this;
     }
     
@@ -282,43 +287,49 @@ public class AlertDialog
     
     public Builder setMultiChoiceItems(@ArrayRes int paramInt, boolean[] paramArrayOfBoolean, DialogInterface.OnMultiChoiceClickListener paramOnMultiChoiceClickListener)
     {
-      this.P.mItems = this.P.mContext.getResources().getTextArray(paramInt);
-      this.P.mOnCheckboxClickListener = paramOnMultiChoiceClickListener;
-      this.P.mCheckedItems = paramArrayOfBoolean;
-      this.P.mIsMultiChoice = true;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mItems = localAlertParams.mContext.getResources().getTextArray(paramInt);
+      localAlertParams = this.P;
+      localAlertParams.mOnCheckboxClickListener = paramOnMultiChoiceClickListener;
+      localAlertParams.mCheckedItems = paramArrayOfBoolean;
+      localAlertParams.mIsMultiChoice = true;
       return this;
     }
     
     public Builder setMultiChoiceItems(Cursor paramCursor, String paramString1, String paramString2, DialogInterface.OnMultiChoiceClickListener paramOnMultiChoiceClickListener)
     {
-      this.P.mCursor = paramCursor;
-      this.P.mOnCheckboxClickListener = paramOnMultiChoiceClickListener;
-      this.P.mIsCheckedColumn = paramString1;
-      this.P.mLabelColumn = paramString2;
-      this.P.mIsMultiChoice = true;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mCursor = paramCursor;
+      localAlertParams.mOnCheckboxClickListener = paramOnMultiChoiceClickListener;
+      localAlertParams.mIsCheckedColumn = paramString1;
+      localAlertParams.mLabelColumn = paramString2;
+      localAlertParams.mIsMultiChoice = true;
       return this;
     }
     
     public Builder setMultiChoiceItems(CharSequence[] paramArrayOfCharSequence, boolean[] paramArrayOfBoolean, DialogInterface.OnMultiChoiceClickListener paramOnMultiChoiceClickListener)
     {
-      this.P.mItems = paramArrayOfCharSequence;
-      this.P.mOnCheckboxClickListener = paramOnMultiChoiceClickListener;
-      this.P.mCheckedItems = paramArrayOfBoolean;
-      this.P.mIsMultiChoice = true;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mItems = paramArrayOfCharSequence;
+      localAlertParams.mOnCheckboxClickListener = paramOnMultiChoiceClickListener;
+      localAlertParams.mCheckedItems = paramArrayOfBoolean;
+      localAlertParams.mIsMultiChoice = true;
       return this;
     }
     
     public Builder setNegativeButton(@StringRes int paramInt, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.P.mNegativeButtonText = this.P.mContext.getText(paramInt);
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mNegativeButtonText = localAlertParams.mContext.getText(paramInt);
       this.P.mNegativeButtonListener = paramOnClickListener;
       return this;
     }
     
     public Builder setNegativeButton(CharSequence paramCharSequence, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.P.mNegativeButtonText = paramCharSequence;
-      this.P.mNegativeButtonListener = paramOnClickListener;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mNegativeButtonText = paramCharSequence;
+      localAlertParams.mNegativeButtonListener = paramOnClickListener;
       return this;
     }
     
@@ -330,15 +341,17 @@ public class AlertDialog
     
     public Builder setNeutralButton(@StringRes int paramInt, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.P.mNeutralButtonText = this.P.mContext.getText(paramInt);
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mNeutralButtonText = localAlertParams.mContext.getText(paramInt);
       this.P.mNeutralButtonListener = paramOnClickListener;
       return this;
     }
     
     public Builder setNeutralButton(CharSequence paramCharSequence, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.P.mNeutralButtonText = paramCharSequence;
-      this.P.mNeutralButtonListener = paramOnClickListener;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mNeutralButtonText = paramCharSequence;
+      localAlertParams.mNeutralButtonListener = paramOnClickListener;
       return this;
     }
     
@@ -374,15 +387,17 @@ public class AlertDialog
     
     public Builder setPositiveButton(@StringRes int paramInt, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.P.mPositiveButtonText = this.P.mContext.getText(paramInt);
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mPositiveButtonText = localAlertParams.mContext.getText(paramInt);
       this.P.mPositiveButtonListener = paramOnClickListener;
       return this;
     }
     
     public Builder setPositiveButton(CharSequence paramCharSequence, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.P.mPositiveButtonText = paramCharSequence;
-      this.P.mPositiveButtonListener = paramOnClickListener;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mPositiveButtonText = paramCharSequence;
+      localAlertParams.mPositiveButtonListener = paramOnClickListener;
       return this;
     }
     
@@ -401,44 +416,50 @@ public class AlertDialog
     
     public Builder setSingleChoiceItems(@ArrayRes int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.P.mItems = this.P.mContext.getResources().getTextArray(paramInt1);
-      this.P.mOnClickListener = paramOnClickListener;
-      this.P.mCheckedItem = paramInt2;
-      this.P.mIsSingleChoice = true;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mItems = localAlertParams.mContext.getResources().getTextArray(paramInt1);
+      localAlertParams = this.P;
+      localAlertParams.mOnClickListener = paramOnClickListener;
+      localAlertParams.mCheckedItem = paramInt2;
+      localAlertParams.mIsSingleChoice = true;
       return this;
     }
     
     public Builder setSingleChoiceItems(Cursor paramCursor, int paramInt, String paramString, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.P.mCursor = paramCursor;
-      this.P.mOnClickListener = paramOnClickListener;
-      this.P.mCheckedItem = paramInt;
-      this.P.mLabelColumn = paramString;
-      this.P.mIsSingleChoice = true;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mCursor = paramCursor;
+      localAlertParams.mOnClickListener = paramOnClickListener;
+      localAlertParams.mCheckedItem = paramInt;
+      localAlertParams.mLabelColumn = paramString;
+      localAlertParams.mIsSingleChoice = true;
       return this;
     }
     
     public Builder setSingleChoiceItems(ListAdapter paramListAdapter, int paramInt, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.P.mAdapter = paramListAdapter;
-      this.P.mOnClickListener = paramOnClickListener;
-      this.P.mCheckedItem = paramInt;
-      this.P.mIsSingleChoice = true;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mAdapter = paramListAdapter;
+      localAlertParams.mOnClickListener = paramOnClickListener;
+      localAlertParams.mCheckedItem = paramInt;
+      localAlertParams.mIsSingleChoice = true;
       return this;
     }
     
     public Builder setSingleChoiceItems(CharSequence[] paramArrayOfCharSequence, int paramInt, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.P.mItems = paramArrayOfCharSequence;
-      this.P.mOnClickListener = paramOnClickListener;
-      this.P.mCheckedItem = paramInt;
-      this.P.mIsSingleChoice = true;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mItems = paramArrayOfCharSequence;
+      localAlertParams.mOnClickListener = paramOnClickListener;
+      localAlertParams.mCheckedItem = paramInt;
+      localAlertParams.mIsSingleChoice = true;
       return this;
     }
     
     public Builder setTitle(@StringRes int paramInt)
     {
-      this.P.mTitle = this.P.mContext.getText(paramInt);
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mTitle = localAlertParams.mContext.getText(paramInt);
       return this;
     }
     
@@ -450,17 +471,19 @@ public class AlertDialog
     
     public Builder setView(int paramInt)
     {
-      this.P.mView = null;
-      this.P.mViewLayoutResId = paramInt;
-      this.P.mViewSpacingSpecified = false;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mView = null;
+      localAlertParams.mViewLayoutResId = paramInt;
+      localAlertParams.mViewSpacingSpecified = false;
       return this;
     }
     
     public Builder setView(View paramView)
     {
-      this.P.mView = paramView;
-      this.P.mViewLayoutResId = 0;
-      this.P.mViewSpacingSpecified = false;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mView = paramView;
+      localAlertParams.mViewLayoutResId = 0;
+      localAlertParams.mViewSpacingSpecified = false;
       return this;
     }
     
@@ -468,13 +491,14 @@ public class AlertDialog
     @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
     public Builder setView(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
-      this.P.mView = paramView;
-      this.P.mViewLayoutResId = 0;
-      this.P.mViewSpacingSpecified = true;
-      this.P.mViewSpacingLeft = paramInt1;
-      this.P.mViewSpacingTop = paramInt2;
-      this.P.mViewSpacingRight = paramInt3;
-      this.P.mViewSpacingBottom = paramInt4;
+      AlertController.AlertParams localAlertParams = this.P;
+      localAlertParams.mView = paramView;
+      localAlertParams.mViewLayoutResId = 0;
+      localAlertParams.mViewSpacingSpecified = true;
+      localAlertParams.mViewSpacingLeft = paramInt1;
+      localAlertParams.mViewSpacingTop = paramInt2;
+      localAlertParams.mViewSpacingRight = paramInt3;
+      localAlertParams.mViewSpacingBottom = paramInt4;
       return this;
     }
     

@@ -11,38 +11,43 @@ final class d
   
   public final boolean a(long paramLong)
   {
-    boolean bool = false;
     e.b("process end %d", new Object[] { Long.valueOf(paramLong) });
-    if ((this.a.a <= 0L) || (this.a.c <= 0L) || (this.a.b == null)) {
-      bool = true;
+    if ((this.a.a > 0L) && (this.a.c > 0L)) {
+      return this.a.b == null;
     }
-    return bool;
+    return true;
   }
   
   public final boolean a(long paramLong1, long paramLong2, String paramString)
   {
     e.b("new process %s", new Object[] { paramString });
-    if (!paramString.equals(paramString)) {}
-    do
-    {
+    if (!paramString.equals(paramString)) {
       return true;
-      this.a.a = paramLong1;
-      this.a.b = paramString;
-      this.a.c = paramLong2;
-    } while (this.b);
-    return false;
+    }
+    f localf = this.a;
+    localf.a = paramLong1;
+    localf.b = paramString;
+    localf.c = paramLong2;
+    return this.b;
   }
   
   public final boolean a(String paramString1, int paramInt, String paramString2, String paramString3)
   {
     e.b("new thread %s", new Object[] { paramString1 });
-    if ((this.a.a <= 0L) || (this.a.c <= 0L) || (this.a.b == null)) {
+    if ((this.a.a > 0L) && (this.a.c > 0L))
+    {
+      if (this.a.b == null) {
+        return true;
+      }
+      if (this.a.d == null) {
+        this.a.d = new HashMap();
+      }
+      Map localMap = this.a.d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt);
+      localMap.put(paramString1, new String[] { paramString2, paramString3, localStringBuilder.toString() });
       return true;
     }
-    if (this.a.d == null) {
-      this.a.d = new HashMap();
-    }
-    this.a.d.put(paramString1, new String[] { paramString2, paramString3, paramInt });
     return true;
   }
 }

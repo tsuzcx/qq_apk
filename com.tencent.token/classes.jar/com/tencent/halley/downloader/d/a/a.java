@@ -19,8 +19,12 @@ public final class a
   private Runnable a(long paramLong, TimeUnit paramTimeUnit)
   {
     paramTimeUnit = (Runnable)super.poll(paramLong, paramTimeUnit);
-    if ((paramTimeUnit == null) && (this.a != null)) {
-      this.a.a();
+    if (paramTimeUnit == null)
+    {
+      b localb = this.a;
+      if (localb != null) {
+        localb.a();
+      }
     }
     return paramTimeUnit;
   }

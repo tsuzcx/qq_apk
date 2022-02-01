@@ -23,15 +23,18 @@ abstract class al<V, O>
   
   public boolean b()
   {
-    return !this.a.isEmpty();
+    return this.a.isEmpty() ^ true;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("parseInitialValue=").append(this.b);
-    if (!this.a.isEmpty()) {
-      localStringBuilder.append(", values=").append(Arrays.toString(this.a.toArray()));
+    localStringBuilder.append("parseInitialValue=");
+    localStringBuilder.append(this.b);
+    if (!this.a.isEmpty())
+    {
+      localStringBuilder.append(", values=");
+      localStringBuilder.append(Arrays.toString(this.a.toArray()));
     }
     return localStringBuilder.toString();
   }

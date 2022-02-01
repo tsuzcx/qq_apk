@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public final class e
 {
-  private static a a = null;
+  private static a a;
   
   private static a a()
   {
@@ -43,34 +43,36 @@ public final class e
       return false;
     }
     String str;
-    if (paramString == null) {
+    if (paramString == null)
+    {
       str = "null";
     }
-    for (;;)
+    else
     {
-      switch (paramInt)
-      {
-      default: 
-        return false;
-      case 0: 
-        locala.a(str);
-        return true;
-        str = paramString;
-        if (paramVarArgs != null)
-        {
+      str = paramString;
+      if (paramVarArgs != null) {
+        if (paramVarArgs.length == 0) {
           str = paramString;
-          if (paramVarArgs.length != 0) {
-            str = String.format(Locale.US, paramString, paramVarArgs);
-          }
+        } else {
+          str = String.format(Locale.US, paramString, paramVarArgs);
         }
-        break;
       }
     }
-    locala.b(str);
-    return true;
-    locala.c(str);
-    return true;
-    locala.d(str);
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 3: 
+      locala.d(str);
+      return true;
+    case 2: 
+      locala.c(str);
+      return true;
+    case 1: 
+      locala.b(str);
+      return true;
+    }
+    locala.a(str);
     return true;
   }
   
@@ -85,17 +87,17 @@ public final class e
     {
     default: 
       return false;
-    case 0: 
-      locala.a(paramThrowable);
-      return true;
-    case 1: 
-      locala.b(paramThrowable);
+    case 3: 
+      locala.d(paramThrowable);
       return true;
     case 2: 
       locala.c(paramThrowable);
       return true;
+    case 1: 
+      locala.b(paramThrowable);
+      return true;
     }
-    locala.d(paramThrowable);
+    locala.a(paramThrowable);
     return true;
   }
   

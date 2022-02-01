@@ -28,14 +28,17 @@ public final class g
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.a != 0) {
-      paramJceOutputStream.write(this.a, 0);
+    int i = this.a;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.b != 0) {
-      paramJceOutputStream.write(this.b, 1);
+    i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 2);
+    ArrayList localArrayList = this.c;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }

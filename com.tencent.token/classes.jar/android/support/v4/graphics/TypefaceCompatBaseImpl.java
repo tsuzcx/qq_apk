@@ -9,8 +9,6 @@ import android.support.annotation.RestrictTo;
 import android.support.v4.content.res.FontResourcesParserCompat.FontFamilyFilesResourceEntry;
 import android.support.v4.content.res.FontResourcesParserCompat.FontFileResourceEntry;
 import android.support.v4.provider.FontsContractCompat.FontInfo;
-import java.io.File;
-import java.io.InputStream;
 
 @RequiresApi(14)
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
@@ -39,55 +37,44 @@ class TypefaceCompatBaseImpl
   private static <T> T findBestFont(T[] paramArrayOfT, int paramInt, StyleExtractor<T> paramStyleExtractor)
   {
     int i;
-    int i1;
-    label19:
-    Object localObject;
-    label32:
-    int k;
-    if ((paramInt & 0x1) == 0)
-    {
+    if ((paramInt & 0x1) == 0) {
       i = 400;
-      if ((paramInt & 0x2) == 0) {
-        break label117;
-      }
-      i1 = 1;
-      localObject = null;
-      int j = 2147483647;
-      int m = paramArrayOfT.length;
-      paramInt = 0;
-      if (paramInt >= m) {
-        break label129;
-      }
-      T ? = paramArrayOfT[paramInt];
-      int n = Math.abs(paramStyleExtractor.getWeight(?) - i);
-      if (paramStyleExtractor.isItalic(?) != i1) {
-        break label123;
-      }
-      k = 0;
-      label74:
-      k += n * 2;
-      if ((localObject != null) && (j <= k)) {
-        break label132;
-      }
-      j = k;
-      localObject = ?;
-    }
-    label129:
-    label132:
-    for (;;)
-    {
-      paramInt += 1;
-      break label32;
+    } else {
       i = 700;
-      break;
-      label117:
-      i1 = 0;
-      break label19;
-      label123:
-      k = 1;
-      break label74;
-      return localObject;
     }
+    int i1;
+    if ((paramInt & 0x2) != 0) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    int n = paramArrayOfT.length;
+    Object localObject = null;
+    paramInt = 0;
+    int k;
+    for (int j = 2147483647; paramInt < n; j = k)
+    {
+      T ? = paramArrayOfT[paramInt];
+      int m = Math.abs(paramStyleExtractor.getWeight(?) - i);
+      if (paramStyleExtractor.isItalic(?) == i1) {
+        k = 0;
+      } else {
+        k = 1;
+      }
+      m = m * 2 + k;
+      if (localObject != null)
+      {
+        k = j;
+        if (j <= m) {}
+      }
+      else
+      {
+        localObject = ?;
+        k = m;
+      }
+      paramInt += 1;
+    }
+    return localObject;
   }
   
   @Nullable
@@ -106,112 +93,193 @@ class TypefaceCompatBaseImpl
     // Byte code:
     //   0: aload_3
     //   1: arraylength
-    //   2: iconst_1
-    //   3: if_icmpge +5 -> 8
-    //   6: aconst_null
-    //   7: areturn
-    //   8: aload_0
-    //   9: aload_3
-    //   10: iload 4
-    //   12: invokevirtual 94	android/support/v4/graphics/TypefaceCompatBaseImpl:findBestInfo	([Landroid/support/v4/provider/FontsContractCompat$FontInfo;I)Landroid/support/v4/provider/FontsContractCompat$FontInfo;
-    //   15: astore_2
-    //   16: aload_1
-    //   17: invokevirtual 100	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   20: aload_2
-    //   21: invokevirtual 106	android/support/v4/provider/FontsContractCompat$FontInfo:getUri	()Landroid/net/Uri;
-    //   24: invokevirtual 112	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
-    //   27: astore_2
-    //   28: aload_0
-    //   29: aload_1
-    //   30: aload_2
-    //   31: invokevirtual 116	android/support/v4/graphics/TypefaceCompatBaseImpl:createFromInputStream	(Landroid/content/Context;Ljava/io/InputStream;)Landroid/graphics/Typeface;
-    //   34: astore_1
-    //   35: aload_2
-    //   36: invokestatic 122	android/support/v4/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
-    //   39: aload_1
-    //   40: areturn
+    //   2: istore 5
+    //   4: aconst_null
+    //   5: astore 6
+    //   7: iload 5
+    //   9: iconst_1
+    //   10: if_icmpge +5 -> 15
+    //   13: aconst_null
+    //   14: areturn
+    //   15: aload_0
+    //   16: aload_3
+    //   17: iload 4
+    //   19: invokevirtual 94	android/support/v4/graphics/TypefaceCompatBaseImpl:findBestInfo	([Landroid/support/v4/provider/FontsContractCompat$FontInfo;I)Landroid/support/v4/provider/FontsContractCompat$FontInfo;
+    //   22: astore_2
+    //   23: aload_1
+    //   24: invokevirtual 100	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   27: aload_2
+    //   28: invokevirtual 106	android/support/v4/provider/FontsContractCompat$FontInfo:getUri	()Landroid/net/Uri;
+    //   31: invokevirtual 112	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+    //   34: astore_2
+    //   35: aload_0
+    //   36: aload_1
+    //   37: aload_2
+    //   38: invokevirtual 116	android/support/v4/graphics/TypefaceCompatBaseImpl:createFromInputStream	(Landroid/content/Context;Ljava/io/InputStream;)Landroid/graphics/Typeface;
     //   41: astore_1
-    //   42: aconst_null
-    //   43: astore_2
-    //   44: aload_2
-    //   45: invokestatic 122	android/support/v4/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
-    //   48: aconst_null
-    //   49: areturn
+    //   42: aload_2
+    //   43: invokestatic 122	android/support/v4/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   46: aload_1
+    //   47: areturn
+    //   48: astore_3
+    //   49: aload_2
     //   50: astore_1
-    //   51: aconst_null
+    //   51: aload_3
     //   52: astore_2
-    //   53: aload_2
-    //   54: invokestatic 122	android/support/v4/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
-    //   57: aload_1
-    //   58: athrow
+    //   53: goto +7 -> 60
+    //   56: astore_2
+    //   57: aload 6
     //   59: astore_1
-    //   60: goto -7 -> 53
-    //   63: astore_1
-    //   64: goto -20 -> 44
+    //   60: aload_1
+    //   61: invokestatic 122	android/support/v4/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   64: aload_2
+    //   65: athrow
+    //   66: aconst_null
+    //   67: astore_2
+    //   68: aload_2
+    //   69: invokestatic 122	android/support/v4/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   72: aconst_null
+    //   73: areturn
+    //   74: astore_1
+    //   75: goto -9 -> 66
+    //   78: astore_1
+    //   79: goto -11 -> 68
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	67	0	this	TypefaceCompatBaseImpl
-    //   0	67	1	paramContext	Context
-    //   0	67	2	paramCancellationSignal	android.os.CancellationSignal
-    //   0	67	3	paramArrayOfFontInfo	FontsContractCompat.FontInfo[]
-    //   0	67	4	paramInt	int
+    //   0	82	0	this	TypefaceCompatBaseImpl
+    //   0	82	1	paramContext	Context
+    //   0	82	2	paramCancellationSignal	android.os.CancellationSignal
+    //   0	82	3	paramArrayOfFontInfo	FontsContractCompat.FontInfo[]
+    //   0	82	4	paramInt	int
+    //   2	9	5	i	int
+    //   5	53	6	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   16	28	41	java/io/IOException
-    //   16	28	50	finally
-    //   28	35	59	finally
-    //   28	35	63	java/io/IOException
+    //   35	42	48	finally
+    //   23	35	56	finally
+    //   23	35	74	java/io/IOException
+    //   35	42	78	java/io/IOException
   }
   
-  protected Typeface createFromInputStream(Context paramContext, InputStream paramInputStream)
+  /* Error */
+  protected Typeface createFromInputStream(Context paramContext, java.io.InputStream paramInputStream)
   {
-    paramContext = TypefaceCompatUtil.getTempFile(paramContext);
-    if (paramContext == null) {
-      return null;
-    }
-    try
-    {
-      boolean bool = TypefaceCompatUtil.copyToFile(paramContext, paramInputStream);
-      if (!bool) {
-        return null;
-      }
-      paramInputStream = Typeface.createFromFile(paramContext.getPath());
-      return paramInputStream;
-    }
-    catch (RuntimeException paramInputStream)
-    {
-      return null;
-    }
-    finally
-    {
-      paramContext.delete();
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: invokestatic 129	android/support/v4/graphics/TypefaceCompatUtil:getTempFile	(Landroid/content/Context;)Ljava/io/File;
+    //   4: astore_1
+    //   5: aload_1
+    //   6: ifnonnull +5 -> 11
+    //   9: aconst_null
+    //   10: areturn
+    //   11: aload_1
+    //   12: aload_2
+    //   13: invokestatic 133	android/support/v4/graphics/TypefaceCompatUtil:copyToFile	(Ljava/io/File;Ljava/io/InputStream;)Z
+    //   16: istore_3
+    //   17: iload_3
+    //   18: ifne +10 -> 28
+    //   21: aload_1
+    //   22: invokevirtual 139	java/io/File:delete	()Z
+    //   25: pop
+    //   26: aconst_null
+    //   27: areturn
+    //   28: aload_1
+    //   29: invokevirtual 142	java/io/File:getPath	()Ljava/lang/String;
+    //   32: invokestatic 148	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   35: astore_2
+    //   36: aload_1
+    //   37: invokevirtual 139	java/io/File:delete	()Z
+    //   40: pop
+    //   41: aload_2
+    //   42: areturn
+    //   43: astore_2
+    //   44: aload_1
+    //   45: invokevirtual 139	java/io/File:delete	()Z
+    //   48: pop
+    //   49: aload_2
+    //   50: athrow
+    //   51: aload_1
+    //   52: invokevirtual 139	java/io/File:delete	()Z
+    //   55: pop
+    //   56: aconst_null
+    //   57: areturn
+    //   58: astore_2
+    //   59: goto -8 -> 51
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	62	0	this	TypefaceCompatBaseImpl
+    //   0	62	1	paramContext	Context
+    //   0	62	2	paramInputStream	java.io.InputStream
+    //   16	2	3	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   11	17	43	finally
+    //   28	36	43	finally
+    //   11	17	58	java/lang/RuntimeException
+    //   28	36	58	java/lang/RuntimeException
   }
   
+  /* Error */
   @Nullable
   public Typeface createFromResourcesFontFile(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2)
   {
-    paramContext = TypefaceCompatUtil.getTempFile(paramContext);
-    if (paramContext == null) {
-      return null;
-    }
-    try
-    {
-      boolean bool = TypefaceCompatUtil.copyToFile(paramContext, paramResources, paramInt1);
-      if (!bool) {
-        return null;
-      }
-      paramResources = Typeface.createFromFile(paramContext.getPath());
-      return paramResources;
-    }
-    catch (RuntimeException paramResources)
-    {
-      return null;
-    }
-    finally
-    {
-      paramContext.delete();
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: invokestatic 129	android/support/v4/graphics/TypefaceCompatUtil:getTempFile	(Landroid/content/Context;)Ljava/io/File;
+    //   4: astore_1
+    //   5: aload_1
+    //   6: ifnonnull +5 -> 11
+    //   9: aconst_null
+    //   10: areturn
+    //   11: aload_1
+    //   12: aload_2
+    //   13: iload_3
+    //   14: invokestatic 151	android/support/v4/graphics/TypefaceCompatUtil:copyToFile	(Ljava/io/File;Landroid/content/res/Resources;I)Z
+    //   17: istore 6
+    //   19: iload 6
+    //   21: ifne +10 -> 31
+    //   24: aload_1
+    //   25: invokevirtual 139	java/io/File:delete	()Z
+    //   28: pop
+    //   29: aconst_null
+    //   30: areturn
+    //   31: aload_1
+    //   32: invokevirtual 142	java/io/File:getPath	()Ljava/lang/String;
+    //   35: invokestatic 148	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   38: astore_2
+    //   39: aload_1
+    //   40: invokevirtual 139	java/io/File:delete	()Z
+    //   43: pop
+    //   44: aload_2
+    //   45: areturn
+    //   46: astore_2
+    //   47: aload_1
+    //   48: invokevirtual 139	java/io/File:delete	()Z
+    //   51: pop
+    //   52: aload_2
+    //   53: athrow
+    //   54: aload_1
+    //   55: invokevirtual 139	java/io/File:delete	()Z
+    //   58: pop
+    //   59: aconst_null
+    //   60: areturn
+    //   61: astore_2
+    //   62: goto -8 -> 54
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	65	0	this	TypefaceCompatBaseImpl
+    //   0	65	1	paramContext	Context
+    //   0	65	2	paramResources	Resources
+    //   0	65	3	paramInt1	int
+    //   0	65	4	paramString	String
+    //   0	65	5	paramInt2	int
+    //   17	3	6	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   11	19	46	finally
+    //   31	39	46	finally
+    //   11	19	61	java/lang/RuntimeException
+    //   31	39	61	java/lang/RuntimeException
   }
   
   protected FontsContractCompat.FontInfo findBestInfo(FontsContractCompat.FontInfo[] paramArrayOfFontInfo, int paramInt)

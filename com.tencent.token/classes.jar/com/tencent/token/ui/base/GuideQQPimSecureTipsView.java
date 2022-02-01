@@ -22,12 +22,6 @@ public class GuideQQPimSecureTipsView
   TextView c;
   ImageView d;
   
-  public GuideQQPimSecureTipsView(Context paramContext)
-  {
-    super(paramContext);
-    a(paramContext);
-  }
-  
   public GuideQQPimSecureTipsView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
@@ -36,15 +30,17 @@ public class GuideQQPimSecureTipsView
   
   private void a(Context paramContext)
   {
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130968677, this, true);
-    this.b = ((TextView)findViewById(2131558968));
-    this.c = ((TextView)findViewById(2131558969));
-    this.d = ((ImageView)findViewById(2131558967));
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131296357, this, true);
+    this.b = ((TextView)findViewById(2131166100));
+    this.c = ((TextView)findViewById(2131166099));
+    this.d = ((ImageView)findViewById(2131165651));
   }
   
   public void a()
   {
-    if ((getVisibility() == 0) && (a)) {}
+    if (getVisibility() == 0) {
+      boolean bool = a;
+    }
   }
   
   public void a(final String paramString1, String paramString2, String paramString3, String paramString4, final ArrayList<String> paramArrayList, final boolean paramBoolean)

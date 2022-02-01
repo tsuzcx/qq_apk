@@ -14,16 +14,6 @@ public final class CommentInfo
   public int score = 0;
   public SoftKey softkey = null;
   
-  static
-  {
-    if (!CommentInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public CommentInfo()
   {
     setSoftkey(this.softkey);
@@ -45,29 +35,39 @@ public final class CommentInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (CommentInfo)paramObject;
-    } while ((!JceUtil.equals(this.softkey, paramObject.softkey)) || (!JceUtil.equals(this.score, paramObject.score)) || (!JceUtil.equals(this.comment, paramObject.comment)));
-    return true;
+    }
+    paramObject = (CommentInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.softkey, paramObject.softkey))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.score, paramObject.score))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.comment, paramObject.comment)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -132,8 +132,9 @@ public final class CommentInfo
   {
     paramJceOutputStream.write(this.softkey, 0);
     paramJceOutputStream.write(this.score, 1);
-    if (this.comment != null) {
-      paramJceOutputStream.write(this.comment, 2);
+    String str = this.comment;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }

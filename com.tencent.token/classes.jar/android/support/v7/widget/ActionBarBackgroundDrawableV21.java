@@ -16,15 +16,15 @@ class ActionBarBackgroundDrawableV21
   
   public void getOutline(@NonNull Outline paramOutline)
   {
-    if (this.mContainer.mIsSplit) {
+    if (this.mContainer.mIsSplit)
+    {
       if (this.mContainer.mSplitBackground != null) {
         this.mContainer.mSplitBackground.getOutline(paramOutline);
       }
     }
-    while (this.mContainer.mBackground == null) {
-      return;
+    else if (this.mContainer.mBackground != null) {
+      this.mContainer.mBackground.getOutline(paramOutline);
     }
-    this.mContainer.mBackground.getOutline(paramOutline);
   }
 }
 

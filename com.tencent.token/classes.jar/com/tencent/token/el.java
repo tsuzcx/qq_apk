@@ -13,7 +13,10 @@ public class el
     }
     catch (Exception paramString)
     {
-      g.c("delete database table failed: " + paramString.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("delete database table failed: ");
+      localStringBuilder.append(paramString.toString());
+      g.c(localStringBuilder.toString());
     }
   }
 }

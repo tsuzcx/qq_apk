@@ -29,10 +29,14 @@ public class AccessibilityWindowInfoCompat
   
   public static AccessibilityWindowInfoCompat obtain(AccessibilityWindowInfoCompat paramAccessibilityWindowInfoCompat)
   {
-    if ((Build.VERSION.SDK_INT < 21) || (paramAccessibilityWindowInfoCompat == null)) {
-      return null;
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      if (paramAccessibilityWindowInfoCompat == null) {
+        return null;
+      }
+      return wrapNonNullInstance(AccessibilityWindowInfo.obtain((AccessibilityWindowInfo)paramAccessibilityWindowInfoCompat.mInfo));
     }
-    return wrapNonNullInstance(AccessibilityWindowInfo.obtain((AccessibilityWindowInfo)paramAccessibilityWindowInfoCompat.mInfo));
+    return null;
   }
   
   private static String typeToString(int paramInt)
@@ -41,14 +45,14 @@ public class AccessibilityWindowInfoCompat
     {
     default: 
       return "<UNKNOWN>";
-    case 1: 
-      return "TYPE_APPLICATION";
-    case 2: 
-      return "TYPE_INPUT_METHOD";
+    case 4: 
+      return "TYPE_ACCESSIBILITY_OVERLAY";
     case 3: 
       return "TYPE_SYSTEM";
+    case 2: 
+      return "TYPE_INPUT_METHOD";
     }
-    return "TYPE_ACCESSIBILITY_OVERLAY";
+    return "TYPE_APPLICATION";
   }
   
   static AccessibilityWindowInfoCompat wrapNonNullInstance(Object paramObject)
@@ -61,26 +65,27 @@ public class AccessibilityWindowInfoCompat
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
-      do
-      {
-        return true;
-        if (paramObject == null) {
-          return false;
-        }
-        if (getClass() != paramObject.getClass()) {
-          return false;
-        }
-        paramObject = (AccessibilityWindowInfoCompat)paramObject;
-        if (this.mInfo != null) {
-          break;
-        }
-      } while (paramObject.mInfo == null);
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
       return false;
-    } while (this.mInfo.equals(paramObject.mInfo));
-    return false;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (AccessibilityWindowInfoCompat)paramObject;
+    Object localObject = this.mInfo;
+    if (localObject == null)
+    {
+      if (paramObject.mInfo != null) {
+        return false;
+      }
+    }
+    else if (!localObject.equals(paramObject.mInfo)) {
+      return false;
+    }
+    return true;
   }
   
   public AccessibilityNodeInfoCompat getAnchor()
@@ -164,10 +169,11 @@ public class AccessibilityWindowInfoCompat
   
   public int hashCode()
   {
-    if (this.mInfo == null) {
+    Object localObject = this.mInfo;
+    if (localObject == null) {
       return 0;
     }
-    return this.mInfo.hashCode();
+    return localObject.hashCode();
   }
   
   public boolean isAccessibilityFocused()
@@ -203,36 +209,41 @@ public class AccessibilityWindowInfoCompat
   
   public String toString()
   {
-    boolean bool2 = true;
     StringBuilder localStringBuilder = new StringBuilder();
     Object localObject = new Rect();
     getBoundsInScreen((Rect)localObject);
     localStringBuilder.append("AccessibilityWindowInfo[");
-    localStringBuilder.append("id=").append(getId());
-    localStringBuilder.append(", type=").append(typeToString(getType()));
-    localStringBuilder.append(", layer=").append(getLayer());
-    localStringBuilder.append(", bounds=").append(localObject);
-    localStringBuilder.append(", focused=").append(isFocused());
-    localStringBuilder.append(", active=").append(isActive());
-    localObject = localStringBuilder.append(", hasParent=");
-    if (getParent() != null)
-    {
+    localStringBuilder.append("id=");
+    localStringBuilder.append(getId());
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(typeToString(getType()));
+    localStringBuilder.append(", layer=");
+    localStringBuilder.append(getLayer());
+    localStringBuilder.append(", bounds=");
+    localStringBuilder.append(localObject);
+    localStringBuilder.append(", focused=");
+    localStringBuilder.append(isFocused());
+    localStringBuilder.append(", active=");
+    localStringBuilder.append(isActive());
+    localStringBuilder.append(", hasParent=");
+    localObject = getParent();
+    boolean bool2 = true;
+    boolean bool1;
+    if (localObject != null) {
       bool1 = true;
-      ((StringBuilder)localObject).append(bool1);
-      localObject = localStringBuilder.append(", hasChildren=");
-      if (getChildCount() <= 0) {
-        break label182;
-      }
-    }
-    label182:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ((StringBuilder)localObject).append(bool1);
-      localStringBuilder.append(']');
-      return localStringBuilder.toString();
+    } else {
       bool1 = false;
-      break;
     }
+    localStringBuilder.append(bool1);
+    localStringBuilder.append(", hasChildren=");
+    if (getChildCount() > 0) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    localStringBuilder.append(bool1);
+    localStringBuilder.append(']');
+    return localStringBuilder.toString();
   }
 }
 

@@ -28,8 +28,9 @@ public final class ad
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bm != null) {
-      paramJceOutputStream.write(this.bm, 0);
+    ArrayList localArrayList = this.bm;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }

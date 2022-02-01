@@ -40,7 +40,9 @@ public class ProcessThread
     this.inImg = paramArrayOfByte3;
     this.bundle = new Bundle();
     this.path = paramString;
-    this.real_width = ((int)(paramInt2 * 0.6D));
+    double d = paramInt2;
+    Double.isNaN(d);
+    this.real_width = ((int)(d * 0.6D));
     this.type = new byte[3000];
     this.data = new byte[3000];
     this.sizeArr = new int[2];
@@ -59,46 +61,64 @@ public class ProcessThread
       label5:
       Log.v("TAG", "detect start");
       long l1 = System.currentTimeMillis();
-      Object localObject = new int[2];
-      ImgProcessScan.a(this.outImg, (int[])localObject, this.raw_data, this.width, this.height, (this.width - this.real_width) / 2, (this.height - this.real_width) / 2, this.real_width, this.real_width, 0, 0);
-      System.arraycopy(this.outImg, 0, this.inImg, 0, this.inImg.length);
-      int j = QbarNative.ScanImage(this.inImg, this.real_width, this.real_width, 0);
+      Object localObject1 = new int[2];
+      Object localObject2 = this.outImg;
+      Object localObject3 = this.raw_data;
+      int i = this.width;
+      int j = this.height;
+      int k = this.real_width;
+      ImgProcessScan.a((byte[])localObject2, (int[])localObject1, (byte[])localObject3, i, j, (i - k) / 2, (j - k) / 2, k, k, 0, 0);
+      localObject1 = this.outImg;
+      localObject2 = this.inImg;
+      j = localObject2.length;
+      i = 0;
+      System.arraycopy(localObject1, 0, localObject2, 0, j);
+      localObject1 = this.inImg;
+      j = this.real_width;
+      j = QbarNative.ScanImage((byte[])localObject1, j, j, 0);
       long l2 = System.currentTimeMillis();
-      double d1 = (1L * 0.0D + (l2 - l1)) / (1L + 1L);
-      Log.v("TAG", "average detect time:" + d1);
-      double d2;
+      double d1 = 1L;
+      double d2 = 0.0D;
+      Double.isNaN(d1);
+      double d3 = l2 - l1;
+      Double.isNaN(d3);
+      double d4 = 2L;
+      Double.isNaN(d4);
+      d1 = (d1 * 0.0D + d3) / d4;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("average detect time:");
+      ((StringBuilder)localObject1).append(d1);
+      Log.v("TAG", ((StringBuilder)localObject1).toString());
+      if (j != 1)
+      {
+        d3 = 0.0D;
+        d2 = d1;
+        d1 = d3;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("average target time:");
+      ((StringBuilder)localObject1).append(d1);
+      Log.v("TAG", ((StringBuilder)localObject1).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("average no target time:");
+      ((StringBuilder)localObject1).append(d2);
+      Log.v("TAG", ((StringBuilder)localObject1).toString());
       if (j == 1)
       {
-        d1 = 1L;
-        d1 = (l2 - l1 + d1 * 0.0D) / (1L + 1L);
-        d2 = 0.0D;
-      }
-      for (;;)
-      {
-        Log.v("TAG", "average target time:" + d1);
-        Log.v("TAG", "average no target time:" + d2);
-        if (j != 1) {
-          break label373;
-        }
-        localObject = new Point[10];
-        int i = 0;
-        while (i < localObject.length)
+        localObject1 = new Point[10];
+        while (i < localObject1.length)
         {
-          localObject[i] = new Point();
+          localObject1[i] = new Point();
           i += 1;
         }
-        d1 = 1L;
-        d2 = (l2 - l1 + d1 * 0.0D) / (1L + 1L);
-        d1 = 0.0D;
+        localObject2 = new StringBuilder();
+        localObject3 = new StringBuilder();
+        QbarNative.GetOneResult((StringBuilder)localObject2, (StringBuilder)localObject3, (Point[])localObject1);
+        this.bundle.putString("dataType", ((StringBuilder)localObject2).toString());
+        this.bundle.putString("dataInfo", ((StringBuilder)localObject3).toString());
+        sendMsg(j, this.bundle);
+        return;
       }
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      QbarNative.GetOneResult(localStringBuilder1, localStringBuilder2, (Point[])localObject);
-      this.bundle.putString("dataType", localStringBuilder1.toString());
-      this.bundle.putString("dataInfo", localStringBuilder2.toString());
-      sendMsg(j, this.bundle);
-      return;
-      label373:
       sendMsg(j);
       return;
     }

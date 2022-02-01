@@ -55,55 +55,48 @@ public class ActionBarDrawerToggle
       {
         public void onClick(View paramAnonymousView)
         {
-          if (ActionBarDrawerToggle.this.mDrawerIndicatorEnabled) {
+          if (ActionBarDrawerToggle.this.mDrawerIndicatorEnabled)
+          {
             ActionBarDrawerToggle.this.toggle();
-          }
-          while (ActionBarDrawerToggle.this.mToolbarNavigationClickListener == null) {
             return;
           }
-          ActionBarDrawerToggle.this.mToolbarNavigationClickListener.onClick(paramAnonymousView);
+          if (ActionBarDrawerToggle.this.mToolbarNavigationClickListener != null) {
+            ActionBarDrawerToggle.this.mToolbarNavigationClickListener.onClick(paramAnonymousView);
+          }
         }
       });
-      this.mDrawerLayout = paramDrawerLayout;
-      this.mOpenDrawerContentDescRes = paramInt1;
-      this.mCloseDrawerContentDescRes = paramInt2;
-      if (paramDrawerArrowDrawable != null) {
-        break label159;
-      }
     }
-    label159:
-    for (this.mSlider = new DrawerArrowDrawable(this.mActivityImpl.getActionBarThemedContext());; this.mSlider = paramDrawerArrowDrawable)
+    else if ((paramActivity instanceof DelegateProvider))
     {
-      this.mHomeAsUpIndicator = getThemeUpIndicator();
-      return;
-      if ((paramActivity instanceof DelegateProvider))
-      {
-        this.mActivityImpl = ((DelegateProvider)paramActivity).getDrawerToggleDelegate();
-        break;
-      }
-      if (Build.VERSION.SDK_INT >= 18)
-      {
-        this.mActivityImpl = new JellybeanMr2Delegate(paramActivity);
-        break;
-      }
-      this.mActivityImpl = new IcsDelegate(paramActivity);
-      break;
+      this.mActivityImpl = ((DelegateProvider)paramActivity).getDrawerToggleDelegate();
     }
+    else if (Build.VERSION.SDK_INT >= 18)
+    {
+      this.mActivityImpl = new JellybeanMr2Delegate(paramActivity);
+    }
+    else
+    {
+      this.mActivityImpl = new IcsDelegate(paramActivity);
+    }
+    this.mDrawerLayout = paramDrawerLayout;
+    this.mOpenDrawerContentDescRes = paramInt1;
+    this.mCloseDrawerContentDescRes = paramInt2;
+    if (paramDrawerArrowDrawable == null) {
+      this.mSlider = new DrawerArrowDrawable(this.mActivityImpl.getActionBarThemedContext());
+    } else {
+      this.mSlider = paramDrawerArrowDrawable;
+    }
+    this.mHomeAsUpIndicator = getThemeUpIndicator();
   }
   
   private void setPosition(float paramFloat)
   {
     if (paramFloat == 1.0F) {
       this.mSlider.setVerticalMirror(true);
+    } else if (paramFloat == 0.0F) {
+      this.mSlider.setVerticalMirror(false);
     }
-    for (;;)
-    {
-      this.mSlider.setProgress(paramFloat);
-      return;
-      if (paramFloat == 0.0F) {
-        this.mSlider.setVerticalMirror(false);
-      }
-    }
+    this.mSlider.setProgress(paramFloat);
   }
   
   @NonNull
@@ -201,28 +194,24 @@ public class ActionBarDrawerToggle
   
   public void setDrawerIndicatorEnabled(boolean paramBoolean)
   {
-    int i;
     if (paramBoolean != this.mDrawerIndicatorEnabled)
     {
-      if (!paramBoolean) {
-        break label54;
+      if (paramBoolean)
+      {
+        DrawerArrowDrawable localDrawerArrowDrawable = this.mSlider;
+        int i;
+        if (this.mDrawerLayout.isDrawerOpen(8388611)) {
+          i = this.mCloseDrawerContentDescRes;
+        } else {
+          i = this.mOpenDrawerContentDescRes;
+        }
+        setActionBarUpIndicator(localDrawerArrowDrawable, i);
       }
-      DrawerArrowDrawable localDrawerArrowDrawable = this.mSlider;
-      if (!this.mDrawerLayout.isDrawerOpen(8388611)) {
-        break label46;
+      else
+      {
+        setActionBarUpIndicator(this.mHomeAsUpIndicator, 0);
       }
-      i = this.mCloseDrawerContentDescRes;
-      setActionBarUpIndicator(localDrawerArrowDrawable, i);
-    }
-    for (;;)
-    {
       this.mDrawerIndicatorEnabled = paramBoolean;
-      return;
-      label46:
-      i = this.mOpenDrawerContentDescRes;
-      break;
-      label54:
-      setActionBarUpIndicator(this.mHomeAsUpIndicator, 0);
     }
   }
   
@@ -236,25 +225,29 @@ public class ActionBarDrawerToggle
   
   public void setHomeAsUpIndicator(int paramInt)
   {
-    Drawable localDrawable = null;
+    Drawable localDrawable;
     if (paramInt != 0) {
       localDrawable = this.mDrawerLayout.getResources().getDrawable(paramInt);
+    } else {
+      localDrawable = null;
     }
     setHomeAsUpIndicator(localDrawable);
   }
   
   public void setHomeAsUpIndicator(Drawable paramDrawable)
   {
-    if (paramDrawable == null) {
-      this.mHomeAsUpIndicator = getThemeUpIndicator();
-    }
-    for (this.mHasCustomUpIndicator = false;; this.mHasCustomUpIndicator = true)
+    if (paramDrawable == null)
     {
-      if (!this.mDrawerIndicatorEnabled) {
-        setActionBarUpIndicator(this.mHomeAsUpIndicator, 0);
-      }
-      return;
+      this.mHomeAsUpIndicator = getThemeUpIndicator();
+      this.mHasCustomUpIndicator = false;
+    }
+    else
+    {
       this.mHomeAsUpIndicator = paramDrawable;
+      this.mHasCustomUpIndicator = true;
+    }
+    if (!this.mDrawerIndicatorEnabled) {
+      setActionBarUpIndicator(this.mHomeAsUpIndicator, 0);
     }
   }
   
@@ -265,38 +258,35 @@ public class ActionBarDrawerToggle
   
   public void syncState()
   {
-    DrawerArrowDrawable localDrawerArrowDrawable;
-    if (this.mDrawerLayout.isDrawerOpen(8388611))
-    {
+    if (this.mDrawerLayout.isDrawerOpen(8388611)) {
       setPosition(1.0F);
-      if (this.mDrawerIndicatorEnabled)
-      {
-        localDrawerArrowDrawable = this.mSlider;
-        if (!this.mDrawerLayout.isDrawerOpen(8388611)) {
-          break label61;
-        }
-      }
-    }
-    label61:
-    for (int i = this.mCloseDrawerContentDescRes;; i = this.mOpenDrawerContentDescRes)
-    {
-      setActionBarUpIndicator(localDrawerArrowDrawable, i);
-      return;
+    } else {
       setPosition(0.0F);
-      break;
+    }
+    if (this.mDrawerIndicatorEnabled)
+    {
+      DrawerArrowDrawable localDrawerArrowDrawable = this.mSlider;
+      int i;
+      if (this.mDrawerLayout.isDrawerOpen(8388611)) {
+        i = this.mCloseDrawerContentDescRes;
+      } else {
+        i = this.mOpenDrawerContentDescRes;
+      }
+      setActionBarUpIndicator(localDrawerArrowDrawable, i);
     }
   }
   
   void toggle()
   {
     int i = this.mDrawerLayout.getDrawerLockMode(8388611);
-    if ((this.mDrawerLayout.isDrawerVisible(8388611)) && (i != 2)) {
+    if ((this.mDrawerLayout.isDrawerVisible(8388611)) && (i != 2))
+    {
       this.mDrawerLayout.closeDrawer(8388611);
-    }
-    while (i == 1) {
       return;
     }
-    this.mDrawerLayout.openDrawer(8388611);
+    if (i != 1) {
+      this.mDrawerLayout.openDrawer(8388611);
+    }
   }
   
   public static abstract interface Delegate

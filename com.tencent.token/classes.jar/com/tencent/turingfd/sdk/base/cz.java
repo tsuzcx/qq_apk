@@ -58,26 +58,27 @@ public class cz
         b(paramcu);
         return;
       }
-    }
-    if (d.get()) {
+      if (d.get()) {
+        return;
+      }
+      d.set(true);
+      if (!c(paramcu))
+      {
+        b.set(false);
+        return;
+      }
+      int i = cv.a;
+      if (i == 0)
+      {
+        Log.i("TuringFdJava", "error channel");
+        b.set(false);
+        return;
+      }
+      b(paramcu);
+      b.set(true);
+      d.set(false);
       return;
     }
-    d.set(true);
-    if (!c(paramcu))
-    {
-      b.set(false);
-      return;
-    }
-    int i = cv.a;
-    if (i == 0)
-    {
-      Log.i("TuringFdJava", "error channel");
-      b.set(false);
-      return;
-    }
-    b(paramcu);
-    b.set(true);
-    d.set(false);
   }
   
   public static String b()
@@ -87,78 +88,73 @@ public class cz
   
   public static void b(cu paramcu)
   {
-    Log.i("TuringFdJava", cv.a);
-    as localas = as.a;
-    localas.d = paramcu;
-    if (localas.f) {}
-    label227:
-    for (;;)
+    Object localObject1 = ci.a("channel : ");
+    ((StringBuilder)localObject1).append(cv.a);
+    Log.i("TuringFdJava", ((StringBuilder)localObject1).toString());
+    localObject1 = as.a;
+    ((as)localObject1).d = paramcu;
+    if (!((as)localObject1).f)
     {
-      ag.a(paramcu);
-      return;
-      localas.f = true;
+      ((as)localObject1).f = true;
       cm.a(paramcu.j());
       e.a().a(paramcu.z());
-      Object localObject = bd.a;
+      Object localObject2 = bd.a;
       paramcu.j();
-      ((bd)localObject).f = new ap(localas);
-      localObject = new HandlerThread(cv.a + "_" + "baseFull", -8);
-      ((HandlerThread)localObject).start();
-      localas.e = new as.b(localas, ((HandlerThread)localObject).getLooper(), paramcu.j());
-      localas.g = new aw(localas.e);
-      localObject = paramcu.j();
-      if (!bm.a.containsKey(bm.c)) {}
-      for (;;)
-      {
-        if (!localas.d.d()) {
-          break label227;
-        }
-        new aq(localas).start();
-        break;
-        new bl((bm.a)bm.a.get(bm.c), (Context)localObject).start();
+      ((bd)localObject2).f = new ap((as)localObject1);
+      localObject2 = ci.a("TuringFdCore_49_");
+      ((StringBuilder)localObject2).append(cv.a);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append("baseFull");
+      localObject2 = new HandlerThread(((StringBuilder)localObject2).toString(), -8);
+      ((HandlerThread)localObject2).start();
+      ((as)localObject1).e = new as.b((as)localObject1, ((HandlerThread)localObject2).getLooper(), paramcu.j());
+      ((as)localObject1).g = new aw(((as)localObject1).e);
+      localObject2 = paramcu.j();
+      if (bm.a.containsKey(bm.c)) {
+        new bl((bm.a)bm.a.get(bm.c), (Context)localObject2).start();
+      }
+      if (((as)localObject1).d.d()) {
+        new aq((as)localObject1).start();
       }
     }
+    ag.a(paramcu);
   }
   
   public static boolean c(cu paramcu)
   {
-    boolean bool1 = true;
     if (a.get()) {
       return a.get();
     }
-    if (paramcu.c())
+    boolean bool2 = paramcu.c();
+    boolean bool1 = true;
+    if (bool2)
     {
       TextUtils.isEmpty(paramcu.p());
       paramcu = paramcu.p();
       try
       {
-        boolean bool2 = TextUtils.isEmpty(paramcu);
-        if (!bool2) {
-          break label79;
+        bool2 = TextUtils.isEmpty(paramcu);
+        if (bool2) {
+          System.loadLibrary("turingbase");
+        } else {
+          System.load(paramcu);
         }
-        System.loadLibrary("turingbase");
       }
       catch (Throwable paramcu)
       {
-        for (;;)
-        {
-          Log.w("TuringFdJava", paramcu);
-          bool1 = false;
-        }
+        Log.w("TuringFdJava", paramcu);
+        bool1 = false;
       }
       a.set(bool1);
       if (!bool1) {
         Log.i("TuringFdJava", "load so failure");
       }
     }
-    for (;;)
+    else
     {
-      return a.get();
-      label79:
-      System.load(paramcu);
-      break;
       a.set(true);
     }
+    return a.get();
   }
 }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <files-path path="download/" name="download" />
-    <external-path path="." name="sdcard" />
-    <root-path path="." name="extra_sdcard" />
+    <files-path name="download" path="download/" />
+    <external-path name="sdcard" path="." />
+    <root-path name="extra_sdcard" path="." />
 </paths>

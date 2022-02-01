@@ -31,11 +31,13 @@ public final class ag
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bi != 0) {
-      paramJceOutputStream.write(this.bi, 0);
+    int i = this.bi;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.bo != null) {
-      paramJceOutputStream.write(this.bo, 1);
+    ArrayList localArrayList = this.bo;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }

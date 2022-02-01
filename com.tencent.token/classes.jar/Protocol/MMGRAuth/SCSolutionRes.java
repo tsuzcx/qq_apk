@@ -38,11 +38,13 @@ public final class SCSolutionRes
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.solutionList != null) {
-      paramJceOutputStream.write(this.solutionList, 1);
+    ArrayList localArrayList = this.solutionList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
-    if (this.canceledSolutionList != null) {
-      paramJceOutputStream.write(this.canceledSolutionList, 2);
+    localArrayList = this.canceledSolutionList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }

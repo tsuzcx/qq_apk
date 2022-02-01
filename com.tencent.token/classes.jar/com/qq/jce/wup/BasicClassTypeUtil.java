@@ -30,34 +30,29 @@ public class BasicClassTypeUtil
   
   public static Object createClassByName(String paramString)
   {
-    Object localObject;
     if (paramString.equals("java.lang.Integer")) {
-      localObject = Integer.valueOf(0);
+      return Integer.valueOf(0);
     }
-    do
+    if (paramString.equals("java.lang.Boolean")) {
+      return Boolean.valueOf(false);
+    }
+    if (paramString.equals("java.lang.Byte")) {
+      return Byte.valueOf((byte)0);
+    }
+    if (paramString.equals("java.lang.Double")) {
+      return Double.valueOf(0.0D);
+    }
+    if (paramString.equals("java.lang.Float")) {
+      return Float.valueOf(0.0F);
+    }
+    if (paramString.equals("java.lang.Long")) {
+      return Long.valueOf(0L);
+    }
+    if (paramString.equals("java.lang.Short")) {
+      return Short.valueOf((short)0);
+    }
+    if (!paramString.equals("java.lang.Character"))
     {
-      return localObject;
-      if (paramString.equals("java.lang.Boolean")) {
-        return Boolean.valueOf(false);
-      }
-      if (paramString.equals("java.lang.Byte")) {
-        return Byte.valueOf((byte)0);
-      }
-      if (paramString.equals("java.lang.Double")) {
-        return Double.valueOf(0.0D);
-      }
-      if (paramString.equals("java.lang.Float")) {
-        return Float.valueOf(0.0F);
-      }
-      if (paramString.equals("java.lang.Long")) {
-        return Long.valueOf(0L);
-      }
-      if (paramString.equals("java.lang.Short")) {
-        return Short.valueOf((short)0);
-      }
-      if (paramString.equals("java.lang.Character")) {
-        throw new IllegalArgumentException("can not support java.lang.Character");
-      }
       if (paramString.equals("java.lang.String")) {
         return "";
       }
@@ -70,270 +65,336 @@ public class BasicClassTypeUtil
       if (paramString.equals("Array")) {
         return "Array";
       }
-      localObject = paramString;
-    } while (paramString.equals("?"));
-    try
-    {
-      paramString = Class.forName(paramString).getConstructor(new Class[0]).newInstance(new Object[0]);
-      return paramString;
+      if (paramString.equals("?")) {
+        return paramString;
+      }
+      try
+      {
+        paramString = Class.forName(paramString).getConstructor(new Class[0]).newInstance(new Object[0]);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        throw new ObjectCreateException(paramString);
+      }
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      throw new ObjectCreateException(paramString);
-    }
+    throw new IllegalArgumentException("can not support java.lang.Character");
   }
   
   public static Object createClassByUni(String paramString)
   {
     Iterator localIterator = getTypeList(paramString).iterator();
-    Object localObject3 = null;
-    paramString = null;
-    Object localObject2 = null;
-    Object localObject1;
-    if (localIterator.hasNext())
+    Object localObject = null;
+    paramString = localObject;
+    String str1 = paramString;
+    while (localIterator.hasNext())
     {
-      localObject1 = createClassByName((String)localIterator.next());
-      if ((localObject1 instanceof String)) {
-        if ("Array".equals((String)localObject1))
+      localObject = createClassByName((String)localIterator.next());
+      boolean bool = localObject instanceof String;
+      int j = 0;
+      if (bool)
+      {
+        String str2 = (String)localObject;
+        if ("Array".equals(str2))
         {
-          if (localObject2 != null) {
-            break label310;
+          if (paramString != null) {
+            continue;
           }
-          localObject3 = Array.newInstance(Byte.class, 0);
-          localObject1 = localObject2;
+          localObject = Array.newInstance(Byte.class, 0);
+          continue;
         }
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      break;
-      if ("?".equals((String)localObject1))
-      {
-        localObject3 = localObject1;
-        localObject1 = localObject2;
-      }
-      else if (localObject2 == null)
-      {
-        localObject2 = localObject1;
-        localObject3 = localObject1;
-        localObject1 = localObject2;
+        if ("?".equals(str2)) {
+          continue;
+        }
+        if (paramString != null) {
+          break label226;
+        }
       }
       else
       {
-        paramString = localObject2;
-        localObject2 = localObject1;
-        localObject3 = localObject1;
-        localObject1 = localObject2;
-        continue;
-        if ((localObject1 instanceof List))
+        if ((localObject instanceof List))
         {
-          if ((localObject2 != null) && ((localObject2 instanceof Byte)))
+          if ((paramString != null) && ((paramString instanceof Byte)))
           {
-            localObject3 = Array.newInstance(Byte.class, 1);
-            Array.set(localObject3, 0, localObject2);
-            localObject1 = localObject2;
-          }
-          else
-          {
-            if (localObject2 != null) {
-              ((List)localObject1).add(localObject2);
-            }
-            localObject2 = null;
-            localObject3 = localObject1;
-            localObject1 = localObject2;
-          }
-        }
-        else
-        {
-          if ((localObject1 instanceof Map))
-          {
-            int i;
-            if (localObject2 != null)
-            {
-              i = 1;
-              label226:
-              if (paramString == null) {
-                break label270;
-              }
-            }
-            label270:
-            for (int j = 1;; j = 0)
-            {
-              if ((j & i) != 0) {
-                ((Map)localObject1).put(localObject2, paramString);
-              }
-              paramString = null;
-              localObject2 = null;
-              localObject3 = localObject1;
-              localObject1 = localObject2;
-              break;
-              i = 0;
-              break label226;
-            }
-          }
-          if (localObject2 == null)
-          {
-            localObject2 = localObject1;
-            localObject3 = localObject1;
-            localObject1 = localObject2;
-          }
-          else
-          {
-            paramString = localObject2;
-            localObject2 = localObject1;
-            localObject3 = localObject1;
-            localObject1 = localObject2;
+            localObject = Array.newInstance(Byte.class, 1);
+            Array.set(localObject, 0, paramString);
             continue;
-            return localObject3;
-            label310:
-            localObject3 = localObject1;
-            localObject1 = localObject2;
           }
+          if (paramString != null) {
+            ((List)localObject).add(paramString);
+          }
+          paramString = null;
+          continue;
+        }
+        if ((localObject instanceof Map))
+        {
+          int i;
+          if (paramString != null) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+          if (str1 != null) {
+            j = 1;
+          }
+          if ((i & j) != 0) {
+            ((Map)localObject).put(paramString, str1);
+          }
+          paramString = null;
+          str1 = paramString;
+          continue;
+        }
+        if (paramString == null) {
+          break label229;
         }
       }
+      label226:
+      str1 = paramString;
+      label229:
+      paramString = localObject;
     }
+    return localObject;
   }
   
   public static String getClassTransName(String paramString)
   {
-    String str;
     if (paramString.equals("int")) {
-      str = "Integer";
+      return "Integer";
     }
-    do
-    {
-      return str;
-      if (paramString.equals("boolean")) {
-        return "Boolean";
-      }
-      if (paramString.equals("byte")) {
-        return "Byte";
-      }
-      if (paramString.equals("double")) {
-        return "Double";
-      }
-      if (paramString.equals("float")) {
-        return "Float";
-      }
-      if (paramString.equals("long")) {
-        return "Long";
-      }
-      if (paramString.equals("short")) {
-        return "Short";
-      }
-      str = paramString;
-    } while (!paramString.equals("char"));
-    return "Character";
+    if (paramString.equals("boolean")) {
+      return "Boolean";
+    }
+    if (paramString.equals("byte")) {
+      return "Byte";
+    }
+    if (paramString.equals("double")) {
+      return "Double";
+    }
+    if (paramString.equals("float")) {
+      return "Float";
+    }
+    if (paramString.equals("long")) {
+      return "Long";
+    }
+    if (paramString.equals("short")) {
+      return "Short";
+    }
+    String str = paramString;
+    if (paramString.equals("char")) {
+      str = "Character";
+    }
+    return str;
   }
   
   public static ArrayList<String> getTypeList(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    int j = 0;
-    int i = paramString.indexOf("<");
-    for (;;)
+    int j = paramString.indexOf("<");
+    int m = 0;
+    while (m < j)
     {
-      if (j < i)
-      {
-        addType(localArrayList, paramString.substring(j, i));
-        j = i + 1;
-        int m = paramString.indexOf("<", j);
-        int k = paramString.indexOf(",", j);
-        i = m;
-        if (m == -1) {
-          i = k;
-        }
-        if ((k != -1) && (k < i)) {
-          i = k;
-        }
+      addType(localArrayList, paramString.substring(m, j));
+      int n = j + 1;
+      j = paramString.indexOf("<", n);
+      int k = paramString.indexOf(",", n);
+      int i = j;
+      if (j == -1) {
+        i = k;
       }
-      else
+      j = i;
+      m = n;
+      if (k != -1)
       {
-        addType(localArrayList, paramString.substring(j, paramString.length()));
-        return localArrayList;
+        j = i;
+        m = n;
+        if (k < i)
+        {
+          j = k;
+          m = n;
+        }
       }
     }
+    addType(localArrayList, paramString.substring(m, paramString.length()));
+    return localArrayList;
   }
   
   public static String getVariableInit(String paramString1, String paramString2)
   {
-    if (paramString2.equals("int")) {
-      return paramString2 + " " + paramString1 + "=0 ;\n";
+    if (paramString2.equals("int"))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("=0 ;\n");
+      return localStringBuilder.toString();
     }
-    if (paramString2.equals("boolean")) {
-      return paramString2 + " " + paramString1 + "=false ;\n";
+    if (paramString2.equals("boolean"))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("=false ;\n");
+      return localStringBuilder.toString();
     }
-    if (paramString2.equals("byte")) {
-      return paramString2 + " " + paramString1 + " ;\n";
+    if (paramString2.equals("byte"))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" ;\n");
+      return localStringBuilder.toString();
     }
-    if (paramString2.equals("double")) {
-      return paramString2 + " " + paramString1 + "=0 ;\n";
+    if (paramString2.equals("double"))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("=0 ;\n");
+      return localStringBuilder.toString();
     }
-    if (paramString2.equals("float")) {
-      return paramString2 + " " + paramString1 + "=0 ;\n";
+    if (paramString2.equals("float"))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("=0 ;\n");
+      return localStringBuilder.toString();
     }
-    if (paramString2.equals("long")) {
-      return paramString2 + " " + paramString1 + "=0 ;\n";
+    if (paramString2.equals("long"))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("=0 ;\n");
+      return localStringBuilder.toString();
     }
-    if (paramString2.equals("short")) {
-      return paramString2 + " " + paramString1 + "=0 ;\n";
+    if (paramString2.equals("short"))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("=0 ;\n");
+      return localStringBuilder.toString();
     }
-    if (paramString2.equals("char")) {
-      return paramString2 + " " + paramString1 + " ;\n";
+    if (paramString2.equals("char"))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" ;\n");
+      return localStringBuilder.toString();
     }
-    return paramString2 + " " + paramString1 + " = null ;\n";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" = null ;\n");
+    return localStringBuilder.toString();
   }
   
   public static boolean isBasicType(String paramString)
   {
-    if (paramString.equals("int")) {}
-    while ((paramString.equals("boolean")) || (paramString.equals("byte")) || (paramString.equals("double")) || (paramString.equals("float")) || (paramString.equals("long")) || (paramString.equals("short")) || (paramString.equals("char")) || (paramString.equals("Integer")) || (paramString.equals("Boolean")) || (paramString.equals("Byte")) || (paramString.equals("Double")) || (paramString.equals("Float")) || (paramString.equals("Long")) || (paramString.equals("Short")) || (paramString.equals("Char"))) {
+    if (paramString.equals("int")) {
       return true;
     }
-    return false;
+    if (paramString.equals("boolean")) {
+      return true;
+    }
+    if (paramString.equals("byte")) {
+      return true;
+    }
+    if (paramString.equals("double")) {
+      return true;
+    }
+    if (paramString.equals("float")) {
+      return true;
+    }
+    if (paramString.equals("long")) {
+      return true;
+    }
+    if (paramString.equals("short")) {
+      return true;
+    }
+    if (paramString.equals("char")) {
+      return true;
+    }
+    if (paramString.equals("Integer")) {
+      return true;
+    }
+    if (paramString.equals("Boolean")) {
+      return true;
+    }
+    if (paramString.equals("Byte")) {
+      return true;
+    }
+    if (paramString.equals("Double")) {
+      return true;
+    }
+    if (paramString.equals("Float")) {
+      return true;
+    }
+    if (paramString.equals("Long")) {
+      return true;
+    }
+    if (paramString.equals("Short")) {
+      return true;
+    }
+    return paramString.equals("Char");
   }
   
   public static String java2UniType(String paramString)
   {
-    String str;
-    if ((paramString.equals("java.lang.Integer")) || (paramString.equals("int"))) {
-      str = "int32";
-    }
-    do
+    if ((!paramString.equals("java.lang.Integer")) && (!paramString.equals("int")))
     {
-      return str;
-      if ((paramString.equals("java.lang.Boolean")) || (paramString.equals("boolean"))) {
-        return "bool";
-      }
-      if ((paramString.equals("java.lang.Byte")) || (paramString.equals("byte"))) {
+      if ((!paramString.equals("java.lang.Boolean")) && (!paramString.equals("boolean")))
+      {
+        if ((!paramString.equals("java.lang.Byte")) && (!paramString.equals("byte")))
+        {
+          if ((!paramString.equals("java.lang.Double")) && (!paramString.equals("double")))
+          {
+            if ((!paramString.equals("java.lang.Float")) && (!paramString.equals("float")))
+            {
+              if ((!paramString.equals("java.lang.Long")) && (!paramString.equals("long")))
+              {
+                if ((!paramString.equals("java.lang.Short")) && (!paramString.equals("short")))
+                {
+                  if (!paramString.equals("java.lang.Character"))
+                  {
+                    if (paramString.equals("java.lang.String")) {
+                      return "string";
+                    }
+                    if (paramString.equals("java.util.List")) {
+                      return "list";
+                    }
+                    if (paramString.equals("java.util.Map")) {
+                      return "map";
+                    }
+                    return paramString;
+                  }
+                  throw new IllegalArgumentException("can not support java.lang.Character");
+                }
+                return "short";
+              }
+              return "int64";
+            }
+            return "float";
+          }
+          return "double";
+        }
         return "char";
       }
-      if ((paramString.equals("java.lang.Double")) || (paramString.equals("double"))) {
-        return "double";
-      }
-      if ((paramString.equals("java.lang.Float")) || (paramString.equals("float"))) {
-        return "float";
-      }
-      if ((paramString.equals("java.lang.Long")) || (paramString.equals("long"))) {
-        return "int64";
-      }
-      if ((paramString.equals("java.lang.Short")) || (paramString.equals("short"))) {
-        return "short";
-      }
-      if (paramString.equals("java.lang.Character")) {
-        throw new IllegalArgumentException("can not support java.lang.Character");
-      }
-      if (paramString.equals("java.lang.String")) {
-        return "string";
-      }
-      if (paramString.equals("java.util.List")) {
-        return "list";
-      }
-      str = paramString;
-    } while (!paramString.equals("java.util.Map"));
-    return "map";
+      return "bool";
+    }
+    return "int32";
   }
   
   public static void main(String[] paramArrayOfString)
@@ -350,14 +411,18 @@ public class BasicClassTypeUtil
     while (paramArrayOfString.hasNext())
     {
       ArrayList localArrayList = getTypeList((String)paramArrayOfString.next());
-      Iterator localIterator = localArrayList.iterator();
-      while (localIterator.hasNext())
+      Object localObject1 = localArrayList.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        String str = (String)localIterator.next();
-        System.out.println(str);
+        localObject2 = (String)((Iterator)localObject1).next();
+        System.out.println((String)localObject2);
       }
       Collections.reverse(localArrayList);
-      System.out.println("-------------finished " + transTypeList(localArrayList));
+      localObject1 = System.out;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("-------------finished ");
+      ((StringBuilder)localObject2).append(transTypeList(localArrayList));
+      ((PrintStream)localObject1).println(((StringBuilder)localObject2).toString());
     }
   }
   
@@ -372,29 +437,48 @@ public class BasicClassTypeUtil
     }
     Collections.reverse(paramArrayList);
     i = 0;
-    if (i < paramArrayList.size())
+    while (i < paramArrayList.size())
     {
-      String str = (String)paramArrayList.get(i);
-      if (str.equals("list"))
+      Object localObject = (String)paramArrayList.get(i);
+      int j;
+      if (((String)localObject).equals("list"))
       {
-        paramArrayList.set(i - 1, "<" + (String)paramArrayList.get(i - 1));
-        paramArrayList.set(0, (String)paramArrayList.get(0) + ">");
+        j = i - 1;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("<");
+        ((StringBuilder)localObject).append((String)paramArrayList.get(j));
+        paramArrayList.set(j, ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append((String)paramArrayList.get(0));
+        ((StringBuilder)localObject).append(">");
+        paramArrayList.set(0, ((StringBuilder)localObject).toString());
       }
-      for (;;)
+      else if (((String)localObject).equals("map"))
       {
-        i += 1;
-        break;
-        if (str.equals("map"))
-        {
-          paramArrayList.set(i - 1, "<" + (String)paramArrayList.get(i - 1) + ",");
-          paramArrayList.set(0, (String)paramArrayList.get(0) + ">");
-        }
-        else if (str.equals("Array"))
-        {
-          paramArrayList.set(i - 1, "<" + (String)paramArrayList.get(i - 1));
-          paramArrayList.set(0, (String)paramArrayList.get(0) + ">");
-        }
+        j = i - 1;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("<");
+        ((StringBuilder)localObject).append((String)paramArrayList.get(j));
+        ((StringBuilder)localObject).append(",");
+        paramArrayList.set(j, ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append((String)paramArrayList.get(0));
+        ((StringBuilder)localObject).append(">");
+        paramArrayList.set(0, ((StringBuilder)localObject).toString());
       }
+      else if (((String)localObject).equals("Array"))
+      {
+        j = i - 1;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("<");
+        ((StringBuilder)localObject).append((String)paramArrayList.get(j));
+        paramArrayList.set(j, ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append((String)paramArrayList.get(0));
+        ((StringBuilder)localObject).append(">");
+        paramArrayList.set(0, ((StringBuilder)localObject).toString());
+      }
+      i += 1;
     }
     Collections.reverse(paramArrayList);
     paramArrayList = paramArrayList.iterator();
@@ -406,40 +490,37 @@ public class BasicClassTypeUtil
   
   public static String uni2JavaType(String paramString)
   {
-    String str;
     if (paramString.equals("int32")) {
-      str = "java.lang.Integer";
+      return "java.lang.Integer";
     }
-    do
-    {
-      return str;
-      if (paramString.equals("bool")) {
-        return "java.lang.Boolean";
-      }
-      if (paramString.equals("char")) {
-        return "java.lang.Byte";
-      }
-      if (paramString.equals("double")) {
-        return "java.lang.Double";
-      }
-      if (paramString.equals("float")) {
-        return "java.lang.Float";
-      }
-      if (paramString.equals("int64")) {
-        return "java.lang.Long";
-      }
-      if (paramString.equals("short")) {
-        return "java.lang.Short";
-      }
-      if (paramString.equals("string")) {
-        return "java.lang.String";
-      }
-      if (paramString.equals("list")) {
-        return "java.util.List";
-      }
-      str = paramString;
-    } while (!paramString.equals("map"));
-    return "java.util.Map";
+    if (paramString.equals("bool")) {
+      return "java.lang.Boolean";
+    }
+    if (paramString.equals("char")) {
+      return "java.lang.Byte";
+    }
+    if (paramString.equals("double")) {
+      return "java.lang.Double";
+    }
+    if (paramString.equals("float")) {
+      return "java.lang.Float";
+    }
+    if (paramString.equals("int64")) {
+      return "java.lang.Long";
+    }
+    if (paramString.equals("short")) {
+      return "java.lang.Short";
+    }
+    if (paramString.equals("string")) {
+      return "java.lang.String";
+    }
+    if (paramString.equals("list")) {
+      return "java.util.List";
+    }
+    if (paramString.equals("map")) {
+      return "java.util.Map";
+    }
+    return paramString;
   }
 }
 

@@ -15,74 +15,85 @@ public final class j
   
   j(e parame, Inflater paramInflater)
   {
-    if (parame == null) {
-      throw new IllegalArgumentException("source == null");
-    }
-    if (paramInflater == null) {
+    if (parame != null)
+    {
+      if (paramInflater != null)
+      {
+        this.a = parame;
+        this.b = paramInflater;
+        return;
+      }
       throw new IllegalArgumentException("inflater == null");
     }
-    this.a = parame;
-    this.b = paramInflater;
+    throw new IllegalArgumentException("source == null");
   }
   
   private void c()
   {
-    if (this.c == 0) {
+    int i = this.c;
+    if (i == 0) {
       return;
     }
-    int i = this.c - this.b.getRemaining();
+    i -= this.b.getRemaining();
     this.c -= i;
     this.a.h(i);
   }
   
   public long a(c paramc, long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("byteCount < 0: " + paramLong);
-    }
-    if (this.d) {
-      throw new IllegalStateException("closed");
-    }
-    if (paramLong == 0L) {
-      return 0L;
+    if (paramLong >= 0L) {
+      if (!this.d) {
+        if (paramLong == 0L) {
+          return 0L;
+        }
+      }
     }
     for (;;)
     {
       boolean bool = b();
-      try
+      label144:
+      do
       {
-        n localn = paramc.e(1);
-        int i = (int)Math.min(paramLong, 8192 - localn.c);
-        i = this.b.inflate(localn.a, localn.c, i);
-        if (i > 0)
+        try
         {
-          localn.c += i;
-          paramc.b += i;
-          return i;
-        }
-        if ((this.b.finished()) || (this.b.needsDictionary()))
-        {
+          n localn = paramc.e(1);
+          int i = (int)Math.min(paramLong, 8192 - localn.c);
+          i = this.b.inflate(localn.a, localn.c, i);
+          if (i > 0)
+          {
+            localn.c += i;
+            paramLong = paramc.b;
+            long l = i;
+            paramc.b = (paramLong + l);
+            return l;
+          }
+          if (!this.b.finished())
+          {
+            if (!this.b.needsDictionary()) {
+              continue;
+            }
+            break label144;
+            throw new EOFException("source exhausted prematurely");
+          }
           c();
           if (localn.b == localn.c)
           {
             paramc.a = localn.b();
             o.a(localn);
           }
+          return -1L;
         }
-        else
+        catch (DataFormatException paramc)
         {
-          if (!bool) {
-            continue;
-          }
-          throw new EOFException("source exhausted prematurely");
+          throw new IOException(paramc);
         }
-      }
-      catch (DataFormatException paramc)
-      {
-        throw new IOException(paramc);
-      }
+        throw new IllegalStateException("closed");
+        paramc = new StringBuilder();
+        paramc.append("byteCount < 0: ");
+        paramc.append(paramLong);
+        throw new IllegalArgumentException(paramc.toString());
+      } while (bool);
     }
-    return -1L;
   }
   
   public r a()
@@ -96,16 +107,17 @@ public final class j
       return false;
     }
     c();
-    if (this.b.getRemaining() != 0) {
-      throw new IllegalStateException("?");
+    if (this.b.getRemaining() == 0)
+    {
+      if (this.a.e()) {
+        return true;
+      }
+      n localn = this.a.c().a;
+      this.c = (localn.c - localn.b);
+      this.b.setInput(localn.a, localn.b, this.c);
+      return false;
     }
-    if (this.a.e()) {
-      return true;
-    }
-    n localn = this.a.c().a;
-    this.c = (localn.c - localn.b);
-    this.b.setInput(localn.a, localn.b, this.c);
-    return false;
+    throw new IllegalStateException("?");
   }
   
   public void close()

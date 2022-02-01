@@ -10,9 +10,10 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.RectF;
-import com.tencent.token.go;
+import com.tencent.token.gn;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.List<Ltaiji.br;>;
 import uilib.doraemon.e;
 import uilib.doraemon.g;
 
@@ -40,28 +41,32 @@ abstract class bq
     this.b.setStrokeJoin(paramJoin);
     this.j = paramad.a();
     this.i = paramac1.a();
-    if (paramac2 == null) {}
-    for (this.l = null;; this.l = paramac2.a())
+    if (paramac2 == null) {
+      parame = null;
+    } else {
+      parame = paramac2.a();
+    }
+    this.l = parame;
+    this.k = new ArrayList(paramList.size());
+    this.h = new float[paramList.size()];
+    int n = 0;
+    int m = 0;
+    while (m < paramList.size())
     {
-      this.k = new ArrayList(paramList.size());
-      this.h = new float[paramList.size()];
-      m = 0;
-      while (m < paramList.size())
-      {
-        this.k.add(((ac)paramList.get(m)).a());
-        m += 1;
-      }
+      this.k.add(((ac)paramList.get(m)).a());
+      m += 1;
     }
     paramar.a(this.j);
     paramar.a(this.i);
-    int m = 0;
+    m = 0;
     while (m < this.k.size())
     {
       paramar.a((l)this.k.get(m));
       m += 1;
     }
-    if (this.l != null) {
-      paramar.a(this.l);
+    parame = this.l;
+    if (parame != null) {
+      paramar.a(parame);
     }
     this.j.a(this);
     this.i.a(this);
@@ -71,164 +76,163 @@ abstract class bq
       ((l)this.k.get(m)).a(this);
       m += 1;
     }
-    if (this.l != null) {
-      this.l.a(this);
+    parame = this.l;
+    if (parame != null) {
+      parame.a(this);
     }
   }
   
   private void a(Canvas paramCanvas, a parama, Matrix paramMatrix)
   {
     g.a("StrokeContent#applyTrimPath");
-    if (a.b(parama) == null)
+    if (a.b(parama) == null) {}
+    for (;;)
     {
       g.b("StrokeContent#applyTrimPath");
       return;
-    }
-    this.d.reset();
-    int m = a.a(parama).size() - 1;
-    while (m >= 0)
-    {
-      this.d.addPath(((h)a.a(parama).get(m)).a(), paramMatrix);
-      m -= 1;
-    }
-    this.c.setPath(this.d, false);
-    for (float f1 = this.c.getLength(); this.c.nextContour(); f1 = this.c.getLength() + f1) {}
-    float f2 = ((Float)a.b(parama).f().b()).floatValue() * f1 / 360.0F;
-    float f5 = ((Float)a.b(parama).d().b()).floatValue() * f1 / 100.0F + f2;
-    float f6 = ((Float)a.b(parama).e().b()).floatValue() * f1 / 100.0F + f2;
-    m = a.a(parama).size() - 1;
-    f2 = 0.0F;
-    if (m >= 0)
-    {
-      this.e.set(((h)a.a(parama).get(m)).a());
-      this.e.transform(paramMatrix);
-      this.c.setPath(this.e, false);
-      float f7 = this.c.getLength();
-      float f3;
-      if ((f6 > f1) && (f6 - f1 < f2 + f7) && (f2 < f6 - f1)) {
-        if (f5 > f1)
-        {
-          f3 = (f5 - f1) / f7;
-          label331:
-          f4 = Math.min((f6 - f1) / f7, 1.0F);
-          go.a(this.e, f3, f4, 0.0F);
-          paramCanvas.drawPath(this.e, this.b);
-        }
-      }
-      for (;;)
+      this.d.reset();
+      int m = a.a(parama).size() - 1;
+      while (m >= 0)
       {
+        this.d.addPath(((h)a.a(parama).get(m)).a(), paramMatrix);
         m -= 1;
-        f2 += f7;
-        break;
-        f3 = 0.0F;
-        break label331;
-        if ((f2 + f7 >= f5) && (f2 <= f6))
+      }
+      this.c.setPath(this.d, false);
+      for (float f3 = this.c.getLength(); this.c.nextContour(); f3 += this.c.getLength()) {}
+      float f1 = ((Float)a.b(parama).f().b()).floatValue() * f3 / 360.0F;
+      float f5 = ((Float)a.b(parama).d().b()).floatValue() * f3 / 100.0F + f1;
+      float f6 = ((Float)a.b(parama).e().b()).floatValue() * f3 / 100.0F + f1;
+      m = a.a(parama).size() - 1;
+      float f4 = 0.0F;
+      while (m >= 0)
+      {
+        this.e.set(((h)a.a(parama).get(m)).a());
+        this.e.transform(paramMatrix);
+        this.c.setPath(this.e, false);
+        float f7 = this.c.getLength();
+        float f2 = 1.0F;
+        float f8;
+        if (f6 > f3)
         {
-          if ((f2 + f7 > f6) || (f5 >= f2)) {
-            break label444;
+          f8 = f6 - f3;
+          if ((f8 < f4 + f7) && (f4 < f8))
+          {
+            if (f5 > f3) {
+              f1 = (f5 - f3) / f7;
+            } else {
+              f1 = 0.0F;
+            }
+            f2 = Math.min(f8 / f7, 1.0F);
           }
-          paramCanvas.drawPath(this.e, this.b);
         }
-      }
-      label444:
-      if (f5 < f2)
-      {
-        f3 = 0.0F;
-        label455:
-        if (f6 <= f2 + f7) {
-          break label509;
+        for (;;)
+        {
+          gn.a(this.e, f1, f2, 0.0F);
+          break label409;
+          f8 = f4 + f7;
+          if ((f8 < f5) || (f4 > f6)) {
+            break;
+          }
+          if ((f8 <= f6) && (f5 < f4))
+          {
+            label409:
+            paramCanvas.drawPath(this.e, this.b);
+            break;
+          }
+          if (f5 < f4) {
+            f1 = 0.0F;
+          } else {
+            f1 = (f5 - f4) / f7;
+          }
+          if (f6 <= f8) {
+            f2 = (f6 - f4) / f7;
+          }
         }
-      }
-      label509:
-      for (float f4 = 1.0F;; f4 = (f6 - f2) / f7)
-      {
-        go.a(this.e, f3, f4, 0.0F);
-        paramCanvas.drawPath(this.e, this.b);
-        break;
-        f3 = (f5 - f2) / f7;
-        break label455;
+        f4 += f7;
+        m -= 1;
       }
     }
-    g.b("StrokeContent#applyTrimPath");
   }
   
   private void a(Matrix paramMatrix)
   {
     g.a("StrokeContent#applyDashPattern");
-    if (this.k.isEmpty())
+    if (this.k.isEmpty()) {}
+    for (;;)
     {
       g.b("StrokeContent#applyDashPattern");
       return;
-    }
-    float f1 = go.a(paramMatrix);
-    int m = 0;
-    if (m < this.k.size())
-    {
-      this.h[m] = ((Float)((l)this.k.get(m)).b()).floatValue();
-      if (m % 2 == 0) {
-        if (this.h[m] < 1.0F) {
-          this.h[m] = 1.0F;
-        }
-      }
-      for (;;)
+      float f1 = gn.a(paramMatrix);
+      int m = 0;
+      while (m < this.k.size())
       {
+        this.h[m] = ((Float)((l)this.k.get(m)).b()).floatValue();
+        if (m % 2 == 0)
+        {
+          paramMatrix = this.h;
+          if (paramMatrix[m] < 1.0F) {
+            paramMatrix[m] = 1.0F;
+          }
+        }
+        else
+        {
+          paramMatrix = this.h;
+          if (paramMatrix[m] < 0.1F) {
+            paramMatrix[m] = 0.1F;
+          }
+        }
         paramMatrix = this.h;
         paramMatrix[m] *= f1;
         m += 1;
-        break;
-        if (this.h[m] < 0.1F) {
-          this.h[m] = 0.1F;
-        }
       }
-    }
-    if (this.l == null) {}
-    for (f1 = 0.0F;; f1 = ((Float)this.l.b()).floatValue())
-    {
+      paramMatrix = this.l;
+      if (paramMatrix == null) {
+        f1 = 0.0F;
+      } else {
+        f1 = ((Float)paramMatrix.b()).floatValue();
+      }
       this.b.setPathEffect(new DashPathEffect(this.h, f1));
-      g.b("StrokeContent#applyDashPattern");
-      return;
     }
   }
   
   public void a(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
   {
     g.a("StrokeContent#draw");
-    float f1 = paramInt / 255.0F;
-    paramInt = (int)(((Integer)this.j.b()).intValue() * f1 / 100.0F * 255.0F);
+    paramInt = (int)(paramInt / 255.0F * ((Integer)this.j.b()).intValue() / 100.0F * 255.0F);
     this.b.setAlpha(paramInt);
-    this.b.setStrokeWidth(((Float)this.i.b()).floatValue() * go.a(paramMatrix));
-    if (this.b.getStrokeWidth() <= 0.0F)
+    this.b.setStrokeWidth(((Float)this.i.b()).floatValue() * gn.a(paramMatrix));
+    if (this.b.getStrokeWidth() <= 0.0F) {}
+    for (;;)
     {
       g.b("StrokeContent#draw");
       return;
-    }
-    a(paramMatrix);
-    paramInt = 0;
-    if (paramInt < this.g.size())
-    {
-      a locala = (a)this.g.get(paramInt);
-      if (a.b(locala) != null) {
-        a(paramCanvas, locala, paramMatrix);
-      }
-      for (;;)
+      a(paramMatrix);
+      paramInt = 0;
+      while (paramInt < this.g.size())
       {
-        paramInt += 1;
-        break;
-        g.a("StrokeContent#buildPath");
-        this.d.reset();
-        int m = a.a(locala).size() - 1;
-        while (m >= 0)
+        a locala = (a)this.g.get(paramInt);
+        if (a.b(locala) != null)
         {
-          this.d.addPath(((h)a.a(locala).get(m)).a(), paramMatrix);
-          m -= 1;
+          a(paramCanvas, locala, paramMatrix);
         }
-        g.b("StrokeContent#buildPath");
-        g.a("StrokeContent#drawPath");
-        paramCanvas.drawPath(this.d, this.b);
-        g.b("StrokeContent#drawPath");
+        else
+        {
+          g.a("StrokeContent#buildPath");
+          this.d.reset();
+          int m = a.a(locala).size() - 1;
+          while (m >= 0)
+          {
+            this.d.addPath(((h)a.a(locala).get(m)).a(), paramMatrix);
+            m -= 1;
+          }
+          g.b("StrokeContent#buildPath");
+          g.a("StrokeContent#drawPath");
+          paramCanvas.drawPath(this.d, this.b);
+          g.b("StrokeContent#drawPath");
+        }
+        paramInt += 1;
       }
     }
-    g.b("StrokeContent#draw");
   }
   
   public void a(RectF paramRectF, Matrix paramMatrix)
@@ -248,16 +252,11 @@ abstract class bq
       m += 1;
     }
     this.d.computeBounds(this.f, false);
-    float f1 = ((Float)this.i.b()).floatValue();
+    float f2 = ((Float)this.i.b()).floatValue();
     paramMatrix = this.f;
-    float f2 = this.f.left;
-    float f3 = f1 / 2.0F;
-    float f4 = this.f.top;
-    float f5 = f1 / 2.0F;
-    float f6 = this.f.right;
-    float f7 = f1 / 2.0F;
-    float f8 = this.f.bottom;
-    paramMatrix.set(f2 - f3, f4 - f5, f6 + f7, f1 / 2.0F + f8);
+    float f1 = paramMatrix.left;
+    f2 /= 2.0F;
+    paramMatrix.set(f1 - f2, this.f.top - f2, this.f.right + f2, this.f.bottom + f2);
     paramRectF.set(this.f);
     paramRectF.set(paramRectF.left - 1.0F, paramRectF.top - 1.0F, paramRectF.right + 1.0F, paramRectF.bottom + 1.0F);
     g.b("StrokeContent#getBounds");
@@ -266,58 +265,56 @@ abstract class bq
   public void a(List<br> paramList1, List<br> paramList2)
   {
     int m = paramList1.size() - 1;
-    k localk = null;
-    br localbr;
-    if (m >= 0)
+    Object localObject3;
+    Object localObject1;
+    for (Object localObject2 = null; m >= 0; localObject2 = localObject1)
     {
-      localbr = (br)paramList1.get(m);
-      if ((!(localbr instanceof k)) || (((k)localbr).a() != cn.b.b)) {
-        break label232;
-      }
-      localk = (k)localbr;
-    }
-    label232:
-    for (;;)
-    {
-      m -= 1;
-      break;
-      if (localk != null) {
-        localk.a(this);
-      }
-      m = paramList2.size() - 1;
-      paramList1 = null;
-      if (m >= 0)
+      localObject3 = (br)paramList1.get(m);
+      localObject1 = localObject2;
+      if ((localObject3 instanceof k))
       {
-        localbr = (br)paramList2.get(m);
-        if (((localbr instanceof k)) && (((k)localbr).a() == cn.b.b))
+        localObject3 = (k)localObject3;
+        localObject1 = localObject2;
+        if (((k)localObject3).a() == cn.b.b) {
+          localObject1 = localObject3;
+        }
+      }
+      m -= 1;
+    }
+    if (localObject2 != null) {
+      localObject2.a(this);
+    }
+    m = paramList2.size() - 1;
+    for (paramList1 = null; m >= 0; paramList1 = (List<br>)localObject1)
+    {
+      localObject3 = (br)paramList2.get(m);
+      if ((localObject3 instanceof k))
+      {
+        k localk = (k)localObject3;
+        if (localk.a() == cn.b.b)
         {
           if (paramList1 != null) {
             this.g.add(paramList1);
           }
-          paramList1 = new a((k)localbr, null);
-          ((k)localbr).a(this);
+          localObject1 = new a(localk, null);
+          localk.a(this);
+          break label223;
         }
       }
-      for (;;)
+      localObject1 = paramList1;
+      if ((localObject3 instanceof h))
       {
-        m -= 1;
-        break;
-        if ((localbr instanceof h))
-        {
-          if (paramList1 == null) {
-            paramList1 = new a(localk, null);
-          }
-          for (;;)
-          {
-            a.a(paramList1).add((h)localbr);
-            break;
-            if (paramList1 != null) {
-              this.g.add(paramList1);
-            }
-            return;
-          }
+        localObject1 = paramList1;
+        if (paramList1 == null) {
+          localObject1 = new a(localObject2, null);
         }
+        a.a((a)localObject1).add((h)localObject3);
       }
+      label223:
+      m -= 1;
+    }
+    if (paramList1 != null) {
+      this.g.add(paramList1);
     }
   }
   

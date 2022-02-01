@@ -24,7 +24,9 @@ public abstract class ContentProviderDB<T>
     Uri localUri = getUriFromTable(paramString1);
     if (localUri == null)
     {
-      Log.e("MicroMsg.SDK.MContentProviderDB", "get uri from table failed, table=" + paramString1);
+      paramString2 = new StringBuilder("get uri from table failed, table=");
+      paramString2.append(paramString1);
+      Log.e("MicroMsg.SDK.MContentProviderDB", paramString2.toString());
       return 0;
     }
     return this.q.getContentResolver().delete(localUri, paramString2, paramArrayOfString);
@@ -32,7 +34,9 @@ public abstract class ContentProviderDB<T>
   
   public boolean execSQL(String paramString1, String paramString2)
   {
-    Log.e("MicroMsg.SDK.MContentProviderDB", "do not support, execSQL sql=" + paramString2);
+    paramString1 = new StringBuilder("do not support, execSQL sql=");
+    paramString1.append(paramString2);
+    Log.e("MicroMsg.SDK.MContentProviderDB", paramString1.toString());
     return false;
   }
   
@@ -43,7 +47,9 @@ public abstract class ContentProviderDB<T>
     paramString2 = getUriFromTable(paramString1);
     if (paramString2 == null)
     {
-      Log.e("MicroMsg.SDK.MContentProviderDB", "get uri from table failed, table=" + paramString1);
+      paramString2 = new StringBuilder("get uri from table failed, table=");
+      paramString2.append(paramString1);
+      Log.e("MicroMsg.SDK.MContentProviderDB", paramString2.toString());
       return -1L;
     }
     return ContentUris.parseId(this.q.getContentResolver().insert(paramString2, paramContentValues));
@@ -54,27 +60,32 @@ public abstract class ContentProviderDB<T>
     paramString3 = getUriFromTable(paramString1);
     if (paramString3 == null)
     {
-      Log.e("MicroMsg.SDK.MContentProviderDB", "get uri from table failed, table=" + paramString1);
+      paramString2 = new StringBuilder("get uri from table failed, table=");
+      paramString2.append(paramString1);
+      Log.e("MicroMsg.SDK.MContentProviderDB", paramString2.toString());
+      return new MatrixCursor(paramArrayOfString1);
+    }
+    paramString2 = this.q.getContentResolver().query(paramString3, paramArrayOfString1, paramString2, paramArrayOfString2, paramString5);
+    paramString1 = paramString2;
+    if (paramString2 == null) {
       paramString1 = new MatrixCursor(paramArrayOfString1);
     }
-    do
-    {
-      return paramString1;
-      paramString2 = this.q.getContentResolver().query(paramString3, paramArrayOfString1, paramString2, paramArrayOfString2, paramString5);
-      paramString1 = paramString2;
-    } while (paramString2 != null);
-    return new MatrixCursor(paramArrayOfString1);
+    return paramString1;
   }
   
   public Cursor rawQuery(String paramString, String[] paramArrayOfString)
   {
-    Log.e("MicroMsg.SDK.MContentProviderDB", "do not support, rawQuery sql=" + paramString);
+    paramArrayOfString = new StringBuilder("do not support, rawQuery sql=");
+    paramArrayOfString.append(paramString);
+    Log.e("MicroMsg.SDK.MContentProviderDB", paramArrayOfString.toString());
     return null;
   }
   
   public long replace(String paramString1, String paramString2, ContentValues paramContentValues)
   {
-    Log.e("MicroMsg.SDK.MContentProviderDB", "do not support, replace table=" + paramString1);
+    paramString2 = new StringBuilder("do not support, replace table=");
+    paramString2.append(paramString1);
+    Log.e("MicroMsg.SDK.MContentProviderDB", paramString2.toString());
     return 0L;
   }
   
@@ -83,7 +94,9 @@ public abstract class ContentProviderDB<T>
     Uri localUri = getUriFromTable(paramString1);
     if (localUri == null)
     {
-      Log.e("MicroMsg.SDK.MContentProviderDB", "get uri from table failed, table=" + paramString1);
+      paramContentValues = new StringBuilder("get uri from table failed, table=");
+      paramContentValues.append(paramString1);
+      Log.e("MicroMsg.SDK.MContentProviderDB", paramContentValues.toString());
       return 0;
     }
     return this.q.getContentResolver().update(localUri, paramContentValues, paramString2, paramArrayOfString);

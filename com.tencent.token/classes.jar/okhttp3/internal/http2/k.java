@@ -9,11 +9,16 @@ public final class k
   
   k a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt1 >= this.b.length)) {
+    if (paramInt1 >= 0)
+    {
+      int[] arrayOfInt = this.b;
+      if (paramInt1 >= arrayOfInt.length) {
+        return this;
+      }
+      this.a = (1 << paramInt1 | this.a);
+      arrayOfInt[paramInt1] = paramInt2;
       return this;
     }
-    this.a = (1 << paramInt1 | this.a);
-    this.b[paramInt1] = paramInt2;
     return this;
   }
   
@@ -26,15 +31,12 @@ public final class k
   void a(k paramk)
   {
     int i = 0;
-    if (i < 10)
+    while (i < 10)
     {
-      if (!paramk.a(i)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
+      if (paramk.a(i)) {
         a(i, paramk.b(i));
       }
+      i += 1;
     }
   }
   
@@ -55,7 +57,7 @@ public final class k
   
   int c()
   {
-    if ((0x2 & this.a) != 0) {
+    if ((this.a & 0x2) != 0) {
       return this.b[1];
     }
     return -1;
@@ -63,7 +65,7 @@ public final class k
   
   int c(int paramInt)
   {
-    if ((0x10 & this.a) != 0) {
+    if ((this.a & 0x10) != 0) {
       paramInt = this.b[4];
     }
     return paramInt;
@@ -71,7 +73,7 @@ public final class k
   
   int d()
   {
-    if ((0x80 & this.a) != 0) {
+    if ((this.a & 0x80) != 0) {
       return this.b[7];
     }
     return 65535;
@@ -79,7 +81,7 @@ public final class k
   
   int d(int paramInt)
   {
-    if ((0x20 & this.a) != 0) {
+    if ((this.a & 0x20) != 0) {
       paramInt = this.b[5];
     }
     return paramInt;

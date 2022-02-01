@@ -25,18 +25,6 @@ public final class RequestPacket
   public String sServantName = null;
   public Map<String, String> status;
   
-  static
-  {
-    if (!RequestPacket.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_sBuffer = null;
-      cache_context = null;
-      return;
-    }
-  }
-  
   public RequestPacket() {}
   
   public RequestPacket(short paramShort, byte paramByte, int paramInt1, int paramInt2, String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt3, Map<String, String> paramMap1, Map<String, String> paramMap2)
@@ -55,18 +43,17 @@ public final class RequestPacket
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
@@ -107,7 +94,11 @@ public final class RequestPacket
     catch (Exception paramJceInputStream)
     {
       paramJceInputStream.printStackTrace();
-      System.out.println("RequestPacket decode error " + WupHexUtil.bytes2HexStr(this.sBuffer));
+      PrintStream localPrintStream = System.out;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RequestPacket decode error ");
+      localStringBuilder.append(WupHexUtil.bytes2HexStr(this.sBuffer));
+      localPrintStream.println(localStringBuilder.toString());
       throw new RuntimeException(paramJceInputStream);
     }
   }

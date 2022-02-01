@@ -37,52 +37,53 @@ public class a
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
-    if (i >= paramArrayOfByte.length) {
-      return localStringBuffer.toString();
-    }
-    if (Integer.toHexString(paramArrayOfByte[i] & 0xFF).length() == 1) {
-      localStringBuffer.append("0").append(Integer.toHexString(paramArrayOfByte[i] & 0xFF));
-    }
     for (;;)
     {
+      if (i >= paramArrayOfByte.length) {
+        return localStringBuffer.toString();
+      }
+      int j;
+      if (Integer.toHexString(paramArrayOfByte[i] & 0xFF).length() == 1)
+      {
+        localStringBuffer.append("0");
+        j = paramArrayOfByte[i];
+      }
+      else
+      {
+        j = paramArrayOfByte[i];
+      }
+      localStringBuffer.append(Integer.toHexString(j & 0xFF));
       i += 1;
-      break;
-      localStringBuffer.append(Integer.toHexString(paramArrayOfByte[i] & 0xFF));
     }
   }
   
   public String a(String paramString)
   {
-    int j = 0;
     StringBuffer localStringBuffer = new StringBuffer();
+    int j = 0;
     int i = 0;
-    if (j >= paramString.length()) {
-      label23:
-      return localStringBuffer.toString();
-    }
-    char c1 = paramString.charAt(j);
-    if (i == 0) {
-      if (c1 == '=') {
-        i = 61;
-      }
-    }
     for (;;)
     {
-      j += 1;
-      break;
-      if (c1 == ':')
+      if (j < paramString.length())
       {
-        i = 58;
-        continue;
-        if ((c1 < '0') || (c1 > 'f') || ((c1 > '9') && (c1 < 'A')) || ((c1 > 'F') && (c1 < 'a')))
+        char c1 = paramString.charAt(j);
+        if (i == 0)
         {
-          if (localStringBuffer.length() <= 0) {
-            continue;
+          if (c1 == '=') {
+            i = 61;
+          } else if (c1 == ':') {
+            i = 58;
           }
-          break label23;
         }
-        localStringBuffer.append(c1);
+        else if ((c1 >= '0') && (c1 <= 'f') && ((c1 <= '9') || (c1 >= 'A')) && ((c1 <= 'F') || (c1 >= 'a'))) {
+          localStringBuffer.append(c1);
+        } else if (localStringBuffer.length() <= 0) {}
       }
+      else
+      {
+        return localStringBuffer.toString();
+      }
+      j += 1;
     }
   }
   
@@ -135,21 +136,24 @@ public class a
   
   public byte[] b(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return null;
-    }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    try
+    if (paramArrayOfByte != null)
     {
-      GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
-      localGZIPOutputStream.write(paramArrayOfByte);
-      localGZIPOutputStream.close();
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      return paramArrayOfByte;
-    }
-    catch (Throwable paramArrayOfByte)
-    {
-      a(paramArrayOfByte);
+      if (paramArrayOfByte.length <= 0) {
+        return null;
+      }
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      try
+      {
+        GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
+        localGZIPOutputStream.write(paramArrayOfByte);
+        localGZIPOutputStream.close();
+        paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+        return paramArrayOfByte;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        a(paramArrayOfByte);
+      }
     }
     return null;
   }

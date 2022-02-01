@@ -20,16 +20,6 @@ public final class ConfSrc
   public int timestamp = 0;
   public String url = "";
   
-  static
-  {
-    if (!ConfSrc.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public ConfSrc()
   {
     setFilename(this.filename);
@@ -63,29 +53,63 @@ public final class ConfSrc
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ConfSrc)paramObject;
-    } while ((!JceUtil.equals(this.filename, paramObject.filename)) || (!JceUtil.equals(this.checksum, paramObject.checksum)) || (!JceUtil.equals(this.timestamp, paramObject.timestamp)) || (!JceUtil.equals(this.url, paramObject.url)) || (!JceUtil.equals(this.isincreupdate, paramObject.isincreupdate)) || (!JceUtil.equals(this.iuchecksum, paramObject.iuchecksum)) || (!JceUtil.equals(this.data, paramObject.data)) || (!JceUtil.equals(this.rnum, paramObject.rnum)) || (!JceUtil.equals(this.size, paramObject.size)));
-    return true;
+    }
+    paramObject = (ConfSrc)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.filename, paramObject.filename))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.checksum, paramObject.checksum))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.timestamp, paramObject.timestamp))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.url, paramObject.url))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.isincreupdate, paramObject.isincreupdate))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.iuchecksum, paramObject.iuchecksum))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.data, paramObject.data))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.rnum, paramObject.rnum))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.size, paramObject.size)) {
+                      bool1 = true;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -221,11 +245,13 @@ public final class ConfSrc
     paramJceOutputStream.write(this.timestamp, 2);
     paramJceOutputStream.write(this.url, 3);
     paramJceOutputStream.write(this.isincreupdate, 4);
-    if (this.iuchecksum != null) {
-      paramJceOutputStream.write(this.iuchecksum, 5);
+    Object localObject = this.iuchecksum;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 6);
+    localObject = this.data;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
     paramJceOutputStream.write(this.rnum, 7);
     paramJceOutputStream.write(this.size, 8);

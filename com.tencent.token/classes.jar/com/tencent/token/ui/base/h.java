@@ -24,8 +24,8 @@ public class h
   
   public h(Context paramContext)
   {
-    this.a = paramContext.getResources().getColor(2131492933);
-    this.b = paramContext.getResources().getColor(2131492937);
+    this.a = paramContext.getResources().getColor(2130968665);
+    this.b = paramContext.getResources().getColor(2130968669);
     this.d = new RectF();
     this.e = new RectF();
   }
@@ -49,20 +49,24 @@ public class h
     paramCanvas.drawRoundRect(this.d, 5.0F, 5.0F, this.c);
     if (!this.f)
     {
-      this.g = ((float)(this.g + 0.15D));
-      if (this.g <= 80.0F) {}
-    }
-    for (this.g = 80.0F;; this.g += 5.0F)
-    {
-      if (this.g >= 100.0F) {
-        this.g = 100.0F;
+      double d1 = this.g;
+      Double.isNaN(d1);
+      this.g = ((float)(d1 + 0.15D));
+      if (this.g > 80.0F) {
+        this.g = 80.0F;
       }
-      this.e.set(this.d.left, this.d.top, this.d.left + this.h * this.g, this.d.bottom);
-      this.c.setColor(this.b);
-      paramCanvas.drawRoundRect(this.e, 5.0F, 5.0F, this.c);
-      invalidateSelf();
-      return;
     }
+    else
+    {
+      this.g += 5.0F;
+    }
+    if (this.g >= 100.0F) {
+      this.g = 100.0F;
+    }
+    this.e.set(this.d.left, this.d.top, this.d.left + this.h * this.g, this.d.bottom);
+    this.c.setColor(this.b);
+    paramCanvas.drawRoundRect(this.e, 5.0F, 5.0F, this.c);
+    invalidateSelf();
   }
   
   public int getOpacity()
@@ -77,7 +81,12 @@ public class h
     super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
     this.d.set(paramInt1, paramInt2, paramInt3, paramInt4);
     this.h = (this.d.width() / 100.0F);
-    g.c("setBounds rect=" + this.d + ",clipRect=" + this.e);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setBounds rect=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",clipRect=");
+    localStringBuilder.append(this.e);
+    g.c(localStringBuilder.toString());
   }
   
   public void setColorFilter(ColorFilter paramColorFilter) {}

@@ -117,20 +117,20 @@ public class a
     {
     default: 
       return "";
-    case 1: 
-      return "PENDING";
-    case 2: 
-      return "STARTED";
-    case 3: 
-      return "DOWNLOADING";
-    case 4: 
-      return "COMPLETE";
+    case 7: 
+      return "DELETED";
     case 6: 
       return "PAUSED";
     case 5: 
       return "FAILED";
+    case 4: 
+      return "COMPLETE";
+    case 3: 
+      return "DOWNLOADING";
+    case 2: 
+      return "STARTED";
     }
-    return "DELETED";
+    return "PENDING";
   }
   
   public static void a(Context paramContext, File paramFile)
@@ -139,21 +139,33 @@ public class a
     localIntent.setAction("android.intent.action.VIEW");
     localIntent.setFlags(1);
     localIntent.addFlags(268435456);
-    if (Build.VERSION.SDK_INT >= 24) {
-      localIntent.setDataAndType(FileProvider.getUriForFile(paramContext, paramContext.getPackageName() + ".FileProvider", paramFile), "application/vnd.android.package-archive");
-    }
-    for (;;)
+    StringBuilder localStringBuilder;
+    if (Build.VERSION.SDK_INT >= 24)
     {
-      paramContext.startActivity(localIntent);
-      return;
-      localIntent.setDataAndType(Uri.parse("file://" + paramFile.toString()), "application/vnd.android.package-archive");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getPackageName());
+      localStringBuilder.append(".FileProvider");
+      localIntent.setDataAndType(FileProvider.getUriForFile(paramContext, localStringBuilder.toString(), paramFile), "application/vnd.android.package-archive");
     }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file://");
+      localStringBuilder.append(paramFile.toString());
+      localIntent.setDataAndType(Uri.parse(localStringBuilder.toString()), "application/vnd.android.package-archive");
+    }
+    paramContext.startActivity(localIntent);
   }
   
   public static String b()
   {
-    if ("mounted".equals(Environment.getExternalStorageState())) {
-      return Environment.getExternalStorageDirectory() + File.separator + "token_download";
+    if ("mounted".equals(Environment.getExternalStorageState()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Environment.getExternalStorageDirectory());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("token_download");
+      return localStringBuilder.toString();
     }
     return RqdApplication.l().getFilesDir().getAbsolutePath();
   }
@@ -212,27 +224,33 @@ public class a
   void a(b paramb)
   {
     a locala = (a)this.c.get(paramb.c());
-    if (locala == null) {}
-    for (;;)
-    {
+    if (locala == null) {
       return;
-      a(paramb, locala);
-      Log.i("DownloadService", "progressChangedCallback: [" + c(paramb) + "]");
-      paramb = d().iterator();
-      while (paramb.hasNext()) {
-        ((c)paramb.next()).a(locala);
-      }
+    }
+    a(paramb, locala);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("progressChangedCallback: [");
+    localStringBuilder.append(c(paramb));
+    localStringBuilder.append("]");
+    Log.i("DownloadService", localStringBuilder.toString());
+    paramb = d().iterator();
+    while (paramb.hasNext()) {
+      ((c)paramb.next()).a(locala);
     }
   }
   
   void a(b paramb, a parama)
   {
-    if ((paramb == null) || (parama == null)) {
+    if (paramb != null)
+    {
+      if (parama == null) {
+        return;
+      }
+      parama.e = paramb.g();
+      parama.f = paramb.d();
+      parama.b = paramb.b();
       return;
     }
-    parama.e = paramb.g();
-    parama.f = paramb.d();
-    parama.b = paramb.b();
   }
   
   public void a(c paramc)
@@ -259,37 +277,40 @@ public class a
       return;
     }
     a(paramb, locala);
-    Log.i("DownloadService", "stateChangedCallback: [" + c(paramb) + "]");
-    Object localObject = d();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("stateChangedCallback: [");
+    ((StringBuilder)localObject).append(c(paramb));
+    ((StringBuilder)localObject).append("]");
+    Log.i("DownloadService", ((StringBuilder)localObject).toString());
+    localObject = d();
     switch (2.a[paramb.d().ordinal()])
     {
-    case 1: 
-    case 2: 
-    case 3: 
     default: 
-      return;
-    case 4: 
-      paramb = ((List)localObject).iterator();
-      while (paramb.hasNext()) {
-        ((c)paramb.next()).d(locala);
-      }
-      e(locala);
-      return;
-    case 5: 
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((c)((Iterator)localObject).next()).c(locala);
-      }
-      this.b.a(paramb, true);
+    case 7: 
       e(locala);
       return;
     case 6: 
       paramb = ((List)localObject).iterator();
-      while (paramb.hasNext()) {
+    case 5: 
+    case 4: 
+      while (paramb.hasNext())
+      {
         ((c)paramb.next()).b(locala);
+        continue;
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((c)((Iterator)localObject).next()).c(locala);
+        }
+        this.b.a(paramb, true);
+        e(locala);
+        return;
+        paramb = ((List)localObject).iterator();
+        while (paramb.hasNext()) {
+          ((c)paramb.next()).d(locala);
+        }
+        e(locala);
       }
     }
-    e(locala);
   }
   
   public void b(a parama)
@@ -336,22 +357,22 @@ public class a
   
   public void d(a parama)
   {
-    if (!c()) {
+    if (!c())
+    {
       Toast.makeText(RqdApplication.l(), "请开启网络再试", 0).show();
-    }
-    do
-    {
-      return;
-      parama = (b)this.d.get(parama.c);
-    } while (parama == null);
-    try
-    {
-      parama.l();
       return;
     }
-    catch (DownloaderAddTaskException parama)
-    {
-      parama.printStackTrace();
+    parama = (b)this.d.get(parama.c);
+    if (parama != null) {
+      try
+      {
+        parama.l();
+        return;
+      }
+      catch (DownloaderAddTaskException parama)
+      {
+        parama.printStackTrace();
+      }
     }
   }
   

@@ -62,65 +62,85 @@ public final class ConfigReport
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.fileId, 0);
-    if (this.checkSum != null) {
-      paramJceOutputStream.write(this.checkSum, 1);
+    String str = this.checkSum;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.timestamp != -1) {
-      paramJceOutputStream.write(this.timestamp, 2);
+    int i = this.timestamp;
+    if (i != -1) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 3);
+    str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.success != 1) {
-      paramJceOutputStream.write(this.success, 4);
+    byte b = this.success;
+    if (b != 1) {
+      paramJceOutputStream.write(b, 4);
     }
-    if (this.downSize != -1) {
-      paramJceOutputStream.write(this.downSize, 5);
+    i = this.downSize;
+    if (i != -1) {
+      paramJceOutputStream.write(i, 5);
     }
-    if (this.usedTime != -1) {
-      paramJceOutputStream.write(this.usedTime, 6);
+    i = this.usedTime;
+    if (i != -1) {
+      paramJceOutputStream.write(i, 6);
     }
-    if (this.retryTimes != -1) {
-      paramJceOutputStream.write(this.retryTimes, 7);
+    i = this.retryTimes;
+    if (i != -1) {
+      paramJceOutputStream.write(i, 7);
     }
-    if (this.downType != 0) {
-      paramJceOutputStream.write(this.downType, 8);
+    b = this.downType;
+    if (b != 0) {
+      paramJceOutputStream.write(b, 8);
     }
-    if (this.errorCode != 0) {
-      paramJceOutputStream.write(this.errorCode, 9);
+    i = this.errorCode;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 9);
     }
-    if (this.downnetType != 0) {
-      paramJceOutputStream.write(this.downnetType, 10);
+    i = this.downnetType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 10);
     }
-    if (this.downNetName != null) {
-      paramJceOutputStream.write(this.downNetName, 11);
+    str = this.downNetName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.reportNetType != 0) {
-      paramJceOutputStream.write(this.reportNetType, 12);
+    i = this.reportNetType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 12);
     }
-    if (this.reportNetName != null) {
-      paramJceOutputStream.write(this.reportNetName, 13);
+    str = this.reportNetName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
-    if (this.errorMsg != null) {
-      paramJceOutputStream.write(this.errorMsg, 14);
+    str = this.errorMsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 14);
     }
-    if (this.rssi != -1) {
-      paramJceOutputStream.write(this.rssi, 15);
+    i = this.rssi;
+    if (i != -1) {
+      paramJceOutputStream.write(i, 15);
     }
-    if (this.sdcardStatus != -1) {
-      paramJceOutputStream.write(this.sdcardStatus, 16);
+    i = this.sdcardStatus;
+    if (i != -1) {
+      paramJceOutputStream.write(i, 16);
     }
-    if (this.fileSize != 0) {
-      paramJceOutputStream.write(this.fileSize, 17);
+    i = this.fileSize;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 17);
     }
-    if (this.hostAddress != null) {
-      paramJceOutputStream.write(this.hostAddress, 18);
+    str = this.hostAddress;
+    if (str != null) {
+      paramJceOutputStream.write(str, 18);
     }
-    if (this.isValid != -1) {
-      paramJceOutputStream.write(this.isValid, 19);
+    i = this.isValid;
+    if (i != -1) {
+      paramJceOutputStream.write(i, 19);
     }
-    if (this.rnum != 0) {
-      paramJceOutputStream.write(this.rnum, 20);
+    i = this.rnum;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 20);
     }
   }
 }

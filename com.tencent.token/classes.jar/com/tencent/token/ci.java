@@ -33,51 +33,53 @@ public class ci
     this.o = c.b();
     this.p = c.c();
     this.q = c.d();
-    byte[] arrayOfByte1 = this.r.getBytes();
-    int i3 = arrayOfByte1.length;
-    if ((this.f != null) && (this.f.length > 0)) {}
-    for (int i1 = this.f.length;; i1 = 0)
-    {
-      int i2 = this.t.length + 92 + i1 + 32 + 1;
-      this.h = ((short)i2);
-      byte[] arrayOfByte2 = new byte[i2];
-      arrayOfByte2[0] = 2;
-      cj.a(arrayOfByte2, 1, this.g);
-      cj.a(arrayOfByte2, 5, this.h);
-      arrayOfByte2[7] = this.i;
-      cj.a(arrayOfByte2, 8, this.j);
-      cj.a(arrayOfByte2, 10, this.k);
-      cj.a(arrayOfByte2, 12, this.l);
-      cj.a(arrayOfByte2, 16, this.m);
-      cj.a(arrayOfByte2, 20, this.n);
-      cj.a(arrayOfByte2, 22, this.o);
-      cj.a(arrayOfByte2, 24, this.p);
-      cj.a(arrayOfByte2, 26, this.q);
-      byte[] arrayOfByte3 = new byte[64];
-      if (i3 > 0)
-      {
-        i2 = i3;
-        if (i3 > 64) {
-          i2 = 64;
-        }
-        cj.a(arrayOfByte3, 0, arrayOfByte1, 0, i2);
-      }
-      cj.a(arrayOfByte2, 28, arrayOfByte3, 0, 64);
-      cj.a(arrayOfByte2, 92, this.t, 0, this.t.length);
-      i2 = this.t.length + 92;
-      if (i1 > 0)
-      {
-        cj.a(arrayOfByte2, i2, this.f, 0, i1);
-        i1 += i2;
-      }
-      for (;;)
-      {
-        cj.a(arrayOfByte2, i1, this.s, 0, this.s.length);
-        arrayOfByte2[(i1 + this.s.length)] = 3;
-        return arrayOfByte2;
-        i1 = i2;
-      }
+    byte[] arrayOfByte2 = this.r.getBytes();
+    int i3 = arrayOfByte2.length;
+    byte[] arrayOfByte1 = this.f;
+    int i1;
+    if ((arrayOfByte1 != null) && (arrayOfByte1.length > 0)) {
+      i1 = arrayOfByte1.length;
+    } else {
+      i1 = 0;
     }
+    int i2 = this.t.length + 92 + i1 + 32 + 1;
+    this.h = ((short)i2);
+    arrayOfByte1 = new byte[i2];
+    arrayOfByte1[0] = 2;
+    cj.a(arrayOfByte1, 1, this.g);
+    cj.a(arrayOfByte1, 5, this.h);
+    arrayOfByte1[7] = this.i;
+    cj.a(arrayOfByte1, 8, this.j);
+    cj.a(arrayOfByte1, 10, this.k);
+    cj.a(arrayOfByte1, 12, this.l);
+    cj.a(arrayOfByte1, 16, this.m);
+    cj.a(arrayOfByte1, 20, this.n);
+    cj.a(arrayOfByte1, 22, this.o);
+    cj.a(arrayOfByte1, 24, this.p);
+    cj.a(arrayOfByte1, 26, this.q);
+    byte[] arrayOfByte3 = new byte[64];
+    if (i3 > 0)
+    {
+      i2 = i3;
+      if (i3 > 64) {
+        i2 = 64;
+      }
+      cj.a(arrayOfByte3, 0, arrayOfByte2, 0, i2);
+    }
+    cj.a(arrayOfByte1, 28, arrayOfByte3, 0, 64);
+    arrayOfByte2 = this.t;
+    cj.a(arrayOfByte1, 92, arrayOfByte2, 0, arrayOfByte2.length);
+    i3 = 92 + this.t.length;
+    i2 = i3;
+    if (i1 > 0)
+    {
+      cj.a(arrayOfByte1, i3, this.f, 0, i1);
+      i2 = i3 + i1;
+    }
+    arrayOfByte2 = this.s;
+    cj.a(arrayOfByte1, i2, arrayOfByte2, 0, arrayOfByte2.length);
+    arrayOfByte1[(i2 + this.s.length)] = 3;
+    return arrayOfByte1;
   }
 }
 

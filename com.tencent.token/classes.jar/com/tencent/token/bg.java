@@ -35,32 +35,37 @@ public final class bg
   
   private void c()
   {
-    if ((this.a < 10000) || (this.a > 60000)) {
+    int i = this.a;
+    if ((i < 10000) || (i > 60000)) {
       this.a = 20000;
     }
-    if ((this.b < 10000) || (this.b > 60000)) {
+    i = this.b;
+    if ((i < 10000) || (i > 60000)) {
       this.b = 20000;
     }
-    if ((this.c < 3) || (this.c > 15)) {
+    i = this.c;
+    if ((i < 3) || (i > 15)) {
       this.c = 8;
     }
-    if ((this.d <= 0) || (this.d > 5)) {
+    i = this.d;
+    if ((i <= 0) || (i > 5)) {
       this.d = 2;
     }
-    if ((this.e < 5) || (this.e > 2160)) {
+    i = this.e;
+    if ((i < 5) || (i > 2160)) {
       this.e = 120;
     }
   }
   
   public final void a()
   {
-    i locali = null;
     Object localObject = f.a().getSharedPreferences("Access_Preferences", 0);
     this.a = ((SharedPreferences)localObject).getInt("connectTimeout", 15000);
     this.b = ((SharedPreferences)localObject).getInt("readTimeout", 15000);
     this.c = ((SharedPreferences)localObject).getInt("apnCachedNum", 8);
     this.d = ((SharedPreferences)localObject).getInt("parallelNum", 2);
     this.e = ((SharedPreferences)localObject).getInt("expireTime", 120);
+    i locali = null;
     localObject = ((SharedPreferences)localObject).getString("samplingInfo", null);
     if (localObject != null)
     {
@@ -92,22 +97,28 @@ public final class bg
     ((SharedPreferences)localObject).edit().putInt("expireTime", this.e).commit();
     SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
     localObject = this.f;
-    StringBuilder localStringBuilder = new StringBuilder();
+    StringBuilder localStringBuilder1 = new StringBuilder();
     if (((i)localObject).a != null)
     {
       Iterator localIterator = ((i)localObject).a.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        localStringBuilder.append(localEntry.getKey() + "," + localEntry.getValue() + ";");
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(localEntry.getKey());
+        localStringBuilder2.append(",");
+        localStringBuilder2.append(localEntry.getValue());
+        localStringBuilder2.append(";");
+        localStringBuilder1.append(localStringBuilder2.toString());
       }
-      localStringBuilder.append(((i)localObject).b);
+      localStringBuilder1.append(((i)localObject).b);
+      localObject = localStringBuilder1.toString();
     }
-    for (localObject = localStringBuilder.toString();; localObject = null)
+    else
     {
-      localEditor.putString("samplingInfo", (String)localObject).commit();
-      return;
+      localObject = null;
     }
+    localEditor.putString("samplingInfo", (String)localObject).commit();
   }
 }
 

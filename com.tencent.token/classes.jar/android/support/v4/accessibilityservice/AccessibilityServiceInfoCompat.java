@@ -23,22 +23,22 @@ public final class AccessibilityServiceInfoCompat
   @NonNull
   public static String capabilityToString(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 4)
     {
-    case 3: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return "UNKNOWN";
-    case 1: 
-      return "CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT";
-    case 2: 
-      return "CAPABILITY_CAN_REQUEST_TOUCH_EXPLORATION";
-    case 4: 
-      return "CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY";
+      if (paramInt != 8)
+      {
+        switch (paramInt)
+        {
+        default: 
+          return "UNKNOWN";
+        case 2: 
+          return "CAPABILITY_CAN_REQUEST_TOUCH_EXPLORATION";
+        }
+        return "CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT";
+      }
+      return "CAPABILITY_CAN_FILTER_KEY_EVENTS";
     }
-    return "CAPABILITY_CAN_FILTER_KEY_EVENTS";
+    return "CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY";
   }
   
   @NonNull
@@ -53,24 +53,32 @@ public final class AccessibilityServiceInfoCompat
       if (localStringBuilder.length() > 1) {
         localStringBuilder.append(", ");
       }
-      switch (i)
+      if (i != 4)
       {
-      default: 
-        break;
-      case 1: 
-        localStringBuilder.append("FEEDBACK_SPOKEN");
-        break;
-      case 4: 
+        if (i != 8)
+        {
+          if (i != 16) {
+            switch (i)
+            {
+            default: 
+              break;
+            case 2: 
+              localStringBuilder.append("FEEDBACK_HAPTIC");
+              break;
+            case 1: 
+              localStringBuilder.append("FEEDBACK_SPOKEN");
+              break;
+            }
+          } else {
+            localStringBuilder.append("FEEDBACK_GENERIC");
+          }
+        }
+        else {
+          localStringBuilder.append("FEEDBACK_VISUAL");
+        }
+      }
+      else {
         localStringBuilder.append("FEEDBACK_AUDIBLE");
-        break;
-      case 2: 
-        localStringBuilder.append("FEEDBACK_HAPTIC");
-        break;
-      case 16: 
-        localStringBuilder.append("FEEDBACK_GENERIC");
-        break;
-      case 8: 
-        localStringBuilder.append("FEEDBACK_VISUAL");
       }
     }
     localStringBuilder.append("]");
@@ -80,22 +88,30 @@ public final class AccessibilityServiceInfoCompat
   @Nullable
   public static String flagToString(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 4)
     {
-    default: 
-      return null;
-    case 1: 
-      return "DEFAULT";
-    case 2: 
-      return "FLAG_INCLUDE_NOT_IMPORTANT_VIEWS";
-    case 4: 
-      return "FLAG_REQUEST_TOUCH_EXPLORATION_MODE";
-    case 8: 
+      if (paramInt != 8)
+      {
+        if (paramInt != 16)
+        {
+          if (paramInt != 32)
+          {
+            switch (paramInt)
+            {
+            default: 
+              return null;
+            case 2: 
+              return "FLAG_INCLUDE_NOT_IMPORTANT_VIEWS";
+            }
+            return "DEFAULT";
+          }
+          return "FLAG_REQUEST_FILTER_KEY_EVENTS";
+        }
+        return "FLAG_REPORT_VIEW_IDS";
+      }
       return "FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY";
-    case 16: 
-      return "FLAG_REPORT_VIEW_IDS";
     }
-    return "FLAG_REQUEST_FILTER_KEY_EVENTS";
+    return "FLAG_REQUEST_TOUCH_EXPLORATION_MODE";
   }
   
   public static int getCapabilities(@NonNull AccessibilityServiceInfo paramAccessibilityServiceInfo)

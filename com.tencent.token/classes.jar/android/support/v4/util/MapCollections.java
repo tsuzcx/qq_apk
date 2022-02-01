@@ -27,32 +27,30 @@ abstract class MapCollections<K, V>
   
   public static <T> boolean equalsSetHelper(Set<T> paramSet, Object paramObject)
   {
-    boolean bool2 = true;
-    boolean bool1 = false;
     if (paramSet == paramObject) {
-      bool1 = true;
+      return true;
     }
-    while (!(paramObject instanceof Set)) {
-      return bool1;
+    if ((paramObject instanceof Set)) {
+      paramObject = (Set)paramObject;
     }
-    paramObject = (Set)paramObject;
     try
     {
       if (paramSet.size() == paramObject.size())
       {
-        bool1 = paramSet.containsAll(paramObject);
-        if (!bool1) {}
-      }
-      for (bool1 = bool2;; bool1 = false) {
-        return bool1;
+        boolean bool = paramSet.containsAll(paramObject);
+        if (bool) {
+          return true;
+        }
       }
       return false;
     }
-    catch (ClassCastException paramSet)
+    catch (NullPointerException paramSet)
     {
       return false;
     }
-    catch (NullPointerException paramSet) {}
+    catch (ClassCastException paramSet) {}
+    return false;
+    return false;
   }
   
   public static <K, V> boolean removeAllHelper(Map<K, V> paramMap, Collection<?> paramCollection)
@@ -135,22 +133,20 @@ abstract class MapCollections<K, V>
   public <T> T[] toArrayHelper(T[] paramArrayOfT, int paramInt)
   {
     int j = colGetSize();
+    Object localObject = paramArrayOfT;
     if (paramArrayOfT.length < j) {
-      paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), j);
+      localObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), j);
     }
-    for (;;)
+    int i = 0;
+    while (i < j)
     {
-      int i = 0;
-      while (i < j)
-      {
-        paramArrayOfT[i] = colGetEntry(i, paramInt);
-        i += 1;
-      }
-      if (paramArrayOfT.length > j) {
-        paramArrayOfT[j] = null;
-      }
-      return paramArrayOfT;
+      localObject[i] = colGetEntry(i, paramInt);
+      i += 1;
     }
+    if (localObject.length > j) {
+      localObject[j] = null;
+    }
+    return localObject;
   }
   
   final class ArrayIterator<T>
@@ -174,24 +170,27 @@ abstract class MapCollections<K, V>
     
     public T next()
     {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
+      if (hasNext())
+      {
+        Object localObject = MapCollections.this.colGetEntry(this.mIndex, this.mOffset);
+        this.mIndex += 1;
+        this.mCanRemove = true;
+        return localObject;
       }
-      Object localObject = MapCollections.this.colGetEntry(this.mIndex, this.mOffset);
-      this.mIndex += 1;
-      this.mCanRemove = true;
-      return localObject;
+      throw new NoSuchElementException();
     }
     
     public void remove()
     {
-      if (!this.mCanRemove) {
-        throw new IllegalStateException();
+      if (this.mCanRemove)
+      {
+        this.mIndex -= 1;
+        this.mSize -= 1;
+        this.mCanRemove = false;
+        MapCollections.this.colRemoveAt(this.mIndex);
+        return;
       }
-      this.mIndex -= 1;
-      this.mSize -= 1;
-      this.mCanRemove = false;
-      MapCollections.this.colRemoveAt(this.mIndex);
+      throw new IllegalStateException();
     }
   }
   
@@ -224,14 +223,14 @@ abstract class MapCollections<K, V>
     
     public boolean contains(Object paramObject)
     {
-      if (!(paramObject instanceof Map.Entry)) {}
-      int i;
-      do
-      {
+      if (!(paramObject instanceof Map.Entry)) {
         return false;
-        paramObject = (Map.Entry)paramObject;
-        i = MapCollections.this.colIndexOfKey(paramObject.getKey());
-      } while (i < 0);
+      }
+      paramObject = (Map.Entry)paramObject;
+      int i = MapCollections.this.colIndexOfKey(paramObject.getKey());
+      if (i < 0) {
+        return false;
+      }
       return ContainerHelpers.equal(MapCollections.this.colGetEntry(i, 1), paramObject.getValue());
     }
     
@@ -253,32 +252,28 @@ abstract class MapCollections<K, V>
     
     public int hashCode()
     {
-      int j = MapCollections.this.colGetSize() - 1;
-      int i = 0;
-      if (j >= 0)
+      int i = MapCollections.this.colGetSize() - 1;
+      int j = 0;
+      while (i >= 0)
       {
-        Object localObject1 = MapCollections.this.colGetEntry(j, 0);
-        Object localObject2 = MapCollections.this.colGetEntry(j, 1);
+        Object localObject1 = MapCollections.this.colGetEntry(i, 0);
+        Object localObject2 = MapCollections.this.colGetEntry(i, 1);
         int k;
-        if (localObject1 == null)
-        {
+        if (localObject1 == null) {
           k = 0;
-          label45:
-          if (localObject2 != null) {
-            break label76;
-          }
-        }
-        label76:
-        for (int m = 0;; m = localObject2.hashCode())
-        {
-          j -= 1;
-          i += (m ^ k);
-          break;
+        } else {
           k = localObject1.hashCode();
-          break label45;
         }
+        int m;
+        if (localObject2 == null) {
+          m = 0;
+        } else {
+          m = localObject2.hashCode();
+        }
+        j += (k ^ m);
+        i -= 1;
       }
-      return i;
+      return j;
     }
     
     public boolean isEmpty()
@@ -361,16 +356,17 @@ abstract class MapCollections<K, V>
     {
       int i = MapCollections.this.colGetSize() - 1;
       int j = 0;
-      if (i >= 0)
+      while (i >= 0)
       {
         Object localObject = MapCollections.this.colGetEntry(i, 0);
-        if (localObject == null) {}
-        for (int k = 0;; k = localObject.hashCode())
-        {
-          j += k;
-          i -= 1;
-          break;
+        int k;
+        if (localObject == null) {
+          k = 0;
+        } else {
+          k = localObject.hashCode();
         }
+        j += k;
+        i -= 1;
       }
       return j;
     }
@@ -433,36 +429,41 @@ abstract class MapCollections<K, V>
     
     public boolean equals(Object paramObject)
     {
-      boolean bool = true;
-      if (!this.mEntryValid) {
-        throw new IllegalStateException("This container does not support retaining Map.Entry objects");
-      }
-      if (!(paramObject instanceof Map.Entry)) {
-        return false;
-      }
-      paramObject = (Map.Entry)paramObject;
-      if ((ContainerHelpers.equal(paramObject.getKey(), MapCollections.this.colGetEntry(this.mIndex, 0))) && (ContainerHelpers.equal(paramObject.getValue(), MapCollections.this.colGetEntry(this.mIndex, 1)))) {}
-      for (;;)
+      if (this.mEntryValid)
       {
-        return bool;
-        bool = false;
+        boolean bool1 = paramObject instanceof Map.Entry;
+        boolean bool2 = false;
+        if (!bool1) {
+          return false;
+        }
+        paramObject = (Map.Entry)paramObject;
+        bool1 = bool2;
+        if (ContainerHelpers.equal(paramObject.getKey(), MapCollections.this.colGetEntry(this.mIndex, 0)))
+        {
+          bool1 = bool2;
+          if (ContainerHelpers.equal(paramObject.getValue(), MapCollections.this.colGetEntry(this.mIndex, 1))) {
+            bool1 = true;
+          }
+        }
+        return bool1;
       }
+      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
     }
     
     public K getKey()
     {
-      if (!this.mEntryValid) {
-        throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+      if (this.mEntryValid) {
+        return MapCollections.this.colGetEntry(this.mIndex, 0);
       }
-      return MapCollections.this.colGetEntry(this.mIndex, 0);
+      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
     }
     
     public V getValue()
     {
-      if (!this.mEntryValid) {
-        throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+      if (this.mEntryValid) {
+        return MapCollections.this.colGetEntry(this.mIndex, 1);
       }
-      return MapCollections.this.colGetEntry(this.mIndex, 1);
+      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
     }
     
     public boolean hasNext()
@@ -472,62 +473,65 @@ abstract class MapCollections<K, V>
     
     public int hashCode()
     {
-      int j = 0;
-      if (!this.mEntryValid) {
-        throw new IllegalStateException("This container does not support retaining Map.Entry objects");
-      }
-      Object localObject1 = MapCollections.this.colGetEntry(this.mIndex, 0);
-      Object localObject2 = MapCollections.this.colGetEntry(this.mIndex, 1);
-      int i;
-      if (localObject1 == null)
+      if (this.mEntryValid)
       {
-        i = 0;
-        if (localObject2 != null) {
-          break label69;
+        Object localObject1 = MapCollections.this;
+        int i = this.mIndex;
+        int j = 0;
+        localObject1 = ((MapCollections)localObject1).colGetEntry(i, 0);
+        Object localObject2 = MapCollections.this.colGetEntry(this.mIndex, 1);
+        if (localObject1 == null) {
+          i = 0;
+        } else {
+          i = localObject1.hashCode();
         }
+        if (localObject2 != null) {
+          j = localObject2.hashCode();
+        }
+        return i ^ j;
       }
-      for (;;)
-      {
-        return j ^ i;
-        i = localObject1.hashCode();
-        break;
-        label69:
-        j = localObject2.hashCode();
-      }
+      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
     }
     
     public Map.Entry<K, V> next()
     {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
+      if (hasNext())
+      {
+        this.mIndex += 1;
+        this.mEntryValid = true;
+        return this;
       }
-      this.mIndex += 1;
-      this.mEntryValid = true;
-      return this;
+      throw new NoSuchElementException();
     }
     
     public void remove()
     {
-      if (!this.mEntryValid) {
-        throw new IllegalStateException();
+      if (this.mEntryValid)
+      {
+        MapCollections.this.colRemoveAt(this.mIndex);
+        this.mIndex -= 1;
+        this.mEnd -= 1;
+        this.mEntryValid = false;
+        return;
       }
-      MapCollections.this.colRemoveAt(this.mIndex);
-      this.mIndex -= 1;
-      this.mEnd -= 1;
-      this.mEntryValid = false;
+      throw new IllegalStateException();
     }
     
     public V setValue(V paramV)
     {
-      if (!this.mEntryValid) {
-        throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+      if (this.mEntryValid) {
+        return MapCollections.this.colSetValue(this.mIndex, paramV);
       }
-      return MapCollections.this.colSetValue(this.mIndex, paramV);
+      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
     }
     
     public String toString()
     {
-      return getKey() + "=" + getValue();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getKey());
+      localStringBuilder.append("=");
+      localStringBuilder.append(getValue());
+      return localStringBuilder.toString();
     }
   }
   
@@ -590,13 +594,13 @@ abstract class MapCollections<K, V>
     
     public boolean removeAll(Collection<?> paramCollection)
     {
-      int i = 0;
       int j = MapCollections.this.colGetSize();
+      int i = 0;
       boolean bool = false;
       while (i < j)
       {
-        int m = i;
         int k = j;
+        int m = i;
         if (paramCollection.contains(MapCollections.this.colGetEntry(i, 1)))
         {
           MapCollections.this.colRemoveAt(i);
@@ -612,13 +616,13 @@ abstract class MapCollections<K, V>
     
     public boolean retainAll(Collection<?> paramCollection)
     {
-      int i = 0;
       int j = MapCollections.this.colGetSize();
+      int i = 0;
       boolean bool = false;
       while (i < j)
       {
-        int m = i;
         int k = j;
+        int m = i;
         if (!paramCollection.contains(MapCollections.this.colGetEntry(i, 1)))
         {
           MapCollections.this.colRemoveAt(i);

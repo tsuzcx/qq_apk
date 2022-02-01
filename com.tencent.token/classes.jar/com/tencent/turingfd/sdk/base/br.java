@@ -12,104 +12,115 @@ public class br
     //   0: getstatic 21	com/tencent/turingfd/sdk/base/ct:av	[I
     //   3: invokestatic 24	com/tencent/turingfd/sdk/base/ct:a	([I)Ljava/lang/String;
     //   6: invokestatic 30	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   9: astore_2
-    //   10: getstatic 32	com/tencent/turingfd/sdk/base/ct:a	[I
-    //   13: invokestatic 24	com/tencent/turingfd/sdk/base/ct:a	([I)Ljava/lang/String;
-    //   16: astore_3
-    //   17: getstatic 38	android/os/Build$VERSION:SDK_INT	I
-    //   20: bipush 17
-    //   22: if_icmplt +106 -> 128
-    //   25: aload_1
-    //   26: invokevirtual 44	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   29: aload_2
-    //   30: invokevirtual 50	android/content/ContentResolver:acquireContentProviderClient	(Landroid/net/Uri;)Landroid/content/ContentProviderClient;
-    //   33: astore_2
-    //   34: aload_2
-    //   35: aload_3
-    //   36: aconst_null
-    //   37: aconst_null
-    //   38: invokevirtual 56	android/content/ContentProviderClient:call	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Landroid/os/Bundle;
-    //   41: astore_1
-    //   42: getstatic 38	android/os/Build$VERSION:SDK_INT	I
-    //   45: bipush 24
-    //   47: if_icmplt +16 -> 63
-    //   50: aload_2
-    //   51: invokevirtual 59	android/content/ContentProviderClient:close	()V
-    //   54: aload_1
-    //   55: ifnonnull +88 -> 143
-    //   58: iconst_m1
-    //   59: invokestatic 64	com/tencent/turingfd/sdk/base/bo:a	(I)Lcom/tencent/turingfd/sdk/base/bo;
-    //   62: areturn
-    //   63: aload_2
-    //   64: invokevirtual 68	android/content/ContentProviderClient:release	()Z
-    //   67: pop
-    //   68: goto -14 -> 54
-    //   71: astore_1
-    //   72: aload_2
-    //   73: ifnull +15 -> 88
-    //   76: getstatic 38	android/os/Build$VERSION:SDK_INT	I
-    //   79: bipush 24
-    //   81: if_icmplt +9 -> 90
-    //   84: aload_2
-    //   85: invokevirtual 59	android/content/ContentProviderClient:close	()V
-    //   88: aload_1
-    //   89: athrow
-    //   90: aload_2
-    //   91: invokevirtual 68	android/content/ContentProviderClient:release	()Z
-    //   94: pop
-    //   95: goto -7 -> 88
-    //   98: astore_1
-    //   99: aload_2
-    //   100: ifnull +15 -> 115
-    //   103: getstatic 38	android/os/Build$VERSION:SDK_INT	I
-    //   106: bipush 24
-    //   108: if_icmplt +12 -> 120
-    //   111: aload_2
-    //   112: invokevirtual 59	android/content/ContentProviderClient:close	()V
-    //   115: aconst_null
-    //   116: astore_1
-    //   117: goto -63 -> 54
-    //   120: aload_2
-    //   121: invokevirtual 68	android/content/ContentProviderClient:release	()Z
-    //   124: pop
-    //   125: goto -10 -> 115
-    //   128: aload_1
-    //   129: invokevirtual 44	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   132: aload_2
-    //   133: aload_3
-    //   134: aconst_null
-    //   135: aconst_null
-    //   136: invokevirtual 71	android/content/ContentResolver:call	(Landroid/net/Uri;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Landroid/os/Bundle;
+    //   9: astore 4
+    //   11: getstatic 32	com/tencent/turingfd/sdk/base/ct:a	[I
+    //   14: invokestatic 24	com/tencent/turingfd/sdk/base/ct:a	([I)Ljava/lang/String;
+    //   17: astore 5
+    //   19: getstatic 38	android/os/Build$VERSION:SDK_INT	I
+    //   22: istore_2
+    //   23: aconst_null
+    //   24: astore_3
+    //   25: iload_2
+    //   26: bipush 17
+    //   28: if_icmplt +115 -> 143
+    //   31: aload_1
+    //   32: invokevirtual 44	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   35: aload 4
+    //   37: invokevirtual 50	android/content/ContentResolver:acquireContentProviderClient	(Landroid/net/Uri;)Landroid/content/ContentProviderClient;
+    //   40: astore 4
+    //   42: aload 4
+    //   44: aload 5
+    //   46: aconst_null
+    //   47: aconst_null
+    //   48: invokevirtual 56	android/content/ContentProviderClient:call	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Landroid/os/Bundle;
+    //   51: astore_1
+    //   52: getstatic 38	android/os/Build$VERSION:SDK_INT	I
+    //   55: bipush 24
+    //   57: if_icmplt +11 -> 68
+    //   60: aload 4
+    //   62: invokevirtual 59	android/content/ContentProviderClient:close	()V
+    //   65: goto +92 -> 157
+    //   68: aload 4
+    //   70: invokevirtual 63	android/content/ContentProviderClient:release	()Z
+    //   73: pop
+    //   74: goto +83 -> 157
+    //   77: astore_1
+    //   78: aload 4
+    //   80: ifnull +25 -> 105
+    //   83: getstatic 38	android/os/Build$VERSION:SDK_INT	I
+    //   86: bipush 24
+    //   88: if_icmplt +11 -> 99
+    //   91: aload 4
+    //   93: invokevirtual 59	android/content/ContentProviderClient:close	()V
+    //   96: goto +9 -> 105
+    //   99: aload 4
+    //   101: invokevirtual 63	android/content/ContentProviderClient:release	()Z
+    //   104: pop
+    //   105: aload_1
+    //   106: athrow
+    //   107: aload_3
+    //   108: astore_1
+    //   109: aload 4
+    //   111: ifnull +46 -> 157
+    //   114: getstatic 38	android/os/Build$VERSION:SDK_INT	I
+    //   117: bipush 24
+    //   119: if_icmplt +13 -> 132
+    //   122: aload 4
+    //   124: invokevirtual 59	android/content/ContentProviderClient:close	()V
+    //   127: aload_3
+    //   128: astore_1
+    //   129: goto +28 -> 157
+    //   132: aload 4
+    //   134: invokevirtual 63	android/content/ContentProviderClient:release	()Z
+    //   137: pop
+    //   138: aload_3
     //   139: astore_1
-    //   140: goto -86 -> 54
+    //   140: goto +17 -> 157
     //   143: aload_1
-    //   144: getstatic 74	com/tencent/turingfd/sdk/base/ct:aw	[I
-    //   147: invokestatic 24	com/tencent/turingfd/sdk/base/ct:a	([I)Ljava/lang/String;
-    //   150: iconst_m1
-    //   151: invokevirtual 80	android/os/Bundle:getInt	(Ljava/lang/String;I)I
-    //   154: ifeq +9 -> 163
-    //   157: bipush 254
-    //   159: invokestatic 64	com/tencent/turingfd/sdk/base/bo:a	(I)Lcom/tencent/turingfd/sdk/base/bo;
-    //   162: areturn
-    //   163: new 61	com/tencent/turingfd/sdk/base/bo
-    //   166: dup
-    //   167: aload_1
-    //   168: getstatic 83	com/tencent/turingfd/sdk/base/ct:ax	[I
-    //   171: invokestatic 24	com/tencent/turingfd/sdk/base/ct:a	([I)Ljava/lang/String;
-    //   174: invokevirtual 87	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   177: iconst_0
-    //   178: invokespecial 90	com/tencent/turingfd/sdk/base/bo:<init>	(Ljava/lang/String;I)V
-    //   181: areturn
+    //   144: invokevirtual 44	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   147: aload 4
+    //   149: aload 5
+    //   151: aconst_null
+    //   152: aconst_null
+    //   153: invokevirtual 66	android/content/ContentResolver:call	(Landroid/net/Uri;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Landroid/os/Bundle;
+    //   156: astore_1
+    //   157: aload_1
+    //   158: ifnonnull +8 -> 166
+    //   161: iconst_m1
+    //   162: invokestatic 71	com/tencent/turingfd/sdk/base/bo:a	(I)Lcom/tencent/turingfd/sdk/base/bo;
+    //   165: areturn
+    //   166: aload_1
+    //   167: getstatic 74	com/tencent/turingfd/sdk/base/ct:aw	[I
+    //   170: invokestatic 24	com/tencent/turingfd/sdk/base/ct:a	([I)Ljava/lang/String;
+    //   173: iconst_m1
+    //   174: invokevirtual 80	android/os/Bundle:getInt	(Ljava/lang/String;I)I
+    //   177: ifeq +9 -> 186
+    //   180: bipush 254
+    //   182: invokestatic 71	com/tencent/turingfd/sdk/base/bo:a	(I)Lcom/tencent/turingfd/sdk/base/bo;
+    //   185: areturn
+    //   186: new 68	com/tencent/turingfd/sdk/base/bo
+    //   189: dup
+    //   190: aload_1
+    //   191: getstatic 83	com/tencent/turingfd/sdk/base/ct:ax	[I
+    //   194: invokestatic 24	com/tencent/turingfd/sdk/base/ct:a	([I)Ljava/lang/String;
+    //   197: invokevirtual 87	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   200: iconst_0
+    //   201: invokespecial 90	com/tencent/turingfd/sdk/base/bo:<init>	(Ljava/lang/String;I)V
+    //   204: areturn
+    //   205: astore_1
+    //   206: goto -99 -> 107
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	182	0	this	br
-    //   0	182	1	paramContext	Context
-    //   9	124	2	localObject	Object
-    //   16	118	3	str	java.lang.String
+    //   0	209	0	this	br
+    //   0	209	1	paramContext	Context
+    //   22	7	2	i	int
+    //   24	115	3	localObject1	Object
+    //   9	139	4	localObject2	Object
+    //   17	133	5	str	java.lang.String
     // Exception table:
     //   from	to	target	type
-    //   34	42	71	finally
-    //   34	42	98	java/lang/Throwable
+    //   42	52	77	finally
+    //   42	52	205	java/lang/Throwable
   }
   
   public void b(Context paramContext) {}

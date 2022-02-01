@@ -17,38 +17,35 @@ public final class bq
   
   public static String a(Context paramContext)
   {
-    int i = 1;
     if (paramContext == null) {
       return null;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        str = a;
-        if (str != null) {
-          continue;
+      String str = a;
+      i = 1;
+      if (str != null) {
+        if (str.trim().length() != 0) {
+          break label65;
         }
-        if (i != 0)
-        {
-          paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-          if (paramContext != null) {
-            a = paramContext.getDeviceId();
-          }
-        }
-      }
-      catch (Exception paramContext)
-      {
-        String str;
-        int j;
-        continue;
-      }
-      return a;
-      j = str.trim().length();
-      if (j != 0) {
-        i = 0;
       }
     }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        continue;
+        int i = 0;
+      }
+    }
+    if (i != 0)
+    {
+      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+      if (paramContext != null) {
+        a = paramContext.getDeviceId();
+      }
+    }
+    return a;
   }
   
   public static String a(Exception paramException)
@@ -57,65 +54,60 @@ public final class bq
     if (str != null)
     {
       if ((str.indexOf("\n") != -1) && (str.indexOf("\n") < 100)) {
-        paramException = str.substring(0, str.indexOf("\n"));
+        return str.substring(0, str.indexOf("\n"));
       }
-      do
-      {
-        return paramException;
-        paramException = str;
-      } while (str.length() <= 100);
-      return str.substring(0, 100);
+      paramException = str;
+      if (str.length() > 100) {
+        paramException = str.substring(0, 100);
+      }
+      return paramException;
     }
     return "";
   }
   
   public static boolean a(String paramString)
   {
-    if (paramString == null) {}
-    while (paramString.trim().length() == 0) {
+    if (paramString == null) {
       return true;
     }
-    return false;
+    return paramString.trim().length() == 0;
   }
   
   public static String b(Context paramContext)
   {
-    int i = 1;
     if (paramContext == null) {
       return null;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        str = b;
-        if (str != null) {
-          continue;
+      String str = b;
+      i = 1;
+      if (str != null) {
+        if (str.trim().length() != 0) {
+          break label74;
         }
-        if (i != 0)
-        {
-          paramContext = (WifiManager)paramContext.getSystemService("wifi");
-          if (paramContext != null)
-          {
-            paramContext = paramContext.getConnectionInfo();
-            if (paramContext != null) {
-              b = paramContext.getMacAddress();
-            }
-          }
-        }
-      }
-      catch (Exception paramContext)
-      {
-        String str;
-        int j;
-        continue;
-      }
-      return b;
-      j = str.trim().length();
-      if (j != 0) {
-        i = 0;
       }
     }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        continue;
+        int i = 0;
+      }
+    }
+    if (i != 0)
+    {
+      paramContext = (WifiManager)paramContext.getSystemService("wifi");
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getConnectionInfo();
+        if (paramContext != null) {
+          b = paramContext.getMacAddress();
+        }
+      }
+    }
+    return b;
   }
   
   public static String b(String paramString)
@@ -144,35 +136,38 @@ public final class bq
   
   private static String c(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
-    }
-    try
+    if (paramString != null)
     {
-      localObject = MessageDigest.getInstance("MD5");
-      ((MessageDigest)localObject).update(paramString.getBytes());
-      paramString = ((MessageDigest)localObject).digest();
-      if (paramString == null) {
-        return "";
+      if (paramString.length() == 0) {
+        return null;
+      }
+      try
+      {
+        Object localObject = MessageDigest.getInstance("MD5");
+        ((MessageDigest)localObject).update(paramString.getBytes());
+        paramString = ((MessageDigest)localObject).digest();
+        if (paramString == null) {
+          return "";
+        }
+        localObject = new StringBuffer();
+        int i = 0;
+        while (i < paramString.length)
+        {
+          String str = Integer.toHexString(paramString[i] & 0xFF);
+          if (str.length() == 1) {
+            ((StringBuffer)localObject).append("0");
+          }
+          ((StringBuffer)localObject).append(str);
+          i += 1;
+        }
+        return ((StringBuffer)localObject).toString().toUpperCase();
+      }
+      catch (NoSuchAlgorithmException paramString)
+      {
+        paramString.printStackTrace();
       }
     }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      paramString.printStackTrace();
-      return null;
-    }
-    Object localObject = new StringBuffer();
-    int i = 0;
-    while (i < paramString.length)
-    {
-      String str = Integer.toHexString(paramString[i] & 0xFF);
-      if (str.length() == 1) {
-        ((StringBuffer)localObject).append("0");
-      }
-      ((StringBuffer)localObject).append(str);
-      i += 1;
-    }
-    return ((StringBuffer)localObject).toString().toUpperCase();
+    return null;
   }
 }
 

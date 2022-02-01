@@ -6,7 +6,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.RectF;
-import com.tencent.token.go;
+import com.tencent.token.gn;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -69,8 +69,8 @@ class ax
   
   private float a(String paramString, float paramFloat1, float paramFloat2)
   {
-    float f1 = 0.0F;
     int i1 = 0;
+    float f1 = 0.0F;
     while (i1 < paramString.length())
     {
       this.e[0] = paramString.charAt(i1);
@@ -101,14 +101,17 @@ class ax
   
   private void a(char paramChar, am paramam, Canvas paramCanvas)
   {
-    this.e[0] = paramChar;
-    a(this.e, this.h, paramCanvas);
+    paramam = this.e;
+    paramam[0] = paramChar;
+    a(paramam, this.h, paramCanvas);
   }
   
   private void a(Path paramPath, Paint paramPaint, Canvas paramCanvas)
   {
-    if (paramPaint.getColor() == 0) {}
-    while ((paramPaint.getStyle() == Paint.Style.STROKE) && (paramPaint.getStrokeWidth() == 0.0F)) {
+    if (paramPaint.getColor() == 0) {
+      return;
+    }
+    if ((paramPaint.getStyle() == Paint.Style.STROKE) && (paramPaint.getStrokeWidth() == 0.0F)) {
       return;
     }
     paramCanvas.drawPath(paramPath, paramPaint);
@@ -117,123 +120,106 @@ class ax
   private void a(am paramam, Matrix paramMatrix, aq paramaq, Canvas paramCanvas)
   {
     float f3 = paramam.c / 100.0F;
-    float f4 = go.a(paramMatrix);
+    float f4 = gn.a(paramMatrix);
     String str = paramam.a;
-    float f1 = paramam.e / 10.0F;
-    if (this.q != null) {
-      f1 = ((Float)this.q.b()).floatValue() + f1;
+    float f2 = paramam.e / 10.0F;
+    Object localObject = this.q;
+    float f1 = f2;
+    if (localObject != null) {
+      f1 = f2 + ((Float)((p)localObject).b()).floatValue();
     }
-    for (;;)
+    int i2;
+    if (paramam.d != 0)
     {
-      float f2;
-      int i1;
-      int i2;
-      ay localay;
-      if (paramam.d != 0)
+      i1 = 0;
+      f2 = 0.0F;
+      while (i1 < str.length())
       {
-        f2 = 0.0F;
-        i1 = 0;
-        if (i1 < str.length())
-        {
-          i2 = ay.a(str.charAt(i1), paramaq.a(), paramaq.b());
-          localay = (ay)this.m.f().get(Integer.valueOf(i2));
-          if (localay == null) {}
-          for (;;)
-          {
-            i1 += 1;
-            break;
-            f2 = f1 * f4 + ((float)localay.b() * f3 * this.m.j() * f4 + f2);
-          }
-        }
-        if (paramam.d == 1) {
-          paramCanvas.translate(-f2, 0.0F);
-        }
-      }
-      else
-      {
-        i1 = 0;
-        label190:
-        if (i1 >= str.length()) {
-          break label325;
-        }
         i2 = ay.a(str.charAt(i1), paramaq.a(), paramaq.b());
-        localay = (ay)this.m.f().get(Integer.valueOf(i2));
-        if (localay != null) {
-          break label278;
+        localObject = (ay)this.m.f().get(Integer.valueOf(i2));
+        if (localObject != null) {
+          f2 = f2 + (float)((ay)localObject).b() * f3 * this.m.j() * f4 + f1 * f4;
         }
-      }
-      for (;;)
-      {
         i1 += 1;
-        break label190;
+      }
+      if (paramam.d == 1) {}
+      for (f2 = -f2;; f2 = -f2 / 2.0F)
+      {
+        paramCanvas.translate(f2, 0.0F);
+        break;
         if (paramam.d != 2) {
           break;
         }
-        paramCanvas.translate(-f2 / 2.0F, 0.0F);
-        break;
-        label278:
-        a(localay, paramMatrix, f3, paramam, paramCanvas);
-        paramCanvas.translate((float)localay.b() * f3 * this.m.j() * f4 + f1 * f4, 0.0F);
       }
-      label325:
-      return;
+    }
+    int i1 = 0;
+    while (i1 < str.length())
+    {
+      i2 = ay.a(str.charAt(i1), paramaq.a(), paramaq.b());
+      localObject = (ay)this.m.f().get(Integer.valueOf(i2));
+      if (localObject != null)
+      {
+        a((ay)localObject, paramMatrix, f3, paramam, paramCanvas);
+        paramCanvas.translate((float)((ay)localObject).b() * f3 * this.m.j() * f4 + f1 * f4, 0.0F);
+      }
+      i1 += 1;
     }
   }
   
   private void a(am paramam, aq paramaq, Matrix paramMatrix, Canvas paramCanvas)
   {
-    float f3 = go.a(paramMatrix);
-    float f1 = paramam.e / 10.0F;
-    if (this.q != null) {
-      f1 = ((Float)this.q.b()).floatValue() + f1;
+    float f3 = gn.a(paramMatrix);
+    float f2 = paramam.e / 10.0F;
+    paramaq = this.q;
+    float f1 = f2;
+    if (paramaq != null) {
+      f1 = f2 + ((Float)paramaq.b()).floatValue();
     }
-    for (;;)
+    paramaq = paramam.a;
+    float f4 = a(paramaq, f1, f3);
+    paramMatrix = this.l.i();
+    if (paramMatrix != null)
     {
-      paramaq = paramam.a;
-      float f4 = a(paramaq, f1, f3);
-      paramMatrix = this.l.i();
-      if (paramMatrix != null) {
-        paramaq = paramMatrix.b(paramaq);
-      }
-      for (float f2 = a(paramaq, f1, f3);; f2 = 0.0F)
+      paramaq = paramMatrix.b(paramaq);
+      f2 = a(paramaq, f1, f3);
+    }
+    else
+    {
+      f2 = 0.0F;
+    }
+    this.h.setTextSize(paramam.c * this.m.j());
+    this.i.setTextSize(this.h.getTextSize());
+    if (f2 > 0.0F)
+    {
+      if (paramam.d == 1) {}
+      for (f2 = f4 - f2;; f2 = (f4 - f2) / 2.0F)
       {
-        this.h.setTextSize(paramam.c * this.m.j());
-        this.i.setTextSize(this.h.getTextSize());
-        if (f2 > 0.0F)
-        {
-          if (paramam.d != 1) {
-            break label217;
-          }
-          paramCanvas.translate(f4 - f2, 0.0F);
+        paramCanvas.translate(f2, 0.0F);
+        break;
+        if (paramam.d != 2) {
+          break;
         }
-        for (;;)
-        {
-          int i1 = 0;
-          while (i1 < paramaq.length())
-          {
-            char c = paramaq.charAt(i1);
-            a(c, paramam, paramCanvas);
-            this.e[0] = c;
-            paramCanvas.translate(this.h.measureText(this.e, 0, 1) + f1 * f3, 0.0F);
-            i1 += 1;
-          }
-          label217:
-          if (paramam.d == 2) {
-            paramCanvas.translate((f4 - f2) / 2.0F, 0.0F);
-          }
-        }
-        return;
       }
+    }
+    int i1 = 0;
+    while (i1 < paramaq.length())
+    {
+      char c = paramaq.charAt(i1);
+      a(c, paramam, paramCanvas);
+      paramMatrix = this.e;
+      paramMatrix[0] = c;
+      paramCanvas.translate(this.h.measureText(paramMatrix, 0, 1) + f1 * f3, 0.0F);
+      i1 += 1;
     }
   }
   
   private void a(ay paramay, Matrix paramMatrix, float paramFloat, am paramam, Canvas paramCanvas)
   {
-    paramay = a(paramay);
+    List localList = a(paramay);
     int i1 = 0;
-    if (i1 < paramay.size())
+    while (i1 < localList.size())
     {
-      Path localPath = ((bs)paramay.get(i1)).a();
+      Path localPath = ((bs)localList.get(i1)).a();
       localPath.computeBounds(this.f, false);
       this.g.set(paramMatrix);
       this.g.preScale(paramFloat, paramFloat);
@@ -241,15 +227,15 @@ class ax
       if (paramam.j)
       {
         a(localPath, this.h, paramCanvas);
-        a(localPath, this.i, paramCanvas);
+        paramay = this.i;
       }
-      for (;;)
+      else
       {
-        i1 += 1;
-        break;
         a(localPath, this.i, paramCanvas);
-        a(localPath, this.h, paramCanvas);
+        paramay = this.h;
       }
+      a(localPath, paramay, paramCanvas);
+      i1 += 1;
     }
   }
   
@@ -269,42 +255,36 @@ class ax
     if (localaq == null) {
       return;
     }
-    if (this.n != null)
-    {
-      this.h.setColor(((Integer)this.n.b()).intValue());
-      if (this.o == null) {
-        break label197;
-      }
-      this.i.setColor(((Integer)this.o.b()).intValue());
-      label114:
-      if (this.p == null) {
-        break label212;
-      }
-      this.i.setStrokeWidth(((Float)this.p.b()).floatValue());
-      label141:
-      this.h.setAlpha(paramInt);
-      this.i.setAlpha(paramInt);
-      if (!this.l.j()) {
-        break label245;
-      }
-      a(localam, paramMatrix, localaq, paramCanvas);
-    }
-    for (;;)
-    {
-      paramCanvas.restore();
-      return;
+    p localp = this.n;
+    if (localp != null) {
+      this.h.setColor(((Integer)localp.b()).intValue());
+    } else {
       this.h.setColor(localam.g);
-      break;
-      label197:
+    }
+    localp = this.o;
+    if (localp != null) {
+      this.i.setColor(((Integer)localp.b()).intValue());
+    } else {
       this.i.setColor(localam.h);
-      break label114;
-      label212:
-      float f1 = go.a(paramMatrix);
-      this.i.setStrokeWidth(f1 * (localam.i * this.m.j()));
-      break label141;
-      label245:
+    }
+    localp = this.p;
+    if (localp != null)
+    {
+      this.i.setStrokeWidth(((Float)localp.b()).floatValue());
+    }
+    else
+    {
+      float f1 = gn.a(paramMatrix);
+      this.i.setStrokeWidth(localam.i * this.m.j() * f1);
+    }
+    this.h.setAlpha(paramInt);
+    this.i.setAlpha(paramInt);
+    if (this.l.j()) {
+      a(localam, paramMatrix, localaq, paramCanvas);
+    } else {
       a(localam, localaq, paramMatrix, paramCanvas);
     }
+    paramCanvas.restore();
   }
 }
 

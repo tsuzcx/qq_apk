@@ -5,7 +5,6 @@ import com.tencent.token.fc;
 import com.tencent.token.gc;
 import java.io.Closeable;
 import java.io.IOException;
-import java.io.InterruptedIOException;
 import java.net.Socket;
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -28,7 +27,7 @@ import okio.d;
 public final class e
   implements Closeable
 {
-  private static final ExecutorService s;
+  private static final ExecutorService s = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), fc.a("OkHttp Http2Connection", true));
   final boolean a;
   final b b;
   final Map<Integer, g> c = new LinkedHashMap();
@@ -50,46 +49,36 @@ public final class e
   private final ExecutorService u;
   private boolean v;
   
-  static
-  {
-    if (!e.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      r = bool;
-      s = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), fc.a("OkHttp Http2Connection", true));
-      return;
-    }
-  }
-  
   e(a parama)
   {
     this.h = parama.f;
     this.a = parama.g;
     this.b = parama.e;
-    if (parama.g) {}
-    for (int i1 = 1;; i1 = 2)
-    {
-      this.f = i1;
-      if (parama.g) {
-        this.f += 2;
-      }
-      if (parama.g) {
-        this.k.a(7, 16777216);
-      }
-      this.d = parama.b;
-      this.t = new ScheduledThreadPoolExecutor(1, fc.a(fc.a("OkHttp %s Writer", new Object[] { this.d }), false));
-      if (parama.h != 0) {
-        this.t.scheduleAtFixedRate(new c(false, 0, 0), parama.h, parama.h, TimeUnit.MILLISECONDS);
-      }
-      this.u = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(), fc.a(fc.a("OkHttp %s Push Observer", new Object[] { this.d }), true));
-      this.l.a(7, 65535);
-      this.l.a(5, 16384);
-      this.j = this.l.d();
-      this.n = parama.a;
-      this.o = new h(parama.d, this.a);
-      this.p = new d(new f(parama.c, this.a));
-      return;
+    int i1;
+    if (parama.g) {
+      i1 = 1;
+    } else {
+      i1 = 2;
     }
+    this.f = i1;
+    if (parama.g) {
+      this.f += 2;
+    }
+    if (parama.g) {
+      this.k.a(7, 16777216);
+    }
+    this.d = parama.b;
+    this.t = new ScheduledThreadPoolExecutor(1, fc.a(fc.a("OkHttp %s Writer", new Object[] { this.d }), false));
+    if (parama.h != 0) {
+      this.t.scheduleAtFixedRate(new c(false, 0, 0), parama.h, parama.h, TimeUnit.MILLISECONDS);
+    }
+    this.u = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(), fc.a(fc.a("OkHttp %s Push Observer", new Object[] { this.d }), true));
+    this.l.a(7, 65535);
+    this.l.a(5, 16384);
+    this.j = this.l.d();
+    this.n = parama.a;
+    this.o = new h(parama.d, this.a);
+    this.p = new d(new f(parama.c, this.a));
   }
   
   private void a(fb paramfb)
@@ -110,9 +99,9 @@ public final class e
   
   private g b(int paramInt, List<a> paramList, boolean paramBoolean)
   {
-    int i1 = 0;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false) {
+    boolean bool = paramBoolean ^ true;
+    for (;;)
+    {
       synchronized (this.o)
       {
         try
@@ -120,37 +109,48 @@ public final class e
           if (this.f > 1073741823) {
             a(ErrorCode.REFUSED_STREAM);
           }
-          if (!this.g) {
-            break;
+          if (!this.g)
+          {
+            int i2 = this.f;
+            this.f += 2;
+            g localg = new g(i2, this, bool, false, paramList);
+            if ((!paramBoolean) || (this.j == 0L)) {
+              break label216;
+            }
+            if (localg.b == 0L)
+            {
+              break label216;
+              if (localg.b()) {
+                this.c.put(Integer.valueOf(i2), localg);
+              }
+              if (paramInt == 0)
+              {
+                this.o.a(bool, i2, paramInt, paramList);
+              }
+              else
+              {
+                if (this.a) {
+                  continue;
+                }
+                this.o.a(paramInt, i2, paramList);
+              }
+              if (i1 != 0) {
+                this.o.b();
+              }
+              return localg;
+              throw new IllegalArgumentException("client streams shouldn't have associated stream IDs");
+            }
           }
-          throw new ConnectionShutdownException();
+          else
+          {
+            throw new ConnectionShutdownException();
+          }
         }
         finally {}
       }
-    }
-    int i2 = this.f;
-    this.f += 2;
-    g localg = new g(i2, this, bool, false, paramList);
-    if ((paramBoolean) && (this.j != 0L) && (localg.b != 0L)) {}
-    for (;;)
-    {
-      if (localg.b()) {
-        this.c.put(Integer.valueOf(i2), localg);
-      }
-      if (paramInt == 0) {
-        this.o.a(bool, i2, paramInt, paramList);
-      }
-      for (;;)
-      {
-        if (i1 != 0) {
-          this.o.b();
-        }
-        return localg;
-        if (this.a) {
-          throw new IllegalArgumentException("client streams shouldn't have associated stream IDs");
-        }
-        this.o.a(paramInt, i2, paramList);
-      }
+      int i1 = 0;
+      continue;
+      label216:
       i1 = 1;
     }
   }
@@ -213,8 +213,10 @@ public final class e
           }
           catch (IOException localIOException)
           {
-            e.a(e.this);
+            label19:
+            break label19;
           }
+          e.a(e.this);
         }
       });
       return;
@@ -222,73 +224,45 @@ public final class e
     catch (RejectedExecutionException localRejectedExecutionException) {}
   }
   
-  /* Error */
   void a(final int paramInt, final List<a> paramList)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 134	okhttp3/internal/http2/e:q	Ljava/util/Set;
-    //   6: iload_1
-    //   7: invokestatic 268	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   10: invokeinterface 328 2 0
-    //   15: ifeq +14 -> 29
-    //   18: aload_0
-    //   19: iload_1
-    //   20: getstatic 297	okhttp3/internal/http2/ErrorCode:PROTOCOL_ERROR	Lokhttp3/internal/http2/ErrorCode;
-    //   23: invokevirtual 331	okhttp3/internal/http2/e:a	(ILokhttp3/internal/http2/ErrorCode;)V
-    //   26: aload_0
-    //   27: monitorexit
-    //   28: return
-    //   29: aload_0
-    //   30: getfield 134	okhttp3/internal/http2/e:q	Ljava/util/Set;
-    //   33: iload_1
-    //   34: invokestatic 268	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   37: invokeinterface 334 2 0
-    //   42: pop
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload_0
-    //   46: new 12	okhttp3/internal/http2/e$3
-    //   49: dup
-    //   50: aload_0
-    //   51: ldc_w 336
-    //   54: iconst_2
-    //   55: anewarray 4	java/lang/Object
-    //   58: dup
-    //   59: iconst_0
-    //   60: aload_0
-    //   61: getfield 156	okhttp3/internal/http2/e:d	Ljava/lang/String;
-    //   64: aastore
-    //   65: dup
-    //   66: iconst_1
-    //   67: iload_1
-    //   68: invokestatic 268	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   71: aastore
-    //   72: iload_1
-    //   73: aload_2
-    //   74: invokespecial 339	okhttp3/internal/http2/e$3:<init>	(Lokhttp3/internal/http2/e;Ljava/lang/String;[Ljava/lang/Object;ILjava/util/List;)V
-    //   77: invokespecial 341	okhttp3/internal/http2/e:a	(Lcom/tencent/token/fb;)V
-    //   80: return
-    //   81: astore_2
-    //   82: return
-    //   83: astore_2
-    //   84: aload_0
-    //   85: monitorexit
-    //   86: aload_2
-    //   87: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	88	0	this	e
-    //   0	88	1	paramInt	int
-    //   0	88	2	paramList	List<a>
-    // Exception table:
-    //   from	to	target	type
-    //   45	80	81	java/util/concurrent/RejectedExecutionException
-    //   2	28	83	finally
-    //   29	45	83	finally
-    //   84	86	83	finally
+    try
+    {
+      if (this.q.contains(Integer.valueOf(paramInt)))
+      {
+        a(paramInt, ErrorCode.PROTOCOL_ERROR);
+        return;
+      }
+      this.q.add(Integer.valueOf(paramInt));
+      return;
+    }
+    finally
+    {
+      try
+      {
+        a(new fb("OkHttp %s Push Request[%s]", new Object[] { this.d, Integer.valueOf(paramInt) })
+        {
+          public void c()
+          {
+            if (e.this.h.a(paramInt, paramList)) {}
+            try
+            {
+              e.this.o.a(paramInt, ErrorCode.CANCEL);
+              synchronized (e.this)
+              {
+                e.this.q.remove(Integer.valueOf(paramInt));
+                return;
+              }
+              return;
+            }
+            catch (IOException localIOException) {}
+          }
+        });
+        return;
+      }
+      catch (RejectedExecutionException paramList) {}
+      paramList = finally;
+    }
   }
   
   void a(final int paramInt, final List<a> paramList, final boolean paramBoolean)
@@ -336,8 +310,10 @@ public final class e
           }
           catch (IOException localIOException)
           {
-            e.a(e.this);
+            label16:
+            break label16;
           }
+          e.a(e.this);
         }
       });
       return;
@@ -348,80 +324,170 @@ public final class e
   void a(final int paramInt1, okio.e parame, final int paramInt2, final boolean paramBoolean)
   {
     final c localc = new c();
-    parame.a(paramInt2);
-    parame.a(localc, paramInt2);
-    if (localc.b() != paramInt2) {
-      throw new IOException(localc.b() + " != " + paramInt2);
-    }
-    a(new fb("OkHttp %s Push Data[%s]", new Object[] { this.d, Integer.valueOf(paramInt1) })
+    long l1 = paramInt2;
+    parame.a(l1);
+    parame.a(localc, l1);
+    if (localc.b() == l1)
     {
-      public void c()
+      a(new fb("OkHttp %s Push Data[%s]", new Object[] { this.d, Integer.valueOf(paramInt1) })
       {
-        try
+        public void c()
         {
-          boolean bool = e.this.h.a(paramInt1, localc, paramInt2, paramBoolean);
-          if (bool) {
-            e.this.o.a(paramInt1, ErrorCode.CANCEL);
-          }
-          if ((bool) || (paramBoolean)) {
-            synchronized (e.this)
-            {
-              e.this.q.remove(Integer.valueOf(paramInt1));
-              return;
+          try
+          {
+            boolean bool = e.this.h.a(paramInt1, localc, paramInt2, paramBoolean);
+            if (bool) {
+              e.this.o.a(paramInt1, ErrorCode.CANCEL);
             }
+            if ((bool) || (paramBoolean)) {
+              synchronized (e.this)
+              {
+                e.this.q.remove(Integer.valueOf(paramInt1));
+                return;
+              }
+            }
+            return;
           }
-          return;
+          catch (IOException localIOException) {}
         }
-        catch (IOException localIOException) {}
-      }
-    });
-  }
-  
-  public void a(int paramInt, boolean paramBoolean, c paramc, long paramLong)
-  {
-    long l1 = paramLong;
-    if (paramLong == 0L)
-    {
-      this.o.a(paramBoolean, paramInt, paramc, 0);
+      });
       return;
     }
-    for (;;)
-    {
-      try
-      {
-        int i1 = Math.min((int)Math.min(l1, this.j), this.o.c());
-        this.j -= i1;
-        l1 -= i1;
-        h localh = this.o;
-        if ((!paramBoolean) || (l1 != 0L)) {
-          break label170;
-        }
-        bool = true;
-        localh.a(bool, paramInt, paramc, i1);
-        if (l1 <= 0L) {
-          break;
-        }
-        try
-        {
-          if (this.j > 0L) {
-            continue;
-          }
-          if (!this.c.containsKey(Integer.valueOf(paramInt))) {
-            throw new IOException("stream closed");
-          }
-        }
-        catch (InterruptedException paramc)
-        {
-          Thread.currentThread().interrupt();
-          throw new InterruptedIOException();
-        }
-        wait();
-      }
-      finally {}
-      continue;
-      label170:
-      boolean bool = false;
-    }
+    parame = new StringBuilder();
+    parame.append(localc.b());
+    parame.append(" != ");
+    parame.append(paramInt2);
+    throw new IOException(parame.toString());
+  }
+  
+  /* Error */
+  public void a(int paramInt, boolean paramBoolean, c paramc, long paramLong)
+  {
+    // Byte code:
+    //   0: lload 4
+    //   2: lstore 8
+    //   4: lload 4
+    //   6: lconst_0
+    //   7: lcmp
+    //   8: ifne +15 -> 23
+    //   11: aload_0
+    //   12: getfield 209	okhttp3/internal/http2/e:o	Lokhttp3/internal/http2/h;
+    //   15: iload_2
+    //   16: iload_1
+    //   17: aload_3
+    //   18: iconst_0
+    //   19: invokevirtual 400	okhttp3/internal/http2/h:a	(ZILokio/c;I)V
+    //   22: return
+    //   23: lload 8
+    //   25: lconst_0
+    //   26: lcmp
+    //   27: ifle +161 -> 188
+    //   30: aload_0
+    //   31: monitorenter
+    //   32: aload_0
+    //   33: getfield 195	okhttp3/internal/http2/e:j	J
+    //   36: lconst_0
+    //   37: lcmp
+    //   38: ifgt +37 -> 75
+    //   41: aload_0
+    //   42: getfield 118	okhttp3/internal/http2/e:c	Ljava/util/Map;
+    //   45: iload_1
+    //   46: invokestatic 265	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   49: invokeinterface 403 2 0
+    //   54: ifeq +10 -> 64
+    //   57: aload_0
+    //   58: invokevirtual 406	java/lang/Object:wait	()V
+    //   61: goto -29 -> 32
+    //   64: new 294	java/io/IOException
+    //   67: dup
+    //   68: ldc_w 408
+    //   71: invokespecial 394	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   74: athrow
+    //   75: lload 8
+    //   77: aload_0
+    //   78: getfield 195	okhttp3/internal/http2/e:j	J
+    //   81: invokestatic 414	java/lang/Math:min	(JJ)J
+    //   84: l2i
+    //   85: aload_0
+    //   86: getfield 209	okhttp3/internal/http2/e:o	Lokhttp3/internal/http2/h;
+    //   89: invokevirtual 416	okhttp3/internal/http2/h:c	()I
+    //   92: invokestatic 419	java/lang/Math:min	(II)I
+    //   95: istore 6
+    //   97: aload_0
+    //   98: getfield 195	okhttp3/internal/http2/e:j	J
+    //   101: lstore 4
+    //   103: iload 6
+    //   105: i2l
+    //   106: lstore 10
+    //   108: aload_0
+    //   109: lload 4
+    //   111: lload 10
+    //   113: lsub
+    //   114: putfield 195	okhttp3/internal/http2/e:j	J
+    //   117: aload_0
+    //   118: monitorexit
+    //   119: lload 8
+    //   121: lload 10
+    //   123: lsub
+    //   124: lstore 8
+    //   126: aload_0
+    //   127: getfield 209	okhttp3/internal/http2/e:o	Lokhttp3/internal/http2/h;
+    //   130: astore 12
+    //   132: iload_2
+    //   133: ifeq +16 -> 149
+    //   136: lload 8
+    //   138: lconst_0
+    //   139: lcmp
+    //   140: ifne +9 -> 149
+    //   143: iconst_1
+    //   144: istore 7
+    //   146: goto +6 -> 152
+    //   149: iconst_0
+    //   150: istore 7
+    //   152: aload 12
+    //   154: iload 7
+    //   156: iload_1
+    //   157: aload_3
+    //   158: iload 6
+    //   160: invokevirtual 400	okhttp3/internal/http2/h:a	(ZILokio/c;I)V
+    //   163: goto -140 -> 23
+    //   166: astore_3
+    //   167: goto +17 -> 184
+    //   170: invokestatic 425	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   173: invokevirtual 428	java/lang/Thread:interrupt	()V
+    //   176: new 430	java/io/InterruptedIOException
+    //   179: dup
+    //   180: invokespecial 431	java/io/InterruptedIOException:<init>	()V
+    //   183: athrow
+    //   184: aload_0
+    //   185: monitorexit
+    //   186: aload_3
+    //   187: athrow
+    //   188: return
+    //   189: astore_3
+    //   190: goto -20 -> 170
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	193	0	this	e
+    //   0	193	1	paramInt	int
+    //   0	193	2	paramBoolean	boolean
+    //   0	193	3	paramc	c
+    //   0	193	4	paramLong	long
+    //   95	64	6	i1	int
+    //   144	11	7	bool	boolean
+    //   2	135	8	l1	long
+    //   106	16	10	l2	long
+    //   130	23	12	localh	h
+    // Exception table:
+    //   from	to	target	type
+    //   32	61	166	finally
+    //   64	75	166	finally
+    //   75	103	166	finally
+    //   108	119	166	finally
+    //   170	184	166	finally
+    //   184	186	166	finally
+    //   32	61	189	java/lang/InterruptedException
+    //   64	75	189	java/lang/InterruptedException
   }
   
   void a(long paramLong)
@@ -445,143 +511,94 @@ public final class e
   
   public void a(ErrorCode paramErrorCode)
   {
-    int i1;
-    synchronized (this.o) {}
+    synchronized (this.o)
+    {
+      try
+      {
+        if (this.g) {
+          return;
+        }
+        this.g = true;
+        int i1 = this.e;
+        this.o.a(i1, paramErrorCode, fc.a);
+        return;
+      }
+      finally {}
+    }
   }
   
-  /* Error */
   void a(ErrorCode paramErrorCode1, ErrorCode paramErrorCode2)
   {
-    // Byte code:
-    //   0: getstatic 82	okhttp3/internal/http2/e:r	Z
-    //   3: ifne +18 -> 21
-    //   6: aload_0
-    //   7: invokestatic 444	java/lang/Thread:holdsLock	(Ljava/lang/Object;)Z
-    //   10: ifeq +11 -> 21
-    //   13: new 446	java/lang/AssertionError
-    //   16: dup
-    //   17: invokespecial 447	java/lang/AssertionError:<init>	()V
-    //   20: athrow
-    //   21: aload_0
-    //   22: aload_1
-    //   23: invokevirtual 249	okhttp3/internal/http2/e:a	(Lokhttp3/internal/http2/ErrorCode;)V
-    //   26: aconst_null
-    //   27: astore_1
-    //   28: aload_0
-    //   29: monitorenter
-    //   30: aload_0
-    //   31: getfield 118	okhttp3/internal/http2/e:c	Ljava/util/Map;
-    //   34: invokeinterface 450 1 0
-    //   39: ifne +177 -> 216
-    //   42: aload_0
-    //   43: getfield 118	okhttp3/internal/http2/e:c	Ljava/util/Map;
-    //   46: invokeinterface 454 1 0
-    //   51: aload_0
-    //   52: getfield 118	okhttp3/internal/http2/e:c	Ljava/util/Map;
-    //   55: invokeinterface 457 1 0
-    //   60: anewarray 255	okhttp3/internal/http2/g
-    //   63: invokeinterface 463 2 0
-    //   68: checkcast 465	[Lokhttp3/internal/http2/g;
-    //   71: astore 6
-    //   73: aload_0
-    //   74: getfield 118	okhttp3/internal/http2/e:c	Ljava/util/Map;
-    //   77: invokeinterface 468 1 0
-    //   82: aload_0
-    //   83: monitorexit
-    //   84: aload_1
-    //   85: astore 5
-    //   87: aload 6
-    //   89: ifnull +65 -> 154
-    //   92: aload 6
-    //   94: arraylength
-    //   95: istore 4
-    //   97: iconst_0
-    //   98: istore_3
-    //   99: iload_3
-    //   100: iload 4
-    //   102: if_icmpge +49 -> 151
-    //   105: aload 6
-    //   107: iload_3
-    //   108: aaload
-    //   109: astore 5
-    //   111: aload 5
-    //   113: aload_2
-    //   114: invokevirtual 469	okhttp3/internal/http2/g:a	(Lokhttp3/internal/http2/ErrorCode;)V
-    //   117: aload_1
-    //   118: astore 5
-    //   120: iload_3
-    //   121: iconst_1
-    //   122: iadd
-    //   123: istore_3
-    //   124: aload 5
-    //   126: astore_1
-    //   127: goto -28 -> 99
-    //   130: astore_1
-    //   131: aload_0
-    //   132: monitorexit
-    //   133: aload_1
-    //   134: athrow
-    //   135: astore 7
-    //   137: aload_1
-    //   138: astore 5
-    //   140: aload_1
-    //   141: ifnull -21 -> 120
-    //   144: aload 7
-    //   146: astore 5
-    //   148: goto -28 -> 120
-    //   151: aload_1
-    //   152: astore 5
-    //   154: aload_0
-    //   155: getfield 209	okhttp3/internal/http2/e:o	Lokhttp3/internal/http2/h;
-    //   158: invokevirtual 472	okhttp3/internal/http2/h:close	()V
-    //   161: aload 5
-    //   163: astore_1
-    //   164: aload_0
-    //   165: getfield 199	okhttp3/internal/http2/e:n	Ljava/net/Socket;
-    //   168: invokevirtual 475	java/net/Socket:close	()V
-    //   171: aload_0
-    //   172: getfield 168	okhttp3/internal/http2/e:t	Ljava/util/concurrent/ScheduledExecutorService;
-    //   175: invokeinterface 478 1 0
-    //   180: aload_0
-    //   181: getfield 189	okhttp3/internal/http2/e:u	Ljava/util/concurrent/ExecutorService;
-    //   184: invokeinterface 479 1 0
-    //   189: aload_1
-    //   190: ifnull +21 -> 211
-    //   193: aload_1
-    //   194: athrow
-    //   195: astore_1
-    //   196: aload 5
-    //   198: ifnull -34 -> 164
-    //   201: aload 5
-    //   203: astore_1
-    //   204: goto -40 -> 164
-    //   207: astore_1
-    //   208: goto -180 -> 28
-    //   211: return
-    //   212: astore_1
-    //   213: goto -42 -> 171
-    //   216: aconst_null
-    //   217: astore 6
-    //   219: goto -137 -> 82
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	222	0	this	e
-    //   0	222	1	paramErrorCode1	ErrorCode
-    //   0	222	2	paramErrorCode2	ErrorCode
-    //   98	26	3	i1	int
-    //   95	8	4	i2	int
-    //   85	117	5	localObject	Object
-    //   71	147	6	arrayOfg	g[]
-    //   135	10	7	localIOException	IOException
-    // Exception table:
-    //   from	to	target	type
-    //   30	82	130	finally
-    //   82	84	130	finally
-    //   131	133	130	finally
-    //   111	117	135	java/io/IOException
-    //   154	161	195	java/io/IOException
-    //   21	26	207	java/io/IOException
-    //   164	171	212	java/io/IOException
+    if ((!r) && (Thread.holdsLock(this))) {
+      throw new AssertionError();
+    }
+    g[] arrayOfg = null;
+    try
+    {
+      a(paramErrorCode1);
+      paramErrorCode1 = null;
+    }
+    catch (IOException paramErrorCode1) {}
+    try
+    {
+      if (!this.c.isEmpty())
+      {
+        arrayOfg = (g[])this.c.values().toArray(new g[this.c.size()]);
+        this.c.clear();
+      }
+      Object localObject = paramErrorCode1;
+      if (arrayOfg != null)
+      {
+        int i2 = arrayOfg.length;
+        int i1 = 0;
+        for (;;)
+        {
+          localObject = paramErrorCode1;
+          if (i1 >= i2) {
+            break;
+          }
+          localObject = arrayOfg[i1];
+          try
+          {
+            ((g)localObject).a(paramErrorCode2);
+            localObject = paramErrorCode1;
+          }
+          catch (IOException localIOException)
+          {
+            localObject = paramErrorCode1;
+            if (paramErrorCode1 != null) {
+              localObject = localIOException;
+            }
+          }
+          i1 += 1;
+          paramErrorCode1 = (ErrorCode)localObject;
+        }
+      }
+      try
+      {
+        this.o.close();
+        paramErrorCode1 = (ErrorCode)localObject;
+      }
+      catch (IOException paramErrorCode2)
+      {
+        paramErrorCode1 = (ErrorCode)localObject;
+        if (localObject == null) {
+          paramErrorCode1 = paramErrorCode2;
+        }
+      }
+      try
+      {
+        this.n.close();
+      }
+      catch (IOException paramErrorCode1) {}
+      this.t.shutdown();
+      this.u.shutdown();
+      if (paramErrorCode1 == null) {
+        return;
+      }
+      throw paramErrorCode1;
+    }
+    finally {}
   }
   
   void a(boolean paramBoolean)
@@ -620,8 +637,10 @@ public final class e
     }
     catch (IOException localIOException)
     {
-      f();
+      label47:
+      break label47;
     }
+    f();
   }
   
   g b(int paramInt)
@@ -800,8 +819,10 @@ public final class e
             }
             catch (IOException localIOException)
             {
-              e.a(e.this);
+              label18:
+              break label18;
             }
+            e.a(e.this);
           }
         });
         return;
@@ -842,28 +863,27 @@ public final class e
     
     public void a(int paramInt, ErrorCode paramErrorCode)
     {
-      if (e.this.c(paramInt)) {
-        e.this.c(paramInt, paramErrorCode);
-      }
-      g localg;
-      do
+      if (e.this.c(paramInt))
       {
+        e.this.c(paramInt, paramErrorCode);
         return;
-        localg = e.this.b(paramInt);
-      } while (localg == null);
-      localg.c(paramErrorCode);
+      }
+      g localg = e.this.b(paramInt);
+      if (localg != null) {
+        localg.c(paramErrorCode);
+      }
     }
     
     public void a(int paramInt, ErrorCode arg2, ByteString paramByteString)
     {
-      if (paramByteString.g() > 0) {}
+      paramByteString.g();
       synchronized (e.this)
       {
         paramByteString = (g[])e.this.c.values().toArray(new g[e.this.c.size()]);
         e.this.g = true;
         int j = paramByteString.length;
         int i = 0;
-        if (i < j)
+        while (i < j)
         {
           ??? = paramByteString[i];
           if ((???.a() > paramInt) && (???.c()))
@@ -873,6 +893,7 @@ public final class e
           }
           i += 1;
         }
+        return;
       }
     }
     
@@ -896,139 +917,137 @@ public final class e
     
     public void a(boolean paramBoolean, int paramInt1, int paramInt2, final List<a> paramList)
     {
-      if (e.this.c(paramInt1)) {
-        e.this.a(paramInt1, paramList, paramBoolean);
-      }
-      g localg;
-      label193:
-      do
+      if (e.this.c(paramInt1))
       {
+        e.this.a(paramInt1, paramList, paramBoolean);
         return;
-        synchronized (e.this)
+      }
+      synchronized (e.this)
+      {
+        g localg = e.this.a(paramInt1);
+        if (localg == null)
         {
-          localg = e.this.a(paramInt1);
-          if (localg != null) {
-            break label193;
-          }
           if (e.this.g) {
             return;
           }
-        }
-        if (paramInt1 <= e.this.e) {
-          return;
-        }
-        if (paramInt1 % 2 == e.this.f % 2) {
-          return;
-        }
-        paramList = new g(paramInt1, e.this, false, paramBoolean, paramList);
-        e.this.e = paramInt1;
-        e.this.c.put(Integer.valueOf(paramInt1), paramList);
-        e.e().execute(new fb("OkHttp %s stream %d", new Object[] { e.this.d, Integer.valueOf(paramInt1) })
-        {
-          public void c()
+          if (paramInt1 <= e.this.e) {
+            return;
+          }
+          if (paramInt1 % 2 == e.this.f % 2) {
+            return;
+          }
+          paramList = new g(paramInt1, e.this, false, paramBoolean, paramList);
+          e.this.e = paramInt1;
+          e.this.c.put(Integer.valueOf(paramInt1), paramList);
+          e.e().execute(new fb("OkHttp %s stream %d", new Object[] { e.this.d, Integer.valueOf(paramInt1) })
           {
-            try
+            public void c()
             {
-              e.this.b.a(paramList);
-              return;
-            }
-            catch (IOException localIOException1)
-            {
-              gc.c().a(4, "Http2Connection.Listener failure for " + e.this.d, localIOException1);
               try
               {
-                paramList.a(ErrorCode.PROTOCOL_ERROR);
+                e.this.b.a(paramList);
                 return;
               }
-              catch (IOException localIOException2) {}
+              catch (IOException localIOException1)
+              {
+                gc localgc = gc.c();
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("Http2Connection.Listener failure for ");
+                localStringBuilder.append(e.this.d);
+                localgc.a(4, localStringBuilder.toString(), localIOException1);
+                try
+                {
+                  paramList.a(ErrorCode.PROTOCOL_ERROR);
+                  return;
+                }
+                catch (IOException localIOException2) {}
+              }
             }
-          }
-        });
-        return;
+          });
+          return;
+        }
         localg.a(paramList);
-      } while (!paramBoolean);
-      localg.i();
+        if (paramBoolean) {
+          localg.i();
+        }
+        return;
+      }
     }
     
     public void a(boolean paramBoolean, int paramInt1, okio.e parame, int paramInt2)
     {
-      if (e.this.c(paramInt1)) {
-        e.this.a(paramInt1, parame, paramInt2, paramBoolean);
-      }
-      g localg;
-      do
+      if (e.this.c(paramInt1))
       {
+        e.this.a(paramInt1, parame, paramInt2, paramBoolean);
         return;
-        localg = e.this.a(paramInt1);
-        if (localg == null)
-        {
-          e.this.a(paramInt1, ErrorCode.PROTOCOL_ERROR);
-          e.this.a(paramInt2);
-          parame.h(paramInt2);
-          return;
-        }
-        localg.a(parame, paramInt2);
-      } while (!paramBoolean);
-      localg.i();
+      }
+      Object localObject = e.this.a(paramInt1);
+      if (localObject == null)
+      {
+        e.this.a(paramInt1, ErrorCode.PROTOCOL_ERROR);
+        localObject = e.this;
+        long l = paramInt2;
+        ((e)localObject).a(l);
+        parame.h(l);
+        return;
+      }
+      ((g)localObject).a(parame, paramInt2);
+      if (paramBoolean) {
+        ((g)localObject).i();
+      }
     }
     
     public void a(boolean paramBoolean, k paramk)
     {
       for (;;)
       {
-        int i;
         synchronized (e.this)
         {
-          i = e.this.l.d();
+          int i = e.this.l.d();
           if (paramBoolean) {
             e.this.l.a();
           }
           e.this.l.a(paramk);
           a(paramk);
           int j = e.this.l.d();
-          if ((j == -1) || (j == i)) {
-            break label251;
-          }
-          l = j - i;
-          if (!e.this.m) {
-            e.this.m = true;
-          }
-          if (e.this.c.isEmpty()) {
-            break label246;
-          }
-          paramk = (g[])e.this.c.values().toArray(new g[e.this.c.size()]);
-          e.e().execute(new fb("OkHttp %s settings", new Object[] { e.this.d })
+          paramk = null;
+          if ((j != -1) && (j != i))
           {
-            public void c()
-            {
-              e.this.b.a(e.this);
+            long l2 = j - i;
+            if (!e.this.m) {
+              e.this.m = true;
             }
-          });
-          if ((paramk == null) || (l == 0L)) {
-            break label245;
-          }
-          j = paramk.length;
-          i = 0;
-          if (i >= j) {
-            break label245;
+            l1 = l2;
+            if (!e.this.c.isEmpty())
+            {
+              paramk = (g[])e.this.c.values().toArray(new g[e.this.c.size()]);
+              l1 = l2;
+            }
+            ExecutorService localExecutorService = e.e();
+            String str = e.this.d;
+            i = 0;
+            localExecutorService.execute(new fb("OkHttp %s settings", new Object[] { str })
+            {
+              public void c()
+              {
+                e.this.b.a(e.this);
+              }
+            });
+            if ((paramk != null) && (l1 != 0L))
+            {
+              j = paramk.length;
+              if (i < j) {
+                synchronized (paramk[i])
+                {
+                  ???.a(l1);
+                  i += 1;
+                }
+              }
+            }
+            return;
           }
         }
-        synchronized (paramk[i])
-        {
-          ???.a(l);
-          i += 1;
-          continue;
-          paramk = finally;
-          throw paramk;
-        }
-        label245:
-        return;
-        label246:
-        paramk = null;
-        continue;
-        label251:
-        paramk = null;
-        long l = 0L;
+        long l1 = 0L;
       }
     }
     
@@ -1039,115 +1058,116 @@ public final class e
       //   0: getstatic 229	okhttp3/internal/http2/ErrorCode:INTERNAL_ERROR	Lokhttp3/internal/http2/ErrorCode;
       //   3: astore_3
       //   4: getstatic 229	okhttp3/internal/http2/ErrorCode:INTERNAL_ERROR	Lokhttp3/internal/http2/ErrorCode;
-      //   7: astore 4
+      //   7: astore 5
       //   9: aload_3
-      //   10: astore_2
+      //   10: astore_1
       //   11: aload_3
-      //   12: astore_1
+      //   12: astore_2
       //   13: aload_0
       //   14: getfield 35	okhttp3/internal/http2/e$d:a	Lokhttp3/internal/http2/f;
       //   17: aload_0
       //   18: invokevirtual 234	okhttp3/internal/http2/f:a	(Lokhttp3/internal/http2/f$b;)V
       //   21: aload_3
-      //   22: astore_2
+      //   22: astore_1
       //   23: aload_3
-      //   24: astore_1
+      //   24: astore_2
       //   25: aload_0
       //   26: getfield 35	okhttp3/internal/http2/e$d:a	Lokhttp3/internal/http2/f;
       //   29: iconst_0
       //   30: aload_0
       //   31: invokevirtual 237	okhttp3/internal/http2/f:a	(ZLokhttp3/internal/http2/f$b;)Z
-      //   34: ifne -13 -> 21
-      //   37: aload_3
-      //   38: astore_2
-      //   39: aload_3
-      //   40: astore_1
-      //   41: getstatic 240	okhttp3/internal/http2/ErrorCode:NO_ERROR	Lokhttp3/internal/http2/ErrorCode;
-      //   44: astore_3
-      //   45: aload_3
-      //   46: astore_2
-      //   47: aload_3
-      //   48: astore_1
-      //   49: getstatic 243	okhttp3/internal/http2/ErrorCode:CANCEL	Lokhttp3/internal/http2/ErrorCode;
-      //   52: astore 5
-      //   54: aload_0
-      //   55: getfield 23	okhttp3/internal/http2/e$d:c	Lokhttp3/internal/http2/e;
-      //   58: aload_3
-      //   59: aload 5
-      //   61: invokevirtual 246	okhttp3/internal/http2/e:a	(Lokhttp3/internal/http2/ErrorCode;Lokhttp3/internal/http2/ErrorCode;)V
-      //   64: aload_0
-      //   65: getfield 35	okhttp3/internal/http2/e$d:a	Lokhttp3/internal/http2/f;
-      //   68: invokestatic 251	com/tencent/token/fc:a	(Ljava/io/Closeable;)V
-      //   71: return
-      //   72: astore_1
-      //   73: aload_2
-      //   74: astore_1
-      //   75: getstatic 188	okhttp3/internal/http2/ErrorCode:PROTOCOL_ERROR	Lokhttp3/internal/http2/ErrorCode;
-      //   78: astore_3
-      //   79: getstatic 188	okhttp3/internal/http2/ErrorCode:PROTOCOL_ERROR	Lokhttp3/internal/http2/ErrorCode;
-      //   82: astore_1
-      //   83: aload_0
-      //   84: getfield 23	okhttp3/internal/http2/e$d:c	Lokhttp3/internal/http2/e;
-      //   87: aload_3
-      //   88: aload_1
-      //   89: invokevirtual 246	okhttp3/internal/http2/e:a	(Lokhttp3/internal/http2/ErrorCode;Lokhttp3/internal/http2/ErrorCode;)V
-      //   92: aload_0
-      //   93: getfield 35	okhttp3/internal/http2/e$d:a	Lokhttp3/internal/http2/f;
-      //   96: invokestatic 251	com/tencent/token/fc:a	(Ljava/io/Closeable;)V
-      //   99: return
-      //   100: astore_2
+      //   34: ifeq +6 -> 40
+      //   37: goto -16 -> 21
+      //   40: aload_3
+      //   41: astore_1
+      //   42: aload_3
+      //   43: astore_2
+      //   44: getstatic 240	okhttp3/internal/http2/ErrorCode:NO_ERROR	Lokhttp3/internal/http2/ErrorCode;
+      //   47: astore_3
+      //   48: aload_3
+      //   49: astore_1
+      //   50: aload_3
+      //   51: astore_2
+      //   52: getstatic 243	okhttp3/internal/http2/ErrorCode:CANCEL	Lokhttp3/internal/http2/ErrorCode;
+      //   55: astore 4
+      //   57: aload_0
+      //   58: getfield 23	okhttp3/internal/http2/e$d:c	Lokhttp3/internal/http2/e;
+      //   61: astore 5
+      //   63: aload_3
+      //   64: astore_2
+      //   65: aload 4
+      //   67: astore_1
+      //   68: aload 5
+      //   70: astore_3
+      //   71: goto +28 -> 99
+      //   74: astore_2
+      //   75: goto +38 -> 113
+      //   78: aload_2
+      //   79: astore_1
+      //   80: getstatic 188	okhttp3/internal/http2/ErrorCode:PROTOCOL_ERROR	Lokhttp3/internal/http2/ErrorCode;
+      //   83: astore_2
+      //   84: aload_2
+      //   85: astore_1
+      //   86: getstatic 188	okhttp3/internal/http2/ErrorCode:PROTOCOL_ERROR	Lokhttp3/internal/http2/ErrorCode;
+      //   89: astore 4
+      //   91: aload_0
+      //   92: getfield 23	okhttp3/internal/http2/e$d:c	Lokhttp3/internal/http2/e;
+      //   95: astore_3
+      //   96: aload 4
+      //   98: astore_1
+      //   99: aload_3
+      //   100: aload_2
       //   101: aload_1
-      //   102: astore_3
-      //   103: aload_2
-      //   104: astore_1
+      //   102: invokevirtual 246	okhttp3/internal/http2/e:a	(Lokhttp3/internal/http2/ErrorCode;Lokhttp3/internal/http2/ErrorCode;)V
       //   105: aload_0
-      //   106: getfield 23	okhttp3/internal/http2/e$d:c	Lokhttp3/internal/http2/e;
-      //   109: aload_3
-      //   110: aload 4
-      //   112: invokevirtual 246	okhttp3/internal/http2/e:a	(Lokhttp3/internal/http2/ErrorCode;Lokhttp3/internal/http2/ErrorCode;)V
-      //   115: aload_0
-      //   116: getfield 35	okhttp3/internal/http2/e$d:a	Lokhttp3/internal/http2/f;
-      //   119: invokestatic 251	com/tencent/token/fc:a	(Ljava/io/Closeable;)V
-      //   122: aload_1
-      //   123: athrow
-      //   124: astore_2
-      //   125: goto -10 -> 115
-      //   128: astore_1
-      //   129: goto -24 -> 105
+      //   106: getfield 35	okhttp3/internal/http2/e$d:a	Lokhttp3/internal/http2/f;
+      //   109: invokestatic 251	com/tencent/token/fc:a	(Ljava/io/Closeable;)V
+      //   112: return
+      //   113: aload_0
+      //   114: getfield 23	okhttp3/internal/http2/e$d:c	Lokhttp3/internal/http2/e;
+      //   117: aload_1
+      //   118: aload 5
+      //   120: invokevirtual 246	okhttp3/internal/http2/e:a	(Lokhttp3/internal/http2/ErrorCode;Lokhttp3/internal/http2/ErrorCode;)V
+      //   123: aload_0
+      //   124: getfield 35	okhttp3/internal/http2/e$d:a	Lokhttp3/internal/http2/f;
+      //   127: invokestatic 251	com/tencent/token/fc:a	(Ljava/io/Closeable;)V
+      //   130: aload_2
+      //   131: athrow
       //   132: astore_1
-      //   133: goto -41 -> 92
+      //   133: goto -55 -> 78
       //   136: astore_1
-      //   137: goto -73 -> 64
+      //   137: goto -32 -> 105
+      //   140: astore_1
+      //   141: goto -18 -> 123
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	140	0	this	d
-      //   12	37	1	localObject1	Object
-      //   72	1	1	localIOException1	IOException
-      //   74	49	1	localObject2	Object
-      //   128	1	1	localObject3	Object
-      //   132	1	1	localIOException2	IOException
-      //   136	1	1	localIOException3	IOException
-      //   10	64	2	localObject4	Object
-      //   100	4	2	localObject5	Object
-      //   124	1	2	localIOException4	IOException
-      //   3	107	3	localObject6	Object
-      //   7	104	4	localErrorCode1	ErrorCode
-      //   52	8	5	localErrorCode2	ErrorCode
+      //   0	144	0	this	d
+      //   10	108	1	localObject1	Object
+      //   132	1	1	localIOException1	IOException
+      //   136	1	1	localIOException2	IOException
+      //   140	1	1	localIOException3	IOException
+      //   12	53	2	localObject2	Object
+      //   74	5	2	localObject3	Object
+      //   83	48	2	localErrorCode1	ErrorCode
+      //   3	97	3	localObject4	Object
+      //   55	42	4	localErrorCode2	ErrorCode
+      //   7	112	5	localObject5	Object
       // Exception table:
       //   from	to	target	type
-      //   13	21	72	java/io/IOException
-      //   25	37	72	java/io/IOException
-      //   41	45	72	java/io/IOException
-      //   49	54	72	java/io/IOException
-      //   13	21	100	finally
-      //   25	37	100	finally
-      //   41	45	100	finally
-      //   49	54	100	finally
-      //   75	79	100	finally
-      //   105	115	124	java/io/IOException
-      //   79	83	128	finally
-      //   83	92	132	java/io/IOException
-      //   54	64	136	java/io/IOException
+      //   13	21	74	finally
+      //   25	37	74	finally
+      //   44	48	74	finally
+      //   52	57	74	finally
+      //   80	84	74	finally
+      //   86	91	74	finally
+      //   13	21	132	java/io/IOException
+      //   25	37	132	java/io/IOException
+      //   44	48	132	java/io/IOException
+      //   52	57	132	java/io/IOException
+      //   57	63	136	java/io/IOException
+      //   91	96	136	java/io/IOException
+      //   99	105	136	java/io/IOException
+      //   113	123	140	java/io/IOException
     }
   }
 }

@@ -13,97 +13,116 @@ public class FilePathGenerator
   
   private static String b(String paramString)
   {
-    if (Util.isNullOrNil(paramString)) {}
-    while (paramString.length() <= 4) {
+    if (Util.isNullOrNil(paramString)) {
       return null;
     }
-    return paramString.substring(0, 2) + "/" + paramString.substring(2, 4) + "/";
+    if (paramString.length() <= 4) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString.substring(0, 2));
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramString.substring(2, 4));
+    localStringBuilder.append("/");
+    return localStringBuilder.toString();
   }
   
   private static boolean c(String paramString)
   {
     try
     {
-      File localFile = new File(paramString);
-      if (!localFile.exists())
+      Object localObject = new File(paramString);
+      if (!((File)localObject).exists())
       {
-        localFile.mkdirs();
-        paramString = new File(paramString + ".nomedia");
+        ((File)localObject).mkdirs();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(".nomedia");
+        paramString = new File(((StringBuilder)localObject).toString());
         boolean bool = paramString.exists();
-        if (bool) {}
-      }
-      try
-      {
-        paramString.createNewFile();
-        return true;
-      }
-      catch (IOException paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
+        if (!bool) {
+          try
+          {
+            paramString.createNewFile();
+          }
+          catch (IOException paramString)
+          {
+            paramString.printStackTrace();
+          }
         }
       }
-      return false;
+      return true;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label78:
+      break label78;
+    }
+    return false;
   }
   
   public static String defGenPathWithOld(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
   {
-    String str = paramString1 + paramString3 + paramString4 + paramString5;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append(paramString4);
+    localStringBuilder.append(paramString5);
+    paramString1 = localStringBuilder.toString();
     paramString2 = genPath(paramString2, paramString3, paramString4, paramString5, paramInt);
-    if ((Util.isNullOrNil(str)) || (Util.isNullOrNil(paramString2))) {
-      paramString1 = null;
-    }
-    do
+    if ((!Util.isNullOrNil(paramString1)) && (!Util.isNullOrNil(paramString2)))
     {
-      do
-      {
-        return paramString1;
-        paramString3 = new File(paramString2);
-        paramString4 = new File(str);
-        paramString1 = paramString2;
-      } while (paramString3.exists());
-      paramString1 = paramString2;
-    } while (!paramString4.exists());
-    FilesCopy.copy(str, paramString2, false);
-    return paramString2;
+      paramString3 = new File(paramString2);
+      paramString4 = new File(paramString1);
+      if (paramString3.exists()) {
+        return paramString2;
+      }
+      if (paramString4.exists()) {
+        FilesCopy.copy(paramString1, paramString2, false);
+      }
+      return paramString2;
+    }
+    return null;
   }
   
   public static String genPath(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    if (Util.isNullOrNil(paramString1)) {}
-    label134:
-    for (;;)
-    {
+    if (Util.isNullOrNil(paramString1)) {
       return null;
-      if (paramString1.endsWith("/"))
+    }
+    if (!paramString1.endsWith("/")) {
+      return null;
+    }
+    Object localObject = "";
+    if (paramInt == 1) {}
+    for (localObject = b(paramString3);; localObject = b(MD5.getMessageDigest(paramString3.getBytes())))
+    {
+      break;
+      if (paramInt != 2) {
+        break;
+      }
+      if (Util.isNullOrNil(paramString3))
       {
-        String str = "";
-        if (paramInt == 1) {
-          str = b(paramString3);
-        }
-        for (;;)
-        {
-          if (Util.isNullOrNil(str)) {
-            break label134;
-          }
-          paramString1 = paramString1 + str;
-          if (!c(paramString1)) {
-            break;
-          }
-          return paramString1 + Util.nullAsNil(paramString2) + paramString3 + Util.nullAsNil(paramString4);
-          if (paramInt == 2) {
-            if (Util.isNullOrNil(paramString3)) {
-              str = null;
-            } else {
-              str = b(MD5.getMessageDigest(paramString3.getBytes()));
-            }
-          }
-        }
+        localObject = null;
+        break;
       }
     }
+    if (Util.isNullOrNil((String)localObject)) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append((String)localObject);
+    paramString1 = localStringBuilder.toString();
+    if (!c(paramString1)) {
+      return null;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(Util.nullAsNil(paramString2));
+    ((StringBuilder)localObject).append(paramString3);
+    ((StringBuilder)localObject).append(Util.nullAsNil(paramString4));
+    return ((StringBuilder)localObject).toString();
   }
   
   public static enum DIR_HASH_TYPE

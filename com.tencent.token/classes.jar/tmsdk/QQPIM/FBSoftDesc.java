@@ -13,16 +13,6 @@ public final class FBSoftDesc
   public String desc = "";
   public SoftKey softkey = null;
   
-  static
-  {
-    if (!FBSoftDesc.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public FBSoftDesc()
   {
     setSoftkey(this.softkey);
@@ -42,29 +32,35 @@ public final class FBSoftDesc
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (FBSoftDesc)paramObject;
-    } while ((!JceUtil.equals(this.softkey, paramObject.softkey)) || (!JceUtil.equals(this.desc, paramObject.desc)));
-    return true;
+    }
+    paramObject = (FBSoftDesc)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.softkey, paramObject.softkey))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.desc, paramObject.desc)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

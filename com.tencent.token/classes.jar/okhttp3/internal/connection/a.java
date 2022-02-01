@@ -22,10 +22,8 @@ public final class a
     fp localfp = (fp)parama;
     x localx = localfp.a();
     f localf = localfp.f();
-    if (!localx.b().equals("GET")) {}
-    for (boolean bool = true;; bool = false) {
-      return localfp.a(localx, localf, localf.a(this.a, parama, bool), localf.c());
-    }
+    boolean bool = localx.b().equals("GET");
+    return localfp.a(localx, localf, localf.a(this.a, parama, bool ^ true), localf.c());
   }
 }
 

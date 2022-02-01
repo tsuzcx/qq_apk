@@ -17,11 +17,6 @@ public class LineGridView
   private float c = 1.5F;
   private int d = 3;
   
-  public LineGridView(Context paramContext)
-  {
-    this(paramContext, null);
-  }
-  
   public LineGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
@@ -41,74 +36,49 @@ public class LineGridView
     super.dispatchDraw(paramCanvas);
     try
     {
-      Object localObject = GridView.class.getDeclaredField("mNumColumns");
-      ((Field)localObject).setAccessible(true);
-      this.d = ((Field)localObject).getInt(this);
-      this.a = getChildCount();
-      i = 0;
-      for (;;)
-      {
-        if (i >= this.a) {
-          return;
-        }
-        localObject = getChildAt(i);
-        f1 = ((View)localObject).getLeft();
-        f2 = ((View)localObject).getTop();
-        f3 = this.c / 2.0F;
-        f4 = ((View)localObject).getRight();
-        f5 = ((View)localObject).getTop();
-        paramCanvas.drawLine(f1, f3 + f2, f4, this.c / 2.0F + f5, this.b);
-        if (this.d + i <= this.a) {
-          break;
-        }
-        paramCanvas.drawLine(((View)localObject).getLeft(), ((View)localObject).getBottom() - this.c / 2.0F, ((View)localObject).getRight(), ((View)localObject).getBottom() - this.c / 2.0F, this.b);
-        if (i + 1 == this.a) {
-          paramCanvas.drawLine(((View)localObject).getRight(), ((View)localObject).getBottom() - this.c / 2.0F, ((View)localObject).getRight() + (((View)localObject).getRight() - ((View)localObject).getLeft()), ((View)localObject).getBottom() - this.c / 2.0F, this.b);
-        }
-        if (i % this.d != 0) {
-          paramCanvas.drawLine(((View)localObject).getLeft(), ((View)localObject).getTop(), ((View)localObject).getLeft(), ((View)localObject).getBottom(), this.b);
-        }
-        if ((this.a % this.d != 0) && (i + 1 == this.a)) {
-          paramCanvas.drawLine(((View)localObject).getRight(), ((View)localObject).getTop(), ((View)localObject).getRight(), ((View)localObject).getBottom(), this.b);
-        }
-        i += 1;
-      }
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
-      {
-        localNoSuchFieldException.printStackTrace();
-      }
+      Field localField = GridView.class.getDeclaredField("mNumColumns");
+      localField.setAccessible(true);
+      this.d = localField.getInt(this);
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      for (;;)
+      localIllegalAccessException.printStackTrace();
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      localNoSuchFieldException.printStackTrace();
+    }
+    this.a = getChildCount();
+    int i = 0;
+    while (i < this.a)
+    {
+      View localView = getChildAt(i);
+      paramCanvas.drawLine(localView.getLeft(), localView.getTop() + this.c / 2.0F, localView.getRight(), localView.getTop() + this.c / 2.0F, this.b);
+      int j = this.d;
+      int k = this.a;
+      if (i + j > k)
       {
-        int i;
-        float f1;
-        float f2;
-        float f3;
-        float f4;
-        float f5;
-        localIllegalAccessException.printStackTrace();
-        continue;
-        if (this.d + i == this.a) {
-          if (this.a % this.d == 0)
-          {
-            paramCanvas.drawLine(localIllegalAccessException.getLeft(), localIllegalAccessException.getBottom() - this.c / 2.0F, localIllegalAccessException.getRight(), localIllegalAccessException.getBottom() - this.c / 2.0F, this.b);
-          }
-          else
-          {
-            f1 = localIllegalAccessException.getLeft();
-            f2 = localIllegalAccessException.getBottom();
-            f3 = this.c / 2.0F;
-            f4 = localIllegalAccessException.getRight();
-            f5 = localIllegalAccessException.getBottom();
-            paramCanvas.drawLine(f1, f3 + f2, f4, this.c / 2.0F + f5, this.b);
-          }
+        paramCanvas.drawLine(localView.getLeft(), localView.getBottom() - this.c / 2.0F, localView.getRight(), localView.getBottom() - this.c / 2.0F, this.b);
+        if (i + 1 == this.a) {
+          paramCanvas.drawLine(localView.getRight(), localView.getBottom() - this.c / 2.0F, localView.getRight() + (localView.getRight() - localView.getLeft()), localView.getBottom() - this.c / 2.0F, this.b);
         }
       }
+      else if (i + j == k)
+      {
+        if (k % j == 0) {
+          paramCanvas.drawLine(localView.getLeft(), localView.getBottom() - this.c / 2.0F, localView.getRight(), localView.getBottom() - this.c / 2.0F, this.b);
+        } else {
+          paramCanvas.drawLine(localView.getLeft(), localView.getBottom() + this.c / 2.0F, localView.getRight(), localView.getBottom() + this.c / 2.0F, this.b);
+        }
+      }
+      if (i % this.d != 0) {
+        paramCanvas.drawLine(localView.getLeft(), localView.getTop(), localView.getLeft(), localView.getBottom(), this.b);
+      }
+      j = this.a;
+      if ((j % this.d != 0) && (i + 1 == j)) {
+        paramCanvas.drawLine(localView.getRight(), localView.getTop(), localView.getRight(), localView.getBottom(), this.b);
+      }
+      i += 1;
     }
   }
 }

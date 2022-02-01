@@ -28,31 +28,40 @@ public class ProtoDoUnbindToken
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
     }
     Object localObject2 = cc.c();
     ((cc)localObject2).m();
-    String str2 = ((cc)localObject2).j().replaceAll("-", "");
+    Object localObject3 = ((cc)localObject2).j().replaceAll("-", "");
     Object localObject1 = "";
     try
     {
-      localObject2 = l.a(new Object[] { "real_uin", Long.valueOf(this.d), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L), "token_seq", str2, "token_code", ((cc)localObject2).o(), "imei", cc.b(), "unbind_type", String.valueOf(this.e) });
+      localObject2 = l.a(new Object[] { "real_uin", Long.valueOf(this.d), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L), "token_seq", localObject3, "token_code", ((cc)localObject2).o(), "imei", cc.b(), "unbind_type", String.valueOf(this.e) });
       localObject1 = localObject2;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        g.c("encrypt data failed:" + localException.getMessage());
-      }
+      localException.printStackTrace();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("encrypt data failed:");
+      ((StringBuilder)localObject3).append(localException.getMessage());
+      g.c(((StringBuilder)localObject3).toString());
     }
-    localObject1 = "?aq_base_sid=" + str1 + "&data=" + (String)localObject1;
-    return c.e() + "/cn/mbtoken3/mbtoken3_unbind_token" + (String)localObject1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject1);
+    localObject1 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c.e());
+    localStringBuilder.append("/cn/mbtoken3/mbtoken3_unbind_token");
+    localStringBuilder.append((String)localObject1);
+    return localStringBuilder.toString();
   }
   
   protected void a(do paramdo)
@@ -68,7 +77,13 @@ public class ProtoDoUnbindToken
     if (i != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
-      this.a.a(i, "server errcode=" + i + ":" + paramJSONObject, paramJSONObject);
+      e locale = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("server errcode=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      locale.a(i, localStringBuilder.toString(), paramJSONObject);
       return;
     }
     this.a.c();

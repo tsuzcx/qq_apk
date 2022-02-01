@@ -41,8 +41,9 @@ class MenuItemWrapperJB
     
     public void onActionProviderVisibilityChanged(boolean paramBoolean)
     {
-      if (this.mListener != null) {
-        this.mListener.onActionProviderVisibilityChanged(paramBoolean);
+      android.support.v4.view.ActionProvider.VisibilityListener localVisibilityListener = this.mListener;
+      if (localVisibilityListener != null) {
+        localVisibilityListener.onActionProviderVisibilityChanged(paramBoolean);
       }
     }
     
@@ -65,12 +66,12 @@ class MenuItemWrapperJB
     {
       this.mListener = paramVisibilityListener;
       ActionProvider localActionProvider = this.mInner;
-      if (paramVisibilityListener != null) {}
-      for (paramVisibilityListener = this;; paramVisibilityListener = null)
-      {
-        localActionProvider.setVisibilityListener(paramVisibilityListener);
-        return;
+      if (paramVisibilityListener != null) {
+        paramVisibilityListener = this;
+      } else {
+        paramVisibilityListener = null;
       }
+      localActionProvider.setVisibilityListener(paramVisibilityListener);
     }
   }
 }

@@ -21,10 +21,11 @@ public class ProtoGetStartUpImg
   
   protected String a()
   {
-    if (this.d == null) {
+    ConfigResult localConfigResult = this.d;
+    if (localConfigResult == null) {
       return null;
     }
-    return this.d.mStartUpImgUrl;
+    return localConfigResult.mStartUpImgUrl;
   }
   
   protected void a(do paramdo)
@@ -35,13 +36,13 @@ public class ProtoGetStartUpImg
   protected void a(JSONObject paramJSONObject)
   {
     this.d.mStartUpImg = ((Bitmap)paramJSONObject.get("startup_img"));
-    if ((this.d.mStartUpImg == null) || (this.d.mStartUpImg.getWidth() == 0) || (this.d.mStartUpImg.getHeight() == 0))
+    if ((this.d.mStartUpImg != null) && (this.d.mStartUpImg.getWidth() != 0) && (this.d.mStartUpImg.getHeight() != 0))
     {
-      this.a.b(10000);
+      this.a.c();
+      m.a(this.d);
       return;
     }
-    this.a.c();
-    m.a(this.d);
+    this.a.b(10000);
   }
 }
 

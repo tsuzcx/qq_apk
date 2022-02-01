@@ -22,72 +22,58 @@ abstract class MenuPopup
   
   protected static int measureIndividualMenuWidth(ListAdapter paramListAdapter, ViewGroup paramViewGroup, Context paramContext, int paramInt)
   {
+    int j = 0;
     int i1 = View.MeasureSpec.makeMeasureSpec(0, 0);
     int i2 = View.MeasureSpec.makeMeasureSpec(0, 0);
     int i3 = paramListAdapter.getCount();
-    int j = 0;
-    int m = 0;
-    View localView = null;
+    Object localObject1 = paramViewGroup;
+    paramViewGroup = null;
     int i = 0;
-    int k;
-    if (j < i3)
+    int m = 0;
+    while (j < i3)
     {
       int n = paramListAdapter.getItemViewType(j);
-      k = m;
+      int k = m;
       if (n != m)
       {
+        paramViewGroup = null;
         k = n;
-        localView = null;
       }
-      if (paramViewGroup != null) {
-        break label146;
+      Object localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = new FrameLayout(paramContext);
       }
-      paramViewGroup = new FrameLayout(paramContext);
-      label82:
-      localView = paramListAdapter.getView(j, localView, paramViewGroup);
-      localView.measure(i1, i2);
-      m = localView.getMeasuredWidth();
+      paramViewGroup = paramListAdapter.getView(j, paramViewGroup, (ViewGroup)localObject2);
+      paramViewGroup.measure(i1, i2);
+      m = paramViewGroup.getMeasuredWidth();
       if (m >= paramInt) {
         return paramInt;
       }
-      if (m <= i) {
-        break label149;
+      n = i;
+      if (m > i) {
+        n = m;
       }
-      i = m;
-    }
-    label146:
-    label149:
-    for (;;)
-    {
       j += 1;
       m = k;
-      break;
-      return i;
-      break label82;
+      localObject1 = localObject2;
+      i = n;
     }
+    return i;
   }
   
   protected static boolean shouldPreserveIconSpacing(MenuBuilder paramMenuBuilder)
   {
-    boolean bool2 = false;
     int j = paramMenuBuilder.size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        MenuItem localMenuItem = paramMenuBuilder.getItem(i);
-        if ((localMenuItem.isVisible()) && (localMenuItem.getIcon() != null)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
+      MenuItem localMenuItem = paramMenuBuilder.getItem(i);
+      if ((localMenuItem.isVisible()) && (localMenuItem.getIcon() != null)) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   protected static MenuAdapter toMenuAdapter(ListAdapter paramListAdapter)
@@ -137,12 +123,12 @@ abstract class MenuPopup
     paramView = (ListAdapter)paramAdapterView.getAdapter();
     paramAdapterView = toMenuAdapter(paramView).mAdapterMenu;
     paramView = (MenuItem)paramView.getItem(paramInt);
-    if (closeMenuOnSubMenuOpened()) {}
-    for (paramInt = 0;; paramInt = 4)
-    {
-      paramAdapterView.performItemAction(paramView, this, paramInt);
-      return;
+    if (closeMenuOnSubMenuOpened()) {
+      paramInt = 0;
+    } else {
+      paramInt = 4;
     }
+    paramAdapterView.performItemAction(paramView, this, paramInt);
   }
   
   public abstract void setAnchorView(View paramView);

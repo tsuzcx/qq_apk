@@ -30,22 +30,29 @@ public class SQLiteAsyncQuery
   int fillRows(ChunkedCursorWindow paramChunkedCursorWindow, int paramInt1, int paramInt2)
   {
     acquire();
-    if (paramChunkedCursorWindow.getNumColumns() != this.mResultColumns) {
-      paramChunkedCursorWindow.setNumColumns(this.mResultColumns);
+    int i = paramChunkedCursorWindow.getNumColumns();
+    int j = this.mResultColumns;
+    if (i != j) {
+      paramChunkedCursorWindow.setNumColumns(j);
     }
     try
     {
       paramInt1 = nativeFillRows(this.mPreparedStatement.getPtr(), paramChunkedCursorWindow.mWindowPtr, paramInt1, paramInt2);
       return paramInt1;
     }
+    catch (SQLiteException paramChunkedCursorWindow)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Got exception on fillRows: ");
+      localStringBuilder.append(paramChunkedCursorWindow.getMessage());
+      localStringBuilder.append(", SQL: ");
+      localStringBuilder.append(getSql());
+      Log.e("WCDB.SQLiteAsyncQuery", localStringBuilder.toString());
+      throw paramChunkedCursorWindow;
+    }
     catch (SQLiteDatabaseCorruptException paramChunkedCursorWindow)
     {
       onCorruption();
-      throw paramChunkedCursorWindow;
-    }
-    catch (SQLiteException paramChunkedCursorWindow)
-    {
-      Log.e("WCDB.SQLiteAsyncQuery", "Got exception on fillRows: " + paramChunkedCursorWindow.getMessage() + ", SQL: " + getSql());
       throw paramChunkedCursorWindow;
     }
   }
@@ -58,15 +65,20 @@ public class SQLiteAsyncQuery
       int i = nativeCount(this.mPreparedStatement.getPtr());
       return i;
     }
+    catch (SQLiteException localSQLiteException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Got exception on getCount: ");
+      localStringBuilder.append(localSQLiteException.getMessage());
+      localStringBuilder.append(", SQL: ");
+      localStringBuilder.append(getSql());
+      Log.e("WCDB.SQLiteAsyncQuery", localStringBuilder.toString());
+      throw localSQLiteException;
+    }
     catch (SQLiteDatabaseCorruptException localSQLiteDatabaseCorruptException)
     {
       onCorruption();
       throw localSQLiteDatabaseCorruptException;
-    }
-    catch (SQLiteException localSQLiteException)
-    {
-      Log.e("WCDB.SQLiteAsyncQuery", "Got exception on getCount: " + localSQLiteException.getMessage() + ", SQL: " + getSql());
-      throw localSQLiteException;
     }
   }
   

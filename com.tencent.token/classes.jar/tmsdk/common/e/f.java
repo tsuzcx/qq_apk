@@ -8,32 +8,32 @@ public class f
 {
   public static b.a a()
   {
+    String str;
     try
     {
       NetworkInfo localNetworkInfo = tmsdk.common.b.a().a();
-      if (localNetworkInfo == null) {
-        return b.a.a;
-      }
     }
     catch (NullPointerException localNullPointerException)
     {
-      String str;
-      for (;;)
-      {
-        new StringBuilder().append(" getActiveNetworkInfo NullPointerException--- \n").append(localNullPointerException.getMessage()).toString();
-        str = null;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" getActiveNetworkInfo NullPointerException--- \n");
+      localStringBuilder.append(localNullPointerException.getMessage());
+      localStringBuilder.toString();
+      str = null;
+    }
+    if (str == null) {
+      return b.a.a;
+    }
+    if (str.getType() == 1) {
+      return b.a.c;
+    }
+    if (str.getType() == 0)
+    {
+      str = c();
+      if ((str != null) && (str.length() > 0) && (d() > 0)) {
+        return b.a.d;
       }
-      if (str.getType() == 1) {
-        return b.a.c;
-      }
-      if (str.getType() == 0)
-      {
-        str = c();
-        if ((str != null) && (str.length() > 0) && (d() > 0)) {
-          return b.a.d;
-        }
-        return b.a.e;
-      }
+      return b.a.e;
     }
     return b.a.e;
   }
@@ -53,17 +53,18 @@ public class f
   
   public static int d()
   {
-    if (b()) {
-      try
-      {
-        int i = Integer.parseInt(System.getProperty("http.proxyPort"));
-        return i;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        return -1;
-      }
+    if (b()) {}
+    try
+    {
+      int i = Integer.parseInt(System.getProperty("http.proxyPort"));
+      return i;
     }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label17:
+      break label17;
+    }
+    return -1;
     return Proxy.getPort(tmsdk.common.a.a());
   }
   
@@ -85,7 +86,10 @@ public class f
     }
     catch (NullPointerException localNullPointerException)
     {
-      new StringBuilder().append(" getActiveNetworkInfo NullPointerException--- \n").append(localNullPointerException.getMessage()).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" getActiveNetworkInfo NullPointerException--- \n");
+      localStringBuilder.append(localNullPointerException.getMessage());
+      localStringBuilder.toString();
     }
     return null;
   }

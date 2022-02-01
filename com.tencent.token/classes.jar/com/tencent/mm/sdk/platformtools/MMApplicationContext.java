@@ -5,7 +5,7 @@ import android.content.Context;
 public final class MMApplicationContext
 {
   private static String am = "com.tencent.mm";
-  private static Context q = null;
+  private static Context q;
   
   public static Context getContext()
   {
@@ -14,7 +14,10 @@ public final class MMApplicationContext
   
   public static String getDefaultPreferencePath()
   {
-    return am + "_preferences";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(am);
+    localStringBuilder.append("_preferences");
+    return localStringBuilder.toString();
   }
   
   public static String getPackageName()
@@ -26,7 +29,9 @@ public final class MMApplicationContext
   {
     q = paramContext;
     am = paramContext.getPackageName();
-    Log.d("MicroMsg.MMApplicationContext", "setup application context for package: " + am);
+    paramContext = new StringBuilder("setup application context for package: ");
+    paramContext.append(am);
+    Log.d("MicroMsg.MMApplicationContext", paramContext.toString());
   }
 }
 

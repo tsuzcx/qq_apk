@@ -24,8 +24,17 @@ public class ProtoGetOperateMsg
       this.a.b(104);
       return null;
     }
-    str = "?aq_base_sid=" + str + "&uin=" + this.d;
-    return c.e() + "/cn/mbtoken3/mbtoken3_get_ads_info" + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&uin=");
+    localStringBuilder.append(this.d);
+    str = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c.e());
+    localStringBuilder.append("/cn/mbtoken3/mbtoken3_get_ads_info");
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
   
   protected void a(do paramdo)

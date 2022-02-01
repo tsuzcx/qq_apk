@@ -39,8 +39,9 @@ public final class SoftServerInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.status, 0);
-    if (this.expand != null) {
-      paramJceOutputStream.write(this.expand, 1);
+    byte[] arrayOfByte = this.expand;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
     paramJceOutputStream.write(this.servertime, 2);
     paramJceOutputStream.write(this.softupdate_tips, 3);

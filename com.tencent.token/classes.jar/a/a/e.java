@@ -28,11 +28,13 @@ public final class e
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.a, 0);
-    if (this.b != 0) {
-      paramJceOutputStream.write(this.b, 1);
+    int i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 2);
+    ArrayList localArrayList = this.c;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }

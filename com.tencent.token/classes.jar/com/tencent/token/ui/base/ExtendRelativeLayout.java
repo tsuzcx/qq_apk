@@ -24,32 +24,26 @@ public class ExtendRelativeLayout
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    View localView;
     if (this.a)
     {
       paramInt3 = getChildCount();
       paramInt1 = 0;
-      if (paramInt1 < paramInt3)
+      while (paramInt1 < paramInt3)
       {
-        localView = getChildAt(paramInt1);
-        if (localView.getVisibility() != 8) {}
-      }
-    }
-    label114:
-    for (;;)
-    {
-      paramInt1 += 1;
-      break;
-      int[] arrayOfInt = ((RelativeLayout.LayoutParams)localView.getLayoutParams()).getRules();
-      if ((arrayOfInt[13] != 0) || (arrayOfInt[15] != 0)) {}
-      for (paramInt2 = (getPaddingTop() - getPaddingBottom()) / 2;; paramInt2 = 0)
-      {
-        if (paramInt2 == 0) {
-          break label114;
+        View localView = getChildAt(paramInt1);
+        if (localView.getVisibility() != 8)
+        {
+          int[] arrayOfInt = ((RelativeLayout.LayoutParams)localView.getLayoutParams()).getRules();
+          if ((arrayOfInt[13] == 0) && (arrayOfInt[15] == 0)) {
+            paramInt2 = 0;
+          } else {
+            paramInt2 = (getPaddingTop() - getPaddingBottom()) / 2;
+          }
+          if (paramInt2 != 0) {
+            localView.offsetTopAndBottom(paramInt2);
+          }
         }
-        localView.offsetTopAndBottom(paramInt2);
-        break;
-        return;
+        paramInt1 += 1;
       }
     }
   }

@@ -42,53 +42,49 @@ public class ActionBarContainer
   {
     super(paramContext, paramAttributeSet);
     Object localObject;
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 21)
-    {
+    if (Build.VERSION.SDK_INT >= 21) {
       localObject = new ActionBarBackgroundDrawableV21(this);
-      ViewCompat.setBackground(this, (Drawable)localObject);
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ActionBar);
-      this.mBackground = paramContext.getDrawable(R.styleable.ActionBar_background);
-      this.mStackedBackground = paramContext.getDrawable(R.styleable.ActionBar_backgroundStacked);
-      this.mHeight = paramContext.getDimensionPixelSize(R.styleable.ActionBar_height, -1);
-      if (getId() == R.id.split_action_bar)
-      {
-        this.mIsSplit = true;
-        this.mSplitBackground = paramContext.getDrawable(R.styleable.ActionBar_backgroundSplit);
-      }
-      paramContext.recycle();
-      if (!this.mIsSplit) {
-        break label143;
-      }
-      if (this.mSplitBackground != null) {
-        break label138;
-      }
-      bool = true;
-    }
-    for (;;)
-    {
-      setWillNotDraw(bool);
-      return;
+    } else {
       localObject = new ActionBarBackgroundDrawable(this);
-      break;
-      label138:
-      bool = false;
-      continue;
-      label143:
-      if ((this.mBackground == null) && (this.mStackedBackground == null)) {
-        bool = true;
-      } else {
-        bool = false;
-      }
     }
+    ViewCompat.setBackground(this, (Drawable)localObject);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ActionBar);
+    this.mBackground = paramContext.getDrawable(R.styleable.ActionBar_background);
+    this.mStackedBackground = paramContext.getDrawable(R.styleable.ActionBar_backgroundStacked);
+    this.mHeight = paramContext.getDimensionPixelSize(R.styleable.ActionBar_height, -1);
+    if (getId() == R.id.split_action_bar)
+    {
+      this.mIsSplit = true;
+      this.mSplitBackground = paramContext.getDrawable(R.styleable.ActionBar_backgroundSplit);
+    }
+    paramContext.recycle();
+    boolean bool1 = this.mIsSplit;
+    boolean bool2 = false;
+    if (bool1)
+    {
+      bool1 = bool2;
+      if (this.mSplitBackground != null) {}
+    }
+    else
+    {
+      do
+      {
+        bool1 = true;
+        break;
+        bool1 = bool2;
+        if (this.mBackground != null) {
+          break;
+        }
+        bool1 = bool2;
+      } while (this.mStackedBackground == null);
+    }
+    setWillNotDraw(bool1);
   }
   
   private int getMeasuredHeightWithMargins(View paramView)
   {
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)paramView.getLayoutParams();
-    int i = paramView.getMeasuredHeight();
-    int j = localLayoutParams.topMargin;
-    return localLayoutParams.bottomMargin + (i + j);
+    return paramView.getMeasuredHeight() + localLayoutParams.topMargin + localLayoutParams.bottomMargin;
   }
   
   private boolean isCollapsed(View paramView)
@@ -99,13 +95,16 @@ public class ActionBarContainer
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if ((this.mBackground != null) && (this.mBackground.isStateful())) {
+    Drawable localDrawable = this.mBackground;
+    if ((localDrawable != null) && (localDrawable.isStateful())) {
       this.mBackground.setState(getDrawableState());
     }
-    if ((this.mStackedBackground != null) && (this.mStackedBackground.isStateful())) {
+    localDrawable = this.mStackedBackground;
+    if ((localDrawable != null) && (localDrawable.isStateful())) {
       this.mStackedBackground.setState(getDrawableState());
     }
-    if ((this.mSplitBackground != null) && (this.mSplitBackground.isStateful())) {
+    localDrawable = this.mSplitBackground;
+    if ((localDrawable != null) && (localDrawable.isStateful())) {
       this.mSplitBackground.setState(getDrawableState());
     }
   }
@@ -118,14 +117,17 @@ public class ActionBarContainer
   public void jumpDrawablesToCurrentState()
   {
     super.jumpDrawablesToCurrentState();
-    if (this.mBackground != null) {
-      this.mBackground.jumpToCurrentState();
+    Drawable localDrawable = this.mBackground;
+    if (localDrawable != null) {
+      localDrawable.jumpToCurrentState();
     }
-    if (this.mStackedBackground != null) {
-      this.mStackedBackground.jumpToCurrentState();
+    localDrawable = this.mStackedBackground;
+    if (localDrawable != null) {
+      localDrawable.jumpToCurrentState();
     }
-    if (this.mSplitBackground != null) {
-      this.mSplitBackground.jumpToCurrentState();
+    localDrawable = this.mSplitBackground;
+    if (localDrawable != null) {
+      localDrawable.jumpToCurrentState();
     }
   }
   
@@ -149,62 +151,68 @@ public class ActionBarContainer
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i = 1;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    View localView = this.mTabContainer;
-    if ((localView != null) && (localView.getVisibility() != 8))
-    {
+    Object localObject1 = this.mTabContainer;
+    paramInt2 = 1;
+    paramInt4 = 0;
+    if ((localObject1 != null) && (((View)localObject1).getVisibility() != 8)) {
       paramBoolean = true;
-      if ((localView != null) && (localView.getVisibility() != 8))
-      {
-        paramInt2 = getMeasuredHeight();
-        FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localView.getLayoutParams();
-        localView.layout(paramInt1, paramInt2 - localView.getMeasuredHeight() - localLayoutParams.bottomMargin, paramInt3, paramInt2 - localLayoutParams.bottomMargin);
-      }
-      if (!this.mIsSplit) {
-        break label143;
-      }
-      if (this.mSplitBackground == null) {
-        break label323;
-      }
-      this.mSplitBackground.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
-      paramInt1 = i;
-    }
-    for (;;)
-    {
-      if (paramInt1 != 0) {
-        invalidate();
-      }
-      return;
+    } else {
       paramBoolean = false;
-      break;
-      label143:
-      if (this.mBackground != null) {
-        if (this.mActionBarView.getVisibility() == 0) {
+    }
+    Object localObject2;
+    if ((localObject1 != null) && (((View)localObject1).getVisibility() != 8))
+    {
+      int i = getMeasuredHeight();
+      localObject2 = (FrameLayout.LayoutParams)((View)localObject1).getLayoutParams();
+      ((View)localObject1).layout(paramInt1, i - ((View)localObject1).getMeasuredHeight() - ((FrameLayout.LayoutParams)localObject2).bottomMargin, paramInt3, i - ((FrameLayout.LayoutParams)localObject2).bottomMargin);
+    }
+    if (this.mIsSplit)
+    {
+      localObject1 = this.mSplitBackground;
+      if (localObject1 != null)
+      {
+        ((Drawable)localObject1).setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
+        paramInt1 = paramInt2;
+      }
+      else
+      {
+        paramInt1 = 0;
+      }
+    }
+    else
+    {
+      paramInt1 = paramInt4;
+      if (this.mBackground != null)
+      {
+        if (this.mActionBarView.getVisibility() == 0)
+        {
           this.mBackground.setBounds(this.mActionBarView.getLeft(), this.mActionBarView.getTop(), this.mActionBarView.getRight(), this.mActionBarView.getBottom());
         }
-      }
-      label195:
-      for (paramInt1 = 1;; paramInt1 = 0)
-      {
-        this.mIsStacked = paramBoolean;
-        if ((paramBoolean) && (this.mStackedBackground != null))
+        else
         {
-          this.mStackedBackground.setBounds(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
-          paramInt1 = i;
-          break;
-          if ((this.mContextView != null) && (this.mContextView.getVisibility() == 0))
-          {
+          localObject2 = this.mContextView;
+          if ((localObject2 != null) && (((View)localObject2).getVisibility() == 0)) {
             this.mBackground.setBounds(this.mContextView.getLeft(), this.mContextView.getTop(), this.mContextView.getRight(), this.mContextView.getBottom());
-            break label195;
+          } else {
+            this.mBackground.setBounds(0, 0, 0, 0);
           }
-          this.mBackground.setBounds(0, 0, 0, 0);
-          break label195;
         }
-        break;
+        paramInt1 = 1;
       }
-      label323:
-      paramInt1 = 0;
+      this.mIsStacked = paramBoolean;
+      if (paramBoolean)
+      {
+        localObject2 = this.mStackedBackground;
+        if (localObject2 != null)
+        {
+          ((Drawable)localObject2).setBounds(((View)localObject1).getLeft(), ((View)localObject1).getTop(), ((View)localObject1).getRight(), ((View)localObject1).getBottom());
+          paramInt1 = paramInt2;
+        }
+      }
+    }
+    if (paramInt1 != 0) {
+      invalidate();
     }
   }
   
@@ -216,38 +224,34 @@ public class ActionBarContainer
       i = paramInt2;
       if (View.MeasureSpec.getMode(paramInt2) == -2147483648)
       {
+        int j = this.mHeight;
         i = paramInt2;
-        if (this.mHeight >= 0) {
-          i = View.MeasureSpec.makeMeasureSpec(Math.min(this.mHeight, View.MeasureSpec.getSize(paramInt2)), -2147483648);
+        if (j >= 0) {
+          i = View.MeasureSpec.makeMeasureSpec(Math.min(j, View.MeasureSpec.getSize(paramInt2)), -2147483648);
         }
       }
     }
     super.onMeasure(paramInt1, i);
-    if (this.mActionBarView == null) {}
-    do
-    {
+    if (this.mActionBarView == null) {
       return;
-      paramInt2 = View.MeasureSpec.getMode(i);
-    } while ((this.mTabContainer == null) || (this.mTabContainer.getVisibility() == 8) || (paramInt2 == 1073741824));
-    if (!isCollapsed(this.mActionBarView))
-    {
-      paramInt1 = getMeasuredHeightWithMargins(this.mActionBarView);
-      if (paramInt2 != -2147483648) {
-        break label172;
-      }
     }
-    label172:
-    for (paramInt2 = View.MeasureSpec.getSize(i);; paramInt2 = 2147483647)
+    paramInt2 = View.MeasureSpec.getMode(i);
+    View localView = this.mTabContainer;
+    if ((localView != null) && (localView.getVisibility() != 8) && (paramInt2 != 1073741824))
     {
-      setMeasuredDimension(getMeasuredWidth(), Math.min(paramInt1 + getMeasuredHeightWithMargins(this.mTabContainer), paramInt2));
-      return;
-      if (!isCollapsed(this.mContextView))
-      {
+      if (!isCollapsed(this.mActionBarView)) {
+        paramInt1 = getMeasuredHeightWithMargins(this.mActionBarView);
+      } else if (!isCollapsed(this.mContextView)) {
         paramInt1 = getMeasuredHeightWithMargins(this.mContextView);
-        break;
+      } else {
+        paramInt1 = 0;
       }
-      paramInt1 = 0;
-      break;
+      if (paramInt2 == -2147483648) {
+        paramInt2 = View.MeasureSpec.getSize(i);
+      } else {
+        paramInt2 = 2147483647;
+      }
+      setMeasuredDimension(getMeasuredWidth(), Math.min(paramInt1 + getMeasuredHeightWithMargins(this.mTabContainer), paramInt2));
     }
   }
   
@@ -259,112 +263,116 @@ public class ActionBarContainer
   
   public void setPrimaryBackground(Drawable paramDrawable)
   {
-    boolean bool = true;
-    if (this.mBackground != null)
+    Drawable localDrawable = this.mBackground;
+    if (localDrawable != null)
     {
-      this.mBackground.setCallback(null);
+      localDrawable.setCallback(null);
       unscheduleDrawable(this.mBackground);
     }
     this.mBackground = paramDrawable;
     if (paramDrawable != null)
     {
       paramDrawable.setCallback(this);
-      if (this.mActionBarView != null) {
-        this.mBackground.setBounds(this.mActionBarView.getLeft(), this.mActionBarView.getTop(), this.mActionBarView.getRight(), this.mActionBarView.getBottom());
+      paramDrawable = this.mActionBarView;
+      if (paramDrawable != null) {
+        this.mBackground.setBounds(paramDrawable.getLeft(), this.mActionBarView.getTop(), this.mActionBarView.getRight(), this.mActionBarView.getBottom());
       }
     }
-    if (this.mIsSplit) {
-      if (this.mSplitBackground != null) {}
+    boolean bool2 = this.mIsSplit;
+    boolean bool1 = true;
+    if (bool2 ? this.mSplitBackground == null : (this.mBackground != null) || (this.mStackedBackground != null)) {
+      bool1 = false;
     }
-    for (;;)
-    {
-      setWillNotDraw(bool);
-      invalidate();
-      return;
-      bool = false;
-      continue;
-      if ((this.mBackground != null) || (this.mStackedBackground != null)) {
-        bool = false;
-      }
-    }
+    setWillNotDraw(bool1);
+    invalidate();
   }
   
   public void setSplitBackground(Drawable paramDrawable)
   {
-    boolean bool = true;
-    if (this.mSplitBackground != null)
+    Drawable localDrawable = this.mSplitBackground;
+    if (localDrawable != null)
     {
-      this.mSplitBackground.setCallback(null);
+      localDrawable.setCallback(null);
       unscheduleDrawable(this.mSplitBackground);
     }
     this.mSplitBackground = paramDrawable;
+    boolean bool2 = false;
     if (paramDrawable != null)
     {
       paramDrawable.setCallback(this);
-      if ((this.mIsSplit) && (this.mSplitBackground != null)) {
-        this.mSplitBackground.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
+      if (this.mIsSplit)
+      {
+        paramDrawable = this.mSplitBackground;
+        if (paramDrawable != null) {
+          paramDrawable.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
+        }
       }
     }
-    if (this.mIsSplit) {
+    boolean bool1;
+    if (this.mIsSplit)
+    {
+      bool1 = bool2;
       if (this.mSplitBackground != null) {}
     }
-    for (;;)
+    else
     {
-      setWillNotDraw(bool);
-      invalidate();
-      return;
-      bool = false;
-      continue;
-      if ((this.mBackground != null) || (this.mStackedBackground != null)) {
-        bool = false;
-      }
+      do
+      {
+        bool1 = true;
+        break;
+        bool1 = bool2;
+        if (this.mBackground != null) {
+          break;
+        }
+        bool1 = bool2;
+      } while (this.mStackedBackground == null);
     }
+    setWillNotDraw(bool1);
+    invalidate();
   }
   
   public void setStackedBackground(Drawable paramDrawable)
   {
-    boolean bool = true;
-    if (this.mStackedBackground != null)
+    Drawable localDrawable = this.mStackedBackground;
+    if (localDrawable != null)
     {
-      this.mStackedBackground.setCallback(null);
+      localDrawable.setCallback(null);
       unscheduleDrawable(this.mStackedBackground);
     }
     this.mStackedBackground = paramDrawable;
     if (paramDrawable != null)
     {
       paramDrawable.setCallback(this);
-      if ((this.mIsStacked) && (this.mStackedBackground != null)) {
-        this.mStackedBackground.setBounds(this.mTabContainer.getLeft(), this.mTabContainer.getTop(), this.mTabContainer.getRight(), this.mTabContainer.getBottom());
+      if (this.mIsStacked)
+      {
+        paramDrawable = this.mStackedBackground;
+        if (paramDrawable != null) {
+          paramDrawable.setBounds(this.mTabContainer.getLeft(), this.mTabContainer.getTop(), this.mTabContainer.getRight(), this.mTabContainer.getBottom());
+        }
       }
     }
-    if (this.mIsSplit) {
-      if (this.mSplitBackground != null) {}
+    boolean bool2 = this.mIsSplit;
+    boolean bool1 = true;
+    if (bool2 ? this.mSplitBackground == null : (this.mBackground != null) || (this.mStackedBackground != null)) {
+      bool1 = false;
     }
-    for (;;)
-    {
-      setWillNotDraw(bool);
-      invalidate();
-      return;
-      bool = false;
-      continue;
-      if ((this.mBackground != null) || (this.mStackedBackground != null)) {
-        bool = false;
-      }
-    }
+    setWillNotDraw(bool1);
+    invalidate();
   }
   
   public void setTabContainer(ScrollingTabContainerView paramScrollingTabContainerView)
   {
-    if (this.mTabContainer != null) {
-      removeView(this.mTabContainer);
+    Object localObject = this.mTabContainer;
+    if (localObject != null) {
+      removeView((View)localObject);
     }
     this.mTabContainer = paramScrollingTabContainerView;
     if (paramScrollingTabContainerView != null)
     {
       addView(paramScrollingTabContainerView);
-      ViewGroup.LayoutParams localLayoutParams = paramScrollingTabContainerView.getLayoutParams();
-      localLayoutParams.width = -1;
-      localLayoutParams.height = -2;
+      localObject = paramScrollingTabContainerView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = -1;
+      ((ViewGroup.LayoutParams)localObject).height = -2;
       paramScrollingTabContainerView.setAllowCollapse(false);
     }
   }
@@ -372,30 +380,35 @@ public class ActionBarContainer
   public void setTransitioning(boolean paramBoolean)
   {
     this.mIsTransitioning = paramBoolean;
-    if (paramBoolean) {}
-    for (int i = 393216;; i = 262144)
-    {
-      setDescendantFocusability(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 393216;
+    } else {
+      i = 262144;
     }
+    setDescendantFocusability(i);
   }
   
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (this.mBackground != null) {
-        this.mBackground.setVisible(bool, false);
-      }
-      if (this.mStackedBackground != null) {
-        this.mStackedBackground.setVisible(bool, false);
-      }
-      if (this.mSplitBackground != null) {
-        this.mSplitBackground.setVisible(bool, false);
-      }
-      return;
+    boolean bool;
+    if (paramInt == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Drawable localDrawable = this.mBackground;
+    if (localDrawable != null) {
+      localDrawable.setVisible(bool, false);
+    }
+    localDrawable = this.mStackedBackground;
+    if (localDrawable != null) {
+      localDrawable.setVisible(bool, false);
+    }
+    localDrawable = this.mSplitBackground;
+    if (localDrawable != null) {
+      localDrawable.setVisible(bool, false);
     }
   }
   

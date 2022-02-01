@@ -24,14 +24,13 @@ public class u
   
   public int a(long paramLong1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2, int paramInt)
   {
-    int i = 0;
     if (paramInt == 0) {
-      i = b(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2);
+      return b(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2);
     }
-    while (paramInt != 1) {
-      return i;
+    if (paramInt == 1) {
+      return c(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2);
     }
-    return c(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2);
+    return 0;
   }
   
   public byte[] a(long paramLong1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2)
@@ -44,8 +43,7 @@ public class u
       util.int32_to_buf(paramArrayOfByte3, 4, (int)paramLong2);
       util.int16_to_buf(paramArrayOfByte3, 8, paramArrayOfByte2.length);
       System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte3, 10, paramArrayOfByte2.length);
-      i = paramArrayOfByte2.length + 10;
-      System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte3, i, paramArrayOfByte1.length);
+      System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte3, 10 + paramArrayOfByte2.length, paramArrayOfByte1.length);
       i = paramArrayOfByte1.length;
       return paramArrayOfByte3;
     }
@@ -81,92 +79,109 @@ public class u
     try
     {
       paramArrayOfByte1 = t.an.toJasonObj().toString().getBytes();
-      if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0)) {
-        return 0;
-      }
     }
     catch (Throwable paramArrayOfByte1)
     {
-      for (;;)
-      {
-        paramArrayOfByte1 = new byte[0];
-      }
-      paramArrayOfByte1 = util.compress(paramArrayOfByte1);
-      if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0)) {
+      label96:
+      byte[] arrayOfByte;
+      int i;
+      break label96;
+    }
+    paramArrayOfByte1 = new byte[0];
+    if (paramArrayOfByte1 != null)
+    {
+      if (paramArrayOfByte1.length == 0) {
         return 0;
       }
-      byte[] arrayOfByte = new byte[paramArrayOfByte1.length + 4];
-      util.int8_to_buf(arrayOfByte, 0, 0);
-      util.int8_to_buf(arrayOfByte, 1, 1);
-      util.int16_to_buf(arrayOfByte, 2, paramArrayOfByte1.length);
-      System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 4, paramArrayOfByte1.length);
-      paramArrayOfByte1 = a(arrayOfByte, paramLong1, paramLong2, l, 0);
-      report_t.delete_file(t.t);
-      int i = b(a(a(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2)));
-      util.LOGI("request_report_error(0) rsp: ret=" + i);
-      if (i != 0)
+      paramArrayOfByte1 = util.compress(paramArrayOfByte1);
+      if (paramArrayOfByte1 != null)
       {
-        report_t.write_tofile(t.an, t.t);
+        if (paramArrayOfByte1.length == 0) {
+          return 0;
+        }
+        arrayOfByte = new byte[paramArrayOfByte1.length + 4];
+        util.int8_to_buf(arrayOfByte, 0, 0);
+        util.int8_to_buf(arrayOfByte, 1, 1);
+        util.int16_to_buf(arrayOfByte, 2, paramArrayOfByte1.length);
+        System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 4, paramArrayOfByte1.length);
+        paramArrayOfByte1 = a(arrayOfByte, paramLong1, paramLong2, l, 0);
+        report_t.delete_file(t.t);
+        i = b(a(a(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2)));
+        paramArrayOfByte1 = new StringBuilder();
+        paramArrayOfByte1.append("request_report_error(0) rsp: ret=");
+        paramArrayOfByte1.append(i);
+        util.LOGI(paramArrayOfByte1.toString());
+        if (i != 0)
+        {
+          report_t.write_tofile(t.an, t.t);
+          return i;
+        }
+        t.an.clear_t2();
         return i;
       }
-      t.an.clear_t2();
-      return i;
+      return 0;
     }
+    return 0;
   }
   
   public int c(long paramLong1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong2)
   {
-    long l1;
-    String str;
-    long l2;
     if ((this.a.d != null) && (!t.e.booleanValue()))
     {
       t.e = Boolean.valueOf(true);
       long l3 = System.currentTimeMillis();
       SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
       Calendar localCalendar = Calendar.getInstance();
-      int j = this.a.d.get_bitmap();
-      int k = this.a.d.get_network();
-      util.LOGI("bitmap:" + j + " network:" + k + " local network:" + util.get_network_type(t.t));
-      int i = 0;
-      if (i < 32)
+      int i = this.a.d.get_bitmap();
+      int j = this.a.d.get_network();
+      paramArrayOfByte1 = new StringBuilder();
+      paramArrayOfByte1.append("bitmap:");
+      paramArrayOfByte1.append(i);
+      paramArrayOfByte1.append(" network:");
+      paramArrayOfByte1.append(j);
+      paramArrayOfByte1.append(" local network:");
+      paramArrayOfByte1.append(util.get_network_type(t.t));
+      util.LOGI(paramArrayOfByte1.toString());
+      int k = 0;
+      while (k < 32)
       {
-        if ((1 << i & j) == 0) {}
-        while ((k != 0) && ((k != 1) || (util.get_network_type(t.t) != 2)))
+        if ((1 << k & i) != 0)
         {
-          i += 1;
-          break;
+          if ((j != 0) && ((j != 1) || (util.get_network_type(t.t) != 2))) {
+            break label352;
+          }
+          long l1 = l3 - 86400000 * k;
+          localCalendar.setTimeInMillis(l1);
+          String str = localSimpleDateFormat.format(localCalendar.getTime());
+          long l2 = util.getLogModifyTime(t.t, str);
+          if (l2 != 0L) {
+            l1 = l2;
+          }
+          paramArrayOfByte1 = util.readLog(t.t, str);
+          if (paramArrayOfByte1 == null) {
+            paramArrayOfByte1 = new byte[0];
+          } else {
+            paramArrayOfByte1 = a(paramArrayOfByte1, paramLong1, paramLong2, l1, 1);
+          }
+          if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length > 0))
+          {
+            int m = b(a(a(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2)));
+            paramArrayOfByte1 = new StringBuilder();
+            paramArrayOfByte1.append("request_report_error(1) rsp: ret=");
+            paramArrayOfByte1.append(m);
+            paramArrayOfByte1.append("(");
+            paramArrayOfByte1.append(str);
+            paramArrayOfByte1.append(")");
+            util.LOGI(paramArrayOfByte1.toString());
+          }
         }
-        l1 = l3 - 86400000 * i;
-        localCalendar.setTimeInMillis(l1);
-        str = localSimpleDateFormat.format(localCalendar.getTime());
-        l2 = util.getLogModifyTime(t.t, str);
-        if (l2 != 0L) {
-          break label339;
-        }
+        label352:
+        k += 1;
       }
     }
-    for (;;)
-    {
-      paramArrayOfByte1 = util.readLog(t.t, str);
-      if (paramArrayOfByte1 == null) {}
-      for (paramArrayOfByte1 = new byte[0];; paramArrayOfByte1 = a(paramArrayOfByte1, paramLong1, paramLong2, l1, 1))
-      {
-        if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length <= 0)) {
-          break label320;
-        }
-        int m = b(a(a(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramLong2)));
-        util.LOGI("request_report_error(1) rsp: ret=" + m + "(" + str + ")");
-        break;
-      }
-      label320:
-      break;
-      this.a.d = null;
-      t.e = Boolean.valueOf(false);
-      return 0;
-      label339:
-      l1 = l2;
-    }
+    this.a.d = null;
+    t.e = Boolean.valueOf(false);
+    return 0;
   }
 }
 

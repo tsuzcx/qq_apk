@@ -19,16 +19,6 @@ public final class CommElementInfo
   public String data7 = "";
   public String data8 = "";
   
-  static
-  {
-    if (!CommElementInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public CommElementInfo() {}
   
   public CommElementInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
@@ -50,18 +40,17 @@ public final class CommElementInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -79,13 +68,44 @@ public final class CommElementInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (CommElementInfo)paramObject;
-    } while ((!JceUtil.equals(this.data1, paramObject.data1)) || (!JceUtil.equals(this.data2, paramObject.data2)) || (!JceUtil.equals(this.data3, paramObject.data3)) || (!JceUtil.equals(this.data4, paramObject.data4)) || (!JceUtil.equals(this.data5, paramObject.data5)) || (!JceUtil.equals(this.data6, paramObject.data6)) || (!JceUtil.equals(this.data7, paramObject.data7)) || (!JceUtil.equals(this.data8, paramObject.data8)));
-    return true;
+    }
+    paramObject = (CommElementInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.data1, paramObject.data1))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.data2, paramObject.data2))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.data3, paramObject.data3))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.data4, paramObject.data4))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.data5, paramObject.data5))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.data6, paramObject.data6))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.data7, paramObject.data7))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.data8, paramObject.data8)) {
+                    bool1 = true;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -200,29 +220,37 @@ public final class CommElementInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.data1 != null) {
-      paramJceOutputStream.write(this.data1, 0);
+    String str = this.data1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.data2 != null) {
-      paramJceOutputStream.write(this.data2, 1);
+    str = this.data2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.data3 != null) {
-      paramJceOutputStream.write(this.data3, 3);
+    str = this.data3;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.data4 != null) {
-      paramJceOutputStream.write(this.data4, 4);
+    str = this.data4;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.data5 != null) {
-      paramJceOutputStream.write(this.data5, 5);
+    str = this.data5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.data6 != null) {
-      paramJceOutputStream.write(this.data6, 6);
+    str = this.data6;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.data7 != null) {
-      paramJceOutputStream.write(this.data7, 7);
+    str = this.data7;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.data8 != null) {
-      paramJceOutputStream.write(this.data8, 8);
+    str = this.data8;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
   }
 }

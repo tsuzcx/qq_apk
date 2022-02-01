@@ -43,22 +43,21 @@ public class ViewGroupUtils
       localMatrix = new Matrix();
       sMatrix.set(localMatrix);
     }
-    for (;;)
+    else
     {
-      offsetDescendantMatrix(paramViewGroup, paramView, localMatrix);
-      paramView = (RectF)sRectF.get();
-      paramViewGroup = paramView;
-      if (paramView == null)
-      {
-        paramViewGroup = new RectF();
-        sRectF.set(paramViewGroup);
-      }
-      paramViewGroup.set(paramRect);
-      localMatrix.mapRect(paramViewGroup);
-      paramRect.set((int)(paramViewGroup.left + 0.5F), (int)(paramViewGroup.top + 0.5F), (int)(paramViewGroup.right + 0.5F), (int)(paramViewGroup.bottom + 0.5F));
-      return;
       localMatrix.reset();
     }
+    offsetDescendantMatrix(paramViewGroup, paramView, localMatrix);
+    paramView = (RectF)sRectF.get();
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = new RectF();
+      sRectF.set(paramViewGroup);
+    }
+    paramViewGroup.set(paramRect);
+    localMatrix.mapRect(paramViewGroup);
+    paramRect.set((int)(paramViewGroup.left + 0.5F), (int)(paramViewGroup.top + 0.5F), (int)(paramViewGroup.right + 0.5F), (int)(paramViewGroup.bottom + 0.5F));
   }
 }
 

@@ -15,123 +15,141 @@ public class a
 {
   private static SolutionItem a(Context paramContext, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 30118) && (paramInt != 30123) && (paramInt != 30125)) {
       return null;
     }
     paramContext = new SolutionItem();
-    paramContext.commSoluId = (-paramInt);
-    paramContext.extSoluId = (-paramInt);
+    long l = -paramInt;
+    paramContext.commSoluId = l;
+    paramContext.extSoluId = l;
     return paramContext;
   }
   
   static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    SolutionItem localSolutionItem2 = g.a(paramContext).a(paramInt1);
-    SolutionItem localSolutionItem1;
-    if (localSolutionItem2 != null)
+    Object localObject2 = g.a(paramContext).a(paramInt1);
+    Object localObject1;
+    if (localObject2 != null)
     {
-      localSolutionItem1 = localSolutionItem2;
-      if (localSolutionItem2.soluInfo != null) {}
+      localObject1 = localObject2;
+      if (((SolutionItem)localObject2).soluInfo != null) {}
     }
     else
     {
-      localSolutionItem2 = a(paramContext, paramInt1);
-      localSolutionItem1 = localSolutionItem2;
-      if (localSolutionItem2 != null) {}
-    }
-    long l;
-    do
-    {
-      return;
-      bn.b("AdapterSolutionMonitor", "adapterID:" + paramInt1 + " solutionID:" + localSolutionItem1.extSoluId + " validity:" + paramInt2 + " verCode:" + paramInt3);
-      l = System.currentTimeMillis();
-    } while (l - f.a(paramContext, localSolutionItem1.extSoluId) <= 86400000L);
-    f.a(paramContext, localSolutionItem1.extSoluId, l);
-    paramContext = new ArrayList();
-    paramContext.add(String.valueOf(localSolutionItem1.commSoluId));
-    if (paramInt2 == 0)
-    {
-      paramContext.add(String.valueOf(2));
-      if (paramInt3 != 0) {
-        break label219;
+      localObject2 = a(paramContext, paramInt1);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        return;
       }
-      paramContext.add("");
     }
-    for (;;)
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("adapterID:");
+    ((StringBuilder)localObject2).append(paramInt1);
+    ((StringBuilder)localObject2).append(" solutionID:");
+    ((StringBuilder)localObject2).append(localObject1.extSoluId);
+    ((StringBuilder)localObject2).append(" validity:");
+    ((StringBuilder)localObject2).append(paramInt2);
+    ((StringBuilder)localObject2).append(" verCode:");
+    ((StringBuilder)localObject2).append(paramInt3);
+    bn.b("AdapterSolutionMonitor", ((StringBuilder)localObject2).toString());
+    long l = System.currentTimeMillis();
+    if (l - f.a(paramContext, localObject1.extSoluId) > 86400000L)
     {
-      paramContext.add(String.valueOf(localSolutionItem1.extSoluId));
-      c.a().e().reportString(265219, paramContext);
-      return;
-      paramContext.add(String.valueOf(1));
-      break;
-      label219:
-      paramContext.add(String.valueOf(paramInt3));
+      f.a(paramContext, localObject1.extSoluId, l);
+      localObject2 = new ArrayList();
+      ((ArrayList)localObject2).add(String.valueOf(localObject1.commSoluId));
+      if (paramInt2 == 0) {
+        paramInt1 = 2;
+      } else {
+        paramInt1 = 1;
+      }
+      ((ArrayList)localObject2).add(String.valueOf(paramInt1));
+      if (paramInt3 == 0) {
+        paramContext = "";
+      } else {
+        paramContext = String.valueOf(paramInt3);
+      }
+      ((ArrayList)localObject2).add(paramContext);
+      ((ArrayList)localObject2).add(String.valueOf(localObject1.extSoluId));
+      c.a().e().reportString(265219, (ArrayList)localObject2);
     }
   }
   
   static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
-    SolutionItem localSolutionItem2 = g.a(paramContext).a(paramInt1);
-    SolutionItem localSolutionItem1;
-    if (localSolutionItem2 != null)
+    Object localObject2 = g.a(paramContext).a(paramInt1);
+    Object localObject1;
+    if (localObject2 != null)
     {
-      localSolutionItem1 = localSolutionItem2;
-      if (localSolutionItem2.soluInfo != null) {}
+      localObject1 = localObject2;
+      if (((SolutionItem)localObject2).soluInfo != null) {}
     }
     else
     {
-      localSolutionItem2 = a(paramContext, paramInt1);
-      localSolutionItem1 = localSolutionItem2;
-      if (localSolutionItem2 == null) {
+      localObject2 = a(paramContext, paramInt1);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
         return;
       }
     }
-    bn.b("AdapterSolutionMonitor", "adapterID:" + paramInt1 + " operation:" + paramInt2 + " source:" + paramInt3 + " errCode:" + paramInt4 + " pkgName:" + paramString);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("adapterID:");
+    ((StringBuilder)localObject2).append(paramInt1);
+    ((StringBuilder)localObject2).append(" operation:");
+    ((StringBuilder)localObject2).append(paramInt2);
+    ((StringBuilder)localObject2).append(" source:");
+    ((StringBuilder)localObject2).append(paramInt3);
+    ((StringBuilder)localObject2).append(" errCode:");
+    ((StringBuilder)localObject2).append(paramInt4);
+    ((StringBuilder)localObject2).append(" pkgName:");
+    ((StringBuilder)localObject2).append(paramString);
+    bn.b("AdapterSolutionMonitor", ((StringBuilder)localObject2).toString());
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(String.valueOf(localSolutionItem1.commSoluId));
+    localArrayList.add(String.valueOf(localObject1.commSoluId));
     paramInt1 = 14;
     switch (paramInt2)
     {
     default: 
-      localArrayList.add(String.valueOf(paramInt1 + (paramInt3 << 7) + (paramInt4 << 18)));
-      if (!TextUtils.isEmpty(paramString)) {
-        localSolutionItem2 = null;
-      }
       break;
+    case 1: 
+      paramInt1 = 30;
+      break;
+    case 0: 
+      paramInt1 = 46;
+      break;
+    case -1: 
+      paramInt1 = 78;
     }
-    for (;;)
+    localArrayList.add(String.valueOf(paramInt1 + (paramInt3 << 7) + (paramInt4 << 18)));
+    boolean bool = TextUtils.isEmpty(paramString);
+    paramInt2 = 0;
+    paramInt1 = paramInt2;
+    if (!bool) {
+      localObject2 = null;
+    }
+    try
     {
-      try
-      {
-        paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
-        if (paramContext != null)
-        {
-          paramInt1 = paramContext.versionCode;
-          if (paramInt1 == 0)
-          {
-            localArrayList.add("");
-            localArrayList.add(String.valueOf(localSolutionItem1.extSoluId));
-            c.a().e().reportString(265219, localArrayList);
-            return;
-            paramInt1 = 78;
-            break;
-            paramInt1 = 46;
-            break;
-            paramInt1 = 30;
-            break;
-          }
-          localArrayList.add(String.valueOf(paramInt1));
-          continue;
-        }
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+      paramInt1 = paramInt2;
+      if (paramContext != null) {
+        paramInt1 = paramContext.versionCode;
       }
-      catch (Throwable paramContext)
-      {
-        paramContext = localSolutionItem2;
-        continue;
+      if (paramInt1 == 0) {
+        paramContext = "";
+      } else {
+        paramContext = String.valueOf(paramInt1);
       }
-      paramInt1 = 0;
+      localArrayList.add(paramContext);
+      localArrayList.add(String.valueOf(localObject1.extSoluId));
+      c.a().e().reportString(265219, localArrayList);
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        paramContext = (Context)localObject2;
+      }
     }
   }
 }

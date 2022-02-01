@@ -22,7 +22,10 @@ public final class TypeTransform
   
   public static int byteArrayHLToInt(byte[] paramArrayOfByte, int paramInt)
   {
-    return (paramArrayOfByte[paramInt] & 0xFF) << 24 | (paramArrayOfByte[(paramInt + 1)] & 0xFF) << 16 | (paramArrayOfByte[(paramInt + 2)] & 0xFF) << 8 | (paramArrayOfByte[(paramInt + 3)] & 0xFF) << 0;
+    int i = paramArrayOfByte[paramInt];
+    int j = paramArrayOfByte[(paramInt + 1)];
+    int k = paramArrayOfByte[(paramInt + 2)];
+    return (paramArrayOfByte[(paramInt + 3)] & 0xFF) << 0 | (i & 0xFF) << 24 | (j & 0xFF) << 16 | (k & 0xFF) << 8;
   }
   
   public static long byteArrayHLToLong(byte[] paramArrayOfByte)
@@ -32,7 +35,14 @@ public final class TypeTransform
   
   public static long byteArrayHLToLong(byte[] paramArrayOfByte, int paramInt)
   {
-    return (paramArrayOfByte[paramInt] & 0xFF) << 56 | (paramArrayOfByte[(paramInt + 1)] & 0xFF) << 48 | (paramArrayOfByte[(paramInt + 2)] & 0xFF) << 40 | (paramArrayOfByte[(paramInt + 3)] & 0xFF) << 32 | (paramArrayOfByte[(paramInt + 4)] & 0xFF) << 24 | (paramArrayOfByte[(paramInt + 5)] & 0xFF) << 16 | (paramArrayOfByte[(paramInt + 6)] & 0xFF) << 8 | (paramArrayOfByte[(paramInt + 7)] & 0xFF) << 0;
+    long l1 = paramArrayOfByte[paramInt];
+    long l2 = paramArrayOfByte[(paramInt + 1)];
+    long l3 = paramArrayOfByte[(paramInt + 2)];
+    long l4 = paramArrayOfByte[(paramInt + 3)];
+    long l5 = paramArrayOfByte[(paramInt + 4)];
+    long l6 = paramArrayOfByte[(paramInt + 5)];
+    long l7 = paramArrayOfByte[(paramInt + 6)];
+    return (paramArrayOfByte[(paramInt + 7)] & 0xFF) << 0 | (l1 & 0xFF) << 56 | (l2 & 0xFF) << 48 | (l3 & 0xFF) << 40 | (l4 & 0xFF) << 32 | (l5 & 0xFF) << 24 | (l6 & 0xFF) << 16 | (l7 & 0xFF) << 8;
   }
   
   public static int byteArrayLHToInt(byte[] paramArrayOfByte)
@@ -42,7 +52,10 @@ public final class TypeTransform
   
   public static int byteArrayLHToInt(byte[] paramArrayOfByte, int paramInt)
   {
-    return (paramArrayOfByte[(paramInt + 3)] & 0xFF) << 24 | (paramArrayOfByte[(paramInt + 2)] & 0xFF) << 16 | (paramArrayOfByte[(paramInt + 1)] & 0xFF) << 8 | (paramArrayOfByte[paramInt] & 0xFF) << 0;
+    int i = paramArrayOfByte[(paramInt + 3)];
+    int j = paramArrayOfByte[(paramInt + 2)];
+    int k = paramArrayOfByte[(paramInt + 1)];
+    return (paramArrayOfByte[paramInt] & 0xFF) << 0 | (i & 0xFF) << 24 | (j & 0xFF) << 16 | (k & 0xFF) << 8;
   }
   
   public static long byteArrayLHToLong(byte[] paramArrayOfByte)
@@ -52,7 +65,14 @@ public final class TypeTransform
   
   public static long byteArrayLHToLong(byte[] paramArrayOfByte, int paramInt)
   {
-    return (paramArrayOfByte[(paramInt + 7)] & 0xFF) << 56 | (paramArrayOfByte[(paramInt + 6)] & 0xFF) << 48 | (paramArrayOfByte[5] & 0xFF) << 40 | (paramArrayOfByte[(paramInt + 4)] & 0xFF) << 32 | (paramArrayOfByte[(paramInt + 3)] & 0xFF) << 24 | (paramArrayOfByte[(paramInt + 2)] & 0xFF) << 16 | (paramArrayOfByte[(paramInt + 1)] & 0xFF) << 8 | (paramArrayOfByte[paramInt] & 0xFF) << 0;
+    long l1 = paramArrayOfByte[(paramInt + 7)];
+    long l2 = paramArrayOfByte[(paramInt + 6)];
+    long l3 = paramArrayOfByte[5];
+    long l4 = paramArrayOfByte[(paramInt + 4)];
+    long l5 = paramArrayOfByte[(paramInt + 3)];
+    long l6 = paramArrayOfByte[(paramInt + 2)];
+    long l7 = paramArrayOfByte[(paramInt + 1)];
+    return (paramArrayOfByte[paramInt] & 0xFF) << 0 | (l1 & 0xFF) << 56 | (l2 & 0xFF) << 48 | (l3 & 0xFF) << 40 | (l4 & 0xFF) << 32 | (l5 & 0xFF) << 24 | (l6 & 0xFF) << 16 | (l7 & 0xFF) << 8;
   }
   
   public static byte[] intToByteArrayHL(int paramInt)

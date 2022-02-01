@@ -22,44 +22,61 @@ public final class DefaultDatabaseErrorHandler
   
   private void deleteDatabaseFile(String paramString)
   {
-    int j = 0;
-    int i = 0;
-    if ((paramString.equalsIgnoreCase(":memory:")) || (paramString.trim().length() == 0)) {}
-    for (;;)
+    if (!paramString.equalsIgnoreCase(":memory:"))
     {
-      return;
-      Log.e("WCDB.DefaultDatabaseErrorHandler", "Remove database file: " + paramString);
-      Object localObject1;
+      if (paramString.trim().length() == 0) {
+        return;
+      }
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Remove database file: ");
+      ((StringBuilder)localObject1).append(paramString);
+      Log.e("WCDB.DefaultDatabaseErrorHandler", ((StringBuilder)localObject1).toString());
+      boolean bool = this.mNoCorruptionBackup;
+      int j = 0;
+      int i = 0;
       Object localObject2;
-      if (!this.mNoCorruptionBackup)
+      StringBuilder localStringBuilder1;
+      if (!bool)
       {
         localObject1 = new File(paramString);
         localObject2 = new File(((File)localObject1).getParentFile(), "corrupted");
         if (!((File)localObject2).mkdirs()) {
           Log.e("WCDB.DefaultDatabaseErrorHandler", "Could not create directory for corrupted database. Corruption backup may be unavailable.");
         }
-        localObject1 = ((File)localObject2).getPath() + "/" + ((File)localObject1).getName();
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append(((File)localObject2).getPath());
+        localStringBuilder1.append("/");
+        localStringBuilder1.append(((File)localObject1).getName());
+        localObject1 = localStringBuilder1.toString();
         localObject2 = SUFFIX_TO_BACKUP;
         j = localObject2.length;
         while (i < j)
         {
-          String str = localObject2[i];
-          moveOrDeleteFile(paramString + str, (String)localObject1 + str);
+          localStringBuilder1 = localObject2[i];
+          Object localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(paramString);
+          ((StringBuilder)localObject3).append(localStringBuilder1);
+          localObject3 = ((StringBuilder)localObject3).toString();
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append((String)localObject1);
+          localStringBuilder2.append(localStringBuilder1);
+          moveOrDeleteFile((String)localObject3, localStringBuilder2.toString());
           i += 1;
         }
       }
-      else
+      localObject1 = SUFFIX_TO_BACKUP;
+      int k = localObject1.length;
+      i = j;
+      while (i < k)
       {
-        localObject1 = SUFFIX_TO_BACKUP;
-        int k = localObject1.length;
-        i = j;
-        while (i < k)
-        {
-          localObject2 = localObject1[i];
-          deleteFile(paramString + (String)localObject2);
-          i += 1;
-        }
+        localObject2 = localObject1[i];
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append(paramString);
+        localStringBuilder1.append((String)localObject2);
+        deleteFile(localStringBuilder1.toString());
+        i += 1;
       }
+      return;
     }
   }
   
@@ -82,124 +99,127 @@ public final class DefaultDatabaseErrorHandler
   public void onCorruption(com.tencent.wcdb.database.SQLiteDatabase paramSQLiteDatabase)
   {
     // Byte code:
-    //   0: ldc 12
-    //   2: new 59	java/lang/StringBuilder
-    //   5: dup
-    //   6: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   0: new 59	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   7: astore_2
+    //   8: aload_2
     //   9: ldc 122
     //   11: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14: aload_1
-    //   15: invokevirtual 125	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
-    //   18: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   24: invokestatic 75	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   27: aload_1
-    //   28: invokevirtual 128	com/tencent/wcdb/database/SQLiteDatabase:isOpen	()Z
-    //   31: ifne +12 -> 43
-    //   34: aload_0
-    //   35: aload_1
-    //   36: invokevirtual 125	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
-    //   39: invokespecial 130	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
-    //   42: return
-    //   43: aconst_null
-    //   44: astore_2
-    //   45: aload_1
-    //   46: invokevirtual 134	com/tencent/wcdb/database/SQLiteDatabase:getAttachedDbs	()Ljava/util/List;
-    //   49: astore_3
-    //   50: aload_3
-    //   51: astore_2
-    //   52: aload_1
-    //   53: invokevirtual 138	com/tencent/wcdb/database/SQLiteDatabase:getTraceCallback	()Lcom/tencent/wcdb/database/SQLiteTrace;
-    //   56: astore_3
-    //   57: aload_3
-    //   58: ifnull +10 -> 68
-    //   61: aload_3
-    //   62: aload_1
-    //   63: invokeinterface 143 2 0
+    //   14: pop
+    //   15: aload_2
+    //   16: aload_1
+    //   17: invokevirtual 125	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
+    //   20: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: pop
+    //   24: ldc 12
+    //   26: aload_2
+    //   27: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokestatic 75	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   33: aload_1
+    //   34: invokevirtual 128	com/tencent/wcdb/database/SQLiteDatabase:isOpen	()Z
+    //   37: ifne +12 -> 49
+    //   40: aload_0
+    //   41: aload_1
+    //   42: invokevirtual 125	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
+    //   45: invokespecial 130	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
+    //   48: return
+    //   49: aconst_null
+    //   50: astore_2
+    //   51: aload_1
+    //   52: invokevirtual 134	com/tencent/wcdb/database/SQLiteDatabase:getAttachedDbs	()Ljava/util/List;
+    //   55: astore_3
+    //   56: aload_3
+    //   57: astore_2
+    //   58: aload_1
+    //   59: invokevirtual 138	com/tencent/wcdb/database/SQLiteDatabase:getTraceCallback	()Lcom/tencent/wcdb/database/SQLiteTrace;
+    //   62: astore_3
+    //   63: aload_3
+    //   64: ifnull +10 -> 74
+    //   67: aload_3
     //   68: aload_1
-    //   69: invokevirtual 146	com/tencent/wcdb/database/SQLiteDatabase:close	()V
-    //   72: aload_2
-    //   73: ifnull +41 -> 114
-    //   76: aload_2
-    //   77: invokeinterface 152 1 0
-    //   82: astore_1
-    //   83: aload_1
-    //   84: invokeinterface 157 1 0
-    //   89: ifeq -47 -> 42
-    //   92: aload_0
-    //   93: aload_1
-    //   94: invokeinterface 161 1 0
-    //   99: checkcast 163	android/util/Pair
-    //   102: getfield 167	android/util/Pair:second	Ljava/lang/Object;
-    //   105: checkcast 18	java/lang/String
-    //   108: invokespecial 130	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
-    //   111: goto -28 -> 83
-    //   114: aload_0
-    //   115: aload_1
-    //   116: invokevirtual 125	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
-    //   119: invokespecial 130	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
-    //   122: return
-    //   123: astore_3
-    //   124: aload_2
-    //   125: ifnull +41 -> 166
-    //   128: aload_2
-    //   129: invokeinterface 152 1 0
-    //   134: astore_1
-    //   135: aload_1
-    //   136: invokeinterface 157 1 0
-    //   141: ifeq -99 -> 42
-    //   144: aload_0
-    //   145: aload_1
-    //   146: invokeinterface 161 1 0
-    //   151: checkcast 163	android/util/Pair
-    //   154: getfield 167	android/util/Pair:second	Ljava/lang/Object;
-    //   157: checkcast 18	java/lang/String
-    //   160: invokespecial 130	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
-    //   163: goto -28 -> 135
-    //   166: aload_0
-    //   167: aload_1
-    //   168: invokevirtual 125	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
-    //   171: invokespecial 130	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
-    //   174: return
-    //   175: astore_3
-    //   176: aload_2
-    //   177: ifnull +41 -> 218
-    //   180: aload_2
-    //   181: invokeinterface 152 1 0
-    //   186: astore_1
-    //   187: aload_1
-    //   188: invokeinterface 157 1 0
-    //   193: ifeq +33 -> 226
-    //   196: aload_0
-    //   197: aload_1
-    //   198: invokeinterface 161 1 0
-    //   203: checkcast 163	android/util/Pair
-    //   206: getfield 167	android/util/Pair:second	Ljava/lang/Object;
-    //   209: checkcast 18	java/lang/String
-    //   212: invokespecial 130	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
-    //   215: goto -28 -> 187
-    //   218: aload_0
-    //   219: aload_1
-    //   220: invokevirtual 125	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
-    //   223: invokespecial 130	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
-    //   226: aload_3
-    //   227: athrow
-    //   228: astore_3
-    //   229: goto -177 -> 52
+    //   69: invokeinterface 143 2 0
+    //   74: aload_1
+    //   75: invokevirtual 146	com/tencent/wcdb/database/SQLiteDatabase:close	()V
+    //   78: aload_2
+    //   79: ifnull +41 -> 120
+    //   82: aload_2
+    //   83: invokeinterface 152 1 0
+    //   88: astore_1
+    //   89: aload_1
+    //   90: invokeinterface 157 1 0
+    //   95: ifeq +129 -> 224
+    //   98: aload_0
+    //   99: aload_1
+    //   100: invokeinterface 161 1 0
+    //   105: checkcast 163	android/util/Pair
+    //   108: getfield 167	android/util/Pair:second	Ljava/lang/Object;
+    //   111: checkcast 18	java/lang/String
+    //   114: invokespecial 130	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
+    //   117: goto -28 -> 89
+    //   120: aload_0
+    //   121: aload_1
+    //   122: invokevirtual 125	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
+    //   125: invokespecial 130	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
+    //   128: return
+    //   129: astore_3
+    //   130: aload_2
+    //   131: ifnull +41 -> 172
+    //   134: aload_2
+    //   135: invokeinterface 152 1 0
+    //   140: astore_1
+    //   141: aload_1
+    //   142: invokeinterface 157 1 0
+    //   147: ifeq +33 -> 180
+    //   150: aload_0
+    //   151: aload_1
+    //   152: invokeinterface 161 1 0
+    //   157: checkcast 163	android/util/Pair
+    //   160: getfield 167	android/util/Pair:second	Ljava/lang/Object;
+    //   163: checkcast 18	java/lang/String
+    //   166: invokespecial 130	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
+    //   169: goto -28 -> 141
+    //   172: aload_0
+    //   173: aload_1
+    //   174: invokevirtual 125	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
+    //   177: invokespecial 130	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
+    //   180: aload_3
+    //   181: athrow
+    //   182: aload_2
+    //   183: ifnull -63 -> 120
+    //   186: aload_2
+    //   187: invokeinterface 152 1 0
+    //   192: astore_1
+    //   193: aload_1
+    //   194: invokeinterface 157 1 0
+    //   199: ifeq +25 -> 224
+    //   202: aload_0
+    //   203: aload_1
+    //   204: invokeinterface 161 1 0
+    //   209: checkcast 163	android/util/Pair
+    //   212: getfield 167	android/util/Pair:second	Ljava/lang/Object;
+    //   215: checkcast 18	java/lang/String
+    //   218: invokespecial 130	com/tencent/wcdb/DefaultDatabaseErrorHandler:deleteDatabaseFile	(Ljava/lang/String;)V
+    //   221: goto -28 -> 193
+    //   224: return
+    //   225: astore_3
+    //   226: goto -168 -> 58
+    //   229: astore_3
+    //   230: goto -48 -> 182
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	232	0	this	DefaultDatabaseErrorHandler
-    //   0	232	1	paramSQLiteDatabase	com.tencent.wcdb.database.SQLiteDatabase
-    //   44	137	2	localObject1	Object
-    //   49	13	3	localObject2	Object
-    //   123	1	3	localSQLiteException1	com.tencent.wcdb.database.SQLiteException
-    //   175	52	3	localObject3	Object
-    //   228	1	3	localSQLiteException2	com.tencent.wcdb.database.SQLiteException
+    //   0	233	0	this	DefaultDatabaseErrorHandler
+    //   0	233	1	paramSQLiteDatabase	com.tencent.wcdb.database.SQLiteDatabase
+    //   7	180	2	localObject1	Object
+    //   55	13	3	localObject2	Object
+    //   129	52	3	localObject3	Object
+    //   225	1	3	localSQLiteException1	com.tencent.wcdb.database.SQLiteException
+    //   229	1	3	localSQLiteException2	com.tencent.wcdb.database.SQLiteException
     // Exception table:
     //   from	to	target	type
-    //   68	72	123	com/tencent/wcdb/database/SQLiteException
-    //   68	72	175	finally
-    //   45	50	228	com/tencent/wcdb/database/SQLiteException
+    //   74	78	129	finally
+    //   51	56	225	com/tencent/wcdb/database/SQLiteException
+    //   74	78	229	com/tencent/wcdb/database/SQLiteException
   }
 }
 

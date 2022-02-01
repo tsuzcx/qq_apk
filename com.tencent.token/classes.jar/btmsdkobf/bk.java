@@ -22,77 +22,76 @@ public class bk
   {
     public dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
     {
-      if ((paramAnonymousInt2 != 10010) || (paramAnonymousJceStruct == null)) {
-        return null;
-      }
-      Object localObject = ((ah)paramAnonymousJceStruct).bo;
-      if ((localObject == null) || (((List)localObject).size() == 0)) {
-        return null;
-      }
-      paramAnonymousJceStruct = new w();
-      paramAnonymousJceStruct.aW = new ArrayList();
-      StringBuilder localStringBuilder = new StringBuilder();
-      bk.a(bk.this, ((ac)((List)localObject).get(0)).bg);
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      if (paramAnonymousInt2 == 10010)
       {
-        ac localac = (ac)((Iterator)localObject).next();
-        if ((localac.bk == null) || (localac.bk.size() == 0))
-        {
-          paramAnonymousJceStruct.aW.add(bk.a(bk.this, localac.bg, localac.bh, null, 3));
+        if (paramAnonymousJceStruct == null) {
+          return null;
         }
-        else
+        Object localObject1 = ((ah)paramAnonymousJceStruct).bo;
+        if (localObject1 != null)
         {
-          Iterator localIterator = localac.bk.iterator();
-          label185:
-          label333:
-          label343:
-          for (;;)
+          if (((List)localObject1).size() == 0) {
+            return null;
+          }
+          paramAnonymousJceStruct = new w();
+          paramAnonymousJceStruct.aW = new ArrayList();
+          StringBuilder localStringBuilder = new StringBuilder();
+          bk.a(bk.this, ((ac)((List)localObject1).get(0)).bg);
+          localObject1 = ((List)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            z localz;
-            ConchService.ConchPushInfo localConchPushInfo;
-            SparseArray localSparseArray;
-            if (localIterator.hasNext())
+            ac localac = (ac)((Iterator)localObject1).next();
+            if ((localac.bk != null) && (localac.bk.size() != 0))
             {
-              localz = (z)localIterator.next();
-              localConchPushInfo = new ConchService.ConchPushInfo(localac.bg, localac.bh, localz);
-              localStringBuilder.append(localz.cmdId + ";");
-              localSparseArray = bk.b(bk.this);
-              if (localConchPushInfo.mRevokeInfo != null) {
-                break label333;
+              Iterator localIterator = localac.bk.iterator();
+              while (localIterator.hasNext())
+              {
+                z localz = (z)localIterator.next();
+                ConchService.ConchPushInfo localConchPushInfo = new ConchService.ConchPushInfo(localac.bg, localac.bh, localz);
+                Object localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append(localz.cmdId);
+                ((StringBuilder)localObject2).append(";");
+                localStringBuilder.append(((StringBuilder)localObject2).toString());
+                localObject2 = bk.b(bk.this);
+                if (localConchPushInfo.mRevokeInfo == null) {
+                  paramAnonymousInt1 = localz.cmdId;
+                } else {
+                  paramAnonymousInt1 = localConchPushInfo.mRevokeInfo.mRevokeCmdId;
+                }
+                if ((ConchService.IConchPushListener)((SparseArray)localObject2).get(paramAnonymousInt1) != null)
+                {
+                  bk.a(bk.this, localConchPushInfo);
+                  paramAnonymousJceStruct.aW.add(bk.a(bk.this, localac.bg, localac.bh, localz, 1));
+                }
               }
             }
-            for (paramAnonymousInt1 = localz.cmdId;; paramAnonymousInt1 = localConchPushInfo.mRevokeInfo.mRevokeCmdId)
+            else
             {
-              if ((ConchService.IConchPushListener)localSparseArray.get(paramAnonymousInt1) == null) {
-                break label343;
-              }
-              bk.a(bk.this, localConchPushInfo);
-              paramAnonymousJceStruct.aW.add(bk.a(bk.this, localac.bg, localac.bh, localz, 1));
-              break label185;
-              break;
+              paramAnonymousJceStruct.aW.add(bk.a(bk.this, localac.bg, localac.bh, null, 3));
             }
           }
+          if (!TextUtils.isEmpty(localStringBuilder.toString())) {
+            be.SaveStringData(1320064, localStringBuilder.toString());
+          }
+          return new dj(Long.valueOf(paramAnonymousLong), Integer.valueOf(paramAnonymousInt2), paramAnonymousJceStruct);
         }
       }
-      if (!TextUtils.isEmpty(localStringBuilder.toString())) {
-        be.SaveStringData(1320064, localStringBuilder.toString());
-      }
-      return new dj(Long.valueOf(paramAnonymousLong), Integer.valueOf(paramAnonymousInt2), paramAnonymousJceStruct);
+      return null;
     }
   };
   
   public static bk G()
   {
-    if (fT == null) {}
-    try
-    {
-      if (fT == null) {
-        fT = new bk();
+    if (fT == null) {
+      try
+      {
+        if (fT == null) {
+          fT = new bk();
+        }
       }
-      return fT;
+      finally {}
     }
-    finally {}
+    return fT;
   }
   
   private void H()
@@ -103,22 +102,25 @@ public class bk
       {
         public void run()
         {
-          x localx = null;
-          synchronized (bk.d(bk.this))
+          for (;;)
           {
-            if (bk.e(bk.this).size() > 0)
+            synchronized (bk.d(bk.this))
             {
-              localx = new x();
-              localx.aW = new ArrayList(bk.e(bk.this));
-              bk.e(bk.this).clear();
-            }
-            if ((localx != null) && (localx.aW != null)) {
-              bk.c(bk.this).a(21, localx, new af(), 2, new cj()
+              if (bk.e(bk.this).size() > 0)
               {
-                public void onFinish(int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3, int paramAnonymous2Int4, JceStruct paramAnonymous2JceStruct) {}
-              }, 0L);
+                x localx = new x();
+                localx.aW = new ArrayList(bk.e(bk.this));
+                bk.e(bk.this).clear();
+                if ((localx != null) && (localx.aW != null)) {
+                  bk.c(bk.this).a(21, localx, new af(), 2, new cj()
+                  {
+                    public void onFinish(int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3, int paramAnonymous2Int4, JceStruct paramAnonymous2JceStruct) {}
+                  }, 0L);
+                }
+                return;
+              }
             }
-            return;
+            Object localObject2 = null;
           }
         }
       }, "conchRet");
@@ -158,22 +160,20 @@ public class bk
           Object localObject = bk.b(bk.this);
           int i = j;
           if (localConchPushInfo != null) {
-            if (localConchPushInfo.mRevokeInfo != null) {
-              break label60;
+            if (localConchPushInfo.mRevokeInfo == null) {
+              i = j;
+            } else {
+              i = localConchPushInfo.mRevokeInfo.mRevokeCmdId;
             }
           }
-          for (i = j;; i = localConchPushInfo.mRevokeInfo.mRevokeCmdId)
+          localObject = (ConchService.IConchPushListener)((SparseArray)localObject).get(i);
+          if (localObject != null) {}
+          try
           {
-            localObject = (ConchService.IConchPushListener)((SparseArray)localObject).get(i);
-            if (localObject != null) {}
-            label60:
-            try
-            {
-              ((ConchService.IConchPushListener)localObject).onRecvPush(localConchPushInfo);
-              return;
-            }
-            catch (Throwable localThrowable) {}
+            ((ConchService.IConchPushListener)localObject).onRecvPush(localConchPushInfo);
+            return;
           }
+          catch (Throwable localThrowable) {}
         }
       }, "conchP");
       return;
@@ -220,56 +220,64 @@ public class bk
     localab.phase = paramInt3;
     switch (paramInt3)
     {
+    case 3: 
     default: 
       localab.bi = paramInt4;
+      break;
+    case 2: 
+      localab.bj = paramInt4;
+      break;
+    case 1: 
+      localab.action = paramInt4;
     }
     synchronized (this.fU)
     {
-      for (;;)
-      {
-        this.fW.add(localab);
-        H();
-        return;
-        localab.bi = paramInt4;
-        continue;
-        localab.action = paramInt4;
-      }
-      localab.bj = paramInt4;
+      this.fW.add(localab);
+      H();
+      return;
     }
   }
   
   public void a(long paramLong, List<Integer> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return;
-    }
-    synchronized (this.fU)
+    if (paramList != null)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      if (paramList.size() <= 0) {
+        return;
+      }
+      synchronized (this.fU)
       {
-        Integer localInteger = (Integer)paramList.next();
-        if (this.fV.get(localInteger.intValue()) != null) {
-          this.fV.remove(localInteger.intValue());
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          Integer localInteger = (Integer)paramList.next();
+          if (this.fV.get(localInteger.intValue()) != null) {
+            this.fV.remove(localInteger.intValue());
+          }
         }
+        return;
       }
     }
   }
   
   public void a(long paramLong, List<Integer> paramList, ConchService.IConchPushListener paramIConchPushListener)
   {
-    if ((paramList == null) || (paramList.size() <= 0) || (paramIConchPushListener == null)) {
-      return;
-    }
-    synchronized (this.fU)
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      if (paramIConchPushListener == null) {
+        return;
+      }
+      synchronized (this.fU)
       {
-        Integer localInteger = (Integer)paramList.next();
-        if (this.fV.get(localInteger.intValue()) == null) {
-          this.fV.put(localInteger.intValue(), paramIConchPushListener);
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          Integer localInteger = (Integer)paramList.next();
+          if (this.fV.get(localInteger.intValue()) == null) {
+            this.fV.put(localInteger.intValue(), paramIConchPushListener);
+          }
         }
+        return;
       }
     }
   }
@@ -286,70 +294,75 @@ public class bk
     {
       public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
       {
-        if (paramAnonymousInt3 != 0)
-        {
+        if (paramAnonymousInt3 != 0) {
           localIConchPushListener.mErrorCode = (paramAnonymousInt3 - 65);
-          if (localIConchPushListener.mErrorCode == 0) {
-            break label66;
+        } else if (paramAnonymousInt4 != 0) {
+          localIConchPushListener.mErrorCode = (paramAnonymousInt4 - 65);
+        } else if (paramAnonymousInt2 != 10011) {
+          localIConchPushListener.mErrorCode = -4000;
+        }
+        if (localIConchPushListener.mErrorCode != 0) {
+          return;
+        }
+        if (paramAnonymousJceStruct != null)
+        {
+          Object localObject = (ag)paramAnonymousJceStruct;
+          if (((ag)localObject).bo != null)
+          {
+            if (((ag)localObject).bo.size() == 0) {
+              return;
+            }
+            paramAnonymousJceStruct = new w();
+            paramAnonymousJceStruct.aW = new ArrayList();
+            StringBuilder localStringBuilder1 = new StringBuilder();
+            if (bk.a(bk.this) == ((ac)((ag)localObject).bo.get(0)).bg) {
+              return;
+            }
+            localObject = ((ag)localObject).bo.iterator();
+            while (((Iterator)localObject).hasNext())
+            {
+              ac localac = (ac)((Iterator)localObject).next();
+              if ((localac.bk != null) && (localac.bk.size() != 0))
+              {
+                Iterator localIterator = localac.bk.iterator();
+                while (localIterator.hasNext())
+                {
+                  z localz = (z)localIterator.next();
+                  StringBuilder localStringBuilder2;
+                  if ((localz.cmdId != paramInt) && (bk.b(bk.this).get(localz.cmdId) == null))
+                  {
+                    localStringBuilder2 = new StringBuilder();
+                    localStringBuilder2.append("2-");
+                    localStringBuilder2.append(localz.cmdId);
+                    localStringBuilder2.append(";");
+                    localStringBuilder1.append(localStringBuilder2.toString());
+                    paramAnonymousJceStruct.aW.add(bk.a(bk.this, localac.bg, localac.bh, localz, 5));
+                  }
+                  else
+                  {
+                    bk.a(bk.this, new ConchService.ConchPushInfo(localac.bg, localac.bh, localz));
+                    paramAnonymousJceStruct.aW.add(bk.a(bk.this, localac.bg, localac.bh, localz, 1));
+                    localStringBuilder2 = new StringBuilder();
+                    localStringBuilder2.append("1-");
+                    localStringBuilder2.append(localz.cmdId);
+                    localStringBuilder2.append(";");
+                    localStringBuilder1.append(localStringBuilder2.toString());
+                  }
+                }
+              }
+              else
+              {
+                localStringBuilder1.append("0-;");
+                paramAnonymousJceStruct.aW.add(bk.a(bk.this, localac.bg, localac.bh, null, 3));
+              }
+            }
+            if (paramAnonymousJceStruct.aW.size() > 0)
+            {
+              be.SaveStringData(1320061, localStringBuilder1.toString());
+              bk.c(bk.this).a(13, paramAnonymousJceStruct, new ae(), 2, null, 0L);
+            }
           }
         }
-        label66:
-        w localw;
-        StringBuilder localStringBuilder;
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              if (paramAnonymousInt4 != 0)
-              {
-                localIConchPushListener.mErrorCode = (paramAnonymousInt4 - 65);
-                break;
-              }
-              if (paramAnonymousInt2 == 10011) {
-                break;
-              }
-              localIConchPushListener.mErrorCode = -4000;
-              break;
-            } while ((paramAnonymousJceStruct == null) || (((ag)paramAnonymousJceStruct).bo == null) || (((ag)paramAnonymousJceStruct).bo.size() == 0));
-            localw = new w();
-            localw.aW = new ArrayList();
-            localStringBuilder = new StringBuilder();
-          } while (bk.a(bk.this) == ((ac)((ag)paramAnonymousJceStruct).bo.get(0)).bg);
-          paramAnonymousJceStruct = ((ag)paramAnonymousJceStruct).bo.iterator();
-          while (paramAnonymousJceStruct.hasNext())
-          {
-            ac localac = (ac)paramAnonymousJceStruct.next();
-            if ((localac.bk == null) || (localac.bk.size() == 0))
-            {
-              localStringBuilder.append("0-;");
-              localw.aW.add(bk.a(bk.this, localac.bg, localac.bh, null, 3));
-            }
-            else
-            {
-              Iterator localIterator = localac.bk.iterator();
-              while (localIterator.hasNext())
-              {
-                z localz = (z)localIterator.next();
-                if ((localz.cmdId == paramInt) || (bk.b(bk.this).get(localz.cmdId) != null))
-                {
-                  bk.a(bk.this, new ConchService.ConchPushInfo(localac.bg, localac.bh, localz));
-                  localw.aW.add(bk.a(bk.this, localac.bg, localac.bh, localz, 1));
-                  localStringBuilder.append("1-" + localz.cmdId + ";");
-                }
-                else
-                {
-                  localStringBuilder.append("2-" + localz.cmdId + ";");
-                  localw.aW.add(bk.a(bk.this, localac.bg, localac.bh, localz, 5));
-                }
-              }
-            }
-          }
-        } while (localw.aW.size() <= 0);
-        be.SaveStringData(1320061, localStringBuilder.toString());
-        bk.c(bk.this).a(13, localw, new ae(), 2, null, 0L);
       }
     }, 0L);
   }

@@ -84,7 +84,7 @@ public class VectorDrawableCompat
   
   static int applyAlpha(int paramInt, float paramFloat)
   {
-    return (int)(Color.alpha(paramInt) * paramFloat) << 24 | 0xFFFFFF & paramInt;
+    return paramInt & 0xFFFFFF | (int)(Color.alpha(paramInt) * paramFloat) << 24;
   }
   
   @Nullable
@@ -101,30 +101,25 @@ public class VectorDrawableCompat
     try
     {
       localObject = paramResources.getXml(paramInt);
-      localAttributeSet = Xml.asAttributeSet((XmlPullParser)localObject);
+      AttributeSet localAttributeSet = Xml.asAttributeSet((XmlPullParser)localObject);
       do
       {
         paramInt = ((XmlPullParser)localObject).next();
       } while ((paramInt != 2) && (paramInt != 1));
-      if (paramInt != 2) {
-        throw new XmlPullParserException("No start tag found");
+      if (paramInt == 2) {
+        return createFromXmlInner(paramResources, (XmlPullParser)localObject, localAttributeSet, paramTheme);
       }
-    }
-    catch (XmlPullParserException paramResources)
-    {
-      AttributeSet localAttributeSet;
-      Log.e("VectorDrawableCompat", "parser error", paramResources);
-      return null;
-      paramResources = createFromXmlInner(paramResources, (XmlPullParser)localObject, localAttributeSet, paramTheme);
-      return paramResources;
+      throw new XmlPullParserException("No start tag found");
     }
     catch (IOException paramResources)
     {
-      for (;;)
-      {
-        Log.e("VectorDrawableCompat", "parser error", paramResources);
-      }
+      Log.e("VectorDrawableCompat", "parser error", paramResources);
     }
+    catch (XmlPullParserException paramResources)
+    {
+      Log.e("VectorDrawableCompat", "parser error", paramResources);
+    }
+    return null;
   }
   
   public static VectorDrawableCompat createFromXmlInner(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
@@ -142,16 +137,13 @@ public class VectorDrawableCompat
     localArrayDeque.push(localVPathRenderer.mRootGroup);
     int k = paramXmlPullParser.getEventType();
     int m = paramXmlPullParser.getDepth();
-    int i = 1;
-    if ((k != 1) && ((paramXmlPullParser.getDepth() >= m + 1) || (k != 3)))
+    int j;
+    for (int i = 1; (k != 1) && ((paramXmlPullParser.getDepth() >= m + 1) || (k != 3)); i = j)
     {
-      Object localObject;
-      VGroup localVGroup;
-      int j;
       if (k == 2)
       {
-        localObject = paramXmlPullParser.getName();
-        localVGroup = (VGroup)localArrayDeque.peek();
+        Object localObject = paramXmlPullParser.getName();
+        VGroup localVGroup = (VGroup)localArrayDeque.peek();
         if ("path".equals(localObject))
         {
           localObject = new VFullPath();
@@ -160,19 +152,11 @@ public class VectorDrawableCompat
           if (((VFullPath)localObject).getPathName() != null) {
             localVPathRenderer.mVGTargetsMap.put(((VFullPath)localObject).getPathName(), localObject);
           }
-          i = 0;
-          j = localVectorDrawableCompatState.mChangingConfigurations;
-          localVectorDrawableCompatState.mChangingConfigurations = (((VFullPath)localObject).mChangingConfigurations | j);
-          label187:
-          j = i;
+          j = 0;
+          i = localVectorDrawableCompatState.mChangingConfigurations;
+          localVectorDrawableCompatState.mChangingConfigurations = (((VFullPath)localObject).mChangingConfigurations | i);
         }
-      }
-      for (;;)
-      {
-        k = paramXmlPullParser.next();
-        i = j;
-        break;
-        if ("clip-path".equals(localObject))
+        else if ("clip-path".equals(localObject))
         {
           localObject = new VClipPath();
           ((VClipPath)localObject).inflate(paramResources, paramAttributeSet, paramTheme, paramXmlPullParser);
@@ -180,21 +164,30 @@ public class VectorDrawableCompat
           if (((VClipPath)localObject).getPathName() != null) {
             localVPathRenderer.mVGTargetsMap.put(((VClipPath)localObject).getPathName(), localObject);
           }
-          localVectorDrawableCompatState.mChangingConfigurations |= ((VClipPath)localObject).mChangingConfigurations;
-          break label187;
+          j = localVectorDrawableCompatState.mChangingConfigurations;
+          localVectorDrawableCompatState.mChangingConfigurations = (((VClipPath)localObject).mChangingConfigurations | j);
+          j = i;
         }
-        if ("group".equals(localObject))
+        else
         {
-          localObject = new VGroup();
-          ((VGroup)localObject).inflate(paramResources, paramAttributeSet, paramTheme, paramXmlPullParser);
-          localVGroup.mChildren.add(localObject);
-          localArrayDeque.push(localObject);
-          if (((VGroup)localObject).getGroupName() != null) {
-            localVPathRenderer.mVGTargetsMap.put(((VGroup)localObject).getGroupName(), localObject);
+          j = i;
+          if ("group".equals(localObject))
+          {
+            localObject = new VGroup();
+            ((VGroup)localObject).inflate(paramResources, paramAttributeSet, paramTheme, paramXmlPullParser);
+            localVGroup.mChildren.add(localObject);
+            localArrayDeque.push(localObject);
+            if (((VGroup)localObject).getGroupName() != null) {
+              localVPathRenderer.mVGTargetsMap.put(((VGroup)localObject).getGroupName(), localObject);
+            }
+            j = localVectorDrawableCompatState.mChangingConfigurations;
+            localVectorDrawableCompatState.mChangingConfigurations = (((VGroup)localObject).mChangingConfigurations | j);
+            j = i;
           }
-          localVectorDrawableCompatState.mChangingConfigurations |= ((VGroup)localObject).mChangingConfigurations;
         }
-        break label187;
+      }
+      else
+      {
         j = i;
         if (k == 3)
         {
@@ -206,72 +199,94 @@ public class VectorDrawableCompat
           }
         }
       }
+      k = paramXmlPullParser.next();
     }
-    if (i != 0) {
-      throw new XmlPullParserException("no path defined");
+    if (i == 0) {
+      return;
     }
+    throw new XmlPullParserException("no path defined");
   }
   
   private boolean needMirroring()
   {
-    if (Build.VERSION.SDK_INT >= 17) {
-      return (isAutoMirrored()) && (DrawableCompat.getLayoutDirection(this) == 1);
+    int i = Build.VERSION.SDK_INT;
+    boolean bool2 = false;
+    if (i >= 17)
+    {
+      boolean bool1 = bool2;
+      if (isAutoMirrored())
+      {
+        bool1 = bool2;
+        if (DrawableCompat.getLayoutDirection(this) == 1) {
+          bool1 = true;
+        }
+      }
+      return bool1;
     }
     return false;
   }
   
   private static PorterDuff.Mode parseTintModeCompat(int paramInt, PorterDuff.Mode paramMode)
   {
-    switch (paramInt)
+    if (paramInt != 3)
     {
-    case 4: 
-    case 6: 
-    case 7: 
-    case 8: 
-    case 10: 
-    case 11: 
-    case 12: 
-    case 13: 
-    default: 
-      return paramMode;
-    case 3: 
-      return PorterDuff.Mode.SRC_OVER;
-    case 5: 
+      if (paramInt != 5)
+      {
+        if (paramInt != 9)
+        {
+          switch (paramInt)
+          {
+          default: 
+            return paramMode;
+          case 16: 
+            return PorterDuff.Mode.ADD;
+          case 15: 
+            return PorterDuff.Mode.SCREEN;
+          }
+          return PorterDuff.Mode.MULTIPLY;
+        }
+        return PorterDuff.Mode.SRC_ATOP;
+      }
       return PorterDuff.Mode.SRC_IN;
-    case 9: 
-      return PorterDuff.Mode.SRC_ATOP;
-    case 14: 
-      return PorterDuff.Mode.MULTIPLY;
-    case 15: 
-      return PorterDuff.Mode.SCREEN;
     }
-    return PorterDuff.Mode.ADD;
+    return PorterDuff.Mode.SRC_OVER;
   }
   
   private void printGroupTree(VGroup paramVGroup, int paramInt)
   {
+    int j = 0;
     Object localObject = "";
     int i = 0;
     while (i < paramInt)
     {
-      localObject = (String)localObject + "    ";
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("    ");
+      localObject = localStringBuilder.toString();
       i += 1;
     }
-    Log.v("VectorDrawableCompat", (String)localObject + "current group is :" + paramVGroup.getGroupName() + " rotation is " + paramVGroup.mRotate);
-    Log.v("VectorDrawableCompat", (String)localObject + "matrix is :" + paramVGroup.getLocalMatrix().toString());
-    i = 0;
-    if (i < paramVGroup.mChildren.size())
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("current group is :");
+    localStringBuilder.append(paramVGroup.getGroupName());
+    localStringBuilder.append(" rotation is ");
+    localStringBuilder.append(paramVGroup.mRotate);
+    Log.v("VectorDrawableCompat", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("matrix is :");
+    localStringBuilder.append(paramVGroup.getLocalMatrix().toString());
+    Log.v("VectorDrawableCompat", localStringBuilder.toString());
+    i = j;
+    while (i < paramVGroup.mChildren.size())
     {
       localObject = paramVGroup.mChildren.get(i);
       if ((localObject instanceof VGroup)) {
         printGroupTree((VGroup)localObject, paramInt + 1);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         ((VPath)localObject).printVPath(paramInt + 1);
       }
+      i += 1;
     }
   }
   
@@ -287,27 +302,44 @@ public class VectorDrawableCompat
     localVectorDrawableCompatState.mAutoMirrored = TypedArrayUtils.getNamedBoolean(paramTypedArray, paramXmlPullParser, "autoMirrored", 5, localVectorDrawableCompatState.mAutoMirrored);
     localVPathRenderer.mViewportWidth = TypedArrayUtils.getNamedFloat(paramTypedArray, paramXmlPullParser, "viewportWidth", 7, localVPathRenderer.mViewportWidth);
     localVPathRenderer.mViewportHeight = TypedArrayUtils.getNamedFloat(paramTypedArray, paramXmlPullParser, "viewportHeight", 8, localVPathRenderer.mViewportHeight);
-    if (localVPathRenderer.mViewportWidth <= 0.0F) {
-      throw new XmlPullParserException(paramTypedArray.getPositionDescription() + "<vector> tag requires viewportWidth > 0");
-    }
-    if (localVPathRenderer.mViewportHeight <= 0.0F) {
-      throw new XmlPullParserException(paramTypedArray.getPositionDescription() + "<vector> tag requires viewportHeight > 0");
-    }
-    localVPathRenderer.mBaseWidth = paramTypedArray.getDimension(3, localVPathRenderer.mBaseWidth);
-    localVPathRenderer.mBaseHeight = paramTypedArray.getDimension(2, localVPathRenderer.mBaseHeight);
-    if (localVPathRenderer.mBaseWidth <= 0.0F) {
-      throw new XmlPullParserException(paramTypedArray.getPositionDescription() + "<vector> tag requires width > 0");
-    }
-    if (localVPathRenderer.mBaseHeight <= 0.0F) {
-      throw new XmlPullParserException(paramTypedArray.getPositionDescription() + "<vector> tag requires height > 0");
-    }
-    localVPathRenderer.setAlpha(TypedArrayUtils.getNamedFloat(paramTypedArray, paramXmlPullParser, "alpha", 4, localVPathRenderer.getAlpha()));
-    paramTypedArray = paramTypedArray.getString(0);
-    if (paramTypedArray != null)
+    if (localVPathRenderer.mViewportWidth > 0.0F)
     {
-      localVPathRenderer.mRootName = paramTypedArray;
-      localVPathRenderer.mVGTargetsMap.put(paramTypedArray, localVPathRenderer);
+      if (localVPathRenderer.mViewportHeight > 0.0F)
+      {
+        localVPathRenderer.mBaseWidth = paramTypedArray.getDimension(3, localVPathRenderer.mBaseWidth);
+        localVPathRenderer.mBaseHeight = paramTypedArray.getDimension(2, localVPathRenderer.mBaseHeight);
+        if (localVPathRenderer.mBaseWidth > 0.0F)
+        {
+          if (localVPathRenderer.mBaseHeight > 0.0F)
+          {
+            localVPathRenderer.setAlpha(TypedArrayUtils.getNamedFloat(paramTypedArray, paramXmlPullParser, "alpha", 4, localVPathRenderer.getAlpha()));
+            paramTypedArray = paramTypedArray.getString(0);
+            if (paramTypedArray != null)
+            {
+              localVPathRenderer.mRootName = paramTypedArray;
+              localVPathRenderer.mVGTargetsMap.put(paramTypedArray, localVPathRenderer);
+            }
+            return;
+          }
+          paramXmlPullParser = new StringBuilder();
+          paramXmlPullParser.append(paramTypedArray.getPositionDescription());
+          paramXmlPullParser.append("<vector> tag requires height > 0");
+          throw new XmlPullParserException(paramXmlPullParser.toString());
+        }
+        paramXmlPullParser = new StringBuilder();
+        paramXmlPullParser.append(paramTypedArray.getPositionDescription());
+        paramXmlPullParser.append("<vector> tag requires width > 0");
+        throw new XmlPullParserException(paramXmlPullParser.toString());
+      }
+      paramXmlPullParser = new StringBuilder();
+      paramXmlPullParser.append(paramTypedArray.getPositionDescription());
+      paramXmlPullParser.append("<vector> tag requires viewportHeight > 0");
+      throw new XmlPullParserException(paramXmlPullParser.toString());
     }
+    paramXmlPullParser = new StringBuilder();
+    paramXmlPullParser.append(paramTypedArray.getPositionDescription());
+    paramXmlPullParser.append("<vector> tag requires viewportWidth > 0");
+    throw new XmlPullParserException(paramXmlPullParser.toString());
   }
   
   public boolean canApplyTheme()
@@ -320,27 +352,26 @@ public class VectorDrawableCompat
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.mDelegateDrawable != null) {
-      this.mDelegateDrawable.draw(paramCanvas);
-    }
-    Object localObject;
-    int i;
-    int j;
-    do
+    if (this.mDelegateDrawable != null)
     {
-      do
-      {
+      this.mDelegateDrawable.draw(paramCanvas);
+      return;
+    }
+    copyBounds(this.mTmpBounds);
+    if (this.mTmpBounds.width() > 0)
+    {
+      if (this.mTmpBounds.height() <= 0) {
         return;
-        copyBounds(this.mTmpBounds);
-      } while ((this.mTmpBounds.width() <= 0) || (this.mTmpBounds.height() <= 0));
-      if (this.mColorFilter != null) {
-        break;
       }
-      localObject = this.mTintFilter;
+      ColorFilter localColorFilter = this.mColorFilter;
+      Object localObject = localColorFilter;
+      if (localColorFilter == null) {
+        localObject = this.mTintFilter;
+      }
       paramCanvas.getMatrix(this.mTmpMatrix);
       this.mTmpMatrix.getValues(this.mTmpFloats);
-      float f2 = Math.abs(this.mTmpFloats[0]);
-      float f1 = Math.abs(this.mTmpFloats[4]);
+      float f1 = Math.abs(this.mTmpFloats[0]);
+      float f2 = Math.abs(this.mTmpFloats[4]);
       float f4 = Math.abs(this.mTmpFloats[1]);
       float f3 = Math.abs(this.mTmpFloats[3]);
       if ((f4 != 0.0F) || (f3 != 0.0F))
@@ -348,35 +379,38 @@ public class VectorDrawableCompat
         f1 = 1.0F;
         f2 = 1.0F;
       }
-      i = (int)(f2 * this.mTmpBounds.width());
-      j = (int)(f1 * this.mTmpBounds.height());
+      int i = (int)(this.mTmpBounds.width() * f1);
+      int j = (int)(this.mTmpBounds.height() * f2);
       i = Math.min(2048, i);
       j = Math.min(2048, j);
-    } while ((i <= 0) || (j <= 0));
-    int k = paramCanvas.save();
-    paramCanvas.translate(this.mTmpBounds.left, this.mTmpBounds.top);
-    if (needMirroring())
-    {
-      paramCanvas.translate(this.mTmpBounds.width(), 0.0F);
-      paramCanvas.scale(-1.0F, 1.0F);
-    }
-    this.mTmpBounds.offsetTo(0, 0);
-    this.mVectorState.createCachedBitmapIfNeeded(i, j);
-    if (!this.mAllowCaching) {
-      this.mVectorState.updateCachedBitmap(i, j);
-    }
-    for (;;)
-    {
-      this.mVectorState.drawCachedBitmapWithRootAlpha(paramCanvas, (ColorFilter)localObject, this.mTmpBounds);
-      paramCanvas.restoreToCount(k);
-      return;
-      localObject = this.mColorFilter;
-      break;
-      if (!this.mVectorState.canReuseCache())
+      if (i > 0)
       {
-        this.mVectorState.updateCachedBitmap(i, j);
-        this.mVectorState.updateCacheStates();
+        if (j <= 0) {
+          return;
+        }
+        int k = paramCanvas.save();
+        paramCanvas.translate(this.mTmpBounds.left, this.mTmpBounds.top);
+        if (needMirroring())
+        {
+          paramCanvas.translate(this.mTmpBounds.width(), 0.0F);
+          paramCanvas.scale(-1.0F, 1.0F);
+        }
+        this.mTmpBounds.offsetTo(0, 0);
+        this.mVectorState.createCachedBitmapIfNeeded(i, j);
+        if (!this.mAllowCaching)
+        {
+          this.mVectorState.updateCachedBitmap(i, j);
+        }
+        else if (!this.mVectorState.canReuseCache())
+        {
+          this.mVectorState.updateCachedBitmap(i, j);
+          this.mVectorState.updateCacheStates();
+        }
+        this.mVectorState.drawCachedBitmapWithRootAlpha(paramCanvas, (ColorFilter)localObject, this.mTmpBounds);
+        paramCanvas.restoreToCount(k);
+        return;
       }
+      return;
     }
   }
   
@@ -432,14 +466,16 @@ public class VectorDrawableCompat
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public float getPixelSize()
   {
-    if ((this.mVectorState == null) || (this.mVectorState.mVPathRenderer == null) || (this.mVectorState.mVPathRenderer.mBaseWidth == 0.0F) || (this.mVectorState.mVPathRenderer.mBaseHeight == 0.0F) || (this.mVectorState.mVPathRenderer.mViewportHeight == 0.0F) || (this.mVectorState.mVPathRenderer.mViewportWidth == 0.0F)) {
-      return 1.0F;
+    VectorDrawableCompatState localVectorDrawableCompatState = this.mVectorState;
+    if ((localVectorDrawableCompatState != null) && (localVectorDrawableCompatState.mVPathRenderer != null) && (this.mVectorState.mVPathRenderer.mBaseWidth != 0.0F) && (this.mVectorState.mVPathRenderer.mBaseHeight != 0.0F) && (this.mVectorState.mVPathRenderer.mViewportHeight != 0.0F) && (this.mVectorState.mVPathRenderer.mViewportWidth != 0.0F))
+    {
+      float f1 = this.mVectorState.mVPathRenderer.mBaseWidth;
+      float f2 = this.mVectorState.mVPathRenderer.mBaseHeight;
+      float f3 = this.mVectorState.mVPathRenderer.mViewportWidth;
+      float f4 = this.mVectorState.mVPathRenderer.mViewportHeight;
+      return Math.min(f3 / f1, f4 / f2);
     }
-    float f1 = this.mVectorState.mVPathRenderer.mBaseWidth;
-    float f2 = this.mVectorState.mVPathRenderer.mBaseHeight;
-    float f3 = this.mVectorState.mVPathRenderer.mViewportWidth;
-    float f4 = this.mVectorState.mVPathRenderer.mViewportHeight;
-    return Math.min(f3 / f1, f4 / f2);
+    return 1.0F;
   }
   
   Object getTargetByName(String paramString)
@@ -498,19 +534,28 @@ public class VectorDrawableCompat
     if (this.mDelegateDrawable != null) {
       return this.mDelegateDrawable.isStateful();
     }
-    return (super.isStateful()) || ((this.mVectorState != null) && (this.mVectorState.mTint != null) && (this.mVectorState.mTint.isStateful()));
+    if (!super.isStateful())
+    {
+      VectorDrawableCompatState localVectorDrawableCompatState = this.mVectorState;
+      if ((localVectorDrawableCompatState == null) || (localVectorDrawableCompatState.mTint == null) || (!this.mVectorState.mTint.isStateful())) {
+        return false;
+      }
+    }
+    return true;
   }
   
   public Drawable mutate()
   {
-    if (this.mDelegateDrawable != null) {
+    if (this.mDelegateDrawable != null)
+    {
       this.mDelegateDrawable.mutate();
-    }
-    while ((this.mMutated) || (super.mutate() != this)) {
       return this;
     }
-    this.mVectorState = new VectorDrawableCompatState(this.mVectorState);
-    this.mMutated = true;
+    if ((!this.mMutated) && (super.mutate() == this))
+    {
+      this.mVectorState = new VectorDrawableCompatState(this.mVectorState);
+      this.mMutated = true;
+    }
     return this;
   }
   
@@ -553,14 +598,16 @@ public class VectorDrawableCompat
   
   public void setAlpha(int paramInt)
   {
-    if (this.mDelegateDrawable != null) {
+    if (this.mDelegateDrawable != null)
+    {
       this.mDelegateDrawable.setAlpha(paramInt);
-    }
-    while (this.mVectorState.mVPathRenderer.getRootAlpha() == paramInt) {
       return;
     }
-    this.mVectorState.mVPathRenderer.setRootAlpha(paramInt);
-    invalidateSelf();
+    if (this.mVectorState.mVPathRenderer.getRootAlpha() != paramInt)
+    {
+      this.mVectorState.mVPathRenderer.setRootAlpha(paramInt);
+      invalidateSelf();
+    }
   }
   
   public void setAutoMirrored(boolean paramBoolean)
@@ -596,34 +643,34 @@ public class VectorDrawableCompat
   
   public void setTintList(ColorStateList paramColorStateList)
   {
-    if (this.mDelegateDrawable != null) {
-      DrawableCompat.setTintList(this.mDelegateDrawable, paramColorStateList);
-    }
-    VectorDrawableCompatState localVectorDrawableCompatState;
-    do
+    if (this.mDelegateDrawable != null)
     {
+      DrawableCompat.setTintList(this.mDelegateDrawable, paramColorStateList);
       return;
-      localVectorDrawableCompatState = this.mVectorState;
-    } while (localVectorDrawableCompatState.mTint == paramColorStateList);
-    localVectorDrawableCompatState.mTint = paramColorStateList;
-    this.mTintFilter = updateTintFilter(this.mTintFilter, paramColorStateList, localVectorDrawableCompatState.mTintMode);
-    invalidateSelf();
+    }
+    VectorDrawableCompatState localVectorDrawableCompatState = this.mVectorState;
+    if (localVectorDrawableCompatState.mTint != paramColorStateList)
+    {
+      localVectorDrawableCompatState.mTint = paramColorStateList;
+      this.mTintFilter = updateTintFilter(this.mTintFilter, paramColorStateList, localVectorDrawableCompatState.mTintMode);
+      invalidateSelf();
+    }
   }
   
   public void setTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.mDelegateDrawable != null) {
-      DrawableCompat.setTintMode(this.mDelegateDrawable, paramMode);
-    }
-    VectorDrawableCompatState localVectorDrawableCompatState;
-    do
+    if (this.mDelegateDrawable != null)
     {
+      DrawableCompat.setTintMode(this.mDelegateDrawable, paramMode);
       return;
-      localVectorDrawableCompatState = this.mVectorState;
-    } while (localVectorDrawableCompatState.mTintMode == paramMode);
-    localVectorDrawableCompatState.mTintMode = paramMode;
-    this.mTintFilter = updateTintFilter(this.mTintFilter, localVectorDrawableCompatState.mTint, paramMode);
-    invalidateSelf();
+    }
+    VectorDrawableCompatState localVectorDrawableCompatState = this.mVectorState;
+    if (localVectorDrawableCompatState.mTintMode != paramMode)
+    {
+      localVectorDrawableCompatState.mTintMode = paramMode;
+      this.mTintFilter = updateTintFilter(this.mTintFilter, localVectorDrawableCompatState.mTint, paramMode);
+      invalidateSelf();
+    }
   }
   
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
@@ -646,10 +693,10 @@ public class VectorDrawableCompat
   
   PorterDuffColorFilter updateTintFilter(PorterDuffColorFilter paramPorterDuffColorFilter, ColorStateList paramColorStateList, PorterDuff.Mode paramMode)
   {
-    if ((paramColorStateList == null) || (paramMode == null)) {
-      return null;
+    if ((paramColorStateList != null) && (paramMode != null)) {
+      return new PorterDuffColorFilter(paramColorStateList.getColorForState(getState(), 0), paramMode);
     }
-    return new PorterDuffColorFilter(paramColorStateList.getColorForState(getState(), 0), paramMode);
+    return null;
   }
   
   private static class VClipPath
@@ -734,12 +781,12 @@ public class VectorDrawableCompat
       {
       default: 
         return paramCap;
-      case 0: 
-        return Paint.Cap.BUTT;
+      case 2: 
+        return Paint.Cap.SQUARE;
       case 1: 
         return Paint.Cap.ROUND;
       }
-      return Paint.Cap.SQUARE;
+      return Paint.Cap.BUTT;
     }
     
     private Paint.Join getStrokeLineJoin(int paramInt, Paint.Join paramJoin)
@@ -748,12 +795,12 @@ public class VectorDrawableCompat
       {
       default: 
         return paramJoin;
-      case 0: 
-        return Paint.Join.MITER;
+      case 2: 
+        return Paint.Join.BEVEL;
       case 1: 
         return Paint.Join.ROUND;
       }
-      return Paint.Join.BEVEL;
+      return Paint.Join.MITER;
     }
     
     private void updateStateFromTypedArray(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser)
@@ -912,39 +959,43 @@ public class VectorDrawableCompat
       this.mThemeAttrs = paramVGroup.mThemeAttrs;
       this.mGroupName = paramVGroup.mGroupName;
       this.mChangingConfigurations = paramVGroup.mChangingConfigurations;
-      if (this.mGroupName != null) {
-        paramArrayMap.put(this.mGroupName, this);
+      Object localObject = this.mGroupName;
+      if (localObject != null) {
+        paramArrayMap.put(localObject, this);
       }
       this.mLocalMatrix.set(paramVGroup.mLocalMatrix);
-      ArrayList localArrayList = paramVGroup.mChildren;
+      localObject = paramVGroup.mChildren;
       int i = 0;
-      while (i < localArrayList.size())
+      while (i < ((ArrayList)localObject).size())
       {
-        paramVGroup = localArrayList.get(i);
+        paramVGroup = ((ArrayList)localObject).get(i);
         if ((paramVGroup instanceof VGroup))
         {
           paramVGroup = (VGroup)paramVGroup;
           this.mChildren.add(new VGroup(paramVGroup, paramArrayMap));
-          i += 1;
         }
         else
         {
-          if ((paramVGroup instanceof VectorDrawableCompat.VFullPath)) {}
-          for (paramVGroup = new VectorDrawableCompat.VFullPath((VectorDrawableCompat.VFullPath)paramVGroup);; paramVGroup = new VectorDrawableCompat.VClipPath((VectorDrawableCompat.VClipPath)paramVGroup))
+          if ((paramVGroup instanceof VectorDrawableCompat.VFullPath))
           {
-            this.mChildren.add(paramVGroup);
-            if (paramVGroup.mPathName == null) {
-              break;
-            }
-            paramArrayMap.put(paramVGroup.mPathName, paramVGroup);
-            break;
-            if (!(paramVGroup instanceof VectorDrawableCompat.VClipPath)) {
-              break label315;
-            }
+            paramVGroup = new VectorDrawableCompat.VFullPath((VectorDrawableCompat.VFullPath)paramVGroup);
           }
-          label315:
-          throw new IllegalStateException("Unknown object in the tree!");
+          else
+          {
+            if (!(paramVGroup instanceof VectorDrawableCompat.VClipPath)) {
+              break label317;
+            }
+            paramVGroup = new VectorDrawableCompat.VClipPath((VectorDrawableCompat.VClipPath)paramVGroup);
+          }
+          this.mChildren.add(paramVGroup);
+          if (paramVGroup.mPathName != null) {
+            paramArrayMap.put(paramVGroup.mPathName, paramVGroup);
+          }
         }
+        i += 1;
+        continue;
+        label317:
+        throw new IllegalStateException("Unknown object in the tree!");
       }
     }
     
@@ -1133,12 +1184,20 @@ public class VectorDrawableCompat
       int i = 0;
       while (i < paramArrayOfPathDataNode.length)
       {
-        str = str + paramArrayOfPathDataNode[i].mType + ":";
-        float[] arrayOfFloat = paramArrayOfPathDataNode[i].mParams;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(paramArrayOfPathDataNode[i].mType);
+        ((StringBuilder)localObject).append(":");
+        str = ((StringBuilder)localObject).toString();
+        localObject = paramArrayOfPathDataNode[i].mParams;
         int j = 0;
-        while (j < arrayOfFloat.length)
+        while (j < localObject.length)
         {
-          str = str + arrayOfFloat[j] + ",";
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append(localObject[j]);
+          localStringBuilder.append(",");
+          str = localStringBuilder.toString();
           j += 1;
         }
         i += 1;
@@ -1152,10 +1211,19 @@ public class VectorDrawableCompat
       int i = 0;
       while (i < paramInt)
       {
-        str = str + "    ";
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("    ");
+        str = localStringBuilder.toString();
         i += 1;
       }
-      Log.v("VectorDrawableCompat", str + "current path is :" + this.mPathName + " pathData is " + nodesToString(this.mNodes));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("current path is :");
+      localStringBuilder.append(this.mPathName);
+      localStringBuilder.append(" pathData is ");
+      localStringBuilder.append(nodesToString(this.mNodes));
+      Log.v("VectorDrawableCompat", localStringBuilder.toString());
     }
     
     public void setPathData(PathParser.PathDataNode[] paramArrayOfPathDataNode)
@@ -1171,8 +1239,9 @@ public class VectorDrawableCompat
     public void toPath(Path paramPath)
     {
       paramPath.reset();
-      if (this.mNodes != null) {
-        PathParser.PathDataNode.nodesToPath(this.mNodes, paramPath);
+      PathParser.PathDataNode[] arrayOfPathDataNode = this.mNodes;
+      if (arrayOfPathDataNode != null) {
+        PathParser.PathDataNode.nodesToPath(arrayOfPathDataNode, paramPath);
       }
     }
   }
@@ -1215,8 +1284,9 @@ public class VectorDrawableCompat
       this.mChangingConfigurations = paramVPathRenderer.mChangingConfigurations;
       this.mRootAlpha = paramVPathRenderer.mRootAlpha;
       this.mRootName = paramVPathRenderer.mRootName;
-      if (paramVPathRenderer.mRootName != null) {
-        this.mVGTargetsMap.put(paramVPathRenderer.mRootName, this);
+      paramVPathRenderer = paramVPathRenderer.mRootName;
+      if (paramVPathRenderer != null) {
+        this.mVGTargetsMap.put(paramVPathRenderer, this);
       }
     }
     
@@ -1231,20 +1301,15 @@ public class VectorDrawableCompat
       paramVGroup.mStackedMatrix.preConcat(paramVGroup.mLocalMatrix);
       paramCanvas.save();
       int i = 0;
-      if (i < paramVGroup.mChildren.size())
+      while (i < paramVGroup.mChildren.size())
       {
         paramMatrix = paramVGroup.mChildren.get(i);
         if ((paramMatrix instanceof VectorDrawableCompat.VGroup)) {
           drawGroupTree((VectorDrawableCompat.VGroup)paramMatrix, paramVGroup.mStackedMatrix, paramCanvas, paramInt1, paramInt2, paramColorFilter);
+        } else if ((paramMatrix instanceof VectorDrawableCompat.VPath)) {
+          drawPath(paramVGroup, (VectorDrawableCompat.VPath)paramMatrix, paramCanvas, paramInt1, paramInt2, paramColorFilter);
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if ((paramMatrix instanceof VectorDrawableCompat.VPath)) {
-            drawPath(paramVGroup, (VectorDrawableCompat.VPath)paramMatrix, paramCanvas, paramInt1, paramInt2, paramColorFilter);
-          }
-        }
+        i += 1;
       }
       paramCanvas.restore();
     }
@@ -1271,16 +1336,11 @@ public class VectorDrawableCompat
         return;
       }
       paramVPath = (VectorDrawableCompat.VFullPath)paramVPath;
-      float f6;
-      float f4;
-      label267:
-      Paint localPaint;
-      Path localPath;
       if ((paramVPath.mTrimPathStart != 0.0F) || (paramVPath.mTrimPathEnd != 1.0F))
       {
-        f6 = paramVPath.mTrimPathStart;
+        float f6 = paramVPath.mTrimPathStart;
         float f7 = paramVPath.mTrimPathOffset;
-        f4 = paramVPath.mTrimPathEnd;
+        float f4 = paramVPath.mTrimPathEnd;
         float f5 = paramVPath.mTrimPathOffset;
         if (this.mPathMeasure == null) {
           this.mPathMeasure = new PathMeasure();
@@ -1294,37 +1354,36 @@ public class VectorDrawableCompat
         {
           this.mPathMeasure.getSegment(f6, f3, paramVGroup, true);
           this.mPathMeasure.getSegment(0.0F, f4, paramVGroup, true);
-          paramVGroup.rLineTo(0.0F, 0.0F);
         }
-      }
-      else
-      {
-        this.mRenderPath.addPath(paramVGroup, this.mFinalPathMatrix);
-        if (paramVPath.mFillColor != 0)
+        else
         {
-          if (this.mFillPaint == null)
-          {
-            this.mFillPaint = new Paint();
-            this.mFillPaint.setStyle(Paint.Style.FILL);
-            this.mFillPaint.setAntiAlias(true);
-          }
-          localPaint = this.mFillPaint;
-          localPaint.setColor(VectorDrawableCompat.applyAlpha(paramVPath.mFillColor, paramVPath.mFillAlpha));
-          localPaint.setColorFilter(paramColorFilter);
-          localPath = this.mRenderPath;
-          if (paramVPath.mFillRule != 0) {
-            break label540;
-          }
+          this.mPathMeasure.getSegment(f6, f4, paramVGroup, true);
         }
+        paramVGroup.rLineTo(0.0F, 0.0F);
       }
-      label540:
-      for (paramVGroup = Path.FillType.WINDING;; paramVGroup = Path.FillType.EVEN_ODD)
+      this.mRenderPath.addPath(paramVGroup, this.mFinalPathMatrix);
+      if (paramVPath.mFillColor != 0)
       {
+        if (this.mFillPaint == null)
+        {
+          this.mFillPaint = new Paint();
+          this.mFillPaint.setStyle(Paint.Style.FILL);
+          this.mFillPaint.setAntiAlias(true);
+        }
+        Paint localPaint = this.mFillPaint;
+        localPaint.setColor(VectorDrawableCompat.applyAlpha(paramVPath.mFillColor, paramVPath.mFillAlpha));
+        localPaint.setColorFilter(paramColorFilter);
+        Path localPath = this.mRenderPath;
+        if (paramVPath.mFillRule == 0) {
+          paramVGroup = Path.FillType.WINDING;
+        } else {
+          paramVGroup = Path.FillType.EVEN_ODD;
+        }
         localPath.setFillType(paramVGroup);
         paramCanvas.drawPath(this.mRenderPath, localPaint);
-        if (paramVPath.mStrokeColor == 0) {
-          break;
-        }
+      }
+      if (paramVPath.mStrokeColor != 0)
+      {
         if (this.mStrokePaint == null)
         {
           this.mStrokePaint = new Paint();
@@ -1341,32 +1400,29 @@ public class VectorDrawableCompat
         paramVGroup.setStrokeMiter(paramVPath.mStrokeMiterlimit);
         paramVGroup.setColor(VectorDrawableCompat.applyAlpha(paramVPath.mStrokeColor, paramVPath.mStrokeAlpha));
         paramVGroup.setColorFilter(paramColorFilter);
-        paramVGroup.setStrokeWidth(f2 * f1 * paramVPath.mStrokeWidth);
+        paramVGroup.setStrokeWidth(paramVPath.mStrokeWidth * (f1 * f2));
         paramCanvas.drawPath(this.mRenderPath, paramVGroup);
-        return;
-        this.mPathMeasure.getSegment(f6, f4, paramVGroup, true);
-        break label267;
       }
     }
     
     private float getMatrixScale(Matrix paramMatrix)
     {
-      float f1 = 0.0F;
       float[] arrayOfFloat = new float[4];
-      float[] tmp9_7 = arrayOfFloat;
-      tmp9_7[0] = 0.0F;
-      float[] tmp13_9 = tmp9_7;
-      tmp13_9[1] = 1.0F;
-      float[] tmp17_13 = tmp13_9;
-      tmp17_13[2] = 1.0F;
-      float[] tmp21_17 = tmp17_13;
-      tmp21_17[3] = 0.0F;
-      tmp21_17;
+      float[] tmp7_5 = arrayOfFloat;
+      tmp7_5[0] = 0.0F;
+      float[] tmp11_7 = tmp7_5;
+      tmp11_7[1] = 1.0F;
+      float[] tmp15_11 = tmp11_7;
+      tmp15_11[2] = 1.0F;
+      float[] tmp19_15 = tmp15_11;
+      tmp19_15[3] = 0.0F;
+      tmp19_15;
       paramMatrix.mapVectors(arrayOfFloat);
-      float f3 = (float)Math.hypot(arrayOfFloat[0], arrayOfFloat[1]);
-      float f4 = (float)Math.hypot(arrayOfFloat[2], arrayOfFloat[3]);
+      float f1 = (float)Math.hypot(arrayOfFloat[0], arrayOfFloat[1]);
+      float f3 = (float)Math.hypot(arrayOfFloat[2], arrayOfFloat[3]);
       float f2 = cross(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2], arrayOfFloat[3]);
-      f3 = Math.max(f3, f4);
+      f3 = Math.max(f1, f3);
+      f1 = 0.0F;
       if (f3 > 0.0F) {
         f1 = Math.abs(f2) / f3;
       }
@@ -1390,7 +1446,7 @@ public class VectorDrawableCompat
     
     public void setAlpha(float paramFloat)
     {
-      setRootAlpha((int)(255.0F * paramFloat));
+      setRootAlpha((int)(paramFloat * 255.0F));
     }
     
     public void setRootAlpha(int paramInt)

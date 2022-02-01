@@ -17,7 +17,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 public class i
 {
-  public static boolean a;
+  public static boolean a = false;
   public static Handler b;
   public static Set<Object> c = new CopyOnWriteArraySet();
   public static Set<g> d = new CopyOnWriteArraySet();
@@ -121,12 +121,16 @@ public class i
     
     public void handleMessage(Message paramMessage)
     {
-      if (paramMessage.what != 1) {}
-      do
-      {
+      if (paramMessage.what != 1) {
         return;
-        paramMessage = paramMessage.obj;
-      } while ((paramMessage == null) || (!(paramMessage instanceof j)));
+      }
+      paramMessage = paramMessage.obj;
+      if (paramMessage == null) {
+        return;
+      }
+      if (!(paramMessage instanceof j)) {
+        return;
+      }
       j localj = (j)paramMessage;
       Iterator localIterator = i.c.iterator();
       while (localIterator.hasNext())
@@ -134,72 +138,66 @@ public class i
         c.d locald = (c.d)localIterator.next();
         if (locald.e.equals(localj.m))
         {
-          if (localj.g <= 0)
-          {
+          int j = localj.g;
+          int i = 0;
+          boolean bool;
+          if (j <= 0) {
             bool = true;
-            label89:
-            locald.f = bool;
-            if (Build.VERSION.SDK_INT >= 14) {
-              if (localj.h != 0) {
-                break label226;
-              }
-            }
+          } else {
+            bool = false;
           }
-          label226:
-          for (boolean bool = true;; bool = false)
+          locald.f = bool;
+          if (Build.VERSION.SDK_INT >= 14)
           {
-            locald.g = bool;
-            switch (localj.f)
-            {
-            default: 
-              break;
-            case 0: 
-              locald.a();
-              locald.b = System.currentTimeMillis();
-              paramMessage = new c.c(locald.h, 0, localj.i, localj.j, localj.k, localj.l);
-              locald.d.add(paramMessage);
-              break;
+            if (localj.h == 0) {
+              bool = true;
+            } else {
               bool = false;
-              break label89;
             }
+            locald.g = bool;
           }
-          locald.a();
-          continue;
-          int i;
-          if (locald.b != -1L)
+          switch (localj.f)
           {
-            i = 1;
-            label253:
-            if (i == 0) {
-              break label311;
+          default: 
+            break;
+          case 3: 
+            locald.a();
+            break;
+          case 2: 
+            if (locald.b != -1L) {
+              i = 1;
             }
-            paramMessage = new c.c(locald.h, 2, localj.i, localj.j, localj.k, localj.l);
-          }
-          for (;;)
-          {
+            if (i != 0)
+            {
+              paramMessage = new c.c(locald.h, 2, localj.i, localj.j, localj.k, localj.l);
+            }
+            else
+            {
+              locald.a();
+              paramMessage = new c.c(locald.h, 0, localj.i, localj.j, localj.k, localj.l);
+              locald.b = System.currentTimeMillis();
+            }
             locald.d.add(paramMessage);
             break;
-            i = 0;
-            break label253;
-            label311:
-            locald.a();
-            paramMessage = new c.c(locald.h, 0, localj.i, localj.j, localj.k, localj.l);
-            locald.b = System.currentTimeMillis();
-          }
-          long l = locald.b;
-          locald.c = (System.currentTimeMillis() - l);
-          paramMessage = new c.c(locald.h, 1, localj.i, localj.j, localj.k, localj.l);
-          locald.d.add(paramMessage);
-          paramMessage = c.a(locald.h, locald.d);
-          paramMessage = c.a(locald.h, locald.b, locald.c, paramMessage);
-          if ((locald.f) || (locald.g)) {
-            c.a(locald.h, locald.e, locald.a, 2, paramMessage);
-          }
-          for (;;)
-          {
+          case 1: 
+            long l = locald.b;
+            locald.c = (System.currentTimeMillis() - l);
+            paramMessage = new c.c(locald.h, 1, localj.i, localj.j, localj.k, localj.l);
+            locald.d.add(paramMessage);
+            paramMessage = c.a(locald.h, locald.d);
+            paramMessage = c.a(locald.h, locald.b, locald.c, paramMessage);
+            if ((!locald.f) && (!locald.g)) {
+              c.a(locald.h, locald.e, locald.a, 1, paramMessage);
+            } else {
+              c.a(locald.h, locald.e, locald.a, 2, paramMessage);
+            }
             locald.a();
             break;
-            c.a(locald.h, locald.e, locald.a, 1, paramMessage);
+          case 0: 
+            locald.a();
+            locald.b = System.currentTimeMillis();
+            paramMessage = new c.c(locald.h, 0, localj.i, localj.j, localj.k, localj.l);
+            locald.d.add(paramMessage);
           }
         }
       }

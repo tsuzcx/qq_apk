@@ -18,7 +18,7 @@ public class f
   
   private int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    return paramInt1 & paramInt2 | (paramInt1 ^ 0xFFFFFFFF) & paramInt3;
+    return (paramInt1 ^ 0xFFFFFFFF) & paramInt3 | paramInt2 & paramInt1;
   }
   
   private void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
@@ -27,9 +27,8 @@ public class f
     paramArrayOfByte[paramInt2] = ((byte)(paramInt1 >>> 24));
     paramInt2 = i + 1;
     paramArrayOfByte[i] = ((byte)(paramInt1 >>> 16));
-    i = paramInt2 + 1;
     paramArrayOfByte[paramInt2] = ((byte)(paramInt1 >>> 8));
-    paramArrayOfByte[i] = ((byte)paramInt1);
+    paramArrayOfByte[(paramInt2 + 1)] = ((byte)paramInt1);
   }
   
   private int b(int paramInt1, int paramInt2, int paramInt3)
@@ -39,7 +38,7 @@ public class f
   
   private int c(int paramInt1, int paramInt2, int paramInt3)
   {
-    return paramInt1 & paramInt2 | paramInt1 & paramInt3 | paramInt2 & paramInt3;
+    return paramInt1 & paramInt3 | paramInt1 & paramInt2 | paramInt2 & paramInt3;
   }
   
   public int a()
@@ -64,8 +63,9 @@ public class f
     if (this.g > 14) {
       d();
     }
-    this.f[14] = ((int)(paramLong >>> 32));
-    this.f[15] = ((int)(0xFFFFFFFF & paramLong));
+    int[] arrayOfInt = this.f;
+    arrayOfInt[14] = ((int)(paramLong >>> 32));
+    arrayOfInt[15] = ((int)(paramLong & 0xFFFFFFFF));
   }
   
   protected void b(byte[] paramArrayOfByte, int paramInt)
@@ -73,7 +73,10 @@ public class f
     int[] arrayOfInt = this.f;
     int i = this.g;
     this.g = (i + 1);
-    arrayOfInt[i] = ((paramArrayOfByte[paramInt] & 0xFF) << 24 | (paramArrayOfByte[(paramInt + 1)] & 0xFF) << 16 | (paramArrayOfByte[(paramInt + 2)] & 0xFF) << 8 | paramArrayOfByte[(paramInt + 3)] & 0xFF);
+    int j = paramArrayOfByte[paramInt];
+    int k = paramArrayOfByte[(paramInt + 1)];
+    int m = paramArrayOfByte[(paramInt + 2)];
+    arrayOfInt[i] = (paramArrayOfByte[(paramInt + 3)] & 0xFF | (j & 0xFF) << 24 | (k & 0xFF) << 16 | (m & 0xFF) << 8);
     if (this.g == 16) {
       d();
     }
@@ -89,9 +92,13 @@ public class f
     this.e = -1009589776;
     this.g = 0;
     int i = 0;
-    while (i != this.f.length)
+    for (;;)
     {
-      this.f[i] = 0;
+      int[] arrayOfInt = this.f;
+      if (i == arrayOfInt.length) {
+        break;
+      }
+      arrayOfInt[i] = 0;
       i += 1;
     }
   }
@@ -99,147 +106,141 @@ public class f
   protected void d()
   {
     int i = 16;
+    int[] arrayOfInt;
     while (i < 80)
     {
-      j = this.f[(i - 3)] ^ this.f[(i - 8)] ^ this.f[(i - 14)] ^ this.f[(i - 16)];
-      this.f[i] = (j >>> 31 | j << 1);
+      arrayOfInt = this.f;
+      j = arrayOfInt[(i - 3)] ^ arrayOfInt[(i - 8)] ^ arrayOfInt[(i - 14)] ^ arrayOfInt[(i - 16)];
+      arrayOfInt[i] = (j >>> 31 | j << 1);
       i += 1;
     }
-    int m = this.a;
-    int i1 = this.b;
+    int j = this.a;
+    int k = this.b;
     i = this.c;
-    int j = this.d;
+    int m = this.d;
     int n = this.e;
-    int k = 0;
+    int i1 = 0;
     int i2 = 0;
     int i4;
-    int[] arrayOfInt;
     while (i2 < 4)
     {
-      i4 = a(i1, i, j);
-      arrayOfInt = this.f;
-      i3 = k + 1;
-      n = arrayOfInt[k] + ((m << 5 | m >>> 27) + i4) + 1518500249 + n;
-      k = i1 >>> 2 | i1 << 30;
-      i4 = a(m, k, i);
-      arrayOfInt = this.f;
-      i1 = i3 + 1;
-      j += (n << 5 | n >>> 27) + i4 + arrayOfInt[i3] + 1518500249;
-      m = m >>> 2 | m << 30;
-      i4 = a(n, m, k);
+      i4 = a(k, i, m);
       arrayOfInt = this.f;
       i3 = i1 + 1;
-      i += (j << 5 | j >>> 27) + i4 + arrayOfInt[i1] + 1518500249;
-      n = n << 30 | n >>> 2;
-      i1 = a(j, n, m);
+      n += (j << 5 | j >>> 27) + i4 + arrayOfInt[i1] + 1518500249;
+      k = k >>> 2 | k << 30;
+      i4 = a(j, k, i);
       arrayOfInt = this.f;
-      i4 = i3 + 1;
-      i1 = k + ((i << 5 | i >>> 27) + i1 + arrayOfInt[i3] + 1518500249);
+      i1 = i3 + 1;
+      m += (n << 5 | n >>> 27) + i4 + arrayOfInt[i3] + 1518500249;
       j = j >>> 2 | j << 30;
-      i3 = a(i, j, n);
+      i4 = a(n, j, k);
       arrayOfInt = this.f;
-      k = i4 + 1;
-      m += i3 + (i1 << 5 | i1 >>> 27) + arrayOfInt[i4] + 1518500249;
+      i3 = i1 + 1;
+      i += (m << 5 | m >>> 27) + i4 + arrayOfInt[i1] + 1518500249;
+      n = n >>> 2 | n << 30;
+      i4 = a(m, n, j);
+      arrayOfInt = this.f;
+      i1 = i3 + 1;
+      k += (i << 5 | i >>> 27) + i4 + arrayOfInt[i3] + 1518500249;
+      m = m >>> 2 | m << 30;
+      j += (k << 5 | k >>> 27) + a(i, m, n) + this.f[i1] + 1518500249;
       i = i >>> 2 | i << 30;
       i2 += 1;
+      i1 += 1;
     }
     i2 = 0;
     while (i2 < 4)
     {
-      i4 = b(i1, i, j);
-      arrayOfInt = this.f;
-      i3 = k + 1;
-      n = arrayOfInt[k] + ((m << 5 | m >>> 27) + i4) + 1859775393 + n;
-      k = i1 >>> 2 | i1 << 30;
-      i4 = b(m, k, i);
-      arrayOfInt = this.f;
-      i1 = i3 + 1;
-      j += (n << 5 | n >>> 27) + i4 + arrayOfInt[i3] + 1859775393;
-      m = m >>> 2 | m << 30;
-      i4 = b(n, m, k);
+      i4 = b(k, i, m);
       arrayOfInt = this.f;
       i3 = i1 + 1;
-      i += (j << 5 | j >>> 27) + i4 + arrayOfInt[i1] + 1859775393;
-      n = n << 30 | n >>> 2;
-      i1 = b(j, n, m);
+      n += (j << 5 | j >>> 27) + i4 + arrayOfInt[i1] + 1859775393;
+      k = k >>> 2 | k << 30;
+      i4 = b(j, k, i);
       arrayOfInt = this.f;
-      i4 = i3 + 1;
-      i1 = k + ((i << 5 | i >>> 27) + i1 + arrayOfInt[i3] + 1859775393);
+      i1 = i3 + 1;
+      m += (n << 5 | n >>> 27) + i4 + arrayOfInt[i3] + 1859775393;
       j = j >>> 2 | j << 30;
-      i3 = b(i, j, n);
+      i4 = b(n, j, k);
       arrayOfInt = this.f;
-      k = i4 + 1;
-      m += i3 + (i1 << 5 | i1 >>> 27) + arrayOfInt[i4] + 1859775393;
+      i3 = i1 + 1;
+      i += (m << 5 | m >>> 27) + i4 + arrayOfInt[i1] + 1859775393;
+      n = n >>> 2 | n << 30;
+      i4 = b(m, n, j);
+      arrayOfInt = this.f;
+      i1 = i3 + 1;
+      k += (i << 5 | i >>> 27) + i4 + arrayOfInt[i3] + 1859775393;
+      m = m >>> 2 | m << 30;
+      j += (k << 5 | k >>> 27) + b(i, m, n) + this.f[i1] + 1859775393;
       i = i >>> 2 | i << 30;
       i2 += 1;
+      i1 += 1;
     }
     i2 = 0;
     while (i2 < 4)
     {
-      i4 = c(i1, i, j);
-      arrayOfInt = this.f;
-      i3 = k + 1;
-      n = arrayOfInt[k] + ((m << 5 | m >>> 27) + i4) - 1894007588 + n;
-      k = i1 >>> 2 | i1 << 30;
-      i4 = c(m, k, i);
-      arrayOfInt = this.f;
-      i1 = i3 + 1;
-      j += (n << 5 | n >>> 27) + i4 + arrayOfInt[i3] - 1894007588;
-      m = m >>> 2 | m << 30;
-      i4 = c(n, m, k);
+      i4 = c(k, i, m);
       arrayOfInt = this.f;
       i3 = i1 + 1;
-      i += (j << 5 | j >>> 27) + i4 + arrayOfInt[i1] - 1894007588;
-      n = n << 30 | n >>> 2;
-      i1 = c(j, n, m);
+      n += (j << 5 | j >>> 27) + i4 + arrayOfInt[i1] - 1894007588;
+      k = k >>> 2 | k << 30;
+      i4 = c(j, k, i);
       arrayOfInt = this.f;
-      i4 = i3 + 1;
-      i1 = k + ((i << 5 | i >>> 27) + i1 + arrayOfInt[i3] - 1894007588);
+      i1 = i3 + 1;
+      m += (n << 5 | n >>> 27) + i4 + arrayOfInt[i3] - 1894007588;
       j = j >>> 2 | j << 30;
-      i3 = c(i, j, n);
+      i4 = c(n, j, k);
       arrayOfInt = this.f;
-      k = i4 + 1;
-      m += i3 + (i1 << 5 | i1 >>> 27) + arrayOfInt[i4] - 1894007588;
+      i3 = i1 + 1;
+      i += (m << 5 | m >>> 27) + i4 + arrayOfInt[i1] - 1894007588;
+      n = n >>> 2 | n << 30;
+      i4 = c(m, n, j);
+      arrayOfInt = this.f;
+      i1 = i3 + 1;
+      k += (i << 5 | i >>> 27) + i4 + arrayOfInt[i3] - 1894007588;
+      m = m >>> 2 | m << 30;
+      j += (k << 5 | k >>> 27) + c(i, m, n) + this.f[i1] - 1894007588;
       i = i >>> 2 | i << 30;
       i2 += 1;
+      i1 += 1;
     }
     int i3 = 0;
-    i2 = m;
+    i2 = i1;
+    i1 = m;
     m = i;
     i = i3;
     while (i <= 3)
     {
-      i4 = b(i1, m, j);
+      i4 = b(k, m, i1);
       arrayOfInt = this.f;
-      i3 = k + 1;
-      n = arrayOfInt[k] + ((i2 << 5 | i2 >>> 27) + i4) - 899497514 + n;
-      k = i1 >>> 2 | i1 << 30;
-      i4 = b(i2, k, m);
+      i3 = i2 + 1;
+      n += (j << 5 | j >>> 27) + i4 + arrayOfInt[i2] - 899497514;
+      k = k >>> 2 | k << 30;
+      i4 = b(j, k, m);
       arrayOfInt = this.f;
-      i1 = i3 + 1;
-      j += (n << 5 | n >>> 27) + i4 + arrayOfInt[i3] - 899497514;
-      i2 = i2 >>> 2 | i2 << 30;
-      i4 = b(n, i2, k);
-      arrayOfInt = this.f;
-      i3 = i1 + 1;
-      m += (j << 5 | j >>> 27) + i4 + arrayOfInt[i1] - 899497514;
-      n = n << 30 | n >>> 2;
-      i1 = b(j, n, i2);
-      arrayOfInt = this.f;
-      i4 = i3 + 1;
-      i1 = k + ((m << 5 | m >>> 27) + i1 + arrayOfInt[i3] - 899497514);
+      i2 = i3 + 1;
+      i1 += (n << 5 | n >>> 27) + i4 + arrayOfInt[i3] - 899497514;
       j = j >>> 2 | j << 30;
-      i3 = b(m, j, n);
+      i4 = b(n, j, k);
       arrayOfInt = this.f;
-      k = i4 + 1;
-      i2 += i3 + (i1 << 5 | i1 >>> 27) + arrayOfInt[i4] - 899497514;
+      i3 = i2 + 1;
+      m += (i1 << 5 | i1 >>> 27) + i4 + arrayOfInt[i2] - 899497514;
+      n = n >>> 2 | n << 30;
+      i4 = b(i1, n, j);
+      arrayOfInt = this.f;
+      i2 = i3 + 1;
+      k += (m << 5 | m >>> 27) + i4 + arrayOfInt[i3] - 899497514;
+      i1 = i1 >>> 2 | i1 << 30;
+      j += (k << 5 | k >>> 27) + b(m, i1, n) + this.f[i2] - 899497514;
       m = m >>> 2 | m << 30;
       i += 1;
+      i2 += 1;
     }
-    this.a += i2;
-    this.b += i1;
+    this.a += j;
+    this.b += k;
     this.c += m;
-    this.d += j;
+    this.d += i1;
     this.e += n;
     this.g = 0;
     i = 0;

@@ -37,17 +37,17 @@ public class StartPwdUpdateInfoActivity
       }
     });
     this.mButtonSkip.setVisibility(4);
-    this.mTitleBar.setBackgroundColor(getResources().getColor(2131493039));
-    this.mTitleDivider.setBackgroundColor(getResources().getColor(2131493053));
-    this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2130837617));
-    this.mTitleText.setTextColor(getResources().getColor(2131493027));
+    this.mTitleBar.setBackgroundColor(getResources().getColor(2130968773));
+    this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968789));
+    this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2131099762));
+    this.mTitleText.setTextColor(getResources().getColor(2130968761));
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt1 == 258) && ((paramInt2 == 259) || (cd.a().d())))
     {
-      showOrangeToast(2131231093, 2130838018);
+      showOrangeToast(2131493235, 2131100167);
       setResult(259);
       startActivity(new Intent(this, StartPwdGestureSelActivity.class));
       finish();
@@ -58,10 +58,10 @@ public class StartPwdUpdateInfoActivity
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
-    setContentView(2130968771);
+    setContentView(2131296452);
     this.source = getIntent().getIntExtra(SOURCE_TO_START_PSW, -1);
-    this.mButtonCreate = ((Button)findViewById(2131559296));
-    this.mButtonSkip = ((Button)findViewById(2131559297));
+    this.mButtonCreate = ((Button)findViewById(2131166192));
+    this.mButtonSkip = ((Button)findViewById(2131166196));
     initUI();
   }
 }

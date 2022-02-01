@@ -8,41 +8,44 @@ public class cu
   
   public static ci bu()
   {
-    if (iu == null) {}
-    try
-    {
-      if (iu == null) {
-        iu = new a();
+    if (iu == null) {
+      try
+      {
+        if (iu == null) {
+          iu = new a();
+        }
       }
-      return iu;
+      finally {}
     }
-    finally {}
+    return iu;
   }
   
   public static ci bv()
   {
-    if (iv == null) {}
-    try
-    {
-      if (iv == null) {
-        iv = new a();
+    if (iv == null) {
+      try
+      {
+        if (iv == null) {
+          iv = new a();
+        }
       }
-      return iv;
+      finally {}
     }
-    finally {}
+    return iv;
   }
   
   public static b bw()
   {
-    if (iw == null) {}
-    try
-    {
-      if (iw == null) {
-        iw = new b();
+    if (iw == null) {
+      try
+      {
+        if (iw == null) {
+          iw = new b();
+        }
       }
-      return iw;
+      finally {}
     }
-    finally {}
+    return iw;
   }
   
   public static class a

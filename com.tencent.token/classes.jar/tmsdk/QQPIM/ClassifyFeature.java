@@ -14,16 +14,6 @@ public final class ClassifyFeature
   public int state = 0;
   public float weight = 0.0F;
   
-  static
-  {
-    if (!ClassifyFeature.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public ClassifyFeature() {}
   
   public ClassifyFeature(long paramLong, float paramFloat, String paramString, int paramInt)
@@ -41,29 +31,43 @@ public final class ClassifyFeature
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ClassifyFeature)paramObject;
-    } while ((!JceUtil.equals(this.featMd5, paramObject.featMd5)) || (!JceUtil.equals(this.weight, paramObject.weight)) || (!JceUtil.equals(this.featValue, paramObject.featValue)) || (!JceUtil.equals(this.state, paramObject.state)));
-    return true;
+    }
+    paramObject = (ClassifyFeature)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.featMd5, paramObject.featMd5))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.weight, paramObject.weight))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.featValue, paramObject.featValue))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.state, paramObject.state)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

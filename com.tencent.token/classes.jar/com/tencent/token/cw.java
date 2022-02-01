@@ -3,7 +3,6 @@ package com.tencent.token;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
 import com.tencent.token.global.g;
@@ -46,165 +45,103 @@ public class cw
   
   public e a(int paramInt)
   {
-    f();
-    e locale = new e();
-    Object localObject3 = cr.a();
-    if (!((cr)localObject3).a(locale)) {
-      return locale;
-    }
-    if (((cr)localObject3).e() == null)
-    {
-      locale.b(103);
-      return locale;
-    }
-    Object localObject2 = ((cr)localObject3).k();
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject1 = ((cr)localObject3).r();
-      if (!((e)localObject1).b())
-      {
-        locale.a((e)localObject1);
-        return locale;
-      }
-      localObject2 = ((cr)localObject3).k();
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        locale.b(103);
-        return locale;
-      }
-    }
-    boolean bool = l.a(RqdApplication.l(), "de.robv.android.xposed.installer");
-    long l = ((QQUser)localObject1).mUin;
-    if (bool) {}
-    for (int k = 1;; k = 0)
-    {
-      localObject1 = l.a(new Object[] { "uin", Long.valueOf(l), "action_type", Integer.valueOf(paramInt), "nosafe", Integer.valueOf(k) });
-      if (localObject1 != null) {
-        break;
-      }
-      locale.a(10000, "encrypt  failed");
-      return null;
-    }
-    localObject2 = "?aq_base_sid=" + ((cr)localObject3).g() + "&data=" + (String)localObject1;
-    localObject1 = new ez();
-    g.b("&nosafe: " + bool);
-    localObject2 = c.e() + "/cn/mbtoken3/mbtoken3_query_for_2nd_verify_v2" + (String)localObject2;
-    localObject3 = ((ez)localObject1).a((String)localObject2);
-    if (localObject3 == null)
-    {
-      locale.a(((ez)localObject1).a());
-      g.c("client request url: " + (String)localObject2 + " failed, reason: " + locale.a + ":" + locale.b);
-      return locale;
-    }
-    try
-    {
-      localObject1 = new JSONObject(new String((byte[])localObject3));
-      paramInt = ((JSONObject)localObject1).getInt("err");
-      if (paramInt != 0)
-      {
-        localObject1 = ((JSONObject)localObject1).getString("info");
-        locale.a(paramInt, (String)localObject1, (String)localObject1);
-        g.c("query2ndVerify, errcode: " + paramInt + ", info: " + (String)localObject1);
-      }
-      else
-      {
-        localObject1 = l.c(((JSONObject)localObject1).getString("data"));
-        if (localObject1 != null)
-        {
-          localObject1 = new JSONObject(new String((byte[])localObject1));
-          this.e = ((JSONObject)localObject1).getInt("need_2nd_verify");
-          if (this.e == 1)
-          {
-            this.f = ((JSONObject)localObject1).getString("verify_tips");
-            this.g = ((JSONObject)localObject1).getString("verify_input_tips");
-            this.h = ((JSONObject)localObject1).getString("cancel_btn_text");
-            this.i = ((JSONObject)localObject1).getString("confirm_btn_text");
-            this.j = ((JSONObject)localObject1).getInt("verify_type");
-          }
-          locale.c();
-        }
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      g.c("parse json failed: " + localJSONException.toString());
-      locale.a(10020, "JSONException:" + localJSONException.toString());
-      break label710;
-      locale.b(10022);
-      return locale;
-    }
-    catch (Exception localException)
-    {
-      g.c("unknown err: " + localException.toString());
-      locale.a(10021, "JSONException:" + localException.toString());
-    }
-    label710:
-    return locale;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public e a(String paramString, int paramInt)
   {
     e locale = new e();
     Object localObject1 = cr.a();
-    if ((localObject1 == null) || (((cr)localObject1).e() == null))
+    if ((localObject1 != null) && (((cr)localObject1).e() != null))
     {
-      locale.b(110);
-      return locale;
-    }
-    int k = (int)(cc.c().s() / 1000L);
-    int m = cb.a + 1;
-    cb.a = m;
-    this.b = m;
-    Object localObject2 = a(cr.a().c(), new String[] { "input_data", paramString, "op_time", String.valueOf(k), "seq_id", String.valueOf(this.b), "uin", String.valueOf(((cr)localObject1).e().mUin), "verify_type", Integer.toString(this.j), "action_type", Integer.toString(paramInt) });
-    if (localObject2 == null)
-    {
-      locale.a(10000, "encrypt imei failed");
-      return locale;
-    }
-    paramString = new ez();
-    localObject1 = "?aq_base_sid=" + ((cr)localObject1).g() + "&data=" + (String)localObject2;
-    localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_perform_2nd_verify_encrypt" + (String)localObject1;
-    localObject2 = paramString.a((String)localObject1);
-    if (localObject2 == null)
-    {
-      locale.a(paramString.a());
-      g.c("client request url: " + (String)localObject1 + " failed, reason: " + locale.a + ":" + locale.b);
-      return locale;
-    }
-    try
-    {
-      paramString = new JSONObject(new String((byte[])localObject2));
-      paramInt = paramString.getInt("err");
-      if (paramInt != 0)
+      int k = (int)(cc.c().s() / 1000L);
+      int m = cb.a + 1;
+      cb.a = m;
+      this.b = m;
+      Object localObject2 = a(cr.a().c(), new String[] { "input_data", paramString, "op_time", String.valueOf(k), "seq_id", String.valueOf(this.b), "uin", String.valueOf(((cr)localObject1).e().mUin), "verify_type", Integer.toString(this.j), "action_type", Integer.toString(paramInt) });
+      if (localObject2 == null)
       {
-        paramString = paramString.getString("info");
-        locale.a(paramInt, paramString, paramString);
+        locale.a(10000, "encrypt imei failed");
+        return locale;
+      }
+      paramString = new ez();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("?aq_base_sid=");
+      localStringBuilder.append(((cr)localObject1).g());
+      localStringBuilder.append("&data=");
+      localStringBuilder.append((String)localObject2);
+      localObject1 = localStringBuilder.toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(c.e());
+      ((StringBuilder)localObject2).append("/cn/mbtoken3/mbtoken3_perform_2nd_verify_encrypt");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject2).toString();
+      localObject2 = paramString.a((String)localObject1);
+      if (localObject2 == null)
+      {
+        locale.a(paramString.a());
+        paramString = new StringBuilder();
+        paramString.append("client request url: ");
+        paramString.append((String)localObject1);
+        paramString.append(" failed, reason: ");
+        paramString.append(locale.a);
+        paramString.append(":");
+        paramString.append(locale.b);
+        g.c(paramString.toString());
+        return locale;
+      }
+      try
+      {
+        paramString = new JSONObject(new String((byte[])localObject2));
+        paramInt = paramString.getInt("err");
+        if (paramInt != 0)
+        {
+          paramString = paramString.getString("info");
+          locale.a(paramInt, paramString, paramString);
+          return locale;
+        }
+        paramInt = new JSONObject(new String(l.c(paramString.getString("data")))).getInt("seq_id");
+        if (this.b != paramInt)
+        {
+          locale.b(10030);
+          paramString = new StringBuilder();
+          paramString.append("parseJSON error seq is wrong seq=");
+          paramString.append(paramInt);
+          paramString.append(",right = ");
+          paramString.append(this.b);
+          g.c(paramString.toString());
+          return locale;
+        }
+        cr.a().m();
+        locale.c();
+        return locale;
+      }
+      catch (Exception paramString)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("unknown err: ");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        g.c(((StringBuilder)localObject1).toString());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("JSONException:");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        locale.a(10021, ((StringBuilder)localObject1).toString());
+        return locale;
+      }
+      catch (JSONException paramString)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("parse json failed: ");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        g.c(((StringBuilder)localObject1).toString());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("JSONException:");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        locale.a(10020, ((StringBuilder)localObject1).toString());
         return locale;
       }
     }
-    catch (JSONException paramString)
-    {
-      g.c("parse json failed: " + paramString.toString());
-      locale.a(10020, "JSONException:" + paramString.toString());
-      return locale;
-      paramInt = new JSONObject(new String(l.c(paramString.getString("data")))).getInt("seq_id");
-      if (this.b != paramInt)
-      {
-        locale.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + paramInt + ",right = " + this.b);
-        return locale;
-      }
-    }
-    catch (Exception paramString)
-    {
-      g.c("unknown err: " + paramString.toString());
-      locale.a(10021, "JSONException:" + paramString.toString());
-      return locale;
-    }
-    cr.a().m();
-    locale.c();
+    locale.b(110);
     return locale;
   }
   
@@ -224,13 +161,14 @@ public class cw
       {
         Message localMessage = new Message();
         localMessage.arg1 = paramInt;
-        if ((paramAnonymouse.b()) && (1 == cw.a(cw.this))) {}
-        for (localMessage.what = 1011;; localMessage.what = 1010)
-        {
-          if (paramHandler != null) {
-            paramHandler.sendMessage(localMessage);
-          }
-          return;
+        if ((paramAnonymouse.b()) && (1 == cw.a(cw.this))) {
+          localMessage.what = 1011;
+        } else {
+          localMessage.what = 1010;
+        }
+        paramAnonymouse = paramHandler;
+        if (paramAnonymouse != null) {
+          paramAnonymouse.sendMessage(localMessage);
         }
       }
     }.c(new String[] { "" });

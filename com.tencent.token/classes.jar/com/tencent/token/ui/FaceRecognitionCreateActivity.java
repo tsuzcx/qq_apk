@@ -39,15 +39,18 @@ public class FaceRecognitionCreateActivity
     }
     catch (Exception localException)
     {
-      g.c("SharedPreferences msg " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
     return false;
   }
   
   private void initNotice()
   {
-    setTitle(2131231541);
-    this.fr_btn_scan = ((Button)findViewById(2131558892));
+    setTitle(2131493685);
+    this.fr_btn_scan = ((Button)findViewById(2131165506));
     this.fr_btn_scan.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
@@ -63,62 +66,64 @@ public class FaceRecognitionCreateActivity
   
   private void initReg()
   {
-    this.chk = ((CheckBox)findViewById(2131558885));
+    this.chk = ((CheckBox)findViewById(2131165507));
     this.chk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
     {
       public void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
         if (paramAnonymousBoolean)
         {
-          FaceRecognitionCreateActivity.this.btn_reg.setTextAppearance(FaceRecognitionCreateActivity.this, 2131362228);
-          FaceRecognitionCreateActivity.this.btn_reg.setBackgroundResource(2130837632);
+          FaceRecognitionCreateActivity.this.btn_reg.setTextAppearance(FaceRecognitionCreateActivity.this, 2131558837);
+          FaceRecognitionCreateActivity.this.btn_reg.setBackgroundResource(2131099777);
           FaceRecognitionCreateActivity.this.btn_reg.setEnabled(true);
           return;
         }
-        FaceRecognitionCreateActivity.this.btn_reg.setTextAppearance(FaceRecognitionCreateActivity.this, 2131362186);
-        FaceRecognitionCreateActivity.this.btn_reg.setBackgroundResource(2130837728);
+        FaceRecognitionCreateActivity.this.btn_reg.setTextAppearance(FaceRecognitionCreateActivity.this, 2131558795);
+        FaceRecognitionCreateActivity.this.btn_reg.setBackgroundResource(2131099874);
         FaceRecognitionCreateActivity.this.btn_reg.setEnabled(false);
       }
     });
-    this.tv_licence = ((TextView)findViewById(2131558886));
-    this.tv_licence.setText(Html.fromHtml(getResources().getString(2131231016)));
+    this.tv_licence = ((TextView)findViewById(2131165516));
+    this.tv_licence.setText(Html.fromHtml(getResources().getString(2131493158)));
     this.tv_licence.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
-        l.a(FaceRecognitionCreateActivity.this, FaceRecognitionCreateActivity.this.getResources().getString(2131231296), FaceRecognitionCreateActivity.this.getResources().getString(2131231297));
+        paramAnonymousView = FaceRecognitionCreateActivity.this;
+        l.a(paramAnonymousView, paramAnonymousView.getResources().getString(2131493438), FaceRecognitionCreateActivity.this.getResources().getString(2131493439));
       }
     });
-    this.btn_reg = ((Button)findViewById(2131558887));
+    this.btn_reg = ((Button)findViewById(2131165505));
     this.btn_reg.setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
         if (FaceRecognitionCreateActivity.this.chk.isChecked())
         {
-          if (cr.a().e() == null) {
-            FaceRecognitionCreateActivity.this.showNoAccountTipDialog(FaceRecognitionCreateActivity.this, 3, 0);
+          if (cr.a().e() == null)
+          {
+            paramAnonymousView = FaceRecognitionCreateActivity.this;
+            paramAnonymousView.showNoAccountTipDialog(paramAnonymousView, 3, 0);
+            return;
           }
+          if (!cr.a().e().mIsBinded)
+          {
+            paramAnonymousView = FaceRecognitionCreateActivity.this;
+            paramAnonymousView.showNoAccountTipDialog(paramAnonymousView, 3, 1);
+            return;
+          }
+          if (FaceRecognitionCreateActivity.getFlag())
+          {
+            paramAnonymousView = new Intent(FaceRecognitionCreateActivity.this, FaceRegCameraActivity.class);
+            paramAnonymousView.putExtra("scene", 1);
+            paramAnonymousView.putExtra("flag", 1);
+            FaceRecognitionCreateActivity.this.startActivity(paramAnonymousView);
+            FaceRecognitionCreateActivity.this.finish();
+            return;
+          }
+          FaceRecognitionCreateActivity.this.setContentView(2131296338);
+          FaceRecognitionCreateActivity.this.initNotice();
         }
-        else {
-          return;
-        }
-        if (!cr.a().e().mIsBinded)
-        {
-          FaceRecognitionCreateActivity.this.showNoAccountTipDialog(FaceRecognitionCreateActivity.this, 3, 1);
-          return;
-        }
-        if (FaceRecognitionCreateActivity.getFlag())
-        {
-          paramAnonymousView = new Intent(FaceRecognitionCreateActivity.this, FaceRegCameraActivity.class);
-          paramAnonymousView.putExtra("scene", 1);
-          paramAnonymousView.putExtra("flag", 1);
-          FaceRecognitionCreateActivity.this.startActivity(paramAnonymousView);
-          FaceRecognitionCreateActivity.this.finish();
-          return;
-        }
-        FaceRecognitionCreateActivity.this.setContentView(2130968658);
-        FaceRecognitionCreateActivity.this.initNotice();
       }
     });
   }
@@ -134,7 +139,10 @@ public class FaceRecognitionCreateActivity
     }
     catch (Exception localException)
     {
-      g.c("SharedPreferences msg " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
   }
   
@@ -156,7 +164,7 @@ public class FaceRecognitionCreateActivity
     super.onCreate(paramBundle);
     this.istry = getIntent().getIntExtra("istry", -1);
     this.fromspalsh = getIntent().getBooleanExtra("fromsplash", false);
-    setContentView(2130968657);
+    setContentView(2131296337);
     initReg();
   }
   

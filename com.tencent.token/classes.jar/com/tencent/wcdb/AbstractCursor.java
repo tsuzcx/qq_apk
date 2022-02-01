@@ -36,9 +36,10 @@ public abstract class AbstractCursor
   
   protected void checkPosition()
   {
-    if ((-1 == this.mPos) || (getCount() == this.mPos)) {
-      throw new CursorIndexOutOfBoundsException(this.mPos, getCount());
+    if ((-1 != this.mPos) && (getCount() != this.mPos)) {
+      return;
     }
+    throw new CursorIndexOutOfBoundsException(this.mPos, getCount());
   }
   
   public void close()
@@ -54,15 +55,13 @@ public abstract class AbstractCursor
     if (str != null)
     {
       char[] arrayOfChar = paramCharArrayBuffer.data;
-      if ((arrayOfChar == null) || (arrayOfChar.length < str.length())) {
+      if ((arrayOfChar != null) && (arrayOfChar.length >= str.length())) {
+        str.getChars(0, str.length(), arrayOfChar, 0);
+      } else {
         paramCharArrayBuffer.data = str.toCharArray();
       }
-      for (;;)
-      {
-        paramCharArrayBuffer.sizeCopied = str.length();
-        return;
-        str.getChars(0, str.length(), arrayOfChar, 0);
-      }
+      paramCharArrayBuffer.sizeCopied = str.length();
+      return;
     }
     paramCharArrayBuffer.sizeCopied = 0;
   }
@@ -79,8 +78,9 @@ public abstract class AbstractCursor
   
   protected void finalize()
   {
-    if ((this.mSelfObserver != null) && (this.mSelfObserverRegistered == true)) {
-      this.mContentResolver.unregisterContentObserver(this.mSelfObserver);
+    ContentObserver localContentObserver = this.mSelfObserver;
+    if ((localContentObserver != null) && (this.mSelfObserverRegistered == true)) {
+      this.mContentResolver.unregisterContentObserver(localContentObserver);
     }
     try
     {
@@ -104,13 +104,16 @@ public abstract class AbstractCursor
   
   public int getColumnIndex(String paramString)
   {
-    int i = 0;
     int j = paramString.lastIndexOf('.');
+    int i = 0;
     Object localObject = paramString;
     if (j != -1)
     {
       localObject = new Exception();
-      Log.e("Cursor", "requesting column name with table name -- " + paramString, new Object[] { localObject });
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("requesting column name with table name -- ");
+      localStringBuilder.append(paramString);
+      Log.e("Cursor", localStringBuilder.toString(), new Object[] { localObject });
       localObject = paramString.substring(j + 1);
     }
     paramString = getColumnNames();
@@ -128,10 +131,14 @@ public abstract class AbstractCursor
   public int getColumnIndexOrThrow(String paramString)
   {
     int i = getColumnIndex(paramString);
-    if (i < 0) {
-      throw new IllegalArgumentException("column '" + paramString + "' does not exist");
+    if (i >= 0) {
+      return i;
     }
-    return i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("column '");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("' does not exist");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public String getColumnName(int paramInt)
@@ -193,20 +200,18 @@ public abstract class AbstractCursor
   
   public final boolean isAfterLast()
   {
-    if (getCount() == 0) {}
-    while (this.mPos == getCount()) {
+    if (getCount() == 0) {
       return true;
     }
-    return false;
+    return this.mPos == getCount();
   }
   
   public final boolean isBeforeFirst()
   {
-    if (getCount() == 0) {}
-    while (this.mPos == -1) {
+    if (getCount() == 0) {
       return true;
     }
-    return false;
+    return this.mPos == -1;
   }
   
   public boolean isClosed()
@@ -255,34 +260,33 @@ public abstract class AbstractCursor
   
   public boolean moveToPosition(int paramInt)
   {
-    boolean bool1 = false;
     int i = getCount();
-    if (paramInt >= i) {
-      this.mPos = i;
-    }
-    boolean bool2;
-    do
+    if (paramInt >= i)
     {
-      return bool1;
-      if (paramInt < 0)
-      {
-        this.mPos = -1;
-        return false;
-      }
-      if (paramInt == this.mPos) {
-        return true;
-      }
-      bool2 = onMove(this.mPos, paramInt);
-      if (!bool2)
-      {
-        this.mPos = -1;
-        return bool2;
-      }
-      this.mPos = paramInt;
-      bool1 = bool2;
-    } while (this.mRowIdColumnIndex == -1);
-    this.mCurrentRowID = Long.valueOf(getLong(this.mRowIdColumnIndex));
-    return bool2;
+      this.mPos = i;
+      return false;
+    }
+    if (paramInt < 0)
+    {
+      this.mPos = -1;
+      return false;
+    }
+    i = this.mPos;
+    if (paramInt == i) {
+      return true;
+    }
+    boolean bool = onMove(i, paramInt);
+    if (!bool)
+    {
+      this.mPos = -1;
+      return bool;
+    }
+    this.mPos = paramInt;
+    paramInt = this.mRowIdColumnIndex;
+    if (paramInt != -1) {
+      this.mCurrentRowID = Long.valueOf(getLong(paramInt));
+    }
+    return bool;
   }
   
   public final boolean moveToPrevious()
@@ -304,9 +308,10 @@ public abstract class AbstractCursor
   
   protected void onDeactivateOrClose()
   {
-    if (this.mSelfObserver != null)
+    ContentObserver localContentObserver = this.mSelfObserver;
+    if (localContentObserver != null)
     {
-      this.mContentResolver.unregisterContentObserver(this.mSelfObserver);
+      this.mContentResolver.unregisterContentObserver(localContentObserver);
       this.mSelfObserverRegistered = false;
     }
     this.mDataSetObservable.notifyInvalidated();
@@ -329,9 +334,10 @@ public abstract class AbstractCursor
   
   public boolean requery()
   {
-    if ((this.mSelfObserver != null) && (!this.mSelfObserverRegistered))
+    ContentObserver localContentObserver = this.mSelfObserver;
+    if ((localContentObserver != null) && (!this.mSelfObserverRegistered))
     {
-      this.mContentResolver.registerContentObserver(this.mNotifyUri, true, this.mSelfObserver);
+      this.mContentResolver.registerContentObserver(this.mNotifyUri, true, localContentObserver);
       this.mSelfObserverRegistered = true;
     }
     this.mDataSetObservable.notifyChanged();

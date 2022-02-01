@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class ce
 {
-  private static ce a = null;
+  private static ce a;
   private SoundPool b = null;
   private Context c = null;
   private HashMap<Integer, Integer> d = null;
@@ -20,21 +20,19 @@ public class ce
   
   public static ce a(Context paramContext)
   {
-    if (a == null) {
+    if (a == null)
+    {
       a = new ce();
-    }
-    try
-    {
-      a.b(paramContext);
-      return a;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
+      try
+      {
+        a.b(paramContext);
+      }
+      catch (Exception paramContext)
       {
         paramContext.printStackTrace();
       }
     }
+    return a;
   }
   
   private void b(Context paramContext)
@@ -46,20 +44,24 @@ public class ce
     this.b = new SoundPool(1, 3, 100);
     this.d = new HashMap();
     int i = 1;
-    if (i <= 10)
+    while (i <= 10)
     {
-      int j = this.b.load(this.c, 2131165185 + (i - 1), 1);
-      if (j == 0) {
-        g.c("load audio number=" + i + " fail");
-      }
-      for (;;)
+      int j = this.b.load(this.c, i - 1 + 2131427329, 1);
+      if (j == 0)
       {
-        i += 1;
-        break;
+        paramContext = new StringBuilder();
+        paramContext.append("load audio number=");
+        paramContext.append(i);
+        paramContext.append(" fail");
+        g.c(paramContext.toString());
+      }
+      else
+      {
         this.d.put(Integer.valueOf(i), Integer.valueOf(j));
       }
+      i += 1;
     }
-    i = this.b.load(this.c, 2131165184, 100);
+    i = this.b.load(this.c, 2131427328, 100);
     if (i == 0)
     {
       g.c("load audio door_open fail");
@@ -128,7 +130,13 @@ public class ce
               paramAnonymousVarArgs = (Integer)ce.a(ce.this).get(Integer.valueOf(paramArrayOfInt[i] + 1));
               if (paramAnonymousVarArgs == null)
               {
-                g.c("token number index=" + i + ",value=" + paramArrayOfInt[i] + " get sound error");
+                paramAnonymousVarArgs = new StringBuilder();
+                paramAnonymousVarArgs.append("token number index=");
+                paramAnonymousVarArgs.append(i);
+                paramAnonymousVarArgs.append(",value=");
+                paramAnonymousVarArgs.append(paramArrayOfInt[i]);
+                paramAnonymousVarArgs.append(" get sound error");
+                g.c(paramAnonymousVarArgs.toString());
                 return "";
               }
               int j = ce.this.a(paramAnonymousVarArgs.intValue());
@@ -140,11 +148,11 @@ public class ce
           }
           catch (Exception paramAnonymousVarArgs)
           {
-            for (;;)
-            {
-              paramAnonymousVarArgs.printStackTrace();
-              g.c("run exception msg=" + paramAnonymousVarArgs.getMessage());
-            }
+            paramAnonymousVarArgs.printStackTrace();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("run exception msg=");
+            localStringBuilder.append(paramAnonymousVarArgs.getMessage());
+            g.c(localStringBuilder.toString());
           }
           return "";
         }

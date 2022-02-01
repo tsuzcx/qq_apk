@@ -91,120 +91,117 @@ public class DrawableUtils
   private static void fixVectorDrawableTinting(Drawable paramDrawable)
   {
     int[] arrayOfInt = paramDrawable.getState();
-    if ((arrayOfInt == null) || (arrayOfInt.length == 0)) {
+    if ((arrayOfInt != null) && (arrayOfInt.length != 0)) {
+      paramDrawable.setState(ThemeUtils.EMPTY_STATE_SET);
+    } else {
       paramDrawable.setState(ThemeUtils.CHECKED_STATE_SET);
     }
-    for (;;)
-    {
-      paramDrawable.setState(arrayOfInt);
-      return;
-      paramDrawable.setState(ThemeUtils.EMPTY_STATE_SET);
-    }
+    paramDrawable.setState(arrayOfInt);
   }
   
   public static Rect getOpticalBounds(Drawable paramDrawable)
   {
-    if (sInsetsClazz != null) {}
-    for (;;)
+    if (sInsetsClazz != null)
     {
-      Object localObject;
-      Rect localRect;
-      int j;
-      int i;
-      try
+      for (;;)
       {
-        paramDrawable = DrawableCompat.unwrap(paramDrawable);
-        localObject = paramDrawable.getClass().getMethod("getOpticalInsets", new Class[0]).invoke(paramDrawable, new Object[0]);
-        if (localObject == null) {
-          break label215;
-        }
-        localRect = new Rect();
-        Field[] arrayOfField = sInsetsClazz.getFields();
-        int k = arrayOfField.length;
-        j = 0;
-        paramDrawable = localRect;
-        if (j >= k) {
-          break label219;
-        }
-        paramDrawable = arrayOfField[j];
-        str = paramDrawable.getName();
-        i = -1;
-        switch (str.hashCode())
+        try
         {
-        case 3317767: 
-          if (!str.equals("left")) {
-            break label263;
+          paramDrawable = DrawableCompat.unwrap(paramDrawable);
+          paramDrawable = paramDrawable.getClass().getMethod("getOpticalInsets", new Class[0]).invoke(paramDrawable, new Object[0]);
+          if (paramDrawable == null) {
+            continue;
           }
-          i = 0;
-        }
-      }
-      catch (Exception paramDrawable)
-      {
-        String str;
-        Log.e("DrawableUtils", "Couldn't obtain the optical insets. Ignoring.");
-      }
-      if (str.equals("top"))
-      {
-        i = 1;
-        break label263;
-        if (str.equals("right"))
-        {
-          i = 2;
-          break label263;
-          if (str.equals("bottom"))
+          localRect = new Rect();
+          Field[] arrayOfField = sInsetsClazz.getFields();
+          int k = arrayOfField.length;
+          j = 0;
+          if (j >= k) {
+            continue;
+          }
+          localField = arrayOfField[j];
+          String str = localField.getName();
+          i = str.hashCode();
+          if (i != -1383228885)
           {
-            i = 3;
-            break label263;
-            localRect.left = paramDrawable.getInt(localObject);
-            break label296;
-            label215:
-            paramDrawable = INSETS_NONE;
-            label219:
-            return paramDrawable;
-            localRect.top = paramDrawable.getInt(localObject);
-            break label296;
-            localRect.right = paramDrawable.getInt(localObject);
-            break label296;
-            localRect.bottom = paramDrawable.getInt(localObject);
-            break label296;
+            if (i != 115029)
+            {
+              if (i != 3317767)
+              {
+                if ((i != 108511772) || (!str.equals("right"))) {
+                  continue;
+                }
+                i = 2;
+                continue;
+              }
+              if (!str.equals("left")) {
+                continue;
+              }
+              i = 0;
+              continue;
+            }
+            if (!str.equals("top")) {
+              continue;
+            }
+            i = 1;
+            continue;
           }
+          if (!str.equals("bottom")) {
+            continue;
+          }
+          i = 3;
         }
+        catch (Exception paramDrawable)
+        {
+          Rect localRect;
+          int j;
+          Field localField;
+          continue;
+          int i = -1;
+          switch (i)
+          {
+          }
+          continue;
+        }
+        localRect.bottom = localField.getInt(paramDrawable);
+        continue;
+        localRect.right = localField.getInt(paramDrawable);
+        continue;
+        localRect.top = localField.getInt(paramDrawable);
+        continue;
+        localRect.left = localField.getInt(paramDrawable);
+        j += 1;
       }
-      label263:
-      switch (i)
-      {
-      }
-      label296:
-      j += 1;
+      return localRect;
+      Log.e("DrawableUtils", "Couldn't obtain the optical insets. Ignoring.");
     }
+    return INSETS_NONE;
   }
   
   public static PorterDuff.Mode parseTintMode(int paramInt, PorterDuff.Mode paramMode)
   {
-    switch (paramInt)
+    if (paramInt != 3)
     {
-    case 4: 
-    case 6: 
-    case 7: 
-    case 8: 
-    case 10: 
-    case 11: 
-    case 12: 
-    case 13: 
-    default: 
-      return paramMode;
-    case 3: 
-      return PorterDuff.Mode.SRC_OVER;
-    case 5: 
+      if (paramInt != 5)
+      {
+        if (paramInt != 9)
+        {
+          switch (paramInt)
+          {
+          default: 
+            return paramMode;
+          case 16: 
+            return PorterDuff.Mode.ADD;
+          case 15: 
+            return PorterDuff.Mode.SCREEN;
+          }
+          return PorterDuff.Mode.MULTIPLY;
+        }
+        return PorterDuff.Mode.SRC_ATOP;
+      }
       return PorterDuff.Mode.SRC_IN;
-    case 9: 
-      return PorterDuff.Mode.SRC_ATOP;
-    case 14: 
-      return PorterDuff.Mode.MULTIPLY;
-    case 15: 
-      return PorterDuff.Mode.SCREEN;
     }
-    return PorterDuff.Mode.ADD;
+    return PorterDuff.Mode.SRC_OVER;
   }
 }
 

@@ -205,7 +205,7 @@ public class bg
     {
       paramContext = (AuthSolutionConfig)bj.a(paramContext.soluInfo, new AuthSolutionConfig(), false);
       if ((paramContext != null) && (paramContext.authSolutionConfigList != null) && (!paramContext.authSolutionConfigList.isEmpty())) {
-        return !((String)paramContext.authSolutionConfigList.get(0)).equals("1");
+        return ((String)paramContext.authSolutionConfigList.get(0)).equals("1") ^ true;
       }
     }
     return true;
@@ -241,12 +241,14 @@ public class bg
     if ((paramContext != null) && (paramContext.soluInfo != null))
     {
       paramContext = (AuthSolutionConfig)bj.a(paramContext.soluInfo, new AuthSolutionConfig(), false);
-      if ((paramContext != null) && (paramContext.authSolutionConfigList != null) && (!paramContext.authSolutionConfigList.isEmpty()) && (paramInt < paramContext.authSolutionConfigList.size())) {
-        return (String)paramContext.authSolutionConfigList.get(paramInt);
-      }
+      if ((paramContext == null) || (paramContext.authSolutionConfigList == null) || (paramContext.authSolutionConfigList.isEmpty()) || (paramInt >= paramContext.authSolutionConfigList.size())) {}
     }
-    if ((paramInt >= 0) && (paramInt < d.size())) {
-      return (String)d.get(paramInt);
+    for (paramContext = paramContext.authSolutionConfigList;; paramContext = d)
+    {
+      return (String)paramContext.get(paramInt);
+      if ((paramInt < 0) || (paramInt >= d.size())) {
+        break;
+      }
     }
     return "";
   }

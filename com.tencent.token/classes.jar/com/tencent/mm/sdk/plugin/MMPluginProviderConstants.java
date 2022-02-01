@@ -79,38 +79,39 @@ public class MMPluginProviderConstants
       if ((paramObject instanceof Double)) {
         return 6;
       }
-      Log.e("MicroMsg.SDK.PluginProvider.Resolver", "unresolve failed, unknown type=" + paramObject.getClass().toString());
+      StringBuilder localStringBuilder = new StringBuilder("unresolve failed, unknown type=");
+      localStringBuilder.append(paramObject.getClass().toString());
+      Log.e("MicroMsg.SDK.PluginProvider.Resolver", localStringBuilder.toString());
       return 0;
     }
     
     public static Object resolveObj(int paramInt, String paramString)
     {
-      String str = paramString;
       switch (paramInt)
       {
       default: 
-      case 1: 
-      case 2: 
-      case 4: 
-      case 5: 
+        break;
       case 6: 
+      case 5: 
+      case 4: 
+      case 2: 
+      case 1: 
         try
         {
-          Log.e("MicroMsg.SDK.PluginProvider.Resolver", "unknown type");
+          return Double.valueOf(paramString);
         }
         catch (Exception paramString)
         {
           paramString.printStackTrace();
-          str = null;
         }
-        return Integer.valueOf(paramString);
-        return Long.valueOf(paramString);
-        return Boolean.valueOf(paramString);
         return Float.valueOf(paramString);
-        paramString = Double.valueOf(paramString);
-        return paramString;
+        return Boolean.valueOf(paramString);
+        return Long.valueOf(paramString);
+        return Integer.valueOf(paramString);
+        Log.e("MicroMsg.SDK.PluginProvider.Resolver", "unknown type");
+        return null;
       }
-      return str;
+      return paramString;
     }
     
     public static boolean unresolveObj(ContentValues paramContentValues, Object paramObject)

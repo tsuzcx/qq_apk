@@ -27,7 +27,11 @@ final class fz
       fz localfz = new fz(SSLParameters.class.getMethod("setApplicationProtocols", new Class[] { [Ljava.lang.String.class }), SSLSocket.class.getMethod("getApplicationProtocol", new Class[0]));
       return localfz;
     }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      label37:
+      break label37;
+    }
     return null;
   }
   
@@ -40,23 +44,14 @@ final class fz
       if (paramSSLSocket != null)
       {
         boolean bool = paramSSLSocket.equals("");
-        if (!bool) {}
+        if (!bool) {
+          return paramSSLSocket;
+        }
       }
-      else
-      {
-        paramSSLSocket = null;
-      }
-      return paramSSLSocket;
+      return null;
     }
-    catch (IllegalAccessException paramSSLSocket)
-    {
-      throw fc.a("unable to get selected protocols", paramSSLSocket);
-    }
-    catch (InvocationTargetException paramSSLSocket)
-    {
-      label36:
-      break label36;
-    }
+    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
+    throw fc.a("unable to get selected protocols", paramSSLSocket);
   }
   
   public void a(SSLSocket paramSSLSocket, String paramString, List<Protocol> paramList)
@@ -69,15 +64,8 @@ final class fz
       paramSSLSocket.setSSLParameters(paramString);
       return;
     }
-    catch (IllegalAccessException paramSSLSocket)
-    {
-      throw fc.a("unable to set ssl parameters", paramSSLSocket);
-    }
-    catch (InvocationTargetException paramSSLSocket)
-    {
-      label48:
-      break label48;
-    }
+    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
+    throw fc.a("unable to set ssl parameters", paramSSLSocket);
   }
 }
 

@@ -22,7 +22,10 @@ public class MMessage
   
   public static boolean send(Context paramContext, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    paramString1 = paramString1 + ".permission.MM_MESSAGE";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(".permission.MM_MESSAGE");
+    paramString1 = localStringBuilder.toString();
     paramString2 = new Intent(paramString2);
     if (paramBundle != null) {
       paramString2.putExtras(paramBundle);
@@ -33,7 +36,11 @@ public class MMessage
     paramString2.putExtra("_mmessage_content", paramString3);
     paramString2.putExtra("_mmessage_checksum", MMessageUtil.a(paramString3, paramBundle));
     paramContext.sendBroadcast(paramString2, paramString1);
-    Log.d("MicroMsg.SDK.MMessage", "send mm message, intent=" + paramString2 + ", perm=" + paramString1);
+    paramContext = new StringBuilder("send mm message, intent=");
+    paramContext.append(paramString2);
+    paramContext.append(", perm=");
+    paramContext.append(paramString1);
+    Log.d("MicroMsg.SDK.MMessage", paramContext.toString());
     return true;
   }
   
@@ -70,19 +77,22 @@ public class MMessage
     
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
-      Log.d("MicroMsg.SDK.MMessage", "receive intent=" + paramIntent);
-      if (this.o != null)
+      paramContext = new StringBuilder("receive intent=");
+      paramContext.append(paramIntent);
+      Log.d("MicroMsg.SDK.MMessage", paramContext.toString());
+      paramContext = this.o;
+      if (paramContext != null)
       {
-        this.o.handleMessage(paramIntent);
+        paramContext.handleMessage(paramIntent);
         Log.d("MicroMsg.SDK.MMessage", "mm message self-handled");
-      }
-      do
-      {
         return;
-        paramContext = (MMessage.CallBack)callbacks.get(paramIntent.getAction());
-      } while (paramContext == null);
-      paramContext.handleMessage(paramIntent);
-      Log.d("MicroMsg.SDK.MMessage", "mm message handled");
+      }
+      paramContext = (MMessage.CallBack)callbacks.get(paramIntent.getAction());
+      if (paramContext != null)
+      {
+        paramContext.handleMessage(paramIntent);
+        Log.d("MicroMsg.SDK.MMessage", "mm message handled");
+      }
     }
   }
 }

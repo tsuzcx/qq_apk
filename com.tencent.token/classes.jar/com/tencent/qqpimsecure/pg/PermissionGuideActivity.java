@@ -81,59 +81,17 @@ public class PermissionGuideActivity
   
   private void a(MSolution paramMSolution, g paramg, int[] paramArrayOfInt, PageNextCallback paramPageNextCallback)
   {
-    boolean bool2 = false;
     if (paramg.d == null) {
       return;
     }
-    ArrayList localArrayList1;
-    switch (paramMSolution.mHelpStyle)
+    int i1 = paramMSolution.mHelpStyle;
+    boolean bool2 = true;
+    boolean bool1 = true;
+    switch (i1)
     {
     default: 
       return;
-    case 1: 
-      paramg = paramg.d;
-      i1 = this.d;
-      localArrayList1 = paramMSolution.mHelpTextList;
-      paramMSolution = paramMSolution.mHelpImageList;
-      if (this.n >= this.c.length - 1) {
-        break;
-      }
-    case 2: 
-      for (bool1 = true;; bool1 = false)
-      {
-        paramg.onShowImage(paramArrayOfInt, i1, localArrayList1, paramMSolution, bool1, paramPageNextCallback, this);
-        return;
-        paramg = paramg.d;
-        i1 = this.d;
-        paramMSolution = paramMSolution.mHelpInfo;
-        if (this.n < this.c.length - 1) {}
-        for (bool1 = true;; bool1 = false)
-        {
-          paramg.onShowText(paramArrayOfInt, i1, paramMSolution, bool1, paramPageNextCallback, this);
-          return;
-        }
-      }
-    case 3: 
-      paramg = paramg.d;
-      i1 = this.d;
-      if (!paramMSolution.mNoTrustAll)
-      {
-        bool1 = true;
-        localArrayList1 = paramMSolution.mHelpTextList;
-        paramMSolution = paramMSolution.mHelpImageList;
-        if (this.n >= this.c.length - 1) {
-          break label242;
-        }
-      }
-      for (bool2 = true;; bool2 = false)
-      {
-        paramg.onShowImageText(paramArrayOfInt, i1, bool1, localArrayList1, paramMSolution, bool2, paramPageNextCallback, this);
-        return;
-        bool1 = false;
-        break;
-      }
     case 5: 
-      label242:
       b(paramMSolution);
       localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
@@ -141,126 +99,184 @@ public class PermissionGuideActivity
       a(paramMSolution, localArrayList1, localArrayList2, localArrayList3);
       paramg = paramg.d;
       i1 = this.d;
-      if (!paramMSolution.mNoTrustAll) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        if (this.n < this.c.length - 1) {
-          bool2 = true;
-        }
-        paramg.onShowDoraemon(paramArrayOfInt, i1, bool1, localArrayList2, localArrayList1, localArrayList3, bool2, paramPageNextCallback, this);
-        return;
+      bool2 = paramMSolution.mNoTrustAll;
+      if (this.n < this.c.length - 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-    }
-    paramg = paramg.d;
-    int i1 = this.d;
-    int i2 = paramMSolution.mHelpAnimation;
-    if (this.n < this.c.length - 1) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
+      paramg.onShowDoraemon(paramArrayOfInt, i1, bool2 ^ true, localArrayList2, localArrayList1, localArrayList3, bool1, paramPageNextCallback, this);
+      return;
+    case 4: 
+      paramg = paramg.d;
+      i1 = this.d;
+      int i2 = paramMSolution.mHelpAnimation;
+      if (this.n >= this.c.length - 1) {
+        bool1 = false;
+      }
       paramg.onShowAnimation(paramArrayOfInt, i1, i2, bool1, paramPageNextCallback, this);
       return;
+    case 3: 
+      paramg = paramg.d;
+      i1 = this.d;
+      bool2 = paramMSolution.mNoTrustAll;
+      localArrayList1 = paramMSolution.mHelpTextList;
+      paramMSolution = paramMSolution.mHelpImageList;
+      if (this.n < this.c.length - 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      paramg.onShowImageText(paramArrayOfInt, i1, bool2 ^ true, localArrayList1, paramMSolution, bool1, paramPageNextCallback, this);
+      return;
+    case 2: 
+      paramg = paramg.d;
+      i1 = this.d;
+      paramMSolution = paramMSolution.mHelpInfo;
+      if (this.n < this.c.length - 1) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
+      }
+      paramg.onShowText(paramArrayOfInt, i1, paramMSolution, bool1, paramPageNextCallback, this);
+      return;
     }
+    paramg = paramg.d;
+    i1 = this.d;
+    ArrayList localArrayList1 = paramMSolution.mHelpTextList;
+    paramMSolution = paramMSolution.mHelpImageList;
+    if (this.n < this.c.length - 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    paramg.onShowImage(paramArrayOfInt, i1, localArrayList1, paramMSolution, bool1, paramPageNextCallback, this);
   }
   
   private void a(MSolution paramMSolution, ArrayList<Integer> paramArrayList, ArrayList<String> paramArrayList1, ArrayList<ArrayList<String>> paramArrayList2)
   {
-    if (paramMSolution.mHelpDoraemonZip == null) {}
-    do
-    {
+    if (paramMSolution.mHelpDoraemonZip == null) {
       return;
-      paramMSolution = paramMSolution.mHelpDoraemonZip.mDoraemonResList;
-    } while ((paramMSolution == null) || (paramMSolution.isEmpty()));
-    Iterator localIterator = paramMSolution.iterator();
-    label33:
-    MDoraemonRes localMDoraemonRes;
-    if (localIterator.hasNext())
-    {
-      localMDoraemonRes = (MDoraemonRes)localIterator.next();
-      paramArrayList.add(Integer.valueOf(localMDoraemonRes.mDoraemonType));
-      if (TextUtils.isEmpty(localMDoraemonRes.mDoraemonText)) {
-        break label115;
-      }
-      paramMSolution = localMDoraemonRes.mDoraemonText;
-      label85:
-      paramArrayList1.add(paramMSolution);
-      if (localMDoraemonRes.mFileList == null) {
-        break label121;
-      }
     }
-    label115:
-    label121:
-    for (paramMSolution = localMDoraemonRes.mFileList;; paramMSolution = new ArrayList())
+    paramMSolution = paramMSolution.mHelpDoraemonZip.mDoraemonResList;
+    if ((paramMSolution != null) && (!paramMSolution.isEmpty()))
     {
-      paramArrayList2.add(paramMSolution);
-      break label33;
-      break;
-      paramMSolution = "";
-      break label85;
+      Iterator localIterator = paramMSolution.iterator();
+      while (localIterator.hasNext())
+      {
+        MDoraemonRes localMDoraemonRes = (MDoraemonRes)localIterator.next();
+        paramArrayList.add(Integer.valueOf(localMDoraemonRes.mDoraemonType));
+        if (!TextUtils.isEmpty(localMDoraemonRes.mDoraemonText)) {
+          paramMSolution = localMDoraemonRes.mDoraemonText;
+        } else {
+          paramMSolution = "";
+        }
+        paramArrayList1.add(paramMSolution);
+        if (localMDoraemonRes.mFileList != null) {
+          paramMSolution = localMDoraemonRes.mFileList;
+        } else {
+          paramMSolution = new ArrayList();
+        }
+        paramArrayList2.add(paramMSolution);
+      }
     }
   }
   
   private void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, ArrayList<taiji.b> paramArrayList)
   {
-    int i1;
-    if (paramBoolean) {
-      switch (paramInt1)
+    if (paramBoolean)
+    {
+      boolean bool2 = false;
+      if (paramInt1 != 30004)
       {
-      default: 
-        int[] arrayOfInt = bg.c(paramInt1);
-        g localg = g.a();
-        int i2 = arrayOfInt.length;
-        i1 = 0;
-        label99:
-        boolean bool = paramBoolean;
-        if (i1 < i2)
+        if (paramInt1 != 30009)
         {
-          int i3 = arrayOfInt[i1];
-          i3 = localg.a.checkPermission(i3);
-          if ((i3 == -1) || (i3 == 1)) {
-            bool = false;
+          switch (paramInt1)
+          {
+          default: 
+            switch (paramInt1)
+            {
+            default: 
+              break;
+            case 30023: 
+              localObject = this.k;
+              i1 = 41;
+              break;
+            case 30022: 
+              localObject = this.k;
+              i1 = 40;
+              break;
+            case 30021: 
+              localObject = this.k;
+              i1 = 39;
+              break;
+            case 30020: 
+              localObject = this.k;
+              i1 = 38;
+            }
+            break;
+          case 30017: 
+          case 30018: 
+            this.k.add(Integer.valueOf(4));
+            break;
           }
         }
         else
         {
-          if (!bool) {
-            break label334;
-          }
-          a(paramInt1, 271337);
-          a.a(this, paramInt1, 1, this.d, 0, paramString);
+          this.k.add(Integer.valueOf(5));
+          f.b(this, 0);
+          break label186;
         }
-        break;
       }
+      else
+      {
+        localObject = this.k;
+        i1 = 3;
+      }
+      ((HashSet)localObject).add(Integer.valueOf(i1));
+      label186:
+      Object localObject = bg.c(paramInt1);
+      g localg = g.a();
+      int i2 = localObject.length;
+      int i1 = 0;
+      int i3;
+      while (i1 < i2)
+      {
+        i3 = localObject[i1];
+        i3 = localg.a.checkPermission(i3);
+        bool1 = bool2;
+        if (i3 == -1) {
+          break label268;
+        }
+        if (i3 == 1)
+        {
+          bool1 = bool2;
+          break label268;
+        }
+        i1 += 1;
+      }
+      boolean bool1 = paramBoolean;
+      label268:
+      if (bool1)
+      {
+        a(paramInt1, 271337);
+        i1 = 1;
+        i2 = this.d;
+        i3 = 0;
+      }
+      else
+      {
+        i1 = 0;
+        i2 = this.d;
+        i3 = -1;
+      }
+      a.a(this, paramInt1, i1, i2, i3, paramString);
     }
-    for (;;)
+    if ((paramInt2 < paramArrayList.size()) && (!this.j))
     {
-      if ((paramInt2 >= paramArrayList.size()) || (this.j)) {
-        break label349;
-      }
       a(paramInt2, paramArrayList);
       return;
-      this.k.add(Integer.valueOf(3));
-      break;
-      this.k.add(Integer.valueOf(4));
-      break;
-      this.k.add(Integer.valueOf(5));
-      f.b(this, 0);
-      break;
-      this.k.add(Integer.valueOf(4));
-      break;
-      this.k.add(Integer.valueOf(38));
-      break;
-      this.k.add(Integer.valueOf(39));
-      break;
-      this.k.add(Integer.valueOf(40));
-      break;
-      this.k.add(Integer.valueOf(41));
-      break;
-      i1 += 1;
-      break label99;
-      label334:
-      a.a(this, paramInt1, 0, this.d, -1, paramString);
     }
-    label349:
     paramString = new Intent(this, PermissionGuideActivity.class);
     paramString.setFlags(603979776);
     startActivity(paramString);
@@ -268,147 +284,164 @@ public class PermissionGuideActivity
   
   private boolean a(final int paramInt, final ArrayList<taiji.b> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty()) || (paramInt >= paramArrayList.size())) {
-      return false;
-    }
-    Object localObject = g.a();
-    if (((g)localObject).b != null) {
-      ((g)localObject).b.onProcessHelper((int)(paramInt / paramArrayList.size() * 100.0F));
-    }
-    localObject = (taiji.b)paramArrayList.get(paramInt);
-    a(((taiji.b)localObject).b, 271336);
-    AccessFactoryManager.get().accessFactory().startPlay(this, (taiji.b)localObject, new bp.a()
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()) && (paramInt < paramArrayList.size()))
     {
-      private String e;
-      private boolean f;
-      
-      public void a() {}
-      
-      public void a(int paramAnonymousInt1, int paramAnonymousInt2)
-      {
-        taiji.a locala = (taiji.a)paramArrayList.get(paramAnonymousInt1);
-        if (locala.a == 1) {
-          this.e = locala.f;
-        }
-        if (paramAnonymousInt2 == 2)
-        {
-          this.f = true;
-          a.a(PermissionGuideActivity.this, paramInt, 0, PermissionGuideActivity.a(PermissionGuideActivity.this), paramAnonymousInt1, this.e);
-        }
+      Object localObject = g.a();
+      if (((g)localObject).b != null) {
+        ((g)localObject).b.onProcessHelper((int)(paramInt / paramArrayList.size() * 100.0F));
       }
-      
-      public void b()
+      localObject = (taiji.b)paramArrayList.get(paramInt);
+      a(((taiji.b)localObject).b, 271336);
+      AccessFactoryManager.get().accessFactory().startPlay(this, (taiji.b)localObject, new bp.a()
       {
-        PermissionGuideActivity.b(PermissionGuideActivity.this).post(new Runnable()
+        private String e;
+        private boolean f;
+        
+        public void a() {}
+        
+        public void a(int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          public void run()
-          {
-            PermissionGuideActivity localPermissionGuideActivity = PermissionGuideActivity.this;
-            if (!PermissionGuideActivity.1.a(PermissionGuideActivity.1.this)) {}
-            for (boolean bool = true;; bool = false)
-            {
-              PermissionGuideActivity.a(localPermissionGuideActivity, bool, PermissionGuideActivity.1.this.a.b, PermissionGuideActivity.1.b(PermissionGuideActivity.1.this), PermissionGuideActivity.1.this.b + 1, PermissionGuideActivity.1.this.c);
-              return;
-            }
+          taiji.a locala = (taiji.a)paramArrayList.get(paramAnonymousInt1);
+          if (locala.a == 1) {
+            this.e = locala.f;
           }
-        });
-      }
-    });
-    return true;
+          if (paramAnonymousInt2 == 2)
+          {
+            this.f = true;
+            a.a(PermissionGuideActivity.this, paramInt, 0, PermissionGuideActivity.a(PermissionGuideActivity.this), paramAnonymousInt1, this.e);
+          }
+        }
+        
+        public void b()
+        {
+          PermissionGuideActivity.b(PermissionGuideActivity.this).post(new Runnable()
+          {
+            public void run()
+            {
+              PermissionGuideActivity.a(PermissionGuideActivity.this, PermissionGuideActivity.1.a(PermissionGuideActivity.1.this) ^ true, PermissionGuideActivity.1.this.a.b, PermissionGuideActivity.1.b(PermissionGuideActivity.1.this), PermissionGuideActivity.1.this.b + 1, PermissionGuideActivity.1.this.c);
+            }
+          });
+        }
+      });
+      return true;
+    }
+    return false;
   }
   
   private boolean a(MSolution paramMSolution)
   {
-    if (paramMSolution == null) {}
-    Intent localIntent;
-    do
-    {
+    int i1 = 0;
+    if (paramMSolution == null) {
       return false;
-      localIntent = e.a(paramMSolution);
-    } while (localIntent == null);
-    int[] arrayOfInt;
-    Object localObject;
-    boolean bool;
+    }
+    Intent localIntent = e.a(paramMSolution);
+    if (localIntent == null) {
+      return false;
+    }
     if (this.f == 2)
     {
-      arrayOfInt = new int[this.m.size()];
-      localObject = this.m.iterator();
-      int i1 = 0;
-      while (((Iterator)localObject).hasNext())
+      localObject2 = new int[this.m.size()];
+      Iterator localIterator = this.m.iterator();
+      for (;;)
       {
-        arrayOfInt[i1] = ((Integer)((Iterator)localObject).next()).intValue();
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject2[i1] = ((Integer)localIterator.next()).intValue();
         i1 += 1;
       }
-      localObject = g.a();
-      if (paramMSolution.mHelpStyle != 0) {
-        break label127;
-      }
-      bool = a(localIntent, paramMSolution, (g)localObject, arrayOfInt);
     }
-    for (;;)
+    Object localObject1 = this.c;
+    Object localObject2 = g.a();
+    boolean bool;
+    if (paramMSolution.mHelpStyle == 0)
     {
-      this.p = paramMSolution.mJumpIntent.mPackage;
-      return bool;
-      arrayOfInt = this.c;
-      break;
-      label127:
-      if ((((g)localObject).a.checkPermission(37) == 0) || (((g)localObject).a.checkPermission(5) == 0))
-      {
-        localIntent.setFlags(411140096);
-        bool = b(localIntent, paramMSolution, (g)localObject, arrayOfInt);
-      }
-      else
-      {
-        localIntent.setFlags(411140096);
-        bool = c(localIntent, paramMSolution, (g)localObject, arrayOfInt);
-      }
+      bool = a(localIntent, paramMSolution, (g)localObject2, (int[])localObject1);
     }
+    else if ((((g)localObject2).a.checkPermission(37) != 0) && (((g)localObject2).a.checkPermission(5) != 0))
+    {
+      localIntent.setFlags(411140096);
+      bool = c(localIntent, paramMSolution, (g)localObject2, (int[])localObject1);
+    }
+    else
+    {
+      localIntent.setFlags(411140096);
+      bool = b(localIntent, paramMSolution, (g)localObject2, (int[])localObject1);
+    }
+    this.p = paramMSolution.mJumpIntent.mPackage;
+    return bool;
   }
   
+  /* Error */
   private boolean a(final Intent paramIntent, MSolution paramMSolution, g paramg, final int[] paramArrayOfInt)
   {
-    if ((paramMSolution.mHelpTextList == null) || (paramMSolution.mHelpTextList.isEmpty())) {}
-    for (;;)
-    {
-      try
-      {
-        startActivityForResult(paramIntent, 100);
-        return true;
-      }
-      catch (Throwable paramIntent) {}
-      if (paramg.d != null) {
-        paramg.d.onShowImage(paramArrayOfInt, this.d, paramMSolution.mHelpTextList, paramMSolution.mHelpImageList, false, new PageNextCallback()
-        {
-          public void onCallback()
-          {
-            try
-            {
-              PermissionGuideActivity.this.startActivity(paramIntent);
-              d.a().a(paramArrayOfInt, PermissionGuideActivity.this);
-              return;
-            }
-            catch (Throwable localThrowable) {}
-          }
-          
-          public void setIntentExtras(Bundle paramAnonymousBundle)
-          {
-            paramIntent.putExtras(paramAnonymousBundle);
-          }
-        }, this);
-      } else {
-        try
-        {
-          paramIntent.setFlags(411140096);
-          startActivity(paramIntent);
-          d.a().a(paramArrayOfInt, this);
-        }
-        catch (Throwable paramIntent)
-        {
-          return false;
-        }
-      }
-    }
-    return false;
+    // Byte code:
+    //   0: aload_2
+    //   1: getfield 144	Protocol/MGuide/MSolution:mHelpTextList	Ljava/util/ArrayList;
+    //   4: ifnull +87 -> 91
+    //   7: aload_2
+    //   8: getfield 144	Protocol/MGuide/MSolution:mHelpTextList	Ljava/util/ArrayList;
+    //   11: invokevirtual 175	java/util/ArrayList:isEmpty	()Z
+    //   14: ifeq +6 -> 20
+    //   17: goto +74 -> 91
+    //   20: aload_3
+    //   21: getfield 110	com/tencent/qqpimsecure/pg/g:d	Ltmsdk/common/module/pgsdk/PageCallback;
+    //   24: ifnull +42 -> 66
+    //   27: aload_3
+    //   28: getfield 110	com/tencent/qqpimsecure/pg/g:d	Ltmsdk/common/module/pgsdk/PageCallback;
+    //   31: aload 4
+    //   33: aload_0
+    //   34: getfield 68	com/tencent/qqpimsecure/pg/PermissionGuideActivity:d	I
+    //   37: aload_2
+    //   38: getfield 144	Protocol/MGuide/MSolution:mHelpTextList	Ljava/util/ArrayList;
+    //   41: aload_2
+    //   42: getfield 147	Protocol/MGuide/MSolution:mHelpImageList	Ljava/util/ArrayList;
+    //   45: iconst_0
+    //   46: new 14	com/tencent/qqpimsecure/pg/PermissionGuideActivity$2
+    //   49: dup
+    //   50: aload_0
+    //   51: aload_1
+    //   52: aload 4
+    //   54: invokespecial 351	com/tencent/qqpimsecure/pg/PermissionGuideActivity$2:<init>	(Lcom/tencent/qqpimsecure/pg/PermissionGuideActivity;Landroid/content/Intent;[I)V
+    //   57: aload_0
+    //   58: invokeinterface 162 8 0
+    //   63: goto +35 -> 98
+    //   66: aload_1
+    //   67: ldc_w 331
+    //   70: invokevirtual 274	android/content/Intent:setFlags	(I)Landroid/content/Intent;
+    //   73: pop
+    //   74: aload_0
+    //   75: aload_1
+    //   76: invokevirtual 278	com/tencent/qqpimsecure/pg/PermissionGuideActivity:startActivity	(Landroid/content/Intent;)V
+    //   79: invokestatic 356	com/tencent/qqpimsecure/pg/d:a	()Lcom/tencent/qqpimsecure/pg/d;
+    //   82: aload 4
+    //   84: aload_0
+    //   85: invokevirtual 359	com/tencent/qqpimsecure/pg/d:a	([ILandroid/app/Activity;)V
+    //   88: goto +10 -> 98
+    //   91: aload_0
+    //   92: aload_1
+    //   93: bipush 100
+    //   95: invokevirtual 363	com/tencent/qqpimsecure/pg/PermissionGuideActivity:startActivityForResult	(Landroid/content/Intent;I)V
+    //   98: iconst_1
+    //   99: ireturn
+    //   100: astore_1
+    //   101: iconst_0
+    //   102: ireturn
+    //   103: astore_1
+    //   104: iconst_0
+    //   105: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	106	0	this	PermissionGuideActivity
+    //   0	106	1	paramIntent	Intent
+    //   0	106	2	paramMSolution	MSolution
+    //   0	106	3	paramg	g
+    //   0	106	4	paramArrayOfInt	int[]
+    // Exception table:
+    //   from	to	target	type
+    //   66	88	100	java/lang/Throwable
+    //   91	98	103	java/lang/Throwable
   }
   
   private void b()
@@ -449,74 +482,60 @@ public class PermissionGuideActivity
   
   private void b(MSolution paramMSolution)
   {
-    if ((paramMSolution == null) || (paramMSolution.mHelpDoraemonZip == null)) {}
-    while ((paramMSolution.mHelpDoraemonZip.mDoraemonResList == null) || (paramMSolution.mHelpDoraemonZip.mDoraemonResList.isEmpty())) {
-      return;
-    }
-    int i1 = 0;
-    label37:
-    if (i1 < paramMSolution.mHelpDoraemonZip.mDoraemonResList.size()) {
-      if (paramMSolution.mHelpDoraemonZip.mDoraemonResList.get(i1) != null) {
-        break label72;
-      }
-    }
-    for (;;)
+    if (paramMSolution != null)
     {
-      i1 += 1;
-      break label37;
-      break;
-      label72:
-      String str = ((MDoraemonRes)paramMSolution.mHelpDoraemonZip.mDoraemonResList.get(i1)).mDoraemonText;
-      if ((!TextUtils.isEmpty(str)) && (str.contains("%pkg"))) {
-        ((MDoraemonRes)paramMSolution.mHelpDoraemonZip.mDoraemonResList.get(i1)).mDoraemonText = str.replace("%pkg", getApplicationInfo().loadLabel(getPackageManager()).toString());
+      if (paramMSolution.mHelpDoraemonZip == null) {
+        return;
+      }
+      if (paramMSolution.mHelpDoraemonZip.mDoraemonResList != null)
+      {
+        if (paramMSolution.mHelpDoraemonZip.mDoraemonResList.isEmpty()) {
+          return;
+        }
+        int i1 = 0;
+        while (i1 < paramMSolution.mHelpDoraemonZip.mDoraemonResList.size())
+        {
+          if (paramMSolution.mHelpDoraemonZip.mDoraemonResList.get(i1) != null)
+          {
+            String str = ((MDoraemonRes)paramMSolution.mHelpDoraemonZip.mDoraemonResList.get(i1)).mDoraemonText;
+            if ((!TextUtils.isEmpty(str)) && (str.contains("%pkg"))) {
+              ((MDoraemonRes)paramMSolution.mHelpDoraemonZip.mDoraemonResList.get(i1)).mDoraemonText = str.replace("%pkg", getApplicationInfo().loadLabel(getPackageManager()).toString());
+            }
+          }
+          i1 += 1;
+        }
       }
     }
   }
   
   private void b(MSolution paramMSolution, g paramg, int[] paramArrayOfInt, PageNextCallback paramPageNextCallback)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     if (paramg.c == null) {
       return;
     }
-    int i1;
     switch (paramMSolution.mHelpStyle)
     {
     default: 
       return;
-    case 1: 
-      paramg.c.onShowPreviewImage(paramArrayOfInt, this.d, paramMSolution.mHelpTextList, paramMSolution.mHelpImageList, paramPageNextCallback, this);
-      return;
-    case 2: 
-      paramg.c.onShowPreviewText(paramArrayOfInt, this.d, paramMSolution.mHelpInfo, paramPageNextCallback, this);
-      return;
-    case 3: 
-      paramg = paramg.c;
-      i1 = this.d;
-      if (!paramMSolution.mNoTrustAll) {}
-      for (;;)
-      {
-        paramg.onShowPreviewImageText(paramArrayOfInt, i1, bool1, paramMSolution.mHelpTextList, paramMSolution.mHelpImageList, paramPageNextCallback, this);
-        return;
-        bool1 = false;
-      }
     case 5: 
       b(paramMSolution);
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
       ArrayList localArrayList3 = new ArrayList();
       a(paramMSolution, localArrayList1, localArrayList2, localArrayList3);
-      paramg = paramg.c;
-      i1 = this.d;
-      if (!paramMSolution.mNoTrustAll) {}
-      for (bool1 = bool2;; bool1 = false)
-      {
-        paramg.onShowPreviewDoraemon(paramArrayOfInt, i1, bool1, localArrayList2, localArrayList1, localArrayList3, paramPageNextCallback, this);
-        return;
-      }
+      paramg.c.onShowPreviewDoraemon(paramArrayOfInt, this.d, paramMSolution.mNoTrustAll ^ true, localArrayList2, localArrayList1, localArrayList3, paramPageNextCallback, this);
+      return;
+    case 4: 
+      paramg.c.onShowPreviewAnimation(paramArrayOfInt, this.d, paramMSolution.mHelpAnimation, paramPageNextCallback, this);
+      return;
+    case 3: 
+      paramg.c.onShowPreviewImageText(paramArrayOfInt, this.d, paramMSolution.mNoTrustAll ^ true, paramMSolution.mHelpTextList, paramMSolution.mHelpImageList, paramPageNextCallback, this);
+      return;
+    case 2: 
+      paramg.c.onShowPreviewText(paramArrayOfInt, this.d, paramMSolution.mHelpInfo, paramPageNextCallback, this);
+      return;
     }
-    paramg.c.onShowPreviewAnimation(paramArrayOfInt, this.d, paramMSolution.mHelpAnimation, paramPageNextCallback, this);
+    paramg.c.onShowPreviewImage(paramArrayOfInt, this.d, paramMSolution.mHelpTextList, paramMSolution.mHelpImageList, paramPageNextCallback, this);
   }
   
   private boolean b(Intent paramIntent, MSolution paramMSolution, g paramg, int[] paramArrayOfInt)
@@ -525,102 +544,93 @@ public class PermissionGuideActivity
     {
       startActivity(paramIntent);
       d.a().a(paramArrayOfInt, this);
-      if (paramg.e != null) {}
-      switch (paramMSolution.mHelpStyle)
+      if (paramg.e != null)
       {
-      default: 
-        if ((!this.m.isEmpty()) && (((Integer)this.m.get(0)).intValue() == 5))
+        int i1;
+        boolean bool;
+        switch (paramMSolution.mHelpStyle)
         {
-          f.b(this, 2);
-          f.b(this, System.currentTimeMillis());
-          f.a(this, 5, this.d);
+        default: 
+          break;
+        case 5: 
+          b(paramMSolution);
+          paramIntent = new ArrayList();
+          ArrayList localArrayList1 = new ArrayList();
+          ArrayList localArrayList2 = new ArrayList();
+          a(paramMSolution, paramIntent, localArrayList1, localArrayList2);
+          paramg = paramg.e;
+          i1 = this.d;
+          if (paramMSolution.mHelpTech != 1) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          paramg.onShowDoraemon(paramArrayOfInt, i1, bool, paramMSolution.mNoTrustAll ^ true, localArrayList1, paramIntent, localArrayList2, this);
+          break;
+        case 4: 
+          paramIntent = paramg.e;
+          i1 = this.d;
+          if (paramMSolution.mHelpTech != 1) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          paramIntent.onShowAnimation(paramArrayOfInt, i1, bool, paramMSolution.mHelpAnimation, this);
+          break;
+        case 3: 
+          paramIntent = paramg.e;
+          i1 = this.d;
+          if (paramMSolution.mHelpTech != 1) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          paramIntent.onShowImageText(paramArrayOfInt, i1, bool, paramMSolution.mNoTrustAll ^ true, paramMSolution.mHelpTextList, paramMSolution.mHelpImageList, this);
+          break;
+        case 2: 
+          paramIntent = paramg.e;
+          i1 = this.d;
+          if (paramMSolution.mHelpTech != 1) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          paramIntent.onShowText(paramArrayOfInt, i1, bool, paramMSolution.mHelpInfo, this);
+          break;
+        case 1: 
+          paramIntent = paramg.e;
+          i1 = this.d;
+          if (paramMSolution.mHelpTech != 1) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          paramIntent.onShowImage(paramArrayOfInt, i1, bool, paramMSolution.mHelpTextList, paramMSolution.mHelpImageList, this);
         }
-        this.i = true;
-        return true;
       }
-    }
-    catch (Throwable paramIntent)
-    {
-      return false;
-    }
-    paramIntent = paramg.e;
-    int i1 = this.d;
-    if (paramMSolution.mHelpTech != 1) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      paramIntent.onShowText(paramArrayOfInt, i1, bool1, paramMSolution.mHelpInfo, this);
-      break;
-    }
-    paramIntent = paramg.e;
-    i1 = this.d;
-    if (paramMSolution.mHelpTech != 1) {}
-    for (bool1 = true;; bool1 = false)
-    {
-      paramIntent.onShowImage(paramArrayOfInt, i1, bool1, paramMSolution.mHelpTextList, paramMSolution.mHelpImageList, this);
-      break;
-    }
-    paramIntent = paramg.e;
-    i1 = this.d;
-    if (paramMSolution.mHelpTech != 1)
-    {
-      bool1 = true;
-      label241:
-      if (paramMSolution.mNoTrustAll) {
-        break label283;
+      if ((!this.m.isEmpty()) && (((Integer)this.m.get(0)).intValue() == 5))
+      {
+        f.b(this, 2);
+        f.b(this, System.currentTimeMillis());
+        f.a(this, 5, this.d);
       }
+      this.i = true;
+      return true;
     }
-    label283:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      paramIntent.onShowImageText(paramArrayOfInt, i1, bool1, bool2, paramMSolution.mHelpTextList, paramMSolution.mHelpImageList, this);
-      break;
-      bool1 = false;
-      break label241;
-    }
-    b(paramMSolution);
-    paramIntent = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    a(paramMSolution, paramIntent, localArrayList1, localArrayList2);
-    paramg = paramg.e;
-    i1 = this.d;
-    if (paramMSolution.mHelpTech != 1)
-    {
-      bool1 = true;
-      label352:
-      if (paramMSolution.mNoTrustAll) {
-        break label391;
-      }
-    }
-    label391:
-    for (bool2 = true;; bool2 = false)
-    {
-      paramg.onShowDoraemon(paramArrayOfInt, i1, bool1, bool2, localArrayList1, paramIntent, localArrayList2, this);
-      break;
-      bool1 = false;
-      break label352;
-    }
-    paramIntent = paramg.e;
-    i1 = this.d;
-    if (paramMSolution.mHelpTech != 1) {}
-    for (bool1 = true;; bool1 = false)
-    {
-      paramIntent.onShowAnimation(paramArrayOfInt, i1, bool1, paramMSolution.mHelpAnimation, this);
-      break;
-    }
+    catch (Throwable paramIntent) {}
+    return false;
   }
   
   private void c()
   {
     g localg = g.a();
     Object localObject1 = null;
-    int i1 = 1;
     int i3 = 0;
-    if (i3 < this.c.length)
+    int i1 = 1;
+    while (i3 < this.c.length)
     {
       int i4;
       Object localObject2;
-      int i2;
       if (!this.h)
       {
         i4 = i1;
@@ -630,36 +640,34 @@ public class PermissionGuideActivity
       else
       {
         this.l.add(Integer.valueOf(this.c[i3]));
-        i2 = i1;
+        int i2 = i1;
         if (i1 != 0) {
           i2 = 0;
         }
-        if (localObject1 != null) {
-          break label155;
-        }
-        localObject2 = e.a(this, this.c[i3]);
-        this.m.clear();
-        this.m.add(Integer.valueOf(this.c[i3]));
-        this.n = i3;
-        this.o = bg.b(this.c[i3]);
-        i4 = i2;
-      }
-      for (;;)
-      {
-        i3 += 1;
-        i1 = i4;
-        localObject1 = localObject2;
-        break;
-        label155:
-        i4 = i2;
-        localObject2 = localObject1;
-        if (bg.b(this.c[i3]) == this.o)
+        if (localObject1 == null)
         {
+          localObject2 = e.a(this, this.c[i3]);
+          this.m.clear();
           this.m.add(Integer.valueOf(this.c[i3]));
+          this.n = i3;
+          this.o = bg.b(this.c[i3]);
+          i4 = i2;
+        }
+        else
+        {
           i4 = i2;
           localObject2 = localObject1;
+          if (bg.b(this.c[i3]) == this.o)
+          {
+            this.m.add(Integer.valueOf(this.c[i3]));
+            localObject2 = localObject1;
+            i4 = i2;
+          }
         }
       }
+      i3 += 1;
+      i1 = i4;
+      localObject1 = localObject2;
     }
     if (i1 != 0)
     {
@@ -715,15 +723,15 @@ public class PermissionGuideActivity
       };
       b(paramMSolution, paramg, paramArrayOfInt, paramIntent);
     }
-    for (;;)
+    else if (paramg.d != null)
     {
-      return true;
-      if (paramg.d != null) {
-        a(paramMSolution, paramg, paramArrayOfInt, paramIntent);
-      } else {
-        paramIntent.onCallback();
-      }
+      a(paramMSolution, paramg, paramArrayOfInt, paramIntent);
     }
+    else
+    {
+      paramIntent.onCallback();
+    }
+    return true;
   }
   
   private void d()
@@ -736,30 +744,35 @@ public class PermissionGuideActivity
         ((g)localObject1).e.onDismissWindow();
       }
     }
-    g localg;
     if (this.f == 2)
     {
-      localg = g.a();
-      if ((this.n >= this.c.length) || (bg.b(this.c[this.n]) != this.o)) {
-        break label464;
+      g localg = g.a();
+      for (;;)
+      {
+        i1 = this.n;
+        localObject1 = this.c;
+        if ((i1 >= localObject1.length) || (bg.b(localObject1[i1]) != this.o)) {
+          break;
+        }
+        if (localg.a.checkPermission(this.c[this.n]) != 0)
+        {
+          i1 = 1;
+          break label117;
+        }
+        this.n += 1;
       }
-      if (localg.a.checkPermission(this.c[this.n]) == 0) {}
-    }
-    label459:
-    label464:
-    for (int i1 = 1;; i1 = 0)
-    {
+      int i1 = 0;
+      label117:
       if (i1 == 0)
       {
         if ((!this.m.isEmpty()) && (((Integer)this.m.get(0)).intValue() == 5)) {
           f.b(this, 0L);
         }
-        if (localg.a.checkPermission(((Integer)this.m.get(0)).intValue()) != 2) {
-          break label459;
+        if (localg.a.checkPermission(((Integer)this.m.get(0)).intValue()) == 2) {
+          i1 = -1;
+        } else {
+          i1 = 1;
         }
-      }
-      for (i1 = -1;; i1 = 1)
-      {
         if (i1 == 1) {
           a(this.o, 271337);
         }
@@ -767,114 +780,106 @@ public class PermissionGuideActivity
         int i3 = this.n;
         localObject1 = null;
         i1 = 1;
-        label208:
-        if (i3 < this.c.length)
+        while (i3 < this.c.length)
         {
           int i4 = i1;
           Object localObject2 = localObject1;
-          int i2;
           if (localg.a.checkPermission(this.c[i3]) != 0)
           {
             this.l.add(Integer.valueOf(this.c[this.n]));
-            i2 = i1;
+            int i2 = i1;
             if (i1 != 0) {
               i2 = 0;
             }
-            if (localObject1 != null) {
-              break label360;
-            }
-            localObject2 = e.a(this, this.c[i3]);
-            this.m.clear();
-            this.m.add(Integer.valueOf(this.c[i3]));
-            this.n = i3;
-            this.o = bg.b(this.c[i3]);
-            i4 = i2;
-          }
-          for (;;)
-          {
-            i3 += 1;
-            i1 = i4;
-            localObject1 = localObject2;
-            break label208;
-            this.n += 1;
-            break;
-            label360:
-            i4 = i2;
-            localObject2 = localObject1;
-            if (bg.b(this.c[i3]) == this.o)
+            if (localObject1 == null)
             {
+              localObject2 = e.a(this, this.c[i3]);
+              this.m.clear();
               this.m.add(Integer.valueOf(this.c[i3]));
+              this.n = i3;
+              this.o = bg.b(this.c[i3]);
+              i4 = i2;
+            }
+            else
+            {
               i4 = i2;
               localObject2 = localObject1;
+              if (bg.b(this.c[i3]) == this.o)
+              {
+                this.m.add(Integer.valueOf(this.c[i3]));
+                localObject2 = localObject1;
+                i4 = i2;
+              }
             }
           }
+          i3 += 1;
+          i1 = i4;
+          localObject1 = localObject2;
         }
-        if (i1 != 0) {
-          g();
-        }
-        do
+        if (i1 != 0)
         {
+          g();
           return;
-          Toast.makeText(this, "开启成功！\n前往开启下一个权限", 1).show();
-          a(this.o, 271336);
-        } while (a((MSolution)localObject1));
-        h();
-        return;
-        h();
+        }
+        Toast.makeText(this, "开启成功！\n前往开启下一个权限", 1).show();
+        a(this.o, 271336);
+        if (!a((MSolution)localObject1)) {
+          h();
+        }
         return;
       }
     }
+    h();
   }
   
   private void e()
   {
-    int i2 = 0;
     if (this.q == null)
     {
       d();
       return;
     }
     g localg = g.a();
-    int[] arrayOfInt;
-    if (this.f == 2)
+    int i1 = this.f;
+    int i2 = 0;
+    if (i1 == 2)
     {
-      arrayOfInt = new int[this.m.size()];
+      int[] arrayOfInt2 = new int[this.m.size()];
       Iterator localIterator = this.m.iterator();
       i1 = 0;
-      while (localIterator.hasNext())
+      for (;;)
       {
-        arrayOfInt[i1] = ((Integer)localIterator.next()).intValue();
+        arrayOfInt1 = arrayOfInt2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        arrayOfInt2[i1] = ((Integer)localIterator.next()).intValue();
         i1 += 1;
-      }
-      i1 = 0;
-      label83:
-      if (i1 >= arrayOfInt.length) {
-        break label164;
-      }
-      if (localg.a.checkPermission(arrayOfInt[i1]) == 0) {
-        break label124;
       }
     }
-    label164:
-    for (int i1 = i2;; i1 = 1)
+    int[] arrayOfInt1 = this.c;
+    i1 = 0;
+    while (i1 < arrayOfInt1.length)
     {
-      if (i1 != 0)
+      if (localg.a.checkPermission(arrayOfInt1[i1]) != 0)
       {
-        d();
-        return;
-        arrayOfInt = this.c;
-        break;
-        label124:
-        i1 += 1;
-        break label83;
+        i1 = i2;
+        break label131;
       }
-      if (localg.c != null) {
-        localg.c.onDismissPreview();
-      }
-      this.q.run();
-      this.q = null;
+      i1 += 1;
+    }
+    i1 = 1;
+    label131:
+    if (i1 != 0)
+    {
+      d();
       return;
     }
+    if (localg.c != null) {
+      localg.c.onDismissPreview();
+    }
+    this.q.run();
+    this.q = null;
   }
   
   private void f()
@@ -912,80 +917,73 @@ public class PermissionGuideActivity
   {
     finish();
     g localg = g.a();
-    Object localObject2;
-    int i1;
-    Object localObject1;
-    int i2;
     if (this.f == 1)
     {
       localObject2 = new int[this.c.length];
       i1 = 0;
-      localObject1 = localObject2;
-      if (i1 < this.c.length)
-      {
-        if ((this.k.contains(Integer.valueOf(this.c[i1]))) && (localg.a.checkPermission(this.c[i1]) == 2)) {
-          localObject2[i1] = 0;
-        }
-        for (;;)
-        {
-          i1 += 1;
-          break;
-          localObject2[i1] = localg.a.checkPermission(this.c[i1]);
-        }
-      }
-    }
-    else
-    {
-      localObject1 = localg.b(this.c);
-      i2 = 0;
-      i1 = 1;
-      if (i2 >= this.c.length) {
-        break label359;
-      }
-      if (!this.l.contains(Integer.valueOf(this.c[i2]))) {
-        break label332;
-      }
-      if (localObject1[i2] != 0) {
-        break label323;
-      }
-      i1 = 1;
-    }
-    label323:
-    label332:
-    label344:
-    label359:
-    for (;;)
-    {
-      if ((!this.m.isEmpty()) && (((Integer)this.m.get(0)).intValue() == 5) && (i1 != -1)) {
-        f.b(this, 0L);
-      }
-      i2 = bg.b(((Integer)this.m.get(0)).intValue());
-      if (i1 == 1) {
-        a(i2, 271337);
-      }
-      if (!this.h) {
-        a.a(this, i2, i1, this.d, 0, this.p);
-      }
-      localObject2 = (RequestCallback)localg.f.get(Integer.valueOf(this.e));
-      if (localObject2 != null)
-      {
-        if (this.f != 2) {
-          break label344;
-        }
-        ((QuickCallback)localObject2).onCallback(this.c, (int[])localObject1, this.n);
-      }
       for (;;)
       {
-        localg.f.remove(Integer.valueOf(this.e));
-        return;
-        if (localObject1[i2] == 2) {}
-        for (i1 = -1;; i1 = 0)
-        {
-          i2 += 1;
+        int[] arrayOfInt = this.c;
+        localObject1 = localObject2;
+        if (i1 >= arrayOfInt.length) {
           break;
         }
+        if ((this.k.contains(Integer.valueOf(arrayOfInt[i1]))) && (localg.a.checkPermission(this.c[i1]) == 2)) {
+          localObject2[i1] = 0;
+        } else {
+          localObject2[i1] = localg.a.checkPermission(this.c[i1]);
+        }
+        i1 += 1;
+      }
+    }
+    Object localObject2 = localg.b(this.c);
+    int i2 = 0;
+    int i1 = 1;
+    int i3;
+    for (;;)
+    {
+      localObject1 = this.c;
+      i3 = i1;
+      if (i2 >= localObject1.length) {
+        break;
+      }
+      if (this.l.contains(Integer.valueOf(localObject1[i2])))
+      {
+        if (localObject2[i2] == 0)
+        {
+          i3 = 1;
+          break;
+        }
+        if (localObject2[i2] == 2) {
+          i1 = -1;
+        } else {
+          i1 = 0;
+        }
+      }
+      i2 += 1;
+    }
+    if ((!this.m.isEmpty()) && (((Integer)this.m.get(0)).intValue() == 5) && (i3 != -1)) {
+      f.b(this, 0L);
+    }
+    i1 = bg.b(((Integer)this.m.get(0)).intValue());
+    if (i3 == 1) {
+      a(i1, 271337);
+    }
+    Object localObject1 = localObject2;
+    if (!this.h)
+    {
+      a.a(this, i1, i3, this.d, 0, this.p);
+      localObject1 = localObject2;
+    }
+    localObject2 = (RequestCallback)localg.f.get(Integer.valueOf(this.e));
+    if (localObject2 != null)
+    {
+      if (this.f == 2) {
+        ((QuickCallback)localObject2).onCallback(this.c, (int[])localObject1, this.n);
+      } else {
         ((RequestCallback)localObject2).onCallback(this.c, (int[])localObject1);
       }
+      localg.f.remove(Integer.valueOf(this.e));
     }
   }
   
@@ -1013,23 +1011,24 @@ public class PermissionGuideActivity
     }
     this.c = paramBundle.getIntArrayExtra("e_pms");
     this.e = paramBundle.getIntExtra("e_uid", 0);
-    if ((this.c == null) || (this.c.length == 0))
+    int[] arrayOfInt = this.c;
+    if ((arrayOfInt != null) && (arrayOfInt.length != 0))
     {
-      f();
+      this.d = paramBundle.getIntExtra("e_src", 0);
+      this.h = paramBundle.getBooleanExtra("e_s_c", false);
+      this.f = paramBundle.getIntExtra("e_md", 3);
+      this.g = paramBundle.getBooleanExtra("e_m", false);
+      this.b = 1;
+      if (this.f == 1)
+      {
+        this.k = new HashSet();
+        return;
+      }
+      this.l = new HashSet();
+      this.m = new ArrayList();
       return;
     }
-    this.d = paramBundle.getIntExtra("e_src", 0);
-    this.h = paramBundle.getBooleanExtra("e_s_c", false);
-    this.f = paramBundle.getIntExtra("e_md", 3);
-    this.g = paramBundle.getBooleanExtra("e_m", false);
-    this.b = 1;
-    if (this.f == 1)
-    {
-      this.k = new HashSet();
-      return;
-    }
-    this.l = new HashSet();
-    this.m = new ArrayList();
+    f();
   }
   
   @TargetApi(11)
@@ -1058,16 +1057,16 @@ public class PermissionGuideActivity
   protected void onResume()
   {
     super.onResume();
-    switch (this.b)
+    int i1 = this.b;
+    if (i1 != 1)
     {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      a();
+      if (i1 != 3) {
+        return;
+      }
+      e();
       return;
     }
-    e();
+    a();
   }
 }
 

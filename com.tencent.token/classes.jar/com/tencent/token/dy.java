@@ -9,22 +9,30 @@ public final class dy
   
   public final String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 4)
     {
-    default: 
-      return "-";
-    case 2: 
-      return "D";
-    case 4: 
-      return "I";
-    case 8: 
+      if (paramInt != 8)
+      {
+        if (paramInt != 16)
+        {
+          if (paramInt != 32)
+          {
+            switch (paramInt)
+            {
+            default: 
+              return "-";
+            case 2: 
+              return "D";
+            }
+            return "V";
+          }
+          return "A";
+        }
+        return "E";
+      }
       return "W";
-    case 16: 
-      return "E";
-    case 1: 
-      return "V";
     }
-    return "A";
+    return "I";
   }
   
   public String a(int paramInt, Thread paramThread, long paramLong, String paramString1, String paramString2, Throwable paramThrowable)
@@ -33,31 +41,37 @@ public final class dy
     Time localTime = new Time();
     localTime.set(paramLong);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(paramInt)).append('/').append(localTime.format("%Y-%m-%d %H:%M:%S")).append('.');
-    if (l < 10L)
-    {
+    localStringBuilder.append(a(paramInt));
+    localStringBuilder.append('/');
+    localStringBuilder.append(localTime.format("%Y-%m-%d %H:%M:%S"));
+    localStringBuilder.append('.');
+    if (l < 10L) {
       localStringBuilder.append("00");
-      localStringBuilder.append(l).append(' ').append('[');
-      if (paramThread != null) {
-        break label199;
-      }
-      localStringBuilder.append("N/A");
-    }
-    for (;;)
-    {
-      localStringBuilder.append(']').append('[').append(paramString1).append(']').append(' ').append(paramString2).append('\n');
-      if (paramThrowable != null) {
-        localStringBuilder.append("* Exception : \n").append(Log.getStackTraceString(paramThrowable)).append('\n');
-      }
-      return localStringBuilder.toString();
-      if (l >= 100L) {
-        break;
-      }
+    } else if (l < 100L) {
       localStringBuilder.append('0');
-      break;
-      label199:
+    }
+    localStringBuilder.append(l);
+    localStringBuilder.append(' ');
+    localStringBuilder.append('[');
+    if (paramThread == null) {
+      localStringBuilder.append("N/A");
+    } else {
       localStringBuilder.append(paramThread.getName());
     }
+    localStringBuilder.append(']');
+    localStringBuilder.append('[');
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(']');
+    localStringBuilder.append(' ');
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append('\n');
+    if (paramThrowable != null)
+    {
+      localStringBuilder.append("* Exception : \n");
+      localStringBuilder.append(Log.getStackTraceString(paramThrowable));
+      localStringBuilder.append('\n');
+    }
+    return localStringBuilder.toString();
   }
 }
 

@@ -27,7 +27,7 @@ public class Lifecycling
       paramConstructor = (GeneratedAdapter)paramConstructor.newInstance(new Object[] { paramObject });
       return paramConstructor;
     }
-    catch (IllegalAccessException paramConstructor)
+    catch (InvocationTargetException paramConstructor)
     {
       throw new RuntimeException(paramConstructor);
     }
@@ -35,7 +35,7 @@ public class Lifecycling
     {
       throw new RuntimeException(paramConstructor);
     }
-    catch (InvocationTargetException paramConstructor)
+    catch (IllegalAccessException paramConstructor)
     {
       throw new RuntimeException(paramConstructor);
     }
@@ -44,55 +44,60 @@ public class Lifecycling
   @Nullable
   private static Constructor<? extends GeneratedAdapter> generatedConstructor(Class<?> paramClass)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        localObject = paramClass.getPackage();
-        String str = paramClass.getCanonicalName();
-        if (localObject != null)
-        {
-          localObject = ((Package)localObject).getName();
-          if (((String)localObject).isEmpty())
-          {
-            str = getAdapterName(str);
-            if (((String)localObject).isEmpty())
-            {
-              localObject = str;
-              paramClass = Class.forName((String)localObject).getDeclaredConstructor(new Class[] { paramClass });
-              if (paramClass.isAccessible()) {
-                break label124;
-              }
-              paramClass.setAccessible(true);
-              return paramClass;
-            }
-          }
-          else
-          {
-            str = str.substring(((String)localObject).length() + 1);
-            continue;
-          }
-          localObject = (String)localObject + "." + str;
-          continue;
-          return paramClass;
-        }
+      localObject = paramClass.getPackage();
+      str = paramClass.getCanonicalName();
+      if (localObject == null) {
+        break label138;
       }
-      catch (ClassNotFoundException paramClass)
-      {
-        return null;
-      }
-      catch (NoSuchMethodException paramClass)
-      {
-        throw new RuntimeException(paramClass);
-      }
-      label124:
-      Object localObject = "";
+      localObject = ((Package)localObject).getName();
     }
+    catch (NoSuchMethodException paramClass)
+    {
+      String str;
+      StringBuilder localStringBuilder;
+      throw new RuntimeException(paramClass);
+      return null;
+    }
+    catch (ClassNotFoundException paramClass)
+    {
+      for (;;)
+      {
+        continue;
+        label138:
+        Object localObject = "";
+      }
+    }
+    if (!((String)localObject).isEmpty()) {
+      str = str.substring(((String)localObject).length() + 1);
+    }
+    str = getAdapterName(str);
+    if (((String)localObject).isEmpty())
+    {
+      localObject = str;
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(".");
+      localStringBuilder.append(str);
+      localObject = localStringBuilder.toString();
+    }
+    paramClass = Class.forName((String)localObject).getDeclaredConstructor(new Class[] { paramClass });
+    if (!paramClass.isAccessible()) {
+      paramClass.setAccessible(true);
+    }
+    return paramClass;
   }
   
   public static String getAdapterName(String paramString)
   {
-    return paramString.replace(".", "_") + "_LifecycleAdapter";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString.replace(".", "_"));
+    localStringBuilder.append("_LifecycleAdapter");
+    return localStringBuilder.toString();
   }
   
   @NonNull
@@ -108,11 +113,12 @@ public class Lifecycling
     if (getObserverConstructorType((Class)localObject) == 2)
     {
       localObject = (List)sClassToAdapters.get(localObject);
-      if (((List)localObject).size() == 1) {
+      int j = ((List)localObject).size();
+      int i = 0;
+      if (j == 1) {
         return new SingleGeneratedAdapterObserver(createGeneratedAdapter((Constructor)((List)localObject).get(0), paramObject));
       }
       GeneratedAdapter[] arrayOfGeneratedAdapter = new GeneratedAdapter[((List)localObject).size()];
-      int i = 0;
       while (i < ((List)localObject).size())
       {
         arrayOfGeneratedAdapter[i] = createGeneratedAdapter((Constructor)((List)localObject).get(i), paramObject);
@@ -161,40 +167,32 @@ public class Lifecycling
       }
       localObject1 = new ArrayList((Collection)sClassToAdapters.get(localObject2));
     }
-    localObject2 = paramClass.getInterfaces();
-    int j = localObject2.length;
+    Class[] arrayOfClass = paramClass.getInterfaces();
+    int j = arrayOfClass.length;
     int i = 0;
-    Class localClass;
     while (i < j)
     {
-      localClass = localObject2[i];
-      if (!isLifecycleParent(localClass))
-      {
-        i += 1;
-      }
-      else
+      Class localClass = arrayOfClass[i];
+      if (isLifecycleParent(localClass))
       {
         if (getObserverConstructorType(localClass) == 1) {
           return 1;
         }
-        if (localObject1 != null) {
-          break label197;
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = new ArrayList();
         }
-        localObject1 = new ArrayList();
+        ((List)localObject2).addAll((Collection)sClassToAdapters.get(localClass));
+        localObject1 = localObject2;
       }
+      i += 1;
     }
-    label197:
-    for (;;)
+    if (localObject1 != null)
     {
-      ((List)localObject1).addAll((Collection)sClassToAdapters.get(localClass));
-      break;
-      if (localObject1 != null)
-      {
-        sClassToAdapters.put(paramClass, localObject1);
-        return 2;
-      }
-      return 1;
+      sClassToAdapters.put(paramClass, localObject1);
+      return 2;
     }
+    return 1;
   }
 }
 

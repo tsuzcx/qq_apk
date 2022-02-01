@@ -21,8 +21,9 @@ public final class af
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bi != 0) {
-      paramJceOutputStream.write(this.bi, 0);
+    int i = this.bi;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
   }
 }

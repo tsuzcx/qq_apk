@@ -8,7 +8,7 @@ import com.tmsdk.common.util.TmsLog;
 
 public class cc
 {
-  private static cc b = null;
+  private static cc b;
   private static String d = "";
   private static String e = "https://aq.qq.com";
   public cm a = null;
@@ -66,7 +66,10 @@ public class cc
   public void a(byte[] paramArrayOfByte)
   {
     this.c.a = paramArrayOfByte;
-    TmsLog.i("mod_seed", "recv initCode, hexStr: " + l.a(paramArrayOfByte));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("recv initCode, hexStr: ");
+    localStringBuilder.append(l.a(paramArrayOfByte));
+    TmsLog.i("mod_seed", localStringBuilder.toString());
     if (paramArrayOfByte != null) {
       ProtoModSeed.a(false);
     }
@@ -74,7 +77,7 @@ public class cc
   
   public void b(long paramLong)
   {
-    paramLong = 1000L * paramLong;
+    paramLong *= 1000L;
     if (paramLong > 0L)
     {
       long l = System.currentTimeMillis();

@@ -17,29 +17,22 @@ public class d
   
   public o a()
   {
-    Object localObject1 = null;
-    Object localObject2 = new SecureRandom();
-    Object localObject3 = new StringBuilder();
+    Object localObject1 = new SecureRandom();
+    Object localObject2 = new StringBuilder();
     int i = 0;
     while (i < 16)
     {
-      ((StringBuilder)localObject3).append("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".charAt(((SecureRandom)localObject2).nextInt(62)));
+      ((StringBuilder)localObject2).append("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".charAt(((SecureRandom)localObject1).nextInt(62)));
       i += 1;
     }
-    this.b = ((StringBuilder)localObject3).toString();
+    this.b = ((StringBuilder)localObject2).toString();
     localObject2 = this.b;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {}
-    for (;;)
-    {
-      localObject2 = new instanceof();
-      ((instanceof)localObject2).mb = ((byte[])localObject1);
-      localObject1 = new o.b(152, 10152, 0);
-      ((o.b)localObject1).d = ((break)localObject2);
-      ((o.b)localObject1).f = new synchronized();
-      return ((o.b)localObject1).a();
+    boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
+    localObject1 = null;
+    if (!bool) {
       try
       {
-        localObject3 = bu.a("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDb49jFnNqMDLdl87UtY5jOMqqdMuvQg65Zuva3Qm1tORQGBuM04u7fqygA64XbOx9e/KPNkDNDmqS8SlsAPL1fV2lqM/phgV0NY62TJqSR+PLngwJd2rhYR8wQ1N0JE+R59a5c08EGsd6axStjHsVu2+evCf/SWU9Y/oQpEtOjGwIDAQAB", 0);
+        Object localObject3 = bu.a("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDb49jFnNqMDLdl87UtY5jOMqqdMuvQg65Zuva3Qm1tORQGBuM04u7fqygA64XbOx9e/KPNkDNDmqS8SlsAPL1fV2lqM/phgV0NY62TJqSR+PLngwJd2rhYR8wQ1N0JE+R59a5c08EGsd6axStjHsVu2+evCf/SWU9Y/oQpEtOjGwIDAQAB", 0);
         localObject3 = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec((byte[])localObject3));
         Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
         localCipher.init(1, (Key)localObject3);
@@ -51,6 +44,12 @@ public class d
         localException.printStackTrace();
       }
     }
+    instanceof localinstanceof = new instanceof();
+    localinstanceof.mb = ((byte[])localObject1);
+    localObject1 = new o.b(152, 10152, 0);
+    ((o.b)localObject1).d = localinstanceof;
+    ((o.b)localObject1).f = new synchronized();
+    return ((o.b)localObject1).a();
   }
   
   public void a(synchronized paramsynchronized)
@@ -64,11 +63,10 @@ public class d
   {
     long l1 = System.currentTimeMillis();
     long l2 = this.c;
-    if (l2 == 0L) {}
-    while (Math.abs(l1 - l2) >= this.d) {
+    if (l2 == 0L) {
       return true;
     }
-    return false;
+    return Math.abs(l1 - l2) >= this.d;
   }
 }
 

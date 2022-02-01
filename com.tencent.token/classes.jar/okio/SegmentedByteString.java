@@ -12,17 +12,21 @@ final class SegmentedByteString
   {
     super(null);
     s.a(paramc.b, 0L, paramInt);
-    n localn = paramc.a;
-    int i = 0;
+    Object localObject = paramc.a;
+    int k = 0;
     int j = 0;
-    while (j < paramInt)
-    {
-      if (localn.c == localn.b) {
+    int i = 0;
+    while (j < paramInt) {
+      if (((n)localObject).c != ((n)localObject).b)
+      {
+        j += ((n)localObject).c - ((n)localObject).b;
+        i += 1;
+        localObject = ((n)localObject).f;
+      }
+      else
+      {
         throw new AssertionError("s.limit == s.pos");
       }
-      j += localn.c - localn.b;
-      i += 1;
-      localn = localn.f;
     }
     this.segments = new byte[i][];
     this.directory = new int[i * 2];
@@ -32,13 +36,14 @@ final class SegmentedByteString
     while (i < paramInt)
     {
       this.segments[j] = paramc.a;
-      k = paramc.c - paramc.b + i;
+      k = i + (paramc.c - paramc.b);
       i = k;
       if (k > paramInt) {
         i = paramInt;
       }
-      this.directory[j] = i;
-      this.directory[(this.segments.length + j)] = paramc.b;
+      localObject = this.directory;
+      localObject[j] = i;
+      localObject[(this.segments.length + j)] = paramc.b;
       paramc.d = true;
       j += 1;
       paramc = paramc.f;
@@ -63,12 +68,16 @@ final class SegmentedByteString
   {
     s.a(this.directory[(this.segments.length - 1)], paramInt, 1L);
     int j = b(paramInt);
-    if (j == 0) {}
-    for (int i = 0;; i = this.directory[(j - 1)])
-    {
-      int k = this.directory[(this.segments.length + j)];
-      return this.segments[j][(paramInt - i + k)];
+    int i;
+    if (j == 0) {
+      i = 0;
+    } else {
+      i = this.directory[(j - 1)];
     }
+    int[] arrayOfInt = this.directory;
+    byte[][] arrayOfByte = this.segments;
+    int k = arrayOfInt[(arrayOfByte.length + j)];
+    return arrayOfByte[j][(paramInt - i + k)];
   }
   
   public String a()
@@ -84,86 +93,95 @@ final class SegmentedByteString
   void a(c paramc)
   {
     int m = this.segments.length;
-    int j = 0;
     int i = 0;
-    if (j < m)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      int n = this.directory[(m + j)];
-      int k = this.directory[j];
-      n localn = new n(this.segments[j], n, n + k - i, true, false);
+      Object localObject = this.directory;
+      int n = localObject[(m + i)];
+      k = localObject[i];
+      localObject = new n(this.segments[i], n, n + k - j, true, false);
       if (paramc.a == null)
       {
-        localn.g = localn;
-        localn.f = localn;
-        paramc.a = localn;
+        ((n)localObject).g = ((n)localObject);
+        ((n)localObject).f = ((n)localObject);
+        paramc.a = ((n)localObject);
       }
-      for (;;)
+      else
       {
-        j += 1;
-        i = k;
-        break;
-        paramc.a.g.a(localn);
+        paramc.a.g.a((n)localObject);
       }
+      i += 1;
     }
-    paramc.b += i;
+    paramc.b += j;
   }
   
   public boolean a(int paramInt1, ByteString paramByteString, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 < 0) || (paramInt1 > g() - paramInt3)) {
-      return false;
-    }
-    int j = b(paramInt1);
-    int i = paramInt1;
-    paramInt1 = j;
-    label30:
-    if (paramInt3 > 0)
+    if (paramInt1 >= 0)
     {
-      if (paramInt1 == 0) {}
-      for (j = 0;; j = this.directory[(paramInt1 - 1)])
+      if (paramInt1 > g() - paramInt3) {
+        return false;
+      }
+      int j = b(paramInt1);
+      int i = paramInt1;
+      paramInt1 = j;
+      while (paramInt3 > 0)
       {
+        if (paramInt1 == 0) {
+          j = 0;
+        } else {
+          j = this.directory[(paramInt1 - 1)];
+        }
         int k = Math.min(paramInt3, this.directory[paramInt1] - j + j - i);
-        int m = this.directory[(this.segments.length + paramInt1)];
-        if (!paramByteString.a(paramInt2, this.segments[paramInt1], i - j + m, k)) {
-          break;
+        int[] arrayOfInt = this.directory;
+        byte[][] arrayOfByte = this.segments;
+        int m = arrayOfInt[(arrayOfByte.length + paramInt1)];
+        if (!paramByteString.a(paramInt2, arrayOfByte[paramInt1], i - j + m, k)) {
+          return false;
         }
         i += k;
         paramInt2 += k;
         paramInt3 -= k;
         paramInt1 += 1;
-        break label30;
       }
+      return true;
     }
-    return true;
+    return false;
   }
   
   public boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 < 0) || (paramInt1 > g() - paramInt3) || (paramInt2 < 0) || (paramInt2 > paramArrayOfByte.length - paramInt3)) {
-      return false;
-    }
-    int j = b(paramInt1);
-    int i = paramInt1;
-    paramInt1 = j;
-    label43:
-    if (paramInt3 > 0)
+    if ((paramInt1 >= 0) && (paramInt1 <= g() - paramInt3) && (paramInt2 >= 0))
     {
-      if (paramInt1 == 0) {}
-      for (j = 0;; j = this.directory[(paramInt1 - 1)])
+      if (paramInt2 > paramArrayOfByte.length - paramInt3) {
+        return false;
+      }
+      int j = b(paramInt1);
+      int i = paramInt1;
+      paramInt1 = j;
+      while (paramInt3 > 0)
       {
+        if (paramInt1 == 0) {
+          j = 0;
+        } else {
+          j = this.directory[(paramInt1 - 1)];
+        }
         int k = Math.min(paramInt3, this.directory[paramInt1] - j + j - i);
-        int m = this.directory[(this.segments.length + paramInt1)];
-        if (!s.a(this.segments[paramInt1], i - j + m, paramArrayOfByte, paramInt2, k)) {
-          break;
+        int[] arrayOfInt = this.directory;
+        byte[][] arrayOfByte = this.segments;
+        int m = arrayOfInt[(arrayOfByte.length + paramInt1)];
+        if (!s.a(arrayOfByte[paramInt1], i - j + m, paramArrayOfByte, paramInt2, k)) {
+          return false;
         }
         i += k;
         paramInt2 += k;
         paramInt3 -= k;
         paramInt1 += 1;
-        break label43;
       }
+      return true;
     }
-    return true;
+    return false;
   }
   
   public String b()
@@ -191,10 +209,14 @@ final class SegmentedByteString
     if (paramObject == this) {
       return true;
     }
-    if (((paramObject instanceof ByteString)) && (((ByteString)paramObject).g() == g()) && (a(0, (ByteString)paramObject, 0, g()))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if ((paramObject instanceof ByteString))
+    {
+      paramObject = (ByteString)paramObject;
+      if ((paramObject.g() == g()) && (a(0, paramObject, 0, g()))) {
+        return true;
+      }
     }
+    return false;
   }
   
   public ByteString f()
@@ -209,18 +231,21 @@ final class SegmentedByteString
   
   public byte[] h()
   {
+    Object localObject2 = this.directory;
+    Object localObject1 = this.segments;
+    localObject2 = new byte[localObject2[(localObject1.length - 1)]];
+    int m = localObject1.length;
     int i = 0;
-    byte[] arrayOfByte = new byte[this.directory[(this.segments.length - 1)]];
-    int m = this.segments.length;
     int k;
     for (int j = 0; i < m; j = k)
     {
-      int n = this.directory[(m + i)];
-      k = this.directory[i];
-      System.arraycopy(this.segments[i], n, arrayOfByte, j, k - j);
+      localObject1 = this.directory;
+      int n = localObject1[(m + i)];
+      k = localObject1[i];
+      System.arraycopy(this.segments[i], n, localObject2, j, k - j);
       i += 1;
     }
-    return arrayOfByte;
+    return localObject2;
   }
   
   public int hashCode()
@@ -229,25 +254,26 @@ final class SegmentedByteString
     if (i != 0) {
       return i;
     }
-    i = 1;
     int i2 = this.segments.length;
-    int j = 0;
+    int k = 0;
+    int m = 1;
     int n;
-    for (int k = 0; j < i2; k = n)
+    for (int j = 0; k < i2; j = n)
     {
-      byte[] arrayOfByte = this.segments[j];
-      int i1 = this.directory[(i2 + j)];
-      n = this.directory[j];
-      int m = i1;
-      while (m < n - k + i1)
+      byte[] arrayOfByte = this.segments[k];
+      int[] arrayOfInt = this.directory;
+      int i1 = arrayOfInt[(i2 + k)];
+      n = arrayOfInt[k];
+      i = i1;
+      while (i < n - j + i1)
       {
-        i = i * 31 + arrayOfByte[m];
-        m += 1;
+        m = m * 31 + arrayOfByte[i];
+        i += 1;
       }
-      j += 1;
+      k += 1;
     }
-    this.hashCode = i;
-    return i;
+    this.hashCode = m;
+    return m;
   }
   
   public String toString()

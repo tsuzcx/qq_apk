@@ -34,78 +34,89 @@ public class ProtoReportDnsInfo
   
   protected String a()
   {
-    int j = 0;
     String str1 = ca.a().b();
     if (str1 == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject1;
-    try
+    for (;;)
     {
-      localObject2 = new Process[2];
-      localObject1 = new String[2];
-      localObject2[0] = Runtime.getRuntime().exec("getprop net.dns1");
-      localObject2[1] = Runtime.getRuntime().exec("getprop net.dns2");
-      i = 0;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      int i;
+      try
+      {
+        Object localObject2 = new Process[2];
+        Object localObject1 = new String[2];
+        localObject2[0] = Runtime.getRuntime().exec("getprop net.dns1");
+        localObject2[1] = Runtime.getRuntime().exec("getprop net.dns2");
+        i = 0;
+        Object localObject3;
+        if (i < 2)
+        {
+          localObject3 = new BufferedReader(new InputStreamReader(localObject2[i].getInputStream()));
+          localObject1[i] = "";
+          String str2 = ((BufferedReader)localObject3).readLine();
+          if (str2 != null)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(localObject1[i]);
+            localStringBuilder.append(str2);
+            localObject1[i] = localStringBuilder.toString();
+            continue;
+          }
+        }
+        else
+        {
+          localObject2[0].destroy();
+          localObject2[1].destroy();
+          localObject2 = new JSONArray();
+          i = 0;
+          if (i < this.d.length())
+          {
+            ((JSONArray)localObject2).put(InetAddress.getByName(this.d.getString(i)).getHostAddress());
+            i += 1;
+            continue;
+          }
+          long l = 0L;
+          localObject3 = cr.a().e();
+          if (localObject3 != null) {
+            l = ((QQUser)localObject3).mRealUin;
+          }
+          i = cb.a + 1;
+          cb.a = i;
+          this.e = i;
+          localObject1 = l.a(new Object[] { "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cc.c().s() / 1000L), "uin", Long.valueOf(l), "dns_ip1", localObject1[0], "dns_ip2", localObject1[1], "domain_list", this.d, "ret_ip_list", localObject2, "MNC", i.l(RqdApplication.l()), "MCC", i.k(RqdApplication.l()), "net_type", l.k() });
+          if (localObject1 == null)
+          {
+            this.a.a(10000, "encrypt imei failed");
+            return null;
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("?aq_base_sid=");
+          ((StringBuilder)localObject2).append(str1);
+          ((StringBuilder)localObject2).append("&data=");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          str1 = ((StringBuilder)localObject2).toString();
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(c.e());
+          ((StringBuilder)localObject1).append("/cn/mbtoken3/mbtoken3_report_dns_v2");
+          ((StringBuilder)localObject1).append(str1);
+          str1 = ((StringBuilder)localObject1).toString();
+          return str1;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return null;
+      }
+      catch (IOException localIOException)
       {
         localIOException.printStackTrace();
         return null;
-        i += 1;
       }
-      localObject2[0].destroy();
-      localObject2[1].destroy();
-      Object localObject2 = new JSONArray();
-      int i = j;
-      while (i < this.d.length())
-      {
-        ((JSONArray)localObject2).put(InetAddress.getByName(this.d.getString(i)).getHostAddress());
-        i += 1;
-      }
-      long l = 0L;
-      Object localObject3 = cr.a().e();
-      if (localObject3 == null) {
-        break label239;
-      }
-      l = ((QQUser)localObject3).mRealUin;
-      i = cb.a + 1;
-      cb.a = i;
-      this.e = i;
-      localObject1 = l.a(new Object[] { "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cc.c().s() / 1000L), "uin", Long.valueOf(l), "dns_ip1", localObject1[0], "dns_ip2", localObject1[1], "domain_list", this.d, "ret_ip_list", localObject2, "MNC", i.l(RqdApplication.l()), "MCC", i.k(RqdApplication.l()), "net_type", l.k() });
-      if (localObject1 != null) {
-        break label439;
-      }
-      this.a.a(10000, "encrypt imei failed");
-      return null;
+      i += 1;
     }
-    catch (Exception localException)
-    {
-      label239:
-      localException.printStackTrace();
-      return null;
-    }
-    if (i < 2)
-    {
-      localObject3 = new BufferedReader(new InputStreamReader(localObject2[i].getInputStream()));
-      localObject1[i] = "";
-      for (;;)
-      {
-        String str3 = ((BufferedReader)localObject3).readLine();
-        if (str3 == null) {
-          break;
-        }
-        localObject1[i] = (localObject1[i] + str3);
-      }
-    }
-    label439:
-    String str2 = "?aq_base_sid=" + localException + "&data=" + (String)localObject1;
-    str2 = c.e() + "/cn/mbtoken3/mbtoken3_report_dns_v2" + str2;
-    return str2;
   }
   
   protected void a(do paramdo)

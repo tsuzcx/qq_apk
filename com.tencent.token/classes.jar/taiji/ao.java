@@ -1,7 +1,7 @@
 package taiji;
 
 import android.graphics.PointF;
-import com.tencent.token.gn;
+import com.tencent.token.gm;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,14 +29,23 @@ public class ao
     if (this.b == null) {
       this.b = new PointF();
     }
-    if ((paramao1.b()) || (paramao2.b())) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((!paramao1.b()) && (!paramao2.b())) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    this.c = bool;
+    if ((!this.a.isEmpty()) && (this.a.size() != paramao1.c().size()) && (this.a.size() != paramao2.c().size()))
     {
-      this.c = bool;
-      if ((this.a.isEmpty()) || (this.a.size() == paramao1.c().size()) || (this.a.size() == paramao2.c().size())) {
-        break;
-      }
-      throw new IllegalStateException("Curves must have the same number of control points. This: " + c().size() + "\tShape 1: " + paramao1.c().size() + "\tShape 2: " + paramao2.c().size());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Curves must have the same number of control points. This: ");
+      ((StringBuilder)localObject1).append(c().size());
+      ((StringBuilder)localObject1).append("\tShape 1: ");
+      ((StringBuilder)localObject1).append(paramao1.c().size());
+      ((StringBuilder)localObject1).append("\tShape 2: ");
+      ((StringBuilder)localObject1).append(paramao2.c().size());
+      throw new IllegalStateException(((StringBuilder)localObject1).toString());
     }
     if (this.a.isEmpty())
     {
@@ -47,23 +56,23 @@ public class ao
         i -= 1;
       }
     }
-    PointF localPointF1 = paramao1.a();
-    PointF localPointF2 = paramao2.a();
-    a(gn.a(localPointF1.x, localPointF2.x, paramFloat), gn.a(localPointF1.y, localPointF2.y, paramFloat));
+    Object localObject1 = paramao1.a();
+    PointF localPointF1 = paramao2.a();
+    a(gm.a(((PointF)localObject1).x, localPointF1.x, paramFloat), gm.a(((PointF)localObject1).y, localPointF1.y, paramFloat));
     int i = this.a.size() - 1;
     while (i >= 0)
     {
-      Object localObject2 = (aa)paramao1.c().get(i);
-      Object localObject1 = (aa)paramao2.c().get(i);
-      localPointF1 = ((aa)localObject2).a();
-      localPointF2 = ((aa)localObject2).b();
+      Object localObject3 = (aa)paramao1.c().get(i);
+      Object localObject2 = (aa)paramao2.c().get(i);
+      localObject1 = ((aa)localObject3).a();
+      localPointF1 = ((aa)localObject3).b();
+      localObject3 = ((aa)localObject3).c();
+      PointF localPointF2 = ((aa)localObject2).a();
+      PointF localPointF3 = ((aa)localObject2).b();
       localObject2 = ((aa)localObject2).c();
-      PointF localPointF3 = ((aa)localObject1).a();
-      PointF localPointF4 = ((aa)localObject1).b();
-      localObject1 = ((aa)localObject1).c();
-      ((aa)this.a.get(i)).a(gn.a(localPointF1.x, localPointF3.x, paramFloat), gn.a(localPointF1.y, localPointF3.y, paramFloat));
-      ((aa)this.a.get(i)).b(gn.a(localPointF2.x, localPointF4.x, paramFloat), gn.a(localPointF2.y, localPointF4.y, paramFloat));
-      ((aa)this.a.get(i)).c(gn.a(((PointF)localObject2).x, ((PointF)localObject1).x, paramFloat), gn.a(((PointF)localObject2).y, ((PointF)localObject1).y, paramFloat));
+      ((aa)this.a.get(i)).a(gm.a(((PointF)localObject1).x, localPointF2.x, paramFloat), gm.a(((PointF)localObject1).y, localPointF2.y, paramFloat));
+      ((aa)this.a.get(i)).b(gm.a(localPointF1.x, localPointF3.x, paramFloat), gm.a(localPointF1.y, localPointF3.y, paramFloat));
+      ((aa)this.a.get(i)).c(gm.a(((PointF)localObject3).x, ((PointF)localObject2).x, paramFloat), gm.a(((PointF)localObject3).y, ((PointF)localObject2).y, paramFloat));
       i -= 1;
     }
   }
@@ -80,7 +89,13 @@ public class ao
   
   public String toString()
   {
-    return "ShapeData{numCurves=" + this.a.size() + "closed=" + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ShapeData{numCurves=");
+    localStringBuilder.append(this.a.size());
+    localStringBuilder.append("closed=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

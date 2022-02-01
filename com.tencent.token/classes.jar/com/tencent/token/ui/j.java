@@ -60,11 +60,12 @@ class j
     {
       public void onClick(View paramAnonymousView)
       {
-        j.c(j.this).findViewById(2131559431).setVisibility(8);
-        j.c(j.this).findViewById(2131559430).setVisibility(8);
+        j.c(j.this).findViewById(2131166217).setVisibility(8);
+        j.c(j.this).findViewById(2131166216).setVisibility(8);
         j.c(j.this).setVisibility(8);
-        j.this.a = false;
-        j.this.notifyDataSetChanged();
+        paramAnonymousView = j.this;
+        paramAnonymousView.a = false;
+        paramAnonymousView.notifyDataSetChanged();
       }
     });
   }
@@ -83,100 +84,119 @@ class j
           return;
         }
         e.a(j.b(j.this).getResources(), paramAnonymouse);
-        j.b(j.this).showTipDialog(2131231390, paramAnonymouse.c);
+        j.b(j.this).showTipDialog(2131493532, paramAnonymouse.c);
       }
       
       public e a(f... paramAnonymousVarArgs)
       {
-        if ((paramb == null) || (paramb.a() == null)) {
-          return null;
+        paramAnonymousVarArgs = paramb;
+        if ((paramAnonymousVarArgs != null) && (paramAnonymousVarArgs.a() != null))
+        {
+          this.c = paramb.a();
+          paramAnonymousVarArgs = cs.a();
+          f localf = this.c;
+          return paramAnonymousVarArgs.a(localf, localf.c ^ true);
         }
-        this.c = paramb.a();
-        paramAnonymousVarArgs = cs.a();
-        f localf = this.c;
-        if (!this.c.c) {}
-        for (boolean bool = true;; bool = false) {
-          return paramAnonymousVarArgs.a(localf, bool);
-        }
+        return null;
       }
       
       public void a()
       {
-        if (this.c == null) {}
-        do
-        {
+        Object localObject = this.c;
+        if (localObject == null) {
           return;
-          this.c.e = false;
-          localObject = new e();
-          ((e)localObject).b(10024);
-          b((e)localObject);
-        } while (j.a(j.this) == null);
-        Object localObject = j.a(j.this).obtainMessage(3017);
-        j.a(j.this).sendMessage((Message)localObject);
+        }
+        ((f)localObject).e = false;
+        localObject = new e();
+        ((e)localObject).b(10024);
+        b((e)localObject);
+        if (j.a(j.this) != null)
+        {
+          localObject = j.a(j.this).obtainMessage(3017);
+          j.a(j.this).sendMessage((Message)localObject);
+        }
       }
       
       public void a(e paramAnonymouse)
       {
-        if ((this.c == null) || (paramAnonymouse == null)) {
-          return;
-        }
-        this.c.e = false;
-        if (paramAnonymouse.b()) {}
-        while ((paramb != null) && (paramb.c() != null) && (this.c.b.equals(paramb.c().getText())))
+        f localf = this.c;
+        if (localf != null)
         {
-          j.this.a(paramb, true);
+          if (paramAnonymouse == null) {
+            return;
+          }
+          localf.e = false;
+          if (!paramAnonymouse.b()) {
+            b(paramAnonymouse);
+          }
+          paramAnonymouse = paramb;
+          if ((paramAnonymouse != null) && (paramAnonymouse.c() != null) && (this.c.b.equals(paramb.c().getText())))
+          {
+            j.this.a(paramb, true);
+            return;
+          }
+          j.this.notifyDataSetChanged();
           return;
-          b(paramAnonymouse);
         }
-        j.this.notifyDataSetChanged();
       }
     }.c(new f[0]);
   }
   
   public void a(b paramb, boolean paramBoolean)
   {
-    boolean bool = true;
-    if ((paramb == null) || (paramb.a() == null) || (this.c == null) || (this.c.isFinishing())) {}
-    f localf;
-    TextView localTextView;
-    SwitchButton localSwitchButton;
-    ProgressBar localProgressBar;
-    do
+    if ((paramb != null) && (paramb.a() != null))
     {
-      do
+      Object localObject = this.c;
+      if (localObject != null)
       {
-        return;
-        localf = paramb.a();
-        localTextView = paramb.c();
-        localSwitchButton = paramb.b();
-        localProgressBar = paramb.d();
+        if (((UtilsGameProtectActivity)localObject).isFinishing()) {
+          return;
+        }
+        localObject = paramb.a();
+        TextView localTextView = paramb.c();
+        SwitchButton localSwitchButton = paramb.b();
+        ProgressBar localProgressBar = paramb.d();
         paramb = paramb.e();
-      } while ((localTextView == null) || (localSwitchButton == null) || (localProgressBar == null) || (paramb == null) || (localf == null));
-      g.c("game protect: " + localf.b + ", " + localTextView.getText());
-    } while ((paramBoolean) && (!localf.b.equals(localTextView.getText())));
-    if (localf.f) {
-      paramb.setVisibility(0);
-    }
-    while ((localf.e) || (!cs.a().p()))
-    {
-      localProgressBar.setVisibility(0);
-      localSwitchButton.setVisibility(0);
-      localSwitchButton.setEnabled(false);
-      if ((!cs.a().p()) && (!this.c.mIsIniting)) {
-        this.c.queryGameProtectStatus();
+        if ((localTextView != null) && (localSwitchButton != null) && (localProgressBar != null) && (paramb != null))
+        {
+          if (localObject == null) {
+            return;
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("game protect: ");
+          localStringBuilder.append(((f)localObject).b);
+          localStringBuilder.append(", ");
+          localStringBuilder.append(localTextView.getText());
+          g.c(localStringBuilder.toString());
+          if ((paramBoolean) && (!((f)localObject).b.equals(localTextView.getText()))) {
+            return;
+          }
+          if (((f)localObject).f) {
+            paramb.setVisibility(0);
+          } else {
+            paramb.setVisibility(4);
+          }
+          if ((!((f)localObject).e) && (cs.a().p()))
+          {
+            localProgressBar.setVisibility(4);
+            localSwitchButton.setVisibility(0);
+            localSwitchButton.setEnabled(true);
+            localSwitchButton.a(true ^ ((f)localObject).c, false);
+          }
+          else
+          {
+            localProgressBar.setVisibility(0);
+            localSwitchButton.setVisibility(0);
+            localSwitchButton.setEnabled(false);
+          }
+          if ((!cs.a().p()) && (!this.c.mIsIniting)) {
+            this.c.queryGameProtectStatus();
+          }
+          localTextView.setText(((f)localObject).b);
+          return;
+        }
+        return;
       }
-      localTextView.setText(localf.b);
-      return;
-      paramb.setVisibility(4);
-    }
-    localProgressBar.setVisibility(4);
-    localSwitchButton.setVisibility(0);
-    localSwitchButton.setEnabled(true);
-    if (!localf.c) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localSwitchButton.a(paramBoolean, false);
-      break;
     }
   }
   
@@ -203,9 +223,12 @@ class j
     f localf = cs.a().b(paramInt);
     View localView = paramView;
     if (paramView == null) {
-      localView = this.d.inflate(2130968795, paramViewGroup, false);
+      localView = this.d.inflate(2131296476, paramViewGroup, false);
     }
-    g.c("game protect getview: " + localf.a);
+    paramView = new StringBuilder();
+    paramView.append("game protect getview: ");
+    paramView.append(localf.a);
+    g.c(paramView.toString());
     paramView = new b(localView, localf);
     paramView.b().setTag(paramView);
     paramView.b().setOnCheckedChangeListener(this.b);
@@ -221,18 +244,24 @@ class j
     public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
     {
       paramCompoundButton = (j.b)paramCompoundButton.getTag();
-      if (paramCompoundButton == null) {}
-      f localf;
-      View localView;
-      do
-      {
+      if (paramCompoundButton == null) {
         return;
-        localf = paramCompoundButton.a();
-        localView = paramCompoundButton.f();
-      } while ((localf == null) || (localView == null) || (!cs.a().p()) || (paramBoolean != localf.c) || (localf.e));
-      localf.e = true;
-      j.this.a(paramCompoundButton, false);
-      j.this.a(paramCompoundButton);
+      }
+      f localf = paramCompoundButton.a();
+      View localView = paramCompoundButton.f();
+      if ((localf != null) && (localView != null) && (cs.a().p()))
+      {
+        if (paramBoolean != localf.c) {
+          return;
+        }
+        if (localf.e) {
+          return;
+        }
+        localf.e = true;
+        j.this.a(paramCompoundButton, false);
+        j.this.a(paramCompoundButton);
+        return;
+      }
     }
   }
   
@@ -248,14 +277,15 @@ class j
     b(View paramView, f paramf)
     {
       this.a = paramView;
-      if (this.a == null) {
+      this$1 = this.a;
+      if (j.this == null) {
         return;
       }
       this.f = paramf;
-      this.d = ((SwitchButton)this.a.findViewById(2131559374));
-      this.b = ((TextView)this.a.findViewById(2131559372));
-      this.c = ((ProgressBar)this.a.findViewById(2131559375));
-      this.e = ((ImageView)this.a.findViewById(2131559373));
+      this.d = ((SwitchButton)j.this.findViewById(2131165554));
+      this.b = ((TextView)this.a.findViewById(2131166214));
+      this.c = ((ProgressBar)this.a.findViewById(2131165556));
+      this.e = ((ImageView)this.a.findViewById(2131166215));
     }
     
     public f a()

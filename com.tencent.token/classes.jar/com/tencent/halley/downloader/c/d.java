@@ -14,59 +14,74 @@ public final class d
   public volatile long b = 0L;
   volatile long c = 0L;
   volatile long d = 0L;
-  public boolean e = false;
+  public boolean e;
   private long f = 0L;
   private String g = "";
   private String h = "";
-  private List i = new LinkedList();
+  private List i;
   
   public d(String paramString)
   {
+    int j = 0;
+    this.e = false;
+    this.i = new LinkedList();
+    this.e = false;
     if (!TextUtils.isEmpty(paramString)) {}
-    label232:
+    label260:
     try
     {
       paramString = paramString.split("\\|");
-      if ((paramString == null) || (paramString.length == 0)) {}
-      while ((!paramString[0].equals("3.0")) || (paramString.length < 7)) {
-        return;
-      }
-      try
+      if (paramString != null)
       {
-        this.a = Long.parseLong(paramString[1]);
-        this.b = Long.parseLong(paramString[2]);
-        this.c = Long.parseLong(paramString[3]);
-        this.d = Long.parseLong(paramString[4]);
-        String[] arrayOfString = paramString[5].split(";");
-        int k = arrayOfString.length;
-        for (;;)
-        {
-          if (j >= k) {
-            break label232;
-          }
-          ab localab = new ab(this, arrayOfString[j]);
-          if (!localab.a) {
-            break;
-          }
-          this.i.add(localab);
-          j += 1;
+        if (paramString.length == 0) {
+          return;
         }
-        this.i.clear();
+        if (!paramString[0].equals("3.0")) {
+          return;
+        }
+        if (paramString.length < 7) {
+          return;
+        }
+        try
+        {
+          this.a = Long.parseLong(paramString[1]);
+          this.b = Long.parseLong(paramString[2]);
+          this.c = Long.parseLong(paramString[3]);
+          this.d = Long.parseLong(paramString[4]);
+          String[] arrayOfString = paramString[5].split(";");
+          int k = arrayOfString.length;
+          while (j < k)
+          {
+            ab localab = new ab(this, arrayOfString[j]);
+            if (localab.a)
+            {
+              this.i.add(localab);
+              j += 1;
+            }
+            else
+            {
+              this.i.clear();
+              return;
+            }
+          }
+          if (paramString.length != 9) {
+            break label260;
+          }
+          a(paramString[7]);
+          b(paramString[8]);
+        }
+        catch (NumberFormatException paramString)
+        {
+          paramString.printStackTrace();
+          b.a("TaskDivider", "parseLong for totalLen fail.", paramString);
+        }
       }
-      catch (NumberFormatException paramString)
+      else
       {
-        paramString.printStackTrace();
-        b.a("TaskDivider", "parseLong for totalLen fail.", paramString);
         return;
       }
-      return;
     }
     catch (Exception paramString) {}
-    if (paramString.length == 9)
-    {
-      a(paramString[7]);
-      b(paramString[8]);
-    }
     this.f = h();
     this.e = true;
     return;
@@ -78,7 +93,7 @@ public final class d
     {
       Iterator localIterator = this.i.iterator();
       ab localab;
-      for (long l = 0L; localIterator.hasNext(); l = localab.e - localab.d + l) {
+      for (long l = 0L; localIterator.hasNext(); l += localab.e - localab.d) {
         localab = (ab)localIterator.next();
       }
       return l;
@@ -87,57 +102,54 @@ public final class d
   
   public final ab a()
   {
+    label238:
+    label244:
+    label250:
     for (;;)
     {
-      Object localObject4;
       synchronized (this.i)
       {
+        ab localab1;
         if (this.i.size() == 0)
         {
-          localObject1 = new ab(this, 0L, 0L, 0L, -1L);
-          if (localObject1 != null) {
-            ((ab)localObject1).h = true;
-          }
-          return localObject1;
+          localab1 = new ab(this, 0L, 0L, 0L, -1L);
         }
-        localObject4 = (ab)this.i.get(0);
-        localObject5 = this.i.iterator();
-        label80:
-        if (!((Iterator)localObject5).hasNext()) {
-          break label257;
-        }
-        Object localObject1 = (ab)((Iterator)localObject5).next();
-        if ((!((ab)localObject1).h) && (((ab)localObject1).a(this.a) > 0L))
+        else
         {
-          localObject5 = localObject1;
-          localObject1 = localObject5;
-          if (localObject5 != null) {
+          ab localab2 = (ab)this.i.get(0);
+          Iterator localIterator = this.i.iterator();
+          if (!localIterator.hasNext()) {
+            break label238;
+          }
+          localab1 = (ab)localIterator.next();
+          if ((localab1.h) || (localab1.a(this.a) <= 0L))
+          {
+            if (localab1.a(this.a) <= localab2.a(this.a)) {
+              continue;
+            }
+            localab2 = localab1;
             continue;
           }
-          l1 = ((ab)localObject4).a(this.a);
-          l2 = ((ab)localObject4).f;
+          if (localab1 != null) {
+            break label250;
+          }
+          long l1 = localab2.a(this.a);
+          long l2 = localab2.f;
           if (l1 <= k.e() << 1) {
             break label244;
           }
           l1 = l2 + l1 / 2L;
-          localObject1 = new ab(this, l1, l1, l1, ((ab)localObject4).g);
-          ((ab)localObject1).c = ((ab)localObject4).b;
+          localab1 = new ab(this, l1, l1, l1, localab2.g);
+          localab1.c = localab2.b;
         }
+        if (localab1 != null) {
+          localab1.h = true;
+        }
+        return localab1;
       }
-      long l1 = localObject2.a(this.a);
-      long l2 = ((ab)localObject4).a(this.a);
-      if (l1 > l2) {}
-      for (;;)
-      {
-        localObject4 = localObject2;
-        break label80;
-        label244:
-        Object localObject3 = null;
-        break;
-        localObject3 = localObject4;
-      }
-      label257:
-      Object localObject5 = null;
+      Object localObject2 = null;
+      continue;
+      localObject2 = null;
     }
   }
   
@@ -155,20 +167,25 @@ public final class d
       catch (Exception localException)
       {
         b.a("TaskDivider", localException);
-        b.d("TaskDivider", "getSection fail. sectionId:" + paramInt + ", divider:" + b());
+        ??? = new StringBuilder("getSection fail. sectionId:");
+        ((StringBuilder)???).append(paramInt);
+        ((StringBuilder)???).append(", divider:");
+        ((StringBuilder)???).append(b());
+        b.d("TaskDivider", ((StringBuilder)???).toString());
         return null;
       }
+      throw localException;
     }
   }
   
   public final void a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramString.equals("null")))
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("null"))) {}
+    for (paramString = paramString.replace("|", "");; paramString = "")
     {
-      this.g = "";
+      this.g = paramString;
       return;
     }
-    this.g = paramString.replace("|", "");
   }
   
   public final boolean a(ab paramab)
@@ -176,6 +193,7 @@ public final class d
     if (paramab.b == -1) {}
     for (;;)
     {
+      ab localab;
       synchronized (this.i)
       {
         if (paramab.c == -1)
@@ -183,45 +201,61 @@ public final class d
           if (this.i.size() != 0)
           {
             b.c("TaskDivider", "first section, list size should be 0!!!");
-            return false;
           }
-          paramab.b = 0;
-          paramab.g = this.a;
-          this.i.add(paramab);
-          return true;
+          else
+          {
+            paramab.b = 0;
+            paramab.g = this.a;
+            this.i.add(paramab);
+            return true;
+          }
         }
-        if (paramab.c >= this.i.size()) {
-          b.d("TaskDivider", "parent id:" + paramab.c + " wrong!!!");
-        }
-      }
-      Object localObject = null;
-      Iterator localIterator = this.i.iterator();
-      while (localIterator.hasNext())
-      {
-        ab localab = (ab)localIterator.next();
-        if (localab.b == paramab.c)
+        else
         {
-          if (localab.f >= localab.g) {
-            return false;
+          if (paramab.c < this.i.size()) {
+            continue;
           }
-          localObject = localab;
-          if (localab.f + k.e() > paramab.d) {
-            return false;
-          }
+          localObject = new StringBuilder("parent id:");
+          ((StringBuilder)localObject).append(paramab.c);
+          ((StringBuilder)localObject).append(" wrong!!!");
+          b.d("TaskDivider", ((StringBuilder)localObject).toString());
         }
-        else if ((localab.g > paramab.d) && (localab.d < paramab.g))
+        return false;
+        localObject = null;
+        Iterator localIterator = this.i.iterator();
+        if (localIterator.hasNext())
         {
+          localab = (ab)localIterator.next();
+          if (localab.b == paramab.c)
+          {
+            if (localab.f >= localab.g) {
+              return false;
+            }
+            if (localab.f + k.e() <= paramab.d) {
+              break label334;
+            }
+            return false;
+          }
+          if ((localab.g <= paramab.d) || (localab.d >= paramab.g)) {
+            continue;
+          }
           return false;
         }
+        if (localObject == null) {
+          return false;
+        }
+        paramab.b = this.i.size();
+        ((ab)localObject).g = paramab.d;
+        this.i.add(paramab);
+        return true;
       }
-      if (localObject == null) {
-        return false;
-      }
-      paramab.b = this.i.size();
-      localObject.g = paramab.d;
-      this.i.add(paramab);
-      return true;
-      b.d("TaskDivider", "addRealSection of id " + paramab.b + " should not happen!!!");
+      Object localObject = new StringBuilder("addRealSection of id ");
+      ((StringBuilder)localObject).append(paramab.b);
+      ((StringBuilder)localObject).append(" should not happen!!!");
+      b.d("TaskDivider", ((StringBuilder)localObject).toString());
+      return false;
+      label334:
+      localObject = localab;
     }
   }
   
@@ -240,45 +274,42 @@ public final class d
     synchronized (this.i)
     {
       Iterator localIterator = this.i.iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         localStringBuilder.append(((ab)localIterator.next()).a());
         localStringBuilder.append(";");
       }
-    }
-    if (this.i.size() > 0) {
-      localObject.deleteCharAt(localObject.length() - 1);
-    }
-    localObject.append("|");
-    localObject.append("null");
-    localObject.append("|");
-    if (TextUtils.isEmpty(this.g))
-    {
-      localObject.append("null");
-      localObject.append("|");
-      if (!TextUtils.isEmpty(this.h)) {
-        break label243;
+      if (this.i.size() > 0) {
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
       }
-      localObject.append("null");
-    }
-    for (;;)
-    {
-      return localObject.toString();
-      localObject.append(this.g);
-      break;
-      label243:
-      localObject.append(this.h);
+      localStringBuilder.append("|");
+      localStringBuilder.append("null");
+      localStringBuilder.append("|");
+      if (TextUtils.isEmpty(this.g)) {
+        ??? = "null";
+      } else {
+        ??? = this.g;
+      }
+      localStringBuilder.append((String)???);
+      localStringBuilder.append("|");
+      if (TextUtils.isEmpty(this.h)) {
+        ??? = "null";
+      } else {
+        ??? = this.h;
+      }
+      localStringBuilder.append((String)???);
+      return localStringBuilder.toString();
     }
   }
   
   public final void b(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramString.equals("null")))
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("null"))) {}
+    for (paramString = paramString.replace("|", "");; paramString = "")
     {
-      this.h = "";
+      this.h = paramString;
       return;
     }
-    this.h = paramString.replace("|", "");
   }
   
   public final String c()
@@ -293,7 +324,8 @@ public final class d
   
   public final boolean e()
   {
-    return (this.a > 0L) && (this.a == h());
+    long l = this.a;
+    return (l > 0L) && (l == h());
   }
   
   public final long f()
@@ -302,7 +334,7 @@ public final class d
     {
       Iterator localIterator = this.i.iterator();
       ab localab;
-      for (long l = 0L; localIterator.hasNext(); l = localab.f - localab.d + l) {
+      for (long l = 0L; localIterator.hasNext(); l += localab.f - localab.d) {
         localab = (ab)localIterator.next();
       }
       return l;

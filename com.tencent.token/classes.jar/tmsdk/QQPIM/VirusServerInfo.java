@@ -18,16 +18,6 @@ public final class VirusServerInfo
   public String url = "";
   public int version = 0;
   
-  static
-  {
-    if (!VirusServerInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public VirusServerInfo()
   {
     setStrTips(this.strTips);
@@ -59,29 +49,59 @@ public final class VirusServerInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (VirusServerInfo)paramObject;
-    } while ((!JceUtil.equals(this.strTips, paramObject.strTips)) || (!JceUtil.equals(this.bUpdate, paramObject.bUpdate)) || (!JceUtil.equals(this.version, paramObject.version)) || (!JceUtil.equals(this.timestamp, paramObject.timestamp)) || (!JceUtil.equals(this.url, paramObject.url)) || (!JceUtil.equals(this.short_desc, paramObject.short_desc)) || (!JceUtil.equals(this.advise, paramObject.advise)) || (!JceUtil.equals(this.engine_version, paramObject.engine_version)));
-    return true;
+    }
+    paramObject = (VirusServerInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.strTips, paramObject.strTips))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.bUpdate, paramObject.bUpdate))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.version, paramObject.version))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.timestamp, paramObject.timestamp))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.url, paramObject.url))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.short_desc, paramObject.short_desc))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.advise, paramObject.advise))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.engine_version, paramObject.engine_version)) {
+                    bool1 = true;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

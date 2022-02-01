@@ -24,15 +24,20 @@ public class FaceRegConfirmActivity
   
   private void init()
   {
-    g.c("pathpath: w=" + this.mBitmap1.getWidth() + ",h=" + this.mBitmap1.getHeight());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("pathpath: w=");
+    ((StringBuilder)localObject).append(this.mBitmap1.getWidth());
+    ((StringBuilder)localObject).append(",h=");
+    ((StringBuilder)localObject).append(this.mBitmap1.getHeight());
+    g.c(((StringBuilder)localObject).toString());
     if ((this.mBitmap1 != null) && (this.mBitmap2 != null))
     {
-      ImageView localImageView1 = (ImageView)findViewById(2131558907);
-      ImageView localImageView2 = (ImageView)findViewById(2131558910);
-      localImageView1.setImageBitmap(this.mBitmap1);
-      localImageView2.setImageBitmap(this.mBitmap2);
+      localObject = (ImageView)findViewById(2131165669);
+      ImageView localImageView = (ImageView)findViewById(2131165670);
+      ((ImageView)localObject).setImageBitmap(this.mBitmap1);
+      localImageView.setImageBitmap(this.mBitmap2);
     }
-    ((Button)findViewById(2131558911)).setOnClickListener(new View.OnClickListener()
+    ((Button)findViewById(2131165402)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -40,7 +45,7 @@ public class FaceRegConfirmActivity
         FaceRegConfirmActivity.this.finish();
       }
     });
-    ((Button)findViewById(2131558912)).setOnClickListener(new View.OnClickListener()
+    ((Button)findViewById(2131165907)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -58,15 +63,16 @@ public class FaceRegConfirmActivity
     this.mBitmap1 = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
     localObject = e.a(this.mPath2);
     this.mBitmap2 = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-    localObject = (ImageView)findViewById(2131558907);
-    ImageView localImageView = (ImageView)findViewById(2131558910);
-    LinearLayout localLinearLayout1 = (LinearLayout)findViewById(2131558905);
-    LinearLayout localLinearLayout2 = (LinearLayout)findViewById(2131558906);
-    LinearLayout localLinearLayout3 = (LinearLayout)findViewById(2131558908);
-    LinearLayout localLinearLayout4 = (LinearLayout)findViewById(2131558909);
+    localObject = (ImageView)findViewById(2131165669);
+    ImageView localImageView = (ImageView)findViewById(2131165670);
+    LinearLayout localLinearLayout1 = (LinearLayout)findViewById(2131165664);
+    LinearLayout localLinearLayout2 = (LinearLayout)findViewById(2131165665);
+    LinearLayout localLinearLayout3 = (LinearLayout)findViewById(2131165666);
+    LinearLayout localLinearLayout4 = (LinearLayout)findViewById(2131165667);
     int i = (int)(this.mBitmap1.getHeight() * 140 / this.mBitmap1.getWidth() * IndexActivity.S_DENSITY);
-    int j = (int)(i + 6.0F * IndexActivity.S_DENSITY);
-    int k = (int)(i + 4.0F * IndexActivity.S_DENSITY);
+    float f = i;
+    int j = (int)(IndexActivity.S_DENSITY * 6.0F + f);
+    int k = (int)(f + IndexActivity.S_DENSITY * 4.0F);
     ((ImageView)localObject).getLayoutParams().height = i;
     localImageView.getLayoutParams().height = i;
     localLinearLayout1.getLayoutParams().height = j;
@@ -88,43 +94,36 @@ public class FaceRegConfirmActivity
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    for (;;)
+    try
     {
-      try
+      if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getKeyCode() == 4))
       {
-        if (paramKeyEvent.getAction() == 0) {}
-        switch (paramKeyEvent.getKeyCode())
-        {
-        case 4: 
-          return super.dispatchKeyEvent(paramKeyEvent);
-        }
-      }
-      catch (Exception paramKeyEvent)
-      {
-        paramKeyEvent.printStackTrace();
+        setResult(10);
+        finish();
         return true;
       }
-      setResult(10);
-      finish();
-      return true;
+      boolean bool = super.dispatchKeyEvent(paramKeyEvent);
+      return bool;
     }
+    catch (Exception paramKeyEvent)
+    {
+      paramKeyEvent.printStackTrace();
+    }
+    return true;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968660);
+    setContentView(2131296340);
     this.mPath1 = getIntent().getStringExtra("origindata1");
     this.mPath2 = getIntent().getStringExtra("origindata2");
     if ((!TextUtils.isEmpty(this.mPath1)) && (!TextUtils.isEmpty(this.mPath2))) {
       initOriginImg();
-    }
-    for (;;)
-    {
-      init();
-      return;
+    } else {
       initSoImg();
     }
+    init();
   }
   
   protected void setDefaultBackArrow()

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class CloudCheck
   extends JceStruct
@@ -83,38 +84,47 @@ public final class CloudCheck
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.safeType, 0);
-    if (this.virusName != null) {
-      paramJceOutputStream.write(this.virusName, 1);
+    Object localObject = this.virusName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.descritpion != null) {
-      paramJceOutputStream.write(this.descritpion, 2);
+    localObject = this.descritpion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.virusDescTimestamp, 3);
-    if (this.short_desc != null) {
-      paramJceOutputStream.write(this.short_desc, 4);
+    localObject = this.short_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.advice != null) {
-      paramJceOutputStream.write(this.advice, 5);
+    localObject = this.advice;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.handleAdvice, 6);
     paramJceOutputStream.write(this.virusID, 7);
-    if (this.handleUrl != null) {
-      paramJceOutputStream.write(this.handleUrl, 8);
+    localObject = this.handleUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.safeLevel, 9);
     paramJceOutputStream.write(this.product, 10);
-    if (this.plugins != null) {
-      paramJceOutputStream.write(this.plugins, 11);
+    localObject = this.plugins;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 11);
     }
-    if (this.descIds != null) {
-      paramJceOutputStream.write(this.descIds, 12);
+    localObject = this.descIds;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 12);
     }
     paramJceOutputStream.write(this.category, 13);
-    if (this.officialPackName != null) {
-      paramJceOutputStream.write(this.officialPackName, 14);
+    localObject = this.officialPackName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
-    if (this.officialCertMd5 != null) {
-      paramJceOutputStream.write(this.officialCertMd5, 15);
+    localObject = this.officialCertMd5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
   }
 }

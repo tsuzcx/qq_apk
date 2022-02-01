@@ -58,103 +58,99 @@ public class StartPwdGestureSelActivity
     try
     {
       this.mSetStartPwd = RqdApplication.l().getSharedPreferences("start_pwd_config", 0).getInt("is_set_start_pwd_show", 1);
-      if (this.mSetStartPwd == 1) {
-        this.mSwitchStartPwd.a(false, false);
-      }
-      for (this.mIsChecked = true;; this.mIsChecked = false)
+      if (this.mSetStartPwd == 1)
       {
-        this.mSwitchStartPwd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-          public void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
-          {
-            if (paramAnonymousBoolean != StartPwdGestureSelActivity.this.mIsChecked) {
-              return;
-            }
-            for (;;)
-            {
-              try
-              {
-                paramAnonymousCompoundButton = RqdApplication.l().getSharedPreferences("start_pwd_config", 0).edit();
-                if (StartPwdGestureSelActivity.this.mSetStartPwd == 1)
-                {
-                  bu.a().a(System.currentTimeMillis(), 65);
-                  paramAnonymousCompoundButton.putInt("is_set_start_pwd_show", 0);
-                  StartPwdGestureSelActivity.access$102(StartPwdGestureSelActivity.this, 0);
-                  StartPwdGestureSelActivity.this.mSwitchStartPwd.a(true, false);
-                  StartPwdGestureSelActivity.access$002(StartPwdGestureSelActivity.this, false);
-                  paramAnonymousCompoundButton.commit();
-                  return;
-                }
-              }
-              catch (Exception paramAnonymousCompoundButton)
-              {
-                paramAnonymousCompoundButton.printStackTrace();
-                return;
-              }
-              paramAnonymousCompoundButton.putInt("is_set_start_pwd_show", 1);
-              StartPwdGestureSelActivity.access$102(StartPwdGestureSelActivity.this, 1);
-              StartPwdGestureSelActivity.this.mSwitchStartPwd.a(false, false);
-              StartPwdGestureSelActivity.access$002(StartPwdGestureSelActivity.this, true);
-            }
-          }
-        });
-        this.mTitleBar.setBackgroundColor(getResources().getColor(2131493039));
-        this.mTitleDivider.setBackgroundColor(getResources().getColor(2131493053));
-        this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2130837617));
-        this.mTitleText.setTextColor(getResources().getColor(2131493027));
-        return;
+        this.mSwitchStartPwd.a(false, false);
+        this.mIsChecked = true;
+      }
+      else
+      {
         this.mSwitchStartPwd.a(true, false);
+        this.mIsChecked = false;
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    this.mSwitchStartPwd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    {
+      public void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        if (paramAnonymousBoolean != StartPwdGestureSelActivity.this.mIsChecked) {
+          return;
+        }
+        try
+        {
+          paramAnonymousCompoundButton = RqdApplication.l().getSharedPreferences("start_pwd_config", 0).edit();
+          if (StartPwdGestureSelActivity.this.mSetStartPwd == 1)
+          {
+            bu.a().a(System.currentTimeMillis(), 65);
+            paramAnonymousCompoundButton.putInt("is_set_start_pwd_show", 0);
+            StartPwdGestureSelActivity.access$102(StartPwdGestureSelActivity.this, 0);
+            StartPwdGestureSelActivity.this.mSwitchStartPwd.a(true, false);
+            StartPwdGestureSelActivity.access$002(StartPwdGestureSelActivity.this, false);
+          }
+          else
+          {
+            paramAnonymousCompoundButton.putInt("is_set_start_pwd_show", 1);
+            StartPwdGestureSelActivity.access$102(StartPwdGestureSelActivity.this, 1);
+            StartPwdGestureSelActivity.this.mSwitchStartPwd.a(false, false);
+            StartPwdGestureSelActivity.access$002(StartPwdGestureSelActivity.this, true);
+          }
+          paramAnonymousCompoundButton.commit();
+          return;
+        }
+        catch (Exception paramAnonymousCompoundButton)
+        {
+          paramAnonymousCompoundButton.printStackTrace();
+        }
+      }
+    });
+    this.mTitleBar.setBackgroundColor(getResources().getColor(2130968773));
+    this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968789));
+    this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2131099762));
+    this.mTitleText.setTextColor(getResources().getColor(2130968761));
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramInt1 == 256) {
+    if (paramInt1 == 256)
+    {
       if (paramInt2 == 257)
       {
         bu.a().a(System.currentTimeMillis(), 22);
         startActivity(new Intent(this, StartPwdUpdateInfoActivity.class));
-        showOrangeToast(2131231102, 2130838018);
+        showOrangeToast(2131493244, 2131100167);
+        finish();
+        return;
+      }
+      if (!cd.a().c()) {
         finish();
       }
     }
-    do
+    else if (paramInt1 == 258)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (cd.a().c());
-        finish();
-        return;
-      } while (paramInt1 != 258);
       if (paramInt2 == 259)
       {
         bu.a().a(System.currentTimeMillis(), 16);
-        showOrangeToast(2131231091, 2130838018);
+        showOrangeToast(2131493233, 2131100167);
         return;
       }
-    } while (cd.a().c());
-    finish();
+      if (!cd.a().c()) {
+        finish();
+      }
+    }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968769);
-    this.mButtonModify = ((Button)findViewById(2131559290));
-    this.mButtonClear = ((Button)findViewById(2131559291));
-    this.mSwitchStartPwd = ((SwitchButton)findViewById(2131559289));
-    this.mTextOpName = ((TextView)findViewById(2131558539));
+    setContentView(2131296450);
+    this.mButtonModify = ((Button)findViewById(2131165562));
+    this.mButtonClear = ((Button)findViewById(2131165560));
+    this.mSwitchStartPwd = ((SwitchButton)findViewById(2131165373));
+    this.mTextOpName = ((TextView)findViewById(2131166068));
     initUI();
   }
 }

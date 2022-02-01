@@ -35,7 +35,7 @@ public class a
     long l2 = this.a;
     this.a = l1;
     e locale = this.b;
-    locale.j = (l1 - l2 + locale.j);
+    locale.j += l1 - l2;
     this.f.a(paramInt1);
     this.b.q = this.f.a();
   }
@@ -73,23 +73,26 @@ public class a
         return 0;
       }
       Iterator localIterator = this.d.iterator();
-      long l1;
-      for (long l2 = 0L; localIterator.hasNext(); l2 = l1)
+      long l1 = 0L;
+      while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
-        l1 = l2;
         if (locala.b <= 2000)
         {
-          l2 += locala.a;
+          long l2 = l1 + locala.a;
           l1 = l2;
           if (l2 < 0L)
           {
-            b.c("CostTimeCounter", "sum:" + l2 + ",len:" + locala.a);
+            StringBuilder localStringBuilder = new StringBuilder("sum:");
+            localStringBuilder.append(l2);
+            localStringBuilder.append(",len:");
+            localStringBuilder.append(locala.a);
+            b.c("CostTimeCounter", localStringBuilder.toString());
             l1 = l2;
           }
         }
       }
-      return (int)(1000L * l2 / 2000L);
+      return (int)(l1 * 1000L / 2000L);
     }
     
     public final int a()
@@ -100,63 +103,60 @@ public class a
     public final void a(int paramInt)
     {
       int k = 1;
-      if (paramInt <= 0) {}
-      for (int i = 1;; i = 0)
+      int i;
+      if (paramInt <= 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      long l = SystemClock.elapsedRealtime();
+      int j = (int)(l - this.a);
+      this.a = l;
+      if (this.d.size() == 0)
       {
-        long l = SystemClock.elapsedRealtime();
-        int j = (int)(l - this.a);
-        this.a = l;
-        if (this.d.size() == 0)
+        j = k;
+        if (i == 0)
         {
+          this.d.add(new a(paramInt));
           j = k;
-          if (i == 0)
-          {
-            this.d.add(new a(paramInt));
-            j = k;
-          }
-          if (j != 0)
-          {
-            this.c = b();
-            this.b = l;
-          }
-          return;
         }
-        Iterator localIterator = this.d.iterator();
-        label99:
-        if (localIterator.hasNext())
+      }
+      else
+      {
+        Object localObject = this.d.iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          a locala = (a)localIterator.next();
+          a locala = (a)((Iterator)localObject).next();
           locala.b += j;
-          if ((i != 0) || (locala.b <= 2000)) {
-            break label262;
+          if ((i == 0) && (locala.b > 2000))
+          {
+            locala.b = 0;
+            locala.a = paramInt;
+            i = 1;
           }
-          locala.b = 0;
-          locala.a = paramInt;
-          i = 1;
         }
-        label262:
-        for (;;)
-        {
-          break label99;
-          if (i == 0)
+        if (i == 0) {
+          if (this.d.size() > 2000 / k.f + 1)
           {
-            if (this.d.size() <= 2000 / k.f + 1) {
-              break label241;
-            }
-            b.d("CostTimeCounter", "records.size():" + this.d.size());
+            localObject = new StringBuilder("records.size():");
+            ((StringBuilder)localObject).append(this.d.size());
+            b.d("CostTimeCounter", ((StringBuilder)localObject).toString());
           }
-          for (;;)
+          else
           {
-            j = k;
-            if (l - this.b > 200L) {
-              break;
-            }
-            j = 0;
-            break;
-            label241:
             this.d.add(new a(paramInt));
           }
         }
+        if (l - this.b > 200L) {
+          j = k;
+        } else {
+          j = 0;
+        }
+      }
+      if (j != 0)
+      {
+        this.c = b();
+        this.b = l;
       }
     }
     

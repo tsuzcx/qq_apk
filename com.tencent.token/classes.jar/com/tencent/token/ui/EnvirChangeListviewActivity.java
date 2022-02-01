@@ -49,25 +49,26 @@ public class EnvirChangeListviewActivity
       paramAnonymousAdapterView = cr.a();
       if (paramAnonymousInt == 0) {
         cr.c = cr.d;
+      } else if (1 == paramAnonymousInt) {
+        cr.c = cr.e;
+      } else if (2 == paramAnonymousInt) {
+        cr.c = cr.f;
+      } else if (3 == paramAnonymousInt) {
+        cr.c = cr.g;
       }
-      for (;;)
-      {
-        g.c("sessionId : " + cr.c);
-        g.c("UserAgent.isInit():---" + paramAnonymousAdapterView.p());
-        cd.b();
-        com.tencent.token.core.push.b.b();
-        AccountPageActivity.mNeedRefreshEval = true;
-        ct.b();
-        EnvirChangeListviewActivity.this.finish();
-        return;
-        if (1 == paramAnonymousInt) {
-          cr.c = cr.e;
-        } else if (2 == paramAnonymousInt) {
-          cr.c = cr.f;
-        } else if (3 == paramAnonymousInt) {
-          cr.c = cr.g;
-        }
-      }
+      paramAnonymousView = new StringBuilder();
+      paramAnonymousView.append("sessionId : ");
+      paramAnonymousView.append(cr.c);
+      g.c(paramAnonymousView.toString());
+      paramAnonymousView = new StringBuilder();
+      paramAnonymousView.append("UserAgent.isInit():---");
+      paramAnonymousView.append(paramAnonymousAdapterView.p());
+      g.c(paramAnonymousView.toString());
+      cd.b();
+      com.tencent.token.core.push.b.b();
+      AccountPageActivity.mNeedRefreshEval = true;
+      ct.b();
+      EnvirChangeListviewActivity.this.finish();
     }
   };
   private a maAdapter;
@@ -75,29 +76,26 @@ public class EnvirChangeListviewActivity
   private void initData()
   {
     int i = 0;
-    if (i < this.envirNames.length)
+    while (i < this.envirNames.length)
     {
       com.tencent.token.core.bean.b localb = new com.tencent.token.core.bean.b();
       localb.a(this.envirNames[i]);
       localb.b(this.envirHosts[i]);
       if (this.envirHosts[i] == c.e()) {
         localb.a(true);
-      }
-      for (;;)
-      {
-        this.envirDataList.add(localb);
-        i += 1;
-        break;
+      } else {
         localb.a(false);
       }
+      this.envirDataList.add(localb);
+      i += 1;
     }
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968642);
-    paramBundle = (ListView)findViewById(2131558831);
+    setContentView(2131296322);
+    paramBundle = (ListView)findViewById(2131165457);
     initData();
     this.maAdapter = new a(this, this.envirDataList);
     paramBundle.setAdapter(this.maAdapter);
@@ -138,10 +136,11 @@ public class EnvirChangeListviewActivity
     
     public int getCount()
     {
-      if (this.b == null) {
+      List localList = this.b;
+      if (localList == null) {
         return 0;
       }
-      return this.b.size();
+      return localList.size();
     }
     
     public Object getItem(int paramInt)
@@ -158,11 +157,11 @@ public class EnvirChangeListviewActivity
     {
       View localView = paramView;
       if (paramView == null) {
-        localView = this.d.inflate(2130968641, paramViewGroup, false);
+        localView = this.d.inflate(2131296321, paramViewGroup, false);
       }
-      paramView = (TextView)localView.findViewById(2131558828);
-      paramViewGroup = (TextView)localView.findViewById(2131558829);
-      RadioButton localRadioButton = (RadioButton)localView.findViewById(2131558830);
+      paramView = (TextView)localView.findViewById(2131165459);
+      paramViewGroup = (TextView)localView.findViewById(2131165458);
+      RadioButton localRadioButton = (RadioButton)localView.findViewById(2131165965);
       com.tencent.token.core.bean.b localb = (com.tencent.token.core.bean.b)getItem(paramInt);
       paramView.setText(localb.a());
       paramViewGroup.setText(localb.b());

@@ -44,9 +44,21 @@ public class ProtoQueryRealName
     }
     Object localObject = RqdApplication.l().getResources().getDisplayMetrics();
     localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L), "mobile_model", URLEncoder.encode(Build.MODEL), "screen_witdh", Integer.valueOf(((DisplayMetrics)localObject).widthPixels), "screen_height", Integer.valueOf(((DisplayMetrics)localObject).heightPixels), "screen_dpi", Integer.valueOf(((DisplayMetrics)localObject).densityDpi), "cpu_count", Integer.valueOf(m.y()), "cpu_freq", Integer.valueOf(m.z()) });
-    str = "?aq_base_sid=" + str + "&data=" + (String)localObject;
-    str = c.e() + "/cn/mbtoken3/mbtoken3_realname_qry" + str;
-    g.c("ProtoQueryRealName url: " + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_realname_qry");
+    ((StringBuilder)localObject).append(str);
+    str = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ProtoQueryRealName url: ");
+    ((StringBuilder)localObject).append(str);
+    g.c(((StringBuilder)localObject).toString());
     return str;
   }
   
@@ -59,7 +71,10 @@ public class ProtoQueryRealName
   protected void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
-    g.c("ProtoQueryRealName parseJSON errCode: " + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ProtoQueryRealName parseJSON errCode: ");
+    localStringBuilder.append(i);
+    g.c(localStringBuilder.toString());
     if (i != 0)
     {
       a(i, paramJSONObject.getString("info"));
@@ -73,16 +88,27 @@ public class ProtoQueryRealName
       if (i != this.f)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.f);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.f);
+        g.c(paramJSONObject.toString());
         return;
       }
       this.d = new RealNameQueryResult(paramJSONObject);
-      g.c("result rebind_type: " + this.d.b());
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("result rebind_type: ");
+      paramJSONObject.append(this.d.b());
+      g.c(paramJSONObject.toString());
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

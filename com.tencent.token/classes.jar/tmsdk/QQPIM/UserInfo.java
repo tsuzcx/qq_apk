@@ -65,68 +65,89 @@ public final class UserInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.imei, 0);
-    if (this.qq != null) {
-      paramJceOutputStream.write(this.qq, 1);
+    Object localObject = this.qq;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.phone != null) {
-      paramJceOutputStream.write(this.phone, 2);
+    localObject = this.phone;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.ip != null) {
-      paramJceOutputStream.write(this.ip, 3);
+    localObject = this.ip;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.lc != null) {
-      paramJceOutputStream.write(this.lc, 4);
+    localObject = this.lc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.channelid != null) {
-      paramJceOutputStream.write(this.channelid, 5);
+    localObject = this.channelid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.ua != null) {
-      paramJceOutputStream.write(this.ua, 6);
+    localObject = this.ua;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.ct != 0) {
-      paramJceOutputStream.write(this.ct, 7);
+    int i = this.ct;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 7);
     }
-    if (this.product != 0) {
-      paramJceOutputStream.write(this.product, 8);
+    i = this.product;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 8);
     }
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 9);
+    localObject = this.version;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.guid != null) {
-      paramJceOutputStream.write(this.guid, 10);
+    localObject = this.guid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.imsi != null) {
-      paramJceOutputStream.write(this.imsi, 11);
+    localObject = this.imsi;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.isbuildin != 0) {
-      paramJceOutputStream.write(this.isbuildin, 12);
+    i = this.isbuildin;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 12);
     }
-    if (this.isroot != 0) {
-      paramJceOutputStream.write(this.isroot, 13);
+    i = this.isroot;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 13);
     }
-    if (this.sdkversion != 0) {
-      paramJceOutputStream.write(this.sdkversion, 14);
+    i = this.sdkversion;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 14);
     }
-    if (this.buildno != 0) {
-      paramJceOutputStream.write(this.buildno, 15);
+    i = this.buildno;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 15);
     }
-    if (this.uuid != null) {
-      paramJceOutputStream.write(this.uuid, 16);
+    localObject = this.uuid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
-    if (this.lang != 0) {
-      paramJceOutputStream.write(this.lang, 17);
+    short s = this.lang;
+    if (s != 0) {
+      paramJceOutputStream.write(s, 17);
     }
-    if (this.longitude != 0.0D) {
-      paramJceOutputStream.write(this.longitude, 18);
+    double d = this.longitude;
+    if (d != 0.0D) {
+      paramJceOutputStream.write(d, 18);
     }
-    if (this.latitude != 0.0D) {
-      paramJceOutputStream.write(this.latitude, 19);
+    d = this.latitude;
+    if (d != 0.0D) {
+      paramJceOutputStream.write(d, 19);
     }
-    if (this.newguid != null) {
-      paramJceOutputStream.write(this.newguid, 20);
+    localObject = this.newguid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.language != 0) {
-      paramJceOutputStream.write(this.language, 21);
+    i = this.language;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 21);
     }
   }
 }

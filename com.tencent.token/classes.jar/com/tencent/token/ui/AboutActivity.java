@@ -24,31 +24,35 @@ public class AboutActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968605);
-    this.versionText = ((TextView)findViewById(2131558544));
+    setContentView(2131296285);
+    this.versionText = ((TextView)findViewById(2131165201));
     paramBundle = j.b;
     try
     {
-      str = getPackageManager().getPackageInfo(getPackageName(), 16384).versionName;
+      String str = getPackageManager().getPackageInfo(getPackageName(), 16384).versionName;
       paramBundle = str;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      for (;;)
-      {
-        String str;
-        g.c(localNameNotFoundException.getMessage());
-      }
+      g.c(localNameNotFoundException.getMessage());
     }
-    this.versionText.setText("V" + paramBundle);
-    this.aboutInfoWithEnvir = ((TextView)findViewById(2131558543));
-    str = getResources().getString(2131230753);
-    paramBundle = str;
-    if (j.c == 2) {
-      paramBundle = str + "RDM(201)";
+    Object localObject = this.versionText;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("V");
+    localStringBuilder.append(paramBundle);
+    ((TextView)localObject).setText(localStringBuilder.toString());
+    this.aboutInfoWithEnvir = ((TextView)findViewById(2131165200));
+    localObject = getResources().getString(2131492895);
+    paramBundle = (Bundle)localObject;
+    if (j.c == 2)
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append((String)localObject);
+      paramBundle.append("RDM(201)");
+      paramBundle = paramBundle.toString();
     }
     this.aboutInfoWithEnvir.setText(paramBundle);
-    findViewById(2131558548).setOnClickListener(new View.OnClickListener()
+    findViewById(2131165202).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -57,7 +61,7 @@ public class AboutActivity
         AboutActivity.this.startActivity(paramAnonymousView);
       }
     });
-    findViewById(2131558548).setOnLongClickListener(new View.OnLongClickListener()
+    findViewById(2131165202).setOnLongClickListener(new View.OnLongClickListener()
     {
       public boolean onLongClick(View paramAnonymousView)
       {
@@ -66,7 +70,7 @@ public class AboutActivity
         return true;
       }
     });
-    findViewById(2131558550).setOnClickListener(new View.OnClickListener()
+    findViewById(2131165203).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -74,18 +78,20 @@ public class AboutActivity
         AboutActivity.this.startActivity(paramAnonymousView);
       }
     });
-    findViewById(2131558552).setOnClickListener(new View.OnClickListener()
+    findViewById(2131165194).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
-        l.a(AboutActivity.this, AboutActivity.this.getString(2131231300));
+        paramAnonymousView = AboutActivity.this;
+        l.a(paramAnonymousView, paramAnonymousView.getString(2131493442));
       }
     });
-    findViewById(2131558545).setOnClickListener(new View.OnClickListener()
+    findViewById(2131165199).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
-        l.a(AboutActivity.this, AboutActivity.this.getString(2131231204));
+        paramAnonymousView = AboutActivity.this;
+        l.a(paramAnonymousView, paramAnonymousView.getString(2131493346));
       }
     });
   }

@@ -29,37 +29,76 @@ public class e
   
   public static void a(Resources paramResources, e parame)
   {
-    if ((parame.c != null) && (parame.c.length() > 0)) {
+    Object localObject1 = parame.c;
+    if ((localObject1 != null) && (((String)localObject1).length() > 0)) {
       return;
     }
-    String str1 = null;
-    switch (parame.a)
+    localObject1 = null;
+    int i = parame.a;
+    if (i != 103)
     {
-    }
-    for (;;)
-    {
-      String str2 = str1;
-      if (str1 == null) {
-        str2 = paramResources.getString(2131230963) + "(" + parame.a + ")";
+      if (i != 10005)
+      {
+        if (i != 100004)
+        {
+          switch (i)
+          {
+          default: 
+            break;
+          case 10001: 
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(paramResources.getString(2131493103));
+            ((StringBuilder)localObject1).append("(");
+            ((StringBuilder)localObject1).append(parame.a);
+            ((StringBuilder)localObject1).append(")");
+            localObject1 = ((StringBuilder)localObject1).toString();
+            break;
+          }
+        }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(paramResources.getString(2131493102));
+          ((StringBuilder)localObject1).append("(");
+          ((StringBuilder)localObject1).append(parame.a);
+          ((StringBuilder)localObject1).append(")");
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
       }
-      parame.c = str2;
-      return;
-      str1 = paramResources.getString(2131230960) + "(" + parame.a + ")";
-      continue;
-      str1 = paramResources.getString(2131230963) + "(" + parame.a + ")";
-      continue;
-      str1 = paramResources.getString(2131230962);
-      continue;
-      str1 = paramResources.getString(2131230961) + "(" + parame.a + ")";
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramResources.getString(2131493105));
+        ((StringBuilder)localObject1).append("(");
+        ((StringBuilder)localObject1).append(parame.a);
+        ((StringBuilder)localObject1).append(")");
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
     }
+    else {
+      localObject1 = paramResources.getString(2131493104);
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramResources.getString(2131493105));
+      ((StringBuilder)localObject1).append("(");
+      ((StringBuilder)localObject1).append(parame.a);
+      ((StringBuilder)localObject1).append(")");
+      localObject2 = ((StringBuilder)localObject1).toString();
+    }
+    parame.c = ((String)localObject2);
   }
   
   public static boolean a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
+    if ((paramInt != 10005) && (paramInt != 100004)) {
+      switch (paramInt)
+      {
+      default: 
+        return false;
+      }
     }
     return true;
   }
@@ -80,33 +119,34 @@ public class e
   public void a(int paramInt, String paramString1, String paramString2)
   {
     this.a = paramInt;
-    if (paramString1 != null)
-    {
-      this.b = paramString1;
-      if (paramString2 == null) {
-        break label106;
-      }
+    if (paramString1 == null) {
+      paramString1 = "";
+    }
+    this.b = paramString1;
+    if (paramString2 != null) {
       paramString1 = paramString2;
-      label20:
-      this.c = paramString1;
-      if ((this.c.indexOf("(") == -1) && (this.c.indexOf(")") == -1)) {
-        if (paramString2 == null) {
-          break label112;
-        }
-      }
+    } else {
+      paramString1 = "";
     }
-    label106:
-    label112:
-    for (paramString1 = paramString2 + "(" + paramInt + ")";; paramString1 = "")
+    this.c = paramString1;
+    if ((this.c.indexOf("(") == -1) && (this.c.indexOf(")") == -1))
     {
+      if (paramString2 != null)
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append(paramString2);
+        paramString1.append("(");
+        paramString1.append(paramInt);
+        paramString1.append(")");
+        paramString1 = paramString1.toString();
+      }
+      else
+      {
+        paramString1 = "";
+      }
       this.c = paramString1;
-      a(RqdApplication.l().getResources(), this);
-      return;
-      paramString1 = "";
-      break;
-      paramString1 = "";
-      break label20;
     }
+    a(RqdApplication.l().getResources(), this);
   }
   
   public void a(e parame)

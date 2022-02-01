@@ -52,8 +52,17 @@ public class ProtoLiveFaceDetect
     f = 0;
     Object localObject = RqdApplication.l().getResources().getDisplayMetrics();
     localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.g), "scene_id", Integer.valueOf(this.h), "mobile_brand", URLEncoder.encode(Build.BRAND), "mobile_model", URLEncoder.encode(Build.MODEL), "mobile_sdk_int", Integer.valueOf(Integer.parseInt(Build.VERSION.SDK)), "mobile_sdk_str", URLEncoder.encode(Build.VERSION.RELEASE), "screen_witdh", Integer.valueOf(((DisplayMetrics)localObject).widthPixels), "screen_height", Integer.valueOf(((DisplayMetrics)localObject).heightPixels), "screen_dpi", Integer.valueOf(((DisplayMetrics)localObject).densityDpi), "cpu_count", Integer.valueOf(m.y()), "cpu_freq", Integer.valueOf(m.z()) });
-    str = "?aq_base_sid=" + str + "&data=" + (String)localObject;
-    return c.e() + "/cn/mbtoken3/mbtoken3_live_video_detect" + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_live_video_detect");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -83,46 +92,59 @@ public class ProtoLiveFaceDetect
         while (k < m)
         {
           this.j[k] = paramJSONObject.getJSONArray("actions").getInt(k);
-          g.a("mLiveDetectActions" + this.j[k]);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("mLiveDetectActions");
+          ((StringBuilder)localObject).append(this.j[k]);
+          g.a(((StringBuilder)localObject).toString());
           k += 1;
         }
-        if ((this.h != 2) && (this.h != 1)) {
-          break label278;
-        }
-        if (this.j.length >= 2)
+        k = this.h;
+        if ((k != 2) && (k != 1))
         {
-          d = this.j[0];
-          e = this.j[1];
+          localObject = this.j;
+          if (localObject.length >= 1)
+          {
+            f = localObject[0];
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("sVryAction");
+            ((StringBuilder)localObject).append(f);
+            g.a(((StringBuilder)localObject).toString());
+          }
+        }
+        else
+        {
+          localObject = this.j;
+          if (localObject.length >= 2)
+          {
+            d = localObject[0];
+            e = localObject[1];
+          }
         }
       }
       try
       {
-        for (;;)
-        {
-          h.k = paramJSONObject.getInt("displayangle");
-          h.l = paramJSONObject.getInt("imageangle");
-          g.a("display angle=" + h.k + ",angel2=" + h.l);
-          m.a(paramJSONObject);
-          this.a.c();
-          return;
-          label278:
-          if (this.j.length >= 1)
-          {
-            f = this.j[0];
-            g.a("sVryAction" + f);
-          }
-        }
+        h.k = paramJSONObject.getInt("displayangle");
+        h.l = paramJSONObject.getInt("imageangle");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("display angle=");
+        ((StringBuilder)localObject).append(h.k);
+        ((StringBuilder)localObject).append(",angel2=");
+        ((StringBuilder)localObject).append(h.l);
+        g.a(((StringBuilder)localObject).toString());
+        m.a(paramJSONObject);
       }
       catch (Exception paramJSONObject)
       {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
+        paramJSONObject.printStackTrace();
       }
+      this.a.c();
+      return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseJSON error decodeData=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    g.c(((StringBuilder)localObject).toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

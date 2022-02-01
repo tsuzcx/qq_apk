@@ -68,20 +68,24 @@ public final class d
     paramb.a(this.a, 0);
     paramb.a(this.b, 1);
     paramb.a(this.c, 2);
-    if (this.d != null) {
-      paramb.a(this.d, 3);
+    Object localObject = this.d;
+    if (localObject != null) {
+      paramb.a((String)localObject, 3);
     }
-    if (this.e != null) {
-      paramb.a(this.e, 4);
+    localObject = this.e;
+    if (localObject != null) {
+      paramb.a((String)localObject, 4);
     }
     paramb.a(this.f, 5);
     paramb.a(this.g, 6);
     paramb.a(this.h, 7);
-    if (this.i != null) {
-      paramb.a(this.i, 8);
+    localObject = this.i;
+    if (localObject != null) {
+      paramb.a((String)localObject, 8);
     }
-    if (this.j != null) {
-      paramb.a(this.j, 9);
+    localObject = this.j;
+    if (localObject != null) {
+      paramb.a((Map)localObject, 9);
     }
   }
 }

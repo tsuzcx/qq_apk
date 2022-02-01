@@ -6,6 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SUI
   extends JceStruct
@@ -19,16 +20,6 @@ public final class SUI
   public String paramvalues = "";
   public PluginInfo pluginInfo = null;
   public int time = 0;
-  
-  static
-  {
-    if (!SUI.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
   
   public SUI()
   {
@@ -57,18 +48,17 @@ public final class SUI
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -84,13 +74,36 @@ public final class SUI
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (SUI)paramObject;
-    } while ((!JceUtil.equals(this.id, paramObject.id)) || (!JceUtil.equals(this.time, paramObject.time)) || (!JceUtil.equals(this.desc, paramObject.desc)) || (!JceUtil.equals(this.ivalues, paramObject.ivalues)) || (!JceUtil.equals(this.paramvalues, paramObject.paramvalues)) || (!JceUtil.equals(this.pluginInfo, paramObject.pluginInfo)));
-    return true;
+    }
+    paramObject = (SUI)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.id, paramObject.id))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.time, paramObject.time))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.desc, paramObject.desc))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.ivalues, paramObject.ivalues))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.paramvalues, paramObject.paramvalues))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.pluginInfo, paramObject.pluginInfo)) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -194,14 +207,17 @@ public final class SUI
     paramJceOutputStream.write(this.id, 0);
     paramJceOutputStream.write(this.time, 1);
     paramJceOutputStream.write(this.desc, 2);
-    if (this.ivalues != null) {
-      paramJceOutputStream.write(this.ivalues, 3);
+    Object localObject = this.ivalues;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.paramvalues != null) {
-      paramJceOutputStream.write(this.paramvalues, 4);
+    localObject = this.paramvalues;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.pluginInfo != null) {
-      paramJceOutputStream.write(this.pluginInfo, 5);
+    localObject = this.pluginInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
   }
 }

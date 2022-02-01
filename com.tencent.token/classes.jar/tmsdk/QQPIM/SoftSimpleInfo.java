@@ -136,25 +136,31 @@ public final class SoftSimpleInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.softkey, 0);
-    if (this.type != null) {
-      paramJceOutputStream.write(this.type, 1);
+    Object localObject = this.type;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.softclass != null) {
-      paramJceOutputStream.write(this.softclass, 2);
+    localObject = this.softclass;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.nick_name != null) {
-      paramJceOutputStream.write(this.nick_name, 3);
+    localObject = this.nick_name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.logourl != null) {
-      paramJceOutputStream.write(this.logourl, 4);
+    localObject = this.logourl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.filesize, 5);
-    if (this.publishtime != null) {
-      paramJceOutputStream.write(this.publishtime, 6);
+    localObject = this.publishtime;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.downloadtimes, 7);
-    if (this.fileurl != null) {
-      paramJceOutputStream.write(this.fileurl, 8);
+    localObject = this.fileurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.score, 9);
     paramJceOutputStream.write(this.suser, 10);
@@ -163,44 +169,54 @@ public final class SoftSimpleInfo
     paramJceOutputStream.write(this.iFileID, 13);
     paramJceOutputStream.write(this.feetype, 14);
     paramJceOutputStream.write(this.fee, 15);
-    if (this.pname != null) {
-      paramJceOutputStream.write(this.pname, 16);
+    localObject = this.pname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
-    if (this.pageurl != null) {
-      paramJceOutputStream.write(this.pageurl, 17);
+    localObject = this.pageurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
     paramJceOutputStream.write(this.lfee, 18);
     paramJceOutputStream.write(this.cn_fee, 19);
     paramJceOutputStream.write(this.cn_lfee, 20);
-    if (this.expand != null) {
-      paramJceOutputStream.write(this.expand, 21);
+    localObject = this.expand;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 21);
     }
     paramJceOutputStream.write(this.safeType, 22);
-    if (this.strSource != null) {
-      paramJceOutputStream.write(this.strSource, 23);
+    localObject = this.strSource;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 23);
     }
-    if (this.break_fileurl != null) {
-      paramJceOutputStream.write(this.break_fileurl, 24);
+    localObject = this.break_fileurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 24);
     }
-    if (this.break_mini_os != null) {
-      paramJceOutputStream.write(this.break_mini_os, 25);
+    localObject = this.break_mini_os;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 25);
     }
     paramJceOutputStream.write(this.sign, 26);
     paramJceOutputStream.write(this.updatetime, 27);
     paramJceOutputStream.write(this.topsign, 28);
-    if (this.diffFileUrl != null) {
-      paramJceOutputStream.write(this.diffFileUrl, 29);
+    localObject = this.diffFileUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 29);
     }
     paramJceOutputStream.write(this.diffFileSizeByte, 30);
-    if (this.apkFileMd5 != null) {
-      paramJceOutputStream.write(this.apkFileMd5, 31);
+    localObject = this.apkFileMd5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 31);
     }
     paramJceOutputStream.write(this.plugintype, 32);
-    if (this.likepercent != null) {
-      paramJceOutputStream.write(this.likepercent, 33);
+    localObject = this.likepercent;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 33);
     }
-    if (this.channelId != null) {
-      paramJceOutputStream.write(this.channelId, 34);
+    localObject = this.channelId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 34);
     }
   }
 }

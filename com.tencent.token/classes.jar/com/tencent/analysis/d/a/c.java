@@ -37,12 +37,11 @@ public final class c
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        Object localObject;
-        paramString = paramString.getBytes();
-      }
+      Object localObject;
+      label12:
+      break label12;
     }
+    paramString = paramString.getBytes();
     localObject = b;
     b = new d(paramInt, paramString);
     c.put(Integer.valueOf(paramInt), b);

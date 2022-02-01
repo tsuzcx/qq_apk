@@ -48,13 +48,10 @@ class OneShotPreDrawListener
   {
     if (this.mViewTreeObserver.isAlive()) {
       this.mViewTreeObserver.removeOnPreDrawListener(this);
-    }
-    for (;;)
-    {
-      this.mView.removeOnAttachStateChangeListener(this);
-      return;
+    } else {
       this.mView.getViewTreeObserver().removeOnPreDrawListener(this);
     }
+    this.mView.removeOnAttachStateChangeListener(this);
   }
 }
 

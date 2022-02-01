@@ -63,62 +63,23 @@ public class n
     }
   }
   
-  /* Error */
   public Object c()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokevirtual 49	tmsdk/common/d/a/c/n:a	()Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +9 -> 17
-    //   11: aconst_null
-    //   12: astore_2
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: aload_2
-    //   16: areturn
-    //   17: aload_0
-    //   18: getfield 13	tmsdk/common/d/a/c/n:a	Ljava/util/TreeMap;
-    //   21: invokevirtual 52	java/util/TreeMap:firstKey	()Ljava/lang/Object;
-    //   24: astore_3
-    //   25: aload_0
-    //   26: getfield 13	tmsdk/common/d/a/c/n:a	Ljava/util/TreeMap;
-    //   29: aload_3
-    //   30: invokevirtual 28	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   33: checkcast 22	java/util/LinkedList
-    //   36: astore 4
-    //   38: aload 4
-    //   40: invokevirtual 55	java/util/LinkedList:poll	()Ljava/lang/Object;
-    //   43: astore_2
-    //   44: aload 4
-    //   46: invokevirtual 59	java/util/LinkedList:size	()I
-    //   49: ifgt +12 -> 61
-    //   52: aload_0
-    //   53: getfield 13	tmsdk/common/d/a/c/n:a	Ljava/util/TreeMap;
-    //   56: aload_3
-    //   57: invokevirtual 62	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   60: pop
-    //   61: goto -48 -> 13
-    //   64: astore_2
-    //   65: aload_0
-    //   66: monitorexit
-    //   67: aload_2
-    //   68: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	69	0	this	n
-    //   6	2	1	bool	boolean
-    //   12	32	2	localObject1	Object
-    //   64	4	2	localObject2	Object
-    //   24	33	3	localObject3	Object
-    //   36	9	4	localLinkedList	LinkedList
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	64	finally
-    //   17	61	64	finally
+    try
+    {
+      boolean bool = a();
+      if (bool) {
+        return null;
+      }
+      Object localObject1 = this.a.firstKey();
+      LinkedList localLinkedList = (LinkedList)this.a.get(localObject1);
+      Object localObject3 = localLinkedList.poll();
+      if (localLinkedList.size() <= 0) {
+        this.a.remove(localObject1);
+      }
+      return localObject3;
+    }
+    finally {}
   }
 }
 

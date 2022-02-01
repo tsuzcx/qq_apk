@@ -16,16 +16,6 @@ public final class SoftList
   public SoftListInfo softListInfo = null;
   public ArrayList<SoftElementInfo> vctSofts = null;
   
-  static
-  {
-    if (!SoftList.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public SoftList() {}
   
   public SoftList(ArrayList<SoftElementInfo> paramArrayList, SoftListInfo paramSoftListInfo)
@@ -41,18 +31,17 @@ public final class SoftList
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -64,13 +53,20 @@ public final class SoftList
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (SoftList)paramObject;
-    } while ((!JceUtil.equals(this.vctSofts, paramObject.vctSofts)) || (!JceUtil.equals(this.softListInfo, paramObject.softListInfo)));
-    return true;
+    }
+    paramObject = (SoftList)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.vctSofts, paramObject.vctSofts))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.softListInfo, paramObject.softListInfo)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -129,8 +125,9 @@ public final class SoftList
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.vctSofts, 0);
-    if (this.softListInfo != null) {
-      paramJceOutputStream.write(this.softListInfo, 1);
+    SoftListInfo localSoftListInfo = this.softListInfo;
+    if (localSoftListInfo != null) {
+      paramJceOutputStream.write(localSoftListInfo, 1);
     }
   }
 }

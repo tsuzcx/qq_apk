@@ -17,68 +17,69 @@ public class c
   
   public static long a(byte paramByte)
   {
+    int i = paramByte;
     if (paramByte < 0) {
-      return paramByte & 0xFF;
+      i = paramByte & 0xFF;
     }
-    return paramByte;
+    return i;
   }
   
   private long a(long paramLong1, long paramLong2, long paramLong3)
   {
-    return paramLong1 & paramLong2 | (0xFFFFFFFF ^ paramLong1) & paramLong3;
+    return (paramLong1 ^ 0xFFFFFFFF) & paramLong3 | paramLong2 & paramLong1;
   }
   
   private long a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
-    paramLong1 = a(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
-    int i = (int)paramLong1;
+    int i = (int)(a(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1);
     int j = (int)paramLong6;
-    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+    return (i >>> (int)(32L - paramLong6) | i << j) + paramLong2;
   }
   
   private void a()
   {
-    this.c[0] = 0L;
-    this.c[1] = 0L;
-    this.b[0] = 1732584193L;
-    this.b[1] = 4023233417L;
-    this.b[2] = 2562383102L;
-    this.b[3] = 271733878L;
+    long[] arrayOfLong = this.c;
+    arrayOfLong[0] = 0L;
+    arrayOfLong[1] = 0L;
+    arrayOfLong = this.b;
+    arrayOfLong[0] = 1732584193L;
+    arrayOfLong[1] = 4023233417L;
+    arrayOfLong[2] = 2562383102L;
+    arrayOfLong[3] = 271733878L;
   }
   
   private void a(byte[] paramArrayOfByte, int paramInt)
   {
-    int j = 0;
     byte[] arrayOfByte = new byte[64];
-    int k = (int)(this.c[0] >>> 3) & 0x3F;
     long[] arrayOfLong = this.c;
-    long l = arrayOfLong[0] + (paramInt << 3);
-    arrayOfLong[0] = l;
-    if (l < paramInt << 3)
-    {
-      arrayOfLong = this.c;
+    int j = (int)(arrayOfLong[0] >>> 3) & 0x3F;
+    long l2 = arrayOfLong[0];
+    long l1 = paramInt << 3;
+    l2 += l1;
+    arrayOfLong[0] = l2;
+    if (l2 < l1) {
       arrayOfLong[1] += 1L;
     }
     arrayOfLong = this.c;
     arrayOfLong[1] += (paramInt >>> 29);
-    int m = 64 - k;
-    int i = k;
-    if (paramInt >= m)
+    int i = 64 - j;
+    if (paramInt >= i)
     {
-      a(this.d, paramArrayOfByte, k, 0, m);
+      a(this.d, paramArrayOfByte, j, 0, i);
       d(this.d);
-      i = m;
       while (i + 63 < paramInt)
       {
         a(arrayOfByte, paramArrayOfByte, 0, i, 64);
         d(arrayOfByte);
         i += 64;
       }
-      k = 0;
-      j = i;
-      i = k;
+      j = 0;
     }
-    a(this.d, paramArrayOfByte, i, j, paramInt - j);
+    else
+    {
+      i = 0;
+    }
+    a(this.d, paramArrayOfByte, j, i, paramInt - i);
   }
   
   private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3)
@@ -100,7 +101,7 @@ public class c
       paramArrayOfByte[i] = ((byte)(int)(paramArrayOfLong[j] & 0xFF));
       paramArrayOfByte[(i + 1)] = ((byte)(int)(paramArrayOfLong[j] >>> 8 & 0xFF));
       paramArrayOfByte[(i + 2)] = ((byte)(int)(paramArrayOfLong[j] >>> 16 & 0xFF));
-      paramArrayOfByte[(i + 3)] = ((byte)(int)(paramArrayOfLong[j] >>> 24 & 0xFF));
+      paramArrayOfByte[(i + 3)] = ((byte)(int)(0xFF & paramArrayOfLong[j] >>> 24));
       j += 1;
       i += 4;
     }
@@ -127,25 +128,23 @@ public class c
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        paramString = paramString.getBytes();
-      }
+      label12:
+      break label12;
     }
+    paramString = paramString.getBytes();
     return new c().a(paramString);
   }
   
   private long b(long paramLong1, long paramLong2, long paramLong3)
   {
-    return paramLong1 & paramLong3 | (0xFFFFFFFF ^ paramLong3) & paramLong2;
+    return paramLong1 & paramLong3 | paramLong2 & (paramLong3 ^ 0xFFFFFFFF);
   }
   
   private long b(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
-    paramLong1 = b(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
-    int i = (int)paramLong1;
+    int i = (int)(b(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1);
     int j = (int)paramLong6;
-    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+    return (i >>> (int)(32L - paramLong6) | i << j) + paramLong2;
   }
   
   public static String b(byte paramByte)
@@ -196,19 +195,21 @@ public class c
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        byte[] arrayOfByte;
-        int i;
-        paramString = paramString.getBytes();
-      }
+      byte[] arrayOfByte;
+      label12:
+      int i;
+      break label12;
     }
+    paramString = paramString.getBytes();
     arrayOfByte = new c().a(paramString);
     paramString = "";
     i = 0;
     while (i < 16)
     {
-      paramString = paramString + b(arrayOfByte[i]);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(b(arrayOfByte[i]));
+      paramString = localStringBuilder.toString();
       i += 1;
     }
     return paramString;
@@ -219,14 +220,14 @@ public class c
     byte[] arrayOfByte = new byte[8];
     a(arrayOfByte, this.c, 8);
     int i = (int)(this.c[0] >>> 3) & 0x3F;
-    if (i < 56) {}
-    for (i = 56 - i;; i = 120 - i)
-    {
-      a(a, i);
-      a(arrayOfByte, 8);
-      a(this.e, this.b, 16);
-      return;
+    if (i < 56) {
+      i = 56 - i;
+    } else {
+      i = 120 - i;
     }
+    a(a, i);
+    a(arrayOfByte, 8);
+    a(this.e, this.b, 16);
   }
   
   public static byte[] b(byte[] paramArrayOfByte)
@@ -241,10 +242,9 @@ public class c
   
   private long c(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
-    paramLong1 = c(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
-    int i = (int)paramLong1;
+    int i = (int)(c(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1);
     int j = (int)paramLong6;
-    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+    return (i >>> (int)(32L - paramLong6) | i << j) + paramLong2;
   }
   
   public static String c(byte[] paramArrayOfByte)
@@ -254,7 +254,10 @@ public class c
     int i = 0;
     while (i < 16)
     {
-      paramArrayOfByte = paramArrayOfByte + b(arrayOfByte[i]);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArrayOfByte);
+      localStringBuilder.append(b(arrayOfByte[i]));
+      paramArrayOfByte = localStringBuilder.toString();
       i += 1;
     }
     return paramArrayOfByte;
@@ -262,24 +265,24 @@ public class c
   
   private long d(long paramLong1, long paramLong2, long paramLong3)
   {
-    return (0xFFFFFFFF ^ paramLong3 | paramLong1) ^ paramLong2;
+    return (paramLong1 | paramLong3 ^ 0xFFFFFFFF) ^ paramLong2;
   }
   
   private long d(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
-    paramLong1 = d(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
-    int i = (int)paramLong1;
+    int i = (int)(d(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1);
     int j = (int)paramLong6;
-    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+    return (i >>> (int)(32L - paramLong6) | i << j) + paramLong2;
   }
   
   private void d(byte[] paramArrayOfByte)
   {
-    long l2 = this.b[0];
-    long l1 = this.b[1];
-    long l4 = this.b[2];
-    long l3 = this.b[3];
-    long[] arrayOfLong = new long[16];
+    long[] arrayOfLong = this.b;
+    long l2 = arrayOfLong[0];
+    long l1 = arrayOfLong[1];
+    long l4 = arrayOfLong[2];
+    long l3 = arrayOfLong[3];
+    arrayOfLong = new long[16];
     a(arrayOfLong, paramArrayOfByte, 64);
     l2 = a(l2, l1, l4, l3, arrayOfLong[0], 7L, 3614090360L);
     l3 = a(l3, l2, l1, l4, arrayOfLong[1], 12L, 3905402710L);
@@ -347,11 +350,8 @@ public class c
     l1 = d(l1, l4, l3, l2, arrayOfLong[9], 21L, 3951481745L);
     paramArrayOfByte = this.b;
     paramArrayOfByte[0] += l2;
-    paramArrayOfByte = this.b;
-    paramArrayOfByte[1] = (l1 + paramArrayOfByte[1]);
-    paramArrayOfByte = this.b;
+    paramArrayOfByte[1] += l1;
     paramArrayOfByte[2] += l4;
-    paramArrayOfByte = this.b;
     paramArrayOfByte[3] += l3;
   }
   

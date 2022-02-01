@@ -54,13 +54,16 @@ public class ProtoDelDevice
   protected String a()
   {
     String str = ca.a().b();
-    g.c("sessId=" + str);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("sessId=");
+    ((StringBuilder)localObject1).append(str);
+    g.c(((StringBuilder)localObject1).toString());
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject1 = "";
+    localObject1 = "";
     try
     {
       Object localObject2 = new JSONObject();
@@ -83,14 +86,23 @@ public class ProtoDelDevice
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
-    localObject1 = "?aq_base_sid=" + str + "&data=" + (String)localObject1;
-    localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_device_lock_del_device_encrypt" + (String)localObject1;
-    g.c("del device url =" + (String)localObject1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject1);
+    localObject1 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c.e());
+    localStringBuilder.append("/cn/mbtoken3/mbtoken3_device_lock_del_device_encrypt");
+    localStringBuilder.append((String)localObject1);
+    localObject1 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("del device url =");
+    localStringBuilder.append((String)localObject1);
+    g.c(localStringBuilder.toString());
     return localObject1;
   }
   
@@ -126,14 +138,22 @@ public class ProtoDelDevice
       if (i1 != this.j)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i1 + ",right = " + cb.a().b());
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i1);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(cb.a().b());
+        g.c(paramJSONObject.toString());
         return;
       }
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

@@ -9,7 +9,7 @@ import uilib.doraemon.a;
 
 public class cs
 {
-  private static final String a = cs.class.getSimpleName();
+  private static final String a = "cs";
   private final List<an> b;
   private final a c;
   private final String d;
@@ -60,30 +60,50 @@ public class cs
   public String a(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString).append(f()).append("\n");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(f());
+    localStringBuilder.append("\n");
     Object localObject1 = this.c.a(m());
+    Object localObject2;
     if (localObject1 != null)
     {
-      localStringBuilder.append("\t\tParents: ").append(((cs)localObject1).f());
-      for (localObject1 = this.c.a(((cs)localObject1).m()); localObject1 != null; localObject1 = this.c.a(((cs)localObject1).m())) {
-        localStringBuilder.append("->").append(((cs)localObject1).f());
+      for (localObject2 = "\t\tParents: ";; localObject2 = "->")
+      {
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append(((cs)localObject1).f());
+        localObject1 = this.c.a(((cs)localObject1).m());
+        if (localObject1 == null) {
+          break;
+        }
       }
-      localStringBuilder.append(paramString).append("\n");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\n");
     }
-    if (!j().isEmpty()) {
-      localStringBuilder.append(paramString).append("\tMasks: ").append(j().size()).append("\n");
+    if (!j().isEmpty())
+    {
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\tMasks: ");
+      localStringBuilder.append(j().size());
+      localStringBuilder.append("\n");
     }
-    if ((r() != 0) && (q() != 0)) {
-      localStringBuilder.append(paramString).append("\tBackground: ").append(String.format(Locale.US, "%dx%d %X\n", new Object[] { Integer.valueOf(r()), Integer.valueOf(q()), Integer.valueOf(p()) }));
+    if ((r() != 0) && (q() != 0))
+    {
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\tBackground: ");
+      localStringBuilder.append(String.format(Locale.US, "%dx%d %X\n", new Object[] { Integer.valueOf(r()), Integer.valueOf(q()), Integer.valueOf(p()) }));
     }
     if (!this.b.isEmpty())
     {
-      localStringBuilder.append(paramString).append("\tShapes:\n");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\tShapes:\n");
       localObject1 = this.b.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        Object localObject2 = ((Iterator)localObject1).next();
-        localStringBuilder.append(paramString).append("\t\t").append(localObject2).append("\n");
+        localObject2 = ((Iterator)localObject1).next();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("\t\t");
+        localStringBuilder.append(localObject2);
+        localStringBuilder.append("\n");
       }
     }
     return localStringBuilder.toString();

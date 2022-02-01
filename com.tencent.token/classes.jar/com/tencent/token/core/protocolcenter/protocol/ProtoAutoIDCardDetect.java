@@ -43,8 +43,17 @@ public class ProtoAutoIDCardDetect
     }
     Object localObject = RqdApplication.l().getResources().getDisplayMetrics();
     localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.f), "scene_id", Integer.valueOf(1), "mobile_brand", URLEncoder.encode(Build.BRAND), "mobile_model", URLEncoder.encode(Build.MODEL), "mobile_sdk_int", Integer.valueOf(Integer.parseInt(Build.VERSION.SDK)), "mobile_sdk_str", URLEncoder.encode(Build.VERSION.RELEASE), "screen_witdh", Integer.valueOf(((DisplayMetrics)localObject).widthPixels), "screen_height", Integer.valueOf(((DisplayMetrics)localObject).heightPixels), "screen_dpi", Integer.valueOf(((DisplayMetrics)localObject).densityDpi), "cpu_count", Integer.valueOf(m.y()), "cpu_freq", Integer.valueOf(m.z()) });
-    str = "?aq_base_sid=" + str + "&data=" + (String)localObject;
-    return c.e() + "/cn/mbtoken3/mbtoken3_idcard_auto_detect" + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_idcard_auto_detect");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -65,25 +74,31 @@ public class ProtoAutoIDCardDetect
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
       this.g = paramJSONObject.getInt("need_idcard_detect");
-      if (this.g == 1) {}
-      try
-      {
-        d = paramJSONObject.getInt("displayangle");
-        e = paramJSONObject.getInt("imageangle");
-        g.a("plain angle=" + d + ",angel2=" + e);
-        this.a.c();
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        for (;;)
+      if (this.g == 1) {
+        try
+        {
+          d = paramJSONObject.getInt("displayangle");
+          e = paramJSONObject.getInt("imageangle");
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append("plain angle=");
+          paramJSONObject.append(d);
+          paramJSONObject.append(",angel2=");
+          paramJSONObject.append(e);
+          g.a(paramJSONObject.toString());
+        }
+        catch (Exception paramJSONObject)
         {
           paramJSONObject.printStackTrace();
         }
       }
+      this.a.c();
+      return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

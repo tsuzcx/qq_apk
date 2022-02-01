@@ -10,14 +10,17 @@ public class WindowInsetsCompat
   
   public WindowInsetsCompat(WindowInsetsCompat paramWindowInsetsCompat)
   {
-    if (Build.VERSION.SDK_INT >= 20)
+    int i = Build.VERSION.SDK_INT;
+    Object localObject = null;
+    if (i >= 20)
     {
-      if (paramWindowInsetsCompat == null) {}
-      for (paramWindowInsetsCompat = localObject;; paramWindowInsetsCompat = new WindowInsets((WindowInsets)paramWindowInsetsCompat.mInsets))
-      {
-        this.mInsets = paramWindowInsetsCompat;
-        return;
+      if (paramWindowInsetsCompat == null) {
+        paramWindowInsetsCompat = localObject;
+      } else {
+        paramWindowInsetsCompat = new WindowInsets((WindowInsets)paramWindowInsetsCompat.mInsets);
       }
+      this.mInsets = paramWindowInsetsCompat;
+      return;
     }
     this.mInsets = null;
   }
@@ -61,20 +64,22 @@ public class WindowInsetsCompat
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (WindowInsetsCompat)paramObject;
-      if (this.mInsets != null) {
-        break;
+      Object localObject = this.mInsets;
+      if (localObject == null) {
+        return paramObject.mInsets == null;
       }
-    } while (paramObject.mInsets == null);
+      return localObject.equals(paramObject.mInsets);
+    }
     return false;
-    return this.mInsets.equals(paramObject.mInsets);
   }
   
   public int getStableInsetBottom()
@@ -167,10 +172,11 @@ public class WindowInsetsCompat
   
   public int hashCode()
   {
-    if (this.mInsets == null) {
+    Object localObject = this.mInsets;
+    if (localObject == null) {
       return 0;
     }
-    return this.mInsets.hashCode();
+    return localObject.hashCode();
   }
   
   public boolean isConsumed()

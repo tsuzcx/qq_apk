@@ -11,46 +11,49 @@ public class d
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool = true;
-    if ((paramContext == null) || (paramIntent == null)) {}
-    label130:
-    label135:
-    for (;;)
+    if (paramContext != null)
     {
-      return;
-      int i = paramIntent.getIntExtra("openIdNotifyFlag", 0);
-      e.b("shouldUpdateId, notifyFlag : " + i);
-      if (i == 1) {
-        if (!TextUtils.equals(paramIntent.getStringExtra("openIdPackage"), paramContext.getPackageName())) {}
-      }
-      for (;;)
-      {
-        if (!bool) {
-          break label135;
-        }
-        paramContext = paramIntent.getStringExtra("openIdType");
-        paramContext = e.b().c(paramContext);
-        if (paramContext == null) {
-          break;
-        }
-        paramContext.a();
+      if (paramIntent == null) {
         return;
-        do
-        {
-          ArrayList localArrayList;
-          do
-          {
-            bool = false;
-            break;
-            if (i != 2) {
-              break label130;
-            }
-            localArrayList = paramIntent.getStringArrayListExtra("openIdPackageList");
-          } while (localArrayList == null);
-          bool = localArrayList.contains(paramContext.getPackageName());
-          break;
-        } while (i != 0);
       }
+      boolean bool = false;
+      int i = paramIntent.getIntExtra("openIdNotifyFlag", 0);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("shouldUpdateId, notifyFlag : ");
+      ((StringBuilder)localObject).append(i);
+      e.b(((StringBuilder)localObject).toString());
+      if (i == 1)
+      {
+        if (!TextUtils.equals(paramIntent.getStringExtra("openIdPackage"), paramContext.getPackageName())) {
+          break label115;
+        }
+      }
+      else
+      {
+        if (i == 2)
+        {
+          localObject = paramIntent.getStringArrayListExtra("openIdPackageList");
+          if (localObject == null) {
+            break label115;
+          }
+          bool = ((ArrayList)localObject).contains(paramContext.getPackageName());
+          break label115;
+        }
+        if (i != 0) {
+          break label115;
+        }
+      }
+      bool = true;
+      label115:
+      if (!bool) {
+        return;
+      }
+      paramContext = paramIntent.getStringExtra("openIdType");
+      paramContext = e.b().c(paramContext);
+      if (paramContext == null) {
+        return;
+      }
+      paramContext.a();
     }
   }
 }

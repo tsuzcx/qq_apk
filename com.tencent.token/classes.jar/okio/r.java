@@ -32,14 +32,19 @@ public class r
   
   public r a(long paramLong, TimeUnit paramTimeUnit)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("timeout < 0: " + paramLong);
-    }
-    if (paramTimeUnit == null) {
+    if (paramLong >= 0L)
+    {
+      if (paramTimeUnit != null)
+      {
+        this.d = paramTimeUnit.toNanos(paramLong);
+        return this;
+      }
       throw new IllegalArgumentException("unit == null");
     }
-    this.d = paramTimeUnit.toNanos(paramLong);
-    return this;
+    paramTimeUnit = new StringBuilder();
+    paramTimeUnit.append("timeout < 0: ");
+    paramTimeUnit.append(paramLong);
+    throw new IllegalArgumentException(paramTimeUnit.toString());
   }
   
   public long c_()
@@ -49,10 +54,10 @@ public class r
   
   public long d()
   {
-    if (!this.a) {
-      throw new IllegalStateException("No deadline");
+    if (this.a) {
+      return this.b;
     }
-    return this.b;
+    throw new IllegalStateException("No deadline");
   }
   
   public boolean d_()
@@ -74,12 +79,18 @@ public class r
   
   public void g()
   {
-    if (Thread.interrupted()) {
-      throw new InterruptedIOException("thread interrupted");
+    if (!Thread.interrupted())
+    {
+      if (this.a)
+      {
+        if (this.b - System.nanoTime() > 0L) {
+          return;
+        }
+        throw new InterruptedIOException("deadline reached");
+      }
+      return;
     }
-    if ((this.a) && (this.b - System.nanoTime() <= 0L)) {
-      throw new InterruptedIOException("deadline reached");
-    }
+    throw new InterruptedIOException("thread interrupted");
   }
 }
 

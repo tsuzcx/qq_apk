@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public class cs
 {
-  static cs a = null;
+  static cs a;
   private static boolean i = true;
   public dc b = new dc();
   public dg c = new dg();
@@ -31,7 +31,8 @@ public class cs
   
   public static cs a()
   {
-    if (a == null)
+    cs localcs = a;
+    if (localcs == null)
     {
       a = new cs();
       return a;
@@ -39,7 +40,7 @@ public class cs
     if (i)
     {
       i = false;
-      a.m();
+      localcs.m();
     }
     return a;
   }
@@ -62,30 +63,60 @@ public class cs
     }
     int j = cb.a + 1;
     cb.a = j;
-    Object localObject1 = new StringBuilder().append("{\"conf_data\":[{\"id\":").append(paramf.a).append(",\"value\":");
-    if (paramBoolean) {}
-    for (paramf = "1";; paramf = "0")
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("{\"conf_data\":[{\"id\":");
+    ((StringBuilder)localObject1).append(paramf.a);
+    ((StringBuilder)localObject1).append(",\"value\":");
+    if (paramBoolean) {
+      paramf = "1";
+    } else {
+      paramf = "0";
+    }
+    ((StringBuilder)localObject1).append(paramf);
+    ((StringBuilder)localObject1).append("}], \"A2\":\"\", \"seq_id\":");
+    ((StringBuilder)localObject1).append(j);
+    ((StringBuilder)localObject1).append(", \"op_time\":");
+    ((StringBuilder)localObject1).append((int)(cc.c().s() / 1000L));
+    ((StringBuilder)localObject1).append(",\"uin\":");
+    ((StringBuilder)localObject1).append(localQQUser.mUin);
+    ((StringBuilder)localObject1).append("}");
+    paramf = ((StringBuilder)localObject1).toString();
+    g.a(paramf);
+    localObject1 = l.b(paramf.getBytes());
+    if (localObject1 == null)
     {
-      paramf = paramf + "}], \"A2\":\"\", \"seq_id\":" + j + ", \"op_time\":" + (int)(cc.c().s() / 1000L) + ",\"uin\":" + localQQUser.mUin + "}";
-      g.a(paramf);
-      localObject1 = l.b(paramf.getBytes());
-      if (localObject1 != null) {
-        break;
-      }
       locale.b(10000);
-      g.c("encTransData failed: " + paramf);
+      parame = new StringBuilder();
+      parame.append("encTransData failed: ");
+      parame.append(paramf);
+      g.c(parame.toString());
       return locale;
     }
     paramf = new ez();
-    Object localObject2 = new StringBuilder().append("?aq_base_sid=");
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("?aq_base_sid=");
     cr.a();
-    localObject1 = cr.c + "&data=" + (String)localObject1;
-    localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_set_service_status_encrypt" + (String)localObject1;
+    ((StringBuilder)localObject2).append(cr.c);
+    ((StringBuilder)localObject2).append("&data=");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(c.e());
+    ((StringBuilder)localObject2).append("/cn/mbtoken3/mbtoken3_set_service_status_encrypt");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    localObject1 = ((StringBuilder)localObject2).toString();
     localObject2 = paramf.a((String)localObject1);
     if (localObject2 == null)
     {
       locale.a(paramf.a());
-      g.c("client request url: " + (String)localObject1 + " failed, reason=" + locale.a + ":" + locale.b);
+      paramf = new StringBuilder();
+      paramf.append("client request url: ");
+      paramf.append((String)localObject1);
+      paramf.append(" failed, reason=");
+      paramf.append(locale.a);
+      paramf.append(":");
+      paramf.append(locale.b);
+      g.c(paramf.toString());
       return locale;
     }
     try
@@ -97,44 +128,66 @@ public class cs
         paramf = paramf.getString("info");
         locale.a(k, paramf, paramf);
         parame.b(k);
+        return locale;
       }
-      else
+      paramf = l.c(paramf.getString("data"));
+      if (paramf != null)
       {
-        paramf = l.c(paramf.getString("data"));
-        if (paramf != null)
+        paramf = new JSONObject(new String(paramf));
+        parame = new StringBuilder();
+        parame.append("ProtoSetServiceStatusV2:");
+        parame.append(paramf);
+        g.b(parame.toString());
+        long l = paramf.getLong("uin");
+        if (l != localQQUser.mUin)
         {
-          paramf = new JSONObject(new String(paramf));
-          g.b("ProtoSetServiceStatusV2:" + paramf);
-          long l = paramf.getLong("uin");
-          if (l != localQQUser.mUin)
-          {
-            locale.a(10000, "uin not match=" + l + ":" + localQQUser.mUin);
-            return locale;
-          }
-          if (paramf.getInt("seq_id") != j)
-          {
-            locale.b(10030);
-            return locale;
-          }
-          cr.a().m();
-          locale.c();
+          paramf = new StringBuilder();
+          paramf.append("uin not match=");
+          paramf.append(l);
+          paramf.append(":");
+          paramf.append(localQQUser.mUin);
+          locale.a(10000, paramf.toString());
+          return locale;
         }
+        if (paramf.getInt("seq_id") != j)
+        {
+          locale.b(10030);
+          return locale;
+        }
+        cr.a().m();
+        locale.c();
+        return locale;
       }
-    }
-    catch (JSONException paramf)
-    {
-      g.c("parse json failed: " + paramf.toString());
-      locale.a(10020, "JSONException:" + paramf.toString());
-      break label715;
-      g.c("parseJSON error decodeData=" + paramf);
-      locale.a(10022, RqdApplication.l().getString(2131230925), RqdApplication.l().getString(2131230925));
+      parame = new StringBuilder();
+      parame.append("parseJSON error decodeData=");
+      parame.append(paramf);
+      g.c(parame.toString());
+      locale.a(10022, RqdApplication.l().getString(2131493067), RqdApplication.l().getString(2131493067));
+      return locale;
     }
     catch (Exception paramf)
     {
-      g.c("unknown err: " + paramf.toString());
-      locale.a(10021, "JSONException:" + paramf.toString());
+      parame = new StringBuilder();
+      parame.append("unknown err: ");
+      parame.append(paramf.toString());
+      g.c(parame.toString());
+      parame = new StringBuilder();
+      parame.append("JSONException:");
+      parame.append(paramf.toString());
+      locale.a(10021, parame.toString());
+      return locale;
     }
-    label715:
+    catch (JSONException paramf)
+    {
+      parame = new StringBuilder();
+      parame.append("parse json failed: ");
+      parame.append(paramf.toString());
+      g.c(parame.toString());
+      parame = new StringBuilder();
+      parame.append("JSONException:");
+      parame.append(paramf.toString());
+      locale.a(10020, parame.toString());
+    }
     return locale;
   }
   
@@ -161,13 +214,15 @@ public class cs
   public e a(f paramf, boolean paramBoolean)
   {
     new e();
-    e locale1 = new e();
-    e locale2 = a(paramf, paramBoolean, locale1);
-    if (locale2.b()) {}
-    while (!cr.a().c(locale1.a)) {
-      return locale2;
+    e locale2 = new e();
+    e locale1 = a(paramf, paramBoolean, locale2);
+    if (locale1.b()) {
+      return locale1;
     }
-    return a(paramf, paramBoolean, locale1);
+    if (cr.a().c(locale2.a)) {
+      locale1 = a(paramf, paramBoolean, locale2);
+    }
+    return locale1;
   }
   
   public boolean a(JSONArray paramJSONArray)
@@ -233,12 +288,12 @@ public class cs
   public void f(JSONArray paramJSONArray)
   {
     Object localObject = null;
-    int k = 0;
     int j = 0;
     int m = 0;
-    if (k < paramJSONArray.length())
+    int k = 0;
+    while (j < paramJSONArray.length())
     {
-      JSONObject localJSONObject = paramJSONArray.getJSONObject(k);
+      JSONObject localJSONObject = paramJSONArray.getJSONObject(j);
       if (4 == localJSONObject.getInt("id"))
       {
         f localf = new f();
@@ -248,29 +303,29 @@ public class cs
         this.e.a(localf);
         m = 1;
       }
-      if (6 != localJSONObject.getInt("id")) {
-        break label183;
+      if (6 == localJSONObject.getInt("id")) {
+        if (c(localJSONObject.getJSONArray("child")))
+        {
+          localObject = localJSONObject;
+          k = 1;
+        }
+        else
+        {
+          throw new JSONException("parse all services data failed");
+        }
       }
-      if (!c(localJSONObject.getJSONArray("child"))) {
-        throw new JSONException("parse all services data failed");
-      }
-      j = 1;
-      localObject = localJSONObject;
+      j += 1;
     }
-    label183:
-    for (;;)
+    if ((m != 0) && (k != 0))
     {
-      k += 1;
-      break;
-      if ((m == 0) || (j == 0)) {
-        throw new JSONException("parse all services data failed");
-      }
-      this.d.e = true;
+      paramJSONArray = this.d;
+      paramJSONArray.e = true;
       this.e.d = true;
-      this.d.f = false;
-      this.d.a(localObject.toString());
+      paramJSONArray.f = false;
+      paramJSONArray.a(localObject.toString());
       return;
     }
+    throw new JSONException("parse all services data failed");
   }
   
   public f g()

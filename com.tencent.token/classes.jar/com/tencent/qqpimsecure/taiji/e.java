@@ -26,121 +26,181 @@ public class e
     if (paramJSONObject == null) {
       return null;
     }
-    Object localObject = paramJSONObject.keys();
-    if ((localObject == null) || (!((Iterator)localObject).hasNext())) {
-      return null;
-    }
-    localObject = (String)((Iterator)localObject).next();
-    bn.b("TaijiLocalSchemeManager", "adapter id:" + (String)localObject);
-    JSONObject localJSONObject = (JSONObject)bi.a(paramJSONObject, (String)localObject);
-    paramJSONObject = (JSONArray)bi.c(localJSONObject, paramString);
-    if (paramJSONObject == null)
+    Object localObject1 = paramJSONObject.keys();
+    if (localObject1 != null)
     {
-      bn.b("TaijiLocalSchemeManager", "adapter id " + (String)localObject + " not accurate scheme for " + paramString + ", try key common scheme");
-      paramJSONObject = (JSONArray)bi.a(localJSONObject, "all_brand");
-    }
-    for (;;)
-    {
-      if (paramJSONObject == null)
-      {
-        bn.b("TaijiLocalSchemeManager", "adapter id " + (String)localObject + " has no scheme for " + paramString + ", abort");
+      if (!((Iterator)localObject1).hasNext()) {
         return null;
       }
-      bn.b("TaijiLocalSchemeManager", "adapter id " + (String)localObject + " has scheme for " + paramString);
+      String str = (String)((Iterator)localObject1).next();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("adapter id:");
+      ((StringBuilder)localObject1).append(str);
+      bn.b("TaijiLocalSchemeManager", ((StringBuilder)localObject1).toString());
+      Object localObject2 = (JSONObject)bi.a(paramJSONObject, str);
+      localObject1 = (JSONArray)bi.c((JSONObject)localObject2, paramString);
+      paramJSONObject = (JSONObject)localObject1;
+      if (localObject1 == null)
+      {
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("adapter id ");
+        paramJSONObject.append(str);
+        paramJSONObject.append(" not accurate scheme for ");
+        paramJSONObject.append(paramString);
+        paramJSONObject.append(", try key common scheme");
+        bn.b("TaijiLocalSchemeManager", paramJSONObject.toString());
+        paramJSONObject = (JSONArray)bi.a((JSONObject)localObject2, "all_brand");
+      }
+      if (paramJSONObject == null)
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("adapter id ");
+        paramContext.append(str);
+        paramContext.append(" has no scheme for ");
+        paramContext.append(paramString);
+        paramContext.append(", abort");
+        bn.b("TaijiLocalSchemeManager", paramContext.toString());
+        return null;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("adapter id ");
+      ((StringBuilder)localObject1).append(str);
+      ((StringBuilder)localObject1).append(" has scheme for ");
+      ((StringBuilder)localObject1).append(paramString);
+      bn.b("TaijiLocalSchemeManager", ((StringBuilder)localObject1).toString());
       bn.b("TaijiLocalSchemeManager", "start to search scheme");
       int m = paramJSONObject.length();
-      bn.b("TaijiLocalSchemeManager", "adapter id " + (String)localObject + ", scheme count:" + m);
+      paramString = new StringBuilder();
+      paramString.append("adapter id ");
+      paramString.append(str);
+      paramString.append(", scheme count:");
+      paramString.append(m);
+      bn.b("TaijiLocalSchemeManager", paramString.toString());
       int k = 0;
-      if (k < m)
+      while (k < m)
       {
-        bn.b("TaijiLocalSchemeManager", "adapter id " + (String)localObject + ", current scheme index:" + k);
-        localJSONObject = (JSONObject)bi.a(paramJSONObject, k);
-        if (localJSONObject == null) {}
-        label372:
-        int j;
-        do
+        paramString = new StringBuilder();
+        paramString.append("adapter id ");
+        paramString.append(str);
+        paramString.append(", current scheme index:");
+        paramString.append(k);
+        bn.b("TaijiLocalSchemeManager", paramString.toString());
+        localObject1 = (JSONObject)bi.a(paramJSONObject, k);
+        if (localObject1 != null)
         {
-          for (;;)
+          paramString = bi.b((JSONObject)localObject1, "scheme");
+          localObject2 = bi.b((JSONObject)localObject1, "sdk");
+          if (TextUtils.isEmpty(paramString))
           {
-            k += 1;
-            break;
-            paramString = bi.b(localJSONObject, "scheme");
-            str = bi.b(localJSONObject, "sdk");
-            if (!TextUtils.isEmpty(paramString)) {
-              break label372;
-            }
             bn.b("TaijiLocalSchemeManager", "scheme is null, abort");
           }
-          bn.b("TaijiLocalSchemeManager", "scheme:" + paramString);
-          bn.b("TaijiLocalSchemeManager", "sdk:" + str);
-          j = 1;
-          int i = j;
-          if (!TextUtils.isEmpty(str))
+          else
           {
-            i = j;
-            if (!a(paramInt, str))
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("scheme:");
+            localStringBuilder.append(paramString);
+            bn.b("TaijiLocalSchemeManager", localStringBuilder.toString());
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("sdk:");
+            localStringBuilder.append((String)localObject2);
+            bn.b("TaijiLocalSchemeManager", localStringBuilder.toString());
+            if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!a(paramInt, (String)localObject2)))
             {
-              bn.b("TaijiLocalSchemeManager", "adapter id " + (String)localObject + " sdk not hit");
-              i = 0;
-            }
-          }
-          String str = bi.b(localJSONObject, "model");
-          j = i;
-          if (!TextUtils.isEmpty(str))
-          {
-            j = i;
-            if (!a(str))
-            {
-              bn.b("TaijiLocalSchemeManager", "adapter id " + (String)localObject + " model not hit");
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("adapter id ");
+              ((StringBuilder)localObject2).append(str);
+              ((StringBuilder)localObject2).append(" sdk not hit");
+              bn.b("TaijiLocalSchemeManager", ((StringBuilder)localObject2).toString());
               j = 0;
             }
-          }
-          str = bi.b(localJSONObject, "rom_version");
-          i = j;
-          if (j != 0)
-          {
-            i = j;
-            if (!TextUtils.isEmpty(str))
+            else
+            {
+              j = 1;
+            }
+            localObject2 = bi.b((JSONObject)localObject1, "model");
+            int i = j;
+            if (!TextUtils.isEmpty((CharSequence)localObject2))
             {
               i = j;
-              if (!b(str))
+              if (!a((String)localObject2))
               {
-                bn.b("TaijiLocalSchemeManager", "adapter id " + str + " rom version not hit");
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("adapter id ");
+                ((StringBuilder)localObject2).append(str);
+                ((StringBuilder)localObject2).append(" model not hit");
+                bn.b("TaijiLocalSchemeManager", ((StringBuilder)localObject2).toString());
                 i = 0;
               }
             }
-          }
-          localJSONObject = (JSONObject)bi.a(localJSONObject, "pkg");
-          j = i;
-          if (i != 0)
-          {
-            j = i;
-            if (localJSONObject != null)
+            localObject2 = bi.b((JSONObject)localObject1, "rom_version");
+            int j = i;
+            if (i != 0)
             {
               j = i;
-              if (!a(paramContext, localJSONObject))
+              if (!TextUtils.isEmpty((CharSequence)localObject2))
               {
-                bn.b("TaijiLocalSchemeManager", "adapter id " + (String)localObject + " pkg not hit");
-                j = 0;
+                j = i;
+                if (!b((String)localObject2))
+                {
+                  localStringBuilder = new StringBuilder();
+                  localStringBuilder.append("adapter id ");
+                  localStringBuilder.append((String)localObject2);
+                  localStringBuilder.append(" rom version not hit");
+                  bn.b("TaijiLocalSchemeManager", localStringBuilder.toString());
+                  j = 0;
+                }
               }
             }
-          }
-        } while (j == 0);
-      }
-      for (paramContext = paramString;; paramContext = null)
-      {
-        if (!TextUtils.isEmpty(paramContext))
-        {
-          paramContext = (SolutionItem)bj.a(Base64.decode(paramContext, 2), new SolutionItem(), false);
-          if (paramContext != null)
-          {
-            bn.b("TaijiLocalSchemeManager", "adapterId:" + paramContext.adapterId + ", commSoluId:" + paramContext.commSoluId + ", extSoluId:" + paramContext.extSoluId + ", soluType:" + paramContext.soluType);
-            return paramContext;
+            localObject1 = (JSONObject)bi.a((JSONObject)localObject1, "pkg");
+            i = j;
+            if (j != 0)
+            {
+              i = j;
+              if (localObject1 != null)
+              {
+                i = j;
+                if (!a(paramContext, (JSONObject)localObject1))
+                {
+                  localObject1 = new StringBuilder();
+                  ((StringBuilder)localObject1).append("adapter id ");
+                  ((StringBuilder)localObject1).append(str);
+                  ((StringBuilder)localObject1).append(" pkg not hit");
+                  bn.b("TaijiLocalSchemeManager", ((StringBuilder)localObject1).toString());
+                  i = 0;
+                }
+              }
+            }
+            if (i != 0)
+            {
+              paramContext = paramString;
+              break label857;
+            }
           }
         }
-        return null;
+        k += 1;
+      }
+      paramContext = null;
+      label857:
+      if (!TextUtils.isEmpty(paramContext))
+      {
+        paramContext = (SolutionItem)bj.a(Base64.decode(paramContext, 2), new SolutionItem(), false);
+        if (paramContext != null)
+        {
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append("adapterId:");
+          paramJSONObject.append(paramContext.adapterId);
+          paramJSONObject.append(", commSoluId:");
+          paramJSONObject.append(paramContext.commSoluId);
+          paramJSONObject.append(", extSoluId:");
+          paramJSONObject.append(paramContext.extSoluId);
+          paramJSONObject.append(", soluType:");
+          paramJSONObject.append(paramContext.soluType);
+          bn.b("TaijiLocalSchemeManager", paramJSONObject.toString());
+          return paramContext;
+        }
       }
     }
+    return null;
   }
   
   public static e a()
@@ -154,146 +214,210 @@ public class e
     {
       String str = bl.c();
       int j = Build.VERSION.SDK_INT;
-      bn.b("TaijiLocalSchemeManager", "brand:" + str + ", sdk:" + j);
-      ArrayList localArrayList = new ArrayList();
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("brand:");
+      ((StringBuilder)localObject1).append(str);
+      ((StringBuilder)localObject1).append(", sdk:");
+      ((StringBuilder)localObject1).append(j);
+      bn.b("TaijiLocalSchemeManager", ((StringBuilder)localObject1).toString());
+      localObject1 = new ArrayList();
       paramString = new JSONArray(paramString);
       int k = paramString.length();
-      bn.b("TaijiLocalSchemeManager", "adapter id count:" + k);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("adapter id count:");
+      ((StringBuilder)localObject2).append(k);
+      bn.b("TaijiLocalSchemeManager", ((StringBuilder)localObject2).toString());
       int i = 0;
       while (i < k)
       {
-        SolutionItem localSolutionItem = a(paramContext, (JSONObject)bi.a(paramString, i), str, j);
-        if (localSolutionItem != null) {
-          localArrayList.add(localSolutionItem);
+        localObject2 = a(paramContext, (JSONObject)bi.a(paramString, i), str, j);
+        if (localObject2 != null) {
+          ((List)localObject1).add(localObject2);
         }
         i += 1;
       }
-      return localArrayList;
+      return localObject1;
     }
     catch (Throwable paramContext)
     {
-      bn.d("TaijiLocalSchemeManager", "parse taiji local scheme file fail!");
+      label172:
+      break label172;
     }
+    bn.d("TaijiLocalSchemeManager", "parse taiji local scheme file fail!");
     return null;
   }
   
   private void a(Context paramContext, List<SolutionItem> paramList)
   {
-    Object localObject = i.a(paramContext);
-    if ((((i)localObject).f()) && (!((i)localObject).g()))
+    Object localObject1 = i.a(paramContext);
+    if ((((i)localObject1).f()) && (!((i)localObject1).g()))
     {
       bn.b("TaijiLocalSchemeManager", "pull cloud scheme finish, ignore local scheme");
       return;
     }
     try
     {
-      localObject = new HashMap();
+      localObject1 = new HashMap();
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         SolutionItem localSolutionItem = (SolutionItem)paramList.next();
-        String str = Base64.encodeToString(b.a().a(paramContext, bj.a(localSolutionItem)), 2);
-        bn.b("TaijiLocalSchemeManager", str);
-        if (!TextUtils.isEmpty(str))
+        Object localObject2 = Base64.encodeToString(b.a().a(paramContext, bj.a(localSolutionItem)), 2);
+        bn.b("TaijiLocalSchemeManager", (String)localObject2);
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          ((HashMap)localObject).put(Integer.valueOf(localSolutionItem.adapterId), str);
-          bn.b("TaijiLocalSchemeManager", "put local scheme to taiji dao, adapter id:" + localSolutionItem.adapterId + ", commSoluId:" + localSolutionItem.commSoluId);
+          ((HashMap)localObject1).put(Integer.valueOf(localSolutionItem.adapterId), localObject2);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("put local scheme to taiji dao, adapter id:");
+          ((StringBuilder)localObject2).append(localSolutionItem.adapterId);
+          ((StringBuilder)localObject2).append(", commSoluId:");
+          ((StringBuilder)localObject2).append(localSolutionItem.commSoluId);
+          bn.b("TaijiLocalSchemeManager", ((StringBuilder)localObject2).toString());
         }
       }
-      a.a(paramContext).a((HashMap)localObject, false);
+      a.a(paramContext).a((HashMap)localObject1, false);
+      return;
     }
     catch (Throwable paramContext)
     {
       bn.d("TaijiLocalSchemeManager", paramContext.getMessage());
-      return;
     }
   }
   
   private static boolean a(int paramInt, String paramString)
   {
-    return a(paramString, paramInt + "", ",");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("");
+    return a(paramString, localStringBuilder.toString(), ",");
   }
   
   private static boolean a(Context paramContext, JSONObject paramJSONObject)
   {
-    if (paramContext == null) {}
-    do
+    if (paramContext == null) {
+      return false;
+    }
+    if (paramJSONObject == null) {
+      return true;
+    }
+    Object localObject = bi.b(paramJSONObject, "pkg_exist");
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!bm.a(paramContext, (String)localObject)))
     {
-      String str;
-      do
+      paramContext = new StringBuilder();
+      paramJSONObject = (JSONObject)localObject;
+      paramContext.append("package:");
+      paramContext.append(paramJSONObject);
+      localObject = " not exist, return false";
+      paramJSONObject = paramContext;
+      paramContext = (Context)localObject;
+    }
+    for (;;)
+    {
+      paramJSONObject.append(paramContext);
+      bn.b("TaijiLocalSchemeManager", paramJSONObject.toString());
+      return false;
+      localObject = bi.b(paramJSONObject, "pkg_not_exist");
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (bm.a(paramContext, (String)localObject)))
       {
-        do
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("package:");
+        paramJSONObject.append((String)localObject);
+        paramContext = " exist, return false";
+      }
+      else
+      {
+        localObject = bi.b(paramJSONObject, "package");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("pkg:");
+        localStringBuilder.append((String)localObject);
+        bn.b("TaijiLocalSchemeManager", localStringBuilder.toString());
+        if (TextUtils.isEmpty((CharSequence)localObject))
         {
-          do
-          {
-            return false;
-            if (paramJSONObject == null) {
-              return true;
-            }
-            str = bi.b(paramJSONObject, "pkg_exist");
-            if ((!TextUtils.isEmpty(str)) && (!bm.a(paramContext, str)))
-            {
-              bn.b("TaijiLocalSchemeManager", "package:" + str + " not exist, return false");
-              return false;
-            }
-            str = bi.b(paramJSONObject, "pkg_not_exist");
-            if ((!TextUtils.isEmpty(str)) && (bm.a(paramContext, str)))
-            {
-              bn.b("TaijiLocalSchemeManager", "package:" + str + " exist, return false");
-              return false;
-            }
-            str = bi.b(paramJSONObject, "package");
-            bn.b("TaijiLocalSchemeManager", "pkg:" + str);
-            if (TextUtils.isEmpty(str))
-            {
-              bn.b("TaijiLocalSchemeManager", "package is null, return true");
-              return true;
-            }
-            if (!bm.a(paramContext, str))
-            {
-              bn.b("TaijiLocalSchemeManager", "package:" + str + " not exist, return false");
-              return false;
-            }
-            paramContext = bm.b(paramContext, str);
-            bn.b("TaijiLocalSchemeManager", "versionName:" + paramContext);
-            if (TextUtils.isEmpty(paramContext))
-            {
-              bn.b("TaijiLocalSchemeManager", "get version name for " + str + " fail, return false");
-              return false;
-            }
-            str = bi.b(paramJSONObject, "versionName_LT");
-            bn.b("TaijiLocalSchemeManager", "versionNameLt:" + str);
-          } while ((!TextUtils.isEmpty(str)) && (paramContext.compareTo(str) >= 0));
-          str = bi.b(paramJSONObject, "versionName_LE");
-          bn.b("TaijiLocalSchemeManager", "versionNameLe:" + str);
-        } while ((!TextUtils.isEmpty(str)) && (paramContext.compareTo(str) > 0));
-        str = bi.b(paramJSONObject, "versionName_MT");
-        bn.b("TaijiLocalSchemeManager", "versionNameMt:" + str);
-      } while ((!TextUtils.isEmpty(str)) && (paramContext.compareTo(str) <= 0));
-      paramJSONObject = bi.b(paramJSONObject, "versionName_ME");
-      bn.b("TaijiLocalSchemeManager", "versionNameMe:" + paramJSONObject);
-    } while ((!TextUtils.isEmpty(paramJSONObject)) && (paramContext.compareTo(paramJSONObject) < 0));
-    return true;
+          bn.b("TaijiLocalSchemeManager", "package is null, return true");
+          return true;
+        }
+        if (!bm.a(paramContext, (String)localObject))
+        {
+          paramContext = new StringBuilder();
+          paramJSONObject = (JSONObject)localObject;
+          break;
+        }
+        paramContext = bm.b(paramContext, (String)localObject);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("versionName:");
+        localStringBuilder.append(paramContext);
+        bn.b("TaijiLocalSchemeManager", localStringBuilder.toString());
+        if (!TextUtils.isEmpty(paramContext)) {
+          break label286;
+        }
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("get version name for ");
+        paramJSONObject.append((String)localObject);
+        paramContext = " fail, return false";
+      }
+    }
+    label286:
+    localObject = bi.b(paramJSONObject, "versionName_LT");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("versionNameLt:");
+    localStringBuilder.append((String)localObject);
+    bn.b("TaijiLocalSchemeManager", localStringBuilder.toString());
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramContext.compareTo((String)localObject) >= 0)) {
+      return false;
+    }
+    localObject = bi.b(paramJSONObject, "versionName_LE");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("versionNameLe:");
+    localStringBuilder.append((String)localObject);
+    bn.b("TaijiLocalSchemeManager", localStringBuilder.toString());
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramContext.compareTo((String)localObject) > 0)) {
+      return false;
+    }
+    localObject = bi.b(paramJSONObject, "versionName_MT");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("versionNameMt:");
+    localStringBuilder.append((String)localObject);
+    bn.b("TaijiLocalSchemeManager", localStringBuilder.toString());
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramContext.compareTo((String)localObject) <= 0)) {
+      return false;
+    }
+    paramJSONObject = bi.b(paramJSONObject, "versionName_ME");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("versionNameMe:");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    bn.b("TaijiLocalSchemeManager", ((StringBuilder)localObject).toString());
+    return (TextUtils.isEmpty(paramJSONObject)) || (paramContext.compareTo(paramJSONObject) >= 0);
   }
   
   private static boolean a(String paramString)
   {
     String str = bl.a();
-    return a(paramString, str + "", ",");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("");
+    return a(paramString, localStringBuilder.toString(), ",");
   }
   
   private static boolean a(String paramString1, String paramString2, String paramString3)
   {
-    bn.b("TaijiLocalSchemeManager", "wholeStr:" + paramString1 + " === matchStr:" + paramString2);
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    for (;;)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("wholeStr:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" === matchStr:");
+    localStringBuilder.append(paramString2);
+    bn.b("TaijiLocalSchemeManager", localStringBuilder.toString());
+    if (!TextUtils.isEmpty(paramString1)) {
+      if (TextUtils.isEmpty(paramString2)) {
+        return false;
+      }
+    }
+    try
     {
-      return false;
-      try
+      paramString1 = paramString1.split(paramString3);
+      if (paramString1 != null)
       {
-        paramString1 = paramString1.split(paramString3);
-        if ((paramString1 == null) || (paramString1.length <= 0)) {
-          continue;
+        if (paramString1.length <= 0) {
+          return false;
         }
         int j = paramString1.length;
         int i = 0;
@@ -309,61 +433,77 @@ public class e
           }
           i += 1;
         }
-        return false;
       }
-      catch (Throwable paramString1) {}
+      return false;
     }
+    catch (Throwable paramString1) {}
+    return false;
   }
   
   private void b(Context paramContext)
   {
-    bn.b("TaijiLocalSchemeManager", "startAndLoadScheme, process id:" + Process.myPid() + ", thread id:" + Thread.currentThread().getId());
-    Object localObject = c(paramContext);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startAndLoadScheme, process id:");
+    ((StringBuilder)localObject).append(Process.myPid());
+    ((StringBuilder)localObject).append(", thread id:");
+    ((StringBuilder)localObject).append(Thread.currentThread().getId());
+    bn.b("TaijiLocalSchemeManager", ((StringBuilder)localObject).toString());
+    localObject = c(paramContext);
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
       bn.b("TaijiLocalSchemeManager", "loadAssetLocalSchemeFile json is null, return");
       return;
     }
-    bn.b("TaijiLocalSchemeManager", "loadAssetLocalSchemeFile json:" + (String)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loadAssetLocalSchemeFile json:");
+    localStringBuilder.append((String)localObject);
+    bn.b("TaijiLocalSchemeManager", localStringBuilder.toString());
     localObject = a(paramContext, (String)localObject);
-    if ((localObject == null) || (((List)localObject).size() <= 0))
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      bn.b("TaijiLocalSchemeManager", "getSolutionListForPhone result list is empty, return");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSolutionListForPhone result list size:");
+      localStringBuilder.append(((List)localObject).size());
+      bn.b("TaijiLocalSchemeManager", localStringBuilder.toString());
+      a(paramContext, (List)localObject);
       return;
     }
-    bn.b("TaijiLocalSchemeManager", "getSolutionListForPhone result list size:" + ((List)localObject).size());
-    a(paramContext, (List)localObject);
+    bn.b("TaijiLocalSchemeManager", "getSolutionListForPhone result list is empty, return");
   }
   
   private static boolean b(String paramString)
   {
     String str = bl.d();
-    bn.b("TaijiLocalSchemeManager", "romVersion:" + paramString + ", phoneRomVersion:" + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("romVersion:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", phoneRomVersion:");
+    localStringBuilder.append(str);
+    bn.b("TaijiLocalSchemeManager", localStringBuilder.toString());
     return a(paramString, str, ",");
   }
   
   private String c(Context paramContext)
   {
     byte[] arrayOfByte = bh.a(paramContext, "zz.dat");
-    if ((arrayOfByte == null) || (arrayOfByte.length == 0))
+    if ((arrayOfByte != null) && (arrayOfByte.length != 0))
     {
-      bn.b("TaijiLocalSchemeManager", "read asset file zz.dat is null");
+      bn.b("TaijiLocalSchemeManager", "read asset file zz.dat is not null");
+      paramContext = b.a().b(paramContext, arrayOfByte, true);
+      if (paramContext != null) {}
+    }
+    for (paramContext = "decrypt asset file zz.dat, result is null";; paramContext = "read asset file zz.dat is null")
+    {
+      bn.b("TaijiLocalSchemeManager", paramContext);
       return null;
+      bn.b("TaijiLocalSchemeManager", "decrypt asset file zz.dat, result is not null");
+      try
+      {
+        paramContext = new String(paramContext, "UTF-8");
+        return paramContext;
+      }
+      catch (Throwable paramContext) {}
     }
-    bn.b("TaijiLocalSchemeManager", "read asset file zz.dat is not null");
-    paramContext = b.a().b(paramContext, arrayOfByte, true);
-    if (paramContext == null)
-    {
-      bn.b("TaijiLocalSchemeManager", "decrypt asset file zz.dat, result is null");
-      return null;
-    }
-    bn.b("TaijiLocalSchemeManager", "decrypt asset file zz.dat, result is not null");
-    try
-    {
-      paramContext = new String(paramContext, "UTF-8");
-      return paramContext;
-    }
-    catch (Throwable paramContext) {}
     return null;
   }
   

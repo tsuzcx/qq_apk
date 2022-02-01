@@ -40,31 +40,32 @@ public class i
   
   public static String a(int paramInt)
   {
-    try
+    do
     {
-      String str1 = a("gsm.sim.state", f.a);
-      if (str1.indexOf(',') != -1)
+      try
       {
+        str = a("gsm.sim.state", f.a);
+        if (str.indexOf(',') == -1) {
+          continue;
+        }
         if (paramInt == 0) {
-          return str1.substring(0, str1.indexOf(','));
+          return str.substring(0, str.indexOf(','));
         }
         if (paramInt == 1) {
-          return str1.substring(str1.indexOf(',') + 1, str1.length());
+          return str.substring(str.indexOf(',') + 1, str.length());
         }
         return f.a;
       }
-      if (paramInt != 0)
+      catch (Exception localException)
       {
-        str1 = f.a;
-        return str1;
+        String str;
+        localException.printStackTrace();
+        return f.a;
       }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      String str2 = f.a;
-      return str2;
-    }
+      str = f.a;
+      return str;
+    } while (paramInt != 0);
+    return localException;
   }
   
   public static String a(String paramString1, String paramString2)
@@ -83,81 +84,69 @@ public class i
   
   public static boolean a()
   {
-    boolean bool2 = false;
     try
     {
       Object localObject = a(RqdApplication.l());
-      boolean bool1 = bool2;
-      int i;
       if (localObject != null)
       {
         localObject = ((ConnectivityManager)localObject).getAllNetworkInfo();
-        bool1 = bool2;
-        if (localObject != null) {
-          i = 0;
-        }
-      }
-      for (;;)
-      {
-        bool1 = bool2;
-        if (i < localObject.length)
+        if (localObject != null)
         {
-          NetworkInfo.State localState1 = localObject[i].getState();
-          NetworkInfo.State localState2 = NetworkInfo.State.CONNECTED;
-          if (localState1 == localState2) {
-            bool1 = true;
+          int i = 0;
+          while (i < localObject.length)
+          {
+            NetworkInfo.State localState1 = localObject[i].getState();
+            NetworkInfo.State localState2 = NetworkInfo.State.CONNECTED;
+            if (localState1 == localState2) {
+              return true;
+            }
+            i += 1;
           }
         }
-        else
-        {
-          return bool1;
-        }
-        i += 1;
       }
       return false;
     }
     catch (Throwable localThrowable) {}
+    return false;
   }
   
   public static String b(Context paramContext)
   {
-    Object localObject2 = f.a;
-    Object localObject1 = localObject2;
-    for (;;)
+    Object localObject1 = f.a;
+    paramContext = (Context)localObject1;
+    try
     {
-      try
+      Enumeration localEnumeration1 = NetworkInterface.getNetworkInterfaces();
+      paramContext = (Context)localObject1;
+      Object localObject2 = localObject1;
+      if (localEnumeration1.hasMoreElements())
       {
-        Enumeration localEnumeration1 = NetworkInterface.getNetworkInterfaces();
-        localObject1 = localObject2;
-        if (localEnumeration1.hasMoreElements())
+        paramContext = (Context)localObject1;
+        Enumeration localEnumeration2 = ((NetworkInterface)localEnumeration1.nextElement()).getInetAddresses();
+        localObject2 = localObject1;
+        for (;;)
         {
           localObject1 = localObject2;
-          Enumeration localEnumeration2 = ((NetworkInterface)localEnumeration1.nextElement()).getInetAddresses();
           paramContext = (Context)localObject2;
-          localObject2 = paramContext;
-          localObject1 = paramContext;
-          if (localEnumeration2.hasMoreElements())
+          if (!localEnumeration2.hasMoreElements()) {
+            break;
+          }
+          paramContext = (Context)localObject2;
+          localObject1 = (InetAddress)localEnumeration2.nextElement();
+          paramContext = (Context)localObject2;
+          if (!((InetAddress)localObject1).isLoopbackAddress())
           {
-            localObject1 = paramContext;
-            localObject2 = (InetAddress)localEnumeration2.nextElement();
-            localObject1 = paramContext;
-            if (!((InetAddress)localObject2).isLoopbackAddress())
-            {
-              localObject1 = paramContext;
-              paramContext = ((InetAddress)localObject2).getHostAddress();
-            }
+            paramContext = (Context)localObject2;
+            localObject2 = ((InetAddress)localObject1).getHostAddress();
           }
         }
-        else
-        {
-          return localObject2;
-        }
       }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-        return localObject1;
-      }
+      return localObject2;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      localObject2 = paramContext;
     }
   }
   
@@ -180,39 +169,41 @@ public class i
   {
     Object localObject = b();
     JSONArray localJSONArray = new JSONArray();
-    if ((localObject == null) || (((List)localObject).size() == 0)) {
-      return localJSONArray;
-    }
-    localObject = ((List)localObject).iterator();
-    for (;;)
+    if (localObject != null)
     {
-      if (((Iterator)localObject).hasNext())
+      if (((List)localObject).size() == 0) {
+        return localJSONArray;
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
         NetworkInterface localNetworkInterface = (NetworkInterface)((Iterator)localObject).next();
         JSONObject localJSONObject = new JSONObject();
         try
         {
           localJSONObject.put("name", localNetworkInterface.getName());
-          localJSONArray.put(localJSONObject);
         }
         catch (JSONException localJSONException)
         {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
+          localJSONException.printStackTrace();
         }
+        localJSONArray.put(localJSONObject);
       }
+      return localJSONArray;
     }
     return localJSONArray;
   }
   
   public static boolean c(Context paramContext)
   {
+    boolean bool = false;
     try
     {
       int i = Settings.System.getInt(paramContext.getContentResolver(), "airplane_mode_on", 0);
-      return i == 1;
+      if (i == 1) {
+        bool = true;
+      }
+      return bool;
     }
     catch (Exception paramContext)
     {
@@ -262,61 +253,52 @@ public class i
   
   public static int e(Context paramContext)
   {
-    for (;;)
+    try
     {
-      try
+      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+      if ((paramContext != null) && (paramContext.getActiveNetworkInfo() != null))
       {
-        paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-        if ((paramContext == null) || (paramContext.getActiveNetworkInfo() == null)) {
-          continue;
+        int i = paramContext.getActiveNetworkInfo().getType();
+        if (i == 1) {
+          return 1;
         }
-        i = paramContext.getActiveNetworkInfo().getType();
-        if (i != 1) {
-          continue;
-        }
-        i = 1;
       }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-        int i = 0;
-        continue;
-      }
-      if (i == 0) {
-        break label57;
-      }
-      return 1;
-      i = 0;
     }
-    label57:
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
     return 0;
   }
   
   public static int f(Context paramContext)
   {
-    if (e(paramContext) == 1) {}
-    label231:
-    for (;;)
-    {
-      int j;
+    if (e(paramContext) == 1) {
       try
       {
-        Object localObject1 = (WifiManager)paramContext.getSystemService("wifi");
-        WifiInfo localWifiInfo = ((WifiManager)localObject1).getConnectionInfo();
-        paramContext = localWifiInfo.getSSID();
-        if ((paramContext == null) || (!paramContext.startsWith("\"")) || (!paramContext.endsWith("\""))) {
-          break label231;
+        Object localObject2 = (WifiManager)paramContext.getSystemService("wifi");
+        WifiInfo localWifiInfo = ((WifiManager)localObject2).getConnectionInfo();
+        Object localObject1 = localWifiInfo.getSSID();
+        paramContext = (Context)localObject1;
+        if (localObject1 != null)
+        {
+          paramContext = (Context)localObject1;
+          if (((String)localObject1).startsWith("\""))
+          {
+            paramContext = (Context)localObject1;
+            if (((String)localObject1).endsWith("\"")) {
+              paramContext = ((String)localObject1).substring(1, ((String)localObject1).length() - 1);
+            }
+          }
         }
-        paramContext = paramContext.substring(1, paramContext.length() - 1);
-        localObject1 = ((WifiManager)localObject1).getScanResults();
+        localObject1 = ((WifiManager)localObject2).getScanResults();
         if ((localObject1 != null) && (((List)localObject1).size() > 0))
         {
           localObject1 = ((List)localObject1).iterator();
           int i = 0;
-          j = i;
-          if (((Iterator)localObject1).hasNext())
+          while (((Iterator)localObject1).hasNext())
           {
-            Object localObject2 = (ScanResult)((Iterator)localObject1).next();
+            localObject2 = (ScanResult)((Iterator)localObject1).next();
             if ((((ScanResult)localObject2).SSID.equals(paramContext)) && (((ScanResult)localObject2).BSSID.equals(localWifiInfo.getBSSID())) && (((ScanResult)localObject2).capabilities != null))
             {
               localObject2 = ((ScanResult)localObject2).capabilities.trim();
@@ -333,25 +315,17 @@ public class i
                 }
               }
               i = 1;
-              continue;
             }
           }
-          else if (j != 0) {}
+          return i;
         }
       }
       catch (Exception paramContext)
       {
         paramContext.printStackTrace();
-        j = 0;
-      }
-      for (;;)
-      {
-        return 0;
-        return 1;
-        break;
-        j = 0;
       }
     }
+    return 0;
   }
   
   public static JSONArray g(Context paramContext)
@@ -497,8 +471,12 @@ public class i
     try
     {
       paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-      if (paramContext != null) {
-        return paramContext.getNetworkType() + "";
+      if (paramContext != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramContext.getNetworkType());
+        localStringBuilder.append("");
+        return localStringBuilder.toString();
       }
       paramContext = f.a;
       return paramContext;
@@ -512,40 +490,41 @@ public class i
   
   public static String o(Context paramContext)
   {
-    try
-    {
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-      if (paramContext == null) {
-        return "unknow";
-      }
-      switch (paramContext.getType())
-      {
-      case 0: 
-        switch (paramContext.getSubtype())
-        {
-        case 13: 
-          paramContext = "4G";
-        }
-        break;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-      paramContext = "unknow";
-    }
-    paramContext = "unknow";
     for (;;)
     {
-      return paramContext;
-      paramContext = "WIFI";
+      try
+      {
+        paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+        if (paramContext == null) {
+          return "unknow";
+        }
+        switch (paramContext.getType())
+        {
+        case 0: 
+          switch (paramContext.getSubtype())
+          {
+          case 1: 
+          case 2: 
+          case 4: 
+          case 7: 
+          case 11: 
+            return "2G";
+          }
+          break;
+        }
+      }
+      catch (Exception paramContext)
+      {
+        paramContext.printStackTrace();
+        return "unknow";
+      }
+      return "unknow";
+      return "unknow";
       continue;
-      paramContext = "unknow";
-      continue;
-      paramContext = "2G";
-      continue;
-      paramContext = "3G";
+      return "WIFI";
     }
+    return "4G";
+    return "3G";
   }
 }
 

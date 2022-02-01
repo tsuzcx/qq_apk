@@ -47,22 +47,20 @@ public final class ca
     public String c()
     {
       String str2 = ((ao)this.a).g;
-      if (TextUtils.isEmpty(str2)) {}
-      for (;;)
-      {
+      if (TextUtils.isEmpty(str2)) {
         return "";
-        try
-        {
-          String str1 = str2.substring(0, 2);
-          str2 = str2.substring(2);
-          if (Integer.parseInt(str1, 16) == 1)
-          {
-            str1 = cm.a(str2);
-            return str1;
-          }
-        }
-        catch (Throwable localThrowable) {}
       }
+      try
+      {
+        String str1 = str2.substring(0, 2);
+        str2 = str2.substring(2);
+        if (Integer.parseInt(str1, 16) != 1) {
+          return "";
+        }
+        str1 = cm.a(str2);
+        return str1;
+      }
+      catch (Throwable localThrowable) {}
       return "";
     }
   }

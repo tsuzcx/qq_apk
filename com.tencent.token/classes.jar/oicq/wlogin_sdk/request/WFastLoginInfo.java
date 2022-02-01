@@ -42,18 +42,17 @@ public class WFastLoginInfo
   
   public void get_clone(WFastLoginInfo paramWFastLoginInfo)
   {
-    if (paramWFastLoginInfo != null) {
-      if (paramWFastLoginInfo._outA1 == null) {
-        break label50;
-      }
-    }
-    label50:
-    for (this._outA1 = ((byte[])paramWFastLoginInfo._outA1.clone());; this._outA1 = new byte[0])
+    if (paramWFastLoginInfo != null)
     {
+      byte[] arrayOfByte = paramWFastLoginInfo._outA1;
+      if (arrayOfByte != null) {
+        this._outA1 = ((byte[])arrayOfByte.clone());
+      } else {
+        this._outA1 = new byte[0];
+      }
       this.iconUrl = paramWFastLoginInfo.iconUrl;
       this.adUrl = paramWFastLoginInfo.adUrl;
       this.profileUrl = paramWFastLoginInfo.profileUrl;
-      return;
     }
   }
   

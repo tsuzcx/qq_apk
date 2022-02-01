@@ -35,21 +35,22 @@ public abstract class FragmentStatePagerAdapter
       this.mSavedState.add(null);
     }
     ArrayList localArrayList = this.mSavedState;
-    if (paramObject.isAdded()) {}
-    for (paramViewGroup = this.mFragmentManager.saveFragmentInstanceState(paramObject);; paramViewGroup = null)
-    {
-      localArrayList.set(paramInt, paramViewGroup);
-      this.mFragments.set(paramInt, null);
-      this.mCurTransaction.remove(paramObject);
-      return;
+    if (paramObject.isAdded()) {
+      paramViewGroup = this.mFragmentManager.saveFragmentInstanceState(paramObject);
+    } else {
+      paramViewGroup = null;
     }
+    localArrayList.set(paramInt, paramViewGroup);
+    this.mFragments.set(paramInt, null);
+    this.mCurTransaction.remove(paramObject);
   }
   
   public void finishUpdate(ViewGroup paramViewGroup)
   {
-    if (this.mCurTransaction != null)
+    paramViewGroup = this.mCurTransaction;
+    if (paramViewGroup != null)
     {
-      this.mCurTransaction.commitNowAllowingStateLoss();
+      paramViewGroup.commitNowAllowingStateLoss();
       this.mCurTransaction = null;
     }
   }
@@ -117,18 +118,21 @@ public abstract class FragmentStatePagerAdapter
         if (str.startsWith("f"))
         {
           i = Integer.parseInt(str.substring(1));
-          Fragment localFragment = this.mFragmentManager.getFragment(paramParcelable, str);
-          if (localFragment != null)
+          Object localObject = this.mFragmentManager.getFragment(paramParcelable, str);
+          if (localObject != null)
           {
             while (this.mFragments.size() <= i) {
               this.mFragments.add(null);
             }
-            localFragment.setMenuVisibility(false);
-            this.mFragments.set(i, localFragment);
+            ((Fragment)localObject).setMenuVisibility(false);
+            this.mFragments.set(i, localObject);
           }
           else
           {
-            Log.w("FragmentStatePagerAdapt", "Bad fragment at key " + str);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("Bad fragment at key ");
+            ((StringBuilder)localObject).append(str);
+            Log.w("FragmentStatePagerAdapt", ((StringBuilder)localObject).toString());
           }
         }
       }
@@ -137,47 +141,55 @@ public abstract class FragmentStatePagerAdapter
   
   public Parcelable saveState()
   {
-    Object localObject1 = null;
     Object localObject2;
+    Object localObject1;
     if (this.mSavedState.size() > 0)
     {
-      localObject1 = new Bundle();
-      localObject2 = new Fragment.SavedState[this.mSavedState.size()];
-      this.mSavedState.toArray((Object[])localObject2);
-      ((Bundle)localObject1).putParcelableArray("states", (Parcelable[])localObject2);
+      localObject2 = new Bundle();
+      localObject1 = new Fragment.SavedState[this.mSavedState.size()];
+      this.mSavedState.toArray((Object[])localObject1);
+      ((Bundle)localObject2).putParcelableArray("states", (Parcelable[])localObject1);
+    }
+    else
+    {
+      localObject2 = null;
     }
     int i = 0;
     while (i < this.mFragments.size())
     {
       Fragment localFragment = (Fragment)this.mFragments.get(i);
-      localObject2 = localObject1;
+      localObject1 = localObject2;
       if (localFragment != null)
       {
-        localObject2 = localObject1;
+        localObject1 = localObject2;
         if (localFragment.isAdded())
         {
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = new Bundle();
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = new Bundle();
           }
-          localObject1 = "f" + i;
-          this.mFragmentManager.putFragment((Bundle)localObject2, (String)localObject1, localFragment);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("f");
+          ((StringBuilder)localObject2).append(i);
+          localObject2 = ((StringBuilder)localObject2).toString();
+          this.mFragmentManager.putFragment((Bundle)localObject1, (String)localObject2, localFragment);
         }
       }
       i += 1;
-      localObject1 = localObject2;
+      localObject2 = localObject1;
     }
-    return localObject1;
+    return localObject2;
   }
   
   public void setPrimaryItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     paramViewGroup = (Fragment)paramObject;
-    if (paramViewGroup != this.mCurrentPrimaryItem)
+    paramObject = this.mCurrentPrimaryItem;
+    if (paramViewGroup != paramObject)
     {
-      if (this.mCurrentPrimaryItem != null)
+      if (paramObject != null)
       {
-        this.mCurrentPrimaryItem.setMenuVisibility(false);
+        paramObject.setMenuVisibility(false);
         this.mCurrentPrimaryItem.setUserVisibleHint(false);
       }
       if (paramViewGroup != null)
@@ -191,9 +203,14 @@ public abstract class FragmentStatePagerAdapter
   
   public void startUpdate(ViewGroup paramViewGroup)
   {
-    if (paramViewGroup.getId() == -1) {
-      throw new IllegalStateException("ViewPager with adapter " + this + " requires a view id");
+    if (paramViewGroup.getId() != -1) {
+      return;
     }
+    paramViewGroup = new StringBuilder();
+    paramViewGroup.append("ViewPager with adapter ");
+    paramViewGroup.append(this);
+    paramViewGroup.append(" requires a view id");
+    throw new IllegalStateException(paramViewGroup.toString());
   }
 }
 

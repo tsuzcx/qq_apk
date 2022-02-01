@@ -38,8 +38,10 @@ public class MenuPopupWindow
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      Log.i("MenuPopupWindow", "Could not find method setTouchModal() on PopupWindow. Oh well.");
+      label21:
+      break label21;
     }
+    Log.i("MenuPopupWindow", "Could not find method setTouchModal() on PopupWindow. Oh well.");
   }
   
   public MenuPopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
@@ -56,15 +58,17 @@ public class MenuPopupWindow
   
   public void onItemHoverEnter(@NonNull MenuBuilder paramMenuBuilder, @NonNull MenuItem paramMenuItem)
   {
-    if (this.mHoverListener != null) {
-      this.mHoverListener.onItemHoverEnter(paramMenuBuilder, paramMenuItem);
+    MenuItemHoverListener localMenuItemHoverListener = this.mHoverListener;
+    if (localMenuItemHoverListener != null) {
+      localMenuItemHoverListener.onItemHoverEnter(paramMenuBuilder, paramMenuItem);
     }
   }
   
   public void onItemHoverExit(@NonNull MenuBuilder paramMenuBuilder, @NonNull MenuItem paramMenuItem)
   {
-    if (this.mHoverListener != null) {
-      this.mHoverListener.onItemHoverExit(paramMenuBuilder, paramMenuItem);
+    MenuItemHoverListener localMenuItemHoverListener = this.mHoverListener;
+    if (localMenuItemHoverListener != null) {
+      localMenuItemHoverListener.onItemHoverExit(paramMenuBuilder, paramMenuItem);
     }
   }
   
@@ -89,16 +93,19 @@ public class MenuPopupWindow
   
   public void setTouchModal(boolean paramBoolean)
   {
-    if (sSetTouchModalMethod != null) {}
+    Method localMethod = sSetTouchModalMethod;
+    if (localMethod != null) {}
     try
     {
-      sSetTouchModalMethod.invoke(this.mPopup, new Object[] { Boolean.valueOf(paramBoolean) });
+      localMethod.invoke(this.mPopup, new Object[] { Boolean.valueOf(paramBoolean) });
       return;
     }
     catch (Exception localException)
     {
-      Log.i("MenuPopupWindow", "Could not invoke setTouchModal() on PopupWindow. Oh well.");
+      label29:
+      break label29;
     }
+    Log.i("MenuPopupWindow", "Could not invoke setTouchModal() on PopupWindow. Oh well.");
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
@@ -131,50 +138,54 @@ public class MenuPopupWindow
     
     public boolean onHoverEvent(MotionEvent paramMotionEvent)
     {
-      Object localObject;
-      int i;
       if (this.mHoverListener != null)
       {
-        localObject = getAdapter();
-        if (!(localObject instanceof HeaderViewListAdapter)) {
-          break label166;
-        }
-        localObject = (HeaderViewListAdapter)localObject;
-        i = ((HeaderViewListAdapter)localObject).getHeadersCount();
-        localObject = (MenuAdapter)((HeaderViewListAdapter)localObject).getWrappedAdapter();
-        if (paramMotionEvent.getAction() == 10) {
-          break label178;
-        }
-        int j = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-        if (j == -1) {
-          break label178;
-        }
-        i = j - i;
-        if ((i < 0) || (i >= ((MenuAdapter)localObject).getCount())) {
-          break label178;
-        }
-      }
-      label166:
-      label178:
-      for (MenuItemImpl localMenuItemImpl = ((MenuAdapter)localObject).getItem(i);; localMenuItemImpl = null)
-      {
-        MenuItem localMenuItem = this.mHoveredMenuItem;
-        if (localMenuItem != localMenuItemImpl)
+        Object localObject1 = getAdapter();
+        int i;
+        if ((localObject1 instanceof HeaderViewListAdapter))
         {
-          localObject = ((MenuAdapter)localObject).getAdapterMenu();
-          if (localMenuItem != null) {
-            this.mHoverListener.onItemHoverExit((MenuBuilder)localObject, localMenuItem);
-          }
-          this.mHoveredMenuItem = localMenuItemImpl;
-          if (localMenuItemImpl != null) {
-            this.mHoverListener.onItemHoverEnter((MenuBuilder)localObject, localMenuItemImpl);
+          localObject1 = (HeaderViewListAdapter)localObject1;
+          i = ((HeaderViewListAdapter)localObject1).getHeadersCount();
+          localObject1 = (MenuAdapter)((HeaderViewListAdapter)localObject1).getWrappedAdapter();
+        }
+        else
+        {
+          i = 0;
+          localObject1 = (MenuAdapter)localObject1;
+        }
+        MenuItem localMenuItem = null;
+        Object localObject2 = localMenuItem;
+        if (paramMotionEvent.getAction() != 10)
+        {
+          int j = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+          localObject2 = localMenuItem;
+          if (j != -1)
+          {
+            i = j - i;
+            localObject2 = localMenuItem;
+            if (i >= 0)
+            {
+              localObject2 = localMenuItem;
+              if (i < ((MenuAdapter)localObject1).getCount()) {
+                localObject2 = ((MenuAdapter)localObject1).getItem(i);
+              }
+            }
           }
         }
-        return super.onHoverEvent(paramMotionEvent);
-        i = 0;
-        localObject = (MenuAdapter)localObject;
-        break;
+        localMenuItem = this.mHoveredMenuItem;
+        if (localMenuItem != localObject2)
+        {
+          localObject1 = ((MenuAdapter)localObject1).getAdapterMenu();
+          if (localMenuItem != null) {
+            this.mHoverListener.onItemHoverExit((MenuBuilder)localObject1, localMenuItem);
+          }
+          this.mHoveredMenuItem = ((MenuItem)localObject2);
+          if (localObject2 != null) {
+            this.mHoverListener.onItemHoverEnter((MenuBuilder)localObject1, (MenuItem)localObject2);
+          }
+        }
       }
+      return super.onHoverEvent(paramMotionEvent);
     }
     
     public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)

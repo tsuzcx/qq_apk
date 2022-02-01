@@ -41,40 +41,42 @@ public class ProDialogWithShutDown
   
   protected void onCreate(Bundle paramBundle)
   {
-    if ((this.a == null) || ((this.a != null) && (this.a.isFinishing())))
+    Object localObject = this.a;
+    if ((localObject != null) && ((localObject == null) || (!((Activity)localObject).isFinishing())))
     {
-      dismiss();
-      return;
-    }
-    super.onCreate(paramBundle);
-    setContentView(2130968718);
-    getWindow().setBackgroundDrawableResource(2130837730);
-    if (this.e)
-    {
-      paramBundle = (TextView)findViewById(2131559126);
-      if ((this.d != null) && (this.d.length() > 0)) {
-        paramBundle.setText(this.d);
-      }
-    }
-    ((ImageView)findViewById(2131559125)).startAnimation(AnimationUtils.loadAnimation(this.a, 2131034130));
-    this.b = ((ImageView)findViewById(2131559128));
-    this.b.setOnClickListener(new View.OnClickListener()
-    {
-      public void onClick(View paramAnonymousView)
+      super.onCreate(paramBundle);
+      setContentView(2131296399);
+      getWindow().setBackgroundDrawableResource(2131099876);
+      if (this.e)
       {
-        ProDialogWithShutDown.this.dismiss();
-      }
-    });
-    setOnDismissListener(new DialogInterface.OnDismissListener()
-    {
-      public void onDismiss(DialogInterface paramAnonymousDialogInterface)
-      {
-        ProDialogWithShutDown.a(ProDialogWithShutDown.this);
-        if (ProDialogWithShutDown.b(ProDialogWithShutDown.this) != null) {
-          ProDialogWithShutDown.b(ProDialogWithShutDown.this).onClick(ProDialogWithShutDown.c(ProDialogWithShutDown.this));
+        paramBundle = (TextView)findViewById(2131165819);
+        localObject = this.d;
+        if ((localObject != null) && (((String)localObject).length() > 0)) {
+          paramBundle.setText(this.d);
         }
       }
-    });
+      ((ImageView)findViewById(2131165817)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
+      this.b = ((ImageView)findViewById(2131165818));
+      this.b.setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          ProDialogWithShutDown.this.dismiss();
+        }
+      });
+      setOnDismissListener(new DialogInterface.OnDismissListener()
+      {
+        public void onDismiss(DialogInterface paramAnonymousDialogInterface)
+        {
+          ProDialogWithShutDown.a(ProDialogWithShutDown.this);
+          if (ProDialogWithShutDown.b(ProDialogWithShutDown.this) != null) {
+            ProDialogWithShutDown.b(ProDialogWithShutDown.this).onClick(ProDialogWithShutDown.c(ProDialogWithShutDown.this));
+          }
+        }
+      });
+      return;
+    }
+    dismiss();
   }
 }
 

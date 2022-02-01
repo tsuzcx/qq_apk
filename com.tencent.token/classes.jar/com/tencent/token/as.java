@@ -12,7 +12,7 @@ import com.tencent.halley.common.f;
 
 final class as
 {
-  private static as a = null;
+  private static as a;
   private av b;
   private final BroadcastReceiver c = new at(this);
   private final BroadcastReceiver d = new au(this);
@@ -32,37 +32,36 @@ final class as
   
   public final void a(NetworkInfo paramNetworkInfo)
   {
-    String str;
     if (paramNetworkInfo != null)
     {
       paramNetworkInfo = bp.b;
       bp.b();
-      str = bp.b;
+      String str = bp.b;
       if (!paramNetworkInfo.equals(str))
       {
-        if ((!paramNetworkInfo.equals(bp.a)) || (!bp.f())) {
-          break label64;
+        if ((paramNetworkInfo.equals(bp.a)) && (bp.f()))
+        {
+          paramNetworkInfo = this.b;
+          if (paramNetworkInfo != null)
+          {
+            paramNetworkInfo.a();
+            return;
+          }
+          b.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
+          return;
         }
-        if (this.b == null) {
-          break label56;
+        if ((!str.equals(bp.a)) && (bp.f()))
+        {
+          paramNetworkInfo = this.b;
+          if (paramNetworkInfo != null)
+          {
+            paramNetworkInfo.a();
+            return;
+          }
+          b.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
         }
-        this.b.a();
       }
     }
-    label56:
-    label64:
-    while ((str.equals(bp.a)) || (!bp.f()))
-    {
-      return;
-      b.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
-      return;
-    }
-    if (this.b != null)
-    {
-      this.b.a();
-      return;
-    }
-    b.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
   }
   
   public final void a(av paramav)
@@ -79,16 +78,17 @@ final class as
     {
       long l = System.currentTimeMillis();
       Intent localIntent = new Intent("action.scheduler.access.trigger.timer");
-      paramav.setRepeating(3, l + 1800000L, 1800000L, PendingIntent.getBroadcast(f.a(), 0, localIntent, 0));
+      paramav.setRepeating(3, 1800000L + l, 1800000L, PendingIntent.getBroadcast(f.a(), 0, localIntent, 0));
       b.a("AccessSchedulerTrigger", "startAccessSchedulerTimer timer start...");
     }
   }
   
   public final void b()
   {
-    if (this.b != null)
+    av localav = this.b;
+    if (localav != null)
     {
-      this.b.a();
+      localav.a();
       return;
     }
     b.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");

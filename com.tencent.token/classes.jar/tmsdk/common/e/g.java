@@ -13,7 +13,7 @@ public final class g
   private static String a = "tms_";
   private static String b = "[com.android.internal.telephony.ITelephony]";
   private static String c = "[com.android.internal.telephony.ITelephonyRegistry]";
-  private static Boolean d = null;
+  private static Boolean d;
   
   public static String a()
   {
@@ -32,22 +32,20 @@ public final class g
   
   public static String b(Context paramContext)
   {
-    String str = ((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId();
-    paramContext = str;
-    if (str == null) {
-      paramContext = "000000000000000";
+    paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId();
+    if (paramContext == null) {
+      return "000000000000000";
     }
     return paramContext;
   }
   
   public static String c(Context paramContext)
   {
-    WifiInfo localWifiInfo = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-    paramContext = null;
-    if (localWifiInfo != null) {
-      paramContext = localWifiInfo.getMacAddress();
+    paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+    if (paramContext != null) {
+      return paramContext.getMacAddress();
     }
-    return paramContext;
+    return null;
   }
   
   public static int d(Context paramContext)

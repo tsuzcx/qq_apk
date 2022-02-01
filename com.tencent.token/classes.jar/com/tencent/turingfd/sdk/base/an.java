@@ -2,7 +2,18 @@ package com.tencent.turingfd.sdk.base;
 
 public class an
 {
-  public static final String a = cv.a + "_" + 49 + "_" + "baseFull";
+  public static final String a;
+  
+  static
+  {
+    StringBuilder localStringBuilder = ci.a("turingfd_protect_");
+    localStringBuilder.append(cv.a);
+    localStringBuilder.append("_");
+    localStringBuilder.append(49);
+    localStringBuilder.append("_");
+    localStringBuilder.append("baseFull");
+    a = localStringBuilder.toString();
+  }
 }
 
 

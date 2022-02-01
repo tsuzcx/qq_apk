@@ -22,12 +22,13 @@ public class ay
   
   public boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      paramString = paramString.split(":");
-    } while (paramString.length != 2);
+    }
+    paramString = paramString.split(":");
+    if (paramString.length != 2) {
+      return false;
+    }
     this.a = paramString[0];
     try
     {
@@ -48,7 +49,11 @@ public class ay
   
   public String c()
   {
-    return this.a + ":" + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
   
   public String toString()

@@ -24,16 +24,18 @@ public class MergeCursor
   public MergeCursor(Cursor[] paramArrayOfCursor)
   {
     this.mCursors = paramArrayOfCursor;
+    int i = 0;
     this.mCursor = paramArrayOfCursor[0];
-    if (i < this.mCursors.length)
+    for (;;)
     {
-      if (this.mCursors[i] == null) {}
-      for (;;)
-      {
-        i += 1;
+      paramArrayOfCursor = this.mCursors;
+      if (i >= paramArrayOfCursor.length) {
         break;
-        this.mCursors[i].registerDataSetObserver(this.mObserver);
       }
+      if (paramArrayOfCursor[i] != null) {
+        paramArrayOfCursor[i].registerDataSetObserver(this.mObserver);
+      }
+      i += 1;
     }
   }
   
@@ -41,15 +43,13 @@ public class MergeCursor
   {
     int j = this.mCursors.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      if (this.mCursors[i] == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.mCursors[i].close();
+      Cursor[] arrayOfCursor = this.mCursors;
+      if (arrayOfCursor[i] != null) {
+        arrayOfCursor[i].close();
       }
+      i += 1;
     }
     super.close();
   }
@@ -60,8 +60,9 @@ public class MergeCursor
     int i = 0;
     while (i < j)
     {
-      if (this.mCursors[i] != null) {
-        this.mCursors[i].deactivate();
+      Cursor[] arrayOfCursor = this.mCursors;
+      if (arrayOfCursor[i] != null) {
+        arrayOfCursor[i].deactivate();
       }
       i += 1;
     }
@@ -75,25 +76,26 @@ public class MergeCursor
   
   public String[] getColumnNames()
   {
-    if (this.mCursor != null) {
-      return this.mCursor.getColumnNames();
+    Cursor localCursor = this.mCursor;
+    if (localCursor != null) {
+      return localCursor.getColumnNames();
     }
     return new String[0];
   }
   
   public int getCount()
   {
-    int j = 0;
     int m = this.mCursors.length;
     int i = 0;
-    while (i < m)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      int k = j;
-      if (this.mCursors[i] != null) {
-        k = j + this.mCursors[i].getCount();
+      Cursor[] arrayOfCursor = this.mCursors;
+      k = j;
+      if (arrayOfCursor[i] != null) {
+        k = j + arrayOfCursor[i].getCount();
       }
       i += 1;
-      j = k;
     }
     return j;
   }
@@ -144,24 +146,24 @@ public class MergeCursor
     int j = this.mCursors.length;
     paramInt1 = 0;
     int i = 0;
-    if (paramInt1 < j) {
-      if (this.mCursors[paramInt1] != null) {}
-    }
-    for (;;)
+    while (paramInt1 < j)
     {
-      paramInt1 += 1;
-      break;
-      if (paramInt2 < this.mCursors[paramInt1].getCount() + i)
+      localObject = this.mCursors;
+      if (localObject[paramInt1] != null)
       {
-        this.mCursor = this.mCursors[paramInt1];
-        if (this.mCursor == null) {
-          break label102;
+        if (paramInt2 < localObject[paramInt1].getCount() + i)
+        {
+          this.mCursor = this.mCursors[paramInt1];
+          break;
         }
-        return this.mCursor.moveToPosition(paramInt2 - i);
+        i += this.mCursors[paramInt1].getCount();
       }
-      i += this.mCursors[paramInt1].getCount();
+      paramInt1 += 1;
     }
-    label102:
+    Object localObject = this.mCursor;
+    if (localObject != null) {
+      return ((Cursor)localObject).moveToPosition(paramInt2 - i);
+    }
     return false;
   }
   
@@ -171,8 +173,9 @@ public class MergeCursor
     int i = 0;
     while (i < j)
     {
-      if (this.mCursors[i] != null) {
-        this.mCursors[i].registerContentObserver(paramContentObserver);
+      Cursor[] arrayOfCursor = this.mCursors;
+      if (arrayOfCursor[i] != null) {
+        arrayOfCursor[i].registerContentObserver(paramContentObserver);
       }
       i += 1;
     }
@@ -184,8 +187,9 @@ public class MergeCursor
     int i = 0;
     while (i < j)
     {
-      if (this.mCursors[i] != null) {
-        this.mCursors[i].registerDataSetObserver(paramDataSetObserver);
+      Cursor[] arrayOfCursor = this.mCursors;
+      if (arrayOfCursor[i] != null) {
+        arrayOfCursor[i].registerDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }
@@ -195,15 +199,13 @@ public class MergeCursor
   {
     int j = this.mCursors.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      if (this.mCursors[i] == null) {}
-      while (this.mCursors[i].requery())
-      {
-        i += 1;
-        break;
+      Cursor[] arrayOfCursor = this.mCursors;
+      if ((arrayOfCursor[i] != null) && (!arrayOfCursor[i].requery())) {
+        return false;
       }
-      return false;
+      i += 1;
     }
     return true;
   }
@@ -214,8 +216,9 @@ public class MergeCursor
     int i = 0;
     while (i < j)
     {
-      if (this.mCursors[i] != null) {
-        this.mCursors[i].unregisterContentObserver(paramContentObserver);
+      Cursor[] arrayOfCursor = this.mCursors;
+      if (arrayOfCursor[i] != null) {
+        arrayOfCursor[i].unregisterContentObserver(paramContentObserver);
       }
       i += 1;
     }
@@ -227,8 +230,9 @@ public class MergeCursor
     int i = 0;
     while (i < j)
     {
-      if (this.mCursors[i] != null) {
-        this.mCursors[i].unregisterDataSetObserver(paramDataSetObserver);
+      Cursor[] arrayOfCursor = this.mCursors;
+      if (arrayOfCursor[i] != null) {
+        arrayOfCursor[i].unregisterDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }

@@ -5,40 +5,52 @@ public class g
   private static boolean a = false;
   private static String[] b;
   private static long[] c;
-  private static int d = 0;
-  private static int e = 0;
+  private static int d;
+  private static int e;
   
   public static void a(String paramString)
   {
     if (!a) {
       return;
     }
-    if (d == 20)
+    int i = d;
+    if (i == 20)
     {
       e += 1;
       return;
     }
-    b[d] = paramString;
-    c[d] = System.nanoTime();
+    b[i] = paramString;
+    c[i] = System.nanoTime();
     d += 1;
   }
   
   public static float b(String paramString)
   {
-    if (e > 0) {
-      e -= 1;
+    int i = e;
+    if (i > 0)
+    {
+      e = i - 1;
+      return 0.0F;
     }
-    while (!a) {
+    if (!a) {
       return 0.0F;
     }
     d -= 1;
-    if (d == -1) {
-      throw new IllegalStateException("Can't end trace section. There are none.");
+    i = d;
+    if (i != -1)
+    {
+      if (paramString.equals(b[i])) {
+        return (float)(System.nanoTime() - c[d]) / 1000000.0F;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unbalanced trace call ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(". Expected ");
+      localStringBuilder.append(b[d]);
+      localStringBuilder.append(".");
+      throw new IllegalStateException(localStringBuilder.toString());
     }
-    if (!paramString.equals(b[d])) {
-      throw new IllegalStateException("Unbalanced trace call " + paramString + ". Expected " + b[d] + ".");
-    }
-    return (float)(System.nanoTime() - c[d]) / 1000000.0F;
+    throw new IllegalStateException("Can't end trace section. There are none.");
   }
 }
 

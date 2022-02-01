@@ -49,20 +49,29 @@ public abstract class ar
   {
     this.b = parame;
     this.c = paramcs;
-    this.o = (paramcs.f() + "#draw");
+    parame = new StringBuilder();
+    parame.append(paramcs.f());
+    parame.append("#draw");
+    this.o = parame.toString();
     this.j.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     this.h.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-    if (paramcs.l() == cs.c.c) {
-      this.i.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-    }
-    for (;;)
+    Paint localPaint;
+    if (paramcs.l() == cs.c.c)
     {
-      this.d = paramcs.o().h();
-      this.d.a(this);
-      this.d.a(this);
-      if ((paramcs.j() == null) || (paramcs.j().isEmpty())) {
-        break label416;
-      }
+      localPaint = this.i;
+      parame = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
+    }
+    else
+    {
+      localPaint = this.i;
+      parame = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
+    }
+    localPaint.setXfermode(parame);
+    this.d = paramcs.o().h();
+    this.d.a(this);
+    this.d.a(this);
+    if ((paramcs.j() != null) && (!paramcs.j().isEmpty()))
+    {
       this.p = new q(paramcs.j());
       parame = this.p.b().iterator();
       while (parame.hasNext())
@@ -71,16 +80,14 @@ public abstract class ar
         a(paramcs);
         paramcs.a(this);
       }
-      this.i.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+      parame = this.p.c().iterator();
+      while (parame.hasNext())
+      {
+        paramcs = (p)parame.next();
+        a(paramcs);
+        paramcs.a(this);
+      }
     }
-    parame = this.p.c().iterator();
-    while (parame.hasNext())
-    {
-      paramcs = (p)parame.next();
-      a(paramcs);
-      paramcs.a(this);
-    }
-    label416:
     f();
   }
   
@@ -89,26 +96,29 @@ public abstract class ar
     switch (2.a[paramcs.k().ordinal()])
     {
     default: 
-      Log.w("Doraemon", "Unknown layer type " + paramcs.k());
+      parame = new StringBuilder();
+      parame.append("Unknown layer type ");
+      parame.append(paramcs.k());
+      Log.w("Doraemon", parame.toString());
       return null;
-    case 1: 
-      return new av(parame, paramcs);
-    case 2: 
-      return new as(parame, paramcs, parama.a(paramcs.g()), parama);
-    case 3: 
-      return new aw(parame, paramcs);
-    case 4: 
-      return new at(parame, paramcs, parama.j());
+    case 6: 
+      return new ax(parame, paramcs);
     case 5: 
       return new au(parame, paramcs);
+    case 4: 
+      return new at(parame, paramcs, parama.j());
+    case 3: 
+      return new aw(parame, paramcs);
+    case 2: 
+      return new as(parame, paramcs, parama.a(paramcs.g()), parama);
     }
-    return new ax(parame, paramcs);
+    return new av(parame, paramcs);
   }
   
   private void a(Canvas paramCanvas)
   {
     g.a("Layer#clearLayer");
-    paramCanvas.drawRect(this.k.left - 1.0F, this.k.top - 1.0F, this.k.right + 1.0F, 1.0F + this.k.bottom, this.j);
+    paramCanvas.drawRect(this.k.left - 1.0F, this.k.top - 1.0F, this.k.right + 1.0F, this.k.bottom + 1.0F, this.j);
     g.b("Layer#clearLayer");
   }
   
@@ -122,28 +132,27 @@ public abstract class ar
     a(paramCanvas);
     int i2 = this.p.a().size();
     int i1 = 0;
-    if (i1 < i2)
+    while (i1 < i2)
     {
-      Object localObject = (cc)this.p.a().get(i1);
-      Path localPath = (Path)((l)this.p.b().get(i1)).b();
-      this.e.set(localPath);
+      Object localObject1 = (cc)this.p.a().get(i1);
+      Object localObject2 = (Path)((l)this.p.b().get(i1)).b();
+      this.e.set((Path)localObject2);
       this.e.transform(paramMatrix);
-      switch (2.b[localObject.a().ordinal()])
-      {
-      default: 
-        this.e.setFillType(Path.FillType.WINDING);
+      if (2.b[localObject1.a().ordinal()] != 1) {
+        localObject1 = this.e;
       }
-      for (;;)
+      for (localObject2 = Path.FillType.WINDING;; localObject2 = Path.FillType.INVERSE_WINDING)
       {
-        localObject = (p)this.p.c().get(i1);
-        int i3 = this.g.getAlpha();
-        this.g.setAlpha((int)(((Integer)((p)localObject).b()).intValue() * 2.55F));
-        paramCanvas.drawPath(this.e, this.g);
-        this.g.setAlpha(i3);
-        i1 += 1;
+        ((Path)localObject1).setFillType((Path.FillType)localObject2);
         break;
-        this.e.setFillType(Path.FillType.INVERSE_WINDING);
+        localObject1 = this.e;
       }
+      localObject1 = (p)this.p.c().get(i1);
+      int i3 = this.g.getAlpha();
+      this.g.setAlpha((int)(((Integer)((p)localObject1).b()).intValue() * 2.55F));
+      paramCanvas.drawPath(this.e, this.g);
+      this.g.setAlpha(i3);
+      i1 += 1;
     }
     g.a("Layer#restoreLayer");
     paramCanvas.restore();
@@ -173,24 +182,29 @@ public abstract class ar
     }
     int i2 = this.p.a().size();
     int i1 = 0;
-    if (i1 < i2)
+    while (i1 < i2)
     {
-      cc localcc = (cc)this.p.a().get(i1);
+      Object localObject = (cc)this.p.a().get(i1);
       Path localPath = (Path)((l)this.p.b().get(i1)).b();
       this.e.set(localPath);
       this.e.transform(paramMatrix);
-      switch (2.b[localcc.a().ordinal()])
+      if (2.b[localObject.a().ordinal()] != 1)
       {
-      }
-      this.e.computeBounds(this.n, false);
-      if (i1 == 0) {
-        this.l.set(this.n);
-      }
-      for (;;)
-      {
+        this.e.computeBounds(this.n, false);
+        if (i1 == 0)
+        {
+          this.l.set(this.n);
+        }
+        else
+        {
+          localObject = this.l;
+          ((RectF)localObject).set(Math.min(((RectF)localObject).left, this.n.left), Math.min(this.l.top, this.n.top), Math.max(this.l.right, this.n.right), Math.max(this.l.bottom, this.n.bottom));
+        }
         i1 += 1;
-        break;
-        this.l.set(Math.min(this.l.left, this.n.left), Math.min(this.l.top, this.n.top), Math.max(this.l.right, this.n.right), Math.max(this.l.bottom, this.n.bottom));
+      }
+      else
+      {
+        return;
       }
     }
     paramRectF.set(Math.max(paramRectF.left, this.l.left), Math.max(paramRectF.top, this.l.top), Math.min(paramRectF.right, this.l.right), Math.min(paramRectF.bottom, this.l.bottom));
@@ -198,8 +212,10 @@ public abstract class ar
   
   private void c(RectF paramRectF, Matrix paramMatrix)
   {
-    if (!d()) {}
-    while (this.c.l() == cs.c.c) {
+    if (!d()) {
+      return;
+    }
+    if (this.c.l() == cs.c.c) {
       return;
     }
     this.q.a(this.m, paramMatrix);
@@ -208,7 +224,9 @@ public abstract class ar
   
   private void f()
   {
-    if (!this.c.d().isEmpty())
+    boolean bool2 = this.c.d().isEmpty();
+    boolean bool1 = true;
+    if (!bool2)
     {
       final n localn = new n(this.c.d());
       localn.a();
@@ -217,21 +235,21 @@ public abstract class ar
         public void c()
         {
           ar localar = ar.this;
-          if (((Float)localn.b()).floatValue() == 1.0F) {}
-          for (boolean bool = true;; bool = false)
-          {
-            ar.a(localar, bool);
-            return;
+          boolean bool;
+          if (((Float)localn.b()).floatValue() == 1.0F) {
+            bool = true;
+          } else {
+            bool = false;
           }
+          ar.a(localar, bool);
         }
       });
-      if (((Float)localn.b()).floatValue() == 1.0F) {}
-      for (boolean bool = true;; bool = false)
-      {
-        a(bool);
-        a(localn);
-        return;
+      if (((Float)localn.b()).floatValue() != 1.0F) {
+        bool1 = false;
       }
+      a(bool1);
+      a(localn);
+      return;
     }
     a(true);
   }
@@ -243,19 +261,17 @@ public abstract class ar
   
   private void h()
   {
-    if (this.s != null) {}
-    for (;;)
-    {
+    if (this.s != null) {
       return;
-      if (this.r == null)
-      {
-        this.s = Collections.emptyList();
-        return;
-      }
-      this.s = new ArrayList();
-      for (ar localar = this.r; localar != null; localar = localar.r) {
-        this.s.add(localar);
-      }
+    }
+    if (this.r == null)
+    {
+      this.s = Collections.emptyList();
+      return;
+    }
+    this.s = new ArrayList();
+    for (ar localar = this.r; localar != null; localar = localar.r) {
+      this.s.add(localar);
     }
   }
   
@@ -270,8 +286,9 @@ public abstract class ar
     if (this.c.b() != 0.0F) {
       f1 = paramFloat / this.c.b();
     }
-    if (this.q != null) {
-      this.q.a(f1);
+    ar localar = this.q;
+    if (localar != null) {
+      localar.a(f1);
     }
     int i1 = 0;
     while (i1 < this.t.size())
@@ -301,8 +318,7 @@ public abstract class ar
       i1 -= 1;
     }
     g.b("Layer#parentMatrix");
-    float f1 = paramInt / 255.0F;
-    paramInt = (int)(((Integer)this.d.a().b()).intValue() * f1 / 100.0F * 255.0F);
+    paramInt = (int)(paramInt / 255.0F * ((Integer)this.d.a().b()).intValue() / 100.0F * 255.0F);
     if ((!d()) && (!e()))
     {
       this.f.preConcat(this.d.b());
@@ -395,7 +411,8 @@ public abstract class ar
   
   boolean e()
   {
-    return (this.p != null) && (!this.p.b().isEmpty());
+    q localq = this.p;
+    return (localq != null) && (!localq.b().isEmpty());
   }
 }
 

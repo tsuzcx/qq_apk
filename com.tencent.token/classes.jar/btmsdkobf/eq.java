@@ -8,12 +8,14 @@ public class eq
   
   public void run()
   {
-    if (this.oN != null) {
-      this.oN.beforeExecute(this, this.oR);
+    a locala = this.oN;
+    if (locala != null) {
+      locala.beforeExecute(this, this.oR);
     }
     super.run();
-    if (this.oN != null) {
-      this.oN.b(this, this.oR);
+    locala = this.oN;
+    if (locala != null) {
+      locala.b(this, this.oR);
     }
   }
   

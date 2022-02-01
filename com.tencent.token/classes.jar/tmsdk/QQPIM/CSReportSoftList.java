@@ -28,14 +28,17 @@ public final class CSReportSoftList
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.phoneType != null) {
-      paramJceOutputStream.write(this.phoneType, 0);
+    Object localObject = this.phoneType;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.userInfo != null) {
-      paramJceOutputStream.write(this.userInfo, 1);
+    localObject = this.userInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.softReportInfo != null) {
-      paramJceOutputStream.write(this.softReportInfo, 2);
+    localObject = this.softReportInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }

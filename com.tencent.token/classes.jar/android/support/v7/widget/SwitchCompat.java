@@ -116,12 +116,14 @@ public class SwitchCompat
     this.mTextPaint.density = ((Resources)localObject).getDisplayMetrics().density;
     paramAttributeSet = TintTypedArray.obtainStyledAttributes(paramContext, paramAttributeSet, R.styleable.SwitchCompat, paramInt, 0);
     this.mThumbDrawable = paramAttributeSet.getDrawable(R.styleable.SwitchCompat_android_thumb);
-    if (this.mThumbDrawable != null) {
-      this.mThumbDrawable.setCallback(this);
+    localObject = this.mThumbDrawable;
+    if (localObject != null) {
+      ((Drawable)localObject).setCallback(this);
     }
     this.mTrackDrawable = paramAttributeSet.getDrawable(R.styleable.SwitchCompat_track);
-    if (this.mTrackDrawable != null) {
-      this.mTrackDrawable.setCallback(this);
+    localObject = this.mTrackDrawable;
+    if (localObject != null) {
+      ((Drawable)localObject).setCallback(this);
     }
     this.mTextOn = paramAttributeSet.getText(R.styleable.SwitchCompat_android_textOn);
     this.mTextOff = paramAttributeSet.getText(R.styleable.SwitchCompat_android_textOff);
@@ -174,17 +176,18 @@ public class SwitchCompat
   
   private void animateThumbToCheckedState(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (float f = 1.0F;; f = 0.0F)
-    {
-      this.mPositionAnimator = ObjectAnimator.ofFloat(this, THUMB_POS, new float[] { f });
-      this.mPositionAnimator.setDuration(250L);
-      if (Build.VERSION.SDK_INT >= 18) {
-        this.mPositionAnimator.setAutoCancel(true);
-      }
-      this.mPositionAnimator.start();
-      return;
+    float f;
+    if (paramBoolean) {
+      f = 1.0F;
+    } else {
+      f = 0.0F;
     }
+    this.mPositionAnimator = ObjectAnimator.ofFloat(this, THUMB_POS, new float[] { f });
+    this.mPositionAnimator.setDuration(250L);
+    if (Build.VERSION.SDK_INT >= 18) {
+      this.mPositionAnimator.setAutoCancel(true);
+    }
+    this.mPositionAnimator.start();
   }
   
   private void applyThumbTint()
@@ -223,8 +226,9 @@ public class SwitchCompat
   
   private void cancelPositionAnimator()
   {
-    if (this.mPositionAnimator != null) {
-      this.mPositionAnimator.cancel();
+    ObjectAnimator localObjectAnimator = this.mPositionAnimator;
+    if (localObjectAnimator != null) {
+      localObjectAnimator.cancel();
     }
   }
   
@@ -241,10 +245,11 @@ public class SwitchCompat
     if (paramFloat1 < paramFloat2) {
       return paramFloat2;
     }
+    paramFloat2 = paramFloat1;
     if (paramFloat1 > paramFloat3) {
-      return paramFloat3;
+      paramFloat2 = paramFloat3;
     }
-    return paramFloat1;
+    return paramFloat2;
   }
   
   private boolean getTargetCheckedState()
@@ -254,221 +259,216 @@ public class SwitchCompat
   
   private int getThumbOffset()
   {
-    if (ViewUtils.isLayoutRtl(this)) {}
-    for (float f = 1.0F - this.mThumbPosition;; f = this.mThumbPosition) {
-      return (int)(f * getThumbScrollRange() + 0.5F);
+    float f;
+    if (ViewUtils.isLayoutRtl(this)) {
+      f = 1.0F - this.mThumbPosition;
+    } else {
+      f = this.mThumbPosition;
     }
+    return (int)(f * getThumbScrollRange() + 0.5F);
   }
   
   private int getThumbScrollRange()
   {
-    if (this.mTrackDrawable != null)
+    Object localObject = this.mTrackDrawable;
+    if (localObject != null)
     {
-      Rect localRect2 = this.mTempRect;
-      this.mTrackDrawable.getPadding(localRect2);
-      if (this.mThumbDrawable != null) {}
-      for (Rect localRect1 = DrawableUtils.getOpticalBounds(this.mThumbDrawable);; localRect1 = DrawableUtils.INSETS_NONE) {
-        return this.mSwitchWidth - this.mThumbWidth - localRect2.left - localRect2.right - localRect1.left - localRect1.right;
+      Rect localRect = this.mTempRect;
+      ((Drawable)localObject).getPadding(localRect);
+      localObject = this.mThumbDrawable;
+      if (localObject != null) {
+        localObject = DrawableUtils.getOpticalBounds((Drawable)localObject);
+      } else {
+        localObject = DrawableUtils.INSETS_NONE;
       }
+      return this.mSwitchWidth - this.mThumbWidth - localRect.left - localRect.right - ((Rect)localObject).left - ((Rect)localObject).right;
     }
     return 0;
   }
   
   private boolean hitThumb(float paramFloat1, float paramFloat2)
   {
-    if (this.mThumbDrawable == null) {}
-    int k;
-    int i;
-    int j;
-    int m;
-    int n;
-    int i1;
-    int i2;
-    int i3;
-    int i4;
-    do
-    {
+    Drawable localDrawable = this.mThumbDrawable;
+    boolean bool2 = false;
+    if (localDrawable == null) {
       return false;
-      k = getThumbOffset();
-      this.mThumbDrawable.getPadding(this.mTempRect);
-      i = this.mSwitchTop;
-      j = this.mTouchSlop;
-      k = k + this.mSwitchLeft - this.mTouchSlop;
-      m = this.mThumbWidth;
-      n = this.mTempRect.left;
-      i1 = this.mTempRect.right;
-      i2 = this.mTouchSlop;
-      i3 = this.mSwitchBottom;
-      i4 = this.mTouchSlop;
-    } while ((paramFloat1 <= k) || (paramFloat1 >= m + k + n + i1 + i2) || (paramFloat2 <= i - j) || (paramFloat2 >= i3 + i4));
-    return true;
+    }
+    int k = getThumbOffset();
+    this.mThumbDrawable.getPadding(this.mTempRect);
+    int i = this.mSwitchTop;
+    int j = this.mTouchSlop;
+    k = this.mSwitchLeft + k - j;
+    int m = this.mThumbWidth;
+    int n = this.mTempRect.left;
+    int i1 = this.mTempRect.right;
+    int i2 = this.mTouchSlop;
+    int i3 = this.mSwitchBottom;
+    boolean bool1 = bool2;
+    if (paramFloat1 > k)
+    {
+      bool1 = bool2;
+      if (paramFloat1 < m + k + n + i1 + i2)
+      {
+        bool1 = bool2;
+        if (paramFloat2 > i - j)
+        {
+          bool1 = bool2;
+          if (paramFloat2 < i3 + i2) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   private Layout makeLayout(CharSequence paramCharSequence)
   {
-    TextPaint localTextPaint;
-    if (this.mSwitchTransformationMethod != null)
-    {
-      paramCharSequence = this.mSwitchTransformationMethod.getTransformation(paramCharSequence, this);
-      localTextPaint = this.mTextPaint;
-      if (paramCharSequence == null) {
-        break label62;
-      }
+    TransformationMethod localTransformationMethod = this.mSwitchTransformationMethod;
+    CharSequence localCharSequence = paramCharSequence;
+    if (localTransformationMethod != null) {
+      localCharSequence = localTransformationMethod.getTransformation(paramCharSequence, this);
     }
-    label62:
-    for (int i = (int)Math.ceil(Layout.getDesiredWidth(paramCharSequence, this.mTextPaint));; i = 0)
-    {
-      return new StaticLayout(paramCharSequence, localTextPaint, i, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
-      break;
+    paramCharSequence = this.mTextPaint;
+    int i;
+    if (localCharSequence != null) {
+      i = (int)Math.ceil(Layout.getDesiredWidth(localCharSequence, paramCharSequence));
+    } else {
+      i = 0;
     }
+    return new StaticLayout(localCharSequence, paramCharSequence, i, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
   }
   
   private void setSwitchTypefaceByIndex(int paramInt1, int paramInt2)
   {
-    Typeface localTypeface = null;
+    Typeface localTypeface;
     switch (paramInt1)
     {
-    }
-    for (;;)
-    {
-      setSwitchTypeface(localTypeface, paramInt2);
-      return;
-      localTypeface = Typeface.SANS_SERIF;
-      continue;
-      localTypeface = Typeface.SERIF;
-      continue;
+    default: 
+      localTypeface = null;
+      break;
+    case 3: 
       localTypeface = Typeface.MONOSPACE;
+      break;
+    case 2: 
+      localTypeface = Typeface.SERIF;
+      break;
+    case 1: 
+      localTypeface = Typeface.SANS_SERIF;
     }
+    setSwitchTypeface(localTypeface, paramInt2);
   }
   
   private void stopDrag(MotionEvent paramMotionEvent)
   {
-    boolean bool1 = true;
     this.mTouchMode = 0;
-    int i;
-    boolean bool2;
-    float f;
-    if ((paramMotionEvent.getAction() == 1) && (isEnabled()))
-    {
+    int i = paramMotionEvent.getAction();
+    boolean bool1 = true;
+    if ((i == 1) && (isEnabled())) {
       i = 1;
-      bool2 = isChecked();
-      if (i == 0) {
-        break label135;
-      }
-      this.mVelocityTracker.computeCurrentVelocity(1000);
-      f = this.mVelocityTracker.getXVelocity();
-      if (Math.abs(f) <= this.mMinFlingVelocity) {
-        break label126;
-      }
-      if (!ViewUtils.isLayoutRtl(this)) {
-        break label114;
-      }
-      if (f >= 0.0F) {
-        break label108;
-      }
-    }
-    label135:
-    for (;;)
-    {
-      if (bool1 != bool2) {
-        playSoundEffect(0);
-      }
-      setChecked(bool1);
-      cancelSuperTouch(paramMotionEvent);
-      return;
+    } else {
       i = 0;
-      break;
-      label108:
-      bool1 = false;
-      continue;
-      label114:
-      if (f <= 0.0F)
+    }
+    boolean bool2 = isChecked();
+    if (i != 0)
+    {
+      this.mVelocityTracker.computeCurrentVelocity(1000);
+      float f = this.mVelocityTracker.getXVelocity();
+      if (Math.abs(f) > this.mMinFlingVelocity)
       {
-        bool1 = false;
-        continue;
-        label126:
+        if (ViewUtils.isLayoutRtl(this) ? f >= 0.0F : f <= 0.0F) {
+          bool1 = false;
+        }
+      }
+      else {
         bool1 = getTargetCheckedState();
-        continue;
-        bool1 = bool2;
       }
     }
+    else
+    {
+      bool1 = bool2;
+    }
+    if (bool1 != bool2) {
+      playSoundEffect(0);
+    }
+    setChecked(bool1);
+    cancelSuperTouch(paramMotionEvent);
   }
   
   public void draw(Canvas paramCanvas)
   {
     Rect localRect = this.mTempRect;
     int j = this.mSwitchLeft;
-    int n = this.mSwitchTop;
-    int i2 = this.mSwitchRight;
-    int i1 = this.mSwitchBottom;
-    int i3 = j + getThumbOffset();
-    Object localObject;
-    int i4;
-    label139:
-    int m;
-    int k;
-    if (this.mThumbDrawable != null)
-    {
-      localObject = DrawableUtils.getOpticalBounds(this.mThumbDrawable);
-      if (this.mTrackDrawable == null) {
-        break label340;
-      }
-      this.mTrackDrawable.getPadding(localRect);
-      i4 = localRect.left;
-      if (localObject == null) {
-        break label320;
-      }
-      i = j;
-      if (((Rect)localObject).left > localRect.left) {
-        i = j + (((Rect)localObject).left - localRect.left);
-      }
-      if (((Rect)localObject).top <= localRect.top) {
-        break label314;
-      }
-      j = ((Rect)localObject).top - localRect.top + n;
-      m = i2;
-      if (((Rect)localObject).right > localRect.right) {
-        m = i2 - (((Rect)localObject).right - localRect.right);
-      }
-      if (((Rect)localObject).bottom <= localRect.bottom) {
-        break label307;
-      }
-      k = i1 - (((Rect)localObject).bottom - localRect.bottom);
-      label201:
-      this.mTrackDrawable.setBounds(i, j, m, k);
+    int m = this.mSwitchTop;
+    int i1 = this.mSwitchRight;
+    int n = this.mSwitchBottom;
+    int k = getThumbOffset() + j;
+    Object localObject = this.mThumbDrawable;
+    if (localObject != null) {
+      localObject = DrawableUtils.getOpticalBounds((Drawable)localObject);
+    } else {
+      localObject = DrawableUtils.INSETS_NONE;
     }
-    label307:
-    label314:
-    label320:
-    label340:
-    for (int i = i4 + i3;; i = i3)
+    Drawable localDrawable = this.mTrackDrawable;
+    int i = k;
+    if (localDrawable != null)
     {
-      if (this.mThumbDrawable != null)
+      localDrawable.getPadding(localRect);
+      int i3 = k + localRect.left;
+      int i2;
+      if (localObject != null)
       {
-        this.mThumbDrawable.getPadding(localRect);
-        j = i - localRect.left;
-        i = i + this.mThumbWidth + localRect.right;
-        this.mThumbDrawable.setBounds(j, n, i, i1);
-        localObject = getBackground();
-        if (localObject != null) {
-          DrawableCompat.setHotspotBounds((Drawable)localObject, j, n, i, i1);
+        i = j;
+        if (((Rect)localObject).left > localRect.left) {
+          i = j + (((Rect)localObject).left - localRect.left);
+        }
+        if (((Rect)localObject).top > localRect.top) {
+          j = ((Rect)localObject).top - localRect.top + m;
+        } else {
+          j = m;
+        }
+        k = i1;
+        if (((Rect)localObject).right > localRect.right) {
+          k = i1 - (((Rect)localObject).right - localRect.right);
+        }
+        if (((Rect)localObject).bottom > localRect.bottom)
+        {
+          i2 = n - (((Rect)localObject).bottom - localRect.bottom);
+          i1 = i;
+          i = i2;
+          i2 = j;
+        }
+        else
+        {
+          i2 = n;
+          i1 = i;
+          i = i2;
+          i2 = j;
         }
       }
-      super.draw(paramCanvas);
-      return;
-      localObject = DrawableUtils.INSETS_NONE;
-      break;
-      k = i1;
-      break label201;
-      j = n;
-      break label139;
-      k = i1;
-      m = n;
-      i = j;
-      j = m;
-      m = i2;
-      break label201;
+      else
+      {
+        i2 = m;
+        i = n;
+        k = i1;
+        i1 = j;
+      }
+      this.mTrackDrawable.setBounds(i1, i2, k, i);
+      i = i3;
     }
+    localObject = this.mThumbDrawable;
+    if (localObject != null)
+    {
+      ((Drawable)localObject).getPadding(localRect);
+      j = i - localRect.left;
+      i = i + this.mThumbWidth + localRect.right;
+      this.mThumbDrawable.setBounds(j, m, i, n);
+      localObject = getBackground();
+      if (localObject != null) {
+        DrawableCompat.setHotspotBounds((Drawable)localObject, j, m, i, n);
+      }
+    }
+    super.draw(paramCanvas);
   }
   
   public void drawableHotspotChanged(float paramFloat1, float paramFloat2)
@@ -476,11 +476,13 @@ public class SwitchCompat
     if (Build.VERSION.SDK_INT >= 21) {
       super.drawableHotspotChanged(paramFloat1, paramFloat2);
     }
-    if (this.mThumbDrawable != null) {
-      DrawableCompat.setHotspot(this.mThumbDrawable, paramFloat1, paramFloat2);
+    Drawable localDrawable = this.mThumbDrawable;
+    if (localDrawable != null) {
+      DrawableCompat.setHotspot(localDrawable, paramFloat1, paramFloat2);
     }
-    if (this.mTrackDrawable != null) {
-      DrawableCompat.setHotspot(this.mTrackDrawable, paramFloat1, paramFloat2);
+    localDrawable = this.mTrackDrawable;
+    if (localDrawable != null) {
+      DrawableCompat.setHotspot(localDrawable, paramFloat1, paramFloat2);
     }
   }
   
@@ -488,8 +490,8 @@ public class SwitchCompat
   {
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
-    boolean bool2 = false;
     Drawable localDrawable = this.mThumbDrawable;
+    boolean bool2 = false;
     boolean bool1 = bool2;
     if (localDrawable != null)
     {
@@ -514,34 +516,28 @@ public class SwitchCompat
   
   public int getCompoundPaddingLeft()
   {
-    int i;
     if (!ViewUtils.isLayoutRtl(this)) {
-      i = super.getCompoundPaddingLeft();
+      return super.getCompoundPaddingLeft();
     }
-    int j;
-    do
-    {
-      return i;
-      j = super.getCompoundPaddingLeft() + this.mSwitchWidth;
-      i = j;
-    } while (TextUtils.isEmpty(getText()));
-    return j + this.mSwitchPadding;
+    int j = super.getCompoundPaddingLeft() + this.mSwitchWidth;
+    int i = j;
+    if (!TextUtils.isEmpty(getText())) {
+      i = j + this.mSwitchPadding;
+    }
+    return i;
   }
   
   public int getCompoundPaddingRight()
   {
-    int i;
     if (ViewUtils.isLayoutRtl(this)) {
-      i = super.getCompoundPaddingRight();
+      return super.getCompoundPaddingRight();
     }
-    int j;
-    do
-    {
-      return i;
-      j = super.getCompoundPaddingRight() + this.mSwitchWidth;
-      i = j;
-    } while (TextUtils.isEmpty(getText()));
-    return j + this.mSwitchPadding;
+    int j = super.getCompoundPaddingRight() + this.mSwitchWidth;
+    int i = j;
+    if (!TextUtils.isEmpty(getText())) {
+      i = j + this.mSwitchPadding;
+    }
+    return i;
   }
   
   public boolean getShowText()
@@ -616,13 +612,16 @@ public class SwitchCompat
   public void jumpDrawablesToCurrentState()
   {
     super.jumpDrawablesToCurrentState();
-    if (this.mThumbDrawable != null) {
-      this.mThumbDrawable.jumpToCurrentState();
+    Object localObject = this.mThumbDrawable;
+    if (localObject != null) {
+      ((Drawable)localObject).jumpToCurrentState();
     }
-    if (this.mTrackDrawable != null) {
-      this.mTrackDrawable.jumpToCurrentState();
+    localObject = this.mTrackDrawable;
+    if (localObject != null) {
+      ((Drawable)localObject).jumpToCurrentState();
     }
-    if ((this.mPositionAnimator != null) && (this.mPositionAnimator.isStarted()))
+    localObject = this.mPositionAnimator;
+    if ((localObject != null) && (((ObjectAnimator)localObject).isStarted()))
     {
       this.mPositionAnimator.end();
       this.mPositionAnimator = null;
@@ -643,78 +642,69 @@ public class SwitchCompat
     super.onDraw(paramCanvas);
     Object localObject1 = this.mTempRect;
     Object localObject3 = this.mTrackDrawable;
-    int k;
-    int m;
-    int n;
-    int i1;
-    Object localObject2;
-    label151:
-    int j;
-    if (localObject3 != null)
-    {
+    if (localObject3 != null) {
       ((Drawable)localObject3).getPadding((Rect)localObject1);
-      k = this.mSwitchTop;
-      m = this.mSwitchBottom;
-      n = ((Rect)localObject1).top;
-      i1 = ((Rect)localObject1).bottom;
-      localObject2 = this.mThumbDrawable;
-      if (localObject3 != null)
+    } else {
+      ((Rect)localObject1).setEmpty();
+    }
+    int k = this.mSwitchTop;
+    int m = this.mSwitchBottom;
+    int n = ((Rect)localObject1).top;
+    int i1 = ((Rect)localObject1).bottom;
+    Object localObject2 = this.mThumbDrawable;
+    Object localObject4;
+    int i;
+    if (localObject3 != null) {
+      if ((this.mSplitTrack) && (localObject2 != null))
       {
-        if ((!this.mSplitTrack) || (localObject2 == null)) {
-          break label322;
-        }
-        Rect localRect = DrawableUtils.getOpticalBounds((Drawable)localObject2);
+        localObject4 = DrawableUtils.getOpticalBounds((Drawable)localObject2);
         ((Drawable)localObject2).copyBounds((Rect)localObject1);
-        ((Rect)localObject1).left += localRect.left;
-        ((Rect)localObject1).right -= localRect.right;
+        ((Rect)localObject1).left += ((Rect)localObject4).left;
+        ((Rect)localObject1).right -= ((Rect)localObject4).right;
         i = paramCanvas.save();
         paramCanvas.clipRect((Rect)localObject1, Region.Op.DIFFERENCE);
         ((Drawable)localObject3).draw(paramCanvas);
         paramCanvas.restoreToCount(i);
       }
-      j = paramCanvas.save();
-      if (localObject2 != null) {
-        ((Drawable)localObject2).draw(paramCanvas);
-      }
-      if (!getTargetCheckedState()) {
-        break label331;
-      }
-      localObject1 = this.mOnLayout;
-      label180:
-      if (localObject1 != null)
+      else
       {
-        localObject3 = getDrawableState();
-        if (this.mTextColors != null) {
-          this.mTextPaint.setColor(this.mTextColors.getColorForState((int[])localObject3, 0));
-        }
-        this.mTextPaint.drawableState = ((int[])localObject3);
-        if (localObject2 == null) {
-          break label340;
-        }
-        localObject2 = ((Drawable)localObject2).getBounds();
-        i = ((Rect)localObject2).left;
+        ((Drawable)localObject3).draw(paramCanvas);
       }
     }
-    label322:
-    label331:
-    label340:
-    for (int i = ((Rect)localObject2).right + i;; i = getWidth())
+    int j = paramCanvas.save();
+    if (localObject2 != null) {
+      ((Drawable)localObject2).draw(paramCanvas);
+    }
+    if (getTargetCheckedState()) {
+      localObject1 = this.mOnLayout;
+    } else {
+      localObject1 = this.mOffLayout;
+    }
+    if (localObject1 != null)
     {
+      localObject3 = getDrawableState();
+      localObject4 = this.mTextColors;
+      if (localObject4 != null) {
+        this.mTextPaint.setColor(((ColorStateList)localObject4).getColorForState((int[])localObject3, 0));
+      }
+      this.mTextPaint.drawableState = ((int[])localObject3);
+      if (localObject2 != null)
+      {
+        localObject2 = ((Drawable)localObject2).getBounds();
+        i = ((Rect)localObject2).left + ((Rect)localObject2).right;
+      }
+      else
+      {
+        i = getWidth();
+      }
       i /= 2;
       int i2 = ((Layout)localObject1).getWidth() / 2;
       k = (k + n + (m - i1)) / 2;
       m = ((Layout)localObject1).getHeight() / 2;
       paramCanvas.translate(i - i2, k - m);
       ((Layout)localObject1).draw(paramCanvas);
-      paramCanvas.restoreToCount(j);
-      return;
-      ((Rect)localObject1).setEmpty();
-      break;
-      ((Drawable)localObject3).draw(paramCanvas);
-      break label151;
-      localObject1 = this.mOffLayout;
-      break label180;
     }
+    paramCanvas.restoreToCount(j);
   }
   
   public void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
@@ -727,80 +717,89 @@ public class SwitchCompat
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     paramAccessibilityNodeInfo.setClassName("android.widget.Switch");
-    if (isChecked()) {}
-    CharSequence localCharSequence2;
-    for (CharSequence localCharSequence1 = this.mTextOn;; localCharSequence1 = this.mTextOff)
-    {
-      if (!TextUtils.isEmpty(localCharSequence1))
-      {
-        localCharSequence2 = paramAccessibilityNodeInfo.getText();
-        if (!TextUtils.isEmpty(localCharSequence2)) {
-          break;
-        }
-        paramAccessibilityNodeInfo.setText(localCharSequence1);
-      }
-      return;
+    CharSequence localCharSequence1;
+    if (isChecked()) {
+      localCharSequence1 = this.mTextOn;
+    } else {
+      localCharSequence1 = this.mTextOff;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(localCharSequence2).append(' ').append(localCharSequence1);
-    paramAccessibilityNodeInfo.setText(localStringBuilder);
+    if (!TextUtils.isEmpty(localCharSequence1))
+    {
+      CharSequence localCharSequence2 = paramAccessibilityNodeInfo.getText();
+      if (TextUtils.isEmpty(localCharSequence2))
+      {
+        paramAccessibilityNodeInfo.setText(localCharSequence1);
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localCharSequence2);
+      localStringBuilder.append(' ');
+      localStringBuilder.append(localCharSequence1);
+      paramAccessibilityNodeInfo.setText(localStringBuilder);
+    }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i = 0;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    Rect localRect1;
-    Rect localRect2;
-    if (this.mThumbDrawable != null)
+    Object localObject1 = this.mThumbDrawable;
+    paramInt1 = 0;
+    if (localObject1 != null)
     {
-      localRect1 = this.mTempRect;
-      if (this.mTrackDrawable != null)
-      {
-        this.mTrackDrawable.getPadding(localRect1);
-        localRect2 = DrawableUtils.getOpticalBounds(this.mThumbDrawable);
-        paramInt2 = Math.max(0, localRect2.left - localRect1.left);
+      localObject1 = this.mTempRect;
+      Object localObject2 = this.mTrackDrawable;
+      if (localObject2 != null) {
+        ((Drawable)localObject2).getPadding((Rect)localObject1);
+      } else {
+        ((Rect)localObject1).setEmpty();
       }
+      localObject2 = DrawableUtils.getOpticalBounds(this.mThumbDrawable);
+      paramInt2 = Math.max(0, ((Rect)localObject2).left - ((Rect)localObject1).left);
+      paramInt1 = Math.max(0, ((Rect)localObject2).right - ((Rect)localObject1).right);
     }
-    for (paramInt1 = Math.max(0, localRect2.right - localRect1.right);; paramInt1 = i)
+    else
     {
-      if (ViewUtils.isLayoutRtl(this))
-      {
-        paramInt3 = getPaddingLeft() + paramInt2;
-        paramInt4 = this.mSwitchWidth + paramInt3 - paramInt2 - paramInt1;
-        label113:
-        switch (getGravity() & 0x70)
-        {
-        default: 
-          paramInt2 = getPaddingTop();
-          paramInt1 = this.mSwitchHeight + paramInt2;
-        }
-      }
-      for (;;)
-      {
-        this.mSwitchLeft = paramInt3;
-        this.mSwitchTop = paramInt2;
-        this.mSwitchBottom = paramInt1;
-        this.mSwitchRight = paramInt4;
-        return;
-        localRect1.setEmpty();
-        break;
-        paramInt4 = getWidth() - getPaddingRight() - paramInt1;
-        paramInt3 = paramInt1 + (paramInt2 + (paramInt4 - this.mSwitchWidth));
-        break label113;
-        paramInt2 = (getPaddingTop() + getHeight() - getPaddingBottom()) / 2 - this.mSwitchHeight / 2;
-        paramInt1 = this.mSwitchHeight + paramInt2;
-        continue;
-        paramInt1 = getHeight() - getPaddingBottom();
-        paramInt2 = paramInt1 - this.mSwitchHeight;
-      }
       paramInt2 = 0;
     }
+    if (ViewUtils.isLayoutRtl(this))
+    {
+      paramInt3 = getPaddingLeft() + paramInt2;
+      paramInt4 = this.mSwitchWidth + paramInt3 - paramInt2 - paramInt1;
+    }
+    else
+    {
+      paramInt4 = getWidth() - getPaddingRight() - paramInt1;
+      paramInt3 = paramInt4 - this.mSwitchWidth + paramInt2 + paramInt1;
+    }
+    paramInt1 = getGravity() & 0x70;
+    if (paramInt1 != 16)
+    {
+      if (paramInt1 != 80)
+      {
+        paramInt1 = getPaddingTop();
+        paramInt2 = this.mSwitchHeight + paramInt1;
+      }
+      else
+      {
+        paramInt2 = getHeight() - getPaddingBottom();
+        paramInt1 = paramInt2 - this.mSwitchHeight;
+      }
+    }
+    else
+    {
+      paramInt1 = (getPaddingTop() + getHeight() - getPaddingBottom()) / 2;
+      paramInt2 = this.mSwitchHeight;
+      paramInt1 -= paramInt2 / 2;
+      paramInt2 += paramInt1;
+    }
+    this.mSwitchLeft = paramInt3;
+    this.mSwitchTop = paramInt1;
+    this.mSwitchBottom = paramInt2;
+    this.mSwitchRight = paramInt4;
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    int m = 0;
     if (this.mShowText)
     {
       if (this.mOnLayout == null) {
@@ -810,141 +809,146 @@ public class SwitchCompat
         this.mOffLayout = makeLayout(this.mTextOff);
       }
     }
-    Rect localRect = this.mTempRect;
-    int i;
-    int k;
-    if (this.mThumbDrawable != null)
+    Object localObject = this.mTempRect;
+    Drawable localDrawable = this.mThumbDrawable;
+    int m = 0;
+    int j;
+    if (localDrawable != null)
     {
-      this.mThumbDrawable.getPadding(localRect);
-      j = this.mThumbDrawable.getIntrinsicWidth() - localRect.left - localRect.right;
+      localDrawable.getPadding((Rect)localObject);
+      j = this.mThumbDrawable.getIntrinsicWidth() - ((Rect)localObject).left - ((Rect)localObject).right;
       i = this.mThumbDrawable.getIntrinsicHeight();
-      if (!this.mShowText) {
-        break label303;
-      }
-      k = Math.max(this.mOnLayout.getWidth(), this.mOffLayout.getWidth()) + this.mThumbTextPadding * 2;
-      label133:
-      this.mThumbWidth = Math.max(k, j);
-      if (this.mTrackDrawable == null) {
-        break label309;
-      }
-      this.mTrackDrawable.getPadding(localRect);
     }
-    for (int j = this.mTrackDrawable.getIntrinsicHeight();; j = m)
+    else
     {
-      int i1 = localRect.left;
-      int n = localRect.right;
-      m = n;
-      k = i1;
-      if (this.mThumbDrawable != null)
-      {
-        localRect = DrawableUtils.getOpticalBounds(this.mThumbDrawable);
-        k = Math.max(i1, localRect.left);
-        m = Math.max(n, localRect.right);
-      }
-      k = Math.max(this.mSwitchMinWidth, m + (k + this.mThumbWidth * 2));
-      i = Math.max(j, i);
-      this.mSwitchWidth = k;
-      this.mSwitchHeight = i;
-      super.onMeasure(paramInt1, paramInt2);
-      if (getMeasuredHeight() < i) {
-        setMeasuredDimension(getMeasuredWidthAndState(), i);
-      }
-      return;
-      i = 0;
       j = 0;
-      break;
-      label303:
+      i = 0;
+    }
+    if (this.mShowText) {
+      k = Math.max(this.mOnLayout.getWidth(), this.mOffLayout.getWidth()) + this.mThumbTextPadding * 2;
+    } else {
       k = 0;
-      break label133;
-      label309:
-      localRect.setEmpty();
+    }
+    this.mThumbWidth = Math.max(k, j);
+    localDrawable = this.mTrackDrawable;
+    if (localDrawable != null)
+    {
+      localDrawable.getPadding((Rect)localObject);
+      j = this.mTrackDrawable.getIntrinsicHeight();
+    }
+    else
+    {
+      ((Rect)localObject).setEmpty();
+      j = m;
+    }
+    int i1 = ((Rect)localObject).left;
+    int n = ((Rect)localObject).right;
+    localObject = this.mThumbDrawable;
+    m = n;
+    int k = i1;
+    if (localObject != null)
+    {
+      localObject = DrawableUtils.getOpticalBounds((Drawable)localObject);
+      k = Math.max(i1, ((Rect)localObject).left);
+      m = Math.max(n, ((Rect)localObject).right);
+    }
+    k = Math.max(this.mSwitchMinWidth, this.mThumbWidth * 2 + k + m);
+    int i = Math.max(j, i);
+    this.mSwitchWidth = k;
+    this.mSwitchHeight = i;
+    super.onMeasure(paramInt1, paramInt2);
+    if (getMeasuredHeight() < i) {
+      setMeasuredDimension(getMeasuredWidthAndState(), i);
     }
   }
   
   public void onPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
   {
     super.onPopulateAccessibilityEvent(paramAccessibilityEvent);
-    if (isChecked()) {}
-    for (CharSequence localCharSequence = this.mTextOn;; localCharSequence = this.mTextOff)
-    {
-      if (localCharSequence != null) {
-        paramAccessibilityEvent.getText().add(localCharSequence);
-      }
-      return;
+    CharSequence localCharSequence;
+    if (isChecked()) {
+      localCharSequence = this.mTextOn;
+    } else {
+      localCharSequence = this.mTextOff;
+    }
+    if (localCharSequence != null) {
+      paramAccessibilityEvent.getText().add(localCharSequence);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     this.mVelocityTracker.addMovement(paramMotionEvent);
+    float f1;
+    float f2;
     switch (paramMotionEvent.getActionMasked())
     {
-    }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
+    default: 
+      break;
+    case 2: 
+      switch (this.mTouchMode)
+      {
+      default: 
+        break;
+      case 2: 
+        float f3 = paramMotionEvent.getX();
+        int i = getThumbScrollRange();
+        f1 = f3 - this.mTouchX;
+        if (i != 0) {
+          f1 /= i;
+        } else if (f1 > 0.0F) {
+          f1 = 1.0F;
+        } else {
+          f1 = -1.0F;
+        }
+        f2 = f1;
+        if (ViewUtils.isLayoutRtl(this)) {
+          f2 = -f1;
+        }
+        f1 = constrain(this.mThumbPosition + f2, 0.0F, 1.0F);
+        if (f1 != this.mThumbPosition)
+        {
+          this.mTouchX = f3;
+          setThumbPosition(f1);
+        }
+        return true;
+      case 1: 
+        f1 = paramMotionEvent.getX();
+        f2 = paramMotionEvent.getY();
+        if ((Math.abs(f1 - this.mTouchX) > this.mTouchSlop) || (Math.abs(f2 - this.mTouchY) > this.mTouchSlop))
+        {
+          this.mTouchMode = 2;
+          getParent().requestDisallowInterceptTouchEvent(true);
+          this.mTouchX = f1;
+          this.mTouchY = f2;
+          return true;
+        }
+        break;
+      }
+      break;
+    case 1: 
+    case 3: 
+      if (this.mTouchMode == 2)
+      {
+        stopDrag(paramMotionEvent);
+        super.onTouchEvent(paramMotionEvent);
+        return true;
+      }
+      this.mTouchMode = 0;
+      this.mVelocityTracker.clear();
+      break;
+    case 0: 
+      f1 = paramMotionEvent.getX();
+      f2 = paramMotionEvent.getY();
       if ((isEnabled()) && (hitThumb(f1, f2)))
       {
         this.mTouchMode = 1;
         this.mTouchX = f1;
         this.mTouchY = f2;
-        continue;
-        switch (this.mTouchMode)
-        {
-        case 0: 
-        default: 
-          break;
-        case 1: 
-          f1 = paramMotionEvent.getX();
-          f2 = paramMotionEvent.getY();
-          if ((Math.abs(f1 - this.mTouchX) > this.mTouchSlop) || (Math.abs(f2 - this.mTouchY) > this.mTouchSlop))
-          {
-            this.mTouchMode = 2;
-            getParent().requestDisallowInterceptTouchEvent(true);
-            this.mTouchX = f1;
-            this.mTouchY = f2;
-            return true;
-          }
-          break;
-        case 2: 
-          float f3 = paramMotionEvent.getX();
-          int i = getThumbScrollRange();
-          f1 = f3 - this.mTouchX;
-          if (i != 0) {
-            f1 /= i;
-          }
-          for (;;)
-          {
-            f2 = f1;
-            if (ViewUtils.isLayoutRtl(this)) {
-              f2 = -f1;
-            }
-            f1 = constrain(f2 + this.mThumbPosition, 0.0F, 1.0F);
-            if (f1 != this.mThumbPosition)
-            {
-              this.mTouchX = f3;
-              setThumbPosition(f1);
-            }
-            return true;
-            if (f1 > 0.0F) {
-              f1 = 1.0F;
-            } else {
-              f1 = -1.0F;
-            }
-          }
-          if (this.mTouchMode == 2)
-          {
-            stopDrag(paramMotionEvent);
-            super.onTouchEvent(paramMotionEvent);
-            return true;
-          }
-          this.mTouchMode = 0;
-          this.mVelocityTracker.clear();
-        }
       }
+      break;
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setChecked(boolean paramBoolean)
@@ -957,12 +961,13 @@ public class SwitchCompat
       return;
     }
     cancelPositionAnimator();
-    if (paramBoolean) {}
-    for (float f = 1.0F;; f = 0.0F)
-    {
-      setThumbPosition(f);
-      return;
+    float f;
+    if (paramBoolean) {
+      f = 1.0F;
+    } else {
+      f = 0.0F;
     }
+    setThumbPosition(f);
   }
   
   public void setShowText(boolean paramBoolean)
@@ -996,28 +1001,28 @@ public class SwitchCompat
   {
     paramContext = TintTypedArray.obtainStyledAttributes(paramContext, paramInt, R.styleable.TextAppearance);
     ColorStateList localColorStateList = paramContext.getColorStateList(R.styleable.TextAppearance_android_textColor);
-    if (localColorStateList != null)
-    {
+    if (localColorStateList != null) {
       this.mTextColors = localColorStateList;
-      paramInt = paramContext.getDimensionPixelSize(R.styleable.TextAppearance_android_textSize, 0);
-      if ((paramInt != 0) && (paramInt != this.mTextPaint.getTextSize()))
+    } else {
+      this.mTextColors = getTextColors();
+    }
+    paramInt = paramContext.getDimensionPixelSize(R.styleable.TextAppearance_android_textSize, 0);
+    if (paramInt != 0)
+    {
+      float f = paramInt;
+      if (f != this.mTextPaint.getTextSize())
       {
-        this.mTextPaint.setTextSize(paramInt);
+        this.mTextPaint.setTextSize(f);
         requestLayout();
       }
-      setSwitchTypefaceByIndex(paramContext.getInt(R.styleable.TextAppearance_android_typeface, -1), paramContext.getInt(R.styleable.TextAppearance_android_textStyle, -1));
-      if (!paramContext.getBoolean(R.styleable.TextAppearance_textAllCaps, false)) {
-        break label127;
-      }
     }
-    label127:
-    for (this.mSwitchTransformationMethod = new AllCapsTransformationMethod(getContext());; this.mSwitchTransformationMethod = null)
-    {
-      paramContext.recycle();
-      return;
-      this.mTextColors = getTextColors();
-      break;
+    setSwitchTypefaceByIndex(paramContext.getInt(R.styleable.TextAppearance_android_typeface, -1), paramContext.getInt(R.styleable.TextAppearance_android_textStyle, -1));
+    if (paramContext.getBoolean(R.styleable.TextAppearance_textAllCaps, false)) {
+      this.mSwitchTransformationMethod = new AllCapsTransformationMethod(getContext());
+    } else {
+      this.mSwitchTransformationMethod = null;
     }
+    paramContext.recycle();
   }
   
   public void setSwitchTypeface(Typeface paramTypeface)
@@ -1032,41 +1037,34 @@ public class SwitchCompat
   
   public void setSwitchTypeface(Typeface paramTypeface, int paramInt)
   {
+    float f = 0.0F;
     boolean bool = false;
     if (paramInt > 0)
     {
-      int i;
-      if (paramTypeface == null)
-      {
+      if (paramTypeface == null) {
         paramTypeface = Typeface.defaultFromStyle(paramInt);
-        setSwitchTypeface(paramTypeface);
-        if (paramTypeface == null) {
-          break label88;
-        }
-        i = paramTypeface.getStyle();
-        label31:
-        paramInt = (i ^ 0xFFFFFFFF) & paramInt;
-        paramTypeface = this.mTextPaint;
-        if ((paramInt & 0x1) != 0) {
-          bool = true;
-        }
-        paramTypeface.setFakeBoldText(bool);
-        paramTypeface = this.mTextPaint;
-        if ((paramInt & 0x2) == 0) {
-          break label94;
-        }
-      }
-      label88:
-      label94:
-      for (float f = -0.25F;; f = 0.0F)
-      {
-        paramTypeface.setTextSkewX(f);
-        return;
+      } else {
         paramTypeface = Typeface.create(paramTypeface, paramInt);
-        break;
-        i = 0;
-        break label31;
       }
+      setSwitchTypeface(paramTypeface);
+      int i;
+      if (paramTypeface != null) {
+        i = paramTypeface.getStyle();
+      } else {
+        i = 0;
+      }
+      paramInt = (i ^ 0xFFFFFFFF) & paramInt;
+      paramTypeface = this.mTextPaint;
+      if ((paramInt & 0x1) != 0) {
+        bool = true;
+      }
+      paramTypeface.setFakeBoldText(bool);
+      paramTypeface = this.mTextPaint;
+      if ((paramInt & 0x2) != 0) {
+        f = -0.25F;
+      }
+      paramTypeface.setTextSkewX(f);
+      return;
     }
     this.mTextPaint.setFakeBoldText(false);
     this.mTextPaint.setTextSkewX(0.0F);
@@ -1087,8 +1085,9 @@ public class SwitchCompat
   
   public void setThumbDrawable(Drawable paramDrawable)
   {
-    if (this.mThumbDrawable != null) {
-      this.mThumbDrawable.setCallback(null);
+    Drawable localDrawable = this.mThumbDrawable;
+    if (localDrawable != null) {
+      localDrawable.setCallback(null);
     }
     this.mThumbDrawable = paramDrawable;
     if (paramDrawable != null) {
@@ -1130,8 +1129,9 @@ public class SwitchCompat
   
   public void setTrackDrawable(Drawable paramDrawable)
   {
-    if (this.mTrackDrawable != null) {
-      this.mTrackDrawable.setCallback(null);
+    Drawable localDrawable = this.mTrackDrawable;
+    if (localDrawable != null) {
+      localDrawable.setCallback(null);
     }
     this.mTrackDrawable = paramDrawable;
     if (paramDrawable != null) {
@@ -1161,12 +1161,7 @@ public class SwitchCompat
   
   public void toggle()
   {
-    if (!isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      setChecked(bool);
-      return;
-    }
+    setChecked(isChecked() ^ true);
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)

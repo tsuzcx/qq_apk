@@ -13,22 +13,34 @@ public class WXMusicObject
   
   public boolean checkArgs()
   {
-    if (((this.musicUrl == null) || (this.musicUrl.length() == 0)) && ((this.musicLowBandUrl == null) || (this.musicLowBandUrl.length() == 0)))
+    String str = this.musicUrl;
+    if ((str == null) || (str.length() == 0))
     {
-      Log.e("MicroMsg.SDK.WXMusicObject", "both arguments are null");
-      return false;
+      str = this.musicLowBandUrl;
+      if ((str == null) || (str.length() == 0)) {}
     }
-    if ((this.musicUrl != null) && (this.musicUrl.length() > 10240))
+    else
     {
-      Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, musicUrl is too long");
-      return false;
+      str = this.musicUrl;
+      if ((str != null) && (str.length() > 10240)) {
+        str = "checkArgs fail, musicUrl is too long";
+      }
     }
-    if ((this.musicLowBandUrl != null) && (this.musicLowBandUrl.length() > 10240))
+    for (;;)
     {
-      Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, musicLowBandUrl is too long");
+      Log.e("MicroMsg.SDK.WXMusicObject", str);
       return false;
+      str = this.musicLowBandUrl;
+      if ((str != null) && (str.length() > 10240))
+      {
+        str = "checkArgs fail, musicLowBandUrl is too long";
+      }
+      else
+      {
+        return true;
+        str = "both arguments are null";
+      }
     }
-    return true;
   }
   
   public void serialize(Bundle paramBundle)

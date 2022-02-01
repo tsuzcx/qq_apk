@@ -12,53 +12,47 @@ public abstract class MAutoDBItem
 {
   public void convertFrom(Cursor paramCursor)
   {
-    int j = 0;
     Object localObject = paramCursor.getColumnNames();
-    if (localObject == null) {
-      Log.e("MicroMsg.SDK.MAutoDBItem", "convertFrom: get column names failed");
-    }
-    int i;
-    do
+    if (localObject == null)
     {
+      Log.e("MicroMsg.SDK.MAutoDBItem", "convertFrom: get column names failed");
       return;
-      HashMap localHashMap = new HashMap();
-      i = 0;
-      while (i < localObject.length)
+    }
+    HashMap localHashMap = new HashMap();
+    int j = 0;
+    int i = 0;
+    while (i < localObject.length)
+    {
+      localHashMap.put(localObject[i], Integer.valueOf(i));
+      i += 1;
+    }
+    localObject = getDBInfo().fields;
+    int k = localObject.length;
+    i = j;
+    while (i < k)
+    {
+      Field localField = localObject[i];
+      String str = getColName(localField);
+      if (!Util.isNullOrNil(str))
       {
-        localHashMap.put(localObject[i], Integer.valueOf(i));
-        i += 1;
-      }
-      localObject = getDBInfo().fields;
-      int k = localObject.length;
-      i = j;
-      for (;;)
-      {
-        if (i < k)
-        {
-          Field localField = localObject[i];
-          String str = getColName(localField);
-          if (!Util.isNullOrNil(str))
-          {
-            j = Util.nullAs((Integer)localHashMap.get(str), -1);
-            if (j < 0) {}
-          }
+        j = Util.nullAs((Integer)localHashMap.get(str), -1);
+        if (j >= 0) {
           try
           {
             CursorFieldHelper.setter(localField.getType()).invoke(localField, this, paramCursor, j);
-            i += 1;
           }
           catch (Exception localException)
           {
-            for (;;)
-            {
-              localException.printStackTrace();
-            }
+            localException.printStackTrace();
           }
         }
       }
-      i = Util.nullAs((Integer)localHashMap.get("rowid"), -1);
-    } while (i < 0);
-    this.systemRowid = paramCursor.getLong(i);
+      i += 1;
+    }
+    i = Util.nullAs((Integer)localHashMap.get("rowid"), -1);
+    if (i >= 0) {
+      this.systemRowid = paramCursor.getLong(i);
+    }
   }
   
   public ContentValues convertTo()
@@ -67,24 +61,18 @@ public abstract class MAutoDBItem
     Field[] arrayOfField = getDBInfo().fields;
     int j = arrayOfField.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      Field localField = arrayOfField[i];
+      try
       {
-        Field localField = arrayOfField[i];
-        try
-        {
-          CursorFieldHelper.getter(localField.getType()).invoke(localField, this, localContentValues);
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-          }
-        }
+        CursorFieldHelper.getter(localField.getType()).invoke(localField, this, localContentValues);
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      i += 1;
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

@@ -27,14 +27,17 @@ public final class DiffUpdate
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.isGradual != true) {
-      paramJceOutputStream.write(this.isGradual, 0);
+    boolean bool = this.isGradual;
+    if (bool != true) {
+      paramJceOutputStream.write(bool, 0);
     }
-    if (this.isDownloadYYB != true) {
-      paramJceOutputStream.write(this.isDownloadYYB, 1);
+    bool = this.isDownloadYYB;
+    if (bool != true) {
+      paramJceOutputStream.write(bool, 1);
     }
-    if (this.yybUrl != null) {
-      paramJceOutputStream.write(this.yybUrl, 2);
+    String str = this.yybUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }

@@ -101,90 +101,99 @@ public final class ResourcesCompat
     Resources localResources = paramContext.getResources();
     localResources.getValue(paramInt1, paramTypedValue, true);
     paramContext = loadFont(paramContext, localResources, paramTypedValue, paramInt1, paramInt2, paramFontCallback, paramHandler, paramBoolean);
-    if ((paramContext == null) && (paramFontCallback == null)) {
-      throw new Resources.NotFoundException("Font resource ID #0x" + Integer.toHexString(paramInt1) + " could not be retrieved.");
+    if (paramContext == null)
+    {
+      if (paramFontCallback != null) {
+        return paramContext;
+      }
+      paramContext = new StringBuilder();
+      paramContext.append("Font resource ID #0x");
+      paramContext.append(Integer.toHexString(paramInt1));
+      paramContext.append(" could not be retrieved.");
+      throw new Resources.NotFoundException(paramContext.toString());
     }
     return paramContext;
   }
   
   private static Typeface loadFont(@NonNull Context paramContext, Resources paramResources, TypedValue paramTypedValue, int paramInt1, int paramInt2, @Nullable FontCallback paramFontCallback, @Nullable Handler paramHandler, boolean paramBoolean)
   {
-    if (paramTypedValue.string == null) {
-      throw new Resources.NotFoundException("Resource \"" + paramResources.getResourceName(paramInt1) + "\" (" + Integer.toHexString(paramInt1) + ") is not a Font: " + paramTypedValue);
-    }
-    String str = paramTypedValue.string.toString();
-    if (!str.startsWith("res/"))
+    if (paramTypedValue.string != null)
     {
+      paramTypedValue = paramTypedValue.string.toString();
+      if (!paramTypedValue.startsWith("res/"))
+      {
+        if (paramFontCallback != null) {
+          paramFontCallback.callbackFailAsync(-3, paramHandler);
+        }
+        return null;
+      }
+      Object localObject = TypefaceCompat.findFromCache(paramResources, paramInt1, paramInt2);
+      if (localObject != null)
+      {
+        if (paramFontCallback != null) {
+          paramFontCallback.callbackSuccessAsync((Typeface)localObject, paramHandler);
+        }
+        return localObject;
+      }
+      try
+      {
+        if (paramTypedValue.toLowerCase().endsWith(".xml"))
+        {
+          localObject = FontResourcesParserCompat.parse(paramResources.getXml(paramInt1), paramResources);
+          if (localObject == null)
+          {
+            Log.e("ResourcesCompat", "Failed to find font-family tag");
+            if (paramFontCallback == null) {
+              break label333;
+            }
+            paramFontCallback.callbackFailAsync(-3, paramHandler);
+            return null;
+          }
+          return TypefaceCompat.createFromResourcesFamilyXml(paramContext, (FontResourcesParserCompat.FamilyResourceEntry)localObject, paramResources, paramInt1, paramInt2, paramFontCallback, paramHandler, paramBoolean);
+        }
+        paramContext = TypefaceCompat.createFromResourcesFontFile(paramContext, paramResources, paramInt1, paramTypedValue, paramInt2);
+        if (paramFontCallback != null)
+        {
+          if (paramContext != null)
+          {
+            paramFontCallback.callbackSuccessAsync(paramContext, paramHandler);
+            return paramContext;
+          }
+          paramFontCallback.callbackFailAsync(-3, paramHandler);
+        }
+        return paramContext;
+      }
+      catch (IOException paramContext)
+      {
+        paramResources = new StringBuilder();
+        paramResources.append("Failed to read xml resource ");
+        paramResources.append(paramTypedValue);
+        Log.e("ResourcesCompat", paramResources.toString(), paramContext);
+      }
+      catch (XmlPullParserException paramContext)
+      {
+        paramResources = new StringBuilder();
+        paramResources.append("Failed to parse xml resource ");
+        paramResources.append(paramTypedValue);
+        Log.e("ResourcesCompat", paramResources.toString(), paramContext);
+      }
       if (paramFontCallback != null) {
         paramFontCallback.callbackFailAsync(-3, paramHandler);
       }
-      paramContext = null;
+      return null;
     }
-    for (;;)
+    else
     {
-      return paramContext;
-      paramTypedValue = TypefaceCompat.findFromCache(paramResources, paramInt1, paramInt2);
-      if (paramTypedValue != null)
-      {
-        paramContext = paramTypedValue;
-        if (paramFontCallback != null)
-        {
-          paramFontCallback.callbackSuccessAsync(paramTypedValue, paramHandler);
-          return paramTypedValue;
-        }
-      }
-      else
-      {
-        try
-        {
-          if (str.toLowerCase().endsWith(".xml"))
-          {
-            paramTypedValue = FontResourcesParserCompat.parse(paramResources.getXml(paramInt1), paramResources);
-            if (paramTypedValue == null)
-            {
-              Log.e("ResourcesCompat", "Failed to find font-family tag");
-              if (paramFontCallback != null) {
-                paramFontCallback.callbackFailAsync(-3, paramHandler);
-              }
-            }
-            else
-            {
-              return TypefaceCompat.createFromResourcesFamilyXml(paramContext, paramTypedValue, paramResources, paramInt1, paramInt2, paramFontCallback, paramHandler, paramBoolean);
-            }
-          }
-          else
-          {
-            paramResources = TypefaceCompat.createFromResourcesFontFile(paramContext, paramResources, paramInt1, str, paramInt2);
-            paramContext = paramResources;
-            if (paramFontCallback == null) {
-              continue;
-            }
-            if (paramResources != null)
-            {
-              paramFontCallback.callbackSuccessAsync(paramResources, paramHandler);
-              return paramResources;
-            }
-          }
-        }
-        catch (XmlPullParserException paramContext)
-        {
-          Log.e("ResourcesCompat", "Failed to parse xml resource " + str, paramContext);
-          if (paramFontCallback != null) {
-            paramFontCallback.callbackFailAsync(-3, paramHandler);
-          }
-          return null;
-          paramFontCallback.callbackFailAsync(-3, paramHandler);
-          return paramResources;
-        }
-        catch (IOException paramContext)
-        {
-          for (;;)
-          {
-            Log.e("ResourcesCompat", "Failed to read xml resource " + str, paramContext);
-          }
-        }
-      }
+      paramContext = new StringBuilder();
+      paramContext.append("Resource \"");
+      paramContext.append(paramResources.getResourceName(paramInt1));
+      paramContext.append("\" (");
+      paramContext.append(Integer.toHexString(paramInt1));
+      paramContext.append(") is not a Font: ");
+      paramContext.append(paramTypedValue);
+      throw new Resources.NotFoundException(paramContext.toString());
     }
+    label333:
     return null;
   }
   

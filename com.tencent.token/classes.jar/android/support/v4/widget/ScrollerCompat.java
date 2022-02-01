@@ -11,12 +11,12 @@ public final class ScrollerCompat
   
   ScrollerCompat(Context paramContext, Interpolator paramInterpolator)
   {
-    if (paramInterpolator != null) {}
-    for (paramContext = new OverScroller(paramContext, paramInterpolator);; paramContext = new OverScroller(paramContext))
-    {
-      this.mScroller = paramContext;
-      return;
+    if (paramInterpolator != null) {
+      paramContext = new OverScroller(paramContext, paramInterpolator);
+    } else {
+      paramContext = new OverScroller(paramContext);
     }
+    this.mScroller = paramContext;
   }
   
   @Deprecated

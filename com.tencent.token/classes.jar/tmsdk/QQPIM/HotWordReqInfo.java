@@ -13,16 +13,6 @@ public final class HotWordReqInfo
   public int num = 0;
   public int version = 0;
   
-  static
-  {
-    if (!HotWordReqInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public HotWordReqInfo()
   {
     setVersion(this.version);
@@ -44,29 +34,39 @@ public final class HotWordReqInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (HotWordReqInfo)paramObject;
-    } while ((!JceUtil.equals(this.version, paramObject.version)) || (!JceUtil.equals(this.index, paramObject.index)) || (!JceUtil.equals(this.num, paramObject.num)));
-    return true;
+    }
+    paramObject = (HotWordReqInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.version, paramObject.version))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.index, paramObject.index))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.num, paramObject.num)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

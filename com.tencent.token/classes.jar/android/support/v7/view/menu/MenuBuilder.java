@@ -108,10 +108,11 @@ public class MenuBuilder
   private void dispatchRestoreInstanceState(Bundle paramBundle)
   {
     paramBundle = paramBundle.getSparseParcelableArray("android:menu:presenters");
-    if ((paramBundle == null) || (this.mPresenters.isEmpty())) {}
-    for (;;)
+    if (paramBundle != null)
     {
-      return;
+      if (this.mPresenters.isEmpty()) {
+        return;
+      }
       Iterator localIterator = this.mPresenters.iterator();
       while (localIterator.hasNext())
       {
@@ -133,6 +134,7 @@ public class MenuBuilder
           }
         }
       }
+      return;
     }
   }
   
@@ -168,33 +170,26 @@ public class MenuBuilder
   
   private boolean dispatchSubMenuSelected(SubMenuBuilder paramSubMenuBuilder, MenuPresenter paramMenuPresenter)
   {
-    boolean bool = false;
-    if (this.mPresenters.isEmpty()) {
+    boolean bool2 = this.mPresenters.isEmpty();
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
     if (paramMenuPresenter != null) {
-      bool = paramMenuPresenter.onSubMenuSelected(paramSubMenuBuilder);
+      bool1 = paramMenuPresenter.onSubMenuSelected(paramSubMenuBuilder);
     }
     paramMenuPresenter = this.mPresenters.iterator();
-    MenuPresenter localMenuPresenter;
-    if (paramMenuPresenter.hasNext())
+    while (paramMenuPresenter.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)paramMenuPresenter.next();
-      localMenuPresenter = (MenuPresenter)localWeakReference.get();
+      MenuPresenter localMenuPresenter = (MenuPresenter)localWeakReference.get();
       if (localMenuPresenter == null) {
         this.mPresenters.remove(localWeakReference);
+      } else if (!bool1) {
+        bool1 = localMenuPresenter.onSubMenuSelected(paramSubMenuBuilder);
       }
     }
-    for (;;)
-    {
-      break;
-      if (!bool)
-      {
-        bool = localMenuPresenter.onSubMenuSelected(paramSubMenuBuilder);
-        continue;
-        return bool;
-      }
-    }
+    return bool1;
   }
   
   private static int findInsertIndex(ArrayList<MenuItemImpl> paramArrayList, int paramInt)
@@ -213,21 +208,29 @@ public class MenuBuilder
   private static int getOrdering(int paramInt)
   {
     int i = (0xFFFF0000 & paramInt) >> 16;
-    if ((i < 0) || (i >= sCategoryToOrder.length)) {
-      throw new IllegalArgumentException("order does not contain a valid category.");
+    if (i >= 0)
+    {
+      int[] arrayOfInt = sCategoryToOrder;
+      if (i < arrayOfInt.length) {
+        return paramInt & 0xFFFF | arrayOfInt[i] << 16;
+      }
     }
-    return sCategoryToOrder[i] << 16 | 0xFFFF & paramInt;
+    throw new IllegalArgumentException("order does not contain a valid category.");
   }
   
   private void removeItemAtInt(int paramInt, boolean paramBoolean)
   {
-    if ((paramInt < 0) || (paramInt >= this.mItems.size())) {}
-    do
+    if (paramInt >= 0)
     {
-      return;
+      if (paramInt >= this.mItems.size()) {
+        return;
+      }
       this.mItems.remove(paramInt);
-    } while (!paramBoolean);
-    onItemsChanged(true);
+      if (paramBoolean) {
+        onItemsChanged(true);
+      }
+      return;
+    }
   }
   
   private void setHeaderInternal(int paramInt1, CharSequence paramCharSequence, int paramInt2, Drawable paramDrawable, View paramView)
@@ -238,43 +241,33 @@ public class MenuBuilder
       this.mHeaderView = paramView;
       this.mHeaderTitle = null;
       this.mHeaderIcon = null;
-      onItemsChanged(false);
-      return;
     }
-    if (paramInt1 > 0)
+    else
     {
-      this.mHeaderTitle = localResources.getText(paramInt1);
-      label47:
-      if (paramInt2 <= 0) {
-        break label83;
+      if (paramInt1 > 0) {
+        this.mHeaderTitle = localResources.getText(paramInt1);
+      } else if (paramCharSequence != null) {
+        this.mHeaderTitle = paramCharSequence;
       }
-      this.mHeaderIcon = ContextCompat.getDrawable(getContext(), paramInt2);
-    }
-    for (;;)
-    {
-      this.mHeaderView = null;
-      break;
-      if (paramCharSequence == null) {
-        break label47;
-      }
-      this.mHeaderTitle = paramCharSequence;
-      break label47;
-      label83:
-      if (paramDrawable != null) {
+      if (paramInt2 > 0) {
+        this.mHeaderIcon = ContextCompat.getDrawable(getContext(), paramInt2);
+      } else if (paramDrawable != null) {
         this.mHeaderIcon = paramDrawable;
       }
+      this.mHeaderView = null;
     }
+    onItemsChanged(false);
   }
   
   private void setShortcutsVisibleInner(boolean paramBoolean)
   {
     boolean bool = true;
-    if ((paramBoolean) && (this.mResources.getConfiguration().keyboard != 1) && (this.mResources.getBoolean(R.bool.abc_config_showMenuShortcutsWhenKeyboardPresent))) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      this.mShortcutsVisible = paramBoolean;
-      return;
+    if ((paramBoolean) && (this.mResources.getConfiguration().keyboard != 1) && (this.mResources.getBoolean(R.bool.abc_config_showMenuShortcutsWhenKeyboardPresent))) {
+      paramBoolean = bool;
+    } else {
+      paramBoolean = false;
     }
+    this.mShortcutsVisible = paramBoolean;
   }
   
   public MenuItem add(int paramInt)
@@ -300,40 +293,36 @@ public class MenuBuilder
   public int addIntentOptions(int paramInt1, int paramInt2, int paramInt3, ComponentName paramComponentName, Intent[] paramArrayOfIntent, Intent paramIntent, int paramInt4, MenuItem[] paramArrayOfMenuItem)
   {
     PackageManager localPackageManager = this.mContext.getPackageManager();
+    int k = 0;
     List localList = localPackageManager.queryIntentActivityOptions(paramComponentName, paramArrayOfIntent, paramIntent, 0);
     int i;
-    label52:
-    ResolveInfo localResolveInfo;
-    if (localList != null)
-    {
+    if (localList != null) {
       i = localList.size();
-      if ((paramInt4 & 0x1) == 0) {
-        removeGroup(paramInt1);
-      }
-      paramInt4 = 0;
-      if (paramInt4 >= i) {
-        break label214;
-      }
-      localResolveInfo = (ResolveInfo)localList.get(paramInt4);
-      if (localResolveInfo.specificIndex >= 0) {
-        break label201;
-      }
+    } else {
+      i = 0;
     }
-    label201:
-    for (paramComponentName = paramIntent;; paramComponentName = paramArrayOfIntent[localResolveInfo.specificIndex])
+    int j = k;
+    if ((paramInt4 & 0x1) == 0)
     {
+      removeGroup(paramInt1);
+      j = k;
+    }
+    while (j < i)
+    {
+      ResolveInfo localResolveInfo = (ResolveInfo)localList.get(j);
+      if (localResolveInfo.specificIndex < 0) {
+        paramComponentName = paramIntent;
+      } else {
+        paramComponentName = paramArrayOfIntent[localResolveInfo.specificIndex];
+      }
       paramComponentName = new Intent(paramComponentName);
       paramComponentName.setComponent(new ComponentName(localResolveInfo.activityInfo.applicationInfo.packageName, localResolveInfo.activityInfo.name));
       paramComponentName = add(paramInt1, paramInt2, paramInt3, localResolveInfo.loadLabel(localPackageManager)).setIcon(localResolveInfo.loadIcon(localPackageManager)).setIntent(paramComponentName);
       if ((paramArrayOfMenuItem != null) && (localResolveInfo.specificIndex >= 0)) {
         paramArrayOfMenuItem[localResolveInfo.specificIndex] = paramComponentName;
       }
-      paramInt4 += 1;
-      break label52;
-      i = 0;
-      break;
+      j += 1;
     }
-    label214:
     return i;
   }
   
@@ -341,10 +330,12 @@ public class MenuBuilder
   {
     int i = getOrdering(paramInt3);
     paramCharSequence = createNewMenuItem(paramInt1, paramInt2, paramInt3, i, paramCharSequence, this.mDefaultShowAsAction);
-    if (this.mCurrentMenuInfo != null) {
-      paramCharSequence.setMenuInfo(this.mCurrentMenuInfo);
+    Object localObject = this.mCurrentMenuInfo;
+    if (localObject != null) {
+      paramCharSequence.setMenuInfo((ContextMenu.ContextMenuInfo)localObject);
     }
-    this.mItems.add(findInsertIndex(this.mItems, i), paramCharSequence);
+    localObject = this.mItems;
+    ((ArrayList)localObject).add(findInsertIndex((ArrayList)localObject, i), paramCharSequence);
     onItemsChanged(true);
     return paramCharSequence;
   }
@@ -386,15 +377,17 @@ public class MenuBuilder
   
   public void changeMenuMode()
   {
-    if (this.mCallback != null) {
-      this.mCallback.onMenuModeChange(this);
+    Callback localCallback = this.mCallback;
+    if (localCallback != null) {
+      localCallback.onMenuModeChange(this);
     }
   }
   
   public void clear()
   {
-    if (this.mExpandedItem != null) {
-      collapseItemActionView(this.mExpandedItem);
+    MenuItemImpl localMenuItemImpl = this.mExpandedItem;
+    if (localMenuItemImpl != null) {
+      collapseItemActionView(localMenuItemImpl);
     }
     this.mItems.clear();
     onItemsChanged(true);
@@ -446,86 +439,84 @@ public class MenuBuilder
   
   public boolean collapseItemActionView(MenuItemImpl paramMenuItemImpl)
   {
+    boolean bool2 = this.mPresenters.isEmpty();
     boolean bool1 = false;
-    boolean bool2 = bool1;
-    if (!this.mPresenters.isEmpty())
+    if (!bool2)
     {
       if (this.mExpandedItem != paramMenuItemImpl) {
-        bool2 = bool1;
+        return false;
       }
-    }
-    else {
-      return bool2;
-    }
-    stopDispatchingItemsChanged();
-    Iterator localIterator = this.mPresenters.iterator();
-    bool1 = false;
-    if (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      MenuPresenter localMenuPresenter = (MenuPresenter)localWeakReference.get();
-      if (localMenuPresenter == null) {
-        this.mPresenters.remove(localWeakReference);
-      }
+      stopDispatchingItemsChanged();
+      Iterator localIterator = this.mPresenters.iterator();
       do
       {
-        break;
+        MenuPresenter localMenuPresenter;
+        for (;;)
+        {
+          bool2 = bool1;
+          if (!localIterator.hasNext()) {
+            break label105;
+          }
+          WeakReference localWeakReference = (WeakReference)localIterator.next();
+          localMenuPresenter = (MenuPresenter)localWeakReference.get();
+          if (localMenuPresenter != null) {
+            break;
+          }
+          this.mPresenters.remove(localWeakReference);
+        }
         bool2 = localMenuPresenter.collapseItemActionView(this, paramMenuItemImpl);
         bool1 = bool2;
       } while (!bool2);
-      bool1 = bool2;
-    }
-    for (;;)
-    {
+      label105:
       startDispatchingItemsChanged();
-      bool2 = bool1;
-      if (!bool1) {
-        break;
+      if (bool2) {
+        this.mExpandedItem = null;
       }
-      this.mExpandedItem = null;
-      return bool1;
+      return bool2;
     }
+    return false;
   }
   
   boolean dispatchMenuItemSelected(MenuBuilder paramMenuBuilder, MenuItem paramMenuItem)
   {
-    return (this.mCallback != null) && (this.mCallback.onMenuItemSelected(paramMenuBuilder, paramMenuItem));
+    Callback localCallback = this.mCallback;
+    return (localCallback != null) && (localCallback.onMenuItemSelected(paramMenuBuilder, paramMenuItem));
   }
   
   public boolean expandItemActionView(MenuItemImpl paramMenuItemImpl)
   {
-    boolean bool2 = false;
-    if (this.mPresenters.isEmpty()) {
-      return bool2;
+    boolean bool2 = this.mPresenters.isEmpty();
+    boolean bool1 = false;
+    if (bool2) {
+      return false;
     }
     stopDispatchingItemsChanged();
     Iterator localIterator = this.mPresenters.iterator();
-    boolean bool1 = false;
-    if (localIterator.hasNext())
+    do
     {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      MenuPresenter localMenuPresenter = (MenuPresenter)localWeakReference.get();
-      if (localMenuPresenter == null) {
+      MenuPresenter localMenuPresenter;
+      for (;;)
+      {
+        bool2 = bool1;
+        if (!localIterator.hasNext()) {
+          break label97;
+        }
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        localMenuPresenter = (MenuPresenter)localWeakReference.get();
+        if (localMenuPresenter != null) {
+          break;
+        }
         this.mPresenters.remove(localWeakReference);
       }
-      do
-      {
-        break;
-        bool2 = localMenuPresenter.expandItemActionView(this, paramMenuItemImpl);
-        bool1 = bool2;
-      } while (!bool2);
+      bool2 = localMenuPresenter.expandItemActionView(this, paramMenuItemImpl);
       bool1 = bool2;
-    }
-    for (;;)
-    {
-      startDispatchingItemsChanged();
-      bool2 = bool1;
-      if (!bool1) {
-        break;
-      }
+    } while (!bool2);
+    label97:
+    startDispatchingItemsChanged();
+    if (bool2) {
       this.mExpandedItem = paramMenuItemImpl;
-      return bool1;
     }
+    return bool2;
   }
   
   public int findGroupIndex(int paramInt)
@@ -557,17 +548,16 @@ public class MenuBuilder
     while (i < j)
     {
       Object localObject = (MenuItemImpl)this.mItems.get(i);
-      if (((MenuItemImpl)localObject).getItemId() == paramInt) {}
-      MenuItem localMenuItem;
-      do
-      {
+      if (((MenuItemImpl)localObject).getItemId() == paramInt) {
         return localObject;
-        if (!((MenuItemImpl)localObject).hasSubMenu()) {
-          break;
+      }
+      if (((MenuItemImpl)localObject).hasSubMenu())
+      {
+        localObject = ((MenuItemImpl)localObject).getSubMenu().findItem(paramInt);
+        if (localObject != null) {
+          return localObject;
         }
-        localMenuItem = ((MenuItemImpl)localObject).getSubMenu().findItem(paramInt);
-        localObject = localMenuItem;
-      } while (localMenuItem != null);
+      }
       i += 1;
     }
     return null;
@@ -592,10 +582,8 @@ public class MenuBuilder
     ArrayList localArrayList = this.mTempShortcutItemList;
     localArrayList.clear();
     findItemsWithShortcutForKey(localArrayList, paramInt, paramKeyEvent);
-    if (localArrayList.isEmpty())
-    {
-      paramKeyEvent = null;
-      return paramKeyEvent;
+    if (localArrayList.isEmpty()) {
+      return null;
     }
     int k = paramKeyEvent.getMetaState();
     KeyCharacterMap.KeyData localKeyData = new KeyCharacterMap.KeyData();
@@ -606,37 +594,19 @@ public class MenuBuilder
     }
     boolean bool = isQwertyMode();
     int i = 0;
-    label84:
-    if (i < m)
+    while (i < m)
     {
-      MenuItemImpl localMenuItemImpl = (MenuItemImpl)localArrayList.get(i);
-      if (bool) {}
-      for (int j = localMenuItemImpl.getAlphabeticShortcut();; j = localMenuItemImpl.getNumericShortcut())
-      {
-        if (j == localKeyData.meta[0])
-        {
-          paramKeyEvent = localMenuItemImpl;
-          if ((k & 0x2) == 0) {
-            break;
-          }
-        }
-        if (j == localKeyData.meta[2])
-        {
-          paramKeyEvent = localMenuItemImpl;
-          if ((k & 0x2) != 0) {
-            break;
-          }
-        }
-        if ((bool) && (j == 8))
-        {
-          paramKeyEvent = localMenuItemImpl;
-          if (paramInt == 67) {
-            break;
-          }
-        }
-        i += 1;
-        break label84;
+      paramKeyEvent = (MenuItemImpl)localArrayList.get(i);
+      int j;
+      if (bool) {
+        j = paramKeyEvent.getAlphabeticShortcut();
+      } else {
+        j = paramKeyEvent.getNumericShortcut();
       }
+      if (((j == localKeyData.meta[0]) && ((k & 0x2) == 0)) || ((j == localKeyData.meta[2]) && ((k & 0x2) != 0)) || ((bool) && (j == 8) && (paramInt == 67))) {
+        return paramKeyEvent;
+      }
+      i += 1;
     }
     return null;
   }
@@ -651,44 +621,33 @@ public class MenuBuilder
     }
     int n = this.mItems.size();
     int i = 0;
-    label49:
-    MenuItemImpl localMenuItemImpl;
-    int j;
-    if (i < n)
+    while (i < n)
     {
-      localMenuItemImpl = (MenuItemImpl)this.mItems.get(i);
+      MenuItemImpl localMenuItemImpl = (MenuItemImpl)this.mItems.get(i);
       if (localMenuItemImpl.hasSubMenu()) {
         ((MenuBuilder)localMenuItemImpl.getSubMenu()).findItemsWithShortcutForKey(paramList, paramInt, paramKeyEvent);
       }
-      if (!bool) {
-        break label212;
+      int j;
+      if (bool) {
+        j = localMenuItemImpl.getAlphabeticShortcut();
+      } else {
+        j = localMenuItemImpl.getNumericShortcut();
       }
-      j = localMenuItemImpl.getAlphabeticShortcut();
-      label104:
-      if (!bool) {
-        break label222;
+      int k;
+      if (bool) {
+        k = localMenuItemImpl.getAlphabeticModifiers();
+      } else {
+        k = localMenuItemImpl.getNumericModifiers();
       }
-      k = localMenuItemImpl.getAlphabeticModifiers();
-      label116:
-      if ((m & 0x1100F) != (k & 0x1100F)) {
-        break label232;
+      if ((m & 0x1100F) == (k & 0x1100F)) {
+        k = 1;
+      } else {
+        k = 0;
       }
-    }
-    label212:
-    label222:
-    label232:
-    for (int k = 1;; k = 0)
-    {
       if ((k != 0) && (j != 0) && ((j == localKeyData.meta[0]) || (j == localKeyData.meta[2]) || ((bool) && (j == 8) && (paramInt == 67))) && (localMenuItemImpl.isEnabled())) {
         paramList.add(localMenuItemImpl);
       }
       i += 1;
-      break label49;
-      break;
-      j = localMenuItemImpl.getNumericShortcut();
-      break label104;
-      k = localMenuItemImpl.getNumericModifiers();
-      break label116;
     }
   }
   
@@ -700,17 +659,14 @@ public class MenuBuilder
     }
     Object localObject = this.mPresenters.iterator();
     int i = 0;
-    if (((Iterator)localObject).hasNext())
+    while (((Iterator)localObject).hasNext())
     {
       WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
       MenuPresenter localMenuPresenter = (MenuPresenter)localWeakReference.get();
       if (localMenuPresenter == null) {
         this.mPresenters.remove(localWeakReference);
-      }
-      for (;;)
-      {
-        break;
-        i = localMenuPresenter.flagActionItems() | i;
+      } else {
+        i |= localMenuPresenter.flagActionItems();
       }
     }
     if (i != 0)
@@ -719,27 +675,21 @@ public class MenuBuilder
       this.mNonActionItems.clear();
       int k = localArrayList.size();
       i = 0;
-      if (i < k)
+      while (i < k)
       {
         localObject = (MenuItemImpl)localArrayList.get(i);
         if (((MenuItemImpl)localObject).isActionButton()) {
           this.mActionItems.add(localObject);
-        }
-        for (;;)
-        {
-          int j;
-          i += 1;
-          break;
+        } else {
           this.mNonActionItems.add(localObject);
         }
+        int j;
+        i += 1;
       }
     }
-    else
-    {
-      this.mActionItems.clear();
-      this.mNonActionItems.clear();
-      this.mNonActionItems.addAll(getVisibleItems());
-    }
+    this.mActionItems.clear();
+    this.mNonActionItems.clear();
+    this.mNonActionItems.addAll(getVisibleItems());
     this.mIsActionItemsStale = false;
   }
   
@@ -881,13 +831,12 @@ public class MenuBuilder
         this.mIsActionItemsStale = true;
       }
       dispatchPresenterUpdate(paramBoolean);
-    }
-    do
-    {
       return;
-      this.mItemsChangedWhileDispatchPrevented = true;
-    } while (!paramBoolean);
-    this.mStructureChangedWhileDispatchPrevented = true;
+    }
+    this.mItemsChangedWhileDispatchPrevented = true;
+    if (paramBoolean) {
+      this.mStructureChangedWhileDispatchPrevented = true;
+    }
   }
   
   public boolean performIdentifierAction(int paramInt1, int paramInt2)
@@ -902,67 +851,73 @@ public class MenuBuilder
   
   public boolean performItemAction(MenuItem paramMenuItem, MenuPresenter paramMenuPresenter, int paramInt)
   {
-    boolean bool2 = false;
     Object localObject = (MenuItemImpl)paramMenuItem;
-    boolean bool1 = bool2;
     if (localObject != null)
     {
-      if (((MenuItemImpl)localObject).isEnabled()) {
-        break label33;
+      if (!((MenuItemImpl)localObject).isEnabled()) {
+        return false;
       }
-      bool1 = bool2;
-    }
-    label33:
-    label101:
-    do
-    {
-      return bool1;
-      bool1 = ((MenuItemImpl)localObject).invoke();
+      boolean bool2 = ((MenuItemImpl)localObject).invoke();
       paramMenuItem = ((MenuItemImpl)localObject).getSupportActionProvider();
-      if ((paramMenuItem != null) && (paramMenuItem.hasSubMenu())) {}
-      for (int i = 1;; i = 0)
+      int i;
+      if ((paramMenuItem != null) && (paramMenuItem.hasSubMenu())) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      boolean bool1;
+      if (((MenuItemImpl)localObject).hasCollapsibleActionView())
       {
-        if (!((MenuItemImpl)localObject).hasCollapsibleActionView()) {
-          break label101;
-        }
-        bool2 = ((MenuItemImpl)localObject).expandActionView() | bool1;
+        bool2 |= ((MenuItemImpl)localObject).expandActionView();
         bool1 = bool2;
-        if (!bool2) {
-          break;
+        if (bool2)
+        {
+          close(true);
+          return bool2;
         }
-        close(true);
-        return bool2;
       }
-      if ((!((MenuItemImpl)localObject).hasSubMenu()) && (i == 0)) {
-        break;
+      else if ((!((MenuItemImpl)localObject).hasSubMenu()) && (i == 0))
+      {
+        bool1 = bool2;
+        if ((paramInt & 0x1) == 0)
+        {
+          close(true);
+          return bool2;
+        }
       }
-      if ((paramInt & 0x4) == 0) {
-        close(false);
+      else
+      {
+        if ((paramInt & 0x4) == 0) {
+          close(false);
+        }
+        if (!((MenuItemImpl)localObject).hasSubMenu()) {
+          ((MenuItemImpl)localObject).setSubMenu(new SubMenuBuilder(getContext(), this, (MenuItemImpl)localObject));
+        }
+        localObject = (SubMenuBuilder)((MenuItemImpl)localObject).getSubMenu();
+        if (i != 0) {
+          paramMenuItem.onPrepareSubMenu((SubMenu)localObject);
+        }
+        bool2 |= dispatchSubMenuSelected((SubMenuBuilder)localObject, paramMenuPresenter);
+        bool1 = bool2;
+        if (!bool2)
+        {
+          close(true);
+          bool1 = bool2;
+        }
       }
-      if (!((MenuItemImpl)localObject).hasSubMenu()) {
-        ((MenuItemImpl)localObject).setSubMenu(new SubMenuBuilder(getContext(), this, (MenuItemImpl)localObject));
-      }
-      localObject = (SubMenuBuilder)((MenuItemImpl)localObject).getSubMenu();
-      if (i != 0) {
-        paramMenuItem.onPrepareSubMenu((SubMenu)localObject);
-      }
-      bool2 = dispatchSubMenuSelected((SubMenuBuilder)localObject, paramMenuPresenter) | bool1;
-      bool1 = bool2;
-    } while (bool2);
-    close(true);
-    return bool2;
-    if ((paramInt & 0x1) == 0) {
-      close(true);
+      return bool1;
     }
-    return bool1;
+    return false;
   }
   
   public boolean performShortcut(int paramInt1, KeyEvent paramKeyEvent, int paramInt2)
   {
     paramKeyEvent = findItemWithShortcutForKey(paramInt1, paramKeyEvent);
-    boolean bool = false;
+    boolean bool;
     if (paramKeyEvent != null) {
       bool = performItemAction(paramKeyEvent, paramInt2);
+    } else {
+      bool = false;
     }
     if ((paramInt2 & 0x2) != 0) {
       close(true);
@@ -1011,33 +966,32 @@ public class MenuBuilder
   
   public void restoreActionViewStates(Bundle paramBundle)
   {
-    if (paramBundle == null) {}
-    do
+    if (paramBundle == null) {
+      return;
+    }
+    SparseArray localSparseArray = paramBundle.getSparseParcelableArray(getActionViewStatesKey());
+    int j = size();
+    int i = 0;
+    while (i < j)
     {
-      int i;
-      do
-      {
-        return;
-        SparseArray localSparseArray = paramBundle.getSparseParcelableArray(getActionViewStatesKey());
-        int j = size();
-        i = 0;
-        while (i < j)
-        {
-          MenuItem localMenuItem = getItem(i);
-          View localView = localMenuItem.getActionView();
-          if ((localView != null) && (localView.getId() != -1)) {
-            localView.restoreHierarchyState(localSparseArray);
-          }
-          if (localMenuItem.hasSubMenu()) {
-            ((SubMenuBuilder)localMenuItem.getSubMenu()).restoreActionViewStates(paramBundle);
-          }
-          i += 1;
-        }
-        i = paramBundle.getInt("android:menu:expandedactionview");
-      } while (i <= 0);
+      MenuItem localMenuItem = getItem(i);
+      View localView = localMenuItem.getActionView();
+      if ((localView != null) && (localView.getId() != -1)) {
+        localView.restoreHierarchyState(localSparseArray);
+      }
+      if (localMenuItem.hasSubMenu()) {
+        ((SubMenuBuilder)localMenuItem.getSubMenu()).restoreActionViewStates(paramBundle);
+      }
+      i += 1;
+    }
+    i = paramBundle.getInt("android:menu:expandedactionview");
+    if (i > 0)
+    {
       paramBundle = findItem(i);
-    } while (paramBundle == null);
-    paramBundle.expandActionView();
+      if (paramBundle != null) {
+        paramBundle.expandActionView();
+      }
+    }
   }
   
   public void restorePresenterStates(Bundle paramBundle)
@@ -1048,13 +1002,13 @@ public class MenuBuilder
   public void saveActionViewStates(Bundle paramBundle)
   {
     int j = size();
+    Object localObject1 = null;
     int i = 0;
-    Object localObject3;
-    for (Object localObject1 = null; i < j; localObject1 = localObject3)
+    while (i < j)
     {
       MenuItem localMenuItem = getItem(i);
       View localView = localMenuItem.getActionView();
-      localObject3 = localObject1;
+      Object localObject3 = localObject1;
       if (localView != null)
       {
         localObject3 = localObject1;
@@ -1077,6 +1031,7 @@ public class MenuBuilder
         ((SubMenuBuilder)localMenuItem.getSubMenu()).saveActionViewStates(paramBundle);
       }
       i += 1;
+      localObject1 = localObject3;
     }
     if (localObject1 != null) {
       paramBundle.putSparseParcelableArray(getActionViewStatesKey(), localObject1);
@@ -1110,21 +1065,20 @@ public class MenuBuilder
     int k = this.mItems.size();
     stopDispatchingItemsChanged();
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       MenuItemImpl localMenuItemImpl = (MenuItemImpl)this.mItems.get(i);
-      if ((localMenuItemImpl.getGroupId() != j) || (!localMenuItemImpl.isExclusiveCheckable())) {}
-      while (!localMenuItemImpl.isCheckable())
+      if ((localMenuItemImpl.getGroupId() == j) && (localMenuItemImpl.isExclusiveCheckable()) && (localMenuItemImpl.isCheckable()))
       {
-        i += 1;
-        break;
-      }
-      if (localMenuItemImpl == paramMenuItem) {}
-      for (boolean bool = true;; bool = false)
-      {
+        boolean bool;
+        if (localMenuItemImpl == paramMenuItem) {
+          bool = true;
+        } else {
+          bool = false;
+        }
         localMenuItemImpl.setCheckedInt(bool);
-        break;
       }
+      i += 1;
     }
     startDispatchingItemsChanged();
   }
@@ -1161,26 +1115,24 @@ public class MenuBuilder
   
   public void setGroupVisible(int paramInt, boolean paramBoolean)
   {
-    int k = this.mItems.size();
-    int j = 0;
+    int m = this.mItems.size();
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      MenuItemImpl localMenuItemImpl = (MenuItemImpl)this.mItems.get(j);
-      if ((localMenuItemImpl.getGroupId() != paramInt) || (!localMenuItemImpl.setVisibleInt(paramBoolean))) {
-        break label74;
+      MenuItemImpl localMenuItemImpl = (MenuItemImpl)this.mItems.get(i);
+      k = j;
+      if (localMenuItemImpl.getGroupId() == paramInt)
+      {
+        k = j;
+        if (localMenuItemImpl.setVisibleInt(paramBoolean)) {
+          k = 1;
+        }
       }
-      i = 1;
+      i += 1;
     }
-    label74:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i != 0) {
-        onItemsChanged(true);
-      }
-      return;
+    if (j != 0) {
+      onItemsChanged(true);
     }
   }
   

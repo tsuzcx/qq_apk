@@ -26,14 +26,18 @@ public class dh
   
   public f a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= c())) {}
-    List localList;
-    do
+    if (paramInt >= 0)
     {
-      return null;
-      localList = a();
-    } while (localList == null);
-    return (f)localList.get(paramInt);
+      if (paramInt >= c()) {
+        return null;
+      }
+      List localList = a();
+      if (localList == null) {
+        return null;
+      }
+      return (f)localList.get(paramInt);
+    }
+    return null;
   }
   
   public List<f> a()
@@ -57,72 +61,75 @@ public class dh
   
   public void a(List<f> paramList)
   {
-    Object localObject;
-    f localf;
     try
     {
       if (this.b == null) {
         this.b = cs.a().h.a("account_prot");
       }
-      if (this.b.mClientVersion <= this.b.mClickVersion) {
-        break label259;
-      }
-      if (this.b.mClickVersion == -1)
+      if (this.b.mClientVersion > this.b.mClickVersion)
       {
-        if (this.b.mConfIDs == null) {
-          break label259;
-        }
-        localObject = this.b.mConfIDs.iterator();
-        while (((Iterator)localObject).hasNext())
+        Object localObject;
+        Iterator localIterator;
+        f localf;
+        if (this.b.mClickVersion == -1)
         {
-          int i = ((Integer)((Iterator)localObject).next()).intValue();
+          if (this.b.mConfIDs != null)
+          {
+            localObject = this.b.mConfIDs.iterator();
+            while (((Iterator)localObject).hasNext())
+            {
+              int i = ((Integer)((Iterator)localObject).next()).intValue();
+              localIterator = paramList.iterator();
+              while (localIterator.hasNext())
+              {
+                localf = (f)localIterator.next();
+                if (i == localf.a) {
+                  localf.f = true;
+                }
+              }
+            }
+          }
+        }
+        else
+        {
+          localObject = new HashSet();
+          localIterator = this.a.iterator();
+          while (localIterator.hasNext()) {
+            ((Set)localObject).add(Integer.valueOf(((f)localIterator.next()).a));
+          }
           localIterator = paramList.iterator();
           while (localIterator.hasNext())
           {
             localf = (f)localIterator.next();
-            if (i == localf.a) {
+            if (!((Set)localObject).contains(Integer.valueOf(localf.a))) {
               localf.f = true;
             }
           }
         }
       }
-      localObject = new HashSet();
+      this.a.clear();
+      this.a = paramList;
+      this.c = cr.c;
+      if (cr.a().e() != null) {
+        this.d = cr.a().e().mUin;
+      }
+      return;
     }
     finally {}
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((Set)localObject).add(Integer.valueOf(((f)localIterator.next()).a));
-    }
-    localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      localf = (f)localIterator.next();
-      if (!((Set)localObject).contains(Integer.valueOf(localf.a))) {
-        localf.f = true;
-      }
-    }
-    label259:
-    this.a.clear();
-    this.a = paramList;
-    this.c = cr.c;
-    if (cr.a().e() != null) {
-      this.d = cr.a().e().mUin;
-    }
   }
   
   public boolean a(JSONArray paramJSONArray)
   {
     boolean bool;
-    ArrayList localArrayList1;
-    ArrayList localArrayList2;
-    if (paramJSONArray != null)
-    {
+    if (paramJSONArray != null) {
       bool = true;
-      g.a(bool);
-      localArrayList1 = new ArrayList();
-      localArrayList2 = new ArrayList();
-      if (paramJSONArray == null) {}
+    } else {
+      bool = false;
     }
+    g.a(bool);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    if (paramJSONArray != null) {}
     for (;;)
     {
       try
@@ -131,30 +138,34 @@ public class dh
         {
           i = 0;
           if (i >= paramJSONArray.length()) {
-            break label234;
+            break label247;
           }
-          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-          if (localJSONObject == null) {
-            break label229;
+          Object localObject = paramJSONArray.getJSONObject(i);
+          if (localObject == null) {
+            break label242;
           }
           bool = true;
           g.a(bool);
           f localf = new f();
-          if (!localf.a(localJSONObject)) {
-            g.c("object item parse failed: " + i);
+          if (!localf.a((JSONObject)localObject))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("object item parse failed: ");
+            ((StringBuilder)localObject).append(i);
+            g.c(((StringBuilder)localObject).toString());
           }
           localArrayList1.add(localf);
           i += 1;
           continue;
           if (i >= localArrayList1.size()) {
-            break label246;
+            break label259;
           }
           paramJSONArray = (f)localArrayList1.get(i);
           if (paramJSONArray.g) {
-            break label239;
+            break label252;
           }
           localArrayList2.add(paramJSONArray);
-          break label239;
+          break label252;
           if (i < localArrayList1.size())
           {
             paramJSONArray = (f)localArrayList1.get(i);
@@ -172,18 +183,16 @@ public class dh
       {
         return false;
       }
-      bool = false;
-      break;
-      label229:
+      label242:
       bool = false;
       continue;
-      label234:
+      label247:
       int i = 0;
       continue;
-      label239:
+      label252:
       i += 1;
       continue;
-      label246:
+      label259:
       i = 0;
     }
   }
@@ -207,11 +216,15 @@ public class dh
   public boolean b()
   {
     QQUser localQQUser = cr.a().e();
-    if ((this.c == null) || (localQQUser == null)) {}
-    while ((!this.c.equals(cr.c)) || (this.d != cr.a().e().mUin) || (!this.e)) {
-      return false;
+    String str = this.c;
+    if (str != null)
+    {
+      if (localQQUser == null) {
+        return false;
+      }
+      return (str.equals(cr.c)) && (this.d == cr.a().e().mUin) && (this.e);
     }
-    return true;
+    return false;
   }
   
   public int c()
@@ -225,28 +238,24 @@ public class dh
   
   public int d()
   {
-    int i = 0;
-    int k = 0;
     try
     {
       List localList = a();
-      if (localList == null) {}
-      int j;
-      do
+      int i = 0;
+      if (localList == null) {
+        return 0;
+      }
+      int k;
+      for (int j = 0; i < localList.size(); j = k)
       {
-        return k;
-        j = 0;
-        k = i;
-      } while (j >= localList.size());
-      boolean bool = ((f)localList.get(j)).g;
-      if (!bool) {
+        boolean bool = ((f)localList.get(i)).g;
+        k = j;
+        if (!bool) {
+          k = j + 1;
+        }
         i += 1;
       }
-      for (;;)
-      {
-        j += 1;
-        break;
-      }
+      return j;
     }
     finally {}
   }

@@ -16,15 +16,23 @@ public class PrefixPrinter
   
   public static Printer create(Printer paramPrinter, String paramString)
   {
-    if ((paramString == null) || (paramString.equals(""))) {
-      return paramPrinter;
+    if (paramString != null)
+    {
+      if (paramString.equals("")) {
+        return paramPrinter;
+      }
+      return new PrefixPrinter(paramPrinter, paramString);
     }
-    return new PrefixPrinter(paramPrinter, paramString);
+    return paramPrinter;
   }
   
   public void println(String paramString)
   {
-    this.mPrinter.println(this.mPrefix + paramString);
+    Printer localPrinter = this.mPrinter;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mPrefix);
+    localStringBuilder.append(paramString);
+    localPrinter.println(localStringBuilder.toString());
   }
 }
 

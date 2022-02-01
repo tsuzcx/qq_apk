@@ -140,48 +140,29 @@ public final class NotificationManagerCompat
   
   public boolean areNotificationsEnabled()
   {
-    boolean bool = true;
     if (Build.VERSION.SDK_INT >= 24) {
-      bool = this.mNotificationManager.areNotificationsEnabled();
+      return this.mNotificationManager.areNotificationsEnabled();
     }
-    while (Build.VERSION.SDK_INT < 19) {
-      return bool;
+    AppOpsManager localAppOpsManager;
+    Object localObject;
+    String str;
+    int i;
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      localAppOpsManager = (AppOpsManager)this.mContext.getSystemService("appops");
+      localObject = this.mContext.getApplicationInfo();
+      str = this.mContext.getApplicationContext().getPackageName();
+      i = ((ApplicationInfo)localObject).uid;
     }
-    AppOpsManager localAppOpsManager = (AppOpsManager)this.mContext.getSystemService("appops");
-    Object localObject = this.mContext.getApplicationInfo();
-    String str = this.mContext.getApplicationContext().getPackageName();
-    int i = ((ApplicationInfo)localObject).uid;
     try
     {
       localObject = Class.forName(AppOpsManager.class.getName());
       i = ((Integer)((Class)localObject).getMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class }).invoke(localAppOpsManager, new Object[] { Integer.valueOf(((Integer)((Class)localObject).getDeclaredField("OP_POST_NOTIFICATION").get(Integer.class)).intValue()), Integer.valueOf(i), str })).intValue();
-      if (i == 0) {}
-      for (bool = true;; bool = false) {
-        return bool;
-      }
-      return true;
+      return i == 0;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      return true;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      return true;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      return true;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      return true;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      return true;
-    }
-    catch (InvocationTargetException localInvocationTargetException) {}
+    catch (ClassNotFoundException|NoSuchMethodException|NoSuchFieldException|InvocationTargetException|IllegalAccessException|RuntimeException localClassNotFoundException) {}
+    return true;
+    return true;
   }
   
   public void cancel(int paramInt)
@@ -266,10 +247,14 @@ public final class NotificationManagerCompat
     public String toString()
     {
       StringBuilder localStringBuilder = new StringBuilder("CancelTask[");
-      localStringBuilder.append("packageName:").append(this.packageName);
-      localStringBuilder.append(", id:").append(this.id);
-      localStringBuilder.append(", tag:").append(this.tag);
-      localStringBuilder.append(", all:").append(this.all);
+      localStringBuilder.append("packageName:");
+      localStringBuilder.append(this.packageName);
+      localStringBuilder.append(", id:");
+      localStringBuilder.append(this.id);
+      localStringBuilder.append(", tag:");
+      localStringBuilder.append(this.tag);
+      localStringBuilder.append(", all:");
+      localStringBuilder.append(this.all);
       localStringBuilder.append("]");
       return localStringBuilder.toString();
     }
@@ -299,9 +284,12 @@ public final class NotificationManagerCompat
     public String toString()
     {
       StringBuilder localStringBuilder = new StringBuilder("NotifyTask[");
-      localStringBuilder.append("packageName:").append(this.packageName);
-      localStringBuilder.append(", id:").append(this.id);
-      localStringBuilder.append(", tag:").append(this.tag);
+      localStringBuilder.append("packageName:");
+      localStringBuilder.append(this.packageName);
+      localStringBuilder.append(", id:");
+      localStringBuilder.append(this.id);
+      localStringBuilder.append(", tag:");
+      localStringBuilder.append(this.tag);
       localStringBuilder.append("]");
       return localStringBuilder.toString();
     }
@@ -345,17 +333,21 @@ public final class NotificationManagerCompat
       if (paramListenerRecord.bound) {
         return true;
       }
-      Intent localIntent = new Intent("android.support.BIND_NOTIFICATION_SIDE_CHANNEL").setComponent(paramListenerRecord.componentName);
-      paramListenerRecord.bound = this.mContext.bindService(localIntent, this, 33);
-      if (paramListenerRecord.bound) {
+      Object localObject = new Intent("android.support.BIND_NOTIFICATION_SIDE_CHANNEL").setComponent(paramListenerRecord.componentName);
+      paramListenerRecord.bound = this.mContext.bindService((Intent)localObject, this, 33);
+      if (paramListenerRecord.bound)
+      {
         paramListenerRecord.retryCount = 0;
       }
-      for (;;)
+      else
       {
-        return paramListenerRecord.bound;
-        Log.w("NotifManCompat", "Unable to bind to listener " + paramListenerRecord.componentName);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Unable to bind to listener ");
+        ((StringBuilder)localObject).append(paramListenerRecord.componentName);
+        Log.w("NotifManCompat", ((StringBuilder)localObject).toString());
         this.mContext.unbindService(this);
       }
+      return paramListenerRecord.bound;
     }
     
     private void ensureServiceUnbound(ListenerRecord paramListenerRecord)
@@ -409,49 +401,65 @@ public final class NotificationManagerCompat
     
     private void processListenerQueue(ListenerRecord paramListenerRecord)
     {
-      if (Log.isLoggable("NotifManCompat", 3)) {
-        Log.d("NotifManCompat", "Processing component " + paramListenerRecord.componentName + ", " + paramListenerRecord.taskQueue.size() + " queued tasks");
-      }
-      if (paramListenerRecord.taskQueue.isEmpty()) {}
-      do
+      Object localObject;
+      if (Log.isLoggable("NotifManCompat", 3))
       {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Processing component ");
+        ((StringBuilder)localObject).append(paramListenerRecord.componentName);
+        ((StringBuilder)localObject).append(", ");
+        ((StringBuilder)localObject).append(paramListenerRecord.taskQueue.size());
+        ((StringBuilder)localObject).append(" queued tasks");
+        Log.d("NotifManCompat", ((StringBuilder)localObject).toString());
+      }
+      if (paramListenerRecord.taskQueue.isEmpty()) {
         return;
-        if ((!ensureServiceBound(paramListenerRecord)) || (paramListenerRecord.service == null))
-        {
-          scheduleListenerRetry(paramListenerRecord);
-          return;
-        }
+      }
+      if ((ensureServiceBound(paramListenerRecord)) && (paramListenerRecord.service != null)) {}
+      for (;;)
+      {
+        localObject = (NotificationManagerCompat.Task)paramListenerRecord.taskQueue.peek();
+        if (localObject != null) {}
         try
         {
-          Object localObject;
-          do
+          if (Log.isLoggable("NotifManCompat", 3))
           {
-            if (Log.isLoggable("NotifManCompat", 3)) {
-              Log.d("NotifManCompat", "Sending task " + localObject);
-            }
-            ((NotificationManagerCompat.Task)localObject).send(paramListenerRecord.service);
-            paramListenerRecord.taskQueue.remove();
-            localObject = (NotificationManagerCompat.Task)paramListenerRecord.taskQueue.peek();
-          } while (localObject != null);
-        }
-        catch (DeadObjectException localDeadObjectException)
-        {
-          for (;;)
-          {
-            if (Log.isLoggable("NotifManCompat", 3)) {
-              Log.d("NotifManCompat", "Remote service has died: " + paramListenerRecord.componentName);
-            }
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("Sending task ");
+            localStringBuilder2.append(localObject);
+            Log.d("NotifManCompat", localStringBuilder2.toString());
           }
+          ((NotificationManagerCompat.Task)localObject).send(paramListenerRecord.service);
+          paramListenerRecord.taskQueue.remove();
         }
         catch (RemoteException localRemoteException)
         {
-          for (;;)
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("RemoteException communicating with ");
+          localStringBuilder2.append(paramListenerRecord.componentName);
+          Log.w("NotifManCompat", localStringBuilder2.toString(), localRemoteException);
+          break label259;
+          if (Log.isLoggable("NotifManCompat", 3))
           {
-            Log.w("NotifManCompat", "RemoteException communicating with " + paramListenerRecord.componentName, localRemoteException);
+            StringBuilder localStringBuilder1 = new StringBuilder();
+            localStringBuilder1.append("Remote service has died: ");
+            localStringBuilder1.append(paramListenerRecord.componentName);
+            Log.d("NotifManCompat", localStringBuilder1.toString());
           }
+          label259:
+          if (!paramListenerRecord.taskQueue.isEmpty()) {
+            scheduleListenerRetry(paramListenerRecord);
+          }
+          return;
+          scheduleListenerRetry(paramListenerRecord);
+          return;
         }
-      } while (paramListenerRecord.taskQueue.isEmpty());
-      scheduleListenerRetry(paramListenerRecord);
+        catch (DeadObjectException localDeadObjectException)
+        {
+          label216:
+          break label216;
+        }
+      }
     }
     
     private void scheduleListenerRetry(ListenerRecord paramListenerRecord)
@@ -460,15 +468,29 @@ public final class NotificationManagerCompat
         return;
       }
       paramListenerRecord.retryCount += 1;
+      StringBuilder localStringBuilder;
       if (paramListenerRecord.retryCount > 6)
       {
-        Log.w("NotifManCompat", "Giving up on delivering " + paramListenerRecord.taskQueue.size() + " tasks to " + paramListenerRecord.componentName + " after " + paramListenerRecord.retryCount + " retries");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Giving up on delivering ");
+        localStringBuilder.append(paramListenerRecord.taskQueue.size());
+        localStringBuilder.append(" tasks to ");
+        localStringBuilder.append(paramListenerRecord.componentName);
+        localStringBuilder.append(" after ");
+        localStringBuilder.append(paramListenerRecord.retryCount);
+        localStringBuilder.append(" retries");
+        Log.w("NotifManCompat", localStringBuilder.toString());
         paramListenerRecord.taskQueue.clear();
         return;
       }
       int i = (1 << paramListenerRecord.retryCount - 1) * 1000;
-      if (Log.isLoggable("NotifManCompat", 3)) {
-        Log.d("NotifManCompat", "Scheduling retry for " + i + " ms");
+      if (Log.isLoggable("NotifManCompat", 3))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Scheduling retry for ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" ms");
+        Log.d("NotifManCompat", localStringBuilder.toString());
       }
       paramListenerRecord = this.mHandler.obtainMessage(3, paramListenerRecord.componentName);
       this.mHandler.sendMessageDelayed(paramListenerRecord, i);
@@ -477,51 +499,65 @@ public final class NotificationManagerCompat
     private void updateListenerMap()
     {
       Object localObject1 = NotificationManagerCompat.getEnabledListenerPackages(this.mContext);
-      if (((Set)localObject1).equals(this.mCachedEnabledPackages)) {}
-      for (;;)
-      {
+      if (((Set)localObject1).equals(this.mCachedEnabledPackages)) {
         return;
-        this.mCachedEnabledPackages = ((Set)localObject1);
-        Object localObject2 = this.mContext.getPackageManager().queryIntentServices(new Intent().setAction("android.support.BIND_NOTIFICATION_SIDE_CHANNEL"), 0);
-        HashSet localHashSet = new HashSet();
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
+      }
+      this.mCachedEnabledPackages = ((Set)localObject1);
+      Object localObject2 = this.mContext.getPackageManager().queryIntentServices(new Intent().setAction("android.support.BIND_NOTIFICATION_SIDE_CHANNEL"), 0);
+      HashSet localHashSet = new HashSet();
+      localObject2 = ((List)localObject2).iterator();
+      Object localObject3;
+      while (((Iterator)localObject2).hasNext())
+      {
+        Object localObject4 = (ResolveInfo)((Iterator)localObject2).next();
+        if (((Set)localObject1).contains(((ResolveInfo)localObject4).serviceInfo.packageName))
         {
-          ResolveInfo localResolveInfo = (ResolveInfo)((Iterator)localObject2).next();
-          if (((Set)localObject1).contains(localResolveInfo.serviceInfo.packageName))
+          localObject3 = new ComponentName(((ResolveInfo)localObject4).serviceInfo.packageName, ((ResolveInfo)localObject4).serviceInfo.name);
+          if (((ResolveInfo)localObject4).serviceInfo.permission != null)
           {
-            ComponentName localComponentName = new ComponentName(localResolveInfo.serviceInfo.packageName, localResolveInfo.serviceInfo.name);
-            if (localResolveInfo.serviceInfo.permission != null) {
-              Log.w("NotifManCompat", "Permission present on component " + localComponentName + ", not adding listener record.");
-            } else {
-              localHashSet.add(localComponentName);
-            }
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("Permission present on component ");
+            ((StringBuilder)localObject4).append(localObject3);
+            ((StringBuilder)localObject4).append(", not adding listener record.");
+            Log.w("NotifManCompat", ((StringBuilder)localObject4).toString());
+          }
+          else
+          {
+            localHashSet.add(localObject3);
           }
         }
-        localObject1 = localHashSet.iterator();
-        while (((Iterator)localObject1).hasNext())
+      }
+      localObject1 = localHashSet.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (ComponentName)((Iterator)localObject1).next();
+        if (!this.mRecordMap.containsKey(localObject2))
         {
-          localObject2 = (ComponentName)((Iterator)localObject1).next();
-          if (!this.mRecordMap.containsKey(localObject2))
+          if (Log.isLoggable("NotifManCompat", 3))
           {
-            if (Log.isLoggable("NotifManCompat", 3)) {
-              Log.d("NotifManCompat", "Adding listener record for " + localObject2);
-            }
-            this.mRecordMap.put(localObject2, new ListenerRecord((ComponentName)localObject2));
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("Adding listener record for ");
+            ((StringBuilder)localObject3).append(localObject2);
+            Log.d("NotifManCompat", ((StringBuilder)localObject3).toString());
           }
+          this.mRecordMap.put(localObject2, new ListenerRecord((ComponentName)localObject2));
         }
-        localObject1 = this.mRecordMap.entrySet().iterator();
-        while (((Iterator)localObject1).hasNext())
+      }
+      localObject1 = this.mRecordMap.entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (Map.Entry)((Iterator)localObject1).next();
+        if (!localHashSet.contains(((Map.Entry)localObject2).getKey()))
         {
-          localObject2 = (Map.Entry)((Iterator)localObject1).next();
-          if (!localHashSet.contains(((Map.Entry)localObject2).getKey()))
+          if (Log.isLoggable("NotifManCompat", 3))
           {
-            if (Log.isLoggable("NotifManCompat", 3)) {
-              Log.d("NotifManCompat", "Removing listener record for " + ((Map.Entry)localObject2).getKey());
-            }
-            ensureServiceUnbound((ListenerRecord)((Map.Entry)localObject2).getValue());
-            ((Iterator)localObject1).remove();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("Removing listener record for ");
+            ((StringBuilder)localObject3).append(((Map.Entry)localObject2).getKey());
+            Log.d("NotifManCompat", ((StringBuilder)localObject3).toString());
           }
+          ensureServiceUnbound((ListenerRecord)((Map.Entry)localObject2).getValue());
+          ((Iterator)localObject1).remove();
         }
       }
     }
@@ -532,33 +568,41 @@ public final class NotificationManagerCompat
       {
       default: 
         return false;
-      case 0: 
-        handleQueueTask((NotificationManagerCompat.Task)paramMessage.obj);
+      case 3: 
+        handleRetryListenerQueue((ComponentName)paramMessage.obj);
+        return true;
+      case 2: 
+        handleServiceDisconnected((ComponentName)paramMessage.obj);
         return true;
       case 1: 
         paramMessage = (NotificationManagerCompat.ServiceConnectedEvent)paramMessage.obj;
         handleServiceConnected(paramMessage.componentName, paramMessage.iBinder);
         return true;
-      case 2: 
-        handleServiceDisconnected((ComponentName)paramMessage.obj);
-        return true;
       }
-      handleRetryListenerQueue((ComponentName)paramMessage.obj);
+      handleQueueTask((NotificationManagerCompat.Task)paramMessage.obj);
       return true;
     }
     
     public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
     {
-      if (Log.isLoggable("NotifManCompat", 3)) {
-        Log.d("NotifManCompat", "Connected to service " + paramComponentName);
+      if (Log.isLoggable("NotifManCompat", 3))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Connected to service ");
+        localStringBuilder.append(paramComponentName);
+        Log.d("NotifManCompat", localStringBuilder.toString());
       }
       this.mHandler.obtainMessage(1, new NotificationManagerCompat.ServiceConnectedEvent(paramComponentName, paramIBinder)).sendToTarget();
     }
     
     public void onServiceDisconnected(ComponentName paramComponentName)
     {
-      if (Log.isLoggable("NotifManCompat", 3)) {
-        Log.d("NotifManCompat", "Disconnected from service " + paramComponentName);
+      if (Log.isLoggable("NotifManCompat", 3))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Disconnected from service ");
+        localStringBuilder.append(paramComponentName);
+        Log.d("NotifManCompat", localStringBuilder.toString());
       }
       this.mHandler.obtainMessage(2, paramComponentName).sendToTarget();
     }

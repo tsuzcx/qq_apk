@@ -4,16 +4,18 @@ class dr
 {
   int[] a;
   int b;
-  int c = 0;
+  int c;
   
   dr()
   {
+    this.c = 0;
     this.a = new int[1];
     this.b = 0;
   }
   
   dr(int paramInt)
   {
+    this.c = 0;
     this.a = new int[1];
     this.b = 1;
     this.a[0] = paramInt;
@@ -21,6 +23,7 @@ class dr
   
   dr(dq paramdq)
   {
+    this.c = 0;
     this.a = new int[paramdq.b.length];
     System.arraycopy(paramdq.b, 0, this.a, 0, paramdq.b.length);
     this.b = this.a.length;
@@ -28,6 +31,8 @@ class dr
   
   dr(dr paramdr)
   {
+    int i = 0;
+    this.c = 0;
     this.b = paramdr.b;
     this.a = new int[this.b];
     while (i < this.b)
@@ -39,43 +44,46 @@ class dr
   
   dr(int[] paramArrayOfInt)
   {
+    this.c = 0;
     this.a = paramArrayOfInt;
     this.b = paramArrayOfInt.length;
   }
   
   private int a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt)
   {
-    long l = 0L;
     int i = paramArrayOfInt1.length - 1;
+    long l1 = 0L;
     while (i >= 0)
     {
-      l += (paramArrayOfInt1[i] & 0xFFFFFFFF) + (paramArrayOfInt2[(i + paramInt)] & 0xFFFFFFFF);
-      paramArrayOfInt2[(i + paramInt)] = ((int)l);
-      l >>>= 32;
+      long l2 = paramArrayOfInt1[i];
+      int j = i + paramInt;
+      l1 = (l2 & 0xFFFFFFFF) + (0xFFFFFFFF & paramArrayOfInt2[j]) + l1;
+      paramArrayOfInt2[j] = ((int)l1);
+      l1 >>>= 32;
       i -= 1;
     }
-    return (int)l;
+    return (int)l1;
   }
   
   private int a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, int paramInt3)
   {
     long l2 = paramInt1;
-    long l1 = 0L;
     paramInt1 = paramInt3 + paramInt2;
     paramInt2 -= 1;
-    if (paramInt2 >= 0)
+    long l1 = 0L;
+    while (paramInt2 >= 0)
     {
-      l1 += (paramArrayOfInt2[paramInt2] & 0xFFFFFFFF) * (l2 & 0xFFFFFFFF);
+      l1 = (paramArrayOfInt2[paramInt2] & 0xFFFFFFFF) * (l2 & 0xFFFFFFFF) + l1;
       long l3 = paramArrayOfInt1[paramInt1] - l1;
       paramArrayOfInt1[paramInt1] = ((int)l3);
-      if ((l3 & 0xFFFFFFFF) > (((int)l1 ^ 0xFFFFFFFF) & 0xFFFFFFFF)) {}
-      for (paramInt3 = 1;; paramInt3 = 0)
-      {
-        l1 = paramInt3 + (l1 >>> 32);
-        paramInt2 -= 1;
-        paramInt1 -= 1;
-        break;
+      if ((l3 & 0xFFFFFFFF) > (((int)l1 ^ 0xFFFFFFFF) & 0xFFFFFFFF)) {
+        paramInt3 = 1;
+      } else {
+        paramInt3 = 0;
       }
+      l1 = paramInt3 + (l1 >>> 32);
+      paramInt2 -= 1;
+      paramInt1 -= 1;
     }
     return (int)l1;
   }
@@ -119,33 +127,30 @@ class dr
       paramArrayOfInt[1] = 0;
       return;
     }
-    long l1 = (paramLong >>> 1) / (l4 >>> 1);
-    long l2 = paramLong - l1 * l4;
-    paramLong = l1;
-    l1 = l2;
+    long l2 = (paramLong >>> 1) / (l4 >>> 1);
+    long l1 = paramLong - l2 * l4;
     long l3;
-    for (;;)
+    for (paramLong = l2;; paramLong -= 1L)
     {
-      l2 = l1;
-      l3 = paramLong;
+      l2 = paramLong;
+      l3 = l1;
       if (l1 >= 0L) {
         break;
       }
       l1 += l4;
-      paramLong -= 1L;
     }
-    while (l2 >= l4)
+    while (l3 >= l4)
     {
-      l2 -= l4;
-      l3 += 1L;
+      l3 -= l4;
+      l2 += 1L;
     }
-    paramArrayOfInt[0] = ((int)l3);
-    paramArrayOfInt[1] = ((int)l2);
+    paramArrayOfInt[0] = ((int)l2);
+    paramArrayOfInt[1] = ((int)l3);
   }
   
   private boolean a(long paramLong1, long paramLong2)
   {
-    return paramLong1 - -9223372036854775808L > -9223372036854775808L + paramLong2;
+    return paramLong1 - -9223372036854775808L > paramLong2 - -9223372036854775808L;
   }
   
   static int d(int paramInt)
@@ -158,96 +163,98 @@ class dr
   
   private dr f(dr paramdr)
   {
-    dr localdr2 = new dr(paramdr);
-    Object localObject1 = new dr(this);
-    Object localObject3 = new dr(localdr2);
-    paramdr = new ds(1);
-    Object localObject2 = new ds();
+    dr localdr = new dr(paramdr);
+    Object localObject3 = new dr(this);
+    Object localObject2 = new dr(localdr);
+    Object localObject1 = new ds(1);
+    paramdr = new ds();
     int i;
-    if (((dr)localObject1).g())
+    if (((dr)localObject3).g())
     {
-      i = ((dr)localObject1).i();
-      ((dr)localObject1).a(i);
-      ((ds)localObject2).b(i);
+      i = ((dr)localObject3).i();
+      ((dr)localObject3).a(i);
+      paramdr.b(i);
     }
-    for (;;)
+    else
     {
-      if (!((dr)localObject1).e())
-      {
-        if (((dr)localObject1).f()) {
-          throw new ArithmeticException("BigInteger not invertible.");
-        }
-        if (((dr)localObject1).a((dr)localObject3) >= 0) {
-          break label255;
-        }
-      }
-      for (;;)
-      {
-        if (((localObject3.a[(localObject3.c + localObject3.b - 1)] ^ localObject1.a[(localObject1.c + localObject1.b - 1)]) & 0x3) == 0)
-        {
-          ((dr)localObject3).d((dr)localObject1);
-          ((ds)localObject2).b(paramdr);
-        }
-        for (;;)
-        {
-          int j = ((dr)localObject3).i();
-          ((dr)localObject3).a(j);
-          paramdr.b(j);
-          i += j;
-          localdr1 = paramdr;
-          localObject4 = localObject1;
-          paramdr = (dr)localObject2;
-          localObject2 = localdr1;
-          localObject1 = localObject3;
-          localObject3 = localObject4;
-          break;
-          ((dr)localObject3).c((dr)localObject1);
-          ((ds)localObject2).a(paramdr);
-        }
-        while (paramdr.d < 0) {
-          paramdr.f(localdr2);
-        }
-        return a(paramdr, localdr2, i);
-        label255:
-        dr localdr1 = paramdr;
-        paramdr = (dr)localObject2;
-        Object localObject4 = localObject1;
-        localObject1 = localObject3;
-        localObject2 = localdr1;
-        localObject3 = localObject4;
-      }
       i = 0;
     }
+    while (!((dr)localObject3).e()) {
+      if (!((dr)localObject3).f())
+      {
+        Object localObject7 = localObject2;
+        Object localObject6 = localObject1;
+        Object localObject5 = paramdr;
+        Object localObject4 = localObject3;
+        if (((dr)localObject3).a((dr)localObject2) < 0)
+        {
+          localObject4 = localObject2;
+          localObject5 = localObject1;
+          localObject6 = paramdr;
+          localObject7 = localObject3;
+        }
+        if (((localObject4.a[(localObject4.c + localObject4.b - 1)] ^ localObject7.a[(localObject7.c + localObject7.b - 1)]) & 0x3) == 0)
+        {
+          localObject4.d(localObject7);
+          ((ds)localObject6).b((ds)localObject5);
+        }
+        else
+        {
+          localObject4.c(localObject7);
+          ((ds)localObject6).a((ds)localObject5);
+        }
+        int j = localObject4.i();
+        localObject4.a(j);
+        ((ds)localObject5).b(j);
+        i += j;
+        localObject2 = localObject7;
+        localObject1 = localObject6;
+        paramdr = (dr)localObject5;
+        localObject3 = localObject4;
+      }
+      else
+      {
+        throw new ArithmeticException("BigInteger not invertible.");
+      }
+    }
+    while (((ds)localObject1).d < 0) {
+      ((ds)localObject1).f(localdr);
+    }
+    return a((dr)localObject1, localdr, i);
   }
   
   private final void f(int paramInt)
   {
     int[] arrayOfInt = this.a;
-    int j = this.c + this.b - 1;
+    int i = this.c + this.b - 1;
     int k;
-    for (int i = arrayOfInt[j]; j > this.c; i = k)
+    for (int j = arrayOfInt[i];; j = k)
     {
-      k = arrayOfInt[(j - 1)];
-      arrayOfInt[j] = (i >>> paramInt | k << 32 - paramInt);
-      j -= 1;
+      k = this.c;
+      if (i <= k) {
+        break;
+      }
+      k = arrayOfInt[(i - 1)];
+      arrayOfInt[i] = (j >>> paramInt | k << 32 - paramInt);
+      i -= 1;
     }
-    i = this.c;
-    arrayOfInt[i] >>>= paramInt;
+    arrayOfInt[k] >>>= paramInt;
   }
   
   private final void g(int paramInt)
   {
     int[] arrayOfInt = this.a;
     int k = this.c;
-    int i = arrayOfInt[k];
-    int n = this.b;
-    int j = k;
-    while (j < n + k - 1)
+    int j = arrayOfInt[k];
+    int i1 = this.b;
+    int i = k;
+    while (i < i1 + k - 1)
     {
-      int m = arrayOfInt[(j + 1)];
-      arrayOfInt[j] = (i << paramInt | m >>> 32 - paramInt);
-      j += 1;
-      i = m;
+      int n = i + 1;
+      int m = arrayOfInt[n];
+      arrayOfInt[i] = (j << paramInt | m >>> 32 - paramInt);
+      i = n;
+      j = m;
     }
     i = this.c + this.b - 1;
     arrayOfInt[i] <<= paramInt;
@@ -255,50 +262,45 @@ class dr
   
   private final int i()
   {
-    if (this.b == 0) {}
-    int i;
-    int j;
-    do
-    {
+    int i = this.b;
+    if (i == 0) {
       return -1;
-      i = this.b - 1;
-      while ((i > 0) && (this.a[(this.c + i)] == 0)) {
-        i -= 1;
-      }
-      j = this.a[(this.c + i)];
-    } while (j == 0);
+    }
+    i -= 1;
+    while ((i > 0) && (this.a[(this.c + i)] == 0)) {
+      i -= 1;
+    }
+    int j = this.a[(this.c + i)];
+    if (j == 0) {
+      return -1;
+    }
     return (this.b - 1 - i << 5) + dq.f(j);
   }
   
   final int a(dr paramdr)
   {
-    int k = 0;
-    int j;
-    if (this.b < paramdr.b)
-    {
-      j = -1;
-      return j;
+    int i = this.b;
+    int j = paramdr.b;
+    if (i < j) {
+      return -1;
     }
-    if (this.b > paramdr.b) {
+    if (i > j) {
       return 1;
     }
-    int i = 0;
-    for (;;)
+    i = 0;
+    while (i < this.b)
     {
-      j = k;
-      if (i >= this.b) {
-        break;
-      }
       j = this.a[(this.c + i)] - -2147483648;
-      int m = paramdr.a[(paramdr.c + i)] - -2147483648;
-      if (j < m) {
+      int k = paramdr.a[(paramdr.c + i)] - -2147483648;
+      if (j < k) {
         return -1;
       }
-      if (j > m) {
+      if (j > k) {
         return 1;
       }
       i += 1;
     }
+    return 0;
   }
   
   void a()
@@ -316,21 +318,22 @@ class dr
   
   void a(int paramInt)
   {
-    if (this.b == 0) {}
-    int i;
-    do
-    {
+    int i = this.b;
+    if (i == 0) {
       return;
-      i = paramInt & 0x1F;
-      this.b -= (paramInt >>> 5);
-    } while (i == 0);
-    if (i >= dq.d(this.a[this.c]))
+    }
+    int j = paramInt & 0x1F;
+    this.b = (i - (paramInt >>> 5));
+    if (j == 0) {
+      return;
+    }
+    if (j >= dq.d(this.a[this.c]))
     {
-      g(32 - i);
+      g(32 - j);
       this.b -= 1;
       return;
     }
-    f(i);
+    f(j);
   }
   
   void a(int paramInt, dr paramdr)
@@ -346,233 +349,263 @@ class dr
       return;
     }
     long l2 = paramInt;
-    if (paramdr.a.length < this.b + 1) {}
-    long l1;
-    for (int[] arrayOfInt = new int[this.b + 1];; arrayOfInt = paramdr.a)
+    int[] arrayOfInt = paramdr.a;
+    paramInt = arrayOfInt.length;
+    int i = this.b;
+    if (paramInt < i + 1) {
+      arrayOfInt = new int[i + 1];
+    }
+    paramInt = this.b - 1;
+    long l1 = 0L;
+    while (paramInt >= 0)
     {
-      l1 = 0L;
-      paramInt = this.b - 1;
-      while (paramInt >= 0)
-      {
-        l1 += (this.a[(this.c + paramInt)] & 0xFFFFFFFF) * (l2 & 0xFFFFFFFF);
-        arrayOfInt[(paramInt + 1)] = ((int)l1);
-        l1 >>>= 32;
-        paramInt -= 1;
-      }
+      l1 = (this.a[(this.c + paramInt)] & 0xFFFFFFFF) * (l2 & 0xFFFFFFFF) + l1;
+      arrayOfInt[(paramInt + 1)] = ((int)l1);
+      l1 >>>= 32;
+      paramInt -= 1;
     }
     if (l1 == 0L)
     {
       paramdr.c = 1;
       paramdr.b = this.b;
     }
-    for (;;)
+    else
     {
-      paramdr.a = arrayOfInt;
-      return;
       paramdr.c = 0;
       this.b += 1;
       arrayOfInt[0] = ((int)l1);
     }
+    paramdr.a = arrayOfInt;
   }
   
   void a(dr paramdr1, dr paramdr2)
   {
-    int k = this.b;
+    int n = this.b;
     int m = paramdr1.b;
-    int i = k + m;
+    int i = n + m;
     if (paramdr2.a.length < i) {
       paramdr2.a = new int[i];
     }
     paramdr2.c = 0;
     paramdr2.b = i;
-    long l = 0L;
     int j = m - 1;
-    i = m + k - 1;
-    while (j >= 0)
+    i -= 1;
+    int k = j;
+    long l1 = 0L;
+    Object localObject;
+    for (;;)
     {
-      l += (paramdr1.a[(paramdr1.c + j)] & 0xFFFFFFFF) * (this.a[(k - 1 + this.c)] & 0xFFFFFFFF);
-      paramdr2.a[i] = ((int)l);
-      l >>>= 32;
-      j -= 1;
+      dr localdr = paramdr1;
+      localObject = this;
+      if (k < 0) {
+        break;
+      }
+      l1 = (localdr.a[(localdr.c + k)] & 0xFFFFFFFF) * (localObject.a[(n - 1 + localObject.c)] & 0xFFFFFFFF) + l1;
+      paramdr2.a[i] = ((int)l1);
+      l1 >>>= 32;
+      k -= 1;
       i -= 1;
     }
-    paramdr2.a[(k - 1)] = ((int)l);
-    i = k - 2;
-    while (i >= 0)
+    paramdr2.a[(n - 1)] = ((int)l1);
+    k = n - 2;
+    i = m;
+    while (k >= 0)
     {
-      l = 0L;
-      k = m - 1;
-      j = m + i;
-      while (k >= 0)
+      m = i + k;
+      n = j;
+      l1 = 0L;
+      while (n >= 0)
       {
-        l += (paramdr1.a[(paramdr1.c + k)] & 0xFFFFFFFF) * (this.a[(this.c + i)] & 0xFFFFFFFF) + (paramdr2.a[j] & 0xFFFFFFFF);
-        paramdr2.a[j] = ((int)l);
-        l >>>= 32;
-        k -= 1;
-        j -= 1;
+        long l2 = paramdr1.a[(paramdr1.c + n)];
+        long l3 = this.a[(this.c + k)];
+        localObject = paramdr2.a;
+        l1 = (l2 & 0xFFFFFFFF) * (l3 & 0xFFFFFFFF) + (localObject[m] & 0xFFFFFFFF) + l1;
+        localObject[m] = ((int)l1);
+        l1 >>>= 32;
+        n -= 1;
+        m -= 1;
       }
-      paramdr2.a[i] = ((int)l);
-      i -= 1;
+      paramdr2.a[k] = ((int)l1);
+      k -= 1;
     }
     paramdr2.c();
   }
   
   void a(dr paramdr1, dr paramdr2, dr paramdr3)
   {
-    if (paramdr1.b == 0) {
-      throw new ArithmeticException("BigInteger divide by zero");
-    }
-    if (this.b == 0)
+    if (paramdr1.b != 0)
     {
-      paramdr3.c = 0;
-      paramdr3.b = 0;
-      paramdr2.c = 0;
-      paramdr2.b = 0;
-      return;
-    }
-    int i = a(paramdr1);
-    if (i < 0)
-    {
-      paramdr2.c = 0;
-      paramdr2.b = 0;
-      paramdr3.b(this);
-      return;
-    }
-    if (i == 0)
-    {
-      paramdr1 = paramdr2.a;
-      paramdr2.b = 1;
-      paramdr1[0] = 1;
-      paramdr3.c = 0;
-      paramdr3.b = 0;
-      paramdr2.c = 0;
-      return;
-    }
-    paramdr2.a();
-    if (paramdr1.b == 1)
-    {
-      paramdr3.b(this);
-      paramdr3.b(paramdr1.a[paramdr1.c], paramdr2);
-      return;
-    }
-    int[] arrayOfInt1 = new int[paramdr1.b];
-    i = 0;
-    while (i < paramdr1.b)
-    {
-      arrayOfInt1[i] = paramdr1.a[(paramdr1.c + i)];
-      i += 1;
-    }
-    int i1 = paramdr1.b;
-    if (paramdr3.a.length < this.b + 1) {
-      paramdr3.a = new int[this.b + 1];
-    }
-    i = 0;
-    while (i < this.b)
-    {
-      paramdr3.a[(i + 1)] = this.a[(this.c + i)];
-      i += 1;
-    }
-    paramdr3.b = this.b;
-    paramdr3.c = 1;
-    i = paramdr3.b;
-    int i2 = i - i1 + 1;
-    if (paramdr2.a.length < i2)
-    {
-      paramdr2.a = new int[i2];
-      paramdr2.c = 0;
-    }
-    paramdr2.b = i2;
-    paramdr1 = paramdr2.a;
-    int i3 = 32 - dq.d(arrayOfInt1[0]);
-    if (i3 > 0)
-    {
-      dq.b(arrayOfInt1, i1, i3);
-      paramdr3.b(i3);
-    }
-    if (paramdr3.b == i)
-    {
-      paramdr3.c = 0;
-      paramdr3.a[0] = 0;
-      paramdr3.b += 1;
-    }
-    int i4 = arrayOfInt1[0];
-    long l1 = 0xFFFFFFFF & i4;
-    int i5 = arrayOfInt1[1];
-    int[] arrayOfInt2 = new int[2];
-    int n = 0;
-    if (n < i2)
-    {
-      int k = 0;
-      i = paramdr3.a[(paramdr3.c + n)];
-      int i6 = i - -2147483648;
-      int m = paramdr3.a[(n + 1 + paramdr3.c)];
-      int j;
-      if (i == i4)
+      if (this.b == 0)
       {
-        j = -1;
-        m = i + m;
-        if (-2147483648 + m < i6)
-        {
-          k = 1;
-          label491:
-          if (j != 0) {
-            break label582;
-          }
-        }
+        paramdr3.c = 0;
+        paramdr3.b = 0;
+        paramdr2.c = 0;
+        paramdr2.b = 0;
+        return;
       }
+      int i = a(paramdr1);
+      if (i < 0)
+      {
+        paramdr2.c = 0;
+        paramdr2.b = 0;
+        paramdr3.b(this);
+        return;
+      }
+      if (i == 0)
+      {
+        paramdr1 = paramdr2.a;
+        paramdr2.b = 1;
+        paramdr1[0] = 1;
+        paramdr3.c = 0;
+        paramdr3.b = 0;
+        paramdr2.c = 0;
+        return;
+      }
+      paramdr2.a();
+      i = paramdr1.b;
+      if (i == 1)
+      {
+        paramdr3.b(this);
+        paramdr3.b(paramdr1.a[paramdr1.c], paramdr2);
+        return;
+      }
+      int[] arrayOfInt1 = new int[i];
+      i = 0;
+      int i1;
       for (;;)
       {
-        n += 1;
-        break;
-        k = 0;
-        break label491;
-        long l2 = i << 32 | m & 0xFFFFFFFF;
-        if (l2 >= 0L)
-        {
-          j = (int)(l2 / l1);
-          m = (int)(l2 - j * l1);
-          break label491;
+        i1 = paramdr1.b;
+        if (i >= i1) {
+          break;
         }
-        a(arrayOfInt2, l2, i4);
-        j = arrayOfInt2[0];
-        m = arrayOfInt2[1];
-        break label491;
-        label582:
-        i = j;
-        if (k == 0)
+        arrayOfInt1[i] = paramdr1.a[(paramdr1.c + i)];
+        i += 1;
+      }
+      i = paramdr3.a.length;
+      int j = this.b;
+      if (i < j + 1) {
+        paramdr3.a = new int[j + 1];
+      }
+      for (i = 0;; i = j)
+      {
+        j = this.b;
+        if (i >= j) {
+          break;
+        }
+        paramdr1 = paramdr3.a;
+        j = i + 1;
+        paramdr1[j] = this.a[(i + this.c)];
+      }
+      paramdr3.b = j;
+      paramdr3.c = 1;
+      i = paramdr3.b;
+      int i2 = i - i1 + 1;
+      if (paramdr2.a.length < i2)
+      {
+        paramdr2.a = new int[i2];
+        paramdr2.c = 0;
+      }
+      paramdr2.b = i2;
+      int[] arrayOfInt2 = paramdr2.a;
+      int i4 = 32 - dq.d(arrayOfInt1[0]);
+      if (i4 > 0)
+      {
+        dq.b(arrayOfInt1, i1, i4);
+        paramdr3.b(i4);
+      }
+      j = paramdr3.b;
+      if (j == i)
+      {
+        paramdr3.c = 0;
+        paramdr3.a[0] = 0;
+        paramdr3.b = (j + 1);
+      }
+      int i3 = arrayOfInt1[0];
+      long l1 = i3 & 0xFFFFFFFF;
+      i = arrayOfInt1[1];
+      paramdr1 = new int[2];
+      int i5;
+      for (int k = 0; k < i2; k = i5)
+      {
+        int[] arrayOfInt3 = paramdr3.a;
+        int m = paramdr3.c;
+        j = arrayOfInt3[(k + m)];
+        int i6 = j - -2147483648;
+        i5 = k + 1;
+        m = arrayOfInt3[(i5 + m)];
+        int n;
+        long l2;
+        if (j == i3)
         {
-          l2 = paramdr3.a[(n + 2 + paramdr3.c)] & 0xFFFFFFFF;
-          long l3 = m;
-          i = j;
-          if (a((i5 & 0xFFFFFFFF) * (j & 0xFFFFFFFF), (l3 & 0xFFFFFFFF) << 32 | l2))
+          n = j + m;
+          if (n - -2147483648 < i6) {
+            m = 1;
+          } else {
+            m = 0;
+          }
+          j = -1;
+        }
+        else
+        {
+          l2 = j << 32 | m & 0xFFFFFFFF;
+          if (l2 >= 0L)
           {
-            j -= 1;
-            k = (int)((m & 0xFFFFFFFF) + l1);
-            i = j;
-            if ((k & 0xFFFFFFFF) >= l1)
-            {
-              i = j;
-              if (a((i5 & 0xFFFFFFFF) * (j & 0xFFFFFFFF), (k & 0xFFFFFFFF) << 32 | l2)) {
-                i = j - 1;
-              }
-            }
+            j = (int)(l2 / l1);
+            n = (int)(l2 - j * l1);
+            m = 0;
+          }
+          else
+          {
+            a(paramdr1, l2, i3);
+            j = paramdr1[0];
+            n = paramdr1[1];
+            m = 0;
           }
         }
-        paramdr3.a[(paramdr3.c + n)] = 0;
-        j = i;
-        if (a(paramdr3.a, arrayOfInt1, i, i1, n + paramdr3.c) - -2147483648 > i6)
+        if (j != 0)
         {
-          a(arrayOfInt1, paramdr3.a, n + 1 + paramdr3.c);
-          j = i - 1;
+          if (m == 0)
+          {
+            l2 = paramdr3.a[(k + 2 + paramdr3.c)] & 0xFFFFFFFF;
+            long l4 = n & 0xFFFFFFFF;
+            long l3 = i & 0xFFFFFFFF;
+            if (a((j & 0xFFFFFFFF) * l3, l4 << 32 | l2))
+            {
+              m = j - 1;
+              l4 = (int)(l4 + l1) & 0xFFFFFFFF;
+              if (l4 >= l1)
+              {
+                j = m;
+                if (a(l3 * (m & 0xFFFFFFFF), l4 << 32 | l2)) {
+                  j = m - 1;
+                }
+              }
+              else
+              {
+                j = m;
+              }
+            }
+            else {}
+          }
+          arrayOfInt3 = paramdr3.a;
+          m = paramdr3.c;
+          arrayOfInt3[(k + m)] = 0;
+          if (a(arrayOfInt3, arrayOfInt1, j, i1, k + m) - -2147483648 > i6)
+          {
+            a(arrayOfInt1, paramdr3.a, i5 + paramdr3.c);
+            j -= 1;
+          }
+          arrayOfInt2[k] = j;
         }
-        paramdr1[n] = j;
       }
+      if (i4 > 0) {
+        paramdr3.a(i4);
+      }
+      paramdr3.c();
+      paramdr2.c();
+      return;
     }
-    if (i3 > 0) {
-      paramdr3.a(i3);
-    }
-    paramdr3.c();
-    paramdr2.c();
+    throw new ArithmeticException("BigInteger divide by zero");
   }
   
   void a(int[] paramArrayOfInt, int paramInt)
@@ -590,25 +623,27 @@ class dr
   
   void b(int paramInt)
   {
-    int i = 0;
     if (this.b == 0) {
       return;
     }
-    int k = paramInt & 0x1F;
-    int m = dq.d(this.a[this.c]);
-    if (paramInt <= 32 - m)
+    int m = paramInt & 0x1F;
+    int n = 32 - dq.d(this.a[this.c]);
+    if (paramInt <= n)
     {
-      g(k);
+      g(m);
       return;
     }
-    int j = (paramInt >>> 5) + this.b + 1;
-    paramInt = j;
-    if (k <= 32 - m) {
-      paramInt = j - 1;
+    int i = this.b + (paramInt >>> 5) + 1;
+    paramInt = i;
+    if (m <= n) {
+      paramInt = i - 1;
     }
-    if (this.a.length < paramInt)
+    int[] arrayOfInt = this.a;
+    int j = arrayOfInt.length;
+    i = 0;
+    if (j < paramInt)
     {
-      int[] arrayOfInt = new int[paramInt];
+      arrayOfInt = new int[paramInt];
       while (i < this.b)
       {
         arrayOfInt[i] = this.a[(this.c + i)];
@@ -616,131 +651,133 @@ class dr
       }
       a(arrayOfInt, paramInt);
     }
-    for (;;)
+    else
     {
-      this.b = paramInt;
-      if (k == 0) {
-        break;
-      }
-      if (k > 32 - m) {
-        break label267;
-      }
-      g(k);
-      return;
-      if (this.a.length - this.c >= paramInt)
+      if (arrayOfInt.length - this.c >= paramInt)
       {
         i = 0;
-        while (i < paramInt - this.b)
+        for (;;)
         {
-          this.a[(this.c + this.b + i)] = 0;
+          j = this.b;
+          if (i >= paramInt - j) {
+            break;
+          }
+          this.a[(this.c + j + i)] = 0;
           i += 1;
         }
       }
-      else
+      i = 0;
+      for (;;)
       {
-        i = 0;
-        while (i < this.b)
-        {
-          this.a[i] = this.a[(this.c + i)];
-          i += 1;
+        int k = this.b;
+        j = k;
+        if (i >= k) {
+          break;
         }
-        i = this.b;
-        while (i < paramInt)
-        {
-          this.a[i] = 0;
-          i += 1;
-        }
-        this.c = 0;
+        arrayOfInt = this.a;
+        arrayOfInt[i] = arrayOfInt[(this.c + i)];
+        i += 1;
       }
+      while (j < paramInt)
+      {
+        this.a[j] = 0;
+        j += 1;
+      }
+      this.c = 0;
     }
-    label267:
-    f(32 - k);
+    this.b = paramInt;
+    if (m == 0) {
+      return;
+    }
+    if (m <= n)
+    {
+      g(m);
+      return;
+    }
+    f(32 - m);
   }
   
   void b(int paramInt, dr paramdr)
   {
     long l2 = paramInt & 0xFFFFFFFF;
-    if (this.b == 1)
+    int j = this.b;
+    int i = 1;
+    if (j == 1)
     {
       l1 = 0xFFFFFFFF & this.a[this.c];
-      paramdr.a[0] = ((int)(l1 / l2));
-      if (paramdr.a[0] == 0)
-      {
+      arrayOfInt = paramdr.a;
+      arrayOfInt[0] = ((int)(l1 / l2));
+      if (arrayOfInt[0] == 0) {
         paramInt = 0;
-        paramdr.b = paramInt;
-        paramdr.c = 0;
-        this.a[0] = ((int)(l1 - l2 * paramdr.a[0]));
-        this.c = 0;
-        if (this.a[0] != 0) {
-          break label112;
-        }
-      }
-      label112:
-      for (paramInt = 0;; paramInt = 1)
-      {
-        this.b = paramInt;
-        return;
+      } else {
         paramInt = 1;
-        break;
       }
+      paramdr.b = paramInt;
+      paramdr.c = 0;
+      arrayOfInt = this.a;
+      arrayOfInt[0] = ((int)(l1 - paramdr.a[0] * l2));
+      this.c = 0;
+      paramInt = i;
+      if (arrayOfInt[0] == 0) {
+        paramInt = 0;
+      }
+      this.b = paramInt;
+      return;
     }
-    if (paramdr.a.length < this.b) {
-      paramdr.a = new int[this.b];
+    if (paramdr.a.length < j) {
+      paramdr.a = new int[j];
     }
     paramdr.c = 0;
     paramdr.b = this.b;
     int k = dq.d(paramInt);
-    int i = this.a[this.c];
+    i = this.a[this.c];
     long l1 = i & 0xFFFFFFFF;
-    int j;
-    int[] arrayOfInt;
     if (l1 < l2)
     {
       paramdr.a[0] = 0;
-      j = this.b;
-      arrayOfInt = new int[2];
-      label202:
-      j -= 1;
-      if (j <= 0) {
-        break label358;
-      }
-      l1 = l1 << 32 | this.a[(this.c + this.b - j)] & 0xFFFFFFFF;
-      if (l1 < 0L) {
-        break label346;
-      }
-      arrayOfInt[0] = ((int)(l1 / l2));
-      arrayOfInt[1] = ((int)(l1 - arrayOfInt[0] * l2));
     }
+    else
+    {
+      arrayOfInt = paramdr.a;
+      arrayOfInt[0] = ((int)(l1 / l2));
+      i = (int)(l1 - arrayOfInt[0] * l2);
+      l1 = i & 0xFFFFFFFF;
+    }
+    j = this.b;
+    int[] arrayOfInt = new int[2];
     for (;;)
     {
+      j -= 1;
+      if (j <= 0) {
+        break;
+      }
+      l1 = this.a[(this.c + this.b - j)] & 0xFFFFFFFF | l1 << 32;
+      if (l1 >= 0L)
+      {
+        arrayOfInt[0] = ((int)(l1 / l2));
+        arrayOfInt[1] = ((int)(l1 - arrayOfInt[0] * l2));
+      }
+      else
+      {
+        a(arrayOfInt, l1, paramInt);
+      }
       paramdr.a[(this.b - j)] = arrayOfInt[0];
       i = arrayOfInt[1];
       l1 = i & 0xFFFFFFFF;
-      break label202;
-      paramdr.a[0] = ((int)(l1 / l2));
-      i = (int)(l1 - paramdr.a[0] * l2);
-      l1 = i & 0xFFFFFFFF;
-      break;
-      label346:
-      a(arrayOfInt, l1, paramInt);
     }
-    label358:
-    if (32 - k > 0)
-    {
+    j = 0;
+    if (32 - k > 0) {
       this.a[0] = (i % paramInt);
-      if (this.a[0] != 0) {
-        break label406;
-      }
-    }
-    label406:
-    for (paramInt = 0;; paramInt = 1)
-    {
-      this.b = paramInt;
-      paramdr.c();
-      return;
+    } else {
       this.a[0] = i;
-      break;
     }
+    if (this.a[0] == 0) {
+      paramInt = j;
+    } else {
+      paramInt = 1;
+    }
+    this.b = paramInt;
+    paramdr.c();
   }
   
   void b(dr paramdr)
@@ -761,53 +798,58 @@ class dr
   
   dr c(int paramInt)
   {
-    if (g()) {
-      throw new ArithmeticException("Non-invertible. (GCD != 1)");
-    }
-    if (paramInt > 64) {
-      return e(paramInt);
-    }
-    int i = d(this.a[(this.c + this.b - 1)]);
-    if (paramInt < 33)
+    if (!g())
     {
-      if (paramInt == 32) {}
-      for (paramInt = i;; paramInt = i & (1 << paramInt) - 1) {
+      if (paramInt > 64) {
+        return e(paramInt);
+      }
+      int i = d(this.a[(this.c + this.b - 1)]);
+      if (paramInt < 33)
+      {
+        if (paramInt == 32) {
+          paramInt = i;
+        } else {
+          paramInt = i & (1 << paramInt) - 1;
+        }
         return new dr(paramInt);
       }
+      Object localObject = this.a;
+      int j = this.c;
+      int k = this.b;
+      long l2 = localObject[(j + k - 1)] & 0xFFFFFFFF;
+      long l1 = l2;
+      if (k > 1) {
+        l1 = l2 | localObject[(j + k - 2)] << 32;
+      }
+      l2 = i & 0xFFFFFFFF;
+      l1 = l2 * (2L - l1 * l2);
+      if (paramInt != 64) {
+        l1 &= (1L << paramInt) - 1L;
+      }
+      localObject = new dr(new int[2]);
+      int[] arrayOfInt = ((dr)localObject).a;
+      arrayOfInt[0] = ((int)(l1 >>> 32));
+      arrayOfInt[1] = ((int)l1);
+      ((dr)localObject).b = 2;
+      ((dr)localObject).c();
+      return localObject;
     }
-    long l2 = this.a[(this.c + this.b - 1)] & 0xFFFFFFFF;
-    long l1 = l2;
-    if (this.b > 1) {
-      l1 = l2 | this.a[(this.c + this.b - 2)] << 32;
-    }
-    l2 = i & 0xFFFFFFFF;
-    l1 = l2 * (2L - l1 * l2);
-    if (paramInt == 64) {}
-    for (;;)
-    {
-      dr localdr = new dr(new int[2]);
-      localdr.a[0] = ((int)(l1 >>> 32));
-      localdr.a[1] = ((int)l1);
-      localdr.b = 2;
-      localdr.c();
-      return localdr;
-      l1 &= (1L << paramInt) - 1L;
-    }
+    throw new ArithmeticException("Non-invertible. (GCD != 1)");
   }
   
   final void c()
   {
-    int j = 0;
-    if (this.b == 0) {
-      this.c = 0;
-    }
-    int k;
-    do
-    {
-      return;
-      k = this.c;
-    } while (this.a[k] != 0);
     int n = this.b;
+    int j = 0;
+    if (n == 0)
+    {
+      this.c = 0;
+      return;
+    }
+    int k = this.c;
+    if (this.a[k] != 0) {
+      return;
+    }
     int i = k;
     int m;
     do
@@ -818,14 +860,15 @@ class dr
       }
       i = m;
     } while (this.a[m] == 0);
-    i = m - this.c;
-    this.b -= i;
-    if (this.b == 0) {}
-    for (i = j;; i = this.c + i)
-    {
-      this.c = i;
-      return;
+    i = this.c;
+    k = m - i;
+    this.b -= k;
+    if (this.b == 0) {
+      i = j;
+    } else {
+      i += k;
     }
+    this.c = i;
   }
   
   void c(dr paramdr)
@@ -833,153 +876,145 @@ class dr
     int n = this.b;
     int j = paramdr.b;
     int i;
-    if (this.b > paramdr.b)
-    {
-      i = this.b;
-      if (this.a.length >= i) {
-        break label161;
-      }
+    if (n > j) {
+      i = n;
+    } else {
+      i = j;
     }
-    int k;
-    long l2;
-    long l1;
-    int m;
+    int[] arrayOfInt2 = this.a;
+    int[] arrayOfInt1 = arrayOfInt2;
+    if (arrayOfInt2.length < i) {
+      arrayOfInt1 = new int[i];
+    }
+    int k = arrayOfInt1.length - 1;
+    long l2 = 0L;
     int i1;
-    label161:
-    for (int[] arrayOfInt = new int[i];; arrayOfInt = this.a)
+    int m;
+    long l1;
+    for (;;)
     {
-      k = arrayOfInt.length - 1;
-      l2 = 0L;
-      for (;;)
-      {
-        l1 = l2;
-        m = k;
-        i1 = n;
-        if (n <= 0) {
-          break;
-        }
-        l1 = l2;
-        m = k;
-        i1 = n;
-        if (j <= 0) {
-          break;
-        }
-        n -= 1;
-        j -= 1;
-        l2 = (l2 >>> 32) + ((this.a[(this.c + n)] & 0xFFFFFFFF) + (paramdr.a[(paramdr.c + j)] & 0xFFFFFFFF));
-        arrayOfInt[k] = ((int)l2);
-        k -= 1;
+      i1 = n;
+      m = k;
+      l1 = l2;
+      if (n <= 0) {
+        break;
       }
-      i = paramdr.b;
-      break;
+      i1 = n;
+      m = k;
+      l1 = l2;
+      if (j <= 0) {
+        break;
+      }
+      n -= 1;
+      j -= 1;
+      l2 = (this.a[(this.c + n)] & 0xFFFFFFFF) + (paramdr.a[(paramdr.c + j)] & 0xFFFFFFFF) + (l2 >>> 32);
+      arrayOfInt1[k] = ((int)l2);
+      k -= 1;
     }
     for (;;)
     {
-      l2 = l1;
-      k = m;
       n = j;
+      k = m;
+      l2 = l1;
       if (i1 <= 0) {
         break;
       }
       i1 -= 1;
-      l1 = (l1 >>> 32) + (this.a[(this.c + i1)] & 0xFFFFFFFF);
-      arrayOfInt[m] = ((int)l1);
+      l1 = (this.a[(this.c + i1)] & 0xFFFFFFFF) + (l1 >>> 32);
+      arrayOfInt1[m] = ((int)l1);
       m -= 1;
     }
     while (n > 0)
     {
       n -= 1;
-      l2 = (l2 >>> 32) + (paramdr.a[(paramdr.c + n)] & 0xFFFFFFFF);
-      arrayOfInt[k] = ((int)l2);
+      l2 = (paramdr.a[(paramdr.c + n)] & 0xFFFFFFFF) + (l2 >>> 32);
+      arrayOfInt1[k] = ((int)l2);
       k -= 1;
     }
     j = i;
-    paramdr = arrayOfInt;
+    paramdr = arrayOfInt1;
     if (l2 >>> 32 > 0L)
     {
-      i += 1;
-      if (arrayOfInt.length >= i) {
-        break label366;
-      }
-      paramdr = new int[i];
-      j = i - 1;
-      while (j > 0)
+      j = i + 1;
+      if (arrayOfInt1.length < j)
       {
-        paramdr[j] = arrayOfInt[(j - 1)];
-        j -= 1;
+        paramdr = new int[j];
+        i = j - 1;
+        while (i > 0)
+        {
+          paramdr[i] = arrayOfInt1[(i - 1)];
+          i -= 1;
+        }
+        paramdr[0] = 1;
       }
-      paramdr[0] = 1;
-      j = i;
+      else
+      {
+        arrayOfInt1[k] = 1;
+        paramdr = arrayOfInt1;
+      }
     }
-    for (;;)
-    {
-      this.a = paramdr;
-      this.b = j;
-      this.c = (paramdr.length - j);
-      return;
-      label366:
-      arrayOfInt[k] = 1;
-      j = i;
-      paramdr = arrayOfInt;
-    }
+    this.a = paramdr;
+    this.b = j;
+    this.c = (paramdr.length - j);
   }
   
   int d(dr paramdr)
   {
-    int[] arrayOfInt = this.a;
-    int m = a(paramdr);
-    if (m == 0)
+    int[] arrayOfInt2 = this.a;
+    int i1 = a(paramdr);
+    if (i1 == 0)
     {
       b();
       return 0;
     }
-    Object localObject;
     dr localdr;
-    if (m < 0)
+    if (i1 < 0)
     {
-      localObject = this;
-      localdr = paramdr;
-      paramdr = (dr)localObject;
-    }
-    for (;;)
-    {
-      int n = localdr.b;
-      localObject = arrayOfInt;
-      if (arrayOfInt.length < n) {
-        localObject = new int[n];
-      }
-      long l = 0L;
-      int j = localdr.b;
-      int k = paramdr.b;
-      int i = localObject.length - 1;
-      while (k > 0)
-      {
-        j -= 1;
-        k -= 1;
-        l = (localdr.a[(localdr.c + j)] & 0xFFFFFFFF) - (paramdr.a[(paramdr.c + k)] & 0xFFFFFFFF) - (int)-(l >> 32);
-        localObject[i] = ((int)l);
-        i -= 1;
-      }
-      for (;;)
-      {
-        if (j > 0)
-        {
-          j -= 1;
-          l = (localdr.a[(localdr.c + j)] & 0xFFFFFFFF) - (int)-(l >> 32);
-          localObject[i] = ((int)l);
-          i -= 1;
-        }
-        else
-        {
-          this.a = ((int[])localObject);
-          this.b = n;
-          this.c = (this.a.length - n);
-          c();
-          return m;
-        }
-      }
       localdr = this;
     }
+    else
+    {
+      localdr = paramdr;
+      paramdr = this;
+    }
+    int i2 = paramdr.b;
+    int[] arrayOfInt1 = arrayOfInt2;
+    if (arrayOfInt2.length < i2) {
+      arrayOfInt1 = new int[i2];
+    }
+    long l1 = 0L;
+    int j = paramdr.b;
+    int k = localdr.b;
+    int i = arrayOfInt1.length - 1;
+    long l2;
+    int m;
+    int n;
+    for (;;)
+    {
+      l2 = l1;
+      m = j;
+      n = i;
+      if (k <= 0) {
+        break;
+      }
+      j -= 1;
+      k -= 1;
+      l1 = (paramdr.a[(paramdr.c + j)] & 0xFFFFFFFF) - (localdr.a[(localdr.c + k)] & 0xFFFFFFFF) - (int)-(l1 >> 32);
+      arrayOfInt1[i] = ((int)l1);
+      i -= 1;
+    }
+    while (m > 0)
+    {
+      m -= 1;
+      l2 = (paramdr.a[(paramdr.c + m)] & 0xFFFFFFFF) - (int)-(l2 >> 32);
+      arrayOfInt1[n] = ((int)l2);
+      n -= 1;
+    }
+    this.a = arrayOfInt1;
+    this.b = i2;
+    this.c = (this.a.length - i2);
+    c();
+    return i1;
   }
   
   int[] d()
@@ -996,52 +1031,53 @@ class dr
   
   dr e(int paramInt)
   {
-    Object localObject1 = new dr(1);
-    ((dr)localObject1).b(paramInt);
-    dr localdr1 = new dr((dr)localObject1);
+    Object localObject3 = new dr(1);
+    ((dr)localObject3).b(paramInt);
+    dr localdr1 = new dr((dr)localObject3);
     Object localObject2 = new dr(this);
     dr localdr2 = new dr();
-    Object localObject3 = new dr();
-    ((dr)localObject1).a((dr)localObject2, localdr2, (dr)localObject3);
+    Object localObject1 = new dr();
+    ((dr)localObject3).a((dr)localObject2, localdr2, (dr)localObject1);
     dr localdr3 = new dr(localdr2);
     dr localdr4 = new dr(1);
     dr localdr5 = new dr();
-    if (!((dr)localObject3).e())
+    for (;;)
     {
-      ((dr)localObject2).a((dr)localObject3, localdr2, (dr)localObject1);
-      if (((dr)localObject1).b == 0) {
-        throw new ArithmeticException("BigInteger not invertible.");
+      Object localObject4 = localObject3;
+      if (((dr)localObject1).e()) {
+        break label270;
+      }
+      ((dr)localObject2).a((dr)localObject1, localdr2, localObject4);
+      if (localObject4.b == 0) {
+        break label260;
       }
       if (localdr2.b == 1) {
         localdr3.a(localdr2.a[localdr2.c], localdr5);
-      }
-      for (;;)
-      {
-        localdr4.c(localdr5);
-        if (!((dr)localObject1).e()) {
-          break;
-        }
-        return localdr4;
+      } else {
         localdr2.a(localdr3, localdr5);
       }
-      ((dr)localObject3).a((dr)localObject1, localdr5, (dr)localObject2);
+      localdr4.c(localdr5);
+      if (localObject4.e()) {
+        return localdr4;
+      }
+      ((dr)localObject1).a(localObject4, localdr5, (dr)localObject2);
       if (((dr)localObject2).b == 0) {
-        throw new ArithmeticException("BigInteger not invertible.");
+        break;
       }
       if (localdr5.b == 1) {
         localdr4.a(localdr5.a[localdr5.c], localdr2);
-      }
-      for (;;)
-      {
-        localdr3.c(localdr2);
-        Object localObject4 = localObject2;
-        localObject2 = localObject1;
-        localObject1 = localObject3;
-        localObject3 = localObject4;
-        break;
+      } else {
         localdr5.a(localdr4, localdr2);
       }
+      localdr3.c(localdr2);
+      localObject3 = localObject1;
+      localObject1 = localObject2;
+      localObject2 = localObject4;
     }
+    throw new ArithmeticException("BigInteger not invertible.");
+    label260:
+    throw new ArithmeticException("BigInteger not invertible.");
+    label270:
     localdr1.d(localdr3);
     return localdr1;
   }
@@ -1051,29 +1087,30 @@ class dr
     if (paramdr.h()) {
       return f(paramdr);
     }
-    if (g()) {
-      throw new ArithmeticException("BigInteger not invertible.");
+    if (!g())
+    {
+      int i = paramdr.i();
+      dr localdr1 = new dr(paramdr);
+      localdr1.a(i);
+      if (localdr1.e()) {
+        return c(i);
+      }
+      dr localdr2 = f(localdr1);
+      dr localdr3 = c(i);
+      dr localdr4 = a(localdr1, i);
+      dr localdr5 = localdr1.c(i);
+      dr localdr6 = new dr();
+      dr localdr7 = new dr();
+      dr localdr8 = new dr();
+      localdr2.b(i);
+      localdr2.a(localdr4, localdr8);
+      localdr3.a(localdr1, localdr6);
+      localdr6.a(localdr5, localdr7);
+      localdr8.c(localdr7);
+      localdr8.a(paramdr, localdr6, localdr7);
+      return localdr7;
     }
-    int i = paramdr.i();
-    dr localdr1 = new dr(paramdr);
-    localdr1.a(i);
-    if (localdr1.e()) {
-      return c(i);
-    }
-    dr localdr2 = f(localdr1);
-    dr localdr3 = c(i);
-    dr localdr4 = a(localdr1, i);
-    dr localdr5 = localdr1.c(i);
-    dr localdr6 = new dr();
-    dr localdr7 = new dr();
-    dr localdr8 = new dr();
-    localdr2.b(i);
-    localdr2.a(localdr4, localdr8);
-    localdr3.a(localdr1, localdr6);
-    localdr6.a(localdr5, localdr7);
-    localdr8.c(localdr7);
-    localdr8.a(paramdr, localdr6, localdr7);
-    return localdr7;
+    throw new ArithmeticException("BigInteger not invertible.");
   }
   
   boolean e()
@@ -1088,7 +1125,16 @@ class dr
   
   boolean g()
   {
-    return (this.b == 0) || ((this.a[(this.c + this.b - 1)] & 0x1) == 0);
+    int i = this.b;
+    boolean bool = true;
+    if (i != 0)
+    {
+      if ((this.a[(this.c + i - 1)] & 0x1) == 0) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   boolean h()

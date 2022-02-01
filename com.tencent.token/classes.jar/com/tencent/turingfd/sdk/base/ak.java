@@ -49,42 +49,41 @@ public class ak
   
   public boolean a()
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.j;
-    long l3 = this.i;
-    if (Math.abs(l1 - l2) > l3) {
+    long l2 = System.currentTimeMillis();
+    long l3 = this.j;
+    long l1 = this.i;
+    l2 = Math.abs(l2 - l3);
+    boolean bool = true;
+    int k;
+    if (l2 > l1) {
       k = 1;
+    } else {
+      k = 0;
     }
-    Object localObject;
-    while (k != 0) {
-      if (this.c.b() < this.f)
-      {
+    if (k != 0)
+    {
+      if (this.c.b() < this.f) {
         return true;
+      }
+      Object localObject = (Long)this.c.a();
+      if ((Math.abs(System.currentTimeMillis() - ((Long)localObject).longValue()) < a) && (this.c.b() >= this.e)) {
         k = 0;
+      } else {
+        k = 1;
+      }
+      if (k != 0)
+      {
+        localObject = this.c;
+        localObject = (Long)((v)localObject).a(((v)localObject).b() - this.f);
+        if (Math.abs(System.currentTimeMillis() - ((Long)localObject).longValue()) >= b) {}
       }
       else
       {
-        localObject = (Long)this.c.a();
-        if ((Math.abs(System.currentTimeMillis() - ((Long)localObject).longValue()) < a) && (this.c.b() >= this.e)) {
-          break label159;
-        }
+        bool = false;
       }
+      return bool;
     }
-    label159:
-    for (int k = 1;; k = 0)
-    {
-      if (k == 0) {}
-      for (;;)
-      {
-        return false;
-        localObject = this.c;
-        localObject = (Long)((v)localObject).a(((v)localObject).b() - this.f);
-        if (Math.abs(System.currentTimeMillis() - ((Long)localObject).longValue()) >= b) {
-          break;
-        }
-      }
-      return false;
-    }
+    return false;
   }
   
   public void b()

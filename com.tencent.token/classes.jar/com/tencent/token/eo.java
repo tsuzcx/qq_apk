@@ -22,14 +22,14 @@ public class eo
     {
     default: 
       return "mobiletoken.db";
-    case 0: 
-      return "mobiletoken_test.db";
-    case 1: 
-      return "mobiletoken.db";
+    case 3: 
+      return "mobiletoken_gray.db";
     case 2: 
       return "mobiletoken_exp.db";
+    case 1: 
+      return "mobiletoken.db";
     }
-    return "mobiletoken_gray.db";
+    return "mobiletoken_test.db";
   }
   
   protected void finalize()

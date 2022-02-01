@@ -55,10 +55,12 @@ public abstract class AutoScrollHelper
   {
     this.mTarget = paramView;
     paramView = Resources.getSystem().getDisplayMetrics();
-    int i = (int)(1575.0F * paramView.density + 0.5F);
+    int i = (int)(paramView.density * 1575.0F + 0.5F);
     int j = (int)(paramView.density * 315.0F + 0.5F);
-    setMaximumVelocity(i, i);
-    setMinimumVelocity(j, j);
+    float f = i;
+    setMaximumVelocity(f, f);
+    f = j;
+    setMinimumVelocity(f, f);
     setEdgeType(1);
     setMaximumEdges(3.4028235E+38F, 3.4028235E+38F);
     setRelativeEdges(0.2F, 0.2F);
@@ -108,45 +110,54 @@ public abstract class AutoScrollHelper
   
   private float constrainEdgeValue(float paramFloat1, float paramFloat2)
   {
-    if (paramFloat2 == 0.0F) {}
-    do
+    if (paramFloat2 == 0.0F) {
+      return 0.0F;
+    }
+    int i = this.mEdgeType;
+    switch (i)
     {
-      do
+    default: 
+      return 0.0F;
+    case 2: 
+      if (paramFloat1 < 0.0F) {
+        return paramFloat1 / -paramFloat2;
+      }
+      break;
+    case 0: 
+    case 1: 
+      if (paramFloat1 < paramFloat2)
       {
-        do
-        {
-          return 0.0F;
-          switch (this.mEdgeType)
-          {
-          default: 
-            return 0.0F;
-          }
-        } while (paramFloat1 >= paramFloat2);
         if (paramFloat1 >= 0.0F) {
           return 1.0F - paramFloat1 / paramFloat2;
         }
-      } while ((!this.mAnimating) || (this.mEdgeType != 1));
-      return 1.0F;
-    } while (paramFloat1 >= 0.0F);
-    return paramFloat1 / -paramFloat2;
+        if ((this.mAnimating) && (i == 1)) {
+          return 1.0F;
+        }
+      }
+      break;
+    }
+    return 0.0F;
   }
   
   private float getEdgeValue(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    float f = 0.0F;
     paramFloat1 = constrain(paramFloat1 * paramFloat2, 0.0F, paramFloat3);
     paramFloat3 = constrainEdgeValue(paramFloat4, paramFloat1);
-    paramFloat2 = constrainEdgeValue(paramFloat2 - paramFloat4, paramFloat1) - paramFloat3;
-    if (paramFloat2 < 0.0F) {}
-    for (paramFloat1 = -this.mEdgeInterpolator.getInterpolation(-paramFloat2);; paramFloat1 = this.mEdgeInterpolator.getInterpolation(paramFloat2))
+    paramFloat1 = constrainEdgeValue(paramFloat2 - paramFloat4, paramFloat1) - paramFloat3;
+    if (paramFloat1 < 0.0F)
     {
-      paramFloat1 = constrain(paramFloat1, -1.0F, 1.0F);
-      do
-      {
-        return paramFloat1;
-        paramFloat1 = f;
-      } while (paramFloat2 <= 0.0F);
+      paramFloat1 = -this.mEdgeInterpolator.getInterpolation(-paramFloat1);
     }
+    else
+    {
+      if (paramFloat1 <= 0.0F) {
+        break label76;
+      }
+      paramFloat1 = this.mEdgeInterpolator.getInterpolation(paramFloat1);
+    }
+    return constrain(paramFloat1, -1.0F, 1.0F);
+    label76:
+    return 0.0F;
   }
   
   private void requestStop()
@@ -166,15 +177,18 @@ public abstract class AutoScrollHelper
     }
     this.mAnimating = true;
     this.mNeedsReset = true;
-    if ((!this.mAlreadyDelayed) && (this.mActivationDelay > 0)) {
-      ViewCompat.postOnAnimationDelayed(this.mTarget, this.mRunnable, this.mActivationDelay);
-    }
-    for (;;)
+    if (!this.mAlreadyDelayed)
     {
-      this.mAlreadyDelayed = true;
-      return;
-      this.mRunnable.run();
+      int i = this.mActivationDelay;
+      if (i > 0)
+      {
+        ViewCompat.postOnAnimationDelayed(this.mTarget, this.mRunnable, i);
+        break label70;
+      }
     }
+    this.mRunnable.run();
+    label70:
+    this.mAlreadyDelayed = true;
   }
   
   public abstract boolean canTargetScrollHorizontally(int paramInt);
@@ -201,34 +215,40 @@ public abstract class AutoScrollHelper
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    if (!this.mEnabled) {
+    boolean bool1 = this.mEnabled;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
     }
     switch (paramMotionEvent.getActionMasked())
     {
     default: 
-      if ((!this.mExclusive) || (!this.mAnimating)) {
-        break;
-      }
-    }
-    for (;;)
-    {
-      return bool;
+      break;
+    case 1: 
+    case 3: 
+      requestStop();
+      break;
+    case 0: 
       this.mNeedsCancel = true;
       this.mAlreadyDelayed = false;
+    case 2: 
       float f1 = computeTargetVelocity(0, paramMotionEvent.getX(), paramView.getWidth(), this.mTarget.getWidth());
       float f2 = computeTargetVelocity(1, paramMotionEvent.getY(), paramView.getHeight(), this.mTarget.getHeight());
       this.mScroller.setTargetVelocity(f1, f2);
-      if ((this.mAnimating) || (!shouldAnimate())) {
-        break;
+      if ((!this.mAnimating) && (shouldAnimate())) {
+        startAnimating();
       }
-      startAnimating();
       break;
-      requestStop();
-      break;
-      bool = false;
     }
+    bool1 = bool2;
+    if (this.mExclusive)
+    {
+      bool1 = bool2;
+      if (this.mAnimating) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public abstract void scrollTargetBy(int paramInt1, int paramInt2);
@@ -265,24 +285,27 @@ public abstract class AutoScrollHelper
   @NonNull
   public AutoScrollHelper setMaximumEdges(float paramFloat1, float paramFloat2)
   {
-    this.mMaximumEdges[0] = paramFloat1;
-    this.mMaximumEdges[1] = paramFloat2;
+    float[] arrayOfFloat = this.mMaximumEdges;
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[1] = paramFloat2;
     return this;
   }
   
   @NonNull
   public AutoScrollHelper setMaximumVelocity(float paramFloat1, float paramFloat2)
   {
-    this.mMaximumVelocity[0] = (paramFloat1 / 1000.0F);
-    this.mMaximumVelocity[1] = (paramFloat2 / 1000.0F);
+    float[] arrayOfFloat = this.mMaximumVelocity;
+    arrayOfFloat[0] = (paramFloat1 / 1000.0F);
+    arrayOfFloat[1] = (paramFloat2 / 1000.0F);
     return this;
   }
   
   @NonNull
   public AutoScrollHelper setMinimumVelocity(float paramFloat1, float paramFloat2)
   {
-    this.mMinimumVelocity[0] = (paramFloat1 / 1000.0F);
-    this.mMinimumVelocity[1] = (paramFloat2 / 1000.0F);
+    float[] arrayOfFloat = this.mMinimumVelocity;
+    arrayOfFloat[0] = (paramFloat1 / 1000.0F);
+    arrayOfFloat[1] = (paramFloat2 / 1000.0F);
     return this;
   }
   
@@ -303,16 +326,18 @@ public abstract class AutoScrollHelper
   @NonNull
   public AutoScrollHelper setRelativeEdges(float paramFloat1, float paramFloat2)
   {
-    this.mRelativeEdges[0] = paramFloat1;
-    this.mRelativeEdges[1] = paramFloat2;
+    float[] arrayOfFloat = this.mRelativeEdges;
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[1] = paramFloat2;
     return this;
   }
   
   @NonNull
   public AutoScrollHelper setRelativeVelocity(float paramFloat1, float paramFloat2)
   {
-    this.mRelativeVelocity[0] = (paramFloat1 / 1000.0F);
-    this.mRelativeVelocity[1] = (paramFloat2 / 1000.0F);
+    float[] arrayOfFloat = this.mRelativeVelocity;
+    arrayOfFloat[0] = (paramFloat1 / 1000.0F);
+    arrayOfFloat[1] = (paramFloat2 / 1000.0F);
     return this;
   }
   
@@ -343,31 +368,34 @@ public abstract class AutoScrollHelper
       if (paramLong < this.mStartTime) {
         return 0.0F;
       }
-      if ((this.mStopTime < 0L) || (paramLong < this.mStopTime)) {
-        return AutoScrollHelper.constrain((float)(paramLong - this.mStartTime) / this.mRampUpDuration, 0.0F, 1.0F) * 0.5F;
-      }
       long l = this.mStopTime;
-      float f1 = this.mStopValue;
-      float f2 = this.mStopValue;
-      return AutoScrollHelper.constrain((float)(paramLong - l) / this.mEffectiveRampDown, 0.0F, 1.0F) * f2 + (1.0F - f1);
+      if ((l >= 0L) && (paramLong >= l))
+      {
+        float f = this.mStopValue;
+        return 1.0F - f + f * AutoScrollHelper.constrain((float)(paramLong - l) / this.mEffectiveRampDown, 0.0F, 1.0F);
+      }
+      return AutoScrollHelper.constrain((float)(paramLong - this.mStartTime) / this.mRampUpDuration, 0.0F, 1.0F) * 0.5F;
     }
     
     private float interpolateValue(float paramFloat)
     {
-      return -4.0F * paramFloat * paramFloat + 4.0F * paramFloat;
+      return -4.0F * paramFloat * paramFloat + paramFloat * 4.0F;
     }
     
     public void computeScrollDelta()
     {
-      if (this.mDeltaTime == 0L) {
-        throw new RuntimeException("Cannot compute scroll delta before calling start()");
+      if (this.mDeltaTime != 0L)
+      {
+        long l1 = AnimationUtils.currentAnimationTimeMillis();
+        float f = interpolateValue(getValueAt(l1));
+        long l2 = this.mDeltaTime;
+        this.mDeltaTime = l1;
+        f = (float)(l1 - l2) * f;
+        this.mDeltaX = ((int)(this.mTargetVelocityX * f));
+        this.mDeltaY = ((int)(f * this.mTargetVelocityY));
+        return;
       }
-      long l1 = AnimationUtils.currentAnimationTimeMillis();
-      float f = interpolateValue(getValueAt(l1));
-      long l2 = l1 - this.mDeltaTime;
-      this.mDeltaTime = l1;
-      this.mDeltaX = ((int)((float)l2 * f * this.mTargetVelocityX));
-      this.mDeltaY = ((int)((float)l2 * f * this.mTargetVelocityY));
+      throw new RuntimeException("Cannot compute scroll delta before calling start()");
     }
     
     public int getDeltaX()
@@ -382,12 +410,14 @@ public abstract class AutoScrollHelper
     
     public int getHorizontalDirection()
     {
-      return (int)(this.mTargetVelocityX / Math.abs(this.mTargetVelocityX));
+      float f = this.mTargetVelocityX;
+      return (int)(f / Math.abs(f));
     }
     
     public int getVerticalDirection()
     {
-      return (int)(this.mTargetVelocityY / Math.abs(this.mTargetVelocityY));
+      float f = this.mTargetVelocityY;
+      return (int)(f / Math.abs(f));
     }
     
     public boolean isFinished()
@@ -442,25 +472,27 @@ public abstract class AutoScrollHelper
       }
       if (AutoScrollHelper.this.mNeedsReset)
       {
-        AutoScrollHelper.this.mNeedsReset = false;
-        AutoScrollHelper.this.mScroller.start();
+        localObject = AutoScrollHelper.this;
+        ((AutoScrollHelper)localObject).mNeedsReset = false;
+        ((AutoScrollHelper)localObject).mScroller.start();
       }
-      AutoScrollHelper.ClampedScroller localClampedScroller = AutoScrollHelper.this.mScroller;
-      if ((localClampedScroller.isFinished()) || (!AutoScrollHelper.this.shouldAnimate()))
+      Object localObject = AutoScrollHelper.this.mScroller;
+      if ((!((AutoScrollHelper.ClampedScroller)localObject).isFinished()) && (AutoScrollHelper.this.shouldAnimate()))
       {
-        AutoScrollHelper.this.mAnimating = false;
+        if (AutoScrollHelper.this.mNeedsCancel)
+        {
+          AutoScrollHelper localAutoScrollHelper = AutoScrollHelper.this;
+          localAutoScrollHelper.mNeedsCancel = false;
+          localAutoScrollHelper.cancelTargetTouch();
+        }
+        ((AutoScrollHelper.ClampedScroller)localObject).computeScrollDelta();
+        int i = ((AutoScrollHelper.ClampedScroller)localObject).getDeltaX();
+        int j = ((AutoScrollHelper.ClampedScroller)localObject).getDeltaY();
+        AutoScrollHelper.this.scrollTargetBy(i, j);
+        ViewCompat.postOnAnimation(AutoScrollHelper.this.mTarget, this);
         return;
       }
-      if (AutoScrollHelper.this.mNeedsCancel)
-      {
-        AutoScrollHelper.this.mNeedsCancel = false;
-        AutoScrollHelper.this.cancelTargetTouch();
-      }
-      localClampedScroller.computeScrollDelta();
-      int i = localClampedScroller.getDeltaX();
-      int j = localClampedScroller.getDeltaY();
-      AutoScrollHelper.this.scrollTargetBy(i, j);
-      ViewCompat.postOnAnimation(AutoScrollHelper.this.mTarget, this);
+      AutoScrollHelper.this.mAnimating = false;
     }
   }
 }

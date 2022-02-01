@@ -43,7 +43,11 @@ public final class Context
     if (paramString.indexOf(File.separatorChar) < 0) {
       return new File(paramFile, paramString);
     }
-    throw new IllegalArgumentException("File " + paramString + " contains a path separator");
+    paramFile = new StringBuilder();
+    paramFile.append("File ");
+    paramFile.append(paramString);
+    paramFile.append(" contains a path separator");
+    throw new IllegalArgumentException(paramFile.toString());
   }
   
   public static SQLiteDatabase openOrCreateDatabase(android.content.Context paramContext, String paramString, int paramInt, SQLiteDatabase.CursorFactory paramCursorFactory)
@@ -64,9 +68,11 @@ public final class Context
   public static SQLiteDatabase openOrCreateDatabase(android.content.Context paramContext, String paramString, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, int paramInt, SQLiteDatabase.CursorFactory paramCursorFactory, DatabaseErrorHandler paramDatabaseErrorHandler)
   {
     paramContext = validateFilePath(paramContext, paramString, true);
-    int i = 268435456;
+    int i;
     if ((paramInt & 0x8) != 0) {
       i = 805306368;
+    } else {
+      i = 268435456;
     }
     paramString = SQLiteDatabase.openDatabase(paramContext.getPath(), paramArrayOfByte, paramSQLiteCipherSpec, paramCursorFactory, i, paramDatabaseErrorHandler, 0);
     setFilePermissionsFromMode(paramContext.getPath(), paramInt, 0);
@@ -89,24 +95,20 @@ public final class Context
   
   private static File validateFilePath(android.content.Context paramContext, String paramString, boolean paramBoolean)
   {
-    File localFile;
     if (paramString.charAt(0) == File.separatorChar)
     {
       paramContext = new File(paramString.substring(0, paramString.lastIndexOf(File.separatorChar)));
-      localFile = new File(paramContext, paramString.substring(paramString.lastIndexOf(File.separatorChar)));
-      paramString = paramContext;
-      paramContext = localFile;
+      paramString = new File(paramContext, paramString.substring(paramString.lastIndexOf(File.separatorChar)));
     }
-    for (;;)
+    else
     {
-      if ((paramBoolean) && (!paramString.isDirectory()) && (paramString.mkdir())) {
-        FileUtils.setPermissions(paramString.getPath(), 505, -1, -1);
-      }
-      return paramContext;
-      localFile = getDatabasesDir(paramContext);
-      paramContext = makeFilename(localFile, paramString);
-      paramString = localFile;
+      paramContext = getDatabasesDir(paramContext);
+      paramString = makeFilename(paramContext, paramString);
     }
+    if ((paramBoolean) && (!paramContext.isDirectory()) && (paramContext.mkdir())) {
+      FileUtils.setPermissions(paramContext.getPath(), 505, -1, -1);
+    }
+    return paramString;
   }
 }
 

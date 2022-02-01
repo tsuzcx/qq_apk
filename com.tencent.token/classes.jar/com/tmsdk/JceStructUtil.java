@@ -18,25 +18,30 @@ public class JceStructUtil
   
   public static <T extends JceStruct> T getJceStruct(byte[] paramArrayOfByte, T paramT, boolean paramBoolean)
   {
-    if ((paramArrayOfByte == null) || (paramT == null)) {
-      return null;
-    }
-    if (paramBoolean) {}
-    for (;;)
+    if (paramArrayOfByte != null)
     {
+      if (paramT == null) {
+        return null;
+      }
+      Object localObject = paramT;
+      if (paramBoolean) {}
       try
       {
-        paramT = paramT.newInit();
-        paramT.recyle();
-        paramT.readFrom(createUTF8InputStream(paramArrayOfByte));
-        return paramT;
+        localObject = paramT.newInit();
+        ((JceStruct)localObject).recyle();
+        ((JceStruct)localObject).readFrom(createUTF8InputStream(paramArrayOfByte));
+        return localObject;
       }
       catch (Exception paramArrayOfByte)
       {
-        Log.e("JceStructUtil", "getJceStruct exception: " + paramArrayOfByte);
+        paramT = new StringBuilder();
+        paramT.append("getJceStruct exception: ");
+        paramT.append(paramArrayOfByte);
+        Log.e("JceStructUtil", paramT.toString());
         return null;
       }
     }
+    return null;
   }
   
   public static byte[] jceStructToUTF8ByteArray(JceStruct paramJceStruct)

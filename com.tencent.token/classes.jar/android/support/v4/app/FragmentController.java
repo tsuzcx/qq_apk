@@ -30,7 +30,9 @@ public class FragmentController
   
   public void attachHost(Fragment paramFragment)
   {
-    this.mHost.mFragmentManager.attachController(this.mHost, this.mHost, paramFragment);
+    FragmentManagerImpl localFragmentManagerImpl = this.mHost.mFragmentManager;
+    FragmentHostCallback localFragmentHostCallback = this.mHost;
+    localFragmentManagerImpl.attachController(localFragmentHostCallback, localFragmentHostCallback, paramFragment);
   }
   
   public void dispatchActivityCreated()

@@ -30,7 +30,7 @@ public class SelectCountryCodeActivity
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    if (i < paramArrayOfString.length)
+    while (i < paramArrayOfString.length)
     {
       j localj = new j();
       localj.b(paramArrayOfString[i][1]);
@@ -38,14 +38,11 @@ public class SelectCountryCodeActivity
       String str = this.characterParser.b(paramArrayOfString[i][1]).substring(0, 1).toUpperCase();
       if (str.matches("[A-Z]")) {
         localj.c(str.toUpperCase());
-      }
-      for (;;)
-      {
-        localArrayList.add(localj);
-        i += 1;
-        break;
+      } else {
         localj.c("#");
       }
+      localArrayList.add(localj);
+      i += 1;
     }
     return localArrayList;
   }
@@ -54,8 +51,8 @@ public class SelectCountryCodeActivity
   {
     this.characterParser = b.a();
     this.pinyinComparator = new f();
-    this.sortListView = ((ListView)findViewById(2131559005));
-    this.sideBar = ((RightLetterView)findViewById(2131559006));
+    this.sortListView = ((ListView)findViewById(2131165652));
+    this.sideBar = ((RightLetterView)findViewById(2131165912));
     this.sideBar.setOnTouchingLetterChangedListener(new a(null));
     this.sourceDateList = filledData(d.b);
     List localList = filledData(d.c);
@@ -68,7 +65,8 @@ public class SelectCountryCodeActivity
         int i = ((Integer)paramAnonymousView.getTag()).intValue();
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("name", ((j)SelectCountryCodeActivity.this.sourceDateList.get(i)).b());
-        SelectCountryCodeActivity.this.setResult(Integer.parseInt(((j)SelectCountryCodeActivity.this.sourceDateList.get(i)).a()), paramAnonymousView);
+        SelectCountryCodeActivity localSelectCountryCodeActivity = SelectCountryCodeActivity.this;
+        localSelectCountryCodeActivity.setResult(Integer.parseInt(((j)localSelectCountryCodeActivity.sourceDateList.get(i)).a()), paramAnonymousView);
         SelectCountryCodeActivity.this.finish();
       }
     });
@@ -78,7 +76,7 @@ public class SelectCountryCodeActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968738);
+    setContentView(2131296419);
     init();
   }
   

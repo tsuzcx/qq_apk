@@ -27,15 +27,24 @@ public class AbnormalLoginMsgResult
         JSONObject localJSONObject = localJSONArray.getJSONObject(i);
         SafeMsgItem localSafeMsgItem = new SafeMsgItem();
         localSafeMsgItem.mUin = paramJSONObject.getLong("uin");
-        if (!localSafeMsgItem.a(localJSONObject)) {
-          throw new JSONException("parse msg[" + i + "] error");
+        if (localSafeMsgItem.a(localJSONObject))
+        {
+          this.mMsgList.add(localSafeMsgItem);
+          i += 1;
         }
-        this.mMsgList.add(localSafeMsgItem);
-        i += 1;
+        else
+        {
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append("parse msg[");
+          paramJSONObject.append(i);
+          paramJSONObject.append("] error");
+          throw new JSONException(paramJSONObject.toString());
+        }
       }
-      if (this.mCnt != this.mMsgList.size()) {
-        throw new JSONException("cnt not equas msgs.size");
+      if (this.mCnt == this.mMsgList.size()) {
+        return;
       }
+      throw new JSONException("cnt not equas msgs.size");
     }
   }
 }

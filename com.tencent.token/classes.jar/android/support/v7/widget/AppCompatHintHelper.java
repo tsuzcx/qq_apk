@@ -9,18 +9,16 @@ class AppCompatHintHelper
 {
   static InputConnection onCreateInputConnection(InputConnection paramInputConnection, EditorInfo paramEditorInfo, View paramView)
   {
-    if ((paramInputConnection != null) && (paramEditorInfo.hintText == null)) {}
-    for (paramView = paramView.getParent();; paramView = paramView.getParent()) {
-      if ((paramView instanceof View))
-      {
-        if ((paramView instanceof WithHint)) {
+    if ((paramInputConnection != null) && (paramEditorInfo.hintText == null)) {
+      for (paramView = paramView.getParent(); (paramView instanceof View); paramView = paramView.getParent()) {
+        if ((paramView instanceof WithHint))
+        {
           paramEditorInfo.hintText = ((WithHint)paramView).getHint();
+          return paramInputConnection;
         }
       }
-      else {
-        return paramInputConnection;
-      }
     }
+    return paramInputConnection;
   }
 }
 

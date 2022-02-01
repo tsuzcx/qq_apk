@@ -31,8 +31,9 @@ public abstract interface ThemedSpinnerAdapter
     @NonNull
     public LayoutInflater getDropDownViewInflater()
     {
-      if (this.mDropDownInflater != null) {
-        return this.mDropDownInflater;
+      LayoutInflater localLayoutInflater = this.mDropDownInflater;
+      if (localLayoutInflater != null) {
+        return localLayoutInflater;
       }
       return this.mInflater;
     }
@@ -40,10 +41,11 @@ public abstract interface ThemedSpinnerAdapter
     @Nullable
     public Resources.Theme getDropDownViewTheme()
     {
-      if (this.mDropDownInflater == null) {
+      LayoutInflater localLayoutInflater = this.mDropDownInflater;
+      if (localLayoutInflater == null) {
         return null;
       }
-      return this.mDropDownInflater.getContext().getTheme();
+      return localLayoutInflater.getContext().getTheme();
     }
     
     public void setDropDownViewTheme(@Nullable Resources.Theme paramTheme)

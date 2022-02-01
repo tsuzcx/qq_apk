@@ -15,16 +15,6 @@ public final class NetInterfaceTypeInfo
   public ArrayList<String> keySet = null;
   public String typeName = "";
   
-  static
-  {
-    if (!NetInterfaceTypeInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public NetInterfaceTypeInfo() {}
   
   public NetInterfaceTypeInfo(String paramString, ArrayList<String> paramArrayList)
@@ -40,18 +30,17 @@ public final class NetInterfaceTypeInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -63,13 +52,20 @@ public final class NetInterfaceTypeInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (NetInterfaceTypeInfo)paramObject;
-    } while ((!JceUtil.equals(this.typeName, paramObject.typeName)) || (!JceUtil.equals(this.keySet, paramObject.keySet)));
-    return true;
+    }
+    paramObject = (NetInterfaceTypeInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.typeName, paramObject.typeName))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.keySet, paramObject.keySet)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -124,8 +120,9 @@ public final class NetInterfaceTypeInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.typeName, 0);
-    if (this.keySet != null) {
-      paramJceOutputStream.write(this.keySet, 1);
+    ArrayList localArrayList = this.keySet;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }

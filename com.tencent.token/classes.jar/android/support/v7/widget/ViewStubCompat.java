@@ -62,40 +62,35 @@ public final class ViewStubCompat
   
   public View inflate()
   {
-    Object localObject = getParent();
-    if ((localObject != null) && ((localObject instanceof ViewGroup)))
+    Object localObject1 = getParent();
+    if ((localObject1 != null) && ((localObject1 instanceof ViewGroup)))
     {
       if (this.mLayoutResource != 0)
       {
-        ViewGroup localViewGroup = (ViewGroup)localObject;
-        int i;
-        if (this.mInflater != null)
-        {
-          localObject = this.mInflater;
-          localObject = ((LayoutInflater)localObject).inflate(this.mLayoutResource, localViewGroup, false);
-          if (this.mInflatedId != -1) {
-            ((View)localObject).setId(this.mInflatedId);
-          }
-          i = localViewGroup.indexOfChild(this);
-          localViewGroup.removeViewInLayout(this);
-          ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-          if (localLayoutParams == null) {
-            break label140;
-          }
-          localViewGroup.addView((View)localObject, i, localLayoutParams);
+        Object localObject2 = (ViewGroup)localObject1;
+        localObject1 = this.mInflater;
+        if (localObject1 == null) {
+          localObject1 = LayoutInflater.from(getContext());
         }
-        for (;;)
-        {
-          this.mInflatedViewRef = new WeakReference(localObject);
-          if (this.mInflateListener != null) {
-            this.mInflateListener.onInflate(this, (View)localObject);
-          }
-          return localObject;
-          localObject = LayoutInflater.from(getContext());
-          break;
-          label140:
-          localViewGroup.addView((View)localObject, i);
+        localObject1 = ((LayoutInflater)localObject1).inflate(this.mLayoutResource, (ViewGroup)localObject2, false);
+        int i = this.mInflatedId;
+        if (i != -1) {
+          ((View)localObject1).setId(i);
         }
+        i = ((ViewGroup)localObject2).indexOfChild(this);
+        ((ViewGroup)localObject2).removeViewInLayout(this);
+        ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
+        if (localLayoutParams != null) {
+          ((ViewGroup)localObject2).addView((View)localObject1, i, localLayoutParams);
+        } else {
+          ((ViewGroup)localObject2).addView((View)localObject1, i);
+        }
+        this.mInflatedViewRef = new WeakReference(localObject1);
+        localObject2 = this.mInflateListener;
+        if (localObject2 != null) {
+          ((OnInflateListener)localObject2).onInflate(this, (View)localObject1);
+        }
+        return localObject1;
       }
       throw new IllegalArgumentException("ViewStub must have a valid layoutResource");
     }
@@ -129,20 +124,21 @@ public final class ViewStubCompat
   
   public void setVisibility(int paramInt)
   {
-    if (this.mInflatedViewRef != null)
+    Object localObject = this.mInflatedViewRef;
+    if (localObject != null)
     {
-      View localView = (View)this.mInflatedViewRef.get();
-      if (localView != null) {
-        localView.setVisibility(paramInt);
+      localObject = (View)((WeakReference)localObject).get();
+      if (localObject != null)
+      {
+        ((View)localObject).setVisibility(paramInt);
+        return;
       }
-    }
-    do
-    {
-      return;
       throw new IllegalStateException("setVisibility called on un-referenced view");
-      super.setVisibility(paramInt);
-    } while ((paramInt != 0) && (paramInt != 4));
-    inflate();
+    }
+    super.setVisibility(paramInt);
+    if ((paramInt == 0) || (paramInt == 4)) {
+      inflate();
+    }
   }
   
   public static abstract interface OnInflateListener

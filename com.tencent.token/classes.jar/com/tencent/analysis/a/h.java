@@ -13,18 +13,9 @@ public abstract class h
   
   public final void a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() < 21)) {}
-    ByteArrayOutputStream localByteArrayOutputStream;
-    for (paramString = null;; paramString = localByteArrayOutputStream.toByteArray())
+    if ((paramString != null) && (paramString.length() >= 21))
     {
-      paramString = ByteBuffer.wrap(paramString);
-      b(paramString);
-      if (this.a >= 0) {
-        break;
-      }
-      c(paramString);
-      return;
-      localByteArrayOutputStream = new ByteArrayOutputStream();
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       paramString = new GZIPInputStream(new ByteArrayInputStream(b.a(paramString)));
       byte[] arrayOfByte = new byte[256];
       for (;;)
@@ -35,6 +26,18 @@ public abstract class h
         }
         localByteArrayOutputStream.write(arrayOfByte, 0, i);
       }
+      paramString = localByteArrayOutputStream.toByteArray();
+    }
+    else
+    {
+      paramString = null;
+    }
+    paramString = ByteBuffer.wrap(paramString);
+    b(paramString);
+    if (this.a < 0)
+    {
+      c(paramString);
+      return;
     }
     a(paramString);
   }
@@ -48,11 +51,20 @@ public abstract class h
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("Response [errorMsg=").append(this.c).append(", isSucess()=");
-    if (this.a == 0) {}
-    for (boolean bool = true;; bool = false) {
-      return bool + ", toString()=" + super.toString() + "]";
+    StringBuilder localStringBuilder = new StringBuilder("Response [errorMsg=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", isSucess()=");
+    boolean bool;
+    if (this.a == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localStringBuilder.append(bool);
+    localStringBuilder.append(", toString()=");
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

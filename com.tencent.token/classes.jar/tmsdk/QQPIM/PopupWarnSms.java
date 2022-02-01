@@ -13,16 +13,6 @@ public final class PopupWarnSms
   public int daylimit = 0;
   public int ispopup = 0;
   
-  static
-  {
-    if (!PopupWarnSms.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public PopupWarnSms() {}
   
   public PopupWarnSms(int paramInt1, int paramInt2)
@@ -38,18 +28,17 @@ public final class PopupWarnSms
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -61,13 +50,20 @@ public final class PopupWarnSms
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (PopupWarnSms)paramObject;
-    } while ((!JceUtil.equals(this.ispopup, paramObject.ispopup)) || (!JceUtil.equals(this.daylimit, paramObject.daylimit)));
-    return true;
+    }
+    paramObject = (PopupWarnSms)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.ispopup, paramObject.ispopup))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.daylimit, paramObject.daylimit)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

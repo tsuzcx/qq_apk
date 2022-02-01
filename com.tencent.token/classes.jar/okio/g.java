@@ -7,10 +7,12 @@ public abstract class g
   
   public g(q paramq)
   {
-    if (paramq == null) {
-      throw new IllegalArgumentException("delegate == null");
+    if (paramq != null)
+    {
+      this.a = paramq;
+      return;
     }
-    this.a = paramq;
+    throw new IllegalArgumentException("delegate == null");
   }
   
   public long a(c paramc, long paramLong)
@@ -35,7 +37,12 @@ public abstract class g
   
   public String toString()
   {
-    return getClass().getSimpleName() + "(" + this.a.toString() + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append("(");
+    localStringBuilder.append(this.a.toString());
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 

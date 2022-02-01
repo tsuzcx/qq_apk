@@ -41,7 +41,7 @@ public class WelcomeActivity
   private static final int BTN_WIDTH = 200;
   private static final int FLING_MIN_DISTANCE = 0;
   private static final int IMAGE_LEVEL_COUNT = mBitmapIds.length;
-  private static final int[] mBitmapIds = { 2130837706, 2130837707 };
+  private static final int[] mBitmapIds = { 2131099852, 2131099853 };
   private int DOT_OFFSET_X;
   private int DOT_OFFSET_Y;
   private int DOT_SIZE;
@@ -59,35 +59,32 @@ public class WelcomeActivity
       {
         if (paramAnonymousMotionEvent1.getX() - paramAnonymousMotionEvent2.getX() > 0.0F)
         {
-          if (WelcomeActivity.this.mLevel >= WelcomeActivity.IMAGE_LEVEL_COUNT - 1) {
-            break label231;
+          if (WelcomeActivity.this.mLevel < WelcomeActivity.IMAGE_LEVEL_COUNT - 1)
+          {
+            paramAnonymousMotionEvent1 = m.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$104(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
+            if (paramAnonymousMotionEvent1 == null)
+            {
+              WelcomeActivity.this.doOutOfMemory();
+              return true;
+            }
+            WelcomeActivity.this.mPageCurlView.a(paramAnonymousMotionEvent1);
+            if ((WelcomeActivity.this.mLevel == WelcomeActivity.IMAGE_LEVEL_COUNT - 1) && (WelcomeActivity.this.mEndBtn != null))
+            {
+              WelcomeActivity.this.mEndBtn.setVisibility(0);
+              return true;
+            }
           }
-          paramAnonymousMotionEvent1 = m.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$104(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
+        }
+        else if ((paramAnonymousMotionEvent2.getX() - paramAnonymousMotionEvent1.getX() > 0.0F) && (WelcomeActivity.this.mLevel > 0))
+        {
+          paramAnonymousMotionEvent1 = m.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$106(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
           if (paramAnonymousMotionEvent1 == null)
           {
             WelcomeActivity.this.doOutOfMemory();
             return true;
           }
-          WelcomeActivity.this.mPageCurlView.a(paramAnonymousMotionEvent1);
-          if ((WelcomeActivity.this.mLevel != WelcomeActivity.IMAGE_LEVEL_COUNT - 1) || (WelcomeActivity.this.mEndBtn == null)) {
-            break label231;
-          }
-          WelcomeActivity.this.mEndBtn.setVisibility(0);
-          return true;
-        }
-      }
-      catch (OutOfMemoryError paramAnonymousMotionEvent1)
-      {
-        paramAnonymousMotionEvent1.printStackTrace();
-        WelcomeActivity.this.doOutOfMemory();
-        return true;
-        if ((paramAnonymousMotionEvent2.getX() - paramAnonymousMotionEvent1.getX() <= 0.0F) || (WelcomeActivity.this.mLevel <= 0)) {
-          break label231;
-        }
-        paramAnonymousMotionEvent1 = m.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$106(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
-        if (paramAnonymousMotionEvent1 == null)
-        {
-          WelcomeActivity.this.doOutOfMemory();
+          WelcomeActivity.this.mPageCurlView.b(paramAnonymousMotionEvent1);
+          WelcomeActivity.this.mEndBtn.setVisibility(8);
           return true;
         }
       }
@@ -97,9 +94,11 @@ public class WelcomeActivity
         WelcomeActivity.this.doOutOfMemory();
         return true;
       }
-      WelcomeActivity.this.mPageCurlView.b(paramAnonymousMotionEvent1);
-      WelcomeActivity.this.mEndBtn.setVisibility(8);
-      label231:
+      catch (OutOfMemoryError paramAnonymousMotionEvent1)
+      {
+        paramAnonymousMotionEvent1.printStackTrace();
+        WelcomeActivity.this.doOutOfMemory();
+      }
       return true;
     }
     
@@ -126,24 +125,30 @@ public class WelcomeActivity
   {
     public void handleMessage(Message paramAnonymousMessage)
     {
-      if ((WelcomeActivity.this == null) || ((WelcomeActivity.this != null) && (WelcomeActivity.this.isFinishing()))) {}
-      do
+      WelcomeActivity localWelcomeActivity = WelcomeActivity.this;
+      if (localWelcomeActivity != null)
       {
-        do
-        {
+        if ((localWelcomeActivity != null) && (localWelcomeActivity.isFinishing())) {
           return;
-          switch (paramAnonymousMessage.what)
-          {
-          default: 
+        }
+        int i = paramAnonymousMessage.what;
+        if (i != 3025)
+        {
+          if (i != 3071) {
             return;
           }
-        } while (paramAnonymousMessage.arg1 != 0);
-        paramAnonymousMessage = cc.c();
-        paramAnonymousMessage.i();
-        paramAnonymousMessage.n();
+          if ((paramAnonymousMessage.arg1 == 0) && (!((QueryCaptchaResult)paramAnonymousMessage.obj).mNeedCaptcha)) {
+            WelcomeActivity.this.sendActiveClient();
+          }
+        }
+        else if (paramAnonymousMessage.arg1 == 0)
+        {
+          paramAnonymousMessage = cc.c();
+          paramAnonymousMessage.i();
+          paramAnonymousMessage.n();
+        }
         return;
-      } while ((paramAnonymousMessage.arg1 != 0) || (((QueryCaptchaResult)paramAnonymousMessage.obj).mNeedCaptcha));
-      WelcomeActivity.this.sendActiveClient();
+      }
     }
   };
   private int mHeight;
@@ -156,16 +161,19 @@ public class WelcomeActivity
   
   private void doOutOfMemory()
   {
-    if (this.mDotEmpty != null) {
-      this.mDotEmpty.recycle();
+    Object localObject = this.mDotEmpty;
+    if (localObject != null) {
+      ((Bitmap)localObject).recycle();
     }
     this.mDotEmpty = null;
-    if (this.mDotFull != null) {
-      this.mDotFull.recycle();
+    localObject = this.mDotFull;
+    if (localObject != null) {
+      ((Bitmap)localObject).recycle();
     }
     this.mDotFull = null;
-    if (this.mPageCurlView != null) {
-      this.mPageCurlView.c();
+    localObject = this.mPageCurlView;
+    if (localObject != null) {
+      ((com.tencent.token.ui.base.g)localObject).c();
     }
     this.mPageCurlView = null;
     nextActivity();
@@ -175,18 +183,15 @@ public class WelcomeActivity
   {
     int j = this.DOT_OFFSET_X;
     int i = 0;
-    if (i < IMAGE_LEVEL_COUNT)
+    while (i < IMAGE_LEVEL_COUNT)
     {
       if (i == paramInt) {
         paramCanvas.drawBitmap(this.mDotEmpty, j, this.DOT_OFFSET_Y, null);
-      }
-      for (;;)
-      {
-        j += this.DOT_SIZE * 2;
-        i += 1;
-        break;
+      } else {
         paramCanvas.drawBitmap(this.mDotFull, j, this.DOT_OFFSET_Y, null);
       }
+      j += this.DOT_SIZE * 2;
+      i += 1;
     }
   }
   
@@ -214,20 +219,27 @@ public class WelcomeActivity
     cc.b(c.h());
     try
     {
-      com.tencent.token.global.g.b("totalMemory:" + Runtime.getRuntime().totalMemory() + " freeMemory:" + Runtime.getRuntime().freeMemory() + " maxMemory:" + Runtime.getRuntime().maxMemory());
-      if (m.b()) {}
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("totalMemory:");
+      localStringBuilder.append(Runtime.getRuntime().totalMemory());
+      localStringBuilder.append(" freeMemory:");
+      localStringBuilder.append(Runtime.getRuntime().freeMemory());
+      localStringBuilder.append(" maxMemory:");
+      localStringBuilder.append(Runtime.getRuntime().maxMemory());
+      com.tencent.token.global.g.b(localStringBuilder.toString());
+      m.b();
       nextActivity();
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localOutOfMemoryError.printStackTrace();
-      doOutOfMemory();
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
+      doOutOfMemory();
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localOutOfMemoryError.printStackTrace();
       doOutOfMemory();
     }
   }
@@ -235,7 +247,8 @@ public class WelcomeActivity
   private void nextActivity()
   {
     Object localObject = cc.c();
-    if ((this.mActiveTask != null) && (this.mActiveTask.b() != UserTask.Status.FINISHED)) {
+    UserTask localUserTask = this.mActiveTask;
+    if ((localUserTask != null) && (localUserTask.b() != UserTask.Status.FINISHED)) {
       this.mActiveTask.a(true);
     }
     if (!((cc)localObject).g())
@@ -249,21 +262,16 @@ public class WelcomeActivity
         return;
       }
       localObject = new Intent(this, IndexActivity.class);
-      if (this.mFirstInstall)
-      {
-        if (cr.a().e() == null) {
-          break label127;
+      if (this.mFirstInstall) {
+        if (cr.a().e() != null) {
+          ((Intent)localObject).putExtra("index_from", 17);
+        } else {
+          ((Intent)localObject).putExtra("index_from", 16);
         }
-        ((Intent)localObject).putExtra("index_from", 17);
       }
-      for (;;)
-      {
-        startActivity((Intent)localObject);
-        finish();
-        return;
-        label127:
-        ((Intent)localObject).putExtra("index_from", 16);
-      }
+      startActivity((Intent)localObject);
+      finish();
+      return;
     }
     localObject = new Intent(this, IndexActivity.class);
     ((Intent)localObject).putExtra("index_from", 16);
@@ -278,67 +286,75 @@ public class WelcomeActivity
   
   public void dismissDialog()
   {
-    if (isFinishing()) {}
-    for (;;)
-    {
+    if (isFinishing()) {
       return;
-      try
+    }
+    try
+    {
+      if (this.mDialog != null)
       {
-        if (this.mDialog != null)
-        {
-          this.mDialog.cancel();
-          this.mDialog = null;
-        }
-        if (this.mProDialog != null)
-        {
-          this.mProDialog.dismiss();
-          this.mProDialog = null;
-          return;
-        }
+        this.mDialog.cancel();
+        this.mDialog = null;
       }
-      catch (Exception localException)
+      if (this.mProDialog != null)
       {
-        com.tencent.token.global.g.b(localException.toString());
+        this.mProDialog.dismiss();
+        this.mProDialog = null;
+        return;
       }
+    }
+    catch (Exception localException)
+    {
+      com.tencent.token.global.g.b(localException.toString());
     }
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    for (;;)
+    try
     {
-      try
+      if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getKeyCode() == 4))
       {
-        if (paramKeyEvent.getAction() == 0) {}
-        switch (paramKeyEvent.getKeyCode())
-        {
-        case 4: 
-          return super.dispatchKeyEvent(paramKeyEvent);
-        }
-      }
-      catch (Exception paramKeyEvent)
-      {
-        paramKeyEvent.printStackTrace();
-        com.tencent.token.global.g.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        finish();
         return true;
       }
-      finish();
-      return true;
+      boolean bool = super.dispatchKeyEvent(paramKeyEvent);
+      return bool;
     }
+    catch (Exception paramKeyEvent)
+    {
+      paramKeyEvent.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dispatchKeyEvent exception ");
+      localStringBuilder.append(this);
+      localStringBuilder.append(paramKeyEvent.toString());
+      com.tencent.token.global.g.d(localStringBuilder.toString());
+    }
+    return true;
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    com.tencent.token.global.g.b(this + ",task" + getTaskId());
-    com.tencent.token.global.g.a("width = " + getWindowManager().getDefaultDisplay().getWidth() + ", height = " + getWindowManager().getDefaultDisplay().getHeight());
+    paramBundle = new StringBuilder();
+    paramBundle.append(this);
+    paramBundle.append(",task");
+    paramBundle.append(getTaskId());
+    com.tencent.token.global.g.b(paramBundle.toString());
+    paramBundle = new StringBuilder();
+    paramBundle.append("width = ");
+    paramBundle.append(getWindowManager().getDefaultDisplay().getWidth());
+    paramBundle.append(", height = ");
+    paramBundle.append(getWindowManager().getDefaultDisplay().getHeight());
+    com.tencent.token.global.g.a(paramBundle.toString());
     init();
   }
   
   protected void onDestroy()
   {
-    if (this.mPageCurlView != null) {
-      this.mPageCurlView.c();
+    com.tencent.token.ui.base.g localg = this.mPageCurlView;
+    if (localg != null) {
+      localg.c();
     }
     this.mPageCurlView = null;
     cb.a().a(getClass().getName());
@@ -347,8 +363,9 @@ public class WelcomeActivity
   
   public void onDrawDots(Canvas paramCanvas, boolean paramBoolean)
   {
-    if (this.mLevel != IMAGE_LEVEL_COUNT - 1) {
-      drawDots(this.mLevel, paramCanvas);
+    int i = this.mLevel;
+    if (i != IMAGE_LEVEL_COUNT - 1) {
+      drawDots(i, paramCanvas);
     }
   }
   
@@ -367,17 +384,19 @@ public class WelcomeActivity
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (!paramBoolean) {}
-    while (this.mPageCurlView == null) {
+    if (!paramBoolean) {
       return;
     }
-    Rect localRect = new Rect();
-    getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    localRect.bottom -= localRect.top;
-    localRect.top = 0;
-    this.mWidth = localRect.width();
-    this.mHeight = localRect.height();
-    this.mPageCurlView.setViewRect(localRect);
+    if (this.mPageCurlView != null)
+    {
+      Rect localRect = new Rect();
+      getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+      localRect.bottom -= localRect.top;
+      localRect.top = 0;
+      this.mWidth = localRect.width();
+      this.mHeight = localRect.height();
+      this.mPageCurlView.setViewRect(localRect);
+    }
   }
   
   public void showUserDialog(int paramInt1, String paramString, int paramInt2, DialogInterface.OnClickListener paramOnClickListener)

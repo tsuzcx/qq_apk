@@ -13,9 +13,9 @@ public abstract class d
     int i = this.b;
     this.b = (i + 1);
     arrayOfByte[i] = paramByte;
-    if (this.b == this.a.length)
+    if (this.b == arrayOfByte.length)
     {
-      b(this.a, 0);
+      b(arrayOfByte, 0);
       this.b = 0;
     }
     this.c += 1L;
@@ -51,9 +51,10 @@ public abstract class d
         break;
       }
       b(paramArrayOfByte, paramInt1);
-      paramInt1 += this.a.length;
-      paramInt2 -= this.a.length;
-      this.c += this.a.length;
+      byte[] arrayOfByte = this.a;
+      paramInt1 += arrayOfByte.length;
+      paramInt2 -= arrayOfByte.length;
+      this.c += arrayOfByte.length;
     }
     while (j > 0)
     {
@@ -81,9 +82,13 @@ public abstract class d
     this.c = 0L;
     this.b = 0;
     int i = 0;
-    while (i < this.a.length)
+    for (;;)
     {
-      this.a[i] = 0;
+      byte[] arrayOfByte = this.a;
+      if (i >= arrayOfByte.length) {
+        break;
+      }
+      arrayOfByte[i] = 0;
       i += 1;
     }
   }

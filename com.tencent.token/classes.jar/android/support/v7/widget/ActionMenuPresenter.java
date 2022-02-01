@@ -69,30 +69,19 @@ class ActionMenuPresenter
   private View findViewForItem(MenuItem paramMenuItem)
   {
     ViewGroup localViewGroup = (ViewGroup)this.mMenuView;
-    Object localObject;
-    if (localViewGroup == null)
-    {
-      localObject = null;
-      return localObject;
+    if (localViewGroup == null) {
+      return null;
     }
     int j = localViewGroup.getChildCount();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label74;
-      }
       View localView = localViewGroup.getChildAt(i);
-      if ((localView instanceof MenuView.ItemView))
-      {
-        localObject = localView;
-        if (((MenuView.ItemView)localView).getItemData() == paramMenuItem) {
-          break;
-        }
+      if (((localView instanceof MenuView.ItemView)) && (((MenuView.ItemView)localView).getItemData() == paramMenuItem)) {
+        return localView;
       }
       i += 1;
     }
-    label74:
     return null;
   }
   
@@ -123,256 +112,213 @@ class ActionMenuPresenter
   
   public boolean flagActionItems()
   {
+    Object localObject1 = this;
     ArrayList localArrayList;
-    int i1;
-    int i;
-    int i4;
-    int i5;
-    ViewGroup localViewGroup;
-    int k;
     int m;
-    int n;
-    int j;
-    label60:
-    Object localObject1;
-    if (this.mMenu != null)
+    if (((ActionMenuPresenter)localObject1).mMenu != null)
     {
-      localArrayList = this.mMenu.getVisibleItems();
-      i1 = localArrayList.size();
-      i = this.mMaxItems;
-      i4 = this.mActionItemWidthLimit;
-      i5 = View.MeasureSpec.makeMeasureSpec(0, 0);
-      localViewGroup = (ViewGroup)this.mMenuView;
-      k = 0;
-      m = 0;
-      n = 0;
-      j = 0;
-      if (j >= i1) {
-        break label145;
-      }
-      localObject1 = (MenuItemImpl)localArrayList.get(j);
-      if (!((MenuItemImpl)localObject1).requiresActionButton()) {
-        break label122;
-      }
-      k += 1;
-      label89:
-      if ((!this.mExpandedActionViewsExclusive) || (!((MenuItemImpl)localObject1).isActionViewExpanded())) {
-        break label836;
-      }
-      i = 0;
+      localArrayList = ((ActionMenuPresenter)localObject1).mMenu.getVisibleItems();
+      m = localArrayList.size();
     }
-    label145:
-    label320:
-    label836:
+    else
+    {
+      localArrayList = null;
+      m = 0;
+    }
+    int i = ((ActionMenuPresenter)localObject1).mMaxItems;
+    int i3 = ((ActionMenuPresenter)localObject1).mActionItemWidthLimit;
+    int i5 = View.MeasureSpec.makeMeasureSpec(0, 0);
+    ViewGroup localViewGroup = (ViewGroup)((ActionMenuPresenter)localObject1).mMenuView;
+    int n = 0;
+    int i1 = 0;
+    int j = 0;
+    int k = 0;
+    while (n < m)
+    {
+      localObject2 = (MenuItemImpl)localArrayList.get(n);
+      if (((MenuItemImpl)localObject2).requiresActionButton()) {
+        j += 1;
+      } else if (((MenuItemImpl)localObject2).requestsActionButton()) {
+        k += 1;
+      } else {
+        i1 = 1;
+      }
+      i2 = i;
+      if (((ActionMenuPresenter)localObject1).mExpandedActionViewsExclusive)
+      {
+        i2 = i;
+        if (((MenuItemImpl)localObject2).isActionViewExpanded()) {
+          i2 = 0;
+        }
+      }
+      n += 1;
+      i = i2;
+    }
+    n = i;
+    if (((ActionMenuPresenter)localObject1).mReserveOverflow) {
+      if (i1 == 0)
+      {
+        n = i;
+        if (k + j <= i) {}
+      }
+      else
+      {
+        n = i - 1;
+      }
+    }
+    k = n - j;
+    Object localObject2 = ((ActionMenuPresenter)localObject1).mActionButtonGroups;
+    ((SparseBooleanArray)localObject2).clear();
+    if (((ActionMenuPresenter)localObject1).mStrictWidthLimit)
+    {
+      i = ((ActionMenuPresenter)localObject1).mMinCellSize;
+      j = i3 / i;
+      i1 = i + i3 % i / j;
+    }
+    else
+    {
+      i1 = 0;
+      j = 0;
+    }
+    n = i3;
+    i3 = 0;
+    i = 0;
+    int i2 = m;
     for (;;)
     {
-      j += 1;
-      break label60;
-      i1 = 0;
-      localArrayList = null;
-      break;
-      label122:
-      if (((MenuItemImpl)localObject1).requestsActionButton())
-      {
-        m += 1;
-        break label89;
+      localObject1 = this;
+      if (i3 >= i2) {
+        break;
       }
-      n = 1;
-      break label89;
-      j = i;
-      if (this.mReserveOverflow) {
-        if (n == 0)
+      MenuItemImpl localMenuItemImpl = (MenuItemImpl)localArrayList.get(i3);
+      View localView;
+      if (localMenuItemImpl.requiresActionButton())
+      {
+        localView = ((ActionMenuPresenter)localObject1).getItemView(localMenuItemImpl, ((ActionMenuPresenter)localObject1).mScrapActionButtonView, localViewGroup);
+        if (((ActionMenuPresenter)localObject1).mScrapActionButtonView == null) {
+          ((ActionMenuPresenter)localObject1).mScrapActionButtonView = localView;
+        }
+        if (((ActionMenuPresenter)localObject1).mStrictWidthLimit) {
+          j -= ActionMenuView.measureChildForCells(localView, i1, j, i5, 0);
+        } else {
+          localView.measure(i5, i5);
+        }
+        m = localView.getMeasuredWidth();
+        n -= m;
+        if (i == 0) {
+          i = m;
+        }
+        m = localMenuItemImpl.getGroupId();
+        if (m != 0) {
+          ((SparseBooleanArray)localObject2).put(m, true);
+        }
+        localMenuItemImpl.setIsActionButton(true);
+      }
+      else if (localMenuItemImpl.requestsActionButton())
+      {
+        int i6 = localMenuItemImpl.getGroupId();
+        boolean bool = ((SparseBooleanArray)localObject2).get(i6);
+        int i7;
+        if (((k > 0) || (bool)) && (n > 0) && ((!((ActionMenuPresenter)localObject1).mStrictWidthLimit) || (j > 0))) {
+          i7 = 1;
+        } else {
+          i7 = 0;
+        }
+        int i4;
+        if (i7 != 0)
         {
-          j = i;
-          if (k + m <= i) {}
+          localView = ((ActionMenuPresenter)localObject1).getItemView(localMenuItemImpl, ((ActionMenuPresenter)localObject1).mScrapActionButtonView, localViewGroup);
+          if (((ActionMenuPresenter)localObject1).mScrapActionButtonView == null) {
+            ((ActionMenuPresenter)localObject1).mScrapActionButtonView = localView;
+          }
+          if (((ActionMenuPresenter)localObject1).mStrictWidthLimit)
+          {
+            i4 = ActionMenuView.measureChildForCells(localView, i1, j, i5, 0);
+            m = j - i4;
+            j = m;
+            if (i4 == 0)
+            {
+              i7 = 0;
+              j = m;
+            }
+          }
+          else
+          {
+            localView.measure(i5, i5);
+          }
+          i4 = localView.getMeasuredWidth();
+          n -= i4;
+          m = i;
+          if (i == 0) {
+            m = i4;
+          }
+          if (((ActionMenuPresenter)localObject1).mStrictWidthLimit)
+          {
+            if (n >= 0) {
+              i = 1;
+            } else {
+              i = 0;
+            }
+            i7 &= i;
+            i = m;
+          }
+          else
+          {
+            if (n + m > 0) {
+              i = 1;
+            } else {
+              i = 0;
+            }
+            i7 &= i;
+            i = m;
+          }
+        }
+        if ((i7 != 0) && (i6 != 0))
+        {
+          ((SparseBooleanArray)localObject2).put(i6, true);
+          m = k;
         }
         else
         {
-          j = i - 1;
-        }
-      }
-      j -= k;
-      localObject1 = this.mActionButtonGroups;
-      ((SparseBooleanArray)localObject1).clear();
-      i = 0;
-      if (this.mStrictWidthLimit)
-      {
-        i = i4 / this.mMinCellSize;
-        k = this.mMinCellSize;
-        m = this.mMinCellSize;
-      }
-      for (int i2 = i4 % k / i + m;; i2 = 0)
-      {
-        int i3 = 0;
-        n = 0;
-        k = i;
-        i = j;
-        m = i4;
-        j = n;
-        MenuItemImpl localMenuItemImpl;
-        Object localObject2;
-        if (i3 < i1)
-        {
-          localMenuItemImpl = (MenuItemImpl)localArrayList.get(i3);
-          if (localMenuItemImpl.requiresActionButton())
+          m = k;
+          if (bool)
           {
-            localObject2 = getItemView(localMenuItemImpl, this.mScrapActionButtonView, localViewGroup);
-            if (this.mScrapActionButtonView == null) {
-              this.mScrapActionButtonView = ((View)localObject2);
-            }
-            if (this.mStrictWidthLimit)
-            {
-              n = k - ActionMenuView.measureChildForCells((View)localObject2, i2, k, i5, 0);
-              k = ((View)localObject2).getMeasuredWidth();
-              if (j != 0) {
-                break label827;
-              }
-              j = k;
-            }
-          }
-        }
-        for (;;)
-        {
-          i4 = localMenuItemImpl.getGroupId();
-          if (i4 != 0) {
-            ((SparseBooleanArray)localObject1).put(i4, true);
-          }
-          localMenuItemImpl.setIsActionButton(true);
-          m -= k;
-          k = i;
-          i = m;
-          i4 = i3 + 1;
-          i3 = k;
-          k = n;
-          m = i;
-          i = i3;
-          i3 = i4;
-          break;
-          ((View)localObject2).measure(i5, i5);
-          n = k;
-          break label320;
-          int i6;
-          boolean bool;
-          int i7;
-          if (localMenuItemImpl.requestsActionButton())
-          {
-            i6 = localMenuItemImpl.getGroupId();
-            bool = ((SparseBooleanArray)localObject1).get(i6);
-            if (((i > 0) || (bool)) && (m > 0) && ((!this.mStrictWidthLimit) || (k > 0)))
-            {
-              i7 = 1;
-              label461:
-              if (i7 == 0) {
-                break label816;
-              }
-              localObject2 = getItemView(localMenuItemImpl, this.mScrapActionButtonView, localViewGroup);
-              if (this.mScrapActionButtonView == null) {
-                this.mScrapActionButtonView = ((View)localObject2);
-              }
-              if (!this.mStrictWidthLimit) {
-                break label648;
-              }
-              n = ActionMenuView.measureChildForCells((View)localObject2, i2, k, i5, 0);
-              if (n != 0) {
-                break label813;
-              }
-              i7 = 0;
-              k -= n;
-              n = ((View)localObject2).getMeasuredWidth();
-              i4 = m - n;
-              m = j;
-              if (j == 0) {
-                m = n;
-              }
-              if (!this.mStrictWidthLimit) {
-                break label665;
-              }
-              if (i4 < 0) {
-                break label660;
-              }
-              j = 1;
-              i7 &= j;
-              j = m;
-              n = k;
-              m = i4;
-              k = j;
-              j = n;
-            }
-          }
-          for (;;)
-          {
-            if ((i7 != 0) && (i6 != 0)) {
-              ((SparseBooleanArray)localObject1).put(i6, true);
-            }
+            ((SparseBooleanArray)localObject2).put(i6, false);
+            i4 = 0;
             for (;;)
             {
-              n = i;
-              if (i7 != 0) {
-                n = i - 1;
-              }
-              localMenuItemImpl.setIsActionButton(i7);
-              i = m;
-              m = n;
-              n = j;
-              j = k;
-              k = m;
-              break;
-              int i8 = 0;
-              break label461;
-              ((View)localObject2).measure(i5, i5);
-              break label526;
-              j = 0;
-              break label565;
-              if (i4 + m > 0) {}
-              for (j = 1;; j = 0)
-              {
-                i8 &= j;
-                j = k;
-                k = m;
-                m = i4;
+              m = k;
+              if (i4 >= i3) {
                 break;
               }
-              if (bool)
+              localObject1 = (MenuItemImpl)localArrayList.get(i4);
+              m = k;
+              if (((MenuItemImpl)localObject1).getGroupId() == i6)
               {
-                ((SparseBooleanArray)localObject1).put(i6, false);
-                i4 = 0;
-                for (;;)
-                {
-                  if (i4 < i3)
-                  {
-                    localObject2 = (MenuItemImpl)localArrayList.get(i4);
-                    n = i;
-                    if (((MenuItemImpl)localObject2).getGroupId() == i6)
-                    {
-                      n = i;
-                      if (((MenuItemImpl)localObject2).isActionButton()) {
-                        n = i + 1;
-                      }
-                      ((MenuItemImpl)localObject2).setIsActionButton(false);
-                    }
-                    i4 += 1;
-                    i = n;
-                    continue;
-                    localMenuItemImpl.setIsActionButton(false);
-                    n = m;
-                    m = i;
-                    i = n;
-                    n = k;
-                    k = m;
-                    break;
-                    return true;
-                  }
+                m = k;
+                if (((MenuItemImpl)localObject1).isActionButton()) {
+                  m = k + 1;
                 }
+                ((MenuItemImpl)localObject1).setIsActionButton(false);
               }
+              i4 += 1;
+              k = m;
             }
-            break label521;
-            n = j;
-            j = k;
-            k = n;
           }
         }
+        k = m;
+        if (i7 != 0) {
+          k = m - 1;
+        }
+        localMenuItemImpl.setIsActionButton(i7);
       }
+      else
+      {
+        localMenuItemImpl.setIsActionButton(false);
+      }
+      i3 += 1;
     }
+    return true;
   }
   
   public View getItemView(MenuItemImpl paramMenuItemImpl, View paramView, ViewGroup paramViewGroup)
@@ -381,17 +327,19 @@ class ActionMenuPresenter
     if ((localView == null) || (paramMenuItemImpl.hasCollapsibleActionView())) {
       localView = super.getItemView(paramMenuItemImpl, paramView, paramViewGroup);
     }
-    if (paramMenuItemImpl.isActionViewExpanded()) {}
-    for (int i = 8;; i = 0)
-    {
-      localView.setVisibility(i);
-      paramMenuItemImpl = (ActionMenuView)paramViewGroup;
-      paramView = localView.getLayoutParams();
-      if (!paramMenuItemImpl.checkLayoutParams(paramView)) {
-        localView.setLayoutParams(paramMenuItemImpl.generateLayoutParams(paramView));
-      }
-      return localView;
+    int i;
+    if (paramMenuItemImpl.isActionViewExpanded()) {
+      i = 8;
+    } else {
+      i = 0;
     }
+    localView.setVisibility(i);
+    paramMenuItemImpl = (ActionMenuView)paramViewGroup;
+    paramView = localView.getLayoutParams();
+    if (!paramMenuItemImpl.checkLayoutParams(paramView)) {
+      localView.setLayoutParams(paramMenuItemImpl.generateLayoutParams(paramView));
+    }
+    return localView;
   }
   
   public MenuView getMenuView(ViewGroup paramViewGroup)
@@ -406,8 +354,9 @@ class ActionMenuPresenter
   
   public Drawable getOverflowIcon()
   {
-    if (this.mOverflowButton != null) {
-      return this.mOverflowButton.getDrawable();
+    OverflowMenuButton localOverflowMenuButton = this.mOverflowButton;
+    if (localOverflowMenuButton != null) {
+      return localOverflowMenuButton.getDrawable();
     }
     if (this.mPendingOverflowIconSet) {
       return this.mPendingOverflowIcon;
@@ -434,9 +383,10 @@ class ActionMenuPresenter
   
   public boolean hideSubMenus()
   {
-    if (this.mActionButtonPopup != null)
+    ActionButtonSubmenu localActionButtonSubmenu = this.mActionButtonPopup;
+    if (localActionButtonSubmenu != null)
     {
-      this.mActionButtonPopup.dismiss();
+      localActionButtonSubmenu.dismiss();
       return true;
     }
     return false;
@@ -473,14 +423,13 @@ class ActionMenuPresenter
       }
       i -= this.mOverflowButton.getMeasuredWidth();
     }
-    for (;;)
+    else
     {
-      this.mActionItemWidthLimit = i;
-      this.mMinCellSize = ((int)(56.0F * paramMenuBuilder.getDisplayMetrics().density));
-      this.mScrapActionButtonView = null;
-      return;
       this.mOverflowButton = null;
     }
+    this.mActionItemWidthLimit = i;
+    this.mMinCellSize = ((int)(paramMenuBuilder.getDisplayMetrics().density * 56.0F));
+    this.mScrapActionButtonView = null;
   }
   
   public boolean isOverflowMenuShowPending()
@@ -490,7 +439,8 @@ class ActionMenuPresenter
   
   public boolean isOverflowMenuShowing()
   {
-    return (this.mOverflowPopup != null) && (this.mOverflowPopup.isShowing());
+    OverflowPopup localOverflowPopup = this.mOverflowPopup;
+    return (localOverflowPopup != null) && (localOverflowPopup.isShowing());
   }
   
   public boolean isOverflowReserved()
@@ -516,17 +466,17 @@ class ActionMenuPresenter
   
   public void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    if (!(paramParcelable instanceof SavedState)) {}
-    do
+    if (!(paramParcelable instanceof SavedState)) {
+      return;
+    }
+    paramParcelable = (SavedState)paramParcelable;
+    if (paramParcelable.openSubMenuId > 0)
     {
-      do
-      {
-        return;
-        paramParcelable = (SavedState)paramParcelable;
-      } while (paramParcelable.openSubMenuId <= 0);
       paramParcelable = this.mMenu.findItem(paramParcelable.openSubMenuId);
-    } while (paramParcelable == null);
-    onSubMenuSelected((SubMenuBuilder)paramParcelable.getSubMenu());
+      if (paramParcelable != null) {
+        onSubMenuSelected((SubMenuBuilder)paramParcelable.getSubMenu());
+      }
+    }
   }
   
   public Parcelable onSaveInstanceState()
@@ -538,43 +488,50 @@ class ActionMenuPresenter
   
   public boolean onSubMenuSelected(SubMenuBuilder paramSubMenuBuilder)
   {
-    if (!paramSubMenuBuilder.hasVisibleItems()) {}
-    Object localObject;
-    do
-    {
+    boolean bool1 = paramSubMenuBuilder.hasVisibleItems();
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      for (localObject = paramSubMenuBuilder; ((SubMenuBuilder)localObject).getParentMenu() != this.mMenu; localObject = (SubMenuBuilder)((SubMenuBuilder)localObject).getParentMenu()) {}
-      localObject = findViewForItem(((SubMenuBuilder)localObject).getItem());
-    } while (localObject == null);
+    }
+    for (Object localObject = paramSubMenuBuilder; ((SubMenuBuilder)localObject).getParentMenu() != this.mMenu; localObject = (SubMenuBuilder)((SubMenuBuilder)localObject).getParentMenu()) {}
+    localObject = findViewForItem(((SubMenuBuilder)localObject).getItem());
+    if (localObject == null) {
+      return false;
+    }
     this.mOpenSubMenuId = paramSubMenuBuilder.getItem().getItemId();
     int j = paramSubMenuBuilder.size();
     int i = 0;
-    if (i < j)
+    for (;;)
     {
+      bool1 = bool2;
+      if (i >= j) {
+        break;
+      }
       MenuItem localMenuItem = paramSubMenuBuilder.getItem(i);
-      if ((!localMenuItem.isVisible()) || (localMenuItem.getIcon() == null)) {}
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      this.mActionButtonPopup = new ActionButtonSubmenu(this.mContext, paramSubMenuBuilder, (View)localObject);
-      this.mActionButtonPopup.setForceShowIcon(bool);
-      this.mActionButtonPopup.show();
-      super.onSubMenuSelected(paramSubMenuBuilder);
-      return true;
+      if ((localMenuItem.isVisible()) && (localMenuItem.getIcon() != null))
+      {
+        bool1 = true;
+        break;
+      }
       i += 1;
-      break;
     }
+    this.mActionButtonPopup = new ActionButtonSubmenu(this.mContext, paramSubMenuBuilder, (View)localObject);
+    this.mActionButtonPopup.setForceShowIcon(bool1);
+    this.mActionButtonPopup.show();
+    super.onSubMenuSelected(paramSubMenuBuilder);
+    return true;
   }
   
   public void onSubUiVisibilityChanged(boolean paramBoolean)
   {
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       super.onSubMenuSelected(null);
-    }
-    while (this.mMenu == null) {
       return;
     }
-    this.mMenu.close(false);
+    if (this.mMenu != null) {
+      this.mMenu.close(false);
+    }
   }
   
   public void setExpandedActionViewsExclusive(boolean paramBoolean)
@@ -596,9 +553,10 @@ class ActionMenuPresenter
   
   public void setOverflowIcon(Drawable paramDrawable)
   {
-    if (this.mOverflowButton != null)
+    OverflowMenuButton localOverflowMenuButton = this.mOverflowButton;
+    if (localOverflowMenuButton != null)
     {
-      this.mOverflowButton.setImageDrawable(paramDrawable);
+      localOverflowMenuButton.setImageDrawable(paramDrawable);
       return;
     }
     this.mPendingOverflowIconSet = true;
@@ -637,18 +595,17 @@ class ActionMenuPresenter
   
   public void updateMenuView(boolean paramBoolean)
   {
-    int j = 1;
-    int k = 0;
     super.updateMenuView(paramBoolean);
     ((View)this.mMenuView).requestLayout();
-    Object localObject;
-    int i;
-    if (this.mMenu != null)
+    Object localObject = this.mMenu;
+    int j = 0;
+    int k;
+    if (localObject != null)
     {
       localObject = this.mMenu.getActionItems();
-      int m = ((ArrayList)localObject).size();
+      k = ((ArrayList)localObject).size();
       i = 0;
-      while (i < m)
+      while (i < k)
       {
         ActionProvider localActionProvider = ((MenuItemImpl)((ArrayList)localObject).get(i)).getSupportActionProvider();
         if (localActionProvider != null) {
@@ -657,29 +614,34 @@ class ActionMenuPresenter
         i += 1;
       }
     }
-    if (this.mMenu != null)
-    {
+    if (this.mMenu != null) {
       localObject = this.mMenu.getNonActionItems();
-      i = k;
-      if (this.mReserveOverflow)
+    } else {
+      localObject = null;
+    }
+    int i = j;
+    boolean bool;
+    if (this.mReserveOverflow)
+    {
+      i = j;
+      if (localObject != null)
       {
-        i = k;
-        if (localObject != null)
+        k = ((ArrayList)localObject).size();
+        if (k == 1)
         {
-          i = ((ArrayList)localObject).size();
-          if (i != 1) {
-            break label256;
+          bool = ((MenuItemImpl)((ArrayList)localObject).get(0)).isActionViewExpanded() ^ true;
+        }
+        else
+        {
+          bool = j;
+          if (k > 0) {
+            bool = true;
           }
-          if (((MenuItemImpl)((ArrayList)localObject).get(0)).isActionViewExpanded()) {
-            break label251;
-          }
-          i = 1;
         }
       }
-      label145:
-      if (i == 0) {
-        break label270;
-      }
+    }
+    if (bool)
+    {
       if (this.mOverflowButton == null) {
         this.mOverflowButton = new OverflowMenuButton(this.mSystemContext);
       }
@@ -693,25 +655,14 @@ class ActionMenuPresenter
         ((ActionMenuView)localObject).addView(this.mOverflowButton, ((ActionMenuView)localObject).generateOverflowButtonLayoutParams());
       }
     }
-    for (;;)
+    else
     {
-      ((ActionMenuView)this.mMenuView).setOverflowReserved(this.mReserveOverflow);
-      return;
-      localObject = null;
-      break;
-      label251:
-      i = 0;
-      break label145;
-      label256:
-      if (i > 0) {}
-      for (i = j;; i = 0) {
-        break;
-      }
-      label270:
-      if ((this.mOverflowButton != null) && (this.mOverflowButton.getParent() == this.mMenuView)) {
+      localObject = this.mOverflowButton;
+      if ((localObject != null) && (((OverflowMenuButton)localObject).getParent() == this.mMenuView)) {
         ((ViewGroup)this.mMenuView).removeView(this.mOverflowButton);
       }
     }
+    ((ActionMenuView)this.mMenuView).setOverflowReserved(this.mReserveOverflow);
   }
   
   private class ActionButtonSubmenu
@@ -720,24 +671,23 @@ class ActionMenuPresenter
     public ActionButtonSubmenu(Context paramContext, SubMenuBuilder paramSubMenuBuilder, View paramView)
     {
       super(paramSubMenuBuilder, paramView, false, R.attr.actionOverflowMenuStyle);
-      if (!((MenuItemImpl)paramSubMenuBuilder.getItem()).isActionButton()) {
-        if (ActionMenuPresenter.this.mOverflowButton != null) {
-          break label59;
-        }
-      }
-      label59:
-      for (paramContext = (View)ActionMenuPresenter.this.mMenuView;; paramContext = ActionMenuPresenter.this.mOverflowButton)
+      if (!((MenuItemImpl)paramSubMenuBuilder.getItem()).isActionButton())
       {
+        if (ActionMenuPresenter.this.mOverflowButton == null) {
+          paramContext = (View)ActionMenuPresenter.this.mMenuView;
+        } else {
+          paramContext = ActionMenuPresenter.this.mOverflowButton;
+        }
         setAnchorView(paramContext);
-        setPresenterCallback(ActionMenuPresenter.this.mPopupPresenterCallback);
-        return;
       }
+      setPresenterCallback(ActionMenuPresenter.this.mPopupPresenterCallback);
     }
     
     protected void onDismiss()
     {
-      ActionMenuPresenter.this.mActionButtonPopup = null;
-      ActionMenuPresenter.this.mOpenSubMenuId = 0;
+      ActionMenuPresenter localActionMenuPresenter = ActionMenuPresenter.this;
+      localActionMenuPresenter.mActionButtonPopup = null;
+      localActionMenuPresenter.mOpenSubMenuId = 0;
       super.onDismiss();
     }
   }
@@ -900,15 +850,16 @@ class ActionMenuPresenter
     
     public boolean onOpenSubMenu(MenuBuilder paramMenuBuilder)
     {
+      boolean bool = false;
       if (paramMenuBuilder == null) {
         return false;
       }
       ActionMenuPresenter.this.mOpenSubMenuId = ((SubMenuBuilder)paramMenuBuilder).getItem().getItemId();
       MenuPresenter.Callback localCallback = ActionMenuPresenter.this.getCallback();
-      if (localCallback != null) {}
-      for (boolean bool = localCallback.onOpenSubMenu(paramMenuBuilder);; bool = false) {
-        return bool;
+      if (localCallback != null) {
+        bool = localCallback.onOpenSubMenu(paramMenuBuilder);
       }
+      return bool;
     }
   }
   

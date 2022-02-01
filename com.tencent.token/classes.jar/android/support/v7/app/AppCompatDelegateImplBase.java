@@ -29,7 +29,7 @@ abstract class AppCompatDelegateImplBase
   static final String EXCEPTION_HANDLER_MESSAGE_SUFFIX = ". If the resource you are trying to use is a vector resource, you may be referencing it in an unsupported way. See AppCompatDelegate.setCompatVectorFromResourcesEnabled() for more info.";
   private static final boolean SHOULD_INSTALL_EXCEPTION_HANDLER;
   private static boolean sInstalledExceptionHandler;
-  private static final int[] sWindowBackgroundStyleable;
+  private static final int[] sWindowBackgroundStyleable = { 16842836 };
   ActionBar mActionBar;
   final AppCompatCallback mAppCompatCallback;
   final Window.Callback mAppCompatWindowCallback;
@@ -49,54 +49,58 @@ abstract class AppCompatDelegateImplBase
   
   static
   {
-    if (Build.VERSION.SDK_INT < 21) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (Build.VERSION.SDK_INT < 21) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    SHOULD_INSTALL_EXCEPTION_HANDLER = bool;
+    if ((SHOULD_INSTALL_EXCEPTION_HANDLER) && (!sInstalledExceptionHandler))
     {
-      SHOULD_INSTALL_EXCEPTION_HANDLER = bool;
-      if ((SHOULD_INSTALL_EXCEPTION_HANDLER) && (!sInstalledExceptionHandler))
+      Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
       {
-        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
+        private boolean shouldWrapException(Throwable paramAnonymousThrowable)
         {
-          private boolean shouldWrapException(Throwable paramAnonymousThrowable)
+          boolean bool1 = paramAnonymousThrowable instanceof Resources.NotFoundException;
+          boolean bool2 = false;
+          if (bool1)
           {
-            boolean bool2 = false;
-            boolean bool1 = bool2;
-            if ((paramAnonymousThrowable instanceof Resources.NotFoundException))
-            {
-              paramAnonymousThrowable = paramAnonymousThrowable.getMessage();
-              bool1 = bool2;
-              if (paramAnonymousThrowable != null) {
-                if (!paramAnonymousThrowable.contains("drawable"))
-                {
-                  bool1 = bool2;
-                  if (!paramAnonymousThrowable.contains("Drawable")) {}
-                }
-                else
-                {
-                  bool1 = true;
-                }
+            paramAnonymousThrowable = paramAnonymousThrowable.getMessage();
+            bool1 = bool2;
+            if (paramAnonymousThrowable != null) {
+              if (!paramAnonymousThrowable.contains("drawable"))
+              {
+                bool1 = bool2;
+                if (!paramAnonymousThrowable.contains("Drawable")) {}
+              }
+              else
+              {
+                bool1 = true;
               }
             }
             return bool1;
           }
-          
-          public void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
+          return false;
+        }
+        
+        public void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
+        {
+          if (shouldWrapException(paramAnonymousThrowable))
           {
-            if (shouldWrapException(paramAnonymousThrowable))
-            {
-              Resources.NotFoundException localNotFoundException = new Resources.NotFoundException(paramAnonymousThrowable.getMessage() + ". If the resource you are trying to use is a vector resource, you may be referencing it in an unsupported way. See AppCompatDelegate.setCompatVectorFromResourcesEnabled() for more info.");
-              localNotFoundException.initCause(paramAnonymousThrowable.getCause());
-              localNotFoundException.setStackTrace(paramAnonymousThrowable.getStackTrace());
-              this.val$defHandler.uncaughtException(paramAnonymousThread, localNotFoundException);
-              return;
-            }
-            this.val$defHandler.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
+            Object localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramAnonymousThrowable.getMessage());
+            ((StringBuilder)localObject).append(". If the resource you are trying to use is a vector resource, you may be referencing it in an unsupported way. See AppCompatDelegate.setCompatVectorFromResourcesEnabled() for more info.");
+            localObject = new Resources.NotFoundException(((StringBuilder)localObject).toString());
+            ((Throwable)localObject).initCause(paramAnonymousThrowable.getCause());
+            ((Throwable)localObject).setStackTrace(paramAnonymousThrowable.getStackTrace());
+            this.val$defHandler.uncaughtException(paramAnonymousThread, (Throwable)localObject);
+            return;
           }
-        });
-        sInstalledExceptionHandler = true;
-      }
-      sWindowBackgroundStyleable = new int[] { 16842836 };
-      return;
+          this.val$defHandler.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
+        }
+      });
+      sInstalledExceptionHandler = true;
     }
   }
   
@@ -106,17 +110,20 @@ abstract class AppCompatDelegateImplBase
     this.mWindow = paramWindow;
     this.mAppCompatCallback = paramAppCompatCallback;
     this.mOriginalWindowCallback = this.mWindow.getCallback();
-    if ((this.mOriginalWindowCallback instanceof AppCompatWindowCallbackBase)) {
-      throw new IllegalStateException("AppCompat has already installed itself into the Window");
+    paramWindow = this.mOriginalWindowCallback;
+    if (!(paramWindow instanceof AppCompatWindowCallbackBase))
+    {
+      this.mAppCompatWindowCallback = wrapWindowCallback(paramWindow);
+      this.mWindow.setCallback(this.mAppCompatWindowCallback);
+      paramContext = TintTypedArray.obtainStyledAttributes(paramContext, null, sWindowBackgroundStyleable);
+      paramWindow = paramContext.getDrawableIfKnown(0);
+      if (paramWindow != null) {
+        this.mWindow.setBackgroundDrawable(paramWindow);
+      }
+      paramContext.recycle();
+      return;
     }
-    this.mAppCompatWindowCallback = wrapWindowCallback(this.mOriginalWindowCallback);
-    this.mWindow.setCallback(this.mAppCompatWindowCallback);
-    paramContext = TintTypedArray.obtainStyledAttributes(paramContext, null, sWindowBackgroundStyleable);
-    paramWindow = paramContext.getDrawableIfKnown(0);
-    if (paramWindow != null) {
-      this.mWindow.setBackgroundDrawable(paramWindow);
-    }
-    paramContext.recycle();
+    throw new IllegalStateException("AppCompat has already installed itself into the Window");
   }
   
   public boolean applyDayNight()
@@ -128,16 +135,17 @@ abstract class AppCompatDelegateImplBase
   
   final Context getActionBarThemedContext()
   {
-    Context localContext = null;
-    Object localObject = getSupportActionBar();
-    if (localObject != null) {
-      localContext = ((ActionBar)localObject).getThemedContext();
+    Object localObject1 = getSupportActionBar();
+    if (localObject1 != null) {
+      localObject1 = ((ActionBar)localObject1).getThemedContext();
+    } else {
+      localObject1 = null;
     }
-    localObject = localContext;
-    if (localContext == null) {
-      localObject = this.mContext;
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = this.mContext;
     }
-    return localObject;
+    return localObject2;
   }
   
   public final ActionBarDrawerToggle.Delegate getDrawerToggleDelegate()
@@ -150,16 +158,15 @@ abstract class AppCompatDelegateImplBase
     if (this.mMenuInflater == null)
     {
       initWindowDecorActionBar();
-      if (this.mActionBar == null) {
-        break label43;
+      Object localObject = this.mActionBar;
+      if (localObject != null) {
+        localObject = ((ActionBar)localObject).getThemedContext();
+      } else {
+        localObject = this.mContext;
       }
+      this.mMenuInflater = new SupportMenuInflater((Context)localObject);
     }
-    label43:
-    for (Context localContext = this.mActionBar.getThemedContext();; localContext = this.mContext)
-    {
-      this.mMenuInflater = new SupportMenuInflater(localContext);
-      return this.mMenuInflater;
-    }
+    return this.mMenuInflater;
   }
   
   public ActionBar getSupportActionBar()
@@ -170,8 +177,9 @@ abstract class AppCompatDelegateImplBase
   
   final CharSequence getTitle()
   {
-    if ((this.mOriginalWindowCallback instanceof Activity)) {
-      return ((Activity)this.mOriginalWindowCallback).getTitle();
+    Window.Callback localCallback = this.mOriginalWindowCallback;
+    if ((localCallback instanceof Activity)) {
+      return ((Activity)localCallback).getTitle();
     }
     return this.mTitle;
   }
@@ -332,30 +340,22 @@ abstract class AppCompatDelegateImplBase
     public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
     {
       MenuBuilder localMenuBuilder;
-      boolean bool1;
-      if ((paramMenu instanceof MenuBuilder))
-      {
+      if ((paramMenu instanceof MenuBuilder)) {
         localMenuBuilder = (MenuBuilder)paramMenu;
-        if ((paramInt != 0) || (localMenuBuilder != null)) {
-          break label34;
-        }
-        bool1 = false;
-      }
-      label34:
-      boolean bool2;
-      do
-      {
-        return bool1;
+      } else {
         localMenuBuilder = null;
-        break;
-        if (localMenuBuilder != null) {
-          localMenuBuilder.setOverrideVisibleItems(true);
-        }
-        bool2 = super.onPreparePanel(paramInt, paramView, paramMenu);
-        bool1 = bool2;
-      } while (localMenuBuilder == null);
-      localMenuBuilder.setOverrideVisibleItems(false);
-      return bool2;
+      }
+      if ((paramInt == 0) && (localMenuBuilder == null)) {
+        return false;
+      }
+      if (localMenuBuilder != null) {
+        localMenuBuilder.setOverrideVisibleItems(true);
+      }
+      boolean bool = super.onPreparePanel(paramInt, paramView, paramMenu);
+      if (localMenuBuilder != null) {
+        localMenuBuilder.setOverrideVisibleItems(false);
+      }
+      return bool;
     }
   }
 }

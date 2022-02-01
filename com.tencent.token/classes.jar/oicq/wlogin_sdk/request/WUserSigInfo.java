@@ -49,7 +49,10 @@ public class WUserSigInfo
   {
     if (paramWloginSigInfo.cacheTickets != null)
     {
-      util.LOGI("WUserSigInfo::get_clone using cacheTickets last update stamp " + paramWloginSigInfo.cacheUpdateStamp, "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WUserSigInfo::get_clone using cacheTickets last update stamp ");
+      localStringBuilder.append(paramWloginSigInfo.cacheUpdateStamp);
+      util.LOGI(localStringBuilder.toString(), "");
       this._tickets = paramWloginSigInfo.cacheTickets;
       return;
     }
@@ -71,15 +74,16 @@ public class WUserSigInfo
     this._tickets.add(new Ticket(32, paramWloginSigInfo._userStWebSig, null, paramWloginSigInfo._userStWebSig_create_time, paramWloginSigInfo._userStWebSig_expire_time));
     this._tickets.add(new Ticket(8388608, paramWloginSigInfo._pay_token, null, 0L, 0L));
     this._tickets.add(new Ticket(16777216, paramWloginSigInfo._pf, paramWloginSigInfo._pfKey, 0L, 0L));
-    if (paramWloginSigInfo._DA2 != null) {}
-    for (int i = paramWloginSigInfo._DA2.length;; i = 0)
-    {
-      util.LOGI(String.format("WUserSigInfo.get_clone add da2 %d", new Object[] { Integer.valueOf(i) }), "");
-      this._tickets.add(new Ticket(33554432, paramWloginSigInfo._DA2, null, 0L, 0L));
-      paramWloginSigInfo.cacheTickets = this._tickets;
-      paramWloginSigInfo.cacheUpdateStamp = util.get_server_cur_time();
-      return;
+    int i;
+    if (paramWloginSigInfo._DA2 != null) {
+      i = paramWloginSigInfo._DA2.length;
+    } else {
+      i = 0;
     }
+    util.LOGI(String.format("WUserSigInfo.get_clone add da2 %d", new Object[] { Integer.valueOf(i) }), "");
+    this._tickets.add(new Ticket(33554432, paramWloginSigInfo._DA2, null, 0L, 0L));
+    paramWloginSigInfo.cacheTickets = this._tickets;
+    paramWloginSigInfo.cacheUpdateStamp = util.get_server_cur_time();
   }
   
   public void readFromParcel(Parcel paramParcel)

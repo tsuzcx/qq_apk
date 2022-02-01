@@ -48,19 +48,28 @@ public class ProtoGetLoginProtect
       ((JSONObject)localObject2).put("uin", this.d);
       ((JSONObject)localObject2).put("seq_id", this.g);
       ((JSONObject)localObject2).put("op_time", (int)(cc.c().s() / 1000L));
-      g.a("loginprotect data=" + localObject2);
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("loginprotect data=");
+      localStringBuilder2.append(localObject2);
+      g.a(localStringBuilder2.toString());
       localObject2 = l.b(((JSONObject)localObject2).toString().getBytes());
       localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
-    localObject1 = "?aq_base_sid=" + str + "&data=" + (String)localObject1;
-    return c.e() + "/cn/mbtoken3/mbtoken3_get_login_prot_encrypt" + (String)localObject1;
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("?aq_base_sid=");
+    localStringBuilder1.append(str);
+    localStringBuilder1.append("&data=");
+    localStringBuilder1.append((String)localObject1);
+    localObject1 = localStringBuilder1.toString();
+    localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append(c.e());
+    localStringBuilder1.append("/cn/mbtoken3/mbtoken3_get_login_prot_encrypt");
+    localStringBuilder1.append((String)localObject1);
+    return localStringBuilder1.toString();
   }
   
   protected void a(do paramdo)
@@ -82,19 +91,30 @@ public class ProtoGetLoginProtect
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      g.a("login protect: " + paramJSONObject);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("login protect: ");
+      localStringBuilder.append(paramJSONObject);
+      g.a(localStringBuilder.toString());
       if (paramJSONObject.getInt("seq_id") != this.g)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + paramJSONObject.getInt("seq_id") + ",right = " + this.g);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parseJSON error seq is wrong seq=");
+        localStringBuilder.append(paramJSONObject.getInt("seq_id"));
+        localStringBuilder.append(",right = ");
+        localStringBuilder.append(this.g);
+        g.c(localStringBuilder.toString());
         return;
       }
       this.e = new LoginProtectResult(paramJSONObject);
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

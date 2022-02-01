@@ -26,7 +26,10 @@ public final class EnvironmentCompat
     }
     catch (IOException paramFile)
     {
-      Log.w("EnvironmentCompat", "Failed to resolve canonical path: " + paramFile);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Failed to resolve canonical path: ");
+      localStringBuilder.append(paramFile);
+      Log.w("EnvironmentCompat", localStringBuilder.toString());
     }
     return "unknown";
   }

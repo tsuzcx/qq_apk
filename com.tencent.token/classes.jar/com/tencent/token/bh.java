@@ -27,7 +27,76 @@ public final class bh
   
   public final String toString()
   {
-    return "ReportStruct [appId=" + this.a + ", appVerName=" + this.b + ", appVerCode=" + this.c + ", sdkVersion=" + this.d + ", uuid=" + this.e + ", apn=" + this.f + ", ssid=" + this.g + ", netType=" + this.h + ", opType=" + this.i + ", domain=" + this.j + ", accessIp=" + this.k + ", lastAccessIp=" + null + ", isNetConnected=" + this.l + ", retCode=" + this.m + ", failInfo=" + this.n + ", exceptionInfo=" + this.o + ", dnsTime=" + this.p + ", connectTime=" + this.q + ", waitTime=" + this.r + ", readTime=" + this.s + ", dataLength=0" + ", rspLen=0" + ", totalTime=" + this.t + ", totalTimeReq=0" + ", retryTime=0" + ", uniqueRequestKey=" + this.u + ", url=" + null + ", isUseSchedulerIp=0" + ", isLast=0" + ", isSchedulerOn=0" + ", probability=" + null + ", rule=" + null + ", jumpUrl=" + null + ", isHijack=0" + ", maxRetryTime=0" + ", domainDns=" + null + ", reqResult=0" + ", contentType=" + this.v + ", isHtttps=0" + ", isTimeout=0" + "]";
+    StringBuilder localStringBuilder = new StringBuilder("ReportStruct [appId=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", appVerName=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", appVerCode=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", sdkVersion=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", uuid=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", apn=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", ssid=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", netType=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", opType=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", domain=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", accessIp=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(", lastAccessIp=");
+    localStringBuilder.append(null);
+    localStringBuilder.append(", isNetConnected=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(", retCode=");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(", failInfo=");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append(", exceptionInfo=");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append(", dnsTime=");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append(", connectTime=");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append(", waitTime=");
+    localStringBuilder.append(this.r);
+    localStringBuilder.append(", readTime=");
+    localStringBuilder.append(this.s);
+    localStringBuilder.append(", dataLength=0");
+    localStringBuilder.append(", rspLen=0");
+    localStringBuilder.append(", totalTime=");
+    localStringBuilder.append(this.t);
+    localStringBuilder.append(", totalTimeReq=0");
+    localStringBuilder.append(", retryTime=0");
+    localStringBuilder.append(", uniqueRequestKey=");
+    localStringBuilder.append(this.u);
+    localStringBuilder.append(", url=");
+    localStringBuilder.append(null);
+    localStringBuilder.append(", isUseSchedulerIp=0");
+    localStringBuilder.append(", isLast=0");
+    localStringBuilder.append(", isSchedulerOn=0");
+    localStringBuilder.append(", probability=");
+    localStringBuilder.append(null);
+    localStringBuilder.append(", rule=");
+    localStringBuilder.append(null);
+    localStringBuilder.append(", jumpUrl=");
+    localStringBuilder.append(null);
+    localStringBuilder.append(", isHijack=0");
+    localStringBuilder.append(", maxRetryTime=0");
+    localStringBuilder.append(", domainDns=");
+    localStringBuilder.append(null);
+    localStringBuilder.append(", reqResult=0");
+    localStringBuilder.append(", contentType=");
+    localStringBuilder.append(this.v);
+    localStringBuilder.append(", isHtttps=0");
+    localStringBuilder.append(", isTimeout=0");
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

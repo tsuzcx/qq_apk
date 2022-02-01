@@ -24,28 +24,25 @@ public class gc
   
   private static gc a()
   {
-    Object localObject1 = fx.a();
-    if (localObject1 != null) {}
-    Object localObject2;
-    do
+    Object localObject = fx.a();
+    if (localObject != null) {
+      return localObject;
+    }
+    if (d())
     {
-      do
-      {
-        do
-        {
-          return localObject1;
-          if (!d()) {
-            break;
-          }
-          localObject2 = fy.a();
-          localObject1 = localObject2;
-        } while (localObject2 != null);
-        localObject2 = fz.a();
-        localObject1 = localObject2;
-      } while (localObject2 != null);
-      localObject2 = ga.a();
-      localObject1 = localObject2;
-    } while (localObject2 != null);
+      localObject = fy.a();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    localObject = fz.a();
+    if (localObject != null) {
+      return localObject;
+    }
+    localObject = ga.a();
+    if (localObject != null) {
+      return localObject;
+    }
     return new gc();
   }
   
@@ -54,16 +51,13 @@ public class gc
     ArrayList localArrayList = new ArrayList(paramList.size());
     int j = paramList.size();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Protocol localProtocol = (Protocol)paramList.get(i);
-      if (localProtocol == Protocol.HTTP_1_0) {}
-      for (;;)
-      {
-        i += 1;
-        break;
+      if (localProtocol != Protocol.HTTP_1_0) {
         localArrayList.add(localProtocol.toString());
       }
+      i += 1;
     }
     return localArrayList;
   }
@@ -73,17 +67,15 @@ public class gc
     c localc = new c();
     int j = paramList.size();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Protocol localProtocol = (Protocol)paramList.get(i);
-      if (localProtocol == Protocol.HTTP_1_0) {}
-      for (;;)
+      if (localProtocol != Protocol.HTTP_1_0)
       {
-        i += 1;
-        break;
         localc.b(localProtocol.toString().length());
         localc.a(localProtocol.toString());
       }
+      i += 1;
     }
     return localc.q();
   }
@@ -101,9 +93,9 @@ public class gc
     return "Conscrypt".equals(java.security.Security.getProviders()[0].getName());
   }
   
-  public gg a(X509TrustManager paramX509TrustManager)
+  public gf a(X509TrustManager paramX509TrustManager)
   {
-    return new ge(b(paramX509TrustManager));
+    return new gd(b(paramX509TrustManager));
   }
   
   public Object a(String paramString)
@@ -122,21 +114,26 @@ public class gc
   
   public void a(int paramInt, String paramString, Throwable paramThrowable)
   {
-    if (paramInt == 5) {}
-    for (Level localLevel = Level.WARNING;; localLevel = Level.INFO)
-    {
-      b.log(localLevel, paramString, paramThrowable);
-      return;
+    Level localLevel;
+    if (paramInt == 5) {
+      localLevel = Level.WARNING;
+    } else {
+      localLevel = Level.INFO;
     }
+    b.log(localLevel, paramString, paramThrowable);
   }
   
   public void a(String paramString, Object paramObject)
   {
-    String str = paramString;
-    if (paramObject == null) {
-      str = paramString + " To see where this was allocated, set the OkHttpClient logger level to FINE: Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);";
+    Object localObject = paramString;
+    if (paramObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" To see where this was allocated, set the OkHttpClient logger level to FINE: Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);");
+      localObject = ((StringBuilder)localObject).toString();
     }
-    a(5, str, (Throwable)paramObject);
+    a(5, (String)localObject, (Throwable)paramObject);
   }
   
   public void a(Socket paramSocket, InetSocketAddress paramInetSocketAddress, int paramInt)
@@ -148,29 +145,35 @@ public class gc
   
   public void a(SSLSocketFactory paramSSLSocketFactory) {}
   
-  public gi b(X509TrustManager paramX509TrustManager)
+  public gh b(X509TrustManager paramX509TrustManager)
   {
-    return new gf(paramX509TrustManager.getAcceptedIssuers());
+    return new ge(paramX509TrustManager.getAcceptedIssuers());
   }
   
   public SSLContext b()
   {
-    if ("1.7".equals(System.getProperty("java.specification.version"))) {
+    if ("1.7".equals(System.getProperty("java.specification.version"))) {}
+    for (;;)
+    {
       try
       {
-        SSLContext localSSLContext1 = SSLContext.getInstance("TLSv1.2");
-        return localSSLContext1;
+        localSSLContext = SSLContext.getInstance("TLSv1.2");
+        return localSSLContext;
       }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1) {}
-    }
-    try
-    {
-      SSLContext localSSLContext2 = SSLContext.getInstance("TLS");
-      return localSSLContext2;
-    }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
-    {
-      throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException2);
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
+      {
+        SSLContext localSSLContext;
+        continue;
+      }
+      try
+      {
+        localSSLContext = SSLContext.getInstance("TLS");
+        return localSSLContext;
+      }
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
+      {
+        throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException1);
+      }
     }
   }
   

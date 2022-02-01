@@ -38,17 +38,21 @@ public final class z
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cmdId, 0);
-    if (this.aZ != null) {
-      paramJceOutputStream.write(this.aZ, 1);
+    Object localObject = this.aZ;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 1);
     }
-    if (this.ba != 0) {
-      paramJceOutputStream.write(this.ba, 2);
+    int i = this.ba;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.bb != null) {
-      paramJceOutputStream.write(this.bb, 3);
+    localObject = this.bb;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.bc != null) {
-      paramJceOutputStream.write(this.bc, 4);
+    localObject = this.bc;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
   }
 }

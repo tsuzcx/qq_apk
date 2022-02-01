@@ -49,21 +49,27 @@ class AppCompatDelegateImplV14
   
   private int getNightMode()
   {
-    if (this.mLocalNightMode != -100) {
-      return this.mLocalNightMode;
+    int i = this.mLocalNightMode;
+    if (i != -100) {
+      return i;
     }
     return getDefaultNightMode();
   }
   
   private boolean shouldRecreateOnNightModeChange()
   {
-    if ((this.mApplyDayNightCalled) && ((this.mContext instanceof Activity)))
+    boolean bool2 = this.mApplyDayNightCalled;
+    boolean bool1 = false;
+    if ((bool2) && ((this.mContext instanceof Activity)))
     {
       PackageManager localPackageManager = this.mContext.getPackageManager();
       try
       {
         int i = localPackageManager.getActivityInfo(new ComponentName(this.mContext, this.mContext.getClass()), 0).configChanges;
-        return (i & 0x200) == 0;
+        if ((i & 0x200) == 0) {
+          bool1 = true;
+        }
+        return bool1;
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
@@ -79,42 +85,41 @@ class AppCompatDelegateImplV14
     Resources localResources = this.mContext.getResources();
     Configuration localConfiguration = localResources.getConfiguration();
     int i = localConfiguration.uiMode;
-    if (paramInt == 2)
-    {
+    if (paramInt == 2) {
       paramInt = 32;
-      if ((i & 0x30) == paramInt) {
-        break label117;
-      }
-      if (!shouldRecreateOnNightModeChange()) {
-        break label61;
-      }
-      ((Activity)this.mContext).recreate();
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       paramInt = 16;
-      break;
-      label61:
-      localConfiguration = new Configuration(localConfiguration);
-      DisplayMetrics localDisplayMetrics = localResources.getDisplayMetrics();
-      localConfiguration.uiMode = (paramInt | localConfiguration.uiMode & 0xFFFFFFCF);
-      localResources.updateConfiguration(localConfiguration, localDisplayMetrics);
-      if (Build.VERSION.SDK_INT < 26) {
-        ResourcesFlusher.flush(localResources);
-      }
     }
-    label117:
+    if ((i & 0x30) != paramInt)
+    {
+      if (shouldRecreateOnNightModeChange())
+      {
+        ((Activity)this.mContext).recreate();
+      }
+      else
+      {
+        localConfiguration = new Configuration(localConfiguration);
+        DisplayMetrics localDisplayMetrics = localResources.getDisplayMetrics();
+        localConfiguration.uiMode = (paramInt | localConfiguration.uiMode & 0xFFFFFFCF);
+        localResources.updateConfiguration(localConfiguration, localDisplayMetrics);
+        if (Build.VERSION.SDK_INT < 26) {
+          ResourcesFlusher.flush(localResources);
+        }
+      }
+      return true;
+    }
     return false;
   }
   
   public boolean applyDayNight()
   {
-    boolean bool = false;
     int i = getNightMode();
     int j = mapNightMode(i);
+    boolean bool;
     if (j != -1) {
       bool = updateForNightMode(j);
+    } else {
+      bool = false;
     }
     if (i == 0)
     {
@@ -149,11 +154,11 @@ class AppCompatDelegateImplV14
   
   int mapNightMode(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -100)
     {
-    default: 
-      return paramInt;
-    case 0: 
+      if (paramInt != 0) {
+        return paramInt;
+      }
       ensureAutoNightModeManager();
       return this.mAutoNightModeManager.getApplyableNightMode();
     }
@@ -171,16 +176,18 @@ class AppCompatDelegateImplV14
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.mAutoNightModeManager != null) {
-      this.mAutoNightModeManager.cleanup();
+    AutoNightModeManager localAutoNightModeManager = this.mAutoNightModeManager;
+    if (localAutoNightModeManager != null) {
+      localAutoNightModeManager.cleanup();
     }
   }
   
   public void onSaveInstanceState(Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
-    if (this.mLocalNightMode != -100) {
-      paramBundle.putInt("appcompat:local_night_mode", this.mLocalNightMode);
+    int i = this.mLocalNightMode;
+    if (i != -100) {
+      paramBundle.putInt("appcompat:local_night_mode", i);
     }
   }
   
@@ -193,8 +200,9 @@ class AppCompatDelegateImplV14
   public void onStop()
   {
     super.onStop();
-    if (this.mAutoNightModeManager != null) {
-      this.mAutoNightModeManager.cleanup();
+    AutoNightModeManager localAutoNightModeManager = this.mAutoNightModeManager;
+    if (localAutoNightModeManager != null) {
+      localAutoNightModeManager.cleanup();
     }
   }
   
@@ -207,17 +215,17 @@ class AppCompatDelegateImplV14
   {
     switch (paramInt)
     {
-    }
-    do
-    {
+    default: 
       Log.i("AppCompatDelegate", "setLocalNightMode() called with an unknown mode");
-      do
-      {
-        return;
-      } while (this.mLocalNightMode == paramInt);
+      return;
+    }
+    if (this.mLocalNightMode != paramInt)
+    {
       this.mLocalNightMode = paramInt;
-    } while (!this.mApplyDayNightCalled);
-    applyDayNight();
+      if (this.mApplyDayNightCalled) {
+        applyDayNight();
+      }
+    }
   }
   
   Window.Callback wrapWindowCallback(Window.Callback paramCallback)

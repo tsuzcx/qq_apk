@@ -26,16 +26,14 @@ public class MMHandlerThread
   
   public static boolean isMainThread()
   {
-    if (mainThreadID == -1L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertFalse("mainThreadID not init ", bool);
-      if (Thread.currentThread().getId() != mainThreadID) {
-        break;
-      }
-      return true;
+    boolean bool;
+    if (mainThreadID == -1L) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    return false;
+    Assert.assertFalse("mainThreadID not init ", bool);
+    return Thread.currentThread().getId() == mainThreadID;
   }
   
   public static void postToMainThread(Runnable paramRunnable)

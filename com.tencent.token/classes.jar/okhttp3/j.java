@@ -20,7 +20,7 @@ import okhttp3.internal.connection.f.a;
 
 public final class j
 {
-  private static final Executor d;
+  private static final Executor d = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), fc.a("OkHttp ConnectionPool", true));
   final d a = new d();
   boolean b;
   private final int e;
@@ -29,41 +29,33 @@ public final class j
   {
     public void run()
     {
-      long l1;
-      do
+      for (;;)
       {
-        l1 = j.this.a(System.nanoTime());
+        long l1 = j.this.a(System.nanoTime());
         if (l1 == -1L) {
           return;
         }
-      } while (l1 <= 0L);
-      long l2 = l1 / 1000000L;
-      try
-      {
-        label57:
-        synchronized (j.this)
+        long l2;
+        if (l1 > 0L) {
+          l2 = l1 / 1000000L;
+        }
+        try
         {
-          j.this.wait(l2, (int)(l1 - l2 * 1000000L));
+          synchronized (j.this)
+          {
+            j.this.wait(l2, (int)(l1 - 1000000L * l2));
+          }
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          label65:
+          break label65;
         }
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        break label57;
-      }
+      throw localObject;
     }
   };
   private final Deque<c> h = new ArrayDeque();
-  
-  static
-  {
-    if (!j.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      c = bool;
-      d = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), fc.a("OkHttp ConnectionPool", true));
-      return;
-    }
-  }
   
   public j()
   {
@@ -74,9 +66,13 @@ public final class j
   {
     this.e = paramInt;
     this.f = paramTimeUnit.toNanos(paramLong);
-    if (paramLong <= 0L) {
-      throw new IllegalArgumentException("keepAliveDuration <= 0: " + paramLong);
+    if (paramLong > 0L) {
+      return;
     }
+    paramTimeUnit = new StringBuilder();
+    paramTimeUnit.append("keepAliveDuration <= 0: ");
+    paramTimeUnit.append(paramLong);
+    throw new IllegalArgumentException(paramTimeUnit.toString());
   }
   
   private int a(c paramc, long paramLong)
@@ -85,16 +81,20 @@ public final class j
     int i = 0;
     while (i < localList.size())
     {
-      Object localObject = (Reference)localList.get(i);
-      if (((Reference)localObject).get() != null)
+      Object localObject1 = (Reference)localList.get(i);
+      if (((Reference)localObject1).get() != null)
       {
         i += 1;
       }
       else
       {
-        localObject = (f.a)localObject;
-        String str = "A connection to " + paramc.a().a().a() + " was leaked. Did you forget to close a response body?";
-        gc.c().a(str, ((f.a)localObject).a);
+        localObject1 = (f.a)localObject1;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("A connection to ");
+        ((StringBuilder)localObject2).append(paramc.a().a().a());
+        ((StringBuilder)localObject2).append(" was leaked. Did you forget to close a response body?");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        gc.c().a((String)localObject2, ((f.a)localObject1).a);
         localList.remove(i);
         paramc.a = true;
         if (localList.isEmpty())
@@ -109,56 +109,53 @@ public final class j
   
   long a(long paramLong)
   {
-    Object localObject1 = null;
-    long l1 = -9223372036854775808L;
-    for (;;)
+    try
     {
-      int j;
-      int i;
-      try
+      Iterator localIterator = this.h.iterator();
+      long l1 = -9223372036854775808L;
+      Object localObject1 = null;
+      int i = 0;
+      int j = 0;
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.h.iterator();
-        j = 0;
-        i = 0;
-        if (localIterator.hasNext())
+        c localc = (c)localIterator.next();
+        if (a(localc, paramLong) > 0)
         {
-          c localc = (c)localIterator.next();
-          if (a(localc, paramLong) > 0)
-          {
-            i += 1;
-            continue;
-          }
+          j += 1;
+        }
+        else
+        {
+          int k = i + 1;
           long l2 = paramLong - localc.e;
-          if (l2 <= l1) {
-            break label184;
+          i = k;
+          if (l2 > l1)
+          {
+            localObject1 = localc;
+            l1 = l2;
+            i = k;
           }
-          localObject1 = localc;
-          l1 = l2;
-          break label184;
         }
-        if ((l1 >= this.f) || (j > this.e))
-        {
-          this.h.remove(localObject1);
-          fc.a(localObject1.b());
-          return 0L;
-        }
-        if (j > 0)
+      }
+      if ((l1 < this.f) && (i <= this.e))
+      {
+        if (i > 0)
         {
           paramLong = this.f;
           return paramLong - l1;
         }
+        if (j > 0)
+        {
+          paramLong = this.f;
+          return paramLong;
+        }
+        this.b = false;
+        return -1L;
       }
-      finally {}
-      if (i > 0)
-      {
-        paramLong = this.f;
-        return paramLong;
-      }
-      this.b = false;
-      return -1L;
-      label184:
-      j += 1;
+      this.h.remove(localObject1);
+      fc.a(localObject1.b());
+      return 0L;
     }
+    finally {}
   }
   
   @Nullable
@@ -215,13 +212,13 @@ public final class j
     if ((!c) && (!Thread.holdsLock(this))) {
       throw new AssertionError();
     }
-    if ((paramc.a) || (this.e == 0))
+    if ((!paramc.a) && (this.e != 0))
     {
-      this.h.remove(paramc);
-      return true;
+      notifyAll();
+      return false;
     }
-    notifyAll();
-    return false;
+    this.h.remove(paramc);
+    return true;
   }
 }
 

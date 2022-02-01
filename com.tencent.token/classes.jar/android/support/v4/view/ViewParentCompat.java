@@ -48,13 +48,14 @@ public final class ViewParentCompat
   
   public static void onNestedPreScroll(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
-    if ((paramViewParent instanceof NestedScrollingParent2)) {
+    if ((paramViewParent instanceof NestedScrollingParent2))
+    {
       ((NestedScrollingParent2)paramViewParent).onNestedPreScroll(paramView, paramInt1, paramInt2, paramArrayOfInt, paramInt3);
-    }
-    while (paramInt3 != 0) {
       return;
     }
-    IMPL.onNestedPreScroll(paramViewParent, paramView, paramInt1, paramInt2, paramArrayOfInt);
+    if (paramInt3 == 0) {
+      IMPL.onNestedPreScroll(paramViewParent, paramView, paramInt1, paramInt2, paramArrayOfInt);
+    }
   }
   
   public static void onNestedScroll(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -64,13 +65,14 @@ public final class ViewParentCompat
   
   public static void onNestedScroll(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if ((paramViewParent instanceof NestedScrollingParent2)) {
+    if ((paramViewParent instanceof NestedScrollingParent2))
+    {
       ((NestedScrollingParent2)paramViewParent).onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
-    }
-    while (paramInt5 != 0) {
       return;
     }
-    IMPL.onNestedScroll(paramViewParent, paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (paramInt5 == 0) {
+      IMPL.onNestedScroll(paramViewParent, paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+    }
   }
   
   public static void onNestedScrollAccepted(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
@@ -80,13 +82,14 @@ public final class ViewParentCompat
   
   public static void onNestedScrollAccepted(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt1, int paramInt2)
   {
-    if ((paramViewParent instanceof NestedScrollingParent2)) {
+    if ((paramViewParent instanceof NestedScrollingParent2))
+    {
       ((NestedScrollingParent2)paramViewParent).onNestedScrollAccepted(paramView1, paramView2, paramInt1, paramInt2);
-    }
-    while (paramInt2 != 0) {
       return;
     }
-    IMPL.onNestedScrollAccepted(paramViewParent, paramView1, paramView2, paramInt1);
+    if (paramInt2 == 0) {
+      IMPL.onNestedScrollAccepted(paramViewParent, paramView1, paramView2, paramInt1);
+    }
   }
   
   public static boolean onStartNestedScroll(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
@@ -112,13 +115,14 @@ public final class ViewParentCompat
   
   public static void onStopNestedScroll(ViewParent paramViewParent, View paramView, int paramInt)
   {
-    if ((paramViewParent instanceof NestedScrollingParent2)) {
+    if ((paramViewParent instanceof NestedScrollingParent2))
+    {
       ((NestedScrollingParent2)paramViewParent).onStopNestedScroll(paramView, paramInt);
-    }
-    while (paramInt != 0) {
       return;
     }
-    IMPL.onStopNestedScroll(paramViewParent, paramView);
+    if (paramInt == 0) {
+      IMPL.onStopNestedScroll(paramViewParent, paramView);
+    }
   }
   
   @Deprecated
@@ -150,7 +154,12 @@ public final class ViewParentCompat
       }
       catch (AbstractMethodError paramView)
       {
-        Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface " + "method onNestedFling", paramView);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ViewParent ");
+        localStringBuilder.append(paramViewParent);
+        localStringBuilder.append(" does not implement interface ");
+        localStringBuilder.append("method onNestedFling");
+        Log.e("ViewParentCompat", localStringBuilder.toString(), paramView);
       }
       return false;
     }
@@ -164,7 +173,12 @@ public final class ViewParentCompat
       }
       catch (AbstractMethodError paramView)
       {
-        Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface " + "method onNestedPreFling", paramView);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ViewParent ");
+        localStringBuilder.append(paramViewParent);
+        localStringBuilder.append(" does not implement interface ");
+        localStringBuilder.append("method onNestedPreFling");
+        Log.e("ViewParentCompat", localStringBuilder.toString(), paramView);
       }
       return false;
     }
@@ -178,7 +192,12 @@ public final class ViewParentCompat
       }
       catch (AbstractMethodError paramView)
       {
-        Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface " + "method onNestedPreScroll", paramView);
+        paramArrayOfInt = new StringBuilder();
+        paramArrayOfInt.append("ViewParent ");
+        paramArrayOfInt.append(paramViewParent);
+        paramArrayOfInt.append(" does not implement interface ");
+        paramArrayOfInt.append("method onNestedPreScroll");
+        Log.e("ViewParentCompat", paramArrayOfInt.toString(), paramView);
       }
     }
     
@@ -191,7 +210,12 @@ public final class ViewParentCompat
       }
       catch (AbstractMethodError paramView)
       {
-        Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface " + "method onNestedScroll", paramView);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ViewParent ");
+        localStringBuilder.append(paramViewParent);
+        localStringBuilder.append(" does not implement interface ");
+        localStringBuilder.append("method onNestedScroll");
+        Log.e("ViewParentCompat", localStringBuilder.toString(), paramView);
       }
     }
     
@@ -204,7 +228,12 @@ public final class ViewParentCompat
       }
       catch (AbstractMethodError paramView1)
       {
-        Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface " + "method onNestedScrollAccepted", paramView1);
+        paramView2 = new StringBuilder();
+        paramView2.append("ViewParent ");
+        paramView2.append(paramViewParent);
+        paramView2.append(" does not implement interface ");
+        paramView2.append("method onNestedScrollAccepted");
+        Log.e("ViewParentCompat", paramView2.toString(), paramView1);
       }
     }
     
@@ -217,7 +246,12 @@ public final class ViewParentCompat
       }
       catch (AbstractMethodError paramView1)
       {
-        Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface " + "method onStartNestedScroll", paramView1);
+        paramView2 = new StringBuilder();
+        paramView2.append("ViewParent ");
+        paramView2.append(paramViewParent);
+        paramView2.append(" does not implement interface ");
+        paramView2.append("method onStartNestedScroll");
+        Log.e("ViewParentCompat", paramView2.toString(), paramView1);
       }
       return false;
     }
@@ -231,7 +265,12 @@ public final class ViewParentCompat
       }
       catch (AbstractMethodError paramView)
       {
-        Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface " + "method onStopNestedScroll", paramView);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ViewParent ");
+        localStringBuilder.append(paramViewParent);
+        localStringBuilder.append(" does not implement interface ");
+        localStringBuilder.append("method onStopNestedScroll");
+        Log.e("ViewParentCompat", localStringBuilder.toString(), paramView);
       }
     }
   }

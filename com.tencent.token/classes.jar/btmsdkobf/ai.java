@@ -21,8 +21,9 @@ public final class ai
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.validEndTime != 0) {
-      paramJceOutputStream.write(this.validEndTime, 0);
+    int i = this.validEndTime;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
   }
 }

@@ -17,16 +17,20 @@ abstract class VectorDrawableCommon
   
   public void applyTheme(Resources.Theme paramTheme)
   {
-    if (this.mDelegateDrawable != null) {
-      DrawableCompat.applyTheme(this.mDelegateDrawable, paramTheme);
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null)
+    {
+      DrawableCompat.applyTheme(localDrawable, paramTheme);
+      return;
     }
   }
   
   public void clearColorFilter()
   {
-    if (this.mDelegateDrawable != null)
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null)
     {
-      this.mDelegateDrawable.clearColorFilter();
+      localDrawable.clearColorFilter();
       return;
     }
     super.clearColorFilter();
@@ -34,72 +38,83 @@ abstract class VectorDrawableCommon
   
   public ColorFilter getColorFilter()
   {
-    if (this.mDelegateDrawable != null) {
-      return DrawableCompat.getColorFilter(this.mDelegateDrawable);
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null) {
+      return DrawableCompat.getColorFilter(localDrawable);
     }
     return null;
   }
   
   public Drawable getCurrent()
   {
-    if (this.mDelegateDrawable != null) {
-      return this.mDelegateDrawable.getCurrent();
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null) {
+      return localDrawable.getCurrent();
     }
     return super.getCurrent();
   }
   
   public int getMinimumHeight()
   {
-    if (this.mDelegateDrawable != null) {
-      return this.mDelegateDrawable.getMinimumHeight();
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null) {
+      return localDrawable.getMinimumHeight();
     }
     return super.getMinimumHeight();
   }
   
   public int getMinimumWidth()
   {
-    if (this.mDelegateDrawable != null) {
-      return this.mDelegateDrawable.getMinimumWidth();
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null) {
+      return localDrawable.getMinimumWidth();
     }
     return super.getMinimumWidth();
   }
   
   public boolean getPadding(Rect paramRect)
   {
-    if (this.mDelegateDrawable != null) {
-      return this.mDelegateDrawable.getPadding(paramRect);
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null) {
+      return localDrawable.getPadding(paramRect);
     }
     return super.getPadding(paramRect);
   }
   
   public int[] getState()
   {
-    if (this.mDelegateDrawable != null) {
-      return this.mDelegateDrawable.getState();
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null) {
+      return localDrawable.getState();
     }
     return super.getState();
   }
   
   public Region getTransparentRegion()
   {
-    if (this.mDelegateDrawable != null) {
-      return this.mDelegateDrawable.getTransparentRegion();
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null) {
+      return localDrawable.getTransparentRegion();
     }
     return super.getTransparentRegion();
   }
   
   public void jumpToCurrentState()
   {
-    if (this.mDelegateDrawable != null) {
-      DrawableCompat.jumpToCurrentState(this.mDelegateDrawable);
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null)
+    {
+      DrawableCompat.jumpToCurrentState(localDrawable);
+      return;
     }
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    if (this.mDelegateDrawable != null)
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null)
     {
-      this.mDelegateDrawable.setBounds(paramRect);
+      localDrawable.setBounds(paramRect);
       return;
     }
     super.onBoundsChange(paramRect);
@@ -107,17 +122,19 @@ abstract class VectorDrawableCommon
   
   protected boolean onLevelChange(int paramInt)
   {
-    if (this.mDelegateDrawable != null) {
-      return this.mDelegateDrawable.setLevel(paramInt);
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null) {
+      return localDrawable.setLevel(paramInt);
     }
     return super.onLevelChange(paramInt);
   }
   
   public void setChangingConfigurations(int paramInt)
   {
-    if (this.mDelegateDrawable != null)
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null)
     {
-      this.mDelegateDrawable.setChangingConfigurations(paramInt);
+      localDrawable.setChangingConfigurations(paramInt);
       return;
     }
     super.setChangingConfigurations(paramInt);
@@ -125,9 +142,10 @@ abstract class VectorDrawableCommon
   
   public void setColorFilter(int paramInt, PorterDuff.Mode paramMode)
   {
-    if (this.mDelegateDrawable != null)
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null)
     {
-      this.mDelegateDrawable.setColorFilter(paramInt, paramMode);
+      localDrawable.setColorFilter(paramInt, paramMode);
       return;
     }
     super.setColorFilter(paramInt, paramMode);
@@ -135,29 +153,37 @@ abstract class VectorDrawableCommon
   
   public void setFilterBitmap(boolean paramBoolean)
   {
-    if (this.mDelegateDrawable != null) {
-      this.mDelegateDrawable.setFilterBitmap(paramBoolean);
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null)
+    {
+      localDrawable.setFilterBitmap(paramBoolean);
+      return;
     }
   }
   
   public void setHotspot(float paramFloat1, float paramFloat2)
   {
-    if (this.mDelegateDrawable != null) {
-      DrawableCompat.setHotspot(this.mDelegateDrawable, paramFloat1, paramFloat2);
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null) {
+      DrawableCompat.setHotspot(localDrawable, paramFloat1, paramFloat2);
     }
   }
   
   public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.mDelegateDrawable != null) {
-      DrawableCompat.setHotspotBounds(this.mDelegateDrawable, paramInt1, paramInt2, paramInt3, paramInt4);
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null)
+    {
+      DrawableCompat.setHotspotBounds(localDrawable, paramInt1, paramInt2, paramInt3, paramInt4);
+      return;
     }
   }
   
   public boolean setState(int[] paramArrayOfInt)
   {
-    if (this.mDelegateDrawable != null) {
-      return this.mDelegateDrawable.setState(paramArrayOfInt);
+    Drawable localDrawable = this.mDelegateDrawable;
+    if (localDrawable != null) {
+      return localDrawable.setState(paramArrayOfInt);
     }
     return super.setState(paramArrayOfInt);
   }

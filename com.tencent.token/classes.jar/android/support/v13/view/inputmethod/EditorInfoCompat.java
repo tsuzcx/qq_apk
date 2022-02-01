@@ -19,19 +19,18 @@ public final class EditorInfoCompat
     if (Build.VERSION.SDK_INT >= 25)
     {
       paramEditorInfo = paramEditorInfo.contentMimeTypes;
-      if (paramEditorInfo == null) {}
-    }
-    String[] arrayOfString;
-    do
-    {
-      return paramEditorInfo;
-      return EMPTY_STRING_ARRAY;
-      if (paramEditorInfo.extras == null) {
-        return EMPTY_STRING_ARRAY;
+      if (paramEditorInfo != null) {
+        return paramEditorInfo;
       }
-      arrayOfString = paramEditorInfo.extras.getStringArray("android.support.v13.view.inputmethod.EditorInfoCompat.CONTENT_MIME_TYPES");
-      paramEditorInfo = arrayOfString;
-    } while (arrayOfString != null);
+      return EMPTY_STRING_ARRAY;
+    }
+    if (paramEditorInfo.extras == null) {
+      return EMPTY_STRING_ARRAY;
+    }
+    paramEditorInfo = paramEditorInfo.extras.getStringArray("android.support.v13.view.inputmethod.EditorInfoCompat.CONTENT_MIME_TYPES");
+    if (paramEditorInfo != null) {
+      return paramEditorInfo;
+    }
     return EMPTY_STRING_ARRAY;
   }
   

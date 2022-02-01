@@ -20,10 +20,13 @@ public final class PermissionChecker
   
   public static int checkCallingOrSelfPermission(@NonNull Context paramContext, @NonNull String paramString)
   {
-    if (Binder.getCallingPid() == Process.myPid()) {}
-    for (String str = paramContext.getPackageName();; str = null) {
-      return checkPermission(paramContext, paramString, Binder.getCallingPid(), Binder.getCallingUid(), str);
+    String str;
+    if (Binder.getCallingPid() == Process.myPid()) {
+      str = paramContext.getPackageName();
+    } else {
+      str = null;
     }
+    return checkPermission(paramContext, paramString, Binder.getCallingPid(), Binder.getCallingUid(), str);
   }
   
   public static int checkCallingPermission(@NonNull Context paramContext, @NonNull String paramString1, @Nullable String paramString2)
@@ -36,22 +39,29 @@ public final class PermissionChecker
   
   public static int checkPermission(@NonNull Context paramContext, @NonNull String paramString1, int paramInt1, int paramInt2, @Nullable String paramString2)
   {
-    if (paramContext.checkPermission(paramString1, paramInt1, paramInt2) == -1) {}
-    String str;
-    do
-    {
+    if (paramContext.checkPermission(paramString1, paramInt1, paramInt2) == -1) {
       return -1;
-      str = AppOpsManagerCompat.permissionToOp(paramString1);
-      if (str == null) {
-        return 0;
-      }
-      paramString1 = paramString2;
-      if (paramString2 != null) {
-        break;
-      }
+    }
+    String str = AppOpsManagerCompat.permissionToOp(paramString1);
+    if (str == null) {
+      return 0;
+    }
+    paramString1 = paramString2;
+    if (paramString2 == null)
+    {
       paramString1 = paramContext.getPackageManager().getPackagesForUid(paramInt2);
-    } while ((paramString1 == null) || (paramString1.length <= 0));
-    paramString1 = paramString1[0];
+      if (paramString1 != null)
+      {
+        if (paramString1.length <= 0) {
+          return -1;
+        }
+        paramString1 = paramString1[0];
+      }
+      else
+      {
+        return -1;
+      }
+    }
     if (AppOpsManagerCompat.noteProxyOpNoThrow(paramContext, str, paramString1) != 0) {
       return -2;
     }

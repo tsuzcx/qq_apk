@@ -20,16 +20,6 @@ public final class SUserInfo
   public int ruletime = 0;
   public String version = "";
   
-  static
-  {
-    if (!SUserInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public SUserInfo()
   {
     setImei(this.imei);
@@ -65,29 +55,67 @@ public final class SUserInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (SUserInfo)paramObject;
-    } while ((!JceUtil.equals(this.imei, paramObject.imei)) || (!JceUtil.equals(this.qq, paramObject.qq)) || (!JceUtil.equals(this.phone, paramObject.phone)) || (!JceUtil.equals(this.ip, paramObject.ip)) || (!JceUtil.equals(this.lc, paramObject.lc)) || (!JceUtil.equals(this.imsi, paramObject.imsi)) || (!JceUtil.equals(this.version, paramObject.version)) || (!JceUtil.equals(this.buildno, paramObject.buildno)) || (!JceUtil.equals(this.productid, paramObject.productid)) || (!JceUtil.equals(this.ruletime, paramObject.ruletime)));
-    return true;
+    }
+    paramObject = (SUserInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.imei, paramObject.imei))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.qq, paramObject.qq))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.phone, paramObject.phone))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.ip, paramObject.ip))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.lc, paramObject.lc))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.imsi, paramObject.imsi))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.version, paramObject.version))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.buildno, paramObject.buildno))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.productid, paramObject.productid))
+                    {
+                      bool1 = bool2;
+                      if (JceUtil.equals(this.ruletime, paramObject.ruletime)) {
+                        bool1 = true;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -225,23 +253,29 @@ public final class SUserInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.imei, 0);
-    if (this.qq != null) {
-      paramJceOutputStream.write(this.qq, 1);
+    String str = this.qq;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.phone != null) {
-      paramJceOutputStream.write(this.phone, 2);
+    str = this.phone;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.ip != null) {
-      paramJceOutputStream.write(this.ip, 3);
+    str = this.ip;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.lc != null) {
-      paramJceOutputStream.write(this.lc, 4);
+    str = this.lc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.imsi != null) {
-      paramJceOutputStream.write(this.imsi, 5);
+    str = this.imsi;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 6);
+    str = this.version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.buildno, 7);
     paramJceOutputStream.write(this.productid, 8);

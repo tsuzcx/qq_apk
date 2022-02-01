@@ -14,17 +14,21 @@ public class k
   
   public static void a()
   {
-    if (a) {}
-    long l;
-    String str;
-    do
-    {
+    if (a) {
       return;
-      l = System.currentTimeMillis();
-      str = bw.ah().aj();
-    } while (TextUtils.isEmpty(str));
+    }
+    long l = System.currentTimeMillis();
+    String str = bw.ah().aj();
+    if (TextUtils.isEmpty(str)) {
+      return;
+    }
     a = true;
-    Log.i("TuringHelper", "init : " + str + "  time=" + (System.currentTimeMillis() - l));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("init : ");
+    localStringBuilder.append(str);
+    localStringBuilder.append("  time=");
+    localStringBuilder.append(System.currentTimeMillis() - l);
+    Log.i("TuringHelper", localStringBuilder.toString());
     ca.a(bz.a(RqdApplication.l(), str).a(105678).a(true).a());
   }
   
@@ -45,7 +49,12 @@ public class k
         localObject1 = "";
       }
     }
-    Log.i("TuringHelper", "getOAID : " + (String)localObject1 + "  time=" + (System.currentTimeMillis() - l));
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("getOAID : ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("  time=");
+    ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+    Log.i("TuringHelper", ((StringBuilder)localObject2).toString());
     return localObject1;
   }
   
@@ -66,7 +75,12 @@ public class k
         localObject1 = "";
       }
     }
-    Log.i("TuringHelper", "getOpenIdTicket : " + (String)localObject1 + "  time=" + (System.currentTimeMillis() - l));
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("getOpenIdTicket : ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("  time=");
+    ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+    Log.i("TuringHelper", ((StringBuilder)localObject2).toString());
     return localObject1;
   }
 }

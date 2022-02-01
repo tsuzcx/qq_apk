@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,32 +51,41 @@ public final class MIntent
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mAction != null) {
-      paramJceOutputStream.write(this.mAction, 0);
+    Object localObject = this.mAction;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.mUri != null) {
-      paramJceOutputStream.write(this.mUri, 1);
+    localObject = this.mUri;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.mType != null) {
-      paramJceOutputStream.write(this.mType, 2);
+    localObject = this.mType;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.mPackage != null) {
-      paramJceOutputStream.write(this.mPackage, 3);
+    localObject = this.mPackage;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.mClass != null) {
-      paramJceOutputStream.write(this.mClass, 4);
+    localObject = this.mClass;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.mFlags != 0) {
-      paramJceOutputStream.write(this.mFlags, 5);
+    int i = this.mFlags;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
-    if (this.mCategories != null) {
-      paramJceOutputStream.write(this.mCategories, 6);
+    localObject = this.mCategories;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
-    if (this.mExtras != null) {
-      paramJceOutputStream.write(this.mExtras, 7);
+    localObject = this.mExtras;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
-    if (this.mUidKey != null) {
-      paramJceOutputStream.write(this.mUidKey, 8);
+    localObject = this.mUidKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
   }
 }

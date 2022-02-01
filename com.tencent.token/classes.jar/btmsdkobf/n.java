@@ -31,8 +31,9 @@ public final class n
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.an, 0);
-    if (this.ao != null) {
-      paramJceOutputStream.write(this.ao, 1);
+    p localp = this.ao;
+    if (localp != null) {
+      paramJceOutputStream.write(localp, 1);
     }
   }
 }

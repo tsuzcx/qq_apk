@@ -52,12 +52,13 @@ public final class GetMessageFromWX
     
     final boolean checkArgs()
     {
-      if (this.message == null)
+      WXMediaMessage localWXMediaMessage = this.message;
+      if (localWXMediaMessage == null)
       {
         Log.e("MicroMsg.SDK.GetMessageFromWX.Resp", "checkArgs fail, message is null");
         return false;
       }
-      return this.message.checkArgs();
+      return localWXMediaMessage.checkArgs();
     }
     
     public void fromBundle(Bundle paramBundle)

@@ -41,9 +41,10 @@ public class PhoneStatusWatcher
   
   public void end()
   {
-    if (this.aE != null)
+    TelephonyManager localTelephonyManager = this.aE;
+    if (localTelephonyManager != null)
     {
-      this.aE.listen(this.aF, 0);
+      localTelephonyManager.listen(this.aF, 0);
       this.aF = null;
     }
   }

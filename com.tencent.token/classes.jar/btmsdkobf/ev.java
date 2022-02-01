@@ -2,6 +2,7 @@ package btmsdkobf;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.text.TextUtils;
@@ -14,84 +15,65 @@ public class ev
   private static long pc = -1L;
   private static int pd = -1;
   
-  /* Error */
   private static int a(Context paramContext, AtomicReference<IBinder> paramAtomicReference, final AtomicReference<ServiceConnection> paramAtomicReference1)
   {
-    // Byte code:
-    //   0: invokestatic 42	java/lang/System:currentTimeMillis	()J
-    //   3: lstore_3
-    //   4: new 4	java/lang/Object
-    //   7: dup
-    //   8: invokespecial 45	java/lang/Object:<init>	()V
-    //   11: astore 5
-    //   13: new 47	android/content/Intent
-    //   16: dup
-    //   17: invokespecial 48	android/content/Intent:<init>	()V
-    //   20: astore 6
-    //   22: aload 6
-    //   24: new 50	android/content/ComponentName
-    //   27: dup
-    //   28: ldc 52
-    //   30: ldc 54
-    //   32: invokespecial 57	android/content/ComponentName:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   35: invokevirtual 61	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
-    //   38: pop
-    //   39: aload 6
-    //   41: ldc 63
-    //   43: invokevirtual 67	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
-    //   46: pop
-    //   47: aload_0
-    //   48: aload 6
-    //   50: new 6	btmsdkobf/ev$1
-    //   53: dup
-    //   54: lload_3
-    //   55: aload_1
-    //   56: aload_2
-    //   57: aload 5
-    //   59: invokespecial 70	btmsdkobf/ev$1:<init>	(JLjava/util/concurrent/atomic/AtomicReference;Ljava/util/concurrent/atomic/AtomicReference;Ljava/lang/Object;)V
-    //   62: iconst_1
-    //   63: invokevirtual 76	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
-    //   66: ifne +7 -> 73
-    //   69: sipush -400
-    //   72: ireturn
-    //   73: aload_1
-    //   74: invokevirtual 82	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
-    //   77: ifnonnull +17 -> 94
-    //   80: aload 5
-    //   82: monitorenter
-    //   83: aload 5
-    //   85: ldc2_w 83
-    //   88: invokevirtual 88	java/lang/Object:wait	(J)V
-    //   91: aload 5
-    //   93: monitorexit
-    //   94: aload_1
-    //   95: invokevirtual 82	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
-    //   98: ifnonnull +13 -> 111
-    //   101: sipush -405
-    //   104: ireturn
-    //   105: astore_0
-    //   106: aload 5
-    //   108: monitorexit
-    //   109: aload_0
-    //   110: athrow
-    //   111: iconst_0
-    //   112: ireturn
-    //   113: astore_0
-    //   114: goto -23 -> 91
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	117	0	paramContext	Context
-    //   0	117	1	paramAtomicReference	AtomicReference<IBinder>
-    //   0	117	2	paramAtomicReference1	AtomicReference<ServiceConnection>
-    //   3	52	3	l	long
-    //   11	96	5	localObject	Object
-    //   20	29	6	localIntent	android.content.Intent
-    // Exception table:
-    //   from	to	target	type
-    //   83	91	105	finally
-    //   91	94	105	finally
-    //   106	109	105	finally
-    //   83	91	113	java/lang/Throwable
+    long l = System.currentTimeMillis();
+    final Object localObject = new Object();
+    Intent localIntent = new Intent();
+    localIntent.setComponent(new ComponentName("com.heytap.openid", "com.heytap.openid.IdentifyService"));
+    localIntent.setAction("action.com.heytap.openid.OPEN_ID_SERVICE");
+    if (!paramContext.bindService(localIntent, new ServiceConnection()
+    {
+      public void onServiceConnected(ComponentName arg1, IBinder paramAnonymousIBinder)
+      {
+        ev.i(System.currentTimeMillis() - this.a);
+        paramAtomicReference1.set(paramAnonymousIBinder);
+        localObject.set(this);
+        try
+        {
+          synchronized (this.d)
+          {
+            this.d.notifyAll();
+          }
+        }
+        catch (Throwable paramAnonymousIBinder)
+        {
+          label49:
+          break label49;
+        }
+        return;
+        throw paramAnonymousIBinder;
+      }
+      
+      public void onServiceDisconnected(ComponentName paramAnonymousComponentName) {}
+    }, 1)) {
+      return -400;
+    }
+    if (paramAtomicReference.get() == null) {}
+    try
+    {
+      try
+      {
+        localObject.wait(1000L);
+      }
+      finally
+      {
+        break label104;
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      label98:
+      break label98;
+    }
+    break label109;
+    label104:
+    throw paramContext;
+    label109:
+    if (paramAtomicReference.get() == null) {
+      return -405;
+    }
+    return 0;
   }
   
   public static String a(Context paramContext)
@@ -107,68 +89,84 @@ public class ev
     return pa;
   }
   
-  /* Error */
   private static int b(final Context paramContext, AtomicReference<IBinder> paramAtomicReference, final AtomicReference<ServiceConnection> paramAtomicReference1)
   {
-    // Byte code:
-    //   0: new 4	java/lang/Object
-    //   3: dup
-    //   4: invokespecial 45	java/lang/Object:<init>	()V
-    //   7: astore 5
-    //   9: new 78	java/util/concurrent/atomic/AtomicReference
-    //   12: dup
-    //   13: iconst_0
-    //   14: invokestatic 111	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   17: invokespecial 114	java/util/concurrent/atomic/AtomicReference:<init>	(Ljava/lang/Object;)V
-    //   20: astore 6
-    //   22: invokestatic 42	java/lang/System:currentTimeMillis	()J
-    //   25: lstore_3
-    //   26: new 8	btmsdkobf/ev$2
-    //   29: dup
-    //   30: aload_1
-    //   31: aload 6
-    //   33: aload_0
-    //   34: aload_2
-    //   35: aload 5
-    //   37: invokespecial 117	btmsdkobf/ev$2:<init>	(Ljava/util/concurrent/atomic/AtomicReference;Ljava/util/concurrent/atomic/AtomicReference;Landroid/content/Context;Ljava/util/concurrent/atomic/AtomicReference;Ljava/lang/Object;)V
-    //   40: invokevirtual 120	btmsdkobf/ev$2:start	()V
-    //   43: aload 5
-    //   45: monitorenter
-    //   46: aload 5
-    //   48: ldc2_w 83
-    //   51: invokevirtual 88	java/lang/Object:wait	(J)V
-    //   54: aload 5
-    //   56: monitorexit
-    //   57: invokestatic 42	java/lang/System:currentTimeMillis	()J
-    //   60: lload_3
-    //   61: lsub
-    //   62: putstatic 27	btmsdkobf/ev:pc	J
-    //   65: aload 6
-    //   67: invokevirtual 82	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
-    //   70: checkcast 107	java/lang/Integer
-    //   73: invokevirtual 124	java/lang/Integer:intValue	()I
-    //   76: ireturn
-    //   77: astore_0
-    //   78: aload 5
-    //   80: monitorexit
-    //   81: aload_0
-    //   82: athrow
-    //   83: astore_0
-    //   84: goto -30 -> 54
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	87	0	paramContext	Context
-    //   0	87	1	paramAtomicReference	AtomicReference<IBinder>
-    //   0	87	2	paramAtomicReference1	AtomicReference<ServiceConnection>
-    //   25	36	3	l	long
-    //   7	72	5	localObject	Object
-    //   20	46	6	localAtomicReference	AtomicReference
-    // Exception table:
-    //   from	to	target	type
-    //   46	54	77	finally
-    //   54	57	77	finally
-    //   78	81	77	finally
-    //   46	54	83	java/lang/Throwable
+    final Object localObject = new Object();
+    final AtomicReference localAtomicReference = new AtomicReference(Integer.valueOf(0));
+    long l = System.currentTimeMillis();
+    new Thread()
+    {
+      public void run()
+      {
+        label137:
+        try
+        {
+          ??? = eu.a.c((IBinder)this.a.get());
+        }
+        catch (Throwable localThrowable1)
+        {
+          label17:
+          label70:
+          label103:
+          break label17;
+        }
+        localAtomicReference.set(Integer.valueOf(-401));
+        ??? = null;
+        if (??? != null) {}
+        try
+        {
+          String str = paramContext.getPackageName();
+          ev.N(((eu)???).a(str, et.a(paramContext, str, "SHA1"), "OUID"));
+        }
+        catch (Throwable localThrowable2)
+        {
+          break label70;
+        }
+        localAtomicReference.set(Integer.valueOf(-402));
+        try
+        {
+          paramContext.unbindService((ServiceConnection)paramAtomicReference1.get());
+        }
+        catch (Throwable localThrowable3)
+        {
+          break label103;
+        }
+        localAtomicReference.set(Integer.valueOf(-403));
+        try
+        {
+          synchronized (localObject)
+          {
+            localObject.notifyAll();
+          }
+        }
+        catch (Throwable localThrowable4)
+        {
+          break label137;
+        }
+        return;
+        throw localObject2;
+      }
+    }.start();
+    try
+    {
+      try
+      {
+        localObject.wait(1000L);
+      }
+      finally
+      {
+        break label84;
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      label61:
+      break label61;
+    }
+    pc = System.currentTimeMillis() - l;
+    return ((Integer)localAtomicReference.get()).intValue();
+    label84:
+    throw paramContext;
   }
   
   private static boolean o(Context paramContext)

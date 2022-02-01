@@ -16,34 +16,31 @@ public class MD5Util
   
   public static String Dec_HexString(String paramString)
   {
-    int j = 0;
     byte[] arrayOfByte = new byte[paramString.length() / 2];
     paramString = paramString.toUpperCase().toCharArray();
-    int k = 0;
+    int j = 0;
     int m = 0;
-    if (j < paramString.length)
+    int k = 0;
+    while (j < paramString.length)
     {
       int n;
-      if (paramString[j] > '@')
-      {
+      if (paramString[j] > '@') {
         n = paramString[j] - '7';
-        label47:
-        if (j % 2 != 0) {
-          break label78;
-        }
-      }
-      label78:
-      int i;
-      for (m = (byte)(n << 4);; m = i)
-      {
-        j += 1;
-        break;
+      } else {
         n = paramString[j] - '0';
-        break label47;
-        i = (byte)(m + (n & 0xF));
+      }
+      if (j % 2 == 0)
+      {
+        m = (byte)(n << 4);
+      }
+      else
+      {
+        int i = (byte)(m + (n & 0xF));
         arrayOfByte[k] = i;
         k += 1;
+        m = i;
       }
+      j += 1;
     }
     return new String(b.decrypt(arrayOfByte, null), Charset.forName("UTF-8"));
   }
@@ -113,22 +110,28 @@ public class MD5Util
       paramFile = new FileInputStream(paramFile);
       return getStreamMD5(paramFile);
     }
-    catch (FileNotFoundException paramFile) {}
+    catch (FileNotFoundException paramFile)
+    {
+      label14:
+      break label14;
+    }
     return null;
   }
   
   public static String getStreamMD5(InputStream paramInputStream)
   {
-    MessageDigest localMessageDigest = null;
-    String str2 = null;
-    if (paramInputStream == null) {}
-    for (;;)
+    Object localObject1 = null;
+    Object localObject3 = null;
+    Object localObject4 = null;
+    if (paramInputStream == null) {
+      return null;
+    }
+    if (paramInputStream != null) {}
+    try
     {
-      return str2;
-      if (paramInputStream != null) {}
       try
       {
-        localMessageDigest = MessageDigest.getInstance("MD5");
+        localObject1 = MessageDigest.getInstance("MD5");
         byte[] arrayOfByte = new byte[8192];
         for (;;)
         {
@@ -136,56 +139,51 @@ public class MD5Util
           if (i <= 0) {
             break;
           }
-          localMessageDigest.update(arrayOfByte, 0, i);
+          ((MessageDigest)localObject1).update(arrayOfByte, 0, i);
         }
+        localObject1 = encrypt_string(((MessageDigest)localObject1).digest());
       }
-      catch (Exception localException)
+      finally
       {
-        if (paramInputStream != null)
-        {
+        if (paramInputStream != null) {
           try
           {
             paramInputStream.close();
-            return null;
           }
           catch (IOException paramInputStream)
           {
             paramInputStream.printStackTrace();
-            return null;
-          }
-          String str1 = encrypt_string(localException.digest());
-          str2 = str1;
-          if (paramInputStream != null) {
-            try
-            {
-              paramInputStream.close();
-              return str1;
-            }
-            catch (IOException paramInputStream)
-            {
-              paramInputStream.printStackTrace();
-              return str1;
-            }
           }
         }
       }
-      finally
+    }
+    catch (Exception localException)
+    {
+      label82:
+      break label82;
+    }
+    if (paramInputStream != null)
+    {
+      localObject3 = localObject4;
+      try
       {
-        if (paramInputStream == null) {}
+        paramInputStream.close();
+        return null;
       }
-    }
-    try
-    {
-      paramInputStream.close();
-      throw localObject;
-    }
-    catch (IOException paramInputStream)
-    {
-      for (;;)
+      catch (IOException paramInputStream)
       {
         paramInputStream.printStackTrace();
+        return localObject3;
+      }
+      localObject3 = localObject2;
+      if (paramInputStream != null)
+      {
+        localObject3 = localObject2;
+        paramInputStream.close();
+        localObject3 = localObject2;
       }
     }
+    return localObject3;
   }
   
   public static byte[] intToByteArray(int paramInt)

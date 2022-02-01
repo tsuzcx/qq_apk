@@ -49,89 +49,90 @@ public class AnimatorInflaterCompat
   
   private static Animator createAnimatorFromXml(Context paramContext, Resources paramResources, Resources.Theme paramTheme, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, AnimatorSet paramAnimatorSet, int paramInt, float paramFloat)
   {
+    int k = paramXmlPullParser.getDepth();
+    Object localObject3 = null;
     Object localObject2 = null;
-    ArrayList localArrayList = null;
-    int j = paramXmlPullParser.getDepth();
+    int j;
     int i;
-    Object localObject1;
-    label85:
-    do
-    {
-      do
-      {
-        do
-        {
-          i = paramXmlPullParser.next();
-          if (((i == 3) && (paramXmlPullParser.getDepth() <= j)) || (i == 1)) {
-            break;
-          }
-        } while (i != 2);
-        localObject1 = paramXmlPullParser.getName();
-        if (!((String)localObject1).equals("objectAnimator")) {
-          break;
-        }
-        localObject1 = loadObjectAnimator(paramContext, paramResources, paramTheme, paramAttributeSet, paramFloat, paramXmlPullParser);
-        i = 0;
-        localObject2 = localObject1;
-      } while (paramAnimatorSet == null);
-      localObject2 = localObject1;
-    } while (i != 0);
-    if (localArrayList == null) {
-      localArrayList = new ArrayList();
-    }
     for (;;)
     {
-      localArrayList.add(localObject1);
-      localObject2 = localObject1;
-      break;
-      if (((String)localObject1).equals("animator"))
-      {
-        localObject1 = loadAnimator(paramContext, paramResources, paramTheme, paramAttributeSet, null, paramFloat, paramXmlPullParser);
-        i = 0;
-        break label85;
+      int m = paramXmlPullParser.next();
+      j = 0;
+      i = 0;
+      if (((m == 3) && (paramXmlPullParser.getDepth() <= k)) || (m == 1)) {
+        break label342;
       }
-      if (((String)localObject1).equals("set"))
+      if (m == 2)
       {
-        localObject1 = new AnimatorSet();
-        localObject2 = TypedArrayUtils.obtainAttributes(paramResources, paramTheme, paramAttributeSet, AndroidResources.STYLEABLE_ANIMATOR_SET);
-        i = TypedArrayUtils.getNamedInt((TypedArray)localObject2, paramXmlPullParser, "ordering", 0, 0);
-        createAnimatorFromXml(paramContext, paramResources, paramTheme, paramXmlPullParser, paramAttributeSet, (AnimatorSet)localObject1, i, paramFloat);
-        ((TypedArray)localObject2).recycle();
-        i = 0;
-        break label85;
-      }
-      if (((String)localObject1).equals("propertyValuesHolder"))
-      {
-        localObject1 = loadValues(paramContext, paramResources, paramTheme, paramXmlPullParser, Xml.asAttributeSet(paramXmlPullParser));
-        if ((localObject1 != null) && (localObject2 != null) && ((localObject2 instanceof ValueAnimator))) {
-          ((ValueAnimator)localObject2).setValues((PropertyValuesHolder[])localObject1);
-        }
-        i = 1;
-        localObject1 = localObject2;
-        break label85;
-      }
-      throw new RuntimeException("Unknown animator name: " + paramXmlPullParser.getName());
-      if ((paramAnimatorSet != null) && (localArrayList != null))
-      {
-        paramContext = new Animator[localArrayList.size()];
-        paramResources = localArrayList.iterator();
-        i = 0;
-        while (paramResources.hasNext())
+        Object localObject1 = paramXmlPullParser.getName();
+        if (((String)localObject1).equals("objectAnimator"))
         {
-          paramContext[i] = ((Animator)paramResources.next());
-          i += 1;
+          localObject1 = loadObjectAnimator(paramContext, paramResources, paramTheme, paramAttributeSet, paramFloat, paramXmlPullParser);
         }
-        if (paramInt == 0) {
-          paramAnimatorSet.playTogether(paramContext);
+        else if (((String)localObject1).equals("animator"))
+        {
+          localObject1 = loadAnimator(paramContext, paramResources, paramTheme, paramAttributeSet, null, paramFloat, paramXmlPullParser);
+        }
+        else if (((String)localObject1).equals("set"))
+        {
+          localObject1 = new AnimatorSet();
+          localObject3 = TypedArrayUtils.obtainAttributes(paramResources, paramTheme, paramAttributeSet, AndroidResources.STYLEABLE_ANIMATOR_SET);
+          j = TypedArrayUtils.getNamedInt((TypedArray)localObject3, paramXmlPullParser, "ordering", 0, 0);
+          createAnimatorFromXml(paramContext, paramResources, paramTheme, paramXmlPullParser, paramAttributeSet, (AnimatorSet)localObject1, j, paramFloat);
+          ((TypedArray)localObject3).recycle();
+        }
+        else
+        {
+          if (!((String)localObject1).equals("propertyValuesHolder")) {
+            break;
+          }
+          localObject1 = loadValues(paramContext, paramResources, paramTheme, paramXmlPullParser, Xml.asAttributeSet(paramXmlPullParser));
+          if ((localObject1 != null) && (localObject3 != null) && ((localObject3 instanceof ValueAnimator))) {
+            ((ValueAnimator)localObject3).setValues((PropertyValuesHolder[])localObject1);
+          }
+          i = 1;
+          localObject1 = localObject3;
+        }
+        localObject3 = localObject1;
+        if (paramAnimatorSet != null)
+        {
+          localObject3 = localObject1;
+          if (i == 0)
+          {
+            Object localObject4 = localObject2;
+            if (localObject2 == null) {
+              localObject4 = new ArrayList();
+            }
+            ((ArrayList)localObject4).add(localObject1);
+            localObject3 = localObject1;
+            localObject2 = localObject4;
+          }
         }
       }
-      else
+    }
+    paramContext = new StringBuilder();
+    paramContext.append("Unknown animator name: ");
+    paramContext.append(paramXmlPullParser.getName());
+    throw new RuntimeException(paramContext.toString());
+    label342:
+    if ((paramAnimatorSet != null) && (localObject2 != null))
+    {
+      paramContext = new Animator[localObject2.size()];
+      paramResources = localObject2.iterator();
+      i = j;
+      while (paramResources.hasNext())
       {
-        return localObject2;
+        paramContext[i] = ((Animator)paramResources.next());
+        i += 1;
+      }
+      if (paramInt == 0)
+      {
+        paramAnimatorSet.playTogether(paramContext);
+        return localObject3;
       }
       paramAnimatorSet.playSequentially(paramContext);
-      return localObject2;
     }
+    return localObject3;
   }
   
   private static Keyframe createNewKeyframe(Keyframe paramKeyframe, float paramFloat)
@@ -157,311 +158,282 @@ public class AnimatorInflaterCompat
   
   private static void dumpKeyframes(Object[] paramArrayOfObject, String paramString)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
-      return;
-    }
-    Log.d("AnimatorInflater", paramString);
-    int j = paramArrayOfObject.length;
-    int i = 0;
-    label22:
-    Keyframe localKeyframe;
-    StringBuilder localStringBuilder;
-    if (i < j)
+    if (paramArrayOfObject != null)
     {
-      localKeyframe = (Keyframe)paramArrayOfObject[i];
-      localStringBuilder = new StringBuilder().append("Keyframe ").append(i).append(": fraction ");
-      if (localKeyframe.getFraction() >= 0.0F) {
-        break label125;
+      if (paramArrayOfObject.length == 0) {
+        return;
       }
-      paramString = "null";
-      label71:
-      localStringBuilder = localStringBuilder.append(paramString).append(", ").append(", value : ");
-      if (!localKeyframe.hasValue()) {
-        break label137;
-      }
-    }
-    label137:
-    for (paramString = localKeyframe.getValue();; paramString = "null")
-    {
       Log.d("AnimatorInflater", paramString);
-      i += 1;
-      break label22;
-      break;
-      label125:
-      paramString = Float.valueOf(localKeyframe.getFraction());
-      break label71;
+      int j = paramArrayOfObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        Keyframe localKeyframe = (Keyframe)paramArrayOfObject[i];
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Keyframe ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(": fraction ");
+        if (localKeyframe.getFraction() < 0.0F) {
+          paramString = "null";
+        } else {
+          paramString = Float.valueOf(localKeyframe.getFraction());
+        }
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(", value : ");
+        if (localKeyframe.hasValue()) {
+          paramString = localKeyframe.getValue();
+        } else {
+          paramString = "null";
+        }
+        localStringBuilder.append(paramString);
+        Log.d("AnimatorInflater", localStringBuilder.toString());
+        i += 1;
+      }
+      return;
     }
   }
   
   private static PropertyValuesHolder getPVH(TypedArray paramTypedArray, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    Object localObject = paramTypedArray.peekValue(paramInt2);
+    Object localObject1 = paramTypedArray.peekValue(paramInt2);
     int j;
-    int m;
-    label27:
-    int k;
-    label42:
-    int n;
-    label54:
-    int i;
-    if (localObject != null)
-    {
+    if (localObject1 != null) {
       j = 1;
-      if (j == 0) {
-        break label215;
-      }
-      m = ((TypedValue)localObject).type;
-      localObject = paramTypedArray.peekValue(paramInt3);
-      if (localObject == null) {
-        break label221;
-      }
-      k = 1;
-      if (k == 0) {
-        break label227;
-      }
-      n = ((TypedValue)localObject).type;
-      i = paramInt1;
-      if (paramInt1 == 4)
-      {
-        if (((j == 0) || (!isColorType(m))) && ((k == 0) || (!isColorType(n)))) {
-          break label233;
-        }
-        i = 3;
-      }
-      label91:
-      if (i != 0) {
-        break label239;
-      }
-      paramInt1 = 1;
+    } else {
+      j = 0;
     }
-    for (;;)
+    int m;
+    if (j != 0) {
+      m = ((TypedValue)localObject1).type;
+    } else {
+      m = 0;
+    }
+    localObject1 = paramTypedArray.peekValue(paramInt3);
+    int k;
+    if (localObject1 != null) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    int n;
+    if (k != 0) {
+      n = ((TypedValue)localObject1).type;
+    } else {
+      n = 0;
+    }
+    int i = paramInt1;
+    if (paramInt1 == 4) {
+      if (((j != 0) && (isColorType(m))) || ((k != 0) && (isColorType(n)))) {
+        i = 3;
+      } else {
+        i = 0;
+      }
+    }
+    if (i == 0) {
+      paramInt1 = 1;
+    } else {
+      paramInt1 = 0;
+    }
+    localObject1 = null;
+    String str = null;
+    Object localObject2;
+    if (i == 2)
     {
-      if (i == 2)
+      localObject2 = paramTypedArray.getString(paramInt2);
+      str = paramTypedArray.getString(paramInt3);
+      PathParser.PathDataNode[] arrayOfPathDataNode1 = PathParser.createNodesFromPathData((String)localObject2);
+      PathParser.PathDataNode[] arrayOfPathDataNode2 = PathParser.createNodesFromPathData(str);
+      if (arrayOfPathDataNode1 == null)
       {
-        localObject = paramTypedArray.getString(paramInt2);
-        paramTypedArray = paramTypedArray.getString(paramInt3);
-        PathParser.PathDataNode[] arrayOfPathDataNode1 = PathParser.createNodesFromPathData((String)localObject);
-        PathParser.PathDataNode[] arrayOfPathDataNode2 = PathParser.createNodesFromPathData(paramTypedArray);
-        if ((arrayOfPathDataNode1 == null) && (arrayOfPathDataNode2 == null)) {
-          break label692;
-        }
+        paramTypedArray = (TypedArray)localObject1;
+        if (arrayOfPathDataNode2 == null) {}
+      }
+      else
+      {
         if (arrayOfPathDataNode1 != null)
         {
-          PathDataEvaluator localPathDataEvaluator = new PathDataEvaluator(null);
+          paramTypedArray = new PathDataEvaluator(null);
           if (arrayOfPathDataNode2 != null)
           {
-            if (!PathParser.canMorph(arrayOfPathDataNode1, arrayOfPathDataNode2))
-            {
-              throw new InflateException(" Can't morph from " + (String)localObject + " to " + paramTypedArray);
-              j = 0;
-              break;
-              label215:
-              m = 0;
-              break label27;
-              label221:
-              k = 0;
-              break label42;
-              label227:
-              n = 0;
-              break label54;
-              label233:
-              i = 0;
-              break label91;
-              label239:
-              paramInt1 = 0;
-              continue;
+            if (PathParser.canMorph(arrayOfPathDataNode1, arrayOfPathDataNode2)) {
+              return PropertyValuesHolder.ofObject(paramString, paramTypedArray, new Object[] { arrayOfPathDataNode1, arrayOfPathDataNode2 });
             }
-            paramString = PropertyValuesHolder.ofObject(paramString, localPathDataEvaluator, new Object[] { arrayOfPathDataNode1, arrayOfPathDataNode2 });
-            return paramString;
+            paramTypedArray = new StringBuilder();
+            paramTypedArray.append(" Can't morph from ");
+            paramTypedArray.append((String)localObject2);
+            paramTypedArray.append(" to ");
+            paramTypedArray.append(str);
+            throw new InflateException(paramTypedArray.toString());
           }
-          return PropertyValuesHolder.ofObject(paramString, localPathDataEvaluator, new Object[] { arrayOfPathDataNode1 });
+          return PropertyValuesHolder.ofObject(paramString, paramTypedArray, new Object[] { arrayOfPathDataNode1 });
         }
-        if (arrayOfPathDataNode2 == null) {
-          break label692;
-        }
-        return PropertyValuesHolder.ofObject(paramString, new PathDataEvaluator(null), new Object[] { arrayOfPathDataNode2 });
-      }
-    }
-    localObject = null;
-    if (i == 3) {
-      localObject = ArgbEvaluator.getInstance();
-    }
-    float f1;
-    label352:
-    float f2;
-    if (paramInt1 != 0) {
-      if (j != 0) {
-        if (m == 5)
-        {
-          f1 = paramTypedArray.getDimension(paramInt2, 0.0F);
-          if (k == 0) {
-            break label435;
-          }
-          if (n != 5) {
-            break label424;
-          }
-          f2 = paramTypedArray.getDimension(paramInt3, 0.0F);
-          label371:
-          paramTypedArray = PropertyValuesHolder.ofFloat(paramString, new float[] { f1, f2 });
+        paramTypedArray = (TypedArray)localObject1;
+        if (arrayOfPathDataNode2 != null) {
+          return PropertyValuesHolder.ofObject(paramString, new PathDataEvaluator(null), new Object[] { arrayOfPathDataNode2 });
         }
       }
     }
-    for (;;)
+    else
     {
-      paramString = paramTypedArray;
-      if (paramTypedArray == null) {
-        break;
+      if (i == 3) {
+        localObject2 = ArgbEvaluator.getInstance();
+      } else {
+        localObject2 = null;
       }
-      paramString = paramTypedArray;
-      if (localObject == null) {
-        break;
-      }
-      paramTypedArray.setEvaluator((TypeEvaluator)localObject);
-      return paramTypedArray;
-      f1 = paramTypedArray.getFloat(paramInt2, 0.0F);
-      break label352;
-      label424:
-      f2 = paramTypedArray.getFloat(paramInt3, 0.0F);
-      break label371;
-      label435:
-      paramTypedArray = PropertyValuesHolder.ofFloat(paramString, new float[] { f1 });
-      continue;
-      if (n == 5) {}
-      for (f1 = paramTypedArray.getDimension(paramInt3, 0.0F);; f1 = paramTypedArray.getFloat(paramInt3, 0.0F))
+      if (paramInt1 != 0)
       {
-        paramTypedArray = PropertyValuesHolder.ofFloat(paramString, new float[] { f1 });
-        break;
-      }
-      if (j != 0)
-      {
-        if (m == 5)
+        float f1;
+        if (j != 0)
         {
-          paramInt1 = (int)paramTypedArray.getDimension(paramInt2, 0.0F);
-          label513:
-          if (k == 0) {
-            break label608;
+          if (m == 5) {
+            f1 = paramTypedArray.getDimension(paramInt2, 0.0F);
+          } else {
+            f1 = paramTypedArray.getFloat(paramInt2, 0.0F);
           }
-          if (n != 5) {
-            break label580;
-          }
-          paramInt2 = (int)paramTypedArray.getDimension(paramInt3, 0.0F);
-        }
-        for (;;)
-        {
-          paramTypedArray = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1, paramInt2 });
-          break;
-          if (isColorType(m))
+          if (k != 0)
           {
-            paramInt1 = paramTypedArray.getColor(paramInt2, 0);
-            break label513;
+            float f2;
+            if (n == 5) {
+              f2 = paramTypedArray.getDimension(paramInt3, 0.0F);
+            } else {
+              f2 = paramTypedArray.getFloat(paramInt3, 0.0F);
+            }
+            localObject1 = PropertyValuesHolder.ofFloat(paramString, new float[] { f1, f2 });
           }
+          else
+          {
+            localObject1 = PropertyValuesHolder.ofFloat(paramString, new float[] { f1 });
+          }
+        }
+        else
+        {
+          if (n == 5) {
+            f1 = paramTypedArray.getDimension(paramInt3, 0.0F);
+          } else {
+            f1 = paramTypedArray.getFloat(paramInt3, 0.0F);
+          }
+          localObject1 = PropertyValuesHolder.ofFloat(paramString, new float[] { f1 });
+        }
+      }
+      else if (j != 0)
+      {
+        if (m == 5) {
+          paramInt1 = (int)paramTypedArray.getDimension(paramInt2, 0.0F);
+        } else if (isColorType(m)) {
+          paramInt1 = paramTypedArray.getColor(paramInt2, 0);
+        } else {
           paramInt1 = paramTypedArray.getInt(paramInt2, 0);
-          break label513;
-          label580:
-          if (isColorType(n)) {
+        }
+        if (k != 0)
+        {
+          if (n == 5) {
+            paramInt2 = (int)paramTypedArray.getDimension(paramInt3, 0.0F);
+          } else if (isColorType(n)) {
             paramInt2 = paramTypedArray.getColor(paramInt3, 0);
           } else {
             paramInt2 = paramTypedArray.getInt(paramInt3, 0);
           }
+          localObject1 = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1, paramInt2 });
         }
-        label608:
-        paramTypedArray = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1 });
+        else
+        {
+          localObject1 = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1 });
+        }
       }
       else
       {
+        localObject1 = str;
         if (k != 0)
         {
           if (n == 5) {
             paramInt1 = (int)paramTypedArray.getDimension(paramInt3, 0.0F);
+          } else if (isColorType(n)) {
+            paramInt1 = paramTypedArray.getColor(paramInt3, 0);
+          } else {
+            paramInt1 = paramTypedArray.getInt(paramInt3, 0);
           }
-          for (;;)
-          {
-            paramTypedArray = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1 });
-            break;
-            if (isColorType(n)) {
-              paramInt1 = paramTypedArray.getColor(paramInt3, 0);
-            } else {
-              paramInt1 = paramTypedArray.getInt(paramInt3, 0);
-            }
-          }
+          localObject1 = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1 });
         }
-        paramTypedArray = null;
+      }
+      paramTypedArray = (TypedArray)localObject1;
+      if (localObject1 != null)
+      {
+        paramTypedArray = (TypedArray)localObject1;
+        if (localObject2 != null)
+        {
+          ((PropertyValuesHolder)localObject1).setEvaluator((TypeEvaluator)localObject2);
+          paramTypedArray = (TypedArray)localObject1;
+        }
       }
     }
-    label692:
-    return null;
+    return paramTypedArray;
   }
   
   private static int inferValueTypeFromValues(TypedArray paramTypedArray, int paramInt1, int paramInt2)
   {
-    int k = 0;
     TypedValue localTypedValue = paramTypedArray.peekValue(paramInt1);
-    int i;
-    if (localTypedValue != null)
-    {
+    int j = 1;
+    int k = 0;
+    if (localTypedValue != null) {
       paramInt1 = 1;
-      if (paramInt1 == 0) {
-        break label87;
-      }
-      i = localTypedValue.type;
-      label27:
-      paramTypedArray = paramTypedArray.peekValue(paramInt2);
-      if (paramTypedArray == null) {
-        break label92;
-      }
-      paramInt2 = 1;
-      label39:
-      if (paramInt2 == 0) {
-        break label97;
-      }
+    } else {
+      paramInt1 = 0;
     }
-    label87:
-    label92:
-    label97:
-    for (int j = paramTypedArray.type;; j = 0)
+    int i;
+    if (paramInt1 != 0) {
+      i = localTypedValue.type;
+    } else {
+      i = 0;
+    }
+    paramTypedArray = paramTypedArray.peekValue(paramInt2);
+    if (paramTypedArray != null) {
+      paramInt2 = j;
+    } else {
+      paramInt2 = 0;
+    }
+    if (paramInt2 != 0) {
+      j = paramTypedArray.type;
+    } else {
+      j = 0;
+    }
+    if ((paramInt1 == 0) || (!isColorType(i)))
     {
-      if ((paramInt1 == 0) || (!isColorType(i)))
+      paramInt1 = k;
+      if (paramInt2 != 0)
       {
         paramInt1 = k;
-        if (paramInt2 != 0)
-        {
-          paramInt1 = k;
-          if (!isColorType(j)) {}
-        }
+        if (!isColorType(j)) {}
       }
-      else
-      {
-        paramInt1 = 3;
-      }
-      return paramInt1;
-      paramInt1 = 0;
-      break;
-      i = 0;
-      break label27;
-      paramInt2 = 0;
-      break label39;
     }
+    else
+    {
+      paramInt1 = 3;
+    }
+    return paramInt1;
   }
   
   private static int inferValueTypeOfKeyframe(Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, XmlPullParser paramXmlPullParser)
   {
-    int k = 0;
     paramResources = TypedArrayUtils.obtainAttributes(paramResources, paramTheme, paramAttributeSet, AndroidResources.STYLEABLE_KEYFRAME);
+    int k = 0;
     paramTheme = TypedArrayUtils.peekNamedValue(paramResources, paramXmlPullParser, "value", 0);
-    if (paramTheme != null) {}
-    for (int i = 1;; i = 0)
-    {
-      int j = k;
-      if (i != 0)
-      {
-        j = k;
-        if (isColorType(paramTheme.type)) {
-          j = 3;
-        }
-      }
-      paramResources.recycle();
-      return j;
+    int i;
+    if (paramTheme != null) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    int j = k;
+    if (i != 0)
+    {
+      j = k;
+      if (isColorType(paramTheme.type)) {
+        j = 3;
+      }
+    }
+    paramResources.recycle();
+    return j;
   }
   
   private static boolean isColorType(int paramInt)
@@ -487,19 +459,19 @@ public class AnimatorInflaterCompat
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
+    //   1: astore 6
     //   3: aconst_null
     //   4: astore 7
     //   6: aconst_null
-    //   7: astore 6
+    //   7: astore 5
     //   9: aload_1
     //   10: iload_3
     //   11: invokevirtual 363	android/content/res/Resources:getAnimation	(I)Landroid/content/res/XmlResourceParser;
     //   14: astore 8
     //   16: aload 8
-    //   18: astore 6
+    //   18: astore 5
     //   20: aload 8
-    //   22: astore 5
+    //   22: astore 6
     //   24: aload 8
     //   26: astore 7
     //   28: aload_0
@@ -516,89 +488,120 @@ public class AnimatorInflaterCompat
     //   51: aload_0
     //   52: areturn
     //   53: astore_0
-    //   54: aload 6
-    //   56: astore 5
-    //   58: new 372	android/content/res/Resources$NotFoundException
-    //   61: dup
-    //   62: new 130	java/lang/StringBuilder
+    //   54: goto +143 -> 197
+    //   57: astore_0
+    //   58: aload 6
+    //   60: astore 5
+    //   62: new 128	java/lang/StringBuilder
     //   65: dup
-    //   66: invokespecial 131	java/lang/StringBuilder:<init>	()V
-    //   69: ldc_w 374
-    //   72: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: iload_3
-    //   76: invokestatic 377	java/lang/Integer:toHexString	(I)Ljava/lang/String;
-    //   79: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   85: invokespecial 378	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
-    //   88: astore_1
-    //   89: aload 6
-    //   91: astore 5
-    //   93: aload_1
-    //   94: aload_0
-    //   95: invokevirtual 382	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   98: pop
-    //   99: aload 6
-    //   101: astore 5
+    //   66: invokespecial 129	java/lang/StringBuilder:<init>	()V
+    //   69: astore_1
+    //   70: aload 6
+    //   72: astore 5
+    //   74: aload_1
+    //   75: ldc_w 372
+    //   78: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: pop
+    //   82: aload 6
+    //   84: astore 5
+    //   86: aload_1
+    //   87: iload_3
+    //   88: invokestatic 375	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   91: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: pop
+    //   95: aload 6
+    //   97: astore 5
+    //   99: new 377	android/content/res/Resources$NotFoundException
+    //   102: dup
     //   103: aload_1
-    //   104: athrow
-    //   105: astore_0
-    //   106: aload 5
-    //   108: ifnull +10 -> 118
-    //   111: aload 5
-    //   113: invokeinterface 370 1 0
-    //   118: aload_0
-    //   119: athrow
-    //   120: astore_0
-    //   121: aload 7
+    //   104: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   107: invokespecial 378	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
+    //   110: astore_1
+    //   111: aload 6
+    //   113: astore 5
+    //   115: aload_1
+    //   116: aload_0
+    //   117: invokevirtual 382	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   120: pop
+    //   121: aload 6
     //   123: astore 5
-    //   125: new 372	android/content/res/Resources$NotFoundException
-    //   128: dup
-    //   129: new 130	java/lang/StringBuilder
-    //   132: dup
-    //   133: invokespecial 131	java/lang/StringBuilder:<init>	()V
-    //   136: ldc_w 374
-    //   139: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   142: iload_3
-    //   143: invokestatic 377	java/lang/Integer:toHexString	(I)Ljava/lang/String;
-    //   146: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   152: invokespecial 378	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
-    //   155: astore_1
-    //   156: aload 7
-    //   158: astore 5
-    //   160: aload_1
-    //   161: aload_0
-    //   162: invokevirtual 382	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   165: pop
-    //   166: aload 7
-    //   168: astore 5
-    //   170: aload_1
-    //   171: athrow
+    //   125: aload_1
+    //   126: athrow
+    //   127: astore_0
+    //   128: aload 7
+    //   130: astore 5
+    //   132: new 128	java/lang/StringBuilder
+    //   135: dup
+    //   136: invokespecial 129	java/lang/StringBuilder:<init>	()V
+    //   139: astore_1
+    //   140: aload 7
+    //   142: astore 5
+    //   144: aload_1
+    //   145: ldc_w 372
+    //   148: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   151: pop
+    //   152: aload 7
+    //   154: astore 5
+    //   156: aload_1
+    //   157: iload_3
+    //   158: invokestatic 375	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   161: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   164: pop
+    //   165: aload 7
+    //   167: astore 5
+    //   169: new 377	android/content/res/Resources$NotFoundException
+    //   172: dup
+    //   173: aload_1
+    //   174: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   177: invokespecial 378	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
+    //   180: astore_1
+    //   181: aload 7
+    //   183: astore 5
+    //   185: aload_1
+    //   186: aload_0
+    //   187: invokevirtual 382	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   190: pop
+    //   191: aload 7
+    //   193: astore 5
+    //   195: aload_1
+    //   196: athrow
+    //   197: aload 5
+    //   199: ifnull +10 -> 209
+    //   202: aload 5
+    //   204: invokeinterface 370 1 0
+    //   209: aload_0
+    //   210: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	172	0	paramContext	Context
-    //   0	172	1	paramResources	Resources
-    //   0	172	2	paramTheme	Resources.Theme
-    //   0	172	3	paramInt	int
-    //   0	172	4	paramFloat	float
-    //   1	168	5	localObject1	Object
-    //   7	93	6	localObject2	Object
-    //   4	163	7	localObject3	Object
+    //   0	211	0	paramContext	Context
+    //   0	211	1	paramResources	Resources
+    //   0	211	2	paramTheme	Resources.Theme
+    //   0	211	3	paramInt	int
+    //   0	211	4	paramFloat	float
+    //   7	196	5	localObject1	Object
+    //   1	121	6	localObject2	Object
+    //   4	188	7	localObject3	Object
     //   14	31	8	localXmlResourceParser	android.content.res.XmlResourceParser
     // Exception table:
     //   from	to	target	type
-    //   9	16	53	org/xmlpull/v1/XmlPullParserException
-    //   28	39	53	org/xmlpull/v1/XmlPullParserException
-    //   9	16	105	finally
-    //   28	39	105	finally
-    //   58	89	105	finally
-    //   93	99	105	finally
-    //   103	105	105	finally
-    //   125	156	105	finally
-    //   160	166	105	finally
-    //   170	172	105	finally
-    //   9	16	120	java/io/IOException
-    //   28	39	120	java/io/IOException
+    //   9	16	53	finally
+    //   28	39	53	finally
+    //   62	70	53	finally
+    //   74	82	53	finally
+    //   86	95	53	finally
+    //   99	111	53	finally
+    //   115	121	53	finally
+    //   125	127	53	finally
+    //   132	140	53	finally
+    //   144	152	53	finally
+    //   156	165	53	finally
+    //   169	181	53	finally
+    //   185	191	53	finally
+    //   195	197	53	finally
+    //   9	16	57	java/io/IOException
+    //   28	39	57	java/io/IOException
+    //   9	16	127	org/xmlpull/v1/XmlPullParserException
+    //   28	39	127	org/xmlpull/v1/XmlPullParserException
   }
   
   private static ValueAnimator loadAnimator(Context paramContext, Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, ValueAnimator paramValueAnimator, float paramFloat, XmlPullParser paramXmlPullParser)
@@ -623,58 +626,50 @@ public class AnimatorInflaterCompat
   
   private static Keyframe loadKeyframe(Context paramContext, Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, int paramInt, XmlPullParser paramXmlPullParser)
   {
-    paramAttributeSet = TypedArrayUtils.obtainAttributes(paramResources, paramTheme, paramAttributeSet, AndroidResources.STYLEABLE_KEYFRAME);
-    paramTheme = null;
-    float f = TypedArrayUtils.getNamedFloat(paramAttributeSet, paramXmlPullParser, "fraction", 3, -1.0F);
-    paramResources = TypedArrayUtils.peekNamedValue(paramAttributeSet, paramXmlPullParser, "value", 0);
+    paramTheme = TypedArrayUtils.obtainAttributes(paramResources, paramTheme, paramAttributeSet, AndroidResources.STYLEABLE_KEYFRAME);
+    float f = TypedArrayUtils.getNamedFloat(paramTheme, paramXmlPullParser, "fraction", 3, -1.0F);
+    paramResources = TypedArrayUtils.peekNamedValue(paramTheme, paramXmlPullParser, "value", 0);
     int j;
-    int i;
-    if (paramResources != null)
-    {
+    if (paramResources != null) {
       j = 1;
-      i = paramInt;
-      if (paramInt == 4)
-      {
-        if ((j == 0) || (!isColorType(paramResources.type))) {
-          break label154;
-        }
-        i = 3;
-      }
-      label73:
-      if (j == 0) {
-        break label200;
-      }
-      paramResources = paramTheme;
-      switch (i)
-      {
-      default: 
-        paramResources = paramTheme;
-      }
-    }
-    for (;;)
-    {
-      paramInt = TypedArrayUtils.getNamedResourceId(paramAttributeSet, paramXmlPullParser, "interpolator", 1, 0);
-      if (paramInt > 0) {
-        paramResources.setInterpolator(AnimationUtilsCompat.loadInterpolator(paramContext, paramInt));
-      }
-      paramAttributeSet.recycle();
-      return paramResources;
+    } else {
       j = 0;
-      break;
-      label154:
-      i = 0;
-      break label73;
-      paramResources = Keyframe.ofFloat(f, TypedArrayUtils.getNamedFloat(paramAttributeSet, paramXmlPullParser, "value", 0, 0.0F));
-      continue;
-      paramResources = Keyframe.ofInt(f, TypedArrayUtils.getNamedInt(paramAttributeSet, paramXmlPullParser, "value", 0, 0));
-      continue;
-      label200:
-      if (i == 0) {
-        paramResources = Keyframe.ofFloat(f);
+    }
+    int i = paramInt;
+    if (paramInt == 4) {
+      if ((j != 0) && (isColorType(paramResources.type))) {
+        i = 3;
       } else {
-        paramResources = Keyframe.ofInt(f);
+        i = 0;
       }
     }
+    if (j != 0)
+    {
+      if (i != 3) {
+        switch (i)
+        {
+        default: 
+          paramResources = null;
+          break;
+        case 0: 
+          paramResources = Keyframe.ofFloat(f, TypedArrayUtils.getNamedFloat(paramTheme, paramXmlPullParser, "value", 0, 0.0F));
+          break;
+        }
+      } else {
+        paramResources = Keyframe.ofInt(f, TypedArrayUtils.getNamedInt(paramTheme, paramXmlPullParser, "value", 0, 0));
+      }
+    }
+    else if (i == 0) {
+      paramResources = Keyframe.ofFloat(f);
+    } else {
+      paramResources = Keyframe.ofInt(f);
+    }
+    paramInt = TypedArrayUtils.getNamedResourceId(paramTheme, paramXmlPullParser, "interpolator", 1, 0);
+    if (paramInt > 0) {
+      paramResources.setInterpolator(AnimationUtilsCompat.loadInterpolator(paramContext, paramInt));
+    }
+    paramTheme.recycle();
+    return paramResources;
   }
   
   private static ObjectAnimator loadObjectAnimator(Context paramContext, Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, float paramFloat, XmlPullParser paramXmlPullParser)
@@ -686,186 +681,179 @@ public class AnimatorInflaterCompat
   
   private static PropertyValuesHolder loadPvh(Context paramContext, Resources paramResources, Resources.Theme paramTheme, XmlPullParser paramXmlPullParser, String paramString, int paramInt)
   {
-    ArrayList localArrayList = null;
-    int i = paramInt;
-    paramInt = paramXmlPullParser.next();
-    if ((paramInt != 3) && (paramInt != 1))
-    {
-      if (!paramXmlPullParser.getName().equals("keyframe")) {
-        break label442;
-      }
-      paramInt = i;
-      if (i == 4) {
-        paramInt = inferValueTypeOfKeyframe(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), paramXmlPullParser);
-      }
-      Keyframe localKeyframe = loadKeyframe(paramContext, paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), paramInt, paramXmlPullParser);
-      if (localKeyframe == null) {
-        break label439;
-      }
-      if (localArrayList != null) {
-        break label436;
-      }
-      localArrayList = new ArrayList();
-      label98:
-      localArrayList.add(localKeyframe);
-      label106:
-      paramXmlPullParser.next();
-    }
+    Object localObject3 = null;
+    Object localObject1 = null;
+    int j = paramInt;
     for (;;)
     {
-      i = paramInt;
-      break;
-      if (localArrayList != null)
+      paramInt = paramXmlPullParser.next();
+      if ((paramInt == 3) || (paramInt == 1)) {
+        break;
+      }
+      if (paramXmlPullParser.getName().equals("keyframe"))
       {
-        paramInt = localArrayList.size();
-        if (paramInt > 0)
+        paramInt = j;
+        if (j == 4) {
+          paramInt = inferValueTypeOfKeyframe(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), paramXmlPullParser);
+        }
+        Keyframe localKeyframe = loadKeyframe(paramContext, paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), paramInt, paramXmlPullParser);
+        Object localObject2 = localObject1;
+        if (localKeyframe != null)
         {
-          paramContext = (Keyframe)localArrayList.get(0);
-          paramResources = (Keyframe)localArrayList.get(paramInt - 1);
-          float f = paramResources.getFraction();
-          if (f < 1.0F) {
-            if (f < 0.0F) {
-              paramResources.setFraction(1.0F);
-            }
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = new ArrayList();
           }
-          for (;;)
+          ((ArrayList)localObject2).add(localKeyframe);
+        }
+        paramXmlPullParser.next();
+        j = paramInt;
+        localObject1 = localObject2;
+      }
+    }
+    paramContext = localObject3;
+    if (localObject1 != null)
+    {
+      int k = localObject1.size();
+      paramContext = localObject3;
+      if (k > 0)
+      {
+        int i = 0;
+        paramContext = (Keyframe)localObject1.get(0);
+        paramResources = (Keyframe)localObject1.get(k - 1);
+        float f = paramResources.getFraction();
+        paramInt = k;
+        if (f < 1.0F) {
+          if (f < 0.0F)
           {
-            f = paramContext.getFraction();
-            int k = paramInt;
-            if (f != 0.0F)
+            paramResources.setFraction(1.0F);
+            paramInt = k;
+          }
+          else
+          {
+            localObject1.add(localObject1.size(), createNewKeyframe(paramResources, 1.0F));
+            paramInt = k + 1;
+          }
+        }
+        f = paramContext.getFraction();
+        k = paramInt;
+        if (f != 0.0F) {
+          if (f < 0.0F)
+          {
+            paramContext.setFraction(0.0F);
+            k = paramInt;
+          }
+          else
+          {
+            localObject1.add(0, createNewKeyframe(paramContext, 0.0F));
+            k = paramInt + 1;
+          }
+        }
+        paramContext = new Keyframe[k];
+        localObject1.toArray(paramContext);
+        paramInt = i;
+        while (paramInt < k)
+        {
+          paramResources = paramContext[paramInt];
+          if (paramResources.getFraction() < 0.0F) {
+            if (paramInt == 0)
             {
-              if (f < 0.0F)
-              {
-                paramContext.setFraction(0.0F);
-                k = paramInt;
-              }
+              paramResources.setFraction(0.0F);
             }
             else
             {
-              label218:
-              paramContext = new Keyframe[k];
-              localArrayList.toArray(paramContext);
-              paramInt = 0;
-              label234:
-              if (paramInt >= k) {
-                break label409;
-              }
-              paramResources = paramContext[paramInt];
-              if (paramResources.getFraction() < 0.0F)
+              int n = k - 1;
+              if (paramInt == n)
               {
-                if (paramInt != 0) {
-                  break label318;
+                paramResources.setFraction(1.0F);
+              }
+              else
+              {
+                i = paramInt + 1;
+                int m = paramInt;
+                while ((i < n) && (paramContext[i].getFraction() < 0.0F))
+                {
+                  m = i;
+                  i += 1;
                 }
-                paramResources.setFraction(0.0F);
-              }
-            }
-            for (;;)
-            {
-              paramInt += 1;
-              break label234;
-              localArrayList.add(localArrayList.size(), createNewKeyframe(paramResources, 1.0F));
-              paramInt += 1;
-              break;
-              localArrayList.add(0, createNewKeyframe(paramContext, 0.0F));
-              k = paramInt + 1;
-              break label218;
-              label318:
-              if (paramInt != k - 1) {
-                break label335;
-              }
-              paramResources.setFraction(1.0F);
-            }
-            label335:
-            int j = paramInt + 1;
-            int m = paramInt;
-            for (;;)
-            {
-              if ((j >= k - 1) || (paramContext[j].getFraction() >= 0.0F))
-              {
                 distributeKeyframes(paramContext, paramContext[(m + 1)].getFraction() - paramContext[(paramInt - 1)].getFraction(), paramInt, m);
-                break;
               }
-              m = j;
-              j += 1;
             }
-            label409:
-            paramContext = PropertyValuesHolder.ofKeyframe(paramString, paramContext);
-            if (i == 3) {
-              paramContext.setEvaluator(ArgbEvaluator.getInstance());
-            }
-            return paramContext;
           }
+          paramInt += 1;
+        }
+        paramResources = PropertyValuesHolder.ofKeyframe(paramString, paramContext);
+        paramContext = paramResources;
+        if (j == 3)
+        {
+          paramResources.setEvaluator(ArgbEvaluator.getInstance());
+          paramContext = paramResources;
         }
       }
-      return null;
-      label436:
-      break label98;
-      label439:
-      break label106;
-      label442:
-      paramInt = i;
     }
+    return paramContext;
   }
   
   private static PropertyValuesHolder[] loadValues(Context paramContext, Resources paramResources, Resources.Theme paramTheme, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet)
   {
-    ArrayList localArrayList = null;
+    Object localObject4 = null;
+    Object localObject1 = null;
+    int j;
     int i;
     for (;;)
     {
-      i = paramXmlPullParser.getEventType();
-      if ((i == 3) || (i == 1)) {
-        break label163;
-      }
-      if (i == 2) {
+      j = paramXmlPullParser.getEventType();
+      i = 0;
+      if ((j == 3) || (j == 1)) {
         break;
       }
-      paramXmlPullParser.next();
-    }
-    if (paramXmlPullParser.getName().equals("propertyValuesHolder"))
-    {
-      TypedArray localTypedArray = TypedArrayUtils.obtainAttributes(paramResources, paramTheme, paramAttributeSet, AndroidResources.STYLEABLE_PROPERTY_VALUES_HOLDER);
-      String str = TypedArrayUtils.getNamedString(localTypedArray, paramXmlPullParser, "propertyName", 3);
-      i = TypedArrayUtils.getNamedInt(localTypedArray, paramXmlPullParser, "valueType", 2, 4);
-      PropertyValuesHolder localPropertyValuesHolder = loadPvh(paramContext, paramResources, paramTheme, paramXmlPullParser, str, i);
-      label140:
-      label148:
-      if (localPropertyValuesHolder == null)
+      if (j != 2)
       {
-        localPropertyValuesHolder = getPVH(localTypedArray, i, 0, 1, str);
-        label121:
-        if (localPropertyValuesHolder != null) {
-          if (localArrayList == null)
-          {
-            localArrayList = new ArrayList();
-            localArrayList.add(localPropertyValuesHolder);
-            localTypedArray.recycle();
-          }
-        }
+        paramXmlPullParser.next();
       }
-    }
-    for (;;)
-    {
-      paramXmlPullParser.next();
-      break;
-      label163:
-      paramContext = null;
-      if (localArrayList != null)
+      else
       {
-        int j = localArrayList.size();
-        paramContext = new PropertyValuesHolder[j];
-        i = 0;
-        while (i < j)
+        if (paramXmlPullParser.getName().equals("propertyValuesHolder"))
         {
-          paramContext[i] = ((PropertyValuesHolder)localArrayList.get(i));
-          i += 1;
+          TypedArray localTypedArray = TypedArrayUtils.obtainAttributes(paramResources, paramTheme, paramAttributeSet, AndroidResources.STYLEABLE_PROPERTY_VALUES_HOLDER);
+          String str = TypedArrayUtils.getNamedString(localTypedArray, paramXmlPullParser, "propertyName", 3);
+          i = TypedArrayUtils.getNamedInt(localTypedArray, paramXmlPullParser, "valueType", 2, 4);
+          Object localObject2 = loadPvh(paramContext, paramResources, paramTheme, paramXmlPullParser, str, i);
+          Object localObject3 = localObject2;
+          if (localObject2 == null) {
+            localObject3 = getPVH(localTypedArray, i, 0, 1, str);
+          }
+          localObject2 = localObject1;
+          if (localObject3 != null)
+          {
+            localObject2 = localObject1;
+            if (localObject1 == null) {
+              localObject2 = new ArrayList();
+            }
+            ((ArrayList)localObject2).add(localObject3);
+          }
+          localTypedArray.recycle();
+          localObject1 = localObject2;
         }
+        paramXmlPullParser.next();
       }
-      return paramContext;
-      break label140;
-      break label148;
-      break label121;
     }
+    paramContext = localObject4;
+    if (localObject1 != null)
+    {
+      j = localObject1.size();
+      paramResources = new PropertyValuesHolder[j];
+      for (;;)
+      {
+        paramContext = paramResources;
+        if (i >= j) {
+          break;
+        }
+        paramResources[i] = ((PropertyValuesHolder)localObject1.get(i));
+        i += 1;
+      }
+    }
+    return paramContext;
   }
   
   private static void parseAnimatorFromTypeArray(ValueAnimator paramValueAnimator, TypedArray paramTypedArray1, TypedArray paramTypedArray2, float paramFloat, XmlPullParser paramXmlPullParser)
@@ -909,10 +897,14 @@ public class AnimatorInflaterCompat
     {
       String str2 = TypedArrayUtils.getNamedString(paramTypedArray, paramXmlPullParser, "propertyXName", 2);
       paramXmlPullParser = TypedArrayUtils.getNamedString(paramTypedArray, paramXmlPullParser, "propertyYName", 3);
-      if (((paramInt == 2) || (paramInt != 4)) || ((str2 == null) && (paramXmlPullParser == null))) {
-        throw new InflateException(paramTypedArray.getPositionDescription() + " propertyXName or propertyYName is needed for PathData");
+      if ((paramInt == 2) || ((str2 == null) && (paramXmlPullParser == null)))
+      {
+        paramValueAnimator = new StringBuilder();
+        paramValueAnimator.append(paramTypedArray.getPositionDescription());
+        paramValueAnimator.append(" propertyXName or propertyYName is needed for PathData");
+        throw new InflateException(paramValueAnimator.toString());
       }
-      setupPathMotion(PathParser.createPathFromPathData(str1), paramValueAnimator, 0.5F * paramFloat, str2, paramXmlPullParser);
+      setupPathMotion(PathParser.createPathFromPathData(str1), paramValueAnimator, paramFloat * 0.5F, str2, paramXmlPullParser);
       return;
     }
     paramValueAnimator.setPropertyName(TypedArrayUtils.getNamedString(paramTypedArray, paramXmlPullParser, "propertyName", 0));
@@ -920,66 +912,72 @@ public class AnimatorInflaterCompat
   
   private static void setupPathMotion(Path paramPath, ObjectAnimator paramObjectAnimator, float paramFloat, String paramString1, String paramString2)
   {
-    Object localObject = new PathMeasure(paramPath, false);
-    float f1 = 0.0F;
+    PathMeasure localPathMeasure = new PathMeasure(paramPath, false);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Float.valueOf(0.0F));
+    float f1 = 0.0F;
     float f2;
     do
     {
-      f2 = f1 + ((PathMeasure)localObject).getLength();
+      f2 = f1 + localPathMeasure.getLength();
       localArrayList.add(Float.valueOf(f2));
       f1 = f2;
-    } while (((PathMeasure)localObject).nextContour());
+    } while (localPathMeasure.nextContour());
     paramPath = new PathMeasure(paramPath, false);
-    int k = Math.min(100, (int)(f2 / paramFloat) + 1);
-    float[] arrayOfFloat1 = new float[k];
-    localObject = new float[k];
-    float[] arrayOfFloat2 = new float[2];
+    int n = Math.min(100, (int)(f2 / paramFloat) + 1);
+    float[] arrayOfFloat2 = new float[n];
+    float[] arrayOfFloat1 = new float[n];
+    float[] arrayOfFloat3 = new float[2];
+    f2 /= (n - 1);
     int i = 0;
-    f1 = f2 / (k - 1);
-    int j = 0;
     paramFloat = 0.0F;
-    if (j < k)
+    int k;
+    for (int j = 0;; j = k)
     {
-      paramPath.getPosTan(paramFloat, arrayOfFloat2, null);
-      arrayOfFloat1[j] = arrayOfFloat2[0];
-      localObject[j] = arrayOfFloat2[1];
-      paramFloat += f1;
-      if ((i + 1 >= localArrayList.size()) || (paramFloat <= ((Float)localArrayList.get(i + 1)).floatValue())) {
-        break label317;
+      localPathMeasure = null;
+      if (i >= n) {
+        break;
       }
-      paramFloat -= ((Float)localArrayList.get(i + 1)).floatValue();
+      paramPath.getPosTan(paramFloat, arrayOfFloat3, null);
+      arrayOfFloat2[i] = arrayOfFloat3[0];
+      arrayOfFloat1[i] = arrayOfFloat3[1];
+      f1 = paramFloat + f2;
+      int m = j + 1;
+      paramFloat = f1;
+      k = j;
+      if (m < localArrayList.size())
+      {
+        paramFloat = f1;
+        k = j;
+        if (f1 > ((Float)localArrayList.get(m)).floatValue())
+        {
+          paramFloat = f1 - ((Float)localArrayList.get(m)).floatValue();
+          paramPath.nextContour();
+          k = m;
+        }
+      }
       i += 1;
-      paramPath.nextContour();
     }
-    label317:
-    for (;;)
-    {
-      j += 1;
-      break;
+    if (paramString1 != null) {
+      paramPath = PropertyValuesHolder.ofFloat(paramString1, arrayOfFloat2);
+    } else {
       paramPath = null;
-      localArrayList = null;
-      if (paramString1 != null) {
-        paramPath = PropertyValuesHolder.ofFloat(paramString1, arrayOfFloat1);
-      }
-      paramString1 = localArrayList;
-      if (paramString2 != null) {
-        paramString1 = PropertyValuesHolder.ofFloat(paramString2, (float[])localObject);
-      }
-      if (paramPath == null)
-      {
-        paramObjectAnimator.setValues(new PropertyValuesHolder[] { paramString1 });
-        return;
-      }
-      if (paramString1 == null)
-      {
-        paramObjectAnimator.setValues(new PropertyValuesHolder[] { paramPath });
-        return;
-      }
-      paramObjectAnimator.setValues(new PropertyValuesHolder[] { paramPath, paramString1 });
+    }
+    paramString1 = localPathMeasure;
+    if (paramString2 != null) {
+      paramString1 = PropertyValuesHolder.ofFloat(paramString2, arrayOfFloat1);
+    }
+    if (paramPath == null)
+    {
+      paramObjectAnimator.setValues(new PropertyValuesHolder[] { paramString1 });
       return;
     }
+    if (paramString1 == null)
+    {
+      paramObjectAnimator.setValues(new PropertyValuesHolder[] { paramPath });
+      return;
+    }
+    paramObjectAnimator.setValues(new PropertyValuesHolder[] { paramPath, paramString1 });
   }
   
   private static class PathDataEvaluator
@@ -996,19 +994,21 @@ public class AnimatorInflaterCompat
     
     public PathParser.PathDataNode[] evaluate(float paramFloat, PathParser.PathDataNode[] paramArrayOfPathDataNode1, PathParser.PathDataNode[] paramArrayOfPathDataNode2)
     {
-      if (!PathParser.canMorph(paramArrayOfPathDataNode1, paramArrayOfPathDataNode2)) {
-        throw new IllegalArgumentException("Can't interpolate between two incompatible pathData");
-      }
-      if ((this.mNodeArray == null) || (!PathParser.canMorph(this.mNodeArray, paramArrayOfPathDataNode1))) {
-        this.mNodeArray = PathParser.deepCopyNodes(paramArrayOfPathDataNode1);
-      }
-      int i = 0;
-      while (i < paramArrayOfPathDataNode1.length)
+      if (PathParser.canMorph(paramArrayOfPathDataNode1, paramArrayOfPathDataNode2))
       {
-        this.mNodeArray[i].interpolatePathDataNode(paramArrayOfPathDataNode1[i], paramArrayOfPathDataNode2[i], paramFloat);
-        i += 1;
+        PathParser.PathDataNode[] arrayOfPathDataNode = this.mNodeArray;
+        if ((arrayOfPathDataNode == null) || (!PathParser.canMorph(arrayOfPathDataNode, paramArrayOfPathDataNode1))) {
+          this.mNodeArray = PathParser.deepCopyNodes(paramArrayOfPathDataNode1);
+        }
+        int i = 0;
+        while (i < paramArrayOfPathDataNode1.length)
+        {
+          this.mNodeArray[i].interpolatePathDataNode(paramArrayOfPathDataNode1[i], paramArrayOfPathDataNode2[i], paramFloat);
+          i += 1;
+        }
+        return this.mNodeArray;
       }
-      return this.mNodeArray;
+      throw new IllegalArgumentException("Can't interpolate between two incompatible pathData");
     }
   }
 }

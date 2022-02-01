@@ -96,7 +96,7 @@ public class b
       for (int j = paramInt1;; j = k)
       {
         k = j;
-        if (k == paramInt1 + paramInt2) {
+        if (k == paramInt2 + paramInt1) {
           break;
         }
         j = i;

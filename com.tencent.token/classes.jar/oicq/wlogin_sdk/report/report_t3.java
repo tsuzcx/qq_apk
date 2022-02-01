@@ -26,13 +26,10 @@ public class report_t3
   
   public JSONObject toJasonObj()
   {
+    JSONObject localJSONObject;
     try
     {
       localJSONObject = new JSONObject();
-      localStringWriter = new StringWriter();
-    }
-    catch (Exception localException1)
-    {
       try
       {
         localJSONObject.put("cmd", String.format("0x%x", new Object[] { Integer.valueOf(this._cmd) }));
@@ -51,19 +48,16 @@ public class report_t3
         localJSONObject.put("wap", String.format("%d", new Object[] { Integer.valueOf(this._wap) }));
         return localJSONObject;
       }
-      catch (Exception localException2)
-      {
-        JSONObject localJSONObject;
-        StringWriter localStringWriter;
-        PrintWriter localPrintWriter;
-        break label332;
-      }
-      localException1 = localException1;
+      catch (Exception localException1) {}
+      localStringWriter = new StringWriter();
+    }
+    catch (Exception localException2)
+    {
       localJSONObject = null;
     }
-    label332:
-    localPrintWriter = new PrintWriter(localStringWriter, true);
-    localException1.printStackTrace(localPrintWriter);
+    StringWriter localStringWriter;
+    PrintWriter localPrintWriter = new PrintWriter(localStringWriter, true);
+    localException2.printStackTrace(localPrintWriter);
     localPrintWriter.flush();
     localStringWriter.flush();
     util.LOGD("exception", localStringWriter.toString());

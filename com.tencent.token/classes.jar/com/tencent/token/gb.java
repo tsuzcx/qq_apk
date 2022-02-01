@@ -18,16 +18,20 @@ class gb<T>
   
   private Method a(Class<?> paramClass)
   {
-    if (this.b != null)
+    String str = this.b;
+    Method localMethod = null;
+    if (str != null)
     {
-      paramClass = a(paramClass, this.b, this.c);
-      if ((paramClass == null) || (this.a == null) || (this.a.isAssignableFrom(paramClass.getReturnType()))) {}
+      localMethod = a(paramClass, str, this.c);
+      if (localMethod != null)
+      {
+        paramClass = this.a;
+        if ((paramClass != null) && (!paramClass.isAssignableFrom(localMethod.getReturnType()))) {
+          return null;
+        }
+      }
     }
-    else
-    {
-      return null;
-    }
-    return paramClass;
+    return localMethod;
   }
   
   private static Method a(Class<?> paramClass, String paramString, Class[] paramArrayOfClass)
@@ -40,20 +44,21 @@ class gb<T>
     }
     catch (NoSuchMethodException paramClass)
     {
-      try
+      for (;;)
       {
-        i = paramClass.getModifiers();
-        if ((i & 0x1) != 0) {
+        try
+        {
+          i = paramClass.getModifiers();
+          if ((i & 0x1) == 0)
+          {
+            return null;
+            paramClass = null;
+          }
           return paramClass;
         }
-        return null;
+        catch (NoSuchMethodException paramString) {}
+        paramClass = paramClass;
       }
-      catch (NoSuchMethodException paramString)
-      {
-        return paramClass;
-      }
-      paramClass = paramClass;
-      return null;
     }
   }
   
@@ -99,20 +104,28 @@ class gb<T>
   public Object c(T paramT, Object... paramVarArgs)
   {
     Method localMethod = a(paramT.getClass());
-    if (localMethod == null) {
-      throw new AssertionError("Method " + this.b + " not supported for object " + paramT);
+    if (localMethod != null) {
+      try
+      {
+        paramT = localMethod.invoke(paramT, paramVarArgs);
+        return paramT;
+      }
+      catch (IllegalAccessException paramT)
+      {
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append("Unexpectedly could not call: ");
+        paramVarArgs.append(localMethod);
+        paramVarArgs = new AssertionError(paramVarArgs.toString());
+        paramVarArgs.initCause(paramT);
+        throw paramVarArgs;
+      }
     }
-    try
-    {
-      paramT = localMethod.invoke(paramT, paramVarArgs);
-      return paramT;
-    }
-    catch (IllegalAccessException paramT)
-    {
-      paramVarArgs = new AssertionError("Unexpectedly could not call: " + localMethod);
-      paramVarArgs.initCause(paramT);
-      throw paramVarArgs;
-    }
+    paramVarArgs = new StringBuilder();
+    paramVarArgs.append("Method ");
+    paramVarArgs.append(this.b);
+    paramVarArgs.append(" not supported for object ");
+    paramVarArgs.append(paramT);
+    throw new AssertionError(paramVarArgs.toString());
   }
   
   public Object d(T paramT, Object... paramVarArgs)

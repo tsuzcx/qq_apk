@@ -110,18 +110,16 @@ class ToolbarActionBar
   
   public void dispatchMenuVisibilityChanged(boolean paramBoolean)
   {
-    if (paramBoolean == this.mLastMenuVisibility) {}
-    for (;;)
-    {
+    if (paramBoolean == this.mLastMenuVisibility) {
       return;
-      this.mLastMenuVisibility = paramBoolean;
-      int j = this.mMenuVisibilityListeners.size();
-      int i = 0;
-      while (i < j)
-      {
-        ((ActionBar.OnMenuVisibilityListener)this.mMenuVisibilityListeners.get(i)).onMenuVisibilityChanged(paramBoolean);
-        i += 1;
-      }
+    }
+    this.mLastMenuVisibility = paramBoolean;
+    int j = this.mMenuVisibilityListeners.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((ActionBar.OnMenuVisibilityListener)this.mMenuVisibilityListeners.get(i)).onMenuVisibilityChanged(paramBoolean);
+      i += 1;
     }
   }
   
@@ -234,29 +232,23 @@ class ToolbarActionBar
   
   public boolean onKeyShortcut(int paramInt, KeyEvent paramKeyEvent)
   {
-    boolean bool = false;
     Menu localMenu = getMenu();
-    int i;
     if (localMenu != null)
     {
-      if (paramKeyEvent == null) {
-        break label61;
+      if (paramKeyEvent != null) {
+        i = paramKeyEvent.getDeviceId();
+      } else {
+        i = -1;
       }
-      i = paramKeyEvent.getDeviceId();
-      if (KeyCharacterMap.load(i).getKeyboardType() == 1) {
-        break label66;
+      int i = KeyCharacterMap.load(i).getKeyboardType();
+      boolean bool = true;
+      if (i == 1) {
+        bool = false;
       }
-    }
-    label61:
-    label66:
-    for (bool = true;; bool = false)
-    {
       localMenu.setQwertyMode(bool);
-      bool = localMenu.performShortcut(paramInt, paramKeyEvent, 0);
-      return bool;
-      i = -1;
-      break;
+      return localMenu.performShortcut(paramInt, paramKeyEvent, 0);
     }
+    return false;
   }
   
   public boolean onMenuKeyEvent(KeyEvent paramKeyEvent)
@@ -275,25 +267,26 @@ class ToolbarActionBar
   void populateOptionsMenu()
   {
     Menu localMenu = getMenu();
-    if ((localMenu instanceof MenuBuilder)) {}
-    for (localMenuBuilder = (MenuBuilder)localMenu;; localMenuBuilder = null)
+    MenuBuilder localMenuBuilder;
+    if ((localMenu instanceof MenuBuilder)) {
+      localMenuBuilder = (MenuBuilder)localMenu;
+    } else {
+      localMenuBuilder = null;
+    }
+    if (localMenuBuilder != null) {
+      localMenuBuilder.stopDispatchingItemsChanged();
+    }
+    try
+    {
+      localMenu.clear();
+      if ((!this.mWindowCallback.onCreatePanelMenu(0, localMenu)) || (!this.mWindowCallback.onPreparePanel(0, null, localMenu))) {
+        localMenu.clear();
+      }
+      return;
+    }
+    finally
     {
       if (localMenuBuilder != null) {
-        localMenuBuilder.stopDispatchingItemsChanged();
-      }
-      try
-      {
-        localMenu.clear();
-        if ((!this.mWindowCallback.onCreatePanelMenu(0, localMenu)) || (!this.mWindowCallback.onPreparePanel(0, null, localMenu))) {
-          localMenu.clear();
-        }
-        return;
-      }
-      finally
-      {
-        if (localMenuBuilder == null) {
-          break;
-        }
         localMenuBuilder.startDispatchingItemsChanged();
       }
     }
@@ -362,12 +355,13 @@ class ToolbarActionBar
   
   public void setDisplayHomeAsUpEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 4;; i = 0)
-    {
-      setDisplayOptions(i, 4);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 4;
+    } else {
+      i = 0;
     }
+    setDisplayOptions(i, 4);
   }
   
   @SuppressLint({"WrongConstant"})
@@ -379,47 +373,45 @@ class ToolbarActionBar
   public void setDisplayOptions(int paramInt1, int paramInt2)
   {
     int i = this.mDecorToolbar.getDisplayOptions();
-    this.mDecorToolbar.setDisplayOptions(i & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
+    this.mDecorToolbar.setDisplayOptions(paramInt1 & paramInt2 | (paramInt2 ^ 0xFFFFFFFF) & i);
   }
   
   public void setDisplayShowCustomEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 16;; i = 0)
-    {
-      setDisplayOptions(i, 16);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 16;
+    } else {
+      i = 0;
     }
+    setDisplayOptions(i, 16);
   }
   
   public void setDisplayShowHomeEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 2;; i = 0)
-    {
-      setDisplayOptions(i, 2);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 2;
+    } else {
+      i = 0;
     }
+    setDisplayOptions(i, 2);
   }
   
   public void setDisplayShowTitleEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 8;; i = 0)
-    {
-      setDisplayOptions(i, 8);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 8;
+    } else {
+      i = 0;
     }
+    setDisplayOptions(i, 8);
   }
   
   public void setDisplayUseLogoEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      setDisplayOptions(i, 1);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setElevation(float paramFloat)
@@ -476,20 +468,22 @@ class ToolbarActionBar
   
   public void setNavigationMode(int paramInt)
   {
-    if (paramInt == 2) {
-      throw new IllegalArgumentException("Tabs not supported in this configuration");
+    if (paramInt != 2)
+    {
+      this.mDecorToolbar.setNavigationMode(paramInt);
+      return;
     }
-    this.mDecorToolbar.setNavigationMode(paramInt);
+    throw new IllegalArgumentException("Tabs not supported in this configuration");
   }
   
   public void setSelectedNavigationItem(int paramInt)
   {
-    switch (this.mDecorToolbar.getNavigationMode())
+    if (this.mDecorToolbar.getNavigationMode() == 1)
     {
-    default: 
-      throw new IllegalStateException("setSelectedNavigationIndex not valid for current navigation mode");
+      this.mDecorToolbar.setDropdownSelectedPosition(paramInt);
+      return;
     }
-    this.mDecorToolbar.setDropdownSelectedPosition(paramInt);
+    throw new IllegalStateException("setSelectedNavigationIndex not valid for current navigation mode");
   }
   
   public void setShowHideAnimationEnabled(boolean paramBoolean) {}
@@ -501,12 +495,13 @@ class ToolbarActionBar
   public void setSubtitle(int paramInt)
   {
     DecorToolbar localDecorToolbar = this.mDecorToolbar;
-    if (paramInt != 0) {}
-    for (CharSequence localCharSequence = this.mDecorToolbar.getContext().getText(paramInt);; localCharSequence = null)
-    {
-      localDecorToolbar.setSubtitle(localCharSequence);
-      return;
+    CharSequence localCharSequence;
+    if (paramInt != 0) {
+      localCharSequence = localDecorToolbar.getContext().getText(paramInt);
+    } else {
+      localCharSequence = null;
     }
+    localDecorToolbar.setSubtitle(localCharSequence);
   }
   
   public void setSubtitle(CharSequence paramCharSequence)
@@ -517,12 +512,13 @@ class ToolbarActionBar
   public void setTitle(int paramInt)
   {
     DecorToolbar localDecorToolbar = this.mDecorToolbar;
-    if (paramInt != 0) {}
-    for (CharSequence localCharSequence = this.mDecorToolbar.getContext().getText(paramInt);; localCharSequence = null)
-    {
-      localDecorToolbar.setTitle(localCharSequence);
-      return;
+    CharSequence localCharSequence;
+    if (paramInt != 0) {
+      localCharSequence = localDecorToolbar.getContext().getText(paramInt);
+    } else {
+      localCharSequence = null;
     }
+    localDecorToolbar.setTitle(localCharSequence);
   }
   
   public void setTitle(CharSequence paramCharSequence)
@@ -585,16 +581,15 @@ class ToolbarActionBar
     {
       if (ToolbarActionBar.this.mWindowCallback != null)
       {
-        if (!ToolbarActionBar.this.mDecorToolbar.isOverflowMenuShowing()) {
-          break label41;
+        if (ToolbarActionBar.this.mDecorToolbar.isOverflowMenuShowing())
+        {
+          ToolbarActionBar.this.mWindowCallback.onPanelClosed(108, paramMenuBuilder);
+          return;
         }
-        ToolbarActionBar.this.mWindowCallback.onPanelClosed(108, paramMenuBuilder);
+        if (ToolbarActionBar.this.mWindowCallback.onPreparePanel(0, null, paramMenuBuilder)) {
+          ToolbarActionBar.this.mWindowCallback.onMenuOpened(108, paramMenuBuilder);
+        }
       }
-      label41:
-      while (!ToolbarActionBar.this.mWindowCallback.onPreparePanel(0, null, paramMenuBuilder)) {
-        return;
-      }
-      ToolbarActionBar.this.mWindowCallback.onMenuOpened(108, paramMenuBuilder);
     }
   }
   

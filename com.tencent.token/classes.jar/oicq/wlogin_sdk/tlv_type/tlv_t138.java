@@ -14,162 +14,130 @@ public class tlv_t138
   
   public int get_a2_chg_time()
   {
-    int k = 0;
     int i = 0;
-    for (;;)
+    while (i < this._count)
     {
-      int j = k;
-      if (i < this._count)
-      {
-        if (util.buf_to_int16(this._buf, this._head_len + 4 + i * 10) == 266) {
-          j = util.buf_to_int32(this._buf, i * 10 + (this._head_len + 4) + 2);
-        }
-      }
-      else {
-        return j;
+      byte[] arrayOfByte = this._buf;
+      int j = this._head_len;
+      int k = i * 10;
+      if (util.buf_to_int16(arrayOfByte, j + 4 + k) == 266) {
+        return util.buf_to_int32(this._buf, this._head_len + 4 + k + 2);
       }
       i += 1;
     }
+    return 0;
   }
   
   public int get_a8_chg_time()
   {
-    int k = 0;
     int i = 0;
-    for (;;)
+    while (i < this._count)
     {
-      int j = k;
-      if (i < this._count)
-      {
-        if (util.buf_to_int16(this._buf, this._head_len + 4 + i * 10) == 258) {
-          j = util.buf_to_int32(this._buf, i * 10 + (this._head_len + 4) + 2);
-        }
-      }
-      else {
-        return j;
+      byte[] arrayOfByte = this._buf;
+      int j = this._head_len;
+      int k = i * 10;
+      if (util.buf_to_int16(arrayOfByte, j + 4 + k) == 258) {
+        return util.buf_to_int32(this._buf, this._head_len + 4 + k + 2);
       }
       i += 1;
     }
+    return 0;
   }
   
   public int get_d2_chg_time()
   {
-    int k = 0;
     int i = 0;
-    for (;;)
+    while (i < this._count)
     {
-      int j = k;
-      if (i < this._count)
-      {
-        if (util.buf_to_int16(this._buf, this._head_len + 4 + i * 10) == 323) {
-          j = util.buf_to_int32(this._buf, i * 10 + (this._head_len + 4) + 2);
-        }
-      }
-      else {
-        return j;
+      byte[] arrayOfByte = this._buf;
+      int j = this._head_len;
+      int k = i * 10;
+      if (util.buf_to_int16(arrayOfByte, j + 4 + k) == 323) {
+        return util.buf_to_int32(this._buf, this._head_len + 4 + k + 2);
       }
       i += 1;
     }
+    return 0;
   }
   
   public int get_lskey_chg_time()
   {
-    int k = 0;
     int i = 0;
-    for (;;)
+    while (i < this._count)
     {
-      int j = k;
-      if (i < this._count)
-      {
-        if (util.buf_to_int16(this._buf, this._head_len + 4 + i * 10) == 284) {
-          j = util.buf_to_int32(this._buf, i * 10 + (this._head_len + 4) + 2);
-        }
-      }
-      else {
-        return j;
+      byte[] arrayOfByte = this._buf;
+      int j = this._head_len;
+      int k = i * 10;
+      if (util.buf_to_int16(arrayOfByte, j + 4 + k) == 284) {
+        return util.buf_to_int32(this._buf, this._head_len + 4 + k + 2);
       }
       i += 1;
     }
+    return 0;
   }
   
   public int get_sid_chg_time()
   {
-    int k = 0;
     int i = 0;
-    for (;;)
+    while (i < this._count)
     {
-      int j = k;
-      if (i < this._count)
-      {
-        if (util.buf_to_int16(this._buf, this._head_len + 4 + i * 10) == 356) {
-          j = util.buf_to_int32(this._buf, i * 10 + (this._head_len + 4) + 2);
-        }
-      }
-      else {
-        return j;
+      byte[] arrayOfByte = this._buf;
+      int j = this._head_len;
+      int k = i * 10;
+      if (util.buf_to_int16(arrayOfByte, j + 4 + k) == 356) {
+        return util.buf_to_int32(this._buf, this._head_len + 4 + k + 2);
       }
       i += 1;
     }
+    return 0;
   }
   
   public int get_skey_chg_time()
   {
-    int k = 0;
     int i = 0;
-    for (;;)
+    while (i < this._count)
     {
-      int j = k;
-      if (i < this._count)
-      {
-        if (util.buf_to_int16(this._buf, this._head_len + 4 + i * 10) == 288) {
-          j = util.buf_to_int32(this._buf, i * 10 + (this._head_len + 4) + 2);
-        }
-      }
-      else {
-        return j;
+      byte[] arrayOfByte = this._buf;
+      int j = this._head_len;
+      int k = i * 10;
+      if (util.buf_to_int16(arrayOfByte, j + 4 + k) == 288) {
+        return util.buf_to_int32(this._buf, this._head_len + 4 + k + 2);
       }
       i += 1;
     }
+    return 0;
   }
   
   public int get_stweb_chg_time()
   {
-    int k = 0;
     int i = 0;
-    for (;;)
+    while (i < this._count)
     {
-      int j = k;
-      if (i < this._count)
-      {
-        if (util.buf_to_int16(this._buf, this._head_len + 4 + i * 10) == 259) {
-          j = util.buf_to_int32(this._buf, i * 10 + (this._head_len + 4) + 2);
-        }
-      }
-      else {
-        return j;
+      byte[] arrayOfByte = this._buf;
+      int j = this._head_len;
+      int k = i * 10;
+      if (util.buf_to_int16(arrayOfByte, j + 4 + k) == 259) {
+        return util.buf_to_int32(this._buf, this._head_len + 4 + k + 2);
       }
       i += 1;
     }
+    return 0;
   }
   
   public int get_vkey_chg_time()
   {
-    int k = 0;
     int i = 0;
-    for (;;)
+    while (i < this._count)
     {
-      int j = k;
-      if (i < this._count)
-      {
-        if (util.buf_to_int16(this._buf, this._head_len + 4 + i * 10) == 310) {
-          j = util.buf_to_int32(this._buf, i * 10 + (this._head_len + 4) + 2);
-        }
-      }
-      else {
-        return j;
+      byte[] arrayOfByte = this._buf;
+      int j = this._head_len;
+      int k = i * 10;
+      if (util.buf_to_int16(arrayOfByte, j + 4 + k) == 310) {
+        return util.buf_to_int32(this._buf, this._head_len + 4 + k + 2);
       }
       i += 1;
     }
+    return 0;
   }
   
   public Boolean verify()

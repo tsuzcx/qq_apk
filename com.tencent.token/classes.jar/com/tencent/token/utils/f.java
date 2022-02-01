@@ -14,30 +14,45 @@ public class f
   
   public static Uri a(String paramString)
   {
-    g.b("path" + paramString);
-    Object localObject = c.b(paramString) + paramString.substring(paramString.lastIndexOf("."));
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("path");
+    ((StringBuilder)localObject1).append(paramString);
+    g.b(((StringBuilder)localObject1).toString());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(c.b(paramString));
+    ((StringBuilder)localObject1).append(paramString.substring(paramString.lastIndexOf(".")));
+    Object localObject2 = ((StringBuilder)localObject1).toString();
     a = new File(Environment.getExternalStorageDirectory(), "cache");
     if (!a.exists()) {
       a.mkdirs();
     }
-    if (!a.exists()) {}
-    File localFile;
-    do
-    {
+    if (!a.exists()) {
       return null;
-      localFile = new File(a, (String)localObject);
-      if (localFile.exists())
-      {
-        g.b("exists" + paramString + "name" + (String)localObject);
-        return Uri.fromFile(localFile);
-      }
-      g.b("fromnet" + paramString);
-      paramString = new ez().a(paramString);
-    } while (paramString == null);
-    localObject = new FileOutputStream(localFile);
-    ((FileOutputStream)localObject).write(paramString, 0, paramString.length);
-    ((FileOutputStream)localObject).close();
-    return Uri.fromFile(localFile);
+    }
+    localObject1 = new File(a, (String)localObject2);
+    if (((File)localObject1).exists())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("exists");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("name");
+      localStringBuilder.append((String)localObject2);
+      g.b(localStringBuilder.toString());
+      return Uri.fromFile((File)localObject1);
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("fromnet");
+    ((StringBuilder)localObject2).append(paramString);
+    g.b(((StringBuilder)localObject2).toString());
+    paramString = new ez().a(paramString);
+    if (paramString != null)
+    {
+      localObject2 = new FileOutputStream((File)localObject1);
+      ((FileOutputStream)localObject2).write(paramString, 0, paramString.length);
+      ((FileOutputStream)localObject2).close();
+      return Uri.fromFile((File)localObject1);
+    }
+    return null;
   }
 }
 

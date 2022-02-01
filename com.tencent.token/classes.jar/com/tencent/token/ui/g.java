@@ -28,10 +28,11 @@ class g
   
   public int getCount()
   {
-    if (this.a == null) {
+    List localList = this.a;
+    if (localList == null) {
       return 0;
     }
-    return this.a.size();
+    return localList.size();
   }
   
   public Object getItem(int paramInt)
@@ -44,41 +45,43 @@ class g
     return 0L;
   }
   
-  public View getView(int paramInt, View paramView, final ViewGroup paramViewGroup)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = this.c.inflate(2130968650, paramViewGroup, false);
+      localView = this.c.inflate(2131296330, paramViewGroup, false);
     }
-    Object localObject = (TextView)localView.findViewById(2131558851);
-    paramView = (ImageView)localView.findViewById(2131558830);
-    if (this.a != null)
+    paramViewGroup = (TextView)localView.findViewById(2131166065);
+    paramView = (ImageView)localView.findViewById(2131165965);
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      paramViewGroup = (QQUser)this.a.get(paramInt);
-      if (paramViewGroup != null)
+      localObject = (QQUser)((List)localObject).get(paramInt);
+      if (localObject != null)
       {
-        ((TextView)localObject).setText(paramViewGroup.mNickName + "(" + l.e(paramViewGroup.mRealUin) + ")");
-        localObject = m.f();
-        if ((localObject == null) || (((QQUser)localObject).mUin != paramViewGroup.mUin)) {
-          break label155;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((QQUser)localObject).mNickName);
+        localStringBuilder.append("(");
+        localStringBuilder.append(l.e(((QQUser)localObject).mRealUin));
+        localStringBuilder.append(")");
+        paramViewGroup.setText(localStringBuilder.toString());
+        paramViewGroup = m.f();
+        if ((paramViewGroup != null) && (paramViewGroup.mUin == ((QQUser)localObject).mUin)) {
+          paramView.setVisibility(0);
+        } else {
+          paramView.setVisibility(4);
         }
-        paramView.setVisibility(0);
+        localView.setOnClickListener(new View.OnClickListener()
+        {
+          public void onClick(View paramAnonymousView)
+          {
+            m.b(this.a.mRealUin);
+            g.this.notifyDataSetChanged();
+          }
+        });
       }
     }
-    for (;;)
-    {
-      localView.setOnClickListener(new View.OnClickListener()
-      {
-        public void onClick(View paramAnonymousView)
-        {
-          m.b(paramViewGroup.mRealUin);
-          g.this.notifyDataSetChanged();
-        }
-      });
-      return localView;
-      label155:
-      paramView.setVisibility(4);
-    }
+    return localView;
   }
 }
 

@@ -21,8 +21,12 @@ public class x
     this.d = paramaj.c().a();
     this.e = paramaj.d().a();
     this.f = paramaj.e().a();
-    if (paramaj.f() != null) {}
-    for (this.g = paramaj.f().a(); paramaj.g() != null; this.g = null)
+    if (paramaj.f() != null) {
+      this.g = paramaj.f().a();
+    } else {
+      this.g = null;
+    }
+    if (paramaj.g() != null)
     {
       this.h = paramaj.g().a();
       return;
@@ -42,11 +46,13 @@ public class x
     paramar.a(this.d);
     paramar.a(this.e);
     paramar.a(this.f);
-    if (this.g != null) {
-      paramar.a(this.g);
+    l locall = this.g;
+    if (locall != null) {
+      paramar.a(locall);
     }
-    if (this.h != null) {
-      paramar.a(this.h);
+    locall = this.h;
+    if (locall != null) {
+      paramar.a(locall);
     }
   }
   
@@ -57,11 +63,13 @@ public class x
     this.d.a(parama);
     this.e.a(parama);
     this.f.a(parama);
-    if (this.g != null) {
-      this.g.a(parama);
+    l locall = this.g;
+    if (locall != null) {
+      locall.a(parama);
     }
-    if (this.h != null) {
-      this.h.a(parama);
+    locall = this.h;
+    if (locall != null) {
+      locall.a(parama);
     }
   }
   

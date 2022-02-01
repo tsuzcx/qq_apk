@@ -24,16 +24,14 @@ public abstract class DisplayManagerCompat
       Object localObject = localDisplayManagerCompat;
       if (localDisplayManagerCompat == null)
       {
-        if (Build.VERSION.SDK_INT >= 17)
-        {
+        if (Build.VERSION.SDK_INT >= 17) {
           localObject = new DisplayManagerCompatApi17Impl(paramContext);
-          sInstances.put(paramContext, localObject);
+        } else {
+          localObject = new DisplayManagerCompatApi14Impl(paramContext);
         }
+        sInstances.put(paramContext, localObject);
       }
-      else {
-        return localObject;
-      }
-      localObject = new DisplayManagerCompatApi14Impl(paramContext);
+      return localObject;
     }
   }
   

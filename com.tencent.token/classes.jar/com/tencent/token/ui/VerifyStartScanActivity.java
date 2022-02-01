@@ -47,7 +47,7 @@ public class VerifyStartScanActivity
   
   private void gotonext()
   {
-    this.mCameraDialog = new CameraPrepareDialog(this, 2131362182);
+    this.mCameraDialog = new CameraPrepareDialog(this, 2131558791);
     this.mCameraDialog.show();
     Intent localIntent = new Intent(this, MainActivity.class);
     localIntent.putExtra("source_from", this.mSource);
@@ -63,11 +63,12 @@ public class VerifyStartScanActivity
     if (!h.a(this.mSource))
     {
       gotoScan();
-      setRightTitleImage(2130838011, new View.OnClickListener()
+      setRightTitleImage(2131100160, new View.OnClickListener()
       {
         public void onClick(View paramAnonymousView)
         {
-          l.b(VerifyStartScanActivity.this, VerifyStartScanActivity.this.getString(2131231286));
+          paramAnonymousView = VerifyStartScanActivity.this;
+          l.b(paramAnonymousView, paramAnonymousView.getString(2131493428));
         }
       });
       return;
@@ -83,25 +84,25 @@ public class VerifyStartScanActivity
     addContentView(this.mScanTipView);
     if (this.mSource == 0)
     {
-      this.mTitleBar.setBackgroundColor(getResources().getColor(2131493039));
-      this.mTitleDivider.setBackgroundColor(getResources().getColor(2131493053));
+      this.mTitleBar.setBackgroundColor(getResources().getColor(2130968773));
+      this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968789));
     }
-    for (;;)
+    else
     {
-      this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2130837617));
-      this.mTitleText.setTextColor(getResources().getColor(2131493027));
-      return;
-      setTitle(getResources().getString(2131231396));
-      this.mTitleBar.setBackgroundColor(getResources().getColor(2131493050));
+      setTitle(getResources().getString(2131493538));
+      this.mTitleBar.setBackgroundColor(getResources().getColor(2130968786));
       this.mTitleDivider.setVisibility(8);
     }
+    this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2131099762));
+    this.mTitleText.setTextColor(getResources().getColor(2130968761));
   }
   
   protected void dismissCameraDialog()
   {
-    if (this.mCameraDialog != null)
+    CameraPrepareDialog localCameraPrepareDialog = this.mCameraDialog;
+    if (localCameraPrepareDialog != null)
     {
-      this.mCameraDialog.dismiss();
+      localCameraPrepareDialog.dismiss();
       this.mCameraDialog = null;
     }
   }

@@ -36,58 +36,67 @@ public class cp
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     String str = paramContext.getPackageName();
-    if (TextUtils.isEmpty(str))
+    Object localObject1;
+    Object localObject2;
+    if (!TextUtils.isEmpty(str))
     {
-      localArrayList1.addAll(localArrayList2);
-      localArrayList2 = new ArrayList();
-      str = paramContext.getPackageName();
-      if (!TextUtils.isEmpty(str)) {
-        break label181;
+      localObject1 = b.get(str);
+      if ((localObject1 != null) && (((Integer)localObject1).intValue() != cv.a))
+      {
+        localObject1 = cm.b(paramContext, str);
+        localObject2 = new Flat();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(da.c);
+        localStringBuilder.append(da.d);
+        ((Flat)localObject2).sc = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("_");
+        localStringBuilder.append((String)localObject1);
+        ((Flat)localObject2).tc = localStringBuilder.toString();
+        localArrayList2.add(localObject2);
       }
     }
-    label181:
-    label345:
-    for (;;)
+    localArrayList1.addAll(localArrayList2);
+    localArrayList2 = new ArrayList();
+    str = paramContext.getPackageName();
+    if (!TextUtils.isEmpty(str))
     {
-      localArrayList1.addAll(localArrayList2);
-      return localArrayList1;
-      Object localObject = b.get(str);
-      if ((localObject == null) || (((Integer)localObject).intValue() == cv.a)) {
-        break;
-      }
-      localObject = cm.b(paramContext, str);
-      Flat localFlat = new Flat();
-      localFlat.sc = (da.c + da.d);
-      localFlat.tc = (str + "_" + (String)localObject);
-      localArrayList2.add(localFlat);
-      break;
-      localObject = (Set)a.get(str);
-      if ((localObject != null) && (((Set)localObject).size() != 0))
+      localObject1 = (Set)a.get(str);
+      if ((localObject1 != null) && (((Set)localObject1).size() != 0))
       {
         paramContext = cm.b(paramContext, str);
         if (!TextUtils.isEmpty(paramContext))
         {
-          localObject = ((Set)localObject).iterator();
+          int j = 0;
+          localObject1 = ((Set)localObject1).iterator();
           do
           {
-            if (!((Iterator)localObject).hasNext()) {
+            i = j;
+            if (!((Iterator)localObject1).hasNext()) {
               break;
             }
-          } while (!((String)((Iterator)localObject).next()).equals(paramContext));
-          for (int i = 1;; i = 0)
+          } while (!((String)((Iterator)localObject1).next()).equals(paramContext));
+          int i = 1;
+          if (i == 0)
           {
-            if (i != 0) {
-              break label345;
-            }
-            localObject = new Flat();
-            ((Flat)localObject).sc = (da.c + da.d);
-            ((Flat)localObject).tc = (str + "_" + paramContext);
-            localArrayList2.add(localObject);
-            break;
+            localObject1 = new Flat();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(da.c);
+            ((StringBuilder)localObject2).append(da.d);
+            ((Flat)localObject1).sc = ((StringBuilder)localObject2).toString();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(str);
+            ((StringBuilder)localObject2).append("_");
+            ((StringBuilder)localObject2).append(paramContext);
+            ((Flat)localObject1).tc = ((StringBuilder)localObject2).toString();
+            localArrayList2.add(localObject1);
           }
         }
       }
     }
+    localArrayList1.addAll(localArrayList2);
+    return localArrayList1;
   }
   
   public static ArrayList<Flat> b(Context paramContext)
@@ -99,8 +108,15 @@ public class cp
     }
     paramContext = cm.b(paramContext, str);
     Flat localFlat = new Flat();
-    localFlat.sc = (da.c + da.g);
-    localFlat.tc = (str + "_" + paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(da.c);
+    localStringBuilder.append(da.g);
+    localFlat.sc = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramContext);
+    localFlat.tc = localStringBuilder.toString();
     localArrayList.add(localFlat);
     return localArrayList;
   }

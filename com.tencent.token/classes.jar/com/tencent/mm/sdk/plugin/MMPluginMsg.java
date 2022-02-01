@@ -28,18 +28,21 @@ public class MMPluginMsg
   
   public static MMPluginMsg WXAppExtentObjectToPluginMsg(WXAppExtendObject paramWXAppExtendObject)
   {
-    if (paramWXAppExtendObject == null) {}
-    MMPluginMsg localMMPluginMsg;
-    do
-    {
-      do
-      {
-        return null;
-        localMMPluginMsg = new MMPluginMsg();
-        localMMPluginMsg.msgClientId = Util.getLong(paramWXAppExtendObject.extInfo, -1L);
-      } while ((localMMPluginMsg.msgClientId == -1L) || (Util.isNullOrNil(paramWXAppExtendObject.fileData)));
-      localMMPluginMsg.content = new String(paramWXAppExtendObject.fileData);
-    } while (Util.isNullOrNil(localMMPluginMsg.content));
+    if (paramWXAppExtendObject == null) {
+      return null;
+    }
+    MMPluginMsg localMMPluginMsg = new MMPluginMsg();
+    localMMPluginMsg.msgClientId = Util.getLong(paramWXAppExtendObject.extInfo, -1L);
+    if (localMMPluginMsg.msgClientId == -1L) {
+      return null;
+    }
+    if (Util.isNullOrNil(paramWXAppExtendObject.fileData)) {
+      return null;
+    }
+    localMMPluginMsg.content = new String(paramWXAppExtendObject.fileData);
+    if (Util.isNullOrNil(localMMPluginMsg.content)) {
+      return null;
+    }
     return localMMPluginMsg;
   }
   
@@ -49,7 +52,9 @@ public class MMPluginMsg
       return null;
     }
     WXAppExtendObject localWXAppExtendObject = new WXAppExtendObject();
-    localWXAppExtendObject.extInfo = paramMMPluginMsg.msgClientId;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMMPluginMsg.msgClientId);
+    localWXAppExtendObject.extInfo = localStringBuilder.toString();
     localWXAppExtendObject.fileData = paramMMPluginMsg.content.getBytes();
     return localWXAppExtendObject;
   }
@@ -71,7 +76,9 @@ public class MMPluginMsg
       return -2L;
     }
     localObject = new SendMessageToWX.Req();
-    ((SendMessageToWX.Req)localObject).transaction = ("appdata" + localMMPluginMsg.msgClientId);
+    StringBuilder localStringBuilder = new StringBuilder("appdata");
+    localStringBuilder.append(localMMPluginMsg.msgClientId);
+    ((SendMessageToWX.Req)localObject).transaction = localStringBuilder.toString();
     ((SendMessageToWX.Req)localObject).message = paramString;
     if (!paramContext.sendReq((BaseReq)localObject)) {
       return -3L;

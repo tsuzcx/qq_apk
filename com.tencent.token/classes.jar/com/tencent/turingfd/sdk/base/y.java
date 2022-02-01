@@ -49,53 +49,47 @@ public class y
   
   public final void a(Handler paramHandler, s params)
   {
-    for (;;)
+    try
     {
-      try
+      if ((this.b) && (this.g != null))
       {
-        if (this.b)
-        {
-          ??? = this.g;
-          if (??? != null) {}
-        }
-        else
-        {
-          return;
-        }
         this.b = false;
         paramHandler.removeCallbacks(this.j);
         paramHandler.removeCallbacks(this.i);
         paramHandler = this.c;
-        if (paramHandler == null) {
-          continue;
-        }
-        paramHandler.a();
-        paramHandler = this.c;
-        if ((int)(paramHandler.e.d / ay.a) < 1)
+        if (paramHandler != null)
         {
-          ((bb.d)params).a(-100);
-          continue;
+          paramHandler.a();
+          paramHandler = this.c;
+          if ((int)(paramHandler.e.d / ay.a) < 1)
+          {
+            ((bb.d)params).a(-100);
+            return;
+          }
+          paramHandler = paramHandler.c();
+          if (paramHandler.size() == 0)
+          {
+            ((bb.d)params).a(-101);
+            return;
+          }
+          synchronized (this.f)
+          {
+            ArrayList localArrayList = new ArrayList(this.f);
+            if (localArrayList.size() < 1)
+            {
+              ((bb.d)params).a(-102);
+              return;
+            }
+            ??? = this.g;
+            ((bb.d)params).a((at)???, localArrayList, paramHandler);
+            return;
+          }
         }
-        paramHandler = paramHandler.c();
+        return;
       }
-      finally {}
-      if (paramHandler.size() == 0)
-      {
-        ((bb.d)params).a(-101);
-        continue;
-      }
-      synchronized (this.f)
-      {
-        ArrayList localArrayList = new ArrayList(this.f);
-        if (localArrayList.size() < 1)
-        {
-          ((bb.d)params).a(-102);
-          continue;
-        }
-        ??? = this.g;
-        ((bb.d)params).a((at)???, localArrayList, paramHandler);
-      }
+      return;
     }
+    finally {}
   }
   
   public static final class a
@@ -125,24 +119,22 @@ public class y
         if (y.g(y.this) == null) {
           return;
         }
-      }
-      if (!y.g(y.this).a(y.a(y.this).b, y.h(y.this))) {
+        if (!y.g(y.this).a(y.a(y.this).b, y.h(y.this))) {
+          return;
+        }
+        long l = y.g(y.this).e.b;
+        y.c localc = y.f(y.this);
+        int i = (int)(y.a(y.this).b / ay.a);
+        localc.a = 1;
+        localc.b = i;
+        localc.c = l;
+        l = l + ay.a - System.currentTimeMillis();
+        if (l > 0L) {
+          y.d(y.this).postDelayed(y.f(y.this), l);
+        } else {
+          y.d(y.this).post(y.f(y.this));
+        }
         return;
-      }
-      long l = y.g(y.this).e.b;
-      y.c localc = y.f(y.this);
-      int i = (int)(y.a(y.this).b / ay.a);
-      localc.a = 1;
-      localc.b = i;
-      localc.c = l;
-      l = l + ay.a - System.currentTimeMillis();
-      if (l > 0L) {
-        y.d(y.this).postDelayed(y.f(y.this), l);
-      }
-      for (;;)
-      {
-        return;
-        y.d(y.this).post(y.f(y.this));
       }
     }
   }
@@ -163,104 +155,92 @@ public class y
     {
       ac localac = new ac();
       ??? = y.a(y.this).c;
-      if (Build.VERSION.SDK_INT >= 24) {}
-      label278:
-      for (;;)
+      Object localObject4;
+      if (Build.VERSION.SDK_INT < 24)
       {
-        ??? = ((Context)???).registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
-        if (??? == null) {}
-        label51:
-        synchronized (y.b(y.this))
+        localObject4 = cm.a(new File(ct.a(ct.an)));
+        if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (!"CONFIGURED".equals(localObject4))) {}
+      }
+      label155:
+      try
+      {
+        localObject4 = ((Context)???).getContentResolver();
+        i = Settings.Secure.getInt((ContentResolver)localObject4, "adb_enabled", 0);
+        if (i > 0) {
+          i = 1;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        int i;
+        label96:
+        break label96;
+      }
+      i = 0;
+      if (i != 0)
+      {
+        localac.a = 1;
+      }
+      else
+      {
+        localac.a = 3;
+        break label155;
+        if ("DISCONNECTED".equals(localObject4)) {
+          localac.a = 2;
+        } else if ("CONNECTED".equals(localObject4)) {
+          localac.a = 3;
+        }
+      }
+      ??? = ((Context)???).registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
+      if (??? != null)
+      {
+        i = ((Intent)???).getIntExtra("status", -1);
+        if ((i != 2) && (i != 5)) {
+          i = 0;
+        } else {
+          i = 1;
+        }
+        if (i == 0)
         {
-          y.b(y.this).add(localac);
-          int i = this.a;
-          if (i >= this.b) {
-            try
-            {
-              if (!y.c(y.this))
-              {
-                return;
-                Object localObject4 = cm.a(new File(ct.a(ct.an)));
-                if (TextUtils.isEmpty((CharSequence)localObject4)) {
-                  continue;
-                }
-                if ("CONFIGURED".equals(localObject4))
-                {
-                  for (;;)
-                  {
-                    try
-                    {
-                      localObject4 = ((Context)???).getContentResolver();
-                      i = Settings.Secure.getInt((ContentResolver)localObject4, "adb_enabled", 0);
-                      if (i <= 0) {
-                        continue;
-                      }
-                      i = 1;
-                    }
-                    catch (Throwable localThrowable)
-                    {
-                      i = 0;
-                      continue;
-                      localac.a = 3;
-                    }
-                    if (i == 0) {
-                      continue;
-                    }
-                    localac.a = 1;
-                    break;
-                    i = 0;
-                  }
-                  continue;
-                }
-                if ("DISCONNECTED".equals(localThrowable))
-                {
-                  localac.a = 2;
-                  continue;
-                }
-                if (!"CONNECTED".equals(localThrowable)) {
-                  continue;
-                }
-                localac.a = 3;
-                continue;
-                i = ((Intent)???).getIntExtra("status", -1);
-                if ((i == 2) || (i == 5)) {}
-                for (i = 1;; i = 0)
-                {
-                  if (i != 0) {
-                    break label278;
-                  }
-                  localac.b = 1;
-                  break;
-                }
-                i = ((Intent)???).getIntExtra("plugged", -1);
-                if (i == 2)
-                {
-                  localac.b = 3;
-                  break label51;
-                }
-                if (i == 1)
-                {
-                  localac.b = 2;
-                  break label51;
-                }
-                localac.b = 0;
-                break label51;
-              }
-              y.a(y.this, y.d(y.this), y.e(y.this));
+          localac.b = 1;
+        }
+        else
+        {
+          i = ((Intent)???).getIntExtra("plugged", -1);
+          if (i == 2) {
+            localac.b = 3;
+          } else if (i == 1) {
+            localac.b = 2;
+          } else {
+            localac.b = 0;
+          }
+        }
+      }
+      synchronized (y.b(y.this))
+      {
+        y.b(y.this).add(localac);
+        i = this.a;
+        if (i >= this.b) {
+          try
+          {
+            if (!y.c(y.this)) {
               return;
             }
-            finally {}
-          }
-          this.a = (i + 1);
-          long l = this.c + ay.a * this.a - System.currentTimeMillis();
-          if (l > 0L)
-          {
-            y.d(y.this).postDelayed(y.f(y.this), l);
+            y.a(y.this, y.d(y.this), y.e(y.this));
             return;
           }
-          y.d(y.this).post(y.f(y.this));
+          finally {}
+        }
+        this.a = (i + 1);
+        long l = this.c;
+        l = ay.a * this.a + l - System.currentTimeMillis();
+        if (l > 0L)
+        {
+          y.d(y.this).postDelayed(y.f(y.this), l);
           return;
         }
+        y.d(y.this).post(y.f(y.this));
+        return;
       }
     }
   }

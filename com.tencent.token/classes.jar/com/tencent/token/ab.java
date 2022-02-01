@@ -46,39 +46,70 @@ public final class ab
   public final long a(long paramLong)
   {
     if (this.g != -1L) {
-      return this.g - this.f;
+      paramLong = this.g;
     }
     return paramLong - this.f;
   }
   
   public final l.a a(int paramInt, boolean paramBoolean)
   {
-    long l1 = -1L;
     long l2 = this.g;
+    long l1 = l2;
     if (paramInt > 0) {
-      if (this.g == -1L) {
+      if (this.g == -1L)
+      {
         l1 = this.f + paramInt;
       }
-    }
-    for (;;)
-    {
-      return new l.a(this.f, l1);
-      if (paramInt < this.g - this.f) {
-        l1 = this.f + paramInt;
-      } else if (paramBoolean) {
-        l1 = l2;
+      else
+      {
+        l1 = paramInt;
+        if (l1 < this.g - this.f)
+        {
+          l1 = this.f + l1;
+        }
+        else
+        {
+          l1 = l2;
+          if (!paramBoolean) {
+            l1 = -1L;
+          }
+        }
       }
     }
+    return new l.a(this.f, l1);
   }
   
   public final String a()
   {
-    return this.b + j + this.c + j + this.d + j + this.e + j + this.g;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.g);
+    return localStringBuilder.toString();
   }
   
   public final String toString()
   {
-    return "[" + this.b + j + this.c + j + this.d + j + this.e + j + this.f + j + this.g + "]";
+    StringBuilder localStringBuilder = new StringBuilder("[");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(j);
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

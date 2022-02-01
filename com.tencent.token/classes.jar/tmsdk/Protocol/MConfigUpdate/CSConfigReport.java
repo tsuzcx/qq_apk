@@ -29,8 +29,9 @@ public final class CSConfigReport
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecConfigReport != null) {
-      paramJceOutputStream.write(this.vecConfigReport, 0);
+    ArrayList localArrayList = this.vecConfigReport;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }

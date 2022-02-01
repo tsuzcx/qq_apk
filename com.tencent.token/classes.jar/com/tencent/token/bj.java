@@ -19,61 +19,66 @@ public class bj
   
   public void a()
   {
-    b.c("ConnectorImpl", "Thread:" + Thread.currentThread().getName() + " isDaemon:" + Thread.currentThread().isDaemon());
-    l1 = System.currentTimeMillis();
-    if (!TextUtils.isEmpty(this.b)) {}
-    for (;;)
+    Object localObject1 = new StringBuilder("Thread:");
+    ((StringBuilder)localObject1).append(Thread.currentThread().getName());
+    ((StringBuilder)localObject1).append(" isDaemon:");
+    ((StringBuilder)localObject1).append(Thread.currentThread().isDaemon());
+    b.c("ConnectorImpl", ((StringBuilder)localObject1).toString());
+    long l1 = System.currentTimeMillis();
+    Object localObject2;
+    if (!TextUtils.isEmpty(this.b))
     {
       try
       {
-        Object localObject = InetAddress.getByName(this.b);
-        this.d = ((int)(System.currentTimeMillis() - l1));
-        localObject = new InetSocketAddress(((InetAddress)localObject).getHostAddress(), 14000);
-        Socket localSocket = new Socket();
-        l1 = 0L;
-        try
-        {
-          long l2 = System.currentTimeMillis();
-          l1 = l2;
-          this.a = bd.a().b.a;
-          l1 = l2;
-          localSocket.connect((SocketAddress)localObject, this.a);
-          l1 = l2;
-          if (localSocket.isConnected())
-          {
-            l1 = l2;
-            if (!localSocket.isClosed())
-            {
-              l1 = l2;
-              this.c = localSocket;
-              l1 = l2;
-              this.e = ((int)(System.currentTimeMillis() - l2));
-            }
-          }
-        }
-        catch (Exception localException2)
-        {
-          InetSocketAddress localInetSocketAddress;
-          localException2.printStackTrace();
-          localException2.getClass().getSimpleName();
-          bq.a(localException2);
-          this.e = ((int)(System.currentTimeMillis() - l1));
-          this.c = null;
-          continue;
-        }
-        System.currentTimeMillis();
-        return;
+        localObject1 = InetAddress.getByName(this.b);
       }
       catch (Exception localException1)
       {
         localException1.getClass().getSimpleName();
-        new StringBuilder("Dns InetAddress exception: domain").append(this.b).toString();
-        localInetSocketAddress = null;
-        continue;
+        localObject2 = new StringBuilder("Dns InetAddress exception: domain");
+        ((StringBuilder)localObject2).append(this.b);
+        ((StringBuilder)localObject2).toString();
+        localObject2 = null;
       }
-      localInetSocketAddress = new InetSocketAddress(this.f.a(), this.f.b());
+      this.d = ((int)(System.currentTimeMillis() - l1));
+      localObject2 = new InetSocketAddress(((InetAddress)localObject2).getHostAddress(), 14000);
+    }
+    else
+    {
+      localObject2 = new InetSocketAddress(this.f.a(), this.f.b());
       this.d = 0;
     }
+    Socket localSocket = new Socket();
+    l1 = 0L;
+    try
+    {
+      long l2 = System.currentTimeMillis();
+      l1 = l2;
+      this.a = bd.a().b.a;
+      l1 = l2;
+      localSocket.connect((SocketAddress)localObject2, this.a);
+      l1 = l2;
+      if (localSocket.isConnected())
+      {
+        l1 = l2;
+        if (!localSocket.isClosed())
+        {
+          l1 = l2;
+          this.c = localSocket;
+          l1 = l2;
+          this.e = ((int)(System.currentTimeMillis() - l2));
+        }
+      }
+    }
+    catch (Exception localException2)
+    {
+      localException2.printStackTrace();
+      localException2.getClass().getSimpleName();
+      bq.a(localException2);
+      this.e = ((int)(System.currentTimeMillis() - l1));
+      this.c = null;
+    }
+    System.currentTimeMillis();
   }
   
   public void a(ay paramay)

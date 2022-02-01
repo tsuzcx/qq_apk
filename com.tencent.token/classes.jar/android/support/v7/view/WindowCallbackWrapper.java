@@ -24,10 +24,12 @@ public class WindowCallbackWrapper
   
   public WindowCallbackWrapper(Window.Callback paramCallback)
   {
-    if (paramCallback == null) {
-      throw new IllegalArgumentException("Window callback may not be null");
+    if (paramCallback != null)
+    {
+      this.mWrapped = paramCallback;
+      return;
     }
-    this.mWrapped = paramCallback;
+    throw new IllegalArgumentException("Window callback may not be null");
   }
   
   public boolean dispatchGenericMotionEvent(MotionEvent paramMotionEvent)

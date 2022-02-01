@@ -23,16 +23,18 @@ public class b
   protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
   {
     super.afterExecute(paramRunnable, paramThrowable);
-    if (this.a != null) {
-      this.a.a(paramRunnable, paramThrowable);
+    a locala = this.a;
+    if (locala != null) {
+      locala.a(paramRunnable, paramThrowable);
     }
   }
   
   protected void beforeExecute(Thread paramThread, Runnable paramRunnable)
   {
     super.beforeExecute(paramThread, paramRunnable);
-    if (this.a != null) {
-      this.a.a(paramThread, paramRunnable);
+    a locala = this.a;
+    if (locala != null) {
+      locala.a(paramThread, paramRunnable);
     }
   }
   

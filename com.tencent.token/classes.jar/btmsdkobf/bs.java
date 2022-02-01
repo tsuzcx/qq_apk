@@ -13,7 +13,7 @@ import tmsdk.common.tcc.b;
 
 public class bs
 {
-  static bs gC = null;
+  static bs gC;
   private static Object gD = new Object();
   private SQLiteOpenHelper gE;
   private final String gF = "CREATE TABLE IF NOT EXISTS r_tb (a INTEGER PRIMARY KEY,f INTEGER,b INTEGER,c INTEGER,d INTEGER,e LONG,i TEXT,j TEXT,k INTEGER,l INTEGER)";
@@ -25,18 +25,38 @@ public class bs
     {
       public void onCreate(SQLiteDatabase paramAnonymousSQLiteDatabase)
       {
-        bo.k("onCreate-db:[" + paramAnonymousSQLiteDatabase + "]");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onCreate-db:[");
+        localStringBuilder.append(paramAnonymousSQLiteDatabase);
+        localStringBuilder.append("]");
+        bo.k(localStringBuilder.toString());
         bs.a(bs.this, paramAnonymousSQLiteDatabase);
       }
       
       public void onDowngrade(SQLiteDatabase paramAnonymousSQLiteDatabase, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        bo.k("onDowngrade-db:[" + paramAnonymousSQLiteDatabase + "]oldVersion:[" + paramAnonymousInt1 + "]newVersion:[" + paramAnonymousInt2 + "]");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onDowngrade-db:[");
+        localStringBuilder.append(paramAnonymousSQLiteDatabase);
+        localStringBuilder.append("]oldVersion:[");
+        localStringBuilder.append(paramAnonymousInt1);
+        localStringBuilder.append("]newVersion:[");
+        localStringBuilder.append(paramAnonymousInt2);
+        localStringBuilder.append("]");
+        bo.k(localStringBuilder.toString());
       }
       
       public void onUpgrade(SQLiteDatabase paramAnonymousSQLiteDatabase, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        bo.k("onUpgrade-db:[" + paramAnonymousSQLiteDatabase + "]oldVersion:[" + paramAnonymousInt1 + "]newVersion:[" + paramAnonymousInt2 + "]");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onUpgrade-db:[");
+        localStringBuilder.append(paramAnonymousSQLiteDatabase);
+        localStringBuilder.append("]oldVersion:[");
+        localStringBuilder.append(paramAnonymousInt1);
+        localStringBuilder.append("]newVersion:[");
+        localStringBuilder.append(paramAnonymousInt2);
+        localStringBuilder.append("]");
+        bo.k(localStringBuilder.toString());
         bs.a(bs.this, paramAnonymousSQLiteDatabase, paramAnonymousInt1, paramAnonymousInt2);
       }
     };
@@ -52,84 +72,61 @@ public class bs
     }
   }
   
-  /* Error */
   public static bs ac()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 18	btmsdkobf/bs:gC	Lbtmsdkobf/bs;
-    //   6: ifnonnull +25 -> 31
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 18	btmsdkobf/bs:gC	Lbtmsdkobf/bs;
-    //   15: ifnonnull +13 -> 28
-    //   18: new 2	btmsdkobf/bs
-    //   21: dup
-    //   22: invokespecial 80	btmsdkobf/bs:<init>	()V
-    //   25: putstatic 18	btmsdkobf/bs:gC	Lbtmsdkobf/bs;
-    //   28: ldc 2
-    //   30: monitorexit
-    //   31: ldc 2
-    //   33: monitorexit
-    //   34: getstatic 18	btmsdkobf/bs:gC	Lbtmsdkobf/bs;
-    //   37: areturn
-    //   38: astore_0
-    //   39: ldc 2
-    //   41: monitorexit
-    //   42: aload_0
-    //   43: athrow
-    //   44: astore_0
-    //   45: ldc 2
-    //   47: monitorexit
-    //   48: aload_0
-    //   49: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   38	5	0	localObject1	Object
-    //   44	5	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	28	38	finally
-    //   28	31	38	finally
-    //   39	42	38	finally
-    //   3	12	44	finally
-    //   31	34	44	finally
-    //   42	44	44	finally
-    //   45	48	44	finally
+    try
+    {
+      if (gC == null) {
+        try
+        {
+          if (gC == null) {
+            gC = new bs();
+          }
+        }
+        finally {}
+      }
+      return gC;
+    }
+    finally {}
   }
   
   private List<br> b(Cursor paramCursor)
   {
-    localArrayList = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     try
     {
       paramCursor.moveToFirst();
+      Object localObject;
       while (!paramCursor.isAfterLast())
       {
-        br localbr = new br();
-        localbr.gz = new bt();
-        localbr.gz.gH = paramCursor.getInt(paramCursor.getColumnIndex("a"));
-        localbr.gz.gI = paramCursor.getInt(paramCursor.getColumnIndex("b"));
-        localbr.gz.gJ = paramCursor.getInt(paramCursor.getColumnIndex("c"));
-        localbr.gz.gK = paramCursor.getInt(paramCursor.getColumnIndex("d"));
-        localbr.gz.gL = paramCursor.getLong(paramCursor.getColumnIndex("e"));
-        localbr.gz.gM = paramCursor.getInt(paramCursor.getColumnIndex("f"));
-        localbr.gz.gN = paramCursor.getString(paramCursor.getColumnIndex("i"));
+        localObject = new br();
+        ((br)localObject).gz = new bt();
+        ((br)localObject).gz.gH = paramCursor.getInt(paramCursor.getColumnIndex("a"));
+        ((br)localObject).gz.gI = paramCursor.getInt(paramCursor.getColumnIndex("b"));
+        ((br)localObject).gz.gJ = paramCursor.getInt(paramCursor.getColumnIndex("c"));
+        ((br)localObject).gz.gK = paramCursor.getInt(paramCursor.getColumnIndex("d"));
+        ((br)localObject).gz.gL = paramCursor.getLong(paramCursor.getColumnIndex("e"));
+        ((br)localObject).gz.gM = paramCursor.getInt(paramCursor.getColumnIndex("f"));
+        ((br)localObject).gz.gN = paramCursor.getString(paramCursor.getColumnIndex("i"));
         String str = new String(b.decrypt(HexUtil.hexStr2Bytes(paramCursor.getString(paramCursor.getColumnIndex("j"))), null));
-        localbr.gz.gO = str;
-        localbr.gA = paramCursor.getInt(paramCursor.getColumnIndex("k"));
-        localbr.gB = paramCursor.getInt(paramCursor.getColumnIndex("l"));
-        localArrayList.add(localbr);
+        ((br)localObject).gz.gO = str;
+        ((br)localObject).gA = paramCursor.getInt(paramCursor.getColumnIndex("k"));
+        ((br)localObject).gB = paramCursor.getInt(paramCursor.getColumnIndex("l"));
+        localArrayList.add(localObject);
         paramCursor.moveToNext();
       }
-      return localArrayList;
+      return paramCursor;
     }
     catch (Throwable paramCursor)
     {
-      bo.l("e:[" + paramCursor + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("e:[");
+      ((StringBuilder)localObject).append(paramCursor);
+      ((StringBuilder)localObject).append("]");
+      bo.l(((StringBuilder)localObject).toString());
+      paramCursor = localArrayList;
       if (localArrayList.size() == 0) {
-        return null;
+        paramCursor = null;
       }
     }
   }
@@ -183,10 +180,7 @@ public class bs
     paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS r_tb (a INTEGER PRIMARY KEY,f INTEGER,b INTEGER,c INTEGER,d INTEGER,e LONG,i TEXT,j TEXT,k INTEGER,l INTEGER)");
   }
   
-  private void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    if (paramInt2 > paramInt1) {}
-  }
+  private void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
   
   private int update(String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString)
   {
@@ -209,240 +203,380 @@ public class bs
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
-    //   3: invokestatic 296	java/lang/System:currentTimeMillis	()J
-    //   6: lstore_2
-    //   7: new 199	java/lang/StringBuilder
-    //   10: dup
-    //   11: bipush 120
-    //   13: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
-    //   16: astore 4
-    //   18: aload 4
-    //   20: ldc_w 301
-    //   23: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: pop
-    //   27: aload 4
-    //   29: ldc_w 303
-    //   32: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: pop
-    //   36: aload 4
-    //   38: ldc_w 305
-    //   41: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: pop
-    //   45: aload 4
-    //   47: ldc 180
-    //   49: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: pop
-    //   53: aload 4
-    //   55: ldc_w 307
-    //   58: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: pop
-    //   62: aload 4
-    //   64: iconst_2
-    //   65: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   68: pop
-    //   69: aload 4
-    //   71: ldc_w 312
-    //   74: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: pop
-    //   78: aload 4
-    //   80: ldc 135
+    //   3: aconst_null
+    //   4: astore 6
+    //   6: aconst_null
+    //   7: astore 8
+    //   9: aconst_null
+    //   10: astore 7
+    //   12: aload 6
+    //   14: astore 4
+    //   16: invokestatic 296	java/lang/System:currentTimeMillis	()J
+    //   19: lstore_2
+    //   20: aload 6
+    //   22: astore 4
+    //   24: new 199	java/lang/StringBuilder
+    //   27: dup
+    //   28: bipush 120
+    //   30: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
+    //   33: astore 9
+    //   35: aload 6
+    //   37: astore 4
+    //   39: aload 9
+    //   41: ldc_w 301
+    //   44: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: pop
+    //   48: aload 6
+    //   50: astore 4
+    //   52: aload 9
+    //   54: ldc_w 303
+    //   57: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: pop
+    //   61: aload 6
+    //   63: astore 4
+    //   65: aload 9
+    //   67: ldc_w 305
+    //   70: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: pop
+    //   74: aload 6
+    //   76: astore 4
+    //   78: aload 9
+    //   80: ldc 180
     //   82: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   85: pop
-    //   86: aload 4
-    //   88: ldc_w 314
-    //   91: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: pop
-    //   95: aload 4
-    //   97: lload_2
-    //   98: invokevirtual 317	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   101: pop
-    //   102: new 199	java/lang/StringBuilder
-    //   105: dup
-    //   106: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   109: ldc_w 319
-    //   112: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: aload 4
-    //   117: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   120: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: ldc 211
-    //   125: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   131: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   134: aload_0
-    //   135: aload 4
-    //   137: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   140: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
-    //   143: astore 4
-    //   145: aload 4
-    //   147: astore 5
-    //   149: aload 5
-    //   151: ifnull +297 -> 448
-    //   154: aload 5
-    //   156: astore 6
-    //   158: aload_0
-    //   159: aload 5
-    //   161: invokespecial 323	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
-    //   164: astore 4
-    //   166: aload 5
-    //   168: astore 6
-    //   170: new 199	java/lang/StringBuilder
-    //   173: dup
-    //   174: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   177: ldc_w 325
-    //   180: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: astore 7
-    //   185: aload 4
-    //   187: ifnull +59 -> 246
-    //   190: aload 5
-    //   192: astore 6
-    //   194: aload 4
-    //   196: invokeinterface 221 1 0
-    //   201: istore_1
-    //   202: aload 5
-    //   204: astore 6
-    //   206: aload 7
-    //   208: iload_1
-    //   209: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   212: ldc 211
-    //   214: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   217: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   220: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   223: aload 4
-    //   225: astore 6
-    //   227: aload 5
-    //   229: ifnull +14 -> 243
-    //   232: aload 5
-    //   234: invokeinterface 326 1 0
-    //   239: aload 4
-    //   241: astore 6
+    //   86: aload 6
+    //   88: astore 4
+    //   90: aload 9
+    //   92: ldc_w 307
+    //   95: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: pop
+    //   99: aload 6
+    //   101: astore 4
+    //   103: aload 9
+    //   105: iconst_2
+    //   106: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   109: pop
+    //   110: aload 6
+    //   112: astore 4
+    //   114: aload 9
+    //   116: ldc_w 312
+    //   119: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: pop
+    //   123: aload 6
+    //   125: astore 4
+    //   127: aload 9
+    //   129: ldc 135
+    //   131: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: pop
+    //   135: aload 6
+    //   137: astore 4
+    //   139: aload 9
+    //   141: ldc_w 314
+    //   144: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: pop
+    //   148: aload 6
+    //   150: astore 4
+    //   152: aload 9
+    //   154: lload_2
+    //   155: invokevirtual 317	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   158: pop
+    //   159: aload 6
+    //   161: astore 4
+    //   163: new 199	java/lang/StringBuilder
+    //   166: dup
+    //   167: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   170: astore 10
+    //   172: aload 6
+    //   174: astore 4
+    //   176: aload 10
+    //   178: ldc_w 319
+    //   181: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: pop
+    //   185: aload 6
+    //   187: astore 4
+    //   189: aload 10
+    //   191: aload 9
+    //   193: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   196: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: pop
+    //   200: aload 6
+    //   202: astore 4
+    //   204: aload 10
+    //   206: ldc 211
+    //   208: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: pop
+    //   212: aload 6
+    //   214: astore 4
+    //   216: aload 10
+    //   218: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   221: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   224: aload 6
+    //   226: astore 4
+    //   228: aload_0
+    //   229: aload 9
+    //   231: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   234: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
+    //   237: astore 6
+    //   239: aload 7
+    //   241: astore 4
     //   243: aload 6
-    //   245: areturn
-    //   246: iconst_0
-    //   247: istore_1
-    //   248: goto -46 -> 202
-    //   251: astore 5
-    //   253: new 199	java/lang/StringBuilder
-    //   256: dup
-    //   257: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   260: ldc 202
-    //   262: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   265: aload 5
-    //   267: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   270: ldc 211
-    //   272: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   278: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   281: aload 4
-    //   283: areturn
-    //   284: astore 7
-    //   286: aconst_null
-    //   287: astore 5
-    //   289: aconst_null
-    //   290: astore 4
-    //   292: aload 5
-    //   294: astore 6
-    //   296: new 199	java/lang/StringBuilder
-    //   299: dup
-    //   300: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   303: ldc 202
-    //   305: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   308: aload 7
-    //   310: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   313: ldc 211
-    //   315: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   318: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   321: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   324: aload 4
-    //   326: astore 6
-    //   328: aload 5
-    //   330: ifnull -87 -> 243
-    //   333: aload 5
-    //   335: invokeinterface 326 1 0
-    //   340: aload 4
-    //   342: areturn
-    //   343: astore 5
-    //   345: new 199	java/lang/StringBuilder
-    //   348: dup
-    //   349: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   352: ldc 202
-    //   354: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   357: aload 5
-    //   359: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   362: ldc 211
-    //   364: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   367: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   370: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   373: aload 4
-    //   375: areturn
-    //   376: astore 4
-    //   378: aload 5
-    //   380: ifnull +10 -> 390
-    //   383: aload 5
-    //   385: invokeinterface 326 1 0
-    //   390: aload 4
-    //   392: athrow
-    //   393: astore 5
-    //   395: new 199	java/lang/StringBuilder
-    //   398: dup
-    //   399: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   402: ldc 202
-    //   404: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   407: aload 5
-    //   409: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   412: ldc 211
-    //   414: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   417: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   420: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   423: goto -33 -> 390
-    //   426: astore 4
-    //   428: aload 6
-    //   430: astore 5
-    //   432: goto -54 -> 378
-    //   435: astore 7
-    //   437: aconst_null
-    //   438: astore 4
-    //   440: goto -148 -> 292
-    //   443: astore 7
-    //   445: goto -153 -> 292
-    //   448: aconst_null
-    //   449: astore 4
-    //   451: goto -285 -> 166
+    //   245: ifnull +11 -> 256
+    //   248: aload_0
+    //   249: aload 6
+    //   251: invokespecial 323	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
+    //   254: astore 4
+    //   256: aload 4
+    //   258: astore 5
+    //   260: new 199	java/lang/StringBuilder
+    //   263: dup
+    //   264: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   267: astore 7
+    //   269: aload 4
+    //   271: astore 5
+    //   273: aload 7
+    //   275: ldc_w 325
+    //   278: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   281: pop
+    //   282: aload 4
+    //   284: ifnull +337 -> 621
+    //   287: aload 4
+    //   289: astore 5
+    //   291: aload 4
+    //   293: invokeinterface 221 1 0
+    //   298: istore_1
+    //   299: goto +3 -> 302
+    //   302: aload 4
+    //   304: astore 5
+    //   306: aload 7
+    //   308: iload_1
+    //   309: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   312: pop
+    //   313: aload 4
+    //   315: astore 5
+    //   317: aload 7
+    //   319: ldc 211
+    //   321: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   324: pop
+    //   325: aload 4
+    //   327: astore 5
+    //   329: aload 7
+    //   331: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   334: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   337: aload 4
+    //   339: astore 5
+    //   341: aload 6
+    //   343: ifnull +214 -> 557
+    //   346: aload 6
+    //   348: invokeinterface 326 1 0
+    //   353: aload 4
+    //   355: areturn
+    //   356: astore 5
+    //   358: new 199	java/lang/StringBuilder
+    //   361: dup
+    //   362: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   365: astore 6
+    //   367: aload 6
+    //   369: ldc 202
+    //   371: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   374: pop
+    //   375: aload 6
+    //   377: aload 5
+    //   379: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   382: pop
+    //   383: aload 6
+    //   385: ldc 211
+    //   387: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   390: pop
+    //   391: aload 6
+    //   393: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   396: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   399: aload 4
+    //   401: areturn
+    //   402: astore 4
+    //   404: aload 6
+    //   406: astore 5
+    //   408: goto +152 -> 560
+    //   411: astore 7
+    //   413: goto +25 -> 438
+    //   416: astore 6
+    //   418: aload 4
+    //   420: astore 5
+    //   422: aload 6
+    //   424: astore 4
+    //   426: goto +134 -> 560
+    //   429: astore 7
+    //   431: aconst_null
+    //   432: astore 5
+    //   434: aload 8
+    //   436: astore 6
+    //   438: aload 6
+    //   440: astore 4
+    //   442: new 199	java/lang/StringBuilder
+    //   445: dup
+    //   446: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   449: astore 8
+    //   451: aload 6
+    //   453: astore 4
+    //   455: aload 8
+    //   457: ldc 202
+    //   459: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   462: pop
+    //   463: aload 6
+    //   465: astore 4
+    //   467: aload 8
+    //   469: aload 7
+    //   471: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   474: pop
+    //   475: aload 6
+    //   477: astore 4
+    //   479: aload 8
+    //   481: ldc 211
+    //   483: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   486: pop
+    //   487: aload 6
+    //   489: astore 4
+    //   491: aload 8
+    //   493: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   496: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   499: aload 6
+    //   501: ifnull +56 -> 557
+    //   504: aload 6
+    //   506: invokeinterface 326 1 0
+    //   511: goto +46 -> 557
+    //   514: astore 4
+    //   516: new 199	java/lang/StringBuilder
+    //   519: dup
+    //   520: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   523: astore 6
+    //   525: aload 6
+    //   527: ldc 202
+    //   529: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   532: pop
+    //   533: aload 6
+    //   535: aload 4
+    //   537: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   540: pop
+    //   541: aload 6
+    //   543: ldc 211
+    //   545: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   548: pop
+    //   549: aload 6
+    //   551: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   554: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   557: aload 5
+    //   559: areturn
+    //   560: aload 5
+    //   562: ifnull +56 -> 618
+    //   565: aload 5
+    //   567: invokeinterface 326 1 0
+    //   572: goto +46 -> 618
+    //   575: astore 5
+    //   577: new 199	java/lang/StringBuilder
+    //   580: dup
+    //   581: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   584: astore 6
+    //   586: aload 6
+    //   588: ldc 202
+    //   590: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   593: pop
+    //   594: aload 6
+    //   596: aload 5
+    //   598: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   601: pop
+    //   602: aload 6
+    //   604: ldc 211
+    //   606: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   609: pop
+    //   610: aload 6
+    //   612: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   615: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   618: aload 4
+    //   620: athrow
+    //   621: iconst_0
+    //   622: istore_1
+    //   623: goto -321 -> 302
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	454	0	this	bs
-    //   201	47	1	i	int
-    //   6	92	2	l	long
-    //   16	358	4	localObject1	Object
-    //   376	15	4	localObject2	Object
-    //   426	1	4	localObject3	Object
-    //   438	12	4	localObject4	Object
-    //   1	232	5	localObject5	Object
-    //   251	15	5	localThrowable1	Throwable
-    //   287	47	5	localObject6	Object
-    //   343	41	5	localThrowable2	Throwable
-    //   393	15	5	localThrowable3	Throwable
-    //   430	1	5	localObject7	Object
-    //   156	273	6	localObject8	Object
-    //   183	24	7	localStringBuilder	java.lang.StringBuilder
-    //   284	25	7	localThrowable4	Throwable
-    //   435	1	7	localThrowable5	Throwable
-    //   443	1	7	localThrowable6	Throwable
+    //   0	626	0	this	bs
+    //   298	325	1	i	int
+    //   19	136	2	l	long
+    //   14	386	4	localObject1	Object
+    //   402	17	4	localObject2	Object
+    //   424	66	4	localObject3	Object
+    //   514	105	4	localThrowable1	Throwable
+    //   1	339	5	localObject4	Object
+    //   356	22	5	localThrowable2	Throwable
+    //   406	160	5	localObject5	Object
+    //   575	22	5	localThrowable3	Throwable
+    //   4	401	6	localObject6	Object
+    //   416	7	6	localObject7	Object
+    //   436	175	6	localObject8	Object
+    //   10	320	7	localStringBuilder1	StringBuilder
+    //   411	1	7	localThrowable4	Throwable
+    //   429	41	7	localThrowable5	Throwable
+    //   7	485	8	localStringBuilder2	StringBuilder
+    //   33	197	9	localStringBuilder3	StringBuilder
+    //   170	47	10	localStringBuilder4	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   232	239	251	java/lang/Throwable
-    //   3	145	284	java/lang/Throwable
-    //   333	340	343	java/lang/Throwable
-    //   3	145	376	finally
-    //   383	390	393	java/lang/Throwable
-    //   158	166	426	finally
-    //   170	185	426	finally
-    //   194	202	426	finally
-    //   206	223	426	finally
-    //   296	324	426	finally
-    //   158	166	435	java/lang/Throwable
-    //   170	185	443	java/lang/Throwable
-    //   194	202	443	java/lang/Throwable
-    //   206	223	443	java/lang/Throwable
+    //   346	353	356	java/lang/Throwable
+    //   248	256	402	finally
+    //   260	269	402	finally
+    //   273	282	402	finally
+    //   291	299	402	finally
+    //   306	313	402	finally
+    //   317	325	402	finally
+    //   329	337	402	finally
+    //   248	256	411	java/lang/Throwable
+    //   260	269	411	java/lang/Throwable
+    //   273	282	411	java/lang/Throwable
+    //   291	299	411	java/lang/Throwable
+    //   306	313	411	java/lang/Throwable
+    //   317	325	411	java/lang/Throwable
+    //   329	337	411	java/lang/Throwable
+    //   16	20	416	finally
+    //   24	35	416	finally
+    //   39	48	416	finally
+    //   52	61	416	finally
+    //   65	74	416	finally
+    //   78	86	416	finally
+    //   90	99	416	finally
+    //   103	110	416	finally
+    //   114	123	416	finally
+    //   127	135	416	finally
+    //   139	148	416	finally
+    //   152	159	416	finally
+    //   163	172	416	finally
+    //   176	185	416	finally
+    //   189	200	416	finally
+    //   204	212	416	finally
+    //   216	224	416	finally
+    //   228	239	416	finally
+    //   442	451	416	finally
+    //   455	463	416	finally
+    //   467	475	416	finally
+    //   479	487	416	finally
+    //   491	499	416	finally
+    //   16	20	429	java/lang/Throwable
+    //   24	35	429	java/lang/Throwable
+    //   39	48	429	java/lang/Throwable
+    //   52	61	429	java/lang/Throwable
+    //   65	74	429	java/lang/Throwable
+    //   78	86	429	java/lang/Throwable
+    //   90	99	429	java/lang/Throwable
+    //   103	110	429	java/lang/Throwable
+    //   114	123	429	java/lang/Throwable
+    //   127	135	429	java/lang/Throwable
+    //   139	148	429	java/lang/Throwable
+    //   152	159	429	java/lang/Throwable
+    //   163	172	429	java/lang/Throwable
+    //   176	185	429	java/lang/Throwable
+    //   189	200	429	java/lang/Throwable
+    //   204	212	429	java/lang/Throwable
+    //   216	224	429	java/lang/Throwable
+    //   228	239	429	java/lang/Throwable
+    //   504	511	514	java/lang/Throwable
+    //   565	572	575	java/lang/Throwable
   }
   
   /* Error */
@@ -451,253 +585,405 @@ public class bs
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 199	java/lang/StringBuilder
-    //   5: dup
-    //   6: bipush 120
-    //   8: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
-    //   11: astore_2
-    //   12: aload_2
-    //   13: ldc_w 301
-    //   16: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: pop
-    //   20: aload_2
-    //   21: ldc_w 303
-    //   24: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: pop
-    //   28: aload_2
-    //   29: ldc_w 305
-    //   32: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: pop
-    //   36: aload_2
-    //   37: ldc 185
-    //   39: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: pop
-    //   43: aload_2
-    //   44: ldc_w 307
-    //   47: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: pop
-    //   51: aload_2
-    //   52: iconst_1
-    //   53: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   56: pop
-    //   57: aload_2
-    //   58: ldc_w 312
-    //   61: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: pop
-    //   65: aload_2
+    //   2: aconst_null
+    //   3: astore 4
+    //   5: aconst_null
+    //   6: astore 6
+    //   8: aconst_null
+    //   9: astore 5
+    //   11: aload 4
+    //   13: astore_2
+    //   14: new 199	java/lang/StringBuilder
+    //   17: dup
+    //   18: bipush 120
+    //   20: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
+    //   23: astore 7
+    //   25: aload 4
+    //   27: astore_2
+    //   28: aload 7
+    //   30: ldc_w 301
+    //   33: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: pop
+    //   37: aload 4
+    //   39: astore_2
+    //   40: aload 7
+    //   42: ldc_w 303
+    //   45: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: pop
+    //   49: aload 4
+    //   51: astore_2
+    //   52: aload 7
+    //   54: ldc_w 305
+    //   57: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: pop
+    //   61: aload 4
+    //   63: astore_2
+    //   64: aload 7
     //   66: ldc 185
     //   68: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   71: pop
-    //   72: aload_2
-    //   73: ldc_w 307
-    //   76: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: pop
-    //   80: aload_2
-    //   81: iconst_2
-    //   82: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   85: pop
-    //   86: aload_2
-    //   87: ldc_w 330
-    //   90: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: aload 4
+    //   74: astore_2
+    //   75: aload 7
+    //   77: ldc_w 307
+    //   80: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: pop
+    //   84: aload 4
+    //   86: astore_2
+    //   87: aload 7
+    //   89: iconst_1
+    //   90: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   93: pop
-    //   94: aload_2
-    //   95: ldc 180
-    //   97: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   100: pop
-    //   101: aload_2
-    //   102: ldc_w 307
-    //   105: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: pop
-    //   109: aload_2
-    //   110: iconst_1
-    //   111: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   114: pop
-    //   115: new 199	java/lang/StringBuilder
-    //   118: dup
-    //   119: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   122: ldc_w 332
+    //   94: aload 4
+    //   96: astore_2
+    //   97: aload 7
+    //   99: ldc_w 312
+    //   102: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: pop
+    //   106: aload 4
+    //   108: astore_2
+    //   109: aload 7
+    //   111: ldc 185
+    //   113: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: pop
+    //   117: aload 4
+    //   119: astore_2
+    //   120: aload 7
+    //   122: ldc_w 307
     //   125: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: aload_2
-    //   129: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   135: ldc 211
-    //   137: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   143: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   146: aload_0
-    //   147: aload_2
-    //   148: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
-    //   154: astore_2
-    //   155: aload_2
-    //   156: astore_3
-    //   157: aload_3
-    //   158: ifnull +263 -> 421
-    //   161: aload_3
-    //   162: astore 4
-    //   164: aload_0
-    //   165: aload_3
-    //   166: invokespecial 323	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
-    //   169: astore_2
-    //   170: aload_3
-    //   171: astore 4
-    //   173: new 199	java/lang/StringBuilder
-    //   176: dup
-    //   177: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   180: ldc_w 334
-    //   183: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   186: astore 5
-    //   188: aload_2
-    //   189: ifnull +52 -> 241
-    //   192: aload_3
-    //   193: astore 4
-    //   195: aload_2
-    //   196: invokeinterface 221 1 0
-    //   201: istore_1
-    //   202: aload_3
-    //   203: astore 4
-    //   205: aload 5
-    //   207: iload_1
-    //   208: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   211: ldc 211
-    //   213: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   216: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   219: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   222: aload_2
-    //   223: astore 4
-    //   225: aload_3
-    //   226: ifnull +12 -> 238
-    //   229: aload_3
-    //   230: invokeinterface 326 1 0
-    //   235: aload_2
-    //   236: astore 4
-    //   238: aload 4
-    //   240: areturn
-    //   241: iconst_0
-    //   242: istore_1
-    //   243: goto -41 -> 202
-    //   246: astore_3
-    //   247: new 199	java/lang/StringBuilder
-    //   250: dup
-    //   251: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   254: ldc 202
-    //   256: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   259: aload_3
-    //   260: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   263: ldc 211
-    //   265: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   271: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   274: aload_2
-    //   275: areturn
-    //   276: astore 5
-    //   278: aconst_null
-    //   279: astore_3
-    //   280: aconst_null
-    //   281: astore_2
-    //   282: aload_3
-    //   283: astore 4
-    //   285: new 199	java/lang/StringBuilder
-    //   288: dup
-    //   289: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   292: ldc 202
-    //   294: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   297: aload 5
-    //   299: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   302: ldc 211
-    //   304: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   307: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   310: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   313: aload_2
-    //   314: astore 4
-    //   316: aload_3
-    //   317: ifnull -79 -> 238
-    //   320: aload_3
-    //   321: invokeinterface 326 1 0
-    //   326: aload_2
-    //   327: areturn
-    //   328: astore_3
-    //   329: new 199	java/lang/StringBuilder
-    //   332: dup
-    //   333: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   336: ldc 202
-    //   338: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   341: aload_3
-    //   342: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   345: ldc 211
-    //   347: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   350: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   353: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   356: aload_2
-    //   357: areturn
-    //   358: astore_2
-    //   359: aload_3
-    //   360: ifnull +9 -> 369
-    //   363: aload_3
-    //   364: invokeinterface 326 1 0
-    //   369: aload_2
-    //   370: athrow
-    //   371: astore_3
-    //   372: new 199	java/lang/StringBuilder
-    //   375: dup
-    //   376: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   379: ldc 202
-    //   381: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   384: aload_3
-    //   385: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   388: ldc 211
-    //   390: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   393: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   396: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   399: goto -30 -> 369
-    //   402: astore_2
-    //   403: aload 4
-    //   405: astore_3
-    //   406: goto -47 -> 359
-    //   409: astore 5
-    //   411: aconst_null
-    //   412: astore_2
-    //   413: goto -131 -> 282
-    //   416: astore 5
-    //   418: goto -136 -> 282
-    //   421: aconst_null
-    //   422: astore_2
-    //   423: goto -253 -> 170
+    //   128: pop
+    //   129: aload 4
+    //   131: astore_2
+    //   132: aload 7
+    //   134: iconst_2
+    //   135: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   138: pop
+    //   139: aload 4
+    //   141: astore_2
+    //   142: aload 7
+    //   144: ldc_w 330
+    //   147: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: pop
+    //   151: aload 4
+    //   153: astore_2
+    //   154: aload 7
+    //   156: ldc 180
+    //   158: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   161: pop
+    //   162: aload 4
+    //   164: astore_2
+    //   165: aload 7
+    //   167: ldc_w 307
+    //   170: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   173: pop
+    //   174: aload 4
+    //   176: astore_2
+    //   177: aload 7
+    //   179: iconst_1
+    //   180: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   183: pop
+    //   184: aload 4
+    //   186: astore_2
+    //   187: new 199	java/lang/StringBuilder
+    //   190: dup
+    //   191: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   194: astore 8
+    //   196: aload 4
+    //   198: astore_2
+    //   199: aload 8
+    //   201: ldc_w 332
+    //   204: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: pop
+    //   208: aload 4
+    //   210: astore_2
+    //   211: aload 8
+    //   213: aload 7
+    //   215: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   218: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: pop
+    //   222: aload 4
+    //   224: astore_2
+    //   225: aload 8
+    //   227: ldc 211
+    //   229: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   232: pop
+    //   233: aload 4
+    //   235: astore_2
+    //   236: aload 8
+    //   238: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   241: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   244: aload 4
+    //   246: astore_2
+    //   247: aload_0
+    //   248: aload 7
+    //   250: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   253: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
+    //   256: astore 4
+    //   258: aload 5
+    //   260: astore_2
+    //   261: aload 4
+    //   263: ifnull +10 -> 273
+    //   266: aload_0
+    //   267: aload 4
+    //   269: invokespecial 323	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
+    //   272: astore_2
+    //   273: aload_2
+    //   274: astore_3
+    //   275: new 199	java/lang/StringBuilder
+    //   278: dup
+    //   279: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   282: astore 5
+    //   284: aload_2
+    //   285: astore_3
+    //   286: aload 5
+    //   288: ldc_w 334
+    //   291: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   294: pop
+    //   295: aload_2
+    //   296: ifnull +303 -> 599
+    //   299: aload_2
+    //   300: astore_3
+    //   301: aload_2
+    //   302: invokeinterface 221 1 0
+    //   307: istore_1
+    //   308: goto +3 -> 311
+    //   311: aload_2
+    //   312: astore_3
+    //   313: aload 5
+    //   315: iload_1
+    //   316: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   319: pop
+    //   320: aload_2
+    //   321: astore_3
+    //   322: aload 5
+    //   324: ldc 211
+    //   326: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   329: pop
+    //   330: aload_2
+    //   331: astore_3
+    //   332: aload 5
+    //   334: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   337: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   340: aload_2
+    //   341: astore_3
+    //   342: aload 4
+    //   344: ifnull +197 -> 541
+    //   347: aload 4
+    //   349: invokeinterface 326 1 0
+    //   354: aload_2
+    //   355: areturn
+    //   356: astore_3
+    //   357: new 199	java/lang/StringBuilder
+    //   360: dup
+    //   361: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   364: astore 4
+    //   366: aload 4
+    //   368: ldc 202
+    //   370: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   373: pop
+    //   374: aload 4
+    //   376: aload_3
+    //   377: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   380: pop
+    //   381: aload 4
+    //   383: ldc 211
+    //   385: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   388: pop
+    //   389: aload 4
+    //   391: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   394: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   397: aload_2
+    //   398: areturn
+    //   399: astore_2
+    //   400: aload 4
+    //   402: astore_3
+    //   403: goto +140 -> 543
+    //   406: astore 5
+    //   408: goto +21 -> 429
+    //   411: astore 4
+    //   413: aload_2
+    //   414: astore_3
+    //   415: aload 4
+    //   417: astore_2
+    //   418: goto +125 -> 543
+    //   421: astore 5
+    //   423: aconst_null
+    //   424: astore_3
+    //   425: aload 6
+    //   427: astore 4
+    //   429: aload 4
+    //   431: astore_2
+    //   432: new 199	java/lang/StringBuilder
+    //   435: dup
+    //   436: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   439: astore 6
+    //   441: aload 4
+    //   443: astore_2
+    //   444: aload 6
+    //   446: ldc 202
+    //   448: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   451: pop
+    //   452: aload 4
+    //   454: astore_2
+    //   455: aload 6
+    //   457: aload 5
+    //   459: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   462: pop
+    //   463: aload 4
+    //   465: astore_2
+    //   466: aload 6
+    //   468: ldc 211
+    //   470: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   473: pop
+    //   474: aload 4
+    //   476: astore_2
+    //   477: aload 6
+    //   479: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   482: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   485: aload 4
+    //   487: ifnull +54 -> 541
+    //   490: aload 4
+    //   492: invokeinterface 326 1 0
+    //   497: goto +44 -> 541
+    //   500: astore_2
+    //   501: new 199	java/lang/StringBuilder
+    //   504: dup
+    //   505: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   508: astore 4
+    //   510: aload 4
+    //   512: ldc 202
+    //   514: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   517: pop
+    //   518: aload 4
+    //   520: aload_2
+    //   521: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   524: pop
+    //   525: aload 4
+    //   527: ldc 211
+    //   529: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   532: pop
+    //   533: aload 4
+    //   535: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   538: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   541: aload_3
+    //   542: areturn
+    //   543: aload_3
+    //   544: ifnull +53 -> 597
+    //   547: aload_3
+    //   548: invokeinterface 326 1 0
+    //   553: goto +44 -> 597
+    //   556: astore_3
+    //   557: new 199	java/lang/StringBuilder
+    //   560: dup
+    //   561: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   564: astore 4
+    //   566: aload 4
+    //   568: ldc 202
+    //   570: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   573: pop
+    //   574: aload 4
+    //   576: aload_3
+    //   577: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   580: pop
+    //   581: aload 4
+    //   583: ldc 211
+    //   585: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   588: pop
+    //   589: aload 4
+    //   591: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   594: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   597: aload_2
+    //   598: athrow
+    //   599: iconst_0
+    //   600: istore_1
+    //   601: goto -290 -> 311
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	426	0	this	bs
-    //   201	42	1	i	int
-    //   11	346	2	localObject1	Object
-    //   358	12	2	localObject2	Object
-    //   402	1	2	localObject3	Object
-    //   412	11	2	localObject4	Object
-    //   1	229	3	localObject5	Object
-    //   246	14	3	localThrowable1	Throwable
-    //   279	42	3	localObject6	Object
-    //   328	36	3	localThrowable2	Throwable
-    //   371	14	3	localThrowable3	Throwable
-    //   405	1	3	localObject7	Object
-    //   162	242	4	localObject8	Object
-    //   186	20	5	localStringBuilder	java.lang.StringBuilder
-    //   276	22	5	localThrowable4	Throwable
-    //   409	1	5	localThrowable5	Throwable
-    //   416	1	5	localThrowable6	Throwable
+    //   0	604	0	this	bs
+    //   307	294	1	i	int
+    //   13	385	2	localObject1	Object
+    //   399	15	2	localObject2	Object
+    //   417	60	2	localObject3	Object
+    //   500	98	2	localThrowable1	Throwable
+    //   1	341	3	localObject4	Object
+    //   356	21	3	localThrowable2	Throwable
+    //   402	146	3	localObject5	Object
+    //   556	21	3	localThrowable3	Throwable
+    //   3	398	4	localObject6	Object
+    //   411	5	4	localObject7	Object
+    //   427	163	4	localObject8	Object
+    //   9	324	5	localStringBuilder1	StringBuilder
+    //   406	1	5	localThrowable4	Throwable
+    //   421	37	5	localThrowable5	Throwable
+    //   6	472	6	localStringBuilder2	StringBuilder
+    //   23	226	7	localStringBuilder3	StringBuilder
+    //   194	43	8	localStringBuilder4	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   229	235	246	java/lang/Throwable
-    //   2	155	276	java/lang/Throwable
-    //   320	326	328	java/lang/Throwable
-    //   2	155	358	finally
-    //   363	369	371	java/lang/Throwable
-    //   164	170	402	finally
-    //   173	188	402	finally
-    //   195	202	402	finally
-    //   205	222	402	finally
-    //   285	313	402	finally
-    //   164	170	409	java/lang/Throwable
-    //   173	188	416	java/lang/Throwable
-    //   195	202	416	java/lang/Throwable
-    //   205	222	416	java/lang/Throwable
+    //   347	354	356	java/lang/Throwable
+    //   266	273	399	finally
+    //   275	284	399	finally
+    //   286	295	399	finally
+    //   301	308	399	finally
+    //   313	320	399	finally
+    //   322	330	399	finally
+    //   332	340	399	finally
+    //   266	273	406	java/lang/Throwable
+    //   275	284	406	java/lang/Throwable
+    //   286	295	406	java/lang/Throwable
+    //   301	308	406	java/lang/Throwable
+    //   313	320	406	java/lang/Throwable
+    //   322	330	406	java/lang/Throwable
+    //   332	340	406	java/lang/Throwable
+    //   14	25	411	finally
+    //   28	37	411	finally
+    //   40	49	411	finally
+    //   52	61	411	finally
+    //   64	72	411	finally
+    //   75	84	411	finally
+    //   87	94	411	finally
+    //   97	106	411	finally
+    //   109	117	411	finally
+    //   120	129	411	finally
+    //   132	139	411	finally
+    //   142	151	411	finally
+    //   154	162	411	finally
+    //   165	174	411	finally
+    //   177	184	411	finally
+    //   187	196	411	finally
+    //   199	208	411	finally
+    //   211	222	411	finally
+    //   225	233	411	finally
+    //   236	244	411	finally
+    //   247	258	411	finally
+    //   432	441	411	finally
+    //   444	452	411	finally
+    //   455	463	411	finally
+    //   466	474	411	finally
+    //   477	485	411	finally
+    //   14	25	421	java/lang/Throwable
+    //   28	37	421	java/lang/Throwable
+    //   40	49	421	java/lang/Throwable
+    //   52	61	421	java/lang/Throwable
+    //   64	72	421	java/lang/Throwable
+    //   75	84	421	java/lang/Throwable
+    //   87	94	421	java/lang/Throwable
+    //   97	106	421	java/lang/Throwable
+    //   109	117	421	java/lang/Throwable
+    //   120	129	421	java/lang/Throwable
+    //   132	139	421	java/lang/Throwable
+    //   142	151	421	java/lang/Throwable
+    //   154	162	421	java/lang/Throwable
+    //   165	174	421	java/lang/Throwable
+    //   177	184	421	java/lang/Throwable
+    //   187	196	421	java/lang/Throwable
+    //   199	208	421	java/lang/Throwable
+    //   211	222	421	java/lang/Throwable
+    //   225	233	421	java/lang/Throwable
+    //   236	244	421	java/lang/Throwable
+    //   247	258	421	java/lang/Throwable
+    //   490	497	500	java/lang/Throwable
+    //   547	553	556	java/lang/Throwable
   }
   
   /* Error */
@@ -706,256 +992,408 @@ public class bs
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 199	java/lang/StringBuilder
-    //   5: dup
-    //   6: bipush 120
-    //   8: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
-    //   11: astore_2
-    //   12: aload_2
-    //   13: ldc_w 301
-    //   16: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: pop
-    //   20: aload_2
-    //   21: ldc_w 303
-    //   24: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: pop
-    //   28: aload_2
-    //   29: ldc_w 305
-    //   32: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: pop
-    //   36: aload_2
-    //   37: ldc 185
-    //   39: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: pop
-    //   43: aload_2
-    //   44: ldc_w 307
-    //   47: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: pop
-    //   51: aload_2
-    //   52: iconst_3
-    //   53: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   56: pop
-    //   57: aload_2
-    //   58: ldc_w 330
-    //   61: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: pop
-    //   65: aload_2
-    //   66: ldc 130
+    //   2: aconst_null
+    //   3: astore 4
+    //   5: aconst_null
+    //   6: astore 6
+    //   8: aconst_null
+    //   9: astore 5
+    //   11: aload 4
+    //   13: astore_2
+    //   14: new 199	java/lang/StringBuilder
+    //   17: dup
+    //   18: bipush 120
+    //   20: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
+    //   23: astore 7
+    //   25: aload 4
+    //   27: astore_2
+    //   28: aload 7
+    //   30: ldc_w 301
+    //   33: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: pop
+    //   37: aload 4
+    //   39: astore_2
+    //   40: aload 7
+    //   42: ldc_w 303
+    //   45: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: pop
+    //   49: aload 4
+    //   51: astore_2
+    //   52: aload 7
+    //   54: ldc_w 305
+    //   57: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: pop
+    //   61: aload 4
+    //   63: astore_2
+    //   64: aload 7
+    //   66: ldc 185
     //   68: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   71: pop
-    //   72: aload_2
-    //   73: ldc_w 307
-    //   76: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: pop
-    //   80: aload_2
-    //   81: iconst_1
-    //   82: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   85: pop
-    //   86: new 199	java/lang/StringBuilder
-    //   89: dup
-    //   90: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   93: ldc_w 337
-    //   96: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   99: aload_2
-    //   100: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   103: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: ldc 211
-    //   108: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   111: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   114: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   117: aload_0
-    //   118: aload_2
-    //   119: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   122: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
-    //   125: astore_2
-    //   126: aload_2
-    //   127: astore_3
-    //   128: aload_3
-    //   129: ifnull +263 -> 392
-    //   132: aload_3
-    //   133: astore 4
-    //   135: aload_0
-    //   136: aload_3
-    //   137: invokespecial 323	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
-    //   140: astore_2
-    //   141: aload_3
-    //   142: astore 4
-    //   144: new 199	java/lang/StringBuilder
-    //   147: dup
-    //   148: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   151: ldc_w 339
-    //   154: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   157: astore 5
-    //   159: aload_2
-    //   160: ifnull +52 -> 212
-    //   163: aload_3
-    //   164: astore 4
-    //   166: aload_2
-    //   167: invokeinterface 221 1 0
-    //   172: istore_1
-    //   173: aload_3
-    //   174: astore 4
-    //   176: aload 5
-    //   178: iload_1
-    //   179: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   72: aload 4
+    //   74: astore_2
+    //   75: aload 7
+    //   77: ldc_w 307
+    //   80: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: pop
+    //   84: aload 4
+    //   86: astore_2
+    //   87: aload 7
+    //   89: iconst_3
+    //   90: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   93: pop
+    //   94: aload 4
+    //   96: astore_2
+    //   97: aload 7
+    //   99: ldc_w 330
+    //   102: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: pop
+    //   106: aload 4
+    //   108: astore_2
+    //   109: aload 7
+    //   111: ldc 130
+    //   113: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: pop
+    //   117: aload 4
+    //   119: astore_2
+    //   120: aload 7
+    //   122: ldc_w 307
+    //   125: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: pop
+    //   129: aload 4
+    //   131: astore_2
+    //   132: aload 7
+    //   134: iconst_1
+    //   135: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   138: pop
+    //   139: aload 4
+    //   141: astore_2
+    //   142: new 199	java/lang/StringBuilder
+    //   145: dup
+    //   146: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   149: astore 8
+    //   151: aload 4
+    //   153: astore_2
+    //   154: aload 8
+    //   156: ldc_w 337
+    //   159: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: pop
+    //   163: aload 4
+    //   165: astore_2
+    //   166: aload 8
+    //   168: aload 7
+    //   170: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   173: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: pop
+    //   177: aload 4
+    //   179: astore_2
+    //   180: aload 8
     //   182: ldc 211
     //   184: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   190: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   193: aload_2
-    //   194: astore 4
-    //   196: aload_3
-    //   197: ifnull +12 -> 209
-    //   200: aload_3
-    //   201: invokeinterface 326 1 0
-    //   206: aload_2
-    //   207: astore 4
-    //   209: aload 4
-    //   211: areturn
-    //   212: iconst_0
-    //   213: istore_1
-    //   214: goto -41 -> 173
-    //   217: astore_3
-    //   218: new 199	java/lang/StringBuilder
-    //   221: dup
-    //   222: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   225: ldc 202
-    //   227: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   230: aload_3
-    //   231: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   234: ldc 211
-    //   236: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   239: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   242: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   245: aload_2
-    //   246: areturn
-    //   247: astore 5
-    //   249: aconst_null
-    //   250: astore_3
-    //   251: aconst_null
-    //   252: astore_2
-    //   253: aload_3
-    //   254: astore 4
-    //   256: new 199	java/lang/StringBuilder
-    //   259: dup
-    //   260: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   263: ldc 202
-    //   265: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   187: pop
+    //   188: aload 4
+    //   190: astore_2
+    //   191: aload 8
+    //   193: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   196: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   199: aload 4
+    //   201: astore_2
+    //   202: aload_0
+    //   203: aload 7
+    //   205: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   208: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
+    //   211: astore 4
+    //   213: aload 5
+    //   215: astore_2
+    //   216: aload 4
+    //   218: ifnull +10 -> 228
+    //   221: aload_0
+    //   222: aload 4
+    //   224: invokespecial 323	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
+    //   227: astore_2
+    //   228: aload_2
+    //   229: astore_3
+    //   230: new 199	java/lang/StringBuilder
+    //   233: dup
+    //   234: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   237: astore 5
+    //   239: aload_2
+    //   240: astore_3
+    //   241: aload 5
+    //   243: ldc_w 339
+    //   246: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: pop
+    //   250: aload_2
+    //   251: ifnull +303 -> 554
+    //   254: aload_2
+    //   255: astore_3
+    //   256: aload_2
+    //   257: invokeinterface 221 1 0
+    //   262: istore_1
+    //   263: goto +3 -> 266
+    //   266: aload_2
+    //   267: astore_3
     //   268: aload 5
-    //   270: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   273: ldc 211
-    //   275: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   278: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   281: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   284: aload_2
-    //   285: astore 4
-    //   287: aload_3
-    //   288: ifnull -79 -> 209
-    //   291: aload_3
-    //   292: invokeinterface 326 1 0
-    //   297: aload_2
-    //   298: areturn
-    //   299: astore_3
-    //   300: new 199	java/lang/StringBuilder
-    //   303: dup
-    //   304: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   307: ldc 202
-    //   309: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   312: aload_3
-    //   313: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   316: ldc 211
-    //   318: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   321: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   324: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   327: aload_2
-    //   328: areturn
-    //   329: astore_2
-    //   330: aload_3
-    //   331: ifnull +9 -> 340
-    //   334: aload_3
-    //   335: invokeinterface 326 1 0
-    //   340: aload_2
-    //   341: athrow
-    //   342: astore_3
-    //   343: new 199	java/lang/StringBuilder
-    //   346: dup
-    //   347: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   350: ldc 202
-    //   352: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   355: aload_3
-    //   356: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   359: ldc 211
-    //   361: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   364: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   367: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   370: goto -30 -> 340
-    //   373: astore_2
-    //   374: aload 4
-    //   376: astore_3
-    //   377: goto -47 -> 330
-    //   380: astore 5
-    //   382: aconst_null
-    //   383: astore_2
-    //   384: goto -131 -> 253
-    //   387: astore 5
-    //   389: goto -136 -> 253
-    //   392: aconst_null
-    //   393: astore_2
-    //   394: goto -253 -> 141
+    //   270: iload_1
+    //   271: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   274: pop
+    //   275: aload_2
+    //   276: astore_3
+    //   277: aload 5
+    //   279: ldc 211
+    //   281: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: pop
+    //   285: aload_2
+    //   286: astore_3
+    //   287: aload 5
+    //   289: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   292: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   295: aload_2
+    //   296: astore_3
+    //   297: aload 4
+    //   299: ifnull +197 -> 496
+    //   302: aload 4
+    //   304: invokeinterface 326 1 0
+    //   309: aload_2
+    //   310: areturn
+    //   311: astore_3
+    //   312: new 199	java/lang/StringBuilder
+    //   315: dup
+    //   316: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   319: astore 4
+    //   321: aload 4
+    //   323: ldc 202
+    //   325: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   328: pop
+    //   329: aload 4
+    //   331: aload_3
+    //   332: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   335: pop
+    //   336: aload 4
+    //   338: ldc 211
+    //   340: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   343: pop
+    //   344: aload 4
+    //   346: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   349: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   352: aload_2
+    //   353: areturn
+    //   354: astore_2
+    //   355: aload 4
+    //   357: astore_3
+    //   358: goto +140 -> 498
+    //   361: astore 5
+    //   363: goto +21 -> 384
+    //   366: astore 4
+    //   368: aload_2
+    //   369: astore_3
+    //   370: aload 4
+    //   372: astore_2
+    //   373: goto +125 -> 498
+    //   376: astore 5
+    //   378: aconst_null
+    //   379: astore_3
+    //   380: aload 6
+    //   382: astore 4
+    //   384: aload 4
+    //   386: astore_2
+    //   387: new 199	java/lang/StringBuilder
+    //   390: dup
+    //   391: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   394: astore 6
+    //   396: aload 4
+    //   398: astore_2
+    //   399: aload 6
+    //   401: ldc 202
+    //   403: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   406: pop
+    //   407: aload 4
+    //   409: astore_2
+    //   410: aload 6
+    //   412: aload 5
+    //   414: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   417: pop
+    //   418: aload 4
+    //   420: astore_2
+    //   421: aload 6
+    //   423: ldc 211
+    //   425: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   428: pop
+    //   429: aload 4
+    //   431: astore_2
+    //   432: aload 6
+    //   434: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   437: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   440: aload 4
+    //   442: ifnull +54 -> 496
+    //   445: aload 4
+    //   447: invokeinterface 326 1 0
+    //   452: goto +44 -> 496
+    //   455: astore_2
+    //   456: new 199	java/lang/StringBuilder
+    //   459: dup
+    //   460: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   463: astore 4
+    //   465: aload 4
+    //   467: ldc 202
+    //   469: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   472: pop
+    //   473: aload 4
+    //   475: aload_2
+    //   476: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   479: pop
+    //   480: aload 4
+    //   482: ldc 211
+    //   484: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   487: pop
+    //   488: aload 4
+    //   490: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   493: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   496: aload_3
+    //   497: areturn
+    //   498: aload_3
+    //   499: ifnull +53 -> 552
+    //   502: aload_3
+    //   503: invokeinterface 326 1 0
+    //   508: goto +44 -> 552
+    //   511: astore_3
+    //   512: new 199	java/lang/StringBuilder
+    //   515: dup
+    //   516: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   519: astore 4
+    //   521: aload 4
+    //   523: ldc 202
+    //   525: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   528: pop
+    //   529: aload 4
+    //   531: aload_3
+    //   532: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   535: pop
+    //   536: aload 4
+    //   538: ldc 211
+    //   540: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   543: pop
+    //   544: aload 4
+    //   546: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   549: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   552: aload_2
+    //   553: athrow
+    //   554: iconst_0
+    //   555: istore_1
+    //   556: goto -290 -> 266
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	397	0	this	bs
-    //   172	42	1	i	int
-    //   11	317	2	localObject1	Object
-    //   329	12	2	localObject2	Object
-    //   373	1	2	localObject3	Object
-    //   383	11	2	localObject4	Object
-    //   1	200	3	localObject5	Object
-    //   217	14	3	localThrowable1	Throwable
-    //   250	42	3	localObject6	Object
-    //   299	36	3	localThrowable2	Throwable
-    //   342	14	3	localThrowable3	Throwable
-    //   376	1	3	localObject7	Object
-    //   133	242	4	localObject8	Object
-    //   157	20	5	localStringBuilder	java.lang.StringBuilder
-    //   247	22	5	localThrowable4	Throwable
-    //   380	1	5	localThrowable5	Throwable
-    //   387	1	5	localThrowable6	Throwable
+    //   0	559	0	this	bs
+    //   262	294	1	i	int
+    //   13	340	2	localObject1	Object
+    //   354	15	2	localObject2	Object
+    //   372	60	2	localObject3	Object
+    //   455	98	2	localThrowable1	Throwable
+    //   1	296	3	localObject4	Object
+    //   311	21	3	localThrowable2	Throwable
+    //   357	146	3	localObject5	Object
+    //   511	21	3	localThrowable3	Throwable
+    //   3	353	4	localObject6	Object
+    //   366	5	4	localObject7	Object
+    //   382	163	4	localObject8	Object
+    //   9	279	5	localStringBuilder1	StringBuilder
+    //   361	1	5	localThrowable4	Throwable
+    //   376	37	5	localThrowable5	Throwable
+    //   6	427	6	localStringBuilder2	StringBuilder
+    //   23	181	7	localStringBuilder3	StringBuilder
+    //   149	43	8	localStringBuilder4	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   200	206	217	java/lang/Throwable
-    //   2	126	247	java/lang/Throwable
-    //   291	297	299	java/lang/Throwable
-    //   2	126	329	finally
-    //   334	340	342	java/lang/Throwable
-    //   135	141	373	finally
-    //   144	159	373	finally
-    //   166	173	373	finally
-    //   176	193	373	finally
-    //   256	284	373	finally
-    //   135	141	380	java/lang/Throwable
-    //   144	159	387	java/lang/Throwable
-    //   166	173	387	java/lang/Throwable
-    //   176	193	387	java/lang/Throwable
+    //   302	309	311	java/lang/Throwable
+    //   221	228	354	finally
+    //   230	239	354	finally
+    //   241	250	354	finally
+    //   256	263	354	finally
+    //   268	275	354	finally
+    //   277	285	354	finally
+    //   287	295	354	finally
+    //   221	228	361	java/lang/Throwable
+    //   230	239	361	java/lang/Throwable
+    //   241	250	361	java/lang/Throwable
+    //   256	263	361	java/lang/Throwable
+    //   268	275	361	java/lang/Throwable
+    //   277	285	361	java/lang/Throwable
+    //   287	295	361	java/lang/Throwable
+    //   14	25	366	finally
+    //   28	37	366	finally
+    //   40	49	366	finally
+    //   52	61	366	finally
+    //   64	72	366	finally
+    //   75	84	366	finally
+    //   87	94	366	finally
+    //   97	106	366	finally
+    //   109	117	366	finally
+    //   120	129	366	finally
+    //   132	139	366	finally
+    //   142	151	366	finally
+    //   154	163	366	finally
+    //   166	177	366	finally
+    //   180	188	366	finally
+    //   191	199	366	finally
+    //   202	213	366	finally
+    //   387	396	366	finally
+    //   399	407	366	finally
+    //   410	418	366	finally
+    //   421	429	366	finally
+    //   432	440	366	finally
+    //   14	25	376	java/lang/Throwable
+    //   28	37	376	java/lang/Throwable
+    //   40	49	376	java/lang/Throwable
+    //   52	61	376	java/lang/Throwable
+    //   64	72	376	java/lang/Throwable
+    //   75	84	376	java/lang/Throwable
+    //   87	94	376	java/lang/Throwable
+    //   97	106	376	java/lang/Throwable
+    //   109	117	376	java/lang/Throwable
+    //   120	129	376	java/lang/Throwable
+    //   132	139	376	java/lang/Throwable
+    //   142	151	376	java/lang/Throwable
+    //   154	163	376	java/lang/Throwable
+    //   166	177	376	java/lang/Throwable
+    //   180	188	376	java/lang/Throwable
+    //   191	199	376	java/lang/Throwable
+    //   202	213	376	java/lang/Throwable
+    //   445	452	455	java/lang/Throwable
+    //   502	508	511	java/lang/Throwable
   }
   
   public void d(br parambr)
   {
-    bo.k("updateDataItem:[" + parambr + "]");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateDataItem:[");
+    ((StringBuilder)localObject).append(parambr);
+    ((StringBuilder)localObject).append("]");
+    bo.k(((StringBuilder)localObject).toString());
     try
     {
-      update("r_tb", f(parambr), "a=" + parambr.gz.gH, null);
+      localObject = f(parambr);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("a=");
+      localStringBuilder.append(parambr.gz.gH);
+      update("r_tb", (ContentValues)localObject, localStringBuilder.toString(), null);
       return;
     }
     catch (Throwable parambr)
     {
-      bo.k("e:[" + parambr + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("e:[");
+      ((StringBuilder)localObject).append(parambr);
+      ((StringBuilder)localObject).append("]");
+      bo.k(((StringBuilder)localObject).toString());
     }
   }
   
   public void e(br parambr)
   {
-    bo.k("insertDataItem:[" + parambr + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("insertDataItem:[");
+    localStringBuilder.append(parambr);
+    localStringBuilder.append("]");
+    bo.k(localStringBuilder.toString());
     try
     {
       a("r_tb", f(parambr));
@@ -963,7 +1401,11 @@ public class bs
     }
     catch (Throwable parambr)
     {
-      bo.k("e:[" + parambr + "]");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("e:[");
+      localStringBuilder.append(parambr);
+      localStringBuilder.append("]");
+      bo.k(localStringBuilder.toString());
     }
   }
   
@@ -971,177 +1413,289 @@ public class bs
   public int getCount()
   {
     // Byte code:
-    //   0: new 199	java/lang/StringBuilder
-    //   3: dup
-    //   4: bipush 120
-    //   6: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
-    //   9: astore_3
-    //   10: aload_3
-    //   11: ldc_w 354
-    //   14: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: pop
-    //   18: aload_3
-    //   19: ldc_w 303
-    //   22: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: pop
-    //   26: aload_0
-    //   27: aload_3
-    //   28: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   31: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
-    //   34: astore_3
-    //   35: aload_3
-    //   36: ifnull +251 -> 287
-    //   39: aload_3
-    //   40: astore 4
-    //   42: aload_3
-    //   43: invokeinterface 197 1 0
-    //   48: ifeq +239 -> 287
-    //   51: aload_3
-    //   52: astore 4
-    //   54: aload_3
-    //   55: iconst_0
-    //   56: invokeinterface 115 2 0
-    //   61: istore_1
-    //   62: aload_3
-    //   63: astore 4
-    //   65: new 199	java/lang/StringBuilder
-    //   68: dup
-    //   69: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   72: ldc_w 356
-    //   75: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: iload_1
-    //   79: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   82: ldc 211
-    //   84: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   0: iconst_0
+    //   1: istore 4
+    //   3: iconst_0
+    //   4: istore_3
+    //   5: aconst_null
+    //   6: astore 8
+    //   8: aconst_null
+    //   9: astore 7
+    //   11: aload 7
+    //   13: astore 5
+    //   15: iload 4
+    //   17: istore_2
+    //   18: aload 8
+    //   20: astore 6
+    //   22: new 199	java/lang/StringBuilder
+    //   25: dup
+    //   26: bipush 120
+    //   28: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
+    //   31: astore 9
+    //   33: aload 7
+    //   35: astore 5
+    //   37: iload 4
+    //   39: istore_2
+    //   40: aload 8
+    //   42: astore 6
+    //   44: aload 9
+    //   46: ldc_w 354
+    //   49: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: pop
+    //   53: aload 7
+    //   55: astore 5
+    //   57: iload 4
+    //   59: istore_2
+    //   60: aload 8
+    //   62: astore 6
+    //   64: aload 9
+    //   66: ldc_w 303
+    //   69: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: pop
+    //   73: aload 7
+    //   75: astore 5
+    //   77: iload 4
+    //   79: istore_2
+    //   80: aload 8
+    //   82: astore 6
+    //   84: aload_0
+    //   85: aload 9
     //   87: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   90: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   93: iload_1
-    //   94: istore_2
-    //   95: aload_3
-    //   96: ifnull +11 -> 107
-    //   99: aload_3
-    //   100: invokeinterface 326 1 0
-    //   105: iload_1
-    //   106: istore_2
-    //   107: iload_2
-    //   108: ireturn
-    //   109: astore_3
-    //   110: new 199	java/lang/StringBuilder
-    //   113: dup
-    //   114: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   117: ldc 202
-    //   119: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: aload_3
-    //   123: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   126: ldc 211
-    //   128: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   137: iload_1
-    //   138: ireturn
-    //   139: astore 5
-    //   141: aconst_null
-    //   142: astore_3
-    //   143: iconst_0
+    //   90: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
+    //   93: astore 7
+    //   95: iload_3
+    //   96: istore_1
+    //   97: aload 7
+    //   99: ifnull +46 -> 145
+    //   102: iload_3
+    //   103: istore_1
+    //   104: aload 7
+    //   106: astore 5
+    //   108: iload 4
+    //   110: istore_2
+    //   111: aload 7
+    //   113: astore 6
+    //   115: aload 7
+    //   117: invokeinterface 197 1 0
+    //   122: ifeq +23 -> 145
+    //   125: aload 7
+    //   127: astore 5
+    //   129: iload 4
+    //   131: istore_2
+    //   132: aload 7
+    //   134: astore 6
+    //   136: aload 7
+    //   138: iconst_0
+    //   139: invokeinterface 115 2 0
     //   144: istore_1
-    //   145: aload_3
-    //   146: astore 4
-    //   148: new 199	java/lang/StringBuilder
-    //   151: dup
-    //   152: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   155: ldc 202
-    //   157: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: aload 5
-    //   162: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   165: ldc 211
-    //   167: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   173: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   176: iload_1
-    //   177: istore_2
-    //   178: aload_3
-    //   179: ifnull -72 -> 107
-    //   182: aload_3
-    //   183: invokeinterface 326 1 0
-    //   188: iload_1
-    //   189: ireturn
-    //   190: astore_3
-    //   191: new 199	java/lang/StringBuilder
-    //   194: dup
-    //   195: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   198: ldc 202
-    //   200: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   203: aload_3
-    //   204: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   207: ldc 211
-    //   209: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   212: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   215: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   218: iload_1
-    //   219: ireturn
-    //   220: astore_3
-    //   221: aconst_null
-    //   222: astore 4
-    //   224: aload 4
-    //   226: ifnull +10 -> 236
-    //   229: aload 4
-    //   231: invokeinterface 326 1 0
-    //   236: aload_3
-    //   237: athrow
-    //   238: astore 4
-    //   240: new 199	java/lang/StringBuilder
-    //   243: dup
-    //   244: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   247: ldc 202
-    //   249: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   252: aload 4
-    //   254: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   257: ldc 211
-    //   259: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   262: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   265: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   268: goto -32 -> 236
-    //   271: astore_3
-    //   272: goto -48 -> 224
-    //   275: astore 5
-    //   277: iconst_0
-    //   278: istore_1
-    //   279: goto -134 -> 145
-    //   282: astore 5
-    //   284: goto -139 -> 145
-    //   287: iconst_0
-    //   288: istore_1
-    //   289: goto -227 -> 62
+    //   145: aload 7
+    //   147: astore 5
+    //   149: iload_1
+    //   150: istore_2
+    //   151: aload 7
+    //   153: astore 6
+    //   155: new 199	java/lang/StringBuilder
+    //   158: dup
+    //   159: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   162: astore 8
+    //   164: aload 7
+    //   166: astore 5
+    //   168: iload_1
+    //   169: istore_2
+    //   170: aload 7
+    //   172: astore 6
+    //   174: aload 8
+    //   176: ldc_w 356
+    //   179: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: pop
+    //   183: aload 7
+    //   185: astore 5
+    //   187: iload_1
+    //   188: istore_2
+    //   189: aload 7
+    //   191: astore 6
+    //   193: aload 8
+    //   195: iload_1
+    //   196: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   199: pop
+    //   200: aload 7
+    //   202: astore 5
+    //   204: iload_1
+    //   205: istore_2
+    //   206: aload 7
+    //   208: astore 6
+    //   210: aload 8
+    //   212: ldc 211
+    //   214: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: pop
+    //   218: aload 7
+    //   220: astore 5
+    //   222: iload_1
+    //   223: istore_2
+    //   224: aload 7
+    //   226: astore 6
+    //   228: aload 8
+    //   230: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   233: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   236: iload_1
+    //   237: istore_3
+    //   238: aload 7
+    //   240: ifnull +157 -> 397
+    //   243: aload 7
+    //   245: invokeinterface 326 1 0
+    //   250: iload_1
+    //   251: ireturn
+    //   252: astore 5
+    //   254: new 199	java/lang/StringBuilder
+    //   257: dup
+    //   258: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   261: astore 6
+    //   263: aload 6
+    //   265: ldc 202
+    //   267: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   270: pop
+    //   271: aload 6
+    //   273: aload 5
+    //   275: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   278: pop
+    //   279: aload 6
+    //   281: ldc 211
+    //   283: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   286: pop
+    //   287: aload 6
+    //   289: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   292: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   295: iload_1
+    //   296: ireturn
+    //   297: astore 6
+    //   299: goto +100 -> 399
+    //   302: astore 7
+    //   304: aload 6
+    //   306: astore 5
+    //   308: new 199	java/lang/StringBuilder
+    //   311: dup
+    //   312: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   315: astore 8
+    //   317: aload 6
+    //   319: astore 5
+    //   321: aload 8
+    //   323: ldc 202
+    //   325: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   328: pop
+    //   329: aload 6
+    //   331: astore 5
+    //   333: aload 8
+    //   335: aload 7
+    //   337: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   340: pop
+    //   341: aload 6
+    //   343: astore 5
+    //   345: aload 8
+    //   347: ldc 211
+    //   349: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   352: pop
+    //   353: aload 6
+    //   355: astore 5
+    //   357: aload 8
+    //   359: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   362: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   365: iload_2
+    //   366: istore_3
+    //   367: aload 6
+    //   369: ifnull +28 -> 397
+    //   372: aload 6
+    //   374: invokeinterface 326 1 0
+    //   379: iload_2
+    //   380: ireturn
+    //   381: astore 5
+    //   383: new 199	java/lang/StringBuilder
+    //   386: dup
+    //   387: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   390: astore 6
+    //   392: iload_2
+    //   393: istore_1
+    //   394: goto -131 -> 263
+    //   397: iload_3
+    //   398: ireturn
+    //   399: aload 5
+    //   401: ifnull +56 -> 457
+    //   404: aload 5
+    //   406: invokeinterface 326 1 0
+    //   411: goto +46 -> 457
+    //   414: astore 5
+    //   416: new 199	java/lang/StringBuilder
+    //   419: dup
+    //   420: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   423: astore 7
+    //   425: aload 7
+    //   427: ldc 202
+    //   429: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   432: pop
+    //   433: aload 7
+    //   435: aload 5
+    //   437: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   440: pop
+    //   441: aload 7
+    //   443: ldc 211
+    //   445: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   448: pop
+    //   449: aload 7
+    //   451: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   454: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   457: aload 6
+    //   459: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	292	0	this	bs
-    //   61	228	1	i	int
-    //   94	84	2	j	int
-    //   9	91	3	localObject1	Object
-    //   109	14	3	localThrowable1	Throwable
-    //   142	41	3	localObject2	Object
-    //   190	14	3	localThrowable2	Throwable
-    //   220	17	3	localObject3	Object
-    //   271	1	3	localObject4	Object
-    //   40	190	4	localObject5	Object
-    //   238	15	4	localThrowable3	Throwable
-    //   139	22	5	localThrowable4	Throwable
-    //   275	1	5	localThrowable5	Throwable
-    //   282	1	5	localThrowable6	Throwable
+    //   0	460	0	this	bs
+    //   96	298	1	i	int
+    //   17	376	2	j	int
+    //   4	394	3	k	int
+    //   1	129	4	m	int
+    //   13	208	5	localCursor1	Cursor
+    //   252	22	5	localThrowable1	Throwable
+    //   306	50	5	localObject1	Object
+    //   381	24	5	localThrowable2	Throwable
+    //   414	22	5	localThrowable3	Throwable
+    //   20	268	6	localObject2	Object
+    //   297	76	6	localObject3	Object
+    //   390	68	6	localStringBuilder1	StringBuilder
+    //   9	235	7	localCursor2	Cursor
+    //   302	34	7	localThrowable4	Throwable
+    //   423	27	7	localStringBuilder2	StringBuilder
+    //   6	352	8	localStringBuilder3	StringBuilder
+    //   31	55	9	localStringBuilder4	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   99	105	109	java/lang/Throwable
-    //   0	35	139	java/lang/Throwable
-    //   182	188	190	java/lang/Throwable
-    //   0	35	220	finally
-    //   229	236	238	java/lang/Throwable
-    //   42	51	271	finally
-    //   54	62	271	finally
-    //   65	93	271	finally
-    //   148	176	271	finally
-    //   42	51	275	java/lang/Throwable
-    //   54	62	275	java/lang/Throwable
-    //   65	93	282	java/lang/Throwable
+    //   243	250	252	java/lang/Throwable
+    //   22	33	297	finally
+    //   44	53	297	finally
+    //   64	73	297	finally
+    //   84	95	297	finally
+    //   115	125	297	finally
+    //   136	145	297	finally
+    //   155	164	297	finally
+    //   174	183	297	finally
+    //   193	200	297	finally
+    //   210	218	297	finally
+    //   228	236	297	finally
+    //   308	317	297	finally
+    //   321	329	297	finally
+    //   333	341	297	finally
+    //   345	353	297	finally
+    //   357	365	297	finally
+    //   22	33	302	java/lang/Throwable
+    //   44	53	302	java/lang/Throwable
+    //   64	73	302	java/lang/Throwable
+    //   84	95	302	java/lang/Throwable
+    //   115	125	302	java/lang/Throwable
+    //   136	145	302	java/lang/Throwable
+    //   155	164	302	java/lang/Throwable
+    //   174	183	302	java/lang/Throwable
+    //   193	200	302	java/lang/Throwable
+    //   210	218	302	java/lang/Throwable
+    //   228	236	302	java/lang/Throwable
+    //   372	379	381	java/lang/Throwable
+    //   404	411	414	java/lang/Throwable
   }
   
   /* Error */
@@ -1151,226 +1705,349 @@ public class bs
     //   0: new 199	java/lang/StringBuilder
     //   3: dup
     //   4: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   7: ldc_w 359
-    //   10: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13: iload_1
-    //   14: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   17: ldc 211
-    //   19: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   25: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   28: new 199	java/lang/StringBuilder
-    //   31: dup
-    //   32: bipush 120
-    //   34: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
-    //   37: astore_2
-    //   38: aload_2
-    //   39: ldc_w 301
-    //   42: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: pop
-    //   46: aload_2
-    //   47: ldc_w 303
-    //   50: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: pop
-    //   54: aload_2
-    //   55: ldc_w 305
-    //   58: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: pop
-    //   62: aload_2
-    //   63: ldc 107
-    //   65: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   68: pop
-    //   69: aload_2
-    //   70: ldc_w 307
-    //   73: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: pop
-    //   77: aload_2
-    //   78: iload_1
-    //   79: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   82: pop
-    //   83: aload_0
-    //   84: aload_2
-    //   85: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   88: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
-    //   91: astore_3
-    //   92: aload_3
-    //   93: ifnull +269 -> 362
-    //   96: aload_3
-    //   97: astore 4
-    //   99: aload_0
-    //   100: aload_3
-    //   101: invokespecial 323	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
-    //   104: astore_2
-    //   105: aload_2
-    //   106: ifnull +256 -> 362
-    //   109: aload_3
-    //   110: astore 4
-    //   112: aload_2
-    //   113: invokeinterface 221 1 0
-    //   118: ifle +244 -> 362
-    //   121: aload_3
-    //   122: astore 4
-    //   124: aload_2
-    //   125: iconst_0
-    //   126: invokeinterface 363 2 0
-    //   131: checkcast 98	btmsdkobf/br
-    //   134: astore_2
-    //   135: aload_3
-    //   136: astore 4
-    //   138: new 199	java/lang/StringBuilder
-    //   141: dup
-    //   142: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   145: ldc_w 365
-    //   148: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   151: aload_2
-    //   152: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   155: ldc 211
-    //   157: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   163: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   166: aload_2
-    //   167: astore 4
-    //   169: aload_3
-    //   170: ifnull +12 -> 182
-    //   173: aload_3
-    //   174: invokeinterface 326 1 0
-    //   179: aload_2
-    //   180: astore 4
-    //   182: aload 4
-    //   184: areturn
-    //   185: astore_3
-    //   186: new 199	java/lang/StringBuilder
-    //   189: dup
-    //   190: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   193: ldc 202
-    //   195: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: aload_3
-    //   199: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   202: ldc 211
-    //   204: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   207: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   210: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   213: aload_2
-    //   214: areturn
-    //   215: astore 5
-    //   217: aconst_null
-    //   218: astore_3
-    //   219: aconst_null
-    //   220: astore_2
-    //   221: aload_3
-    //   222: astore 4
-    //   224: new 199	java/lang/StringBuilder
-    //   227: dup
-    //   228: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   231: ldc 202
-    //   233: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   236: aload 5
-    //   238: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   241: ldc 211
-    //   243: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   246: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   249: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   252: aload_2
-    //   253: astore 4
-    //   255: aload_3
-    //   256: ifnull -74 -> 182
-    //   259: aload_3
+    //   7: astore_2
+    //   8: aload_2
+    //   9: ldc_w 359
+    //   12: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: pop
+    //   16: aload_2
+    //   17: iload_1
+    //   18: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   21: pop
+    //   22: aload_2
+    //   23: ldc 211
+    //   25: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: pop
+    //   29: aload_2
+    //   30: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   36: aconst_null
+    //   37: astore 6
+    //   39: aconst_null
+    //   40: astore 4
+    //   42: aconst_null
+    //   43: astore_3
+    //   44: aconst_null
+    //   45: astore 5
+    //   47: aload 4
+    //   49: astore_2
+    //   50: new 199	java/lang/StringBuilder
+    //   53: dup
+    //   54: bipush 120
+    //   56: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
+    //   59: astore 7
+    //   61: aload 4
+    //   63: astore_2
+    //   64: aload 7
+    //   66: ldc_w 301
+    //   69: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: pop
+    //   73: aload 4
+    //   75: astore_2
+    //   76: aload 7
+    //   78: ldc_w 303
+    //   81: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: pop
+    //   85: aload 4
+    //   87: astore_2
+    //   88: aload 7
+    //   90: ldc_w 305
+    //   93: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: pop
+    //   97: aload 4
+    //   99: astore_2
+    //   100: aload 7
+    //   102: ldc 107
+    //   104: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: pop
+    //   108: aload 4
+    //   110: astore_2
+    //   111: aload 7
+    //   113: ldc_w 307
+    //   116: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: pop
+    //   120: aload 4
+    //   122: astore_2
+    //   123: aload 7
+    //   125: iload_1
+    //   126: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   129: pop
+    //   130: aload 4
+    //   132: astore_2
+    //   133: aload_0
+    //   134: aload 7
+    //   136: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   139: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
+    //   142: astore 4
+    //   144: aload 5
+    //   146: astore_3
+    //   147: aload 4
+    //   149: ifnull +53 -> 202
+    //   152: aload 6
+    //   154: astore_2
+    //   155: aload_0
+    //   156: aload 4
+    //   158: invokespecial 323	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
+    //   161: astore 7
+    //   163: aload 5
+    //   165: astore_3
+    //   166: aload 7
+    //   168: ifnull +34 -> 202
+    //   171: aload 5
+    //   173: astore_3
+    //   174: aload 6
+    //   176: astore_2
+    //   177: aload 7
+    //   179: invokeinterface 221 1 0
+    //   184: ifle +18 -> 202
+    //   187: aload 6
+    //   189: astore_2
+    //   190: aload 7
+    //   192: iconst_0
+    //   193: invokeinterface 363 2 0
+    //   198: checkcast 98	btmsdkobf/br
+    //   201: astore_3
+    //   202: aload_3
+    //   203: astore_2
+    //   204: new 199	java/lang/StringBuilder
+    //   207: dup
+    //   208: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   211: astore 5
+    //   213: aload_3
+    //   214: astore_2
+    //   215: aload 5
+    //   217: ldc_w 365
+    //   220: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: pop
+    //   224: aload_3
+    //   225: astore_2
+    //   226: aload 5
+    //   228: aload_3
+    //   229: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   232: pop
+    //   233: aload_3
+    //   234: astore_2
+    //   235: aload 5
+    //   237: ldc 211
+    //   239: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: pop
+    //   243: aload_3
+    //   244: astore_2
+    //   245: aload 5
+    //   247: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   250: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   253: aload 4
+    //   255: ifnull +54 -> 309
+    //   258: aload 4
     //   260: invokeinterface 326 1 0
-    //   265: aload_2
-    //   266: areturn
-    //   267: astore_3
-    //   268: new 199	java/lang/StringBuilder
-    //   271: dup
-    //   272: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   275: ldc 202
-    //   277: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   280: aload_3
-    //   281: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   284: ldc 211
-    //   286: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   289: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   292: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   295: aload_2
-    //   296: areturn
-    //   297: astore_2
-    //   298: aconst_null
-    //   299: astore 4
+    //   265: goto +44 -> 309
+    //   268: astore_2
+    //   269: new 199	java/lang/StringBuilder
+    //   272: dup
+    //   273: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   276: astore 4
+    //   278: aload 4
+    //   280: ldc 202
+    //   282: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   285: pop
+    //   286: aload 4
+    //   288: aload_2
+    //   289: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   292: pop
+    //   293: aload 4
+    //   295: ldc 211
+    //   297: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   300: pop
     //   301: aload 4
-    //   303: ifnull +10 -> 313
-    //   306: aload 4
-    //   308: invokeinterface 326 1 0
-    //   313: aload_2
-    //   314: athrow
-    //   315: astore_3
-    //   316: new 199	java/lang/StringBuilder
-    //   319: dup
-    //   320: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   323: ldc 202
-    //   325: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   328: aload_3
-    //   329: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   332: ldc 211
-    //   334: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   337: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   340: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
-    //   343: goto -30 -> 313
-    //   346: astore_2
-    //   347: goto -46 -> 301
-    //   350: astore 5
-    //   352: aconst_null
-    //   353: astore_2
-    //   354: goto -133 -> 221
-    //   357: astore 5
-    //   359: goto -138 -> 221
-    //   362: aconst_null
-    //   363: astore_2
-    //   364: goto -229 -> 135
+    //   303: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   306: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   309: aload_3
+    //   310: areturn
+    //   311: astore_3
+    //   312: aload 4
+    //   314: astore_2
+    //   315: goto +126 -> 441
+    //   318: astore 5
+    //   320: aload 4
+    //   322: astore_3
+    //   323: aload_2
+    //   324: astore 4
+    //   326: goto +12 -> 338
+    //   329: astore_3
+    //   330: goto +111 -> 441
+    //   333: astore 5
+    //   335: aconst_null
+    //   336: astore 4
+    //   338: aload_3
+    //   339: astore_2
+    //   340: new 199	java/lang/StringBuilder
+    //   343: dup
+    //   344: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   347: astore 6
+    //   349: aload_3
+    //   350: astore_2
+    //   351: aload 6
+    //   353: ldc 202
+    //   355: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   358: pop
+    //   359: aload_3
+    //   360: astore_2
+    //   361: aload 6
+    //   363: aload 5
+    //   365: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   368: pop
+    //   369: aload_3
+    //   370: astore_2
+    //   371: aload 6
+    //   373: ldc 211
+    //   375: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   378: pop
+    //   379: aload_3
+    //   380: astore_2
+    //   381: aload 6
+    //   383: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   386: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   389: aload_3
+    //   390: ifnull +48 -> 438
+    //   393: aload_3
+    //   394: invokeinterface 326 1 0
+    //   399: aload 4
+    //   401: areturn
+    //   402: astore_2
+    //   403: new 199	java/lang/StringBuilder
+    //   406: dup
+    //   407: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   410: astore_3
+    //   411: aload_3
+    //   412: ldc 202
+    //   414: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   417: pop
+    //   418: aload_3
+    //   419: aload_2
+    //   420: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   423: pop
+    //   424: aload_3
+    //   425: ldc 211
+    //   427: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   430: pop
+    //   431: aload_3
+    //   432: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   435: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   438: aload 4
+    //   440: areturn
+    //   441: aload_2
+    //   442: ifnull +53 -> 495
+    //   445: aload_2
+    //   446: invokeinterface 326 1 0
+    //   451: goto +44 -> 495
+    //   454: astore_2
+    //   455: new 199	java/lang/StringBuilder
+    //   458: dup
+    //   459: invokespecial 200	java/lang/StringBuilder:<init>	()V
+    //   462: astore 4
+    //   464: aload 4
+    //   466: ldc 202
+    //   468: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   471: pop
+    //   472: aload 4
+    //   474: aload_2
+    //   475: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   478: pop
+    //   479: aload 4
+    //   481: ldc 211
+    //   483: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   486: pop
+    //   487: aload 4
+    //   489: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   492: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   495: aload_3
+    //   496: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	367	0	this	bs
-    //   0	367	1	paramInt	int
-    //   37	259	2	localObject1	Object
-    //   297	17	2	localObject2	Object
-    //   346	1	2	localObject3	Object
-    //   353	11	2	localObject4	Object
-    //   91	83	3	localCursor	Cursor
-    //   185	14	3	localThrowable1	Throwable
-    //   218	42	3	localObject5	Object
-    //   267	14	3	localThrowable2	Throwable
-    //   315	14	3	localThrowable3	Throwable
-    //   97	210	4	localObject6	Object
-    //   215	22	5	localThrowable4	Throwable
-    //   350	1	5	localThrowable5	Throwable
-    //   357	1	5	localThrowable6	Throwable
+    //   0	497	0	this	bs
+    //   0	497	1	paramInt	int
+    //   7	238	2	localObject1	Object
+    //   268	21	2	localThrowable1	Throwable
+    //   314	67	2	localObject2	Object
+    //   402	44	2	localThrowable2	Throwable
+    //   454	21	2	localThrowable3	Throwable
+    //   43	267	3	localObject3	Object
+    //   311	1	3	localObject4	Object
+    //   322	1	3	localObject5	Object
+    //   329	65	3	localObject6	Object
+    //   410	86	3	localStringBuilder1	StringBuilder
+    //   40	448	4	localObject7	Object
+    //   45	201	5	localStringBuilder2	StringBuilder
+    //   318	1	5	localThrowable4	Throwable
+    //   333	31	5	localThrowable5	Throwable
+    //   37	345	6	localStringBuilder3	StringBuilder
+    //   59	132	7	localObject8	Object
     // Exception table:
     //   from	to	target	type
-    //   173	179	185	java/lang/Throwable
-    //   28	92	215	java/lang/Throwable
-    //   259	265	267	java/lang/Throwable
-    //   28	92	297	finally
-    //   306	313	315	java/lang/Throwable
-    //   99	105	346	finally
-    //   112	121	346	finally
-    //   124	135	346	finally
-    //   138	166	346	finally
-    //   224	252	346	finally
-    //   99	105	350	java/lang/Throwable
-    //   112	121	350	java/lang/Throwable
-    //   124	135	350	java/lang/Throwable
-    //   138	166	357	java/lang/Throwable
+    //   258	265	268	java/lang/Throwable
+    //   155	163	311	finally
+    //   177	187	311	finally
+    //   190	202	311	finally
+    //   204	213	311	finally
+    //   215	224	311	finally
+    //   226	233	311	finally
+    //   235	243	311	finally
+    //   245	253	311	finally
+    //   155	163	318	java/lang/Throwable
+    //   177	187	318	java/lang/Throwable
+    //   190	202	318	java/lang/Throwable
+    //   204	213	318	java/lang/Throwable
+    //   215	224	318	java/lang/Throwable
+    //   226	233	318	java/lang/Throwable
+    //   235	243	318	java/lang/Throwable
+    //   245	253	318	java/lang/Throwable
+    //   50	61	329	finally
+    //   64	73	329	finally
+    //   76	85	329	finally
+    //   88	97	329	finally
+    //   100	108	329	finally
+    //   111	120	329	finally
+    //   123	130	329	finally
+    //   133	144	329	finally
+    //   340	349	329	finally
+    //   351	359	329	finally
+    //   361	369	329	finally
+    //   371	379	329	finally
+    //   381	389	329	finally
+    //   50	61	333	java/lang/Throwable
+    //   64	73	333	java/lang/Throwable
+    //   76	85	333	java/lang/Throwable
+    //   88	97	333	java/lang/Throwable
+    //   100	108	333	java/lang/Throwable
+    //   111	120	333	java/lang/Throwable
+    //   123	130	333	java/lang/Throwable
+    //   133	144	333	java/lang/Throwable
+    //   393	399	402	java/lang/Throwable
+    //   445	451	454	java/lang/Throwable
   }
   
   public void j(int paramInt)
   {
-    bo.k("deleteDataItem-id:[" + paramInt + "]");
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("deleteDataItem-id:[");
+    localStringBuilder1.append(paramInt);
+    localStringBuilder1.append("]");
+    bo.k(localStringBuilder1.toString());
     try
     {
-      delete("r_tb", "a=" + paramInt, null);
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("a=");
+      localStringBuilder1.append(paramInt);
+      delete("r_tb", localStringBuilder1.toString(), null);
       return;
     }
     catch (Throwable localThrowable)
     {
-      bo.k("e:[" + localThrowable + "]");
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("e:[");
+      localStringBuilder2.append(localThrowable);
+      localStringBuilder2.append("]");
+      bo.k(localStringBuilder2.toString());
     }
   }
 }

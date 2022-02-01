@@ -16,10 +16,11 @@ class l
       if (localLinkedList != null)
       {
         ??? = localLinkedList.iterator();
-        if (((Iterator)???).hasNext()) {
+        while (((Iterator)???).hasNext()) {
           ((Iterator)???).next();
         }
       }
+      return;
     }
   }
 }

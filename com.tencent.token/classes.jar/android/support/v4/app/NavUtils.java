@@ -43,8 +43,14 @@ public final class NavUtils
     }
     catch (PackageManager.NameNotFoundException paramActivity)
     {
-      Log.e("NavUtils", "getParentActivityIntent: bad parentActivityName '" + (String)localObject + "' in manifest");
+      label67:
+      break label67;
     }
+    paramActivity = new StringBuilder();
+    paramActivity.append("getParentActivityIntent: bad parentActivityName '");
+    paramActivity.append((String)localObject);
+    paramActivity.append("' in manifest");
+    Log.e("NavUtils", paramActivity.toString());
     return null;
   }
   
@@ -93,34 +99,47 @@ public final class NavUtils
   @Nullable
   public static String getParentActivityName(@NonNull Context paramContext, @NonNull ComponentName paramComponentName)
   {
-    Object localObject = paramContext.getPackageManager().getActivityInfo(paramComponentName, 128);
+    paramComponentName = paramContext.getPackageManager().getActivityInfo(paramComponentName, 128);
     if (Build.VERSION.SDK_INT >= 16)
     {
-      paramComponentName = ((ActivityInfo)localObject).parentActivityName;
-      if (paramComponentName == null) {}
+      str = paramComponentName.parentActivityName;
+      if (str != null) {
+        return str;
+      }
     }
-    do
+    if (paramComponentName.metaData == null) {
+      return null;
+    }
+    String str = paramComponentName.metaData.getString("android.support.PARENT_ACTIVITY");
+    if (str == null) {
+      return null;
+    }
+    paramComponentName = str;
+    if (str.charAt(0) == '.')
     {
-      return paramComponentName;
-      if (((ActivityInfo)localObject).metaData == null) {
-        return null;
-      }
-      localObject = ((ActivityInfo)localObject).metaData.getString("android.support.PARENT_ACTIVITY");
-      if (localObject == null) {
-        return null;
-      }
-      paramComponentName = (ComponentName)localObject;
-    } while (((String)localObject).charAt(0) != '.');
-    return paramContext.getPackageName() + (String)localObject;
+      paramComponentName = new StringBuilder();
+      paramComponentName.append(paramContext.getPackageName());
+      paramComponentName.append(str);
+      paramComponentName = paramComponentName.toString();
+    }
+    return paramComponentName;
   }
   
   public static void navigateUpFromSameTask(@NonNull Activity paramActivity)
   {
-    Intent localIntent = getParentActivityIntent(paramActivity);
-    if (localIntent == null) {
-      throw new IllegalArgumentException("Activity " + paramActivity.getClass().getSimpleName() + " does not have a parent activity name specified." + " (Did you forget to add the android.support.PARENT_ACTIVITY <meta-data> " + " element in your manifest?)");
+    Object localObject = getParentActivityIntent(paramActivity);
+    if (localObject != null)
+    {
+      navigateUpTo(paramActivity, (Intent)localObject);
+      return;
     }
-    navigateUpTo(paramActivity, localIntent);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Activity ");
+    ((StringBuilder)localObject).append(paramActivity.getClass().getSimpleName());
+    ((StringBuilder)localObject).append(" does not have a parent activity name specified.");
+    ((StringBuilder)localObject).append(" (Did you forget to add the android.support.PARENT_ACTIVITY <meta-data> ");
+    ((StringBuilder)localObject).append(" element in your manifest?)");
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
   public static void navigateUpTo(@NonNull Activity paramActivity, @NonNull Intent paramIntent)

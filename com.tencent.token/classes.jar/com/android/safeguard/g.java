@@ -20,7 +20,10 @@ public class g
     this.b = paramContext;
     this.e = new b(paramContext).g();
     this.a = "sensor";
-    this.c = (Long.toString(620365L, 16) + Long.toString(355688L, 16) + Long.toString(3036316L, 16));
+    paramContext = new StringBuilder(String.valueOf(Long.toString(620365L, 16)));
+    paramContext.append(Long.toString(355688L, 16));
+    paramContext.append(Long.toString(3036316L, 16));
+    this.c = paramContext.toString();
   }
   
   public String a()

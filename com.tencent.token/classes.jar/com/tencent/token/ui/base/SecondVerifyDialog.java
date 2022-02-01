@@ -49,30 +49,28 @@ public class SecondVerifyDialog
   
   protected void onCreate(Bundle paramBundle)
   {
-    if ((this.d == null) || ((this.d != null) && (this.d.isFinishing())))
+    Activity localActivity = this.d;
+    if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
     {
-      dismiss();
-      return;
-    }
-    super.onCreate(paramBundle);
-    setContentView(2130968750);
-    paramBundle = getWindow();
-    paramBundle.setBackgroundDrawableResource(2130837730);
-    ((ViewGroup.MarginLayoutParams)findViewById(2131559221).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
-    paramBundle = cw.a();
-    this.b = ((TextView)findViewById(2131559223));
-    if ((paramBundle.b() != null) && (paramBundle.b().length() > 0)) {
-      this.b.setText(paramBundle.b());
-    }
-    for (;;)
-    {
-      this.c = ((TextView)findViewById(2131559224));
+      super.onCreate(paramBundle);
+      setContentView(2131296431);
+      paramBundle = getWindow();
+      paramBundle.setBackgroundDrawableResource(2131099876);
+      ((ViewGroup.MarginLayoutParams)findViewById(2131165960).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
+      paramBundle = cw.a();
+      this.b = ((TextView)findViewById(2131165964));
+      if ((paramBundle.b() != null) && (paramBundle.b().length() > 0)) {
+        this.b.setText(paramBundle.b());
+      } else {
+        this.b.setText(this.d.getResources().getString(2131492985));
+      }
+      this.c = ((TextView)findViewById(2131165962));
       if ((paramBundle.c() != null) && (paramBundle.c().length() > 0)) {
         this.c.setText(paramBundle.c());
       }
-      this.e = ((EditText)findViewById(2131559225));
+      this.e = ((EditText)findViewById(2131165961));
       this.e.clearFocus();
-      this.f = ((Button)findViewById(2131559227));
+      this.f = ((Button)findViewById(2131165959));
       this.f.setText(paramBundle.e());
       this.f.setOnClickListener(new View.OnClickListener()
       {
@@ -90,7 +88,8 @@ public class SecondVerifyDialog
             SecondVerifyDialog.this.a.dismiss();
             SecondVerifyDialog.this.a = null;
           }
-          SecondVerifyDialog.this.a = new ProDialog(SecondVerifyDialog.c(SecondVerifyDialog.this), 2131362182, SecondVerifyDialog.c(SecondVerifyDialog.this).getResources().getString(2131231392));
+          paramAnonymousView = SecondVerifyDialog.this;
+          paramAnonymousView.a = new ProDialog(SecondVerifyDialog.c(paramAnonymousView), 2131558791, SecondVerifyDialog.c(SecondVerifyDialog.this).getResources().getString(2131493534));
           SecondVerifyDialog.this.a.show();
           new UserTask()
           {
@@ -116,22 +115,29 @@ public class SecondVerifyDialog
                   paramAnonymous2e.arg1 = SecondVerifyDialog.d(SecondVerifyDialog.this);
                   SecondVerifyDialog.e(SecondVerifyDialog.this).sendMessage(paramAnonymous2e);
                 }
-                return;
               }
-              e.a(SecondVerifyDialog.c(SecondVerifyDialog.this).getResources(), paramAnonymous2e);
-              g.c("perform2ndVerify failed:" + paramAnonymous2e.a + "-" + paramAnonymous2e.b);
-              Toast localToast = new Toast(SecondVerifyDialog.c(SecondVerifyDialog.this));
-              View localView = SecondVerifyDialog.c(SecondVerifyDialog.this).getLayoutInflater().inflate(2130968780, null);
-              localToast.setView(localView);
-              localToast.setDuration(0);
-              localToast.setGravity(17, 0, (int)(40.0F * IndexActivity.S_DENSITY));
-              ((TextView)localView.findViewById(2131558988)).setText(paramAnonymous2e.c);
-              localToast.show();
+              else
+              {
+                e.a(SecondVerifyDialog.c(SecondVerifyDialog.this).getResources(), paramAnonymous2e);
+                Object localObject = new StringBuilder();
+                ((StringBuilder)localObject).append("perform2ndVerify failed:");
+                ((StringBuilder)localObject).append(paramAnonymous2e.a);
+                ((StringBuilder)localObject).append("-");
+                ((StringBuilder)localObject).append(paramAnonymous2e.b);
+                g.c(((StringBuilder)localObject).toString());
+                localObject = new Toast(SecondVerifyDialog.c(SecondVerifyDialog.this));
+                View localView = SecondVerifyDialog.c(SecondVerifyDialog.this).getLayoutInflater().inflate(2131296461, null);
+                ((Toast)localObject).setView(localView);
+                ((Toast)localObject).setDuration(0);
+                ((Toast)localObject).setGravity(17, 0, (int)(IndexActivity.S_DENSITY * 40.0F));
+                ((TextView)localView.findViewById(2131166118)).setText(paramAnonymous2e.c);
+                ((Toast)localObject).show();
+              }
             }
           }.c(new String[] { "" });
         }
       });
-      this.g = ((Button)findViewById(2131559226));
+      this.g = ((Button)findViewById(2131165958));
       this.g.setText(paramBundle.d());
       this.g.setOnClickListener(new View.OnClickListener()
       {
@@ -148,8 +154,8 @@ public class SecondVerifyDialog
         }
       });
       return;
-      this.b.setText(this.d.getResources().getString(2131230843));
     }
+    dismiss();
   }
 }
 

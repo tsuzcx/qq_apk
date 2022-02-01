@@ -26,14 +26,15 @@ public class e
   
   public e(Activity paramActivity)
   {
-    this.b = BitmapFactory.decodeResource(paramActivity.getResources(), 2130837914);
+    this.b = BitmapFactory.decodeResource(paramActivity.getResources(), 2131100062);
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
     this.d = localDisplayMetrics.density;
-    this.f = (286.0F * this.d);
-    this.g = (442.0F * this.d);
+    float f1 = this.d;
+    this.f = (286.0F * f1);
+    this.g = (f1 * 442.0F);
     this.h = (this.f / 100.0F);
-    this.a.setColor(paramActivity.getResources().getColor(2131493007));
+    this.a.setColor(paramActivity.getResources().getColor(2130968740));
     this.a.setAntiAlias(true);
     this.a.setFilterBitmap(true);
   }
@@ -41,19 +42,20 @@ public class e
   public void draw(Canvas paramCanvas)
   {
     this.e %= 100;
-    if (this.e != 99)
+    int i = this.e;
+    if (i != 99)
     {
       float f1 = this.h;
-      float f2 = this.e;
+      float f2 = i;
       paramCanvas.drawBitmap(this.b, 0.0F, f1 * f2, this.a);
     }
-    for (;;)
+    else
     {
-      this.e += 1;
-      invalidateSelf();
-      return;
-      paramCanvas.drawBitmap(this.b, 0.0F, this.f - this.b.getHeight(), this.a);
+      Bitmap localBitmap = this.b;
+      paramCanvas.drawBitmap(localBitmap, 0.0F, this.f - localBitmap.getHeight(), this.a);
     }
+    this.e += 1;
+    invalidateSelf();
   }
   
   public int getOpacity()

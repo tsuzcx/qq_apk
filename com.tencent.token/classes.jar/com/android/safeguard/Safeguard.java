@@ -29,545 +29,598 @@ public class Safeguard
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
+    //   1: astore 5
     //   3: aconst_null
-    //   4: astore_1
-    //   5: aload_1
-    //   6: astore_2
-    //   7: aload 4
-    //   9: astore_3
-    //   10: invokestatic 43	com/android/safeguard/j:e	()Z
-    //   13: ifeq +5 -> 18
-    //   16: aconst_null
-    //   17: areturn
-    //   18: aload_1
-    //   19: astore_2
-    //   20: aload 4
-    //   22: astore_3
-    //   23: invokestatic 46	com/android/safeguard/j:d	()V
-    //   26: aload_1
-    //   27: astore_2
-    //   28: aload 4
-    //   30: astore_3
-    //   31: new 30	com/android/safeguard/j
-    //   34: dup
-    //   35: invokespecial 47	com/android/safeguard/j:<init>	()V
-    //   38: astore 9
-    //   40: aload_1
-    //   41: astore_2
-    //   42: aload 4
-    //   44: astore_3
-    //   45: new 49	com/android/safeguard/b
-    //   48: dup
-    //   49: aload_0
-    //   50: getfield 19	com/android/safeguard/Safeguard:c	Landroid/content/Context;
-    //   53: invokespecial 52	com/android/safeguard/b:<init>	(Landroid/content/Context;)V
-    //   56: astore 5
-    //   58: aload_1
-    //   59: astore_2
-    //   60: aload 4
-    //   62: astore_3
-    //   63: new 54	com/android/safeguard/c
-    //   66: dup
-    //   67: aload_0
-    //   68: getfield 19	com/android/safeguard/Safeguard:c	Landroid/content/Context;
-    //   71: invokespecial 55	com/android/safeguard/c:<init>	(Landroid/content/Context;)V
-    //   74: astore 6
-    //   76: aload_1
-    //   77: astore_2
-    //   78: aload 4
-    //   80: astore_3
-    //   81: new 57	com/android/safeguard/a
-    //   84: dup
-    //   85: invokespecial 58	com/android/safeguard/a:<init>	()V
-    //   88: astore 7
-    //   90: aload_1
-    //   91: astore_2
-    //   92: aload 4
-    //   94: astore_3
-    //   95: new 60	com/android/safeguard/g
-    //   98: dup
-    //   99: aload_0
-    //   100: getfield 19	com/android/safeguard/Safeguard:c	Landroid/content/Context;
-    //   103: invokespecial 61	com/android/safeguard/g:<init>	(Landroid/content/Context;)V
-    //   106: astore 8
-    //   108: aload 5
-    //   110: invokevirtual 64	com/android/safeguard/b:a	()Ljava/lang/String;
-    //   113: astore_2
-    //   114: aload 9
-    //   116: aload 7
-    //   118: aload 6
-    //   120: aload_2
-    //   121: invokevirtual 67	com/android/safeguard/c:c	(Ljava/lang/String;)Ljava/lang/String;
-    //   124: invokevirtual 69	com/android/safeguard/a:e	(Ljava/lang/String;)Ljava/lang/String;
-    //   127: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
-    //   130: aload 9
-    //   132: aload 7
-    //   134: aload 6
-    //   136: aload_2
-    //   137: invokevirtual 73	com/android/safeguard/c:e	(Ljava/lang/String;)Ljava/lang/String;
-    //   140: invokevirtual 69	com/android/safeguard/a:e	(Ljava/lang/String;)Ljava/lang/String;
-    //   143: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
-    //   146: aload 9
-    //   148: aload 7
-    //   150: aload 6
-    //   152: aload_2
-    //   153: invokevirtual 76	com/android/safeguard/c:g	(Ljava/lang/String;)Ljava/lang/String;
-    //   156: invokevirtual 69	com/android/safeguard/a:e	(Ljava/lang/String;)Ljava/lang/String;
-    //   159: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
-    //   162: aload 9
-    //   164: aload 7
-    //   166: aload 6
-    //   168: invokevirtual 77	com/android/safeguard/c:a	()Ljava/lang/String;
-    //   171: invokevirtual 69	com/android/safeguard/a:e	(Ljava/lang/String;)Ljava/lang/String;
-    //   174: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
-    //   177: aload 9
-    //   179: aload 7
-    //   181: aload 6
-    //   183: aload_2
-    //   184: invokevirtual 79	com/android/safeguard/c:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   187: invokevirtual 69	com/android/safeguard/a:e	(Ljava/lang/String;)Ljava/lang/String;
-    //   190: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
-    //   193: aload 9
-    //   195: aload 7
-    //   197: aload_2
-    //   198: invokevirtual 81	com/android/safeguard/a:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   201: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
-    //   204: aload 9
-    //   206: aload 7
-    //   208: aload_2
-    //   209: invokevirtual 82	com/android/safeguard/a:c	(Ljava/lang/String;)Ljava/lang/String;
-    //   212: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
-    //   215: aload 9
-    //   217: aload 7
-    //   219: invokestatic 84	com/android/safeguard/j:c	()Ljava/lang/String;
-    //   222: invokevirtual 86	com/android/safeguard/a:d	(Ljava/lang/String;)Ljava/lang/String;
-    //   225: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
-    //   228: aload 9
-    //   230: aload 5
-    //   232: invokevirtual 89	com/android/safeguard/b:m	()Ljava/lang/String;
-    //   235: putfield 92	com/android/safeguard/j:u	Ljava/lang/String;
-    //   238: aload 9
-    //   240: aload 5
+    //   4: astore 6
+    //   6: aconst_null
+    //   7: astore 4
+    //   9: aload 5
+    //   11: astore_2
+    //   12: aload 6
+    //   14: astore_3
+    //   15: invokestatic 43	com/android/safeguard/j:e	()Z
+    //   18: ifeq +5 -> 23
+    //   21: aconst_null
+    //   22: areturn
+    //   23: aload 5
+    //   25: astore_2
+    //   26: aload 6
+    //   28: astore_3
+    //   29: invokestatic 46	com/android/safeguard/j:d	()V
+    //   32: aload 5
+    //   34: astore_2
+    //   35: aload 6
+    //   37: astore_3
+    //   38: new 30	com/android/safeguard/j
+    //   41: dup
+    //   42: invokespecial 47	com/android/safeguard/j:<init>	()V
+    //   45: astore_1
+    //   46: aload 5
+    //   48: astore_2
+    //   49: aload 6
+    //   51: astore_3
+    //   52: new 49	com/android/safeguard/b
+    //   55: dup
+    //   56: aload_0
+    //   57: getfield 19	com/android/safeguard/Safeguard:c	Landroid/content/Context;
+    //   60: invokespecial 52	com/android/safeguard/b:<init>	(Landroid/content/Context;)V
+    //   63: astore 10
+    //   65: aload 5
+    //   67: astore_2
+    //   68: aload 6
+    //   70: astore_3
+    //   71: new 54	com/android/safeguard/c
+    //   74: dup
+    //   75: aload_0
+    //   76: getfield 19	com/android/safeguard/Safeguard:c	Landroid/content/Context;
+    //   79: invokespecial 55	com/android/safeguard/c:<init>	(Landroid/content/Context;)V
+    //   82: astore 7
+    //   84: aload 5
+    //   86: astore_2
+    //   87: aload 6
+    //   89: astore_3
+    //   90: new 57	com/android/safeguard/a
+    //   93: dup
+    //   94: invokespecial 58	com/android/safeguard/a:<init>	()V
+    //   97: astore 8
+    //   99: aload 5
+    //   101: astore_2
+    //   102: aload 6
+    //   104: astore_3
+    //   105: new 60	com/android/safeguard/g
+    //   108: dup
+    //   109: aload_0
+    //   110: getfield 19	com/android/safeguard/Safeguard:c	Landroid/content/Context;
+    //   113: invokespecial 61	com/android/safeguard/g:<init>	(Landroid/content/Context;)V
+    //   116: astore 9
+    //   118: aload 10
+    //   120: invokevirtual 64	com/android/safeguard/b:a	()Ljava/lang/String;
+    //   123: astore_2
+    //   124: aload_1
+    //   125: aload 8
+    //   127: aload 7
+    //   129: aload_2
+    //   130: invokevirtual 67	com/android/safeguard/c:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   133: invokevirtual 69	com/android/safeguard/a:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   136: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
+    //   139: aload_1
+    //   140: aload 8
+    //   142: aload 7
+    //   144: aload_2
+    //   145: invokevirtual 73	com/android/safeguard/c:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   148: invokevirtual 69	com/android/safeguard/a:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   151: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
+    //   154: aload_1
+    //   155: aload 8
+    //   157: aload 7
+    //   159: aload_2
+    //   160: invokevirtual 76	com/android/safeguard/c:g	(Ljava/lang/String;)Ljava/lang/String;
+    //   163: invokevirtual 69	com/android/safeguard/a:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   166: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
+    //   169: aload_1
+    //   170: aload 8
+    //   172: aload 7
+    //   174: invokevirtual 77	com/android/safeguard/c:a	()Ljava/lang/String;
+    //   177: invokevirtual 69	com/android/safeguard/a:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   180: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
+    //   183: aload_1
+    //   184: aload 8
+    //   186: aload 7
+    //   188: aload_2
+    //   189: invokevirtual 79	com/android/safeguard/c:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   192: invokevirtual 69	com/android/safeguard/a:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   195: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
+    //   198: aload_1
+    //   199: aload 8
+    //   201: aload_2
+    //   202: invokevirtual 81	com/android/safeguard/a:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   205: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
+    //   208: aload_1
+    //   209: aload 8
+    //   211: aload_2
+    //   212: invokevirtual 82	com/android/safeguard/a:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   215: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
+    //   218: aload_1
+    //   219: aload 8
+    //   221: invokestatic 84	com/android/safeguard/j:c	()Ljava/lang/String;
+    //   224: invokevirtual 86	com/android/safeguard/a:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   227: invokevirtual 72	com/android/safeguard/j:a	(Ljava/lang/String;)V
+    //   230: aload_1
+    //   231: aload 10
+    //   233: invokevirtual 89	com/android/safeguard/b:m	()Ljava/lang/String;
+    //   236: putfield 92	com/android/safeguard/j:u	Ljava/lang/String;
+    //   239: aload_1
+    //   240: aload 10
     //   242: invokevirtual 95	com/android/safeguard/b:l	()Ljava/lang/String;
     //   245: putfield 98	com/android/safeguard/j:t	Ljava/lang/String;
-    //   248: aload 9
-    //   250: aload 5
-    //   252: invokevirtual 99	com/android/safeguard/b:c	()Ljava/lang/String;
-    //   255: putfield 102	com/android/safeguard/j:k	Ljava/lang/String;
-    //   258: aload 9
-    //   260: aload 5
-    //   262: invokevirtual 105	com/android/safeguard/b:i	()Ljava/lang/String;
-    //   265: putfield 108	com/android/safeguard/j:q	Ljava/lang/String;
-    //   268: aload 9
-    //   270: aload 5
-    //   272: invokevirtual 110	com/android/safeguard/b:k	()Ljava/lang/String;
-    //   275: putfield 113	com/android/safeguard/j:s	Ljava/lang/String;
-    //   278: aload 9
-    //   280: aload 5
-    //   282: invokevirtual 116	com/android/safeguard/b:n	()Ljava/lang/String;
-    //   285: putfield 119	com/android/safeguard/j:v	Ljava/lang/String;
-    //   288: aload 9
-    //   290: aload 5
-    //   292: invokevirtual 122	com/android/safeguard/b:j	()Ljava/lang/String;
-    //   295: putfield 125	com/android/safeguard/j:r	Ljava/lang/String;
-    //   298: aload 9
-    //   300: aload 5
-    //   302: invokevirtual 128	com/android/safeguard/b:o	()Ljava/lang/String;
-    //   305: putfield 131	com/android/safeguard/j:w	Ljava/lang/String;
-    //   308: aload 9
-    //   310: aload 5
-    //   312: invokevirtual 134	com/android/safeguard/b:p	()Ljava/lang/String;
-    //   315: putfield 137	com/android/safeguard/j:x	Ljava/lang/String;
-    //   318: aload 9
-    //   320: aload 5
-    //   322: invokevirtual 140	com/android/safeguard/b:f	()Ljava/lang/String;
-    //   325: putfield 142	com/android/safeguard/j:n	Ljava/lang/String;
-    //   328: aload 9
-    //   330: aload 5
-    //   332: invokevirtual 144	com/android/safeguard/b:b	()Ljava/lang/String;
-    //   335: putfield 146	com/android/safeguard/j:j	Ljava/lang/String;
-    //   338: aload 9
-    //   340: aload 5
-    //   342: invokevirtual 149	com/android/safeguard/b:g	()I
-    //   345: putfield 152	com/android/safeguard/j:o	I
-    //   348: aload 9
-    //   350: aload 5
-    //   352: invokevirtual 154	com/android/safeguard/b:d	()Ljava/lang/String;
-    //   355: putfield 156	com/android/safeguard/j:l	Ljava/lang/String;
-    //   358: aload 9
-    //   360: aload 5
-    //   362: invokevirtual 158	com/android/safeguard/b:q	()Ljava/lang/String;
-    //   365: putfield 161	com/android/safeguard/j:y	Ljava/lang/String;
-    //   368: aload 9
-    //   370: aload 5
-    //   372: invokevirtual 163	com/android/safeguard/b:e	()I
-    //   375: putfield 165	com/android/safeguard/j:m	I
-    //   378: aload 9
-    //   380: aload 5
-    //   382: invokevirtual 168	com/android/safeguard/b:h	()Ljava/lang/String;
-    //   385: putfield 170	com/android/safeguard/j:p	Ljava/lang/String;
-    //   388: aload 9
-    //   390: aload 5
-    //   392: invokevirtual 172	com/android/safeguard/b:r	()Ljava/lang/String;
-    //   395: putfield 175	com/android/safeguard/j:z	Ljava/lang/String;
-    //   398: aload 9
-    //   400: aload 5
-    //   402: invokevirtual 177	com/android/safeguard/b:s	()Ljava/lang/String;
-    //   405: putfield 180	com/android/safeguard/j:A	Ljava/lang/String;
-    //   408: aload 9
-    //   410: aload 8
-    //   412: invokevirtual 181	com/android/safeguard/g:b	()Ljava/lang/String;
-    //   415: putfield 183	com/android/safeguard/j:g	Ljava/lang/String;
-    //   418: aload 9
-    //   420: aload 8
-    //   422: invokevirtual 184	com/android/safeguard/g:d	()Ljava/lang/String;
-    //   425: putfield 186	com/android/safeguard/j:i	Ljava/lang/String;
-    //   428: aload 9
+    //   248: aload_1
+    //   249: aload 10
+    //   251: invokevirtual 99	com/android/safeguard/b:c	()Ljava/lang/String;
+    //   254: putfield 102	com/android/safeguard/j:k	Ljava/lang/String;
+    //   257: aload_1
+    //   258: aload 10
+    //   260: invokevirtual 105	com/android/safeguard/b:i	()Ljava/lang/String;
+    //   263: putfield 108	com/android/safeguard/j:q	Ljava/lang/String;
+    //   266: aload_1
+    //   267: aload 10
+    //   269: invokevirtual 110	com/android/safeguard/b:k	()Ljava/lang/String;
+    //   272: putfield 113	com/android/safeguard/j:s	Ljava/lang/String;
+    //   275: aload_1
+    //   276: aload 10
+    //   278: invokevirtual 116	com/android/safeguard/b:n	()Ljava/lang/String;
+    //   281: putfield 119	com/android/safeguard/j:v	Ljava/lang/String;
+    //   284: aload_1
+    //   285: aload 10
+    //   287: invokevirtual 122	com/android/safeguard/b:j	()Ljava/lang/String;
+    //   290: putfield 125	com/android/safeguard/j:r	Ljava/lang/String;
+    //   293: aload_1
+    //   294: aload 10
+    //   296: invokevirtual 128	com/android/safeguard/b:o	()Ljava/lang/String;
+    //   299: putfield 131	com/android/safeguard/j:w	Ljava/lang/String;
+    //   302: aload_1
+    //   303: aload 10
+    //   305: invokevirtual 134	com/android/safeguard/b:p	()Ljava/lang/String;
+    //   308: putfield 137	com/android/safeguard/j:x	Ljava/lang/String;
+    //   311: aload_1
+    //   312: aload 10
+    //   314: invokevirtual 140	com/android/safeguard/b:f	()Ljava/lang/String;
+    //   317: putfield 142	com/android/safeguard/j:n	Ljava/lang/String;
+    //   320: aload_1
+    //   321: aload 10
+    //   323: invokevirtual 144	com/android/safeguard/b:b	()Ljava/lang/String;
+    //   326: putfield 146	com/android/safeguard/j:j	Ljava/lang/String;
+    //   329: aload_1
+    //   330: aload 10
+    //   332: invokevirtual 149	com/android/safeguard/b:g	()I
+    //   335: putfield 152	com/android/safeguard/j:o	I
+    //   338: aload_1
+    //   339: aload 10
+    //   341: invokevirtual 154	com/android/safeguard/b:d	()Ljava/lang/String;
+    //   344: putfield 156	com/android/safeguard/j:l	Ljava/lang/String;
+    //   347: aload_1
+    //   348: aload 10
+    //   350: invokevirtual 158	com/android/safeguard/b:q	()Ljava/lang/String;
+    //   353: putfield 161	com/android/safeguard/j:y	Ljava/lang/String;
+    //   356: aload_1
+    //   357: aload 10
+    //   359: invokevirtual 163	com/android/safeguard/b:e	()I
+    //   362: putfield 165	com/android/safeguard/j:m	I
+    //   365: aload_1
+    //   366: aload 10
+    //   368: invokevirtual 168	com/android/safeguard/b:h	()Ljava/lang/String;
+    //   371: putfield 170	com/android/safeguard/j:p	Ljava/lang/String;
+    //   374: aload_1
+    //   375: aload 10
+    //   377: invokevirtual 172	com/android/safeguard/b:r	()Ljava/lang/String;
+    //   380: putfield 175	com/android/safeguard/j:z	Ljava/lang/String;
+    //   383: aload_1
+    //   384: aload 10
+    //   386: invokevirtual 177	com/android/safeguard/b:s	()Ljava/lang/String;
+    //   389: putfield 180	com/android/safeguard/j:A	Ljava/lang/String;
+    //   392: aload_1
+    //   393: aload 9
+    //   395: invokevirtual 181	com/android/safeguard/g:b	()Ljava/lang/String;
+    //   398: putfield 183	com/android/safeguard/j:g	Ljava/lang/String;
+    //   401: aload_1
+    //   402: aload 9
+    //   404: invokevirtual 184	com/android/safeguard/g:d	()Ljava/lang/String;
+    //   407: putfield 186	com/android/safeguard/j:i	Ljava/lang/String;
+    //   410: aload_1
+    //   411: aload 9
+    //   413: invokevirtual 187	com/android/safeguard/g:a	()Ljava/lang/String;
+    //   416: putfield 189	com/android/safeguard/j:f	Ljava/lang/String;
+    //   419: aload_1
+    //   420: aload 9
+    //   422: invokevirtual 190	com/android/safeguard/g:c	()Ljava/lang/String;
+    //   425: putfield 192	com/android/safeguard/j:h	Ljava/lang/String;
+    //   428: aload 8
     //   430: aload 8
-    //   432: invokevirtual 187	com/android/safeguard/g:a	()Ljava/lang/String;
-    //   435: putfield 189	com/android/safeguard/j:f	Ljava/lang/String;
-    //   438: aload 9
-    //   440: aload 8
-    //   442: invokevirtual 190	com/android/safeguard/g:c	()Ljava/lang/String;
-    //   445: putfield 192	com/android/safeguard/j:h	Ljava/lang/String;
-    //   448: aload 7
-    //   450: aload 7
-    //   452: aload 9
-    //   454: invokevirtual 194	com/android/safeguard/j:b	()[B
-    //   457: invokevirtual 197	com/android/safeguard/a:b	([B)[B
-    //   460: invokevirtual 199	com/android/safeguard/a:c	([B)[B
-    //   463: astore_2
-    //   464: aload_2
-    //   465: astore_1
+    //   432: aload_1
+    //   433: invokevirtual 194	com/android/safeguard/j:b	()[B
+    //   436: invokevirtual 197	com/android/safeguard/a:b	([B)[B
+    //   439: invokevirtual 199	com/android/safeguard/a:c	([B)[B
+    //   442: astore_1
+    //   443: aload_1
+    //   444: astore_2
+    //   445: aload_1
+    //   446: astore_3
+    //   447: new 201	java/lang/StringBuilder
+    //   450: dup
+    //   451: aload 10
+    //   453: invokevirtual 203	com/android/safeguard/b:t	()Ljava/lang/String;
+    //   456: invokestatic 209	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   459: invokespecial 211	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   462: astore 4
+    //   464: aload_1
+    //   465: astore_2
     //   466: aload_1
-    //   467: astore_2
-    //   468: aload_1
-    //   469: astore_3
-    //   470: aload_0
-    //   471: new 201	java/lang/StringBuilder
-    //   474: dup
-    //   475: aload 5
-    //   477: invokevirtual 203	com/android/safeguard/b:t	()Ljava/lang/String;
-    //   480: invokestatic 209	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   483: invokespecial 211	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   486: aload 6
-    //   488: invokevirtual 212	com/android/safeguard/c:t	()Ljava/lang/String;
-    //   491: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   494: aload 7
-    //   496: invokevirtual 217	com/android/safeguard/a:t	()Ljava/lang/String;
-    //   499: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   502: aload 8
-    //   504: invokevirtual 218	com/android/safeguard/g:t	()Ljava/lang/String;
-    //   507: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   510: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   513: invokevirtual 223	com/android/safeguard/Safeguard:i	(Ljava/lang/String;)V
-    //   516: aload_1
-    //   517: areturn
-    //   518: astore_1
-    //   519: aload_0
+    //   467: astore_3
+    //   468: aload 4
+    //   470: aload 7
+    //   472: invokevirtual 212	com/android/safeguard/c:t	()Ljava/lang/String;
+    //   475: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   478: pop
+    //   479: aload_1
+    //   480: astore_2
+    //   481: aload_1
+    //   482: astore_3
+    //   483: aload 4
+    //   485: aload 8
+    //   487: invokevirtual 217	com/android/safeguard/a:t	()Ljava/lang/String;
+    //   490: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   493: pop
+    //   494: aload_1
+    //   495: astore_2
+    //   496: aload_1
+    //   497: astore_3
+    //   498: aload 4
+    //   500: aload 9
+    //   502: invokevirtual 218	com/android/safeguard/g:t	()Ljava/lang/String;
+    //   505: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   508: pop
+    //   509: aload_1
+    //   510: astore_2
+    //   511: aload_1
+    //   512: astore_3
+    //   513: aload 4
+    //   515: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   518: astore 4
     //   520: aload_1
-    //   521: invokevirtual 226	com/android/safeguard/Safeguard:a	(Ljava/lang/Exception;)V
-    //   524: aload_2
-    //   525: areturn
-    //   526: astore_2
-    //   527: aload_0
-    //   528: aload_2
-    //   529: invokevirtual 226	com/android/safeguard/Safeguard:a	(Ljava/lang/Exception;)V
-    //   532: aload_1
-    //   533: astore_2
-    //   534: aload 4
-    //   536: astore_3
+    //   521: astore_2
+    //   522: aload_1
+    //   523: astore_3
+    //   524: aload_0
+    //   525: aload 4
+    //   527: invokevirtual 223	com/android/safeguard/Safeguard:i	(Ljava/lang/String;)V
+    //   530: aload_1
+    //   531: areturn
+    //   532: astore_1
+    //   533: goto +199 -> 732
+    //   536: astore_1
     //   537: aload_0
-    //   538: new 201	java/lang/StringBuilder
-    //   541: dup
+    //   538: aload_1
+    //   539: invokevirtual 35	com/android/safeguard/Safeguard:a	(Ljava/lang/Throwable;)V
     //   542: aload 5
-    //   544: invokevirtual 203	com/android/safeguard/b:t	()Ljava/lang/String;
-    //   547: invokestatic 209	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   550: invokespecial 211	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   553: aload 6
-    //   555: invokevirtual 212	com/android/safeguard/c:t	()Ljava/lang/String;
-    //   558: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   561: aload 7
-    //   563: invokevirtual 217	com/android/safeguard/a:t	()Ljava/lang/String;
-    //   566: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   569: aload 8
-    //   571: invokevirtual 218	com/android/safeguard/g:t	()Ljava/lang/String;
-    //   574: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   577: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   580: invokevirtual 223	com/android/safeguard/Safeguard:i	(Ljava/lang/String;)V
-    //   583: aconst_null
-    //   584: areturn
-    //   585: astore_1
-    //   586: aload_0
-    //   587: aload_1
-    //   588: invokevirtual 35	com/android/safeguard/Safeguard:a	(Ljava/lang/Throwable;)V
-    //   591: aload_3
-    //   592: areturn
-    //   593: astore_2
-    //   594: aload_0
-    //   595: aload_2
-    //   596: invokevirtual 35	com/android/safeguard/Safeguard:a	(Ljava/lang/Throwable;)V
-    //   599: aload_1
-    //   600: astore_2
-    //   601: aload 4
-    //   603: astore_3
-    //   604: aload_0
-    //   605: new 201	java/lang/StringBuilder
-    //   608: dup
-    //   609: aload 5
-    //   611: invokevirtual 203	com/android/safeguard/b:t	()Ljava/lang/String;
-    //   614: invokestatic 209	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   617: invokespecial 211	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   620: aload 6
-    //   622: invokevirtual 212	com/android/safeguard/c:t	()Ljava/lang/String;
-    //   625: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   628: aload 7
-    //   630: invokevirtual 217	com/android/safeguard/a:t	()Ljava/lang/String;
-    //   633: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   636: aload 8
-    //   638: invokevirtual 218	com/android/safeguard/g:t	()Ljava/lang/String;
-    //   641: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   644: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   647: invokevirtual 223	com/android/safeguard/Safeguard:i	(Ljava/lang/String;)V
-    //   650: aconst_null
-    //   651: areturn
-    //   652: astore 9
-    //   654: aload_1
-    //   655: astore_2
-    //   656: aload 4
-    //   658: astore_3
-    //   659: aload_0
-    //   660: new 201	java/lang/StringBuilder
-    //   663: dup
-    //   664: aload 5
-    //   666: invokevirtual 203	com/android/safeguard/b:t	()Ljava/lang/String;
-    //   669: invokestatic 209	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   672: invokespecial 211	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   675: aload 6
-    //   677: invokevirtual 212	com/android/safeguard/c:t	()Ljava/lang/String;
-    //   680: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   683: aload 7
-    //   685: invokevirtual 217	com/android/safeguard/a:t	()Ljava/lang/String;
-    //   688: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   691: aload 8
-    //   693: invokevirtual 218	com/android/safeguard/g:t	()Ljava/lang/String;
-    //   696: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   699: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   702: invokevirtual 223	com/android/safeguard/Safeguard:i	(Ljava/lang/String;)V
-    //   705: aload_1
-    //   706: astore_2
-    //   707: aload 4
-    //   709: astore_3
-    //   710: aload 9
-    //   712: athrow
+    //   544: astore_2
+    //   545: aload 6
+    //   547: astore_3
+    //   548: new 201	java/lang/StringBuilder
+    //   551: dup
+    //   552: aload 10
+    //   554: invokevirtual 203	com/android/safeguard/b:t	()Ljava/lang/String;
+    //   557: invokestatic 209	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   560: invokespecial 211	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   563: astore_1
+    //   564: aload 5
+    //   566: astore_2
+    //   567: aload 6
+    //   569: astore_3
+    //   570: aload_1
+    //   571: aload 7
+    //   573: invokevirtual 212	com/android/safeguard/c:t	()Ljava/lang/String;
+    //   576: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   579: pop
+    //   580: aload 5
+    //   582: astore_2
+    //   583: aload 6
+    //   585: astore_3
+    //   586: aload_1
+    //   587: aload 8
+    //   589: invokevirtual 217	com/android/safeguard/a:t	()Ljava/lang/String;
+    //   592: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   595: pop
+    //   596: aload 5
+    //   598: astore_2
+    //   599: aload 6
+    //   601: astore_3
+    //   602: aload_1
+    //   603: aload 9
+    //   605: invokevirtual 218	com/android/safeguard/g:t	()Ljava/lang/String;
+    //   608: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   611: pop
+    //   612: aload 5
+    //   614: astore_2
+    //   615: aload 6
+    //   617: astore_3
+    //   618: aload_1
+    //   619: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   622: astore 5
+    //   624: aload 4
+    //   626: astore_1
+    //   627: aload 5
+    //   629: astore 4
+    //   631: goto -111 -> 520
+    //   634: astore_1
+    //   635: aload_0
+    //   636: aload_1
+    //   637: invokevirtual 226	com/android/safeguard/Safeguard:a	(Ljava/lang/Exception;)V
+    //   640: aload 5
+    //   642: astore_2
+    //   643: aload 6
+    //   645: astore_3
+    //   646: new 201	java/lang/StringBuilder
+    //   649: dup
+    //   650: aload 10
+    //   652: invokevirtual 203	com/android/safeguard/b:t	()Ljava/lang/String;
+    //   655: invokestatic 209	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   658: invokespecial 211	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   661: astore_1
+    //   662: aload 5
+    //   664: astore_2
+    //   665: aload 6
+    //   667: astore_3
+    //   668: aload_1
+    //   669: aload 7
+    //   671: invokevirtual 212	com/android/safeguard/c:t	()Ljava/lang/String;
+    //   674: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   677: pop
+    //   678: aload 5
+    //   680: astore_2
+    //   681: aload 6
+    //   683: astore_3
+    //   684: aload_1
+    //   685: aload 8
+    //   687: invokevirtual 217	com/android/safeguard/a:t	()Ljava/lang/String;
+    //   690: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   693: pop
+    //   694: aload 5
+    //   696: astore_2
+    //   697: aload 6
+    //   699: astore_3
+    //   700: aload_1
+    //   701: aload 9
+    //   703: invokevirtual 218	com/android/safeguard/g:t	()Ljava/lang/String;
+    //   706: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   709: pop
+    //   710: aload 5
+    //   712: astore_2
+    //   713: aload 6
+    //   715: astore_3
+    //   716: aload_1
+    //   717: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   720: astore 5
+    //   722: aload 4
+    //   724: astore_1
+    //   725: aload 5
+    //   727: astore 4
+    //   729: goto -209 -> 520
+    //   732: aload 5
+    //   734: astore_2
+    //   735: aload 6
+    //   737: astore_3
+    //   738: new 201	java/lang/StringBuilder
+    //   741: dup
+    //   742: aload 10
+    //   744: invokevirtual 203	com/android/safeguard/b:t	()Ljava/lang/String;
+    //   747: invokestatic 209	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   750: invokespecial 211	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   753: astore 4
+    //   755: aload 5
+    //   757: astore_2
+    //   758: aload 6
+    //   760: astore_3
+    //   761: aload 4
+    //   763: aload 7
+    //   765: invokevirtual 212	com/android/safeguard/c:t	()Ljava/lang/String;
+    //   768: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   771: pop
+    //   772: aload 5
+    //   774: astore_2
+    //   775: aload 6
+    //   777: astore_3
+    //   778: aload 4
+    //   780: aload 8
+    //   782: invokevirtual 217	com/android/safeguard/a:t	()Ljava/lang/String;
+    //   785: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   788: pop
+    //   789: aload 5
+    //   791: astore_2
+    //   792: aload 6
+    //   794: astore_3
+    //   795: aload 4
+    //   797: aload 9
+    //   799: invokevirtual 218	com/android/safeguard/g:t	()Ljava/lang/String;
+    //   802: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   805: pop
+    //   806: aload 5
+    //   808: astore_2
+    //   809: aload 6
+    //   811: astore_3
+    //   812: aload_0
+    //   813: aload 4
+    //   815: invokevirtual 221	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   818: invokevirtual 223	com/android/safeguard/Safeguard:i	(Ljava/lang/String;)V
+    //   821: aload 5
+    //   823: astore_2
+    //   824: aload 6
+    //   826: astore_3
+    //   827: aload_1
+    //   828: athrow
+    //   829: astore_1
+    //   830: aload_0
+    //   831: aload_1
+    //   832: invokevirtual 35	com/android/safeguard/Safeguard:a	(Ljava/lang/Throwable;)V
+    //   835: aload_2
+    //   836: areturn
+    //   837: astore_1
+    //   838: aload_0
+    //   839: aload_1
+    //   840: invokevirtual 226	com/android/safeguard/Safeguard:a	(Ljava/lang/Exception;)V
+    //   843: aload_3
+    //   844: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	713	0	this	Safeguard
-    //   4	513	1	localObject1	java.lang.Object
-    //   518	15	1	localException1	java.lang.Exception
-    //   585	121	1	localThrowable1	Throwable
-    //   6	519	2	localObject2	java.lang.Object
-    //   526	3	2	localException2	java.lang.Exception
-    //   533	1	2	localException3	java.lang.Exception
-    //   593	3	2	localThrowable2	Throwable
-    //   600	107	2	localThrowable3	Throwable
-    //   9	701	3	localObject3	java.lang.Object
-    //   1	707	4	localObject4	java.lang.Object
-    //   56	609	5	localb	b
-    //   74	602	6	localc	c
-    //   88	596	7	locala	a
-    //   106	586	8	localg	g
-    //   38	415	9	localj	j
-    //   652	59	9	localObject5	java.lang.Object
+    //   0	845	0	this	Safeguard
+    //   45	486	1	localObject1	Object
+    //   532	1	1	localObject2	Object
+    //   536	3	1	localThrowable1	Throwable
+    //   563	64	1	localObject3	Object
+    //   634	3	1	localException1	java.lang.Exception
+    //   661	167	1	localObject4	Object
+    //   829	3	1	localThrowable2	Throwable
+    //   837	3	1	localException2	java.lang.Exception
+    //   11	825	2	localObject5	Object
+    //   14	830	3	localObject6	Object
+    //   7	807	4	localObject7	Object
+    //   1	821	5	str	String
+    //   4	821	6	localObject8	Object
+    //   82	682	7	localc	c
+    //   97	684	8	locala	a
+    //   116	682	9	localg	g
+    //   63	680	10	localb	b
     // Exception table:
     //   from	to	target	type
-    //   10	16	518	java/lang/Exception
-    //   23	26	518	java/lang/Exception
-    //   31	40	518	java/lang/Exception
-    //   45	58	518	java/lang/Exception
-    //   63	76	518	java/lang/Exception
-    //   81	90	518	java/lang/Exception
-    //   95	108	518	java/lang/Exception
-    //   470	516	518	java/lang/Exception
-    //   537	583	518	java/lang/Exception
-    //   604	650	518	java/lang/Exception
-    //   659	705	518	java/lang/Exception
-    //   710	713	518	java/lang/Exception
-    //   108	464	526	java/lang/Exception
-    //   10	16	585	java/lang/Throwable
-    //   23	26	585	java/lang/Throwable
-    //   31	40	585	java/lang/Throwable
-    //   45	58	585	java/lang/Throwable
-    //   63	76	585	java/lang/Throwable
-    //   81	90	585	java/lang/Throwable
-    //   95	108	585	java/lang/Throwable
-    //   470	516	585	java/lang/Throwable
-    //   537	583	585	java/lang/Throwable
-    //   604	650	585	java/lang/Throwable
-    //   659	705	585	java/lang/Throwable
-    //   710	713	585	java/lang/Throwable
-    //   108	464	593	java/lang/Throwable
-    //   108	464	652	finally
-    //   527	532	652	finally
-    //   594	599	652	finally
+    //   118	443	532	finally
+    //   537	542	532	finally
+    //   635	640	532	finally
+    //   118	443	536	java/lang/Throwable
+    //   118	443	634	java/lang/Exception
+    //   15	21	829	java/lang/Throwable
+    //   29	32	829	java/lang/Throwable
+    //   38	46	829	java/lang/Throwable
+    //   52	65	829	java/lang/Throwable
+    //   71	84	829	java/lang/Throwable
+    //   90	99	829	java/lang/Throwable
+    //   105	118	829	java/lang/Throwable
+    //   447	464	829	java/lang/Throwable
+    //   468	479	829	java/lang/Throwable
+    //   483	494	829	java/lang/Throwable
+    //   498	509	829	java/lang/Throwable
+    //   513	520	829	java/lang/Throwable
+    //   524	530	829	java/lang/Throwable
+    //   548	564	829	java/lang/Throwable
+    //   570	580	829	java/lang/Throwable
+    //   586	596	829	java/lang/Throwable
+    //   602	612	829	java/lang/Throwable
+    //   618	624	829	java/lang/Throwable
+    //   646	662	829	java/lang/Throwable
+    //   668	678	829	java/lang/Throwable
+    //   684	694	829	java/lang/Throwable
+    //   700	710	829	java/lang/Throwable
+    //   716	722	829	java/lang/Throwable
+    //   738	755	829	java/lang/Throwable
+    //   761	772	829	java/lang/Throwable
+    //   778	789	829	java/lang/Throwable
+    //   795	806	829	java/lang/Throwable
+    //   812	821	829	java/lang/Throwable
+    //   827	829	829	java/lang/Throwable
+    //   15	21	837	java/lang/Exception
+    //   29	32	837	java/lang/Exception
+    //   38	46	837	java/lang/Exception
+    //   52	65	837	java/lang/Exception
+    //   71	84	837	java/lang/Exception
+    //   90	99	837	java/lang/Exception
+    //   105	118	837	java/lang/Exception
+    //   447	464	837	java/lang/Exception
+    //   468	479	837	java/lang/Exception
+    //   483	494	837	java/lang/Exception
+    //   498	509	837	java/lang/Exception
+    //   513	520	837	java/lang/Exception
+    //   524	530	837	java/lang/Exception
+    //   548	564	837	java/lang/Exception
+    //   570	580	837	java/lang/Exception
+    //   586	596	837	java/lang/Exception
+    //   602	612	837	java/lang/Exception
+    //   618	624	837	java/lang/Exception
+    //   646	662	837	java/lang/Exception
+    //   668	678	837	java/lang/Exception
+    //   684	694	837	java/lang/Exception
+    //   700	710	837	java/lang/Exception
+    //   716	722	837	java/lang/Exception
+    //   738	755	837	java/lang/Exception
+    //   761	772	837	java/lang/Exception
+    //   778	789	837	java/lang/Exception
+    //   795	806	837	java/lang/Exception
+    //   812	821	837	java/lang/Exception
+    //   827	829	837	java/lang/Exception
   }
   
-  /* Error */
   public String getSafeguardInfo()
   {
-    // Byte code:
-    //   0: ldc 229
-    //   2: astore_3
-    //   3: aload_0
-    //   4: invokevirtual 231	com/android/safeguard/Safeguard:a	()[B
-    //   7: astore 6
-    //   9: aload_3
-    //   10: astore 5
-    //   12: aload 6
-    //   14: ifnull +216 -> 230
-    //   17: aload_3
-    //   18: astore 4
-    //   20: new 57	com/android/safeguard/a
-    //   23: dup
-    //   24: invokespecial 58	com/android/safeguard/a:<init>	()V
-    //   27: astore 7
-    //   29: iconst_0
-    //   30: istore_1
-    //   31: aload_3
-    //   32: astore 4
-    //   34: aload_0
-    //   35: invokevirtual 232	com/android/safeguard/Safeguard:t	()Ljava/lang/String;
-    //   38: astore 8
-    //   40: aload_3
-    //   41: astore 5
-    //   43: aload_3
-    //   44: astore 4
-    //   46: aload 8
-    //   48: invokevirtual 235	java/lang/String:length	()I
-    //   51: sipush 1024
-    //   54: if_icmple +142 -> 196
-    //   57: aload_3
-    //   58: astore 4
-    //   60: aload 8
-    //   62: invokevirtual 235	java/lang/String:length	()I
-    //   65: istore_1
-    //   66: iload_1
-    //   67: sipush 1024
-    //   70: isub
-    //   71: istore_1
-    //   72: ldc 229
-    //   74: astore_3
-    //   75: aload_0
-    //   76: aload 8
-    //   78: aload 8
-    //   80: invokevirtual 235	java/lang/String:length	()I
-    //   83: iload_1
-    //   84: isub
-    //   85: invokevirtual 238	com/android/safeguard/Safeguard:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   88: astore 4
-    //   90: aload 7
-    //   92: aload_0
-    //   93: getfield 28	com/android/safeguard/Safeguard:b	Lcom/android/safeguard/i;
-    //   96: aload 6
-    //   98: aload 7
-    //   100: aload 4
-    //   102: aload_0
-    //   103: getfield 23	com/android/safeguard/Safeguard:a	Ljava/lang/String;
-    //   106: invokevirtual 242	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   109: invokevirtual 197	com/android/safeguard/a:b	([B)[B
-    //   112: invokevirtual 245	com/android/safeguard/i:a	([B[B)[B
-    //   115: invokevirtual 248	com/android/safeguard/a:a	([B)Ljava/lang/String;
-    //   118: astore 4
-    //   120: aload 4
-    //   122: astore_3
-    //   123: aload_3
-    //   124: astore 4
-    //   126: iload_1
-    //   127: aload 8
-    //   129: invokevirtual 235	java/lang/String:length	()I
-    //   132: if_icmplt +70 -> 202
-    //   135: aload_3
-    //   136: astore 4
-    //   138: iload_1
-    //   139: aload 8
-    //   141: invokevirtual 235	java/lang/String:length	()I
-    //   144: if_icmpne +22 -> 166
-    //   147: aload_3
-    //   148: astore 4
-    //   150: aload_3
-    //   151: astore 5
-    //   153: aload_3
-    //   154: invokevirtual 235	java/lang/String:length	()I
-    //   157: sipush 1024
-    //   160: if_icmple +70 -> 230
-    //   163: ldc 229
-    //   165: areturn
-    //   166: aload_3
-    //   167: astore 4
-    //   169: aload 8
-    //   171: invokevirtual 235	java/lang/String:length	()I
-    //   174: istore_1
-    //   175: aload_3
-    //   176: astore 4
-    //   178: aload_3
-    //   179: invokevirtual 235	java/lang/String:length	()I
-    //   182: istore_2
-    //   183: aload_3
-    //   184: astore 5
-    //   186: iload_2
-    //   187: sipush 1024
-    //   190: if_icmple +40 -> 230
-    //   193: aload_3
-    //   194: astore 5
-    //   196: aload 5
-    //   198: astore_3
-    //   199: goto -124 -> 75
-    //   202: iload_1
-    //   203: bipush 10
-    //   205: iadd
-    //   206: istore_1
-    //   207: goto -32 -> 175
-    //   210: astore_3
-    //   211: aload_0
-    //   212: aload_3
-    //   213: invokevirtual 35	com/android/safeguard/Safeguard:a	(Ljava/lang/Throwable;)V
-    //   216: aload 4
-    //   218: areturn
-    //   219: astore 5
-    //   221: aload_3
-    //   222: astore 4
-    //   224: aload 5
-    //   226: astore_3
-    //   227: goto -16 -> 211
-    //   230: aload 5
-    //   232: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	233	0	this	Safeguard
-    //   30	177	1	i	int
-    //   182	9	2	j	int
-    //   2	197	3	localObject1	java.lang.Object
-    //   210	12	3	localThrowable1	Throwable
-    //   226	1	3	localObject2	java.lang.Object
-    //   18	205	4	localObject3	java.lang.Object
-    //   10	187	5	localObject4	java.lang.Object
-    //   219	12	5	localThrowable2	Throwable
-    //   7	90	6	arrayOfByte	byte[]
-    //   27	72	7	locala	a
-    //   38	132	8	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   20	29	210	java/lang/Throwable
-    //   34	40	210	java/lang/Throwable
-    //   46	57	210	java/lang/Throwable
-    //   60	66	210	java/lang/Throwable
-    //   126	135	210	java/lang/Throwable
-    //   138	147	210	java/lang/Throwable
-    //   153	163	210	java/lang/Throwable
-    //   169	175	210	java/lang/Throwable
-    //   178	183	210	java/lang/Throwable
-    //   75	120	219	java/lang/Throwable
+    String str3 = "";
+    byte[] arrayOfByte = a();
+    String str2 = str3;
+    String str1;
+    if (arrayOfByte != null) {
+      str1 = str3;
+    }
+    for (;;)
+    {
+      int i;
+      Object localObject;
+      try
+      {
+        a locala = new a();
+        i = 0;
+        str1 = str3;
+        String str4 = t();
+        str2 = str3;
+        str1 = str3;
+        if (str4.length() > 1024)
+        {
+          str1 = str3;
+          i = str4.length() - 1024;
+          str2 = str3;
+        }
+        str1 = str2;
+        str3 = a(str4, str4.length() - i);
+        str1 = str2;
+        str3 = locala.a(this.b.a(arrayOfByte, locala.b(str3.getBytes(this.a))));
+        str1 = str3;
+        if (i < str4.length()) {
+          break label222;
+        }
+        str1 = str3;
+        if (i == str4.length())
+        {
+          str1 = str3;
+          str2 = str3;
+          if (str3.length() > 1024) {
+            return "";
+          }
+        }
+        else
+        {
+          str1 = str3;
+          i = str4.length();
+          str1 = str3;
+          int j = str3.length();
+          str2 = str3;
+          if (j > 1024) {
+            continue;
+          }
+          return str3;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        a(localThrowable);
+        localObject = str1;
+      }
+      return localObject;
+      label222:
+      i += 10;
+    }
   }
 }
 

@@ -34,11 +34,13 @@ public final class STMatchRule_Optional
   {
     paramJceOutputStream.write(this.unit, 0);
     paramJceOutputStream.write(this.type, 1);
-    if (this.prefix != null) {
-      paramJceOutputStream.write(this.prefix, 2);
+    String str = this.prefix;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.postfix != null) {
-      paramJceOutputStream.write(this.postfix, 3);
+    str = this.postfix;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }

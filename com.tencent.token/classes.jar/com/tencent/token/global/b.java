@@ -16,73 +16,72 @@ public class b
   
   private int c(String paramString)
   {
+    int j;
     try
     {
       paramString = paramString.getBytes("gb2312");
-      if ((paramString != null) && (paramString.length <= 2) && (paramString.length > 0)) {
-        break label67;
-      }
-      throw new RuntimeException("illegal resource string");
-    }
-    catch (Exception paramString)
-    {
-      i = 0;
-    }
-    System.out.println("ERROR:ChineseSpelling.class-getChsAscii(String chs)" + paramString);
-    int j = i;
-    return j;
-    label67:
-    if (paramString.length == 1) {}
-    for (int i = paramString[0];; i = 0)
-    {
-      for (;;)
+      if ((paramString != null) && (paramString.length <= 2) && (paramString.length > 0))
       {
+        if (paramString.length == 1) {
+          i = paramString[0];
+        } else {
+          i = 0;
+        }
         j = i;
         try
         {
           if (paramString.length != 2) {
-            break;
+            return j;
           }
           i = paramString[0];
           j = paramString[1];
-          return j + 256 + (i + 256) * 256 - 65536;
+          return (i + 256) * 256 + (j + 256) - 65536;
         }
         catch (Exception paramString) {}
       }
-      break;
+      else
+      {
+        throw new RuntimeException("illegal resource string");
+      }
     }
+    catch (Exception paramString)
+    {
+      int i = 0;
+      PrintStream localPrintStream = System.out;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ERROR:ChineseSpelling.class-getChsAscii(String chs)");
+      localStringBuilder.append(paramString);
+      localPrintStream.println(localStringBuilder.toString());
+      j = i;
+    }
+    return j;
   }
   
   public String a(String paramString)
   {
-    Object localObject = null;
     int j = c(paramString);
-    if ((j > 0) && (j < 160))
-    {
-      paramString = String.valueOf((char)j);
-      return paramString;
+    if ((j > 0) && (j < 160)) {
+      return String.valueOf((char)j);
     }
     int i = b.length - 1;
-    for (;;)
+    while (i >= 0)
     {
-      paramString = localObject;
-      if (i < 0) {
-        break;
-      }
       if (b[i] <= j) {
         return a[i];
       }
       i -= 1;
     }
+    return null;
   }
   
   public String b(String paramString)
   {
     this.c = new StringBuilder();
-    int i = 0;
-    while (i < paramString.length())
+    int j;
+    for (int i = 0; i < paramString.length(); i = j)
     {
-      String str2 = paramString.substring(i, i + 1);
+      j = i + 1;
+      String str2 = paramString.substring(i, j);
       String str1 = str2;
       if (str2.getBytes().length >= 2)
       {
@@ -93,7 +92,6 @@ public class b
         }
       }
       this.c.append(str1);
-      i += 1;
     }
     return this.c.toString();
   }

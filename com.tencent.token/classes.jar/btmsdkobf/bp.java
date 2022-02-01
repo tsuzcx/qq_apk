@@ -93,8 +93,10 @@ public class bp
   
   public static boolean sendShark(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ISharkCallBackNest paramISharkCallBackNest, long paramLong)
   {
-    if ((paramJceStruct1 == null) || (paramISharkCallBackNest == null)) {
-      return false;
+    if (paramJceStruct1 != null) {
+      if (paramISharkCallBackNest == null) {
+        return false;
+      }
     }
     try
     {
@@ -108,6 +110,7 @@ public class bp
       return true;
     }
     catch (Throwable paramJceStruct1) {}
+    return false;
     return false;
   }
 }

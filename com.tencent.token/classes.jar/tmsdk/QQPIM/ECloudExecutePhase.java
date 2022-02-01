@@ -2,7 +2,7 @@ package tmsdk.QQPIM;
 
 public final class ECloudExecutePhase
 {
-  public static final ECloudExecutePhase ECEP_Phase_Execute;
+  public static final ECloudExecutePhase ECEP_Phase_Execute = new ECloudExecutePhase(3, 3, "ECEP_Phase_Execute");
   public static final ECloudExecutePhase ECEP_Phase_None;
   public static final ECloudExecutePhase ECEP_Phase_Show;
   public static final ECloudExecutePhase ECEP_Phase_User_Confirm;
@@ -10,23 +10,15 @@ public final class ECloudExecutePhase
   public static final int _ECEP_Phase_None = 0;
   public static final int _ECEP_Phase_Show = 1;
   public static final int _ECEP_Phase_User_Confirm = 2;
-  private static ECloudExecutePhase[] ej;
+  private static ECloudExecutePhase[] ej = new ECloudExecutePhase[4];
   private int eb;
   private String ec = new String();
   
   static
   {
-    if (!ECloudExecutePhase.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      ej = new ECloudExecutePhase[4];
-      ECEP_Phase_None = new ECloudExecutePhase(0, 0, "ECEP_Phase_None");
-      ECEP_Phase_Show = new ECloudExecutePhase(1, 1, "ECEP_Phase_Show");
-      ECEP_Phase_User_Confirm = new ECloudExecutePhase(2, 2, "ECEP_Phase_User_Confirm");
-      ECEP_Phase_Execute = new ECloudExecutePhase(3, 3, "ECEP_Phase_Execute");
-      return;
-    }
+    ECEP_Phase_None = new ECloudExecutePhase(0, 0, "ECEP_Phase_None");
+    ECEP_Phase_Show = new ECloudExecutePhase(1, 1, "ECEP_Phase_Show");
+    ECEP_Phase_User_Confirm = new ECloudExecutePhase(2, 2, "ECEP_Phase_User_Confirm");
   }
   
   private ECloudExecutePhase(int paramInt1, int paramInt2, String paramString)
@@ -39,15 +31,16 @@ public final class ECloudExecutePhase
   public static ECloudExecutePhase convert(int paramInt)
   {
     int i = 0;
-    while (i < ej.length)
+    for (;;)
     {
-      if (ej[i].value() == paramInt) {
+      ECloudExecutePhase[] arrayOfECloudExecutePhase = ej;
+      if (i >= arrayOfECloudExecutePhase.length) {
+        break;
+      }
+      if (arrayOfECloudExecutePhase[i].value() == paramInt) {
         return ej[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -55,15 +48,16 @@ public final class ECloudExecutePhase
   public static ECloudExecutePhase convert(String paramString)
   {
     int i = 0;
-    while (i < ej.length)
+    for (;;)
     {
-      if (ej[i].toString().equals(paramString)) {
+      ECloudExecutePhase[] arrayOfECloudExecutePhase = ej;
+      if (i >= arrayOfECloudExecutePhase.length) {
+        break;
+      }
+      if (arrayOfECloudExecutePhase[i].toString().equals(paramString)) {
         return ej[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }

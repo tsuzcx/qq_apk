@@ -12,16 +12,6 @@ public final class RequestTemplate
   static ArrayList<UrlCheckRequest> eG;
   public ArrayList<UrlCheckRequest> reqTemp = null;
   
-  static
-  {
-    if (!RequestTemplate.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public RequestTemplate()
   {
     setReqTemp(this.reqTemp);
@@ -39,18 +29,17 @@ public final class RequestTemplate
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
@@ -82,8 +71,9 @@ public final class RequestTemplate
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.reqTemp != null) {
-      paramJceOutputStream.write(this.reqTemp, 0);
+    ArrayList localArrayList = this.reqTemp;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }

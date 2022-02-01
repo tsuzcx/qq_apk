@@ -39,16 +39,19 @@ public class dg
   
   public static void a(dg paramdg, int paramInt)
   {
-    if (paramdg == null) {}
-    for (;;)
-    {
+    if (paramdg == null) {
       return;
-      try
-      {
-        paramdg.mu = System.currentTimeMillis();
-        mw.put(Integer.valueOf(paramInt), paramdg);
-      }
-      finally {}
+    }
+    try
+    {
+      paramdg.mu = System.currentTimeMillis();
+      mw.put(Integer.valueOf(paramInt), paramdg);
+      return;
+    }
+    finally
+    {
+      paramdg = finally;
+      throw paramdg;
     }
   }
   
@@ -73,7 +76,11 @@ public class dg
   
   public void I(int paramInt)
   {
-    this.mr = (this.mr + String.valueOf(paramInt) + ";");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mr);
+    localStringBuilder.append(String.valueOf(paramInt));
+    localStringBuilder.append(";");
+    this.mr = localStringBuilder.toString();
   }
   
   public void d(cl paramcl)
@@ -92,10 +99,11 @@ public class dg
   
   public void f(ArrayList<String> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {}
-    for (;;)
+    if (paramArrayList != null)
     {
-      return;
+      if (paramArrayList.size() <= 0) {
+        return;
+      }
       StringBuilder localStringBuilder = new StringBuilder();
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
@@ -114,21 +122,60 @@ public class dg
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("|ip|" + this.mi);
-    localStringBuilder.append("|port|" + this.mj);
-    localStringBuilder.append("|tryTimes|" + this.mk);
-    localStringBuilder.append("|apn|" + this.ml);
-    localStringBuilder.append("|requestType|" + this.mm);
-    localStringBuilder.append("|requestTime|" + this.mn);
-    localStringBuilder.append("|errorCode|" + this.errorCode);
-    localStringBuilder.append("|cmdids|" + this.mr);
-    localStringBuilder.append("|iplist|" + this.mq);
-    localStringBuilder.append("|lastRequest|" + this.mp);
-    localStringBuilder.append("|errorDetail|" + this.mo);
-    localStringBuilder.append("|isDetect|" + this.ms);
-    localStringBuilder.append("|isConnect|" + this.mt);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("|ip|");
+    localStringBuilder2.append(this.mi);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("|port|");
+    localStringBuilder2.append(this.mj);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("|tryTimes|");
+    localStringBuilder2.append(this.mk);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("|apn|");
+    localStringBuilder2.append(this.ml);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("|requestType|");
+    localStringBuilder2.append(this.mm);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("|requestTime|");
+    localStringBuilder2.append(this.mn);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("|errorCode|");
+    localStringBuilder2.append(this.errorCode);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("|cmdids|");
+    localStringBuilder2.append(this.mr);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("|iplist|");
+    localStringBuilder2.append(this.mq);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("|lastRequest|");
+    localStringBuilder2.append(this.mp);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("|errorDetail|");
+    localStringBuilder2.append(this.mo);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("|isDetect|");
+    localStringBuilder2.append(this.ms);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("|isConnect|");
+    localStringBuilder2.append(this.mt);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 

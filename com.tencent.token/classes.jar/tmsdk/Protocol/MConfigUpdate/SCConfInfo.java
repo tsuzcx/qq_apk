@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import tmsdk.Protocol.MCommon.TimeCtrl;
 import tmsdk.Protocol.MCommon.TipsInfo;
 
@@ -43,17 +44,21 @@ public final class SCConfInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.taskId, 0);
-    if (this.timeCtrl != null) {
-      paramJceOutputStream.write(this.timeCtrl, 1);
+    Object localObject = this.timeCtrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.tips != null) {
-      paramJceOutputStream.write(this.tips, 2);
+    localObject = this.tips;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.extTips != null) {
-      paramJceOutputStream.write(this.extTips, 3);
+    localObject = this.extTips;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.vecConfInfo != null) {
-      paramJceOutputStream.write(this.vecConfInfo, 4);
+    localObject = this.vecConfInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }

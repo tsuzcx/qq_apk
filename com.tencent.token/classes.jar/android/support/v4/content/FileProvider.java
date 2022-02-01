@@ -49,21 +49,17 @@ public class FileProvider
   {
     int j = paramVarArgs.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       String str = paramVarArgs[i];
-      if (str == null) {
-        break label40;
+      File localFile = paramFile;
+      if (str != null) {
+        localFile = new File(paramFile, str);
       }
-      paramFile = new File(paramFile, str);
-    }
-    label40:
-    for (;;)
-    {
       i += 1;
-      break;
-      return paramFile;
+      paramFile = localFile;
     }
+    return paramFile;
   }
   
   private static Object[] copyOf(Object[] paramArrayOfObject, int paramInt)
@@ -82,28 +78,26 @@ public class FileProvider
   
   private static PathStrategy getPathStrategy(Context paramContext, String paramString)
   {
-    PathStrategy localPathStrategy1;
     synchronized (sCache)
     {
       PathStrategy localPathStrategy2 = (PathStrategy)sCache.get(paramString);
-      localPathStrategy1 = localPathStrategy2;
-      if (localPathStrategy2 != null) {}
-    }
-    try
-    {
-      localPathStrategy1 = parsePathStrategy(paramContext, paramString);
-      sCache.put(paramString, localPathStrategy1);
+      PathStrategy localPathStrategy1 = localPathStrategy2;
+      if (localPathStrategy2 == null) {
+        try
+        {
+          localPathStrategy1 = parsePathStrategy(paramContext, paramString);
+          sCache.put(paramString, localPathStrategy1);
+        }
+        catch (XmlPullParserException paramContext)
+        {
+          throw new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
+        }
+        catch (IOException paramContext)
+        {
+          throw new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
+        }
+      }
       return localPathStrategy1;
-    }
-    catch (IOException paramContext)
-    {
-      throw new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
-      paramContext = finally;
-      throw paramContext;
-    }
-    catch (XmlPullParserException paramContext)
-    {
-      throw new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
     }
   }
   
@@ -117,115 +111,119 @@ public class FileProvider
     if ("r".equals(paramString)) {
       return 268435456;
     }
-    if (("w".equals(paramString)) || ("wt".equals(paramString))) {
-      return 738197504;
+    if ((!"w".equals(paramString)) && (!"wt".equals(paramString)))
+    {
+      if ("wa".equals(paramString)) {
+        return 704643072;
+      }
+      if ("rw".equals(paramString)) {
+        return 939524096;
+      }
+      if ("rwt".equals(paramString)) {
+        return 1006632960;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Invalid mode: ");
+      localStringBuilder.append(paramString);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    if ("wa".equals(paramString)) {
-      return 704643072;
-    }
-    if ("rw".equals(paramString)) {
-      return 939524096;
-    }
-    if ("rwt".equals(paramString)) {
-      return 1006632960;
-    }
-    throw new IllegalArgumentException("Invalid mode: " + paramString);
+    return 738197504;
   }
   
   private static PathStrategy parsePathStrategy(Context paramContext, String paramString)
   {
     SimplePathStrategy localSimplePathStrategy = new SimplePathStrategy(paramString);
     XmlResourceParser localXmlResourceParser = paramContext.getPackageManager().resolveContentProvider(paramString, 128).loadXmlMetaData(paramContext.getPackageManager(), "android.support.FILE_PROVIDER_PATHS");
-    if (localXmlResourceParser == null) {
-      throw new IllegalArgumentException("Missing android.support.FILE_PROVIDER_PATHS meta-data");
-    }
-    label277:
-    for (;;)
+    if (localXmlResourceParser != null)
     {
-      int i = localXmlResourceParser.next();
-      String str1;
-      String str2;
-      if (i != 1)
-      {
-        if (i != 2) {
-          continue;
-        }
-        paramString = localXmlResourceParser.getName();
-        str1 = localXmlResourceParser.getAttributeValue(null, "name");
-        str2 = localXmlResourceParser.getAttributeValue(null, "path");
-        if ("root-path".equals(paramString)) {
-          paramString = DEVICE_ROOT;
-        }
-      }
       for (;;)
       {
-        if (paramString == null) {
-          break label277;
+        int i = localXmlResourceParser.next();
+        if (i == 1) {
+          break;
         }
-        localSimplePathStrategy.addRoot(str1, buildPath(paramString, new String[] { str2 }));
-        break;
-        if ("files-path".equals(paramString))
+        if (i == 2)
         {
-          paramString = paramContext.getFilesDir();
-        }
-        else if ("cache-path".equals(paramString))
-        {
-          paramString = paramContext.getCacheDir();
-        }
-        else if ("external-path".equals(paramString))
-        {
-          paramString = Environment.getExternalStorageDirectory();
-        }
-        else
-        {
-          if ("external-files-path".equals(paramString))
+          Object localObject2 = localXmlResourceParser.getName();
+          Object localObject1 = null;
+          String str1 = localXmlResourceParser.getAttributeValue(null, "name");
+          String str2 = localXmlResourceParser.getAttributeValue(null, "path");
+          if ("root-path".equals(localObject2))
           {
-            paramString = ContextCompat.getExternalFilesDirs(paramContext, null);
-            if (paramString.length > 0) {
-              paramString = paramString[0];
+            paramString = DEVICE_ROOT;
+          }
+          else if ("files-path".equals(localObject2))
+          {
+            paramString = paramContext.getFilesDir();
+          }
+          else if ("cache-path".equals(localObject2))
+          {
+            paramString = paramContext.getCacheDir();
+          }
+          else if ("external-path".equals(localObject2))
+          {
+            paramString = Environment.getExternalStorageDirectory();
+          }
+          else if ("external-files-path".equals(localObject2))
+          {
+            localObject2 = ContextCompat.getExternalFilesDirs(paramContext, null);
+            paramString = localObject1;
+            if (localObject2.length > 0) {
+              paramString = localObject2[0];
             }
           }
-          else if ("external-cache-path".equals(paramString))
+          else if ("external-cache-path".equals(localObject2))
           {
-            paramString = ContextCompat.getExternalCacheDirs(paramContext);
-            if (paramString.length > 0) {
-              paramString = paramString[0];
+            localObject2 = ContextCompat.getExternalCacheDirs(paramContext);
+            paramString = localObject1;
+            if (localObject2.length > 0) {
+              paramString = localObject2[0];
             }
           }
-          else if ((Build.VERSION.SDK_INT >= 21) && ("external-media-path".equals(paramString)))
+          else
           {
-            paramString = paramContext.getExternalMediaDirs();
-            if (paramString.length > 0)
+            paramString = localObject1;
+            if (Build.VERSION.SDK_INT >= 21)
             {
-              paramString = paramString[0];
-              continue;
-              return localSimplePathStrategy;
+              paramString = localObject1;
+              if ("external-media-path".equals(localObject2))
+              {
+                localObject2 = paramContext.getExternalMediaDirs();
+                paramString = localObject1;
+                if (localObject2.length > 0) {
+                  paramString = localObject2[0];
+                }
+              }
             }
           }
-          paramString = null;
+          if (paramString != null) {
+            localSimplePathStrategy.addRoot(str1, buildPath(paramString, new String[] { str2 }));
+          }
         }
       }
+      return localSimplePathStrategy;
     }
+    throw new IllegalArgumentException("Missing android.support.FILE_PROVIDER_PATHS meta-data");
   }
   
   public void attachInfo(@NonNull Context paramContext, @NonNull ProviderInfo paramProviderInfo)
   {
     super.attachInfo(paramContext, paramProviderInfo);
-    if (paramProviderInfo.exported) {
-      throw new SecurityException("Provider must not be exported");
-    }
-    if (!paramProviderInfo.grantUriPermissions) {
+    if (!paramProviderInfo.exported)
+    {
+      if (paramProviderInfo.grantUriPermissions)
+      {
+        this.mStrategy = getPathStrategy(paramContext, paramProviderInfo.authority);
+        return;
+      }
       throw new SecurityException("Provider must grant uri permissions");
     }
-    this.mStrategy = getPathStrategy(paramContext, paramProviderInfo.authority);
+    throw new SecurityException("Provider must not be exported");
   }
   
   public int delete(@NonNull Uri paramUri, @Nullable String paramString, @Nullable String[] paramArrayOfString)
   {
-    if (this.mStrategy.getFileForUri(paramUri).delete()) {
-      return 1;
-    }
-    return 0;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public String getType(@NonNull Uri paramUri)
@@ -269,37 +267,33 @@ public class FileProvider
     paramArrayOfString1 = new Object[paramUri.length];
     int m = paramUri.length;
     int j = 0;
-    int i = 0;
-    int k;
-    if (j < m)
+    int i;
+    for (int k = 0; j < m; k = i)
     {
       paramString2 = paramUri[j];
       if ("_display_name".equals(paramString2))
       {
-        paramArrayOfString2[i] = "_display_name";
-        k = i + 1;
-        paramArrayOfString1[i] = paramString1.getName();
-        i = k;
+        paramArrayOfString2[k] = "_display_name";
+        paramArrayOfString1[k] = paramString1.getName();
+        i = k + 1;
       }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if ("_size".equals(paramString2))
+      else
       {
-        paramArrayOfString2[i] = "_size";
-        k = i + 1;
-        paramArrayOfString1[i] = Long.valueOf(paramString1.length());
         i = k;
-        continue;
-        paramUri = copyOf(paramArrayOfString2, i);
-        paramArrayOfString1 = copyOf(paramArrayOfString1, i);
-        paramUri = new MatrixCursor(paramUri, 1);
-        paramUri.addRow(paramArrayOfString1);
-        return paramUri;
+        if ("_size".equals(paramString2))
+        {
+          paramArrayOfString2[k] = "_size";
+          paramArrayOfString1[k] = Long.valueOf(paramString1.length());
+          i = k + 1;
+        }
       }
+      j += 1;
     }
+    paramUri = copyOf(paramArrayOfString2, k);
+    paramArrayOfString1 = copyOf(paramArrayOfString1, k);
+    paramUri = new MatrixCursor(paramUri, 1);
+    paramUri.addRow(paramArrayOfString1);
+    return paramUri;
   }
   
   public int update(@NonNull Uri paramUri, ContentValues paramContentValues, @Nullable String paramString, @Nullable String[] paramArrayOfString)
@@ -327,19 +321,22 @@ public class FileProvider
     
     void addRoot(String paramString, File paramFile)
     {
-      if (TextUtils.isEmpty(paramString)) {
-        throw new IllegalArgumentException("Name must not be empty");
+      if (!TextUtils.isEmpty(paramString)) {
+        try
+        {
+          localObject = paramFile.getCanonicalFile();
+          this.mRoots.put(paramString, localObject);
+          return;
+        }
+        catch (IOException paramString)
+        {
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Failed to resolve canonical path for ");
+          ((StringBuilder)localObject).append(paramFile);
+          throw new IllegalArgumentException(((StringBuilder)localObject).toString(), paramString);
+        }
       }
-      try
-      {
-        File localFile = paramFile.getCanonicalFile();
-        this.mRoots.put(paramString, localFile);
-        return;
-      }
-      catch (IOException paramString)
-      {
-        throw new IllegalArgumentException("Failed to resolve canonical path for " + paramFile, paramString);
-      }
+      throw new IllegalArgumentException("Name must not be empty");
     }
     
     public File getFileForUri(Uri paramUri)
@@ -349,72 +346,77 @@ public class FileProvider
       Object localObject1 = Uri.decode(((String)localObject2).substring(1, i));
       localObject2 = Uri.decode(((String)localObject2).substring(i + 1));
       localObject1 = (File)this.mRoots.get(localObject1);
-      if (localObject1 == null) {
-        throw new IllegalArgumentException("Unable to find configured root for " + paramUri);
+      if (localObject1 != null) {
+        paramUri = new File((File)localObject1, (String)localObject2);
       }
-      paramUri = new File((File)localObject1, (String)localObject2);
       try
       {
         localObject2 = paramUri.getCanonicalFile();
-        if (!((File)localObject2).getPath().startsWith(((File)localObject1).getPath())) {
-          throw new SecurityException("Resolved path jumped beyond configured root");
+        if (((File)localObject2).getPath().startsWith(((File)localObject1).getPath())) {
+          return localObject2;
         }
+        throw new SecurityException("Resolved path jumped beyond configured root");
       }
       catch (IOException localIOException)
       {
-        throw new IllegalArgumentException("Failed to resolve canonical path for " + paramUri);
+        label100:
+        break label100;
       }
-      return localObject2;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Failed to resolve canonical path for ");
+      ((StringBuilder)localObject1).append(paramUri);
+      throw new IllegalArgumentException(((StringBuilder)localObject1).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Unable to find configured root for ");
+      ((StringBuilder)localObject1).append(paramUri);
+      throw new IllegalArgumentException(((StringBuilder)localObject1).toString());
     }
     
     public Uri getUriForFile(File paramFile)
     {
-      for (;;)
+      try
       {
-        String str1;
-        try
+        Object localObject2 = paramFile.getCanonicalPath();
+        paramFile = null;
+        Iterator localIterator = this.mRoots.entrySet().iterator();
+        while (localIterator.hasNext())
         {
-          str1 = paramFile.getCanonicalPath();
-          paramFile = null;
-          Iterator localIterator = this.mRoots.entrySet().iterator();
-          if (localIterator.hasNext())
-          {
-            Map.Entry localEntry2 = (Map.Entry)localIterator.next();
-            String str2 = ((File)localEntry2.getValue()).getPath();
-            if (!str1.startsWith(str2)) {
-              break label277;
-            }
-            Map.Entry localEntry1 = localEntry2;
-            if (paramFile != null)
-            {
-              if (str2.length() <= ((File)paramFile.getValue()).getPath().length()) {
-                break label277;
-              }
-              localEntry1 = localEntry2;
-            }
-            paramFile = localEntry1;
-            continue;
-          }
-          if (paramFile != null) {
-            break label163;
+          localObject1 = (Map.Entry)localIterator.next();
+          String str = ((File)((Map.Entry)localObject1).getValue()).getPath();
+          if ((((String)localObject2).startsWith(str)) && ((paramFile == null) || (str.length() > ((File)paramFile.getValue()).getPath().length()))) {
+            paramFile = (File)localObject1;
           }
         }
-        catch (IOException localIOException)
+        if (paramFile != null)
         {
-          throw new IllegalArgumentException("Failed to resolve canonical path for " + paramFile);
-        }
-        throw new IllegalArgumentException("Failed to find configured root that contains " + str1);
-        label163:
-        Object localObject = ((File)paramFile.getValue()).getPath();
-        if (((String)localObject).endsWith("/")) {}
-        for (localObject = str1.substring(((String)localObject).length());; localObject = str1.substring(((String)localObject).length() + 1))
-        {
-          paramFile = Uri.encode((String)paramFile.getKey()) + '/' + Uri.encode((String)localObject, "/");
+          localObject1 = ((File)paramFile.getValue()).getPath();
+          if (((String)localObject1).endsWith("/")) {
+            localObject1 = ((String)localObject2).substring(((String)localObject1).length());
+          } else {
+            localObject1 = ((String)localObject2).substring(((String)localObject1).length() + 1);
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(Uri.encode((String)paramFile.getKey()));
+          ((StringBuilder)localObject2).append('/');
+          ((StringBuilder)localObject2).append(Uri.encode((String)localObject1, "/"));
+          paramFile = ((StringBuilder)localObject2).toString();
           return new Uri.Builder().scheme("content").authority(this.mAuthority).encodedPath(paramFile).build();
         }
-        label277:
-        localObject = paramFile;
+        paramFile = new StringBuilder();
+        paramFile.append("Failed to find configured root that contains ");
+        paramFile.append((String)localObject2);
+        throw new IllegalArgumentException(paramFile.toString());
       }
+      catch (IOException localIOException)
+      {
+        Object localObject1;
+        label254:
+        break label254;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Failed to resolve canonical path for ");
+      ((StringBuilder)localObject1).append(paramFile);
+      throw new IllegalArgumentException(((StringBuilder)localObject1).toString());
     }
   }
 }

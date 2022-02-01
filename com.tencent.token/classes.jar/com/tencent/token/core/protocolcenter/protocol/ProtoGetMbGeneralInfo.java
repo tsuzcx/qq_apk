@@ -27,13 +27,19 @@ public class ProtoGetMbGeneralInfo
   
   protected String a()
   {
-    Object localObject1 = null;
     String str = ca.a().b();
-    g.c("account page generateUrl sessId =" + str);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("account page generateUrl sessId =");
+    ((StringBuilder)localObject1).append(str);
+    g.c(((StringBuilder)localObject1).toString());
+    localObject1 = null;
     if (str == null)
     {
       this.a.b(104);
-      g.c("account page generateUrl sessId =" + str);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("account page generateUrl sessId =");
+      ((StringBuilder)localObject1).append(str);
+      g.c(((StringBuilder)localObject1).toString());
       return null;
     }
     try
@@ -46,27 +52,45 @@ public class ProtoGetMbGeneralInfo
       ((JSONObject)localObject2).put("seq_id", this.f);
       ((JSONObject)localObject2).put("op_time", cc.c().s() / 1000L);
       localObject2 = ((JSONObject)localObject2).toString();
-      g.a("plain:" + (String)localObject2);
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("plain:");
+      localStringBuilder2.append((String)localObject2);
+      g.a(localStringBuilder2.toString());
       localObject2 = l.b(((String)localObject2).getBytes());
       localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        g.c("JSONException:" + localJSONException.getMessage());
-      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("JSONException:");
+      localStringBuilder2.append(localJSONException.getMessage());
+      g.c(localStringBuilder2.toString());
     }
-    localObject1 = "?aq_base_sid=" + str + "&data=" + (String)localObject1;
-    localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_get_mb_general_info" + (String)localObject1;
-    g.c("account page generateUrl url =" + (String)localObject1);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("?aq_base_sid=");
+    localStringBuilder1.append(str);
+    localStringBuilder1.append("&data=");
+    localStringBuilder1.append((String)localObject1);
+    localObject1 = localStringBuilder1.toString();
+    localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append(c.e());
+    localStringBuilder1.append("/cn/mbtoken3/mbtoken3_get_mb_general_info");
+    localStringBuilder1.append((String)localObject1);
+    localObject1 = localStringBuilder1.toString();
+    localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("account page generateUrl url =");
+    localStringBuilder1.append((String)localObject1);
+    g.c(localStringBuilder1.toString());
     return localObject1;
   }
   
   protected void a(do paramdo)
   {
     this.e = ((Long)paramdo.c.get("param.uinhash")).longValue();
-    g.c("account page ProtoGetEvalAccountResult unpacketParams: user =" + this.e);
+    paramdo = new StringBuilder();
+    paramdo.append("account page ProtoGetEvalAccountResult unpacketParams: user =");
+    paramdo.append(this.e);
+    g.c(paramdo.toString());
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -85,15 +109,23 @@ public class ProtoGetMbGeneralInfo
       if (i != this.f)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + cb.a().b());
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(cb.a().b());
+        g.c(paramJSONObject.toString());
         return;
       }
       paramJSONObject.getJSONObject("result");
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

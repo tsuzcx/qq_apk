@@ -18,22 +18,14 @@ public final class SQLiteSession
   private Transaction mTransactionPool;
   private Transaction mTransactionStack;
   
-  static
-  {
-    if (!SQLiteSession.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public SQLiteSession(SQLiteConnectionPool paramSQLiteConnectionPool)
   {
-    if (paramSQLiteConnectionPool == null) {
-      throw new IllegalArgumentException("connectionPool must not be null");
+    if (paramSQLiteConnectionPool != null)
+    {
+      this.mConnectionPool = paramSQLiteConnectionPool;
+      return;
     }
-    this.mConnectionPool = paramSQLiteConnectionPool;
+    throw new IllegalArgumentException("connectionPool must not be null");
   }
   
   private void acquireConnection(String paramString, int paramInt, CancellationSignal paramCancellationSignal)
@@ -47,177 +39,113 @@ public final class SQLiteSession
     this.mConnectionUseCount += 1;
   }
   
-  /* Error */
   private void beginTransactionUnchecked(int paramInt1, SQLiteTransactionListener paramSQLiteTransactionListener, int paramInt2, CancellationSignal paramCancellationSignal)
   {
-    // Byte code:
-    //   0: aload 4
-    //   2: ifnull +8 -> 10
-    //   5: aload 4
-    //   7: invokevirtual 91	com/tencent/wcdb/support/CancellationSignal:throwIfCanceled	()V
-    //   10: aload_0
-    //   11: getfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
-    //   14: ifnonnull +11 -> 25
-    //   17: aload_0
-    //   18: aconst_null
-    //   19: iload_3
-    //   20: aload 4
-    //   22: invokespecial 95	com/tencent/wcdb/database/SQLiteSession:acquireConnection	(Ljava/lang/String;ILcom/tencent/wcdb/support/CancellationSignal;)V
-    //   25: aload_0
-    //   26: getfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
-    //   29: ifnonnull +39 -> 68
-    //   32: iload_1
-    //   33: tableswitch	default:+143 -> 176, 1:+77->110, 2:+106->139
-    //   57: getfield 55	com/tencent/wcdb/database/SQLiteSession:mConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
-    //   60: ldc 97
-    //   62: aconst_null
-    //   63: aload 4
-    //   65: invokevirtual 101	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
-    //   68: aload_2
-    //   69: ifnull +9 -> 78
-    //   72: aload_2
-    //   73: invokeinterface 106 1 0
-    //   78: aload_0
-    //   79: iload_1
-    //   80: aload_2
-    //   81: invokespecial 110	com/tencent/wcdb/database/SQLiteSession:obtainTransaction	(ILcom/tencent/wcdb/database/SQLiteTransactionListener;)Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
-    //   84: astore_2
-    //   85: aload_2
-    //   86: aload_0
-    //   87: getfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
-    //   90: putfield 113	com/tencent/wcdb/database/SQLiteSession$Transaction:mParent	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
-    //   93: aload_0
-    //   94: aload_2
-    //   95: putfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
-    //   98: aload_0
-    //   99: getfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
-    //   102: ifnonnull +7 -> 109
-    //   105: aload_0
-    //   106: invokespecial 116	com/tencent/wcdb/database/SQLiteSession:releaseConnection	()V
-    //   109: return
-    //   110: aload_0
-    //   111: getfield 55	com/tencent/wcdb/database/SQLiteSession:mConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
-    //   114: ldc 118
-    //   116: aconst_null
-    //   117: aload 4
-    //   119: invokevirtual 101	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
-    //   122: goto -54 -> 68
-    //   125: astore_2
-    //   126: aload_0
-    //   127: getfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
-    //   130: ifnonnull +7 -> 137
-    //   133: aload_0
-    //   134: invokespecial 116	com/tencent/wcdb/database/SQLiteSession:releaseConnection	()V
-    //   137: aload_2
-    //   138: athrow
-    //   139: aload_0
-    //   140: getfield 55	com/tencent/wcdb/database/SQLiteSession:mConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
-    //   143: ldc 120
-    //   145: aconst_null
-    //   146: aload 4
-    //   148: invokevirtual 101	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
-    //   151: goto -83 -> 68
-    //   154: astore_2
-    //   155: aload_0
-    //   156: getfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
-    //   159: ifnonnull +15 -> 174
-    //   162: aload_0
-    //   163: getfield 55	com/tencent/wcdb/database/SQLiteSession:mConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
-    //   166: ldc 122
-    //   168: aconst_null
-    //   169: aload 4
-    //   171: invokevirtual 101	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
-    //   174: aload_2
-    //   175: athrow
-    //   176: goto -120 -> 56
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	179	0	this	SQLiteSession
-    //   0	179	1	paramInt1	int
-    //   0	179	2	paramSQLiteTransactionListener	SQLiteTransactionListener
-    //   0	179	3	paramInt2	int
-    //   0	179	4	paramCancellationSignal	CancellationSignal
-    // Exception table:
-    //   from	to	target	type
-    //   25	32	125	finally
-    //   56	68	125	finally
-    //   72	78	125	finally
-    //   78	98	125	finally
-    //   110	122	125	finally
-    //   139	151	125	finally
-    //   155	174	125	finally
-    //   174	176	125	finally
-    //   72	78	154	java/lang/RuntimeException
-  }
-  
-  private void endTransactionUnchecked(CancellationSignal paramCancellationSignal, boolean paramBoolean)
-  {
-    int j = 0;
     if (paramCancellationSignal != null) {
       paramCancellationSignal.throwIfCanceled();
     }
-    Transaction localTransaction = this.mTransactionStack;
-    int i;
-    SQLiteTransactionListener localSQLiteTransactionListener;
-    if (((localTransaction.mMarkedSuccessful) || (paramBoolean)) && (!localTransaction.mChildFailed))
-    {
-      i = 1;
-      localSQLiteTransactionListener = localTransaction.mListener;
-      if (localSQLiteTransactionListener == null) {
-        break label174;
-      }
-      if (i == 0) {
-        break label112;
-      }
+    if (this.mTransactionStack == null) {
+      acquireConnection(null, paramInt2, paramCancellationSignal);
     }
     for (;;)
     {
       try
       {
+        if (this.mTransactionStack == null) {}
+        SQLiteConnection localSQLiteConnection;
+        switch (paramInt1)
+        {
+        case 2: 
+          localSQLiteConnection = this.mConnection;
+          continue;
+          this.mConnection.execute("BEGIN EXCLUSIVE;", null, paramCancellationSignal);
+          break;
+        case 1: 
+          this.mConnection.execute("BEGIN IMMEDIATE;", null, paramCancellationSignal);
+          continue;
+          localSQLiteConnection.execute("BEGIN;", null, paramCancellationSignal);
+          if (paramSQLiteTransactionListener != null) {
+            try
+            {
+              paramSQLiteTransactionListener.onBegin();
+            }
+            catch (RuntimeException paramSQLiteTransactionListener)
+            {
+              if (this.mTransactionStack == null) {
+                this.mConnection.execute("ROLLBACK;", null, paramCancellationSignal);
+              }
+              throw paramSQLiteTransactionListener;
+            }
+          }
+          paramSQLiteTransactionListener = obtainTransaction(paramInt1, paramSQLiteTransactionListener);
+          paramSQLiteTransactionListener.mParent = this.mTransactionStack;
+          this.mTransactionStack = paramSQLiteTransactionListener;
+          return;
+        }
+      }
+      finally
+      {
+        if (this.mTransactionStack == null) {
+          releaseConnection();
+        }
+      }
+    }
+  }
+  
+  private void endTransactionUnchecked(CancellationSignal paramCancellationSignal, boolean paramBoolean)
+  {
+    if (paramCancellationSignal != null) {
+      paramCancellationSignal.throwIfCanceled();
+    }
+    Transaction localTransaction = this.mTransactionStack;
+    int i;
+    if (((localTransaction.mMarkedSuccessful) || (paramBoolean)) && (!localTransaction.mChildFailed)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    SQLiteTransactionListener localSQLiteTransactionListener = localTransaction.mListener;
+    if (localSQLiteTransactionListener != null)
+    {
+      if (i != 0) {}
+      try
+      {
         localSQLiteTransactionListener.onCommit();
-        localSQLiteTransactionListener = null;
       }
       catch (RuntimeException localRuntimeException)
       {
-        label112:
-        i = j;
-        continue;
-        if (i == 0) {
-          continue;
-        }
-        try
-        {
-          this.mConnection.execute("COMMIT;", null, paramCancellationSignal);
-          releaseConnection();
-          continue;
-        }
-        finally
-        {
-          releaseConnection();
-        }
-        this.mConnection.execute("ROLLBACK;", null, paramCancellationSignal);
-        continue;
-      }
-      this.mTransactionStack = localTransaction.mParent;
-      recycleTransaction(localTransaction);
-      if (this.mTransactionStack != null)
-      {
-        if (i == 0) {
-          this.mTransactionStack.mChildFailed = true;
-        }
-        if (localSQLiteTransactionListener == null) {
-          break label173;
-        }
-        throw localSQLiteTransactionListener;
         i = 0;
-        break;
-        localSQLiteTransactionListener.onRollback();
-        continue;
+        break label87;
       }
-      label173:
-      return;
-      label174:
-      Object localObject = null;
+      localSQLiteTransactionListener.onRollback();
+    }
+    Object localObject = null;
+    label87:
+    this.mTransactionStack = localTransaction.mParent;
+    recycleTransaction(localTransaction);
+    localTransaction = this.mTransactionStack;
+    if (localTransaction != null)
+    {
+      if (i == 0) {
+        localTransaction.mChildFailed = true;
+      }
+    }
+    else if (i == 0) {}
+    try
+    {
+      this.mConnection.execute("COMMIT;", null, paramCancellationSignal);
+      break label155;
+      this.mConnection.execute("ROLLBACK;", null, paramCancellationSignal);
+      label155:
+      releaseConnection();
+      if (localObject == null) {
+        return;
+      }
+      throw localObject;
+    }
+    finally
+    {
+      releaseConnection();
     }
   }
   
@@ -230,15 +158,15 @@ public final class SQLiteSession
     {
     default: 
       return false;
-    case 4: 
-      beginTransaction(2, null, paramInt, paramCancellationSignal);
+    case 6: 
+      endTransaction(paramCancellationSignal);
       return true;
     case 5: 
       setTransactionSuccessful();
       endTransaction(paramCancellationSignal);
       return true;
     }
-    endTransaction(paramCancellationSignal);
+    beginTransaction(2, null, paramInt, paramCancellationSignal);
     return true;
   }
   
@@ -252,13 +180,13 @@ public final class SQLiteSession
       localTransaction.mMarkedSuccessful = false;
       localTransaction.mChildFailed = false;
     }
-    for (;;)
+    else
     {
-      localTransaction.mMode = paramInt;
-      localTransaction.mListener = paramSQLiteTransactionListener;
-      return localTransaction;
       localTransaction = new Transaction(null);
     }
+    localTransaction.mMode = paramInt;
+    localTransaction.mListener = paramSQLiteTransactionListener;
+    return localTransaction;
   }
   
   private void recycleTransaction(Transaction paramTransaction)
@@ -272,36 +200,44 @@ public final class SQLiteSession
   {
     int i = this.mConnectionUseCount - 1;
     this.mConnectionUseCount = i;
-    if (i == 0) {}
-    try
-    {
-      this.mConnection.setAcquisitionState(null, 0);
-      this.mConnectionPool.releaseConnection(this.mConnection);
-      return;
-    }
-    finally
-    {
-      this.mConnection = null;
+    if (i == 0) {
+      try
+      {
+        this.mConnection.setAcquisitionState(null, 0);
+        this.mConnectionPool.releaseConnection(this.mConnection);
+        return;
+      }
+      finally
+      {
+        this.mConnection = null;
+      }
     }
   }
   
   private void throwIfNestedTransaction()
   {
-    if (hasNestedTransaction()) {
-      throw new IllegalStateException("Cannot perform this operation because a nested transaction is in progress.");
+    if (!hasNestedTransaction()) {
+      return;
     }
+    throw new IllegalStateException("Cannot perform this operation because a nested transaction is in progress.");
   }
   
   private void throwIfNoTransaction()
   {
-    if (this.mTransactionStack == null) {
-      throw new IllegalStateException("Cannot perform this operation because there is no current transaction.");
+    if (this.mTransactionStack != null) {
+      return;
     }
+    throw new IllegalStateException("Cannot perform this operation because there is no current transaction.");
   }
   
   private void throwIfTransactionMarkedSuccessful()
   {
-    if ((this.mTransactionStack != null) && (this.mTransactionStack.mMarkedSuccessful)) {
+    Transaction localTransaction = this.mTransactionStack;
+    if (localTransaction != null)
+    {
+      if (!localTransaction.mMarkedSuccessful) {
+        return;
+      }
       throw new IllegalStateException("Cannot perform this operation because the transaction has already been marked successful.  The only thing you can do now is call endTransaction().");
     }
   }
@@ -353,133 +289,139 @@ public final class SQLiteSession
   public void endTransaction(CancellationSignal paramCancellationSignal)
   {
     throwIfNoTransaction();
-    assert (this.mConnection != null);
     endTransactionUnchecked(paramCancellationSignal, false);
   }
   
   public void execute(String paramString, Object[] paramArrayOfObject, int paramInt, CancellationSignal paramCancellationSignal)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("sql must not be null.");
-    }
-    if (executeSpecial(paramString, paramArrayOfObject, paramInt, paramCancellationSignal)) {
-      return;
-    }
-    acquireConnection(paramString, paramInt, paramCancellationSignal);
-    try
+    if (paramString != null)
     {
-      this.mConnection.execute(paramString, paramArrayOfObject, paramCancellationSignal);
-      return;
+      if (executeSpecial(paramString, paramArrayOfObject, paramInt, paramCancellationSignal)) {
+        return;
+      }
+      acquireConnection(paramString, paramInt, paramCancellationSignal);
+      try
+      {
+        this.mConnection.execute(paramString, paramArrayOfObject, paramCancellationSignal);
+        return;
+      }
+      finally
+      {
+        releaseConnection();
+      }
     }
-    finally
-    {
-      releaseConnection();
-    }
+    throw new IllegalArgumentException("sql must not be null.");
   }
   
   public int executeForChangedRowCount(String paramString, Object[] paramArrayOfObject, int paramInt, CancellationSignal paramCancellationSignal)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("sql must not be null.");
-    }
-    if (executeSpecial(paramString, paramArrayOfObject, paramInt, paramCancellationSignal)) {
-      return 0;
-    }
-    acquireConnection(paramString, paramInt, paramCancellationSignal);
-    try
+    if (paramString != null)
     {
-      paramInt = this.mConnection.executeForChangedRowCount(paramString, paramArrayOfObject, paramCancellationSignal);
-      return paramInt;
+      if (executeSpecial(paramString, paramArrayOfObject, paramInt, paramCancellationSignal)) {
+        return 0;
+      }
+      acquireConnection(paramString, paramInt, paramCancellationSignal);
+      try
+      {
+        paramInt = this.mConnection.executeForChangedRowCount(paramString, paramArrayOfObject, paramCancellationSignal);
+        return paramInt;
+      }
+      finally
+      {
+        releaseConnection();
+      }
     }
-    finally
-    {
-      releaseConnection();
-    }
+    throw new IllegalArgumentException("sql must not be null.");
   }
   
   public int executeForCursorWindow(String paramString, Object[] paramArrayOfObject, CursorWindow paramCursorWindow, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, CancellationSignal paramCancellationSignal)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("sql must not be null.");
-    }
-    if (paramCursorWindow == null) {
+    if (paramString != null)
+    {
+      if (paramCursorWindow != null)
+      {
+        if (executeSpecial(paramString, paramArrayOfObject, paramInt3, paramCancellationSignal))
+        {
+          paramCursorWindow.clear();
+          return 0;
+        }
+        acquireConnection(paramString, paramInt3, paramCancellationSignal);
+        try
+        {
+          paramInt1 = this.mConnection.executeForCursorWindow(paramString, paramArrayOfObject, paramCursorWindow, paramInt1, paramInt2, paramBoolean, paramCancellationSignal);
+          return paramInt1;
+        }
+        finally
+        {
+          releaseConnection();
+        }
+      }
       throw new IllegalArgumentException("window must not be null.");
     }
-    if (executeSpecial(paramString, paramArrayOfObject, paramInt3, paramCancellationSignal))
-    {
-      paramCursorWindow.clear();
-      return 0;
-    }
-    acquireConnection(paramString, paramInt3, paramCancellationSignal);
-    try
-    {
-      paramInt1 = this.mConnection.executeForCursorWindow(paramString, paramArrayOfObject, paramCursorWindow, paramInt1, paramInt2, paramBoolean, paramCancellationSignal);
-      return paramInt1;
-    }
-    finally
-    {
-      releaseConnection();
-    }
+    throw new IllegalArgumentException("sql must not be null.");
   }
   
   public long executeForLastInsertedRowId(String paramString, Object[] paramArrayOfObject, int paramInt, CancellationSignal paramCancellationSignal)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("sql must not be null.");
-    }
-    if (executeSpecial(paramString, paramArrayOfObject, paramInt, paramCancellationSignal)) {
-      return 0L;
-    }
-    acquireConnection(paramString, paramInt, paramCancellationSignal);
-    try
+    if (paramString != null)
     {
-      long l = this.mConnection.executeForLastInsertedRowId(paramString, paramArrayOfObject, paramCancellationSignal);
-      return l;
+      if (executeSpecial(paramString, paramArrayOfObject, paramInt, paramCancellationSignal)) {
+        return 0L;
+      }
+      acquireConnection(paramString, paramInt, paramCancellationSignal);
+      try
+      {
+        long l = this.mConnection.executeForLastInsertedRowId(paramString, paramArrayOfObject, paramCancellationSignal);
+        return l;
+      }
+      finally
+      {
+        releaseConnection();
+      }
     }
-    finally
-    {
-      releaseConnection();
-    }
+    throw new IllegalArgumentException("sql must not be null.");
   }
   
   public long executeForLong(String paramString, Object[] paramArrayOfObject, int paramInt, CancellationSignal paramCancellationSignal)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("sql must not be null.");
-    }
-    if (executeSpecial(paramString, paramArrayOfObject, paramInt, paramCancellationSignal)) {
-      return 0L;
-    }
-    acquireConnection(paramString, paramInt, paramCancellationSignal);
-    try
+    if (paramString != null)
     {
-      long l = this.mConnection.executeForLong(paramString, paramArrayOfObject, paramCancellationSignal);
-      return l;
+      if (executeSpecial(paramString, paramArrayOfObject, paramInt, paramCancellationSignal)) {
+        return 0L;
+      }
+      acquireConnection(paramString, paramInt, paramCancellationSignal);
+      try
+      {
+        long l = this.mConnection.executeForLong(paramString, paramArrayOfObject, paramCancellationSignal);
+        return l;
+      }
+      finally
+      {
+        releaseConnection();
+      }
     }
-    finally
-    {
-      releaseConnection();
-    }
+    throw new IllegalArgumentException("sql must not be null.");
   }
   
   public String executeForString(String paramString, Object[] paramArrayOfObject, int paramInt, CancellationSignal paramCancellationSignal)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("sql must not be null.");
-    }
-    if (executeSpecial(paramString, paramArrayOfObject, paramInt, paramCancellationSignal)) {
-      return null;
-    }
-    acquireConnection(paramString, paramInt, paramCancellationSignal);
-    try
+    if (paramString != null)
     {
-      paramString = this.mConnection.executeForString(paramString, paramArrayOfObject, paramCancellationSignal);
-      return paramString;
+      if (executeSpecial(paramString, paramArrayOfObject, paramInt, paramCancellationSignal)) {
+        return null;
+      }
+      acquireConnection(paramString, paramInt, paramCancellationSignal);
+      try
+      {
+        paramString = this.mConnection.executeForString(paramString, paramArrayOfObject, paramCancellationSignal);
+        return paramString;
+      }
+      finally
+      {
+        releaseConnection();
+      }
     }
-    finally
-    {
-      releaseConnection();
-    }
+    throw new IllegalArgumentException("sql must not be null.");
   }
   
   public boolean hasConnection()
@@ -489,7 +431,8 @@ public final class SQLiteSession
   
   public boolean hasNestedTransaction()
   {
-    return (this.mTransactionStack != null) && (this.mTransactionStack.mParent != null);
+    Transaction localTransaction = this.mTransactionStack;
+    return (localTransaction != null) && (localTransaction.mParent != null);
   }
   
   public boolean hasTransaction()
@@ -499,37 +442,40 @@ public final class SQLiteSession
   
   public void prepare(String paramString, int paramInt, CancellationSignal paramCancellationSignal, SQLiteStatementInfo paramSQLiteStatementInfo)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("sql must not be null.");
-    }
-    if (paramCancellationSignal != null) {
-      paramCancellationSignal.throwIfCanceled();
-    }
-    acquireConnection(paramString, paramInt, paramCancellationSignal);
-    try
+    if (paramString != null)
     {
-      this.mConnection.prepare(paramString, paramSQLiteStatementInfo);
-      return;
+      if (paramCancellationSignal != null) {
+        paramCancellationSignal.throwIfCanceled();
+      }
+      acquireConnection(paramString, paramInt, paramCancellationSignal);
+      try
+      {
+        this.mConnection.prepare(paramString, paramSQLiteStatementInfo);
+        return;
+      }
+      finally
+      {
+        releaseConnection();
+      }
     }
-    finally
-    {
-      releaseConnection();
-    }
+    throw new IllegalArgumentException("sql must not be null.");
   }
   
   void releaseConnectionForNativeHandle(Exception paramException)
   {
-    if (this.mConnection != null) {
-      this.mConnection.endNativeHandle(paramException);
+    SQLiteConnection localSQLiteConnection = this.mConnection;
+    if (localSQLiteConnection != null) {
+      localSQLiteConnection.endNativeHandle(paramException);
     }
     releaseConnection();
   }
   
   void releasePreparedStatement(SQLiteConnection.PreparedStatement paramPreparedStatement)
   {
-    if (this.mConnection != null)
+    SQLiteConnection localSQLiteConnection = this.mConnection;
+    if (localSQLiteConnection != null)
     {
-      this.mConnection.releasePreparedStatement(paramPreparedStatement);
+      localSQLiteConnection.releasePreparedStatement(paramPreparedStatement);
       releaseConnection();
     }
   }
@@ -563,17 +509,22 @@ public final class SQLiteSession
       throwIfTransactionMarkedSuccessful();
       throwIfNestedTransaction();
     }
-    while ((this.mTransactionStack != null) && (!this.mTransactionStack.mMarkedSuccessful) && (this.mTransactionStack.mParent == null))
+    else
     {
-      if (($assertionsDisabled) || (this.mConnection != null)) {
-        break;
+      Transaction localTransaction = this.mTransactionStack;
+      if ((localTransaction == null) || (localTransaction.mMarkedSuccessful)) {
+        break label70;
       }
-      throw new AssertionError();
+      if (this.mTransactionStack.mParent != null) {
+        return false;
+      }
     }
-    while (this.mTransactionStack.mChildFailed) {
+    if (this.mTransactionStack.mChildFailed) {
       return false;
     }
     return yieldTransactionUnchecked(paramLong, paramCancellationSignal);
+    label70:
+    return false;
   }
   
   private static final class Transaction

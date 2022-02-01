@@ -20,9 +20,10 @@ public class j
   
   public void onChange(boolean paramBoolean)
   {
-    if (this.ah != null)
+    i locali = this.ah;
+    if (locali != null)
     {
-      this.ah.b(this.ag, this.af);
+      locali.b(this.ag, this.af);
       return;
     }
     Log.e("VMS_IDLG_SDK_Observer", "mIdentifierIdClient is null");

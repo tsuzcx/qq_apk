@@ -7,8 +7,10 @@ class SyncTask$1
   
   public void run()
   {
-    SyncTask.a(this.bk, Util.ticksToNow(SyncTask.a(this.bk)));
-    this.bk.setResult(this.bk.run());
+    SyncTask localSyncTask = this.bk;
+    SyncTask.a(localSyncTask, Util.ticksToNow(SyncTask.a(localSyncTask)));
+    localSyncTask = this.bk;
+    localSyncTask.setResult(localSyncTask.run());
   }
 }
 

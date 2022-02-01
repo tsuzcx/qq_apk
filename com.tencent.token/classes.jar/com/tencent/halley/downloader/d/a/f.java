@@ -27,8 +27,11 @@ public final class f
     if (b())
     {
       long l = this.c.longValue();
-      if ((this.d + l < System.currentTimeMillis()) && (this.c.compareAndSet(l, System.currentTimeMillis() + 1L)))
+      if (this.d + l < System.currentTimeMillis())
       {
+        if (!this.c.compareAndSet(l, System.currentTimeMillis() + 1L)) {
+          return;
+        }
         Thread.currentThread().setUncaughtExceptionHandler(new g(this));
         throw new RuntimeException("Stopping thread to avoid potential memory leaks after a context was stopped.");
       }
@@ -65,16 +68,16 @@ public final class f
     catch (RejectedExecutionException localRejectedExecutionException)
     {
       d locald;
-      while ((super.getQueue() instanceof d))
+      if ((super.getQueue() instanceof d))
       {
         locald = (d)super.getQueue();
         try
         {
-          if (!locald.a(paramRunnable, 0L, localTimeUnit))
-          {
-            this.a.decrementAndGet();
-            throw new RejectedExecutionException("Queue capacity is full.");
+          if (locald.a(paramRunnable, 0L, localTimeUnit)) {
+            return;
           }
+          this.a.decrementAndGet();
+          throw new RejectedExecutionException("Queue capacity is full.");
         }
         catch (InterruptedException paramRunnable)
         {

@@ -27,14 +27,39 @@ public final class fg
   
   public static boolean a(z paramz, x paramx)
   {
-    switch (paramz.b())
+    int i = paramz.b();
+    boolean bool2 = false;
+    switch (i)
     {
-    }
-    do
-    {
+    default: 
       return false;
-    } while (((paramz.a("Expires") == null) && (paramz.h().c() == -1) && (!paramz.h().e()) && (!paramz.h().d())) || (paramz.h().b()) || (paramx.f().b()));
-    return true;
+    case 302: 
+    case 307: 
+      if ((paramz.a("Expires") == null) && (paramz.h().c() == -1) && (!paramz.h().e()) && (!paramz.h().d())) {
+        break;
+      }
+    case 200: 
+    case 203: 
+    case 204: 
+    case 300: 
+    case 301: 
+    case 308: 
+    case 404: 
+    case 405: 
+    case 410: 
+    case 414: 
+    case 501: 
+      boolean bool1 = bool2;
+      if (!paramz.h().b())
+      {
+        bool1 = bool2;
+        if (!paramx.f().b()) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+    return false;
   }
   
   public static class a
@@ -64,7 +89,7 @@ public final class fg
         paramx = paramz.d();
         int m = 0;
         int n = paramx.a();
-        if (m < n)
+        while (m < n)
         {
           paramz = paramx.a(m);
           String str = paramx.b(m);
@@ -73,28 +98,24 @@ public final class fg
             this.d = fm.a(str);
             this.e = str;
           }
-          for (;;)
+          else if ("Expires".equalsIgnoreCase(paramz))
           {
-            m += 1;
-            break;
-            if ("Expires".equalsIgnoreCase(paramz))
-            {
-              this.h = fm.a(str);
-            }
-            else if ("Last-Modified".equalsIgnoreCase(paramz))
-            {
-              this.f = fm.a(str);
-              this.g = str;
-            }
-            else if ("ETag".equalsIgnoreCase(paramz))
-            {
-              this.k = str;
-            }
-            else if ("Age".equalsIgnoreCase(paramz))
-            {
-              this.l = fn.b(str, -1);
-            }
+            this.h = fm.a(str);
           }
+          else if ("Last-Modified".equalsIgnoreCase(paramz))
+          {
+            this.f = fm.a(str);
+            this.g = str;
+          }
+          else if ("ETag".equalsIgnoreCase(paramz))
+          {
+            this.k = str;
+          }
+          else if ("Age".equalsIgnoreCase(paramz))
+          {
+            this.l = fn.b(str, -1);
+          }
+          m += 1;
         }
       }
     }
@@ -106,7 +127,6 @@ public final class fg
     
     private fg b()
     {
-      long l4 = 0L;
       if (this.c == null) {
         return new fg(this.b, null);
       }
@@ -117,22 +137,25 @@ public final class fg
         return new fg(this.b, null);
       }
       Object localObject1 = this.b.f();
-      if ((((d)localObject1).a()) || (a(this.b))) {
-        return new fg(this.b, null);
-      }
-      Object localObject2 = this.c.h();
-      if (((d)localObject2).j()) {
-        return new fg(null, this.c);
-      }
-      long l5 = d();
-      long l2 = c();
-      long l1 = l2;
-      if (((d)localObject1).c() != -1) {
-        l1 = Math.min(l2, TimeUnit.SECONDS.toMillis(((d)localObject1).c()));
-      }
-      if (((d)localObject1).h() != -1) {}
-      for (l2 = TimeUnit.SECONDS.toMillis(((d)localObject1).h());; l2 = 0L)
+      if ((!((d)localObject1).a()) && (!a(this.b)))
       {
+        Object localObject2 = this.c.h();
+        if (((d)localObject2).j()) {
+          return new fg(null, this.c);
+        }
+        long l5 = d();
+        long l2 = c();
+        long l1 = l2;
+        if (((d)localObject1).c() != -1) {
+          l1 = Math.min(l2, TimeUnit.SECONDS.toMillis(((d)localObject1).c()));
+        }
+        int m = ((d)localObject1).h();
+        long l4 = 0L;
+        if (m != -1) {
+          l2 = TimeUnit.SECONDS.toMillis(((d)localObject1).h());
+        } else {
+          l2 = 0L;
+        }
         long l3 = l4;
         if (!((d)localObject2).f())
         {
@@ -141,103 +164,101 @@ public final class fg
             l3 = TimeUnit.SECONDS.toMillis(((d)localObject1).g());
           }
         }
-        if ((!((d)localObject2).a()) && (l5 + l2 < l3 + l1))
+        if (!((d)localObject2).a())
         {
-          localObject1 = this.c.f();
-          if (l2 + l5 >= l1) {
-            ((z.a)localObject1).a("Warning", "110 HttpURLConnection \"Response is stale\"");
+          l2 += l5;
+          if (l2 < l3 + l1)
+          {
+            localObject1 = this.c.f();
+            if (l2 >= l1) {
+              ((z.a)localObject1).a("Warning", "110 HttpURLConnection \"Response is stale\"");
+            }
+            if ((l5 > 86400000L) && (e())) {
+              ((z.a)localObject1).a("Warning", "113 HttpURLConnection \"Heuristic expiration\"");
+            }
+            return new fg(null, ((z.a)localObject1).a());
           }
-          if ((l5 > 86400000L) && (e())) {
-            ((z.a)localObject1).a("Warning", "113 HttpURLConnection \"Heuristic expiration\"");
-          }
-          return new fg(null, ((z.a)localObject1).a());
         }
-        if (this.k != null)
+        localObject1 = this.k;
+        if (localObject1 != null)
         {
           localObject2 = "If-None-Match";
-          localObject1 = this.k;
         }
-        for (;;)
+        else if (this.f != null)
         {
-          r.a locala = this.b.c().b();
-          fa.a.a(locala, (String)localObject2, (String)localObject1);
-          return new fg(this.b.e().a(locala.a()).a(), this.c);
-          if (this.f != null)
-          {
-            localObject2 = "If-Modified-Since";
-            localObject1 = this.g;
-          }
-          else
-          {
-            if (this.d == null) {
-              break;
-            }
-            localObject2 = "If-Modified-Since";
-            localObject1 = this.e;
-          }
+          localObject2 = "If-Modified-Since";
+          localObject1 = this.g;
         }
+        else
+        {
+          if (this.d == null) {
+            break label455;
+          }
+          localObject2 = "If-Modified-Since";
+          localObject1 = this.e;
+        }
+        r.a locala = this.b.c().b();
+        fa.a.a(locala, (String)localObject2, (String)localObject1);
+        return new fg(this.b.e().a(locala.a()).a(), this.c);
+        label455:
         return new fg(this.b, null);
       }
+      return new fg(this.b, null);
     }
     
     private long c()
     {
-      long l2 = 0L;
-      d locald = this.c.h();
-      if (locald.c() != -1) {
-        l1 = TimeUnit.SECONDS.toMillis(locald.c());
+      Object localObject = this.c.h();
+      if (((d)localObject).c() != -1) {
+        return TimeUnit.SECONDS.toMillis(((d)localObject).c());
       }
-      label83:
-      do
+      localObject = this.h;
+      long l1 = 0L;
+      long l2;
+      if (localObject != null)
       {
-        do
-        {
-          return l1;
-          if (this.h != null)
-          {
-            if (this.d != null)
-            {
-              l1 = this.d.getTime();
-              l1 = this.h.getTime() - l1;
-              if (l1 <= 0L) {
-                break label83;
-              }
-            }
-            for (;;)
-            {
-              return l1;
-              l1 = this.j;
-              break;
-              l1 = 0L;
-            }
-          }
-          l1 = l2;
-        } while (this.f == null);
-        l1 = l2;
-      } while (this.c.a().a().k() != null);
-      if (this.d != null) {}
-      for (long l1 = this.d.getTime();; l1 = this.i)
-      {
-        long l3 = l1 - this.f.getTime();
-        l1 = l2;
-        if (l3 <= 0L) {
-          break;
+        localObject = this.d;
+        if (localObject != null) {
+          l2 = ((Date)localObject).getTime();
+        } else {
+          l2 = this.j;
         }
-        return l3 / 10L;
+        l2 = this.h.getTime() - l2;
+        if (l2 > 0L) {
+          l1 = l2;
+        }
+        return l1;
       }
+      if ((this.f != null) && (this.c.a().a().k() == null))
+      {
+        localObject = this.d;
+        if (localObject != null) {
+          l2 = ((Date)localObject).getTime();
+        } else {
+          l2 = this.i;
+        }
+        l2 -= this.f.getTime();
+        if (l2 > 0L) {
+          l1 = l2 / 10L;
+        }
+        return l1;
+      }
+      return 0L;
     }
     
     private long d()
     {
+      Date localDate = this.d;
       long l1 = 0L;
-      if (this.d != null) {
-        l1 = Math.max(0L, this.j - this.d.getTime());
+      if (localDate != null) {
+        l1 = Math.max(0L, this.j - localDate.getTime());
       }
       long l2 = l1;
       if (this.l != -1) {
         l2 = Math.max(l1, TimeUnit.SECONDS.toMillis(this.l));
       }
-      return l2 + (this.j - this.i) + (this.a - this.j);
+      l1 = this.j;
+      return l2 + (l1 - this.i) + (this.a - l1);
     }
     
     private boolean e()
@@ -247,16 +268,11 @@ public final class fg
     
     public fg a()
     {
-      fg localfg2 = b();
-      fg localfg1 = localfg2;
-      if (localfg2.a != null)
-      {
-        localfg1 = localfg2;
-        if (this.b.f().i()) {
-          localfg1 = new fg(null, null);
-        }
+      fg localfg = b();
+      if ((localfg.a != null) && (this.b.f().i())) {
+        return new fg(null, null);
       }
-      return localfg1;
+      return localfg;
     }
   }
 }

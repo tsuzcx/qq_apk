@@ -47,16 +47,12 @@ public class MbInfoResult
       try
       {
         this.mContent = paramJSONObject.getString("content");
-        this.mDetail = new MbInfoResult.MbInfoItemDetail(paramJSONObject.getJSONObject("detail_info"));
-        return;
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
+        localJSONException.printStackTrace();
       }
+      this.mDetail = new MbInfoResult.MbInfoItemDetail(paramJSONObject.getJSONObject("detail_info"));
     }
   }
   

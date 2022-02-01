@@ -11,20 +11,23 @@ public abstract interface o
   {
     public List<InetAddress> a(String paramAnonymousString)
     {
-      if (paramAnonymousString == null) {
-        throw new UnknownHostException("hostname == null");
+      if (paramAnonymousString != null) {
+        try
+        {
+          List localList = Arrays.asList(InetAddress.getAllByName(paramAnonymousString));
+          return localList;
+        }
+        catch (NullPointerException localNullPointerException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Broken system behaviour for dns lookup of ");
+          localStringBuilder.append(paramAnonymousString);
+          paramAnonymousString = new UnknownHostException(localStringBuilder.toString());
+          paramAnonymousString.initCause(localNullPointerException);
+          throw paramAnonymousString;
+        }
       }
-      try
-      {
-        List localList = Arrays.asList(InetAddress.getAllByName(paramAnonymousString));
-        return localList;
-      }
-      catch (NullPointerException localNullPointerException)
-      {
-        paramAnonymousString = new UnknownHostException("Broken system behaviour for dns lookup of " + paramAnonymousString);
-        paramAnonymousString.initCause(localNullPointerException);
-        throw paramAnonymousString;
-      }
+      throw new UnknownHostException("hostname == null");
     }
   };
   

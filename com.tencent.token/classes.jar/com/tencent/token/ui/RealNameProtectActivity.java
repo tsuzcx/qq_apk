@@ -20,8 +20,8 @@ public class RealNameProtectActivity
       finish();
       return;
     }
-    setContentView(2130968728);
-    findViewById(2131559172).setOnClickListener(new View.OnClickListener()
+    setContentView(2131296409);
+    findViewById(2131165874).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {

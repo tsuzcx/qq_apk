@@ -45,64 +45,79 @@ public final class SQLiteQuery
     //   45: iload_2
     //   46: ireturn
     //   47: astore 5
-    //   49: aload_0
-    //   50: invokevirtual 59	com/tencent/wcdb/database/SQLiteQuery:onCorruption	()V
-    //   53: aload 5
-    //   55: athrow
-    //   56: astore 5
-    //   58: aload_1
-    //   59: invokevirtual 55	com/tencent/wcdb/CursorWindow:releaseReference	()V
-    //   62: aload 5
-    //   64: athrow
-    //   65: astore_1
-    //   66: aload_0
-    //   67: invokevirtual 56	com/tencent/wcdb/database/SQLiteQuery:releaseReference	()V
-    //   70: aload_1
-    //   71: athrow
-    //   72: astore 5
-    //   74: ldc 8
-    //   76: new 61	java/lang/StringBuilder
-    //   79: dup
-    //   80: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   83: ldc 65
-    //   85: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: aload 5
-    //   90: invokevirtual 72	com/tencent/wcdb/database/SQLiteException:getMessage	()Ljava/lang/String;
-    //   93: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   96: ldc 74
-    //   98: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   101: aload_0
-    //   102: invokevirtual 38	com/tencent/wcdb/database/SQLiteQuery:getSql	()Ljava/lang/String;
-    //   105: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   111: invokestatic 83	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   114: aload 5
-    //   116: athrow
+    //   49: goto +73 -> 122
+    //   52: astore 5
+    //   54: new 58	java/lang/StringBuilder
+    //   57: dup
+    //   58: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   61: astore 6
+    //   63: aload 6
+    //   65: ldc 62
+    //   67: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: pop
+    //   71: aload 6
+    //   73: aload 5
+    //   75: invokevirtual 69	com/tencent/wcdb/database/SQLiteException:getMessage	()Ljava/lang/String;
+    //   78: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: pop
+    //   82: aload 6
+    //   84: ldc 71
+    //   86: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: pop
+    //   90: aload 6
+    //   92: aload_0
+    //   93: invokevirtual 38	com/tencent/wcdb/database/SQLiteQuery:getSql	()Ljava/lang/String;
+    //   96: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   99: pop
+    //   100: ldc 8
+    //   102: aload 6
+    //   104: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   107: invokestatic 80	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   110: aload 5
+    //   112: athrow
+    //   113: astore 5
+    //   115: aload_0
+    //   116: invokevirtual 83	com/tencent/wcdb/database/SQLiteQuery:onCorruption	()V
+    //   119: aload 5
+    //   121: athrow
+    //   122: aload_1
+    //   123: invokevirtual 55	com/tencent/wcdb/CursorWindow:releaseReference	()V
+    //   126: aload 5
+    //   128: athrow
+    //   129: astore_1
+    //   130: aload_0
+    //   131: invokevirtual 56	com/tencent/wcdb/database/SQLiteQuery:releaseReference	()V
+    //   134: aload_1
+    //   135: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	117	0	this	SQLiteQuery
-    //   0	117	1	paramCursorWindow	com.tencent.wcdb.CursorWindow
-    //   0	117	2	paramInt1	int
-    //   0	117	3	paramInt2	int
-    //   0	117	4	paramBoolean	boolean
-    //   47	7	5	localSQLiteDatabaseCorruptException	SQLiteDatabaseCorruptException
-    //   56	7	5	localObject	Object
-    //   72	43	5	localSQLiteException	SQLiteException
+    //   0	136	0	this	SQLiteQuery
+    //   0	136	1	paramCursorWindow	com.tencent.wcdb.CursorWindow
+    //   0	136	2	paramInt1	int
+    //   0	136	3	paramInt2	int
+    //   0	136	4	paramBoolean	boolean
+    //   47	1	5	localObject	Object
+    //   52	59	5	localSQLiteException	SQLiteException
+    //   113	14	5	localSQLiteDatabaseCorruptException	SQLiteDatabaseCorruptException
+    //   61	42	6	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   8	37	47	com/tencent/wcdb/database/SQLiteDatabaseCorruptException
-    //   8	37	56	finally
-    //   49	56	56	finally
-    //   74	117	56	finally
-    //   4	8	65	finally
-    //   37	41	65	finally
-    //   58	65	65	finally
-    //   8	37	72	com/tencent/wcdb/database/SQLiteException
+    //   8	37	47	finally
+    //   54	113	47	finally
+    //   115	122	47	finally
+    //   8	37	52	com/tencent/wcdb/database/SQLiteException
+    //   8	37	113	com/tencent/wcdb/database/SQLiteDatabaseCorruptException
+    //   4	8	129	finally
+    //   37	41	129	finally
+    //   122	129	129	finally
   }
   
   public String toString()
   {
-    return "SQLiteQuery: " + getSql();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SQLiteQuery: ");
+    localStringBuilder.append(getSql());
+    return localStringBuilder.toString();
   }
 }
 

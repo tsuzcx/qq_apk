@@ -30,6 +30,7 @@ class TreeDocumentFile
     catch (RuntimeException paramAutoCloseable)
     {
       throw paramAutoCloseable;
+      return;
     }
     catch (Exception paramAutoCloseable) {}
   }
@@ -41,7 +42,11 @@ class TreeDocumentFile
       paramContext = DocumentsContract.createDocument(paramContext.getContentResolver(), paramUri, paramString1, paramString2);
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label13:
+      break label13;
+    }
     return null;
   }
   
@@ -80,7 +85,11 @@ class TreeDocumentFile
       boolean bool = DocumentsContract.deleteDocument(this.mContext.getContentResolver(), this.mUri);
       return bool;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label17:
+      break label17;
+    }
     return false;
   }
   
@@ -136,158 +145,178 @@ class TreeDocumentFile
     //   0: aload_0
     //   1: getfield 18	android/support/v4/provider/TreeDocumentFile:mContext	Landroid/content/Context;
     //   4: invokevirtual 41	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   7: astore_2
-    //   8: aload_0
-    //   9: getfield 20	android/support/v4/provider/TreeDocumentFile:mUri	Landroid/net/Uri;
-    //   12: aload_0
-    //   13: getfield 20	android/support/v4/provider/TreeDocumentFile:mUri	Landroid/net/Uri;
+    //   7: astore 4
+    //   9: aload_0
+    //   10: getfield 20	android/support/v4/provider/TreeDocumentFile:mUri	Landroid/net/Uri;
+    //   13: astore_2
+    //   14: aload_2
+    //   15: aload_2
     //   16: invokestatic 107	android/provider/DocumentsContract:getDocumentId	(Landroid/net/Uri;)Ljava/lang/String;
     //   19: invokestatic 111	android/provider/DocumentsContract:buildChildDocumentsUriUsingTree	(Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
-    //   22: astore_3
-    //   23: new 113	java/util/ArrayList
-    //   26: dup
-    //   27: invokespecial 115	java/util/ArrayList:<init>	()V
-    //   30: astore 5
-    //   32: aload_2
-    //   33: aload_3
-    //   34: iconst_1
-    //   35: anewarray 117	java/lang/String
-    //   38: dup
-    //   39: iconst_0
-    //   40: ldc 119
-    //   42: aastore
-    //   43: aconst_null
-    //   44: aconst_null
-    //   45: aconst_null
-    //   46: invokevirtual 125	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   49: astore_3
-    //   50: aload_3
-    //   51: astore_2
-    //   52: aload_3
-    //   53: invokeinterface 130 1 0
-    //   58: ifeq +124 -> 182
-    //   61: aload_3
-    //   62: astore_2
-    //   63: aload_3
-    //   64: iconst_0
-    //   65: invokeinterface 134 2 0
-    //   70: astore 4
-    //   72: aload_3
-    //   73: astore_2
-    //   74: aload 5
-    //   76: aload_0
-    //   77: getfield 20	android/support/v4/provider/TreeDocumentFile:mUri	Landroid/net/Uri;
+    //   22: astore 5
+    //   24: new 113	java/util/ArrayList
+    //   27: dup
+    //   28: invokespecial 115	java/util/ArrayList:<init>	()V
+    //   31: astore 6
+    //   33: iconst_0
+    //   34: istore_1
+    //   35: aconst_null
+    //   36: astore_2
+    //   37: aconst_null
+    //   38: astore_3
+    //   39: aload 4
+    //   41: aload 5
+    //   43: iconst_1
+    //   44: anewarray 117	java/lang/String
+    //   47: dup
+    //   48: iconst_0
+    //   49: ldc 119
+    //   51: aastore
+    //   52: aconst_null
+    //   53: aconst_null
+    //   54: aconst_null
+    //   55: invokevirtual 125	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   58: astore 4
+    //   60: aload 4
+    //   62: astore 5
+    //   64: aload 4
+    //   66: astore_3
+    //   67: aload 4
+    //   69: astore_2
+    //   70: aload 4
+    //   72: invokeinterface 130 1 0
+    //   77: ifeq +43 -> 120
     //   80: aload 4
-    //   82: invokestatic 137	android/provider/DocumentsContract:buildDocumentUriUsingTree	(Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
-    //   85: invokevirtual 141	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   88: pop
-    //   89: goto -39 -> 50
-    //   92: astore 4
-    //   94: aload_3
-    //   95: astore_2
-    //   96: ldc 143
-    //   98: new 145	java/lang/StringBuilder
-    //   101: dup
-    //   102: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   105: ldc 148
-    //   107: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: aload 4
-    //   112: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   115: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   118: invokestatic 164	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
-    //   121: pop
-    //   122: aload_3
-    //   123: invokestatic 166	android/support/v4/provider/TreeDocumentFile:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   126: aload 5
-    //   128: aload 5
-    //   130: invokevirtual 170	java/util/ArrayList:size	()I
-    //   133: anewarray 172	android/net/Uri
-    //   136: invokevirtual 176	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
-    //   139: checkcast 178	[Landroid/net/Uri;
-    //   142: astore_2
-    //   143: aload_2
-    //   144: arraylength
-    //   145: anewarray 4	android/support/v4/provider/DocumentFile
-    //   148: astore_3
-    //   149: iconst_0
-    //   150: istore_1
-    //   151: iload_1
-    //   152: aload_2
-    //   153: arraylength
-    //   154: if_icmpge +44 -> 198
-    //   157: aload_3
-    //   158: iload_1
-    //   159: new 2	android/support/v4/provider/TreeDocumentFile
-    //   162: dup
-    //   163: aload_0
-    //   164: aload_0
-    //   165: getfield 18	android/support/v4/provider/TreeDocumentFile:mContext	Landroid/content/Context;
-    //   168: aload_2
-    //   169: iload_1
-    //   170: aaload
-    //   171: invokespecial 65	android/support/v4/provider/TreeDocumentFile:<init>	(Landroid/support/v4/provider/DocumentFile;Landroid/content/Context;Landroid/net/Uri;)V
-    //   174: aastore
-    //   175: iload_1
-    //   176: iconst_1
-    //   177: iadd
-    //   178: istore_1
-    //   179: goto -28 -> 151
-    //   182: aload_3
-    //   183: invokestatic 166	android/support/v4/provider/TreeDocumentFile:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   186: goto -60 -> 126
-    //   189: astore_3
-    //   190: aconst_null
-    //   191: astore_2
-    //   192: aload_2
-    //   193: invokestatic 166	android/support/v4/provider/TreeDocumentFile:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   196: aload_3
-    //   197: athrow
-    //   198: aload_3
-    //   199: areturn
-    //   200: astore_3
-    //   201: goto -9 -> 192
-    //   204: astore 4
-    //   206: aconst_null
-    //   207: astore_3
-    //   208: goto -114 -> 94
+    //   82: astore_3
+    //   83: aload 4
+    //   85: astore_2
+    //   86: aload 4
+    //   88: iconst_0
+    //   89: invokeinterface 134 2 0
+    //   94: astore 5
+    //   96: aload 4
+    //   98: astore_3
+    //   99: aload 4
+    //   101: astore_2
+    //   102: aload 6
+    //   104: aload_0
+    //   105: getfield 20	android/support/v4/provider/TreeDocumentFile:mUri	Landroid/net/Uri;
+    //   108: aload 5
+    //   110: invokestatic 137	android/provider/DocumentsContract:buildDocumentUriUsingTree	(Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
+    //   113: invokevirtual 141	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   116: pop
+    //   117: goto -57 -> 60
+    //   120: aload 5
+    //   122: invokestatic 143	android/support/v4/provider/TreeDocumentFile:closeQuietly	(Ljava/lang/AutoCloseable;)V
+    //   125: goto +59 -> 184
+    //   128: astore_2
+    //   129: goto +111 -> 240
+    //   132: astore 4
+    //   134: aload_2
+    //   135: astore_3
+    //   136: new 145	java/lang/StringBuilder
+    //   139: dup
+    //   140: invokespecial 146	java/lang/StringBuilder:<init>	()V
+    //   143: astore 5
+    //   145: aload_2
+    //   146: astore_3
+    //   147: aload 5
+    //   149: ldc 148
+    //   151: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: pop
+    //   155: aload_2
+    //   156: astore_3
+    //   157: aload 5
+    //   159: aload 4
+    //   161: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   164: pop
+    //   165: aload_2
+    //   166: astore_3
+    //   167: ldc 157
+    //   169: aload 5
+    //   171: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   174: invokestatic 166	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
+    //   177: pop
+    //   178: aload_2
+    //   179: astore 5
+    //   181: goto -61 -> 120
+    //   184: aload 6
+    //   186: aload 6
+    //   188: invokevirtual 170	java/util/ArrayList:size	()I
+    //   191: anewarray 172	android/net/Uri
+    //   194: invokevirtual 176	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
+    //   197: checkcast 178	[Landroid/net/Uri;
+    //   200: astore_2
+    //   201: aload_2
+    //   202: arraylength
+    //   203: anewarray 4	android/support/v4/provider/DocumentFile
+    //   206: astore_3
+    //   207: iload_1
+    //   208: aload_2
+    //   209: arraylength
+    //   210: if_icmpge +28 -> 238
+    //   213: aload_3
+    //   214: iload_1
+    //   215: new 2	android/support/v4/provider/TreeDocumentFile
+    //   218: dup
+    //   219: aload_0
+    //   220: aload_0
+    //   221: getfield 18	android/support/v4/provider/TreeDocumentFile:mContext	Landroid/content/Context;
+    //   224: aload_2
+    //   225: iload_1
+    //   226: aaload
+    //   227: invokespecial 65	android/support/v4/provider/TreeDocumentFile:<init>	(Landroid/support/v4/provider/DocumentFile;Landroid/content/Context;Landroid/net/Uri;)V
+    //   230: aastore
+    //   231: iload_1
+    //   232: iconst_1
+    //   233: iadd
+    //   234: istore_1
+    //   235: goto -28 -> 207
+    //   238: aload_3
+    //   239: areturn
+    //   240: aload_3
+    //   241: invokestatic 143	android/support/v4/provider/TreeDocumentFile:closeQuietly	(Ljava/lang/AutoCloseable;)V
+    //   244: aload_2
+    //   245: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	211	0	this	TreeDocumentFile
-    //   150	29	1	i	int
-    //   7	186	2	localObject1	java.lang.Object
-    //   22	161	3	localObject2	java.lang.Object
-    //   189	10	3	arrayOfDocumentFile	DocumentFile[]
-    //   200	1	3	localObject3	java.lang.Object
-    //   207	1	3	localObject4	java.lang.Object
-    //   70	11	4	str	String
-    //   92	19	4	localException1	Exception
-    //   204	1	4	localException2	Exception
-    //   30	99	5	localArrayList	java.util.ArrayList
+    //   0	246	0	this	TreeDocumentFile
+    //   34	201	1	i	int
+    //   13	89	2	localObject1	java.lang.Object
+    //   128	51	2	localObject2	java.lang.Object
+    //   200	45	2	arrayOfUri	Uri[]
+    //   38	203	3	localObject3	java.lang.Object
+    //   7	93	4	localObject4	java.lang.Object
+    //   132	28	4	localException	Exception
+    //   22	158	5	localObject5	java.lang.Object
+    //   31	156	6	localArrayList	java.util.ArrayList
     // Exception table:
     //   from	to	target	type
-    //   52	61	92	java/lang/Exception
-    //   63	72	92	java/lang/Exception
-    //   74	89	92	java/lang/Exception
-    //   32	50	189	finally
-    //   52	61	200	finally
-    //   63	72	200	finally
-    //   74	89	200	finally
-    //   96	122	200	finally
-    //   32	50	204	java/lang/Exception
+    //   39	60	128	finally
+    //   70	80	128	finally
+    //   86	96	128	finally
+    //   102	117	128	finally
+    //   136	145	128	finally
+    //   147	155	128	finally
+    //   157	165	128	finally
+    //   167	178	128	finally
+    //   39	60	132	java/lang/Exception
+    //   70	80	132	java/lang/Exception
+    //   86	96	132	java/lang/Exception
+    //   102	117	132	java/lang/Exception
   }
   
   public boolean renameTo(String paramString)
   {
-    boolean bool = false;
     try
     {
       paramString = DocumentsContract.renameDocument(this.mContext.getContentResolver(), this.mUri, paramString);
       if (paramString != null)
       {
         this.mUri = paramString;
-        bool = true;
+        return true;
       }
-      return bool;
+      return false;
     }
     catch (Exception paramString) {}
     return false;

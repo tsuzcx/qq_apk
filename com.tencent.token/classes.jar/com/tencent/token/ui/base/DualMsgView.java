@@ -86,31 +86,46 @@ public class DualMsgView
   
   private String a(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString1.length() <= 0)) {
-      return "";
-    }
-    String str = null;
-    int i1 = 0;
-    if (i1 < paramString1.length() - 1)
+    if ((paramString1 != null) && (paramString1.length() > 0))
     {
-      if (str == null) {}
-      for (str = paramString1.substring(i1, i1 + 1);; str = str + paramString1.substring(i1, i1 + 1))
+      String str = null;
+      int i1 = 0;
+      while (i1 < paramString1.length() - 1)
       {
-        str = str + paramString2;
+        if (str == null)
+        {
+          str = paramString1.substring(i1, i1 + 1);
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append(paramString1.substring(i1, i1 + 1));
+          str = localStringBuilder.toString();
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(paramString2);
+        str = localStringBuilder.toString();
         i1 += 1;
-        break;
       }
+      paramString2 = new StringBuilder();
+      paramString2.append(str);
+      paramString2.append(paramString1.substring(paramString1.length() - 1, paramString1.length()));
+      return paramString2.toString();
     }
-    return str + paramString1.substring(paramString1.length() - 1, paramString1.length());
+    return "";
   }
   
   public void a()
   {
-    if (this.t != null) {
-      this.t.recycle();
+    Bitmap localBitmap = this.t;
+    if (localBitmap != null) {
+      localBitmap.recycle();
     }
-    if (this.u != null) {
-      this.u.recycle();
+    localBitmap = this.u;
+    if (localBitmap != null) {
+      localBitmap.recycle();
     }
   }
   
@@ -133,10 +148,18 @@ public class DualMsgView
     parama = cr.a().c(parama.c());
     if (parama != null)
     {
-      this.j.setImageDrawable(g.a(parama.b() + "", parama.mUin + ""));
+      ImageView localImageView = this.j;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(parama.b());
+      ((StringBuilder)localObject).append("");
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(parama.mUin);
+      localStringBuilder.append("");
+      localImageView.setImageDrawable(g.a((String)localObject, localStringBuilder.toString()));
       if (parama.mIsZzb)
       {
-        this.k.setImageDrawable(getResources().getDrawable(2130838075));
+        this.k.setImageDrawable(getResources().getDrawable(2131100224));
         this.l.setVisibility(0);
       }
       this.g.setText(parama.mNickName);
@@ -147,54 +170,56 @@ public class DualMsgView
   
   public boolean a(Context paramContext)
   {
-    if ((this.m == null) || ((this.m != null) && (this.m.isFinishing()))) {
-      return false;
-    }
-    this.n = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    this.o = this.n.inflate(2130968640, null);
-    this.o.setVisibility(4);
-    this.p = this.o.findViewById(2131558823);
-    this.q = this.o.findViewById(2131558809);
-    this.r = this.o.findViewById(2131558804);
-    this.s = this.o.findViewById(2131558806);
-    this.t = m.a(this.m.getResources(), 2130837681);
-    this.u = m.a(this.m.getResources(), 2130837680);
-    if (this.t != null) {
-      ((LinearLayout)this.o.findViewById(2131558810)).setBackgroundDrawable(new BitmapDrawable(this.t));
-    }
-    if (this.u != null)
+    Activity localActivity = this.m;
+    if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
     {
-      ((LinearLayout)this.o.findViewById(2131558811)).setBackgroundDrawable(new BitmapDrawable(this.u));
-      ((LinearLayout)this.o.findViewById(2131558812)).setBackgroundDrawable(new BitmapDrawable(this.u));
-    }
-    this.a = this.o.findViewById(2131558815);
-    this.c = ((TextView)this.o.findViewById(2131558816));
-    this.d = ((TextView)this.o.findViewById(2131558817));
-    this.b = this.o.findViewById(2131558818);
-    this.e = ((TextView)this.o.findViewById(2131558819));
-    this.f = ((TextView)this.o.findViewById(2131558820));
-    this.j = ((ImageView)this.o.findViewById(2131558825));
-    this.k = ((ImageView)this.o.findViewById(2131558826));
-    this.l = ((ImageView)this.o.findViewById(2131558827));
-    this.h = ((Button)this.o.findViewById(2131558821));
-    this.i = ((Button)this.o.findViewById(2131558822));
-    this.g = ((TextView)this.o.findViewById(2131558814));
-    this.h.setOnClickListener(new View.OnClickListener()
-    {
-      public void onClick(View paramAnonymousView)
-      {
-        DualMsgView.a(DualMsgView.this).a(2);
+      this.n = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+      this.o = this.n.inflate(2131296320, null);
+      this.o.setVisibility(4);
+      this.p = this.o.findViewById(2131166258);
+      this.q = this.o.findViewById(2131166245);
+      this.r = this.o.findViewById(2131166259);
+      this.s = this.o.findViewById(2131166246);
+      this.t = m.a(this.m.getResources(), 2131099827);
+      this.u = m.a(this.m.getResources(), 2131099826);
+      if (this.t != null) {
+        ((LinearLayout)this.o.findViewById(2131166239)).setBackgroundDrawable(new BitmapDrawable(this.t));
       }
-    });
-    this.i.setOnClickListener(new View.OnClickListener()
-    {
-      public void onClick(View paramAnonymousView)
+      if (this.u != null)
       {
-        DualMsgView.a(DualMsgView.this).a(3);
+        ((LinearLayout)this.o.findViewById(2131166240)).setBackgroundDrawable(new BitmapDrawable(this.u));
+        ((LinearLayout)this.o.findViewById(2131166241)).setBackgroundDrawable(new BitmapDrawable(this.u));
       }
-    });
-    addView(this.o, new RelativeLayout.LayoutParams(-1, -1));
-    return true;
+      this.a = this.o.findViewById(2131165758);
+      this.c = ((TextView)this.o.findViewById(2131165754));
+      this.d = ((TextView)this.o.findViewById(2131165742));
+      this.b = this.o.findViewById(2131165759);
+      this.e = ((TextView)this.o.findViewById(2131165755));
+      this.f = ((TextView)this.o.findViewById(2131165743));
+      this.j = ((ImageView)this.o.findViewById(2131165745));
+      this.k = ((ImageView)this.o.findViewById(2131165747));
+      this.l = ((ImageView)this.o.findViewById(2131165746));
+      this.h = ((Button)this.o.findViewById(2131165741));
+      this.i = ((Button)this.o.findViewById(2131165751));
+      this.g = ((TextView)this.o.findViewById(2131165757));
+      this.h.setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          DualMsgView.a(DualMsgView.this).a(2);
+        }
+      });
+      this.i.setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          DualMsgView.a(DualMsgView.this).a(3);
+        }
+      });
+      addView(this.o, new RelativeLayout.LayoutParams(-1, -1));
+      return true;
+    }
+    return false;
   }
   
   public void b()
@@ -206,26 +231,41 @@ public class DualMsgView
   {
     this.e.setText(Html.fromHtml(parama.f()));
     this.f.setText(Html.fromHtml(parama.g()));
-    this.h.setText("  " + Html.fromHtml(parama.h()));
-    this.i.setText("  " + Html.fromHtml(parama.i()));
+    Object localObject1 = this.h;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("  ");
+    ((StringBuilder)localObject2).append(Html.fromHtml(parama.h()));
+    ((Button)localObject1).setText(((StringBuilder)localObject2).toString());
+    localObject1 = this.i;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("  ");
+    ((StringBuilder)localObject2).append(Html.fromHtml(parama.i()));
+    ((Button)localObject1).setText(((StringBuilder)localObject2).toString());
     parama = cr.a().c(parama.c());
     if (parama != null)
     {
-      this.j.setImageDrawable(g.a(parama.b() + "", parama.mUin + ""));
+      localObject1 = this.j;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(parama.b());
+      ((StringBuilder)localObject2).append("");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(parama.mUin);
+      localStringBuilder.append("");
+      ((ImageView)localObject1).setImageDrawable(g.a((String)localObject2, localStringBuilder.toString()));
       if (parama.mIsZzb)
       {
-        this.k.setImageDrawable(getResources().getDrawable(2130838075));
+        this.k.setImageDrawable(getResources().getDrawable(2131100224));
         this.l.setVisibility(0);
       }
       this.g.setText(parama.mNickName);
     }
-    for (;;)
+    else
     {
-      this.y.post(new a(this.a, this.b));
-      return;
       this.g.setText("");
       this.l.setVisibility(4);
     }
+    this.y.post(new a(this.a, this.b));
   }
   
   public void c()
@@ -263,8 +303,8 @@ public class DualMsgView
     {
       this.b = paramView1;
       this.c = paramView2;
-      this.d = AnimationUtils.loadAnimation(DualMsgView.g(DualMsgView.this), 2131034133);
-      this.e = AnimationUtils.loadAnimation(DualMsgView.g(DualMsgView.this), 2131034136);
+      this.d = AnimationUtils.loadAnimation(DualMsgView.g(DualMsgView.this), 2130771989);
+      this.e = AnimationUtils.loadAnimation(DualMsgView.g(DualMsgView.this), 2130771992);
       this.e.setAnimationListener(new Animation.AnimationListener()
       {
         public void onAnimationEnd(Animation paramAnonymousAnimation)
@@ -310,7 +350,7 @@ public class DualMsgView
       this.h = new TranslateAnimation(0.0F, 0.0F, DualMsgView.b(DualMsgView.this), 0.0F);
       this.h.setDuration(400L);
       this.h.setInterpolator(new AccelerateDecelerateInterpolator());
-      this.i = new TranslateAnimation(0.0F, 0.0F, j + -DualMsgView.c(DualMsgView.this), 0.0F);
+      this.i = new TranslateAnimation(0.0F, 0.0F, -DualMsgView.c(DualMsgView.this) + j, 0.0F);
       this.i.setDuration(400L);
       this.i.setInterpolator(new AccelerateDecelerateInterpolator());
       this.f = new TranslateAnimation(0.0F, 0.0F, DualMsgView.b(DualMsgView.this), 0.0F);
@@ -357,7 +397,8 @@ public class DualMsgView
       this.c = paramView2;
       this.d = paramView3;
       this.e = paramView4;
-      this.h = new TranslateAnimation(0.0F, 0.0F, 0.0F, (int)(IndexActivity.S_DENSITY * 40.0F) + -DualMsgView.c(DualMsgView.this));
+      int j = (int)(IndexActivity.S_DENSITY * 40.0F);
+      this.h = new TranslateAnimation(0.0F, 0.0F, 0.0F, -DualMsgView.c(DualMsgView.this) + j);
       this.h.setDuration(600L);
       this.h.setInterpolator(new DualMsgView.e(DualMsgView.this, null));
       this.i = new TranslateAnimation(0.0F, 0.0F, 0.0F, DualMsgView.b(DualMsgView.this));
@@ -407,7 +448,7 @@ public class DualMsgView
     public d(View paramView)
     {
       this.b = paramView;
-      this.c = AnimationUtils.loadAnimation(DualMsgView.g(DualMsgView.this), 2131034137);
+      this.c = AnimationUtils.loadAnimation(DualMsgView.g(DualMsgView.this), 2130771993);
       this.c.setAnimationListener(new Animation.AnimationListener()
       {
         public void onAnimationEnd(Animation paramAnonymousAnimation)

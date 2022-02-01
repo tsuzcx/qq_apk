@@ -31,9 +31,9 @@ public class FacePwdIndexActivity
   
   private void initView()
   {
-    this.mFacePwdVerifyTipTextView = ((TextView)findViewById(2131558836));
-    this.mDivider = findViewById(2131558837);
-    this.mSwitchVerifySet = ((SwitchButton)findViewById(2131558835));
+    this.mFacePwdVerifyTipTextView = ((TextView)findViewById(2131165482));
+    this.mDivider = findViewById(2131165443);
+    this.mSwitchVerifySet = ((SwitchButton)findViewById(2131165372));
     cr.a().a(this.mRegisterFacePwdUserList);
     if (this.mRegisterFacePwdUserList.size() > 0)
     {
@@ -43,66 +43,69 @@ public class FacePwdIndexActivity
         this.mSwitchVerifySet.a(false, false);
         this.mIsChecked = true;
       }
-    }
-    for (;;)
-    {
-      this.mSwitchVerifySet.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+      else
       {
-        public void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+        this.mSwitchVerifySet.a(true, false);
+        this.mIsChecked = false;
+      }
+    }
+    else
+    {
+      this.mSwitchVerifySet.a(true, false);
+      this.mIsChecked = false;
+    }
+    this.mSwitchVerifySet.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    {
+      public void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        if (paramAnonymousBoolean != FacePwdIndexActivity.this.mIsChecked) {
+          return;
+        }
+        if (FacePwdIndexActivity.this.mIsChecked)
         {
-          if (paramAnonymousBoolean != FacePwdIndexActivity.this.mIsChecked) {
-            return;
-          }
-          if (FacePwdIndexActivity.this.mIsChecked)
+          FacePwdIndexActivity.this.mSwitchVerifySet.a(true, false);
+          FacePwdIndexActivity.access$002(FacePwdIndexActivity.this, false);
+          m.b(0L);
+          FacePwdIndexActivity.this.mListView.setVisibility(4);
+          FacePwdIndexActivity.this.mFacePwdVerifyTipTextView.setVisibility(4);
+          FacePwdIndexActivity.this.mDivider.setVisibility(4);
+          return;
+        }
+        FacePwdIndexActivity.this.mListView.setVisibility(0);
+        FacePwdIndexActivity.this.mFacePwdVerifyTipTextView.setVisibility(0);
+        FacePwdIndexActivity.this.mDivider.setVisibility(0);
+        if (FacePwdIndexActivity.this.mRegisterFacePwdUserList.size() > 0)
+        {
+          if (FacePwdIndexActivity.this.mRegisterFacePwdUserList.size() == 1)
           {
-            FacePwdIndexActivity.this.mSwitchVerifySet.a(true, false);
-            FacePwdIndexActivity.access$002(FacePwdIndexActivity.this, false);
-            m.b(0L);
-            FacePwdIndexActivity.this.mListView.setVisibility(4);
-            FacePwdIndexActivity.this.mFacePwdVerifyTipTextView.setVisibility(4);
-            FacePwdIndexActivity.this.mDivider.setVisibility(4);
-            return;
-          }
-          FacePwdIndexActivity.this.mListView.setVisibility(0);
-          FacePwdIndexActivity.this.mFacePwdVerifyTipTextView.setVisibility(0);
-          FacePwdIndexActivity.this.mDivider.setVisibility(0);
-          if (FacePwdIndexActivity.this.mRegisterFacePwdUserList.size() > 0)
-          {
-            if (FacePwdIndexActivity.this.mRegisterFacePwdUserList.size() == 1)
-            {
-              FacePwdIndexActivity.access$002(FacePwdIndexActivity.this, true);
-              FacePwdIndexActivity.this.mSwitchVerifySet.a(false, false);
-              m.b(((QQUser)FacePwdIndexActivity.this.mRegisterFacePwdUserList.get(0)).mRealUin);
-              FacePwdIndexActivity.this.refreshList();
-              return;
-            }
             FacePwdIndexActivity.access$002(FacePwdIndexActivity.this, true);
             FacePwdIndexActivity.this.mSwitchVerifySet.a(false, false);
-            paramAnonymousCompoundButton = new FacePwdVerifySelDialog(FacePwdIndexActivity.this, 2131362182, FacePwdIndexActivity.this.mRegisterFacePwdUserList);
-            paramAnonymousCompoundButton.setCancelable(false);
-            paramAnonymousCompoundButton.show();
+            m.b(((QQUser)FacePwdIndexActivity.this.mRegisterFacePwdUserList.get(0)).mRealUin);
+            FacePwdIndexActivity.this.refreshList();
             return;
           }
-          paramAnonymousCompoundButton = new Intent(FacePwdIndexActivity.this, FaceRecognitionCreateActivity.class);
-          FacePwdIndexActivity.this.startActivity(paramAnonymousCompoundButton);
-          FacePwdIndexActivity.this.finish();
+          FacePwdIndexActivity.access$002(FacePwdIndexActivity.this, true);
+          FacePwdIndexActivity.this.mSwitchVerifySet.a(false, false);
+          paramAnonymousCompoundButton = FacePwdIndexActivity.this;
+          paramAnonymousCompoundButton = new FacePwdVerifySelDialog(paramAnonymousCompoundButton, 2131558791, paramAnonymousCompoundButton.mRegisterFacePwdUserList);
+          paramAnonymousCompoundButton.setCancelable(false);
+          paramAnonymousCompoundButton.show();
+          return;
         }
-      });
-      this.mListView = ((ListView)findViewById(2131558850));
-      this.mAdapter = new g(this, this.mRegisterFacePwdUserList);
-      this.mListView.setAdapter(this.mAdapter);
-      if (!this.mIsChecked) {
-        break;
+        paramAnonymousCompoundButton = new Intent(FacePwdIndexActivity.this, FaceRecognitionCreateActivity.class);
+        FacePwdIndexActivity.this.startActivity(paramAnonymousCompoundButton);
+        FacePwdIndexActivity.this.finish();
       }
+    });
+    this.mListView = ((ListView)findViewById(2131165481));
+    this.mAdapter = new g(this, this.mRegisterFacePwdUserList);
+    this.mListView.setAdapter(this.mAdapter);
+    if (this.mIsChecked)
+    {
       this.mListView.setVisibility(0);
       this.mFacePwdVerifyTipTextView.setVisibility(0);
       this.mDivider.setVisibility(0);
       return;
-      this.mSwitchVerifySet.a(true, false);
-      this.mIsChecked = false;
-      continue;
-      this.mSwitchVerifySet.a(true, false);
-      this.mIsChecked = false;
     }
     this.mListView.setVisibility(4);
     this.mFacePwdVerifyTipTextView.setVisibility(4);
@@ -112,7 +115,7 @@ public class FacePwdIndexActivity
   private void showGesturePwdDialog()
   {
     if (!cd.a().c()) {
-      showUserDialog(2131230994, getString(2131230991), 2131230993, 2131230992, new DialogInterface.OnClickListener()
+      showUserDialog(2131493136, getString(2131493133), 2131493135, 2131493134, new DialogInterface.OnClickListener()
       {
         public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -126,7 +129,7 @@ public class FacePwdIndexActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968649);
+    setContentView(2131296329);
     initView();
   }
   

@@ -96,238 +96,244 @@ public class bn
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     paramContext = paramContext.getDir("turingfd", 0);
-    if (paramContext == null) {}
-    label617:
-    label634:
-    label639:
-    for (;;)
+    Object localObject1;
+    int i;
+    if (paramContext != null)
     {
-      int k;
-      int i;
-      if (localLinkedHashMap.size() == 0)
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramContext.getAbsolutePath());
+      paramContext = new File(ci.a((StringBuilder)localObject1, File.separator, "10"));
+      if (paramContext.exists())
       {
-        return null;
-        paramContext = new File(ci.a(new StringBuilder().append(paramContext.getAbsolutePath()), File.separator, "10"));
-        if (paramContext.exists())
+        paramContext = paramContext.listFiles();
+        if (paramContext != null)
         {
-          paramContext = paramContext.listFiles();
-          if (paramContext != null)
+          Arrays.sort(paramContext, new bp(this));
+          int k = paramContext.length;
+          i = 0;
+          while (i < k)
           {
-            Arrays.sort(paramContext, new bp(this));
-            k = paramContext.length;
-            i = 0;
-          }
-        }
-      }
-      else
-      {
-        for (;;)
-        {
-          if (i >= k) {
-            break label639;
-          }
-          Object localObject1 = paramContext[i];
-          int j;
-          do
-          {
+            localObject1 = paramContext[i];
             try
             {
-              Object localObject2 = ((File)localObject1).getName();
+              localObject2 = ((File)localObject1).getName();
               localObject2 = ((String)localObject2).split("_");
-              if (localObject2 == null)
-              {
-                break label617;
-                localObject2 = a(((File)localObject1).getAbsolutePath());
-                localLinkedHashMap.put(((File)localObject1).getAbsolutePath(), localObject2);
-                break label634;
-              }
-              if (localObject2.length != 2) {
-                break label617;
+              if ((localObject2 == null) || (localObject2.length != 2)) {
+                break label660;
               }
               j = Integer.valueOf(localObject2[0]).intValue() / 1000;
             }
             catch (Throwable localThrowable)
             {
-              ((File)localObject1).deleteOnExit();
-              break label634;
-            }
-            ArrayList localArrayList = new ArrayList();
-            Iterator localIterator = localLinkedHashMap.keySet().iterator();
-            paramContext = null;
-            while (localIterator.hasNext())
-            {
-              Object localObject3 = (String)localIterator.next();
-              localObject1 = (Dew)localLinkedHashMap.get(localObject3);
-              if ((localObject1 != null) && (((Dew)localObject1).Ob == 0))
+              for (;;)
               {
-                localArrayList.add(localObject3);
-                if (paramContext == null)
-                {
-                  paramContext = (Context)localObject1;
-                }
-                else
-                {
-                  localObject3 = paramContext.Lb;
-                  Object localObject4;
-                  if ((localObject3 == null) || (((ArrayList)localObject3).size() == 0))
-                  {
-                    i = 0;
-                    if (i < 120)
-                    {
-                      paramContext.Lb.addAll(((Dew)localObject1).Lb);
-                      localObject3 = paramContext.ac;
-                      localObject4 = ((Dew)localObject1).ac;
-                      localObject1 = localObject3;
-                      if (localObject3 == null) {
-                        localObject1 = new Date();
-                      }
-                      if (((Date)localObject1).zb == null) {
-                        ((Date)localObject1).zb = new ArrayList();
-                      }
-                      localObject3 = localObject4;
-                      if (localObject4 == null) {
-                        localObject3 = new Date();
-                      }
-                      if (((Date)localObject3).zb == null) {
-                        ((Date)localObject3).zb = new ArrayList();
-                      }
-                      ((Date)localObject1).zb.addAll(((Date)localObject3).zb);
-                      paramContext.ac = ((Date)localObject1);
-                    }
-                  }
-                  else
-                  {
-                    localObject3 = ((ArrayList)localObject3).iterator();
-                    paramInt = 0;
-                    do
-                    {
-                      i = paramInt;
-                      if (!((Iterator)localObject3).hasNext()) {
-                        break;
-                      }
-                      localObject4 = ((Guava)((Iterator)localObject3).next()).Nc;
-                    } while (localObject4 == null);
-                    localObject4 = ((ArrayList)localObject4).iterator();
-                    i = paramInt;
-                    for (;;)
-                    {
-                      paramInt = i;
-                      if (!((Iterator)localObject4).hasNext()) {
-                        break;
-                      }
-                      Map localMap = ((Herbaceous)((Iterator)localObject4).next()).Uc;
-                      if ((localMap != null) && (localMap.containsKey(Integer.valueOf(0)))) {
-                        i += 1;
-                      }
-                    }
-                  }
+                Object localObject2;
+                ArrayList localArrayList;
+                Iterator localIterator;
+                continue;
+                int j = -1;
+                if (paramInt != j) {
+                  if (paramInt != -1) {}
                 }
               }
             }
-            if (paramContext != null)
-            {
-              Collections.sort(paramContext.Lb, new bw(this));
-              localObject1 = new b(null);
-              ((b)localObject1).a = paramContext;
-              ((b)localObject1).b = localArrayList;
-            }
-            for (paramContext = (Context)localObject1; paramContext != null; paramContext = null) {
-              return new az(paramContext.a, paramContext.b);
-            }
-            break;
-            j = -1;
-          } while ((paramInt == j) || (paramInt == -1));
-          i += 1;
+            localObject2 = a(((File)localObject1).getAbsolutePath());
+            localLinkedHashMap.put(((File)localObject1).getAbsolutePath(), localObject2);
+            break label200;
+            ((File)localObject1).deleteOnExit();
+            label200:
+            i += 1;
+          }
         }
       }
     }
+    if (localLinkedHashMap.size() == 0) {
+      return null;
+    }
+    localArrayList = new ArrayList();
+    localIterator = localLinkedHashMap.keySet().iterator();
+    paramContext = null;
+    while (localIterator.hasNext())
+    {
+      localObject2 = (String)localIterator.next();
+      localObject1 = (Dew)localLinkedHashMap.get(localObject2);
+      if ((localObject1 != null) && (((Dew)localObject1).Ob == 0))
+      {
+        localArrayList.add(localObject2);
+        if (paramContext == null)
+        {
+          paramContext = (Context)localObject1;
+        }
+        else
+        {
+          localObject2 = paramContext.Lb;
+          Object localObject3;
+          if ((localObject2 != null) && (((ArrayList)localObject2).size() != 0))
+          {
+            localObject2 = ((ArrayList)localObject2).iterator();
+            paramInt = 0;
+            do
+            {
+              i = paramInt;
+              if (!((Iterator)localObject2).hasNext()) {
+                break;
+              }
+              localObject3 = ((Guava)((Iterator)localObject2).next()).Nc;
+            } while (localObject3 == null);
+            localObject3 = ((ArrayList)localObject3).iterator();
+            i = paramInt;
+            for (;;)
+            {
+              paramInt = i;
+              if (!((Iterator)localObject3).hasNext()) {
+                break;
+              }
+              Map localMap = ((Herbaceous)((Iterator)localObject3).next()).Uc;
+              if ((localMap != null) && (localMap.containsKey(Integer.valueOf(0)))) {
+                i += 1;
+              }
+            }
+          }
+          i = 0;
+          if (i < 120)
+          {
+            paramContext.Lb.addAll(((Dew)localObject1).Lb);
+            localObject2 = paramContext.ac;
+            localObject3 = ((Dew)localObject1).ac;
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = new Date();
+            }
+            if (((Date)localObject1).zb == null) {
+              ((Date)localObject1).zb = new ArrayList();
+            }
+            localObject2 = localObject3;
+            if (localObject3 == null) {
+              localObject2 = new Date();
+            }
+            if (((Date)localObject2).zb == null) {
+              ((Date)localObject2).zb = new ArrayList();
+            }
+            ((Date)localObject1).zb.addAll(((Date)localObject2).zb);
+            paramContext.ac = ((Date)localObject1);
+          }
+        }
+      }
+    }
+    if (paramContext != null)
+    {
+      Collections.sort(paramContext.Lb, new bw(this));
+      localObject1 = new b(null);
+      ((b)localObject1).a = paramContext;
+      ((b)localObject1).b = localArrayList;
+      paramContext = (Context)localObject1;
+    }
+    else
+    {
+      paramContext = null;
+    }
+    if (paramContext != null) {
+      return new az(paramContext.a, paramContext.b);
+    }
+    return null;
   }
   
   public final String a(int paramInt1, int paramInt2)
   {
-    return paramInt1 + "00" + paramInt2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("00");
+    localStringBuilder.append(paramInt2);
+    return localStringBuilder.toString();
   }
   
   public void a(Context paramContext, int paramInt1, int paramInt2, Dew paramDew)
   {
     Object localObject1 = cm.a(cm.b(paramDew.c()), cm.b());
-    if (localObject1 == null) {}
-    label36:
-    label41:
-    label77:
-    label470:
-    for (;;)
-    {
+    if (localObject1 == null) {
       return;
-      paramDew = paramContext.getDir("turingfd", 0);
-      if (paramDew == null)
+    }
+    paramDew = paramContext.getDir("turingfd", 0);
+    if (paramDew != null)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramDew.getAbsolutePath());
+      paramDew = new File(ci.a((StringBuilder)localObject2, File.separator, "10"));
+      if ((paramDew.exists()) || (paramDew.mkdirs())) {}
+    }
+    else
+    {
+      paramDew = "";
+      break label168;
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramDew.getAbsolutePath());
+    ((StringBuilder)localObject2).append(File.separator);
+    ((StringBuilder)localObject2).append(a(paramInt1, paramInt2));
+    ((StringBuilder)localObject2).append("_");
+    ((StringBuilder)localObject2).append(System.currentTimeMillis());
+    paramDew = ((StringBuilder)localObject2).toString();
+    label168:
+    if (TextUtils.isEmpty(paramDew)) {
+      return;
+    }
+    cm.a(paramDew, (byte[])localObject1);
+    paramDew = a(paramInt1, paramInt2);
+    paramContext = paramContext.getDir("turingfd", 0);
+    if (paramContext != null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramContext.getAbsolutePath());
+      paramContext = new File(ci.a((StringBuilder)localObject1, File.separator, "10"));
+      if (paramContext.exists())
       {
-        paramDew = "";
-        if (TextUtils.isEmpty(paramDew)) {
-          break label197;
-        }
-        cm.a(paramDew, (byte[])localObject1);
-        paramDew = a(paramInt1, paramInt2);
-        paramContext = paramContext.getDir("turingfd", 0);
-        if (paramContext != null) {
-          break label199;
-        }
-      }
-      Object localObject2;
-      for (paramContext = "";; paramContext = paramContext.getAbsolutePath() + File.separator + paramDew + "_" + ((List)localObject2).get(0))
-      {
-        if (TextUtils.isEmpty(paramContext)) {
-          break label470;
-        }
-        new File(paramContext).delete();
-        return;
-        paramDew = new File(ci.a(new StringBuilder().append(paramDew.getAbsolutePath()), File.separator, "10"));
-        if ((!paramDew.exists()) && (!paramDew.mkdirs())) {
-          break label36;
-        }
-        paramDew = paramDew.getAbsolutePath() + File.separator + a(paramInt1, paramInt2) + "_" + System.currentTimeMillis();
-        break label41;
-        break;
-        paramContext = new File(ci.a(new StringBuilder().append(paramContext.getAbsolutePath()), File.separator, "10"));
-        if (!paramContext.exists()) {
-          break label77;
-        }
-        localObject2 = paramContext.listFiles();
-        if (localObject2 == null) {
-          break label77;
-        }
-        localObject1 = new ArrayList();
-        paramInt2 = localObject2.length;
-        paramInt1 = 0;
-        Object localObject3;
-        if (paramInt1 < paramInt2)
+        localObject1 = paramContext.listFiles();
+        if (localObject1 != null)
         {
-          localObject3 = localObject2[paramInt1];
-          if (!((File)localObject3).getName().startsWith(paramDew)) {}
-          for (;;)
+          localObject2 = new ArrayList();
+          paramInt2 = localObject1.length;
+          paramInt1 = 0;
+          Object localObject3;
+          while (paramInt1 < paramInt2)
           {
+            localObject3 = localObject1[paramInt1];
+            if (((File)localObject3).getName().startsWith(paramDew)) {
+              ((List)localObject2).add(localObject3);
+            }
             paramInt1 += 1;
-            break;
-            ((List)localObject1).add(localObject3);
+          }
+          if (((List)localObject2).size() > 6)
+          {
+            localObject1 = new ArrayList();
+            localObject2 = ((List)localObject2).iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              localObject3 = ((File)((Iterator)localObject2).next()).getName().split("_");
+              if ((localObject3.length == 2) && (localObject3[0].equals(paramDew))) {
+                ((List)localObject1).add(Long.valueOf(Long.parseLong(localObject3[1])));
+              }
+            }
+            if (((List)localObject1).size() > 6) {
+              break label454;
+            }
           }
         }
-        if (((List)localObject1).size() <= 6) {
-          break label77;
-        }
-        localObject2 = new ArrayList();
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject3 = ((File)((Iterator)localObject1).next()).getName().split("_");
-          if ((localObject3.length == 2) && (localObject3[0].equals(paramDew))) {
-            ((List)localObject2).add(Long.valueOf(Long.parseLong(localObject3[1])));
-          }
-        }
-        if (((List)localObject2).size() <= 6) {
-          break label77;
-        }
-        Collections.sort((List)localObject2);
       }
+    }
+    paramContext = "";
+    break label523;
+    label454:
+    Collections.sort((List)localObject1);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramContext.getAbsolutePath());
+    ((StringBuilder)localObject2).append(File.separator);
+    ((StringBuilder)localObject2).append(paramDew);
+    ((StringBuilder)localObject2).append("_");
+    ((StringBuilder)localObject2).append(((List)localObject1).get(0));
+    paramContext = ((StringBuilder)localObject2).toString();
+    label523:
+    if (!TextUtils.isEmpty(paramContext)) {
+      new File(paramContext).delete();
     }
   }
   

@@ -10,26 +10,29 @@ public abstract class AbstractWindowedCursor
   protected void checkPosition()
   {
     super.checkPosition();
-    if (this.mWindow == null) {
-      throw new StaleDataException("Attempting to access a closed CursorWindow.Most probable cause: cursor is deactivated prior to calling this method.");
+    if (this.mWindow != null) {
+      return;
     }
+    throw new StaleDataException("Attempting to access a closed CursorWindow.Most probable cause: cursor is deactivated prior to calling this method.");
   }
   
   protected void clearOrCreateWindow(String paramString)
   {
-    if (this.mWindow == null)
+    CursorWindow localCursorWindow = this.mWindow;
+    if (localCursorWindow == null)
     {
       this.mWindow = new CursorWindow(paramString);
       return;
     }
-    this.mWindow.clear();
+    localCursorWindow.clear();
   }
   
   protected void closeWindow()
   {
-    if (this.mWindow != null)
+    CursorWindow localCursorWindow = this.mWindow;
+    if (localCursorWindow != null)
     {
-      this.mWindow.close();
+      localCursorWindow.close();
       this.mWindow = null;
     }
   }

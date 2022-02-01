@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class MDoraemonRes
   extends JceStruct
@@ -32,14 +33,17 @@ public final class MDoraemonRes
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mFileList != null) {
-      paramJceOutputStream.write(this.mFileList, 0);
+    Object localObject = this.mFileList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.mDoraemonType != 0) {
-      paramJceOutputStream.write(this.mDoraemonType, 1);
+    int i = this.mDoraemonType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.mDoraemonText != null) {
-      paramJceOutputStream.write(this.mDoraemonText, 2);
+    localObject = this.mDoraemonText;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }

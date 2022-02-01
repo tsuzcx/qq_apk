@@ -46,7 +46,13 @@ public class ap
   
   public String d()
   {
-    return "accessInfo:" + this.a + ", sdkCfgInfo:" + this.b + ", sdkAccessInfo:" + this.c;
+    StringBuilder localStringBuilder = new StringBuilder("accessInfo:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", sdkCfgInfo:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", sdkAccessInfo:");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
   
   public List e()

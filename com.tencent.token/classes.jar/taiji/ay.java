@@ -12,7 +12,7 @@ public class ay
   
   public static int a(char paramChar, String paramString1, String paramString2)
   {
-    return ((paramChar + '\000') * 31 + paramString1.hashCode()) * 31 + paramString2.hashCode();
+    return (('\000' + paramChar) * 31 + paramString1.hashCode()) * 31 + paramString2.hashCode();
   }
   
   public List<ap> a()

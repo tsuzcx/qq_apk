@@ -42,7 +42,8 @@ public class SimpleCursorAdapter
     if (paramCursor != null)
     {
       int j = paramArrayOfString.length;
-      if ((this.mFrom == null) || (this.mFrom.length != j)) {
+      int[] arrayOfInt = this.mFrom;
+      if ((arrayOfInt == null) || (arrayOfInt.length != j)) {
         this.mFrom = new int[j];
       }
       int i = 0;
@@ -58,48 +59,47 @@ public class SimpleCursorAdapter
   public void bindView(View paramView, Context paramContext, Cursor paramCursor)
   {
     ViewBinder localViewBinder = this.mViewBinder;
-    int j = this.mTo.length;
-    int[] arrayOfInt1 = this.mFrom;
-    int[] arrayOfInt2 = this.mTo;
+    int[] arrayOfInt1 = this.mTo;
+    int j = arrayOfInt1.length;
+    int[] arrayOfInt2 = this.mFrom;
     int i = 0;
-    View localView;
-    if (i < j)
+    while (i < j)
     {
-      localView = paramView.findViewById(arrayOfInt2[i]);
-      if (localView != null) {
-        if (localViewBinder == null) {
-          break label190;
-        }
-      }
-    }
-    label129:
-    label150:
-    label190:
-    for (boolean bool = localViewBinder.setViewValue(localView, paramCursor, arrayOfInt1[i]);; bool = false)
-    {
-      if (!bool)
+      View localView = paramView.findViewById(arrayOfInt1[i]);
+      if (localView != null)
       {
-        String str = paramCursor.getString(arrayOfInt1[i]);
-        paramContext = str;
-        if (str == null) {
-          paramContext = "";
+        boolean bool;
+        if (localViewBinder != null) {
+          bool = localViewBinder.setViewValue(localView, paramCursor, arrayOfInt2[i]);
+        } else {
+          bool = false;
         }
-        if (!(localView instanceof TextView)) {
-          break label129;
+        if (!bool)
+        {
+          String str = paramCursor.getString(arrayOfInt2[i]);
+          paramContext = str;
+          if (str == null) {
+            paramContext = "";
+          }
+          if ((localView instanceof TextView))
+          {
+            setViewText((TextView)localView, paramContext);
+          }
+          else if ((localView instanceof ImageView))
+          {
+            setViewImage((ImageView)localView, paramContext);
+          }
+          else
+          {
+            paramView = new StringBuilder();
+            paramView.append(localView.getClass().getName());
+            paramView.append(" is not a ");
+            paramView.append(" view that can be bounds by this SimpleCursorAdapter");
+            throw new IllegalStateException(paramView.toString());
+          }
         }
-        setViewText((TextView)localView, paramContext);
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (!(localView instanceof ImageView)) {
-          break label150;
-        }
-        setViewImage((ImageView)localView, paramContext);
-      }
-      throw new IllegalStateException(localView.getClass().getName() + " is not a " + " view that can be bounds by this SimpleCursorAdapter");
-      return;
+      i += 1;
     }
   }
   
@@ -113,11 +113,13 @@ public class SimpleCursorAdapter
   
   public CharSequence convertToString(Cursor paramCursor)
   {
-    if (this.mCursorToStringConverter != null) {
-      return this.mCursorToStringConverter.convertToString(paramCursor);
+    CursorToStringConverter localCursorToStringConverter = this.mCursorToStringConverter;
+    if (localCursorToStringConverter != null) {
+      return localCursorToStringConverter.convertToString(paramCursor);
     }
-    if (this.mStringConversionColumn > -1) {
-      return paramCursor.getString(this.mStringConversionColumn);
+    int i = this.mStringConversionColumn;
+    if (i > -1) {
+      return paramCursor.getString(i);
     }
     return super.convertToString(paramCursor);
   }
@@ -161,8 +163,10 @@ public class SimpleCursorAdapter
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      paramImageView.setImageURI(Uri.parse(paramString));
+      label9:
+      break label9;
     }
+    paramImageView.setImageURI(Uri.parse(paramString));
   }
   
   public void setViewText(TextView paramTextView, String paramString)

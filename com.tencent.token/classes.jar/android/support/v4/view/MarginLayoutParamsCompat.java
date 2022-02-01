@@ -7,11 +7,21 @@ public final class MarginLayoutParamsCompat
 {
   public static int getLayoutDirection(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
   {
-    if (Build.VERSION.SDK_INT >= 17) {}
-    for (int i = paramMarginLayoutParams.getLayoutDirection(); (i != 0) && (i != 1); i = 0) {
-      return 0;
+    int i;
+    if (Build.VERSION.SDK_INT >= 17) {
+      i = paramMarginLayoutParams.getLayoutDirection();
+    } else {
+      i = 0;
     }
-    return i;
+    int j = i;
+    if (i != 0)
+    {
+      j = i;
+      if (i != 1) {
+        j = 0;
+      }
+    }
+    return j;
   }
   
   public static int getMarginEnd(ViewGroup.MarginLayoutParams paramMarginLayoutParams)

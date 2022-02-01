@@ -69,26 +69,27 @@ public class AccessibilityRecordCompat
   @Deprecated
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
-      do
-      {
-        return true;
-        if (paramObject == null) {
-          return false;
-        }
-        if (getClass() != paramObject.getClass()) {
-          return false;
-        }
-        paramObject = (AccessibilityRecordCompat)paramObject;
-        if (this.mRecord != null) {
-          break;
-        }
-      } while (paramObject.mRecord == null);
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
       return false;
-    } while (this.mRecord.equals(paramObject.mRecord));
-    return false;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (AccessibilityRecordCompat)paramObject;
+    AccessibilityRecord localAccessibilityRecord = this.mRecord;
+    if (localAccessibilityRecord == null)
+    {
+      if (paramObject.mRecord != null) {
+        return false;
+      }
+    }
+    else if (!localAccessibilityRecord.equals(paramObject.mRecord)) {
+      return false;
+    }
+    return true;
   }
   
   @Deprecated
@@ -202,10 +203,11 @@ public class AccessibilityRecordCompat
   @Deprecated
   public int hashCode()
   {
-    if (this.mRecord == null) {
+    AccessibilityRecord localAccessibilityRecord = this.mRecord;
+    if (localAccessibilityRecord == null) {
       return 0;
     }
-    return this.mRecord.hashCode();
+    return localAccessibilityRecord.hashCode();
   }
   
   @Deprecated

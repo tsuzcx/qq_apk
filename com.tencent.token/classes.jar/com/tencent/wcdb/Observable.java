@@ -8,16 +8,22 @@ public abstract class Observable<T>
   
   public void registerObserver(T paramT)
   {
-    if (paramT == null) {
-      throw new IllegalArgumentException("The observer is null.");
-    }
-    synchronized (this.mObservers)
-    {
-      if (this.mObservers.contains(paramT)) {
-        throw new IllegalStateException("Observer " + paramT + " is already registered.");
+    if (paramT != null) {
+      synchronized (this.mObservers)
+      {
+        if (!this.mObservers.contains(paramT))
+        {
+          this.mObservers.add(paramT);
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Observer ");
+        localStringBuilder.append(paramT);
+        localStringBuilder.append(" is already registered.");
+        throw new IllegalStateException(localStringBuilder.toString());
       }
     }
-    this.mObservers.add(paramT);
+    throw new IllegalArgumentException("The observer is null.");
   }
   
   public void unregisterAll()
@@ -31,18 +37,23 @@ public abstract class Observable<T>
   
   public void unregisterObserver(T paramT)
   {
-    if (paramT == null) {
-      throw new IllegalArgumentException("The observer is null.");
-    }
-    int i;
-    synchronized (this.mObservers)
-    {
-      i = this.mObservers.indexOf(paramT);
-      if (i == -1) {
-        throw new IllegalStateException("Observer " + paramT + " was not registered.");
+    if (paramT != null) {
+      synchronized (this.mObservers)
+      {
+        int i = this.mObservers.indexOf(paramT);
+        if (i != -1)
+        {
+          this.mObservers.remove(i);
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Observer ");
+        localStringBuilder.append(paramT);
+        localStringBuilder.append(" was not registered.");
+        throw new IllegalStateException(localStringBuilder.toString());
       }
     }
-    this.mObservers.remove(i);
+    throw new IllegalArgumentException("The observer is null.");
   }
 }
 

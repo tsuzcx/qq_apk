@@ -101,13 +101,19 @@ public class SQLiteDirectQuery
     }
     catch (RuntimeException localRuntimeException)
     {
-      if (!(localRuntimeException instanceof SQLiteDatabaseCorruptException)) {
-        break label89;
+      if ((localRuntimeException instanceof SQLiteDatabaseCorruptException))
+      {
+        onCorruption();
       }
-    }
-    onCorruption();
-    for (;;)
-    {
+      else if ((localRuntimeException instanceof SQLiteException))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Got exception on stepping: ");
+        localStringBuilder.append(localRuntimeException.getMessage());
+        localStringBuilder.append(", SQL: ");
+        localStringBuilder.append(getSql());
+        Log.e("WCDB.SQLiteDirectQuery", localStringBuilder.toString());
+      }
       if (this.mPreparedStatement != null)
       {
         this.mPreparedStatement.detachCancellationSignal(this.mCancellationSignal);
@@ -115,10 +121,6 @@ public class SQLiteDirectQuery
       }
       releasePreparedStatement();
       throw localRuntimeException;
-      label89:
-      if ((localRuntimeException instanceof SQLiteException)) {
-        Log.e("WCDB.SQLiteDirectQuery", "Got exception on stepping: " + localRuntimeException.getMessage() + ", SQL: " + getSql());
-      }
     }
   }
 }

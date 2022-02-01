@@ -39,10 +39,7 @@ public class TCaptchaDialog
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
     super.dismiss();
   }

@@ -57,88 +57,96 @@ public class DualMsgShowDialog
   
   private void a(final a parama, final int paramInt)
   {
-    if ((this.b == null) || (this.j == null) || (this.k == null)) {
-      return;
-    }
-    if (parama == null)
+    Object localObject = this.b;
+    if ((localObject != null) && (this.j != null))
     {
-      this.b.a(paramInt);
-      return;
-    }
-    new UserTask()
-    {
-      public e a(String... paramAnonymousVarArgs)
+      if (this.k == null) {
+        return;
+      }
+      if (parama == null)
       {
-        if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {
-          return cp.a().a(parama, paramInt);
-        }
-        return cn.a().a(parama, paramInt);
+        ((DualMsgView)localObject).a(paramInt);
+        return;
       }
-      
-      public void a(e paramAnonymouse) {}
-    }.c(new String[] { "" });
-    g.a("current item index: " + this.e);
-    if (paramInt == 2)
-    {
-      this.k.setText(2131230947);
-      this.j.show();
-      if (parama.c() == this.h) {
-        this.i = -1;
-      }
-      label121:
-      this.e += 1;
-      if (this.d != 0) {
-        break label264;
-      }
-    }
-    label264:
-    for (parama = cp.a();; parama = cn.a())
-    {
-      if (this.e != parama.b()) {
-        break label271;
-      }
-      this.b.a(paramInt);
-      if ((paramInt != 3) || (this.d != 0)) {
-        break;
-      }
-      new AlertDialog.Builder(this.a).setTitle(2131230843).setMessage(this.a.getString(2131230951)).setPositiveButton(2131231243, new DialogInterface.OnClickListener()
+      new UserTask()
       {
-        public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        public e a(String... paramAnonymousVarArgs)
         {
-          paramAnonymousDialogInterface = new Intent(DualMsgShowDialog.b(DualMsgShowDialog.this), ModifyQQPwdActivity.class);
-          o.a().a(DualMsgShowDialog.b(DualMsgShowDialog.this), paramAnonymousDialogInterface, o.b);
+          if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {
+            return cp.a().a(parama, paramInt);
+          }
+          return cn.a().a(parama, paramInt);
         }
-      }).setNegativeButton(2131230886, null).create().show();
-      return;
-      this.k.setText(2131230948);
-      this.j.show();
-      if (parama.c() != this.h) {
-        break label121;
+        
+        public void a(e paramAnonymouse) {}
+      }.c(new String[] { "" });
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("current item index: ");
+      ((StringBuilder)localObject).append(this.e);
+      g.a(((StringBuilder)localObject).toString());
+      if (paramInt == 2)
+      {
+        this.k.setText(2131493089);
+        this.j.show();
+        if (parama.c() == this.h) {
+          this.i = -1;
+        }
       }
-      this.i = -2;
-      break label121;
-    }
-    label271:
-    c();
-    if (this.g == null)
-    {
-      this.b.a(paramInt);
+      else
+      {
+        this.k.setText(2131493090);
+        this.j.show();
+        if (parama.c() == this.h) {
+          this.i = -2;
+        }
+      }
+      this.e += 1;
+      if (this.d == 0) {
+        parama = cp.a();
+      } else {
+        parama = cn.a();
+      }
+      if (this.e == parama.b())
+      {
+        this.b.a(paramInt);
+        if ((paramInt == 3) && (this.d == 0)) {
+          new AlertDialog.Builder(this.a).setTitle(2131492985).setMessage(this.a.getString(2131493093)).setPositiveButton(2131493385, new DialogInterface.OnClickListener()
+          {
+            public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              paramAnonymousDialogInterface = new Intent(DualMsgShowDialog.b(DualMsgShowDialog.this), ModifyQQPwdActivity.class);
+              o.a().a(DualMsgShowDialog.b(DualMsgShowDialog.this), paramAnonymousDialogInterface, o.b);
+            }
+          }).setNegativeButton(2131493028, null).create().show();
+        }
+      }
+      else
+      {
+        c();
+        parama = this.g;
+        if (parama == null)
+        {
+          this.b.a(paramInt);
+          return;
+        }
+        this.b.b(parama);
+      }
       return;
     }
-    this.b.b(this.g);
   }
   
   private void c()
   {
-    if (this.d == 0) {}
-    for (this.g = cp.a().a(this.e);; this.g = cn.a().a(this.e))
+    if (this.d == 0) {
+      this.g = cp.a().a(this.e);
+    } else {
+      this.g = cn.a().a(this.e);
+    }
+    a locala = this.g;
+    if ((locala == null) || (locala.f() == null) || (this.g.g() == null) || (this.g.h() == null) || (this.g.i() == null))
     {
-      if ((this.g == null) || (this.g.f() == null) || (this.g.g() == null) || (this.g.h() == null) || (this.g.i() == null))
-      {
-        g.c("item content err");
-        this.g = null;
-      }
-      return;
+      g.c("item content err");
+      this.g = null;
     }
   }
   
@@ -155,11 +163,7 @@ public class DualMsgShowDialog
           label10:
           return null;
         }
-        catch (Error paramAnonymousVarArgs)
-        {
-          break label10;
-        }
-        catch (Exception paramAnonymousVarArgs)
+        catch (Exception|Error paramAnonymousVarArgs)
         {
           break label10;
         }
@@ -170,10 +174,11 @@ public class DualMsgShowDialog
   public void a()
   {
     c();
-    if (this.g == null) {
+    a locala = this.g;
+    if (locala == null) {
       return;
     }
-    this.b.a(this.g);
+    this.b.a(locala);
   }
   
   public void b()
@@ -200,12 +205,13 @@ public class DualMsgShowDialog
       
       public void a(int paramAnonymousInt)
       {
-        if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {}
-        for (a locala = cp.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));; locala = cn.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this)))
-        {
-          DualMsgShowDialog.a(DualMsgShowDialog.this, locala, paramAnonymousInt);
-          return;
+        a locala;
+        if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {
+          locala = cp.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
+        } else {
+          locala = cn.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
         }
+        DualMsgShowDialog.a(DualMsgShowDialog.this, locala, paramAnonymousInt);
       }
     });
     if (!this.b.a(this.a))
@@ -215,21 +221,22 @@ public class DualMsgShowDialog
       return;
     }
     c();
-    if (this.g == null)
+    paramBundle = this.g;
+    if (paramBundle == null)
     {
       dismiss();
       return;
     }
-    this.b.a(this.g);
+    this.b.a(paramBundle);
     setContentView(this.b);
     d();
-    paramBundle = this.a.getLayoutInflater().inflate(2130968780, null);
+    paramBundle = this.a.getLayoutInflater().inflate(2131296461, null);
     this.j = new Toast(this.a);
     this.j.setView(paramBundle);
     this.j.setDuration(0);
     this.j.setGravity(55, 0, IndexActivity.S_TITLE_HEIGHT);
-    this.k = ((TextView)paramBundle.findViewById(2131558988));
-    ((ImageView)paramBundle.findViewById(2131558987)).setBackgroundResource(2130838018);
+    this.k = ((TextView)paramBundle.findViewById(2131166118));
+    ((ImageView)paramBundle.findViewById(2131166116)).setBackgroundResource(2131100167);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

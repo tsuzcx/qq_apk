@@ -11,7 +11,11 @@ public class ew
       paramContext = k.a(paramContext);
       return paramContext;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label7:
+      break label7;
+    }
     return null;
   }
 }

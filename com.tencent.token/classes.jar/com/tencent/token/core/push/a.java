@@ -31,7 +31,7 @@ public class a
   public Notification.Builder a(String paramString1, String paramString2, PendingIntent paramPendingIntent)
   {
     if (Build.VERSION.SDK_INT >= 26) {
-      return new Notification.Builder(RqdApplication.l(), "channel_qqsafe").setDefaults(1).setContentTitle(paramString1).setContentText(paramString2).setContentIntent(paramPendingIntent).setSmallIcon(2130837767).setAutoCancel(true);
+      return new Notification.Builder(RqdApplication.l(), "channel_qqsafe").setDefaults(1).setContentTitle(paramString1).setContentText(paramString2).setContentIntent(paramPendingIntent).setSmallIcon(2131099913).setAutoCancel(true);
     }
     return null;
   }
@@ -60,7 +60,7 @@ public class a
   
   public NotificationCompat.Builder b(String paramString1, String paramString2, PendingIntent paramPendingIntent)
   {
-    return new NotificationCompat.Builder(RqdApplication.l()).setDefaults(1).setContentTitle(paramString1).setContentText(paramString2).setContentIntent(paramPendingIntent).setSmallIcon(2130837767).setAutoCancel(true);
+    return new NotificationCompat.Builder(RqdApplication.l()).setDefaults(1).setContentTitle(paramString1).setContentText(paramString2).setContentIntent(paramPendingIntent).setSmallIcon(2131099913).setAutoCancel(true);
   }
 }
 

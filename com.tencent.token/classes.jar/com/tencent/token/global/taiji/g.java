@@ -6,9 +6,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class g
   implements f.a, h
 {
-  private final ThreadGroup b = new ThreadGroup("TMS_FREE_POOL_" + a.getAndIncrement());
+  private final ThreadGroup b;
   private final AtomicInteger c = new AtomicInteger(1);
   private HashMap<Thread, i.c> d = new HashMap();
+  
+  public g()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TMS_FREE_POOL_");
+    localStringBuilder.append(a.getAndIncrement());
+    this.b = new ThreadGroup(localStringBuilder.toString());
+  }
   
   public Thread a(Runnable paramRunnable, String paramString, long paramLong)
   {
@@ -22,7 +30,12 @@ public class g
     {
       str = paramRunnable.getClass().getName();
     }
-    paramString = "FreeThread-" + this.c.getAndIncrement() + "-" + str;
+    paramString = new StringBuilder();
+    paramString.append("FreeThread-");
+    paramString.append(this.c.getAndIncrement());
+    paramString.append("-");
+    paramString.append(str);
+    paramString = paramString.toString();
     paramRunnable = new f(this.b, paramRunnable, paramString, paramLong);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);

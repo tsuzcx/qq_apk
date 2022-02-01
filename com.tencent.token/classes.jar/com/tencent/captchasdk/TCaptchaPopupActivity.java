@@ -92,8 +92,8 @@ public class TCaptchaPopupActivity
         this.a.removeAllViews();
         this.a.destroy();
         this.a = null;
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -103,20 +103,18 @@ public class TCaptchaPopupActivity
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramInt == 4) {}
-    try
-    {
-      setResult(0);
-      finish();
-      return super.onKeyDown(paramInt, paramKeyEvent);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if (paramInt == 4) {
+      try
+      {
+        setResult(0);
+        finish();
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
     }
+    return super.onKeyDown(paramInt, paramKeyEvent);
   }
 }
 

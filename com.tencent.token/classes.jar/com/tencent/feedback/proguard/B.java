@@ -4,14 +4,13 @@ public final class B
 {
   public static C a(int paramInt)
   {
-    E localE = null;
     if (paramInt == 1) {
-      localE = new E();
+      return new E();
     }
-    while (paramInt != 2) {
-      return localE;
+    if (paramInt == 2) {
+      return new D();
     }
-    return new D();
+    return null;
   }
 }
 

@@ -2,8 +2,12 @@ package com.tencent.mm.sdk.platformtools;
 
 import android.os.Build;
 import android.os.Build.VERSION;
+import com.tencent.mm.algorithm.TypeTransform;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
 
 final class LogHelper
 {
@@ -12,134 +16,106 @@ final class LogHelper
   
   public static void initLogHeader(PrintStream paramPrintStream, String paramString1, String paramString2, long paramLong, int paramInt)
   {
-    if ((paramPrintStream == null) || (Util.isNullOrNil(paramString2)) || (paramLong == 0L)) {
-      return;
+    if ((paramPrintStream != null) && (!Util.isNullOrNil(paramString2)))
+    {
+      if (paramLong == 0L) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder("1 ");
+      localStringBuilder.append(paramString1);
+      paramPrintStream.println(localStringBuilder.toString());
+      paramString1 = new StringBuilder("2 ");
+      paramString1.append(paramString2);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("3 ");
+      paramString1.append(paramLong);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("4 ");
+      paramString1.append(Integer.toHexString(paramInt));
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("5 ");
+      paramString1.append(Build.VERSION.RELEASE);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("6 ");
+      paramString1.append(Build.VERSION.CODENAME);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("7 ");
+      paramString1.append(Build.VERSION.INCREMENTAL);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("8 ");
+      paramString1.append(Build.BOARD);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("9 ");
+      paramString1.append(Build.DEVICE);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("10 ");
+      paramString1.append(Build.DISPLAY);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("11 ");
+      paramString1.append(Build.FINGERPRINT);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("12 ");
+      paramString1.append(Build.HOST);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("13 ");
+      paramString1.append(Build.MANUFACTURER);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("14 ");
+      paramString1.append(Build.MODEL);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("15 ");
+      paramString1.append(Build.PRODUCT);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("16 ");
+      paramString1.append(Build.TAGS);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("17 ");
+      paramString1.append(Build.TYPE);
+      paramPrintStream.println(paramString1.toString());
+      paramString1 = new StringBuilder("18 ");
+      paramString1.append(Build.USER);
+      paramPrintStream.println(paramString1.toString());
+      paramPrintStream.println();
+      paramPrintStream.flush();
     }
-    paramPrintStream.println("1 " + paramString1);
-    paramPrintStream.println("2 " + paramString2);
-    paramPrintStream.println("3 " + paramLong);
-    paramPrintStream.println("4 " + Integer.toHexString(paramInt));
-    paramPrintStream.println("5 " + Build.VERSION.RELEASE);
-    paramPrintStream.println("6 " + Build.VERSION.CODENAME);
-    paramPrintStream.println("7 " + Build.VERSION.INCREMENTAL);
-    paramPrintStream.println("8 " + Build.BOARD);
-    paramPrintStream.println("9 " + Build.DEVICE);
-    paramPrintStream.println("10 " + Build.DISPLAY);
-    paramPrintStream.println("11 " + Build.FINGERPRINT);
-    paramPrintStream.println("12 " + Build.HOST);
-    paramPrintStream.println("13 " + Build.MANUFACTURER);
-    paramPrintStream.println("14 " + Build.MODEL);
-    paramPrintStream.println("15 " + Build.PRODUCT);
-    paramPrintStream.println("16 " + Build.TAGS);
-    paramPrintStream.println("17 " + Build.TYPE);
-    paramPrintStream.println("18 " + Build.USER);
-    paramPrintStream.println();
-    paramPrintStream.flush();
   }
   
-  /* Error */
   public static void writeToStream(PrintStream paramPrintStream, byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnull +24 -> 25
-    //   4: aload_1
-    //   5: invokestatic 156	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	([B)Z
-    //   8: ifne +17 -> 25
-    //   11: aload_2
-    //   12: invokestatic 36	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   15: ifne +10 -> 25
-    //   18: aload_3
-    //   19: invokestatic 36	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   22: ifeq +4 -> 26
-    //   25: return
-    //   26: aload_0
-    //   27: monitorenter
-    //   28: new 158	java/lang/StringBuffer
-    //   31: dup
-    //   32: invokespecial 159	java/lang/StringBuffer:<init>	()V
-    //   35: astore 4
-    //   37: aload 4
-    //   39: getstatic 20	com/tencent/mm/sdk/platformtools/LogHelper:aa	Ljava/text/SimpleDateFormat;
-    //   42: invokestatic 165	java/lang/System:currentTimeMillis	()J
-    //   45: invokestatic 171	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   48: invokevirtual 175	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
-    //   51: invokevirtual 178	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   54: pop
-    //   55: aload 4
-    //   57: ldc 180
-    //   59: invokevirtual 178	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   62: aload_2
-    //   63: invokevirtual 178	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   66: ldc 180
-    //   68: invokevirtual 178	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   71: aload_3
-    //   72: invokevirtual 178	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   75: pop
-    //   76: aload 4
-    //   78: invokevirtual 181	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   81: astore_2
-    //   82: new 183	javax/crypto/spec/DESKeySpec
-    //   85: dup
-    //   86: aload_1
-    //   87: invokespecial 186	javax/crypto/spec/DESKeySpec:<init>	([B)V
-    //   90: astore_1
-    //   91: ldc 188
-    //   93: invokestatic 194	javax/crypto/SecretKeyFactory:getInstance	(Ljava/lang/String;)Ljavax/crypto/SecretKeyFactory;
-    //   96: aload_1
-    //   97: invokevirtual 198	javax/crypto/SecretKeyFactory:generateSecret	(Ljava/security/spec/KeySpec;)Ljavax/crypto/SecretKey;
-    //   100: astore_1
-    //   101: ldc 188
-    //   103: invokestatic 203	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
-    //   106: astore_3
-    //   107: aload_3
-    //   108: iconst_1
-    //   109: aload_1
-    //   110: invokevirtual 207	javax/crypto/Cipher:init	(ILjava/security/Key;)V
-    //   113: aload_3
-    //   114: aload_2
-    //   115: invokevirtual 213	java/lang/String:getBytes	()[B
-    //   118: invokevirtual 217	javax/crypto/Cipher:doFinal	([B)[B
-    //   121: astore_1
-    //   122: aload_0
-    //   123: aload_1
-    //   124: arraylength
-    //   125: invokestatic 223	com/tencent/mm/algorithm/TypeTransform:intToByteArrayLH	(I)[B
-    //   128: invokevirtual 226	java/io/PrintStream:write	([B)V
-    //   131: aload_0
-    //   132: aload_1
-    //   133: invokevirtual 226	java/io/PrintStream:write	([B)V
-    //   136: aload_0
-    //   137: getstatic 25	com/tencent/mm/sdk/platformtools/LogHelper:ab	[B
-    //   140: invokevirtual 226	java/io/PrintStream:write	([B)V
-    //   143: aload_0
-    //   144: invokevirtual 149	java/io/PrintStream:flush	()V
-    //   147: aload_0
-    //   148: monitorexit
-    //   149: return
-    //   150: astore_1
-    //   151: aload_0
-    //   152: monitorexit
-    //   153: aload_1
-    //   154: athrow
-    //   155: astore_1
-    //   156: aload_1
-    //   157: invokevirtual 229	java/lang/Exception:printStackTrace	()V
-    //   160: goto -17 -> 143
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	163	0	paramPrintStream	PrintStream
-    //   0	163	1	paramArrayOfByte	byte[]
-    //   0	163	2	paramString1	String
-    //   0	163	3	paramString2	String
-    //   35	42	4	localStringBuffer	java.lang.StringBuffer
-    // Exception table:
-    //   from	to	target	type
-    //   28	82	150	finally
-    //   82	143	150	finally
-    //   143	149	150	finally
-    //   156	160	150	finally
-    //   82	143	155	java/lang/Exception
+    if ((paramPrintStream != null) && (!Util.isNullOrNil(paramArrayOfByte)) && (!Util.isNullOrNil(paramString1)))
+    {
+      if (Util.isNullOrNil(paramString2)) {
+        return;
+      }
+      try
+      {
+        StringBuffer localStringBuffer = new StringBuffer();
+        localStringBuffer.append(aa.format(Long.valueOf(System.currentTimeMillis())));
+        localStringBuffer.append(" ");
+        localStringBuffer.append(paramString1);
+        localStringBuffer.append(" ");
+        localStringBuffer.append(paramString2);
+        paramString1 = localStringBuffer.toString();
+        try
+        {
+          paramArrayOfByte = new DESKeySpec(paramArrayOfByte);
+          paramArrayOfByte = SecretKeyFactory.getInstance("DES").generateSecret(paramArrayOfByte);
+          paramString2 = Cipher.getInstance("DES");
+          paramString2.init(1, paramArrayOfByte);
+          paramArrayOfByte = paramString2.doFinal(paramString1.getBytes());
+          paramPrintStream.write(TypeTransform.intToByteArrayLH(paramArrayOfByte.length));
+          paramPrintStream.write(paramArrayOfByte);
+          paramPrintStream.write(ab);
+        }
+        catch (Exception paramArrayOfByte)
+        {
+          paramArrayOfByte.printStackTrace();
+        }
+        paramPrintStream.flush();
+        return;
+      }
+      finally {}
+    }
   }
 }
 

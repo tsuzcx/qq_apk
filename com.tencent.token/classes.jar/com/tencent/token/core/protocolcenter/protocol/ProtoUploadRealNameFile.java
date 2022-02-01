@@ -22,7 +22,10 @@ public class ProtoUploadRealNameFile
   
   protected String a()
   {
-    return c.e() + "/cn/mbtoken3/mbtoken3_realname_check";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c.e());
+    localStringBuilder.append("/cn/mbtoken3/mbtoken3_realname_check");
+    return localStringBuilder.toString();
   }
   
   protected void a(do paramdo) {}
@@ -33,29 +36,30 @@ public class ProtoUploadRealNameFile
     if (j == 0)
     {
       paramJSONObject = l.c(paramJSONObject.getString("data"));
+      StringBuilder localStringBuilder;
       if (paramJSONObject != null)
       {
         paramJSONObject = new JSONObject(new String(paramJSONObject));
-        g.c("parseJSON  decodeData=" + paramJSONObject.toString());
-        if (i == 1) {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parseJSON  decodeData=");
+        localStringBuilder.append(paramJSONObject.toString());
+        g.c(localStringBuilder.toString());
+        int k = i;
+        if (k == 1)
+        {
           if (paramJSONObject.getInt("live_result") == 0) {
             a(j, paramJSONObject.getString("info"));
+          } else {
+            this.a.c();
           }
         }
-      }
-      for (;;)
-      {
-        g.a("ProtoUploadRealNameFile upload success");
-        return;
-        this.a.c();
-        continue;
-        if (i == 2)
+        else if (k == 2)
         {
           d = paramJSONObject.getString("ocr_name");
           e = paramJSONObject.getString("ocr_card");
           this.a.c();
         }
-        else if (i == 5)
+        else if (k == 5)
         {
           f = paramJSONObject.getLong("submit_time");
           g = paramJSONObject.getLong("complete_time");
@@ -65,14 +69,24 @@ public class ProtoUploadRealNameFile
         else
         {
           this.a.c();
-          continue;
-          g.c("parseJSON error decodeData=" + paramJSONObject);
-          a(10022, RqdApplication.l().getString(2131230925));
         }
       }
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parseJSON error decodeData=");
+        localStringBuilder.append(paramJSONObject);
+        g.c(localStringBuilder.toString());
+        a(10022, RqdApplication.l().getString(2131493067));
+      }
+      g.a("ProtoUploadRealNameFile upload success");
+      return;
     }
     a(j, paramJSONObject.getString("info"));
-    g.a("ProtoUploadRealNameFile upload fail errCode=" + j);
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("ProtoUploadRealNameFile upload fail errCode=");
+    paramJSONObject.append(j);
+    g.a(paramJSONObject.toString());
   }
 }
 

@@ -23,11 +23,13 @@ public final class s
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.aB != 0L) {
-      paramJceOutputStream.write(this.aB, 0);
+    long l = this.aB;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 0);
     }
-    if (this.aC != 0L) {
-      paramJceOutputStream.write(this.aC, 1);
+    l = this.aC;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 1);
     }
   }
 }

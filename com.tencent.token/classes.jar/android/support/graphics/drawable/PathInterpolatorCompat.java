@@ -50,39 +50,69 @@ public class PathInterpolatorCompat
     paramPath = new PathMeasure(paramPath, false);
     float f1 = paramPath.getLength();
     int k = Math.min(3000, (int)(f1 / 0.002F) + 1);
-    if (k <= 0) {
-      throw new IllegalArgumentException("The Path has a invalid length " + f1);
-    }
-    this.mX = new float[k];
-    this.mY = new float[k];
-    float[] arrayOfFloat = new float[2];
-    int i = 0;
-    while (i < k)
+    if (k > 0)
     {
-      paramPath.getPosTan(i * f1 / (k - 1), arrayOfFloat, null);
-      this.mX[i] = arrayOfFloat[0];
-      this.mY[i] = arrayOfFloat[1];
-      i += 1;
-    }
-    if ((Math.abs(this.mX[0]) > 1.E-005D) || (Math.abs(this.mY[0]) > 1.E-005D) || (Math.abs(this.mX[(k - 1)] - 1.0F) > 1.E-005D) || (Math.abs(this.mY[(k - 1)] - 1.0F) > 1.E-005D)) {
-      throw new IllegalArgumentException("The Path must start at (0,0) and end at (1,1) start: " + this.mX[0] + "," + this.mY[0] + " end:" + this.mX[(k - 1)] + "," + this.mY[(k - 1)]);
-    }
-    f1 = 0.0F;
-    i = 0;
-    while (j < k)
-    {
-      float f2 = this.mX[i];
-      if (f2 < f1) {
-        throw new IllegalArgumentException("The Path cannot loop back on itself, x :" + f2);
+      this.mX = new float[k];
+      this.mY = new float[k];
+      float[] arrayOfFloat = new float[2];
+      int i = 0;
+      while (i < k)
+      {
+        paramPath.getPosTan(i * f1 / (k - 1), arrayOfFloat, null);
+        this.mX[i] = arrayOfFloat[0];
+        this.mY[i] = arrayOfFloat[1];
+        i += 1;
       }
-      this.mX[j] = f2;
-      j += 1;
-      f1 = f2;
-      i += 1;
+      if ((Math.abs(this.mX[0]) <= 1.E-005D) && (Math.abs(this.mY[0]) <= 1.E-005D))
+      {
+        arrayOfFloat = this.mX;
+        i = k - 1;
+        if ((Math.abs(arrayOfFloat[i] - 1.0F) <= 1.E-005D) && (Math.abs(this.mY[i] - 1.0F) <= 1.E-005D))
+        {
+          i = 0;
+          f1 = 0.0F;
+          while (j < k)
+          {
+            arrayOfFloat = this.mX;
+            float f2 = arrayOfFloat[i];
+            if (f2 >= f1)
+            {
+              arrayOfFloat[j] = f2;
+              j += 1;
+              f1 = f2;
+              i += 1;
+            }
+            else
+            {
+              paramPath = new StringBuilder();
+              paramPath.append("The Path cannot loop back on itself, x :");
+              paramPath.append(f2);
+              throw new IllegalArgumentException(paramPath.toString());
+            }
+          }
+          if (!paramPath.nextContour()) {
+            return;
+          }
+          throw new IllegalArgumentException("The Path should be continuous, can't have 2+ contours");
+        }
+      }
+      paramPath = new StringBuilder();
+      paramPath.append("The Path must start at (0,0) and end at (1,1) start: ");
+      paramPath.append(this.mX[0]);
+      paramPath.append(",");
+      paramPath.append(this.mY[0]);
+      paramPath.append(" end:");
+      arrayOfFloat = this.mX;
+      i = k - 1;
+      paramPath.append(arrayOfFloat[i]);
+      paramPath.append(",");
+      paramPath.append(this.mY[i]);
+      throw new IllegalArgumentException(paramPath.toString());
     }
-    if (paramPath.nextContour()) {
-      throw new IllegalArgumentException("The Path should be continuous, can't have 2+ contours");
-    }
+    paramPath = new StringBuilder();
+    paramPath.append("The Path has a invalid length ");
+    paramPath.append(f1);
+    throw new IllegalArgumentException(paramPath.toString());
   }
   
   private void initQuad(float paramFloat1, float paramFloat2)
@@ -99,62 +129,68 @@ public class PathInterpolatorCompat
     {
       paramTypedArray = TypedArrayUtils.getNamedString(paramTypedArray, paramXmlPullParser, "pathData", 4);
       paramXmlPullParser = PathParser.createPathFromPathData(paramTypedArray);
-      if (paramXmlPullParser == null) {
-        throw new InflateException("The path is null, which is created from " + paramTypedArray);
+      if (paramXmlPullParser != null)
+      {
+        initPath(paramXmlPullParser);
+        return;
       }
-      initPath(paramXmlPullParser);
-      return;
+      paramXmlPullParser = new StringBuilder();
+      paramXmlPullParser.append("The path is null, which is created from ");
+      paramXmlPullParser.append(paramTypedArray);
+      throw new InflateException(paramXmlPullParser.toString());
     }
-    if (!TypedArrayUtils.hasAttribute(paramXmlPullParser, "controlX1")) {
-      throw new InflateException("pathInterpolator requires the controlX1 attribute");
-    }
-    if (!TypedArrayUtils.hasAttribute(paramXmlPullParser, "controlY1")) {
+    if (TypedArrayUtils.hasAttribute(paramXmlPullParser, "controlX1"))
+    {
+      if (TypedArrayUtils.hasAttribute(paramXmlPullParser, "controlY1"))
+      {
+        float f1 = TypedArrayUtils.getNamedFloat(paramTypedArray, paramXmlPullParser, "controlX1", 0, 0.0F);
+        float f2 = TypedArrayUtils.getNamedFloat(paramTypedArray, paramXmlPullParser, "controlY1", 1, 0.0F);
+        boolean bool = TypedArrayUtils.hasAttribute(paramXmlPullParser, "controlX2");
+        if (bool == TypedArrayUtils.hasAttribute(paramXmlPullParser, "controlY2"))
+        {
+          if (!bool)
+          {
+            initQuad(f1, f2);
+            return;
+          }
+          initCubic(f1, f2, TypedArrayUtils.getNamedFloat(paramTypedArray, paramXmlPullParser, "controlX2", 2, 0.0F), TypedArrayUtils.getNamedFloat(paramTypedArray, paramXmlPullParser, "controlY2", 3, 0.0F));
+          return;
+        }
+        throw new InflateException("pathInterpolator requires both controlX2 and controlY2 for cubic Beziers.");
+      }
       throw new InflateException("pathInterpolator requires the controlY1 attribute");
     }
-    float f1 = TypedArrayUtils.getNamedFloat(paramTypedArray, paramXmlPullParser, "controlX1", 0, 0.0F);
-    float f2 = TypedArrayUtils.getNamedFloat(paramTypedArray, paramXmlPullParser, "controlY1", 1, 0.0F);
-    boolean bool = TypedArrayUtils.hasAttribute(paramXmlPullParser, "controlX2");
-    if (bool != TypedArrayUtils.hasAttribute(paramXmlPullParser, "controlY2")) {
-      throw new InflateException("pathInterpolator requires both controlX2 and controlY2 for cubic Beziers.");
-    }
-    if (!bool)
-    {
-      initQuad(f1, f2);
-      return;
-    }
-    initCubic(f1, f2, TypedArrayUtils.getNamedFloat(paramTypedArray, paramXmlPullParser, "controlX2", 2, 0.0F), TypedArrayUtils.getNamedFloat(paramTypedArray, paramXmlPullParser, "controlY2", 3, 0.0F));
+    throw new InflateException("pathInterpolator requires the controlX1 attribute");
   }
   
   public float getInterpolation(float paramFloat)
   {
-    float f = 1.0F;
     if (paramFloat <= 0.0F) {
-      f = 0.0F;
+      return 0.0F;
     }
-    while (paramFloat >= 1.0F) {
-      return f;
+    if (paramFloat >= 1.0F) {
+      return 1.0F;
     }
     int j = 0;
     int i = this.mX.length - 1;
-    if (i - j > 1)
+    while (i - j > 1)
     {
       int k = (j + i) / 2;
       if (paramFloat < this.mX[k]) {
         i = k;
-      }
-      for (;;)
-      {
-        break;
+      } else {
         j = k;
       }
     }
-    f = this.mX[i] - this.mX[j];
+    float[] arrayOfFloat = this.mX;
+    float f = arrayOfFloat[i] - arrayOfFloat[j];
     if (f == 0.0F) {
       return this.mY[j];
     }
-    paramFloat = (paramFloat - this.mX[j]) / f;
-    f = this.mY[j];
-    return paramFloat * (this.mY[i] - f) + f;
+    paramFloat = (paramFloat - arrayOfFloat[j]) / f;
+    arrayOfFloat = this.mY;
+    f = arrayOfFloat[j];
+    return f + paramFloat * (arrayOfFloat[i] - f);
   }
 }
 

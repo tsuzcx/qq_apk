@@ -31,7 +31,11 @@ public class cd
   
   public String toString()
   {
-    return "MergePaths{mode=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MergePaths{mode=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public static enum b

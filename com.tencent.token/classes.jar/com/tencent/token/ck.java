@@ -18,56 +18,71 @@ public class ck
   
   private String a()
   {
-    return cc.a() + "/cn/manage/token/gprs_get_svr_time_req";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(cc.a());
+    localStringBuilder.append("/cn/manage/token/gprs_get_svr_time_req");
+    return localStringBuilder.toString();
   }
   
   private String a(ch paramch)
   {
-    if ((paramch.c != null) && (paramch.c.length() != 0))
-    {
-      str = paramch.c;
-      return str;
+    if ((paramch.c != null) && (paramch.c.length() != 0)) {
+      return paramch.c;
     }
-    String str = "其它错误：" + paramch.b;
-    switch (paramch.b)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("其它错误：");
+    ((StringBuilder)localObject).append(paramch.b);
+    localObject = ((StringBuilder)localObject).toString();
+    int i = paramch.b;
+    switch (i)
     {
-    case 0: 
     default: 
-      g.b("其它错误：" + paramch.b);
-      return "其它错误：" + paramch.b;
-    case 1: 
-      g.b("短信没有到达");
-      return "短信没有到达";
-    case 2: 
-      g.b("六位验证码验证错误");
-      return "六位验证码验证错误";
-    case 3: 
-      g.b("该号码已经绑定令牌");
-      return "该号码已经绑定令牌";
-    case 4: 
-      g.b("解除绑定时该号码还没有绑定qq");
-      return "解除绑定时该号码还没有绑定qq";
-    case 5: 
-      g.b("密保手机不正确");
-      return "密保手机不正确";
-    case 6: 
-      g.b("还没有密保手机");
-      return "还没有密保手机";
-    case 7: 
-      g.b("客户端输入错误");
-      return "客户端输入错误";
-    case 8: 
-      g.b("令牌序列号不存在");
-      return "令牌序列号不存在";
+      switch (i)
+      {
+      default: 
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("其它错误：");
+        ((StringBuilder)localObject).append(paramch.b);
+        g.b(((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("其它错误：");
+        ((StringBuilder)localObject).append(paramch.b);
+        return ((StringBuilder)localObject).toString();
+      case 101: 
+        g.b("如果客户端收到此错误，测等待一段时间重新尝试请求。");
+        return "如果客户端收到此错误，测等待一段时间重新尝试请求。";
+      }
+      g.b("预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误");
+      return "预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误";
     case 9: 
       g.b("已经到令牌的最大绑定个数");
       return "已经到令牌的最大绑定个数";
-    case 100: 
-      g.b("预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误");
-      return "预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误";
+    case 8: 
+      g.b("令牌序列号不存在");
+      return "令牌序列号不存在";
+    case 7: 
+      g.b("客户端输入错误");
+      return "客户端输入错误";
+    case 6: 
+      g.b("还没有密保手机");
+      return "还没有密保手机";
+    case 5: 
+      g.b("密保手机不正确");
+      return "密保手机不正确";
+    case 4: 
+      g.b("解除绑定时该号码还没有绑定qq");
+      return "解除绑定时该号码还没有绑定qq";
+    case 3: 
+      g.b("该号码已经绑定令牌");
+      return "该号码已经绑定令牌";
+    case 2: 
+      g.b("六位验证码验证错误");
+      return "六位验证码验证错误";
+    case 1: 
+      g.b("短信没有到达");
+      return "短信没有到达";
     }
-    g.b("如果客户端收到此错误，测等待一段时间重新尝试请求。");
-    return "如果客户端收到此错误，测等待一段时间重新尝试请求。";
+    return localObject;
   }
   
   public void a(long paramLong)
@@ -102,15 +117,25 @@ public class ck
     case 104: 
     default: 
       return;
-    case 101: 
+    case 106: 
       this.b.a(paramex, paramArrayOfByte);
       if (paramex.b == 0)
       {
-        g.b("服务器时间:" + paramex.d);
-        this.d.a(paramex.d);
+        cr.a().n();
+        this.d.b();
         return;
       }
-      this.d.a(a(paramex));
+      this.d.b(paramex.b, a(paramex));
+      return;
+    case 105: 
+      this.b.a(paramex, paramArrayOfByte);
+      if (paramex.b == 0)
+      {
+        cr.a().n();
+        this.d.a();
+        return;
+      }
+      this.d.a(paramex.b, a(paramex));
       return;
     case 102: 
       paramex = new cg();
@@ -123,25 +148,18 @@ public class ck
       }
       this.d.c(a(paramex));
       return;
-    case 105: 
-      this.b.a(paramex, paramArrayOfByte);
-      if (paramex.b == 0)
-      {
-        cr.a().n();
-        this.d.a();
-        return;
-      }
-      this.d.a(paramex.b, a(paramex));
-      return;
     }
     this.b.a(paramex, paramArrayOfByte);
     if (paramex.b == 0)
     {
-      cr.a().n();
-      this.d.b();
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("服务器时间:");
+      paramArrayOfByte.append(paramex.d);
+      g.b(paramArrayOfByte.toString());
+      this.d.a(paramex.d);
       return;
     }
-    this.d.b(paramex.b, a(paramex));
+    this.d.a(a(paramex));
   }
   
   public boolean a(ex paramex, int paramInt)

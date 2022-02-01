@@ -19,52 +19,43 @@ public abstract class FragmentTransitionImpl
   protected static void bfsAddViewChildren(List<View> paramList, View paramView)
   {
     int k = paramList.size();
-    if (containedBeforeIndex(paramList, paramView, k)) {}
-    for (;;)
-    {
+    if (containedBeforeIndex(paramList, paramView, k)) {
       return;
-      paramList.add(paramView);
-      int i = k;
-      while (i < paramList.size())
+    }
+    paramList.add(paramView);
+    int i = k;
+    while (i < paramList.size())
+    {
+      paramView = (View)paramList.get(i);
+      if ((paramView instanceof ViewGroup))
       {
-        paramView = (View)paramList.get(i);
-        if ((paramView instanceof ViewGroup))
+        paramView = (ViewGroup)paramView;
+        int m = paramView.getChildCount();
+        int j = 0;
+        while (j < m)
         {
-          paramView = (ViewGroup)paramView;
-          int m = paramView.getChildCount();
-          int j = 0;
-          while (j < m)
-          {
-            View localView = paramView.getChildAt(j);
-            if (!containedBeforeIndex(paramList, localView, k)) {
-              paramList.add(localView);
-            }
-            j += 1;
+          View localView = paramView.getChildAt(j);
+          if (!containedBeforeIndex(paramList, localView, k)) {
+            paramList.add(localView);
           }
+          j += 1;
         }
-        i += 1;
       }
+      i += 1;
     }
   }
   
   private static boolean containedBeforeIndex(List<View> paramList, View paramView, int paramInt)
   {
-    boolean bool2 = false;
     int i = 0;
-    for (;;)
+    while (i < paramInt)
     {
-      boolean bool1 = bool2;
-      if (i < paramInt)
-      {
-        if (paramList.get(i) == paramView) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (paramList.get(i) == paramView) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   static String findKeyForValue(Map<String, String> paramMap, String paramString)
@@ -97,29 +88,24 @@ public abstract class FragmentTransitionImpl
   {
     if (paramView.getVisibility() == 0)
     {
-      if (!(paramView instanceof ViewGroup)) {
-        break label64;
-      }
-      paramView = (ViewGroup)paramView;
-      if (!ViewGroupCompat.isTransitionGroup(paramView)) {
-        break label33;
+      if ((paramView instanceof ViewGroup))
+      {
+        paramView = (ViewGroup)paramView;
+        if (ViewGroupCompat.isTransitionGroup(paramView))
+        {
+          paramArrayList.add(paramView);
+          return;
+        }
+        int j = paramView.getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          captureTransitioningViews(paramArrayList, paramView.getChildAt(i));
+          i += 1;
+        }
       }
       paramArrayList.add(paramView);
     }
-    for (;;)
-    {
-      return;
-      label33:
-      int j = paramView.getChildCount();
-      int i = 0;
-      while (i < j)
-      {
-        captureTransitioningViews(paramArrayList, paramView.getChildAt(i));
-        i += 1;
-      }
-    }
-    label64:
-    paramArrayList.add(paramView);
   }
   
   public abstract Object cloneTransition(Object paramObject);
@@ -229,25 +215,18 @@ public abstract class FragmentTransitionImpl
     final int k = paramArrayList2.size();
     final ArrayList localArrayList = new ArrayList();
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       Object localObject = (View)paramArrayList1.get(i);
       String str = ViewCompat.getTransitionName((View)localObject);
       localArrayList.add(str);
-      if (str == null) {}
-      label134:
-      for (;;)
+      if (str != null)
       {
-        i += 1;
-        break;
         ViewCompat.setTransitionName((View)localObject, null);
         localObject = (String)paramMap.get(str);
         int j = 0;
-        for (;;)
+        while (j < k)
         {
-          if (j >= k) {
-            break label134;
-          }
           if (((String)localObject).equals(paramArrayList.get(j)))
           {
             ViewCompat.setTransitionName((View)paramArrayList2.get(j), str);
@@ -256,6 +235,7 @@ public abstract class FragmentTransitionImpl
           j += 1;
         }
       }
+      i += 1;
     }
     OneShotPreDrawListener.add(paramView, new Runnable()
     {

@@ -27,8 +27,9 @@ public final class al
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bP != null) {
-      paramJceOutputStream.write(this.bP, 0);
+    byte[] arrayOfByte = this.bP;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 0);
     }
   }
 }

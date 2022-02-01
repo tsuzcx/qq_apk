@@ -6,17 +6,24 @@ public class ci
 {
   public static String a(String paramString, int paramInt)
   {
-    return paramString + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public static String a(StringBuilder paramStringBuilder, String paramString1, String paramString2)
   {
-    return paramString1 + paramString2;
+    paramStringBuilder.append(paramString1);
+    paramStringBuilder.append(paramString2);
+    return paramStringBuilder.toString();
   }
   
   public static StringBuilder a(String paramString)
   {
-    return new StringBuilder().append(paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    return localStringBuilder;
   }
   
   public static void a(HashMap paramHashMap, Object paramObject1, Object paramObject2, long paramLong, int paramInt)

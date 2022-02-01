@@ -22,10 +22,14 @@ public final class AccessibilityManagerCompat
   
   public static boolean addTouchExplorationStateChangeListener(AccessibilityManager paramAccessibilityManager, TouchExplorationStateChangeListener paramTouchExplorationStateChangeListener)
   {
-    if ((Build.VERSION.SDK_INT < 19) || (paramTouchExplorationStateChangeListener == null)) {
-      return false;
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      if (paramTouchExplorationStateChangeListener == null) {
+        return false;
+      }
+      return paramAccessibilityManager.addTouchExplorationStateChangeListener(new TouchExplorationStateChangeListenerWrapper(paramTouchExplorationStateChangeListener));
     }
-    return paramAccessibilityManager.addTouchExplorationStateChangeListener(new TouchExplorationStateChangeListenerWrapper(paramTouchExplorationStateChangeListener));
+    return false;
   }
   
   @Deprecated
@@ -57,10 +61,14 @@ public final class AccessibilityManagerCompat
   
   public static boolean removeTouchExplorationStateChangeListener(AccessibilityManager paramAccessibilityManager, TouchExplorationStateChangeListener paramTouchExplorationStateChangeListener)
   {
-    if ((Build.VERSION.SDK_INT < 19) || (paramTouchExplorationStateChangeListener == null)) {
-      return false;
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      if (paramTouchExplorationStateChangeListener == null) {
+        return false;
+      }
+      return paramAccessibilityManager.removeTouchExplorationStateChangeListener(new TouchExplorationStateChangeListenerWrapper(paramTouchExplorationStateChangeListener));
     }
-    return paramAccessibilityManager.removeTouchExplorationStateChangeListener(new TouchExplorationStateChangeListenerWrapper(paramTouchExplorationStateChangeListener));
+    return false;
   }
   
   @Deprecated
@@ -90,11 +98,12 @@ public final class AccessibilityManagerCompat
       if (this == paramObject) {
         return true;
       }
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      if ((paramObject != null) && (getClass() == paramObject.getClass()))
+      {
+        paramObject = (AccessibilityStateChangeListenerWrapper)paramObject;
+        return this.mListener.equals(paramObject.mListener);
       }
-      paramObject = (AccessibilityStateChangeListenerWrapper)paramObject;
-      return this.mListener.equals(paramObject.mListener);
+      return false;
     }
     
     public int hashCode()
@@ -129,11 +138,12 @@ public final class AccessibilityManagerCompat
       if (this == paramObject) {
         return true;
       }
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      if ((paramObject != null) && (getClass() == paramObject.getClass()))
+      {
+        paramObject = (TouchExplorationStateChangeListenerWrapper)paramObject;
+        return this.mListener.equals(paramObject.mListener);
       }
-      paramObject = (TouchExplorationStateChangeListenerWrapper)paramObject;
-      return this.mListener.equals(paramObject.mListener);
+      return false;
     }
     
     public int hashCode()

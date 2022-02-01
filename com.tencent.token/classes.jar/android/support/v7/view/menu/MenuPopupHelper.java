@@ -75,35 +75,29 @@ public class MenuPopupHelper
   {
     Object localObject = ((WindowManager)this.mContext.getSystemService("window")).getDefaultDisplay();
     Point localPoint = new Point();
-    int i;
-    if (Build.VERSION.SDK_INT >= 17)
-    {
+    if (Build.VERSION.SDK_INT >= 17) {
       ((Display)localObject).getRealSize(localPoint);
-      if (Math.min(localPoint.x, localPoint.y) < this.mContext.getResources().getDimensionPixelSize(R.dimen.abc_cascading_menus_min_smallest_width)) {
-        break label158;
-      }
-      i = 1;
-      label68:
-      if (i == 0) {
-        break label163;
-      }
-    }
-    label158:
-    label163:
-    for (localObject = new CascadingMenuPopup(this.mContext, this.mAnchorView, this.mPopupStyleAttr, this.mPopupStyleRes, this.mOverflowOnly);; localObject = new StandardMenuPopup(this.mContext, this.mMenu, this.mAnchorView, this.mPopupStyleAttr, this.mPopupStyleRes, this.mOverflowOnly))
-    {
-      ((MenuPopup)localObject).addMenu(this.mMenu);
-      ((MenuPopup)localObject).setOnDismissListener(this.mInternalOnDismissListener);
-      ((MenuPopup)localObject).setAnchorView(this.mAnchorView);
-      ((MenuPopup)localObject).setCallback(this.mPresenterCallback);
-      ((MenuPopup)localObject).setForceShowIcon(this.mForceShowIcon);
-      ((MenuPopup)localObject).setGravity(this.mDropDownGravity);
-      return localObject;
+    } else {
       ((Display)localObject).getSize(localPoint);
-      break;
-      i = 0;
-      break label68;
     }
+    int i;
+    if (Math.min(localPoint.x, localPoint.y) >= this.mContext.getResources().getDimensionPixelSize(R.dimen.abc_cascading_menus_min_smallest_width)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      localObject = new CascadingMenuPopup(this.mContext, this.mAnchorView, this.mPopupStyleAttr, this.mPopupStyleRes, this.mOverflowOnly);
+    } else {
+      localObject = new StandardMenuPopup(this.mContext, this.mMenu, this.mAnchorView, this.mPopupStyleAttr, this.mPopupStyleRes, this.mOverflowOnly);
+    }
+    ((MenuPopup)localObject).addMenu(this.mMenu);
+    ((MenuPopup)localObject).setOnDismissListener(this.mInternalOnDismissListener);
+    ((MenuPopup)localObject).setAnchorView(this.mAnchorView);
+    ((MenuPopup)localObject).setCallback(this.mPresenterCallback);
+    ((MenuPopup)localObject).setForceShowIcon(this.mForceShowIcon);
+    ((MenuPopup)localObject).setGravity(this.mDropDownGravity);
+    return localObject;
   }
   
   private void showPopup(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
@@ -119,7 +113,7 @@ public class MenuPopupHelper
       localMenuPopup.setHorizontalOffset(i);
       localMenuPopup.setVerticalOffset(paramInt2);
       paramInt1 = (int)(this.mContext.getResources().getDisplayMetrics().density * 48.0F / 2.0F);
-      localMenuPopup.setEpicenterBounds(new Rect(i - paramInt1, paramInt2 - paramInt1, i + paramInt1, paramInt1 + paramInt2));
+      localMenuPopup.setEpicenterBounds(new Rect(i - paramInt1, paramInt2 - paramInt1, i + paramInt1, paramInt2 + paramInt1));
     }
     localMenuPopup.show();
   }
@@ -152,14 +146,16 @@ public class MenuPopupHelper
   
   public boolean isShowing()
   {
-    return (this.mPopup != null) && (this.mPopup.isShowing());
+    MenuPopup localMenuPopup = this.mPopup;
+    return (localMenuPopup != null) && (localMenuPopup.isShowing());
   }
   
   protected void onDismiss()
   {
     this.mPopup = null;
-    if (this.mOnDismissListener != null) {
-      this.mOnDismissListener.onDismiss();
+    PopupWindow.OnDismissListener localOnDismissListener = this.mOnDismissListener;
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss();
     }
   }
   
@@ -171,8 +167,9 @@ public class MenuPopupHelper
   public void setForceShowIcon(boolean paramBoolean)
   {
     this.mForceShowIcon = paramBoolean;
-    if (this.mPopup != null) {
-      this.mPopup.setForceShowIcon(paramBoolean);
+    MenuPopup localMenuPopup = this.mPopup;
+    if (localMenuPopup != null) {
+      localMenuPopup.setForceShowIcon(paramBoolean);
     }
   }
   
@@ -189,23 +186,26 @@ public class MenuPopupHelper
   public void setPresenterCallback(@Nullable MenuPresenter.Callback paramCallback)
   {
     this.mPresenterCallback = paramCallback;
-    if (this.mPopup != null) {
-      this.mPopup.setCallback(paramCallback);
+    MenuPopup localMenuPopup = this.mPopup;
+    if (localMenuPopup != null) {
+      localMenuPopup.setCallback(paramCallback);
     }
   }
   
   public void show()
   {
-    if (!tryShow()) {
-      throw new IllegalStateException("MenuPopupHelper cannot be used without an anchor");
+    if (tryShow()) {
+      return;
     }
+    throw new IllegalStateException("MenuPopupHelper cannot be used without an anchor");
   }
   
   public void show(int paramInt1, int paramInt2)
   {
-    if (!tryShow(paramInt1, paramInt2)) {
-      throw new IllegalStateException("MenuPopupHelper cannot be used without an anchor");
+    if (tryShow(paramInt1, paramInt2)) {
+      return;
     }
+    throw new IllegalStateException("MenuPopupHelper cannot be used without an anchor");
   }
   
   public boolean tryShow()

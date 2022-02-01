@@ -28,17 +28,21 @@ public final class a
   {
     paramJceOutputStream.write(this.a, 0);
     paramJceOutputStream.write(this.b, 1);
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 2);
+    String str = this.c;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.d != null) {
-      paramJceOutputStream.write(this.d, 3);
+    str = this.d;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.e != null) {
-      paramJceOutputStream.write(this.e, 4);
+    str = this.e;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.f != 0) {
-      paramJceOutputStream.write(this.f, 5);
+    int i = this.f;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
   }
 }

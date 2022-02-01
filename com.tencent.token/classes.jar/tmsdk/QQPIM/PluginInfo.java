@@ -14,16 +14,6 @@ public final class PluginInfo
   public int pluginId = 0;
   public int pluginVersion = 0;
   
-  static
-  {
-    if (!PluginInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public PluginInfo()
   {
     setHostId(this.hostId);
@@ -45,18 +35,17 @@ public final class PluginInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -69,13 +58,24 @@ public final class PluginInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (PluginInfo)paramObject;
-    } while ((!JceUtil.equals(this.hostId, paramObject.hostId)) || (!JceUtil.equals(this.pluginId, paramObject.pluginId)) || (!JceUtil.equals(this.pluginVersion, paramObject.pluginVersion)));
-    return true;
+    }
+    paramObject = (PluginInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.hostId, paramObject.hostId))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.pluginId, paramObject.pluginId))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.pluginVersion, paramObject.pluginVersion)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

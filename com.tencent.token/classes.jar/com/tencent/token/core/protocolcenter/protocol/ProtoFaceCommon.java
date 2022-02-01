@@ -51,7 +51,10 @@ public class ProtoFaceCommon
   {
     paramdo.c.put("param.uinhash", Long.valueOf(paramLong1));
     paramdo.j = paramInt1;
-    g.c("reqdata.seq=" + paramInt1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reqdata.seq=");
+    localStringBuilder.append(paramInt1);
+    g.c(localStringBuilder.toString());
     paramdo.c.put("param.realuin", Long.valueOf(paramLong2));
     paramdo.c.put("param.optype", Integer.valueOf(paramInt2));
     paramdo.c.put("param.facedata", paramArrayOfByte);
@@ -86,14 +89,20 @@ public class ProtoFaceCommon
       this.a.b(104);
       return null;
     }
-    return com.tencent.token.global.c.e() + "/cn/mbtoken3/mbtoken3_face_reg_v2";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(com.tencent.token.global.c.e());
+    localStringBuilder.append("/cn/mbtoken3/mbtoken3_face_reg_v2");
+    return localStringBuilder.toString();
   }
   
   protected void a(do paramdo)
   {
     this.p = ((Long)paramdo.c.get("param.uinhash")).longValue();
     this.q = paramdo.j;
-    g.c("reqdata.seq=" + this.q);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reqdata.seq=");
+    localStringBuilder.append(this.q);
+    g.c(localStringBuilder.toString());
     this.s = ((Long)paramdo.c.get("param.realuin")).longValue();
     this.t = ((Integer)paramdo.c.get("param.optype")).intValue();
     this.u = ((byte[])paramdo.c.get("param.facedata"));
@@ -109,23 +118,33 @@ public class ProtoFaceCommon
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
       int i1 = paramJSONObject.getInt("seq_id");
-      g.c("reqdata.seq=" + i1 + ", json=" + paramJSONObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reqdata.seq=");
+      ((StringBuilder)localObject).append(i1);
+      ((StringBuilder)localObject).append(", json=");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      g.c(((StringBuilder)localObject).toString());
       if (i1 != this.q)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i1 + ",right = " + this.q);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i1);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.q);
+        g.c(paramJSONObject.toString());
         return;
       }
       i1 = paramJSONObject.getInt("err");
       if (i1 != 0)
       {
-        String str = paramJSONObject.getString("info");
+        localObject = paramJSONObject.getString("info");
         this.r = paramJSONObject.getInt("op_type");
         com.tencent.token.core.bean.c localc = new com.tencent.token.core.bean.c();
         localc.a(this.r);
         localc.b(paramJSONObject.optInt("is_realname_qualified"));
         this.a.d = localc;
-        a(i1, str);
+        a(i1, (String)localObject);
         return;
       }
       this.r = paramJSONObject.getInt("op_type");
@@ -133,100 +152,131 @@ public class ProtoFaceCommon
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseJSON error decodeData=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    g.c(((StringBuilder)localObject).toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   public do b(do paramdo)
   {
-    int i2 = 1;
     int i3 = paramdo.j;
+    int i2 = 1;
     paramdo.m = 1;
     paramdo.n = new ContentValues(3);
     paramdo.n.put("aq_base_sid", ca.a().b());
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject1 = new JSONObject();
     for (;;)
     {
       try
       {
         if (this.t != 2)
         {
-          localJSONObject.put("uin", this.s);
-          localJSONObject.put("op_type", this.t);
-          long l1 = System.currentTimeMillis();
-          String str;
-          if (this.t != 3)
-          {
-            g.c("doFaceRecognition src data=" + this.u.length);
-            str = b.a(this.u);
-            localJSONObject.put("img_data", str);
-            g.c("doFaceRecognition img_data=" + str.length());
-            localJSONObject.put("resolution", d);
-            localJSONObject.put("so_code_time", e);
-            localJSONObject.put("face_detect_time", f);
-            localJSONObject.put("face_detect_frame", h);
-            if (FaceDetector.IsSupportNeon())
-            {
-              i1 = 1;
-              localJSONObject.put("is_neon", i1);
-              localJSONObject.put("face_model_init_time", g);
-              localJSONObject.put("vivo_model_init_time", i);
-              localJSONObject.put("vivo_reg_action1_time", j);
-              localJSONObject.put("vivo_reg_action2_time", k);
-              localJSONObject.put("vivo_reg_action1_frame", l);
-              localJSONObject.put("vivo_reg_action2_frame", m);
-              localJSONObject.put("vivo_ver_action_time", n);
-              localJSONObject.put("vivo_ver_action_frame", o);
-              localJSONObject.put("vivo_reg_action1_type", ProtoLiveFaceDetect.d);
-              localJSONObject.put("vivo_reg_action2_type", ProtoLiveFaceDetect.e);
-              localJSONObject.put("vivo_ver_action_type", ProtoLiveFaceDetect.f);
-              localJSONObject.put("mobile_os", "android:" + URLEncoder.encode(Build.VERSION.RELEASE));
-              localJSONObject.put("algorithm", m.i());
-            }
+          ((JSONObject)localObject1).put("uin", this.s);
+        }
+        else
+        {
+          ((JSONObject)localObject1).put("uin", this.s);
+          if (this.v > 0) {
+            ((JSONObject)localObject1).put("lock_status", this.v);
           }
-          else
+        }
+        ((JSONObject)localObject1).put("op_type", this.t);
+        long l1 = System.currentTimeMillis();
+        Object localObject2;
+        StringBuilder localStringBuilder;
+        if (this.t != 3)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("doFaceRecognition src data=");
+          ((StringBuilder)localObject2).append(this.u.length);
+          g.c(((StringBuilder)localObject2).toString());
+          localObject2 = b.a(this.u);
+          ((JSONObject)localObject1).put("img_data", localObject2);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("doFaceRecognition img_data=");
+          localStringBuilder.append(((String)localObject2).length());
+          g.c(localStringBuilder.toString());
+          ((JSONObject)localObject1).put("resolution", d);
+          ((JSONObject)localObject1).put("so_code_time", e);
+          ((JSONObject)localObject1).put("face_detect_time", f);
+          ((JSONObject)localObject1).put("face_detect_frame", h);
+          if (FaceDetector.IsSupportNeon())
           {
-            localJSONObject.put("op_time", (int)(cc.c().s() / 1000L));
-            localJSONObject.put("seq_id", i3);
-            localJSONObject.put("highlighted", this.x);
-            if (this.w != 10) {
-              break label771;
-            }
-            i1 = i2;
-            localJSONObject.put("scene", i1);
-            i1 = (int)(System.currentTimeMillis() - l1);
-            g.c("encodeTime=" + i1);
-            localJSONObject.put("encode_time", i1);
-            if (this.t == 5) {
-              localJSONObject.put("token_seq", cc.c().k());
-            }
-            str = b.a(l.c(localJSONObject.toString().getBytes())).replace('+', '-').replace('=', '_');
-            paramdo.n.put("data", str);
-            g.a("resolution=" + d + ",so_code_time=" + e + ",scan_time=" + f + ",frame_cnt=" + h + ",encode_time=" + i1 + ",seq=" + i3);
-            g.a("doFaceRecognition data=" + localJSONObject.toString());
-            g.a("doFaceRecognition base64 data=" + str.length());
-            return paramdo;
+            i1 = 1;
+            ((JSONObject)localObject1).put("is_neon", i1);
+            ((JSONObject)localObject1).put("face_model_init_time", g);
+            ((JSONObject)localObject1).put("vivo_model_init_time", i);
+            ((JSONObject)localObject1).put("vivo_reg_action1_time", j);
+            ((JSONObject)localObject1).put("vivo_reg_action2_time", k);
+            ((JSONObject)localObject1).put("vivo_reg_action1_frame", l);
+            ((JSONObject)localObject1).put("vivo_reg_action2_frame", m);
+            ((JSONObject)localObject1).put("vivo_ver_action_time", n);
+            ((JSONObject)localObject1).put("vivo_ver_action_frame", o);
+            ((JSONObject)localObject1).put("vivo_reg_action1_type", ProtoLiveFaceDetect.d);
+            ((JSONObject)localObject1).put("vivo_reg_action2_type", ProtoLiveFaceDetect.e);
+            ((JSONObject)localObject1).put("vivo_ver_action_type", ProtoLiveFaceDetect.f);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("android:");
+            ((StringBuilder)localObject2).append(URLEncoder.encode(Build.VERSION.RELEASE));
+            ((JSONObject)localObject1).put("mobile_os", ((StringBuilder)localObject2).toString());
+            ((JSONObject)localObject1).put("algorithm", m.i());
           }
         }
         else
         {
-          localJSONObject.put("uin", this.s);
-          if (this.v <= 0) {
-            continue;
+          ((JSONObject)localObject1).put("op_time", (int)(cc.c().s() / 1000L));
+          ((JSONObject)localObject1).put("seq_id", i3);
+          ((JSONObject)localObject1).put("highlighted", this.x);
+          if (this.w == 10) {
+            i1 = i2;
+          } else {
+            i1 = this.w;
           }
-          localJSONObject.put("lock_status", this.v);
-          continue;
+          ((JSONObject)localObject1).put("scene", i1);
+          i1 = (int)(System.currentTimeMillis() - l1);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("encodeTime=");
+          ((StringBuilder)localObject2).append(i1);
+          g.c(((StringBuilder)localObject2).toString());
+          ((JSONObject)localObject1).put("encode_time", i1);
+          if (this.t == 5) {
+            ((JSONObject)localObject1).put("token_seq", cc.c().k());
+          }
+          localObject2 = b.a(l.c(((JSONObject)localObject1).toString().getBytes())).replace('+', '-').replace('=', '_');
+          paramdo.n.put("data", (String)localObject2);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("resolution=");
+          localStringBuilder.append(d);
+          localStringBuilder.append(",so_code_time=");
+          localStringBuilder.append(e);
+          localStringBuilder.append(",scan_time=");
+          localStringBuilder.append(f);
+          localStringBuilder.append(",frame_cnt=");
+          localStringBuilder.append(h);
+          localStringBuilder.append(",encode_time=");
+          localStringBuilder.append(i1);
+          localStringBuilder.append(",seq=");
+          localStringBuilder.append(i3);
+          g.a(localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("doFaceRecognition data=");
+          localStringBuilder.append(((JSONObject)localObject1).toString());
+          g.a(localStringBuilder.toString());
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("doFaceRecognition base64 data=");
+          ((StringBuilder)localObject1).append(((String)localObject2).length());
+          g.a(((StringBuilder)localObject1).toString());
+          return paramdo;
         }
-        i1 = 0;
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
         return paramdo;
       }
-      continue;
-      label771:
-      int i1 = this.w;
+      int i1 = 0;
     }
   }
   

@@ -13,18 +13,22 @@ public final class ab
   
   public ab(a parama, Proxy paramProxy, InetSocketAddress paramInetSocketAddress)
   {
-    if (parama == null) {
-      throw new NullPointerException("address == null");
-    }
-    if (paramProxy == null) {
+    if (parama != null)
+    {
+      if (paramProxy != null)
+      {
+        if (paramInetSocketAddress != null)
+        {
+          this.a = parama;
+          this.b = paramProxy;
+          this.c = paramInetSocketAddress;
+          return;
+        }
+        throw new NullPointerException("inetSocketAddress == null");
+      }
       throw new NullPointerException("proxy == null");
     }
-    if (paramInetSocketAddress == null) {
-      throw new NullPointerException("inetSocketAddress == null");
-    }
-    this.a = parama;
-    this.b = paramProxy;
-    this.c = paramInetSocketAddress;
+    throw new NullPointerException("address == null");
   }
   
   public a a()
@@ -49,17 +53,28 @@ public final class ab
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof ab)) && (((ab)paramObject).a.equals(this.a)) && (((ab)paramObject).b.equals(this.b)) && (((ab)paramObject).c.equals(this.c));
+    if ((paramObject instanceof ab))
+    {
+      paramObject = (ab)paramObject;
+      if ((paramObject.a.equals(this.a)) && (paramObject.b.equals(this.b)) && (paramObject.c.equals(this.c))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public int hashCode()
   {
-    return ((this.a.hashCode() + 527) * 31 + this.b.hashCode()) * 31 + this.c.hashCode();
+    return ((527 + this.a.hashCode()) * 31 + this.b.hashCode()) * 31 + this.c.hashCode();
   }
   
   public String toString()
   {
-    return "Route{" + this.c + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Route{");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

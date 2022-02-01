@@ -28,14 +28,17 @@ public final class CSReportChannel
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.phoneType != null) {
-      paramJceOutputStream.write(this.phoneType, 0);
+    Object localObject = this.phoneType;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.userInfo != null) {
-      paramJceOutputStream.write(this.userInfo, 1);
+    localObject = this.userInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.channelInfo != null) {
-      paramJceOutputStream.write(this.channelInfo, 3);
+    localObject = this.channelInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }

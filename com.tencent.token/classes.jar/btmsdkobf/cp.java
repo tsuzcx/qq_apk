@@ -8,25 +8,29 @@ public class cp
 {
   public static <T extends JceStruct> T a(byte[] paramArrayOfByte, T paramT, boolean paramBoolean)
   {
-    if ((paramArrayOfByte == null) || (paramT == null)) {
-      return null;
-    }
-    if (paramBoolean) {}
-    for (;;)
+    if (paramArrayOfByte != null)
     {
+      if (paramT == null) {
+        return null;
+      }
+      Object localObject = paramT;
+      if (paramBoolean) {}
       try
       {
-        paramT = paramT.newInit();
-        paramT.recyle();
-        paramT.readFrom(h(paramArrayOfByte));
-        return paramT;
+        localObject = paramT.newInit();
+        ((JceStruct)localObject).recyle();
+        ((JceStruct)localObject).readFrom(h(paramArrayOfByte));
+        return localObject;
       }
       catch (Exception paramArrayOfByte)
       {
-        eg.h("JceStructUtil", "getJceStruct exception: " + paramArrayOfByte);
-        return null;
+        paramT = new StringBuilder();
+        paramT.append("getJceStruct exception: ");
+        paramT.append(paramArrayOfByte);
+        eg.h("JceStructUtil", paramT.toString());
       }
     }
+    return null;
   }
   
   public static byte[] b(JceStruct paramJceStruct)

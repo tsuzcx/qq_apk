@@ -16,8 +16,8 @@ final class c
     {
     default: 
       return;
-    case 1: 
-      x.a().a(b.a(this.b));
+    case 7: 
+      x.a().g(b.a(this.b));
       synchronized (b.b(this.b))
       {
         Iterator localIterator1 = b.b(this.b).iterator();
@@ -25,13 +25,13 @@ final class c
         {
           localc = (com.tencent.halley.downloader.c)localIterator1.next();
           if (localc != null) {
-            localc.a(b.a(this.b));
+            localc.g(b.a(this.b));
           }
         }
+        return;
       }
-      return;
-    case 2: 
-      x.a().b(b.a(this.b));
+    case 6: 
+      x.a().f(b.a(this.b));
       synchronized (b.b(this.b))
       {
         Iterator localIterator2 = b.b(this.b).iterator();
@@ -39,13 +39,13 @@ final class c
         {
           localc = (com.tencent.halley.downloader.c)localIterator2.next();
           if (localc != null) {
-            localc.b(b.a(this.b));
+            localc.f(b.a(this.b));
           }
         }
+        return;
       }
-      return;
-    case 3: 
-      x.a().c(b.a(this.b));
+    case 5: 
+      x.a().e(b.a(this.b));
       synchronized (b.b(this.b))
       {
         Iterator localIterator3 = b.b(this.b).iterator();
@@ -53,11 +53,11 @@ final class c
         {
           localc = (com.tencent.halley.downloader.c)localIterator3.next();
           if (localc != null) {
-            localc.c(b.a(this.b));
+            localc.e(b.a(this.b));
           }
         }
+        return;
       }
-      return;
     case 4: 
       x.a().d(b.a(this.b));
       synchronized (b.b(this.b))
@@ -70,10 +70,10 @@ final class c
             localc.d(b.a(this.b));
           }
         }
+        return;
       }
-      return;
-    case 5: 
-      x.a().e(b.a(this.b));
+    case 3: 
+      x.a().c(b.a(this.b));
       synchronized (b.b(this.b))
       {
         Iterator localIterator5 = b.b(this.b).iterator();
@@ -81,13 +81,13 @@ final class c
         {
           localc = (com.tencent.halley.downloader.c)localIterator5.next();
           if (localc != null) {
-            localc.e(b.a(this.b));
+            localc.c(b.a(this.b));
           }
         }
+        return;
       }
-      return;
-    case 6: 
-      x.a().f(b.a(this.b));
+    case 2: 
+      x.a().b(b.a(this.b));
       synchronized (b.b(this.b))
       {
         Iterator localIterator6 = b.b(this.b).iterator();
@@ -95,13 +95,13 @@ final class c
         {
           localc = (com.tencent.halley.downloader.c)localIterator6.next();
           if (localc != null) {
-            localc.f(b.a(this.b));
+            localc.b(b.a(this.b));
           }
         }
+        return;
       }
-      return;
     }
-    x.a().g(b.a(this.b));
+    x.a().a(b.a(this.b));
     synchronized (b.b(this.b))
     {
       Iterator localIterator7 = b.b(this.b).iterator();
@@ -109,9 +109,10 @@ final class c
       {
         localc = (com.tencent.halley.downloader.c)localIterator7.next();
         if (localc != null) {
-          localc.g(b.a(this.b));
+          localc.a(b.a(this.b));
         }
       }
+      return;
     }
   }
 }

@@ -16,7 +16,11 @@ public final class CancellationSignal
       {
         wait();
       }
-      catch (InterruptedException localInterruptedException) {}
+      catch (InterruptedException localInterruptedException)
+      {
+        label14:
+        break label14;
+      }
     }
   }
   
@@ -47,74 +51,77 @@ public final class CancellationSignal
     //   32: aload_0
     //   33: monitorexit
     //   34: aload_1
-    //   35: ifnull +9 -> 44
+    //   35: ifnull +12 -> 47
     //   38: aload_1
     //   39: invokeinterface 37 1 0
-    //   44: aload_2
-    //   45: ifnull +18 -> 63
-    //   48: getstatic 43	android/os/Build$VERSION:SDK_INT	I
-    //   51: bipush 16
-    //   53: if_icmplt +10 -> 63
-    //   56: aload_2
-    //   57: checkcast 45	android/os/CancellationSignal
-    //   60: invokevirtual 47	android/os/CancellationSignal:cancel	()V
-    //   63: aload_0
-    //   64: monitorenter
-    //   65: aload_0
-    //   66: iconst_0
-    //   67: putfield 24	android/support/v4/os/CancellationSignal:mCancelInProgress	Z
-    //   70: aload_0
-    //   71: invokevirtual 50	java/lang/Object:notifyAll	()V
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: return
-    //   77: astore_1
-    //   78: aload_0
-    //   79: monitorexit
-    //   80: aload_1
-    //   81: athrow
-    //   82: astore_1
-    //   83: aload_0
-    //   84: monitorexit
-    //   85: aload_1
-    //   86: athrow
-    //   87: astore_1
-    //   88: aload_0
-    //   89: monitorenter
-    //   90: aload_0
-    //   91: iconst_0
-    //   92: putfield 24	android/support/v4/os/CancellationSignal:mCancelInProgress	Z
-    //   95: aload_0
-    //   96: invokevirtual 50	java/lang/Object:notifyAll	()V
-    //   99: aload_0
-    //   100: monitorexit
-    //   101: aload_1
-    //   102: athrow
+    //   44: goto +3 -> 47
+    //   47: aload_2
+    //   48: ifnull +41 -> 89
+    //   51: getstatic 43	android/os/Build$VERSION:SDK_INT	I
+    //   54: bipush 16
+    //   56: if_icmplt +33 -> 89
+    //   59: aload_2
+    //   60: checkcast 45	android/os/CancellationSignal
+    //   63: invokevirtual 47	android/os/CancellationSignal:cancel	()V
+    //   66: goto +23 -> 89
+    //   69: aload_0
+    //   70: monitorenter
+    //   71: aload_0
+    //   72: iconst_0
+    //   73: putfield 24	android/support/v4/os/CancellationSignal:mCancelInProgress	Z
+    //   76: aload_0
+    //   77: invokevirtual 50	java/lang/Object:notifyAll	()V
+    //   80: aload_0
+    //   81: monitorexit
+    //   82: aload_1
+    //   83: athrow
+    //   84: astore_1
+    //   85: aload_0
+    //   86: monitorexit
+    //   87: aload_1
+    //   88: athrow
+    //   89: aload_0
+    //   90: monitorenter
+    //   91: aload_0
+    //   92: iconst_0
+    //   93: putfield 24	android/support/v4/os/CancellationSignal:mCancelInProgress	Z
+    //   96: aload_0
+    //   97: invokevirtual 50	java/lang/Object:notifyAll	()V
+    //   100: aload_0
+    //   101: monitorexit
+    //   102: return
     //   103: astore_1
     //   104: aload_0
     //   105: monitorexit
     //   106: aload_1
     //   107: athrow
+    //   108: astore_1
+    //   109: aload_0
+    //   110: monitorexit
+    //   111: aload_1
+    //   112: athrow
+    //   113: astore_1
+    //   114: goto -45 -> 69
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	108	0	this	CancellationSignal
-    //   26	13	1	localOnCancelListener	OnCancelListener
-    //   77	4	1	localObject1	Object
-    //   82	4	1	localObject2	Object
-    //   87	15	1	localObject3	Object
-    //   103	4	1	localObject4	Object
-    //   31	26	2	localObject5	Object
+    //   0	117	0	this	CancellationSignal
+    //   26	57	1	localOnCancelListener	OnCancelListener
+    //   84	4	1	localObject1	Object
+    //   103	4	1	localObject2	Object
+    //   108	4	1	localObject3	Object
+    //   113	1	1	localObject4	Object
+    //   31	29	2	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   65	76	77	finally
-    //   78	80	77	finally
-    //   2	11	82	finally
-    //   12	34	82	finally
-    //   83	85	82	finally
-    //   38	44	87	finally
-    //   48	63	87	finally
-    //   90	101	103	finally
+    //   71	82	84	finally
+    //   85	87	84	finally
+    //   91	102	103	finally
     //   104	106	103	finally
+    //   2	11	108	finally
+    //   12	34	108	finally
+    //   109	111	108	finally
+    //   38	44	113	finally
+    //   51	66	113	finally
   }
   
   public Object getCancellationSignalObject()
@@ -156,19 +163,22 @@ public final class CancellationSignal
         return;
       }
       this.mOnCancelListener = paramOnCancelListener;
-      if ((!this.mIsCanceled) || (paramOnCancelListener == null)) {
+      if ((this.mIsCanceled) && (paramOnCancelListener != null))
+      {
+        paramOnCancelListener.onCancel();
         return;
       }
+      return;
     }
     finally {}
-    paramOnCancelListener.onCancel();
   }
   
   public void throwIfCanceled()
   {
-    if (isCanceled()) {
-      throw new OperationCanceledException();
+    if (!isCanceled()) {
+      return;
     }
+    throw new OperationCanceledException();
   }
   
   public static abstract interface OnCancelListener

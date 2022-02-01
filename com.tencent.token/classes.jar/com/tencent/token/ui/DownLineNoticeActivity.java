@@ -8,7 +8,7 @@ public class DownLineNoticeActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968639);
+    setContentView(2131296319);
   }
 }
 

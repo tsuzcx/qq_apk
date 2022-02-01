@@ -2,28 +2,20 @@ package tmsdk.QQPIM;
 
 public final class EAutoStartOption
 {
-  public static final EAutoStartOption EASO_Forbid;
+  public static final EAutoStartOption EASO_Forbid = new EAutoStartOption(2, 2, "EASO_Forbid");
   public static final EAutoStartOption EASO_NONE;
   public static final EAutoStartOption EASO_OK;
   public static final int _EASO_Forbid = 2;
   public static final int _EASO_NONE = 0;
   public static final int _EASO_OK = 1;
-  private static EAutoStartOption[] ef;
+  private static EAutoStartOption[] ef = new EAutoStartOption[3];
   private int eb;
   private String ec = new String();
   
   static
   {
-    if (!EAutoStartOption.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      ef = new EAutoStartOption[3];
-      EASO_NONE = new EAutoStartOption(0, 0, "EASO_NONE");
-      EASO_OK = new EAutoStartOption(1, 1, "EASO_OK");
-      EASO_Forbid = new EAutoStartOption(2, 2, "EASO_Forbid");
-      return;
-    }
+    EASO_NONE = new EAutoStartOption(0, 0, "EASO_NONE");
+    EASO_OK = new EAutoStartOption(1, 1, "EASO_OK");
   }
   
   private EAutoStartOption(int paramInt1, int paramInt2, String paramString)
@@ -36,15 +28,16 @@ public final class EAutoStartOption
   public static EAutoStartOption convert(int paramInt)
   {
     int i = 0;
-    while (i < ef.length)
+    for (;;)
     {
-      if (ef[i].value() == paramInt) {
+      EAutoStartOption[] arrayOfEAutoStartOption = ef;
+      if (i >= arrayOfEAutoStartOption.length) {
+        break;
+      }
+      if (arrayOfEAutoStartOption[i].value() == paramInt) {
         return ef[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -52,15 +45,16 @@ public final class EAutoStartOption
   public static EAutoStartOption convert(String paramString)
   {
     int i = 0;
-    while (i < ef.length)
+    for (;;)
     {
-      if (ef[i].toString().equals(paramString)) {
+      EAutoStartOption[] arrayOfEAutoStartOption = ef;
+      if (i >= arrayOfEAutoStartOption.length) {
+        break;
+      }
+      if (arrayOfEAutoStartOption[i].toString().equals(paramString)) {
         return ef[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }

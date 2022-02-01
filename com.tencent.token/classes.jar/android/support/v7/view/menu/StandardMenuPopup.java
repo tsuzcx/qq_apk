@@ -53,15 +53,13 @@ final class StandardMenuPopup
       if ((StandardMenuPopup.this.isShowing()) && (!StandardMenuPopup.this.mPopup.isModal()))
       {
         View localView = StandardMenuPopup.this.mShownAnchorView;
-        if ((localView == null) || (!localView.isShown())) {
-          StandardMenuPopup.this.dismiss();
+        if ((localView != null) && (localView.isShown()))
+        {
+          StandardMenuPopup.this.mPopup.show();
+          return;
         }
+        StandardMenuPopup.this.dismiss();
       }
-      else
-      {
-        return;
-      }
-      StandardMenuPopup.this.mPopup.show();
     }
   };
   private boolean mHasContentWidth;
@@ -98,17 +96,23 @@ final class StandardMenuPopup
     if (isShowing()) {
       return true;
     }
-    if ((this.mWasDismissed) || (this.mAnchorView == null)) {
-      return false;
-    }
-    this.mShownAnchorView = this.mAnchorView;
-    this.mPopup.setOnDismissListener(this);
-    this.mPopup.setOnItemClickListener(this);
-    this.mPopup.setModal(true);
-    Object localObject = this.mShownAnchorView;
-    if (this.mTreeObserver == null) {}
-    for (int i = 1;; i = 0)
+    if (!this.mWasDismissed)
     {
+      Object localObject = this.mAnchorView;
+      if (localObject == null) {
+        return false;
+      }
+      this.mShownAnchorView = ((View)localObject);
+      this.mPopup.setOnDismissListener(this);
+      this.mPopup.setOnItemClickListener(this);
+      this.mPopup.setModal(true);
+      localObject = this.mShownAnchorView;
+      int i;
+      if (this.mTreeObserver == null) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       this.mTreeObserver = ((View)localObject).getViewTreeObserver();
       if (i != 0) {
         this.mTreeObserver.addOnGlobalLayoutListener(this.mGlobalLayoutListener);
@@ -141,6 +145,7 @@ final class StandardMenuPopup
       this.mPopup.show();
       return true;
     }
+    return false;
   }
   
   public void addMenu(MenuBuilder paramMenuBuilder) {}
@@ -169,30 +174,33 @@ final class StandardMenuPopup
   
   public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
   {
-    if (paramMenuBuilder != this.mMenu) {}
-    do
-    {
+    if (paramMenuBuilder != this.mMenu) {
       return;
-      dismiss();
-    } while (this.mPresenterCallback == null);
-    this.mPresenterCallback.onCloseMenu(paramMenuBuilder, paramBoolean);
+    }
+    dismiss();
+    MenuPresenter.Callback localCallback = this.mPresenterCallback;
+    if (localCallback != null) {
+      localCallback.onCloseMenu(paramMenuBuilder, paramBoolean);
+    }
   }
   
   public void onDismiss()
   {
     this.mWasDismissed = true;
     this.mMenu.close();
-    if (this.mTreeObserver != null)
+    Object localObject = this.mTreeObserver;
+    if (localObject != null)
     {
-      if (!this.mTreeObserver.isAlive()) {
+      if (!((ViewTreeObserver)localObject).isAlive()) {
         this.mTreeObserver = this.mShownAnchorView.getViewTreeObserver();
       }
       this.mTreeObserver.removeGlobalOnLayoutListener(this.mGlobalLayoutListener);
       this.mTreeObserver = null;
     }
     this.mShownAnchorView.removeOnAttachStateChangeListener(this.mAttachStateChangeListener);
-    if (this.mOnDismissListener != null) {
-      this.mOnDismissListener.onDismiss();
+    localObject = this.mOnDismissListener;
+    if (localObject != null) {
+      ((PopupWindow.OnDismissListener)localObject).onDismiss();
     }
   }
   
@@ -217,17 +225,18 @@ final class StandardMenuPopup
   {
     if (paramSubMenuBuilder.hasVisibleItems())
     {
-      MenuPopupHelper localMenuPopupHelper = new MenuPopupHelper(this.mContext, paramSubMenuBuilder, this.mShownAnchorView, this.mOverflowOnly, this.mPopupStyleAttr, this.mPopupStyleRes);
-      localMenuPopupHelper.setPresenterCallback(this.mPresenterCallback);
-      localMenuPopupHelper.setForceShowIcon(MenuPopup.shouldPreserveIconSpacing(paramSubMenuBuilder));
-      localMenuPopupHelper.setGravity(this.mDropDownGravity);
-      localMenuPopupHelper.setOnDismissListener(this.mOnDismissListener);
+      Object localObject = new MenuPopupHelper(this.mContext, paramSubMenuBuilder, this.mShownAnchorView, this.mOverflowOnly, this.mPopupStyleAttr, this.mPopupStyleRes);
+      ((MenuPopupHelper)localObject).setPresenterCallback(this.mPresenterCallback);
+      ((MenuPopupHelper)localObject).setForceShowIcon(MenuPopup.shouldPreserveIconSpacing(paramSubMenuBuilder));
+      ((MenuPopupHelper)localObject).setGravity(this.mDropDownGravity);
+      ((MenuPopupHelper)localObject).setOnDismissListener(this.mOnDismissListener);
       this.mOnDismissListener = null;
       this.mMenu.close(false);
-      if (localMenuPopupHelper.tryShow(this.mPopup.getHorizontalOffset(), this.mPopup.getVerticalOffset()))
+      if (((MenuPopupHelper)localObject).tryShow(this.mPopup.getHorizontalOffset(), this.mPopup.getVerticalOffset()))
       {
-        if (this.mPresenterCallback != null) {
-          this.mPresenterCallback.onOpenSubMenu(paramSubMenuBuilder);
+        localObject = this.mPresenterCallback;
+        if (localObject != null) {
+          ((MenuPresenter.Callback)localObject).onOpenSubMenu(paramSubMenuBuilder);
         }
         return true;
       }
@@ -277,16 +286,18 @@ final class StandardMenuPopup
   
   public void show()
   {
-    if (!tryShow()) {
-      throw new IllegalStateException("StandardMenuPopup cannot be used without an anchor");
+    if (tryShow()) {
+      return;
     }
+    throw new IllegalStateException("StandardMenuPopup cannot be used without an anchor");
   }
   
   public void updateMenuView(boolean paramBoolean)
   {
     this.mHasContentWidth = false;
-    if (this.mAdapter != null) {
-      this.mAdapter.notifyDataSetChanged();
+    MenuAdapter localMenuAdapter = this.mAdapter;
+    if (localMenuAdapter != null) {
+      localMenuAdapter.notifyDataSetChanged();
     }
   }
 }

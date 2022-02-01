@@ -23,9 +23,10 @@ public class RecoverKit
     this.mDB = paramSQLiteDatabase;
     this.mLastError = null;
     this.mNativePtr = nativeInit(paramString, paramArrayOfByte);
-    if (this.mNativePtr == 0L) {
-      throw new SQLiteException("Failed initialize recover context.");
+    if (this.mNativePtr != 0L) {
+      return;
     }
+    throw new SQLiteException("Failed initialize recover context.");
   }
   
   private static native void nativeCancel(long paramLong);
@@ -60,34 +61,37 @@ public class RecoverKit
   
   public void onCancel()
   {
-    if (this.mNativePtr != 0L) {
-      nativeCancel(this.mNativePtr);
+    long l = this.mNativePtr;
+    if (l != 0L) {
+      nativeCancel(l);
     }
   }
   
   public void release()
   {
-    if (this.mNativePtr != 0L)
+    long l = this.mNativePtr;
+    if (l != 0L)
     {
-      nativeFinish(this.mNativePtr);
+      nativeFinish(l);
       this.mNativePtr = 0L;
     }
   }
   
   public int run(boolean paramBoolean)
   {
-    if (this.mNativePtr == 0L) {
-      throw new IllegalStateException("RecoverKit not initialized.");
+    if (this.mNativePtr != 0L)
+    {
+      long l = this.mDB.acquireNativeConnectionHandle("recover", false, false);
+      int i = nativeRun(this.mNativePtr, l, paramBoolean);
+      this.mDB.releaseNativeConnection(l, null);
+      this.mSuccessCount = nativeSuccessCount(this.mNativePtr);
+      this.mFailedCount = nativeFailureCount(this.mNativePtr);
+      this.mLastError = nativeLastError(this.mNativePtr);
+      nativeFinish(this.mNativePtr);
+      this.mNativePtr = 0L;
+      return i;
     }
-    long l = this.mDB.acquireNativeConnectionHandle("recover", false, false);
-    int i = nativeRun(this.mNativePtr, l, paramBoolean);
-    this.mDB.releaseNativeConnection(l, null);
-    this.mSuccessCount = nativeSuccessCount(this.mNativePtr);
-    this.mFailedCount = nativeFailureCount(this.mNativePtr);
-    this.mLastError = nativeLastError(this.mNativePtr);
-    nativeFinish(this.mNativePtr);
-    this.mNativePtr = 0L;
-    return i;
+    throw new IllegalStateException("RecoverKit not initialized.");
   }
   
   public int run(boolean paramBoolean, CancellationSignal paramCancellationSignal)

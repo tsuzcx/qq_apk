@@ -48,28 +48,30 @@ class c
   
   public static int a(Context paramContext, float paramFloat)
   {
-    int i;
     try
     {
-      if (paramContext.getResources().getDisplayMetrics().widthPixels < paramContext.getResources().getDisplayMetrics().heightPixels)
-      {
-        i = (int)(paramContext.getResources().getDisplayMetrics().widthPixels * 0.9F);
-      }
-      else
-      {
+      if (paramContext.getResources().getDisplayMetrics().widthPixels < paramContext.getResources().getDisplayMetrics().heightPixels) {
+        i = paramContext.getResources().getDisplayMetrics().widthPixels;
+      } else {
         i = paramContext.getResources().getDisplayMetrics().heightPixels;
-        i = (int)(i * 0.9F);
       }
+      int j = (int)(i * 0.9F);
+      int k = (int)(paramFloat * 400.0F);
+      i = j;
+      if (j <= k) {
+        break label79;
+      }
+      return k;
     }
     catch (Exception paramContext)
     {
-      return (int)(300.0F * paramFloat);
+      int i;
+      label73:
+      label79:
+      break label73;
     }
-    int j = i;
-    if (i > (int)(400.0F * paramFloat)) {
-      j = (int)(400.0F * paramFloat);
-    }
-    return j;
+    i = (int)(paramFloat * 300.0F);
+    return i;
   }
   
   public static int a(Context paramContext, Window paramWindow, RelativeLayout paramRelativeLayout1, RelativeLayout paramRelativeLayout2, b paramb)
@@ -82,10 +84,12 @@ class c
     paramContext.addRule(13);
     paramRelativeLayout1.addView(paramb, paramContext);
     paramContext = paramRelativeLayout2.getLayoutParams();
-    paramContext.width = ((int)('' * f));
-    paramContext.height = ((int)('' * f));
+    int j = (int)('' * f);
+    paramContext.width = j;
+    paramContext.height = j;
     paramRelativeLayout2.setLayoutParams(paramContext);
-    new RelativeLayout.LayoutParams((int)(52 * f), (int)(52 * f)).addRule(13);
+    j = (int)(52 * f);
+    new RelativeLayout.LayoutParams(j, j).addRule(13);
     paramContext = paramWindow.getAttributes();
     paramContext.width = i;
     paramContext.height = i;
@@ -101,8 +105,12 @@ class c
       TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
       if (paramInt == 0)
       {
-        if (localTelephonyManager != null) {
-          return localTelephonyManager.getNetworkType() + "";
+        if (localTelephonyManager != null)
+        {
+          paramContext = new StringBuilder();
+          paramContext.append(localTelephonyManager.getNetworkType());
+          paramContext.append("");
+          return paramContext.toString();
         }
       }
       else
@@ -110,7 +118,7 @@ class c
         if (paramInt == 1)
         {
           if (localTelephonyManager == null) {
-            break label202;
+            break label206;
           }
           return localTelephonyManager.getNetworkOperatorName();
         }
@@ -139,14 +147,14 @@ class c
       return "";
     }
     return "";
-    label202:
+    label206:
     return "";
     return "";
     return "WIFI";
     return "UNKOWN";
-    return "2G";
-    return "3G";
     return "4G";
+    return "3G";
+    return "2G";
   }
   
   public static void a()
@@ -210,11 +218,16 @@ class c
     if (Build.DISPLAY.contains(Build.VERSION.INCREMENTAL)) {
       return Build.DISPLAY;
     }
-    return Build.DISPLAY + "|" + Build.VERSION.INCREMENTAL;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.DISPLAY);
+    localStringBuilder.append("|");
+    localStringBuilder.append(Build.VERSION.INCREMENTAL);
+    return localStringBuilder.toString();
   }
   
   public static String b(Context paramContext, int paramInt)
   {
+    Object localObject;
     for (;;)
     {
       try
@@ -222,33 +235,25 @@ class c
         paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
         if (paramInt == 0)
         {
-          if (paramContext == null) {
-            break label136;
-          }
-          localObject = paramContext.getSSID();
-          paramContext = (Context)localObject;
-          if (localObject != null)
-          {
-            paramContext = (Context)localObject;
-            if (((String)localObject).length() > 0)
-            {
-              paramContext = (Context)localObject;
-              if (((String)localObject).indexOf("\"") == 0) {
-                paramContext = ((String)localObject).substring(1, ((String)localObject).length());
-              }
-            }
-          }
-          localObject = paramContext;
           if (paramContext != null)
           {
+            paramContext = paramContext.getSSID();
             localObject = paramContext;
-            if (paramContext.length() > 0)
+            if (paramContext != null)
             {
               localObject = paramContext;
-              if (paramContext.lastIndexOf("\"") == paramContext.length() - 1) {
-                return paramContext.substring(0, paramContext.length() - 1);
+              if (paramContext.length() > 0)
+              {
+                localObject = paramContext;
+                if (paramContext.indexOf("\"") == 0) {
+                  localObject = paramContext.substring(1, paramContext.length());
+                }
               }
             }
+            if ((localObject == null) || (((String)localObject).length() <= 0) || (((String)localObject).lastIndexOf("\"") != ((String)localObject).length() - 1)) {
+              break;
+            }
+            return ((String)localObject).substring(0, ((String)localObject).length() - 1);
           }
         }
         else
@@ -256,7 +261,7 @@ class c
           if (paramInt == 1)
           {
             if (paramContext == null) {
-              break;
+              break label139;
             }
             return paramContext.getBSSID();
           }
@@ -266,43 +271,33 @@ class c
       catch (Exception paramContext)
       {
         paramContext.printStackTrace();
-        localObject = "";
+        return "";
       }
-      return localObject;
-      label136:
-      Object localObject = "";
+      paramContext = "";
     }
+    return localObject;
+    label139:
     return "";
   }
   
   public static int c()
   {
-    for (;;)
+    try
     {
-      try
+      if ((!Build.FINGERPRINT.startsWith("generic")) && (!Build.FINGERPRINT.startsWith("unknown")) && (!Build.MODEL.contains("google_sdk")) && (!Build.MODEL.contains("Emulator")) && (!Build.MODEL.contains("Android SDK built for x86")) && (!Build.MANUFACTURER.contains("Genymotion")) && ((!Build.BRAND.startsWith("generic")) || (!Build.DEVICE.startsWith("generic"))))
       {
-        if ((!Build.FINGERPRINT.startsWith("generic")) && (!Build.FINGERPRINT.startsWith("unknown")) && (!Build.MODEL.contains("google_sdk")) && (!Build.MODEL.contains("Emulator")) && (!Build.MODEL.contains("Android SDK built for x86")) && (!Build.MANUFACTURER.contains("Genymotion")) && ((!Build.BRAND.startsWith("generic")) || (!Build.DEVICE.startsWith("generic"))))
-        {
-          boolean bool = "google_sdk".equals(Build.PRODUCT);
-          if (!bool) {
-            continue;
-          }
-        }
-        i = 1;
+        boolean bool = "google_sdk".equals(Build.PRODUCT);
+        if (!bool) {}
       }
-      catch (Exception localException)
+      else
       {
-        localException.printStackTrace();
-        int i = 0;
-        continue;
+        return 1;
       }
-      if (i == 0) {
-        break label133;
-      }
-      return 1;
-      i = 0;
     }
-    label133:
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
     return 0;
   }
   
@@ -322,9 +317,11 @@ class c
   
   public static int d()
   {
+    int j = 0;
+    int i;
     try
     {
-      arrayOfString = new String[8];
+      String[] arrayOfString = new String[8];
       arrayOfString[0] = "/system/bin/";
       arrayOfString[1] = "/system/xbin/";
       arrayOfString[2] = "/sbin/";
@@ -333,45 +330,36 @@ class c
       arrayOfString[5] = "/data/local/xbin/";
       arrayOfString[6] = "/data/local/bin/";
       arrayOfString[7] = "/data/local/";
-      m = arrayOfString.length;
-      j = 0;
+      int m = arrayOfString.length;
       i = 0;
-    }
-    catch (Exception localException1)
-    {
-      try
+      for (;;)
       {
-        String[] arrayOfString;
-        int m;
-        int j;
-        String str;
-        boolean bool = new File(str + "su").exists();
-        if (bool) {
-          i = 1;
+        k = i;
+        if (j >= m) {
+          return k;
         }
-        j += 1;
+        String str = arrayOfString[j];
+        try
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append("su");
+          boolean bool = new File(localStringBuilder.toString()).exists();
+          if (bool) {
+            i = 1;
+          }
+          j += 1;
+        }
+        catch (Exception localException1) {}
       }
-      catch (Exception localException2)
-      {
-        int i;
-        int k;
-        break label137;
-      }
-      localException1 = localException1;
+      localException2.printStackTrace();
+    }
+    catch (Exception localException2)
+    {
       i = 0;
     }
-    k = i;
-    if (j < m)
-    {
-      str = arrayOfString[j];
-      label137:
-      localException1.printStackTrace();
-      k = i;
-    }
-    if (k != 0) {
-      return 1;
-    }
-    return 0;
+    int k = i;
+    return k;
   }
   
   public static int d(Context paramContext)
@@ -390,46 +378,48 @@ class c
   
   public static int e(Context paramContext)
   {
-    for (int j = 1;; j = 0)
+    for (;;)
     {
-      int i;
       try
       {
         paramContext = (SensorManager)paramContext.getSystemService("sensor");
-        if (paramContext.getDefaultSensor(1) == null) {
-          continue;
-        }
-        i = j;
-        if (paramContext.getDefaultSensor(2) != null) {
-          i = j | 0x2;
-        }
-        j = i;
-        if (paramContext.getDefaultSensor(4) != null) {
-          j = i | 0x4;
-        }
-        i = j;
-        if (paramContext.getDefaultSensor(9) != null) {
-          i = j | 0x8;
-        }
-        j = i;
-        if (paramContext.getDefaultSensor(10) != null) {
-          j = i | 0x10;
-        }
-        i = j;
-        if (paramContext.getDefaultSensor(5) != null) {
-          i = j | 0x20;
-        }
-        j = i;
-        if (paramContext.getDefaultSensor(8) != null) {
-          j = i | 0x40;
-        }
-        i = j;
-        if (paramContext.getDefaultSensor(7) != null) {
-          i = j | 0x80;
-        }
-        paramContext = paramContext.getDefaultSensor(6);
-        if (paramContext != null) {
-          return i | 0x100;
+        j = 1;
+        if (paramContext.getDefaultSensor(1) != null)
+        {
+          int i = j;
+          if (paramContext.getDefaultSensor(2) != null) {
+            i = j | 0x2;
+          }
+          j = i;
+          if (paramContext.getDefaultSensor(4) != null) {
+            j = i | 0x4;
+          }
+          i = j;
+          if (paramContext.getDefaultSensor(9) != null) {
+            i = j | 0x8;
+          }
+          j = i;
+          if (paramContext.getDefaultSensor(10) != null) {
+            j = i | 0x10;
+          }
+          i = j;
+          if (paramContext.getDefaultSensor(5) != null) {
+            i = j | 0x20;
+          }
+          j = i;
+          if (paramContext.getDefaultSensor(8) != null) {
+            j = i | 0x40;
+          }
+          i = j;
+          if (paramContext.getDefaultSensor(7) != null) {
+            i = j | 0x80;
+          }
+          paramContext = paramContext.getDefaultSensor(6);
+          j = i;
+          if (paramContext != null) {
+            j = i | 0x100;
+          }
+          return j;
         }
       }
       catch (Exception paramContext)
@@ -437,7 +427,7 @@ class c
         paramContext.printStackTrace();
         return 0;
       }
-      return i;
+      int j = 0;
     }
   }
   
@@ -457,17 +447,24 @@ class c
   
   public static int f(Context paramContext)
   {
+    int j = 0;
     try
     {
       paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-      if ((paramContext != null) && (paramContext.getActiveNetworkInfo() != null))
+      int i = j;
+      if (paramContext != null)
       {
-        int i = paramContext.getActiveNetworkInfo().getType();
-        if (i == 1) {
-          return 1;
+        i = j;
+        if (paramContext.getActiveNetworkInfo() != null)
+        {
+          int k = paramContext.getActiveNetworkInfo().getType();
+          i = j;
+          if (k == 1) {
+            i = 1;
+          }
         }
       }
-      return 0;
+      return i;
     }
     catch (Exception paramContext)
     {
@@ -478,25 +475,26 @@ class c
   
   public static String f()
   {
-    String str2 = "";
     try
     {
       BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/version").getInputStream()), 8192);
-      String str3;
-      for (String str1 = "";; str1 = str1 + str3)
+      StringBuilder localStringBuilder;
+      for (String str1 = "";; str1 = localStringBuilder.toString())
       {
-        str3 = localBufferedReader.readLine();
-        if (str3 == null) {
+        String str2 = localBufferedReader.readLine();
+        if (str2 == null) {
           break;
         }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append(str2);
       }
       if (str1 != "")
       {
-        int i = str1.indexOf("version ");
-        str1 = str1.substring("version ".length() + i);
-        str2 = str1.substring(0, str1.indexOf(" "));
+        str1 = str1.substring(str1.indexOf("version ") + 8);
+        str1 = str1.substring(0, str1.indexOf(" "));
+        return str1;
       }
-      return str2;
     }
     catch (Exception localException)
     {

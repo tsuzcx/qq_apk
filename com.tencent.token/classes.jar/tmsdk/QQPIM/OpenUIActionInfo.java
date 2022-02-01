@@ -34,11 +34,13 @@ public final class OpenUIActionInfo
   {
     paramJceOutputStream.write(this.uiid, 0);
     paramJceOutputStream.write(this.action, 1);
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 2);
+    String str = this.title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 3);
+    str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }

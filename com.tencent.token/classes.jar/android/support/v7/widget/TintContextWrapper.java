@@ -36,11 +36,19 @@ public class TintContextWrapper
   
   private static boolean shouldWrap(@NonNull Context paramContext)
   {
-    if (((paramContext instanceof TintContextWrapper)) || ((paramContext.getResources() instanceof TintResources)) || ((paramContext.getResources() instanceof VectorEnabledTintResources))) {}
-    while ((Build.VERSION.SDK_INT >= 21) && (!VectorEnabledTintResources.shouldBeUsed())) {
-      return false;
+    boolean bool2 = paramContext instanceof TintContextWrapper;
+    boolean bool1 = false;
+    if ((!bool2) && (!(paramContext.getResources() instanceof TintResources)))
+    {
+      if ((paramContext.getResources() instanceof VectorEnabledTintResources)) {
+        return false;
+      }
+      if ((Build.VERSION.SDK_INT < 21) || (VectorEnabledTintResources.shouldBeUsed())) {
+        bool1 = true;
+      }
+      return bool1;
     }
-    return true;
+    return false;
   }
   
   public static Context wrap(@NonNull Context paramContext)
@@ -54,42 +62,45 @@ public class TintContextWrapper
         if (sCache == null)
         {
           sCache = new ArrayList();
-          paramContext = new TintContextWrapper(paramContext);
-          sCache.add(new WeakReference(paramContext));
-          return paramContext;
         }
-        i = sCache.size() - 1;
-        if (i >= 0)
+        else
         {
-          localObject1 = (WeakReference)sCache.get(i);
-          if ((localObject1 != null) && (((WeakReference)localObject1).get() != null)) {
-            break label162;
+          i = sCache.size() - 1;
+          if (i >= 0)
+          {
+            localObject1 = (WeakReference)sCache.get(i);
+            if ((localObject1 != null) && (((WeakReference)localObject1).get() != null)) {
+              break label168;
+            }
+            sCache.remove(i);
+            break label168;
           }
-          sCache.remove(i);
-          break label162;
+          i = sCache.size() - 1;
+          if (i >= 0)
+          {
+            localObject1 = (WeakReference)sCache.get(i);
+            if (localObject1 == null) {
+              break label175;
+            }
+            localObject1 = (TintContextWrapper)((WeakReference)localObject1).get();
+            if ((localObject1 == null) || (((TintContextWrapper)localObject1).getBaseContext() != paramContext)) {
+              break label180;
+            }
+            return localObject1;
+          }
         }
-        i = sCache.size() - 1;
-        if (i < 0) {
-          continue;
-        }
-        localObject1 = (WeakReference)sCache.get(i);
-        if (localObject1 == null) {
-          break label169;
-        }
-        localObject1 = (TintContextWrapper)((WeakReference)localObject1).get();
-        if ((localObject1 == null) || (((TintContextWrapper)localObject1).getBaseContext() != paramContext)) {
-          break label174;
-        }
-        return localObject1;
+        paramContext = new TintContextWrapper(paramContext);
+        sCache.add(new WeakReference(paramContext));
+        return paramContext;
       }
       return paramContext;
-      label162:
+      label168:
       i -= 1;
       continue;
-      label169:
+      label175:
       Object localObject1 = null;
       continue;
-      label174:
+      label180:
       i -= 1;
     }
   }
@@ -106,20 +117,23 @@ public class TintContextWrapper
   
   public Resources.Theme getTheme()
   {
-    if (this.mTheme == null) {
-      return super.getTheme();
+    Resources.Theme localTheme2 = this.mTheme;
+    Resources.Theme localTheme1 = localTheme2;
+    if (localTheme2 == null) {
+      localTheme1 = super.getTheme();
     }
-    return this.mTheme;
+    return localTheme1;
   }
   
   public void setTheme(int paramInt)
   {
-    if (this.mTheme == null)
+    Resources.Theme localTheme = this.mTheme;
+    if (localTheme == null)
     {
       super.setTheme(paramInt);
       return;
     }
-    this.mTheme.applyStyle(paramInt, true);
+    localTheme.applyStyle(paramInt, true);
   }
 }
 

@@ -70,8 +70,10 @@ public enum b
   public static final void a(ByteBuffer paramByteBuffer, Map paramMap)
   {
     int i1 = paramByteBuffer.getShort();
-    b localb = valueOf("_" + (i1 & 0xFFFF));
-    paramMap.put(localb, localb.a(paramByteBuffer));
+    Object localObject = new StringBuilder("_");
+    ((StringBuilder)localObject).append(i1 & 0xFFFF);
+    localObject = valueOf(((StringBuilder)localObject).toString());
+    paramMap.put(localObject, ((b)localObject).a(paramByteBuffer));
   }
   
   protected String a(ByteBuffer paramByteBuffer)
@@ -88,16 +90,17 @@ public enum b
   
   public byte[] a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
+    if ((paramString != null) && (paramString.length() != 0))
+    {
+      paramString = paramString.getBytes("UTF-8");
+      byte[] arrayOfByte = new byte[paramString.length + 4];
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(arrayOfByte);
+      localByteBuffer.putShort(this.X);
+      localByteBuffer.putShort((short)paramString.length);
+      localByteBuffer.put(paramString);
+      return arrayOfByte;
     }
-    paramString = paramString.getBytes("UTF-8");
-    byte[] arrayOfByte = new byte[paramString.length + 4];
-    ByteBuffer localByteBuffer = ByteBuffer.wrap(arrayOfByte);
-    localByteBuffer.putShort(this.X);
-    localByteBuffer.putShort((short)paramString.length);
-    localByteBuffer.put(paramString);
-    return arrayOfByte;
+    return null;
   }
   
   public final f b()

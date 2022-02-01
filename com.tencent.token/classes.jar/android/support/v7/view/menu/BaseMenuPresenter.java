@@ -79,12 +79,13 @@ public abstract class BaseMenuPresenter
   
   public View getItemView(MenuItemImpl paramMenuItemImpl, View paramView, ViewGroup paramViewGroup)
   {
-    if ((paramView instanceof MenuView.ItemView)) {}
-    for (paramView = (MenuView.ItemView)paramView;; paramView = createItemView(paramViewGroup))
-    {
-      bindItemView(paramMenuItemImpl, paramView);
-      return (View)paramView;
+    if ((paramView instanceof MenuView.ItemView)) {
+      paramView = (MenuView.ItemView)paramView;
+    } else {
+      paramView = createItemView(paramViewGroup);
     }
+    bindItemView(paramMenuItemImpl, paramView);
+    return (View)paramView;
   }
   
   public MenuView getMenuView(ViewGroup paramViewGroup)
@@ -107,15 +108,17 @@ public abstract class BaseMenuPresenter
   
   public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
   {
-    if (this.mCallback != null) {
-      this.mCallback.onCloseMenu(paramMenuBuilder, paramBoolean);
+    MenuPresenter.Callback localCallback = this.mCallback;
+    if (localCallback != null) {
+      localCallback.onCloseMenu(paramMenuBuilder, paramBoolean);
     }
   }
   
   public boolean onSubMenuSelected(SubMenuBuilder paramSubMenuBuilder)
   {
-    if (this.mCallback != null) {
-      return this.mCallback.onOpenSubMenu(paramSubMenuBuilder);
+    MenuPresenter.Callback localCallback = this.mCallback;
+    if (localCallback != null) {
+      return localCallback.onOpenSubMenu(paramSubMenuBuilder);
     }
     return false;
   }
@@ -138,58 +141,47 @@ public abstract class BaseMenuPresenter
   public void updateMenuView(boolean paramBoolean)
   {
     ViewGroup localViewGroup = (ViewGroup)this.mMenuView;
-    if (localViewGroup == null) {}
-    label198:
-    label204:
-    for (;;)
-    {
+    if (localViewGroup == null) {
       return;
-      int j;
-      if (this.mMenu != null)
+    }
+    Object localObject = this.mMenu;
+    int i = 0;
+    if (localObject != null)
+    {
+      ((MenuBuilder)localObject).flagActionItems();
+      ArrayList localArrayList = this.mMenu.getVisibleItems();
+      int m = localArrayList.size();
+      int j = 0;
+      int k;
+      for (i = 0; j < m; i = k)
       {
-        this.mMenu.flagActionItems();
-        ArrayList localArrayList = this.mMenu.getVisibleItems();
-        int m = localArrayList.size();
-        int k = 0;
-        int i = 0;
-        j = i;
-        if (k < m)
+        MenuItemImpl localMenuItemImpl = (MenuItemImpl)localArrayList.get(j);
+        k = i;
+        if (shouldIncludeItem(i, localMenuItemImpl))
         {
-          MenuItemImpl localMenuItemImpl2 = (MenuItemImpl)localArrayList.get(k);
-          if (!shouldIncludeItem(i, localMenuItemImpl2)) {
-            break label198;
-          }
           View localView1 = localViewGroup.getChildAt(i);
-          if ((localView1 instanceof MenuView.ItemView)) {}
-          for (MenuItemImpl localMenuItemImpl1 = ((MenuView.ItemView)localView1).getItemData();; localMenuItemImpl1 = null)
-          {
-            View localView2 = getItemView(localMenuItemImpl2, localView1, localViewGroup);
-            if (localMenuItemImpl2 != localMenuItemImpl1)
-            {
-              localView2.setPressed(false);
-              localView2.jumpDrawablesToCurrentState();
-            }
-            if (localView2 != localView1) {
-              addItemView(localView2, i);
-            }
-            i += 1;
-            k += 1;
-            break;
+          if ((localView1 instanceof MenuView.ItemView)) {
+            localObject = ((MenuView.ItemView)localView1).getItemData();
+          } else {
+            localObject = null;
           }
+          View localView2 = getItemView(localMenuItemImpl, localView1, localViewGroup);
+          if (localMenuItemImpl != localObject)
+          {
+            localView2.setPressed(false);
+            localView2.jumpDrawablesToCurrentState();
+          }
+          if (localView2 != localView1) {
+            addItemView(localView2, i);
+          }
+          k = i + 1;
         }
+        j += 1;
       }
-      for (;;)
-      {
-        if (j >= localViewGroup.getChildCount()) {
-          break label204;
-        }
-        if (!filterLeftoverView(localViewGroup, j))
-        {
-          j += 1;
-          continue;
-          break;
-          j = 0;
-        }
+    }
+    while (i < localViewGroup.getChildCount()) {
+      if (!filterLeftoverView(localViewGroup, i)) {
+        i += 1;
       }
     }
   }

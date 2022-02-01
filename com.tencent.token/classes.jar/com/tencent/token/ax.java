@@ -2,13 +2,11 @@ package com.tencent.token;
 
 import com.tencent.halley.common.b;
 import com.tencent.halley.common.e;
-import java.util.Iterator;
-import java.util.List;
 
 public final class ax
   implements aw
 {
-  private static ax a = null;
+  private static ax a;
   
   public static ax a()
   {
@@ -25,54 +23,7 @@ public final class ax
   
   private static bh a(ao paramao)
   {
-    bh localbh = new bh();
-    localbh.a = paramao.b();
-    localbh.b = paramao.c();
-    localbh.c = paramao.d();
-    localbh.d = paramao.a();
-    localbh.e = paramao.e();
-    localbh.h = paramao.g();
-    if (localbh.h == 1) {
-      localbh.g = bp.a();
-    }
-    StringBuilder localStringBuilder;
-    for (;;)
-    {
-      localbh.i = paramao.h();
-      Object localObject = paramao.f();
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
-        break label290;
-      }
-      localStringBuilder = new StringBuilder();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        localStringBuilder.append((String)((Iterator)localObject).next());
-        localStringBuilder.append("|");
-      }
-      localbh.f = bp.a();
-    }
-    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-    localbh.j = localStringBuilder.toString();
-    localbh.k = paramao.i();
-    if (paramao.j()) {}
-    for (int i = 1;; i = 0)
-    {
-      localbh.l = i;
-      localbh.m = paramao.k();
-      localbh.n = paramao.l();
-      localbh.o = paramao.m();
-      localbh.p = paramao.n();
-      localbh.r = paramao.p();
-      localbh.q = paramao.o();
-      localbh.s = paramao.q();
-      localbh.t = paramao.r();
-      localbh.u = paramao.s();
-      return localbh;
-      label290:
-      localbh.j = "";
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public final void a(ao paramao, ap paramap)
@@ -81,7 +32,9 @@ public final class ax
     paramao = a(paramao);
     if (paramao != null)
     {
-      b.b("AccessSchedulerStatistics", "AccessSchedulerFinished：" + paramao.toString());
+      paramap = new StringBuilder("AccessSchedulerFinished：");
+      paramap.append(paramao.toString());
+      b.b("AccessSchedulerStatistics", paramap.toString());
       new a(paramao).start();
     }
   }
@@ -92,7 +45,9 @@ public final class ax
     paramao = a(paramao);
     if (paramao != null)
     {
-      b.b("AccessSchedulerStatistics", "ResSchedulerFinished：" + paramao.toString());
+      paramap = new StringBuilder("ResSchedulerFinished：");
+      paramap.append(paramao.toString());
+      b.b("AccessSchedulerStatistics", paramap.toString());
       e.a("B_ACSDK_RES_Result", e.a(paramao));
     }
   }

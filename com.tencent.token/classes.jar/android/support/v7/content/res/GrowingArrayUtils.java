@@ -4,19 +4,8 @@ import java.lang.reflect.Array;
 
 final class GrowingArrayUtils
 {
-  static
-  {
-    if (!GrowingArrayUtils.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public static int[] append(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    assert (paramInt1 <= paramArrayOfInt.length);
     int[] arrayOfInt = paramArrayOfInt;
     if (paramInt1 + 1 > paramArrayOfInt.length)
     {
@@ -29,7 +18,6 @@ final class GrowingArrayUtils
   
   public static long[] append(long[] paramArrayOfLong, int paramInt, long paramLong)
   {
-    assert (paramInt <= paramArrayOfLong.length);
     long[] arrayOfLong = paramArrayOfLong;
     if (paramInt + 1 > paramArrayOfLong.length)
     {
@@ -42,23 +30,18 @@ final class GrowingArrayUtils
   
   public static <T> T[] append(T[] paramArrayOfT, int paramInt, T paramT)
   {
-    assert (paramInt <= paramArrayOfT.length);
+    Object localObject = paramArrayOfT;
     if (paramInt + 1 > paramArrayOfT.length)
     {
-      Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), growSize(paramInt));
-      System.arraycopy(paramArrayOfT, 0, arrayOfObject, 0, paramInt);
-      paramArrayOfT = arrayOfObject;
+      localObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), growSize(paramInt));
+      System.arraycopy(paramArrayOfT, 0, localObject, 0, paramInt);
     }
-    for (;;)
-    {
-      paramArrayOfT[paramInt] = paramT;
-      return paramArrayOfT;
-    }
+    localObject[paramInt] = paramT;
+    return localObject;
   }
   
   public static boolean[] append(boolean[] paramArrayOfBoolean, int paramInt, boolean paramBoolean)
   {
-    assert (paramInt <= paramArrayOfBoolean.length);
     boolean[] arrayOfBoolean = paramArrayOfBoolean;
     if (paramInt + 1 > paramArrayOfBoolean.length)
     {
@@ -79,7 +62,6 @@ final class GrowingArrayUtils
   
   public static int[] insert(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
   {
-    assert (paramInt1 <= paramArrayOfInt.length);
     if (paramInt1 + 1 <= paramArrayOfInt.length)
     {
       System.arraycopy(paramArrayOfInt, paramInt2, paramArrayOfInt, paramInt2 + 1, paramInt1 - paramInt2);
@@ -95,7 +77,6 @@ final class GrowingArrayUtils
   
   public static long[] insert(long[] paramArrayOfLong, int paramInt1, int paramInt2, long paramLong)
   {
-    assert (paramInt1 <= paramArrayOfLong.length);
     if (paramInt1 + 1 <= paramArrayOfLong.length)
     {
       System.arraycopy(paramArrayOfLong, paramInt2, paramArrayOfLong, paramInt2 + 1, paramInt1 - paramInt2);
@@ -111,7 +92,6 @@ final class GrowingArrayUtils
   
   public static <T> T[] insert(T[] paramArrayOfT, int paramInt1, int paramInt2, T paramT)
   {
-    assert (paramInt1 <= paramArrayOfT.length);
     if (paramInt1 + 1 <= paramArrayOfT.length)
     {
       System.arraycopy(paramArrayOfT, paramInt2, paramArrayOfT, paramInt2 + 1, paramInt1 - paramInt2);
@@ -127,7 +107,6 @@ final class GrowingArrayUtils
   
   public static boolean[] insert(boolean[] paramArrayOfBoolean, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    assert (paramInt1 <= paramArrayOfBoolean.length);
     if (paramInt1 + 1 <= paramArrayOfBoolean.length)
     {
       System.arraycopy(paramArrayOfBoolean, paramInt2, paramArrayOfBoolean, paramInt2 + 1, paramInt1 - paramInt2);

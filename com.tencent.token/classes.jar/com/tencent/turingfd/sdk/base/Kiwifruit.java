@@ -28,29 +28,42 @@ public final class Kiwifruit
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (cd) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (cd) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (Kiwifruit)paramObject;
-    } while ((!ce.a(this.ld, paramObject.ld)) || (!ce.a(this.md, paramObject.md)) || (!ce.a(this.Jb, paramObject.Jb)));
-    return true;
+    }
+    paramObject = (Kiwifruit)paramObject;
+    boolean bool1 = bool2;
+    if (ce.a(this.ld, paramObject.ld))
+    {
+      bool1 = bool2;
+      if (ce.a(this.md, paramObject.md))
+      {
+        bool1 = bool2;
+        if (ce.a(this.Jb, paramObject.Jb)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()

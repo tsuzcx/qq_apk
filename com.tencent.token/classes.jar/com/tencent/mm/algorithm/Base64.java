@@ -24,789 +24,725 @@ public class Base64
   
   public static final byte[] decode(String paramString)
   {
-    if (paramString != null) {}
-    for (int i = paramString.length(); i == 0; i = 0) {
+    if (paramString != null) {
+      i = paramString.length();
+    } else {
+      i = 0;
+    }
+    if (i == 0) {
       return new byte[0];
     }
-    int k = 0;
-    for (int j = 0; k < i; j = m)
+    int j = 0;
+    for (int k = 0; j < i; k = m)
     {
-      m = j;
-      if (b[paramString.charAt(k)] < 0) {
-        m = j + 1;
+      m = k;
+      if (b[paramString.charAt(j)] < 0) {
+        m = k + 1;
       }
-      k += 1;
+      j += 1;
     }
-    if ((i - j) % 4 != 0) {
+    int m = i - k;
+    if (m % 4 != 0) {
       return null;
     }
-    k = i;
-    int m = 0;
-    int n;
-    while (k > 1)
+    j = 0;
+    while (i > 1)
     {
       localObject = b;
-      n = k - 1;
-      if (localObject[paramString.charAt(n)] > 0) {
+      k = i - 1;
+      if (localObject[paramString.charAt(k)] > 0) {
         break;
       }
-      k = n;
-      if (paramString.charAt(n) == '=')
+      i = k;
+      if (paramString.charAt(k) == '=')
       {
-        m += 1;
-        k = n;
-      }
-    }
-    int i1 = ((i - j) * 6 >> 3) - m;
-    Object localObject = new byte[i1];
-    k = 0;
-    i = 0;
-    if (k < i1)
-    {
-      m = 0;
-      n = 0;
-      j = i;
-      i = n;
-      if (i < 4)
-      {
-        n = b[paramString.charAt(j)];
-        if (n >= 0) {
-          m |= n << 18 - i * 6;
-        }
-        for (;;)
-        {
-          i += 1;
-          j += 1;
-          break;
-          i -= 1;
-        }
-      }
-      n = k + 1;
-      localObject[k] = ((byte)(m >> 16));
-      i = n;
-      if (n < i1)
-      {
-        i = n + 1;
-        localObject[n] = ((byte)(m >> 8));
-        if (i >= i1) {
-          break label293;
-        }
-        k = i + 1;
-        localObject[i] = ((byte)m);
+        j += 1;
         i = k;
       }
     }
-    label293:
-    for (;;)
+    int i1 = (m * 6 >> 3) - j;
+    Object localObject = new byte[i1];
+    k = 0;
+    int i = 0;
+    while (k < i1)
     {
-      k = i;
-      i = j;
-      break;
-      return localObject;
+      j = 0;
+      m = 0;
+      while (j < 4)
+      {
+        n = b[paramString.charAt(i)];
+        if (n >= 0) {
+          m |= n << 18 - j * 6;
+        } else {
+          j -= 1;
+        }
+        j += 1;
+        i += 1;
+      }
+      int n = k + 1;
+      localObject[k] = ((byte)(m >> 16));
+      j = n;
+      if (n < i1)
+      {
+        k = n + 1;
+        localObject[n] = ((byte)(m >> 8));
+        j = k;
+        if (k < i1)
+        {
+          j = k + 1;
+          localObject[k] = ((byte)m);
+        }
+      }
+      k = j;
     }
+    return localObject;
   }
   
   public static final byte[] decode(byte[] paramArrayOfByte)
   {
     int m = paramArrayOfByte.length;
-    int j = 0;
-    for (int i = 0; j < m; i = k)
+    int i = 0;
+    for (int j = 0; i < m; j = k)
     {
-      k = i;
-      if (b[(paramArrayOfByte[j] & 0xFF)] < 0) {
-        k = i + 1;
+      k = j;
+      if (b[(paramArrayOfByte[i] & 0xFF)] < 0) {
+        k = j + 1;
       }
-      j += 1;
+      i += 1;
     }
-    if ((m - i) % 4 != 0) {
+    int n = m - j;
+    if (n % 4 != 0) {
       return null;
     }
-    j = m;
-    int k = 0;
-    int n;
-    while (j > 1)
+    j = 0;
+    i = m;
+    while (i > 1)
     {
       localObject = b;
-      n = j - 1;
-      if (localObject[(paramArrayOfByte[n] & 0xFF)] > 0) {
+      k = i - 1;
+      if (localObject[(paramArrayOfByte[k] & 0xFF)] > 0) {
         break;
       }
-      j = n;
-      if (paramArrayOfByte[n] == 61)
+      i = k;
+      if (paramArrayOfByte[k] == 61)
       {
-        k += 1;
-        j = n;
-      }
-    }
-    int i1 = ((m - i) * 6 >> 3) - k;
-    Object localObject = new byte[i1];
-    k = 0;
-    i = 0;
-    if (k < i1)
-    {
-      m = 0;
-      n = 0;
-      j = i;
-      i = n;
-      if (i < 4)
-      {
-        n = b[(paramArrayOfByte[j] & 0xFF)];
-        if (n >= 0) {
-          m |= n << 18 - i * 6;
-        }
-        for (;;)
-        {
-          i += 1;
-          j += 1;
-          break;
-          i -= 1;
-        }
-      }
-      n = k + 1;
-      localObject[k] = ((byte)(m >> 16));
-      i = n;
-      if (n < i1)
-      {
-        i = n + 1;
-        localObject[n] = ((byte)(m >> 8));
-        if (i >= i1) {
-          break label276;
-        }
-        k = i + 1;
-        localObject[i] = ((byte)m);
+        j += 1;
         i = k;
       }
     }
-    label276:
-    for (;;)
+    int i1 = (n * 6 >> 3) - j;
+    Object localObject = new byte[i1];
+    int k = 0;
+    i = 0;
+    while (k < i1)
     {
-      k = i;
-      i = j;
-      break;
-      return localObject;
+      j = 0;
+      m = 0;
+      while (j < 4)
+      {
+        n = b[(paramArrayOfByte[i] & 0xFF)];
+        if (n >= 0) {
+          m |= n << 18 - j * 6;
+        } else {
+          j -= 1;
+        }
+        j += 1;
+        i += 1;
+      }
+      n = k + 1;
+      localObject[k] = ((byte)(m >> 16));
+      j = n;
+      if (n < i1)
+      {
+        k = n + 1;
+        localObject[n] = ((byte)(m >> 8));
+        j = k;
+        if (k < i1)
+        {
+          j = k + 1;
+          localObject[k] = ((byte)m);
+        }
+      }
+      k = j;
     }
+    return localObject;
   }
   
   public static final byte[] decode(char[] paramArrayOfChar)
   {
-    if (paramArrayOfChar != null) {}
-    for (int i = paramArrayOfChar.length; i == 0; i = 0) {
+    if (paramArrayOfChar != null) {
+      i = paramArrayOfChar.length;
+    } else {
+      i = 0;
+    }
+    if (i == 0) {
       return new byte[0];
     }
-    int k = 0;
-    for (int j = 0; k < i; j = m)
+    int j = 0;
+    for (int k = 0; j < i; k = m)
     {
-      m = j;
-      if (b[paramArrayOfChar[k]] < 0) {
-        m = j + 1;
+      m = k;
+      if (b[paramArrayOfChar[j]] < 0) {
+        m = k + 1;
       }
-      k += 1;
+      j += 1;
     }
-    if ((i - j) % 4 != 0) {
+    int m = i - k;
+    if (m % 4 != 0) {
       return null;
     }
-    k = i;
-    int m = 0;
-    int n;
-    while (k > 1)
+    j = 0;
+    while (i > 1)
     {
       localObject = b;
-      n = k - 1;
-      if (localObject[paramArrayOfChar[n]] > 0) {
+      k = i - 1;
+      if (localObject[paramArrayOfChar[k]] > 0) {
         break;
       }
-      k = n;
-      if (paramArrayOfChar[n] == '=')
+      i = k;
+      if (paramArrayOfChar[k] == '=')
       {
-        m += 1;
-        k = n;
-      }
-    }
-    int i1 = ((i - j) * 6 >> 3) - m;
-    Object localObject = new byte[i1];
-    k = 0;
-    i = 0;
-    if (k < i1)
-    {
-      m = 0;
-      n = 0;
-      j = i;
-      i = n;
-      if (i < 4)
-      {
-        n = b[paramArrayOfChar[j]];
-        if (n >= 0) {
-          m |= n << 18 - i * 6;
-        }
-        for (;;)
-        {
-          i += 1;
-          j += 1;
-          break;
-          i -= 1;
-        }
-      }
-      n = k + 1;
-      localObject[k] = ((byte)(m >> 16));
-      i = n;
-      if (n < i1)
-      {
-        i = n + 1;
-        localObject[n] = ((byte)(m >> 8));
-        if (i >= i1) {
-          break label283;
-        }
-        k = i + 1;
-        localObject[i] = ((byte)m);
+        j += 1;
         i = k;
       }
     }
-    label283:
-    for (;;)
+    int i1 = (m * 6 >> 3) - j;
+    Object localObject = new byte[i1];
+    k = 0;
+    int i = 0;
+    while (k < i1)
     {
-      k = i;
-      i = j;
-      break;
-      return localObject;
+      j = 0;
+      m = 0;
+      while (j < 4)
+      {
+        n = b[paramArrayOfChar[i]];
+        if (n >= 0) {
+          m |= n << 18 - j * 6;
+        } else {
+          j -= 1;
+        }
+        j += 1;
+        i += 1;
+      }
+      int n = k + 1;
+      localObject[k] = ((byte)(m >> 16));
+      j = n;
+      if (n < i1)
+      {
+        k = n + 1;
+        localObject[n] = ((byte)(m >> 8));
+        j = k;
+        if (k < i1)
+        {
+          j = k + 1;
+          localObject[k] = ((byte)m);
+        }
+      }
+      k = j;
     }
+    return localObject;
   }
   
   public static final byte[] decodeFast(String paramString)
   {
-    int i2 = 0;
     int k = paramString.length();
+    int i2 = 0;
     if (k == 0) {
       return new byte[0];
     }
-    int n = k - 1;
-    int i = 0;
-    while ((i < n) && (b[(paramString.charAt(i) & 0xFF)] < 0)) {
-      i += 1;
-    }
+    int i = k - 1;
+    int j = 0;
+    int n;
     for (;;)
     {
-      if ((n > 0) && (b[(paramString.charAt(n) & 0xFF)] < 0))
-      {
-        n -= 1;
+      n = i;
+      if (j >= i) {
+        break;
       }
-      else
-      {
-        int j;
-        int m;
-        if (paramString.charAt(n) == '=') {
-          if (paramString.charAt(n - 1) == '=')
-          {
-            j = 2;
-            m = n - i + 1;
-            if (k <= 76) {
-              break label388;
-            }
-            if (paramString.charAt(76) != '\r') {
-              break label383;
-            }
-            k = m / 78;
-          }
-        }
-        label140:
-        int i6;
-        byte[] arrayOfByte;
-        int i3;
-        label388:
-        for (int i1 = k << 1;; i1 = 0)
-        {
-          i6 = ((m - i1) * 6 >> 3) - j;
-          arrayOfByte = new byte[i6];
-          int i7 = i6 / 3;
-          m = 0;
-          k = 0;
-          while (k < i7 * 3)
-          {
-            int[] arrayOfInt = b;
-            int i4 = i + 1;
-            i = arrayOfInt[paramString.charAt(i)];
-            arrayOfInt = b;
-            i3 = i4 + 1;
-            i4 = arrayOfInt[paramString.charAt(i4)];
-            arrayOfInt = b;
-            int i5 = i3 + 1;
-            int i8 = arrayOfInt[paramString.charAt(i3)];
-            arrayOfInt = b;
-            i3 = i5 + 1;
-            i = i8 << 6 | i << 18 | i4 << 12 | arrayOfInt[paramString.charAt(i5)];
-            i4 = k + 1;
-            arrayOfByte[k] = ((byte)(i >> 16));
-            k = i4 + 1;
-            arrayOfByte[i4] = ((byte)(i >> 8));
-            i4 = k + 1;
-            arrayOfByte[k] = ((byte)i);
-            i = i3;
-            k = i4;
-            if (i1 > 0)
-            {
-              i5 = m + 1;
-              m = i5;
-              i = i3;
-              k = i4;
-              if (i5 == 19)
-              {
-                i = i3 + 2;
-                m = 0;
-                k = i4;
-              }
-            }
-          }
-          j = 1;
-          break;
-          j = 0;
-          break;
-          label383:
-          k = 0;
-          break label140;
-        }
-        if (k < i6)
-        {
-          i1 = i;
-          m = 0;
-          i = i2;
-          for (;;)
-          {
-            i2 = i;
-            if (i1 > n - j) {
-              break;
-            }
-            i3 = b[paramString.charAt(i1)];
-            i = i2 + 1;
-            m = i3 << 18 - i2 * 6 | m;
-            i1 += 1;
-          }
-          j = 16;
-          i = k;
-          while (i < i6)
-          {
-            arrayOfByte[i] = ((byte)(m >> j));
-            j -= 8;
-            i += 1;
-          }
-        }
-        return arrayOfByte;
+      n = i;
+      if (b[(paramString.charAt(j) & 0xFF)] >= 0) {
+        break;
+      }
+      j += 1;
+    }
+    while ((n > 0) && (b[(paramString.charAt(n) & 0xFF)] < 0)) {
+      n -= 1;
+    }
+    if (paramString.charAt(n) == '=')
+    {
+      if (paramString.charAt(n - 1) == '=') {
+        i = 2;
+      } else {
+        i = 1;
       }
     }
+    else {
+      i = 0;
+    }
+    int m = n - j + 1;
+    int i1;
+    if (k > 76)
+    {
+      if (paramString.charAt(76) == '\r') {
+        k = m / 78;
+      } else {
+        k = 0;
+      }
+      i1 = k << 1;
+    }
+    else
+    {
+      i1 = 0;
+    }
+    int i4 = ((m - i1) * 6 >> 3) - i;
+    byte[] arrayOfByte = new byte[i4];
+    int i5 = i4 / 3;
+    int i3 = 0;
+    k = 0;
+    m = j;
+    for (j = i3; j < i5 * 3; j = i3 + 1)
+    {
+      int[] arrayOfInt = b;
+      int i6 = m + 1;
+      i3 = arrayOfInt[paramString.charAt(m)];
+      arrayOfInt = b;
+      m = i6 + 1;
+      i6 = arrayOfInt[paramString.charAt(i6)];
+      arrayOfInt = b;
+      int i7 = m + 1;
+      int i8 = arrayOfInt[paramString.charAt(m)];
+      arrayOfInt = b;
+      m = i7 + 1;
+      i6 = i3 << 18 | i6 << 12 | i8 << 6 | arrayOfInt[paramString.charAt(i7)];
+      i7 = j + 1;
+      arrayOfByte[j] = ((byte)(i6 >> 16));
+      i3 = i7 + 1;
+      arrayOfByte[i7] = ((byte)(i6 >> 8));
+      arrayOfByte[i3] = ((byte)i6);
+      j = k;
+      if (i1 > 0)
+      {
+        k += 1;
+        j = k;
+        if (k == 19)
+        {
+          m += 2;
+          k = 0;
+          continue;
+        }
+      }
+      k = j;
+    }
+    if (j < i4)
+    {
+      i1 = 0;
+      k = i2;
+      while (m <= n - i)
+      {
+        k |= b[paramString.charAt(m)] << 18 - i1 * 6;
+        i1 += 1;
+        m += 1;
+      }
+      i = 16;
+      while (j < i4)
+      {
+        arrayOfByte[j] = ((byte)(k >> i));
+        i -= 8;
+        j += 1;
+      }
+    }
+    return arrayOfByte;
   }
   
   public static final byte[] decodeFast(byte[] paramArrayOfByte)
   {
-    int i2 = 0;
     int k = paramArrayOfByte.length;
+    int i2 = 0;
     if (k == 0) {
       return new byte[0];
     }
-    int n = k - 1;
-    int i = 0;
-    while ((i < n) && (b[(paramArrayOfByte[i] & 0xFF)] < 0)) {
-      i += 1;
-    }
+    int i = k - 1;
+    int j = 0;
+    int n;
     for (;;)
     {
-      if ((n > 0) && (b[(paramArrayOfByte[n] & 0xFF)] < 0))
-      {
-        n -= 1;
+      n = i;
+      if (j >= i) {
+        break;
       }
-      else
-      {
-        int j;
-        int m;
-        if (paramArrayOfByte[n] == 61) {
-          if (paramArrayOfByte[(n - 1)] == 61)
-          {
-            j = 2;
-            m = n - i + 1;
-            if (k <= 76) {
-              break label368;
-            }
-            if (paramArrayOfByte[76] != 13) {
-              break label363;
-            }
-            k = m / 78;
-          }
-        }
-        label128:
-        int i6;
-        byte[] arrayOfByte;
-        int i3;
-        label363:
-        label368:
-        for (int i1 = k << 1;; i1 = 0)
-        {
-          i6 = ((m - i1) * 6 >> 3) - j;
-          arrayOfByte = new byte[i6];
-          int i7 = i6 / 3;
-          m = 0;
-          k = 0;
-          while (k < i7 * 3)
-          {
-            int[] arrayOfInt = b;
-            int i4 = i + 1;
-            i = arrayOfInt[paramArrayOfByte[i]];
-            arrayOfInt = b;
-            i3 = i4 + 1;
-            i4 = arrayOfInt[paramArrayOfByte[i4]];
-            arrayOfInt = b;
-            int i5 = i3 + 1;
-            int i8 = arrayOfInt[paramArrayOfByte[i3]];
-            arrayOfInt = b;
-            i3 = i5 + 1;
-            i = i8 << 6 | i << 18 | i4 << 12 | arrayOfInt[paramArrayOfByte[i5]];
-            i4 = k + 1;
-            arrayOfByte[k] = ((byte)(i >> 16));
-            k = i4 + 1;
-            arrayOfByte[i4] = ((byte)(i >> 8));
-            i4 = k + 1;
-            arrayOfByte[k] = ((byte)i);
-            i = i3;
-            k = i4;
-            if (i1 > 0)
-            {
-              i5 = m + 1;
-              m = i5;
-              i = i3;
-              k = i4;
-              if (i5 == 19)
-              {
-                i = i3 + 2;
-                m = 0;
-                k = i4;
-              }
-            }
-          }
-          j = 1;
-          break;
-          j = 0;
-          break;
-          k = 0;
-          break label128;
-        }
-        if (k < i6)
-        {
-          i1 = i;
-          m = 0;
-          i = i2;
-          for (;;)
-          {
-            i2 = i;
-            if (i1 > n - j) {
-              break;
-            }
-            i3 = b[paramArrayOfByte[i1]];
-            i = i2 + 1;
-            m = i3 << 18 - i2 * 6 | m;
-            i1 += 1;
-          }
-          j = 16;
-          i = k;
-          while (i < i6)
-          {
-            arrayOfByte[i] = ((byte)(m >> j));
-            j -= 8;
-            i += 1;
-          }
-        }
-        return arrayOfByte;
+      n = i;
+      if (b[(paramArrayOfByte[j] & 0xFF)] >= 0) {
+        break;
+      }
+      j += 1;
+    }
+    while ((n > 0) && (b[(paramArrayOfByte[n] & 0xFF)] < 0)) {
+      n -= 1;
+    }
+    if (paramArrayOfByte[n] == 61)
+    {
+      if (paramArrayOfByte[(n - 1)] == 61) {
+        i = 2;
+      } else {
+        i = 1;
       }
     }
+    else {
+      i = 0;
+    }
+    int m = n - j + 1;
+    int i1;
+    if (k > 76)
+    {
+      if (paramArrayOfByte[76] == 13) {
+        k = m / 78;
+      } else {
+        k = 0;
+      }
+      i1 = k << 1;
+    }
+    else
+    {
+      i1 = 0;
+    }
+    int i4 = ((m - i1) * 6 >> 3) - i;
+    byte[] arrayOfByte = new byte[i4];
+    int i5 = i4 / 3;
+    int i3 = 0;
+    k = 0;
+    m = j;
+    for (j = i3; j < i5 * 3; j = i3 + 1)
+    {
+      int[] arrayOfInt = b;
+      int i6 = m + 1;
+      i3 = arrayOfInt[paramArrayOfByte[m]];
+      m = i6 + 1;
+      i6 = arrayOfInt[paramArrayOfByte[i6]];
+      int i7 = m + 1;
+      int i8 = arrayOfInt[paramArrayOfByte[m]];
+      m = i7 + 1;
+      i6 = i3 << 18 | i6 << 12 | i8 << 6 | arrayOfInt[paramArrayOfByte[i7]];
+      i7 = j + 1;
+      arrayOfByte[j] = ((byte)(i6 >> 16));
+      i3 = i7 + 1;
+      arrayOfByte[i7] = ((byte)(i6 >> 8));
+      arrayOfByte[i3] = ((byte)i6);
+      j = k;
+      if (i1 > 0)
+      {
+        k += 1;
+        j = k;
+        if (k == 19)
+        {
+          m += 2;
+          k = 0;
+          continue;
+        }
+      }
+      k = j;
+    }
+    if (j < i4)
+    {
+      i1 = 0;
+      k = i2;
+      while (m <= n - i)
+      {
+        k |= b[paramArrayOfByte[m]] << 18 - i1 * 6;
+        i1 += 1;
+        m += 1;
+      }
+      i = 16;
+      while (j < i4)
+      {
+        arrayOfByte[j] = ((byte)(k >> i));
+        i -= 8;
+        j += 1;
+      }
+    }
+    return arrayOfByte;
   }
   
   public static final byte[] decodeFast(char[] paramArrayOfChar)
   {
-    int i2 = 0;
     int k = paramArrayOfChar.length;
+    int i2 = 0;
     if (k == 0) {
       return new byte[0];
     }
-    int n = k - 1;
-    int i = 0;
-    while ((i < n) && (b[paramArrayOfChar[i]] < 0)) {
-      i += 1;
-    }
+    int i = k - 1;
+    int j = 0;
+    int n;
     for (;;)
     {
-      if ((n > 0) && (b[paramArrayOfChar[n]] < 0))
-      {
-        n -= 1;
+      n = i;
+      if (j >= i) {
+        break;
       }
-      else
-      {
-        int j;
-        int m;
-        if (paramArrayOfChar[n] == '=') {
-          if (paramArrayOfChar[(n - 1)] == '=')
-          {
-            j = 2;
-            m = n - i + 1;
-            if (k <= 76) {
-              break label360;
-            }
-            if (paramArrayOfChar[76] != '\r') {
-              break label355;
-            }
-            k = m / 78;
-          }
-        }
-        label120:
-        int i6;
-        byte[] arrayOfByte;
-        int i3;
-        label355:
-        label360:
-        for (int i1 = k << 1;; i1 = 0)
-        {
-          i6 = ((m - i1) * 6 >> 3) - j;
-          arrayOfByte = new byte[i6];
-          int i7 = i6 / 3;
-          m = 0;
-          k = 0;
-          while (k < i7 * 3)
-          {
-            int[] arrayOfInt = b;
-            int i4 = i + 1;
-            i = arrayOfInt[paramArrayOfChar[i]];
-            arrayOfInt = b;
-            i3 = i4 + 1;
-            i4 = arrayOfInt[paramArrayOfChar[i4]];
-            arrayOfInt = b;
-            int i5 = i3 + 1;
-            int i8 = arrayOfInt[paramArrayOfChar[i3]];
-            arrayOfInt = b;
-            i3 = i5 + 1;
-            i = i8 << 6 | i << 18 | i4 << 12 | arrayOfInt[paramArrayOfChar[i5]];
-            i4 = k + 1;
-            arrayOfByte[k] = ((byte)(i >> 16));
-            k = i4 + 1;
-            arrayOfByte[i4] = ((byte)(i >> 8));
-            i4 = k + 1;
-            arrayOfByte[k] = ((byte)i);
-            i = i3;
-            k = i4;
-            if (i1 > 0)
-            {
-              i5 = m + 1;
-              m = i5;
-              i = i3;
-              k = i4;
-              if (i5 == 19)
-              {
-                i = i3 + 2;
-                m = 0;
-                k = i4;
-              }
-            }
-          }
-          j = 1;
-          break;
-          j = 0;
-          break;
-          k = 0;
-          break label120;
-        }
-        if (k < i6)
-        {
-          i1 = i;
-          m = 0;
-          i = i2;
-          for (;;)
-          {
-            i2 = i;
-            if (i1 > n - j) {
-              break;
-            }
-            i3 = b[paramArrayOfChar[i1]];
-            i = i2 + 1;
-            m = i3 << 18 - i2 * 6 | m;
-            i1 += 1;
-          }
-          j = 16;
-          i = k;
-          while (i < i6)
-          {
-            arrayOfByte[i] = ((byte)(m >> j));
-            j -= 8;
-            i += 1;
-          }
-        }
-        return arrayOfByte;
+      n = i;
+      if (b[paramArrayOfChar[j]] >= 0) {
+        break;
+      }
+      j += 1;
+    }
+    while ((n > 0) && (b[paramArrayOfChar[n]] < 0)) {
+      n -= 1;
+    }
+    if (paramArrayOfChar[n] == '=')
+    {
+      if (paramArrayOfChar[(n - 1)] == '=') {
+        i = 2;
+      } else {
+        i = 1;
       }
     }
+    else {
+      i = 0;
+    }
+    int m = n - j + 1;
+    int i1;
+    if (k > 76)
+    {
+      if (paramArrayOfChar[76] == '\r') {
+        k = m / 78;
+      } else {
+        k = 0;
+      }
+      i1 = k << 1;
+    }
+    else
+    {
+      i1 = 0;
+    }
+    int i4 = ((m - i1) * 6 >> 3) - i;
+    byte[] arrayOfByte = new byte[i4];
+    int i5 = i4 / 3;
+    int i3 = 0;
+    k = 0;
+    m = j;
+    for (j = i3; j < i5 * 3; j = i3 + 1)
+    {
+      int[] arrayOfInt = b;
+      int i6 = m + 1;
+      i3 = arrayOfInt[paramArrayOfChar[m]];
+      m = i6 + 1;
+      i6 = arrayOfInt[paramArrayOfChar[i6]];
+      int i7 = m + 1;
+      int i8 = arrayOfInt[paramArrayOfChar[m]];
+      m = i7 + 1;
+      i6 = i3 << 18 | i6 << 12 | i8 << 6 | arrayOfInt[paramArrayOfChar[i7]];
+      i7 = j + 1;
+      arrayOfByte[j] = ((byte)(i6 >> 16));
+      i3 = i7 + 1;
+      arrayOfByte[i7] = ((byte)(i6 >> 8));
+      arrayOfByte[i3] = ((byte)i6);
+      j = k;
+      if (i1 > 0)
+      {
+        k += 1;
+        j = k;
+        if (k == 19)
+        {
+          m += 2;
+          k = 0;
+          continue;
+        }
+      }
+      k = j;
+    }
+    if (j < i4)
+    {
+      i1 = 0;
+      k = i2;
+      while (m <= n - i)
+      {
+        k |= b[paramArrayOfChar[m]] << 18 - i1 * 6;
+        i1 += 1;
+        m += 1;
+      }
+      i = 16;
+      while (j < i4)
+      {
+        arrayOfByte[j] = ((byte)(k >> i));
+        i -= 8;
+        j += 1;
+      }
+    }
+    return arrayOfByte;
   }
   
   public static final byte[] encodeToByte(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    int i1 = 0;
-    if (paramArrayOfByte != null) {}
-    for (int m = paramArrayOfByte.length; m == 0; m = 0) {
+    int i2 = 0;
+    int m;
+    if (paramArrayOfByte != null) {
+      m = paramArrayOfByte.length;
+    } else {
+      m = 0;
+    }
+    if (m == 0) {
       return new byte[0];
     }
-    int i5 = m / 3 * 3;
-    int k = (m - 1) / 3 + 1 << 2;
-    if (paramBoolean) {}
-    int i6;
-    byte[] arrayOfByte;
-    int n;
-    for (int j = (k - 1) / 76 << 1;; j = 0)
-    {
-      i6 = k + j;
-      arrayOfByte = new byte[i6];
+    int i4 = m / 3 * 3;
+    int i3 = m - 1;
+    int k = i3 / 3 + 1 << 2;
+    int j;
+    if (paramBoolean) {
+      j = (k - 1) / 76 << 1;
+    } else {
       j = 0;
-      k = 0;
-      n = 0;
-      while (n < i5)
+    }
+    int i5 = k + j;
+    byte[] arrayOfByte = new byte[i5];
+    int i1 = 0;
+    k = 0;
+    for (int n = 0; i1 < i4; n = j)
+    {
+      j = i1 + 1;
+      i1 = paramArrayOfByte[i1];
+      int i6 = j + 1;
+      j = (i1 & 0xFF) << 16 | (paramArrayOfByte[j] & 0xFF) << 8 | paramArrayOfByte[i6] & 0xFF;
+      i1 = k + 1;
+      char[] arrayOfChar = a;
+      arrayOfByte[k] = ((byte)arrayOfChar[(j >>> 18 & 0x3F)]);
+      k = i1 + 1;
+      arrayOfByte[i1] = ((byte)arrayOfChar[(j >>> 12 & 0x3F)]);
+      int i7 = k + 1;
+      arrayOfByte[k] = ((byte)arrayOfChar[(j >>> 6 & 0x3F)]);
+      i1 = i7 + 1;
+      arrayOfByte[i7] = ((byte)arrayOfChar[(j & 0x3F)]);
+      k = i1;
+      j = n;
+      if (paramBoolean)
       {
-        int i2 = n + 1;
-        n = paramArrayOfByte[n];
-        int i3 = i2 + 1;
-        int i4 = paramArrayOfByte[i2];
-        i2 = i3 + 1;
-        n = (i4 & 0xFF) << 8 | (n & 0xFF) << 16 | paramArrayOfByte[i3] & 0xFF;
-        i3 = k + 1;
-        arrayOfByte[k] = ((byte)a[(n >>> 18 & 0x3F)]);
-        k = i3 + 1;
-        arrayOfByte[i3] = ((byte)a[(n >>> 12 & 0x3F)]);
-        i4 = k + 1;
-        arrayOfByte[k] = ((byte)a[(n >>> 6 & 0x3F)]);
-        i3 = i4 + 1;
-        arrayOfByte[i4] = ((byte)a[(n & 0x3F)]);
-        k = i3;
-        n = i2;
-        if (paramBoolean)
+        n += 1;
+        k = i1;
+        j = n;
+        if (n == 19)
         {
-          i4 = j + 1;
-          j = i4;
-          k = i3;
-          n = i2;
-          if (i4 == 19)
+          k = i1;
+          j = n;
+          if (i1 < i5 - 2)
           {
-            j = i4;
-            k = i3;
-            n = i2;
-            if (i3 < i6 - 2)
-            {
-              j = i3 + 1;
-              arrayOfByte[i3] = 13;
-              arrayOfByte[j] = 10;
-              k = j + 1;
-              j = 0;
-              n = i2;
-            }
+            j = i1 + 1;
+            arrayOfByte[i1] = 13;
+            k = j + 1;
+            arrayOfByte[j] = 10;
+            j = 0;
           }
         }
       }
+      i1 = i6 + 1;
     }
-    k = m - i5;
+    k = m - i4;
     if (k > 0)
     {
-      n = paramArrayOfByte[i5];
-      j = i1;
+      m = paramArrayOfByte[i4];
+      j = i2;
       if (k == 2) {
-        j = (paramArrayOfByte[(m - 1)] & 0xFF) << 2;
+        j = (paramArrayOfByte[i3] & 0xFF) << 2;
       }
-      j |= (n & 0xFF) << 10;
-      arrayOfByte[(i6 - 4)] = ((byte)a[(j >> 12)]);
-      arrayOfByte[(i6 - 3)] = ((byte)a[(j >>> 6 & 0x3F)]);
-      if (k != 2) {
-        break label455;
+      j = (m & 0xFF) << 10 | j;
+      paramArrayOfByte = a;
+      arrayOfByte[(i5 - 4)] = ((byte)paramArrayOfByte[(j >> 12)]);
+      arrayOfByte[(i5 - 3)] = ((byte)paramArrayOfByte[(j >>> 6 & 0x3F)]);
+      int i;
+      if (k == 2) {
+        i = (byte)paramArrayOfByte[(j & 0x3F)];
+      } else {
+        i = 61;
       }
+      arrayOfByte[(i5 - 2)] = i;
+      arrayOfByte[(i5 - 1)] = 61;
     }
-    label455:
-    for (int i = (byte)a[(j & 0x3F)];; i = 61)
-    {
-      arrayOfByte[(i6 - 2)] = i;
-      arrayOfByte[(i6 - 1)] = 61;
-      return arrayOfByte;
-    }
+    return arrayOfByte;
   }
   
   public static final char[] encodeToChar(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    int i1 = 0;
-    if (paramArrayOfByte != null) {}
-    for (int m = paramArrayOfByte.length; m == 0; m = 0) {
+    int i2 = 0;
+    int m;
+    if (paramArrayOfByte != null) {
+      m = paramArrayOfByte.length;
+    } else {
+      m = 0;
+    }
+    if (m == 0) {
       return new char[0];
     }
-    int i5 = m / 3 * 3;
-    int k = (m - 1) / 3 + 1 << 2;
-    if (paramBoolean) {}
-    int i6;
-    char[] arrayOfChar;
-    int n;
-    for (int j = (k - 1) / 76 << 1;; j = 0)
-    {
-      i6 = k + j;
-      arrayOfChar = new char[i6];
+    int i4 = m / 3 * 3;
+    int i3 = m - 1;
+    int k = i3 / 3 + 1 << 2;
+    int j;
+    if (paramBoolean) {
+      j = (k - 1) / 76 << 1;
+    } else {
       j = 0;
-      k = 0;
-      n = 0;
-      while (n < i5)
+    }
+    int i5 = k + j;
+    char[] arrayOfChar1 = new char[i5];
+    int i1 = 0;
+    k = 0;
+    for (int n = 0; i1 < i4; n = j)
+    {
+      j = i1 + 1;
+      i1 = paramArrayOfByte[i1];
+      int i6 = j + 1;
+      j = (i1 & 0xFF) << 16 | (paramArrayOfByte[j] & 0xFF) << 8 | paramArrayOfByte[i6] & 0xFF;
+      i1 = k + 1;
+      char[] arrayOfChar2 = a;
+      arrayOfChar1[k] = arrayOfChar2[(j >>> 18 & 0x3F)];
+      k = i1 + 1;
+      arrayOfChar1[i1] = arrayOfChar2[(j >>> 12 & 0x3F)];
+      int i7 = k + 1;
+      arrayOfChar1[k] = arrayOfChar2[(j >>> 6 & 0x3F)];
+      i1 = i7 + 1;
+      arrayOfChar1[i7] = arrayOfChar2[(j & 0x3F)];
+      k = i1;
+      j = n;
+      if (paramBoolean)
       {
-        int i2 = n + 1;
-        n = paramArrayOfByte[n];
-        int i3 = i2 + 1;
-        int i4 = paramArrayOfByte[i2];
-        i2 = i3 + 1;
-        n = (i4 & 0xFF) << 8 | (n & 0xFF) << 16 | paramArrayOfByte[i3] & 0xFF;
-        i3 = k + 1;
-        arrayOfChar[k] = a[(n >>> 18 & 0x3F)];
-        k = i3 + 1;
-        arrayOfChar[i3] = a[(n >>> 12 & 0x3F)];
-        i4 = k + 1;
-        arrayOfChar[k] = a[(n >>> 6 & 0x3F)];
-        i3 = i4 + 1;
-        arrayOfChar[i4] = a[(n & 0x3F)];
-        k = i3;
-        n = i2;
-        if (paramBoolean)
+        n += 1;
+        k = i1;
+        j = n;
+        if (n == 19)
         {
-          i4 = j + 1;
-          j = i4;
-          k = i3;
-          n = i2;
-          if (i4 == 19)
+          k = i1;
+          j = n;
+          if (i1 < i5 - 2)
           {
-            j = i4;
-            k = i3;
-            n = i2;
-            if (i3 < i6 - 2)
-            {
-              j = i3 + 1;
-              arrayOfChar[i3] = '\r';
-              arrayOfChar[j] = '\n';
-              k = j + 1;
-              j = 0;
-              n = i2;
-            }
+            j = i1 + 1;
+            arrayOfChar1[i1] = '\r';
+            k = j + 1;
+            arrayOfChar1[j] = '\n';
+            j = 0;
           }
         }
       }
+      i1 = i6 + 1;
     }
-    k = m - i5;
+    k = m - i4;
     if (k > 0)
     {
-      n = paramArrayOfByte[i5];
-      j = i1;
+      m = paramArrayOfByte[i4];
+      j = i2;
       if (k == 2) {
-        j = (paramArrayOfByte[(m - 1)] & 0xFF) << 2;
+        j = (paramArrayOfByte[i3] & 0xFF) << 2;
       }
-      j |= (n & 0xFF) << 10;
-      arrayOfChar[(i6 - 4)] = a[(j >> 12)];
-      arrayOfChar[(i6 - 3)] = a[(j >>> 6 & 0x3F)];
-      if (k != 2) {
-        break label448;
+      j = (m & 0xFF) << 10 | j;
+      paramArrayOfByte = a;
+      arrayOfChar1[(i5 - 4)] = paramArrayOfByte[(j >> 12)];
+      arrayOfChar1[(i5 - 3)] = paramArrayOfByte[(j >>> 6 & 0x3F)];
+      int i;
+      if (k == 2) {
+        i = paramArrayOfByte[(j & 0x3F)];
+      } else {
+        i = 61;
       }
+      arrayOfChar1[(i5 - 2)] = i;
+      arrayOfChar1[(i5 - 1)] = '=';
     }
-    label448:
-    for (int i = a[(j & 0x3F)];; i = 61)
-    {
-      arrayOfChar[(i6 - 2)] = i;
-      arrayOfChar[(i6 - 1)] = '=';
-      return arrayOfChar;
-    }
+    return arrayOfChar1;
   }
   
   public static final String encodeToString(byte[] paramArrayOfByte, boolean paramBoolean)

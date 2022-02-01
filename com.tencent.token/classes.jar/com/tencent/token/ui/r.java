@@ -35,27 +35,32 @@ class r
   
   private void a(View paramView, QQUser paramQQUser)
   {
-    ImageView localImageView1 = (ImageView)paramView.findViewById(2131559202);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131559203);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131559204);
-    ImageView localImageView2 = (ImageView)paramView.findViewById(2131559206);
-    ImageView localImageView3 = (ImageView)paramView.findViewById(2131559205);
-    localTextView1.setText(paramQQUser.mNickName);
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131165849);
+    Object localObject1 = (TextView)paramView.findViewById(2131165850);
+    Object localObject2 = (TextView)paramView.findViewById(2131165860);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131165794);
+    ImageView localImageView3 = (ImageView)paramView.findViewById(2131165429);
+    ((TextView)localObject1).setText(paramQQUser.mNickName);
     if ((paramQQUser.mUinMask != null) && (paramQQUser.mUinMask.length() > 0)) {
-      localTextView2.setText(paramQQUser.mUinMask);
+      ((TextView)localObject2).setText(paramQQUser.mUinMask);
+    } else {
+      ((TextView)localObject2).setText(l.e(paramQQUser.mRealUin));
     }
-    for (;;)
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramQQUser.mRealUin);
+    ((StringBuilder)localObject1).append("");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramQQUser.mUin);
+    ((StringBuilder)localObject2).append("");
+    localImageView1.setImageDrawable(g.a((String)localObject1, ((StringBuilder)localObject2).toString()));
+    if (this.c)
     {
-      localImageView1.setImageDrawable(g.a(paramQQUser.mRealUin + "", paramQQUser.mUin + ""));
-      if (!this.c) {
-        break;
-      }
       localImageView3.setVisibility(0);
       localImageView2.setVisibility(4);
       localImageView3.setTag(paramQQUser);
       localImageView3.setOnClickListener(this.a.mDeleteListener);
       return;
-      localTextView2.setText(l.e(paramQQUser.mRealUin));
     }
     localImageView2.setVisibility(0);
     localImageView3.setVisibility(4);
@@ -102,35 +107,32 @@ class r
     if ((paramInt != 0) || (i == 0)) {}
     try
     {
-      paramViewGroup = this.b.inflate(2130968743, paramViewGroup, false);
-      paramViewGroup.findViewById(2131558992).setVisibility(0);
+      paramViewGroup = this.b.inflate(2131296424, paramViewGroup, false);
+      paramViewGroup.findViewById(2131165444).setVisibility(0);
       paramViewGroup.setOnClickListener(this.d);
       return paramViewGroup;
     }
     catch (InflateException paramViewGroup)
     {
       paramViewGroup.printStackTrace();
-      paramViewGroup = paramView;
     }
-    paramViewGroup = this.b.inflate(2130968745, paramViewGroup, false);
-    for (paramView = paramViewGroup;; paramView = paramViewGroup)
+    paramViewGroup = this.b.inflate(2131296426, paramViewGroup, false);
+    paramView = paramViewGroup;
+    if (paramInt < i)
     {
-      QQUser localQQUser = cr.a().a(paramInt);
-      paramViewGroup = paramView;
-      if (localQQUser == null) {
-        return paramViewGroup;
+      paramViewGroup = this.b.inflate(2131296425, paramViewGroup, false);
+      paramView = paramViewGroup;
+      paramViewGroup = cr.a().a(paramInt);
+      if (paramViewGroup == null) {
+        return paramView;
       }
-      a(paramView, localQQUser);
+      a(paramView, paramViewGroup);
       return paramView;
-      if (paramInt >= i) {
-        break;
-      }
-      paramViewGroup = this.b.inflate(2130968744, paramViewGroup, false);
     }
-    paramViewGroup = this.b.inflate(2130968743, paramViewGroup, false);
+    paramViewGroup = this.b.inflate(2131296424, paramViewGroup, false);
     paramViewGroup.setOnClickListener(this.d);
     return paramViewGroup;
-    return paramViewGroup;
+    return paramView;
   }
 }
 

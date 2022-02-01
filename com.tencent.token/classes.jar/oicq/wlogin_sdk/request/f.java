@@ -31,30 +31,31 @@ class f
   
   public void run()
   {
-    if ((e.a(this.a) != null) && (e.b(this.a) != null)) {}
-    try
-    {
-      LinearLayout localLinearLayout = new LinearLayout(e.a(this.a));
-      localLinearLayout.setOrientation(1);
-      localLinearLayout.setBackgroundColor(-7829368);
-      localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-      Object localObject = new TextView(e.a(this.a));
-      ((TextView)localObject).getPaint().setFakeBoldText(true);
-      ((TextView)localObject).setText(e.b(this.a).getTitle());
-      localLinearLayout.addView((View)localObject, 0, new LinearLayout.LayoutParams(-1, -2));
-      localObject = new TextView(e.a(this.a));
-      ((TextView)localObject).setText(e.b(this.a).getMessage());
-      localLinearLayout.addView((View)localObject, 1, new LinearLayout.LayoutParams(-1, -2));
-      localObject = new Toast(e.a(this.a));
-      ((Toast)localObject).setGravity(17, 0, 0);
-      ((Toast)localObject).setDuration(1);
-      ((Toast)localObject).setView(localLinearLayout);
-      a((Toast)localObject, 0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      util.printException(localException);
+    if ((e.a(this.a) != null) && (e.b(this.a) != null)) {
+      try
+      {
+        LinearLayout localLinearLayout = new LinearLayout(e.a(this.a));
+        localLinearLayout.setOrientation(1);
+        localLinearLayout.setBackgroundColor(-7829368);
+        localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+        Object localObject = new TextView(e.a(this.a));
+        ((TextView)localObject).getPaint().setFakeBoldText(true);
+        ((TextView)localObject).setText(e.b(this.a).getTitle());
+        localLinearLayout.addView((View)localObject, 0, new LinearLayout.LayoutParams(-1, -2));
+        localObject = new TextView(e.a(this.a));
+        ((TextView)localObject).setText(e.b(this.a).getMessage());
+        localLinearLayout.addView((View)localObject, 1, new LinearLayout.LayoutParams(-1, -2));
+        localObject = new Toast(e.a(this.a));
+        ((Toast)localObject).setGravity(17, 0, 0);
+        ((Toast)localObject).setDuration(1);
+        ((Toast)localObject).setView(localLinearLayout);
+        a((Toast)localObject, 0);
+        return;
+      }
+      catch (Exception localException)
+      {
+        util.printException(localException);
+      }
     }
   }
 }

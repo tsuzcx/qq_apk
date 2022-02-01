@@ -20,29 +20,54 @@ public final class BulkCursorToCursorAdaptor
   
   private void throwIfCursorIsClosed()
   {
-    if (this.mBulkCursor == null) {
-      throw new StaleDataException("Attempted to access a cursor after it has been closed.");
+    if (this.mBulkCursor != null) {
+      return;
     }
+    throw new StaleDataException("Attempted to access a cursor after it has been closed.");
   }
   
+  /* Error */
   public void close()
   {
-    super.close();
-    if (this.mBulkCursor != null) {}
-    try
-    {
-      this.mBulkCursor.close();
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      Log.w("BulkCursor", "Remote process exception when closing");
-      return;
-    }
-    finally
-    {
-      this.mBulkCursor = null;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 45	com/tencent/wcdb/AbstractWindowedCursor:close	()V
+    //   4: aload_0
+    //   5: getfield 33	com/tencent/wcdb/BulkCursorToCursorAdaptor:mBulkCursor	Lcom/tencent/wcdb/IBulkCursor;
+    //   8: astore_1
+    //   9: aload_1
+    //   10: ifnull +36 -> 46
+    //   13: aload_1
+    //   14: invokeinterface 48 1 0
+    //   19: aload_0
+    //   20: aconst_null
+    //   21: putfield 33	com/tencent/wcdb/BulkCursorToCursorAdaptor:mBulkCursor	Lcom/tencent/wcdb/IBulkCursor;
+    //   24: return
+    //   25: astore_1
+    //   26: goto +13 -> 39
+    //   29: ldc 8
+    //   31: ldc 50
+    //   33: invokestatic 56	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   36: goto -17 -> 19
+    //   39: aload_0
+    //   40: aconst_null
+    //   41: putfield 33	com/tencent/wcdb/BulkCursorToCursorAdaptor:mBulkCursor	Lcom/tencent/wcdb/IBulkCursor;
+    //   44: aload_1
+    //   45: athrow
+    //   46: return
+    //   47: astore_1
+    //   48: goto -19 -> 29
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	51	0	this	BulkCursorToCursorAdaptor
+    //   8	6	1	localIBulkCursor	IBulkCursor
+    //   25	20	1	localObject	Object
+    //   47	1	1	localRemoteException	RemoteException
+    // Exception table:
+    //   from	to	target	type
+    //   13	19	25	finally
+    //   29	36	25	finally
+    //   13	19	47	android/os/RemoteException
   }
   
   public void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer) {}
@@ -50,16 +75,19 @@ public final class BulkCursorToCursorAdaptor
   public void deactivate()
   {
     super.deactivate();
-    if (this.mBulkCursor != null) {}
+    IBulkCursor localIBulkCursor = this.mBulkCursor;
+    if (localIBulkCursor != null) {}
     try
     {
-      this.mBulkCursor.deactivate();
+      localIBulkCursor.deactivate();
       return;
     }
     catch (RemoteException localRemoteException)
     {
-      Log.w("BulkCursor", "Remote process exception when deactivating");
+      label20:
+      break label20;
     }
+    Log.w("BulkCursor", "Remote process exception when deactivating");
   }
   
   public String[] getColumnNames()
@@ -95,7 +123,11 @@ public final class BulkCursorToCursorAdaptor
       IContentObserver localIContentObserver = (IContentObserver)this.mObserverBridge.getClass().getMethod("getContentObserver", new Class[0]).invoke(this.mObserverBridge, new Object[0]);
       return localIContentObserver;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label33:
+      break label33;
+    }
     return null;
   }
   
@@ -116,23 +148,24 @@ public final class BulkCursorToCursorAdaptor
     throwIfCursorIsClosed();
     try
     {
-      if ((this.mWindow == null) || (paramInt2 < this.mWindow.getStartPosition()) || (paramInt2 >= this.mWindow.getStartPosition() + this.mWindow.getNumRows())) {
-        setWindow(this.mBulkCursor.getWindow(paramInt2));
-      }
-      while (this.mWindow == null)
+      if ((this.mWindow != null) && (paramInt2 >= this.mWindow.getStartPosition()) && (paramInt2 < this.mWindow.getStartPosition() + this.mWindow.getNumRows()))
       {
-        return false;
         if (this.mWantsAllOnMoveCalls) {
           this.mBulkCursor.onMove(paramInt2);
         }
       }
-      return true;
+      else {
+        setWindow(this.mBulkCursor.getWindow(paramInt2));
+      }
+      return this.mWindow != null;
     }
     catch (RemoteException localRemoteException)
     {
-      Log.e("BulkCursor", "Unable to get window because the remote process is dead");
-      return false;
+      label89:
+      break label89;
     }
+    Log.e("BulkCursor", "Unable to get window because the remote process is dead");
+    return false;
   }
   
   public void registerContentObserver(ContentObserver paramContentObserver) {}
@@ -157,7 +190,10 @@ public final class BulkCursorToCursorAdaptor
     }
     catch (Exception localException)
     {
-      Log.e("BulkCursor", "Unable to requery because the remote process exception " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to requery because the remote process exception ");
+      localStringBuilder.append(localException.getMessage());
+      Log.e("BulkCursor", localStringBuilder.toString());
       deactivate();
     }
     return false;

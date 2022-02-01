@@ -95,32 +95,31 @@ public class ListMenuPresenter
   
   public void initForMenu(Context paramContext, MenuBuilder paramMenuBuilder)
   {
-    if (this.mThemeRes != 0)
+    int i = this.mThemeRes;
+    if (i != 0)
     {
-      this.mContext = new ContextThemeWrapper(paramContext, this.mThemeRes);
+      this.mContext = new ContextThemeWrapper(paramContext, i);
       this.mInflater = LayoutInflater.from(this.mContext);
     }
-    for (;;)
+    else if (this.mContext != null)
     {
-      this.mMenu = paramMenuBuilder;
-      if (this.mAdapter != null) {
-        this.mAdapter.notifyDataSetChanged();
+      this.mContext = paramContext;
+      if (this.mInflater == null) {
+        this.mInflater = LayoutInflater.from(this.mContext);
       }
-      return;
-      if (this.mContext != null)
-      {
-        this.mContext = paramContext;
-        if (this.mInflater == null) {
-          this.mInflater = LayoutInflater.from(this.mContext);
-        }
-      }
+    }
+    this.mMenu = paramMenuBuilder;
+    paramContext = this.mAdapter;
+    if (paramContext != null) {
+      paramContext.notifyDataSetChanged();
     }
   }
   
   public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
   {
-    if (this.mCallback != null) {
-      this.mCallback.onCloseMenu(paramMenuBuilder, paramBoolean);
+    MenuPresenter.Callback localCallback = this.mCallback;
+    if (localCallback != null) {
+      localCallback.onCloseMenu(paramMenuBuilder, paramBoolean);
     }
   }
   
@@ -150,8 +149,9 @@ public class ListMenuPresenter
       return false;
     }
     new MenuDialogHelper(paramSubMenuBuilder).show(null);
-    if (this.mCallback != null) {
-      this.mCallback.onOpenSubMenu(paramSubMenuBuilder);
+    MenuPresenter.Callback localCallback = this.mCallback;
+    if (localCallback != null) {
+      localCallback.onOpenSubMenu(paramSubMenuBuilder);
     }
     return true;
   }
@@ -167,8 +167,9 @@ public class ListMenuPresenter
   public void saveHierarchyState(Bundle paramBundle)
   {
     SparseArray localSparseArray = new SparseArray();
-    if (this.mMenuView != null) {
-      this.mMenuView.saveHierarchyState(localSparseArray);
+    ExpandedMenuView localExpandedMenuView = this.mMenuView;
+    if (localExpandedMenuView != null) {
+      localExpandedMenuView.saveHierarchyState(localSparseArray);
     }
     paramBundle.putSparseParcelableArray("android:menu:list", localSparseArray);
   }
@@ -193,8 +194,9 @@ public class ListMenuPresenter
   
   public void updateMenuView(boolean paramBoolean)
   {
-    if (this.mAdapter != null) {
-      this.mAdapter.notifyDataSetChanged();
+    MenuAdapter localMenuAdapter = this.mAdapter;
+    if (localMenuAdapter != null) {
+      localMenuAdapter.notifyDataSetChanged();
     }
   }
   
@@ -241,12 +243,13 @@ public class ListMenuPresenter
     public MenuItemImpl getItem(int paramInt)
     {
       ArrayList localArrayList = ListMenuPresenter.this.mMenu.getNonActionItems();
-      int i = ListMenuPresenter.this.mItemIndexOffset + paramInt;
+      int i = paramInt + ListMenuPresenter.this.mItemIndexOffset;
+      int j = this.mExpandedIndex;
       paramInt = i;
-      if (this.mExpandedIndex >= 0)
+      if (j >= 0)
       {
         paramInt = i;
-        if (i >= this.mExpandedIndex) {
+        if (i >= j) {
           paramInt = i + 1;
         }
       }
@@ -260,14 +263,12 @@ public class ListMenuPresenter
     
     public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
+      View localView = paramView;
       if (paramView == null) {
-        paramView = ListMenuPresenter.this.mInflater.inflate(ListMenuPresenter.this.mItemLayoutRes, paramViewGroup, false);
+        localView = ListMenuPresenter.this.mInflater.inflate(ListMenuPresenter.this.mItemLayoutRes, paramViewGroup, false);
       }
-      for (;;)
-      {
-        ((MenuView.ItemView)paramView).initialize(getItem(paramInt), 0);
-        return paramView;
-      }
+      ((MenuView.ItemView)localView).initialize(getItem(paramInt), 0);
+      return localView;
     }
     
     public void notifyDataSetChanged()

@@ -25,7 +25,11 @@ public class j
       boolean bool = paramHttpURLConnection.a();
       return bool;
     }
-    catch (Throwable paramHttpURLConnection) {}
+    catch (Throwable paramHttpURLConnection)
+    {
+      label37:
+      break label37;
+    }
     return false;
   }
   

@@ -37,24 +37,24 @@ public class a
       paramHttpResponse = EntityUtils.toString(paramHttpResponse.getEntity(), "utf-8");
       return paramHttpResponse;
     }
-    catch (ParseException paramHttpResponse)
+    catch (IOException paramHttpResponse)
     {
       paramHttpResponse = paramHttpResponse.toString();
       if (com.tencent.analysis.b.c) {
         Log.i("HttpHelper", paramHttpResponse);
       }
-      return "";
     }
-    catch (IOException paramHttpResponse)
+    catch (ParseException paramHttpResponse)
     {
       for (;;)
       {
         paramHttpResponse = paramHttpResponse.toString();
-        if (com.tencent.analysis.b.c) {
-          Log.i("HttpHelper", paramHttpResponse);
+        if (!com.tencent.analysis.b.c) {
+          break;
         }
       }
     }
+    return "";
   }
   
   public static HttpResponse a(String paramString1, String paramString2)
@@ -73,17 +73,19 @@ public class a
   
   private static HttpClient a()
   {
-    if (a == null) {}
-    for (;;)
+    if (a == null)
     {
       Object localObject1;
+      int i;
       Object localObject3;
       int j;
+      label185:
       try
       {
         if (a == null)
         {
           localObject1 = new BasicHttpParams();
+          i = 0;
           HttpConnectionParams.setStaleCheckingEnabled((HttpParams)localObject1, false);
           HttpConnectionParams.setConnectionTimeout((HttpParams)localObject1, 5000);
           HttpConnectionParams.setSoTimeout((HttpParams)localObject1, 15000);
@@ -97,29 +99,27 @@ public class a
         }
       }
       finally {}
-      try
-      {
-        localObject1 = Proxy.getDefaultHost();
-        j = Proxy.getDefaultPort();
-        localObject3 = ((ConnectivityManager)com.tencent.analysis.a.a.getSystemService("connectivity")).getActiveNetworkInfo();
-        if (localObject3 != null) {
-          continue;
-        }
-        i = 0;
-        if ((i == 0) && (localObject1 != null) && (j != -1))
-        {
-          localObject1 = new HttpHost((String)localObject1, j);
-          a.getParams().setParameter("http.route.default-proxy", localObject1);
-        }
-      }
-      catch (Exception localException)
-      {
-        continue;
-      }
-      a.setHttpRequestRetryHandler(new b());
-      return a;
-      int i = ((NetworkInfo)localObject3).getType();
     }
+    try
+    {
+      localObject1 = Proxy.getDefaultHost();
+      j = Proxy.getDefaultPort();
+      localObject3 = ((ConnectivityManager)com.tencent.analysis.a.a.getSystemService("connectivity")).getActiveNetworkInfo();
+      if (localObject3 != null) {
+        i = ((NetworkInfo)localObject3).getType();
+      }
+      if ((i == 0) && (localObject1 != null) && (j != -1))
+      {
+        localObject1 = new HttpHost((String)localObject1, j);
+        a.getParams().setParameter("http.route.default-proxy", localObject1);
+      }
+    }
+    catch (Exception localException)
+    {
+      break label185;
+    }
+    a.setHttpRequestRetryHandler(new b());
+    return a;
   }
 }
 

@@ -16,24 +16,28 @@ public class FreezeStatusResult
   
   public FreezeStatusResult(JSONObject paramJSONObject)
   {
-    try
+    for (;;)
     {
-      this.mFreezeStatus = paramJSONObject.getInt("freeze_state");
-      this.mFreezeReason = paramJSONObject.getString("system_freeze_reason");
-      this.mAutoMeltTime = paramJSONObject.getLong("auto_melt_time");
-      this.mAutoFreezeIntervalTime = paramJSONObject.getInt("auto_freeze_time");
-      if (paramJSONObject.getInt("freeze_success") == 1) {}
-      for (;;)
+      try
       {
-        this.mFreezeReasonOK = bool;
-        return;
-        bool = false;
+        this.mFreezeStatus = paramJSONObject.getInt("freeze_state");
+        this.mFreezeReason = paramJSONObject.getString("system_freeze_reason");
+        this.mAutoMeltTime = paramJSONObject.getLong("auto_melt_time");
+        this.mAutoFreezeIntervalTime = paramJSONObject.getInt("auto_freeze_time");
+        int i = paramJSONObject.getInt("freeze_success");
+        bool = true;
+        if (i == 1)
+        {
+          this.mFreezeReasonOK = bool;
+          return;
+        }
       }
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return;
+      }
+      boolean bool = false;
     }
   }
 }

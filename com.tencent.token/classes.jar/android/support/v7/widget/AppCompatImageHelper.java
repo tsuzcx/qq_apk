@@ -45,26 +45,20 @@ public class AppCompatImageHelper
       localTintInfo.mHasTintMode = true;
       localTintInfo.mTintMode = ((PorterDuff.Mode)localObject);
     }
-    if ((localTintInfo.mHasTintList) || (localTintInfo.mHasTintMode))
-    {
-      AppCompatDrawableManager.tintDrawable(paramDrawable, localTintInfo, this.mView.getDrawableState());
-      return true;
+    if ((!localTintInfo.mHasTintList) && (!localTintInfo.mHasTintMode)) {
+      return false;
     }
-    return false;
+    AppCompatDrawableManager.tintDrawable(paramDrawable, localTintInfo, this.mView.getDrawableState());
+    return true;
   }
   
   private boolean shouldApplyFrameworkTintUsingColorFilter()
   {
     int i = Build.VERSION.SDK_INT;
     if (i > 21) {
-      if (this.mInternalImageTint == null) {}
+      return this.mInternalImageTint != null;
     }
-    while (i == 21)
-    {
-      return true;
-      return false;
-    }
-    return false;
+    return i == 21;
   }
   
   void applySupportImageTint()
@@ -73,31 +67,38 @@ public class AppCompatImageHelper
     if (localDrawable != null) {
       DrawableUtils.fixDrawable(localDrawable);
     }
-    if ((localDrawable == null) || ((shouldApplyFrameworkTintUsingColorFilter()) && (applyFrameworkTintUsingColorFilter(localDrawable)))) {}
-    do
+    if (localDrawable != null)
     {
-      return;
-      if (this.mImageTint != null)
-      {
-        AppCompatDrawableManager.tintDrawable(localDrawable, this.mImageTint, this.mView.getDrawableState());
+      if ((shouldApplyFrameworkTintUsingColorFilter()) && (applyFrameworkTintUsingColorFilter(localDrawable))) {
         return;
       }
-    } while (this.mInternalImageTint == null);
-    AppCompatDrawableManager.tintDrawable(localDrawable, this.mInternalImageTint, this.mView.getDrawableState());
+      TintInfo localTintInfo = this.mImageTint;
+      if (localTintInfo != null)
+      {
+        AppCompatDrawableManager.tintDrawable(localDrawable, localTintInfo, this.mView.getDrawableState());
+        return;
+      }
+      localTintInfo = this.mInternalImageTint;
+      if (localTintInfo != null) {
+        AppCompatDrawableManager.tintDrawable(localDrawable, localTintInfo, this.mView.getDrawableState());
+      }
+    }
   }
   
   ColorStateList getSupportImageTintList()
   {
-    if (this.mImageTint != null) {
-      return this.mImageTint.mTintList;
+    TintInfo localTintInfo = this.mImageTint;
+    if (localTintInfo != null) {
+      return localTintInfo.mTintList;
     }
     return null;
   }
   
   PorterDuff.Mode getSupportImageTintMode()
   {
-    if (this.mImageTint != null) {
-      return this.mImageTint.mTintMode;
+    TintInfo localTintInfo = this.mImageTint;
+    if (localTintInfo != null) {
+      return localTintInfo.mTintMode;
     }
     return null;
   }
@@ -157,12 +158,11 @@ public class AppCompatImageHelper
       }
       this.mView.setImageDrawable(localDrawable);
     }
-    for (;;)
+    else
     {
-      applySupportImageTint();
-      return;
       this.mView.setImageDrawable(null);
     }
+    applySupportImageTint();
   }
   
   void setInternalImageTint(ColorStateList paramColorStateList)
@@ -172,15 +172,15 @@ public class AppCompatImageHelper
       if (this.mInternalImageTint == null) {
         this.mInternalImageTint = new TintInfo();
       }
-      this.mInternalImageTint.mTintList = paramColorStateList;
-      this.mInternalImageTint.mHasTintList = true;
+      TintInfo localTintInfo = this.mInternalImageTint;
+      localTintInfo.mTintList = paramColorStateList;
+      localTintInfo.mHasTintList = true;
     }
-    for (;;)
+    else
     {
-      applySupportImageTint();
-      return;
       this.mInternalImageTint = null;
     }
+    applySupportImageTint();
   }
   
   void setSupportImageTintList(ColorStateList paramColorStateList)
@@ -188,8 +188,9 @@ public class AppCompatImageHelper
     if (this.mImageTint == null) {
       this.mImageTint = new TintInfo();
     }
-    this.mImageTint.mTintList = paramColorStateList;
-    this.mImageTint.mHasTintList = true;
+    TintInfo localTintInfo = this.mImageTint;
+    localTintInfo.mTintList = paramColorStateList;
+    localTintInfo.mHasTintList = true;
     applySupportImageTint();
   }
   
@@ -198,8 +199,9 @@ public class AppCompatImageHelper
     if (this.mImageTint == null) {
       this.mImageTint = new TintInfo();
     }
-    this.mImageTint.mTintMode = paramMode;
-    this.mImageTint.mHasTintMode = true;
+    TintInfo localTintInfo = this.mImageTint;
+    localTintInfo.mTintMode = paramMode;
+    localTintInfo.mHasTintMode = true;
     applySupportImageTint();
   }
 }

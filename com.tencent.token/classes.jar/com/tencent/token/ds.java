@@ -14,19 +14,21 @@ class ds
   
   void a(ds paramds)
   {
-    if (this.d == paramds.d)
+    int i = this.d;
+    if (i == paramds.d)
     {
       c(paramds);
       return;
     }
-    this.d *= d(paramds);
+    this.d = (i * d(paramds));
   }
   
   void b(ds paramds)
   {
-    if (this.d == paramds.d)
+    int i = this.d;
+    if (i == paramds.d)
     {
-      this.d *= d(paramds);
+      this.d = (i * d(paramds));
       return;
     }
     c(paramds);
@@ -34,12 +36,13 @@ class ds
   
   void f(dr paramdr)
   {
-    if (this.d == 1)
+    int i = this.d;
+    if (i == 1)
     {
       c(paramdr);
       return;
     }
-    this.d *= d(paramdr);
+    this.d = (i * d(paramdr));
   }
   
   public String toString()

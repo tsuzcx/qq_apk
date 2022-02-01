@@ -20,18 +20,21 @@ public class s
   
   public PointF a(o<PointF> paramo, float paramFloat)
   {
-    r localr = (r)paramo;
-    Path localPath = localr.d();
+    Object localObject = (r)paramo;
+    Path localPath = ((r)localObject).d();
     if (localPath == null) {
       return (PointF)paramo.a;
     }
-    if (this.d != localr)
+    if (this.d != localObject)
     {
       this.e = new PathMeasure(localPath, false);
-      this.d = localr;
+      this.d = ((r)localObject);
     }
-    this.e.getPosTan(this.e.getLength() * paramFloat, this.c, null);
-    this.b.set(this.c[0], this.c[1]);
+    paramo = this.e;
+    paramo.getPosTan(paramFloat * paramo.getLength(), this.c, null);
+    paramo = this.b;
+    localObject = this.c;
+    paramo.set(localObject[0], localObject[1]);
     return this.b;
   }
 }

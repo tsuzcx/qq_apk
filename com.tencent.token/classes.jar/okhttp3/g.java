@@ -1,7 +1,7 @@
 package okhttp3;
 
 import com.tencent.token.fc;
-import com.tencent.token.gg;
+import com.tencent.token.gf;
 import java.security.Principal;
 import java.security.PublicKey;
 import java.security.cert.Certificate;
@@ -22,20 +22,24 @@ public final class g
   public static final g a = new a().a();
   private final Set<b> b;
   @Nullable
-  private final gg c;
+  private final gf c;
   
-  g(Set<b> paramSet, @Nullable gg paramgg)
+  g(Set<b> paramSet, @Nullable gf paramgf)
   {
     this.b = paramSet;
-    this.c = paramgg;
+    this.c = paramgf;
   }
   
   public static String a(Certificate paramCertificate)
   {
-    if (!(paramCertificate instanceof X509Certificate)) {
-      throw new IllegalArgumentException("Certificate pinning requires X509 certificates");
+    if ((paramCertificate instanceof X509Certificate))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sha256/");
+      localStringBuilder.append(b((X509Certificate)paramCertificate).b());
+      return localStringBuilder.toString();
     }
-    return "sha256/" + b((X509Certificate)paramCertificate).b();
+    throw new IllegalArgumentException("Certificate pinning requires X509 certificates");
   }
   
   static ByteString a(X509Certificate paramX509Certificate)
@@ -68,12 +72,12 @@ public final class g
     return localObject1;
   }
   
-  g a(@Nullable gg paramgg)
+  g a(@Nullable gf paramgf)
   {
-    if (fc.a(this.c, paramgg)) {
+    if (fc.a(this.c, paramgf)) {
       return this;
     }
-    return new g(this.b, paramgg);
+    return new g(this.b, paramgf);
   }
   
   public void a(String paramString, List<Certificate> paramList)
@@ -82,74 +86,82 @@ public final class g
     if (localList.isEmpty()) {
       return;
     }
+    Object localObject1 = this.c;
     Object localObject3 = paramList;
-    if (this.c != null) {
-      localObject3 = this.c.a(paramList, paramString);
+    if (localObject1 != null) {
+      localObject3 = ((gf)localObject1).a(paramList, paramString);
     }
-    int k = ((List)localObject3).size();
+    int m = ((List)localObject3).size();
+    int k = 0;
     int i = 0;
-    Object localObject1;
-    for (;;)
+    while (i < m)
     {
-      if (i >= k) {
-        break label244;
-      }
       X509Certificate localX509Certificate = (X509Certificate)((List)localObject3).get(i);
-      int m = localList.size();
-      j = 0;
-      paramList = null;
+      int n = localList.size();
       localObject1 = null;
-      if (j < m)
+      paramList = (List<Certificate>)localObject1;
+      j = 0;
+      while (j < n)
       {
         b localb = (b)localList.get(j);
         Object localObject2;
         if (localb.c.equals("sha256/"))
         {
-          localObject2 = paramList;
-          if (paramList == null) {
-            localObject2 = b(localX509Certificate);
-          }
-          if (localb.d.equals(localObject2)) {
-            break;
-          }
-          paramList = (List<Certificate>)localObject2;
-        }
-        do
-        {
-          j += 1;
-          break;
-          if (!localb.c.equals("sha1/")) {
-            break label206;
-          }
           localObject2 = localObject1;
           if (localObject1 == null) {
-            localObject2 = a(localX509Certificate);
+            localObject2 = b(localX509Certificate);
           }
           localObject1 = localObject2;
-        } while (!localb.d.equals(localObject2));
-        return;
-        label206:
-        throw new AssertionError("unsupported hashAlgorithm: " + localb.c);
+          if (!localb.d.equals(localObject2)) {}
+        }
+        else
+        {
+          if (!localb.c.equals("sha1/")) {
+            break label213;
+          }
+          localObject2 = paramList;
+          if (paramList == null) {
+            localObject2 = a(localX509Certificate);
+          }
+          paramList = (List<Certificate>)localObject2;
+          if (localb.d.equals(localObject2)) {
+            return;
+          }
+        }
+        j += 1;
+        continue;
+        label213:
+        paramString = new StringBuilder();
+        paramString.append("unsupported hashAlgorithm: ");
+        paramString.append(localb.c);
+        throw new AssertionError(paramString.toString());
       }
       i += 1;
     }
-    label244:
-    paramList = new StringBuilder().append("Certificate pinning failure!").append("\n  Peer certificate chain:");
+    paramList = new StringBuilder();
+    paramList.append("Certificate pinning failure!");
+    paramList.append("\n  Peer certificate chain:");
     int j = ((List)localObject3).size();
     i = 0;
     while (i < j)
     {
       localObject1 = (X509Certificate)((List)localObject3).get(i);
-      paramList.append("\n    ").append(a((Certificate)localObject1)).append(": ").append(((X509Certificate)localObject1).getSubjectDN().getName());
+      paramList.append("\n    ");
+      paramList.append(a((Certificate)localObject1));
+      paramList.append(": ");
+      paramList.append(((X509Certificate)localObject1).getSubjectDN().getName());
       i += 1;
     }
-    paramList.append("\n  Pinned certificates for ").append(paramString).append(":");
+    paramList.append("\n  Pinned certificates for ");
+    paramList.append(paramString);
+    paramList.append(":");
     j = localList.size();
-    i = 0;
+    i = k;
     while (i < j)
     {
       paramString = (b)localList.get(i);
-      paramList.append("\n    ").append(paramString);
+      paramList.append("\n    ");
+      paramList.append(paramString);
       i += 1;
     }
     throw new SSLPeerUnverifiedException(paramList.toString());
@@ -160,18 +172,27 @@ public final class g
     if (paramObject == this) {
       return true;
     }
-    if (((paramObject instanceof g)) && (fc.a(this.c, ((g)paramObject).c)) && (this.b.equals(((g)paramObject).b))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if ((paramObject instanceof g))
+    {
+      gf localgf = this.c;
+      paramObject = (g)paramObject;
+      if ((fc.a(localgf, paramObject.c)) && (this.b.equals(paramObject.b))) {
+        return true;
+      }
     }
+    return false;
   }
   
   public int hashCode()
   {
-    if (this.c != null) {}
-    for (int i = this.c.hashCode();; i = 0) {
-      return i * 31 + this.b.hashCode();
+    gf localgf = this.c;
+    int i;
+    if (localgf != null) {
+      i = localgf.hashCode();
+    } else {
+      i = 0;
     }
+    return i * 31 + this.b.hashCode();
   }
   
   public static final class a
@@ -193,36 +214,45 @@ public final class g
     
     boolean a(String paramString)
     {
-      boolean bool2 = false;
       if (this.a.startsWith("*."))
       {
         int i = paramString.indexOf('.');
-        boolean bool1 = bool2;
         if (paramString.length() - i - 1 == this.b.length())
         {
-          bool1 = bool2;
-          if (paramString.regionMatches(false, i + 1, this.b, 0, this.b.length())) {
-            bool1 = true;
+          String str = this.b;
+          if (paramString.regionMatches(false, i + 1, str, 0, str.length())) {
+            return true;
           }
         }
-        return bool1;
+        return false;
       }
       return paramString.equals(this.b);
     }
     
     public boolean equals(Object paramObject)
     {
-      return ((paramObject instanceof b)) && (this.a.equals(((b)paramObject).a)) && (this.c.equals(((b)paramObject).c)) && (this.d.equals(((b)paramObject).d));
+      if ((paramObject instanceof b))
+      {
+        String str = this.a;
+        paramObject = (b)paramObject;
+        if ((str.equals(paramObject.a)) && (this.c.equals(paramObject.c)) && (this.d.equals(paramObject.d))) {
+          return true;
+        }
+      }
+      return false;
     }
     
     public int hashCode()
     {
-      return ((this.a.hashCode() + 527) * 31 + this.c.hashCode()) * 31 + this.d.hashCode();
+      return ((527 + this.a.hashCode()) * 31 + this.c.hashCode()) * 31 + this.d.hashCode();
     }
     
     public String toString()
     {
-      return this.c + this.d.b();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.d.b());
+      return localStringBuilder.toString();
     }
   }
 }

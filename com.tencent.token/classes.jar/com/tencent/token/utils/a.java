@@ -31,8 +31,9 @@ public final class a
   protected void a(Uri paramUri)
   {
     super.onPostExecute(paramUri);
-    if ((this.a != null) && (paramUri != null)) {
-      this.a.setImageURI(paramUri);
+    ImageView localImageView = this.a;
+    if ((localImageView != null) && (paramUri != null)) {
+      localImageView.setImageURI(paramUri);
     }
   }
 }

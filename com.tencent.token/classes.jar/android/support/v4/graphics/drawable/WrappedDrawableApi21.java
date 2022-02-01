@@ -38,15 +38,16 @@ class WrappedDrawableApi21
   
   private void findAndCacheIsProjectedDrawableMethod()
   {
-    if (sIsProjectedDrawableMethod == null) {}
-    try
-    {
-      sIsProjectedDrawableMethod = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.w("WrappedDrawableApi21", "Failed to retrieve Drawable#isProjected() method", localException);
+    if (sIsProjectedDrawableMethod == null) {
+      try
+      {
+        sIsProjectedDrawableMethod = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
+        return;
+      }
+      catch (Exception localException)
+      {
+        Log.w("WrappedDrawableApi21", "Failed to retrieve Drawable#isProjected() method", localException);
+      }
     }
   }
   
@@ -63,35 +64,34 @@ class WrappedDrawableApi21
   
   protected boolean isCompatTintEnabled()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (Build.VERSION.SDK_INT == 21)
+    int i = Build.VERSION.SDK_INT;
+    boolean bool = false;
+    if (i == 21)
     {
       Drawable localDrawable = this.mDrawable;
-      if ((!(localDrawable instanceof GradientDrawable)) && (!(localDrawable instanceof DrawableContainer)) && (!(localDrawable instanceof InsetDrawable)))
-      {
-        bool1 = bool2;
-        if (!(localDrawable instanceof RippleDrawable)) {}
+      if (((localDrawable instanceof GradientDrawable)) || ((localDrawable instanceof DrawableContainer)) || ((localDrawable instanceof InsetDrawable)) || ((localDrawable instanceof RippleDrawable))) {
+        bool = true;
       }
-      else
-      {
-        bool1 = true;
-      }
+      return bool;
     }
-    return bool1;
+    return false;
   }
   
   public boolean isProjected()
   {
-    if ((this.mDrawable != null) && (sIsProjectedDrawableMethod != null)) {
-      try
-      {
-        boolean bool = ((Boolean)sIsProjectedDrawableMethod.invoke(this.mDrawable, new Object[0])).booleanValue();
-        return bool;
-      }
-      catch (Exception localException)
-      {
-        Log.w("WrappedDrawableApi21", "Error calling Drawable#isProjected() method", localException);
+    if (this.mDrawable != null)
+    {
+      Method localMethod = sIsProjectedDrawableMethod;
+      if (localMethod != null) {
+        try
+        {
+          boolean bool = ((Boolean)localMethod.invoke(this.mDrawable, new Object[0])).booleanValue();
+          return bool;
+        }
+        catch (Exception localException)
+        {
+          Log.w("WrappedDrawableApi21", "Error calling Drawable#isProjected() method", localException);
+        }
       }
     }
     return false;

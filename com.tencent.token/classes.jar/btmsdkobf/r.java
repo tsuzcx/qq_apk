@@ -25,8 +25,9 @@ public final class r
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ay, 0);
-    if (this.az != null) {
-      paramJceOutputStream.write(this.az, 1);
+    s locals = this.az;
+    if (locals != null) {
+      paramJceOutputStream.write(locals, 1);
     }
   }
 }

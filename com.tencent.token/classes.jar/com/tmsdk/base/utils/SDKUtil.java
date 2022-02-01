@@ -35,16 +35,18 @@ public class SDKUtil
   public static int getAndroidReleaseName()
   {
     String str = Build.PRODUCT;
-    if ((str.contains("OMS")) || (str.contains("SnapperTD"))) {
-      return 1;
-    }
-    if ((str.contains("qsd8250_surf")) || (str.contains("3GW100"))) {
+    if ((!str.contains("OMS")) && (!str.contains("SnapperTD")))
+    {
+      if ((!str.contains("qsd8250_surf")) && (!str.contains("3GW100")))
+      {
+        if (str.contains("meizu_m9")) {
+          return 4;
+        }
+        return 2;
+      }
       return 3;
     }
-    if (str.contains("meizu_m9")) {
-      return 4;
-    }
-    return 2;
+    return 1;
   }
   
   public static int getSDKVersion()

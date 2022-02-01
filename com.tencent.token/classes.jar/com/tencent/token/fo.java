@@ -24,7 +24,7 @@ public final class fo
   
   public static boolean e(String paramString)
   {
-    return !paramString.equals("PROPFIND");
+    return paramString.equals("PROPFIND") ^ true;
   }
 }
 

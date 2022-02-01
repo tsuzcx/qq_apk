@@ -8,20 +8,21 @@ final class s
   
   public static int a(int paramInt)
   {
-    return (0xFF000000 & paramInt) >>> 24 | (0xFF0000 & paramInt) >>> 8 | (0xFF00 & paramInt) << 8 | (paramInt & 0xFF) << 24;
+    return (paramInt & 0xFF) << 24 | (0xFF000000 & paramInt) >>> 24 | (0xFF0000 & paramInt) >>> 8 | (0xFF00 & paramInt) << 8;
   }
   
   public static short a(short paramShort)
   {
-    paramShort = 0xFFFF & paramShort;
+    paramShort &= 0xFFFF;
     return (short)((paramShort & 0xFF) << 8 | (0xFF00 & paramShort) >>> 8);
   }
   
   public static void a(long paramLong1, long paramLong2, long paramLong3)
   {
-    if (((paramLong2 | paramLong3) < 0L) || (paramLong2 > paramLong1) || (paramLong1 - paramLong2 < paramLong3)) {
-      throw new ArrayIndexOutOfBoundsException(String.format("size=%s offset=%s byteCount=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) }));
+    if (((paramLong2 | paramLong3) >= 0L) && (paramLong2 <= paramLong1) && (paramLong1 - paramLong2 >= paramLong3)) {
+      return;
     }
+    throw new ArrayIndexOutOfBoundsException(String.format("size=%s offset=%s byteCount=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) }));
   }
   
   public static void a(Throwable paramThrowable)

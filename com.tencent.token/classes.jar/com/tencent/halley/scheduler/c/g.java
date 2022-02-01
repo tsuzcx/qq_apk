@@ -29,8 +29,9 @@ public final class g
   
   public final void a(b paramb)
   {
-    if (this.a != null) {
-      paramb.a(this.a, 0);
+    Map localMap = this.a;
+    if (localMap != null) {
+      paramb.a(localMap, 0);
     }
     paramb.a(this.b, 1);
   }

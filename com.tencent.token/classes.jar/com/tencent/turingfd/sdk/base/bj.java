@@ -16,11 +16,17 @@ public class bj
     if (paramContext == null) {
       return "";
     }
-    paramContext = new File(ci.a(new StringBuilder().append(paramContext.getAbsolutePath()), File.separator, "1"));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getAbsolutePath());
+    paramContext = new File(ci.a(localStringBuilder, File.separator, "1"));
     if ((!paramContext.exists()) && (!paramContext.mkdirs())) {
       return "";
     }
-    return paramContext.getAbsolutePath() + File.separator + b;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(b);
+    return localStringBuilder.toString();
   }
   
   public static void a(Context paramContext, aw paramaw)
@@ -68,8 +74,12 @@ public class bj
   {
     long l1 = paramaw.c(paramContext, "502");
     long l2 = Process.myUid();
-    if (l1 != l2) {
-      paramaw.a(paramContext, "502", "" + l2, false);
+    if (l1 != l2)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(l2);
+      paramaw.a(paramContext, "502", localStringBuilder.toString(), false);
     }
   }
 }

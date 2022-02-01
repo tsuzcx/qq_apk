@@ -23,17 +23,16 @@ public final class SQLiteGlobal
     try
     {
       i = new StatFs(Environment.getDataDirectory().getAbsolutePath()).getBlockSize();
-      defaultPageSize = i;
-      nativeSetDefaultPageSize(i);
-      return;
     }
     catch (RuntimeException localRuntimeException)
     {
-      for (;;)
-      {
-        int i = 4096;
-      }
+      int i;
+      label31:
+      break label31;
     }
+    i = 4096;
+    defaultPageSize = i;
+    nativeSetDefaultPageSize(i);
   }
   
   public static void loadLib() {}

@@ -11,21 +11,22 @@ import java.util.concurrent.ConcurrentHashMap;
 public class dv
 {
   private static Object lock = new Object();
-  private static dv nC = null;
+  private static dv nC;
   private static Object nD = new Object();
   ConcurrentHashMap<String, a> nB = new ConcurrentHashMap();
   private Context ny = bc.n();
   
   public static dv cQ()
   {
-    if (nC == null) {}
-    synchronized (lock)
-    {
-      if (nC == null) {
-        nC = new dv();
+    if (nC == null) {
+      synchronized (lock)
+      {
+        if (nC == null) {
+          nC = new dv();
+        }
       }
-      return nC;
     }
+    return nC;
   }
   
   public void D(String paramString)
@@ -78,20 +79,27 @@ public class dv
     public void onReceive(final Context paramContext, Intent paramIntent)
     {
       paramContext = paramIntent.getAction();
-      if (paramContext == null) {}
-      do
-      {
+      if (paramContext == null) {
         return;
-        eg.f("cccccc", "action:" + paramContext);
-      } while ((!this.a.equals(paramContext)) || (this.b == null));
-      ee.cT().addTask(new Runnable()
+      }
+      paramIntent = new StringBuilder();
+      paramIntent.append("action:");
+      paramIntent.append(paramContext);
+      eg.f("cccccc", paramIntent.toString());
+      if (this.a.equals(paramContext))
       {
-        public void run()
-        {
-          dv.a.this.b.run();
-          dv.this.D(paramContext);
+        if (this.b == null) {
+          return;
         }
-      }, "AlarmerTaskReceiver");
+        ee.cT().addTask(new Runnable()
+        {
+          public void run()
+          {
+            dv.a.this.b.run();
+            dv.this.D(paramContext);
+          }
+        }, "AlarmerTaskReceiver");
+      }
     }
   }
 }

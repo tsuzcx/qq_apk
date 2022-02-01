@@ -82,7 +82,8 @@ public class ScrollingTabContainerView
   
   private boolean isCollapsed()
   {
-    return (this.mTabSpinner != null) && (this.mTabSpinner.getParent() == this);
+    Spinner localSpinner = this.mTabSpinner;
+    return (localSpinner != null) && (localSpinner.getParent() == this);
   }
   
   private void performCollapse()
@@ -98,9 +99,10 @@ public class ScrollingTabContainerView
     if (this.mTabSpinner.getAdapter() == null) {
       this.mTabSpinner.setAdapter(new TabAdapter());
     }
-    if (this.mTabSelector != null)
+    Runnable localRunnable = this.mTabSelector;
+    if (localRunnable != null)
     {
-      removeCallbacks(this.mTabSelector);
+      removeCallbacks(localRunnable);
       this.mTabSelector = null;
     }
     this.mTabSpinner.setSelection(this.mSelectedTabIndex);
@@ -121,8 +123,9 @@ public class ScrollingTabContainerView
   {
     paramTab = createTabView(paramTab, false);
     this.mTabLayout.addView(paramTab, paramInt, new LinearLayoutCompat.LayoutParams(0, -1, 1.0F));
-    if (this.mTabSpinner != null) {
-      ((TabAdapter)this.mTabSpinner.getAdapter()).notifyDataSetChanged();
+    Spinner localSpinner = this.mTabSpinner;
+    if (localSpinner != null) {
+      ((TabAdapter)localSpinner.getAdapter()).notifyDataSetChanged();
     }
     if (paramBoolean) {
       paramTab.setSelected(true);
@@ -136,8 +139,9 @@ public class ScrollingTabContainerView
   {
     paramTab = createTabView(paramTab, false);
     this.mTabLayout.addView(paramTab, new LinearLayoutCompat.LayoutParams(0, -1, 1.0F));
-    if (this.mTabSpinner != null) {
-      ((TabAdapter)this.mTabSpinner.getAdapter()).notifyDataSetChanged();
+    Spinner localSpinner = this.mTabSpinner;
+    if (localSpinner != null) {
+      ((TabAdapter)localSpinner.getAdapter()).notifyDataSetChanged();
     }
     if (paramBoolean) {
       paramTab.setSelected(true);
@@ -150,8 +154,9 @@ public class ScrollingTabContainerView
   public void animateToTab(int paramInt)
   {
     final View localView = this.mTabLayout.getChildAt(paramInt);
-    if (this.mTabSelector != null) {
-      removeCallbacks(this.mTabSelector);
+    Runnable localRunnable = this.mTabSelector;
+    if (localRunnable != null) {
+      removeCallbacks(localRunnable);
     }
     this.mTabSelector = new Runnable()
     {
@@ -168,8 +173,9 @@ public class ScrollingTabContainerView
   
   public void animateToVisibility(int paramInt)
   {
-    if (this.mVisibilityAnim != null) {
-      this.mVisibilityAnim.cancel();
+    ViewPropertyAnimator localViewPropertyAnimator = this.mVisibilityAnim;
+    if (localViewPropertyAnimator != null) {
+      localViewPropertyAnimator.cancel();
     }
     if (paramInt == 0)
     {
@@ -183,7 +189,7 @@ public class ScrollingTabContainerView
       localViewPropertyAnimator.start();
       return;
     }
-    ViewPropertyAnimator localViewPropertyAnimator = animate().alpha(0.0F);
+    localViewPropertyAnimator = animate().alpha(0.0F);
     localViewPropertyAnimator.setDuration(200L);
     localViewPropertyAnimator.setInterpolator(sAlphaInterpolator);
     localViewPropertyAnimator.setListener(this.mVisAnimListener.withFinalVisibility(localViewPropertyAnimator, paramInt));
@@ -210,8 +216,9 @@ public class ScrollingTabContainerView
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.mTabSelector != null) {
-      post(this.mTabSelector);
+    Runnable localRunnable = this.mTabSelector;
+    if (localRunnable != null) {
+      post(localRunnable);
     }
   }
   
@@ -226,8 +233,9 @@ public class ScrollingTabContainerView
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.mTabSelector != null) {
-      removeCallbacks(this.mTabSelector);
+    Runnable localRunnable = this.mTabSelector;
+    if (localRunnable != null) {
+      removeCallbacks(localRunnable);
     }
   }
   
@@ -238,63 +246,51 @@ public class ScrollingTabContainerView
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    paramInt2 = 1;
     int i = View.MeasureSpec.getMode(paramInt1);
+    paramInt2 = 1;
     boolean bool;
-    if (i == 1073741824)
-    {
+    if (i == 1073741824) {
       bool = true;
-      setFillViewport(bool);
-      int j = this.mTabLayout.getChildCount();
-      if ((j <= 1) || ((i != 1073741824) && (i != -2147483648))) {
-        break label195;
-      }
-      if (j <= 2) {
-        break label182;
-      }
-      this.mMaxTabWidth = ((int)(View.MeasureSpec.getSize(paramInt1) * 0.4F));
-      label72:
-      this.mMaxTabWidth = Math.min(this.mMaxTabWidth, this.mStackedTabMaxWidth);
-      label87:
-      i = View.MeasureSpec.makeMeasureSpec(this.mContentHeight, 1073741824);
-      if ((bool) || (!this.mAllowCollapse)) {
-        break label203;
-      }
-      label110:
-      if (paramInt2 == 0) {
-        break label216;
-      }
-      this.mTabLayout.measure(0, i);
-      if (this.mTabLayout.getMeasuredWidth() <= View.MeasureSpec.getSize(paramInt1)) {
-        break label208;
-      }
-      performCollapse();
-    }
-    for (;;)
-    {
-      paramInt2 = getMeasuredWidth();
-      super.onMeasure(paramInt1, i);
-      paramInt1 = getMeasuredWidth();
-      if ((bool) && (paramInt2 != paramInt1)) {
-        setTabSelected(this.mSelectedTabIndex);
-      }
-      return;
+    } else {
       bool = false;
-      break;
-      label182:
-      this.mMaxTabWidth = (View.MeasureSpec.getSize(paramInt1) / 2);
-      break label72;
-      label195:
+    }
+    setFillViewport(bool);
+    int j = this.mTabLayout.getChildCount();
+    if ((j > 1) && ((i == 1073741824) || (i == -2147483648)))
+    {
+      if (j > 2) {
+        this.mMaxTabWidth = ((int)(View.MeasureSpec.getSize(paramInt1) * 0.4F));
+      } else {
+        this.mMaxTabWidth = (View.MeasureSpec.getSize(paramInt1) / 2);
+      }
+      this.mMaxTabWidth = Math.min(this.mMaxTabWidth, this.mStackedTabMaxWidth);
+    }
+    else
+    {
       this.mMaxTabWidth = -1;
-      break label87;
-      label203:
+    }
+    i = View.MeasureSpec.makeMeasureSpec(this.mContentHeight, 1073741824);
+    if ((bool) || (!this.mAllowCollapse)) {
       paramInt2 = 0;
-      break label110;
-      label208:
+    }
+    if (paramInt2 != 0)
+    {
+      this.mTabLayout.measure(0, i);
+      if (this.mTabLayout.getMeasuredWidth() > View.MeasureSpec.getSize(paramInt1)) {
+        performCollapse();
+      } else {
+        performExpand();
+      }
+    }
+    else
+    {
       performExpand();
-      continue;
-      label216:
-      performExpand();
+    }
+    paramInt2 = getMeasuredWidth();
+    super.onMeasure(paramInt1, i);
+    paramInt1 = getMeasuredWidth();
+    if ((bool) && (paramInt2 != paramInt1)) {
+      setTabSelected(this.mSelectedTabIndex);
     }
   }
   
@@ -303,8 +299,9 @@ public class ScrollingTabContainerView
   public void removeAllTabs()
   {
     this.mTabLayout.removeAllViews();
-    if (this.mTabSpinner != null) {
-      ((TabAdapter)this.mTabSpinner.getAdapter()).notifyDataSetChanged();
+    Spinner localSpinner = this.mTabSpinner;
+    if (localSpinner != null) {
+      ((TabAdapter)localSpinner.getAdapter()).notifyDataSetChanged();
     }
     if (this.mAllowCollapse) {
       requestLayout();
@@ -314,8 +311,9 @@ public class ScrollingTabContainerView
   public void removeTabAt(int paramInt)
   {
     this.mTabLayout.removeViewAt(paramInt);
-    if (this.mTabSpinner != null) {
-      ((TabAdapter)this.mTabSpinner.getAdapter()).notifyDataSetChanged();
+    Spinner localSpinner = this.mTabSpinner;
+    if (localSpinner != null) {
+      ((TabAdapter)localSpinner.getAdapter()).notifyDataSetChanged();
     }
     if (this.mAllowCollapse) {
       requestLayout();
@@ -338,30 +336,33 @@ public class ScrollingTabContainerView
     this.mSelectedTabIndex = paramInt;
     int j = this.mTabLayout.getChildCount();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      View localView = this.mTabLayout.getChildAt(i);
-      if (i == paramInt) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localView.setSelected(bool);
-        if (bool) {
-          animateToTab(paramInt);
-        }
-        i += 1;
-        break;
+      localObject = this.mTabLayout.getChildAt(i);
+      boolean bool;
+      if (i == paramInt) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      ((View)localObject).setSelected(bool);
+      if (bool) {
+        animateToTab(paramInt);
+      }
+      i += 1;
     }
-    if ((this.mTabSpinner != null) && (paramInt >= 0)) {
-      this.mTabSpinner.setSelection(paramInt);
+    Object localObject = this.mTabSpinner;
+    if ((localObject != null) && (paramInt >= 0)) {
+      ((Spinner)localObject).setSelection(paramInt);
     }
   }
   
   public void updateTab(int paramInt)
   {
     ((TabView)this.mTabLayout.getChildAt(paramInt)).update();
-    if (this.mTabSpinner != null) {
-      ((TabAdapter)this.mTabSpinner.getAdapter()).notifyDataSetChanged();
+    Spinner localSpinner = this.mTabSpinner;
+    if (localSpinner != null) {
+      ((TabAdapter)localSpinner.getAdapter()).notifyDataSetChanged();
     }
     if (this.mAllowCollapse) {
       requestLayout();
@@ -408,16 +409,17 @@ public class ScrollingTabContainerView
       ((ScrollingTabContainerView.TabView)paramView).getTab().select();
       int j = ScrollingTabContainerView.this.mTabLayout.getChildCount();
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         View localView = ScrollingTabContainerView.this.mTabLayout.getChildAt(i);
-        if (localView == paramView) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localView.setSelected(bool);
-          i += 1;
-          break;
+        boolean bool;
+        if (localView == paramView) {
+          bool = true;
+        } else {
+          bool = false;
         }
+        localView.setSelected(bool);
+        i += 1;
       }
     }
   }
@@ -479,21 +481,23 @@ public class ScrollingTabContainerView
     
     public void setSelected(boolean paramBoolean)
     {
-      if (isSelected() != paramBoolean) {}
-      for (int i = 1;; i = 0)
-      {
-        super.setSelected(paramBoolean);
-        if ((i != 0) && (paramBoolean)) {
-          sendAccessibilityEvent(4);
-        }
-        return;
+      int i;
+      if (isSelected() != paramBoolean) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      super.setSelected(paramBoolean);
+      if ((i != 0) && (paramBoolean)) {
+        sendAccessibilityEvent(4);
       }
     }
     
     public void update()
     {
-      Object localObject1 = this.mTab;
-      Object localObject2 = ((ActionBar.Tab)localObject1).getCustomView();
+      ActionBar.Tab localTab = this.mTab;
+      Object localObject2 = localTab.getCustomView();
+      Object localObject1 = null;
       if (localObject2 != null)
       {
         localObject1 = ((View)localObject2).getParent();
@@ -505,87 +509,84 @@ public class ScrollingTabContainerView
           addView((View)localObject2);
         }
         this.mCustomView = ((View)localObject2);
-        if (this.mTextView != null) {
-          this.mTextView.setVisibility(8);
+        localObject1 = this.mTextView;
+        if (localObject1 != null) {
+          ((TextView)localObject1).setVisibility(8);
         }
-        if (this.mIconView != null)
+        localObject1 = this.mIconView;
+        if (localObject1 != null)
         {
-          this.mIconView.setVisibility(8);
+          ((ImageView)localObject1).setVisibility(8);
           this.mIconView.setImageDrawable(null);
         }
-        return;
       }
-      if (this.mCustomView != null)
+      else
       {
-        removeView(this.mCustomView);
-        this.mCustomView = null;
-      }
-      Object localObject3 = ((ActionBar.Tab)localObject1).getIcon();
-      localObject2 = ((ActionBar.Tab)localObject1).getText();
-      int i;
-      if (localObject3 != null)
-      {
+        localObject2 = this.mCustomView;
+        if (localObject2 != null)
+        {
+          removeView((View)localObject2);
+          this.mCustomView = null;
+        }
+        Object localObject3 = localTab.getIcon();
+        localObject2 = localTab.getText();
         Object localObject4;
-        if (this.mIconView == null)
+        if (localObject3 != null)
         {
-          localObject4 = new AppCompatImageView(getContext());
-          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-          localLayoutParams.gravity = 16;
-          ((ImageView)localObject4).setLayoutParams(localLayoutParams);
-          addView((View)localObject4, 0);
-          this.mIconView = ((ImageView)localObject4);
+          if (this.mIconView == null)
+          {
+            localObject4 = new AppCompatImageView(getContext());
+            LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+            localLayoutParams.gravity = 16;
+            ((ImageView)localObject4).setLayoutParams(localLayoutParams);
+            addView((View)localObject4, 0);
+            this.mIconView = ((ImageView)localObject4);
+          }
+          this.mIconView.setImageDrawable((Drawable)localObject3);
+          this.mIconView.setVisibility(0);
         }
-        this.mIconView.setImageDrawable((Drawable)localObject3);
-        this.mIconView.setVisibility(0);
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label357;
-        }
-        i = 1;
-        label209:
-        if (i == 0) {
-          break label362;
-        }
-        if (this.mTextView == null)
+        else
         {
-          localObject3 = new AppCompatTextView(getContext(), null, R.attr.actionBarTabTextStyle);
-          ((TextView)localObject3).setEllipsize(TextUtils.TruncateAt.END);
-          localObject4 = new LinearLayout.LayoutParams(-2, -2);
-          ((LinearLayout.LayoutParams)localObject4).gravity = 16;
-          ((TextView)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-          addView((View)localObject3);
-          this.mTextView = ((TextView)localObject3);
+          localObject3 = this.mIconView;
+          if (localObject3 != null)
+          {
+            ((ImageView)localObject3).setVisibility(8);
+            this.mIconView.setImageDrawable(null);
+          }
         }
-        this.mTextView.setText((CharSequence)localObject2);
-        this.mTextView.setVisibility(0);
-        label300:
-        if (this.mIconView != null) {
-          this.mIconView.setContentDescription(((ActionBar.Tab)localObject1).getContentDescription());
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject2) ^ true;
+        if (bool)
+        {
+          if (this.mTextView == null)
+          {
+            localObject3 = new AppCompatTextView(getContext(), null, R.attr.actionBarTabTextStyle);
+            ((TextView)localObject3).setEllipsize(TextUtils.TruncateAt.END);
+            localObject4 = new LinearLayout.LayoutParams(-2, -2);
+            ((LinearLayout.LayoutParams)localObject4).gravity = 16;
+            ((TextView)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
+            addView((View)localObject3);
+            this.mTextView = ((TextView)localObject3);
+          }
+          this.mTextView.setText((CharSequence)localObject2);
+          this.mTextView.setVisibility(0);
         }
-        if (i == 0) {
-          break label389;
+        else
+        {
+          localObject2 = this.mTextView;
+          if (localObject2 != null)
+          {
+            ((TextView)localObject2).setVisibility(8);
+            this.mTextView.setText(null);
+          }
         }
-      }
-      label389:
-      for (localObject1 = null;; localObject1 = ((ActionBar.Tab)localObject1).getContentDescription())
-      {
+        localObject2 = this.mIconView;
+        if (localObject2 != null) {
+          ((ImageView)localObject2).setContentDescription(localTab.getContentDescription());
+        }
+        if (!bool) {
+          localObject1 = localTab.getContentDescription();
+        }
         TooltipCompat.setTooltipText(this, (CharSequence)localObject1);
-        return;
-        if (this.mIconView == null) {
-          break;
-        }
-        this.mIconView.setVisibility(8);
-        this.mIconView.setImageDrawable(null);
-        break;
-        label357:
-        i = 0;
-        break label209;
-        label362:
-        if (this.mTextView == null) {
-          break label300;
-        }
-        this.mTextView.setVisibility(8);
-        this.mTextView.setText(null);
-        break label300;
       }
     }
   }
@@ -608,8 +609,9 @@ public class ScrollingTabContainerView
       if (this.mCanceled) {
         return;
       }
-      ScrollingTabContainerView.this.mVisibilityAnim = null;
-      ScrollingTabContainerView.this.setVisibility(this.mFinalVisibility);
+      paramAnimator = ScrollingTabContainerView.this;
+      paramAnimator.mVisibilityAnim = null;
+      paramAnimator.setVisibility(this.mFinalVisibility);
     }
     
     public void onAnimationStart(Animator paramAnimator)

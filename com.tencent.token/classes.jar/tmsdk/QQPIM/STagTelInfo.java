@@ -38,11 +38,13 @@ public final class STagTelInfo
     paramJceOutputStream.write(this.phoneNum, 1);
     paramJceOutputStream.write(this.tagType, 2);
     paramJceOutputStream.write(this.tagCount, 3);
-    if (this.phoneName != null) {
-      paramJceOutputStream.write(this.phoneName, 4);
+    String str = this.phoneName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.comment != null) {
-      paramJceOutputStream.write(this.comment, 5);
+    str = this.comment;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }

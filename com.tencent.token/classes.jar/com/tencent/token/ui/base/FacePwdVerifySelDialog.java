@@ -25,17 +25,18 @@ public class FacePwdVerifySelDialog
   
   protected void onCreate(Bundle paramBundle)
   {
-    if ((this.a == null) || ((this.a != null) && (this.a.isFinishing())))
+    FacePwdIndexActivity localFacePwdIndexActivity = this.a;
+    if ((localFacePwdIndexActivity != null) && ((localFacePwdIndexActivity == null) || (!localFacePwdIndexActivity.isFinishing())))
     {
-      dismiss();
+      super.onCreate(paramBundle);
+      setContentView(2131296331);
+      getWindow().setBackgroundDrawableResource(2131099876);
+      this.b = ((ListView)findViewById(2131166251));
+      this.c = new b(this.a, this, this.d);
+      this.b.setAdapter(this.c);
       return;
     }
-    super.onCreate(paramBundle);
-    setContentView(2130968651);
-    getWindow().setBackgroundDrawableResource(2130837730);
-    this.b = ((ListView)findViewById(2131558852));
-    this.c = new b(this.a, this, this.d);
-    this.b.setAdapter(this.c);
+    dismiss();
   }
 }
 

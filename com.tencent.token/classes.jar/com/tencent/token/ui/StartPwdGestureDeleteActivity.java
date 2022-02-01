@@ -39,40 +39,57 @@ public class StartPwdGestureDeleteActivity
       if (StartPwdGestureDeleteActivity.this.isFinishing()) {
         return;
       }
-      switch (paramAnonymousMessage.what)
+      int i = paramAnonymousMessage.what;
+      Object localObject1;
+      Object localObject2;
+      if (i != 1008)
       {
-      default: 
-        return;
-      case 1008: 
-        if (paramAnonymousMessage.arg1 == 0)
+        if (i != 4104)
         {
-          StartPwdGestureDeleteActivity.this.dismissDialog();
-          paramAnonymousMessage = cr.a().e();
-          if (paramAnonymousMessage == null)
-          {
-            bu.a().a(System.currentTimeMillis(), 23);
-            StartPwdGestureDeleteActivity.this.showNobindingAlert(StartPwdGestureDeleteActivity.this, 2131231100, 2131231094);
+          if (i != 4109) {
             return;
           }
-          StartPwdGestureDeleteActivity.this.dismissDialog();
-          bz.a(StartPwdGestureDeleteActivity.this.getApplicationContext()).a(StartPwdGestureDeleteActivity.this, 523005419L, StartPwdGestureDeleteActivity.this.mHandler, paramAnonymousMessage.mRealUin + "");
+          StartPwdGestureDeleteActivity.this.judgeNextStep();
           return;
         }
-        StartPwdGestureDeleteActivity.this.dismissDialog();
-        paramAnonymousMessage = (e)paramAnonymousMessage.obj;
-        StartPwdGestureDeleteActivity.this.showUserDialog(paramAnonymousMessage.c);
-        return;
-      case 4104: 
         StartPwdGestureDeleteActivity.this.dismissDialog();
         if ((paramAnonymousMessage.getData() != null) && (paramAnonymousMessage.getData().getString("exception") != null))
         {
-          StartPwdGestureDeleteActivity.this.showToast(StartPwdGestureDeleteActivity.this.getResources().getString(2131231411) + ":" + paramAnonymousMessage.getData().getString("exception"));
+          localObject1 = StartPwdGestureDeleteActivity.this;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(StartPwdGestureDeleteActivity.this.getResources().getString(2131493553));
+          ((StringBuilder)localObject2).append(":");
+          ((StringBuilder)localObject2).append(paramAnonymousMessage.getData().getString("exception"));
+          ((StartPwdGestureDeleteActivity)localObject1).showToast(((StringBuilder)localObject2).toString());
           return;
         }
-        StartPwdGestureDeleteActivity.this.showToast(2131231411);
+        StartPwdGestureDeleteActivity.this.showToast(2131493553);
         return;
       }
-      StartPwdGestureDeleteActivity.this.judgeNextStep();
+      if (paramAnonymousMessage.arg1 == 0)
+      {
+        StartPwdGestureDeleteActivity.this.dismissDialog();
+        paramAnonymousMessage = cr.a().e();
+        if (paramAnonymousMessage == null)
+        {
+          bu.a().a(System.currentTimeMillis(), 23);
+          paramAnonymousMessage = StartPwdGestureDeleteActivity.this;
+          paramAnonymousMessage.showNobindingAlert(paramAnonymousMessage, 2131493242, 2131493236);
+          return;
+        }
+        StartPwdGestureDeleteActivity.this.dismissDialog();
+        localObject1 = bz.a(StartPwdGestureDeleteActivity.this.getApplicationContext());
+        localObject2 = StartPwdGestureDeleteActivity.this;
+        Handler localHandler = ((StartPwdGestureDeleteActivity)localObject2).mHandler;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramAnonymousMessage.mRealUin);
+        localStringBuilder.append("");
+        ((bz)localObject1).a((Activity)localObject2, 523005419L, localHandler, localStringBuilder.toString());
+        return;
+      }
+      StartPwdGestureDeleteActivity.this.dismissDialog();
+      paramAnonymousMessage = (e)paramAnonymousMessage.obj;
+      StartPwdGestureDeleteActivity.this.showUserDialog(paramAnonymousMessage.c);
     }
   };
   private LockPatternVerifyView.b mListener = new LockPatternVerifyView.b()
@@ -91,7 +108,8 @@ public class StartPwdGestureDeleteActivity
     
     public void a(boolean paramAnonymousBoolean)
     {
-      StartPwdGestureDeleteActivity.this.showUserDialog(2131230843, StartPwdGestureDeleteActivity.this.getResources().getString(2131231116), 2131230897, new DialogInterface.OnClickListener()
+      StartPwdGestureDeleteActivity localStartPwdGestureDeleteActivity = StartPwdGestureDeleteActivity.this;
+      localStartPwdGestureDeleteActivity.showUserDialog(2131492985, localStartPwdGestureDeleteActivity.getResources().getString(2131493258), 2131493039, new DialogInterface.OnClickListener()
       {
         public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
         {
@@ -111,13 +129,18 @@ public class StartPwdGestureDeleteActivity
   private void gotoQuickLoginWb()
   {
     QQUser localQQUser = cr.a().e();
-    if ((localQQUser == null) || (localQQUser.mRealUin <= 0L))
+    if ((localQQUser != null) && (localQQUser.mRealUin > 0L))
     {
-      bv.a().e(this.mHandler);
-      showProDialog(this, 2131230843, 2131231298, null);
+      bz localbz = bz.a(getApplicationContext());
+      Handler localHandler = this.mHandler;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(localQQUser.b());
+      localbz.a(this, 523005419L, localHandler, localStringBuilder.toString());
       return;
     }
-    bz.a(getApplicationContext()).a(this, 523005419L, this.mHandler, "" + localQQUser.b());
+    bv.a().e(this.mHandler);
+    showProDialog(this, 2131492985, 2131493440, null);
   }
   
   private void judgeNextStep()
@@ -139,7 +162,7 @@ public class StartPwdGestureDeleteActivity
   private void showNobindingAlert(final Context paramContext, int paramInt1, int paramInt2)
   {
     if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
-      showUserDialog(2131230843, getString(paramInt1), paramInt2, 2131230886, new DialogInterface.OnClickListener()
+      showUserDialog(2131492985, getString(paramInt1), paramInt2, 2131493028, new DialogInterface.OnClickListener()
       {
         public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -160,31 +183,36 @@ public class StartPwdGestureDeleteActivity
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    g.c("verify gesture: resultCode=" + paramInt2 + ", requestCode=" + paramInt1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("verify gesture: resultCode=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", requestCode=");
+    localStringBuilder.append(paramInt1);
+    g.c(localStringBuilder.toString());
     if ((paramInt1 == 256) && (paramInt2 == 257))
     {
       setResult(35);
       finish();
-    }
-    while ((paramInt1 != 1201) && (paramInt1 != 1202)) {
       return;
     }
-    bz.a(getApplicationContext()).a(paramIntent);
+    if ((paramInt1 == 1201) || (paramInt1 == 1202)) {
+      bz.a(getApplicationContext()).a(paramIntent);
+    }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
-    setContentView(2130968766);
-    ((ViewStub)findViewById(2131559319)).inflate();
-    paramBundle = (LockPatternVerifyView)findViewById(2131559463);
+    setContentView(2131296447);
+    ((ViewStub)findViewById(2131166266)).inflate();
+    paramBundle = (LockPatternVerifyView)findViewById(2131165716);
     paramBundle.setVerifyListener(this.mListener);
     paramBundle.setAnimType(2);
-    this.mTitleBar.setBackgroundColor(getResources().getColor(2131493039));
-    this.mTitleDivider.setBackgroundColor(getResources().getColor(2131493053));
-    this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2130837617));
-    this.mTitleText.setTextColor(getResources().getColor(2131493027));
+    this.mTitleBar.setBackgroundColor(getResources().getColor(2130968773));
+    this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968789));
+    this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2131099762));
+    this.mTitleText.setTextColor(getResources().getColor(2130968761));
   }
   
   public void pwdIsDelete()

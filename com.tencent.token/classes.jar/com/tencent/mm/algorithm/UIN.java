@@ -12,7 +12,7 @@ public class UIN
   
   public UIN(long paramLong)
   {
-    this.h = ((int)(0xFFFFFFFF & paramLong));
+    this.h = ((int)(paramLong & 0xFFFFFFFF));
   }
   
   public static int valueOf(String paramString)
@@ -22,18 +22,26 @@ public class UIN
       int i = new UIN(Long.valueOf(paramString).longValue()).intValue();
       return i;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label20:
+      break label20;
+    }
     return 0;
   }
   
   public double doubleValue()
   {
-    return (this.h | 0L) + 0.0D;
+    double d = this.h | 0L;
+    Double.isNaN(d);
+    return d + 0.0D;
   }
   
   public float floatValue()
   {
-    return (float)((this.h | 0L) + 0.0D);
+    double d = this.h | 0L;
+    Double.isNaN(d);
+    return (float)(d + 0.0D);
   }
   
   public int intValue()

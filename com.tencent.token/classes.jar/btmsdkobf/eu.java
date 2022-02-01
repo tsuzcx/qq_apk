@@ -27,9 +27,7 @@ public abstract interface eu
     
     public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
     {
-      switch (paramInt1)
-      {
-      default: 
+      if (paramInt1 != 1598968902) {
         return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
       }
       paramParcel2.writeString("com.heytap.openid.IOpenID");

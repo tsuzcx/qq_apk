@@ -32,19 +32,21 @@ class ActionBarDrawerToggleHoneycomb
     if (paramSetIndicatorInfo == null) {
       localSetIndicatorInfo = new SetIndicatorInfo(paramActivity);
     }
-    if (localSetIndicatorInfo.setHomeAsUpIndicator != null) {}
-    try
-    {
-      paramSetIndicatorInfo = paramActivity.getActionBar();
-      localSetIndicatorInfo.setHomeActionContentDescription.invoke(paramSetIndicatorInfo, new Object[] { Integer.valueOf(paramInt) });
-      if (Build.VERSION.SDK_INT <= 19) {
-        paramSetIndicatorInfo.setSubtitle(paramSetIndicatorInfo.getSubtitle());
+    if (localSetIndicatorInfo.setHomeAsUpIndicator != null) {
+      try
+      {
+        paramSetIndicatorInfo = paramActivity.getActionBar();
+        localSetIndicatorInfo.setHomeActionContentDescription.invoke(paramSetIndicatorInfo, new Object[] { Integer.valueOf(paramInt) });
+        if (Build.VERSION.SDK_INT <= 19)
+        {
+          paramSetIndicatorInfo.setSubtitle(paramSetIndicatorInfo.getSubtitle());
+          return localSetIndicatorInfo;
+        }
       }
-      return localSetIndicatorInfo;
-    }
-    catch (Exception paramSetIndicatorInfo)
-    {
-      Log.w("ActionBarDrawerToggleHC", "Couldn't set content description via JB-MR2 API", paramSetIndicatorInfo);
+      catch (Exception paramSetIndicatorInfo)
+      {
+        Log.w("ActionBarDrawerToggleHC", "Couldn't set content description via JB-MR2 API", paramSetIndicatorInfo);
+      }
     }
     return localSetIndicatorInfo;
   }
@@ -83,38 +85,33 @@ class ActionBarDrawerToggleHoneycomb
     
     SetIndicatorInfo(Activity paramActivity)
     {
-      for (;;)
+      try
       {
+        this.setHomeAsUpIndicator = ActionBar.class.getDeclaredMethod("setHomeAsUpIndicator", new Class[] { Drawable.class });
+        this.setHomeActionContentDescription = ActionBar.class.getDeclaredMethod("setHomeActionContentDescription", new Class[] { Integer.TYPE });
+        return;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        label46:
         Object localObject;
-        try
-        {
-          this.setHomeAsUpIndicator = ActionBar.class.getDeclaredMethod("setHomeAsUpIndicator", new Class[] { Drawable.class });
-          this.setHomeActionContentDescription = ActionBar.class.getDeclaredMethod("setHomeActionContentDescription", new Class[] { Integer.TYPE });
-          return;
-        }
-        catch (NoSuchMethodException localNoSuchMethodException)
-        {
-          paramActivity = paramActivity.findViewById(16908332);
-          if (paramActivity == null) {
-            continue;
-          }
-          localObject = (ViewGroup)paramActivity.getParent();
-          if (((ViewGroup)localObject).getChildCount() != 2) {
-            continue;
-          }
-          paramActivity = ((ViewGroup)localObject).getChildAt(0);
-          localObject = ((ViewGroup)localObject).getChildAt(1);
-          if (paramActivity.getId() != 16908332) {
-            break label113;
-          }
-        }
+        break label46;
+      }
+      paramActivity = paramActivity.findViewById(16908332);
+      if (paramActivity == null) {
+        return;
+      }
+      localObject = (ViewGroup)paramActivity.getParent();
+      if (((ViewGroup)localObject).getChildCount() != 2) {
+        return;
+      }
+      paramActivity = ((ViewGroup)localObject).getChildAt(0);
+      localObject = ((ViewGroup)localObject).getChildAt(1);
+      if (paramActivity.getId() == 16908332) {
         paramActivity = (Activity)localObject;
-        label113:
-        while ((paramActivity instanceof ImageView))
-        {
-          this.upIndicatorView = ((ImageView)paramActivity);
-          return;
-        }
+      }
+      if ((paramActivity instanceof ImageView)) {
+        this.upIndicatorView = ((ImageView)paramActivity);
       }
     }
   }

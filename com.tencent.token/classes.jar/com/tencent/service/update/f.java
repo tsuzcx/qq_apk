@@ -30,12 +30,13 @@ import com.tmsdk.base.conch.ConchServiceProxy;
 import com.tmsdk.base.utils.NetworkUtil;
 import com.tmsdk.base.utils.PhoneInfoFetcher;
 import com.tmsdk.base.utils.PhoneInfoFetcher.SizeInfo;
+import java.io.Serializable;
 import java.util.Calendar;
 import tmsdk.QQPIM.ConnectType;
 
 public class f
 {
-  private static f a = null;
+  private static f a;
   private boolean b;
   private boolean c;
   private b d = new b("com.tencent.token");
@@ -74,15 +75,22 @@ public class f
   private void a(SoftUpdateInfo paramSoftUpdateInfo, Bundle paramBundle)
   {
     int j = paramBundle.getInt("ask_type");
-    Log.e("UpdateManager", "askType:" + j);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("askType:");
+    localStringBuilder.append(j);
+    Log.e("UpdateManager", localStringBuilder.toString());
     a(paramBundle.getLong("taskId"), paramBundle.getLong("task_seqno"), paramBundle.getInt("cmd_id"), paramBundle.getInt("conch_seqno"));
-    a(paramSoftUpdateInfo, 1000L * paramBundle.getLong("valid_End_Time"), paramBundle.getInt("message_type"), paramBundle.getString("message_title"));
-    if (!g()) {}
-    do
-    {
+    a(paramSoftUpdateInfo, paramBundle.getLong("valid_End_Time") * 1000L, paramBundle.getInt("message_type"), paramBundle.getString("message_title"));
+    if (!g()) {
       return;
-      a(1, 1);
-    } while ((this.b) || (e(true)));
+    }
+    a(1, 1);
+    if (this.b) {
+      return;
+    }
+    if (e(true)) {
+      return;
+    }
     n();
   }
   
@@ -94,43 +102,78 @@ public class f
       Log.e("UpdateManager", "APK静默下载配置参数为空");
       return -1;
     }
-    Log.e("UpdateManager", "APK静默下载配置参数=" + (String)localObject1);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("APK静默下载配置参数=");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    Log.e("UpdateManager", ((StringBuilder)localObject2).toString());
     localObject1 = ((String)localObject1).split(";");
-    if ((localObject1 == null) || (localObject1.length <= 1)) {
-      return -1;
-    }
-    int j = 1;
-    while (j < localObject1.length)
+    if (localObject1 != null)
     {
-      Object localObject2 = localObject1[j];
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      if (localObject1.length <= 1) {
         return -1;
       }
-      localObject2 = ((String)localObject2).split(",");
-      if ((localObject2 == null) || (localObject2.length != 3)) {
-        return -1;
+      int j = 1;
+      while (j < localObject1.length)
+      {
+        localObject2 = localObject1[j];
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          return -1;
+        }
+        localObject2 = ((String)localObject2).split(",");
+        if (localObject2 != null)
+        {
+          if (localObject2.length != 3) {
+            return -1;
+          }
+          int k = Integer.valueOf(localObject2[0]).intValue();
+          int m = Integer.valueOf(localObject2[1]).intValue();
+          int n = Integer.valueOf(localObject2[2]).intValue();
+          if (k >= 0)
+          {
+            if (k > 23) {
+              return -1;
+            }
+            if (m >= 1)
+            {
+              if (m > 24) {
+                return -1;
+              }
+              if (m <= k) {
+                return -1;
+              }
+              if (n >= 0)
+              {
+                if (n > 100) {
+                  return -1;
+                }
+                if ((paramInt >= k) && (paramInt < m)) {
+                  return n;
+                }
+                j += 1;
+              }
+              else
+              {
+                return -1;
+              }
+            }
+            else
+            {
+              return -1;
+            }
+          }
+          else
+          {
+            return -1;
+          }
+        }
+        else
+        {
+          return -1;
+        }
       }
-      int k = Integer.valueOf(localObject2[0]).intValue();
-      int m = Integer.valueOf(localObject2[1]).intValue();
-      int n = Integer.valueOf(localObject2[2]).intValue();
-      if ((k < 0) || (k > 23)) {
-        return -1;
-      }
-      if ((m < 1) || (m > 24)) {
-        return -1;
-      }
-      if (m <= k) {
-        return -1;
-      }
-      if ((n < 0) || (n > 100)) {
-        return -1;
-      }
-      if ((paramInt >= k) && (paramInt < m)) {
-        return n;
-      }
-      j += 1;
+      return 0;
     }
-    return 0;
+    return -1;
   }
   
   private boolean e(boolean paramBoolean)
@@ -163,19 +206,17 @@ public class f
       return false;
     }
     ConnectType localConnectType = NetworkUtil.getNetworkType();
-    if (paramBoolean)
-    {
-      if (localConnectType != ConnectType.CT_WIFI) {
-        break label154;
+    if (paramBoolean) {
+      if (localConnectType == ConnectType.CT_WIFI) {
+        Log.i("UpdateManager", "canUpdateSilently onReceiveUpdateCloud wifi");
+      } else {
+        Log.i("UpdateManager", "canUpdateSilently onReceiveUpdateCloud no wifi");
       }
-      Log.i("UpdateManager", "canUpdateSilently onReceiveUpdateCloud wifi");
     }
-    while ((this.h.m()) && (localConnectType == ConnectType.CT_WIFI) && (u()))
+    if ((this.h.m()) && (localConnectType == ConnectType.CT_WIFI) && (u()))
     {
       Log.i("UpdateManager", "canUpdateSilently true");
       return true;
-      label154:
-      Log.i("UpdateManager", "canUpdateSilently onReceiveUpdateCloud no wifi");
     }
     Log.i("UpdateManager", "canUpdateSilently false");
     a(false);
@@ -191,56 +232,58 @@ public class f
   
   private boolean q()
   {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(System.currentTimeMillis());
-    int m = localCalendar.get(11);
-    Log.d("UpdateManager", "现在时间的小时数是：" + m);
+    Object localObject = Calendar.getInstance();
+    ((Calendar)localObject).setTimeInMillis(System.currentTimeMillis());
+    int m = ((Calendar)localObject).get(11);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("现在时间的小时数是：");
+    ((StringBuilder)localObject).append(m);
+    Log.d("UpdateManager", ((StringBuilder)localObject).toString());
+    int j;
     try
     {
       j = b(m);
-      k = j;
-      if (j == -1)
-      {
-        if ((m >= 19) && (m < 23)) {
-          k = 100;
-        }
-      }
-      else
-      {
-        if (k != 0) {
-          break label129;
-        }
-        Log.d("UpdateManager", "配置文件中已设置为不过滤，本次可以下载APK");
-        return true;
-      }
     }
     catch (Exception localException)
     {
-      int k;
-      for (;;)
-      {
-        localException.printStackTrace();
-        Log.e("UpdateManager", "APK静默下载配置文件解析异常，将使用本地默认控制");
-        int j = -1;
-        continue;
+      localException.printStackTrace();
+      Log.e("UpdateManager", "APK静默下载配置文件解析异常，将使用本地默认控制");
+      j = -1;
+    }
+    int k = j;
+    if (j == -1) {
+      if ((m >= 19) && (m < 23)) {
+        k = 100;
+      } else {
         k = 0;
       }
-      label129:
-      if (k == 100)
-      {
-        Log.d("UpdateManager", "配置文件中已设置为全部过滤，本次不可以下载任何APK");
-        return false;
-      }
-      double d1 = k / 100.0D;
-      double d2 = Math.random();
-      Log.d("UpdateManager", "配置文件中设置的过滤比例=" + d1 + ",生成的随机数=" + d2);
-      if (d2 < d1)
-      {
-        Log.d("UpdateManager", "随机数小于过滤比例，本次不能下载APK");
-        return false;
-      }
-      Log.d("UpdateManager", "随机数大于等于过滤比例，本次可以下载APK");
     }
+    if (k == 0)
+    {
+      Log.d("UpdateManager", "配置文件中已设置为不过滤，本次可以下载APK");
+      return true;
+    }
+    if (k == 100)
+    {
+      Log.d("UpdateManager", "配置文件中已设置为全部过滤，本次不可以下载任何APK");
+      return false;
+    }
+    double d1 = k;
+    Double.isNaN(d1);
+    d1 /= 100.0D;
+    double d2 = Math.random();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("配置文件中设置的过滤比例=");
+    localStringBuilder.append(d1);
+    localStringBuilder.append(",生成的随机数=");
+    localStringBuilder.append(d2);
+    Log.d("UpdateManager", localStringBuilder.toString());
+    if (d2 < d1)
+    {
+      Log.d("UpdateManager", "随机数小于过滤比例，本次不能下载APK");
+      return false;
+    }
+    Log.d("UpdateManager", "随机数大于等于过滤比例，本次可以下载APK");
     return true;
   }
   
@@ -273,39 +316,51 @@ public class f
   {
     PhoneInfoFetcher.SizeInfo localSizeInfo = new PhoneInfoFetcher.SizeInfo();
     PhoneInfoFetcher.getStorageCardSize(localSizeInfo);
-    Log.i("UpdateManager", "hasEnoughStorage info.availdSize :" + localSizeInfo.availdSize + " info.percent:" + localSizeInfo.percent());
-    if ((localSizeInfo.availdSize >= 524288000L) || (localSizeInfo.percent() < 90L))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hasEnoughStorage info.availdSize :");
+    localStringBuilder.append(localSizeInfo.availdSize);
+    localStringBuilder.append(" info.percent:");
+    localStringBuilder.append(localSizeInfo.percent());
+    Log.i("UpdateManager", localStringBuilder.toString());
+    if ((localSizeInfo.availdSize < 524288000L) && (localSizeInfo.percent() >= 90L))
     {
-      Log.i("UpdateManager", "hasEnoughStorage true");
-      return true;
+      Log.i("UpdateManager", "hasEnoughStorage false");
+      return false;
     }
-    Log.i("UpdateManager", "hasEnoughStorage false");
-    return false;
+    Log.i("UpdateManager", "hasEnoughStorage true");
+    return true;
   }
   
   private boolean v()
   {
     boolean bool = this.h.s();
     long l = this.h.v();
-    if ((!bool) || (System.currentTimeMillis() < l)) {}
-    while ((!g()) || (!i.a())) {
+    if (bool)
+    {
+      if (System.currentTimeMillis() < l) {
+        return false;
+      }
+      if ((g()) && (i.a()))
+      {
+        a().a(new d()
+        {
+          public void a()
+          {
+            f.this.d(false);
+          }
+          
+          public void b()
+          {
+            f.a().d();
+          }
+          
+          public void c() {}
+        });
+        return true;
+      }
       return false;
     }
-    a().a(new d()
-    {
-      public void a()
-      {
-        f.this.d(false);
-      }
-      
-      public void b()
-      {
-        f.a().d();
-      }
-      
-      public void c() {}
-    });
-    return true;
+    return false;
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -327,22 +382,22 @@ public class f
   {
     Log.i("UpdateManager", "handleSoftUpdate");
     SoftUpdateInfo localSoftUpdateInfo = (SoftUpdateInfo)paramBundle.getSerializable("update_info");
-    if (localSoftUpdateInfo == null) {
-      Log.i("UpdateManager", "handleSoftUpdate null");
-    }
-    do
+    if (localSoftUpdateInfo == null)
     {
+      Log.i("UpdateManager", "handleSoftUpdate null");
       return;
-      if (paramBundle.getLong("taskId") > this.h.k()) {
-        d();
-      }
-      if (!g()) {
-        break;
-      }
+    }
+    if (paramBundle.getLong("taskId") > this.h.k()) {
+      d();
+    }
+    if (g())
+    {
       Log.i("UpdateManager", "handleSoftUpdate hasUpdateInfo return");
-    } while (!this.b);
-    o();
-    return;
+      if (this.b) {
+        o();
+      }
+      return;
+    }
     a(localSoftUpdateInfo, paramBundle);
   }
   
@@ -350,7 +405,10 @@ public class f
   {
     CSDCheckData localCSDCheckData = new CSDCheckData();
     localCSDCheckData.taskNo = this.h.k();
-    Log.i("UpdateManager", "DoubleCheck TaskNo : " + this.h.k());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DoubleCheck TaskNo : ");
+    localStringBuilder.append(this.h.k());
+    Log.i("UpdateManager", localStringBuilder.toString());
     if (this.h.k() == 0L)
     {
       paramd.b();
@@ -362,13 +420,26 @@ public class f
       {
         if (paramAnonymousInt3 == 0)
         {
-          Log.i("UpdateManager", "DoubleCheck : " + paramAnonymousInt1 + "|" + paramAnonymousInt2 + "|" + paramAnonymousInt3 + "|" + paramAnonymousInt4);
-          if (paramAnonymousInt2 == 13150)
-          {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("DoubleCheck : ");
+          localStringBuilder.append(paramAnonymousInt1);
+          localStringBuilder.append("|");
+          localStringBuilder.append(paramAnonymousInt2);
+          localStringBuilder.append("|");
+          localStringBuilder.append(paramAnonymousInt3);
+          localStringBuilder.append("|");
+          localStringBuilder.append(paramAnonymousInt4);
+          Log.i("UpdateManager", localStringBuilder.toString());
+          if (paramAnonymousInt2 == 13150) {
             try
             {
               paramAnonymousJceStruct = (SCDCheckRes)paramAnonymousJceStruct;
-              Log.i("UpdateManager", "DoubleCheck : " + paramAnonymousJceStruct.retCode + "|" + paramAnonymousJceStruct.res);
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("DoubleCheck : ");
+              localStringBuilder.append(paramAnonymousJceStruct.retCode);
+              localStringBuilder.append("|");
+              localStringBuilder.append(paramAnonymousJceStruct.res);
+              Log.i("UpdateManager", localStringBuilder.toString());
               if (paramAnonymousJceStruct.retCode == 0)
               {
                 if (paramAnonymousJceStruct.res == 0)
@@ -382,6 +453,8 @@ public class f
                 paramd.a();
                 return;
               }
+              paramd.c();
+              return;
             }
             catch (Exception paramAnonymousJceStruct)
             {
@@ -389,10 +462,7 @@ public class f
               paramAnonymousJceStruct.printStackTrace();
               return;
             }
-            paramd.c();
-          }
-          else
-          {
+          } else {
             paramd.c();
           }
         }
@@ -406,75 +476,82 @@ public class f
   
   public void a(boolean paramBoolean)
   {
-    if (this.c) {}
-    while ((this.h.s()) || (this.h.t()) || (((!paramBoolean) || (!i())) && (paramBoolean))) {
+    if (this.c) {
       return;
     }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-    localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
-    localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
-    RqdApplication.l().registerReceiver(this.i, localIntentFilter);
-    this.c = true;
+    if (!this.h.s())
+    {
+      if (this.h.t()) {
+        return;
+      }
+      if (((paramBoolean) && (i())) || (!paramBoolean))
+      {
+        IntentFilter localIntentFilter = new IntentFilter();
+        localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
+        localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
+        RqdApplication.l().registerReceiver(this.i, localIntentFilter);
+        this.c = true;
+      }
+      return;
+    }
   }
   
   public boolean a(int paramInt)
   {
-    if (paramInt <= 0) {
-      Log.i("UpdateManager", "hasUpdateInfo buildNumber <= 0");
-    }
-    for (;;)
+    if (paramInt <= 0)
     {
+      Log.i("UpdateManager", "hasUpdateInfo buildNumber <= 0");
       return false;
-      Log.i("UpdateManager", "isBuildVesionNew");
-      int j = j.a;
-      try
+    }
+    Log.i("UpdateManager", "isBuildVesionNew");
+    int j = j.a;
+    try
+    {
+      if (Integer.valueOf(String.valueOf(j)).intValue() < paramInt)
       {
-        if (Integer.valueOf(String.valueOf(j)).intValue() < paramInt)
-        {
-          Log.i("UpdateManager", "isBuildVesionNew curBuild < buildNumber");
-          return true;
-        }
+        Log.i("UpdateManager", "isBuildVesionNew curBuild < buildNumber");
+        return true;
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
     return false;
   }
   
   public a.a b(boolean paramBoolean)
   {
-    Object localObject2 = null;
-    String str = this.h.d() + "." + this.h.e() + "." + this.h.f();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.h.d());
+    ((StringBuilder)localObject).append(".");
+    ((StringBuilder)localObject).append(this.h.e());
+    ((StringBuilder)localObject).append(".");
+    ((StringBuilder)localObject).append(this.h.f());
+    String str = ((StringBuilder)localObject).toString();
     int j = -this.h.g();
-    Object localObject1;
     if (paramBoolean) {
-      localObject1 = this.h.r();
+      localObject = this.h.r();
+    } else if (f()) {
+      localObject = this.h.j();
+    } else {
+      localObject = null;
     }
-    for (;;)
-    {
-      if (localObject1 == null) {
-        localObject1 = localObject2;
-      }
-      do
-      {
-        return localObject1;
-        if (!f()) {
-          break label175;
-        }
-        localObject1 = this.h.j();
-        break;
-        localObject2 = "com.tencent.token_" + j + "_" + str;
-        localObject2 = this.d.a((String)localObject1, (String)localObject2);
-        localObject1 = localObject2;
-      } while (!a.a().a((a.a)localObject2));
-      ((a.a)localObject2).f = DownloaderTaskStatus.COMPLETE;
-      return localObject2;
-      label175:
-      localObject1 = null;
+    if (localObject == null) {
+      return null;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("com.tencent.token_");
+    localStringBuilder.append(j);
+    localStringBuilder.append("_");
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
+    localObject = this.d.a((String)localObject, str);
+    if (a.a().a((a.a)localObject)) {
+      ((a.a)localObject).f = DownloaderTaskStatus.COMPLETE;
+    }
+    return localObject;
   }
   
   public void b()
@@ -486,32 +563,35 @@ public class f
       public void onRecvPush(ConchService.ConchPushInfo paramAnonymousConchPushInfo)
       {
         Log.i("UpdateManager", "onRecvPush");
-        if ((paramAnonymousConchPushInfo == null) || (paramAnonymousConchPushInfo.mConch == null))
+        if ((paramAnonymousConchPushInfo != null) && (paramAnonymousConchPushInfo.mConch != null))
         {
-          Log.i("UpdateManager", "onRecvPush (conchPushInfo == null) || (conchPushInfo.mConch == null)");
-          new Bundle().putInt("soft_update_ret", this.mErrorCode);
-          return;
-        }
-        Log.i("UpdateManager", "onRecvPush info : " + paramAnonymousConchPushInfo.mTaskId + "|" + paramAnonymousConchPushInfo.mTaskSeqno + "|" + paramAnonymousConchPushInfo.mConch.cmdId + "|" + ConchPushInfoUtil.getConchSeqno(paramAnonymousConchPushInfo.mConch));
-        switch (paramAnonymousConchPushInfo.mConch.cmdId)
-        {
-        default: 
-          return;
-        }
-        Log.i("UpdateManager", "onRecvPush softUpdate");
-        TMSDKContext.saveActionData(1150105);
-        if (this.mErrorCode == 0)
-        {
-          SoftUpdateInfo localSoftUpdateInfo = (SoftUpdateInfo)JceStructUtil.getJceStruct(ConchPushInfoUtil.getConchParams(paramAnonymousConchPushInfo.mConch), new SoftUpdateInfo(), false);
-          if (localSoftUpdateInfo != null) {
-            localConchServiceProxy.reportConchResult(paramAnonymousConchPushInfo, 10, 1);
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onRecvPush info : ");
+          ((StringBuilder)localObject).append(paramAnonymousConchPushInfo.mTaskId);
+          ((StringBuilder)localObject).append("|");
+          ((StringBuilder)localObject).append(paramAnonymousConchPushInfo.mTaskSeqno);
+          ((StringBuilder)localObject).append("|");
+          ((StringBuilder)localObject).append(paramAnonymousConchPushInfo.mConch.cmdId);
+          ((StringBuilder)localObject).append("|");
+          ((StringBuilder)localObject).append(ConchPushInfoUtil.getConchSeqno(paramAnonymousConchPushInfo.mConch));
+          Log.i("UpdateManager", ((StringBuilder)localObject).toString());
+          if (paramAnonymousConchPushInfo.mConch.cmdId != 200) {
+            return;
           }
-          for (;;)
+          Log.i("UpdateManager", "onRecvPush softUpdate");
+          TMSDKContext.saveActionData(1150105);
+          if (this.mErrorCode == 0)
           {
+            localObject = (SoftUpdateInfo)JceStructUtil.getJceStruct(ConchPushInfoUtil.getConchParams(paramAnonymousConchPushInfo.mConch), new SoftUpdateInfo(), false);
+            if (localObject != null) {
+              localConchServiceProxy.reportConchResult(paramAnonymousConchPushInfo, 10, 1);
+            } else {
+              localConchServiceProxy.reportConchResult(paramAnonymousConchPushInfo, 10, 2);
+            }
             Bundle localBundle = new Bundle();
             localBundle.putLong("valid_End_Time", ConchPushInfoUtil.getConchTime(paramAnonymousConchPushInfo.mConch).validEndTime);
             localBundle.putInt("ask_type", ConchPushInfoUtil.getConchTips(paramAnonymousConchPushInfo.mConch).bq);
-            localBundle.putSerializable("update_info", localSoftUpdateInfo);
+            localBundle.putSerializable("update_info", (Serializable)localObject);
             localBundle.putInt("message_type", ConchPushInfoUtil.getConchTips(paramAnonymousConchPushInfo.mConch).type);
             localBundle.putString("message_title", ConchPushInfoUtil.getConchTips(paramAnonymousConchPushInfo.mConch).title);
             localBundle.putLong("taskId", paramAnonymousConchPushInfo.mTaskId);
@@ -520,19 +600,21 @@ public class f
             localBundle.putInt("conch_seqno", ConchPushInfoUtil.getConchSeqno(paramAnonymousConchPushInfo.mConch));
             f.a().a(localBundle);
             return;
-            localConchServiceProxy.reportConchResult(paramAnonymousConchPushInfo, 10, 2);
           }
-        }
-        if (this.mErrorCode == -2)
-        {
+          if (this.mErrorCode == -2)
+          {
+            paramAnonymousConchPushInfo = new Bundle();
+            paramAnonymousConchPushInfo.putInt("soft_update_ret", 0);
+            f.a().b(paramAnonymousConchPushInfo);
+            return;
+          }
           paramAnonymousConchPushInfo = new Bundle();
-          paramAnonymousConchPushInfo.putInt("soft_update_ret", 0);
+          paramAnonymousConchPushInfo.putInt("soft_update_ret", this.mErrorCode);
           f.a().b(paramAnonymousConchPushInfo);
           return;
         }
-        paramAnonymousConchPushInfo = new Bundle();
-        paramAnonymousConchPushInfo.putInt("soft_update_ret", this.mErrorCode);
-        f.a().b(paramAnonymousConchPushInfo);
+        Log.i("UpdateManager", "onRecvPush (conchPushInfo == null) || (conchPushInfo.mConch == null)");
+        new Bundle().putInt("soft_update_ret", this.mErrorCode);
       }
     });
     localConchServiceProxy.pullConch(200);
@@ -549,20 +631,21 @@ public class f
   {
     Log.i("UpdateManager", "showUpdateDialog");
     final a.a locala = a().m();
-    if (locala == null) {}
-    while (this.g == null) {
+    if (locala == null) {
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new Runnable()
-    {
-      public void run()
+    if (this.g != null) {
+      new Handler(Looper.getMainLooper()).post(new Runnable()
       {
-        new UpdateDownloadDialog(f.a(f.this), 2131362182, locala).show();
-        f.this.a(4, 1);
-        f.b(f.this).e(System.currentTimeMillis() + f.b(f.this).u());
-        TMSDKContext.saveActionData(1150106);
-      }
-    });
+        public void run()
+        {
+          new UpdateDownloadDialog(f.a(f.this), 2131558791, locala).show();
+          f.this.a(4, 1);
+          f.b(f.this).e(System.currentTimeMillis() + f.b(f.this).u());
+          TMSDKContext.saveActionData(1150106);
+        }
+      });
+    }
   }
   
   public void d()
@@ -598,7 +681,7 @@ public class f
       {
         if (f.a(f.this) != null)
         {
-          new UpdateDownloadDialog(f.a(f.this), 2131362182, locala).show();
+          new UpdateDownloadDialog(f.a(f.this), 2131558791, locala).show();
           f.this.a(4, 1);
           f.b(f.this).e(System.currentTimeMillis() + f.b(f.this).u());
         }
@@ -633,17 +716,16 @@ public class f
       if (l > 0L) {
         d();
       }
-    }
-    do
-    {
       return false;
-      if (a(this.h.g())) {
-        break;
-      }
+    }
+    if (!a(this.h.g()))
+    {
       Log.i("UpdateManager", "hasUpdateInfo build < now");
-    } while (this.h.g() <= 0);
-    d();
-    return false;
+      if (this.h.g() > 0) {
+        d();
+      }
+      return false;
+    }
     return true;
   }
   
@@ -670,11 +752,12 @@ public class f
   public void j()
   {
     Log.i("UpdateManager", "change to wifi!");
-    if (t()) {}
-    while (!r()) {
+    if (t()) {
       return;
     }
-    l();
+    if (r()) {
+      l();
+    }
   }
   
   public boolean k()
@@ -731,13 +814,17 @@ public class f
   
   public a.a m()
   {
-    a.a locala = null;
-    synchronized (this.f)
+    for (;;)
     {
-      if (this.d != null) {
-        locala = this.d.a();
+      synchronized (this.f)
+      {
+        if (this.d != null)
+        {
+          a.a locala = this.d.a();
+          return locala;
+        }
       }
-      return locala;
+      Object localObject2 = null;
     }
   }
   
@@ -748,9 +835,7 @@ public class f
     {
       public void a()
       {
-        switch (f.b(f.this).o())
-        {
-        default: 
+        if (f.b(f.this).o() != 6) {
           return;
         }
         f.this.c(false);

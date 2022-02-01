@@ -26,71 +26,86 @@ public abstract class SQLiteProgram
     switch (i)
     {
     default: 
+      bool = true;
       if (i != 1) {
         break;
       }
+      break;
+    case 4: 
+    case 5: 
+    case 6: 
+      this.mReadOnly = false;
+      this.mColumnNames = EMPTY_STRING_ARRAY;
+      this.mNumParameters = 0;
+      break;
     }
-    for (;;)
+    boolean bool = false;
+    paramString = new SQLiteStatementInfo();
+    paramSQLiteDatabase.getThreadSession().prepare(this.mSql, paramSQLiteDatabase.getThreadDefaultConnectionFlags(bool), paramCancellationSignal, paramString);
+    this.mReadOnly = paramString.readOnly;
+    this.mColumnNames = paramString.columnNames;
+    this.mNumParameters = paramString.numParameters;
+    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > this.mNumParameters))
     {
-      paramString = new SQLiteStatementInfo();
-      paramSQLiteDatabase.getThreadSession().prepare(this.mSql, paramSQLiteDatabase.getThreadDefaultConnectionFlags(bool), paramCancellationSignal, paramString);
-      this.mReadOnly = paramString.readOnly;
-      this.mColumnNames = paramString.columnNames;
-      for (this.mNumParameters = paramString.numParameters; (paramArrayOfObject != null) && (paramArrayOfObject.length > this.mNumParameters); this.mNumParameters = 0)
-      {
-        throw new IllegalArgumentException("Too many bind arguments.  " + paramArrayOfObject.length + " arguments were provided but the statement needs " + this.mNumParameters + " arguments.");
-        this.mReadOnly = false;
-        this.mColumnNames = EMPTY_STRING_ARRAY;
-      }
-      bool = false;
+      paramSQLiteDatabase = new StringBuilder();
+      paramSQLiteDatabase.append("Too many bind arguments.  ");
+      paramSQLiteDatabase.append(paramArrayOfObject.length);
+      paramSQLiteDatabase.append(" arguments were provided but the statement needs ");
+      paramSQLiteDatabase.append(this.mNumParameters);
+      paramSQLiteDatabase.append(" arguments.");
+      throw new IllegalArgumentException(paramSQLiteDatabase.toString());
     }
-    if (this.mNumParameters != 0)
+    i = this.mNumParameters;
+    if (i != 0)
     {
-      this.mBindArgs = new Object[this.mNumParameters];
+      this.mBindArgs = new Object[i];
       if (paramArrayOfObject != null) {
         System.arraycopy(paramArrayOfObject, 0, this.mBindArgs, 0, paramArrayOfObject.length);
       }
     }
-    for (;;)
+    else
     {
-      this.mPreparedStatement = null;
-      this.mBoundSession = null;
-      return;
       this.mBindArgs = null;
     }
+    this.mPreparedStatement = null;
+    this.mBoundSession = null;
   }
   
   private void bind(int paramInt, Object paramObject)
   {
-    if ((paramInt < 1) || (paramInt > this.mNumParameters)) {
-      throw new IllegalArgumentException("Cannot bind argument at index " + paramInt + " because the index is out of range.  The statement has " + this.mNumParameters + " parameters.");
+    if ((paramInt >= 1) && (paramInt <= this.mNumParameters))
+    {
+      this.mBindArgs[(paramInt - 1)] = paramObject;
+      return;
     }
-    this.mBindArgs[(paramInt - 1)] = paramObject;
+    paramObject = new StringBuilder();
+    paramObject.append("Cannot bind argument at index ");
+    paramObject.append(paramInt);
+    paramObject.append(" because the index is out of range.  The statement has ");
+    paramObject.append(this.mNumParameters);
+    paramObject.append(" parameters.");
+    throw new IllegalArgumentException(paramObject.toString());
   }
   
   protected boolean acquirePreparedStatement()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        SQLiteSession localSQLiteSession1 = this.mDatabase.getThreadSession();
-        SQLiteSession localSQLiteSession2 = this.mBoundSession;
-        if (localSQLiteSession1 == localSQLiteSession2)
-        {
-          bool = false;
-          return bool;
-        }
-        if (this.mBoundSession != null) {
-          throw new IllegalStateException("SQLiteProgram has bound to another thread.");
-        }
+      SQLiteSession localSQLiteSession1 = this.mDatabase.getThreadSession();
+      SQLiteSession localSQLiteSession2 = this.mBoundSession;
+      if (localSQLiteSession1 == localSQLiteSession2) {
+        return false;
       }
-      finally {}
-      this.mBoundSession = localObject;
-      this.mPreparedStatement = localObject.acquirePreparedStatement(this.mSql, this.mDatabase.getThreadDefaultConnectionFlags(this.mReadOnly));
-      this.mPreparedStatement.bindArguments(this.mBindArgs);
-      boolean bool = true;
+      if (this.mBoundSession == null)
+      {
+        this.mBoundSession = localSQLiteSession1;
+        this.mPreparedStatement = localSQLiteSession1.acquirePreparedStatement(this.mSql, this.mDatabase.getThreadDefaultConnectionFlags(this.mReadOnly));
+        this.mPreparedStatement.bindArguments(this.mBindArgs);
+        return true;
+      }
+      throw new IllegalStateException("SQLiteProgram has bound to another thread.");
     }
+    finally {}
   }
   
   public void bindAllArgsAsStrings(String[] paramArrayOfString)
@@ -108,10 +123,16 @@ public abstract class SQLiteProgram
   
   public void bindBlob(int paramInt, byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {
-      throw new IllegalArgumentException("the bind value at index " + paramInt + " is null");
+    if (paramArrayOfByte != null)
+    {
+      bind(paramInt, paramArrayOfByte);
+      return;
     }
-    bind(paramInt, paramArrayOfByte);
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("the bind value at index ");
+    paramArrayOfByte.append(paramInt);
+    paramArrayOfByte.append(" is null");
+    throw new IllegalArgumentException(paramArrayOfByte.toString());
   }
   
   public void bindDouble(int paramInt, double paramDouble)
@@ -131,56 +152,38 @@ public abstract class SQLiteProgram
   
   public void bindString(int paramInt, String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("the bind value at index " + paramInt + " is null");
+    if (paramString != null)
+    {
+      bind(paramInt, paramString);
+      return;
     }
-    bind(paramInt, paramString);
+    paramString = new StringBuilder();
+    paramString.append("the bind value at index ");
+    paramString.append(paramInt);
+    paramString.append(" is null");
+    throw new IllegalArgumentException(paramString.toString());
   }
   
   public void clearBindings()
   {
-    if (this.mBindArgs != null) {
-      Arrays.fill(this.mBindArgs, null);
+    Object[] arrayOfObject = this.mBindArgs;
+    if (arrayOfObject != null) {
+      Arrays.fill(arrayOfObject, null);
     }
   }
   
-  /* Error */
   protected void finalize()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 121	com/tencent/wcdb/database/SQLiteProgram:mBoundSession	Lcom/tencent/wcdb/database/SQLiteSession;
-    //   6: ifnonnull +10 -> 16
-    //   9: aload_0
-    //   10: getfield 119	com/tencent/wcdb/database/SQLiteProgram:mPreparedStatement	Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
-    //   13: ifnull +18 -> 31
-    //   16: new 186	com/tencent/wcdb/database/SQLiteMisuseException
-    //   19: dup
-    //   20: ldc 188
-    //   22: invokespecial 189	com/tencent/wcdb/database/SQLiteMisuseException:<init>	(Ljava/lang/String;)V
-    //   25: athrow
-    //   26: astore_1
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_1
-    //   30: athrow
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: aload_0
-    //   34: invokespecial 191	java/lang/Object:finalize	()V
-    //   37: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	38	0	this	SQLiteProgram
-    //   26	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	16	26	finally
-    //   16	26	26	finally
-    //   27	29	26	finally
-    //   31	33	26	finally
+    try
+    {
+      if ((this.mBoundSession == null) && (this.mPreparedStatement == null))
+      {
+        super.finalize();
+        return;
+      }
+      throw new SQLiteMisuseException("Acquired prepared statement is not released.");
+    }
+    finally {}
   }
   
   protected final Object[] getBindArgs()
@@ -233,29 +236,29 @@ public abstract class SQLiteProgram
   
   protected void releasePreparedStatement()
   {
-    for (;;)
+    try
     {
-      try
+      if (this.mBoundSession == null)
       {
-        if (this.mBoundSession == null)
-        {
-          SQLiteConnection.PreparedStatement localPreparedStatement = this.mPreparedStatement;
-          if (localPreparedStatement == null) {
-            return;
-          }
-        }
-        if ((this.mBoundSession == null) || (this.mPreparedStatement == null)) {
-          throw new IllegalStateException("Internal state error.");
+        SQLiteConnection.PreparedStatement localPreparedStatement = this.mPreparedStatement;
+        if (localPreparedStatement == null) {
+          return;
         }
       }
-      finally {}
-      if (this.mBoundSession != this.mDatabase.getThreadSession()) {
+      if ((this.mBoundSession != null) && (this.mPreparedStatement != null))
+      {
+        if (this.mBoundSession == this.mDatabase.getThreadSession())
+        {
+          this.mBoundSession.releasePreparedStatement(this.mPreparedStatement);
+          this.mPreparedStatement = null;
+          this.mBoundSession = null;
+          return;
+        }
         throw new IllegalStateException("SQLiteProgram has bound to another thread.");
       }
-      this.mBoundSession.releasePreparedStatement(this.mPreparedStatement);
-      this.mPreparedStatement = null;
-      this.mBoundSession = null;
+      throw new IllegalStateException("Internal state error.");
     }
+    finally {}
   }
 }
 

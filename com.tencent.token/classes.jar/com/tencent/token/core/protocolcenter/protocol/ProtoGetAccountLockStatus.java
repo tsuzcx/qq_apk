@@ -32,8 +32,8 @@ public class ProtoGetAccountLockStatus
   
   protected String a()
   {
-    Object localObject1 = null;
     String str = ca.a().b();
+    Object localObject1 = null;
     if (str == null)
     {
       this.a.b(104);
@@ -49,19 +49,31 @@ public class ProtoGetAccountLockStatus
       ((JSONObject)localObject2).put("seq_id", this.e);
       ((JSONObject)localObject2).put("op_time", cc.c().s() / 1000L);
       localObject2 = ((JSONObject)localObject2).toString();
-      g.a("plain:" + (String)localObject2);
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("plain:");
+      localStringBuilder2.append((String)localObject2);
+      g.a(localStringBuilder2.toString());
       localObject2 = l.b(((String)localObject2).getBytes());
       localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        g.c("JSONException:" + localJSONException.getMessage());
-      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("JSONException:");
+      localStringBuilder2.append(localJSONException.getMessage());
+      g.c(localStringBuilder2.toString());
     }
-    localObject1 = "?aq_base_sid=" + str + "&data=" + (String)localObject1;
-    return c.e() + "/cn/mbtoken3/mbtoken3_get_ac_lock_status_v2" + (String)localObject1;
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("?aq_base_sid=");
+    localStringBuilder1.append(str);
+    localStringBuilder1.append("&data=");
+    localStringBuilder1.append((String)localObject1);
+    localObject1 = localStringBuilder1.toString();
+    localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append(c.e());
+    localStringBuilder1.append("/cn/mbtoken3/mbtoken3_get_ac_lock_status_v2");
+    localStringBuilder1.append((String)localObject1);
+    return localStringBuilder1.toString();
   }
   
   protected void a(do paramdo)
@@ -85,19 +97,34 @@ public class ProtoGetAccountLockStatus
       if (i != this.e)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + cb.a().b());
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(cb.a().b());
+        g.c(paramJSONObject.toString());
         return;
       }
       long l = ((JSONObject)localObject).getLong("uin");
       if (l != this.d)
       {
-        this.a.a(10000, "uin not match=" + l + ":" + this.d);
+        paramJSONObject = this.a;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("uin not match=");
+        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(this.d);
+        paramJSONObject.a(10000, ((StringBuilder)localObject).toString());
         return;
       }
       localObject = ((JSONObject)localObject).getJSONArray("result");
       if (!this.f.a((JSONArray)localObject))
       {
-        this.a.a(10000, "update conf list failed:" + ((JSONArray)localObject).toString());
+        paramJSONObject = this.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("update conf list failed:");
+        localStringBuilder.append(((JSONArray)localObject).toString());
+        paramJSONObject.a(10000, localStringBuilder.toString());
         return;
       }
       this.f.b.a(new String(paramJSONObject.toString()));
@@ -106,8 +133,11 @@ public class ProtoGetAccountLockStatus
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + localObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("parseJSON error decodeData=");
+    paramJSONObject.append(localObject);
+    g.c(paramJSONObject.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
 }
 

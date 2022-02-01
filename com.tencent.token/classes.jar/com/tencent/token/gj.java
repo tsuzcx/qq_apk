@@ -1,8 +1,89 @@
 package com.tencent.token;
 
-public abstract interface gj
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
+
+@TargetApi(11)
+public class gj
+  extends ValueAnimator
 {
-  public abstract int a(String paramString, int paramInt);
+  private boolean a = false;
+  private float b = 0.0F;
+  private float c = 1.0F;
+  private long d;
+  
+  public gj()
+  {
+    setFloatValues(new float[] { 0.0F, 1.0F });
+    addListener(new AnimatorListenerAdapter()
+    {
+      public void onAnimationCancel(Animator paramAnonymousAnimator)
+      {
+        gj.a(gj.this);
+      }
+      
+      public void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        gj.a(gj.this);
+      }
+    });
+  }
+  
+  private void a()
+  {
+    a(this.b, this.c);
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.b = paramFloat;
+    a();
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    float f1 = Math.min(paramFloat1, paramFloat2);
+    paramFloat1 = Math.max(paramFloat1, paramFloat2);
+    if (this.a) {
+      paramFloat2 = paramFloat1;
+    } else {
+      paramFloat2 = f1;
+    }
+    float f2;
+    if (this.a) {
+      f2 = f1;
+    } else {
+      f2 = paramFloat1;
+    }
+    setFloatValues(new float[] { paramFloat2, f2 });
+    super.setDuration(((float)this.d * (paramFloat1 - f1)));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
+    a();
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.c = paramFloat;
+    a();
+  }
+  
+  public long getDuration()
+  {
+    return this.d;
+  }
+  
+  public ValueAnimator setDuration(long paramLong)
+  {
+    this.d = paramLong;
+    a();
+    return this;
+  }
 }
 
 

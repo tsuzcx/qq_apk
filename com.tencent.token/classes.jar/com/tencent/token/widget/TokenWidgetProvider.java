@@ -16,14 +16,17 @@ public class TokenWidgetProvider
   public void onDeleted(Context paramContext, int[] paramArrayOfInt)
   {
     paramArrayOfInt = AppWidgetManager.getInstance(paramContext).getAppWidgetIds(new ComponentName(paramContext, TokenWidgetProvider.class));
-    g.a("widget_big num=" + paramArrayOfInt.length);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("widget_big num=");
+    ((StringBuilder)localObject).append(paramArrayOfInt.length);
+    g.a(((StringBuilder)localObject).toString());
     bu.a().a(System.currentTimeMillis(), 13);
     bu.a().a(paramContext);
     if (paramArrayOfInt.length <= 0)
     {
       paramArrayOfInt = new Intent(paramContext, TokenService.class);
-      PendingIntent localPendingIntent = PendingIntent.getService(paramContext, 0, paramArrayOfInt, 0);
-      ((AlarmManager)paramContext.getSystemService("alarm")).cancel(localPendingIntent);
+      localObject = PendingIntent.getService(paramContext, 0, paramArrayOfInt, 0);
+      ((AlarmManager)paramContext.getSystemService("alarm")).cancel((PendingIntent)localObject);
       paramContext.stopService(paramArrayOfInt);
     }
   }

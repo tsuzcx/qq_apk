@@ -31,8 +31,8 @@ public class ProtoQueryMaliciousURL
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
@@ -40,9 +40,18 @@ public class ProtoQueryMaliciousURL
     int i = cb.a + 1;
     cb.a = i;
     this.c = i;
-    String str2 = l.a(new Object[] { "url", URLEncoder.encode(this.d), "seq_id", Integer.valueOf(this.c), "op_time", Long.valueOf(cc.c().s() / 1000L) });
-    str1 = "?aq_base_sid=" + str1 + "&data=" + str2;
-    return c.e() + "/cn/mbtoken3/mbtoken3_query_malicious_url_encrypt" + str1;
+    Object localObject = l.a(new Object[] { "url", URLEncoder.encode(this.d), "seq_id", Integer.valueOf(this.c), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_query_malicious_url_encrypt");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -62,12 +71,20 @@ public class ProtoQueryMaliciousURL
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      g.a("json" + paramJSONObject.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("json");
+      localStringBuilder.append(paramJSONObject.toString());
+      g.a(localStringBuilder.toString());
       i = paramJSONObject.getInt("seq_id");
       if (i != this.c)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.c);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.c);
+        g.c(paramJSONObject.toString());
         return;
       }
       this.e = paramJSONObject.getInt("malicious_id");
@@ -75,8 +92,11 @@ public class ProtoQueryMaliciousURL
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

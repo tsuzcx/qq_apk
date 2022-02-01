@@ -68,16 +68,17 @@ public class ToolbarWidgetWrapper
     this.mTitle = paramToolbar.getTitle();
     this.mSubtitle = paramToolbar.getSubtitle();
     boolean bool;
-    if (this.mTitle != null)
-    {
+    if (this.mTitle != null) {
       bool = true;
-      this.mTitleSet = bool;
-      this.mNavIcon = paramToolbar.getNavigationIcon();
-      paramToolbar = TintTypedArray.obtainStyledAttributes(paramToolbar.getContext(), null, R.styleable.ActionBar, R.attr.actionBarStyle, 0);
-      this.mDefaultNavigationIcon = paramToolbar.getDrawable(R.styleable.ActionBar_homeAsUpIndicator);
-      if (!paramBoolean) {
-        break label477;
-      }
+    } else {
+      bool = false;
+    }
+    this.mTitleSet = bool;
+    this.mNavIcon = paramToolbar.getNavigationIcon();
+    paramToolbar = TintTypedArray.obtainStyledAttributes(paramToolbar.getContext(), null, R.styleable.ActionBar, R.attr.actionBarStyle, 0);
+    this.mDefaultNavigationIcon = paramToolbar.getDrawable(R.styleable.ActionBar_homeAsUpIndicator);
+    if (paramBoolean)
+    {
       Object localObject = paramToolbar.getText(R.styleable.ActionBar_title);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         setTitle((CharSequence)localObject);
@@ -94,8 +95,12 @@ public class ToolbarWidgetWrapper
       if (localObject != null) {
         setIcon((Drawable)localObject);
       }
-      if ((this.mNavIcon == null) && (this.mDefaultNavigationIcon != null)) {
-        setNavigationIcon(this.mDefaultNavigationIcon);
+      if (this.mNavIcon == null)
+      {
+        localObject = this.mDefaultNavigationIcon;
+        if (localObject != null) {
+          setNavigationIcon((Drawable)localObject);
+        }
       }
       setDisplayOptions(paramToolbar.getInt(R.styleable.ActionBar_displayOptions, 0));
       paramInt2 = paramToolbar.getResourceId(R.styleable.ActionBar_customNavigationLayout, 0);
@@ -117,51 +122,50 @@ public class ToolbarWidgetWrapper
         this.mToolbar.setContentInsetsRelative(Math.max(paramInt2, 0), Math.max(i, 0));
       }
       paramInt2 = paramToolbar.getResourceId(R.styleable.ActionBar_titleTextStyle, 0);
-      if (paramInt2 != 0) {
-        this.mToolbar.setTitleTextAppearance(this.mToolbar.getContext(), paramInt2);
+      if (paramInt2 != 0)
+      {
+        localObject = this.mToolbar;
+        ((Toolbar)localObject).setTitleTextAppearance(((Toolbar)localObject).getContext(), paramInt2);
       }
       paramInt2 = paramToolbar.getResourceId(R.styleable.ActionBar_subtitleTextStyle, 0);
-      if (paramInt2 != 0) {
-        this.mToolbar.setSubtitleTextAppearance(this.mToolbar.getContext(), paramInt2);
+      if (paramInt2 != 0)
+      {
+        localObject = this.mToolbar;
+        ((Toolbar)localObject).setSubtitleTextAppearance(((Toolbar)localObject).getContext(), paramInt2);
       }
       paramInt2 = paramToolbar.getResourceId(R.styleable.ActionBar_popupTheme, 0);
       if (paramInt2 != 0) {
         this.mToolbar.setPopupTheme(paramInt2);
       }
     }
-    for (;;)
+    else
     {
-      paramToolbar.recycle();
-      setDefaultNavigationContentDescription(paramInt1);
-      this.mHomeDescription = this.mToolbar.getNavigationContentDescription();
-      this.mToolbar.setNavigationOnClickListener(new View.OnClickListener()
-      {
-        final ActionMenuItem mNavItem = new ActionMenuItem(ToolbarWidgetWrapper.this.mToolbar.getContext(), 0, 16908332, 0, 0, ToolbarWidgetWrapper.this.mTitle);
-        
-        public void onClick(View paramAnonymousView)
-        {
-          if ((ToolbarWidgetWrapper.this.mWindowCallback != null) && (ToolbarWidgetWrapper.this.mMenuPrepared)) {
-            ToolbarWidgetWrapper.this.mWindowCallback.onMenuItemSelected(0, this.mNavItem);
-          }
-        }
-      });
-      return;
-      bool = false;
-      break;
-      label477:
       this.mDisplayOpts = detectDisplayOptions();
     }
+    paramToolbar.recycle();
+    setDefaultNavigationContentDescription(paramInt1);
+    this.mHomeDescription = this.mToolbar.getNavigationContentDescription();
+    this.mToolbar.setNavigationOnClickListener(new View.OnClickListener()
+    {
+      final ActionMenuItem mNavItem = new ActionMenuItem(ToolbarWidgetWrapper.this.mToolbar.getContext(), 0, 16908332, 0, 0, ToolbarWidgetWrapper.this.mTitle);
+      
+      public void onClick(View paramAnonymousView)
+      {
+        if ((ToolbarWidgetWrapper.this.mWindowCallback != null) && (ToolbarWidgetWrapper.this.mMenuPrepared)) {
+          ToolbarWidgetWrapper.this.mWindowCallback.onMenuItemSelected(0, this.mNavItem);
+        }
+      }
+    });
   }
   
   private int detectDisplayOptions()
   {
-    int i = 11;
     if (this.mToolbar.getNavigationIcon() != null)
     {
-      i = 15;
       this.mDefaultNavigationIcon = this.mToolbar.getNavigationIcon();
+      return 15;
     }
-    return i;
+    return 11;
   }
   
   private void ensureSpinner()
@@ -186,14 +190,13 @@ public class ToolbarWidgetWrapper
   {
     if ((this.mDisplayOpts & 0x4) != 0)
     {
-      if (TextUtils.isEmpty(this.mHomeDescription)) {
+      if (TextUtils.isEmpty(this.mHomeDescription))
+      {
         this.mToolbar.setNavigationContentDescription(this.mDefaultNavigationContentDescription);
+        return;
       }
+      this.mToolbar.setNavigationContentDescription(this.mHomeDescription);
     }
-    else {
-      return;
-    }
-    this.mToolbar.setNavigationContentDescription(this.mHomeDescription);
   }
   
   private void updateNavigationIcon()
@@ -201,39 +204,38 @@ public class ToolbarWidgetWrapper
     if ((this.mDisplayOpts & 0x4) != 0)
     {
       Toolbar localToolbar = this.mToolbar;
-      if (this.mNavIcon != null) {}
-      for (Drawable localDrawable = this.mNavIcon;; localDrawable = this.mDefaultNavigationIcon)
-      {
-        localToolbar.setNavigationIcon(localDrawable);
-        return;
+      Drawable localDrawable = this.mNavIcon;
+      if (localDrawable == null) {
+        localDrawable = this.mDefaultNavigationIcon;
       }
+      localToolbar.setNavigationIcon(localDrawable);
+      return;
     }
     this.mToolbar.setNavigationIcon(null);
   }
   
   private void updateToolbarLogo()
   {
-    Drawable localDrawable = null;
-    if ((this.mDisplayOpts & 0x2) != 0)
+    int i = this.mDisplayOpts;
+    Drawable localDrawable;
+    if ((i & 0x2) != 0)
     {
-      if ((this.mDisplayOpts & 0x1) == 0) {
-        break label49;
+      if ((i & 0x1) != 0)
+      {
+        localDrawable = this.mLogo;
+        if (localDrawable == null) {
+          localDrawable = this.mIcon;
+        }
       }
-      if (this.mLogo == null) {
-        break label41;
+      else
+      {
+        localDrawable = this.mIcon;
       }
-      localDrawable = this.mLogo;
     }
-    for (;;)
-    {
-      this.mToolbar.setLogo(localDrawable);
-      return;
-      label41:
-      localDrawable = this.mIcon;
-      continue;
-      label49:
-      localDrawable = this.mIcon;
+    else {
+      localDrawable = null;
     }
+    this.mToolbar.setLogo(localDrawable);
   }
   
   public void animateToVisibility(int paramInt)
@@ -276,16 +278,18 @@ public class ToolbarWidgetWrapper
   
   public int getDropdownItemCount()
   {
-    if (this.mSpinner != null) {
-      return this.mSpinner.getCount();
+    Spinner localSpinner = this.mSpinner;
+    if (localSpinner != null) {
+      return localSpinner.getCount();
     }
     return 0;
   }
   
   public int getDropdownSelectedPosition()
   {
-    if (this.mSpinner != null) {
-      return this.mSpinner.getSelectedItemPosition();
+    Spinner localSpinner = this.mSpinner;
+    if (localSpinner != null) {
+      return localSpinner.getSelectedItemPosition();
     }
     return 0;
   }
@@ -397,8 +401,9 @@ public class ToolbarWidgetWrapper
   
   public void setCustomView(View paramView)
   {
-    if ((this.mCustomView != null) && ((this.mDisplayOpts & 0x10) != 0)) {
-      this.mToolbar.removeView(this.mCustomView);
+    View localView = this.mCustomView;
+    if ((localView != null) && ((this.mDisplayOpts & 0x10) != 0)) {
+      this.mToolbar.removeView(localView);
     }
     this.mCustomView = paramView;
     if ((paramView != null) && ((this.mDisplayOpts & 0x10) != 0)) {
@@ -408,13 +413,13 @@ public class ToolbarWidgetWrapper
   
   public void setDefaultNavigationContentDescription(int paramInt)
   {
-    if (paramInt == this.mDefaultNavigationContentDescription) {}
-    do
-    {
+    if (paramInt == this.mDefaultNavigationContentDescription) {
       return;
-      this.mDefaultNavigationContentDescription = paramInt;
-    } while (!TextUtils.isEmpty(this.mToolbar.getNavigationContentDescription()));
-    setNavigationContentDescription(this.mDefaultNavigationContentDescription);
+    }
+    this.mDefaultNavigationContentDescription = paramInt;
+    if (TextUtils.isEmpty(this.mToolbar.getNavigationContentDescription())) {
+      setNavigationContentDescription(this.mDefaultNavigationContentDescription);
+    }
   }
   
   public void setDefaultNavigationIcon(Drawable paramDrawable)
@@ -442,30 +447,32 @@ public class ToolbarWidgetWrapper
       if ((i & 0x3) != 0) {
         updateToolbarLogo();
       }
-      if ((i & 0x8) != 0)
-      {
-        if ((paramInt & 0x8) == 0) {
-          break label115;
+      if ((i & 0x8) != 0) {
+        if ((paramInt & 0x8) != 0)
+        {
+          this.mToolbar.setTitle(this.mTitle);
+          this.mToolbar.setSubtitle(this.mSubtitle);
         }
-        this.mToolbar.setTitle(this.mTitle);
-        this.mToolbar.setSubtitle(this.mSubtitle);
+        else
+        {
+          this.mToolbar.setTitle(null);
+          this.mToolbar.setSubtitle(null);
+        }
+      }
+      if ((i & 0x10) != 0)
+      {
+        View localView = this.mCustomView;
+        if (localView != null)
+        {
+          if ((paramInt & 0x10) != 0)
+          {
+            this.mToolbar.addView(localView);
+            return;
+          }
+          this.mToolbar.removeView(localView);
+        }
       }
     }
-    for (;;)
-    {
-      if (((i & 0x10) != 0) && (this.mCustomView != null))
-      {
-        if ((paramInt & 0x10) == 0) {
-          break;
-        }
-        this.mToolbar.addView(this.mCustomView);
-      }
-      return;
-      label115:
-      this.mToolbar.setTitle(null);
-      this.mToolbar.setSubtitle(null);
-    }
-    this.mToolbar.removeView(this.mCustomView);
   }
   
   public void setDropdownParams(SpinnerAdapter paramSpinnerAdapter, AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
@@ -477,25 +484,34 @@ public class ToolbarWidgetWrapper
   
   public void setDropdownSelectedPosition(int paramInt)
   {
-    if (this.mSpinner == null) {
-      throw new IllegalStateException("Can't set dropdown selected position without an adapter");
+    Spinner localSpinner = this.mSpinner;
+    if (localSpinner != null)
+    {
+      localSpinner.setSelection(paramInt);
+      return;
     }
-    this.mSpinner.setSelection(paramInt);
+    throw new IllegalStateException("Can't set dropdown selected position without an adapter");
   }
   
   public void setEmbeddedTabView(ScrollingTabContainerView paramScrollingTabContainerView)
   {
-    if ((this.mTabView != null) && (this.mTabView.getParent() == this.mToolbar)) {
-      this.mToolbar.removeView(this.mTabView);
+    Object localObject = this.mTabView;
+    if (localObject != null)
+    {
+      localObject = ((View)localObject).getParent();
+      Toolbar localToolbar = this.mToolbar;
+      if (localObject == localToolbar) {
+        localToolbar.removeView(this.mTabView);
+      }
     }
     this.mTabView = paramScrollingTabContainerView;
     if ((paramScrollingTabContainerView != null) && (this.mNavigationMode == 2))
     {
       this.mToolbar.addView(this.mTabView, 0);
-      Toolbar.LayoutParams localLayoutParams = (Toolbar.LayoutParams)this.mTabView.getLayoutParams();
-      localLayoutParams.width = -2;
-      localLayoutParams.height = -2;
-      localLayoutParams.gravity = 8388691;
+      localObject = (Toolbar.LayoutParams)this.mTabView.getLayoutParams();
+      ((Toolbar.LayoutParams)localObject).width = -2;
+      ((Toolbar.LayoutParams)localObject).height = -2;
+      ((Toolbar.LayoutParams)localObject).gravity = 8388691;
       paramScrollingTabContainerView.setAllowCollapse(true);
     }
   }
@@ -504,12 +520,13 @@ public class ToolbarWidgetWrapper
   
   public void setIcon(int paramInt)
   {
-    if (paramInt != 0) {}
-    for (Drawable localDrawable = AppCompatResources.getDrawable(getContext(), paramInt);; localDrawable = null)
-    {
-      setIcon(localDrawable);
-      return;
+    Drawable localDrawable;
+    if (paramInt != 0) {
+      localDrawable = AppCompatResources.getDrawable(getContext(), paramInt);
+    } else {
+      localDrawable = null;
     }
+    setIcon(localDrawable);
   }
   
   public void setIcon(Drawable paramDrawable)
@@ -520,12 +537,13 @@ public class ToolbarWidgetWrapper
   
   public void setLogo(int paramInt)
   {
-    if (paramInt != 0) {}
-    for (Drawable localDrawable = AppCompatResources.getDrawable(getContext(), paramInt);; localDrawable = null)
-    {
-      setLogo(localDrawable);
-      return;
+    Drawable localDrawable;
+    if (paramInt != 0) {
+      localDrawable = AppCompatResources.getDrawable(getContext(), paramInt);
+    } else {
+      localDrawable = null;
     }
+    setLogo(localDrawable);
   }
   
   public void setLogo(Drawable paramDrawable)
@@ -557,12 +575,13 @@ public class ToolbarWidgetWrapper
   
   public void setNavigationContentDescription(int paramInt)
   {
-    if (paramInt == 0) {}
-    for (Object localObject = null;; localObject = getContext().getString(paramInt))
-    {
-      setNavigationContentDescription((CharSequence)localObject);
-      return;
+    String str;
+    if (paramInt == 0) {
+      str = null;
+    } else {
+      str = getContext().getString(paramInt);
     }
+    setNavigationContentDescription(str);
   }
   
   public void setNavigationContentDescription(CharSequence paramCharSequence)
@@ -573,12 +592,13 @@ public class ToolbarWidgetWrapper
   
   public void setNavigationIcon(int paramInt)
   {
-    if (paramInt != 0) {}
-    for (Drawable localDrawable = AppCompatResources.getDrawable(getContext(), paramInt);; localDrawable = null)
-    {
-      setNavigationIcon(localDrawable);
-      return;
+    Drawable localDrawable;
+    if (paramInt != 0) {
+      localDrawable = AppCompatResources.getDrawable(getContext(), paramInt);
+    } else {
+      localDrawable = null;
     }
+    setNavigationIcon(localDrawable);
   }
   
   public void setNavigationIcon(Drawable paramDrawable)
@@ -592,39 +612,60 @@ public class ToolbarWidgetWrapper
     int i = this.mNavigationMode;
     if (paramInt != i)
     {
+      Object localObject;
+      Toolbar localToolbar;
       switch (i)
       {
-      }
-      for (;;)
-      {
-        this.mNavigationMode = paramInt;
-        switch (paramInt)
+      default: 
+        break;
+      case 2: 
+        localObject = this.mTabView;
+        if (localObject != null)
         {
-        default: 
-          throw new IllegalArgumentException("Invalid navigation mode " + paramInt);
-          if ((this.mSpinner != null) && (this.mSpinner.getParent() == this.mToolbar))
-          {
-            this.mToolbar.removeView(this.mSpinner);
-            continue;
-            if ((this.mTabView != null) && (this.mTabView.getParent() == this.mToolbar)) {
-              this.mToolbar.removeView(this.mTabView);
-            }
+          localObject = ((View)localObject).getParent();
+          localToolbar = this.mToolbar;
+          if (localObject == localToolbar) {
+            localToolbar.removeView(this.mTabView);
           }
-          break;
         }
+        break;
+      case 1: 
+        localObject = this.mSpinner;
+        if (localObject != null)
+        {
+          localObject = ((Spinner)localObject).getParent();
+          localToolbar = this.mToolbar;
+          if (localObject == localToolbar) {
+            localToolbar.removeView(this.mSpinner);
+          }
+        }
+        break;
       }
-      ensureSpinner();
-      this.mToolbar.addView(this.mSpinner, 0);
+      this.mNavigationMode = paramInt;
+      switch (paramInt)
+      {
+      default: 
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Invalid navigation mode ");
+        ((StringBuilder)localObject).append(paramInt);
+        throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+      case 2: 
+        localObject = this.mTabView;
+        if (localObject != null)
+        {
+          this.mToolbar.addView((View)localObject, 0);
+          localObject = (Toolbar.LayoutParams)this.mTabView.getLayoutParams();
+          ((Toolbar.LayoutParams)localObject).width = -2;
+          ((Toolbar.LayoutParams)localObject).height = -2;
+          ((Toolbar.LayoutParams)localObject).gravity = 8388691;
+          return;
+        }
+        break;
+      case 1: 
+        ensureSpinner();
+        this.mToolbar.addView(this.mSpinner, 0);
+      }
     }
-    do
-    {
-      return;
-    } while (this.mTabView == null);
-    this.mToolbar.addView(this.mTabView, 0);
-    Toolbar.LayoutParams localLayoutParams = (Toolbar.LayoutParams)this.mTabView.getLayoutParams();
-    localLayoutParams.width = -2;
-    localLayoutParams.height = -2;
-    localLayoutParams.gravity = 8388691;
   }
   
   public void setSubtitle(CharSequence paramCharSequence)
@@ -661,30 +702,33 @@ public class ToolbarWidgetWrapper
   public ViewPropertyAnimatorCompat setupAnimatorToVisibility(final int paramInt, long paramLong)
   {
     ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat = ViewCompat.animate(this.mToolbar);
-    if (paramInt == 0) {}
-    for (float f = 1.0F;; f = 0.0F) {
-      localViewPropertyAnimatorCompat.alpha(f).setDuration(paramLong).setListener(new ViewPropertyAnimatorListenerAdapter()
-      {
-        private boolean mCanceled = false;
-        
-        public void onAnimationCancel(View paramAnonymousView)
-        {
-          this.mCanceled = true;
-        }
-        
-        public void onAnimationEnd(View paramAnonymousView)
-        {
-          if (!this.mCanceled) {
-            ToolbarWidgetWrapper.this.mToolbar.setVisibility(paramInt);
-          }
-        }
-        
-        public void onAnimationStart(View paramAnonymousView)
-        {
-          ToolbarWidgetWrapper.this.mToolbar.setVisibility(0);
-        }
-      });
+    float f;
+    if (paramInt == 0) {
+      f = 1.0F;
+    } else {
+      f = 0.0F;
     }
+    localViewPropertyAnimatorCompat.alpha(f).setDuration(paramLong).setListener(new ViewPropertyAnimatorListenerAdapter()
+    {
+      private boolean mCanceled = false;
+      
+      public void onAnimationCancel(View paramAnonymousView)
+      {
+        this.mCanceled = true;
+      }
+      
+      public void onAnimationEnd(View paramAnonymousView)
+      {
+        if (!this.mCanceled) {
+          ToolbarWidgetWrapper.this.mToolbar.setVisibility(paramInt);
+        }
+      }
+      
+      public void onAnimationStart(View paramAnonymousView)
+      {
+        ToolbarWidgetWrapper.this.mToolbar.setVisibility(0);
+      }
+    });
   }
   
   public boolean showOverflowMenu()

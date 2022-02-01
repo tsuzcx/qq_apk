@@ -64,8 +64,9 @@ public final class h
     paramJceOutputStream.write(this.l, 11);
     paramJceOutputStream.write(this.m, 12);
     paramJceOutputStream.write(this.n, 13);
-    if (this.o != null) {
-      paramJceOutputStream.write(this.o, 14);
+    String str = this.o;
+    if (str != null) {
+      paramJceOutputStream.write(str, 14);
     }
   }
 }

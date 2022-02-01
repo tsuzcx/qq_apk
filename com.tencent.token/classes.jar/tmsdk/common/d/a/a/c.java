@@ -10,9 +10,19 @@ class c
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     b.c();
-    new StringBuilder().append("checkWifiApprovement() needWifiApprove: ").append(paramBoolean1).append(" receivedError").append(paramBoolean2).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkWifiApprovement() needWifiApprove: ");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(" receivedError");
+    localStringBuilder.append(paramBoolean2);
+    localStringBuilder.toString();
     b.c();
-    new StringBuilder().append("checkWifiApprovement() needWifiApprove: ").append(paramBoolean1).append(" receivedError").append(paramBoolean2).toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkWifiApprovement() needWifiApprove: ");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(" receivedError");
+    localStringBuilder.append(paramBoolean2);
+    localStringBuilder.toString();
   }
 }
 

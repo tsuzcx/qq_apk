@@ -4,7 +4,7 @@ import android.os.Looper;
 
 public final class EventPoolFactory
 {
-  public static IEventPool impl = null;
+  public static IEventPool impl;
   
   public static final IEventPool getImpl()
   {

@@ -4,7 +4,7 @@ public class Log
 {
   public static final int LOGGER_DEFAULT = 1;
   public static final int LOGGER_NONE = 0;
-  private static LogCallback mCallback = null;
+  private static LogCallback mCallback;
   
   public static void d(String paramString1, String paramString2)
   {
@@ -52,9 +52,10 @@ public class Log
   
   public static void println(int paramInt, String paramString1, String paramString2)
   {
-    if (mCallback != null)
+    LogCallback localLogCallback = mCallback;
+    if (localLogCallback != null)
     {
-      mCallback.println(paramInt, paramString1, paramString2);
+      localLogCallback.println(paramInt, paramString1, paramString2);
       return;
     }
     nativePrintLn(paramInt, paramString1, paramString2);

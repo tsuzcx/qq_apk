@@ -28,15 +28,15 @@ public class DefaultTaskExecutor
   
   public void postToMainThread(Runnable paramRunnable)
   {
-    if (this.mMainHandler == null) {}
-    synchronized (this.mLock)
-    {
-      if (this.mMainHandler == null) {
-        this.mMainHandler = new Handler(Looper.getMainLooper());
+    if (this.mMainHandler == null) {
+      synchronized (this.mLock)
+      {
+        if (this.mMainHandler == null) {
+          this.mMainHandler = new Handler(Looper.getMainLooper());
+        }
       }
-      this.mMainHandler.post(paramRunnable);
-      return;
     }
+    this.mMainHandler.post(paramRunnable);
   }
 }
 

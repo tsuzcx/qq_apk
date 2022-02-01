@@ -50,16 +50,16 @@ public class LBSManager
   
   private boolean a()
   {
-    boolean bool = false;
-    if (this.H != null) {}
+    LocationManager localLocationManager = this.H;
+    if (localLocationManager != null) {}
     try
     {
-      this.H.sendExtraCommand("gps", "force_xtra_injection", null);
+      localLocationManager.sendExtraCommand("gps", "force_xtra_injection", null);
       this.H.sendExtraCommand("gps", "force_time_injection", null);
-      bool = true;
-      return bool;
+      return true;
     }
     catch (Exception localException) {}
+    return false;
     return false;
   }
   
@@ -74,14 +74,23 @@ public class LBSManager
     if (paramInt1 == 0) {
       return;
     }
-    Log.v("MicroMsg.LBSManager", "setLocationCache [" + paramFloat1 + "," + paramFloat2 + "] acc:" + paramInt1 + " source:" + paramInt2);
+    Object localObject = new StringBuilder("setLocationCache [");
+    ((StringBuilder)localObject).append(paramFloat1);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(paramFloat2);
+    ((StringBuilder)localObject).append("] acc:");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" source:");
+    ((StringBuilder)localObject).append(paramInt2);
+    Log.v("MicroMsg.LBSManager", ((StringBuilder)localObject).toString());
     if (F == null) {
       F = new LocationCache();
     }
-    F.Q = paramFloat1;
-    F.R = paramFloat2;
-    F.S = paramInt1;
-    F.time = System.currentTimeMillis();
+    localObject = F;
+    ((LocationCache)localObject).Q = paramFloat1;
+    ((LocationCache)localObject).R = paramFloat2;
+    ((LocationCache)localObject).S = paramInt1;
+    ((LocationCache)localObject).time = System.currentTimeMillis();
     F.T = paramInt2;
   }
   
@@ -92,29 +101,31 @@ public class LBSManager
   
   public String getWIFILocation()
   {
-    Object localObject = (WifiManager)this.q.getSystemService("wifi");
-    if (localObject == null)
+    Object localObject2 = (WifiManager)this.q.getSystemService("wifi");
+    if (localObject2 == null) {}
+    for (Object localObject1 = "no wifi service";; localObject1 = "WIFILocation wifi info null")
     {
-      Log.e("MicroMsg.LBSManager", "no wifi service");
+      Log.e("MicroMsg.LBSManager", (String)localObject1);
       return "";
+      if (((WifiManager)localObject2).getConnectionInfo() != null) {
+        break;
+      }
     }
-    if (((WifiManager)localObject).getConnectionInfo() == null)
-    {
-      Log.e("MicroMsg.LBSManager", "WIFILocation wifi info null");
-      return "";
-    }
-    LinkedList localLinkedList = new LinkedList();
-    localObject = ((WifiManager)localObject).getScanResults();
-    if (localObject != null)
+    localObject1 = new LinkedList();
+    localObject2 = ((WifiManager)localObject2).getScanResults();
+    if (localObject2 != null)
     {
       int i = 0;
-      while (i < ((List)localObject).size())
+      while (i < ((List)localObject2).size())
       {
-        localLinkedList.add(new PhoneUtil.MacInfo(((ScanResult)((List)localObject).get(i)).BSSID, ((ScanResult)((List)localObject).get(i)).level));
+        String str = ((ScanResult)((List)localObject2).get(i)).BSSID;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((ScanResult)((List)localObject2).get(i)).level);
+        ((List)localObject1).add(new PhoneUtil.MacInfo(str, localStringBuilder.toString()));
         i += 1;
       }
     }
-    return PhoneUtil.getMacXml(localLinkedList);
+    return PhoneUtil.getMacXml((List)localObject1);
   }
   
   public boolean isGpsEnable()
@@ -149,58 +160,80 @@ public class LBSManager
   {
     paramContext = (Location)paramIntent.getExtras().get("location");
     this.N += 1;
-    boolean bool;
-    int i;
-    String str;
     if (paramContext != null)
     {
-      bool = "gps".equals(paramContext.getProvider());
+      boolean bool = "gps".equals(paramContext.getProvider());
       if (((bool) && (paramContext.getAccuracy() <= 200.0F)) || ((!bool) && (paramContext.getAccuracy() <= 1000.0F) && (paramContext.getAccuracy() > 0.0F)))
       {
-        if (!bool) {
-          break label271;
-        }
-        i = 0;
+        int i = bool ^ true;
         setLocationCache((float)paramContext.getLatitude(), (float)paramContext.getLongitude(), (int)paramContext.getAccuracy(), i);
         if ((this.G != null) && ((!this.K) || (!this.L) || (!this.M)))
         {
           paramIntent = Util.nullAsNil(getWIFILocation());
-          str = Util.nullAsNil(getTelLocation());
-          if (this.K) {
-            break label276;
+          String str = Util.nullAsNil(getTelLocation());
+          StringBuilder localStringBuilder;
+          if (!this.K)
+          {
+            b();
+            this.K = true;
+            localStringBuilder = new StringBuilder("location by provider ok:[");
+            localStringBuilder.append(paramContext.getLatitude());
+            localStringBuilder.append(" , ");
+            localStringBuilder.append(paramContext.getLongitude());
+            localStringBuilder.append("]  accuracy:");
+            localStringBuilder.append(paramContext.getAccuracy());
+            localStringBuilder.append("  retry count:");
+            localStringBuilder.append(this.N);
+            localStringBuilder.append(" isGpsProvider:");
+            localStringBuilder.append(bool);
+            Log.v("MicroMsg.LBSManager", localStringBuilder.toString());
+            this.G.onLocationGot((float)paramContext.getLatitude(), (float)paramContext.getLongitude(), (int)paramContext.getAccuracy(), i, paramIntent, str, true);
+            return;
           }
-          b();
-          this.K = true;
-          Log.v("MicroMsg.LBSManager", "location by provider ok:[" + paramContext.getLatitude() + " , " + paramContext.getLongitude() + "]  accuracy:" + paramContext.getAccuracy() + "  retry count:" + this.N + " isGpsProvider:" + bool);
-          this.G.onLocationGot((float)paramContext.getLatitude(), (float)paramContext.getLongitude(), (int)paramContext.getAccuracy(), i, paramIntent, str, true);
+          if ((!this.L) && (i == 0))
+          {
+            this.L = true;
+            localStringBuilder = new StringBuilder("report location by GPS ok:[");
+            localStringBuilder.append(paramContext.getLatitude());
+            localStringBuilder.append(" , ");
+            localStringBuilder.append(paramContext.getLongitude());
+            localStringBuilder.append("]  accuracy:");
+            localStringBuilder.append(paramContext.getAccuracy());
+            localStringBuilder.append("  retry count:");
+            localStringBuilder.append(this.N);
+            localStringBuilder.append(" isGpsProvider:");
+            localStringBuilder.append(bool);
+            Log.v("MicroMsg.LBSManager", localStringBuilder.toString());
+            this.G.onLocationGot((float)paramContext.getLatitude(), (float)paramContext.getLongitude(), (int)paramContext.getAccuracy(), 3, paramIntent, str, true);
+            return;
+          }
+          if ((!this.M) && (i == 1))
+          {
+            this.M = true;
+            localStringBuilder = new StringBuilder("report location by Network ok:[");
+            localStringBuilder.append(paramContext.getLatitude());
+            localStringBuilder.append(" , ");
+            localStringBuilder.append(paramContext.getLongitude());
+            localStringBuilder.append("]  accuracy:");
+            localStringBuilder.append(paramContext.getAccuracy());
+            localStringBuilder.append("  retry count:");
+            localStringBuilder.append(this.N);
+            localStringBuilder.append(" isGpsProvider:");
+            localStringBuilder.append(bool);
+            Log.v("MicroMsg.LBSManager", localStringBuilder.toString());
+            this.G.onLocationGot((float)paramContext.getLatitude(), (float)paramContext.getLongitude(), (int)paramContext.getAccuracy(), 4, paramIntent, str, true);
+          }
         }
       }
     }
-    label271:
-    label276:
-    do
-    {
-      return;
-      i = 1;
-      break;
-      if ((!this.L) && (i == 0))
-      {
-        this.L = true;
-        Log.v("MicroMsg.LBSManager", "report location by GPS ok:[" + paramContext.getLatitude() + " , " + paramContext.getLongitude() + "]  accuracy:" + paramContext.getAccuracy() + "  retry count:" + this.N + " isGpsProvider:" + bool);
-        this.G.onLocationGot((float)paramContext.getLatitude(), (float)paramContext.getLongitude(), (int)paramContext.getAccuracy(), 3, paramIntent, str, true);
-        return;
-      }
-    } while ((this.M) || (i != 1));
-    this.M = true;
-    Log.v("MicroMsg.LBSManager", "report location by Network ok:[" + paramContext.getLatitude() + " , " + paramContext.getLongitude() + "]  accuracy:" + paramContext.getAccuracy() + "  retry count:" + this.N + " isGpsProvider:" + bool);
-    this.G.onLocationGot((float)paramContext.getLatitude(), (float)paramContext.getLongitude(), (int)paramContext.getAccuracy(), 4, paramIntent, str, true);
   }
   
   public void removeGpsUpdate()
   {
     Log.v("MicroMsg.LBSManager", "removed gps update");
-    if (this.H != null) {
-      this.H.removeUpdates(this.I);
+    LocationManager localLocationManager = this.H;
+    if (localLocationManager != null) {
+      localLocationManager.removeUpdates(this.I);
     }
     try
     {
@@ -209,8 +242,10 @@ public class LBSManager
     }
     catch (Exception localException)
     {
-      Log.v("MicroMsg.LBSManager", "location receiver has already unregistered");
+      label34:
+      break label34;
     }
+    Log.v("MicroMsg.LBSManager", "location receiver has already unregistered");
   }
   
   public void removeListener()
@@ -236,22 +271,18 @@ public class LBSManager
     if ((!isGpsEnable()) && (!isNetworkPrividerEnable())) {
       return;
     }
-    if (paramInt > 0) {}
-    for (;;)
-    {
-      Log.v("MicroMsg.LBSManager", "requested gps update");
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("filter_gps");
-      this.q.registerReceiver(this, localIntentFilter);
-      if (isGpsEnable()) {
-        this.H.requestLocationUpdates("gps", paramInt, 0.0F, this.I);
-      }
-      if (!isNetworkPrividerEnable()) {
-        break;
-      }
-      this.H.requestLocationUpdates("network", paramInt, 0.0F, this.I);
-      return;
+    if (paramInt <= 0) {
       paramInt = 500;
+    }
+    Log.v("MicroMsg.LBSManager", "requested gps update");
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("filter_gps");
+    this.q.registerReceiver(this, localIntentFilter);
+    if (isGpsEnable()) {
+      this.H.requestLocationUpdates("gps", paramInt, 0.0F, this.I);
+    }
+    if (isNetworkPrividerEnable()) {
+      this.H.requestLocationUpdates("network", paramInt, 0.0F, this.I);
     }
   }
   
@@ -263,62 +294,81 @@ public class LBSManager
   
   public void start()
   {
-    String str1 = Util.nullAsNil(getWIFILocation());
-    String str2 = Util.nullAsNil(getTelLocation());
+    Object localObject1 = Util.nullAsNil(getWIFILocation());
+    String str = Util.nullAsNil(getTelLocation());
+    boolean bool = isGpsEnable();
+    int j = 0;
     int i;
-    if ((isGpsEnable()) || (isNetworkPrividerEnable()))
-    {
+    if ((!bool) && (!isNetworkPrividerEnable())) {
+      i = 0;
+    } else {
       i = 1;
-      if ((i == 0) || (this.J)) {
-        break label73;
-      }
+    }
+    if ((i != 0) && (!this.J))
+    {
       this.J = true;
       this.N = 0;
       requestGpsUpdate();
       this.O.startTimer(3000L);
-    }
-    label73:
-    label241:
-    do
-    {
-      do
-      {
-        return;
-        i = 0;
-        break;
-        if (F == null) {
-          i = 0;
-        }
-        for (;;)
-        {
-          if (i == 0) {
-            break label241;
-          }
-          if (this.G == null) {
-            break;
-          }
-          this.K = true;
-          Log.v("MicroMsg.LBSManager", "location by GPS cache ok:[" + F.Q + " , " + F.R + "]  accuracy:" + F.S + " source:" + F.T);
-          this.G.onLocationGot(F.Q, F.R, F.S, F.T, str1, str2, true);
-          return;
-          if ((System.currentTimeMillis() - F.time > 180000L) || (F.S <= 0)) {
-            i = 0;
-          } else {
-            i = 1;
-          }
-        }
-        this.K = true;
-        if ((!str1.equals("")) || (!str2.equals(""))) {
-          break label302;
-        }
-        Log.v("MicroMsg.LBSManager", "get location by network failed");
-      } while (this.G == null);
-      this.G.onLocationGot(-1000.0F, -1000.0F, -1000, 0, "", "", false);
       return;
-      Log.v("MicroMsg.LBSManager", "get location by network ok, macs : " + str1 + " cell ids :" + str2);
-    } while (this.G == null);
-    label302:
-    this.G.onLocationGot(-1000.0F, -1000.0F, -1000, 0, str1, str2, true);
+    }
+    if (F == null)
+    {
+      i = j;
+    }
+    else
+    {
+      i = j;
+      if (System.currentTimeMillis() - F.time <= 180000L) {
+        if (F.S <= 0) {
+          i = j;
+        } else {
+          i = 1;
+        }
+      }
+    }
+    Object localObject2;
+    if (i != 0)
+    {
+      if (this.G != null)
+      {
+        this.K = true;
+        localObject2 = new StringBuilder("location by GPS cache ok:[");
+        ((StringBuilder)localObject2).append(F.Q);
+        ((StringBuilder)localObject2).append(" , ");
+        ((StringBuilder)localObject2).append(F.R);
+        ((StringBuilder)localObject2).append("]  accuracy:");
+        ((StringBuilder)localObject2).append(F.S);
+        ((StringBuilder)localObject2).append(" source:");
+        ((StringBuilder)localObject2).append(F.T);
+        Log.v("MicroMsg.LBSManager", ((StringBuilder)localObject2).toString());
+        this.G.onLocationGot(F.Q, F.R, F.S, F.T, (String)localObject1, str, true);
+      }
+    }
+    else
+    {
+      this.K = true;
+      if ((((String)localObject1).equals("")) && (str.equals("")))
+      {
+        Log.v("MicroMsg.LBSManager", "get location by network failed");
+        localObject1 = this.G;
+        if (localObject1 != null) {
+          ((OnLocationGotListener)localObject1).onLocationGot(-1000.0F, -1000.0F, -1000, 0, "", "", false);
+        }
+      }
+      else
+      {
+        localObject2 = new StringBuilder("get location by network ok, macs : ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" cell ids :");
+        ((StringBuilder)localObject2).append(str);
+        Log.v("MicroMsg.LBSManager", ((StringBuilder)localObject2).toString());
+        localObject2 = this.G;
+        if (localObject2 != null) {
+          ((OnLocationGotListener)localObject2).onLocationGot(-1000.0F, -1000.0F, -1000, 0, (String)localObject1, str, true);
+        }
+      }
+    }
   }
   
   static class LocationCache

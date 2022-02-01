@@ -8,7 +8,7 @@ import com.tencent.token.utils.l;
 public class ct
   extends cu
 {
-  static ct a = null;
+  static ct a;
   public OnlineDeviceResult b;
   
   private ct()

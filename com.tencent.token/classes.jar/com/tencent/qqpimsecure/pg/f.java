@@ -13,8 +13,12 @@ public class f
   
   public static long a(Context paramContext, long paramLong)
   {
-    String str = "s" + paramLong + "ct";
-    return c.a().a(paramContext, "pgd_sp", 4).getLong(str, 0L);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("s");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("ct");
+    localObject = ((StringBuilder)localObject).toString();
+    return c.a().a(paramContext, "pgd_sp", 4).getLong((String)localObject, 0L);
   }
   
   public static void a(Context paramContext, int paramInt)
@@ -24,14 +28,22 @@ public class f
   
   public static void a(Context paramContext, int paramInt1, int paramInt2)
   {
-    String str = "pg" + paramInt1 + "s";
-    c.a().a(paramContext, "pgd_sp", 4).putInt(str, paramInt2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("pg");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("s");
+    localObject = ((StringBuilder)localObject).toString();
+    c.a().a(paramContext, "pgd_sp", 4).putInt((String)localObject, paramInt2);
   }
   
   public static void a(Context paramContext, long paramLong1, long paramLong2)
   {
-    String str = "s" + paramLong1 + "ct";
-    c.a().a(paramContext, "pgd_sp", 4).putLong(str, paramLong2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("s");
+    ((StringBuilder)localObject).append(paramLong1);
+    ((StringBuilder)localObject).append("ct");
+    localObject = ((StringBuilder)localObject).toString();
+    c.a().a(paramContext, "pgd_sp", 4).putLong((String)localObject, paramLong2);
   }
   
   public static void a(Context paramContext, boolean paramBoolean)
@@ -56,8 +68,12 @@ public class f
   
   public static int c(Context paramContext, int paramInt)
   {
-    String str = "pg" + paramInt + "s";
-    return c.a().a(paramContext, "pgd_sp", 4).getInt(str, 0);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("pg");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("s");
+    localObject = ((StringBuilder)localObject).toString();
+    return c.a().a(paramContext, "pgd_sp", 4).getInt((String)localObject, 0);
   }
   
   public static long c(Context paramContext)

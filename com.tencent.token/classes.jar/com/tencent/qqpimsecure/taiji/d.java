@@ -32,7 +32,12 @@ public class d
     if (Build.VERSION.SDK_INT >= 11) {
       this.g = 4;
     }
-    paramContext = c.a().a(this.i, "freq_ctrl_" + this.h, this.g);
+    paramContext = c.a();
+    paramString = this.i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("freq_ctrl_");
+    localStringBuilder.append(this.h);
+    paramContext = paramContext.a(paramString, localStringBuilder.toString(), this.g);
     this.a = paramInt;
     this.b = l;
     this.c = paramLong2;
@@ -47,52 +52,65 @@ public class d
   private void a(int paramInt)
   {
     this.d = paramInt;
-    c.a().a(this.i, "freq_ctrl_" + this.h, this.g).putInt("times_now", this.d);
+    c localc = c.a();
+    Context localContext = this.i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("freq_ctrl_");
+    localStringBuilder.append(this.h);
+    localc.a(localContext, localStringBuilder.toString(), this.g).putInt("times_now", this.d);
   }
   
   private void a(long paramLong)
   {
     this.e = paramLong;
     this.f = (this.b + paramLong);
-    ITaijiPreferenceManager localITaijiPreferenceManager = c.a().a(this.i, "freq_ctrl_" + this.h, this.g);
-    localITaijiPreferenceManager.putLong("time_span_start", this.e);
-    localITaijiPreferenceManager.putLong("time_span_end", this.f);
-    localITaijiPreferenceManager.putLong("last", paramLong);
+    Object localObject = c.a();
+    Context localContext = this.i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("freq_ctrl_");
+    localStringBuilder.append(this.h);
+    localObject = ((c)localObject).a(localContext, localStringBuilder.toString(), this.g);
+    ((ITaijiPreferenceManager)localObject).putLong("time_span_start", this.e);
+    ((ITaijiPreferenceManager)localObject).putLong("time_span_end", this.f);
+    ((ITaijiPreferenceManager)localObject).putLong("last", paramLong);
   }
   
   public boolean a()
   {
-    if (this.e == 0L) {}
-    long l1;
-    long l2;
-    do
-    {
+    if (this.e == 0L) {
       return true;
-      l1 = System.currentTimeMillis();
-      l2 = c.a().a(this.i, "freq_ctrl_" + this.h, this.g).getLong("last", 0L);
-    } while (((this.d < this.a) || (l1 >= this.f)) && ((this.c <= 0L) || (l1 - l2 >= this.c)));
-    return false;
+    }
+    long l1 = System.currentTimeMillis();
+    c localc = c.a();
+    Context localContext = this.i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("freq_ctrl_");
+    localStringBuilder.append(this.h);
+    long l2 = localc.a(localContext, localStringBuilder.toString(), this.g).getLong("last", 0L);
+    long l3;
+    if ((this.d < this.a) || (l1 >= this.f)) {
+      l3 = this.c;
+    }
+    return (l3 <= 0L) || (l1 - l2 >= l3);
   }
   
   public void b()
   {
     long l = System.currentTimeMillis();
-    if (this.e == 0L)
+    if (this.e == 0L) {}
+    while (l >= this.f)
     {
       a(l);
       a(0);
+      break;
     }
-    for (;;)
-    {
-      a(this.d + 1);
-      c.a().a(this.i, "freq_ctrl_" + this.h, this.g).putLong("last", l);
-      return;
-      if (l >= this.f)
-      {
-        a(l);
-        a(0);
-      }
-    }
+    a(this.d + 1);
+    c localc = c.a();
+    Context localContext = this.i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("freq_ctrl_");
+    localStringBuilder.append(this.h);
+    localc.a(localContext, localStringBuilder.toString(), this.g).putLong("last", l);
   }
 }
 

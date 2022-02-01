@@ -14,80 +14,77 @@ public class bh
     localStringBuilder.append(a);
     localStringBuilder.append(",");
     localStringBuilder.append("LT:");
-    localStringBuilder.append("" + (System.currentTimeMillis() - a));
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("");
+    ((StringBuilder)localObject1).append(System.currentTimeMillis() - a);
+    localStringBuilder.append(((StringBuilder)localObject1).toString());
     localStringBuilder.append(",");
     localStringBuilder.append("F:");
-    label170:
-    label203:
-    Object localObject2;
-    if (paramBoolean1)
-    {
+    if (paramBoolean1) {
       localObject1 = "1";
-      localStringBuilder.append((String)localObject1);
-      localStringBuilder.append(",");
-      localStringBuilder.append("PT:");
-      localStringBuilder.append("" + paramInt);
-      localStringBuilder.append(",");
-      localStringBuilder.append("PKG:");
-      if (!paramBoolean2) {
-        break label407;
-      }
-      localObject1 = "1";
-      localStringBuilder.append((String)localObject1);
-      localStringBuilder.append(",");
-      localStringBuilder.append("SC:");
-      if (!paramBoolean3) {
-        break label414;
-      }
-      localObject1 = "1";
-      localStringBuilder.append((String)localObject1);
-      localObject1 = bd.a.b(paramContext);
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localStringBuilder.append(",");
-        localStringBuilder.append("CL:");
-        localStringBuilder.append((String)localObject1);
-      }
-      localObject2 = aw.a(paramContext, "204");
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        localObject2 = ci.a("0_");
-        if (!paramBoolean1) {
-          break label421;
-        }
-      }
+    } else {
+      localObject1 = "0";
     }
-    label407:
-    label414:
-    label421:
-    for (Object localObject1 = "1";; localObject1 = "0")
-    {
-      localObject1 = (String)localObject1;
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localStringBuilder.append(",");
-        localStringBuilder.append("R:");
-        localStringBuilder.append((String)localObject1);
-      }
-      localStringBuilder.append(",");
-      localStringBuilder.append("US:");
-      localStringBuilder.append(aw.a(paramContext));
-      paramContext = aw.a(paramContext, "111");
-      if (!TextUtils.isEmpty(paramContext))
-      {
-        localStringBuilder.append(",");
-        localStringBuilder.append("ND:");
-        localStringBuilder.append(paramContext);
-      }
-      return localStringBuilder.toString();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(",");
+    localStringBuilder.append("PT:");
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("");
+    ((StringBuilder)localObject1).append(paramInt);
+    localStringBuilder.append(((StringBuilder)localObject1).toString());
+    localStringBuilder.append(",");
+    localStringBuilder.append("PKG:");
+    if (paramBoolean2) {
+      localObject1 = "1";
+    } else {
       localObject1 = "0";
-      break;
-      localObject1 = "0";
-      break label170;
-      localObject1 = "0";
-      break label203;
     }
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(",");
+    localStringBuilder.append("SC:");
+    if (paramBoolean3) {
+      localObject1 = "1";
+    } else {
+      localObject1 = "0";
+    }
+    localStringBuilder.append((String)localObject1);
+    localObject1 = bd.a.b(paramContext);
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localStringBuilder.append(",");
+      localStringBuilder.append("CL:");
+      localStringBuilder.append((String)localObject1);
+    }
+    Object localObject2 = aw.a(paramContext, "204");
+    localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      localObject2 = ci.a("0_");
+      if (paramBoolean1) {
+        localObject1 = "1";
+      } else {
+        localObject1 = "0";
+      }
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject2).toString();
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localStringBuilder.append(",");
+      localStringBuilder.append("R:");
+      localStringBuilder.append((String)localObject1);
+    }
+    localStringBuilder.append(",");
+    localStringBuilder.append("US:");
+    localStringBuilder.append(aw.a(paramContext));
+    paramContext = aw.a(paramContext, "111");
+    if (!TextUtils.isEmpty(paramContext))
+    {
+      localStringBuilder.append(",");
+      localStringBuilder.append("ND:");
+      localStringBuilder.append(paramContext);
+    }
+    return localStringBuilder.toString();
   }
 }
 

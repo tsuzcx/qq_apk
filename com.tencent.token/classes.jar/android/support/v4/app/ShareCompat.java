@@ -28,25 +28,34 @@ public final class ShareCompat
   public static void configureMenuItem(Menu paramMenu, int paramInt, IntentBuilder paramIntentBuilder)
   {
     paramMenu = paramMenu.findItem(paramInt);
-    if (paramMenu == null) {
-      throw new IllegalArgumentException("Could not find menu item with id " + paramInt + " in the supplied menu");
+    if (paramMenu != null)
+    {
+      configureMenuItem(paramMenu, paramIntentBuilder);
+      return;
     }
-    configureMenuItem(paramMenu, paramIntentBuilder);
+    paramMenu = new StringBuilder();
+    paramMenu.append("Could not find menu item with id ");
+    paramMenu.append(paramInt);
+    paramMenu.append(" in the supplied menu");
+    throw new IllegalArgumentException(paramMenu.toString());
   }
   
   public static void configureMenuItem(MenuItem paramMenuItem, IntentBuilder paramIntentBuilder)
   {
     Object localObject = paramMenuItem.getActionProvider();
-    if (!(localObject instanceof ShareActionProvider)) {}
-    for (localObject = new ShareActionProvider(paramIntentBuilder.getActivity());; localObject = (ShareActionProvider)localObject)
-    {
-      ((ShareActionProvider)localObject).setShareHistoryFileName(".sharecompat_" + paramIntentBuilder.getActivity().getClass().getName());
-      ((ShareActionProvider)localObject).setShareIntent(paramIntentBuilder.getIntent());
-      paramMenuItem.setActionProvider((ActionProvider)localObject);
-      if ((Build.VERSION.SDK_INT < 16) && (!paramMenuItem.hasSubMenu())) {
-        paramMenuItem.setIntent(paramIntentBuilder.createChooserIntent());
-      }
-      return;
+    if (!(localObject instanceof ShareActionProvider)) {
+      localObject = new ShareActionProvider(paramIntentBuilder.getActivity());
+    } else {
+      localObject = (ShareActionProvider)localObject;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(".sharecompat_");
+    localStringBuilder.append(paramIntentBuilder.getActivity().getClass().getName());
+    ((ShareActionProvider)localObject).setShareHistoryFileName(localStringBuilder.toString());
+    ((ShareActionProvider)localObject).setShareIntent(paramIntentBuilder.getIntent());
+    paramMenuItem.setActionProvider((ActionProvider)localObject);
+    if ((Build.VERSION.SDK_INT < 16) && (!paramMenuItem.hasSubMenu())) {
+      paramMenuItem.setIntent(paramIntentBuilder.createChooserIntent());
     }
   }
   
@@ -92,34 +101,36 @@ public final class ShareCompat
     private void combineArrayExtra(String paramString, ArrayList<String> paramArrayList)
     {
       String[] arrayOfString1 = this.mIntent.getStringArrayExtra(paramString);
-      if (arrayOfString1 != null) {}
-      for (int i = arrayOfString1.length;; i = 0)
-      {
-        String[] arrayOfString2 = new String[paramArrayList.size() + i];
-        paramArrayList.toArray(arrayOfString2);
-        if (arrayOfString1 != null) {
-          System.arraycopy(arrayOfString1, 0, arrayOfString2, paramArrayList.size(), i);
-        }
-        this.mIntent.putExtra(paramString, arrayOfString2);
-        return;
+      int i;
+      if (arrayOfString1 != null) {
+        i = arrayOfString1.length;
+      } else {
+        i = 0;
       }
+      String[] arrayOfString2 = new String[paramArrayList.size() + i];
+      paramArrayList.toArray(arrayOfString2);
+      if (arrayOfString1 != null) {
+        System.arraycopy(arrayOfString1, 0, arrayOfString2, paramArrayList.size(), i);
+      }
+      this.mIntent.putExtra(paramString, arrayOfString2);
     }
     
     private void combineArrayExtra(String paramString, String[] paramArrayOfString)
     {
       Intent localIntent = getIntent();
       String[] arrayOfString1 = localIntent.getStringArrayExtra(paramString);
-      if (arrayOfString1 != null) {}
-      for (int i = arrayOfString1.length;; i = 0)
-      {
-        String[] arrayOfString2 = new String[paramArrayOfString.length + i];
-        if (arrayOfString1 != null) {
-          System.arraycopy(arrayOfString1, 0, arrayOfString2, 0, i);
-        }
-        System.arraycopy(paramArrayOfString, 0, arrayOfString2, i, paramArrayOfString.length);
-        localIntent.putExtra(paramString, arrayOfString2);
-        return;
+      int i;
+      if (arrayOfString1 != null) {
+        i = arrayOfString1.length;
+      } else {
+        i = 0;
       }
+      String[] arrayOfString2 = new String[paramArrayOfString.length + i];
+      if (arrayOfString1 != null) {
+        System.arraycopy(arrayOfString1, 0, arrayOfString2, 0, i);
+      }
+      System.arraycopy(paramArrayOfString, 0, arrayOfString2, i, paramArrayOfString.length);
+      localIntent.putExtra(paramString, arrayOfString2);
     }
     
     public static IntentBuilder from(Activity paramActivity)
@@ -202,56 +213,52 @@ public final class ShareCompat
     
     public Intent getIntent()
     {
-      if (this.mToAddresses != null)
+      ArrayList localArrayList = this.mToAddresses;
+      if (localArrayList != null)
       {
-        combineArrayExtra("android.intent.extra.EMAIL", this.mToAddresses);
+        combineArrayExtra("android.intent.extra.EMAIL", localArrayList);
         this.mToAddresses = null;
       }
-      if (this.mCcAddresses != null)
+      localArrayList = this.mCcAddresses;
+      if (localArrayList != null)
       {
-        combineArrayExtra("android.intent.extra.CC", this.mCcAddresses);
+        combineArrayExtra("android.intent.extra.CC", localArrayList);
         this.mCcAddresses = null;
       }
-      if (this.mBccAddresses != null)
+      localArrayList = this.mBccAddresses;
+      if (localArrayList != null)
       {
-        combineArrayExtra("android.intent.extra.BCC", this.mBccAddresses);
+        combineArrayExtra("android.intent.extra.BCC", localArrayList);
         this.mBccAddresses = null;
       }
-      int i;
-      if ((this.mStreams != null) && (this.mStreams.size() > 1))
-      {
-        i = 1;
-        boolean bool = this.mIntent.getAction().equals("android.intent.action.SEND_MULTIPLE");
-        if ((i == 0) && (bool))
-        {
-          this.mIntent.setAction("android.intent.action.SEND");
-          if ((this.mStreams == null) || (this.mStreams.isEmpty())) {
-            break label219;
-          }
-          this.mIntent.putExtra("android.intent.extra.STREAM", (Parcelable)this.mStreams.get(0));
-          label155:
-          this.mStreams = null;
-        }
-        if ((i != 0) && (!bool))
-        {
-          this.mIntent.setAction("android.intent.action.SEND_MULTIPLE");
-          if ((this.mStreams == null) || (this.mStreams.isEmpty())) {
-            break label231;
-          }
-          this.mIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", this.mStreams);
-        }
-      }
-      for (;;)
-      {
-        return this.mIntent;
+      localArrayList = this.mStreams;
+      int i = 1;
+      if ((localArrayList == null) || (localArrayList.size() <= 1)) {
         i = 0;
-        break;
-        label219:
-        this.mIntent.removeExtra("android.intent.extra.STREAM");
-        break label155;
-        label231:
-        this.mIntent.removeExtra("android.intent.extra.STREAM");
       }
+      boolean bool = this.mIntent.getAction().equals("android.intent.action.SEND_MULTIPLE");
+      if ((i == 0) && (bool))
+      {
+        this.mIntent.setAction("android.intent.action.SEND");
+        localArrayList = this.mStreams;
+        if ((localArrayList != null) && (!localArrayList.isEmpty())) {
+          this.mIntent.putExtra("android.intent.extra.STREAM", (Parcelable)this.mStreams.get(0));
+        } else {
+          this.mIntent.removeExtra("android.intent.extra.STREAM");
+        }
+        this.mStreams = null;
+      }
+      if ((i != 0) && (!bool))
+      {
+        this.mIntent.setAction("android.intent.action.SEND_MULTIPLE");
+        localArrayList = this.mStreams;
+        if ((localArrayList != null) && (!localArrayList.isEmpty())) {
+          this.mIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", this.mStreams);
+        } else {
+          this.mIntent.removeExtra("android.intent.extra.STREAM");
+        }
+      }
+      return this.mIntent;
     }
     
     public IntentBuilder setChooserTitle(@StringRes int paramInt)
@@ -353,34 +360,33 @@ public final class ShareCompat
     
     private static void withinStyle(StringBuilder paramStringBuilder, CharSequence paramCharSequence, int paramInt1, int paramInt2)
     {
-      if (paramInt1 < paramInt2)
+      while (paramInt1 < paramInt2)
       {
         char c = paramCharSequence.charAt(paramInt1);
-        if (c == '<') {
+        if (c == '<')
+        {
           paramStringBuilder.append("&lt;");
         }
-        for (;;)
+        else if (c == '>')
         {
-          paramInt1 += 1;
-          break;
-          if (c == '>')
+          paramStringBuilder.append("&gt;");
+        }
+        else if (c == '&')
+        {
+          paramStringBuilder.append("&amp;");
+        }
+        else if ((c <= '~') && (c >= ' '))
+        {
+          if (c == ' ')
           {
-            paramStringBuilder.append("&gt;");
-          }
-          else if (c == '&')
-          {
-            paramStringBuilder.append("&amp;");
-          }
-          else if ((c > '~') || (c < ' '))
-          {
-            paramStringBuilder.append("&#" + c + ";");
-          }
-          else if (c == ' ')
-          {
-            while ((paramInt1 + 1 < paramInt2) && (paramCharSequence.charAt(paramInt1 + 1) == ' '))
+            for (;;)
             {
+              int i = paramInt1 + 1;
+              if ((i >= paramInt2) || (paramCharSequence.charAt(i) != ' ')) {
+                break;
+              }
               paramStringBuilder.append("&nbsp;");
-              paramInt1 += 1;
+              paramInt1 = i;
             }
             paramStringBuilder.append(' ');
           }
@@ -389,6 +395,15 @@ public final class ShareCompat
             paramStringBuilder.append(c);
           }
         }
+        else
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("&#");
+          localStringBuilder.append(c);
+          localStringBuilder.append(";");
+          paramStringBuilder.append(localStringBuilder.toString());
+        }
+        paramInt1 += 1;
       }
     }
     
@@ -473,13 +488,15 @@ public final class ShareCompat
     
     public String getHtmlText()
     {
-      Object localObject = this.mIntent.getStringExtra("android.intent.extra.HTML_TEXT");
-      if (localObject == null)
+      String str = this.mIntent.getStringExtra("android.intent.extra.HTML_TEXT");
+      Object localObject = str;
+      if (str == null)
       {
         CharSequence localCharSequence = getText();
         if ((localCharSequence instanceof Spanned)) {
           return Html.toHtml((Spanned)localCharSequence);
         }
+        localObject = str;
         if (localCharSequence != null)
         {
           if (Build.VERSION.SDK_INT >= 16) {
@@ -487,7 +504,7 @@ public final class ShareCompat
           }
           localObject = new StringBuilder();
           withinStyle((StringBuilder)localObject, localCharSequence, 0, localCharSequence.length());
-          return ((StringBuilder)localObject).toString();
+          localObject = ((StringBuilder)localObject).toString();
         }
       }
       return localObject;
@@ -503,27 +520,24 @@ public final class ShareCompat
       if ((this.mStreams == null) && (isMultipleShare())) {
         this.mStreams = this.mIntent.getParcelableArrayListExtra("android.intent.extra.STREAM");
       }
-      if (this.mStreams != null) {
-        return (Uri)this.mStreams.get(paramInt);
+      Object localObject = this.mStreams;
+      if (localObject != null) {
+        return (Uri)((ArrayList)localObject).get(paramInt);
       }
       if (paramInt == 0) {
         return (Uri)this.mIntent.getParcelableExtra("android.intent.extra.STREAM");
       }
-      throw new IndexOutOfBoundsException("Stream items available: " + getStreamCount() + " index requested: " + paramInt);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Stream items available: ");
+      ((StringBuilder)localObject).append(getStreamCount());
+      ((StringBuilder)localObject).append(" index requested: ");
+      ((StringBuilder)localObject).append(paramInt);
+      throw new IndexOutOfBoundsException(((StringBuilder)localObject).toString());
     }
     
     public int getStreamCount()
     {
-      if ((this.mStreams == null) && (isMultipleShare())) {
-        this.mStreams = this.mIntent.getParcelableArrayListExtra("android.intent.extra.STREAM");
-      }
-      if (this.mStreams != null) {
-        return this.mStreams.size();
-      }
-      if (this.mIntent.hasExtra("android.intent.extra.STREAM")) {
-        return 1;
-      }
-      return 0;
+      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
     }
     
     public String getSubject()

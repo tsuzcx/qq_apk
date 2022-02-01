@@ -1,6 +1,15 @@
 package btmsdkobf;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import com.tmsdk.base.utils.MD5Util;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.util.GregorianCalendar;
 import java.util.Properties;
 
@@ -17,84 +26,47 @@ public class bg
     this.mContext = paramContext;
   }
   
-  /* Error */
   private String j(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 38	btmsdkobf/bg:mContext	Landroid/content/Context;
-    //   4: invokevirtual 52	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
-    //   7: astore_2
-    //   8: aload_2
-    //   9: aload_1
-    //   10: bipush 64
-    //   12: invokevirtual 58	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
-    //   15: astore_1
-    //   16: aload_1
-    //   17: ifnull +81 -> 98
-    //   20: new 60	java/io/ByteArrayInputStream
-    //   23: dup
-    //   24: aload_1
-    //   25: getfield 66	android/content/pm/PackageInfo:signatures	[Landroid/content/pm/Signature;
-    //   28: iconst_0
-    //   29: aaload
-    //   30: invokevirtual 72	android/content/pm/Signature:toByteArray	()[B
-    //   33: invokespecial 75	java/io/ByteArrayInputStream:<init>	([B)V
-    //   36: astore_2
-    //   37: ldc 77
-    //   39: invokestatic 83	java/security/cert/CertificateFactory:getInstance	(Ljava/lang/String;)Ljava/security/cert/CertificateFactory;
-    //   42: aload_2
-    //   43: invokevirtual 87	java/security/cert/CertificateFactory:generateCertificate	(Ljava/io/InputStream;)Ljava/security/cert/Certificate;
-    //   46: checkcast 89	java/security/cert/X509Certificate
-    //   49: invokevirtual 92	java/security/cert/X509Certificate:getEncoded	()[B
-    //   52: invokestatic 98	com/tmsdk/base/utils/MD5Util:encrypt_bytes	([B)Ljava/lang/String;
-    //   55: astore_1
-    //   56: aload_2
-    //   57: invokevirtual 101	java/io/ByteArrayInputStream:close	()V
-    //   60: aload_1
-    //   61: areturn
-    //   62: astore_1
-    //   63: aload_1
-    //   64: invokevirtual 104	java/lang/Exception:printStackTrace	()V
-    //   67: aconst_null
-    //   68: astore_1
-    //   69: goto -53 -> 16
-    //   72: astore_2
-    //   73: aconst_null
-    //   74: astore_1
-    //   75: aload_2
-    //   76: invokevirtual 105	java/security/cert/CertificateException:printStackTrace	()V
-    //   79: aload_1
-    //   80: areturn
-    //   81: astore_2
-    //   82: aconst_null
-    //   83: astore_1
-    //   84: aload_2
-    //   85: invokevirtual 106	java/io/IOException:printStackTrace	()V
-    //   88: aload_1
-    //   89: areturn
-    //   90: astore_2
-    //   91: goto -7 -> 84
-    //   94: astore_2
-    //   95: goto -20 -> 75
-    //   98: aconst_null
-    //   99: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	100	0	this	bg
-    //   0	100	1	paramString	String
-    //   7	50	2	localObject	Object
-    //   72	4	2	localCertificateException1	java.security.cert.CertificateException
-    //   81	4	2	localIOException1	java.io.IOException
-    //   90	1	2	localIOException2	java.io.IOException
-    //   94	1	2	localCertificateException2	java.security.cert.CertificateException
-    // Exception table:
-    //   from	to	target	type
-    //   8	16	62	java/lang/Exception
-    //   37	56	72	java/security/cert/CertificateException
-    //   37	56	81	java/io/IOException
-    //   56	60	90	java/io/IOException
-    //   56	60	94	java/security/cert/CertificateException
+    Object localObject3 = this.mContext.getPackageManager();
+    String str2 = null;
+    Object localObject1 = null;
+    Object localObject2 = null;
+    try
+    {
+      paramString = ((PackageManager)localObject3).getPackageInfo(paramString, 64);
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      paramString = null;
+    }
+    String str1;
+    if (paramString != null)
+    {
+      localObject3 = new ByteArrayInputStream(paramString.signatures[0].toByteArray());
+      localObject1 = localObject2;
+      paramString = str2;
+      try
+      {
+        str2 = MD5Util.encrypt_bytes(((X509Certificate)CertificateFactory.getInstance("X.509").generateCertificate((InputStream)localObject3)).getEncoded());
+        localObject1 = str2;
+        paramString = str2;
+        ((ByteArrayInputStream)localObject3).close();
+        return str2;
+      }
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+        return localObject1;
+      }
+      catch (CertificateException localCertificateException)
+      {
+        localCertificateException.printStackTrace();
+        str1 = paramString;
+      }
+    }
+    return str1;
   }
   
   public long A()
@@ -110,22 +82,31 @@ public class bg
   
   public boolean z()
   {
-    if (this.fL) {}
-    String str1;
-    do
-    {
+    if (this.fL) {
       return true;
-      str1 = j(this.mContext.getPackageName());
-    } while (str1 == null);
-    String str2 = this.fK.getProperty("signature").toUpperCase().trim();
-    this.fL = str1.equals(str2);
-    if (this.fL) {}
-    for (;;)
-    {
-      return this.fL;
-      eg.f("DEBUG", "your    signature is " + str1 + " len:" + str1.length());
-      eg.f("DEBUG", "licence signature is " + str2 + " len:" + str2.length());
     }
+    Object localObject = j(this.mContext.getPackageName());
+    if (localObject == null) {
+      return true;
+    }
+    String str = this.fK.getProperty("signature").toUpperCase().trim();
+    this.fL = ((String)localObject).equals(str);
+    if (!this.fL)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("your    signature is ");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" len:");
+      localStringBuilder.append(((String)localObject).length());
+      eg.f("DEBUG", localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("licence signature is ");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(" len:");
+      ((StringBuilder)localObject).append(str.length());
+      eg.f("DEBUG", ((StringBuilder)localObject).toString());
+    }
+    return this.fL;
   }
 }
 

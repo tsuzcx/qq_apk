@@ -15,9 +15,7 @@ class E
     if (paramJceStruct == null) {
       return null;
     }
-    switch (paramInt2)
-    {
-    default: 
+    if (paramInt2 != 10001) {
       return null;
     }
     paramJceStruct = (e)paramJceStruct;

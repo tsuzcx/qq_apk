@@ -40,27 +40,41 @@ public class ProtoDoGeneralBindToken
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject = cc.c();
-    ((cc)localObject).m();
-    String str2 = ((cc)localObject).j().replaceAll("-", "");
+    Object localObject1 = cc.c();
+    ((cc)localObject1).m();
+    Object localObject2 = ((cc)localObject1).j().replaceAll("-", "");
     int k = cb.a + 1;
     cb.a = k;
     this.j = k;
-    TmsLog.i("mod_seed", "call bind, token_seq: " + str2 + " tokenCodeStr: " + ((cc)localObject).o());
-    localObject = l.a(new Object[] { "uin", Long.valueOf(this.f), "verify_type_id", String.valueOf(this.g), "token_seq", str2, "mobile", this.d, "area_code", this.e, "token_code", ((cc)localObject).o(), "imei", cc.b(), "seq_id", Integer.valueOf(this.j), "op_time", Long.valueOf(cc.c().s() / 1000L) });
-    if (localObject == null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("call bind, token_seq: ");
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append(" tokenCodeStr: ");
+    localStringBuilder.append(((cc)localObject1).o());
+    TmsLog.i("mod_seed", localStringBuilder.toString());
+    localObject1 = l.a(new Object[] { "uin", Long.valueOf(this.f), "verify_type_id", String.valueOf(this.g), "token_seq", localObject2, "mobile", this.d, "area_code", this.e, "token_code", ((cc)localObject1).o(), "imei", cc.b(), "seq_id", Integer.valueOf(this.j), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    if (localObject1 == null)
     {
       this.a.a(10000, "encrypt imei failed");
       return null;
     }
-    str1 = "?aq_base_sid=" + str1 + "&data=" + (String)localObject;
-    return c.e() + "/cn/mbtoken3/mbtoken3_general_bind" + str1;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("?aq_base_sid=");
+    ((StringBuilder)localObject2).append(str);
+    ((StringBuilder)localObject2).append("&data=");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    str = ((StringBuilder)localObject2).toString();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(c.e());
+    ((StringBuilder)localObject1).append("/cn/mbtoken3/mbtoken3_general_bind");
+    ((StringBuilder)localObject1).append(str);
+    return ((StringBuilder)localObject1).toString();
   }
   
   protected void a(do paramdo)
@@ -74,14 +88,23 @@ public class ProtoDoGeneralBindToken
   protected void a(JSONObject paramJSONObject)
   {
     int k = paramJSONObject.getInt("err");
-    TmsLog.i("mod_seed", "ProtoDoGeneralBindToken, errcode: " + k);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ProtoDoGeneralBindToken, errcode: ");
+    ((StringBuilder)localObject).append(k);
+    TmsLog.i("mod_seed", ((StringBuilder)localObject).toString());
     if (k != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
-      this.a.a(k, "server errcode=" + k + ":" + paramJSONObject, paramJSONObject);
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("server errcode=");
+      localStringBuilder.append(k);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      ((e)localObject).a(k, localStringBuilder.toString(), paramJSONObject);
       return;
     }
-    Object localObject = l.c(paramJSONObject.getString("data"));
+    localObject = l.c(paramJSONObject.getString("data"));
     if (localObject != null)
     {
       localObject = new JSONObject(new String((byte[])localObject));
@@ -89,43 +112,48 @@ public class ProtoDoGeneralBindToken
       if (k != this.j)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + k + ",right = " + cb.a().b());
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(k);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(cb.a().b());
+        g.c(paramJSONObject.toString());
         return;
       }
       this.h = ((JSONObject)localObject).getInt("bind_mobile_succ");
-      if (1 != this.h) {}
-      try
-      {
-        this.a.a(paramJSONObject.getString("info"));
-        l = ((JSONObject)localObject).getLong("server_time");
-        cc.c().b(l);
-      }
-      catch (Exception paramJSONObject)
-      {
+      if (1 != this.h) {
         try
         {
-          long l = ((JSONObject)localObject).getLong("seed_expire_time");
-          cc.c().c(l);
-          paramJSONObject = cr.a().d(this.f);
-          if (paramJSONObject != null) {
-            cr.a().b(paramJSONObject);
-          }
-          this.a.c();
-          return;
-          paramJSONObject = paramJSONObject;
+          this.a.a(paramJSONObject.getString("info"));
+        }
+        catch (Exception paramJSONObject)
+        {
           paramJSONObject.printStackTrace();
         }
-        catch (JSONException paramJSONObject)
-        {
-          for (;;)
-          {
-            paramJSONObject.printStackTrace();
-          }
-        }
       }
+      long l = ((JSONObject)localObject).getLong("server_time");
+      cc.c().b(l);
+      try
+      {
+        l = ((JSONObject)localObject).getLong("seed_expire_time");
+        cc.c().c(l);
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
+      paramJSONObject = cr.a().d(this.f);
+      if (paramJSONObject != null) {
+        cr.a().b(paramJSONObject);
+      }
+      this.a.c();
+      return;
     }
-    g.c("parseJSON error decodeData=" + localObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("parseJSON error decodeData=");
+    paramJSONObject.append(localObject);
+    g.c(paramJSONObject.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

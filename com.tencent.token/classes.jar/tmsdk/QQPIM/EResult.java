@@ -6,27 +6,19 @@ public final class EResult
   implements Serializable
 {
   public static final EResult ER_Fail;
-  public static final EResult ER_Invalid;
+  public static final EResult ER_Invalid = new EResult(2, 2, "ER_Invalid");
   public static final EResult ER_Success;
   public static final int _ER_Fail = 0;
   public static final int _ER_Invalid = 2;
   public static final int _ER_Success = 1;
-  private static EResult[] eu;
+  private static EResult[] eu = new EResult[3];
   private int eb;
   private String ec = new String();
   
   static
   {
-    if (!EResult.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      eu = new EResult[3];
-      ER_Fail = new EResult(0, 0, "ER_Fail");
-      ER_Success = new EResult(1, 1, "ER_Success");
-      ER_Invalid = new EResult(2, 2, "ER_Invalid");
-      return;
-    }
+    ER_Fail = new EResult(0, 0, "ER_Fail");
+    ER_Success = new EResult(1, 1, "ER_Success");
   }
   
   private EResult(int paramInt1, int paramInt2, String paramString)
@@ -39,15 +31,16 @@ public final class EResult
   public static EResult convert(int paramInt)
   {
     int i = 0;
-    while (i < eu.length)
+    for (;;)
     {
-      if (eu[i].value() == paramInt) {
+      EResult[] arrayOfEResult = eu;
+      if (i >= arrayOfEResult.length) {
+        break;
+      }
+      if (arrayOfEResult[i].value() == paramInt) {
         return eu[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -55,15 +48,16 @@ public final class EResult
   public static EResult convert(String paramString)
   {
     int i = 0;
-    while (i < eu.length)
+    for (;;)
     {
-      if (eu[i].toString().equals(paramString)) {
+      EResult[] arrayOfEResult = eu;
+      if (i >= arrayOfEResult.length) {
+        break;
+      }
+      if (arrayOfEResult[i].toString().equals(paramString)) {
         return eu[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }

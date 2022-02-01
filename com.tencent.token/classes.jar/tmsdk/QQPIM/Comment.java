@@ -14,16 +14,6 @@ public final class Comment
   public String title = "";
   public String user = "";
   
-  static
-  {
-    if (!Comment.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public Comment()
   {
     setTitle(this.title);
@@ -47,29 +37,43 @@ public final class Comment
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (Comment)paramObject;
-    } while ((!JceUtil.equals(this.title, paramObject.title)) || (!JceUtil.equals(this.comment, paramObject.comment)) || (!JceUtil.equals(this.user, paramObject.user)) || (!JceUtil.equals(this.score, paramObject.score)));
-    return true;
+    }
+    paramObject = (Comment)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.title, paramObject.title))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.comment, paramObject.comment))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.user, paramObject.user))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.score, paramObject.score)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

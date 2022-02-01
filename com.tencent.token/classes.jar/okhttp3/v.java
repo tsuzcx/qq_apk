@@ -4,8 +4,8 @@ import com.tencent.token.fa;
 import com.tencent.token.fc;
 import com.tencent.token.fi;
 import com.tencent.token.gc;
+import com.tencent.token.gf;
 import com.tencent.token.gg;
-import com.tencent.token.gh;
 import java.net.Proxy;
 import java.net.ProxySelector;
 import java.net.Socket;
@@ -51,7 +51,7 @@ public class v
   @Nullable
   final SSLSocketFactory o;
   @Nullable
-  final gg p;
+  final gf p;
   final HostnameVerifier q;
   final g r;
   final b s;
@@ -140,45 +140,56 @@ public class v
     this.n = parama.l;
     Object localObject = this.f.iterator();
     int i1 = 0;
-    if (((Iterator)localObject).hasNext())
+    while (((Iterator)localObject).hasNext())
     {
       k localk = (k)((Iterator)localObject).next();
-      if ((i1 != 0) || (localk.a())) {}
-      for (i1 = 1;; i1 = 0) {
-        break;
+      if ((i1 == 0) && (!localk.a())) {
+        i1 = 0;
+      } else {
+        i1 = 1;
       }
     }
-    if ((parama.m != null) || (i1 == 0)) {
-      this.o = parama.m;
-    }
-    for (this.p = parama.n;; this.p = gg.a((X509TrustManager)localObject))
+    if ((parama.m == null) && (i1 != 0))
     {
-      if (this.o != null) {
-        gc.c().a(this.o);
-      }
-      this.q = parama.o;
-      this.r = parama.p.a(this.p);
-      this.s = parama.q;
-      this.t = parama.r;
-      this.u = parama.s;
-      this.v = parama.t;
-      this.w = parama.u;
-      this.x = parama.v;
-      this.y = parama.w;
-      this.z = parama.x;
-      this.A = parama.y;
-      this.B = parama.z;
-      this.C = parama.A;
-      if (!this.g.contains(null)) {
-        break;
-      }
-      throw new IllegalStateException("Null interceptor: " + this.g);
       localObject = fc.a();
       this.o = a((X509TrustManager)localObject);
+      this.p = gf.a((X509TrustManager)localObject);
     }
-    if (this.h.contains(null)) {
-      throw new IllegalStateException("Null network interceptor: " + this.h);
+    else
+    {
+      this.o = parama.m;
+      this.p = parama.n;
     }
+    if (this.o != null) {
+      gc.c().a(this.o);
+    }
+    this.q = parama.o;
+    this.r = parama.p.a(this.p);
+    this.s = parama.q;
+    this.t = parama.r;
+    this.u = parama.s;
+    this.v = parama.t;
+    this.w = parama.u;
+    this.x = parama.v;
+    this.y = parama.w;
+    this.z = parama.x;
+    this.A = parama.y;
+    this.B = parama.z;
+    this.C = parama.A;
+    if (!this.g.contains(null))
+    {
+      if (!this.h.contains(null)) {
+        return;
+      }
+      parama = new StringBuilder();
+      parama.append("Null network interceptor: ");
+      parama.append(this.h);
+      throw new IllegalStateException(parama.toString());
+    }
+    parama = new StringBuilder();
+    parama.append("Null interceptor: ");
+    parama.append(this.g);
+    throw new IllegalStateException(parama.toString());
   }
   
   private static SSLSocketFactory a(X509TrustManager paramX509TrustManager)
@@ -238,8 +249,9 @@ public class v
   
   fi h()
   {
-    if (this.l != null) {
-      return this.l.a;
+    c localc = this.l;
+    if (localc != null) {
+      return localc.a;
     }
     return this.m;
   }
@@ -350,8 +362,8 @@ public class v
     @Nullable
     SSLSocketFactory m;
     @Nullable
-    gg n;
-    HostnameVerifier o = gh.a;
+    gf n;
+    HostnameVerifier o = gg.a;
     g p = g.a;
     b q = b.a;
     b r = b.a;

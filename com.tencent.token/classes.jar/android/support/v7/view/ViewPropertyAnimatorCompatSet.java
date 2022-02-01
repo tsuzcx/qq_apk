@@ -37,13 +37,13 @@ public class ViewPropertyAnimatorCompatSet
     
     public void onAnimationStart(View paramAnonymousView)
     {
-      if (this.mProxyStarted) {}
-      do
-      {
+      if (this.mProxyStarted) {
         return;
-        this.mProxyStarted = true;
-      } while (ViewPropertyAnimatorCompatSet.this.mListener == null);
-      ViewPropertyAnimatorCompatSet.this.mListener.onAnimationStart(null);
+      }
+      this.mProxyStarted = true;
+      if (ViewPropertyAnimatorCompatSet.this.mListener != null) {
+        ViewPropertyAnimatorCompatSet.this.mListener.onAnimationStart(null);
+      }
     }
     
     void onEnd()
@@ -120,11 +120,13 @@ public class ViewPropertyAnimatorCompatSet
     while (localIterator.hasNext())
     {
       ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat = (ViewPropertyAnimatorCompat)localIterator.next();
-      if (this.mDuration >= 0L) {
-        localViewPropertyAnimatorCompat.setDuration(this.mDuration);
+      long l = this.mDuration;
+      if (l >= 0L) {
+        localViewPropertyAnimatorCompat.setDuration(l);
       }
-      if (this.mInterpolator != null) {
-        localViewPropertyAnimatorCompat.setInterpolator(this.mInterpolator);
+      Interpolator localInterpolator = this.mInterpolator;
+      if (localInterpolator != null) {
+        localViewPropertyAnimatorCompat.setInterpolator(localInterpolator);
       }
       if (this.mListener != null) {
         localViewPropertyAnimatorCompat.setListener(this.mProxyListener);

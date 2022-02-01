@@ -47,12 +47,12 @@ public class GuideQQPimSecureDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968674);
-    getWindow().setBackgroundDrawableResource(2130837730);
-    paramBundle = (TextView)findViewById(2131558408);
-    TextView localTextView = (TextView)findViewById(2131558947);
-    Button localButton = (Button)findViewById(2131558948);
-    findViewById(2131558949).setOnClickListener(new View.OnClickListener()
+    setContentView(2131296354);
+    getWindow().setBackgroundDrawableResource(2131099876);
+    paramBundle = (TextView)findViewById(2131165655);
+    TextView localTextView = (TextView)findViewById(2131165656);
+    Button localButton = (Button)findViewById(2131165564);
+    findViewById(2131165378).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -71,7 +71,7 @@ public class GuideQQPimSecureDialog
     paramBundle.setText((CharSequence)this.a.get(0));
     localTextView.setText((CharSequence)this.a.get(1));
     localButton.setText((CharSequence)this.a.get(2));
-    new a((ImageView)findViewById(2131558946)).execute(new String[] { this.d });
+    new a((ImageView)findViewById(2131166142)).execute(new String[] { this.d });
   }
 }
 

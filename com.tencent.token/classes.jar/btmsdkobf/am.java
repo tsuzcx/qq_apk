@@ -21,8 +21,9 @@ public final class am
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sessionId != null) {
-      paramJceOutputStream.write(this.sessionId, 0);
+    String str = this.sessionId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }

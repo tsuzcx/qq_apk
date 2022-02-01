@@ -38,8 +38,10 @@ public final class SharedPreferencesCompat
         }
         catch (AbstractMethodError localAbstractMethodError)
         {
-          paramEditor.commit();
+          label7:
+          break label7;
         }
+        paramEditor.commit();
       }
     }
   }

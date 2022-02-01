@@ -28,20 +28,19 @@ public class QuickLoginWebViewLoader
   
   public static void disableAccessibility(Context paramContext)
   {
-    if (Build.VERSION.SDK_INT == 17) {
-      try
-      {
-        paramContext = (AccessibilityManager)paramContext.getSystemService("accessibility");
-        if (!paramContext.isEnabled()) {
-          return;
-        }
-        Method localMethod = paramContext.getClass().getDeclaredMethod("setState", new Class[] { Integer.TYPE });
-        localMethod.setAccessible(true);
-        localMethod.invoke(paramContext, new Object[] { Integer.valueOf(0) });
+    if (Build.VERSION.SDK_INT == 17) {}
+    try
+    {
+      paramContext = (AccessibilityManager)paramContext.getSystemService("accessibility");
+      if (!paramContext.isEnabled()) {
         return;
       }
-      catch (Exception paramContext) {}catch (Error paramContext) {}
+      Method localMethod = paramContext.getClass().getDeclaredMethod("setState", new Class[] { Integer.TYPE });
+      localMethod.setAccessible(true);
+      localMethod.invoke(paramContext, new Object[] { Integer.valueOf(0) });
+      return;
     }
+    catch (Exception|Error paramContext) {}
   }
   
   public static void load(Activity paramActivity, Intent paramIntent)
@@ -58,25 +57,22 @@ public class QuickLoginWebViewLoader
     long l = paramIntent.getLongExtra("appid", 0L);
     String str = paramIntent.getStringExtra("account");
     int i;
-    if (true == paramIntent.getBooleanExtra("isUserAccountLocked", false))
-    {
+    if (true == paramIntent.getBooleanExtra("isUserAccountLocked", false)) {
       i = 1;
-      if (true != paramIntent.getBooleanExtra("forceWebLogin", false)) {
-        break label106;
-      }
+    } else {
+      i = 0;
     }
-    label106:
-    for (int j = 1;; j = 0)
+    int j;
+    if (true == paramIntent.getBooleanExtra("forceWebLogin", false)) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if (0L == l)
     {
-      if (0L != l) {
-        break label111;
-      }
       util.LOGI("QuickLoginWebViewActivity get appid failed");
       return;
-      i = 0;
-      break;
     }
-    label111:
     Object localObject2 = paramIntent.getStringExtra("titleBackgroundColor");
     Object localObject1;
     if (localObject2 != null)
@@ -98,94 +94,138 @@ public class QuickLoginWebViewLoader
     {
       paramIntent = "#FFFFFF";
     }
-    RelativeLayout localRelativeLayout = new RelativeLayout(paramActivity);
-    localRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    localObject2 = new RelativeLayout(paramActivity);
+    ((RelativeLayout)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
     int k = paramActivity.getWindowManager().getDefaultDisplay().getHeight();
-    int m = (int)(0.07000000000000001D * k);
-    localObject2 = new TextView(paramActivity);
-    for (;;)
+    double d = k;
+    Double.isNaN(d);
+    int m = (int)(d * 0.07000000000000001D);
+    Object localObject3 = new TextView(paramActivity);
+    try
     {
-      try
+      ((TextView)localObject3).setBackgroundColor(Color.parseColor((String)localObject1));
+      ((TextView)localObject3).setTextColor(Color.parseColor(paramIntent));
+    }
+    catch (IllegalArgumentException localIllegalArgumentException1)
+    {
+      label258:
+      StringBuilder localStringBuilder;
+      break label258;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("color error titleBackgroundColor ");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(" titleTextColor ");
+    localStringBuilder.append(paramIntent);
+    util.LOGI(localStringBuilder.toString(), "");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("color error titleBackgroundColor ");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(" titleTextColor ");
+    localStringBuilder.append(paramIntent);
+    Log.e("wtlogin", localStringBuilder.toString());
+    ((TextView)localObject3).setText("");
+    ((TextView)localObject3).setLayoutParams(new RelativeLayout.LayoutParams(-1, m));
+    ((RelativeLayout)localObject2).addView((View)localObject3);
+    localObject3 = new Button(paramActivity);
+    try
+    {
+      ((Button)localObject3).setBackgroundColor(Color.parseColor((String)localObject1));
+      ((Button)localObject3).setTextColor(Color.parseColor(paramIntent));
+    }
+    catch (IllegalArgumentException localIllegalArgumentException2)
+    {
+      label420:
+      break label420;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("color error titleBackgroundColor ");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(" titleTextColor ");
+    localStringBuilder.append(paramIntent);
+    util.LOGI(localStringBuilder.toString(), "");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("color error titleBackgroundColor ");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(" titleTextColor ");
+    localStringBuilder.append(paramIntent);
+    Log.e("wtlogin", localStringBuilder.toString());
+    ((Button)localObject3).setText("关闭");
+    ((Button)localObject3).setPadding(15, ((Button)localObject3).getPaddingTop(), 15, ((Button)localObject3).getPaddingBottom());
+    ((Button)localObject3).setLayoutParams(new RelativeLayout.LayoutParams(-2, m));
+    ((RelativeLayout)localObject2).addView((View)localObject3);
+    ((Button)localObject3).setOnClickListener(new a(paramActivity));
+    try
+    {
+      localObject3 = new WebView(paramActivity);
+      paramIntent = new RelativeLayout.LayoutParams(-1, k - m);
+      paramIntent.setMargins(0, m, 0, 0);
+      ((WebView)localObject3).setLayoutParams(paramIntent);
+      ((RelativeLayout)localObject2).addView((View)localObject3);
+      paramActivity.setContentView((View)localObject2);
+      localObject1 = ((WebView)localObject3).getSettings();
+      ((WebSettings)localObject1).setUseWideViewPort(true);
+      ((WebSettings)localObject1).setLoadWithOverviewMode(true);
+      if (17 <= Build.VERSION.SDK_INT)
       {
-        ((TextView)localObject2).setBackgroundColor(Color.parseColor((String)localObject1));
-        ((TextView)localObject2).setTextColor(Color.parseColor(paramIntent));
-        ((TextView)localObject2).setText("");
-        ((TextView)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-1, m));
-        localRelativeLayout.addView((View)localObject2);
-        localObject2 = new Button(paramActivity);
+        ((WebView)localObject3).addJavascriptInterface(new QuikLoginJSInterface(paramActivity), "WTLogin");
+        paramIntent = "javascript:function wtCB(uin, sig, input) { WTLogin.ptloginCallBack(uin, sig, input); }function wtAlert(input) { WTLogin.ptAlertCallBack(input); }";
       }
-      catch (IllegalArgumentException localIllegalArgumentException1)
+      else
       {
-        try
+        paramIntent = "javascript:function wtCB(uin, sig, input) { return prompt(JSON.stringify({ uin:''+uin, sig:''+sig, input:''+input})); }";
+      }
+      disableAccessibility(paramActivity);
+      ((WebSettings)localObject1).setJavaScriptEnabled(true);
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        ((WebView)localObject3).removeJavascriptInterface("searchBoxJavaBridge_");
+        ((WebView)localObject3).removeJavascriptInterface("accessibility");
+        ((WebView)localObject3).removeJavascriptInterface("accessibilityTraversal");
+      }
+      if (17 > Build.VERSION.SDK_INT) {
+        ((WebView)localObject3).setWebChromeClient(new b(localQuikLoginJSInterface));
+      }
+      ((WebView)localObject3).setWebViewClient(new c(paramActivity, (WebView)localObject3, paramIntent));
+      localObject2 = "";
+      localObject1 = localObject2;
+      if (str != null)
+      {
+        localObject1 = localObject2;
+        if (str.length() != 0)
         {
-          ((Button)localObject2).setBackgroundColor(Color.parseColor((String)localObject1));
-          ((Button)localObject2).setTextColor(Color.parseColor(paramIntent));
-          ((Button)localObject2).setText("关闭");
-          ((Button)localObject2).setPadding(15, ((Button)localObject2).getPaddingTop(), 15, ((Button)localObject2).getPaddingBottom());
-          ((Button)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-2, m));
-          localRelativeLayout.addView((View)localObject2);
-          ((Button)localObject2).setOnClickListener(new a(paramActivity));
-          try
-          {
-            localObject2 = new WebView(paramActivity);
-            paramIntent = new RelativeLayout.LayoutParams(-1, k - m);
-            paramIntent.setMargins(0, m, 0, 0);
-            ((WebView)localObject2).setLayoutParams(paramIntent);
-            localRelativeLayout.addView((View)localObject2);
-            paramActivity.setContentView(localRelativeLayout);
-            localObject1 = ((WebView)localObject2).getSettings();
-            ((WebSettings)localObject1).setUseWideViewPort(true);
-            ((WebSettings)localObject1).setLoadWithOverviewMode(true);
-            if (17 > Build.VERSION.SDK_INT) {
-              break label857;
-            }
-            ((WebView)localObject2).addJavascriptInterface(new QuikLoginJSInterface(paramActivity), "WTLogin");
-            paramIntent = "javascript:function wtCB(uin, sig, input) { WTLogin.ptloginCallBack(uin, sig, input); }function wtAlert(input) { WTLogin.ptAlertCallBack(input); }";
-            disableAccessibility(paramActivity);
-            ((WebSettings)localObject1).setJavaScriptEnabled(true);
-            if (Build.VERSION.SDK_INT >= 11)
-            {
-              ((WebView)localObject2).removeJavascriptInterface("searchBoxJavaBridge_");
-              ((WebView)localObject2).removeJavascriptInterface("accessibility");
-              ((WebView)localObject2).removeJavascriptInterface("accessibilityTraversal");
-            }
-            if (17 > Build.VERSION.SDK_INT) {
-              ((WebView)localObject2).setWebChromeClient(new b(localQuikLoginJSInterface));
-            }
-            ((WebView)localObject2).setWebViewClient(new c(paramActivity, (WebView)localObject2, paramIntent));
-            if ((str == null) || (str.length() == 0)) {
-              break label864;
-            }
-            localObject1 = "&default_uin=" + str + "&pt_lock_uin=" + i;
-            paramActivity.runOnUiThread(new g((WebView)localObject2, "https://xui.ptlogin2.qq.com/cgi-bin/xlogin?appid=" + l + "&style=42&s_url=http://wtlogin.qq.com/&pt_no_onekey=1&pt_no_auth=1&daid=499&wt_force_pwd=" + j + (String)localObject1, paramIntent));
-            return;
-          }
-          catch (Exception paramActivity)
-          {
-            util.LOGI("create webview failed " + paramActivity.getMessage(), "");
-            return;
-          }
-          catch (Error paramActivity)
-          {
-            util.LOGI("create webview failed " + paramActivity.getMessage(), "");
-            return;
-          }
-          localIllegalArgumentException1 = localIllegalArgumentException1;
-          util.LOGI("color error titleBackgroundColor " + (String)localObject1 + " titleTextColor " + paramIntent, "");
-          Log.e("wtlogin", "color error titleBackgroundColor " + (String)localObject1 + " titleTextColor " + paramIntent);
-        }
-        catch (IllegalArgumentException localIllegalArgumentException2)
-        {
-          util.LOGI("color error titleBackgroundColor " + (String)localObject1 + " titleTextColor " + paramIntent, "");
-          Log.e("wtlogin", "color error titleBackgroundColor " + (String)localObject1 + " titleTextColor " + paramIntent);
-          continue;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("&default_uin=");
+          ((StringBuilder)localObject1).append(str);
+          ((StringBuilder)localObject1).append("&pt_lock_uin=");
+          ((StringBuilder)localObject1).append(i);
+          localObject1 = ((StringBuilder)localObject1).toString();
         }
       }
-      label857:
-      paramIntent = "javascript:function wtCB(uin, sig, input) { return prompt(JSON.stringify({ uin:''+uin, sig:''+sig, input:''+input})); }";
-      continue;
-      label864:
-      localObject1 = "";
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("https://xui.ptlogin2.qq.com/cgi-bin/xlogin?appid=");
+      ((StringBuilder)localObject2).append(l);
+      ((StringBuilder)localObject2).append("&style=42&s_url=http://wtlogin.qq.com/&pt_no_onekey=1&pt_no_auth=1&daid=499&wt_force_pwd=");
+      ((StringBuilder)localObject2).append(j);
+      ((StringBuilder)localObject2).append((String)localObject1);
+      paramActivity.runOnUiThread(new g((WebView)localObject3, ((StringBuilder)localObject2).toString(), paramIntent));
+      return;
+    }
+    catch (Error paramActivity)
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("create webview failed ");
+      paramIntent.append(paramActivity.getMessage());
+      util.LOGI(paramIntent.toString(), "");
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("create webview failed ");
+      paramIntent.append(paramActivity.getMessage());
+      util.LOGI(paramIntent.toString(), "");
+      return;
     }
   }
 }

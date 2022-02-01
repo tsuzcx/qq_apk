@@ -54,16 +54,15 @@ public class FragmentActivity
       {
       default: 
         super.handleMessage(paramAnonymousMessage);
-      case 1: 
-        do
-        {
-          return;
-        } while (!FragmentActivity.this.mStopped);
-        FragmentActivity.this.doReallyStop(false);
+        return;
+      case 2: 
+        FragmentActivity.this.onResumeFragments();
+        FragmentActivity.this.mFragments.execPendingActions();
         return;
       }
-      FragmentActivity.this.onResumeFragments();
-      FragmentActivity.this.mFragments.execPendingActions();
+      if (FragmentActivity.this.mStopped) {
+        FragmentActivity.this.doReallyStop(false);
+      }
     }
   };
   LoaderManager mLoaderManager;
@@ -78,16 +77,17 @@ public class FragmentActivity
   
   private int allocateRequestIndex(Fragment paramFragment)
   {
-    if (this.mPendingFragmentActivityResults.size() >= 65534) {
-      throw new IllegalStateException("Too many pending Fragment activity results.");
-    }
-    while (this.mPendingFragmentActivityResults.indexOfKey(this.mNextCandidateRequestIndex) >= 0) {
+    if (this.mPendingFragmentActivityResults.size() < 65534)
+    {
+      while (this.mPendingFragmentActivityResults.indexOfKey(this.mNextCandidateRequestIndex) >= 0) {
+        this.mNextCandidateRequestIndex = ((this.mNextCandidateRequestIndex + 1) % 65534);
+      }
+      int i = this.mNextCandidateRequestIndex;
+      this.mPendingFragmentActivityResults.put(i, paramFragment.mWho);
       this.mNextCandidateRequestIndex = ((this.mNextCandidateRequestIndex + 1) % 65534);
+      return i;
     }
-    int i = this.mNextCandidateRequestIndex;
-    this.mPendingFragmentActivityResults.put(i, paramFragment.mWho);
-    this.mNextCandidateRequestIndex = ((this.mNextCandidateRequestIndex + 1) % 65534);
-    return i;
+    throw new IllegalStateException("Too many pending Fragment activity results.");
   }
   
   private void markFragmentsCreated()
@@ -98,30 +98,26 @@ public class FragmentActivity
   private static boolean markState(FragmentManager paramFragmentManager, Lifecycle.State paramState)
   {
     paramFragmentManager = paramFragmentManager.getFragments().iterator();
-    boolean bool = false;
+    boolean bool1 = false;
     while (paramFragmentManager.hasNext())
     {
       Object localObject = (Fragment)paramFragmentManager.next();
       if (localObject != null)
       {
+        boolean bool2 = bool1;
         if (((Fragment)localObject).getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED))
         {
           ((Fragment)localObject).mLifecycleRegistry.markState(paramState);
-          bool = true;
+          bool2 = true;
         }
         localObject = ((Fragment)localObject).peekChildFragmentManager();
-        if (localObject == null) {
-          break label83;
+        bool1 = bool2;
+        if (localObject != null) {
+          bool1 = bool2 | markState((FragmentManager)localObject, paramState);
         }
-        bool = markState((FragmentManager)localObject, paramState) | bool;
       }
     }
-    label83:
-    for (;;)
-    {
-      break;
-      return bool;
-    }
+    return bool1;
   }
   
   final View dispatchFragmentsOnCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
@@ -147,8 +143,11 @@ public class FragmentActivity
     paramPrintWriter.print("Local FragmentActivity ");
     paramPrintWriter.print(Integer.toHexString(System.identityHashCode(this)));
     paramPrintWriter.println(" State:");
-    String str = paramString + "  ";
-    paramPrintWriter.print(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("  ");
+    localObject = ((StringBuilder)localObject).toString();
+    paramPrintWriter.print((String)localObject);
     paramPrintWriter.print("mCreated=");
     paramPrintWriter.print(this.mCreated);
     paramPrintWriter.print("mResumed=");
@@ -157,8 +156,9 @@ public class FragmentActivity
     paramPrintWriter.print(this.mStopped);
     paramPrintWriter.print(" mReallyStopped=");
     paramPrintWriter.println(this.mReallyStopped);
-    if (this.mLoaderManager != null) {
-      this.mLoaderManager.dump(str, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+    LoaderManager localLoaderManager = this.mLoaderManager;
+    if (localLoaderManager != null) {
+      localLoaderManager.dump((String)localObject, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     }
     this.mFragments.getSupportFragmentManager().dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
   }
@@ -184,8 +184,9 @@ public class FragmentActivity
   
   public LoaderManager getSupportLoaderManager()
   {
-    if (this.mLoaderManager != null) {
-      return this.mLoaderManager;
+    LoaderManager localLoaderManager = this.mLoaderManager;
+    if (localLoaderManager != null) {
+      return localLoaderManager;
     }
     this.mLoaderManager = new LoaderManagerImpl(this, getViewModelStore());
     return this.mLoaderManager;
@@ -194,42 +195,46 @@ public class FragmentActivity
   @NonNull
   public ViewModelStore getViewModelStore()
   {
-    if (getApplication() == null) {
-      throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
+    if (getApplication() != null)
+    {
+      if (this.mViewModelStore == null) {
+        this.mViewModelStore = new ViewModelStore();
+      }
+      return this.mViewModelStore;
     }
-    if (this.mViewModelStore == null) {
-      this.mViewModelStore = new ViewModelStore();
-    }
-    return this.mViewModelStore;
+    throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     this.mFragments.noteStateNotSaved();
     int i = paramInt1 >> 16;
-    Object localObject;
     if (i != 0)
     {
       i -= 1;
       localObject = (String)this.mPendingFragmentActivityResults.get(i);
       this.mPendingFragmentActivityResults.remove(i);
-      if (localObject == null) {
+      if (localObject == null)
+      {
         Log.w("FragmentActivity", "Activity result delivered for unknown Fragment.");
+        return;
       }
-    }
-    do
-    {
-      return;
       Fragment localFragment = this.mFragments.findFragmentByWho((String)localObject);
       if (localFragment == null)
       {
-        Log.w("FragmentActivity", "Activity result no fragment exists for who: " + (String)localObject);
+        paramIntent = new StringBuilder();
+        paramIntent.append("Activity result no fragment exists for who: ");
+        paramIntent.append((String)localObject);
+        Log.w("FragmentActivity", paramIntent.toString());
         return;
       }
-      localFragment.onActivityResult(0xFFFF & paramInt1, paramInt2, paramIntent);
+      localFragment.onActivityResult(paramInt1 & 0xFFFF, paramInt2, paramIntent);
       return;
-      localObject = ActivityCompat.getPermissionCompatDelegate();
-    } while ((localObject != null) && (((ActivityCompat.PermissionCompatDelegate)localObject).onActivityResult(this, paramInt1, paramInt2, paramIntent)));
+    }
+    Object localObject = ActivityCompat.getPermissionCompatDelegate();
+    if ((localObject != null) && (((ActivityCompat.PermissionCompatDelegate)localObject).onActivityResult(this, paramInt1, paramInt2, paramIntent))) {
+      return;
+    }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
@@ -239,11 +244,12 @@ public class FragmentActivity
   {
     FragmentManager localFragmentManager = this.mFragments.getSupportFragmentManager();
     boolean bool = localFragmentManager.isStateSaved();
-    if ((bool) && (Build.VERSION.SDK_INT <= 25)) {}
-    while ((!bool) && (localFragmentManager.popBackStackImmediate())) {
+    if ((bool) && (Build.VERSION.SDK_INT <= 25)) {
       return;
     }
-    super.onBackPressed();
+    if ((bool) || (!localFragmentManager.popBackStackImmediate())) {
+      super.onBackPressed();
+    }
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
@@ -255,53 +261,48 @@ public class FragmentActivity
   
   protected void onCreate(@Nullable Bundle paramBundle)
   {
-    this.mFragments.attachHost(null);
+    Object localObject2 = this.mFragments;
+    Object localObject1 = null;
+    ((FragmentController)localObject2).attachHost(null);
     super.onCreate(paramBundle);
-    Object localObject = (NonConfigurationInstances)getLastNonConfigurationInstance();
-    if (localObject != null) {
-      this.mViewModelStore = ((NonConfigurationInstances)localObject).viewModelStore;
+    NonConfigurationInstances localNonConfigurationInstances = (NonConfigurationInstances)getLastNonConfigurationInstance();
+    if (localNonConfigurationInstances != null) {
+      this.mViewModelStore = localNonConfigurationInstances.viewModelStore;
     }
     if (paramBundle != null)
     {
-      Parcelable localParcelable = paramBundle.getParcelable("android:support:fragments");
+      localObject2 = paramBundle.getParcelable("android:support:fragments");
       FragmentController localFragmentController = this.mFragments;
-      if (localObject == null) {
-        break label156;
+      if (localNonConfigurationInstances != null) {
+        localObject1 = localNonConfigurationInstances.fragments;
       }
-      localObject = ((NonConfigurationInstances)localObject).fragments;
-      localFragmentController.restoreAllState(localParcelable, (FragmentManagerNonConfig)localObject);
+      localFragmentController.restoreAllState((Parcelable)localObject2, (FragmentManagerNonConfig)localObject1);
       if (paramBundle.containsKey("android:support:next_request_index"))
       {
         this.mNextCandidateRequestIndex = paramBundle.getInt("android:support:next_request_index");
-        localObject = paramBundle.getIntArray("android:support:request_indicies");
+        localObject1 = paramBundle.getIntArray("android:support:request_indicies");
         paramBundle = paramBundle.getStringArray("android:support:request_fragment_who");
-        if ((localObject != null) && (paramBundle != null) && (localObject.length == paramBundle.length)) {
-          break label161;
+        int i;
+        if ((localObject1 != null) && (paramBundle != null) && (localObject1.length == paramBundle.length))
+        {
+          this.mPendingFragmentActivityResults = new SparseArrayCompat(localObject1.length);
+          i = 0;
         }
-        Log.w("FragmentActivity", "Invalid requestCode mapping in savedInstanceState.");
+        while (i < localObject1.length)
+        {
+          this.mPendingFragmentActivityResults.put(localObject1[i], paramBundle[i]);
+          i += 1;
+          continue;
+          Log.w("FragmentActivity", "Invalid requestCode mapping in savedInstanceState.");
+        }
       }
     }
-    for (;;)
+    if (this.mPendingFragmentActivityResults == null)
     {
-      if (this.mPendingFragmentActivityResults == null)
-      {
-        this.mPendingFragmentActivityResults = new SparseArrayCompat();
-        this.mNextCandidateRequestIndex = 0;
-      }
-      this.mFragments.dispatchCreate();
-      return;
-      label156:
-      localObject = null;
-      break;
-      label161:
-      this.mPendingFragmentActivityResults = new SparseArrayCompat(localObject.length);
-      int i = 0;
-      while (i < localObject.length)
-      {
-        this.mPendingFragmentActivityResults.put(localObject[i], paramBundle[i]);
-        i += 1;
-      }
+      this.mPendingFragmentActivityResults = new SparseArrayCompat();
+      this.mNextCandidateRequestIndex = 0;
     }
+    this.mFragments.dispatchCreate();
   }
   
   public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
@@ -316,8 +317,9 @@ public class FragmentActivity
   {
     super.onDestroy();
     doReallyStop(false);
-    if ((this.mViewModelStore != null) && (!this.mRetaining)) {
-      this.mViewModelStore.clear();
+    ViewModelStore localViewModelStore = this.mViewModelStore;
+    if ((localViewModelStore != null) && (!this.mRetaining)) {
+      localViewModelStore.clear();
     }
     this.mFragments.dispatchDestroy();
   }
@@ -333,14 +335,14 @@ public class FragmentActivity
     if (super.onMenuItemSelected(paramInt, paramMenuItem)) {
       return true;
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return false;
-    case 0: 
-      return this.mFragments.dispatchOptionsItemSelected(paramMenuItem);
+      if (paramInt != 6) {
+        return false;
+      }
+      return this.mFragments.dispatchContextItemSelected(paramMenuItem);
     }
-    return this.mFragments.dispatchContextItemSelected(paramMenuItem);
+    return this.mFragments.dispatchOptionsItemSelected(paramMenuItem);
   }
   
   @CallSuper
@@ -357,15 +359,10 @@ public class FragmentActivity
   
   public void onPanelClosed(int paramInt, Menu paramMenu)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      super.onPanelClosed(paramInt, paramMenu);
-      return;
+    if (paramInt == 0) {
       this.mFragments.dispatchOptionsMenuClosed(paramMenu);
     }
+    super.onPanelClosed(paramInt, paramMenu);
   }
   
   protected void onPause()
@@ -417,27 +414,27 @@ public class FragmentActivity
   {
     this.mFragments.noteStateNotSaved();
     int i = paramInt >> 16 & 0xFFFF;
-    String str;
     if (i != 0)
     {
       i -= 1;
-      str = (String)this.mPendingFragmentActivityResults.get(i);
+      String str = (String)this.mPendingFragmentActivityResults.get(i);
       this.mPendingFragmentActivityResults.remove(i);
-      if (str == null) {
+      if (str == null)
+      {
         Log.w("FragmentActivity", "Activity result delivered for unknown Fragment.");
+        return;
       }
+      Fragment localFragment = this.mFragments.findFragmentByWho(str);
+      if (localFragment == null)
+      {
+        paramArrayOfString = new StringBuilder();
+        paramArrayOfString.append("Activity result no fragment exists for who: ");
+        paramArrayOfString.append(str);
+        Log.w("FragmentActivity", paramArrayOfString.toString());
+        return;
+      }
+      localFragment.onRequestPermissionsResult(paramInt & 0xFFFF, paramArrayOfString, paramArrayOfInt);
     }
-    else
-    {
-      return;
-    }
-    Fragment localFragment = this.mFragments.findFragmentByWho(str);
-    if (localFragment == null)
-    {
-      Log.w("FragmentActivity", "Activity result no fragment exists for who: " + str);
-      return;
-    }
-    localFragment.onRequestPermissionsResult(paramInt & 0xFFFF, paramArrayOfString, paramArrayOfInt);
   }
   
   protected void onResume()
@@ -541,7 +538,7 @@ public class FragmentActivity
     try
     {
       this.mRequestedPermissionsFromFragment = true;
-      ActivityCompat.requestPermissions(this, paramArrayOfString, (allocateRequestIndex(paramFragment) + 1 << 16) + (0xFFFF & paramInt));
+      ActivityCompat.requestPermissions(this, paramArrayOfString, (allocateRequestIndex(paramFragment) + 1 << 16) + (paramInt & 0xFFFF));
       return;
     }
     finally
@@ -587,7 +584,7 @@ public class FragmentActivity
       this.mStartedActivityFromFragment = false;
     }
     checkForValidRequestCode(paramInt);
-    ActivityCompat.startActivityForResult(this, paramIntent, (allocateRequestIndex(paramFragment) + 1 << 16) + (0xFFFF & paramInt), paramBundle);
+    ActivityCompat.startActivityForResult(this, paramIntent, (allocateRequestIndex(paramFragment) + 1 << 16) + (paramInt & 0xFFFF), paramBundle);
     this.mStartedActivityFromFragment = false;
   }
   
@@ -605,7 +602,7 @@ public class FragmentActivity
       this.mStartedIntentSenderFromFragment = false;
     }
     checkForValidRequestCode(paramInt1);
-    ActivityCompat.startIntentSenderForResult(this, paramIntentSender, (allocateRequestIndex(paramFragment) + 1 << 16) + (0xFFFF & paramInt1), paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+    ActivityCompat.startIntentSenderForResult(this, paramIntentSender, (allocateRequestIndex(paramFragment) + 1 << 16) + (paramInt1 & 0xFFFF), paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
     this.mStartedIntentSenderFromFragment = false;
   }
   
@@ -698,7 +695,7 @@ public class FragmentActivity
     
     public boolean onShouldSaveFragmentState(Fragment paramFragment)
     {
-      return !FragmentActivity.this.isFinishing();
+      return FragmentActivity.this.isFinishing() ^ true;
     }
     
     public boolean onShouldShowRequestPermissionRationale(@NonNull String paramString)

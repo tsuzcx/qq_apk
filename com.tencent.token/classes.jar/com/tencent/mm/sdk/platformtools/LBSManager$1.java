@@ -8,8 +8,9 @@ class LBSManager$1
   public boolean onTimerExpired()
   {
     Log.v("MicroMsg.LBSManager", "get location by GPS failed.");
-    this.P.K = true;
-    this.P.start();
+    LBSManager localLBSManager = this.P;
+    localLBSManager.K = true;
+    localLBSManager.start();
     LBSManager.a(this.P);
     return false;
   }

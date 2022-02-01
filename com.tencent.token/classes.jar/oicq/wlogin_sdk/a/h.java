@@ -7,7 +7,7 @@ public class h
 {
   public static String a = "e75734d01ad9b57f";
   public static boolean x = false;
-  public static long y;
+  public static long y = 0L;
   public static String z = "";
   public byte[] A = new byte[0];
   public HashMap<Integer, tlv_t> B = new HashMap();

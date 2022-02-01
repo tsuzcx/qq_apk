@@ -37,14 +37,21 @@ public class Space
   private static int getDefaultSize2(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getMode(paramInt2);
-    paramInt2 = View.MeasureSpec.getSize(paramInt2);
-    switch (i)
+    int j = View.MeasureSpec.getSize(paramInt2);
+    if (i != -2147483648)
     {
-    case 0: 
-    default: 
-      return paramInt1;
-    case -2147483648: 
-      return Math.min(paramInt1, paramInt2);
+      paramInt2 = paramInt1;
+      if (i != 0)
+      {
+        if (i != 1073741824) {
+          return paramInt1;
+        }
+        return j;
+      }
+    }
+    else
+    {
+      paramInt2 = Math.min(paramInt1, j);
     }
     return paramInt2;
   }

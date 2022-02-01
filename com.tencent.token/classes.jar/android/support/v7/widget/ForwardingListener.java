@@ -36,11 +36,13 @@ public abstract class ForwardingListener
   
   private void clearCallbacks()
   {
-    if (this.mTriggerLongPress != null) {
-      this.mSrc.removeCallbacks(this.mTriggerLongPress);
+    Runnable localRunnable = this.mTriggerLongPress;
+    if (localRunnable != null) {
+      this.mSrc.removeCallbacks(localRunnable);
     }
-    if (this.mDisallowIntercept != null) {
-      this.mSrc.removeCallbacks(this.mDisallowIntercept);
+    localRunnable = this.mDisallowIntercept;
+    if (localRunnable != null) {
+      this.mSrc.removeCallbacks(localRunnable);
     }
   }
   
@@ -48,71 +50,76 @@ public abstract class ForwardingListener
   {
     View localView = this.mSrc;
     Object localObject = getPopup();
-    if ((localObject == null) || (!((ShowableListMenu)localObject).isShowing())) {}
-    do
+    if (localObject != null)
     {
-      return false;
-      localObject = (DropDownListView)((ShowableListMenu)localObject).getListView();
-    } while ((localObject == null) || (!((DropDownListView)localObject).isShown()));
-    MotionEvent localMotionEvent = MotionEvent.obtainNoHistory(paramMotionEvent);
-    toGlobalMotionEvent(localView, localMotionEvent);
-    toLocalMotionEvent((View)localObject, localMotionEvent);
-    boolean bool = ((DropDownListView)localObject).onForwardedEvent(localMotionEvent, this.mActivePointerId);
-    localMotionEvent.recycle();
-    int i = paramMotionEvent.getActionMasked();
-    if ((i != 1) && (i != 3))
-    {
-      i = 1;
-      if ((!bool) || (i == 0)) {
-        break label129;
+      if (!((ShowableListMenu)localObject).isShowing()) {
+        return false;
       }
+      localObject = (DropDownListView)((ShowableListMenu)localObject).getListView();
+      if (localObject != null)
+      {
+        if (!((DropDownListView)localObject).isShown()) {
+          return false;
+        }
+        MotionEvent localMotionEvent = MotionEvent.obtainNoHistory(paramMotionEvent);
+        toGlobalMotionEvent(localView, localMotionEvent);
+        toLocalMotionEvent((View)localObject, localMotionEvent);
+        boolean bool = ((DropDownListView)localObject).onForwardedEvent(localMotionEvent, this.mActivePointerId);
+        localMotionEvent.recycle();
+        int i = paramMotionEvent.getActionMasked();
+        if ((i != 1) && (i != 3)) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        return (bool) && (i != 0);
+      }
+      return false;
     }
-    label129:
-    for (bool = true;; bool = false)
-    {
-      return bool;
-      i = 0;
-      break;
-    }
+    return false;
   }
   
   private boolean onTouchObserved(MotionEvent paramMotionEvent)
   {
     View localView = this.mSrc;
-    if (!localView.isEnabled()) {}
-    int i;
-    do
-    {
+    if (!localView.isEnabled()) {
       return false;
-      switch (paramMotionEvent.getActionMasked())
+    }
+    switch (paramMotionEvent.getActionMasked())
+    {
+    default: 
+      return false;
+    case 2: 
+      int i = paramMotionEvent.findPointerIndex(this.mActivePointerId);
+      if ((i >= 0) && (!pointInView(localView, paramMotionEvent.getX(i), paramMotionEvent.getY(i), this.mScaledTouchSlop)))
       {
-      default: 
-        return false;
-      case 0: 
-        this.mActivePointerId = paramMotionEvent.getPointerId(0);
-        if (this.mDisallowIntercept == null) {
-          this.mDisallowIntercept = new DisallowIntercept();
-        }
-        localView.postDelayed(this.mDisallowIntercept, this.mTapTimeout);
-        if (this.mTriggerLongPress == null) {
-          this.mTriggerLongPress = new TriggerLongPress();
-        }
-        localView.postDelayed(this.mTriggerLongPress, this.mLongPressTimeout);
-        return false;
-      case 2: 
-        i = paramMotionEvent.findPointerIndex(this.mActivePointerId);
+        clearCallbacks();
+        localView.getParent().requestDisallowInterceptTouchEvent(true);
+        return true;
       }
-    } while ((i < 0) || (pointInView(localView, paramMotionEvent.getX(i), paramMotionEvent.getY(i), this.mScaledTouchSlop)));
-    clearCallbacks();
-    localView.getParent().requestDisallowInterceptTouchEvent(true);
-    return true;
-    clearCallbacks();
+      break;
+    case 1: 
+    case 3: 
+      clearCallbacks();
+      return false;
+    case 0: 
+      this.mActivePointerId = paramMotionEvent.getPointerId(0);
+      if (this.mDisallowIntercept == null) {
+        this.mDisallowIntercept = new DisallowIntercept();
+      }
+      localView.postDelayed(this.mDisallowIntercept, this.mTapTimeout);
+      if (this.mTriggerLongPress == null) {
+        this.mTriggerLongPress = new TriggerLongPress();
+      }
+      localView.postDelayed(this.mTriggerLongPress, this.mLongPressTimeout);
+    }
     return false;
   }
   
   private static boolean pointInView(View paramView, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return (paramFloat1 >= -paramFloat3) && (paramFloat2 >= -paramFloat3) && (paramFloat1 < paramView.getRight() - paramView.getLeft() + paramFloat3) && (paramFloat2 < paramView.getBottom() - paramView.getTop() + paramFloat3);
+    float f = -paramFloat3;
+    return (paramFloat1 >= f) && (paramFloat2 >= f) && (paramFloat1 < paramView.getRight() - paramView.getLeft() + paramFloat3) && (paramFloat2 < paramView.getBottom() - paramView.getTop() + paramFloat3);
   }
   
   private boolean toGlobalMotionEvent(View paramView, MotionEvent paramMotionEvent)
@@ -155,52 +162,64 @@ public abstract class ForwardingListener
   {
     clearCallbacks();
     View localView = this.mSrc;
-    if ((!localView.isEnabled()) || (localView.isLongClickable())) {}
-    while (!onForwardingStarted()) {
+    if (localView.isEnabled())
+    {
+      if (localView.isLongClickable()) {
+        return;
+      }
+      if (!onForwardingStarted()) {
+        return;
+      }
+      localView.getParent().requestDisallowInterceptTouchEvent(true);
+      long l = SystemClock.uptimeMillis();
+      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+      localView.onTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      this.mForwarding = true;
       return;
     }
-    localView.getParent().requestDisallowInterceptTouchEvent(true);
-    long l = SystemClock.uptimeMillis();
-    MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-    localView.onTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    this.mForwarding = true;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool2 = false;
-    boolean bool3 = this.mForwarding;
-    if (bool3)
+    boolean bool4 = this.mForwarding;
+    boolean bool3 = true;
+    boolean bool1;
+    if (bool4)
     {
-      if ((onTouchForwarded(paramMotionEvent)) || (!onForwardingStopped())) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        this.mForwarding = bool1;
-        if (!bool1)
-        {
-          bool1 = bool2;
-          if (!bool3) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-        return bool1;
+      if ((!onTouchForwarded(paramMotionEvent)) && (onForwardingStopped())) {
+        bool1 = false;
+      } else {
+        bool1 = true;
       }
     }
-    if ((onTouchObserved(paramMotionEvent)) && (onForwardingStarted())) {}
-    for (boolean bool1 = true;; bool1 = false)
+    else
     {
-      if (bool1)
+      if ((onTouchObserved(paramMotionEvent)) && (onForwardingStarted())) {
+        bool2 = true;
+      } else {
+        bool2 = false;
+      }
+      bool1 = bool2;
+      if (bool2)
       {
         long l = SystemClock.uptimeMillis();
         paramView = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
         this.mSrc.onTouchEvent(paramView);
         paramView.recycle();
+        bool1 = bool2;
       }
-      break;
     }
+    this.mForwarding = bool1;
+    boolean bool2 = bool3;
+    if (!bool1)
+    {
+      if (bool4) {
+        return true;
+      }
+      bool2 = false;
+    }
+    return bool2;
   }
   
   public void onViewAttachedToWindow(View paramView) {}
@@ -209,8 +228,9 @@ public abstract class ForwardingListener
   {
     this.mForwarding = false;
     this.mActivePointerId = -1;
-    if (this.mDisallowIntercept != null) {
-      this.mSrc.removeCallbacks(this.mDisallowIntercept);
+    paramView = this.mDisallowIntercept;
+    if (paramView != null) {
+      this.mSrc.removeCallbacks(paramView);
     }
   }
   

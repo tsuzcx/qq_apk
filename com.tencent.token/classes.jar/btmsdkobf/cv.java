@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class cv
 {
-  private static cv iA = null;
+  private static cv iA;
   private cl he = null;
   private PowerManager iB = null;
   public Map<Byte, Integer> iC = new HashMap();
@@ -71,17 +71,17 @@ public class cv
     //   31: invokevirtual 94	btmsdkobf/cr:b	(ZZ)I
     //   34: putfield 98	btmsdkobf/cv$a:iG	I
     //   37: aload_0
-    //   38: getfield 40	btmsdkobf/cv:iB	Landroid/os/PowerManager;
+    //   38: getfield 38	btmsdkobf/cv:iB	Landroid/os/PowerManager;
     //   41: astore 4
     //   43: aload 4
     //   45: ifnull +15 -> 60
     //   48: aload 5
     //   50: aload_0
-    //   51: getfield 40	btmsdkobf/cv:iB	Landroid/os/PowerManager;
+    //   51: getfield 38	btmsdkobf/cv:iB	Landroid/os/PowerManager;
     //   54: invokevirtual 104	android/os/PowerManager:isScreenOn	()Z
     //   57: putfield 108	btmsdkobf/cv$a:iH	Z
     //   60: aload_0
-    //   61: getfield 36	btmsdkobf/cv:iz	Lbtmsdkobf/cc;
+    //   61: getfield 34	btmsdkobf/cv:iz	Lbtmsdkobf/cc;
     //   64: iload_1
     //   65: invokestatic 68	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   68: aload 5
@@ -128,51 +128,74 @@ public class cv
   
   public void a(String paramString1, int paramInt1, int paramInt2, as paramas, int paramInt3, int paramInt4, String paramString2)
   {
+    try
+    {
+      paramas = (a)this.iz.get(Integer.valueOf(paramInt2));
+      if (paramas == null) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramString1);
+      paramString1 = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[ocean][shark_funnel]|seqNo|seq_");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("|step|");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append("|cmdId|cmd_");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("|stepTime|");
+      localStringBuilder.append(System.currentTimeMillis() - paramas.iN);
+      localStringBuilder.append("|retCode|");
+      localStringBuilder.append(paramInt4);
+      localStringBuilder.append("|flow|");
+      localStringBuilder.append(paramString2);
+      eh.i(paramString1, localStringBuilder.toString());
+      if (paramInt1 == 21)
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("|step|");
+        paramString1.append(paramInt3);
+        paramString1.append("|cmdId|");
+        paramString1.append(paramInt1);
+        paramString1.append("|retCode|");
+        paramString1.append(paramInt4);
+        eh.i("SharkFunnelModel", paramString1.toString());
+      }
+      paramas.bM = paramInt1;
+      paramas.iE.set(paramInt3, true);
+      if (paramString2 == null) {
+        break label355;
+      }
+      paramas.iO = paramString2;
+    }
+    finally {}
+    if (paramInt3 == 16)
+    {
+      paramas.iL = paramInt4;
+      if (this.he != null) {
+        this.he.h(paramInt1, paramInt4);
+      }
+    }
+    else
+    {
+      paramas.df = paramInt4;
+    }
     for (;;)
     {
-      label229:
-      try
-      {
-        paramas = (a)this.iz.get(Integer.valueOf(paramInt2));
-        if (paramas == null) {
-          return;
-        }
-        eh.i("" + paramString1, "[ocean][shark_funnel]|seqNo|seq_" + paramInt2 + "|step|" + paramInt3 + "|cmdId|cmd_" + paramInt1 + "|stepTime|" + (System.currentTimeMillis() - paramas.iN) + "|retCode|" + paramInt4 + "|flow|" + paramString2);
-        if (paramInt1 == 21) {
-          eh.i("SharkFunnelModel", "|step|" + paramInt3 + "|cmdId|" + paramInt1 + "|retCode|" + paramInt4);
-        }
-        paramas.bM = paramInt1;
-        paramas.iE.set(paramInt3, true);
-        if (paramString2 == null) {
-          break label289;
-        }
-        paramas.iO = paramString2;
-      }
-      finally {}
       paramas.iK = paramInt4;
       if (this.he != null) {
         this.he.g(paramInt1, paramInt4);
       }
       paramas.iN = System.currentTimeMillis();
-      continue;
-      label289:
-      do
-      {
-        if (paramInt3 == 16)
-        {
-          paramas.iL = paramInt4;
-          if (this.he == null) {
-            break label229;
-          }
-          this.he.h(paramInt1, paramInt4);
-          break label229;
-        }
-        paramas.df = paramInt4;
-        break label229;
-        if ((paramInt3 == 14) || (paramInt3 == 9)) {
+      return;
+      label355:
+      if ((paramInt3 != 14) && (paramInt3 != 9)) {
+        if (paramInt3 != 10) {
           break;
         }
-      } while (paramInt3 != 10);
+      }
     }
   }
   
@@ -192,197 +215,205 @@ public class cv
   
   public void a(String paramString1, int paramInt1, int paramInt2, ba paramba, int paramInt3, int paramInt4, String paramString2)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        paramba = (a)this.iz.get(Integer.valueOf(paramInt2));
-        if (paramba == null) {
-          return;
-        }
-        eh.i("" + paramString1, "[ocean][shark_funnel]|seqNo|seq_" + paramInt2 + "|step|" + paramInt3 + "|cmdId|cmd_" + paramInt1 + "|stepTime|" + (System.currentTimeMillis() - paramba.iN) + "|retCode|" + paramInt4 + "|flow|" + paramString2);
-        if (paramInt1 == 10021) {
-          eh.i("SharkFunnelModel", "|step|" + paramInt3 + "|cmdId|" + paramInt1 + "|retCode|" + paramInt4);
-        }
-        paramba.bM = paramInt1;
-        if (paramString2 != null) {
-          paramba.iP = paramString2;
-        }
-        paramba.iE.set(paramInt3, true);
-        if (paramInt3 == 14)
-        {
-          paramba.iK = paramInt4;
-          paramba.iN = System.currentTimeMillis();
-          continue;
-        }
-        if (paramInt3 != 16) {
-          break label250;
-        }
+      paramba = (a)this.iz.get(Integer.valueOf(paramInt2));
+      if (paramba == null) {
+        return;
       }
-      finally {}
-      paramba.iL = paramInt4;
-      continue;
-      label250:
-      paramba.df = paramInt4;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramString1);
+      paramString1 = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[ocean][shark_funnel]|seqNo|seq_");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("|step|");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append("|cmdId|cmd_");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("|stepTime|");
+      localStringBuilder.append(System.currentTimeMillis() - paramba.iN);
+      localStringBuilder.append("|retCode|");
+      localStringBuilder.append(paramInt4);
+      localStringBuilder.append("|flow|");
+      localStringBuilder.append(paramString2);
+      eh.i(paramString1, localStringBuilder.toString());
+      if (paramInt1 == 10021)
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("|step|");
+        paramString1.append(paramInt3);
+        paramString1.append("|cmdId|");
+        paramString1.append(paramInt1);
+        paramString1.append("|retCode|");
+        paramString1.append(paramInt4);
+        eh.i("SharkFunnelModel", paramString1.toString());
+      }
+      paramba.bM = paramInt1;
+      if (paramString2 != null) {
+        paramba.iP = paramString2;
+      }
+      paramba.iE.set(paramInt3, true);
+      if (paramInt3 == 14) {
+        paramba.iK = paramInt4;
+      } else if (paramInt3 == 16) {
+        paramba.iL = paramInt4;
+      } else {
+        paramba.df = paramInt4;
+      }
+      paramba.iN = System.currentTimeMillis();
+      return;
     }
+    finally {}
   }
   
   public boolean a(int paramInt, boolean paramBoolean)
   {
     for (;;)
     {
-      a locala;
-      boolean bool;
       int j;
       int k;
-      int i;
-      StringBuilder localStringBuilder;
+      int m;
       try
       {
-        locala = (a)this.iz.get(Integer.valueOf(paramInt));
-        if (locala == null)
-        {
-          paramBoolean = false;
-          return paramBoolean;
+        a locala = (a)this.iz.get(Integer.valueOf(paramInt));
+        if (locala == null) {
+          return false;
         }
         this.iz.a(Integer.valueOf(paramInt));
-        bool = locala.iE.get(15);
+        boolean bool = locala.iE.get(15);
         j = locala.df;
-        if (j == 0) {
-          break label686;
-        }
-        k = bz.o(j);
-        i = locala.iG;
-        if (i == -2)
+        i = j;
+        if (j != 0)
         {
-          i = j - k - 160000;
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("|cmd|cmd_");
-          localStringBuilder.append(locala.bM);
-          localStringBuilder.append("|seqNo|seq_");
-          localStringBuilder.append(paramInt);
-          if (!TextUtils.isEmpty(locala.iF))
+          k = bz.o(j);
+          m = locala.iG;
+          if (m == -2)
           {
-            localStringBuilder.append("|reason|");
-            localStringBuilder.append(locala.iF);
+            i = j - k - 160000;
           }
-          localStringBuilder.append("|channel|");
-          if (!bool) {
-            break label747;
-          }
-          String str1 = "http";
-          localStringBuilder.append(str1);
-          localStringBuilder.append("|step|");
-          localStringBuilder.append(locala.iE.toString());
-          localStringBuilder.append("|netState|");
-          localStringBuilder.append(cr.u(locala.iG));
-          localStringBuilder.append("|isScreenOn|");
-          localStringBuilder.append(locala.iH);
-          localStringBuilder.append("|isNetworkChanged|");
-          localStringBuilder.append(locala.iI);
-          localStringBuilder.append("|tcpRetCode|");
-          localStringBuilder.append(locala.iK);
-          localStringBuilder.append("|httpRecCode|");
-          localStringBuilder.append(locala.iL);
-          localStringBuilder.append("|retCode|");
-          if (i == locala.df)
+          else
           {
-            localStringBuilder.append(locala.df);
-            localStringBuilder.append("|timeOut|");
-            localStringBuilder.append(locala.iJ);
-            localStringBuilder.append("|totalTime|");
-            localStringBuilder.append(System.currentTimeMillis() - locala.iM);
-            localStringBuilder.append("|sendFlow|");
-            localStringBuilder.append(locala.iO);
-            localStringBuilder.append("|recFlow|");
-            localStringBuilder.append(locala.iP);
-            if (locala.df != 0) {
-              break label587;
+            i = j;
+            if (k == -50000)
+            {
+              if (!locala.iI) {
+                break label737;
+              }
+              i = -550000;
+              break label781;
             }
-            eh.e("SharkFunnelModel", "[shark_funnel]" + localStringBuilder.toString());
-            if (this.he == null) {
-              break label692;
-            }
-            if (locala.bM <= 10000) {
-              break label655;
-            }
-            paramInt = locala.bM - 10000;
-            if ((paramInt == 999) || (paramInt == 794) || (paramInt == 797) || (paramInt == 782)) {
-              break label692;
-            }
-            if (i != 0) {
-              break label664;
-            }
-            this.he.i(paramInt, i);
-            break label692;
           }
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("|cmd|cmd_");
+        localStringBuilder.append(locala.bM);
+        localStringBuilder.append("|seqNo|seq_");
+        localStringBuilder.append(paramInt);
+        if (!TextUtils.isEmpty(locala.iF))
+        {
+          localStringBuilder.append("|reason|");
+          localStringBuilder.append(locala.iF);
+        }
+        localStringBuilder.append("|channel|");
+        if (!bool) {
+          break label792;
+        }
+        Object localObject1 = "http";
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append("|step|");
+        localStringBuilder.append(locala.iE.toString());
+        localStringBuilder.append("|netState|");
+        localStringBuilder.append(cr.u(locala.iG));
+        localStringBuilder.append("|isScreenOn|");
+        localStringBuilder.append(locala.iH);
+        localStringBuilder.append("|isNetworkChanged|");
+        localStringBuilder.append(locala.iI);
+        localStringBuilder.append("|tcpRetCode|");
+        localStringBuilder.append(locala.iK);
+        localStringBuilder.append("|httpRecCode|");
+        localStringBuilder.append(locala.iL);
+        localStringBuilder.append("|retCode|");
+        if (i == locala.df)
+        {
+          localStringBuilder.append(locala.df);
         }
         else
         {
-          if (k != -50000) {
-            break label686;
-          }
-          if (!locala.iI) {
-            break label709;
-          }
-          i = -550000;
-          break label698;
+          localStringBuilder.append(locala.df);
+          localStringBuilder.append("->");
+          localStringBuilder.append(i);
         }
-        localStringBuilder.append(locala.df).append("->").append(i);
-        continue;
-        if (!paramBoolean) {
-          break label623;
+        localStringBuilder.append("|timeOut|");
+        localStringBuilder.append(locala.iJ);
+        localStringBuilder.append("|totalTime|");
+        localStringBuilder.append(System.currentTimeMillis() - locala.iM);
+        localStringBuilder.append("|sendFlow|");
+        localStringBuilder.append(locala.iO);
+        localStringBuilder.append("|recFlow|");
+        localStringBuilder.append(locala.iP);
+        if (locala.df == 0)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("[shark_funnel]");
+          ((StringBuilder)localObject1).append(localStringBuilder.toString());
+          eh.e("SharkFunnelModel", ((StringBuilder)localObject1).toString());
         }
+        else if (paramBoolean)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("xxxxxxxxxxxx [shark_funnel]");
+          ((StringBuilder)localObject1).append(localStringBuilder.toString());
+          localObject1 = ((StringBuilder)localObject1).toString();
+          eh.h("SharkFunnelModel", (String)localObject1);
+        }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("tttt [shark_funnel]");
+          ((StringBuilder)localObject1).append(localStringBuilder.toString());
+          localObject1 = ((StringBuilder)localObject1).toString();
+          continue;
+        }
+        if (this.he != null)
+        {
+          if (locala.bM > 10000) {
+            paramInt = locala.bM - 10000;
+          } else {
+            paramInt = locala.bM;
+          }
+          if ((paramInt != 999) && (paramInt != 794) && (paramInt != 797) && (paramInt != 782)) {
+            if (i == 0)
+            {
+              localObject1 = this.he;
+              ((cl)localObject1).i(paramInt, i);
+            }
+            else if (paramBoolean)
+            {
+              localObject1 = this.he;
+              continue;
+            }
+          }
+        }
+        return bool;
       }
       finally {}
-      label587:
-      eh.h("SharkFunnelModel", "xxxxxxxxxxxx [shark_funnel]" + localStringBuilder.toString());
-      continue;
-      label623:
-      eh.h("SharkFunnelModel", "tttt [shark_funnel]" + localStringBuilder.toString());
-      continue;
-      label655:
-      paramInt = locala.bM;
-      continue;
-      label664:
-      if (paramBoolean)
-      {
-        this.he.i(paramInt, i);
-        break label692;
-        label680:
+      label737:
+      if (m == -4) {
+        i = -530000;
+      } else if (m == -1) {
+        i = -220000;
+      } else if (m == -3) {
+        i = -540000;
+      } else {
         i = k;
-        break label698;
-        label686:
-        i = j;
-        continue;
       }
-      label692:
-      paramBoolean = bool;
+      label781:
+      int i = j - k + i;
       continue;
-      for (;;)
-      {
-        label698:
-        i += j - k;
-        break;
-        label709:
-        if (i == -4)
-        {
-          i = -530000;
-        }
-        else if (i == -1)
-        {
-          i = -220000;
-        }
-        else
-        {
-          if (i != -3) {
-            break label680;
-          }
-          i = -540000;
-        }
-      }
-      label747:
-      String str2 = "tcp";
+      label792:
+      String str = "tcp";
     }
   }
   
@@ -408,13 +439,13 @@ public class cv
     //   1: monitorenter
     //   2: aload_0
     //   3: aload_1
-    //   4: putfield 38	btmsdkobf/cv:he	Lbtmsdkobf/cl;
+    //   4: putfield 36	btmsdkobf/cv:he	Lbtmsdkobf/cl;
     //   7: aload_0
     //   8: invokestatic 304	btmsdkobf/bc:n	()Landroid/content/Context;
     //   11: ldc_w 306
     //   14: invokevirtual 312	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   17: checkcast 100	android/os/PowerManager
-    //   20: putfield 40	btmsdkobf/cv:iB	Landroid/os/PowerManager;
+    //   20: putfield 38	btmsdkobf/cv:iB	Landroid/os/PowerManager;
     //   23: invokestatic 318	btmsdkobf/cz:bS	()Lbtmsdkobf/cz;
     //   26: new 6	btmsdkobf/cv$1
     //   29: dup

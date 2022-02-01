@@ -30,39 +30,43 @@ public class b
   private void a(Class<?> paramClass)
   {
     paramClass = paramClass.getDeclaredFields();
-    if (paramClass == null) {}
-    for (;;)
-    {
+    if (paramClass == null) {
       return;
-      int j = paramClass.length;
-      int i = 0;
-      while (i < j)
+    }
+    int j = paramClass.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject2 = paramClass[i];
+      try
       {
-        Object localObject2 = paramClass[i];
-        try
+        Object localObject1 = ((Field)localObject2).get(null);
+        if ((localObject1 instanceof String))
         {
-          Object localObject1 = ((Field)localObject2).get(null);
-          if (!(localObject1 instanceof String)) {
-            break label135;
-          }
           localObject1 = (String)localObject1;
           localObject2 = (f)((Field)localObject2).getAnnotation(f.class);
-          if ((localObject1 == null) || (localObject2 == null)) {
-            break label135;
-          }
-          localObject2 = ((f)localObject2).a();
-          if (localObject2 == null) {
-            g.c("protocol mapping definition in ProtocolConstant is error:" + (String)localObject1);
+          if ((localObject1 != null) && (localObject2 != null))
+          {
+            localObject2 = ((f)localObject2).a();
+            if (localObject2 == null)
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("protocol mapping definition in ProtocolConstant is error:");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              g.c(((StringBuilder)localObject2).toString());
+            }
+            else
+            {
+              this.a.put(localObject1, localObject2);
+            }
           }
         }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-        this.a.put(localException, localObject2);
-        label135:
-        i += 1;
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      i += 1;
     }
   }
   

@@ -14,18 +14,13 @@ public class d
   
   public final String b(String paramString)
   {
-    Object localObject;
     if ((this.b) && (this.a.containsKey(paramString))) {
-      localObject = (String)this.a.get(paramString);
+      return (String)this.a.get(paramString);
     }
-    String str;
-    do
-    {
-      return localObject;
-      str = a(paramString);
-      localObject = str;
-    } while (!this.b);
-    this.a.put(paramString, str);
+    String str = a(paramString);
+    if (this.b) {
+      this.a.put(paramString, str);
+    }
     return str;
   }
 }

@@ -475,11 +475,10 @@ public class ViewCompat
   {
     if ((paramView instanceof NestedScrollingChild2)) {
       ((NestedScrollingChild2)paramView).hasNestedScrollingParent(paramInt);
+    } else if (paramInt == 0) {
+      return IMPL.hasNestedScrollingParent(paramView);
     }
-    while (paramInt != 0) {
-      return false;
-    }
-    return IMPL.hasNestedScrollingParent(paramView);
+    return false;
   }
   
   public static boolean hasOnClickListeners(View paramView)
@@ -630,10 +629,10 @@ public class ViewCompat
   public static <T extends View> T requireViewById(@NonNull View paramView, @IdRes int paramInt)
   {
     paramView = paramView.findViewById(paramInt);
-    if (paramView == null) {
-      throw new IllegalArgumentException("ID does not reference a View inside this View");
+    if (paramView != null) {
+      return paramView;
     }
-    return paramView;
+    throw new IllegalArgumentException("ID does not reference a View inside this View");
   }
   
   @Deprecated
@@ -918,13 +917,14 @@ public class ViewCompat
   
   public static void stopNestedScroll(@NonNull View paramView, int paramInt)
   {
-    if ((paramView instanceof NestedScrollingChild2)) {
+    if ((paramView instanceof NestedScrollingChild2))
+    {
       ((NestedScrollingChild2)paramView).stopNestedScroll(paramInt);
-    }
-    while (paramInt != 0) {
       return;
     }
-    IMPL.stopNestedScroll(paramView);
+    if (paramInt == 0) {
+      IMPL.stopNestedScroll(paramView);
+    }
   }
   
   public static void updateDragShadow(View paramView, View.DragShadowBuilder paramDragShadowBuilder)
@@ -1308,25 +1308,20 @@ public class ViewCompat
     {
       Rect localRect = getEmptyTempRect();
       ViewParent localViewParent = paramView.getParent();
-      int i;
+      boolean bool;
       if ((localViewParent instanceof View))
       {
         View localView = (View)localViewParent;
         localRect.set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
-        if (!localRect.intersects(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom())) {
-          i = 1;
-        }
+        bool = localRect.intersects(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()) ^ true;
       }
-      for (;;)
+      else
       {
-        super.offsetLeftAndRight(paramView, paramInt);
-        if ((i != 0) && (localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
-          ((View)localViewParent).invalidate(localRect);
-        }
-        return;
-        i = 0;
-        continue;
-        i = 0;
+        bool = false;
+      }
+      super.offsetLeftAndRight(paramView, paramInt);
+      if ((bool) && (localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
+        ((View)localViewParent).invalidate(localRect);
       }
     }
     
@@ -1334,25 +1329,20 @@ public class ViewCompat
     {
       Rect localRect = getEmptyTempRect();
       ViewParent localViewParent = paramView.getParent();
-      int i;
+      boolean bool;
       if ((localViewParent instanceof View))
       {
         View localView = (View)localViewParent;
         localRect.set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
-        if (!localRect.intersects(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom())) {
-          i = 1;
-        }
+        bool = localRect.intersects(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()) ^ true;
       }
-      for (;;)
+      else
       {
-        super.offsetTopAndBottom(paramView, paramInt);
-        if ((i != 0) && (localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
-          ((View)localViewParent).invalidate(localRect);
-        }
-        return;
-        i = 0;
-        continue;
-        i = 0;
+        bool = false;
+      }
+      super.offsetTopAndBottom(paramView, paramInt);
+      if ((bool) && (localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
+        ((View)localViewParent).invalidate(localRect);
       }
     }
     
@@ -1378,13 +1368,12 @@ public class ViewCompat
       if (Build.VERSION.SDK_INT == 21)
       {
         paramColorStateList = paramView.getBackground();
+        int i;
         if ((paramView.getBackgroundTintList() == null) && (paramView.getBackgroundTintMode() == null)) {
-          break label64;
+          i = 0;
+        } else {
+          i = 1;
         }
-      }
-      label64:
-      for (int i = 1;; i = 0)
-      {
         if ((paramColorStateList != null) && (i != 0))
         {
           if (paramColorStateList.isStateful()) {
@@ -1392,7 +1381,6 @@ public class ViewCompat
           }
           paramView.setBackground(paramColorStateList);
         }
-        return;
       }
     }
     
@@ -1402,13 +1390,12 @@ public class ViewCompat
       if (Build.VERSION.SDK_INT == 21)
       {
         paramMode = paramView.getBackground();
+        int i;
         if ((paramView.getBackgroundTintList() == null) && (paramView.getBackgroundTintMode() == null)) {
-          break label64;
+          i = 0;
+        } else {
+          i = 1;
         }
-      }
-      label64:
-      for (int i = 1;; i = 0)
-      {
         if ((paramMode != null) && (i != 0))
         {
           if (paramMode.isStateful()) {
@@ -1416,7 +1403,6 @@ public class ViewCompat
           }
           paramView.setBackground(paramMode);
         }
-        return;
       }
     }
     
@@ -1524,12 +1510,12 @@ public class ViewCompat
     
     public void setPointerIcon(View paramView, PointerIconCompat paramPointerIconCompat)
     {
-      if (paramPointerIconCompat != null) {}
-      for (paramPointerIconCompat = paramPointerIconCompat.getPointerIcon();; paramPointerIconCompat = null)
-      {
-        paramView.setPointerIcon((PointerIcon)paramPointerIconCompat);
-        return;
+      if (paramPointerIconCompat != null) {
+        paramPointerIconCompat = paramPointerIconCompat.getPointerIcon();
+      } else {
+        paramPointerIconCompat = null;
       }
+      paramView.setPointerIcon((PointerIcon)paramPointerIconCompat);
     }
     
     public boolean startDragAndDrop(View paramView, ClipData paramClipData, View.DragShadowBuilder paramDragShadowBuilder, Object paramObject, int paramInt)
@@ -1645,16 +1631,12 @@ public class ViewCompat
       {
         this.mDispatchStartTemporaryDetach = View.class.getDeclaredMethod("dispatchStartTemporaryDetach", new Class[0]);
         this.mDispatchFinishTemporaryDetach = View.class.getDeclaredMethod("dispatchFinishTemporaryDetach", new Class[0]);
-        this.mTempDetachBound = true;
-        return;
       }
       catch (NoSuchMethodException localNoSuchMethodException)
       {
-        for (;;)
-        {
-          Log.e("ViewCompat", "Couldn't find method", localNoSuchMethodException);
-        }
+        Log.e("ViewCompat", "Couldn't find method", localNoSuchMethodException);
       }
+      this.mTempDetachBound = true;
     }
     
     private static void tickleInvalidationFlag(View paramView)
@@ -1693,10 +1675,11 @@ public class ViewCompat
       if (!this.mTempDetachBound) {
         bindTempDetach();
       }
-      if (this.mDispatchFinishTemporaryDetach != null) {
+      Method localMethod = this.mDispatchFinishTemporaryDetach;
+      if (localMethod != null) {
         try
         {
-          this.mDispatchFinishTemporaryDetach.invoke(paramView, new Object[0]);
+          localMethod.invoke(paramView, new Object[0]);
           return;
         }
         catch (Exception paramView)
@@ -1745,10 +1728,11 @@ public class ViewCompat
       if (!this.mTempDetachBound) {
         bindTempDetach();
       }
-      if (this.mDispatchStartTemporaryDetach != null) {
+      Method localMethod = this.mDispatchStartTemporaryDetach;
+      if (localMethod != null) {
         try
         {
-          this.mDispatchStartTemporaryDetach.invoke(paramView, new Object[0]);
+          localMethod.invoke(paramView, new Object[0]);
           return;
         }
         catch (Exception paramView)
@@ -1860,13 +1844,17 @@ public class ViewCompat
         sMinHeightField.setAccessible(true);
         label23:
         sMinHeightFieldFetched = true;
-        if (sMinHeightField != null) {
-          try
-          {
-            int i = ((Integer)sMinHeightField.get(paramView)).intValue();
-            return i;
-          }
-          catch (Exception paramView) {}
+        Field localField = sMinHeightField;
+        if (localField != null) {}
+        try
+        {
+          int i = ((Integer)localField.get(paramView)).intValue();
+          return i;
+        }
+        catch (Exception paramView)
+        {
+          label49:
+          break label49;
         }
         return 0;
       }
@@ -1885,13 +1873,17 @@ public class ViewCompat
         sMinWidthField.setAccessible(true);
         label24:
         sMinWidthFieldFetched = true;
-        if (sMinWidthField != null) {
-          try
-          {
-            int i = ((Integer)sMinWidthField.get(paramView)).intValue();
-            return i;
-          }
-          catch (Exception paramView) {}
+        Field localField = sMinWidthField;
+        if (localField != null) {}
+        try
+        {
+          int i = ((Integer)localField.get(paramView)).intValue();
+          return i;
+        }
+        catch (Exception paramView)
+        {
+          label50:
+          break label50;
         }
         return 0;
       }
@@ -1928,10 +1920,11 @@ public class ViewCompat
     
     public String getTransitionName(View paramView)
     {
-      if (sTransitionNameMap == null) {
+      WeakHashMap localWeakHashMap = sTransitionNameMap;
+      if (localWeakHashMap == null) {
         return null;
       }
-      return (String)sTransitionNameMap.get(paramView);
+      return (String)localWeakHashMap.get(paramView);
     }
     
     public float getTranslationZ(View paramView)
@@ -1949,55 +1942,41 @@ public class ViewCompat
       return getTranslationZ(paramView) + getElevation(paramView);
     }
     
-    /* Error */
     public boolean hasAccessibilityDelegate(View paramView)
     {
-      // Byte code:
-      //   0: iconst_1
-      //   1: istore_2
-      //   2: getstatic 39	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateCheckFailed	Z
-      //   5: ifeq +5 -> 10
-      //   8: iconst_0
-      //   9: ireturn
-      //   10: getstatic 293	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateField	Ljava/lang/reflect/Field;
-      //   13: ifnonnull +21 -> 34
-      //   16: ldc 49
-      //   18: ldc_w 295
-      //   21: invokevirtual 238	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-      //   24: putstatic 293	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateField	Ljava/lang/reflect/Field;
-      //   27: getstatic 293	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateField	Ljava/lang/reflect/Field;
-      //   30: iconst_1
-      //   31: invokevirtual 246	java/lang/reflect/Field:setAccessible	(Z)V
-      //   34: getstatic 293	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateField	Ljava/lang/reflect/Field;
-      //   37: aload_1
-      //   38: invokevirtual 247	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-      //   41: astore_1
-      //   42: aload_1
-      //   43: ifnull +12 -> 55
-      //   46: iload_2
-      //   47: ireturn
-      //   48: astore_1
-      //   49: iconst_1
-      //   50: putstatic 39	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateCheckFailed	Z
-      //   53: iconst_0
-      //   54: ireturn
-      //   55: iconst_0
-      //   56: istore_2
-      //   57: goto -11 -> 46
-      //   60: astore_1
-      //   61: iconst_1
-      //   62: putstatic 39	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateCheckFailed	Z
-      //   65: iconst_0
-      //   66: ireturn
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	67	0	this	ViewCompatBaseImpl
-      //   0	67	1	paramView	View
-      //   1	56	2	bool	boolean
-      // Exception table:
-      //   from	to	target	type
-      //   16	34	48	java/lang/Throwable
-      //   34	42	60	java/lang/Throwable
+      boolean bool2 = sAccessibilityDelegateCheckFailed;
+      boolean bool1 = false;
+      if (bool2) {
+        return false;
+      }
+      if (sAccessibilityDelegateField == null) {}
+      try
+      {
+        sAccessibilityDelegateField = View.class.getDeclaredField("mAccessibilityDelegate");
+        sAccessibilityDelegateField.setAccessible(true);
+      }
+      catch (Throwable paramView)
+      {
+        label39:
+        label61:
+        break label39;
+      }
+      sAccessibilityDelegateCheckFailed = true;
+      return false;
+      try
+      {
+        paramView = sAccessibilityDelegateField.get(paramView);
+        if (paramView != null) {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      catch (Throwable paramView)
+      {
+        break label61;
+      }
+      sAccessibilityDelegateCheckFailed = true;
+      return false;
     }
     
     public boolean hasExplicitFocusable(@NonNull View paramView)
@@ -2156,12 +2135,12 @@ public class ViewCompat
     
     public void setAccessibilityDelegate(View paramView, @Nullable AccessibilityDelegateCompat paramAccessibilityDelegateCompat)
     {
-      if (paramAccessibilityDelegateCompat == null) {}
-      for (paramAccessibilityDelegateCompat = null;; paramAccessibilityDelegateCompat = paramAccessibilityDelegateCompat.getBridge())
-      {
-        paramView.setAccessibilityDelegate(paramAccessibilityDelegateCompat);
-        return;
+      if (paramAccessibilityDelegateCompat == null) {
+        paramAccessibilityDelegateCompat = null;
+      } else {
+        paramAccessibilityDelegateCompat = paramAccessibilityDelegateCompat.getBridge();
       }
+      paramView.setAccessibilityDelegate(paramAccessibilityDelegateCompat);
     }
     
     public void setAccessibilityLiveRegion(View paramView, int paramInt) {}
@@ -2189,38 +2168,36 @@ public class ViewCompat
     
     public void setChildrenDrawingOrderEnabled(ViewGroup paramViewGroup, boolean paramBoolean)
     {
-      if (sChildrenDrawingOrderMethod == null) {}
-      try
+      if (sChildrenDrawingOrderMethod == null)
       {
-        sChildrenDrawingOrderMethod = ViewGroup.class.getDeclaredMethod("setChildrenDrawingOrderEnabled", new Class[] { Boolean.TYPE });
-        sChildrenDrawingOrderMethod.setAccessible(true);
-      }
-      catch (NoSuchMethodException localNoSuchMethodException)
-      {
-        for (;;)
+        try
         {
-          try
-          {
-            sChildrenDrawingOrderMethod.invoke(paramViewGroup, new Object[] { Boolean.valueOf(paramBoolean) });
-            return;
-          }
-          catch (IllegalAccessException paramViewGroup)
-          {
-            Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
-            return;
-          }
-          catch (IllegalArgumentException paramViewGroup)
-          {
-            Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
-            return;
-          }
-          catch (InvocationTargetException paramViewGroup)
-          {
-            Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
-          }
-          localNoSuchMethodException = localNoSuchMethodException;
+          sChildrenDrawingOrderMethod = ViewGroup.class.getDeclaredMethod("setChildrenDrawingOrderEnabled", new Class[] { Boolean.TYPE });
+        }
+        catch (NoSuchMethodException localNoSuchMethodException)
+        {
           Log.e("ViewCompat", "Unable to find childrenDrawingOrderEnabled", localNoSuchMethodException);
         }
+        sChildrenDrawingOrderMethod.setAccessible(true);
+      }
+      try
+      {
+        sChildrenDrawingOrderMethod.invoke(paramViewGroup, new Object[] { Boolean.valueOf(paramBoolean) });
+        return;
+      }
+      catch (InvocationTargetException paramViewGroup)
+      {
+        Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
+        return;
+      }
+      catch (IllegalArgumentException paramViewGroup)
+      {
+        Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
+        return;
+      }
+      catch (IllegalAccessException paramViewGroup)
+      {
+        Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
       }
     }
     

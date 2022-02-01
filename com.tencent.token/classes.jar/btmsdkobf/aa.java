@@ -29,18 +29,22 @@ public final class aa
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bg != 0L) {
-      paramJceOutputStream.write(this.bg, 0);
+    long l = this.bg;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 0);
     }
-    if (this.bh != 0L) {
-      paramJceOutputStream.write(this.bh, 1);
+    l = this.bh;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 1);
     }
-    if (this.ba != 0) {
-      paramJceOutputStream.write(this.ba, 2);
+    int i = this.ba;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
     paramJceOutputStream.write(this.cmdId, 3);
-    if (this.bi != 0) {
-      paramJceOutputStream.write(this.bi, 4);
+    i = this.bi;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
   }
 }

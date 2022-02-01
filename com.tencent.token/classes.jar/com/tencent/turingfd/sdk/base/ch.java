@@ -11,49 +11,48 @@ public class ch
   
   public static int a(Context paramContext)
   {
-    int i = 0;
-    int j = 100;
-    for (;;)
+    try
     {
-      try
-      {
-        paramContext = paramContext.registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
-        if (paramContext == null)
-        {
-          j = a;
-          return j;
-        }
-        if (!TextUtils.equals(paramContext.getAction(), "android.intent.action.BATTERY_CHANGED")) {
-          return a;
-        }
-        int k;
-        try
-        {
-          k = paramContext.getIntExtra("level", 0);
-          int m = paramContext.getIntExtra("scale", 100);
-          if (m == 0) {
-            return a;
-          }
-          k = k * 100 / m;
-          if (k < 0)
-          {
-            if (i > 100) {
-              continue;
-            }
-            return i;
-          }
-        }
-        catch (Throwable paramContext)
-        {
-          return a;
-        }
-        i = k;
+      paramContext = paramContext.registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
+      if (paramContext == null) {
+        return a;
       }
-      catch (Throwable paramContext)
-      {
+      if (!TextUtils.equals(paramContext.getAction(), "android.intent.action.BATTERY_CHANGED")) {
         return a;
       }
     }
+    catch (Throwable paramContext)
+    {
+      int i;
+      int j;
+      label92:
+      label96:
+      break label96;
+    }
+    try
+    {
+      i = paramContext.getIntExtra("level", 0);
+      j = paramContext.getIntExtra("scale", 100);
+      if (j == 0) {
+        return a;
+      }
+      j = i * 100 / j;
+      i = j;
+      if (j < 0) {
+        i = 0;
+      }
+      j = i;
+      if (i > 100) {
+        j = 100;
+      }
+      return j;
+    }
+    catch (Throwable paramContext)
+    {
+      break label92;
+    }
+    return a;
+    return a;
   }
 }
 

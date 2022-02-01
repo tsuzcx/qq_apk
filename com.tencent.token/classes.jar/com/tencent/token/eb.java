@@ -11,29 +11,31 @@ public class eb
   
   public static byte[] a(ArrayList<byte[]> paramArrayList)
   {
-    int k = paramArrayList.size();
-    int i = 0;
-    int j = k * 4 + 4;
-    while (i < k)
+    int m = paramArrayList.size();
+    int i = m * 4 + 4;
+    int k = i;
+    int j = 0;
+    while (j < m)
     {
-      j += ((byte[])paramArrayList.get(i)).length;
-      i += 1;
+      k += ((byte[])paramArrayList.get(j)).length;
+      j += 1;
     }
-    byte[] arrayOfByte = new byte[j];
-    System.arraycopy(a(k), 0, arrayOfByte, 0, 4);
-    i = 0;
-    while (i < k)
+    byte[] arrayOfByte = new byte[k];
+    System.arraycopy(a(m), 0, arrayOfByte, 0, 4);
+    j = 0;
+    while (j < m)
     {
-      System.arraycopy(a(((byte[])paramArrayList.get(i)).length), 0, arrayOfByte, i * 4 + 4, 4);
-      i += 1;
+      System.arraycopy(a(((byte[])paramArrayList.get(j)).length), 0, arrayOfByte, j * 4 + 4, 4);
+      j += 1;
     }
-    i = 0;
-    j = k * 4 + 4;
-    while (i < k)
+    k = 0;
+    j = i;
+    i = k;
+    while (i < m)
     {
-      int m = ((byte[])paramArrayList.get(i)).length;
-      System.arraycopy(paramArrayList.get(i), 0, arrayOfByte, j, m);
-      j += m;
+      k = ((byte[])paramArrayList.get(i)).length;
+      System.arraycopy(paramArrayList.get(i), 0, arrayOfByte, j, k);
+      j += k;
       i += 1;
     }
     return arrayOfByte;

@@ -25,18 +25,22 @@ public final class PRNGFixes
   
   private static void c()
   {
-    if ((Build.VERSION.SDK_INT < 16) || (Build.VERSION.SDK_INT > 18)) {}
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      return;
+      if (Build.VERSION.SDK_INT > 18) {
+        return;
+      }
       try
       {
         Class.forName("org.apache.harmony.xnet.provider.jsse.NativeCrypto").getMethod("RAND_seed", new Class[] { [B.class }).invoke(null, new Object[] { d() });
         int i = ((Integer)Class.forName("org.apache.harmony.xnet.provider.jsse.NativeCrypto").getMethod("RAND_load_file", new Class[] { String.class, Long.TYPE }).invoke(null, new Object[] { "/dev/urandom", Integer.valueOf(1024) })).intValue();
         if (i == 1024) {
-          continue;
+          return;
         }
-        throw new IOException("Unexpected number of bytes read from Linux PRNG: " + i);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Unexpected number of bytes read from Linux PRNG: ");
+        localStringBuilder.append(i);
+        throw new IOException(localStringBuilder.toString());
       }
       catch (Exception localException)
       {
@@ -95,8 +99,10 @@ public final class PRNGFixes
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      throw new RuntimeException("UTF-8 encoding not supported");
+      label48:
+      break label48;
     }
+    throw new RuntimeException("UTF-8 encoding not supported");
   }
   
   public static class LinuxPRNGSecureRandom
@@ -112,18 +118,23 @@ public final class PRNGFixes
     {
       synchronized (sLock)
       {
-        DataInputStream localDataInputStream = sUrandomIn;
-        if (localDataInputStream == null) {}
-        try
-        {
-          sUrandomIn = new DataInputStream(new FileInputStream(URANDOM_FILE));
-          localDataInputStream = sUrandomIn;
-          return localDataInputStream;
+        DataInputStream localDataInputStream1 = sUrandomIn;
+        if (localDataInputStream1 == null) {
+          try
+          {
+            sUrandomIn = new DataInputStream(new FileInputStream(URANDOM_FILE));
+          }
+          catch (IOException localIOException)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("Failed to open ");
+            localStringBuilder.append(URANDOM_FILE);
+            localStringBuilder.append(" for reading");
+            throw new SecurityException(localStringBuilder.toString(), localIOException);
+          }
         }
-        catch (IOException localIOException)
-        {
-          throw new SecurityException("Failed to open " + URANDOM_FILE + " for reading", localIOException);
-        }
+        DataInputStream localDataInputStream2 = sUrandomIn;
+        return localDataInputStream2;
       }
     }
     
@@ -131,18 +142,23 @@ public final class PRNGFixes
     {
       synchronized (sLock)
       {
-        OutputStream localOutputStream = sUrandomOut;
-        if (localOutputStream == null) {}
-        try
-        {
-          sUrandomOut = new FileOutputStream(URANDOM_FILE);
-          localOutputStream = sUrandomOut;
-          return localOutputStream;
+        OutputStream localOutputStream1 = sUrandomOut;
+        if (localOutputStream1 == null) {
+          try
+          {
+            sUrandomOut = new FileOutputStream(URANDOM_FILE);
+          }
+          catch (IOException localIOException)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("Failed to open ");
+            localStringBuilder.append(URANDOM_FILE);
+            localStringBuilder.append(" for writing");
+            throw new SecurityException(localStringBuilder.toString(), localIOException);
+          }
         }
-        catch (IOException localIOException)
-        {
-          throw new SecurityException("Failed to open " + URANDOM_FILE + " for writing", localIOException);
-        }
+        OutputStream localOutputStream2 = sUrandomOut;
+        return localOutputStream2;
       }
     }
     
@@ -181,44 +197,50 @@ public final class PRNGFixes
       //   35: monitorexit
       //   36: return
       //   37: astore_1
-      //   38: aload_2
+      //   38: aload_3
       //   39: monitorexit
       //   40: aload_1
       //   41: athrow
       //   42: astore_1
-      //   43: new 55	java/lang/SecurityException
-      //   46: dup
-      //   47: new 57	java/lang/StringBuilder
-      //   50: dup
-      //   51: invokespecial 58	java/lang/StringBuilder:<init>	()V
-      //   54: ldc 106
-      //   56: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   59: getstatic 29	com/tencent/token/utils/encrypt/random/PRNGFixes$LinuxPRNGSecureRandom:URANDOM_FILE	Ljava/io/File;
-      //   62: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-      //   65: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   68: aload_1
-      //   69: invokespecial 76	java/lang/SecurityException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-      //   72: athrow
-      //   73: astore_1
-      //   74: aload_3
-      //   75: monitorexit
-      //   76: aload_1
-      //   77: athrow
+      //   43: aload_2
+      //   44: monitorexit
+      //   45: aload_1
+      //   46: athrow
+      //   47: astore_1
+      //   48: new 55	java/lang/StringBuilder
+      //   51: dup
+      //   52: invokespecial 56	java/lang/StringBuilder:<init>	()V
+      //   55: astore_2
+      //   56: aload_2
+      //   57: ldc 106
+      //   59: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   62: pop
+      //   63: aload_2
+      //   64: getstatic 29	com/tencent/token/utils/encrypt/random/PRNGFixes$LinuxPRNGSecureRandom:URANDOM_FILE	Ljava/io/File;
+      //   67: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      //   70: pop
+      //   71: new 69	java/lang/SecurityException
+      //   74: dup
+      //   75: aload_2
+      //   76: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   79: aload_1
+      //   80: invokespecial 76	java/lang/SecurityException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+      //   83: athrow
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	78	0	this	LinuxPRNGSecureRandom
-      //   0	78	1	paramArrayOfByte	byte[]
-      //   24	51	3	localDataInputStream	DataInputStream
+      //   0	84	0	this	LinuxPRNGSecureRandom
+      //   0	84	1	paramArrayOfByte	byte[]
+      //   24	15	3	localDataInputStream	DataInputStream
       // Exception table:
       //   from	to	target	type
-      //   20	27	37	finally
+      //   29	36	37	finally
       //   38	40	37	finally
-      //   14	20	42	java/io/IOException
-      //   27	29	42	java/io/IOException
-      //   40	42	42	java/io/IOException
-      //   76	78	42	java/io/IOException
-      //   29	36	73	finally
-      //   74	76	73	finally
+      //   20	27	42	finally
+      //   43	45	42	finally
+      //   14	20	47	java/io/IOException
+      //   27	29	47	java/io/IOException
+      //   40	42	47	java/io/IOException
+      //   45	47	47	java/io/IOException
     }
     
     /* Error */
@@ -249,23 +271,29 @@ public final class PRNGFixes
       //   31: aload_1
       //   32: athrow
       //   33: astore_1
-      //   34: new 55	java/lang/SecurityException
+      //   34: new 55	java/lang/StringBuilder
       //   37: dup
-      //   38: new 57	java/lang/StringBuilder
-      //   41: dup
-      //   42: invokespecial 58	java/lang/StringBuilder:<init>	()V
-      //   45: ldc 118
-      //   47: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   38: invokespecial 56	java/lang/StringBuilder:<init>	()V
+      //   41: astore_2
+      //   42: aload_2
+      //   43: ldc 118
+      //   45: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   48: pop
+      //   49: aload_2
       //   50: getstatic 29	com/tencent/token/utils/encrypt/random/PRNGFixes$LinuxPRNGSecureRandom:URANDOM_FILE	Ljava/io/File;
-      //   53: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-      //   56: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   59: aload_1
-      //   60: invokespecial 76	java/lang/SecurityException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-      //   63: athrow
+      //   53: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      //   56: pop
+      //   57: new 69	java/lang/SecurityException
+      //   60: dup
+      //   61: aload_2
+      //   62: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   65: aload_1
+      //   66: invokespecial 76	java/lang/SecurityException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+      //   69: athrow
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	64	0	this	LinuxPRNGSecureRandom
-      //   0	64	1	paramArrayOfByte	byte[]
+      //   0	70	0	this	LinuxPRNGSecureRandom
+      //   0	70	1	paramArrayOfByte	byte[]
       //   10	9	3	localOutputStream	OutputStream
       // Exception table:
       //   from	to	target	type

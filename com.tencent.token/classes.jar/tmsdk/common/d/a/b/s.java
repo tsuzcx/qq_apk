@@ -23,36 +23,34 @@ class s
     {
     default: 
       return;
-    case 1: 
-      r.a(this.a).removeMessages(1);
-      u localu = new u(this.a, null);
-      for (;;)
-      {
-        t localt2;
-        synchronized (r.b(this.a))
-        {
-          Iterator localIterator = r.b(this.a).iterator();
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localt2 = (t)localIterator.next();
-          if ((localt2.e & 0x40000000) == 0)
-          {
-            if (localt2.h.a()) {
-              continue;
-            }
-            localu.a(Integer.valueOf(localt2.g), localt2);
-          }
-        }
-        localRunnable.a.add(localt2);
-      }
-      r.b(this.a).clear();
-      r.c(this.a).submit(localRunnable);
+    case 2: 
+      ??? = (Object[])???.obj;
+      localObject1 = (t)???[0];
+      ((t)localObject1).f.a(((t)localObject1).g, ((t)localObject1).b, ((Integer)???[1]).intValue(), ((Integer)???[2]).intValue(), ((t)localObject1).d);
       return;
     }
-    ??? = (Object[])???.obj;
-    t localt1 = (t)???[0];
-    localt1.f.a(localt1.g, localt1.b, ((Integer)???[1]).intValue(), ((Integer)???[2]).intValue(), localt1.d);
+    r.a(this.a).removeMessages(1);
+    Object localObject1 = new u(this.a, null);
+    synchronized (r.b(this.a))
+    {
+      Iterator localIterator = r.b(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        t localt = (t)localIterator.next();
+        if ((localt.e & 0x40000000) == 0)
+        {
+          if (!localt.h.a()) {
+            ((u)localObject1).a(Integer.valueOf(localt.g), localt);
+          }
+        }
+        else {
+          ((u)localObject1).a.add(localt);
+        }
+      }
+      r.b(this.a).clear();
+      r.c(this.a).submit((Runnable)localObject1);
+      return;
+    }
   }
 }
 

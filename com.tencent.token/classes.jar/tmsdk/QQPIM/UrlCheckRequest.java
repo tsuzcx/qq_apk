@@ -17,16 +17,6 @@ public final class UrlCheckRequest
   public String url = "";
   public int version = 0;
   
-  static
-  {
-    if (!UrlCheckRequest.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public UrlCheckRequest() {}
   
   public UrlCheckRequest(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3)
@@ -46,18 +36,17 @@ public final class UrlCheckRequest
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -73,13 +62,36 @@ public final class UrlCheckRequest
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (UrlCheckRequest)paramObject;
-    } while ((!JceUtil.equals(this.url, paramObject.url)) || (!JceUtil.equals(this.ext, paramObject.ext)) || (!JceUtil.equals(this.seq, paramObject.seq)) || (!JceUtil.equals(this.version, paramObject.version)) || (!JceUtil.equals(this.guid, paramObject.guid)) || (!JceUtil.equals(this.appId, paramObject.appId)));
-    return true;
+    }
+    paramObject = (UrlCheckRequest)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.url, paramObject.url))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.ext, paramObject.ext))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.seq, paramObject.seq))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.version, paramObject.version))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.guid, paramObject.guid))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.appId, paramObject.appId)) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -173,13 +185,15 @@ public final class UrlCheckRequest
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.url, 0);
-    if (this.ext != null) {
-      paramJceOutputStream.write(this.ext, 1);
+    String str = this.ext;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.seq, 2);
     paramJceOutputStream.write(this.version, 3);
-    if (this.guid != null) {
-      paramJceOutputStream.write(this.guid, 4);
+    str = this.guid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.appId, 5);
   }

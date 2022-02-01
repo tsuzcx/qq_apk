@@ -8,11 +8,24 @@ public class a
 {
   private final ThreadGroup b = new ThreadGroup("TMS-COMMON");
   private final AtomicInteger c = new AtomicInteger(1);
-  private final String d = "CTPl-" + a.getAndIncrement() + "-Td-";
+  private final String d;
+  
+  a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CTPl-");
+    localStringBuilder.append(a.getAndIncrement());
+    localStringBuilder.append("-Td-");
+    this.d = localStringBuilder.toString();
+  }
   
   public Thread newThread(Runnable paramRunnable)
   {
-    paramRunnable = new Thread(this.b, paramRunnable, this.d + this.c.getAndIncrement(), 0L);
+    ThreadGroup localThreadGroup = this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.c.getAndIncrement());
+    paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
     }

@@ -14,37 +14,30 @@ public final class a
   {
     this.a = paramString;
     this.b = parama;
-    if ((parama != a.e) && (parama != a.f) && (parama == a.j)) {}
+    if ((parama != a.e) && (parama != a.f)) {
+      paramString = a.j;
+    }
   }
   
   public static a a(a parama, boolean paramBoolean)
   {
-    int i = 0;
     a[] arrayOfa;
-    a locala;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       arrayOfa = d;
-      locala = arrayOfa[0];
-      if (parama == null) {}
+    } else {
+      arrayOfa = e;
     }
-    else
-    {
-      for (;;)
+    int i = 0;
+    a locala = arrayOfa[0];
+    if (parama != null) {
+      while (i < arrayOfa.length)
       {
-        if (i >= arrayOfa.length) {
-          break label60;
-        }
-        if ((parama == arrayOfa[i]) && (i != arrayOfa.length - 1))
-        {
+        if ((parama == arrayOfa[i]) && (i != arrayOfa.length - 1)) {
           return arrayOfa[(i + 1)];
-          arrayOfa = e;
-          break;
         }
         i += 1;
       }
     }
-    label60:
     return locala;
   }
   
@@ -65,11 +58,19 @@ public final class a
   
   public final String toString()
   {
-    boolean bool = false;
-    if ((this.b == a.e) || (this.b == a.f) || (this.b == a.j) || (this.b == a.c) || (this.b == a.h)) {
+    boolean bool;
+    if ((this.b != a.e) && (this.b != a.f) && (this.b != a.j) && (this.b != a.c) && (this.b != a.h)) {
+      bool = false;
+    } else {
       bool = true;
     }
-    return this.c + ":" + this.b.ordinal() + ":" + h.a(this.a, bool);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.b.ordinal());
+    localStringBuilder.append(":");
+    localStringBuilder.append(h.a(this.a, bool));
+    return localStringBuilder.toString();
   }
   
   public static enum a

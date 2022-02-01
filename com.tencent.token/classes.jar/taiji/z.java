@@ -21,8 +21,16 @@ public class z
   public z(Drawable.Callback paramCallback, String paramString, c paramc, Map<String, b> paramMap)
   {
     this.b = paramString;
-    if ((!TextUtils.isEmpty(paramString)) && (this.b.charAt(this.b.length() - 1) != '/')) {
-      this.b += '/';
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = this.b;
+      if (paramString.charAt(paramString.length() - 1) != '/')
+      {
+        paramString = new StringBuilder();
+        paramString.append(this.b);
+        paramString.append('/');
+        this.b = paramString.toString();
+      }
     }
     if (!(paramCallback instanceof View))
     {
@@ -38,16 +46,10 @@ public class z
   
   public Bitmap a(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.c != null)
-    {
-      localObject1 = localObject2;
-      if (this.d.get(paramString) != null) {
-        localObject1 = this.c.a((b)this.d.get(paramString));
-      }
+    if ((this.c != null) && (this.d.get(paramString) != null)) {
+      return this.c.a((b)this.d.get(paramString));
     }
-    return localObject1;
+    return null;
   }
   
   public void a() {}

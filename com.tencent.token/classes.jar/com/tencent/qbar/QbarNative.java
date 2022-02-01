@@ -102,10 +102,11 @@ public class QbarNative
     y = area.y;
     width = area.width;
     height = area.height;
-    pointNum = sizeArr[3];
+    paramArrayOfPoint = sizeArr;
+    pointNum = paramArrayOfPoint[3];
     try
     {
-      paramArrayOfPoint = new String(charset, 0, sizeArr[2], "UTF-8");
+      paramArrayOfPoint = new String(charset, 0, paramArrayOfPoint[2], "UTF-8");
       if (paramArrayOfPoint.equals("ANY"))
       {
         paramStringBuilder1.append(new String(type, 0, sizeArr[0], "UTF-8"));

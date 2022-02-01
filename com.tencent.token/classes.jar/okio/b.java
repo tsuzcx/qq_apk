@@ -14,51 +14,57 @@ final class b
   
   private static String a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    int i = 0;
     byte[] arrayOfByte = new byte[(paramArrayOfByte1.length + 2) / 3 * 4];
     int k = paramArrayOfByte1.length - paramArrayOfByte1.length % 3;
+    int i = 0;
     int j = 0;
+    int m;
     while (i < k)
     {
-      int m = j + 1;
+      m = j + 1;
       arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[i] & 0xFF) >> 2)];
       j = m + 1;
-      arrayOfByte[m] = paramArrayOfByte2[((paramArrayOfByte1[i] & 0x3) << 4 | (paramArrayOfByte1[(i + 1)] & 0xFF) >> 4)];
+      int i1 = paramArrayOfByte1[i];
+      int n = i + 1;
+      arrayOfByte[m] = paramArrayOfByte2[((i1 & 0x3) << 4 | (paramArrayOfByte1[n] & 0xFF) >> 4)];
       m = j + 1;
-      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[(i + 1)] & 0xF) << 2 | (paramArrayOfByte1[(i + 2)] & 0xFF) >> 6)];
+      i1 = paramArrayOfByte1[n];
+      n = i + 2;
+      arrayOfByte[j] = paramArrayOfByte2[((i1 & 0xF) << 2 | (paramArrayOfByte1[n] & 0xFF) >> 6)];
       j = m + 1;
-      arrayOfByte[m] = paramArrayOfByte2[(paramArrayOfByte1[(i + 2)] & 0x3F)];
+      arrayOfByte[m] = paramArrayOfByte2[(paramArrayOfByte1[n] & 0x3F)];
       i += 3;
     }
     switch (paramArrayOfByte1.length % 3)
     {
-    }
-    for (;;)
-    {
-      try
-      {
-        paramArrayOfByte1 = new String(arrayOfByte, "US-ASCII");
-        return paramArrayOfByte1;
-      }
-      catch (UnsupportedEncodingException paramArrayOfByte1)
-      {
-        throw new AssertionError(paramArrayOfByte1);
-      }
+    default: 
+      break;
+    case 2: 
+      i = j + 1;
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xFF) >> 2)];
+      j = i + 1;
+      m = paramArrayOfByte1[k];
+      k += 1;
+      arrayOfByte[i] = paramArrayOfByte2[((m & 0x3) << 4 | (paramArrayOfByte1[k] & 0xFF) >> 4)];
+      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xF) << 2)];
+      arrayOfByte[(j + 1)] = 61;
+      break;
+    case 1: 
       i = j + 1;
       arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xFF) >> 2)];
       j = i + 1;
       arrayOfByte[i] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0x3) << 4)];
-      i = j + 1;
       arrayOfByte[j] = 61;
-      arrayOfByte[i] = 61;
-      continue;
-      i = j + 1;
-      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0xFF) >> 2)];
-      j = i + 1;
-      arrayOfByte[i] = paramArrayOfByte2[((paramArrayOfByte1[k] & 0x3) << 4 | (paramArrayOfByte1[(k + 1)] & 0xFF) >> 4)];
-      i = j + 1;
-      arrayOfByte[j] = paramArrayOfByte2[((paramArrayOfByte1[(k + 1)] & 0xF) << 2)];
-      arrayOfByte[i] = 61;
+      arrayOfByte[(j + 1)] = 61;
+    }
+    try
+    {
+      paramArrayOfByte1 = new String(arrayOfByte, "US-ASCII");
+      return paramArrayOfByte1;
+    }
+    catch (UnsupportedEncodingException paramArrayOfByte1)
+    {
+      throw new AssertionError(paramArrayOfByte1);
     }
   }
 }

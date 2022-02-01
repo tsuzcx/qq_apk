@@ -30,37 +30,30 @@ public class RecordTextView
     public void handleMessage(Message paramAnonymousMessage)
     {
       paramAnonymousMessage = RecordTextView.this;
-      boolean bool;
-      if (!RecordTextView.a(RecordTextView.this))
+      RecordTextView.a(paramAnonymousMessage, RecordTextView.a(paramAnonymousMessage) ^ true);
+      if (RecordTextView.b(RecordTextView.this))
       {
-        bool = true;
-        RecordTextView.a(paramAnonymousMessage, bool);
-        if (!RecordTextView.b(RecordTextView.this)) {
-          break label81;
-        }
         RecordTextView.c(RecordTextView.this);
         RecordTextView.this.invalidate();
-        if (RecordTextView.d(RecordTextView.this) >= 10) {
-          break label81;
-        }
-        RecordTextView.e(RecordTextView.this).sendEmptyMessageDelayed(0, 70L);
-      }
-      label81:
-      do
-      {
-        return;
-        bool = false;
-        break;
-        if (RecordTextView.f(RecordTextView.this) < RecordTextView.this.getWidth())
+        if (RecordTextView.d(RecordTextView.this) < 10)
         {
-          RecordTextView.a(RecordTextView.this, RecordTextView.f(RecordTextView.this) + RecordTextView.this.getWidth() / 10);
-          RecordTextView.this.invalidate();
           RecordTextView.e(RecordTextView.this).sendEmptyMessageDelayed(0, 70L);
           return;
         }
-      } while (RecordTextView.g(RecordTextView.this) == null);
-      g.c("onAniEnd");
-      RecordTextView.g(RecordTextView.this).a(RecordTextView.h(RecordTextView.this));
+      }
+      if (RecordTextView.f(RecordTextView.this) < RecordTextView.this.getWidth())
+      {
+        paramAnonymousMessage = RecordTextView.this;
+        RecordTextView.a(paramAnonymousMessage, RecordTextView.f(paramAnonymousMessage) + RecordTextView.this.getWidth() / 10);
+        RecordTextView.this.invalidate();
+        RecordTextView.e(RecordTextView.this).sendEmptyMessageDelayed(0, 70L);
+        return;
+      }
+      if (RecordTextView.g(RecordTextView.this) != null)
+      {
+        g.c("onAniEnd");
+        RecordTextView.g(RecordTextView.this).a(RecordTextView.h(RecordTextView.this));
+      }
     }
   };
   
@@ -68,9 +61,9 @@ public class RecordTextView
   {
     super(paramContext, paramAttributeSet);
     this.b.setAntiAlias(true);
-    this.h = paramContext.getResources().getColor(2131493009);
-    this.i = paramContext.getResources().getColor(2131493010);
-    this.j = paramContext.getResources().getColor(2131493011);
+    this.h = paramContext.getResources().getColor(2130968742);
+    this.i = paramContext.getResources().getColor(2130968743);
+    this.j = paramContext.getResources().getColor(2130968744);
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -80,17 +73,12 @@ public class RecordTextView
     {
       this.b.setColor(this.h);
       paramCanvas.drawRect(0.0F, getTop(), this.c, getTop() + getHeight(), this.b);
-      if (!this.k) {
-        break label109;
+      if (this.k) {
+        this.b.setColor(this.i);
+      } else {
+        this.b.setColor(this.j);
       }
-      this.b.setColor(this.i);
-    }
-    for (;;)
-    {
       paramCanvas.drawRect(this.c, getTop(), this.c + this.g, getTop() + getHeight(), this.b);
-      return;
-      label109:
-      this.b.setColor(this.j);
     }
   }
   

@@ -27,14 +27,23 @@ public class x
     int i = 0;
     for (;;)
     {
-      byte[] arrayOfByte = a(paramString.getBytes(), paramInt1, paramInt2, paramArrayOfLong);
-      a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, arrayOfByte);
+      Object localObject = a(paramString.getBytes(), paramInt1, paramInt2, paramArrayOfLong);
+      a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, (byte[])localObject);
       int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
       if (k != 0) {
         return k;
       }
       k = b();
-      util.LOGI("retry num:" + i + " ret:" + k, "" + this.x.f);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("retry num:");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" ret:");
+      ((StringBuilder)localObject).append(k);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(this.x.f);
+      util.LOGI((String)localObject, localStringBuilder.toString());
       if (k != 180) {
         return k;
       }
@@ -47,58 +56,69 @@ public class x
   
   public byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long[] paramArrayOfLong)
   {
-    int i = 0;
     int[] arrayOfInt = new int[5];
-    int[] tmp10_8 = arrayOfInt;
-    tmp10_8[0] = 260;
-    int[] tmp16_10 = tmp10_8;
-    tmp16_10[1] = 8;
-    int[] tmp21_16 = tmp16_10;
-    tmp21_16[2] = 295;
-    int[] tmp27_21 = tmp21_16;
-    tmp27_21[3] = 388;
-    int[] tmp33_27 = tmp27_21;
-    tmp33_27[4] = 278;
-    tmp33_27;
+    int[] tmp7_5 = arrayOfInt;
+    tmp7_5[0] = 260;
+    int[] tmp13_7 = tmp7_5;
+    tmp13_7[1] = 8;
+    int[] tmp18_13 = tmp13_7;
+    tmp18_13[2] = 295;
+    int[] tmp24_18 = tmp18_13;
+    tmp24_18[3] = 388;
+    int[] tmp30_24 = tmp24_18;
+    tmp30_24[4] = 278;
+    tmp30_24;
     ArrayList localArrayList = new ArrayList();
     int i1 = arrayOfInt.length;
-    int j = 0;
     async_context localasync_context = t.b(this.x.h);
-    int n = 0;
-    if (n < i1)
+    int j = 0;
+    int k = 0;
+    int m;
+    for (int i = 0; j < i1; i = m)
     {
       byte[] arrayOfByte = new byte[0];
-      switch (arrayOfInt[n])
+      m = arrayOfInt[j];
+      if (m != 8)
       {
-      }
-      for (;;)
-      {
-        int k = j;
-        int m = i;
-        if (arrayOfByte.length > 4)
+        if (m != 260)
         {
-          m = i + 1;
-          k = j + arrayOfByte.length;
-          localArrayList.add(arrayOfByte);
+          if (m != 278)
+          {
+            if (m != 295)
+            {
+              if (m == 388) {
+                arrayOfByte = new tlv_t184().get_tlv_184(localasync_context._msalt, localasync_context._mpasswd);
+              }
+            }
+            else {
+              arrayOfByte = new tlv_t127().get_tlv_127(paramArrayOfByte, localasync_context._t126.get_random());
+            }
+          }
+          else {
+            arrayOfByte = new tlv_t116().get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
+          }
         }
-        n += 1;
-        i = m;
-        j = k;
-        break;
-        arrayOfByte = localasync_context._t104.get_buf();
-        continue;
-        arrayOfByte = new tlv_t8().get_tlv_8(0, t.u, 0);
-        continue;
-        arrayOfByte = new tlv_t127().get_tlv_127(paramArrayOfByte, localasync_context._t126.get_random());
-        continue;
-        arrayOfByte = new tlv_t184().get_tlv_184(localasync_context._msalt, localasync_context._mpasswd);
-        continue;
-        arrayOfByte = new tlv_t116().get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
+        else {
+          arrayOfByte = localasync_context._t104.get_buf();
+        }
       }
+      else {
+        arrayOfByte = new tlv_t8().get_tlv_8(0, t.u, 0);
+      }
+      int n = k;
+      m = i;
+      if (arrayOfByte.length > 4)
+      {
+        m = i + 1;
+        n = k + arrayOfByte.length;
+        localArrayList.add(arrayOfByte);
+      }
+      j += 1;
+      k = n;
     }
-    paramArrayOfByte = new byte[j];
-    paramInt2 = 0;
+    paramArrayOfByte = new byte[k];
     paramInt1 = 0;
+    paramInt2 = 0;
     while (paramInt1 < i)
     {
       paramArrayOfLong = (byte[])localArrayList.get(paramInt1);

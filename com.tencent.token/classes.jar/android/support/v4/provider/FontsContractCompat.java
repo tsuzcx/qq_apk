@@ -60,25 +60,18 @@ public class FontsContractCompat
   {
     public int compare(byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2)
     {
-      int k = 0;
-      int i;
-      if (paramAnonymousArrayOfByte1.length != paramAnonymousArrayOfByte2.length)
-      {
-        i = paramAnonymousArrayOfByte1.length - paramAnonymousArrayOfByte2.length;
-        return i;
+      if (paramAnonymousArrayOfByte1.length != paramAnonymousArrayOfByte2.length) {
+        return paramAnonymousArrayOfByte1.length - paramAnonymousArrayOfByte2.length;
       }
-      int j = 0;
-      for (;;)
+      int i = 0;
+      while (i < paramAnonymousArrayOfByte1.length)
       {
-        i = k;
-        if (j >= paramAnonymousArrayOfByte1.length) {
-          break;
+        if (paramAnonymousArrayOfByte1[i] != paramAnonymousArrayOfByte2[i]) {
+          return paramAnonymousArrayOfByte1[i] - paramAnonymousArrayOfByte2[i];
         }
-        if (paramAnonymousArrayOfByte1[j] != paramAnonymousArrayOfByte2[j]) {
-          return paramAnonymousArrayOfByte1[j] - paramAnonymousArrayOfByte2[j];
-        }
-        j += 1;
+        i += 1;
       }
+      return 0;
     }
   };
   private static final Object sLock;
@@ -117,17 +110,13 @@ public class FontsContractCompat
       return false;
     }
     int i = 0;
-    for (;;)
+    while (i < paramList1.size())
     {
-      if (i >= paramList1.size()) {
-        break label62;
-      }
       if (!Arrays.equals((byte[])paramList1.get(i), (byte[])paramList2.get(i))) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label62:
     return true;
   }
   
@@ -156,108 +145,125 @@ public class FontsContractCompat
     ArrayList localArrayList = new ArrayList();
     Uri localUri1 = new Uri.Builder().scheme("content").authority(paramString).build();
     Uri localUri2 = new Uri.Builder().scheme("content").authority(paramString).appendPath("file").build();
+    Object localObject = null;
+    paramString = localObject;
     for (;;)
     {
       try
       {
-        if (Build.VERSION.SDK_INT <= 16) {
-          continue;
-        }
-        paramContext = paramContext.getContentResolver();
-        paramFontRequest = paramFontRequest.getQuery();
-        paramContext = paramContext.query(localUri1, new String[] { "_id", "file_id", "font_ttc_index", "font_variation_settings", "font_weight", "font_italic", "result_code" }, "query = ?", new String[] { paramFontRequest }, null, paramCancellationSignal);
-        if (paramContext == null) {
-          continue;
-        }
-        try
+        if (Build.VERSION.SDK_INT > 16)
         {
-          if (paramContext.getCount() <= 0) {
-            continue;
-          }
-          int m = paramContext.getColumnIndex("result_code");
-          paramString = new ArrayList();
-          int n = paramContext.getColumnIndex("_id");
-          i1 = paramContext.getColumnIndex("file_id");
-          int i2 = paramContext.getColumnIndex("font_ttc_index");
-          int i3 = paramContext.getColumnIndex("font_weight");
-          int i4 = paramContext.getColumnIndex("font_italic");
-          paramFontRequest = paramString;
-          if (!paramContext.moveToNext()) {
-            continue;
-          }
-          if (m == -1) {
-            continue;
-          }
-          i = paramContext.getInt(m);
-          if (i2 == -1) {
-            continue;
-          }
-          j = paramContext.getInt(i2);
-          if (i1 != -1) {
-            continue;
-          }
-          paramFontRequest = ContentUris.withAppendedId(localUri1, paramContext.getLong(n));
-          if (i3 == -1) {
-            continue;
-          }
-          k = paramContext.getInt(i3);
-          if ((i4 == -1) || (paramContext.getInt(i4) != 1)) {
-            continue;
-          }
-          bool = true;
-          paramString.add(new FontInfo(paramFontRequest, j, k, bool, i));
-          continue;
-          if (paramFontRequest == null) {
-            continue;
-          }
+          paramString = localObject;
+          paramContext = paramContext.getContentResolver();
+          paramString = localObject;
+          paramFontRequest = paramFontRequest.getQuery();
+          paramString = localObject;
+          paramContext = paramContext.query(localUri1, new String[] { "_id", "file_id", "font_ttc_index", "font_variation_settings", "font_weight", "font_italic", "result_code" }, "query = ?", new String[] { paramFontRequest }, null, paramCancellationSignal);
         }
-        finally
+        else
         {
-          paramFontRequest = paramContext;
-          paramContext = paramString;
+          paramString = localObject;
+          paramContext = paramContext.getContentResolver();
+          paramString = localObject;
+          paramFontRequest = paramFontRequest.getQuery();
+          paramString = localObject;
+          paramContext = paramContext.query(localUri1, new String[] { "_id", "file_id", "font_ttc_index", "font_variation_settings", "font_weight", "font_italic", "result_code" }, "query = ?", new String[] { paramFontRequest }, null);
         }
+        paramFontRequest = localArrayList;
+        if (paramContext != null)
+        {
+          paramFontRequest = localArrayList;
+          paramString = paramContext;
+          if (paramContext.getCount() > 0)
+          {
+            paramString = paramContext;
+            int m = paramContext.getColumnIndex("result_code");
+            paramString = paramContext;
+            paramCancellationSignal = new ArrayList();
+            paramString = paramContext;
+            int n = paramContext.getColumnIndex("_id");
+            paramString = paramContext;
+            int i1 = paramContext.getColumnIndex("file_id");
+            paramString = paramContext;
+            int i2 = paramContext.getColumnIndex("font_ttc_index");
+            paramString = paramContext;
+            int i3 = paramContext.getColumnIndex("font_weight");
+            paramString = paramContext;
+            int i4 = paramContext.getColumnIndex("font_italic");
+            paramString = paramContext;
+            if (paramContext.moveToNext())
+            {
+              if (m == -1) {
+                break label559;
+              }
+              paramString = paramContext;
+              i = paramContext.getInt(m);
+              if (i2 == -1) {
+                break label565;
+              }
+              paramString = paramContext;
+              j = paramContext.getInt(i2);
+              if (i1 == -1)
+              {
+                paramString = paramContext;
+                paramFontRequest = ContentUris.withAppendedId(localUri1, paramContext.getLong(n));
+              }
+              else
+              {
+                paramString = paramContext;
+                paramFontRequest = ContentUris.withAppendedId(localUri2, paramContext.getLong(i1));
+              }
+              if (i3 == -1) {
+                break label571;
+              }
+              paramString = paramContext;
+              k = paramContext.getInt(i3);
+              if (i4 == -1) {
+                break label579;
+              }
+              paramString = paramContext;
+              if (paramContext.getInt(i4) != 1) {
+                break label579;
+              }
+              bool = true;
+              paramString = paramContext;
+              paramCancellationSignal.add(new FontInfo(paramFontRequest, j, k, bool, i));
+              continue;
+            }
+            paramFontRequest = paramCancellationSignal;
+          }
+        }
+        return (FontInfo[])paramFontRequest.toArray(new FontInfo[0]);
       }
       finally
       {
-        int i1;
-        int i;
-        int j;
-        int k;
-        boolean bool;
-        paramFontRequest = null;
-        continue;
+        if (paramString != null) {
+          paramString.close();
+        }
       }
-      paramFontRequest.close();
-      throw paramContext;
-      paramContext = paramContext.getContentResolver();
-      paramFontRequest = paramFontRequest.getQuery();
-      paramContext = paramContext.query(localUri1, new String[] { "_id", "file_id", "font_ttc_index", "font_variation_settings", "font_weight", "font_italic", "result_code" }, "query = ?", new String[] { paramFontRequest }, null);
+      label559:
+      int i = 0;
       continue;
-      i = 0;
+      label565:
+      int j = 0;
       continue;
-      j = 0;
+      label571:
+      int k = 400;
       continue;
-      paramFontRequest = ContentUris.withAppendedId(localUri2, paramContext.getLong(i1));
-      continue;
-      k = 400;
-      continue;
-      bool = false;
+      label579:
+      boolean bool = false;
     }
-    paramFontRequest = localArrayList;
-    if (paramContext != null) {
-      paramContext.close();
-    }
-    return (FontInfo[])paramFontRequest.toArray(new FontInfo[0]);
   }
   
   @NonNull
   private static TypefaceResult getFontInternal(Context paramContext, FontRequest paramFontRequest, int paramInt)
   {
-    int i = -3;
     try
     {
       paramFontRequest = fetchFonts(paramContext, null, paramFontRequest);
-      if (paramFontRequest.getStatusCode() == 0)
+      int j = paramFontRequest.getStatusCode();
+      int i = -3;
+      if (j == 0)
       {
         paramContext = TypefaceCompat.createFromFontInfo(paramContext, null, paramFontRequest.getFonts(), paramInt);
         if (paramContext != null) {
@@ -265,22 +271,28 @@ public class FontsContractCompat
         }
         return new TypefaceResult(paramContext, i);
       }
+      if (paramFontRequest.getStatusCode() == 1) {
+        i = -2;
+      }
+      return new TypefaceResult(null, i);
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      return new TypefaceResult(null, -1);
+      label69:
+      break label69;
     }
-    if (paramFontRequest.getStatusCode() == 1) {
-      i = -2;
-    }
-    return new TypefaceResult(null, i);
+    return new TypefaceResult(null, -1);
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public static Typeface getFontSync(Context paramContext, final FontRequest paramFontRequest, @Nullable ResourcesCompat.FontCallback arg2, @Nullable final Handler paramHandler, boolean paramBoolean, int paramInt1, final int paramInt2)
   {
-    final String str = paramFontRequest.getIdentifier() + "-" + paramInt2;
-    Typeface localTypeface = (Typeface)sTypefaceCache.get(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramFontRequest.getIdentifier());
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(paramInt2);
+    localObject = ((StringBuilder)localObject).toString();
+    Typeface localTypeface = (Typeface)sTypefaceCache.get(localObject);
     if (localTypeface != null)
     {
       if (??? != null) {
@@ -291,19 +303,14 @@ public class FontsContractCompat
     if ((paramBoolean) && (paramInt1 == -1))
     {
       paramContext = getFontInternal(paramContext, paramFontRequest, paramInt2);
-      if (??? != null)
-      {
-        if (paramContext.mResult != 0) {
-          break label105;
+      if (??? != null) {
+        if (paramContext.mResult == 0) {
+          ???.callbackSuccessAsync(paramContext.mTypeface, paramHandler);
+        } else {
+          ???.callbackFailAsync(paramContext.mResult, paramHandler);
         }
-        ???.callbackSuccessAsync(paramContext.mTypeface, paramHandler);
       }
-      for (;;)
-      {
-        return paramContext.mTypeface;
-        label105:
-        ???.callbackFailAsync(paramContext.mResult, paramHandler);
-      }
+      return paramContext.mTypeface;
     }
     paramFontRequest = new Callable()
     {
@@ -311,7 +318,7 @@ public class FontsContractCompat
       {
         FontsContractCompat.TypefaceResult localTypefaceResult = FontsContractCompat.getFontInternal(this.val$context, paramFontRequest, paramInt2);
         if (localTypefaceResult.mTypeface != null) {
-          FontsContractCompat.sTypefaceCache.put(str, localTypefaceResult.mTypeface);
+          FontsContractCompat.sTypefaceCache.put(this.val$id, localTypefaceResult.mTypeface);
         }
         return localTypefaceResult;
       }
@@ -323,62 +330,65 @@ public class FontsContractCompat
       return paramContext;
     }
     catch (InterruptedException paramContext) {}
-    if (??? == null) {}
-    for (paramContext = null;; paramContext = new SelfDestructiveThread.ReplyCallback()
-        {
-          public void onReply(FontsContractCompat.TypefaceResult paramAnonymousTypefaceResult)
-          {
-            if (paramAnonymousTypefaceResult == null)
-            {
-              this.val$fontCallback.callbackFailAsync(1, paramHandler);
-              return;
-            }
-            if (paramAnonymousTypefaceResult.mResult == 0)
-            {
-              this.val$fontCallback.callbackSuccessAsync(paramAnonymousTypefaceResult.mTypeface, paramHandler);
-              return;
-            }
-            this.val$fontCallback.callbackFailAsync(paramAnonymousTypefaceResult.mResult, paramHandler);
-          }
-        }) {
-      synchronized (sLock)
+    if (??? == null) {
+      paramContext = null;
+    } else {
+      paramContext = new SelfDestructiveThread.ReplyCallback()
       {
-        if (!sPendingReplies.containsKey(str)) {
-          break;
+        public void onReply(FontsContractCompat.TypefaceResult paramAnonymousTypefaceResult)
+        {
+          if (paramAnonymousTypefaceResult == null)
+          {
+            this.val$fontCallback.callbackFailAsync(1, paramHandler);
+            return;
+          }
+          if (paramAnonymousTypefaceResult.mResult == 0)
+          {
+            this.val$fontCallback.callbackSuccessAsync(paramAnonymousTypefaceResult.mTypeface, paramHandler);
+            return;
+          }
+          this.val$fontCallback.callbackFailAsync(paramAnonymousTypefaceResult.mResult, paramHandler);
         }
+      };
+    }
+    synchronized (sLock)
+    {
+      if (sPendingReplies.containsKey(localObject))
+      {
         if (paramContext != null) {
-          ((ArrayList)sPendingReplies.get(str)).add(paramContext);
+          ((ArrayList)sPendingReplies.get(localObject)).add(paramContext);
         }
         return null;
       }
-    }
-    if (paramContext != null)
-    {
-      paramHandler = new ArrayList();
-      paramHandler.add(paramContext);
-      sPendingReplies.put(str, paramHandler);
-    }
-    sBackgroundThread.postAndReply(paramFontRequest, new SelfDestructiveThread.ReplyCallback()
-    {
-      public void onReply(FontsContractCompat.TypefaceResult paramAnonymousTypefaceResult)
+      if (paramContext != null)
       {
-        synchronized (FontsContractCompat.sLock)
+        paramHandler = new ArrayList();
+        paramHandler.add(paramContext);
+        sPendingReplies.put(localObject, paramHandler);
+      }
+      sBackgroundThread.postAndReply(paramFontRequest, new SelfDestructiveThread.ReplyCallback()
+      {
+        public void onReply(FontsContractCompat.TypefaceResult paramAnonymousTypefaceResult)
         {
-          ArrayList localArrayList = (ArrayList)FontsContractCompat.sPendingReplies.get(this.val$id);
-          if (localArrayList == null) {
+          synchronized (FontsContractCompat.sLock)
+          {
+            ArrayList localArrayList = (ArrayList)FontsContractCompat.sPendingReplies.get(this.val$id);
+            if (localArrayList == null) {
+              return;
+            }
+            FontsContractCompat.sPendingReplies.remove(this.val$id);
+            int i = 0;
+            while (i < localArrayList.size())
+            {
+              ((SelfDestructiveThread.ReplyCallback)localArrayList.get(i)).onReply(paramAnonymousTypefaceResult);
+              i += 1;
+            }
             return;
           }
-          FontsContractCompat.sPendingReplies.remove(this.val$id);
-          int i = 0;
-          if (i < localArrayList.size())
-          {
-            ((SelfDestructiveThread.ReplyCallback)localArrayList.get(i)).onReply(paramAnonymousTypefaceResult);
-            i += 1;
-          }
         }
-      }
-    });
-    return null;
+      });
+      return null;
+    }
     return null;
   }
   
@@ -388,27 +398,37 @@ public class FontsContractCompat
   public static ProviderInfo getProvider(@NonNull PackageManager paramPackageManager, @NonNull FontRequest paramFontRequest, @Nullable Resources paramResources)
   {
     String str = paramFontRequest.getProviderAuthority();
-    ProviderInfo localProviderInfo = paramPackageManager.resolveContentProvider(str, 0);
-    if (localProviderInfo == null) {
-      throw new PackageManager.NameNotFoundException("No package found for authority: " + str);
-    }
-    if (!localProviderInfo.packageName.equals(paramFontRequest.getProviderPackage())) {
-      throw new PackageManager.NameNotFoundException("Found content provider " + str + ", but package was not " + paramFontRequest.getProviderPackage());
-    }
-    paramPackageManager = convertToByteArrayList(paramPackageManager.getPackageInfo(localProviderInfo.packageName, 64).signatures);
-    Collections.sort(paramPackageManager, sByteArrayComparator);
-    paramFontRequest = getCertificates(paramFontRequest, paramResources);
     int i = 0;
-    while (i < paramFontRequest.size())
+    ProviderInfo localProviderInfo = paramPackageManager.resolveContentProvider(str, 0);
+    if (localProviderInfo != null)
     {
-      paramResources = new ArrayList((Collection)paramFontRequest.get(i));
-      Collections.sort(paramResources, sByteArrayComparator);
-      if (equalsByteArrayList(paramPackageManager, paramResources)) {
-        return localProviderInfo;
+      if (localProviderInfo.packageName.equals(paramFontRequest.getProviderPackage()))
+      {
+        paramPackageManager = convertToByteArrayList(paramPackageManager.getPackageInfo(localProviderInfo.packageName, 64).signatures);
+        Collections.sort(paramPackageManager, sByteArrayComparator);
+        paramFontRequest = getCertificates(paramFontRequest, paramResources);
+        while (i < paramFontRequest.size())
+        {
+          paramResources = new ArrayList((Collection)paramFontRequest.get(i));
+          Collections.sort(paramResources, sByteArrayComparator);
+          if (equalsByteArrayList(paramPackageManager, paramResources)) {
+            return localProviderInfo;
+          }
+          i += 1;
+        }
+        return null;
       }
-      i += 1;
+      paramPackageManager = new StringBuilder();
+      paramPackageManager.append("Found content provider ");
+      paramPackageManager.append(str);
+      paramPackageManager.append(", but package was not ");
+      paramPackageManager.append(paramFontRequest.getProviderPackage());
+      throw new PackageManager.NameNotFoundException(paramPackageManager.toString());
     }
-    return null;
+    paramPackageManager = new StringBuilder();
+    paramPackageManager.append("No package found for authority: ");
+    paramPackageManager.append(str);
+    throw new PackageManager.NameNotFoundException(paramPackageManager.toString());
   }
   
   @RequiresApi(19)
@@ -418,19 +438,17 @@ public class FontsContractCompat
     HashMap localHashMap = new HashMap();
     int j = paramArrayOfFontInfo.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Object localObject = paramArrayOfFontInfo[i];
-      if (((FontInfo)localObject).getResultCode() != 0) {}
-      for (;;)
+      if (((FontInfo)localObject).getResultCode() == 0)
       {
-        i += 1;
-        break;
         localObject = ((FontInfo)localObject).getUri();
         if (!localHashMap.containsKey(localObject)) {
           localHashMap.put(localObject, TypefaceCompatUtil.mmap(paramContext, paramCancellationSignal, (Uri)localObject));
         }
       }
+      i += 1;
     }
     return Collections.unmodifiableMap(localHashMap);
   }
@@ -443,72 +461,74 @@ public class FontsContractCompat
       {
         try
         {
-          FontsContractCompat.FontFamilyResult localFontFamilyResult = FontsContractCompat.fetchFonts(this.val$context, null, paramFontRequest);
-          if (localFontFamilyResult.getStatusCode() == 0) {
-            break label117;
-          }
-          switch (localFontFamilyResult.getStatusCode())
+          Object localObject1 = FontsContractCompat.fetchFonts(this.val$context, null, paramFontRequest);
+          if (((FontsContractCompat.FontFamilyResult)localObject1).getStatusCode() != 0)
           {
-          default: 
+            switch (((FontsContractCompat.FontFamilyResult)localObject1).getStatusCode())
+            {
+            default: 
+              this.val$callerThreadHandler.post(new Runnable()
+              {
+                public void run()
+                {
+                  FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(-3);
+                }
+              });
+              return;
+            case 2: 
+              this.val$callerThreadHandler.post(new Runnable()
+              {
+                public void run()
+                {
+                  FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(-3);
+                }
+              });
+              return;
+            }
             this.val$callerThreadHandler.post(new Runnable()
             {
               public void run()
               {
-                FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(-3);
+                FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(-2);
               }
             });
             return;
           }
-        }
-        catch (PackageManager.NameNotFoundException localNameNotFoundException)
-        {
-          this.val$callerThreadHandler.post(new Runnable()
+          localObject1 = ((FontsContractCompat.FontFamilyResult)localObject1).getFonts();
+          if ((localObject1 != null) && (localObject1.length != 0))
           {
-            public void run()
+            int j = localObject1.length;
+            final int i = 0;
+            while (i < j)
             {
-              FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(-1);
+              Object localObject2 = localObject1[i];
+              if (localObject2.getResultCode() != 0)
+              {
+                i = localObject2.getResultCode();
+                if (i < 0)
+                {
+                  this.val$callerThreadHandler.post(new Runnable()
+                  {
+                    public void run()
+                    {
+                      FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(-3);
+                    }
+                  });
+                  return;
+                }
+                this.val$callerThreadHandler.post(new Runnable()
+                {
+                  public void run()
+                  {
+                    FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(i);
+                  }
+                });
+                return;
+              }
+              i += 1;
             }
-          });
-          return;
-        }
-        this.val$callerThreadHandler.post(new Runnable()
-        {
-          public void run()
-          {
-            FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(-2);
-          }
-        });
-        return;
-        this.val$callerThreadHandler.post(new Runnable()
-        {
-          public void run()
-          {
-            FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(-3);
-          }
-        });
-        return;
-        label117:
-        Object localObject1 = localNameNotFoundException.getFonts();
-        if ((localObject1 == null) || (localObject1.length == 0))
-        {
-          this.val$callerThreadHandler.post(new Runnable()
-          {
-            public void run()
-            {
-              FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(1);
-            }
-          });
-          return;
-        }
-        int j = localObject1.length;
-        final int i = 0;
-        while (i < j)
-        {
-          Object localObject2 = localObject1[i];
-          if (localObject2.getResultCode() != 0)
-          {
-            i = localObject2.getResultCode();
-            if (i < 0)
+            localObject1 = FontsContractCompat.buildTypeface(this.val$context, null, (FontsContractCompat.FontInfo[])localObject1);
+            if (localObject1 == null)
             {
               this.val$callerThreadHandler.post(new Runnable()
               {
@@ -523,30 +543,30 @@ public class FontsContractCompat
             {
               public void run()
               {
-                FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(i);
+                FontsContractCompat.4.this.val$callback.onTypefaceRetrieved(this.val$typeface);
               }
             });
             return;
           }
-          i += 1;
-        }
-        localObject1 = FontsContractCompat.buildTypeface(this.val$context, null, (FontsContractCompat.FontInfo[])localObject1);
-        if (localObject1 == null)
-        {
           this.val$callerThreadHandler.post(new Runnable()
           {
             public void run()
             {
-              FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(-3);
+              FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(1);
             }
           });
           return;
+        }
+        catch (PackageManager.NameNotFoundException localNameNotFoundException)
+        {
+          label257:
+          break label257;
         }
         this.val$callerThreadHandler.post(new Runnable()
         {
           public void run()
           {
-            FontsContractCompat.4.this.val$callback.onTypefaceRetrieved(this.val$typeface);
+            FontsContractCompat.4.this.val$callback.onTypefaceRequestFailed(-1);
           }
         });
       }

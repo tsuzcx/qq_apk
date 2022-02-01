@@ -62,13 +62,14 @@ class DropDownListView
     this.mDrawsInPressedState = false;
     setPressed(false);
     drawableStateChanged();
-    View localView = getChildAt(this.mMotionPosition - getFirstVisiblePosition());
-    if (localView != null) {
-      localView.setPressed(false);
+    Object localObject = getChildAt(this.mMotionPosition - getFirstVisiblePosition());
+    if (localObject != null) {
+      ((View)localObject).setPressed(false);
     }
-    if (this.mClickAnimation != null)
+    localObject = this.mClickAnimation;
+    if (localObject != null)
     {
-      this.mClickAnimation.cancel();
+      ((ViewPropertyAnimatorCompat)localObject).cancel();
       this.mClickAnimation = null;
     }
   }
@@ -99,66 +100,60 @@ class DropDownListView
     localRect.top -= this.mSelectionTopPadding;
     localRect.right += this.mSelectionRightPadding;
     localRect.bottom += this.mSelectionBottomPadding;
-    try
+    for (;;)
     {
-      boolean bool = this.mIsChildViewEnabled.getBoolean(this);
-      if (paramView.isEnabled() != bool)
+      try
       {
-        paramView = this.mIsChildViewEnabled;
-        if (bool) {
-          break label134;
+        bool = this.mIsChildViewEnabled.getBoolean(this);
+        if (paramView.isEnabled() != bool)
+        {
+          paramView = this.mIsChildViewEnabled;
+          if (bool) {
+            break label143;
+          }
+          bool = true;
+          paramView.set(this, Boolean.valueOf(bool));
+          if (paramInt != -1)
+          {
+            refreshDrawableState();
+            return;
+          }
         }
       }
-      label134:
-      for (bool = true;; bool = false)
+      catch (IllegalAccessException paramView)
       {
-        paramView.set(this, Boolean.valueOf(bool));
-        if (paramInt != -1) {
-          refreshDrawableState();
-        }
-        return;
+        paramView.printStackTrace();
       }
       return;
-    }
-    catch (IllegalAccessException paramView)
-    {
-      paramView.printStackTrace();
+      label143:
+      boolean bool = false;
     }
   }
   
   private void positionSelectorLikeFocusCompat(int paramInt, View paramView)
   {
-    boolean bool = true;
     Drawable localDrawable = getSelector();
+    boolean bool = true;
     int i;
-    float f1;
-    float f2;
-    if ((localDrawable != null) && (paramInt != -1))
-    {
+    if ((localDrawable != null) && (paramInt != -1)) {
       i = 1;
-      if (i != 0) {
-        localDrawable.setVisible(false, false);
-      }
-      positionSelectorCompat(paramInt, paramView);
-      if (i != 0)
-      {
-        paramView = this.mSelectorRect;
-        f1 = paramView.exactCenterX();
-        f2 = paramView.exactCenterY();
-        if (getVisibility() != 0) {
-          break label93;
-        }
-      }
+    } else {
+      i = 0;
     }
-    for (;;)
+    if (i != 0) {
+      localDrawable.setVisible(false, false);
+    }
+    positionSelectorCompat(paramInt, paramView);
+    if (i != 0)
     {
+      paramView = this.mSelectorRect;
+      float f1 = paramView.exactCenterX();
+      float f2 = paramView.exactCenterY();
+      if (getVisibility() != 0) {
+        bool = false;
+      }
       localDrawable.setVisible(bool, false);
       DrawableCompat.setHotspot(localDrawable, f1, f2);
-      return;
-      i = 0;
-      break;
-      label93:
-      bool = false;
     }
   }
   
@@ -181,9 +176,10 @@ class DropDownListView
       setPressed(true);
     }
     layoutChildren();
-    if (this.mMotionPosition != -1)
+    int i = this.mMotionPosition;
+    if (i != -1)
     {
-      View localView = getChildAt(this.mMotionPosition - getFirstVisiblePosition());
+      View localView = getChildAt(i - getFirstVisiblePosition());
       if ((localView != null) && (localView != paramView) && (localView.isPressed())) {
         localView.setPressed(false);
       }
@@ -204,8 +200,9 @@ class DropDownListView
   
   private void setSelectorEnabled(boolean paramBoolean)
   {
-    if (this.mSelector != null) {
-      this.mSelector.setEnabled(paramBoolean);
+    GateKeeperDrawable localGateKeeperDrawable = this.mSelector;
+    if (localGateKeeperDrawable != null) {
+      localGateKeeperDrawable.setEnabled(paramBoolean);
     }
   }
   
@@ -261,102 +258,96 @@ class DropDownListView
   public int lookForSelectablePosition(int paramInt, boolean paramBoolean)
   {
     ListAdapter localListAdapter = getAdapter();
-    int i;
-    if ((localListAdapter == null) || (isInTouchMode())) {
-      i = -1;
-    }
-    int j;
-    label130:
-    do
+    if (localListAdapter != null)
     {
-      do
+      if (isInTouchMode()) {
+        return -1;
+      }
+      int j = localListAdapter.getCount();
+      if (!getAdapter().areAllItemsEnabled())
       {
-        return i;
-        j = localListAdapter.getCount();
-        if (getAdapter().areAllItemsEnabled()) {
-          break label130;
-        }
+        int i;
         if (paramBoolean)
         {
-          i = Math.max(0, paramInt);
+          paramInt = Math.max(0, paramInt);
           for (;;)
           {
-            paramInt = i;
-            if (i >= j) {
+            i = paramInt;
+            if (paramInt >= j) {
               break;
             }
-            paramInt = i;
-            if (localListAdapter.isEnabled(i)) {
+            i = paramInt;
+            if (localListAdapter.isEnabled(paramInt)) {
               break;
             }
-            i += 1;
+            paramInt += 1;
           }
         }
-        i = Math.min(paramInt, j - 1);
+        paramInt = Math.min(paramInt, j - 1);
         for (;;)
         {
-          paramInt = i;
-          if (i < 0) {
+          i = paramInt;
+          if (paramInt < 0) {
             break;
           }
-          paramInt = i;
-          if (localListAdapter.isEnabled(i)) {
+          i = paramInt;
+          if (localListAdapter.isEnabled(paramInt)) {
             break;
           }
-          i -= 1;
+          paramInt -= 1;
         }
-        if (paramInt < 0) {
-          break;
+        if (i >= 0)
+        {
+          if (i >= j) {
+            return -1;
+          }
+          return i;
         }
-        i = paramInt;
-      } while (paramInt < j);
-      return -1;
-      if (paramInt < 0) {
-        break;
+        return -1;
       }
-      i = paramInt;
-    } while (paramInt < j);
+      if (paramInt >= 0)
+      {
+        if (paramInt >= j) {
+          return -1;
+        }
+        return paramInt;
+      }
+      return -1;
+    }
     return -1;
   }
   
   public int measureHeightOfChildrenCompat(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     paramInt2 = getListPaddingTop();
-    int i = getListPaddingBottom();
+    paramInt3 = getListPaddingBottom();
     getListPaddingLeft();
     getListPaddingRight();
-    paramInt3 = getDividerHeight();
+    int i = getDividerHeight();
     Object localObject = getDivider();
     ListAdapter localListAdapter = getAdapter();
-    if (localListAdapter == null)
-    {
-      paramInt1 = paramInt2 + i;
-      return paramInt1;
+    if (localListAdapter == null) {
+      return paramInt2 + paramInt3;
     }
-    paramInt2 = i + paramInt2;
-    label64:
-    int j;
-    label85:
-    int m;
-    label117:
-    View localView;
-    if ((paramInt3 > 0) && (localObject != null))
-    {
-      j = 0;
-      localObject = null;
-      int k = 0;
-      int n = localListAdapter.getCount();
+    if ((i <= 0) || (localObject == null)) {
       i = 0;
-      if (i >= n) {
-        break label310;
+    }
+    int i1 = localListAdapter.getCount();
+    paramInt3 = paramInt2 + paramInt3;
+    localObject = null;
+    int j = 0;
+    int m = 0;
+    int n;
+    for (paramInt2 = 0; j < i1; paramInt2 = n)
+    {
+      n = localListAdapter.getItemViewType(j);
+      int k = m;
+      if (n != m)
+      {
+        localObject = null;
+        k = n;
       }
-      m = localListAdapter.getItemViewType(i);
-      if (m == k) {
-        break label312;
-      }
-      localObject = null;
-      k = m;
-      localView = localListAdapter.getView(i, (View)localObject, this);
+      View localView = localListAdapter.getView(j, (View)localObject, this);
       ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
       localObject = localLayoutParams;
       if (localLayoutParams == null)
@@ -364,64 +355,51 @@ class DropDownListView
         localObject = generateDefaultLayoutParams();
         localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      if (((ViewGroup.LayoutParams)localObject).height <= 0) {
-        break label260;
+      if (((ViewGroup.LayoutParams)localObject).height > 0) {
+        m = View.MeasureSpec.makeMeasureSpec(((ViewGroup.LayoutParams)localObject).height, 1073741824);
+      } else {
+        m = View.MeasureSpec.makeMeasureSpec(0, 0);
       }
-      m = View.MeasureSpec.makeMeasureSpec(((ViewGroup.LayoutParams)localObject).height, 1073741824);
-      label181:
       localView.measure(paramInt1, m);
       localView.forceLayout();
-      if (i <= 0) {
-        break label315;
+      m = paramInt3;
+      if (j > 0) {
+        m = paramInt3 + i;
       }
-      paramInt2 += paramInt3;
-    }
-    label260:
-    label310:
-    label312:
-    label315:
-    for (;;)
-    {
-      paramInt2 += localView.getMeasuredHeight();
-      if (paramInt2 >= paramInt4)
+      paramInt3 = m + localView.getMeasuredHeight();
+      if (paramInt3 >= paramInt4)
       {
         paramInt1 = paramInt4;
-        if (paramInt5 < 0) {
-          break;
+        if (paramInt5 >= 0)
+        {
+          paramInt1 = paramInt4;
+          if (j > paramInt5)
+          {
+            paramInt1 = paramInt4;
+            if (paramInt2 > 0)
+            {
+              paramInt1 = paramInt4;
+              if (paramInt3 != paramInt4) {
+                paramInt1 = paramInt2;
+              }
+            }
+          }
         }
-        paramInt1 = paramInt4;
-        if (i <= paramInt5) {
-          break;
-        }
-        paramInt1 = paramInt4;
-        if (j <= 0) {
-          break;
-        }
-        paramInt1 = paramInt4;
-        if (paramInt2 == paramInt4) {
-          break;
-        }
-        return j;
-        paramInt3 = 0;
-        break label64;
-        m = View.MeasureSpec.makeMeasureSpec(0, 0);
-        break label181;
+        return paramInt1;
       }
-      m = j;
+      n = paramInt2;
       if (paramInt5 >= 0)
       {
-        m = j;
-        if (i >= paramInt5) {
-          m = paramInt2;
+        n = paramInt2;
+        if (j >= paramInt5) {
+          n = paramInt3;
         }
       }
-      i += 1;
-      j = m;
+      j += 1;
+      m = k;
       localObject = localView;
-      break label85;
-      return paramInt2;
-      break label117;
     }
+    return paramInt3;
   }
   
   protected void onDetachedFromWindow()
@@ -433,113 +411,107 @@ class DropDownListView
   public boolean onForwardedEvent(MotionEvent paramMotionEvent, int paramInt)
   {
     int i = paramMotionEvent.getActionMasked();
+    boolean bool;
     switch (i)
     {
     default: 
       paramInt = 0;
+      bool = true;
+      break;
     case 3: 
-      for (bool = true;; bool = false)
-      {
-        label37:
-        if ((!bool) || (paramInt != 0)) {
-          clearPressedItem();
-        }
-        if (!bool) {
-          break;
-        }
-        if (this.mScrollHelper == null) {
-          this.mScrollHelper = new ListViewAutoScrollHelper(this);
-        }
-        this.mScrollHelper.setEnabled(true);
-        this.mScrollHelper.onTouch(this, paramMotionEvent);
-        label93:
-        return bool;
-        paramInt = 0;
-      }
+      paramInt = 0;
+      bool = false;
+      break;
+    case 2: 
+      bool = true;
+      break;
+    case 1: 
+      bool = false;
     }
-    for (boolean bool = false;; bool = true)
+    int j = paramMotionEvent.findPointerIndex(paramInt);
+    if (j < 0)
     {
-      int j = paramMotionEvent.findPointerIndex(paramInt);
-      if (j < 0)
-      {
-        paramInt = 0;
-        bool = false;
-        break label37;
-      }
+      paramInt = 0;
+      bool = false;
+    }
+    else
+    {
       paramInt = (int)paramMotionEvent.getX(j);
       j = (int)paramMotionEvent.getY(j);
       int k = pointToPosition(paramInt, j);
       if (k == -1)
       {
         paramInt = 1;
-        break label37;
       }
-      View localView = getChildAt(k - getFirstVisiblePosition());
-      setPressedItem(localView, k, paramInt, j);
-      if (i != 1) {
-        break;
+      else
+      {
+        View localView = getChildAt(k - getFirstVisiblePosition());
+        setPressedItem(localView, k, paramInt, j);
+        if (i == 1) {
+          clickPressedItem(localView, k);
+        }
+        paramInt = 0;
+        bool = true;
       }
-      clickPressedItem(localView, k);
-      break;
+    }
+    if ((!bool) || (paramInt != 0)) {
+      clearPressedItem();
+    }
+    if (bool)
+    {
       if (this.mScrollHelper == null) {
-        break label93;
+        this.mScrollHelper = new ListViewAutoScrollHelper(this);
       }
-      this.mScrollHelper.setEnabled(false);
+      this.mScrollHelper.setEnabled(true);
+      this.mScrollHelper.onTouch(this, paramMotionEvent);
       return bool;
     }
+    paramMotionEvent = this.mScrollHelper;
+    if (paramMotionEvent != null) {
+      paramMotionEvent.setEnabled(false);
+    }
+    return bool;
   }
   
   public boolean onHoverEvent(@NonNull MotionEvent paramMotionEvent)
   {
-    boolean bool1;
     if (Build.VERSION.SDK_INT < 26) {
-      bool1 = super.onHoverEvent(paramMotionEvent);
+      return super.onHoverEvent(paramMotionEvent);
     }
-    int i;
-    boolean bool2;
-    do
+    int i = paramMotionEvent.getActionMasked();
+    if ((i == 10) && (this.mResolveHoverRunnable == null))
     {
-      do
-      {
-        return bool1;
-        i = paramMotionEvent.getActionMasked();
-        if ((i == 10) && (this.mResolveHoverRunnable == null))
-        {
-          this.mResolveHoverRunnable = new ResolveHoverRunnable(null);
-          this.mResolveHoverRunnable.post();
-        }
-        bool2 = super.onHoverEvent(paramMotionEvent);
-        if ((i != 9) && (i != 7)) {
-          break;
-        }
-        i = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-        bool1 = bool2;
-      } while (i == -1);
-      bool1 = bool2;
-    } while (i == getSelectedItemPosition());
-    paramMotionEvent = getChildAt(i - getFirstVisiblePosition());
-    if (paramMotionEvent.isEnabled()) {
-      setSelectionFromTop(i, paramMotionEvent.getTop() - getTop());
+      this.mResolveHoverRunnable = new ResolveHoverRunnable(null);
+      this.mResolveHoverRunnable.post();
     }
-    updateSelectorStateCompat();
-    return bool2;
-    setSelection(-1);
-    return bool2;
+    boolean bool = super.onHoverEvent(paramMotionEvent);
+    if ((i != 9) && (i != 7))
+    {
+      setSelection(-1);
+      return bool;
+    }
+    i = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+    if ((i != -1) && (i != getSelectedItemPosition()))
+    {
+      paramMotionEvent = getChildAt(i - getFirstVisiblePosition());
+      if (paramMotionEvent.isEnabled()) {
+        setSelectionFromTop(i, paramMotionEvent.getTop() - getTop());
+      }
+      updateSelectorStateCompat();
+    }
+    return bool;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      if (this.mResolveHoverRunnable != null) {
-        this.mResolveHoverRunnable.cancel();
-      }
-      return super.onTouchEvent(paramMotionEvent);
+    if (paramMotionEvent.getAction() == 0) {
       this.mMotionPosition = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
     }
+    ResolveHoverRunnable localResolveHoverRunnable = this.mResolveHoverRunnable;
+    if (localResolveHoverRunnable != null) {
+      localResolveHoverRunnable.cancel();
+    }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   void setListSelectionHidden(boolean paramBoolean)
@@ -549,21 +521,21 @@ class DropDownListView
   
   public void setSelector(Drawable paramDrawable)
   {
-    if (paramDrawable != null) {}
-    for (Object localObject = new GateKeeperDrawable(paramDrawable);; localObject = null)
-    {
-      this.mSelector = ((GateKeeperDrawable)localObject);
-      super.setSelector(this.mSelector);
-      localObject = new Rect();
-      if (paramDrawable != null) {
-        paramDrawable.getPadding((Rect)localObject);
-      }
-      this.mSelectionLeftPadding = ((Rect)localObject).left;
-      this.mSelectionTopPadding = ((Rect)localObject).top;
-      this.mSelectionRightPadding = ((Rect)localObject).right;
-      this.mSelectionBottomPadding = ((Rect)localObject).bottom;
-      return;
+    if (paramDrawable != null) {
+      localObject = new GateKeeperDrawable(paramDrawable);
+    } else {
+      localObject = null;
     }
+    this.mSelector = ((GateKeeperDrawable)localObject);
+    super.setSelector(this.mSelector);
+    Object localObject = new Rect();
+    if (paramDrawable != null) {
+      paramDrawable.getPadding((Rect)localObject);
+    }
+    this.mSelectionLeftPadding = ((Rect)localObject).left;
+    this.mSelectionTopPadding = ((Rect)localObject).top;
+    this.mSelectionRightPadding = ((Rect)localObject).right;
+    this.mSelectionBottomPadding = ((Rect)localObject).bottom;
   }
   
   private static class GateKeeperDrawable

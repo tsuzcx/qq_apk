@@ -34,25 +34,29 @@ public class StartPwdDigitVerifyActivity
   protected int getBtnStringId()
   {
     if (1 == this.mEnterType) {
-      return 2131231490;
+      return 2131493634;
     }
-    return 2131230897;
+    return 2131493039;
   }
   
   public void onClick(View paramView)
   {
-    if (this.mTokenPwdInpuText != null) {
-      this.mTokenPwdInpuText.clearFocus();
+    paramView = this.mTokenPwdInpuText;
+    if (paramView != null) {
+      paramView.clearFocus();
     }
     if (cd.a().a(this.mTokenPwdInpuText.getText().toString()))
     {
       hideKeyBoard();
-      g.a("verify_token_pwd: " + this.mEnterType);
+      paramView = new StringBuilder();
+      paramView.append("verify_token_pwd: ");
+      paramView.append(this.mEnterType);
+      g.a(paramView.toString());
       setResult(257);
       finish();
       return;
     }
-    showToast(2131231494);
+    showToast(2131493638);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -64,22 +68,28 @@ public class StartPwdDigitVerifyActivity
       this.mEnterType = paramBundle.getInt("enter_type");
       this.mUin = paramBundle.getLong("uin");
     }
-    setContentView(2130968816);
-    paramBundle = findViewById(2131559452);
+    setContentView(2131296497);
+    paramBundle = findViewById(2131165332);
     paramBundle.setOnClickListener(this);
     ((Button)paramBundle).setText(getBtnStringId());
     setBtnWidth(paramBundle.getLayoutParams());
-    this.mTokenPwdInpuText = ((EditText)findViewById(2131559451));
-    if (this.mTokenPwdInpuText != null) {
-      this.mTokenPwdInpuText.clearFocus();
+    this.mTokenPwdInpuText = ((EditText)findViewById(2131166069));
+    paramBundle = this.mTokenPwdInpuText;
+    if (paramBundle != null) {
+      paramBundle.clearFocus();
     }
-    g.a("verify_token_pwd: " + this.mEnterType + ", uin: " + this.mUin);
+    paramBundle = new StringBuilder();
+    paramBundle.append("verify_token_pwd: ");
+    paramBundle.append(this.mEnterType);
+    paramBundle.append(", uin: ");
+    paramBundle.append(this.mUin);
+    g.a(paramBundle.toString());
   }
   
   protected void setBtnWidth(ViewGroup.LayoutParams paramLayoutParams)
   {
     if (1 == this.mEnterType) {
-      paramLayoutParams.width = ((int)getResources().getDimension(2131296365));
+      paramLayoutParams.width = ((int)getResources().getDimension(2131034192));
     }
   }
 }

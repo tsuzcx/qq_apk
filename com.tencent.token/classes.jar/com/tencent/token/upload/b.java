@@ -67,12 +67,16 @@ public class b
   {
     Object localObject = (ArrayList)a(paramContext);
     paramContext = new JSONArray();
-    if ((localObject == null) || (((ArrayList)localObject).size() == 0)) {
+    if (localObject != null)
+    {
+      if (((ArrayList)localObject).size() == 0) {
+        return paramContext;
+      }
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        paramContext.put(((a)((Iterator)localObject).next()).a());
+      }
       return paramContext;
-    }
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      paramContext.put(((a)((Iterator)localObject).next()).a());
     }
     return paramContext;
   }

@@ -30,32 +30,31 @@ class FragmentTransitionCompat21
   
   public void addTargets(Object paramObject, ArrayList<View> paramArrayList)
   {
-    int i = 0;
     paramObject = (Transition)paramObject;
-    if (paramObject == null) {}
-    for (;;)
-    {
+    if (paramObject == null) {
       return;
-      int j;
-      if ((paramObject instanceof TransitionSet))
+    }
+    boolean bool = paramObject instanceof TransitionSet;
+    int j = 0;
+    int i = 0;
+    if (bool)
+    {
+      paramObject = (TransitionSet)paramObject;
+      j = paramObject.getTransitionCount();
+      while (i < j)
       {
-        paramObject = (TransitionSet)paramObject;
-        j = paramObject.getTransitionCount();
-        while (i < j)
-        {
-          addTargets(paramObject.getTransitionAt(i), paramArrayList);
-          i += 1;
-        }
+        addTargets(paramObject.getTransitionAt(i), paramArrayList);
+        i += 1;
       }
-      else if ((!hasSimpleTarget(paramObject)) && (isNullOrEmpty(paramObject.getTargets())))
+    }
+    if ((!hasSimpleTarget(paramObject)) && (isNullOrEmpty(paramObject.getTargets())))
+    {
+      int k = paramArrayList.size();
+      i = j;
+      while (i < k)
       {
-        j = paramArrayList.size();
-        i = 0;
-        while (i < j)
-        {
-          paramObject.addTarget((View)paramArrayList.get(i));
-          i += 1;
-        }
+        paramObject.addTarget((View)paramArrayList.get(i));
+        i += 1;
       }
     }
   }
@@ -72,23 +71,27 @@ class FragmentTransitionCompat21
   
   public Object cloneTransition(Object paramObject)
   {
-    Transition localTransition = null;
     if (paramObject != null) {
-      localTransition = ((Transition)paramObject).clone();
+      return ((Transition)paramObject).clone();
     }
-    return localTransition;
+    return null;
   }
   
   public Object mergeTransitionsInSequence(Object paramObject1, Object paramObject2, Object paramObject3)
   {
-    Object localObject = null;
     paramObject1 = (Transition)paramObject1;
     paramObject2 = (Transition)paramObject2;
     paramObject3 = (Transition)paramObject3;
     if ((paramObject1 != null) && (paramObject2 != null)) {
       paramObject1 = new TransitionSet().addTransition(paramObject1).addTransition(paramObject2).setOrdering(1);
+    } else if (paramObject1 == null) {
+      if (paramObject2 != null) {
+        paramObject1 = paramObject2;
+      } else {
+        paramObject1 = null;
+      }
     }
-    while (paramObject3 != null)
+    if (paramObject3 != null)
     {
       paramObject2 = new TransitionSet();
       if (paramObject1 != null) {
@@ -96,13 +99,6 @@ class FragmentTransitionCompat21
       }
       paramObject2.addTransition(paramObject3);
       return paramObject2;
-      if (paramObject1 == null)
-      {
-        paramObject1 = localObject;
-        if (paramObject2 != null) {
-          paramObject1 = paramObject2;
-        }
-      }
     }
     return paramObject1;
   }
@@ -131,10 +127,11 @@ class FragmentTransitionCompat21
   
   public void replaceTargets(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2)
   {
-    int i = 0;
     paramObject = (Transition)paramObject;
-    int j;
-    if ((paramObject instanceof TransitionSet))
+    boolean bool = paramObject instanceof TransitionSet;
+    int j = 0;
+    int i = 0;
+    if (bool)
     {
       paramObject = (TransitionSet)paramObject;
       j = paramObject.getTransitionCount();
@@ -149,15 +146,15 @@ class FragmentTransitionCompat21
       List localList = paramObject.getTargets();
       if ((localList != null) && (localList.size() == paramArrayList1.size()) && (localList.containsAll(paramArrayList1)))
       {
-        if (paramArrayList2 == null) {}
-        for (i = 0;; i = paramArrayList2.size())
+        if (paramArrayList2 == null) {
+          i = 0;
+        } else {
+          i = paramArrayList2.size();
+        }
+        while (j < i)
         {
-          j = 0;
-          while (j < i)
-          {
-            paramObject.addTarget((View)paramArrayList2.get(j));
-            j += 1;
-          }
+          paramObject.addTarget((View)paramArrayList2.get(j));
+          j += 1;
         }
         i = paramArrayList1.size() - 1;
         while (i >= 0)
@@ -210,14 +207,17 @@ class FragmentTransitionCompat21
       
       public void onTransitionStart(Transition paramAnonymousTransition)
       {
-        if (paramObject2 != null) {
-          FragmentTransitionCompat21.this.replaceTargets(paramObject2, paramArrayList1, null);
+        paramAnonymousTransition = paramObject2;
+        if (paramAnonymousTransition != null) {
+          FragmentTransitionCompat21.this.replaceTargets(paramAnonymousTransition, paramArrayList1, null);
         }
-        if (paramObject3 != null) {
-          FragmentTransitionCompat21.this.replaceTargets(paramObject3, paramArrayList2, null);
+        paramAnonymousTransition = paramObject3;
+        if (paramAnonymousTransition != null) {
+          FragmentTransitionCompat21.this.replaceTargets(paramAnonymousTransition, paramArrayList2, null);
         }
-        if (paramObject4 != null) {
-          FragmentTransitionCompat21.this.replaceTargets(paramObject4, paramArrayList3, null);
+        paramAnonymousTransition = paramObject4;
+        if (paramAnonymousTransition != null) {
+          FragmentTransitionCompat21.this.replaceTargets(paramAnonymousTransition, paramArrayList3, null);
         }
       }
     });
@@ -230,10 +230,11 @@ class FragmentTransitionCompat21
       {
         public Rect onGetEpicenter(Transition paramAnonymousTransition)
         {
-          if ((paramRect == null) || (paramRect.isEmpty())) {
-            return null;
+          paramAnonymousTransition = paramRect;
+          if ((paramAnonymousTransition != null) && (!paramAnonymousTransition.isEmpty())) {
+            return paramRect;
           }
-          return paramRect;
+          return null;
         }
       });
     }

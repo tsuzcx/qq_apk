@@ -41,28 +41,29 @@ class TwilightManager
   @SuppressLint({"MissingPermission"})
   private Location getLastKnownLocation()
   {
-    Object localObject1 = null;
-    if (PermissionChecker.checkSelfPermission(this.mContext, "android.permission.ACCESS_COARSE_LOCATION") == 0) {}
-    for (Location localLocation = getLastKnownLocationForProvider("network");; localLocation = null)
-    {
-      if (PermissionChecker.checkSelfPermission(this.mContext, "android.permission.ACCESS_FINE_LOCATION") == 0) {
-        localObject1 = getLastKnownLocationForProvider("gps");
-      }
-      if ((localObject1 != null) && (localLocation != null))
-      {
-        Object localObject2 = localLocation;
-        if (((Location)localObject1).getTime() > localLocation.getTime()) {
-          localObject2 = localObject1;
-        }
-        return localObject2;
-      }
-      if (localObject1 != null) {}
-      for (;;)
-      {
-        return localObject1;
-        localObject1 = localLocation;
-      }
+    int i = PermissionChecker.checkSelfPermission(this.mContext, "android.permission.ACCESS_COARSE_LOCATION");
+    Location localLocation2 = null;
+    Location localLocation1;
+    if (i == 0) {
+      localLocation1 = getLastKnownLocationForProvider("network");
+    } else {
+      localLocation1 = null;
     }
+    if (PermissionChecker.checkSelfPermission(this.mContext, "android.permission.ACCESS_FINE_LOCATION") == 0) {
+      localLocation2 = getLastKnownLocationForProvider("gps");
+    }
+    if ((localLocation2 != null) && (localLocation1 != null))
+    {
+      Location localLocation3 = localLocation1;
+      if (localLocation2.getTime() > localLocation1.getTime()) {
+        localLocation3 = localLocation2;
+      }
+      return localLocation3;
+    }
+    if (localLocation2 != null) {
+      localLocation1 = localLocation2;
+    }
+    return localLocation1;
   }
   
   @RequiresPermission(anyOf={"android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION"})
@@ -102,41 +103,37 @@ class TwilightManager
     localTwilightCalculator.calculateTwilight(l1 - 86400000L, paramLocation.getLatitude(), paramLocation.getLongitude());
     long l2 = localTwilightCalculator.sunset;
     localTwilightCalculator.calculateTwilight(l1, paramLocation.getLatitude(), paramLocation.getLongitude());
-    if (localTwilightCalculator.state == 1) {}
-    long l3;
-    long l4;
-    long l5;
-    for (boolean bool = true;; bool = false)
-    {
-      l3 = localTwilightCalculator.sunrise;
-      l4 = localTwilightCalculator.sunset;
-      localTwilightCalculator.calculateTwilight(86400000L + l1, paramLocation.getLatitude(), paramLocation.getLongitude());
-      l5 = localTwilightCalculator.sunrise;
-      if ((l3 != -1L) && (l4 != -1L)) {
-        break;
-      }
-      l1 = 43200000L + l1;
-      localTwilightState.isNight = bool;
-      localTwilightState.yesterdaySunset = l2;
-      localTwilightState.todaySunrise = l3;
-      localTwilightState.todaySunset = l4;
-      localTwilightState.tomorrowSunrise = l5;
-      localTwilightState.nextUpdate = l1;
-      return;
+    boolean bool;
+    if (localTwilightCalculator.state == 1) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    if (l1 > l4) {
-      l1 = 0L + l5;
-    }
-    for (;;)
+    long l3 = localTwilightCalculator.sunrise;
+    long l4 = localTwilightCalculator.sunset;
+    localTwilightCalculator.calculateTwilight(86400000L + l1, paramLocation.getLatitude(), paramLocation.getLongitude());
+    long l5 = localTwilightCalculator.sunrise;
+    if ((l3 != -1L) && (l4 != -1L))
     {
-      l1 += 60000L;
-      break;
-      if (l1 > l3) {
+      if (l1 > l4) {
+        l1 = 0L + l5;
+      } else if (l1 > l3) {
         l1 = 0L + l4;
       } else {
         l1 = 0L + l3;
       }
+      l1 += 60000L;
     }
+    else
+    {
+      l1 = 43200000L + l1;
+    }
+    localTwilightState.isNight = bool;
+    localTwilightState.yesterdaySunset = l2;
+    localTwilightState.todaySunrise = l3;
+    localTwilightState.todaySunset = l4;
+    localTwilightState.tomorrowSunrise = l5;
+    localTwilightState.nextUpdate = l1;
   }
   
   boolean isNight()

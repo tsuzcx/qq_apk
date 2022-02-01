@@ -31,10 +31,11 @@ class b
   
   public int getCount()
   {
-    if (this.a == null) {
+    List localList = this.a;
+    if (localList == null) {
       return 0;
     }
-    return this.a.size();
+    return localList.size();
   }
   
   public Object getItem(int paramInt)
@@ -51,35 +52,39 @@ class b
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = this.c.inflate(2130968652, paramViewGroup, false);
+      localView = this.c.inflate(2131296332, paramViewGroup, false);
     }
-    paramView = localView.findViewById(2131558837);
+    paramView = localView.findViewById(2131165443);
     if (paramInt == getCount() - 1) {
       paramView.setVisibility(4);
-    }
-    for (;;)
-    {
-      paramView = (TextView)localView.findViewById(2131558851);
-      if (this.a != null)
-      {
-        paramViewGroup = (QQUser)this.a.get(paramInt);
-        if (paramViewGroup != null)
-        {
-          paramView.setText(paramViewGroup.mNickName + "(" + l.e(paramViewGroup.mRealUin) + ")");
-          localView.setOnClickListener(new View.OnClickListener()
-          {
-            public void onClick(View paramAnonymousView)
-            {
-              m.b(paramViewGroup.mRealUin);
-              b.a(b.this).dismiss();
-              b.b(b.this).refreshList();
-            }
-          });
-        }
-      }
-      return localView;
+    } else {
       paramView.setVisibility(0);
     }
+    paramView = (TextView)localView.findViewById(2131166065);
+    paramViewGroup = this.a;
+    if (paramViewGroup != null)
+    {
+      paramViewGroup = (QQUser)paramViewGroup.get(paramInt);
+      if (paramViewGroup != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramViewGroup.mNickName);
+        localStringBuilder.append("(");
+        localStringBuilder.append(l.e(paramViewGroup.mRealUin));
+        localStringBuilder.append(")");
+        paramView.setText(localStringBuilder.toString());
+        localView.setOnClickListener(new View.OnClickListener()
+        {
+          public void onClick(View paramAnonymousView)
+          {
+            m.b(paramViewGroup.mRealUin);
+            b.a(b.this).dismiss();
+            b.b(b.this).refreshList();
+          }
+        });
+      }
+    }
+    return localView;
   }
 }
 

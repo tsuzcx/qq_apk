@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SoftInfo
   extends JceStruct
@@ -224,46 +225,57 @@ public final class SoftInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.softkey, 0);
-    if (this.short_desc != null) {
-      paramJceOutputStream.write(this.short_desc, 1);
+    Object localObject = this.short_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.description != null) {
-      paramJceOutputStream.write(this.description, 2);
+    localObject = this.description;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.type != null) {
-      paramJceOutputStream.write(this.type, 3);
+    localObject = this.type;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.softclass != null) {
-      paramJceOutputStream.write(this.softclass, 4);
+    localObject = this.softclass;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.procinfo != null) {
-      paramJceOutputStream.write(this.procinfo, 5);
+    localObject = this.procinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
     paramJceOutputStream.write(this.smsmonitor, 6);
     paramJceOutputStream.write(this.phonemonitor, 7);
     paramJceOutputStream.write(this.netaccess, 8);
     paramJceOutputStream.write(this.autostart, 9);
     paramJceOutputStream.write(this.asopt, 10);
-    if (this.nick_name != null) {
-      paramJceOutputStream.write(this.nick_name, 11);
+    localObject = this.nick_name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.reportFeature, 12);
-    if (this.logourl != null) {
-      paramJceOutputStream.write(this.logourl, 13);
+    localObject = this.logourl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.filesize, 14);
-    if (this.publishtime != null) {
-      paramJceOutputStream.write(this.publishtime, 15);
+    localObject = this.publishtime;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
     paramJceOutputStream.write(this.downloadtimes, 16);
-    if (this.function != null) {
-      paramJceOutputStream.write(this.function, 17);
+    localObject = this.function;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
-    if (this.fileurl != null) {
-      paramJceOutputStream.write(this.fileurl, 18);
+    localObject = this.fileurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.picurls != null) {
-      paramJceOutputStream.write(this.picurls, 19);
+    localObject = this.picurls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 19);
     }
     paramJceOutputStream.write(this.official, 20);
     paramJceOutputStream.write(this.update, 21);
@@ -275,60 +287,76 @@ public final class SoftInfo
     paramJceOutputStream.write(this.iFileID, 27);
     paramJceOutputStream.write(this.feetype, 28);
     paramJceOutputStream.write(this.fee, 29);
-    if (this.pname != null) {
-      paramJceOutputStream.write(this.pname, 30);
+    localObject = this.pname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 30);
     }
-    if (this.hprice != null) {
-      paramJceOutputStream.write(this.hprice, 31);
+    localObject = this.hprice;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 31);
     }
-    if (this.comments != null) {
-      paramJceOutputStream.write(this.comments, 32);
+    localObject = this.comments;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 32);
     }
-    if (this.logourls != null) {
-      paramJceOutputStream.write(this.logourls, 33);
+    localObject = this.logourls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 33);
     }
-    if (this.pageurl != null) {
-      paramJceOutputStream.write(this.pageurl, 34);
+    localObject = this.pageurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 34);
     }
     paramJceOutputStream.write(this.lfee, 35);
     paramJceOutputStream.write(this.isoftclass, 36);
     paramJceOutputStream.write(this.cn_fee, 37);
     paramJceOutputStream.write(this.cn_lfee, 38);
-    if (this.srcpicurls != null) {
-      paramJceOutputStream.write(this.srcpicurls, 39);
+    localObject = this.srcpicurls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 39);
     }
-    if (this.expand != null) {
-      paramJceOutputStream.write(this.expand, 40);
+    localObject = this.expand;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 40);
     }
-    if (this.strSource != null) {
-      paramJceOutputStream.write(this.strSource, 41);
+    localObject = this.strSource;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 41);
     }
-    if (this.strLinkContent != null) {
-      paramJceOutputStream.write(this.strLinkContent, 42);
+    localObject = this.strLinkContent;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 42);
     }
-    if (this.strLinkUrl != null) {
-      paramJceOutputStream.write(this.strLinkUrl, 43);
+    localObject = this.strLinkUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 43);
     }
-    if (this.break_fileurl != null) {
-      paramJceOutputStream.write(this.break_fileurl, 44);
+    localObject = this.break_fileurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 44);
     }
-    if (this.version_break != null) {
-      paramJceOutputStream.write(this.version_break, 45);
+    localObject = this.version_break;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 45);
     }
-    if (this.break_mini_os != null) {
-      paramJceOutputStream.write(this.break_mini_os, 46);
+    localObject = this.break_mini_os;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 46);
     }
-    if (this.diffFileUrl != null) {
-      paramJceOutputStream.write(this.diffFileUrl, 47);
+    localObject = this.diffFileUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 47);
     }
     paramJceOutputStream.write(this.diffFileSizeByte, 48);
-    if (this.apkFileMd5 != null) {
-      paramJceOutputStream.write(this.apkFileMd5, 49);
+    localObject = this.apkFileMd5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 49);
     }
     paramJceOutputStream.write(this.plugintype, 50);
     paramJceOutputStream.write(this.sign, 51);
-    if (this.channelId != null) {
-      paramJceOutputStream.write(this.channelId, 52);
+    localObject = this.channelId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 52);
     }
   }
 }

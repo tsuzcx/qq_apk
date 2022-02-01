@@ -24,8 +24,9 @@ public final class ao
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cS, 0);
-    if (this.cT != null) {
-      paramJceOutputStream.write(this.cT, 1);
+    String str = this.cT;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }

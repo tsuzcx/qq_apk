@@ -48,8 +48,9 @@ public class g
     this.j = parama;
     this.m = this.k;
     this.n = this.l;
-    this.c.x = (this.m - 0.09F);
-    this.c.y = (this.n - 0.09F);
+    paramContext = this.c;
+    paramContext.x = (this.m - 0.09F);
+    paramContext.y = (this.n - 0.09F);
     this.h = new Paint();
     this.h.setStyle(Paint.Style.FILL);
     paramContext = new ColorMatrix();
@@ -70,7 +71,7 @@ public class g
     catch (Exception paramContext)
     {
       paramContext.printStackTrace();
-      this.u = ((int)getResources().getDimension(2131296371));
+      this.u = ((int)getResources().getDimension(2131034200));
     }
   }
   
@@ -78,18 +79,21 @@ public class g
   {
     this.m = this.k;
     this.n = this.l;
-    this.c.x = (this.m - 0.09F);
-    this.c.y = (this.n - 0.09F);
+    PointF localPointF = this.c;
+    localPointF.x = (this.m - 0.09F);
+    localPointF.y = (this.n - 0.09F);
     this.p = false;
   }
   
   public void a(Bitmap paramBitmap)
   {
-    if (this.j != null) {
-      this.j.onNextPage(true);
+    Object localObject = this.j;
+    if (localObject != null) {
+      ((a)localObject).onNextPage(true);
     }
-    if (this.a != null) {
-      this.a.recycle();
+    localObject = this.a;
+    if (localObject != null) {
+      ((Bitmap)localObject).recycle();
     }
     this.a = paramBitmap;
     postInvalidate();
@@ -106,11 +110,13 @@ public class g
     if (!this.i.isFinished())
     {
       this.i.abortAnimation();
-      if (this.j != null) {
-        this.j.onNextPage(this.q);
+      Object localObject = this.j;
+      if (localObject != null) {
+        ((a)localObject).onNextPage(this.q);
       }
-      if (this.a != null) {
-        this.a.recycle();
+      localObject = this.a;
+      if (localObject != null) {
+        ((Bitmap)localObject).recycle();
       }
       this.a = this.b;
       this.b = null;
@@ -120,11 +126,13 @@ public class g
   
   public void b(Bitmap paramBitmap)
   {
-    if (this.j != null) {
-      this.j.onNextPage(false);
+    Object localObject = this.j;
+    if (localObject != null) {
+      ((a)localObject).onNextPage(false);
     }
-    if (this.a != null) {
-      this.a.recycle();
+    localObject = this.a;
+    if (localObject != null) {
+      ((Bitmap)localObject).recycle();
     }
     this.a = paramBitmap;
     postInvalidate();
@@ -133,12 +141,14 @@ public class g
   public void c()
   {
     com.tencent.token.global.g.b("PageCurlView Do Clean");
-    if (this.b != null) {
-      this.b.recycle();
+    Bitmap localBitmap = this.b;
+    if (localBitmap != null) {
+      localBitmap.recycle();
     }
     this.b = null;
-    if (this.a != null) {
-      this.a.recycle();
+    localBitmap = this.a;
+    if (localBitmap != null) {
+      localBitmap.recycle();
     }
     this.a = null;
   }
@@ -146,29 +156,31 @@ public class g
   public void computeScroll()
   {
     super.computeScroll();
+    Object localObject;
     if (this.i.computeScrollOffset())
     {
-      f1 = this.i.getCurrX();
-      f2 = this.i.getCurrY();
-      this.c.x = f1;
-      this.c.y = f2;
+      float f1 = this.i.getCurrX();
+      float f2 = this.i.getCurrY();
+      localObject = this.c;
+      ((PointF)localObject).x = f1;
+      ((PointF)localObject).y = f2;
       postInvalidate();
-    }
-    while (!this.p)
-    {
-      float f1;
-      float f2;
       return;
     }
-    if (this.j != null) {
-      this.j.onNextPage(this.q);
+    if (this.p)
+    {
+      localObject = this.j;
+      if (localObject != null) {
+        ((a)localObject).onNextPage(this.q);
+      }
+      localObject = this.a;
+      if (localObject != null) {
+        ((Bitmap)localObject).recycle();
+      }
+      this.a = this.b;
+      this.b = null;
+      a();
     }
-    if (this.a != null) {
-      this.a.recycle();
-    }
-    this.a = this.b;
-    this.b = null;
-    a();
   }
   
   protected void onDetachedFromWindow()
@@ -184,7 +196,8 @@ public class g
       this.s = ((this.r.width() - this.a.getWidth()) / 2);
       this.t = ((this.r.height() - this.u - this.a.getHeight()) / 2);
     }
-    if ((this.a != null) && (!this.a.isRecycled())) {
+    Bitmap localBitmap = this.a;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
       paramCanvas.drawBitmap(this.a, this.s, this.t, null);
     }
     this.j.onDrawDots(paramCanvas, true);

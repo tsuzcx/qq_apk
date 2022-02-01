@@ -2,7 +2,7 @@
 <LinearLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:edu="http://schemas.android.com/apk/res-auto">
     <LinearLayout android:orientation="vertical" android:id="@id/title_layout" android:layout_width="fill_parent" android:layout_height="53.0dip">
-        <com.tencent.token.utils.bugscanuitl.TitleBar android:id="@id/title" android:layout_width="fill_parent" android:layout_height="fill_parent" edu:titletext="@string/app_name" edu:titletextsize="@dimen/text_size_18" edu:backColor="@color/reslutlisttitlebackcolor" edu:titlecolor="@color/add_account_tip_msg_content" edu:padleft="@dimen/titlepadleft" edu:hasleft="true" />
+        <com.tencent.token.utils.bugscanuitl.TitleBar android:id="@id/title" android:layout_width="fill_parent" android:layout_height="fill_parent" edu:backColor="@color/reslutlisttitlebackcolor" edu:hasleft="true" edu:padleft="@dimen/titlepadleft" edu:titlecolor="@color/add_account_tip_msg_content" edu:titletext="@string/app_name" edu:titletextsize="@dimen/text_size_18" />
     </LinearLayout>
     <RelativeLayout android:id="@id/upper_layout" android:background="#ff247fed" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="9.0">
         <View android:id="@id/divider_line" android:background="#22ffffff" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />

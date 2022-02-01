@@ -4,16 +4,6 @@ import java.io.UnsupportedEncodingException;
 
 public class d
 {
-  static
-  {
-    if (!d.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      return;
-    }
-  }
-  
   public static String a(byte[] paramArrayOfByte, int paramInt)
   {
     try
@@ -31,52 +21,48 @@ public class d
   {
     f localf = new f(paramInt3, null);
     int i = paramInt2 / 3 * 4;
-    int j;
     if (localf.d)
     {
       paramInt3 = i;
       if (paramInt2 % 3 > 0) {
         paramInt3 = i + 4;
       }
-      i = paramInt3;
-      if (localf.e)
-      {
-        i = paramInt3;
-        if (paramInt2 > 0)
-        {
-          j = (paramInt2 - 1) / 57;
-          if (!localf.f) {
-            break label186;
-          }
-        }
-      }
     }
-    label186:
-    for (i = 2;; i = 1)
+    else
     {
-      i = paramInt3 + i * (j + 1);
-      localf.a = new byte[i];
-      localf.a(paramArrayOfByte, paramInt1, paramInt2, true);
-      if ((a) || (localf.b == i)) {
-        break label192;
-      }
-      throw new AssertionError();
       paramInt3 = i;
       switch (paramInt2 % 3)
       {
-      case 0: 
       default: 
         paramInt3 = i;
-        break;
-      case 1: 
-        paramInt3 = i + 2;
         break;
       case 2: 
         paramInt3 = i + 3;
         break;
+      case 1: 
+        paramInt3 = i + 2;
       }
     }
-    label192:
+    i = paramInt3;
+    if (localf.e)
+    {
+      i = paramInt3;
+      if (paramInt2 > 0)
+      {
+        int j = (paramInt2 - 1) / 57;
+        if (localf.f) {
+          i = 2;
+        } else {
+          i = 1;
+        }
+        i = paramInt3 + (j + 1) * i;
+      }
+    }
+    localf.a = new byte[i];
+    localf.a(paramArrayOfByte, paramInt1, paramInt2, true);
+    if ((!a) && (localf.b != i)) {
+      throw new AssertionError();
+    }
     return localf.a;
   }
   

@@ -18,89 +18,107 @@ public class h
   {
     long l = f.c(paramContext);
     int i = g.a().a.checkPermission(5);
-    MSolution localMSolution;
     if (System.currentTimeMillis() - l > 5000L)
     {
       f.b(paramContext, i);
       if (l > 0L)
       {
         f.b(paramContext, 0L);
-        localMSolution = e.a(paramContext, 5);
-        if (i != 0) {
-          break label93;
+        MSolution localMSolution = e.a(paramContext, 5);
+        int j;
+        if (i == 0)
+        {
+          if ((localMSolution == null) || (localMSolution.mJumpIntent == null)) {
+            return;
+          }
+          i = 30109;
+          j = 1;
         }
-        if ((localMSolution != null) && (localMSolution.mJumpIntent != null)) {
-          a.a(paramContext, 30109, 1, f.c(paramContext, 5), 0, localMSolution.mJumpIntent.mPackage);
+        else
+        {
+          if ((localMSolution == null) || (localMSolution.mJumpIntent == null)) {
+            return;
+          }
+          i = bg.b(5);
+          j = 0;
         }
+        a.a(paramContext, i, j, f.c(paramContext, 5), 0, localMSolution.mJumpIntent.mPackage);
       }
     }
-    label93:
-    while ((localMSolution == null) || (localMSolution.mJumpIntent == null)) {
-      return;
-    }
-    a.a(paramContext, bg.b(5), 0, f.c(paramContext, 5), 0, localMSolution.mJumpIntent.mPackage);
   }
   
   public static void b(final Context paramContext)
   {
-    if (Build.VERSION.SDK_INT > 24) {
+    if (Build.VERSION.SDK_INT > 24)
+    {
       f.a(paramContext, -1);
-    }
-    while ((f.d(paramContext)) || (f.a(paramContext) != 2)) {
       return;
     }
-    final WindowManager localWindowManager = (WindowManager)paramContext.getSystemService("window");
-    final WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    localLayoutParams.width = 0;
-    localLayoutParams.height = 0;
-    localLayoutParams.type = 2005;
-    View local1 = new View(paramContext)
+    if (f.d(paramContext)) {
+      return;
+    }
+    if (f.a(paramContext) == 2)
     {
-      public void onWindowFocusChanged(boolean paramAnonymousBoolean)
+      final WindowManager localWindowManager = (WindowManager)paramContext.getSystemService("window");
+      final WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+      localLayoutParams.width = 0;
+      localLayoutParams.height = 0;
+      localLayoutParams.type = 2005;
+      View local1 = new View(paramContext)
       {
-        if (f.d(paramContext))
+        public void onWindowFocusChanged(boolean paramAnonymousBoolean)
         {
-          f.a(paramContext, 2);
-          return;
-        }
-        if (paramAnonymousBoolean)
-        {
-          f.a(paramContext, 0);
-          return;
-        }
-        f.a(paramContext, -1);
-      }
-    };
-    Handler localHandler = new Handler(Looper.getMainLooper());
-    localHandler.post(new Runnable()
-    {
-      public void run()
-      {
-        if (this.a.getParent() == null) {}
-        try
-        {
-          localWindowManager.addView(this.a, localLayoutParams);
-          if (!f.d(paramContext)) {
-            f.a(paramContext, -1);
+          if (f.d(paramContext))
+          {
+            f.a(paramContext, 2);
+            return;
           }
-          return;
+          Context localContext;
+          int i;
+          if (paramAnonymousBoolean)
+          {
+            localContext = paramContext;
+            i = 0;
+          }
+          else
+          {
+            localContext = paramContext;
+            i = -1;
+          }
+          f.a(localContext, i);
         }
-        catch (Throwable localThrowable) {}
-      }
-    });
-    localHandler.postDelayed(new Runnable()
-    {
-      public void run()
+      };
+      Handler localHandler = new Handler(Looper.getMainLooper());
+      localHandler.post(new Runnable()
       {
-        if (this.a.getParent() != null) {}
-        try
+        public void run()
         {
-          localWindowManager.removeView(this.a);
-          return;
+          if (this.a.getParent() == null) {}
+          try
+          {
+            localWindowManager.addView(this.a, localLayoutParams);
+            if (!f.d(paramContext)) {
+              f.a(paramContext, -1);
+            }
+            return;
+          }
+          catch (Throwable localThrowable) {}
         }
-        catch (Throwable localThrowable) {}
-      }
-    }, 1000L);
+      });
+      localHandler.postDelayed(new Runnable()
+      {
+        public void run()
+        {
+          if (this.a.getParent() != null) {}
+          try
+          {
+            localWindowManager.removeView(this.a);
+            return;
+          }
+          catch (Throwable localThrowable) {}
+        }
+      }, 1000L);
+    }
   }
 }
 

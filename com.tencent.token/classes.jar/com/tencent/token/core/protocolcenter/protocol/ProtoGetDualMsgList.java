@@ -35,75 +35,94 @@ public class ProtoGetDualMsgList
   
   protected String a()
   {
-    if (ca.a().b() == null)
+    Object localObject2 = ca.a().b();
+    Object localObject1 = null;
+    if (localObject2 == null)
     {
       this.a.b(104);
       return null;
     }
     cr localcr = cr.a();
     int i;
-    Object localObject1;
+    StringBuilder localStringBuilder2;
     if (this.d > 0L)
     {
       i = 0;
-      for (;;)
+      while (i < localcr.d())
       {
-        if (i < localcr.d())
-        {
-          localObject1 = localcr.a(i);
-          g.c("getdualmsglist: hash=" + this.d + ", uin=" + ((QQUser)localObject1).mUin + ", real=" + ((QQUser)localObject1).mRealUin + ", bind=" + ((QQUser)localObject1).mIsBinded);
-          if ((!((QQUser)localObject1).mIsBinded) || (((QQUser)localObject1).mUin != this.d)) {}
+        localObject2 = localcr.a(i);
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("getdualmsglist: hash=");
+        localStringBuilder2.append(this.d);
+        localStringBuilder2.append(", uin=");
+        localStringBuilder2.append(((QQUser)localObject2).mUin);
+        localStringBuilder2.append(", real=");
+        localStringBuilder2.append(((QQUser)localObject2).mRealUin);
+        localStringBuilder2.append(", bind=");
+        localStringBuilder2.append(((QQUser)localObject2).mIsBinded);
+        g.c(localStringBuilder2.toString());
+        if ((((QQUser)localObject2).mIsBinded) && (((QQUser)localObject2).mUin == this.d)) {
+          break;
         }
-        else
-        {
-          if (i != localcr.d()) {
-            break;
-          }
-          this.a.b(110);
-          return null;
-        }
-        if ((!((QQUser)localObject1).mIsBinded) && (l.f(((QQUser)localObject1).mRealUin) == this.d))
+        if ((!((QQUser)localObject2).mIsBinded) && (l.f(((QQUser)localObject2).mRealUin) == this.d))
         {
           this.a.b(10029);
           return null;
         }
         i += 1;
       }
-    }
-    long l = localcr.f();
-    if ((localcr.e() == null) || (l == 0L))
-    {
-      this.a.b(110);
-      return null;
-    }
-    if (localcr.e().mIsBinded) {
-      l = localcr.e().mUin;
-    }
-    try
-    {
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("uin", l);
-      i = cb.a + 1;
-      cb.a = i;
-      this.g = i;
-      ((JSONObject)localObject1).put("seq_id", this.g);
-      ((JSONObject)localObject1).put("op_time", cc.c().s() / 1000L);
-      ((JSONObject)localObject1).put("tkn_seq", cc.c().j().replaceAll("-", ""));
-      ((JSONObject)localObject1).put("source", this.e);
-      localObject1 = ((JSONObject)localObject1).toString();
-      g.a("plain:" + (String)localObject1);
-      localObject1 = l.b(((String)localObject1).getBytes());
-      localObject1 = "?aq_base_sid=" + localcr.g() + "&data=" + (String)localObject1;
-      return c.e() + "/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2" + (String)localObject1;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      if (i == localcr.d())
       {
-        g.c("JSONException:" + localJSONException.getMessage());
-        Object localObject2 = null;
+        this.a.b(110);
+        return null;
       }
     }
+    long l = localcr.f();
+    if ((localcr.e() != null) && (l != 0L))
+    {
+      if (localcr.e().mIsBinded) {
+        l = localcr.e().mUin;
+      }
+      try
+      {
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("uin", l);
+        i = cb.a + 1;
+        cb.a = i;
+        this.g = i;
+        ((JSONObject)localObject2).put("seq_id", this.g);
+        ((JSONObject)localObject2).put("op_time", cc.c().s() / 1000L);
+        ((JSONObject)localObject2).put("tkn_seq", cc.c().j().replaceAll("-", ""));
+        ((JSONObject)localObject2).put("source", this.e);
+        localObject2 = ((JSONObject)localObject2).toString();
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("plain:");
+        localStringBuilder2.append((String)localObject2);
+        g.a(localStringBuilder2.toString());
+        localObject2 = l.b(((String)localObject2).getBytes());
+        localObject1 = localObject2;
+      }
+      catch (JSONException localJSONException)
+      {
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("JSONException:");
+        localStringBuilder2.append(localJSONException.getMessage());
+        g.c(localStringBuilder2.toString());
+      }
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("?aq_base_sid=");
+      localStringBuilder1.append(localcr.g());
+      localStringBuilder1.append("&data=");
+      localStringBuilder1.append((String)localObject1);
+      localObject1 = localStringBuilder1.toString();
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append(c.e());
+      localStringBuilder1.append("/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2");
+      localStringBuilder1.append((String)localObject1);
+      return localStringBuilder1.toString();
+    }
+    this.a.b(110);
+    return null;
   }
   
   protected void a(do paramdo)
@@ -128,21 +147,33 @@ public class ProtoGetDualMsgList
       if (i != this.g)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + cb.a().b());
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(cb.a().b());
+        g.c(paramJSONObject.toString());
         return;
       }
       paramJSONObject = paramJSONObject.getJSONArray("msgs");
       if (!cp.a().a(paramJSONObject, this.d))
       {
-        this.a.a(10000, "update conf list failed:" + paramJSONObject.toString());
+        localObject = this.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("update conf list failed:");
+        localStringBuilder.append(paramJSONObject.toString());
+        ((e)localObject).a(10000, localStringBuilder.toString());
         return;
       }
       cr.a().m();
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseJSON error decodeData=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    g.c(((StringBuilder)localObject).toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
 }
 

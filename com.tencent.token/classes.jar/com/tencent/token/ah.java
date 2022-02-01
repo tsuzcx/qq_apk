@@ -13,16 +13,17 @@ public class ah
   
   public boolean a()
   {
-    boolean bool = false;
-    if (this.a != null) {}
-    try
-    {
-      bool = this.a.cancel(false);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+    Future localFuture = this.a;
+    if (localFuture != null) {
+      try
+      {
+        boolean bool = localFuture.cancel(false);
+        return bool;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
     }
     return false;
   }

@@ -20,16 +20,17 @@ public class l
   public l(View paramView, f paramf)
   {
     this.a = paramView;
-    if (this.a == null) {
+    paramView = this.a;
+    if (paramView == null) {
       return;
     }
     this.h = paramf;
-    this.d = ((SwitchButton)this.a.findViewById(2131559357));
-    this.b = ((TextView)this.a.findViewById(2131559354));
-    this.c = ((ProgressBar)this.a.findViewById(2131559358));
-    this.e = ((ImageView)this.a.findViewById(2131559356));
-    this.f = ((ImageView)this.a.findViewById(2131559359));
-    this.g = ((ImageView)this.a.findViewById(2131559355));
+    this.d = ((SwitchButton)paramView.findViewById(2131166205));
+    this.b = ((TextView)this.a.findViewById(2131166234));
+    this.c = ((ProgressBar)this.a.findViewById(2131166209));
+    this.e = ((ImageView)this.a.findViewById(2131166235));
+    this.f = ((ImageView)this.a.findViewById(2131166204));
+    this.g = ((ImageView)this.a.findViewById(2131166233));
   }
   
   public f a()

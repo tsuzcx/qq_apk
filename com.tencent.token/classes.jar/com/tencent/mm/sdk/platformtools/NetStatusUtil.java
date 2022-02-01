@@ -3,11 +3,7 @@ package com.tencent.mm.sdk.platformtools;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build.VERSION;
@@ -17,7 +13,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -46,81 +41,187 @@ public class NetStatusUtil
   public static final int WAP_3G = 3;
   public static final int WIFI = 0;
   
+  /* Error */
   private static Intent a(Context paramContext, String paramString)
   {
-    try
-    {
-      PackageManager localPackageManager = paramContext.getPackageManager();
-      List localList = localPackageManager.getInstalledPackages(0);
-      if ((localList != null) && (localList.size() > 0))
-      {
-        Log.e("MicroMsg.NetStatusUtil", "package  size" + localList.size());
-        int i = 0;
-        for (;;)
-        {
-          int j = localList.size();
-          if (i >= j) {
-            break label314;
-          }
-          try
-          {
-            Log.e("MicroMsg.NetStatusUtil", "package " + ((PackageInfo)localList.get(i)).packageName);
-            Object localObject1 = new Intent();
-            ((Intent)localObject1).setPackage(((PackageInfo)localList.get(i)).packageName);
-            Object localObject2 = localPackageManager.queryIntentActivities((Intent)localObject1, 0);
-            if (localObject2 != null) {
-              j = ((List)localObject2).size();
-            }
-            for (;;)
-            {
-              if (j > 0) {
-                try
-                {
-                  Log.e("MicroMsg.NetStatusUtil", "activityName count " + j);
-                  int k = 0;
-                  for (;;)
-                  {
-                    if (k >= j) {
-                      break label292;
-                    }
-                    localObject1 = ((ResolveInfo)((List)localObject2).get(k)).activityInfo;
-                    if (((ActivityInfo)localObject1).name.contains(paramString))
-                    {
-                      localObject2 = new Intent("/");
-                      ((Intent)localObject2).setComponent(new ComponentName(((ActivityInfo)localObject1).packageName, ((ActivityInfo)localObject1).name));
-                      ((Intent)localObject2).setAction("android.intent.action.VIEW");
-                      paramContext.startActivity((Intent)localObject2);
-                      return localObject2;
-                      j = 0;
-                      break;
-                    }
-                    k += 1;
-                  }
-                  i += 1;
-                }
-                catch (Exception localException1)
-                {
-                  localException1.printStackTrace();
-                }
-              }
-            }
-          }
-          catch (Exception localException2)
-          {
-            for (;;)
-            {
-              label292:
-              localException2.printStackTrace();
-            }
-          }
-        }
-      }
-      return null;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 51	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   4: astore 5
+    //   6: aload 5
+    //   8: iconst_0
+    //   9: invokevirtual 57	android/content/pm/PackageManager:getInstalledPackages	(I)Ljava/util/List;
+    //   12: astore 6
+    //   14: aload 6
+    //   16: ifnull +319 -> 335
+    //   19: aload 6
+    //   21: invokeinterface 63 1 0
+    //   26: ifle +309 -> 335
+    //   29: new 65	java/lang/StringBuilder
+    //   32: dup
+    //   33: ldc 67
+    //   35: invokespecial 70	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   38: astore 7
+    //   40: aload 7
+    //   42: aload 6
+    //   44: invokeinterface 63 1 0
+    //   49: invokevirtual 74	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   52: pop
+    //   53: ldc 76
+    //   55: aload 7
+    //   57: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: invokestatic 86	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   63: iconst_0
+    //   64: istore_2
+    //   65: aload 6
+    //   67: invokeinterface 63 1 0
+    //   72: istore_3
+    //   73: iload_2
+    //   74: iload_3
+    //   75: if_icmpge +260 -> 335
+    //   78: new 65	java/lang/StringBuilder
+    //   81: dup
+    //   82: ldc 88
+    //   84: invokespecial 70	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   87: astore 7
+    //   89: aload 7
+    //   91: aload 6
+    //   93: iload_2
+    //   94: invokeinterface 92 2 0
+    //   99: checkcast 94	android/content/pm/PackageInfo
+    //   102: getfield 98	android/content/pm/PackageInfo:packageName	Ljava/lang/String;
+    //   105: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: pop
+    //   109: ldc 76
+    //   111: aload 7
+    //   113: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   116: invokestatic 86	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   119: new 103	android/content/Intent
+    //   122: dup
+    //   123: invokespecial 104	android/content/Intent:<init>	()V
+    //   126: astore 7
+    //   128: aload 7
+    //   130: aload 6
+    //   132: iload_2
+    //   133: invokeinterface 92 2 0
+    //   138: checkcast 94	android/content/pm/PackageInfo
+    //   141: getfield 98	android/content/pm/PackageInfo:packageName	Ljava/lang/String;
+    //   144: invokevirtual 108	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
+    //   147: pop
+    //   148: aload 5
+    //   150: aload 7
+    //   152: iconst_0
+    //   153: invokevirtual 112	android/content/pm/PackageManager:queryIntentActivities	(Landroid/content/Intent;I)Ljava/util/List;
+    //   156: astore 7
+    //   158: aload 7
+    //   160: ifnull +14 -> 174
+    //   163: aload 7
+    //   165: invokeinterface 63 1 0
+    //   170: istore_3
+    //   171: goto +5 -> 176
+    //   174: iconst_0
+    //   175: istore_3
+    //   176: iload_3
+    //   177: ifle +146 -> 323
+    //   180: new 65	java/lang/StringBuilder
+    //   183: dup
+    //   184: ldc 114
+    //   186: invokespecial 70	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   189: astore 8
+    //   191: aload 8
+    //   193: iload_3
+    //   194: invokevirtual 74	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   197: pop
+    //   198: ldc 76
+    //   200: aload 8
+    //   202: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   205: invokestatic 86	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   208: iconst_0
+    //   209: istore 4
+    //   211: iload 4
+    //   213: iload_3
+    //   214: if_icmpge +109 -> 323
+    //   217: aload 7
+    //   219: iload 4
+    //   221: invokeinterface 92 2 0
+    //   226: checkcast 116	android/content/pm/ResolveInfo
+    //   229: getfield 120	android/content/pm/ResolveInfo:activityInfo	Landroid/content/pm/ActivityInfo;
+    //   232: astore 8
+    //   234: aload 8
+    //   236: getfield 125	android/content/pm/ActivityInfo:name	Ljava/lang/String;
+    //   239: aload_1
+    //   240: invokevirtual 131	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   243: ifeq +54 -> 297
+    //   246: new 103	android/content/Intent
+    //   249: dup
+    //   250: ldc 133
+    //   252: invokespecial 134	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   255: astore 7
+    //   257: aload 7
+    //   259: new 136	android/content/ComponentName
+    //   262: dup
+    //   263: aload 8
+    //   265: getfield 137	android/content/pm/ActivityInfo:packageName	Ljava/lang/String;
+    //   268: aload 8
+    //   270: getfield 125	android/content/pm/ActivityInfo:name	Ljava/lang/String;
+    //   273: invokespecial 139	android/content/ComponentName:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   276: invokevirtual 143	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
+    //   279: pop
+    //   280: aload 7
+    //   282: ldc 145
+    //   284: invokevirtual 148	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
+    //   287: pop
+    //   288: aload_0
+    //   289: aload 7
+    //   291: invokevirtual 152	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   294: aload 7
+    //   296: areturn
+    //   297: iload 4
+    //   299: iconst_1
+    //   300: iadd
+    //   301: istore 4
+    //   303: goto -92 -> 211
+    //   306: astore 7
+    //   308: aload 7
+    //   310: invokevirtual 155	java/lang/Exception:printStackTrace	()V
+    //   313: goto +10 -> 323
+    //   316: astore 7
+    //   318: aload 7
+    //   320: invokevirtual 155	java/lang/Exception:printStackTrace	()V
+    //   323: iload_2
+    //   324: iconst_1
+    //   325: iadd
+    //   326: istore_2
+    //   327: goto -262 -> 65
+    //   330: astore_0
+    //   331: aload_0
+    //   332: invokevirtual 155	java/lang/Exception:printStackTrace	()V
+    //   335: aconst_null
+    //   336: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	337	0	paramContext	Context
+    //   0	337	1	paramString	String
+    //   64	263	2	i	int
+    //   72	143	3	j	int
+    //   209	93	4	k	int
+    //   4	145	5	localPackageManager	android.content.pm.PackageManager
+    //   12	119	6	localList	java.util.List
+    //   38	257	7	localObject1	Object
+    //   306	3	7	localException1	Exception
+    //   316	3	7	localException2	Exception
+    //   189	80	8	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   180	208	306	java/lang/Exception
+    //   217	294	306	java/lang/Exception
+    //   78	158	316	java/lang/Exception
+    //   163	171	316	java/lang/Exception
+    //   308	313	316	java/lang/Exception
+    //   0	14	330	java/lang/Exception
+    //   19	63	330	java/lang/Exception
+    //   65	73	330	java/lang/Exception
+    //   318	323	330	java/lang/Exception
   }
   
   public static boolean checkFromXml(int paramInt)
@@ -135,7 +236,11 @@ public class NetStatusUtil
         Object localObject = (Element)localNodeList.item(i);
         String str = ((Element)localObject).getAttribute("uid");
         localObject = ((Element)localObject).getAttribute("policy");
-        Log.e("MicroMsg.NetStatusUtil", "uid is " + str + "  policy is " + (String)localObject);
+        StringBuilder localStringBuilder = new StringBuilder("uid is ");
+        localStringBuilder.append(str);
+        localStringBuilder.append("  policy is ");
+        localStringBuilder.append((String)localObject);
+        Log.e("MicroMsg.NetStatusUtil", localStringBuilder.toString());
         if (str.equals(Integer.toString(paramInt)))
         {
           if (Integer.parseInt((String)localObject) == 1) {
@@ -161,13 +266,27 @@ public class NetStatusUtil
     try
     {
       paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-      Log.e("MicroMsg.NetStatusUtil", "isAvailable " + paramContext.isAvailable());
-      Log.e("MicroMsg.NetStatusUtil", "isConnected " + paramContext.isConnected());
-      Log.e("MicroMsg.NetStatusUtil", "isRoaming " + paramContext.isRoaming());
-      Log.e("MicroMsg.NetStatusUtil", "isFailover " + paramContext.isFailover());
-      Log.e("MicroMsg.NetStatusUtil", "getSubtypeName " + paramContext.getSubtypeName());
-      Log.e("MicroMsg.NetStatusUtil", "getExtraInfo " + paramContext.getExtraInfo());
-      Log.e("MicroMsg.NetStatusUtil", "activeNetInfo " + paramContext.toString());
+      StringBuilder localStringBuilder = new StringBuilder("isAvailable ");
+      localStringBuilder.append(paramContext.isAvailable());
+      Log.e("MicroMsg.NetStatusUtil", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder("isConnected ");
+      localStringBuilder.append(paramContext.isConnected());
+      Log.e("MicroMsg.NetStatusUtil", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder("isRoaming ");
+      localStringBuilder.append(paramContext.isRoaming());
+      Log.e("MicroMsg.NetStatusUtil", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder("isFailover ");
+      localStringBuilder.append(paramContext.isFailover());
+      Log.e("MicroMsg.NetStatusUtil", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder("getSubtypeName ");
+      localStringBuilder.append(paramContext.getSubtypeName());
+      Log.e("MicroMsg.NetStatusUtil", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder("getExtraInfo ");
+      localStringBuilder.append(paramContext.getExtraInfo());
+      Log.e("MicroMsg.NetStatusUtil", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder("activeNetInfo ");
+      localStringBuilder.append(paramContext.toString());
+      Log.e("MicroMsg.NetStatusUtil", localStringBuilder.toString());
       return;
     }
     catch (Exception paramContext)
@@ -200,14 +319,16 @@ public class NetStatusUtil
       if (i != 2)
       {
         int j = getNetType(paramContext);
-        if (j == 0) {}
+        if (j != 0) {
+          return 0;
+        }
+        if ((i == 1) || (i == 0)) {
+          return 3;
+        }
       }
       else
       {
         return 0;
-      }
-      if ((i == 1) || (i == 0)) {
-        return 3;
       }
     }
     catch (Exception paramContext)
@@ -224,12 +345,16 @@ public class NetStatusUtil
       return 0;
     }
     paramContext = paramContext.getSimOperator();
-    if ((paramContext == null) || (paramContext.length() < 5)) {
-      return 0;
+    if (paramContext != null)
+    {
+      if (paramContext.length() < 5) {
+        return 0;
+      }
+      paramContext = paramContext.substring(0, 5);
+      Log.d("MicroMsg.NetStatusUtil", "getISPCode MCC_MNC=%s", new Object[] { paramContext });
+      return Integer.valueOf(paramContext).intValue();
     }
-    paramContext = paramContext.substring(0, 5);
-    Log.d("MicroMsg.NetStatusUtil", "getISPCode MCC_MNC=%s", new Object[] { paramContext });
-    return Integer.valueOf(paramContext).intValue();
+    return 0;
   }
   
   public static String getISPName(Context paramContext)
@@ -328,24 +453,40 @@ public class NetStatusUtil
       int i = paramContext.getSubtype();
       switch (i)
       {
+      default: 
+        return 102400;
+      case 3: 
+      case 4: 
+      case 5: 
+      case 6: 
+      case 7: 
+      case 8: 
+      case 9: 
+      case 10: 
+      case 11: 
+      case 12: 
+      case 13: 
+      case 14: 
+      case 15: 
+        return 102400;
+      case 2: 
+        return 8192;
       }
+      return 4096;
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
+      paramContext.printStackTrace();
     }
-    return 102400;
-    return 4096;
-    return 8192;
     return 102400;
   }
   
   public static boolean is2G(int paramInt)
   {
-    return (paramInt == 1) || (paramInt == 2) || (paramInt == 5) || (paramInt == 6) || (paramInt == 7) || (paramInt == 8);
+    if ((paramInt != 1) && (paramInt != 2) && (paramInt != 5) && (paramInt != 6) && (paramInt != 7)) {
+      return paramInt == 8;
+    }
+    return true;
   }
   
   public static boolean is2G(Context paramContext)
@@ -434,22 +575,25 @@ public class NetStatusUtil
       boolean bool = paramContext.isConnected();
       return bool;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label20:
+      break label20;
+    }
     return false;
   }
   
   public static boolean isImmediatelyDestroyActivities(Context paramContext)
   {
-    boolean bool = false;
-    if (Settings.System.getInt(paramContext.getContentResolver(), "always_finish_activities", 0) != 0) {
-      bool = true;
-    }
-    return bool;
+    return Settings.System.getInt(paramContext.getContentResolver(), "always_finish_activities", 0) != 0;
   }
   
   public static boolean isLimited(int paramInt)
   {
-    return (paramInt == 2) || (paramInt == 1) || (paramInt == 3);
+    if ((paramInt != 2) && (paramInt != 1)) {
+      return paramInt == 3;
+    }
+    return true;
   }
   
   public static boolean isMobile(int paramInt)
@@ -474,7 +618,9 @@ public class NetStatusUtil
       ((Field)localObject).setAccessible(true);
       paramContext = ((Field)localObject).get(paramContext);
       int j = ((Integer)paramContext.getClass().getMethod("getUidPolicy", new Class[] { Integer.TYPE }).invoke(paramContext, new Object[] { Integer.valueOf(i) })).intValue();
-      Log.e("MicroMsg.NetStatusUtil", "policy is " + j);
+      paramContext = new StringBuilder("policy is ");
+      paramContext.append(j);
+      Log.e("MicroMsg.NetStatusUtil", paramContext.toString());
       if (j == 1) {
         return true;
       }
@@ -513,211 +659,247 @@ public class NetStatusUtil
   public static boolean runRootCommand()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: aconst_null
-    //   3: astore_2
-    //   4: invokestatic 477	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   7: ldc_w 479
-    //   10: invokevirtual 483	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
-    //   13: astore_0
-    //   14: new 485	java/io/DataOutputStream
-    //   17: dup
-    //   18: aload_0
-    //   19: invokevirtual 491	java/lang/Process:getOutputStream	()Ljava/io/OutputStream;
-    //   22: invokespecial 494	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   25: astore_1
-    //   26: aload_1
-    //   27: ldc_w 496
-    //   30: invokevirtual 499	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   33: aload_1
-    //   34: invokevirtual 502	java/io/DataOutputStream:flush	()V
+    //   0: invokestatic 477	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   3: ldc_w 479
+    //   6: invokevirtual 483	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   9: astore_0
+    //   10: new 485	java/io/DataOutputStream
+    //   13: dup
+    //   14: aload_0
+    //   15: invokevirtual 491	java/lang/Process:getOutputStream	()Ljava/io/OutputStream;
+    //   18: invokespecial 494	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   21: astore 5
+    //   23: aload_0
+    //   24: astore_1
+    //   25: aload 5
+    //   27: astore 4
+    //   29: aload 5
+    //   31: ldc_w 496
+    //   34: invokevirtual 499	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
     //   37: aload_0
-    //   38: invokevirtual 505	java/lang/Process:waitFor	()I
-    //   41: pop
-    //   42: aload_1
-    //   43: invokevirtual 508	java/io/DataOutputStream:close	()V
-    //   46: aload_0
-    //   47: ifnull +7 -> 54
-    //   50: aload_0
-    //   51: invokevirtual 511	java/lang/Process:destroy	()V
-    //   54: iconst_1
-    //   55: ireturn
-    //   56: astore_0
-    //   57: aload_0
-    //   58: invokevirtual 155	java/lang/Exception:printStackTrace	()V
-    //   61: goto -7 -> 54
-    //   64: astore_0
-    //   65: aconst_null
-    //   66: astore_1
-    //   67: ldc 65
-    //   69: new 67	java/lang/StringBuilder
-    //   72: dup
-    //   73: ldc_w 513
-    //   76: invokespecial 72	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   79: aload_0
-    //   80: invokevirtual 516	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   83: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   89: invokestatic 518	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   92: aload_1
-    //   93: ifnull +7 -> 100
-    //   96: aload_1
-    //   97: invokevirtual 508	java/io/DataOutputStream:close	()V
-    //   100: aload_2
-    //   101: ifnull +7 -> 108
-    //   104: aload_2
-    //   105: invokevirtual 511	java/lang/Process:destroy	()V
-    //   108: iconst_0
-    //   109: ireturn
-    //   110: astore_0
-    //   111: aload_0
-    //   112: invokevirtual 155	java/lang/Exception:printStackTrace	()V
-    //   115: goto -7 -> 108
-    //   118: astore_0
+    //   38: astore_1
+    //   39: aload 5
+    //   41: astore 4
+    //   43: aload 5
+    //   45: invokevirtual 502	java/io/DataOutputStream:flush	()V
+    //   48: aload_0
+    //   49: astore_1
+    //   50: aload 5
+    //   52: astore 4
+    //   54: aload_0
+    //   55: invokevirtual 505	java/lang/Process:waitFor	()I
+    //   58: pop
+    //   59: aload 5
+    //   61: invokevirtual 508	java/io/DataOutputStream:close	()V
+    //   64: aload_0
+    //   65: ifnull +15 -> 80
+    //   68: aload_0
+    //   69: invokevirtual 511	java/lang/Process:destroy	()V
+    //   72: goto +8 -> 80
+    //   75: astore_0
+    //   76: aload_0
+    //   77: invokevirtual 155	java/lang/Exception:printStackTrace	()V
+    //   80: iconst_1
+    //   81: ireturn
+    //   82: astore_2
+    //   83: aload_0
+    //   84: astore_3
+    //   85: aload 5
+    //   87: astore_0
+    //   88: goto +35 -> 123
+    //   91: astore_1
+    //   92: aconst_null
+    //   93: astore 4
+    //   95: goto +108 -> 203
+    //   98: astore_2
+    //   99: aconst_null
+    //   100: astore_1
+    //   101: aload_0
+    //   102: astore_3
+    //   103: aload_1
+    //   104: astore_0
+    //   105: goto +18 -> 123
+    //   108: astore_1
+    //   109: aconst_null
+    //   110: astore 4
+    //   112: aload 4
+    //   114: astore_0
+    //   115: goto +88 -> 203
+    //   118: astore_2
     //   119: aconst_null
-    //   120: astore_3
-    //   121: aload_1
-    //   122: astore_2
+    //   120: astore_0
+    //   121: aload_0
+    //   122: astore_3
     //   123: aload_3
     //   124: astore_1
-    //   125: aload_1
-    //   126: ifnull +7 -> 133
-    //   129: aload_1
-    //   130: invokevirtual 508	java/io/DataOutputStream:close	()V
-    //   133: aload_2
-    //   134: ifnull +7 -> 141
-    //   137: aload_2
-    //   138: invokevirtual 511	java/lang/Process:destroy	()V
-    //   141: aload_0
-    //   142: athrow
-    //   143: astore_1
-    //   144: aload_1
-    //   145: invokevirtual 155	java/lang/Exception:printStackTrace	()V
-    //   148: goto -7 -> 141
-    //   151: astore_3
-    //   152: aconst_null
-    //   153: astore_1
-    //   154: aload_0
-    //   155: astore_2
-    //   156: aload_3
-    //   157: astore_0
-    //   158: goto -33 -> 125
-    //   161: astore_3
-    //   162: aload_0
-    //   163: astore_2
-    //   164: aload_3
-    //   165: astore_0
-    //   166: goto -41 -> 125
-    //   169: astore_0
-    //   170: goto -45 -> 125
-    //   173: astore_3
-    //   174: aconst_null
-    //   175: astore_1
-    //   176: aload_0
-    //   177: astore_2
-    //   178: aload_3
-    //   179: astore_0
-    //   180: goto -113 -> 67
-    //   183: astore_3
-    //   184: aload_0
-    //   185: astore_2
-    //   186: aload_3
-    //   187: astore_0
-    //   188: goto -121 -> 67
+    //   125: aload_0
+    //   126: astore 4
+    //   128: new 65	java/lang/StringBuilder
+    //   131: dup
+    //   132: ldc_w 513
+    //   135: invokespecial 70	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   138: astore 5
+    //   140: aload_3
+    //   141: astore_1
+    //   142: aload_0
+    //   143: astore 4
+    //   145: aload 5
+    //   147: aload_2
+    //   148: invokevirtual 516	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   151: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: pop
+    //   155: aload_3
+    //   156: astore_1
+    //   157: aload_0
+    //   158: astore 4
+    //   160: ldc 76
+    //   162: aload 5
+    //   164: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   167: invokestatic 518	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   170: aload_0
+    //   171: ifnull +10 -> 181
+    //   174: aload_0
+    //   175: invokevirtual 508	java/io/DataOutputStream:close	()V
+    //   178: goto +3 -> 181
+    //   181: aload_3
+    //   182: ifnull +14 -> 196
+    //   185: aload_3
+    //   186: invokevirtual 511	java/lang/Process:destroy	()V
+    //   189: goto +7 -> 196
+    //   192: aload_0
+    //   193: invokevirtual 155	java/lang/Exception:printStackTrace	()V
+    //   196: iconst_0
+    //   197: ireturn
+    //   198: astore_2
+    //   199: aload_1
+    //   200: astore_0
+    //   201: aload_2
+    //   202: astore_1
+    //   203: aload 4
+    //   205: ifnull +11 -> 216
+    //   208: aload 4
+    //   210: invokevirtual 508	java/io/DataOutputStream:close	()V
+    //   213: goto +3 -> 216
+    //   216: aload_0
+    //   217: ifnull +14 -> 231
+    //   220: aload_0
+    //   221: invokevirtual 511	java/lang/Process:destroy	()V
+    //   224: goto +7 -> 231
+    //   227: aload_0
+    //   228: invokevirtual 155	java/lang/Exception:printStackTrace	()V
+    //   231: aload_1
+    //   232: athrow
+    //   233: astore_0
+    //   234: goto -42 -> 192
+    //   237: astore_0
+    //   238: goto -11 -> 227
     // Local variable table:
     //   start	length	slot	name	signature
-    //   13	38	0	localProcess	java.lang.Process
-    //   56	2	0	localException1	Exception
-    //   64	16	0	localException2	Exception
-    //   110	2	0	localException3	Exception
-    //   118	37	0	localObject1	Object
-    //   157	9	0	localObject2	Object
-    //   169	8	0	localObject3	Object
-    //   179	9	0	localObject4	Object
-    //   1	129	1	localObject5	Object
-    //   143	2	1	localException4	Exception
-    //   153	23	1	localObject6	Object
-    //   3	183	2	localObject7	Object
-    //   120	4	3	localObject8	Object
-    //   151	6	3	localObject9	Object
-    //   161	4	3	localObject10	Object
-    //   173	6	3	localException5	Exception
-    //   183	4	3	localException6	Exception
+    //   9	60	0	localProcess1	java.lang.Process
+    //   75	9	0	localException1	Exception
+    //   87	141	0	localObject1	Object
+    //   233	1	0	localException2	Exception
+    //   237	1	0	localException3	Exception
+    //   24	26	1	localProcess2	java.lang.Process
+    //   91	1	1	localObject2	Object
+    //   100	4	1	localObject3	Object
+    //   108	1	1	localObject4	Object
+    //   124	108	1	localObject5	Object
+    //   82	1	2	localException4	Exception
+    //   98	1	2	localException5	Exception
+    //   118	30	2	localException6	Exception
+    //   198	4	2	localObject6	Object
+    //   84	102	3	localObject7	Object
+    //   27	182	4	localObject8	Object
+    //   21	142	5	localObject9	Object
     // Exception table:
     //   from	to	target	type
-    //   42	46	56	java/lang/Exception
-    //   50	54	56	java/lang/Exception
-    //   4	14	64	java/lang/Exception
-    //   96	100	110	java/lang/Exception
-    //   104	108	110	java/lang/Exception
-    //   4	14	118	finally
-    //   129	133	143	java/lang/Exception
-    //   137	141	143	java/lang/Exception
-    //   14	26	151	finally
-    //   26	42	161	finally
-    //   67	92	169	finally
-    //   14	26	173	java/lang/Exception
-    //   26	42	183	java/lang/Exception
+    //   59	64	75	java/lang/Exception
+    //   68	72	75	java/lang/Exception
+    //   29	37	82	java/lang/Exception
+    //   43	48	82	java/lang/Exception
+    //   54	59	82	java/lang/Exception
+    //   10	23	91	finally
+    //   10	23	98	java/lang/Exception
+    //   0	10	108	finally
+    //   0	10	118	java/lang/Exception
+    //   29	37	198	finally
+    //   43	48	198	finally
+    //   54	59	198	finally
+    //   128	140	198	finally
+    //   145	155	198	finally
+    //   160	170	198	finally
+    //   174	178	233	java/lang/Exception
+    //   185	189	233	java/lang/Exception
+    //   208	213	237	java/lang/Exception
+    //   220	224	237	java/lang/Exception
   }
   
   public static void startSettingItent(Context paramContext, int paramInt)
   {
     switch (paramInt)
     {
-    case 0: 
     default: 
       return;
-    case 2: 
-      try
-      {
-        Intent localIntent1 = new Intent("/");
-        localIntent1.setComponent(new ComponentName("com.android.providers.subscribedfeeds", "com.android.settings.ManageAccountsSettings"));
-        localIntent1.setAction("android.intent.action.VIEW");
-        paramContext.startActivity(localIntent1);
-        return;
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          Intent localIntent2 = new Intent("/");
-          localIntent2.setComponent(new ComponentName("com.htc.settings.accountsync", "com.htc.settings.accountsync.ManageAccountsSettings"));
-          localIntent2.setAction("android.intent.action.VIEW");
-          paramContext.startActivity(localIntent2);
-          return;
-        }
-        catch (Exception localException2)
-        {
-          a(paramContext, "ManageAccountsSettings");
-          return;
-        }
-      }
-    case 1: 
-      try
-      {
-        Intent localIntent3 = new Intent("/");
-        localIntent3.setComponent(new ComponentName("com.android.settings", "com.android.settings.DevelopmentSettings"));
-        localIntent3.setAction("android.intent.action.VIEW");
-        paramContext.startActivity(localIntent3);
-        return;
-      }
-      catch (Exception localException3)
-      {
-        a(paramContext, "DevelopmentSettings");
-        return;
-      }
     }
     try
     {
-      Intent localIntent4 = new Intent();
-      localIntent4.setAction("android.settings.WIFI_IP_SETTINGS");
-      paramContext.startActivity(localIntent4);
+      localObject = new Intent();
+      ((Intent)localObject).setAction("android.settings.WIFI_IP_SETTINGS");
+      paramContext.startActivity((Intent)localObject);
       return;
     }
-    catch (Exception localException4)
+    catch (Exception localException1)
     {
-      a(paramContext, "AdvancedSettings");
+      Object localObject;
+      label55:
+      break label55;
+    }
+    a(paramContext, "AdvancedSettings");
+    return;
+    label146:
+    label198:
+    try
+    {
+      localObject = new Intent("/");
+      ((Intent)localObject).setComponent(new ComponentName("com.android.providers.subscribedfeeds", "com.android.settings.ManageAccountsSettings"));
+      ((Intent)localObject).setAction("android.intent.action.VIEW");
+      paramContext.startActivity((Intent)localObject);
+      return;
+    }
+    catch (Exception localException2)
+    {
+      label105:
+      break label105;
+    }
+    try
+    {
+      localObject = new Intent("/");
+      ((Intent)localObject).setComponent(new ComponentName("com.htc.settings.accountsync", "com.htc.settings.accountsync.ManageAccountsSettings"));
+      ((Intent)localObject).setAction("android.intent.action.VIEW");
+      paramContext.startActivity((Intent)localObject);
+      return;
+    }
+    catch (Exception localException3)
+    {
+      break label146;
+    }
+    for (localObject = "ManageAccountsSettings";; localObject = "DevelopmentSettings")
+    {
+      a(paramContext, (String)localObject);
+      return;
+      try
+      {
+        localObject = new Intent("/");
+        ((Intent)localObject).setComponent(new ComponentName("com.android.settings", "com.android.settings.DevelopmentSettings"));
+        ((Intent)localObject).setAction("android.intent.action.VIEW");
+        paramContext.startActivity((Intent)localObject);
+        return;
+      }
+      catch (Exception localException4)
+      {
+        break label198;
+      }
     }
   }
 }

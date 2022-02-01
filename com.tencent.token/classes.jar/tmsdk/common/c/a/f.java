@@ -5,41 +5,40 @@ import java.util.ArrayList;
 public final class f
 {
   private static volatile boolean a = false;
-  private static volatile String b = null;
+  private static volatile String b;
   private static volatile boolean c = false;
   private static volatile boolean d = false;
-  private static volatile long e = 0L;
-  private static volatile long f = 0L;
+  private static volatile long e;
+  private static volatile long f;
   private static Object g = new Object();
   private static ArrayList h = new ArrayList();
   
   public static boolean a()
   {
-    synchronized (g)
+    for (;;)
     {
-      long l1 = System.currentTimeMillis();
-      long l2 = f - l1;
-      new StringBuilder().append(" couldNotConnect() diff: ").append(l2).toString();
-      int i;
-      if (l2 > 5184000L)
+      synchronized (g)
       {
-        i = 1;
-        if (f - l1 < 0L) {
-          break label81;
+        long l1 = System.currentTimeMillis();
+        long l2 = f - l1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" couldNotConnect() diff: ");
+        localStringBuilder.append(l2);
+        localStringBuilder.toString();
+        if (l2 > 5184000L)
+        {
+          i = 1;
+          if (f - l1 < 0L) {
+            break label110;
+          }
+          j = 1;
+          return (i == 0) && (j != 0);
         }
       }
-      label81:
-      for (int j = 1;; j = 0)
-      {
-        if ((i != 0) || (j == 0)) {
-          break label86;
-        }
-        return true;
-        i = 0;
-        break;
-      }
-      label86:
-      return false;
+      int i = 0;
+      continue;
+      label110:
+      int j = 0;
     }
   }
 }

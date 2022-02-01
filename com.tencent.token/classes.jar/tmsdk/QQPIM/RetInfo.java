@@ -12,16 +12,6 @@ public final class RetInfo
   public String strtime_sec = "";
   public int time = 0;
   
-  static
-  {
-    if (!RetInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public RetInfo()
   {
     setTime(this.time);
@@ -41,29 +31,35 @@ public final class RetInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (RetInfo)paramObject;
-    } while ((!JceUtil.equals(this.time, paramObject.time)) || (!JceUtil.equals(this.strtime_sec, paramObject.strtime_sec)));
-    return true;
+    }
+    paramObject = (RetInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.time, paramObject.time))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.strtime_sec, paramObject.strtime_sec)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -113,8 +109,9 @@ public final class RetInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.time, 0);
-    if (this.strtime_sec != null) {
-      paramJceOutputStream.write(this.strtime_sec, 1);
+    String str = this.strtime_sec;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }

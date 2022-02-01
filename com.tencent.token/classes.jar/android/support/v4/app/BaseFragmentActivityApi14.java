@@ -16,31 +16,30 @@ abstract class BaseFragmentActivityApi14
   
   static void checkForValidRequestCode(int paramInt)
   {
-    if ((0xFFFF0000 & paramInt) != 0) {
-      throw new IllegalArgumentException("Can only use lower 16 bits for requestCode");
+    if ((paramInt & 0xFFFF0000) == 0) {
+      return;
     }
+    throw new IllegalArgumentException("Can only use lower 16 bits for requestCode");
   }
   
   abstract View dispatchFragmentsOnCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet);
   
   public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    View localView2 = dispatchFragmentsOnCreateView(paramView, paramString, paramContext, paramAttributeSet);
-    View localView1 = localView2;
-    if (localView2 == null) {
-      localView1 = super.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    View localView = dispatchFragmentsOnCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    if (localView == null) {
+      return super.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
     }
-    return localView1;
+    return localView;
   }
   
   public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    View localView2 = dispatchFragmentsOnCreateView(null, paramString, paramContext, paramAttributeSet);
-    View localView1 = localView2;
-    if (localView2 == null) {
-      localView1 = super.onCreateView(paramString, paramContext, paramAttributeSet);
+    View localView = dispatchFragmentsOnCreateView(null, paramString, paramContext, paramAttributeSet);
+    if (localView == null) {
+      return super.onCreateView(paramString, paramContext, paramAttributeSet);
     }
-    return localView1;
+    return localView;
   }
   
   public void startIntentSenderForResult(IntentSender paramIntentSender, int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3, int paramInt4)

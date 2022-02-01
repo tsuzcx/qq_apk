@@ -67,38 +67,49 @@ public final class ServerConfInfo
     paramJceOutputStream.write(this.fileId, 0);
     paramJceOutputStream.write(this.md5Bin, 1);
     paramJceOutputStream.write(this.timestamp, 2);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 3);
+    Object localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.isIncreUpdate) {
-      paramJceOutputStream.write(this.isIncreUpdate, 4);
+    boolean bool = this.isIncreUpdate;
+    if (bool) {
+      paramJceOutputStream.write(bool, 4);
     }
-    if (this.iuMd5Bin != null) {
-      paramJceOutputStream.write(this.iuMd5Bin, 5);
+    localObject = this.iuMd5Bin;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
-    if (this.confData != null) {
-      paramJceOutputStream.write(this.confData, 6);
+    localObject = this.confData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
-    if (this.updateNum != 0) {
-      paramJceOutputStream.write(this.updateNum, 7);
+    int i = this.updateNum;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 7);
     }
-    if (this.fileSize != 0) {
-      paramJceOutputStream.write(this.fileSize, 8);
+    i = this.fileSize;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 8);
     }
-    if (this.taskid != 0L) {
-      paramJceOutputStream.write(this.taskid, 9);
+    long l = this.taskid;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 9);
     }
-    if (this.downloadflag != 0) {
-      paramJceOutputStream.write(this.downloadflag, 10);
+    i = this.downloadflag;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 10);
     }
-    if (this.wraptype != 0) {
-      paramJceOutputStream.write(this.wraptype, 11);
+    i = this.wraptype;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 11);
     }
-    if (this.wrapkey != null) {
-      paramJceOutputStream.write(this.wrapkey, 12);
+    localObject = this.wrapkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.extmap != null) {
-      paramJceOutputStream.write(this.extmap, 13);
+    localObject = this.extmap;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
   }
 }

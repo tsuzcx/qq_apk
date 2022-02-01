@@ -18,17 +18,17 @@ public class dk
   
   private dj<Long, Integer, JceStruct> a(long paramLong, int paramInt, av paramav)
   {
-    if (paramav == null) {}
-    do
-    {
+    if (paramav == null) {
       return null;
-      if (paramav.dq == 0)
-      {
-        b(1, true);
-        return null;
-      }
-    } while (paramav.dq != 1);
-    b(1, false);
+    }
+    if (paramav.dq == 0)
+    {
+      b(1, true);
+      return null;
+    }
+    if (paramav.dq == 1) {
+      b(1, false);
+    }
     return null;
   }
   
@@ -42,84 +42,50 @@ public class dk
   
   private aq c(int paramInt, boolean paramBoolean)
   {
-    Object localObject2 = null;
-    Object localObject1 = this.hF.bL().aF();
-    String str1 = this.hF.bL().aG();
-    label35:
-    String str2;
-    if (localObject1 != null)
-    {
-      if (str1 == null) {
-        break label106;
-      }
-      str2 = this.hF.bL().aO();
-      if (str2 == null) {
-        break label113;
-      }
-      label52:
-      if (!paramBoolean) {
-        break label120;
-      }
-      localObject2 = new aq();
-      ((aq)localObject2).cZ = paramInt;
-      ((aq)localObject2).da = ((String)localObject1);
-      ((aq)localObject2).cS = str1;
-      ((aq)localObject2).cT = str2;
-      localObject1 = localObject2;
+    String str1 = this.hF.bL().aF();
+    String str2 = this.hF.bL().aG();
+    if (str1 == null) {
+      str1 = "";
     }
-    for (;;)
+    if (str2 == null) {
+      str2 = "";
+    }
+    String str3 = this.hF.bL().aO();
+    if (str3 == null) {
+      str3 = "";
+    }
+    if (paramBoolean) {}
+    for (aq localaq = new aq();; localaq = new aq())
     {
-      localObject2 = localObject1;
-      label106:
-      label113:
-      label120:
-      do
-      {
-        return localObject2;
-        localObject1 = "";
+      localaq.cZ = paramInt;
+      localaq.da = str1;
+      localaq.cS = str2;
+      localaq.cT = str3;
+      return localaq;
+      if (aY()) {
+        return null;
+      }
+      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (str1.equals(str2))) {
         break;
-        str1 = "";
-        break label35;
-        str2 = "";
-        break label52;
-      } while (aY());
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str1)) && (!((String)localObject1).equals(str1)))
-      {
-        localObject2 = new aq();
-        ((aq)localObject2).cZ = paramInt;
-        ((aq)localObject2).da = ((String)localObject1);
-        ((aq)localObject2).cS = str1;
-        ((aq)localObject2).cT = str2;
-        localObject1 = localObject2;
-      }
-      else
-      {
-        localObject1 = null;
       }
     }
+    return null;
   }
   
   private ao cz()
   {
     ao localao = new ao();
     String str = this.hF.bL().aG();
-    if (str != null)
-    {
-      localao.cS = str;
-      str = this.hF.bL().aO();
-      if (str == null) {
-        break label56;
-      }
-    }
-    for (;;)
-    {
-      localao.cT = str;
-      return localao;
-      str = "";
-      break;
-      label56:
+    if (str == null) {
       str = "";
     }
+    localao.cS = str;
+    str = this.hF.bL().aO();
+    if (str == null) {
+      str = "";
+    }
+    localao.cT = str;
+    return localao;
   }
   
   public void av()
@@ -137,7 +103,10 @@ public class dk
     }
     if (!aY())
     {
-      eh.f("VidCertifier", "[cu_vid]registerVidIfNeed(), not necessary, mVidFromPhone: " + this.mV);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[cu_vid]registerVidIfNeed(), not necessary, mVidFromPhone: ");
+      localStringBuilder.append(this.mV);
+      eh.f("VidCertifier", localStringBuilder.toString());
       return;
     }
     this.hF.bL().aE();
@@ -146,52 +115,74 @@ public class dk
     {
       public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
       {
-        if ((paramAnonymousInt3 != 0) || (paramAnonymousInt4 != 0) || (paramAnonymousJceStruct == null)) {
-          eh.g("VidCertifier", "[cu_vid]registerVidIfNeed()-onFinish(), seqNo: " + paramAnonymousInt1 + " retCode: " + paramAnonymousInt3 + " dataRetCode: " + paramAnonymousInt4 + " resp: " + paramAnonymousJceStruct);
-        }
-        for (;;)
+        StringBuilder localStringBuilder;
+        if ((paramAnonymousInt3 == 0) && (paramAnonymousInt4 == 0) && (paramAnonymousJceStruct != null))
         {
-          dk.a(dk.this, false);
-          return;
           paramAnonymousJceStruct = ((ax)paramAnonymousJceStruct).dr;
           if (!TextUtils.isEmpty(paramAnonymousJceStruct))
           {
-            eh.f("VidCertifier", "[cu_vid]registerVidIfNeed()-onFinish(), succ, vid: " + paramAnonymousJceStruct);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[cu_vid]registerVidIfNeed()-onFinish(), succ, vid: ");
+            localStringBuilder.append(paramAnonymousJceStruct);
+            eh.f("VidCertifier", localStringBuilder.toString());
             dk.a(dk.this, paramAnonymousJceStruct);
             dk.a(dk.this).bL().c(paramAnonymousJceStruct, true);
             dk.a(dk.this).bL().d(paramAnonymousJceStruct, true);
           }
           else
           {
-            eh.g("VidCertifier", "[cu_vid]registerVidIfNeed()-onFinish(), seqNo: " + paramAnonymousInt1 + ", vid is empty: " + paramAnonymousJceStruct);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[cu_vid]registerVidIfNeed()-onFinish(), seqNo: ");
+            localStringBuilder.append(paramAnonymousInt1);
+            localStringBuilder.append(", vid is empty: ");
+            localStringBuilder.append(paramAnonymousJceStruct);
+            eh.g("VidCertifier", localStringBuilder.toString());
           }
         }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[cu_vid]registerVidIfNeed()-onFinish(), seqNo: ");
+          localStringBuilder.append(paramAnonymousInt1);
+          localStringBuilder.append(" retCode: ");
+          localStringBuilder.append(paramAnonymousInt3);
+          localStringBuilder.append(" dataRetCode: ");
+          localStringBuilder.append(paramAnonymousInt4);
+          localStringBuilder.append(" resp: ");
+          localStringBuilder.append(paramAnonymousJceStruct);
+          eh.g("VidCertifier", localStringBuilder.toString());
+        }
+        dk.a(dk.this, false);
       }
     }, 30000L);
   }
   
   public void b(int paramInt, boolean paramBoolean)
   {
-    if (!this.hF.bL().aD()) {}
-    aq localaq;
-    do
-    {
+    if (!this.hF.bL().aD()) {
       return;
-      localaq = c(paramInt, paramBoolean);
-    } while (localaq == null);
+    }
+    aq localaq = c(paramInt, paramBoolean);
+    if (localaq == null) {
+      return;
+    }
     cx.bE().b(5007, localaq, new ay(), 0, new cj()
     {
       public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
       {
-        if ((paramAnonymousInt3 != 0) || (paramAnonymousInt4 != 0) || (paramAnonymousJceStruct == null)) {}
-        do
+        if ((paramAnonymousInt3 == 0) && (paramAnonymousInt4 == 0))
         {
-          return;
+          if (paramAnonymousJceStruct == null) {
+            return;
+          }
           paramAnonymousJceStruct = ((ay)paramAnonymousJceStruct).dr;
-        } while (TextUtils.isEmpty(paramAnonymousJceStruct));
-        dk.a(dk.this, paramAnonymousJceStruct);
-        dk.a(dk.this).bL().c(paramAnonymousJceStruct, false);
-        dk.a(dk.this).bL().d(paramAnonymousJceStruct, false);
+          if (!TextUtils.isEmpty(paramAnonymousJceStruct))
+          {
+            dk.a(dk.this, paramAnonymousJceStruct);
+            dk.a(dk.this).bL().c(paramAnonymousJceStruct, false);
+            dk.a(dk.this).bL().d(paramAnonymousJceStruct, false);
+          }
+        }
       }
     }, 30000L);
   }
@@ -207,9 +198,7 @@ public class dk
           eh.h("VidCertifier", "onRecvPush() null == push");
           return null;
         }
-        switch (paramAnonymousInt2)
-        {
-        default: 
+        if (paramAnonymousInt2 != 15020) {
           return null;
         }
         return dk.a(dk.this, paramAnonymousLong, paramAnonymousInt1, (av)paramAnonymousJceStruct);

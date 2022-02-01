@@ -46,17 +46,15 @@ public class aw
   public void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
   {
     int i = Color.alpha(this.g.p());
-    if (i == 0) {}
-    do
-    {
+    if (i == 0) {
       return;
-      float f1 = paramInt / 255.0F;
-      float f2 = i / 255.0F;
-      paramInt = (int)(((Integer)this.d.a().b()).intValue() * f2 / 100.0F * f1 * 255.0F);
-      a(paramMatrix);
-      this.f.setAlpha(paramInt);
-    } while (paramInt <= 0);
-    paramCanvas.drawRect(this.e, this.f);
+    }
+    paramInt = (int)(paramInt / 255.0F * (i / 255.0F * ((Integer)this.d.a().b()).intValue() / 100.0F) * 255.0F);
+    a(paramMatrix);
+    this.f.setAlpha(paramInt);
+    if (paramInt > 0) {
+      paramCanvas.drawRect(this.e, this.f);
+    }
   }
 }
 

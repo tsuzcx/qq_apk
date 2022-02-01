@@ -48,13 +48,10 @@ class AppCompatDelegateImplV23
     
     public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback, int paramInt)
     {
-      if (AppCompatDelegateImplV23.this.isHandleNativeActionModesEnabled()) {}
-      switch (paramInt)
-      {
-      default: 
-        return super.onWindowStartingActionMode(paramCallback, paramInt);
+      if ((AppCompatDelegateImplV23.this.isHandleNativeActionModesEnabled()) && (paramInt == 0)) {
+        return startAsSupportActionMode(paramCallback);
       }
-      return startAsSupportActionMode(paramCallback);
+      return super.onWindowStartingActionMode(paramCallback, paramInt);
     }
   }
 }

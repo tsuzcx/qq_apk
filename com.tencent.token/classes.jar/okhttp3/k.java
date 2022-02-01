@@ -32,40 +32,40 @@ public final class k
   private k b(SSLSocket paramSSLSocket, boolean paramBoolean)
   {
     String[] arrayOfString1;
-    if (this.g != null)
-    {
+    if (this.g != null) {
       arrayOfString1 = fc.a(h.a, paramSSLSocket.getEnabledCipherSuites(), this.g);
-      if (this.h == null) {
-        break label118;
-      }
-    }
-    label118:
-    for (String[] arrayOfString2 = fc.a(fc.h, paramSSLSocket.getEnabledProtocols(), this.h);; arrayOfString2 = paramSSLSocket.getEnabledProtocols())
-    {
-      String[] arrayOfString3 = paramSSLSocket.getSupportedCipherSuites();
-      int k = fc.a(h.a, arrayOfString3, "TLS_FALLBACK_SCSV");
-      paramSSLSocket = arrayOfString1;
-      if (paramBoolean)
-      {
-        paramSSLSocket = arrayOfString1;
-        if (k != -1) {
-          paramSSLSocket = fc.a(arrayOfString1, arrayOfString3[k]);
-        }
-      }
-      return new a(this).a(paramSSLSocket).b(arrayOfString2).a();
+    } else {
       arrayOfString1 = paramSSLSocket.getEnabledCipherSuites();
-      break;
     }
+    String[] arrayOfString2;
+    if (this.h != null) {
+      arrayOfString2 = fc.a(fc.h, paramSSLSocket.getEnabledProtocols(), this.h);
+    } else {
+      arrayOfString2 = paramSSLSocket.getEnabledProtocols();
+    }
+    String[] arrayOfString3 = paramSSLSocket.getSupportedCipherSuites();
+    int k = fc.a(h.a, arrayOfString3, "TLS_FALLBACK_SCSV");
+    paramSSLSocket = arrayOfString1;
+    if (paramBoolean)
+    {
+      paramSSLSocket = arrayOfString1;
+      if (k != -1) {
+        paramSSLSocket = fc.a(arrayOfString1, arrayOfString3[k]);
+      }
+    }
+    return new a(this).a(paramSSLSocket).b(arrayOfString2).a();
   }
   
   void a(SSLSocket paramSSLSocket, boolean paramBoolean)
   {
-    k localk = b(paramSSLSocket, paramBoolean);
-    if (localk.h != null) {
-      paramSSLSocket.setEnabledProtocols(localk.h);
+    Object localObject = b(paramSSLSocket, paramBoolean);
+    String[] arrayOfString = ((k)localObject).h;
+    if (arrayOfString != null) {
+      paramSSLSocket.setEnabledProtocols(arrayOfString);
     }
-    if (localk.g != null) {
-      paramSSLSocket.setEnabledCipherSuites(localk.g);
+    localObject = ((k)localObject).g;
+    if (localObject != null) {
+      paramSSLSocket.setEnabledCipherSuites((String[])localObject);
     }
   }
   
@@ -76,18 +76,21 @@ public final class k
   
   public boolean a(SSLSocket paramSSLSocket)
   {
-    if (!this.e) {}
-    while (((this.h != null) && (!fc.b(fc.h, this.h, paramSSLSocket.getEnabledProtocols()))) || ((this.g != null) && (!fc.b(h.a, this.g, paramSSLSocket.getEnabledCipherSuites())))) {
+    if (!this.e) {
       return false;
     }
-    return true;
+    if ((this.h != null) && (!fc.b(fc.h, this.h, paramSSLSocket.getEnabledProtocols()))) {
+      return false;
+    }
+    return (this.g == null) || (fc.b(h.a, this.g, paramSSLSocket.getEnabledCipherSuites()));
   }
   
   @Nullable
   public List<h> b()
   {
-    if (this.g != null) {
-      return h.a(this.g);
+    String[] arrayOfString = this.g;
+    if (arrayOfString != null) {
+      return h.a(arrayOfString);
     }
     return null;
   }
@@ -95,8 +98,9 @@ public final class k
   @Nullable
   public List<TlsVersion> c()
   {
-    if (this.h != null) {
-      return TlsVersion.a(this.h);
+    String[] arrayOfString = this.h;
+    if (arrayOfString != null) {
+      return TlsVersion.a(arrayOfString);
     }
     return null;
   }
@@ -108,37 +112,38 @@ public final class k
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (!(paramObject instanceof k)) {}
-    do
-    {
+    if (!(paramObject instanceof k)) {
       return false;
-      if (paramObject == this) {
-        return true;
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    paramObject = (k)paramObject;
+    boolean bool = this.e;
+    if (bool != paramObject.e) {
+      return false;
+    }
+    if (bool)
+    {
+      if (!Arrays.equals(this.g, paramObject.g)) {
+        return false;
       }
-      paramObject = (k)paramObject;
-    } while ((this.e != paramObject.e) || ((this.e) && ((!Arrays.equals(this.g, paramObject.g)) || (!Arrays.equals(this.h, paramObject.h)) || (this.f != paramObject.f))));
+      if (!Arrays.equals(this.h, paramObject.h)) {
+        return false;
+      }
+      if (this.f != paramObject.f) {
+        return false;
+      }
+    }
     return true;
   }
   
   public int hashCode()
   {
-    int k = 17;
-    int m;
-    int n;
-    if (this.e)
-    {
-      m = Arrays.hashCode(this.g);
-      n = Arrays.hashCode(this.h);
-      if (!this.f) {
-        break label53;
-      }
+    if (this.e) {
+      return ((527 + Arrays.hashCode(this.g)) * 31 + Arrays.hashCode(this.h)) * 31 + (this.f ^ true);
     }
-    label53:
-    for (k = 0;; k = 1)
-    {
-      k += ((m + 527) * 31 + n) * 31;
-      return k;
-    }
+    return 17;
   }
   
   public String toString()
@@ -147,20 +152,26 @@ public final class k
       return "ConnectionSpec()";
     }
     String str1;
-    if (this.g != null)
-    {
+    if (this.g != null) {
       str1 = b().toString();
-      if (this.h == null) {
-        break label92;
-      }
-    }
-    label92:
-    for (String str2 = c().toString();; str2 = "[all enabled]")
-    {
-      return "ConnectionSpec(cipherSuites=" + str1 + ", tlsVersions=" + str2 + ", supportsTlsExtensions=" + this.f + ")";
+    } else {
       str1 = "[all enabled]";
-      break;
     }
+    String str2;
+    if (this.h != null) {
+      str2 = c().toString();
+    } else {
+      str2 = "[all enabled]";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ConnectionSpec(cipherSuites=");
+    localStringBuilder.append(str1);
+    localStringBuilder.append(", tlsVersions=");
+    localStringBuilder.append(str2);
+    localStringBuilder.append(", supportsTlsExtensions=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public static final class a
@@ -187,53 +198,58 @@ public final class k
     
     public a a(boolean paramBoolean)
     {
-      if (!this.a) {
-        throw new IllegalStateException("no TLS extensions for cleartext connections");
+      if (this.a)
+      {
+        this.d = paramBoolean;
+        return this;
       }
-      this.d = paramBoolean;
-      return this;
+      throw new IllegalStateException("no TLS extensions for cleartext connections");
     }
     
     public a a(String... paramVarArgs)
     {
-      if (!this.a) {
-        throw new IllegalStateException("no cipher suites for cleartext connections");
-      }
-      if (paramVarArgs.length == 0) {
+      if (this.a)
+      {
+        if (paramVarArgs.length != 0)
+        {
+          this.b = ((String[])paramVarArgs.clone());
+          return this;
+        }
         throw new IllegalArgumentException("At least one cipher suite is required");
       }
-      this.b = ((String[])paramVarArgs.clone());
-      return this;
+      throw new IllegalStateException("no cipher suites for cleartext connections");
     }
     
     public a a(TlsVersion... paramVarArgs)
     {
-      if (!this.a) {
-        throw new IllegalStateException("no TLS versions for cleartext connections");
-      }
-      String[] arrayOfString = new String[paramVarArgs.length];
-      int i = 0;
-      while (i < paramVarArgs.length)
+      if (this.a)
       {
-        arrayOfString[i] = paramVarArgs[i].javaName;
-        i += 1;
+        String[] arrayOfString = new String[paramVarArgs.length];
+        int i = 0;
+        while (i < paramVarArgs.length)
+        {
+          arrayOfString[i] = paramVarArgs[i].javaName;
+          i += 1;
+        }
+        return b(arrayOfString);
       }
-      return b(arrayOfString);
+      throw new IllegalStateException("no TLS versions for cleartext connections");
     }
     
     public a a(h... paramVarArgs)
     {
-      if (!this.a) {
-        throw new IllegalStateException("no cipher suites for cleartext connections");
-      }
-      String[] arrayOfString = new String[paramVarArgs.length];
-      int i = 0;
-      while (i < paramVarArgs.length)
+      if (this.a)
       {
-        arrayOfString[i] = paramVarArgs[i].bk;
-        i += 1;
+        String[] arrayOfString = new String[paramVarArgs.length];
+        int i = 0;
+        while (i < paramVarArgs.length)
+        {
+          arrayOfString[i] = paramVarArgs[i].bk;
+          i += 1;
+        }
+        return a(arrayOfString);
       }
-      return a(arrayOfString);
+      throw new IllegalStateException("no cipher suites for cleartext connections");
     }
     
     public k a()
@@ -243,14 +259,16 @@ public final class k
     
     public a b(String... paramVarArgs)
     {
-      if (!this.a) {
-        throw new IllegalStateException("no TLS versions for cleartext connections");
-      }
-      if (paramVarArgs.length == 0) {
+      if (this.a)
+      {
+        if (paramVarArgs.length != 0)
+        {
+          this.c = ((String[])paramVarArgs.clone());
+          return this;
+        }
         throw new IllegalArgumentException("At least one TLS version is required");
       }
-      this.c = ((String[])paramVarArgs.clone());
-      return this;
+      throw new IllegalStateException("no TLS versions for cleartext connections");
     }
   }
 }

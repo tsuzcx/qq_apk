@@ -16,7 +16,7 @@ import tmsdk.common.module.pgsdk.manager.ITaijiPreferenceManager;
 
 public class a
 {
-  private static a a = null;
+  private static a a;
   private ITaijiPreferenceManager b;
   private Context c;
   private int d = 0;
@@ -44,38 +44,48 @@ public class a
   
   public static a a(Context paramContext)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new a(paramContext);
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new a(paramContext);
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public String a(int paramInt)
   {
-    return this.b.getString("ad_" + paramInt, "");
+    ITaijiPreferenceManager localITaijiPreferenceManager = this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ad_");
+    localStringBuilder.append(paramInt);
+    return localITaijiPreferenceManager.getString(localStringBuilder.toString(), "");
   }
   
   public List<String> a(List<Integer> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      int i = ((Integer)paramList.next()).intValue();
-      String str = this.b.getString("ad_" + i);
-      if (!TextUtils.isEmpty(str)) {
-        localArrayList.add(str);
+      ArrayList localArrayList = new ArrayList(paramList.size());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        int i = ((Integer)paramList.next()).intValue();
+        Object localObject = this.b;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ad_");
+        localStringBuilder.append(i);
+        localObject = ((ITaijiPreferenceManager)localObject).getString(localStringBuilder.toString());
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          localArrayList.add(localObject);
+        }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public void a()
@@ -97,8 +107,23 @@ public class a
       while (localIterator.hasNext())
       {
         int i = ((Integer)localIterator.next()).intValue();
-        if ((paramBoolean) || (TextUtils.isEmpty(this.b.getString("ad_" + i, "")))) {
-          this.b.putString("ad_" + i, (String)paramHashMap.get(Integer.valueOf(i)));
+        ITaijiPreferenceManager localITaijiPreferenceManager;
+        StringBuilder localStringBuilder;
+        if (!paramBoolean)
+        {
+          localITaijiPreferenceManager = this.b;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("ad_");
+          localStringBuilder.append(i);
+          if (!TextUtils.isEmpty(localITaijiPreferenceManager.getString(localStringBuilder.toString(), ""))) {}
+        }
+        else
+        {
+          localITaijiPreferenceManager = this.b;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("ad_");
+          localStringBuilder.append(i);
+          localITaijiPreferenceManager.putString(localStringBuilder.toString(), (String)paramHashMap.get(Integer.valueOf(i)));
         }
       }
       this.b.endTransaction();
@@ -107,7 +132,11 @@ public class a
   
   public void b(int paramInt)
   {
-    this.b.remove("ad_" + paramInt);
+    ITaijiPreferenceManager localITaijiPreferenceManager = this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ad_");
+    localStringBuilder.append(paramInt);
+    localITaijiPreferenceManager.remove(localStringBuilder.toString());
   }
 }
 

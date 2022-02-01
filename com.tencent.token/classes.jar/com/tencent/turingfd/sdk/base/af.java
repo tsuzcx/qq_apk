@@ -15,88 +15,89 @@ public class af
     //   6: iconst_m1
     //   7: if_icmpeq +9 -> 16
     //   10: getstatic 18	com/tencent/turingfd/sdk/base/af:b	Lcom/tencent/turingfd/sdk/base/Foxnut;
-    //   13: ifnonnull +95 -> 108
+    //   13: ifnonnull +97 -> 110
     //   16: new 20	android/util/SparseArray
     //   19: dup
     //   20: invokespecial 23	android/util/SparseArray:<init>	()V
-    //   23: astore_0
+    //   23: astore_1
     //   24: invokestatic 29	com/tencent/turingfd/sdk/base/cm:e	()Landroid/util/SparseArray;
     //   27: invokestatic 35	com/tencent/turingfd/sdk/base/TuringDIDService$aa:d	(Landroid/util/SparseArray;)Landroid/util/SparseArray;
-    //   30: astore_1
-    //   31: aload_1
-    //   32: astore_0
-    //   33: aload_0
+    //   30: astore_0
+    //   31: aload_0
+    //   32: astore_1
+    //   33: aload_1
     //   34: sipush 201
     //   37: ldc 37
     //   39: invokestatic 40	com/tencent/turingfd/sdk/base/cm:a	(Landroid/util/SparseArray;ILjava/lang/Class;)Ljava/lang/Object;
     //   42: checkcast 37	java/lang/String
-    //   45: astore_1
-    //   46: aload_1
-    //   47: ifnonnull +83 -> 130
-    //   50: ldc 42
-    //   52: astore_1
-    //   53: aload_0
-    //   54: sipush 202
-    //   57: ldc 37
-    //   59: invokestatic 40	com/tencent/turingfd/sdk/base/cm:a	(Landroid/util/SparseArray;ILjava/lang/Class;)Ljava/lang/Object;
-    //   62: checkcast 37	java/lang/String
-    //   65: astore_2
-    //   66: aload_2
-    //   67: astore_0
+    //   45: astore_2
+    //   46: aload_2
+    //   47: astore_0
+    //   48: aload_2
+    //   49: ifnonnull +6 -> 55
+    //   52: ldc 42
+    //   54: astore_0
+    //   55: aload_1
+    //   56: sipush 202
+    //   59: ldc 37
+    //   61: invokestatic 40	com/tencent/turingfd/sdk/base/cm:a	(Landroid/util/SparseArray;ILjava/lang/Class;)Ljava/lang/Object;
+    //   64: checkcast 37	java/lang/String
+    //   67: astore_2
     //   68: aload_2
-    //   69: ifnonnull +6 -> 75
-    //   72: ldc 42
-    //   74: astore_0
-    //   75: aload_1
-    //   76: invokestatic 48	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   79: invokevirtual 52	java/lang/Integer:intValue	()I
-    //   82: putstatic 16	com/tencent/turingfd/sdk/base/af:a	I
-    //   85: new 54	com/tencent/turingfd/sdk/base/Foxnut
-    //   88: dup
-    //   89: invokespecial 55	com/tencent/turingfd/sdk/base/Foxnut:<init>	()V
-    //   92: putstatic 18	com/tencent/turingfd/sdk/base/af:b	Lcom/tencent/turingfd/sdk/base/Foxnut;
-    //   95: getstatic 18	com/tencent/turingfd/sdk/base/af:b	Lcom/tencent/turingfd/sdk/base/Foxnut;
-    //   98: aload_0
-    //   99: invokestatic 48	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   102: invokevirtual 52	java/lang/Integer:intValue	()I
-    //   105: putfield 58	com/tencent/turingfd/sdk/base/Foxnut:uc	I
-    //   108: ldc 2
-    //   110: monitorexit
-    //   111: return
-    //   112: astore_1
-    //   113: goto -80 -> 33
-    //   116: astore_0
-    //   117: ldc 2
-    //   119: monitorexit
-    //   120: aload_0
-    //   121: athrow
-    //   122: astore_0
-    //   123: goto -15 -> 108
-    //   126: astore_1
-    //   127: goto -42 -> 85
-    //   130: goto -77 -> 53
+    //   69: astore_1
+    //   70: aload_2
+    //   71: ifnonnull +6 -> 77
+    //   74: ldc 42
+    //   76: astore_1
+    //   77: aload_0
+    //   78: invokestatic 48	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   81: invokevirtual 52	java/lang/Integer:intValue	()I
+    //   84: putstatic 16	com/tencent/turingfd/sdk/base/af:a	I
+    //   87: new 54	com/tencent/turingfd/sdk/base/Foxnut
+    //   90: dup
+    //   91: invokespecial 55	com/tencent/turingfd/sdk/base/Foxnut:<init>	()V
+    //   94: putstatic 18	com/tencent/turingfd/sdk/base/af:b	Lcom/tencent/turingfd/sdk/base/Foxnut;
+    //   97: getstatic 18	com/tencent/turingfd/sdk/base/af:b	Lcom/tencent/turingfd/sdk/base/Foxnut;
+    //   100: aload_1
+    //   101: invokestatic 48	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   104: invokevirtual 52	java/lang/Integer:intValue	()I
+    //   107: putfield 58	com/tencent/turingfd/sdk/base/Foxnut:uc	I
+    //   110: ldc 2
+    //   112: monitorexit
+    //   113: return
+    //   114: astore_0
+    //   115: ldc 2
+    //   117: monitorexit
+    //   118: aload_0
+    //   119: athrow
+    //   120: astore_0
+    //   121: goto -88 -> 33
+    //   124: astore_0
+    //   125: goto -38 -> 87
+    //   128: astore_0
+    //   129: goto -19 -> 110
     // Local variable table:
     //   start	length	slot	name	signature
-    //   23	76	0	localObject1	Object
-    //   116	5	0	localObject2	Object
-    //   122	1	0	localNumberFormatException1	java.lang.NumberFormatException
-    //   30	46	1	localObject3	Object
-    //   112	1	1	localThrowable	java.lang.Throwable
-    //   126	1	1	localNumberFormatException2	java.lang.NumberFormatException
-    //   65	4	2	str	java.lang.String
+    //   30	48	0	localObject1	Object
+    //   114	5	0	localObject2	Object
+    //   120	1	0	localThrowable	java.lang.Throwable
+    //   124	1	0	localNumberFormatException1	java.lang.NumberFormatException
+    //   128	1	0	localNumberFormatException2	java.lang.NumberFormatException
+    //   23	78	1	localObject3	Object
+    //   45	26	2	str	java.lang.String
     // Exception table:
     //   from	to	target	type
-    //   24	31	112	java/lang/Throwable
-    //   3	16	116	finally
-    //   16	24	116	finally
-    //   24	31	116	finally
-    //   33	46	116	finally
-    //   53	66	116	finally
-    //   75	85	116	finally
-    //   85	95	116	finally
-    //   95	108	116	finally
-    //   95	108	122	java/lang/NumberFormatException
-    //   75	85	126	java/lang/NumberFormatException
+    //   3	16	114	finally
+    //   16	24	114	finally
+    //   24	31	114	finally
+    //   33	46	114	finally
+    //   55	68	114	finally
+    //   77	87	114	finally
+    //   87	97	114	finally
+    //   97	110	114	finally
+    //   24	31	120	java/lang/Throwable
+    //   77	87	124	java/lang/NumberFormatException
+    //   97	110	128	java/lang/NumberFormatException
   }
   
   public static int b()

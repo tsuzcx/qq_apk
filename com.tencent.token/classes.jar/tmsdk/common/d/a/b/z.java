@@ -27,8 +27,8 @@ public class z
   extends t
   implements tmsdk.common.d.a.c.d, tmsdk.common.d.a.c.m
 {
-  private static Object B;
-  private static z C;
+  private static Object B = new Object();
+  private static z C = null;
   private Handler A = null;
   g a = null;
   boolean b = false;
@@ -55,18 +55,6 @@ public class z
   private Handler y = new D(this, Looper.getMainLooper());
   private J z = null;
   
-  static
-  {
-    if (!z.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      g = bool;
-      B = new Object();
-      C = null;
-      return;
-    }
-  }
-  
   private z()
   {
     this.m.a(this);
@@ -80,7 +68,11 @@ public class z
     }
     this.s.set(i1 / 100);
     this.A = new F(this, this.n.getMainLooper());
-    if ((!g) && (30000L >= this.q)) {
+    if (!g)
+    {
+      if (30000L < this.q) {
+        return;
+      }
       throw new AssertionError();
     }
   }
@@ -100,9 +92,11 @@ public class z
     if (parame.b > 0)
     {
       a(parame.b);
-      new StringBuilder().append("间隔 : ").append(parame.b).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("间隔 : ");
+      ((StringBuilder)localObject).append(parame.b);
+      ((StringBuilder)localObject).toString();
     }
-    Object localObject;
     if ((parame.c != null) && (parame.c.size() > 0))
     {
       this.m.a();
@@ -111,19 +105,34 @@ public class z
       {
         int i1 = ((Integer)((Iterator)localObject).next()).intValue();
         this.m.a(i1);
-        new StringBuilder().append("端口 : ").append(i1).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("端口 : ");
+        localStringBuilder.append(i1);
+        localStringBuilder.toString();
       }
-      new StringBuilder().append("handleSharkConfPush() interval: ").append(parame.b).append(" ports.size(): ").append(parame.c.size()).append(" hash: ").append(parame.a).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleSharkConfPush() interval: ");
+      ((StringBuilder)localObject).append(parame.b);
+      ((StringBuilder)localObject).append(" ports.size(): ");
+      ((StringBuilder)localObject).append(parame.c.size());
+      ((StringBuilder)localObject).append(" hash: ");
+      ((StringBuilder)localObject).append(parame.a);
+      ((StringBuilder)localObject).toString();
     }
-    for (;;)
+    else
     {
-      this.t.a(parame.b);
-      this.t.a(parame.c);
-      localObject = new a.a.b();
-      ((a.a.b)localObject).a = parame.a;
-      return new Pair(Integer.valueOf(1), localObject);
-      new StringBuilder().append("handleSharkConfPush() interval: ").append(parame.b).append(" hash: ").append(parame.a).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleSharkConfPush() interval: ");
+      ((StringBuilder)localObject).append(parame.b);
+      ((StringBuilder)localObject).append(" hash: ");
+      ((StringBuilder)localObject).append(parame.a);
+      ((StringBuilder)localObject).toString();
     }
+    this.t.a(parame.b);
+    this.t.a(parame.c);
+    Object localObject = new a.a.b();
+    ((a.a.b)localObject).a = parame.a;
+    return new Pair(Integer.valueOf(1), localObject);
   }
   
   private WeakReference a(o paramo, int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct1, JceStruct paramJceStruct2, ef paramef, long paramLong)
@@ -150,9 +159,11 @@ public class z
     paramJceStruct1.b = paramo.c().a();
     paramJceStruct1.c = paramInt3;
     paramJceStruct1.d = arrayOfByte;
-    boolean bool = false;
+    boolean bool;
     if (paramInt1 == 999) {
       bool = true;
+    } else {
+      bool = false;
     }
     if (paramef != null) {
       a(paramInt2, paramJceStruct1.b, paramJceStruct2, paramef);
@@ -163,14 +174,21 @@ public class z
     paramJceStruct2.a = paramInt4;
     paramJceStruct2.f = paramLong;
     this.x.a(paramJceStruct2);
-    new StringBuilder().append("ClientSashimi seqNO : ").append(paramJceStruct1.b).toString();
+    paramef = new StringBuilder();
+    paramef.append("ClientSashimi seqNO : ");
+    paramef.append(paramJceStruct1.b);
+    paramef.toString();
     if (paramLong > 0L)
     {
       paramJceStruct1 = paramJceStruct2.b;
       if ((paramJceStruct1 != null) && (paramJceStruct1 != null))
       {
         paramInt1 = paramJceStruct1.b;
-        new StringBuilder().append("对 seqNo : ").append(paramInt1).append(" 的回包计时").toString();
+        paramJceStruct1 = new StringBuilder();
+        paramJceStruct1.append("对 seqNo : ");
+        paramJceStruct1.append(paramInt1);
+        paramJceStruct1.append(" 的回包计时");
+        paramJceStruct1.toString();
         this.A.sendEmptyMessageDelayed(paramInt1, paramLong);
       }
     }
@@ -180,48 +198,63 @@ public class z
   
   public static z a()
   {
-    if (C == null) {}
-    synchronized (B)
-    {
-      if (C == null) {
-        C = new z();
+    if (C == null) {
+      synchronized (B)
+      {
+        if (C == null) {
+          C = new z();
+        }
       }
-      return C;
     }
+    return C;
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
   {
     this.A.removeMessages(paramInt3);
-    for (;;)
+    synchronized (this.j)
     {
-      synchronized (this.j)
+      Object localObject1 = (a)this.f.get(paramInt3);
+      if (localObject1 == null) {
+        return;
+      }
+      this.f.remove(paramInt3);
+      if (tmsdk.common.d.a.a.a.filterNetworkCode(paramInt1) == -50000)
       {
-        a locala = (a)this.f.get(paramInt3);
-        if (locala == null) {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("这个超时了 refSeqNo : ");
+        ((StringBuilder)???).append(paramInt3);
+        ((StringBuilder)???).append(" retCode : ");
+        ((StringBuilder)???).append(paramInt1);
+        ((StringBuilder)???).toString();
+      }
+      else
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("onRecvCallBack : refSeqNo : ");
+        ((StringBuilder)???).append(paramInt3);
+        ((StringBuilder)???).append(" retCode : ");
+        ((StringBuilder)???).append(paramInt1);
+        ((StringBuilder)???).toString();
+      }
+      paramArrayOfByte = new m(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte, (a)localObject1);
+      paramInt1 = eh.a(((a)localObject1).c);
+      if (paramInt1 != 8)
+      {
+        if (paramInt1 != 16)
+        {
+          com.tencent.token.f.a().b(new H(this, paramArrayOfByte), "tcp run callback on thread");
           return;
         }
-        this.f.remove(paramInt3);
-        if (tmsdk.common.d.a.a.a.filterNetworkCode(paramInt1) == -50000)
-        {
-          new StringBuilder().append("这个超时了 refSeqNo : ").append(paramInt3).append(" retCode : ").append(paramInt1).toString();
-          paramArrayOfByte = new m(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte, locala);
-          switch (eh.a(locala.c))
-          {
-          default: 
-            com.tencent.token.f.a().b(new H(this, paramArrayOfByte), "tcp run callback on thread");
-            return;
-          }
-        }
+        a(paramArrayOfByte);
+        return;
       }
-      new StringBuilder().append("onRecvCallBack : refSeqNo : ").append(paramInt3).append(" retCode : ").append(paramInt1).toString();
+      localObject1 = Message.obtain();
+      ((Message)localObject1).obj = paramArrayOfByte;
+      ((Message)localObject1).what = 1;
+      this.y.sendMessage((Message)localObject1);
+      return;
     }
-    ??? = Message.obtain();
-    ((Message)???).obj = paramArrayOfByte;
-    ((Message)???).what = 1;
-    this.y.sendMessage((Message)???);
-    return;
-    a(paramArrayOfByte);
   }
   
   private void a(int paramInt1, int paramInt2, JceStruct arg3, ef paramef)
@@ -236,73 +269,90 @@ public class z
   
   private void a(j paramj, int paramInt)
   {
-    if ((paramj == null) || (paramj.b == null)) {
+    if (paramj != null)
+    {
+      if (paramj.b == null) {
+        return;
+      }
+      paramj = paramj.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onFail cmd : ");
+      localStringBuilder.append(paramj.a);
+      localStringBuilder.toString();
+      a(paramInt, 0, paramj.b, paramj.a, null);
       return;
     }
-    paramj = paramj.b;
-    new StringBuilder().append("onFail cmd : ").append(paramj.a).toString();
-    a(paramInt, 0, paramj.b, paramj.a, null);
   }
   
   private void a(m paramm)
   {
-    if ((paramm.f == null) || (paramm.f.a == null)) {
+    if (paramm.f != null)
+    {
+      if (paramm.f.a == null) {
+        return;
+      }
+      JceStruct localJceStruct = b.a(this.n, null, paramm.e, paramm.f.b);
+      if (localJceStruct == null) {
+        localJceStruct = paramm.f.b;
+      }
+      paramm.f.a.a(paramm.c, paramm.d, paramm.a, paramm.b, localJceStruct);
       return;
     }
-    JceStruct localJceStruct2 = b.a(this.n, null, paramm.e, paramm.f.b);
-    JceStruct localJceStruct1 = localJceStruct2;
-    if (localJceStruct2 == null) {
-      localJceStruct1 = paramm.f.b;
-    }
-    paramm.f.a.a(paramm.c, paramm.d, paramm.a, paramm.b, localJceStruct1);
   }
   
   private void a(n paramn)
   {
-    if ((paramn == null) || (paramn.f == null) || (paramn.f.a == null)) {}
-    Object localObject;
-    do
+    if ((paramn != null) && (paramn.f != null))
     {
-      return;
-      localObject = h.a(paramn.e, paramn.f.b);
+      if (paramn.f.a == null) {
+        return;
+      }
+      Object localObject = h.a(paramn.e, paramn.f.b);
       localObject = paramn.f.a.a(paramn.a, paramn.d, (JceStruct)localObject);
-    } while ((localObject == null) || (((Pair)localObject).first == null) || (((Pair)localObject).second == null));
-    a.c.a locala = new a.c.a();
-    locala.a = ((Integer)((Pair)localObject).first).intValue();
-    locala.b = h.a((JceStruct)((Pair)localObject).second);
-    a(this.h, 655, 32, paramn.b, paramn.c, locala, null, null, -1L);
+      if ((localObject != null) && (((Pair)localObject).first != null) && (((Pair)localObject).second != null))
+      {
+        a.c.a locala = new a.c.a();
+        locala.a = ((Integer)((Pair)localObject).first).intValue();
+        locala.b = h.a((JceStruct)((Pair)localObject).second);
+        a(this.h, 655, 32, paramn.b, paramn.c, locala, null, null, -1L);
+      }
+      return;
+    }
   }
   
   private void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
   {
-    for (;;)
+    synchronized (this.i)
     {
-      Object localObject2;
-      synchronized (this.i)
+      Object localObject2 = (ArrayList)this.e.get(paramInt4);
+      if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
       {
-        localObject2 = (ArrayList)this.e.get(paramInt4);
-        if ((localObject2 == null) || (((ArrayList)localObject2).size() <= 0)) {
-          return;
-        }
         localObject2 = (ArrayList)((ArrayList)localObject2).clone();
         ??? = ((List)localObject2).iterator();
-        if (!((Iterator)???).hasNext()) {
-          break;
-        }
-        localObject3 = (i)((Iterator)???).next();
-        localObject2 = new n(paramInt3, paramInt4, paramArrayOfByte, paramInt1, paramInt2, (i)localObject3);
-        switch (eh.a(((i)localObject3).c))
+        while (((Iterator)???).hasNext())
         {
-        default: 
-          com.tencent.token.f.a().b(new I(this, (n)localObject2), "tcp run push on thread");
+          Object localObject3 = (i)((Iterator)???).next();
+          localObject2 = new n(paramInt3, paramInt4, paramArrayOfByte, paramInt1, paramInt2, (i)localObject3);
+          int i1 = eh.a(((i)localObject3).c);
+          if (i1 != 8)
+          {
+            if (i1 != 16) {
+              com.tencent.token.f.a().b(new I(this, (n)localObject2), "tcp run push on thread");
+            } else {
+              a((n)localObject2);
+            }
+          }
+          else
+          {
+            localObject3 = Message.obtain();
+            ((Message)localObject3).obj = localObject2;
+            ((Message)localObject3).what = 2;
+            this.y.sendMessage((Message)localObject3);
+          }
         }
+        return;
       }
-      Object localObject3 = Message.obtain();
-      ((Message)localObject3).obj = localObject2;
-      ((Message)localObject3).what = 2;
-      this.y.sendMessage((Message)localObject3);
-      continue;
-      a((n)localObject2);
+      return;
     }
   }
   
@@ -355,33 +405,50 @@ public class z
   
   eg a(int paramInt, eg parameg)
   {
-    ArrayList localArrayList;
-    synchronized (this.i)
+    for (;;)
     {
-      localArrayList = (ArrayList)this.e.get(paramInt);
-      if ((localArrayList == null) || (localArrayList.size() == 0)) {
-        return null;
-      }
-      if (parameg == null)
+      int i1;
+      Object localObject1;
+      synchronized (this.i)
       {
-        this.e.remove(paramInt);
-        parameg = ((i)localArrayList.get(0)).a;
-        return parameg;
+        ArrayList localArrayList = (ArrayList)this.e.get(paramInt);
+        Object localObject2 = null;
+        if ((localArrayList != null) && (localArrayList.size() != 0))
+        {
+          i1 = 0;
+          if (parameg == null)
+          {
+            this.e.remove(paramInt);
+            parameg = ((i)localArrayList.get(0)).a;
+          }
+          else
+          {
+            localObject1 = localObject2;
+            if (i1 < localArrayList.size())
+            {
+              if (((i)localArrayList.get(i1)).a != parameg) {
+                break label152;
+              }
+              localObject1 = ((i)localArrayList.remove(i1)).a;
+            }
+            if (localArrayList.size() > 0) {
+              break label159;
+            }
+            this.e.remove(paramInt);
+            break label159;
+          }
+          return parameg;
+        }
+        else
+        {
+          return null;
+        }
       }
-    }
-    int i1 = 0;
-    label78:
-    if (i1 < localArrayList.size()) {
-      if (((i)localArrayList.get(i1)).a != parameg) {}
-    }
-    for (parameg = ((i)localArrayList.remove(i1)).a;; parameg = null)
-    {
-      if (localArrayList.size() <= 0) {
-        this.e.remove(paramInt);
-      }
-      break;
+      label152:
       i1 += 1;
-      break label78;
+      continue;
+      label159:
+      parameg = (eg)localObject1;
     }
   }
   
@@ -399,11 +466,19 @@ public class z
   {
     Object localObject = paramf.f;
     paramInt2 = paramf.a;
-    new StringBuilder().append("onRecv cmdId : ").append(paramInt2).append(" seqNo: ").append(paramf.b).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onRecv cmdId : ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" seqNo: ");
+    localStringBuilder.append(paramf.b);
+    localStringBuilder.toString();
     if (paramInt2 == 10655)
     {
       localObject = (a.c.b)b.a(this.n, null, (byte[])localObject, this.o);
-      new StringBuilder().append("onRecvPush ECmd.Cmd_SCPush, push.cmd: ").append(((a.c.b)localObject).a).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRecvPush ECmd.Cmd_SCPush, push.cmd: ");
+      localStringBuilder.append(((a.c.b)localObject).a);
+      localStringBuilder.toString();
       b(paramf.b, paramInt1, paramf.b, ((a.c.b)localObject).a, ((a.c.b)localObject).b);
       return;
     }
@@ -434,31 +509,41 @@ public class z
   
   public void a(d paramd, boolean paramBoolean)
   {
-    if (this.m != null) {
-      this.m.a(paramBoolean);
+    Object localObject = this.m;
+    if (localObject != null) {
+      ((s)localObject).a(paramBoolean);
     }
     this.t = paramd;
     p();
-    if (this.t == null) {}
-    for (;;)
-    {
+    paramd = this.t;
+    if (paramd == null) {
       return;
-      long l1 = this.t.l();
-      paramd = this.t.m();
-      if (l1 > 0L)
+    }
+    long l1 = paramd.l();
+    paramd = this.t.m();
+    if (l1 > 0L)
+    {
+      a(l1);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("初始化心跳包间隔 : ");
+      ((StringBuilder)localObject).append(l1);
+      ((StringBuilder)localObject).toString();
+    }
+    if ((paramd != null) && (paramd.size() > 0))
+    {
+      localObject = this.m;
+      if (localObject != null)
       {
-        a(l1);
-        new StringBuilder().append("初始化心跳包间隔 : ").append(l1).toString();
-      }
-      if ((paramd != null) && (paramd.size() > 0) && (this.m != null))
-      {
-        this.m.a();
+        ((s)localObject).a();
         paramd = paramd.iterator();
         while (paramd.hasNext())
         {
           int i1 = ((Integer)paramd.next()).intValue();
           this.m.a(i1);
-          new StringBuilder().append("初始化端口 : ").append(i1).toString();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("初始化端口 : ");
+          ((StringBuilder)localObject).append(i1);
+          ((StringBuilder)localObject).toString();
         }
       }
     }
@@ -466,8 +551,9 @@ public class z
   
   public void a(boolean paramBoolean)
   {
-    if (this.m != null) {
-      this.m.a(paramBoolean);
+    s locals = this.m;
+    if (locals != null) {
+      locals.a(paramBoolean);
     }
   }
   
@@ -542,8 +628,9 @@ public class z
   
   void h()
   {
-    if (this.z != null) {
-      this.z.removeMessages(0);
+    J localJ = this.z;
+    if (localJ != null) {
+      localJ.removeMessages(0);
     }
   }
   

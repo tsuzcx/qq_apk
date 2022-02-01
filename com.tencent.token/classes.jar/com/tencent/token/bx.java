@@ -48,17 +48,20 @@ public class bx
     {
       if (paramAnonymousMessage.what == 4016)
       {
-        if (paramAnonymousMessage.arg1 != 0) {
-          break label25;
+        if (paramAnonymousMessage.arg1 == 0)
+        {
+          TmsLog.i("mod_seed", "mod seed done, success.");
+          return;
         }
-        TmsLog.i("mod_seed", "mod seed done, success.");
+        if (cr.a().e() == null) {
+          return;
+        }
+        paramAnonymousMessage = (e)paramAnonymousMessage.obj;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mod seed failed, errcode:");
+        localStringBuilder.append(paramAnonymousMessage.a);
+        TmsLog.e("mod_seed", localStringBuilder.toString());
       }
-      label25:
-      while (cr.a().e() == null) {
-        return;
-      }
-      paramAnonymousMessage = (e)paramAnonymousMessage.obj;
-      TmsLog.e("mod_seed", "mod seed failed, errcode:" + paramAnonymousMessage.a);
     }
   };
   private long j = 0L;
@@ -74,27 +77,40 @@ public class bx
     ((Calendar)localObject1).setTime(new Date(paramLong));
     ((Calendar)localObject1).setTimeZone(TimeZone.getTimeZone("GMT+8"));
     Object localObject2 = new StringBuffer();
-    ((StringBuffer)localObject2).append(((Calendar)localObject1).get(1)).append('-').append(l.a(((Calendar)localObject1).get(2) + 1, 2)).append('-').append(l.a(((Calendar)localObject1).get(5), 2)).append(' ').append(l.a(((Calendar)localObject1).get(11), 2)).append(':').append(l.a(((Calendar)localObject1).get(12), 2)).append(':').append(l.a(((Calendar)localObject1).get(13) / 30 * 30, 2));
+    ((StringBuffer)localObject2).append(((Calendar)localObject1).get(1));
+    ((StringBuffer)localObject2).append('-');
+    ((StringBuffer)localObject2).append(l.a(((Calendar)localObject1).get(2) + 1, 2));
+    ((StringBuffer)localObject2).append('-');
+    ((StringBuffer)localObject2).append(l.a(((Calendar)localObject1).get(5), 2));
+    ((StringBuffer)localObject2).append(' ');
+    ((StringBuffer)localObject2).append(l.a(((Calendar)localObject1).get(11), 2));
+    ((StringBuffer)localObject2).append(':');
+    ((StringBuffer)localObject2).append(l.a(((Calendar)localObject1).get(12), 2));
+    ((StringBuffer)localObject2).append(':');
+    ((StringBuffer)localObject2).append(l.a(((Calendar)localObject1).get(13) / 30 * 30, 2));
     localObject1 = ((StringBuffer)localObject2).toString().getBytes();
-    if (this.a == null) {
+    localObject2 = this.a;
+    if (localObject2 == null) {
       return;
     }
-    localObject2 = new byte[this.a.length + localObject1.length];
-    System.arraycopy(this.a, 0, localObject2, 0, this.a.length);
-    System.arraycopy(localObject1, 0, localObject2, this.a.length, localObject1.length);
-    localObject1 = new dv().a((byte[])localObject2);
+    byte[] arrayOfByte = new byte[localObject2.length + localObject1.length];
+    System.arraycopy(localObject2, 0, arrayOfByte, 0, localObject2.length);
+    System.arraycopy(localObject1, 0, arrayOfByte, this.a.length, localObject1.length);
+    localObject1 = new dv().a(arrayOfByte);
     localObject2 = new byte[localObject1.length * 2];
     int k = 0;
+    int m;
     while (k < localObject1.length)
     {
-      localObject2[(k * 2)] = ((byte)((localObject1[k] & 0xFF) >>> 4));
-      localObject2[(k * 2 + 1)] = ((byte)(localObject1[k] & 0xF));
+      m = k * 2;
+      localObject2[m] = ((byte)((localObject1[k] & 0xFF) >>> 4));
+      localObject2[(m + 1)] = ((byte)(localObject1[k] & 0xF));
       k += 1;
     }
     k = 0;
     while (k < 6)
     {
-      int m = 0;
+      m = 0;
       int n = 0;
       while (m < 9)
       {
@@ -104,7 +120,9 @@ public class bx
       this.b[k] = (n % 10);
       k += 1;
     }
-    this.f = (paramLong / 1000L / this.e * this.e * 1000L);
+    paramLong /= 1000L;
+    k = this.e;
+    this.f = (paramLong / k * k * 1000L);
   }
   
   public static String d()
@@ -114,7 +132,11 @@ public class bx
       String str = r().getString("token_info", "");
       return str;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label15:
+      break label15;
+    }
     return null;
   }
   
@@ -137,20 +159,23 @@ public class bx
     {
       k = 0;
       int[] arrayOfInt1;
-      try
+      for (;;)
       {
-        while (k < arrayOfInt2.length)
+        localObject2 = arrayOfInt2;
+        try
         {
+          if (k >= arrayOfInt2.length) {
+            return localObject2;
+          }
           arrayOfInt2[k] = Integer.parseInt(String.valueOf(((String)localObject1).charAt(k)));
           k += 1;
         }
-        return arrayOfInt2;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        arrayOfInt1 = new int[16];
-        k = 0;
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+          arrayOfInt1 = new int[16];
+          k = 0;
+        }
       }
       for (;;)
       {
@@ -187,31 +212,38 @@ public class bx
     try
     {
       PRNGFixes.a();
-      localObject1 = new SecureRandom();
-      SecureRandom localSecureRandom = new SecureRandom();
-      StringBuffer localStringBuffer = new StringBuffer();
-      localStringBuffer.append((String)localObject2).append(localSecureRandom.nextInt()).append(System.currentTimeMillis()).append(m).append(new Object().hashCode());
-      ((SecureRandom)localObject1).a(localStringBuffer.toString().getBytes());
-      int k = 1;
-      while (k < arrayOfByte.length)
-      {
-        arrayOfByte[k] = ((byte)(Math.abs(((SecureRandom)localObject1).nextInt()) % 256));
-        localSecureRandom.a(localSecureRandom.a(k));
-        localStringBuffer = new StringBuffer();
-        localStringBuffer.append(System.currentTimeMillis() + "").append(localSecureRandom.nextInt()).append(m).append(new Object().hashCode());
-        localStringBuffer.insert(Math.abs(localSecureRandom.nextInt()) % localStringBuffer.length(), (String)localObject2);
-        ((SecureRandom)localObject1).a(localStringBuffer.toString().getBytes());
-        k += 1;
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-      arrayOfByte[0] = ((byte)(Math.abs(localException.nextInt()) % 64));
+      localException.printStackTrace();
     }
+    SecureRandom localSecureRandom1 = new SecureRandom();
+    SecureRandom localSecureRandom2 = new SecureRandom();
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append((String)localObject2);
+    localStringBuffer.append(localSecureRandom2.nextInt());
+    localStringBuffer.append(System.currentTimeMillis());
+    localStringBuffer.append(m);
+    localStringBuffer.append(new Object().hashCode());
+    localSecureRandom1.a(localStringBuffer.toString().getBytes());
+    int k = 1;
+    while (k < arrayOfByte.length)
+    {
+      arrayOfByte[k] = ((byte)(Math.abs(localSecureRandom1.nextInt()) % 256));
+      localSecureRandom2.a(localSecureRandom2.a(k));
+      localStringBuffer = new StringBuffer();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuilder.append("");
+      localStringBuffer.append(localStringBuilder.toString());
+      localStringBuffer.append(localSecureRandom2.nextInt());
+      localStringBuffer.append(m);
+      localStringBuffer.append(new Object().hashCode());
+      localStringBuffer.insert(Math.abs(localSecureRandom2.nextInt()) % localStringBuffer.length(), (String)localObject2);
+      localSecureRandom1.a(localStringBuffer.toString().getBytes());
+      k += 1;
+    }
+    arrayOfByte[0] = ((byte)(Math.abs(localSecureRandom1.nextInt()) % 64));
     return cj.a(arrayOfByte);
   }
   
@@ -221,46 +253,62 @@ public class bx
     {
     default: 
       return RqdApplication.l().getSharedPreferences("token_save_info", 0);
-    case 0: 
-      return RqdApplication.l().getSharedPreferences("token_save_info_test", 0);
-    case 1: 
-      return RqdApplication.l().getSharedPreferences("token_save_info", 0);
+    case 3: 
+      return RqdApplication.l().getSharedPreferences("token_save_info_gray", 0);
     case 2: 
       return RqdApplication.l().getSharedPreferences("token_save_info_exp", 0);
+    case 1: 
+      return RqdApplication.l().getSharedPreferences("token_save_info", 0);
     }
-    return RqdApplication.l().getSharedPreferences("token_save_info_gray", 0);
+    return RqdApplication.l().getSharedPreferences("token_save_info_test", 0);
   }
   
   public String a(int paramInt)
   {
     long l = System.currentTimeMillis() + this.d + paramInt;
-    TmsLog.i("mod_seed", "get token code timestamp: " + l);
-    Object localObject1 = Calendar.getInstance();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("get token code timestamp: ");
+    ((StringBuilder)localObject1).append(l);
+    TmsLog.i("mod_seed", ((StringBuilder)localObject1).toString());
+    localObject1 = Calendar.getInstance();
     ((Calendar)localObject1).setTime(new Date(l));
     ((Calendar)localObject1).setTimeZone(TimeZone.getTimeZone("GMT+8"));
     Object localObject2 = new StringBuffer();
-    ((StringBuffer)localObject2).append(((Calendar)localObject1).get(1)).append('-').append(l.a(((Calendar)localObject1).get(2) + 1, 2)).append('-').append(l.a(((Calendar)localObject1).get(5), 2)).append(' ').append(l.a(((Calendar)localObject1).get(11), 2)).append(':').append(l.a(((Calendar)localObject1).get(12), 2)).append(':').append(l.a(((Calendar)localObject1).get(13) / 30 * 30, 2));
+    ((StringBuffer)localObject2).append(((Calendar)localObject1).get(1));
+    ((StringBuffer)localObject2).append('-');
+    ((StringBuffer)localObject2).append(l.a(((Calendar)localObject1).get(2) + 1, 2));
+    ((StringBuffer)localObject2).append('-');
+    ((StringBuffer)localObject2).append(l.a(((Calendar)localObject1).get(5), 2));
+    ((StringBuffer)localObject2).append(' ');
+    ((StringBuffer)localObject2).append(l.a(((Calendar)localObject1).get(11), 2));
+    ((StringBuffer)localObject2).append(':');
+    ((StringBuffer)localObject2).append(l.a(((Calendar)localObject1).get(12), 2));
+    ((StringBuffer)localObject2).append(':');
+    ((StringBuffer)localObject2).append(l.a(((Calendar)localObject1).get(13) / 30 * 30, 2));
     localObject1 = ((StringBuffer)localObject2).toString().getBytes();
-    if (this.a == null) {
+    localObject2 = this.a;
+    if (localObject2 == null) {
       return "";
     }
-    localObject2 = new byte[this.a.length + localObject1.length];
-    System.arraycopy(this.a, 0, localObject2, 0, this.a.length);
-    System.arraycopy(localObject1, 0, localObject2, this.a.length, localObject1.length);
-    localObject2 = new dv().a((byte[])localObject2);
+    byte[] arrayOfByte = new byte[localObject2.length + localObject1.length];
+    System.arraycopy(localObject2, 0, arrayOfByte, 0, localObject2.length);
+    System.arraycopy(localObject1, 0, arrayOfByte, this.a.length, localObject1.length);
+    localObject2 = new dv().a(arrayOfByte);
     localObject1 = new byte[localObject2.length * 2];
     paramInt = 0;
+    int k;
     while (paramInt < localObject2.length)
     {
-      localObject1[(paramInt * 2)] = ((byte)((localObject2[paramInt] & 0xFF) >>> 4));
-      localObject1[(paramInt * 2 + 1)] = ((byte)(localObject2[paramInt] & 0xF));
+      k = paramInt * 2;
+      localObject1[k] = ((byte)((localObject2[paramInt] & 0xFF) >>> 4));
+      localObject1[(k + 1)] = ((byte)(localObject2[paramInt] & 0xF));
       paramInt += 1;
     }
     localObject2 = new StringBuffer();
     paramInt = 0;
     while (paramInt < 6)
     {
-      int k = 0;
+      k = 0;
       int m = 0;
       while (k < 9)
       {
@@ -282,7 +330,12 @@ public class bx
   public void a(dq paramdq)
   {
     this.a = new dv().a(cj.a(paramdq.e()));
-    TmsLog.i("mod_seed", "computeSeed @active, shareKey: " + paramdq + " hexStr: " + l.a(this.a));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("computeSeed @active, shareKey: ");
+    localStringBuilder.append(paramdq);
+    localStringBuilder.append(" hexStr: ");
+    localStringBuilder.append(l.a(this.a));
+    TmsLog.i("mod_seed", localStringBuilder.toString());
   }
   
   public void a(String paramString)
@@ -293,35 +346,37 @@ public class bx
   
   public void a(boolean paramBoolean)
   {
-    long l1 = 0L;
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       if (System.currentTimeMillis() - this.j > 1000L)
       {
         TmsLog.i("mod_seed", "handle mod is excuting.");
         bv.a().d(this.i);
         this.j = System.currentTimeMillis();
       }
-    }
-    long l2;
-    do
-    {
       return;
-      l2 = n();
-    } while (l2 >= 31536000000L);
-    if (l2 < 0L) {}
-    for (;;)
-    {
-      this.i.removeCallbacks(this.c);
-      this.i.postDelayed(this.c, l1);
-      TmsLog.i("mod_seed", "auto mod will excute in " + l1 + " ms later.");
-      return;
-      l1 = l2;
     }
+    long l2 = n();
+    if (l2 >= 31536000000L) {
+      return;
+    }
+    long l1 = l2;
+    if (l2 < 0L) {
+      l1 = 0L;
+    }
+    this.i.removeCallbacks(this.c);
+    this.i.postDelayed(this.c, l1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("auto mod will excute in ");
+    localStringBuilder.append(l1);
+    localStringBuilder.append(" ms later.");
+    TmsLog.i("mod_seed", localStringBuilder.toString());
   }
   
   public boolean a()
   {
-    return (this.a == null) || (this.a.length == 0);
+    byte[] arrayOfByte = this.a;
+    return (arrayOfByte == null) || (arrayOfByte.length == 0);
   }
   
   public void b()
@@ -337,57 +392,55 @@ public class bx
     }
     SharedPreferences.Editor localEditor = r().edit();
     localEditor.putLong("seed_expire_time", l);
-    TmsLog.i("mod_seed", "@recordSeedExpireTime expiretime is server: " + l);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("@recordSeedExpireTime expiretime is server: ");
+    localStringBuilder.append(l);
+    TmsLog.i("mod_seed", localStringBuilder.toString());
     localEditor.commit();
   }
   
   public void c()
   {
-    try
+    for (;;)
     {
-      eu localeu = new eu();
-      String str;
-      Object localObject2;
-      byte[] arrayOfByte;
-      if ((this.a != null) && (this.a.length > 0))
+      try
       {
-        str = q();
-        localObject2 = new a();
-        arrayOfByte = ((a)localObject2).b(this.a, com.tencent.token.utils.encrypt.c.a(str));
-        if (arrayOfByte != null) {
-          break label176;
-        }
-        arrayOfByte = ((a)localObject2).b(this.a, com.tencent.token.utils.encrypt.c.a(str));
-      }
-      for (;;)
-      {
-        localObject2 = r();
-        boolean bool;
-        if (localObject2 != null)
+        eu localeu = new eu();
+        if ((this.a != null) && (this.a.length > 0))
         {
+          String str = q();
+          a locala = new a();
+          Object localObject3 = locala.b(this.a, com.tencent.token.utils.encrypt.c.a(str));
+          Object localObject1 = localObject3;
+          if (localObject3 == null) {
+            localObject1 = locala.b(this.a, com.tencent.token.utils.encrypt.c.a(str));
+          }
+          localObject3 = r();
+          if (localObject3 == null) {
+            break label172;
+          }
           bool = true;
           g.a(bool);
-          localObject2 = ((SharedPreferences)localObject2).edit();
-          ((SharedPreferences.Editor)localObject2).putInt("token_type", 2);
-          ((SharedPreferences.Editor)localObject2).putString("token_info", str);
-          ((SharedPreferences.Editor)localObject2).commit();
-          localeu.a(this.d, this.e, arrayOfByte);
+          localObject3 = ((SharedPreferences)localObject3).edit();
+          ((SharedPreferences.Editor)localObject3).putInt("token_type", 2);
+          ((SharedPreferences.Editor)localObject3).putString("token_info", str);
+          ((SharedPreferences.Editor)localObject3).commit();
+          localeu.a(this.d, this.e, (byte[])localObject1);
         }
-        for (;;)
+        else
         {
-          return;
-          bool = false;
-          break;
           localeu.a(this.d, this.e, this.a);
         }
+        return;
       }
+      finally {}
+      label172:
+      boolean bool = false;
     }
-    finally {}
   }
   
   public void e()
   {
-    boolean bool = false;
     for (;;)
     {
       try
@@ -414,47 +467,49 @@ public class bx
         this.e = ((eu)localObject3).c;
         this.g = ((en)localObject4).b;
         localObject1 = r();
-        if (localObject1 != null) {
+        if (localObject1 != null)
+        {
           bool = true;
-        }
-        g.a(bool);
-        localObject3 = ((SharedPreferences)localObject1).edit();
-        ((SharedPreferences.Editor)localObject3).putBoolean("token_status", true);
-        ((SharedPreferences.Editor)localObject3).commit();
-        if ((this.a != null) && (this.a.length > 0))
-        {
-          this.h = ((SharedPreferences)localObject1).getInt("token_type", 0);
-          if (2 != this.h) {
-            break label287;
+          g.a(bool);
+          localObject3 = ((SharedPreferences)localObject1).edit();
+          ((SharedPreferences.Editor)localObject3).putBoolean("token_status", true);
+          ((SharedPreferences.Editor)localObject3).commit();
+          if ((this.a != null) && (this.a.length > 0))
+          {
+            this.h = ((SharedPreferences)localObject1).getInt("token_type", 0);
+            if (2 == this.h)
+            {
+              localObject4 = ((SharedPreferences)localObject1).getString("token_info", "");
+              if ((localObject4 != null) && (((String)localObject4).length() != 0))
+              {
+                a locala = new a();
+                localObject3 = locala.a(this.a, com.tencent.token.utils.encrypt.c.a((String)localObject4));
+                localObject1 = localObject3;
+                if (localObject3 == null) {
+                  localObject1 = locala.a(this.a, com.tencent.token.utils.encrypt.c.a((String)localObject4));
+                }
+                this.a = ((byte[])localObject1);
+              }
+              else
+              {
+                this.a = null;
+              }
+            }
+            else if (1 == this.h)
+            {
+              this.a = TknEncManager.a().decInitCode(this.a);
+              c();
+            }
+            else
+            {
+              c();
+            }
           }
-          localObject4 = ((SharedPreferences)localObject1).getString("token_info", "");
-          if ((localObject4 == null) || (((String)localObject4).length() == 0)) {
-            this.a = null;
-          }
-        }
-        else
-        {
           return;
-        }
-        a locala = new a();
-        localObject3 = locala.a(this.a, com.tencent.token.utils.encrypt.c.a((String)localObject4));
-        localObject1 = localObject3;
-        if (localObject3 == null) {
-          localObject1 = locala.a(this.a, com.tencent.token.utils.encrypt.c.a((String)localObject4));
-        }
-        this.a = ((byte[])localObject1);
-        continue;
-        if (1 != this.h) {
-          break label316;
         }
       }
       finally {}
-      label287:
-      this.a = TknEncManager.a().decInitCode(this.a);
-      c();
-      continue;
-      label316:
-      c();
+      boolean bool = false;
     }
   }
   
@@ -481,27 +536,31 @@ public class bx
   
   public long h()
   {
-    long l1 = 0L;
     try
     {
-      int[] arrayOfInt = p();
+      localObject = p();
       StringBuffer localStringBuffer = new StringBuffer();
       int k = 0;
-      while (k < arrayOfInt.length)
+      while (k < localObject.length)
       {
-        localStringBuffer.append(arrayOfInt[k]);
+        localStringBuffer.append(localObject[k]);
         k += 1;
       }
-      long l2 = Long.parseLong(localStringBuffer.toString());
-      l1 = l2;
+      l = Long.parseLong(localStringBuffer.toString());
     }
     catch (Exception localException)
     {
-      label56:
-      break label56;
+      Object localObject;
+      long l;
+      label53:
+      break label53;
     }
-    TmsLog.i("mod_seed", "tokenseq: " + l1);
-    return l1;
+    l = 0L;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("tokenseq: ");
+    ((StringBuilder)localObject).append(l);
+    TmsLog.i("mod_seed", ((StringBuilder)localObject).toString());
+    return l;
   }
   
   public void i()
@@ -536,17 +595,23 @@ public class bx
   public boolean m()
   {
     long l1 = r().getLong("seed_expire_time", 0L);
-    if (l1 == 0L) {
-      TmsLog.i("mod_seed", "@isSeedExpire expiretime is 0, will never be expired.");
-    }
-    long l2;
-    do
+    boolean bool = false;
+    if (l1 == 0L)
     {
+      TmsLog.i("mod_seed", "@isSeedExpire expiretime is 0, will never be expired.");
       return false;
-      l2 = System.currentTimeMillis() + this.d;
-      TmsLog.i("mod_seed", "@isSeedExpire expiretime is server: " + l1 + " client time with plus: " + l2);
-    } while (l2 < l1);
-    return true;
+    }
+    long l2 = System.currentTimeMillis() + this.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("@isSeedExpire expiretime is server: ");
+    localStringBuilder.append(l1);
+    localStringBuilder.append(" client time with plus: ");
+    localStringBuilder.append(l2);
+    TmsLog.i("mod_seed", localStringBuilder.toString());
+    if (l2 >= l1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public long n()
@@ -562,12 +627,13 @@ public class bx
   
   public String o()
   {
-    int i1 = 0;
     Object localObject1 = new int[16];
     Object localObject2 = new dv();
     Object localObject3 = new dv();
+    int i1 = 0;
     for (;;)
     {
+      int m;
       try
       {
         localObject2 = ((dv)localObject2).a(((dv)localObject3).a(this.a));
@@ -576,8 +642,9 @@ public class bx
         if (k >= localObject2.length) {
           continue;
         }
-        localObject3[(k * 2)] = ((byte)((localObject2[k] & 0xFF) >>> 4));
-        localObject3[(k * 2 + 1)] = ((byte)(localObject2[k] & 0xF));
+        m = k * 2;
+        localObject3[m] = ((byte)((localObject2[k] & 0xFF) >>> 4));
+        localObject3[(m + 1)] = ((byte)(localObject2[k] & 0xF));
         k += 1;
         continue;
         if (localObject1[0] == 0) {
@@ -604,7 +671,7 @@ public class bx
         return ((StringBuilder)localObject2).toString();
         while (k < 16)
         {
-          int m = 0;
+          m = 0;
           int n = 0;
           while (m < 4)
           {

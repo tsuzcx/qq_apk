@@ -20,19 +20,20 @@ public class ca
     {
     default: 
       cr.e = paramString;
-    }
-    for (;;)
-    {
-      cr.c = paramString;
-      return;
-      cr.d = paramString;
-      continue;
-      cr.e = paramString;
-      continue;
-      cr.f = paramString;
-      continue;
+      break;
+    case 3: 
       cr.g = paramString;
+      break;
+    case 2: 
+      cr.f = paramString;
+      break;
+    case 1: 
+      cr.e = paramString;
+      break;
+    case 0: 
+      cr.d = paramString;
     }
+    cr.c = paramString;
   }
   
   public void a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)

@@ -30,21 +30,33 @@ public class ProtoQueryCaptcha
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    String str2 = l.a(new Object[] { "uin", Long.valueOf(this.e), "scenario_id", Integer.valueOf(this.f) });
-    if (str2 == null)
+    Object localObject = l.a(new Object[] { "uin", Long.valueOf(this.e), "scenario_id", Integer.valueOf(this.f) });
+    if (localObject == null)
     {
       this.a.a(10000, "encrypt  failed");
       return null;
     }
-    str1 = "?data=" + str2 + "&aq_base_sid=" + str1;
-    g.c("params: " + str1);
-    return c.e() + "/cn/mbtoken3/mbtoken3_query_captcha_v3" + str1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?data=");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("&aq_base_sid=");
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("params: ");
+    ((StringBuilder)localObject).append(str);
+    g.c(((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_query_captcha_v3");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -65,13 +77,17 @@ public class ProtoQueryCaptcha
     if (paramJSONObject != null)
     {
       this.d = new QueryCaptchaResult(new JSONObject(new String(paramJSONObject)));
-      this.d.mRealUin = this.e;
-      this.d.mSceneId = this.f;
+      paramJSONObject = this.d;
+      paramJSONObject.mRealUin = this.e;
+      paramJSONObject.mSceneId = this.f;
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

@@ -62,22 +62,17 @@ class AlertController
     {
       if ((paramAnonymousView == AlertController.this.mButtonPositive) && (AlertController.this.mButtonPositiveMessage != null)) {
         paramAnonymousView = Message.obtain(AlertController.this.mButtonPositiveMessage);
+      } else if ((paramAnonymousView == AlertController.this.mButtonNegative) && (AlertController.this.mButtonNegativeMessage != null)) {
+        paramAnonymousView = Message.obtain(AlertController.this.mButtonNegativeMessage);
+      } else if ((paramAnonymousView == AlertController.this.mButtonNeutral) && (AlertController.this.mButtonNeutralMessage != null)) {
+        paramAnonymousView = Message.obtain(AlertController.this.mButtonNeutralMessage);
+      } else {
+        paramAnonymousView = null;
       }
-      for (;;)
-      {
-        if (paramAnonymousView != null) {
-          paramAnonymousView.sendToTarget();
-        }
-        AlertController.this.mHandler.obtainMessage(1, AlertController.this.mDialog).sendToTarget();
-        return;
-        if ((paramAnonymousView == AlertController.this.mButtonNegative) && (AlertController.this.mButtonNegativeMessage != null)) {
-          paramAnonymousView = Message.obtain(AlertController.this.mButtonNegativeMessage);
-        } else if ((paramAnonymousView == AlertController.this.mButtonNeutral) && (AlertController.this.mButtonNeutralMessage != null)) {
-          paramAnonymousView = Message.obtain(AlertController.this.mButtonNeutralMessage);
-        } else {
-          paramAnonymousView = null;
-        }
+      if (paramAnonymousView != null) {
+        paramAnonymousView.sendToTarget();
       }
+      AlertController.this.mHandler.obtainMessage(1, AlertController.this.mDialog).sendToTarget();
     }
   };
   private final int mButtonIconDimen;
@@ -174,106 +169,98 @@ class AlertController
   static void manageScrollIndicators(View paramView1, View paramView2, View paramView3)
   {
     int j = 0;
+    int i;
     if (paramView2 != null)
     {
-      if (paramView1.canScrollVertically(-1))
-      {
+      if (paramView1.canScrollVertically(-1)) {
         i = 0;
-        paramView2.setVisibility(i);
+      } else {
+        i = 4;
       }
+      paramView2.setVisibility(i);
     }
-    else if (paramView3 != null) {
-      if (!paramView1.canScrollVertically(1)) {
-        break label48;
-      }
-    }
-    label48:
-    for (int i = j;; i = 4)
+    if (paramView3 != null)
     {
+      if (paramView1.canScrollVertically(1)) {
+        i = j;
+      } else {
+        i = 4;
+      }
       paramView3.setVisibility(i);
-      return;
-      i = 4;
-      break;
     }
   }
   
   @Nullable
   private ViewGroup resolvePanel(@Nullable View paramView1, @Nullable View paramView2)
   {
-    if (paramView1 == null) {
-      if (!(paramView2 instanceof ViewStub)) {
-        break label71;
-      }
-    }
-    label71:
-    for (paramView1 = ((ViewStub)paramView2).inflate();; paramView1 = paramView2)
+    if (paramView1 == null)
     {
+      paramView1 = paramView2;
+      if ((paramView2 instanceof ViewStub)) {
+        paramView1 = ((ViewStub)paramView2).inflate();
+      }
       return (ViewGroup)paramView1;
-      if (paramView2 != null)
-      {
-        ViewParent localViewParent = paramView2.getParent();
-        if ((localViewParent instanceof ViewGroup)) {
-          ((ViewGroup)localViewParent).removeView(paramView2);
-        }
-      }
-      if ((paramView1 instanceof ViewStub)) {
-        paramView1 = ((ViewStub)paramView1).inflate();
-      }
-      for (;;)
-      {
-        return (ViewGroup)paramView1;
+    }
+    if (paramView2 != null)
+    {
+      ViewParent localViewParent = paramView2.getParent();
+      if ((localViewParent instanceof ViewGroup)) {
+        ((ViewGroup)localViewParent).removeView(paramView2);
       }
     }
+    paramView2 = paramView1;
+    if ((paramView1 instanceof ViewStub)) {
+      paramView2 = ((ViewStub)paramView1).inflate();
+    }
+    return (ViewGroup)paramView2;
   }
   
   private int selectContentView()
   {
-    if (this.mButtonPanelSideLayout == 0) {
+    int i = this.mButtonPanelSideLayout;
+    if (i == 0) {
       return this.mAlertDialogLayout;
     }
     if (this.mButtonPanelLayoutHint == 1) {
-      return this.mButtonPanelSideLayout;
+      return i;
     }
     return this.mAlertDialogLayout;
   }
   
   private void setScrollIndicators(ViewGroup paramViewGroup, final View paramView, int paramInt1, int paramInt2)
   {
-    Object localObject = null;
-    View localView2 = this.mWindow.findViewById(R.id.scrollIndicatorUp);
-    View localView1 = this.mWindow.findViewById(R.id.scrollIndicatorDown);
+    Object localObject2 = this.mWindow.findViewById(R.id.scrollIndicatorUp);
+    Object localObject1 = this.mWindow.findViewById(R.id.scrollIndicatorDown);
     if (Build.VERSION.SDK_INT >= 23)
     {
       ViewCompat.setScrollIndicators(paramView, paramInt1, paramInt2);
-      if (localView2 != null) {
-        paramViewGroup.removeView(localView2);
+      if (localObject2 != null) {
+        paramViewGroup.removeView((View)localObject2);
       }
-      if (localView1 != null) {
-        paramViewGroup.removeView(localView1);
+      if (localObject1 != null) {
+        paramViewGroup.removeView((View)localObject1);
       }
     }
-    label232:
-    for (;;)
+    else
     {
-      return;
-      paramView = localView2;
-      if (localView2 != null)
+      Object localObject3 = null;
+      paramView = (View)localObject2;
+      if (localObject2 != null)
       {
-        paramView = localView2;
+        paramView = (View)localObject2;
         if ((paramInt1 & 0x1) == 0)
         {
-          paramViewGroup.removeView(localView2);
+          paramViewGroup.removeView((View)localObject2);
           paramView = null;
         }
       }
-      if ((localView1 != null) && ((paramInt1 & 0x2) == 0)) {
-        paramViewGroup.removeView(localView1);
-      }
-      for (;;)
+      if ((localObject1 != null) && ((paramInt1 & 0x2) == 0))
       {
-        if ((paramView == null) && (localObject == null)) {
-          break label232;
-        }
+        paramViewGroup.removeView((View)localObject1);
+        localObject1 = localObject3;
+      }
+      if ((paramView != null) || (localObject1 != null))
+      {
         if (this.mMessage != null)
         {
           this.mScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener()
@@ -292,9 +279,10 @@ class AlertController
           });
           return;
         }
-        if (this.mListView != null)
+        localObject2 = this.mListView;
+        if (localObject2 != null)
         {
-          this.mListView.setOnScrollListener(new AbsListView.OnScrollListener()
+          ((ListView)localObject2).setOnScrollListener(new AbsListView.OnScrollListener()
           {
             public void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
             {
@@ -315,98 +303,94 @@ class AlertController
         if (paramView != null) {
           paramViewGroup.removeView(paramView);
         }
-        if (localObject == null) {
-          break;
+        if (localObject1 != null) {
+          paramViewGroup.removeView((View)localObject1);
         }
-        paramViewGroup.removeView((View)localObject);
-        return;
-        localObject = localView1;
       }
     }
   }
   
   private void setupButtons(ViewGroup paramViewGroup)
   {
-    int j = 1;
     this.mButtonPositive = ((Button)paramViewGroup.findViewById(16908313));
     this.mButtonPositive.setOnClickListener(this.mButtonHandler);
-    if ((TextUtils.isEmpty(this.mButtonPositiveText)) && (this.mButtonPositiveIcon == null))
+    boolean bool = TextUtils.isEmpty(this.mButtonPositiveText);
+    int j = 1;
+    int i;
+    Drawable localDrawable;
+    if ((bool) && (this.mButtonPositiveIcon == null))
     {
       this.mButtonPositive.setVisibility(8);
       i = 0;
-      this.mButtonNegative = ((Button)paramViewGroup.findViewById(16908314));
-      this.mButtonNegative.setOnClickListener(this.mButtonHandler);
-      if ((!TextUtils.isEmpty(this.mButtonNegativeText)) || (this.mButtonNegativeIcon != null)) {
-        break label259;
-      }
-      this.mButtonNegative.setVisibility(8);
-      label106:
-      this.mButtonNeutral = ((Button)paramViewGroup.findViewById(16908315));
-      this.mButtonNeutral.setOnClickListener(this.mButtonHandler);
-      if ((!TextUtils.isEmpty(this.mButtonNeutralText)) || (this.mButtonNeutralIcon != null)) {
-        break label323;
-      }
-      this.mButtonNeutral.setVisibility(8);
-      label157:
-      if (shouldCenterSingleButton(this.mContext))
-      {
-        if (i != 1) {
-          break label387;
-        }
-        centerButton(this.mButtonPositive);
-      }
-      label180:
-      if (i == 0) {
-        break label419;
-      }
     }
-    label259:
-    label387:
-    label419:
-    for (int i = j;; i = 0)
+    else
     {
-      if (i == 0) {
-        paramViewGroup.setVisibility(8);
-      }
-      return;
       this.mButtonPositive.setText(this.mButtonPositiveText);
-      if (this.mButtonPositiveIcon != null)
+      localDrawable = this.mButtonPositiveIcon;
+      if (localDrawable != null)
       {
-        this.mButtonPositiveIcon.setBounds(0, 0, this.mButtonIconDimen, this.mButtonIconDimen);
+        i = this.mButtonIconDimen;
+        localDrawable.setBounds(0, 0, i, i);
         this.mButtonPositive.setCompoundDrawables(this.mButtonPositiveIcon, null, null, null);
       }
       this.mButtonPositive.setVisibility(0);
       i = 1;
-      break;
+    }
+    this.mButtonNegative = ((Button)paramViewGroup.findViewById(16908314));
+    this.mButtonNegative.setOnClickListener(this.mButtonHandler);
+    int k;
+    if ((TextUtils.isEmpty(this.mButtonNegativeText)) && (this.mButtonNegativeIcon == null))
+    {
+      this.mButtonNegative.setVisibility(8);
+    }
+    else
+    {
       this.mButtonNegative.setText(this.mButtonNegativeText);
-      if (this.mButtonNegativeIcon != null)
+      localDrawable = this.mButtonNegativeIcon;
+      if (localDrawable != null)
       {
-        this.mButtonNegativeIcon.setBounds(0, 0, this.mButtonIconDimen, this.mButtonIconDimen);
+        k = this.mButtonIconDimen;
+        localDrawable.setBounds(0, 0, k, k);
         this.mButtonNegative.setCompoundDrawables(this.mButtonNegativeIcon, null, null, null);
       }
       this.mButtonNegative.setVisibility(0);
       i |= 0x2;
-      break label106;
-      label323:
+    }
+    this.mButtonNeutral = ((Button)paramViewGroup.findViewById(16908315));
+    this.mButtonNeutral.setOnClickListener(this.mButtonHandler);
+    if ((TextUtils.isEmpty(this.mButtonNeutralText)) && (this.mButtonNeutralIcon == null))
+    {
+      this.mButtonNeutral.setVisibility(8);
+    }
+    else
+    {
       this.mButtonNeutral.setText(this.mButtonNeutralText);
-      if (this.mButtonPositiveIcon != null)
+      localDrawable = this.mButtonPositiveIcon;
+      if (localDrawable != null)
       {
-        this.mButtonPositiveIcon.setBounds(0, 0, this.mButtonIconDimen, this.mButtonIconDimen);
+        k = this.mButtonIconDimen;
+        localDrawable.setBounds(0, 0, k, k);
         this.mButtonPositive.setCompoundDrawables(this.mButtonPositiveIcon, null, null, null);
       }
       this.mButtonNeutral.setVisibility(0);
       i |= 0x4;
-      break label157;
-      if (i == 2)
-      {
+    }
+    if (shouldCenterSingleButton(this.mContext)) {
+      if (i == 1) {
+        centerButton(this.mButtonPositive);
+      } else if (i == 2) {
         centerButton(this.mButtonNegative);
-        break label180;
+      } else if (i == 4) {
+        centerButton(this.mButtonNeutral);
       }
-      if (i != 4) {
-        break label180;
-      }
-      centerButton(this.mButtonNeutral);
-      break label180;
+    }
+    if (i != 0) {
+      i = j;
+    } else {
+      i = 0;
+    }
+    if (i == 0) {
+      paramViewGroup.setVisibility(8);
     }
   }
   
@@ -416,15 +400,17 @@ class AlertController
     this.mScrollView.setFocusable(false);
     this.mScrollView.setNestedScrollingEnabled(false);
     this.mMessageView = ((TextView)paramViewGroup.findViewById(16908299));
-    if (this.mMessageView == null) {
+    TextView localTextView = this.mMessageView;
+    if (localTextView == null) {
       return;
     }
-    if (this.mMessage != null)
+    CharSequence localCharSequence = this.mMessage;
+    if (localCharSequence != null)
     {
-      this.mMessageView.setText(this.mMessage);
+      localTextView.setText(localCharSequence);
       return;
     }
-    this.mMessageView.setVisibility(8);
+    localTextView.setVisibility(8);
     this.mScrollView.removeView(this.mMessageView);
     if (this.mListView != null)
     {
@@ -439,22 +425,23 @@ class AlertController
   
   private void setupCustomContent(ViewGroup paramViewGroup)
   {
+    View localView = this.mView;
     int i = 0;
-    View localView;
-    if (this.mView != null) {
-      localView = this.mView;
+    if (localView == null) {
+      if (this.mViewLayoutResId != 0) {
+        localView = LayoutInflater.from(this.mContext).inflate(this.mViewLayoutResId, paramViewGroup, false);
+      } else {
+        localView = null;
+      }
     }
-    for (;;)
+    if (localView != null) {
+      i = 1;
+    }
+    if ((i == 0) || (!canTextInput(localView))) {
+      this.mWindow.setFlags(131072, 131072);
+    }
+    if (i != 0)
     {
-      if (localView != null) {
-        i = 1;
-      }
-      if ((i == 0) || (!canTextInput(localView))) {
-        this.mWindow.setFlags(131072, 131072);
-      }
-      if (i == 0) {
-        break;
-      }
       FrameLayout localFrameLayout = (FrameLayout)this.mWindow.findViewById(R.id.custom);
       localFrameLayout.addView(localView, new ViewGroup.LayoutParams(-1, -1));
       if (this.mViewSpacingSpecified) {
@@ -463,14 +450,11 @@ class AlertController
       if (this.mListView != null) {
         ((LinearLayoutCompat.LayoutParams)paramViewGroup.getLayoutParams()).weight = 0.0F;
       }
-      return;
-      if (this.mViewLayoutResId != 0) {
-        localView = LayoutInflater.from(this.mContext).inflate(this.mViewLayoutResId, paramViewGroup, false);
-      } else {
-        localView = null;
-      }
     }
-    paramViewGroup.setVisibility(8);
+    else
+    {
+      paramViewGroup.setVisibility(8);
+    }
   }
   
   private void setupTitle(ViewGroup paramViewGroup)
@@ -483,31 +467,25 @@ class AlertController
       return;
     }
     this.mIconView = ((ImageView)this.mWindow.findViewById(16908294));
-    int i;
-    if (!TextUtils.isEmpty(this.mTitle)) {
-      i = 1;
-    }
-    while ((i != 0) && (this.mShowTitle))
+    if (((TextUtils.isEmpty(this.mTitle) ^ true)) && (this.mShowTitle))
     {
       this.mTitleView = ((TextView)this.mWindow.findViewById(R.id.alertTitle));
       this.mTitleView.setText(this.mTitle);
-      if (this.mIconId != 0)
+      int i = this.mIconId;
+      if (i != 0)
       {
-        this.mIconView.setImageResource(this.mIconId);
-        return;
-        i = 0;
-      }
-      else
-      {
-        if (this.mIcon != null)
-        {
-          this.mIconView.setImageDrawable(this.mIcon);
-          return;
-        }
-        this.mTitleView.setPadding(this.mIconView.getPaddingLeft(), this.mIconView.getPaddingTop(), this.mIconView.getPaddingRight(), this.mIconView.getPaddingBottom());
-        this.mIconView.setVisibility(8);
+        this.mIconView.setImageResource(i);
         return;
       }
+      paramViewGroup = this.mIcon;
+      if (paramViewGroup != null)
+      {
+        this.mIconView.setImageDrawable(paramViewGroup);
+        return;
+      }
+      this.mTitleView.setPadding(this.mIconView.getPaddingLeft(), this.mIconView.getPaddingTop(), this.mIconView.getPaddingRight(), this.mIconView.getPaddingBottom());
+      this.mIconView.setVisibility(8);
+      return;
     }
     this.mWindow.findViewById(R.id.title_template).setVisibility(8);
     this.mIconView.setVisibility(8);
@@ -531,34 +509,37 @@ class AlertController
     setupContent((ViewGroup)localObject2);
     setupButtons((ViewGroup)localObject1);
     setupTitle((ViewGroup)localObject3);
+    int j = 0;
     int i;
-    boolean bool1;
-    label173:
-    boolean bool2;
-    if ((localObject4 != null) && (((ViewGroup)localObject4).getVisibility() != 8))
-    {
+    if ((localObject4 != null) && (((ViewGroup)localObject4).getVisibility() != 8)) {
       i = 1;
-      if ((localObject3 == null) || (((ViewGroup)localObject3).getVisibility() == 8)) {
-        break label405;
+    } else {
+      i = 0;
+    }
+    int k;
+    if ((localObject3 != null) && (((ViewGroup)localObject3).getVisibility() != 8)) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    boolean bool;
+    if ((localObject1 != null) && (((ViewGroup)localObject1).getVisibility() != 8)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if ((!bool) && (localObject2 != null))
+    {
+      localObject1 = ((ViewGroup)localObject2).findViewById(R.id.textSpacerNoButtons);
+      if (localObject1 != null) {
+        ((View)localObject1).setVisibility(0);
       }
-      bool1 = true;
-      if ((localObject1 == null) || (((ViewGroup)localObject1).getVisibility() == 8)) {
-        break label410;
-      }
-      bool2 = true;
-      label191:
-      if ((!bool2) && (localObject2 != null))
-      {
-        localObject1 = ((ViewGroup)localObject2).findViewById(R.id.textSpacerNoButtons);
-        if (localObject1 != null) {
-          ((View)localObject1).setVisibility(0);
-        }
-      }
-      if (!bool1) {
-        break label416;
-      }
-      if (this.mScrollView != null) {
-        this.mScrollView.setClipToPadding(true);
+    }
+    if (k != 0)
+    {
+      localObject1 = this.mScrollView;
+      if (localObject1 != null) {
+        ((NestedScrollView)localObject1).setClipToPadding(true);
       }
       localObject1 = null;
       if ((this.mMessage != null) || (this.mListView != null)) {
@@ -567,43 +548,40 @@ class AlertController
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(0);
       }
-      label279:
-      if ((this.mListView instanceof RecycleListView)) {
-        ((RecycleListView)this.mListView).setHasDecor(bool1, bool2);
-      }
-      if (i == 0)
-      {
-        if (this.mListView == null) {
-          break label445;
-        }
-        localObject1 = this.mListView;
-        label319:
-        if (localObject1 != null)
-        {
-          if (!bool1) {
-            break label454;
-          }
-          i = 1;
-          label330:
-          if (!bool2) {
-            break label459;
-          }
-        }
+    }
+    else if (localObject2 != null)
+    {
+      localObject1 = ((ViewGroup)localObject2).findViewById(R.id.textSpacerNoTitle);
+      if (localObject1 != null) {
+        ((View)localObject1).setVisibility(0);
       }
     }
-    label405:
-    label410:
-    label416:
-    label445:
-    label454:
-    label459:
-    for (int j = 2;; j = 0)
+    localObject1 = this.mListView;
+    if ((localObject1 instanceof RecycleListView)) {
+      ((RecycleListView)localObject1).setHasDecor(k, bool);
+    }
+    if (i == 0)
     {
-      setScrollIndicators((ViewGroup)localObject2, (View)localObject1, j | i, 3);
       localObject1 = this.mListView;
-      if ((localObject1 != null) && (this.mAdapter != null))
+      if (localObject1 == null) {
+        localObject1 = this.mScrollView;
+      }
+      if (localObject1 != null)
       {
-        ((ListView)localObject1).setAdapter(this.mAdapter);
+        i = j;
+        if (bool) {
+          i = 2;
+        }
+        setScrollIndicators((ViewGroup)localObject2, (View)localObject1, k | i, 3);
+      }
+    }
+    localObject1 = this.mListView;
+    if (localObject1 != null)
+    {
+      localObject2 = this.mAdapter;
+      if (localObject2 != null)
+      {
+        ((ListView)localObject1).setAdapter((ListAdapter)localObject2);
         i = this.mCheckedItem;
         if (i > -1)
         {
@@ -611,26 +589,6 @@ class AlertController
           ((ListView)localObject1).setSelection(i);
         }
       }
-      return;
-      i = 0;
-      break;
-      bool1 = false;
-      break label173;
-      bool2 = false;
-      break label191;
-      if (localObject2 == null) {
-        break label279;
-      }
-      localObject1 = ((ViewGroup)localObject2).findViewById(R.id.textSpacerNoTitle);
-      if (localObject1 == null) {
-        break label279;
-      }
-      ((View)localObject1).setVisibility(0);
-      break label279;
-      localObject1 = this.mScrollView;
-      break label319;
-      i = 0;
-      break label330;
     }
   }
   
@@ -676,12 +634,14 @@ class AlertController
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    return (this.mScrollView != null) && (this.mScrollView.executeKeyEvent(paramKeyEvent));
+    NestedScrollView localNestedScrollView = this.mScrollView;
+    return (localNestedScrollView != null) && (localNestedScrollView.executeKeyEvent(paramKeyEvent));
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    return (this.mScrollView != null) && (this.mScrollView.executeKeyEvent(paramKeyEvent));
+    NestedScrollView localNestedScrollView = this.mScrollView;
+    return (localNestedScrollView != null) && (localNestedScrollView.executeKeyEvent(paramKeyEvent));
   }
   
   public void setButton(int paramInt, CharSequence paramCharSequence, DialogInterface.OnClickListener paramOnClickListener, Message paramMessage, Drawable paramDrawable)
@@ -728,51 +688,51 @@ class AlertController
   {
     this.mIcon = null;
     this.mIconId = paramInt;
-    if (this.mIconView != null)
+    ImageView localImageView = this.mIconView;
+    if (localImageView != null)
     {
       if (paramInt != 0)
       {
-        this.mIconView.setVisibility(0);
+        localImageView.setVisibility(0);
         this.mIconView.setImageResource(this.mIconId);
+        return;
       }
+      localImageView.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.mIconView.setVisibility(8);
   }
   
   public void setIcon(Drawable paramDrawable)
   {
     this.mIcon = paramDrawable;
     this.mIconId = 0;
-    if (this.mIconView != null)
+    ImageView localImageView = this.mIconView;
+    if (localImageView != null)
     {
       if (paramDrawable != null)
       {
-        this.mIconView.setVisibility(0);
+        localImageView.setVisibility(0);
         this.mIconView.setImageDrawable(paramDrawable);
+        return;
       }
+      localImageView.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.mIconView.setVisibility(8);
   }
   
   public void setMessage(CharSequence paramCharSequence)
   {
     this.mMessage = paramCharSequence;
-    if (this.mMessageView != null) {
-      this.mMessageView.setText(paramCharSequence);
+    TextView localTextView = this.mMessageView;
+    if (localTextView != null) {
+      localTextView.setText(paramCharSequence);
     }
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
     this.mTitle = paramCharSequence;
-    if (this.mTitleView != null) {
-      this.mTitleView.setText(paramCharSequence);
+    TextView localTextView = this.mTitleView;
+    if (localTextView != null) {
+      localTextView.setText(paramCharSequence);
     }
   }
   
@@ -857,10 +817,10 @@ class AlertController
     private void createListView(final AlertController paramAlertController)
     {
       final AlertController.RecycleListView localRecycleListView = (AlertController.RecycleListView)this.mInflater.inflate(paramAlertController.mListLayout, null);
-      Object localObject;
-      if (this.mIsMultiChoice) {
-        if (this.mCursor == null)
-        {
+      if (this.mIsMultiChoice)
+      {
+        localObject = this.mCursor;
+        if (localObject == null) {
           localObject = new ArrayAdapter(this.mContext, paramAlertController.mMultiChoiceItemLayout, 16908308, this.mItems)
           {
             public View getView(int paramAnonymousInt, View paramAnonymousView, ViewGroup paramAnonymousViewGroup)
@@ -872,83 +832,71 @@ class AlertController
               return paramAnonymousView;
             }
           };
-          if (this.mOnPrepareListViewListener != null) {
-            this.mOnPrepareListViewListener.onPrepareListView(localRecycleListView);
-          }
-          paramAlertController.mAdapter = ((ListAdapter)localObject);
-          paramAlertController.mCheckedItem = this.mCheckedItem;
-          if (this.mOnClickListener == null) {
-            break label271;
-          }
-          localRecycleListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        } else {
+          localObject = new CursorAdapter(this.mContext, (Cursor)localObject, false)
           {
-            public void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+            private final int mIsCheckedIndex;
+            private final int mLabelIndex;
+            
+            public void bindView(View paramAnonymousView, Context paramAnonymousContext, Cursor paramAnonymousCursor)
             {
-              AlertController.AlertParams.this.mOnClickListener.onClick(paramAlertController.mDialog, paramAnonymousInt);
-              if (!AlertController.AlertParams.this.mIsSingleChoice) {
-                paramAlertController.mDialog.dismiss();
+              ((CheckedTextView)paramAnonymousView.findViewById(16908308)).setText(paramAnonymousCursor.getString(this.mLabelIndex));
+              paramAnonymousView = localRecycleListView;
+              int i = paramAnonymousCursor.getPosition();
+              int j = paramAnonymousCursor.getInt(this.mIsCheckedIndex);
+              boolean bool = true;
+              if (j != 1) {
+                bool = false;
               }
+              paramAnonymousView.setItemChecked(i, bool);
             }
-          });
-          label108:
-          if (this.mOnItemSelectedListener != null) {
-            localRecycleListView.setOnItemSelectedListener(this.mOnItemSelectedListener);
-          }
-          if (!this.mIsSingleChoice) {
-            break label297;
-          }
-          localRecycleListView.setChoiceMode(1);
+            
+            public View newView(Context paramAnonymousContext, Cursor paramAnonymousCursor, ViewGroup paramAnonymousViewGroup)
+            {
+              return AlertController.AlertParams.this.mInflater.inflate(paramAlertController.mMultiChoiceItemLayout, paramAnonymousViewGroup, false);
+            }
+          };
         }
       }
-      for (;;)
+      else
       {
-        paramAlertController.mListView = localRecycleListView;
-        return;
-        localObject = new CursorAdapter(this.mContext, this.mCursor, false)
-        {
-          private final int mIsCheckedIndex;
-          private final int mLabelIndex;
-          
-          public void bindView(View paramAnonymousView, Context paramAnonymousContext, Cursor paramAnonymousCursor)
-          {
-            ((CheckedTextView)paramAnonymousView.findViewById(16908308)).setText(paramAnonymousCursor.getString(this.mLabelIndex));
-            paramAnonymousView = localRecycleListView;
-            int i = paramAnonymousCursor.getPosition();
-            if (paramAnonymousCursor.getInt(this.mIsCheckedIndex) == 1) {}
-            for (boolean bool = true;; bool = false)
-            {
-              paramAnonymousView.setItemChecked(i, bool);
-              return;
-            }
-          }
-          
-          public View newView(Context paramAnonymousContext, Cursor paramAnonymousCursor, ViewGroup paramAnonymousViewGroup)
-          {
-            return AlertController.AlertParams.this.mInflater.inflate(paramAlertController.mMultiChoiceItemLayout, paramAnonymousViewGroup, false);
-          }
-        };
-        break;
-        if (this.mIsSingleChoice) {}
-        for (int i = paramAlertController.mSingleChoiceItemLayout;; i = paramAlertController.mListItemLayout)
-        {
-          if (this.mCursor == null) {
-            break label234;
-          }
-          localObject = new SimpleCursorAdapter(this.mContext, i, this.mCursor, new String[] { this.mLabelColumn }, new int[] { 16908308 });
-          break;
+        int i;
+        if (this.mIsSingleChoice) {
+          i = paramAlertController.mSingleChoiceItemLayout;
+        } else {
+          i = paramAlertController.mListItemLayout;
         }
-        label234:
-        if (this.mAdapter != null)
+        localObject = this.mCursor;
+        if (localObject != null)
+        {
+          localObject = new SimpleCursorAdapter(this.mContext, i, (Cursor)localObject, new String[] { this.mLabelColumn }, new int[] { 16908308 });
+        }
+        else
         {
           localObject = this.mAdapter;
-          break;
+          if (localObject == null) {
+            localObject = new AlertController.CheckedItemAdapter(this.mContext, i, 16908308, this.mItems);
+          }
         }
-        localObject = new AlertController.CheckedItemAdapter(this.mContext, i, 16908308, this.mItems);
-        break;
-        label271:
-        if (this.mOnCheckboxClickListener == null) {
-          break label108;
-        }
+      }
+      OnPrepareListViewListener localOnPrepareListViewListener = this.mOnPrepareListViewListener;
+      if (localOnPrepareListViewListener != null) {
+        localOnPrepareListViewListener.onPrepareListView(localRecycleListView);
+      }
+      paramAlertController.mAdapter = ((ListAdapter)localObject);
+      paramAlertController.mCheckedItem = this.mCheckedItem;
+      if (this.mOnClickListener != null) {
+        localRecycleListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+          public void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+          {
+            AlertController.AlertParams.this.mOnClickListener.onClick(paramAlertController.mDialog, paramAnonymousInt);
+            if (!AlertController.AlertParams.this.mIsSingleChoice) {
+              paramAlertController.mDialog.dismiss();
+            }
+          }
+        });
+      } else if (this.mOnCheckboxClickListener != null) {
         localRecycleListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
           public void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
@@ -959,65 +907,76 @@ class AlertController
             AlertController.AlertParams.this.mOnCheckboxClickListener.onClick(paramAlertController.mDialog, paramAnonymousInt, localRecycleListView.isItemChecked(paramAnonymousInt));
           }
         });
-        break label108;
-        label297:
-        if (this.mIsMultiChoice) {
-          localRecycleListView.setChoiceMode(2);
-        }
       }
+      Object localObject = this.mOnItemSelectedListener;
+      if (localObject != null) {
+        localRecycleListView.setOnItemSelectedListener((AdapterView.OnItemSelectedListener)localObject);
+      }
+      if (this.mIsSingleChoice) {
+        localRecycleListView.setChoiceMode(1);
+      } else if (this.mIsMultiChoice) {
+        localRecycleListView.setChoiceMode(2);
+      }
+      paramAlertController.mListView = localRecycleListView;
     }
     
     public void apply(AlertController paramAlertController)
     {
-      if (this.mCustomTitleView != null)
+      Object localObject = this.mCustomTitleView;
+      if (localObject != null)
       {
-        paramAlertController.setCustomTitle(this.mCustomTitleView);
-        if (this.mMessage != null) {
-          paramAlertController.setMessage(this.mMessage);
-        }
-        if ((this.mPositiveButtonText != null) || (this.mPositiveButtonIcon != null)) {
-          paramAlertController.setButton(-1, this.mPositiveButtonText, this.mPositiveButtonListener, null, this.mPositiveButtonIcon);
-        }
-        if ((this.mNegativeButtonText != null) || (this.mNegativeButtonIcon != null)) {
-          paramAlertController.setButton(-2, this.mNegativeButtonText, this.mNegativeButtonListener, null, this.mNegativeButtonIcon);
-        }
-        if ((this.mNeutralButtonText != null) || (this.mNeutralButtonIcon != null)) {
-          paramAlertController.setButton(-3, this.mNeutralButtonText, this.mNeutralButtonListener, null, this.mNeutralButtonIcon);
-        }
-        if ((this.mItems != null) || (this.mCursor != null) || (this.mAdapter != null)) {
-          createListView(paramAlertController);
-        }
-        if (this.mView == null) {
-          break label269;
-        }
-        if (!this.mViewSpacingSpecified) {
-          break label260;
-        }
-        paramAlertController.setView(this.mView, this.mViewSpacingLeft, this.mViewSpacingTop, this.mViewSpacingRight, this.mViewSpacingBottom);
+        paramAlertController.setCustomTitle((View)localObject);
       }
-      label260:
-      label269:
-      while (this.mViewLayoutResId == 0)
+      else
       {
-        return;
-        if (this.mTitle != null) {
-          paramAlertController.setTitle(this.mTitle);
+        localObject = this.mTitle;
+        if (localObject != null) {
+          paramAlertController.setTitle((CharSequence)localObject);
         }
-        if (this.mIcon != null) {
-          paramAlertController.setIcon(this.mIcon);
+        localObject = this.mIcon;
+        if (localObject != null) {
+          paramAlertController.setIcon((Drawable)localObject);
         }
-        if (this.mIconId != 0) {
-          paramAlertController.setIcon(this.mIconId);
+        i = this.mIconId;
+        if (i != 0) {
+          paramAlertController.setIcon(i);
         }
-        if (this.mIconAttrId == 0) {
-          break;
+        i = this.mIconAttrId;
+        if (i != 0) {
+          paramAlertController.setIcon(paramAlertController.getIconAttributeResId(i));
         }
-        paramAlertController.setIcon(paramAlertController.getIconAttributeResId(this.mIconAttrId));
-        break;
-        paramAlertController.setView(this.mView);
+      }
+      localObject = this.mMessage;
+      if (localObject != null) {
+        paramAlertController.setMessage((CharSequence)localObject);
+      }
+      if ((this.mPositiveButtonText != null) || (this.mPositiveButtonIcon != null)) {
+        paramAlertController.setButton(-1, this.mPositiveButtonText, this.mPositiveButtonListener, null, this.mPositiveButtonIcon);
+      }
+      if ((this.mNegativeButtonText != null) || (this.mNegativeButtonIcon != null)) {
+        paramAlertController.setButton(-2, this.mNegativeButtonText, this.mNegativeButtonListener, null, this.mNegativeButtonIcon);
+      }
+      if ((this.mNeutralButtonText != null) || (this.mNeutralButtonIcon != null)) {
+        paramAlertController.setButton(-3, this.mNeutralButtonText, this.mNeutralButtonListener, null, this.mNeutralButtonIcon);
+      }
+      if ((this.mItems != null) || (this.mCursor != null) || (this.mAdapter != null)) {
+        createListView(paramAlertController);
+      }
+      localObject = this.mView;
+      if (localObject != null)
+      {
+        if (this.mViewSpacingSpecified)
+        {
+          paramAlertController.setView((View)localObject, this.mViewSpacingLeft, this.mViewSpacingTop, this.mViewSpacingRight, this.mViewSpacingBottom);
+          return;
+        }
+        paramAlertController.setView((View)localObject);
         return;
       }
-      paramAlertController.setView(this.mViewLayoutResId);
+      int i = this.mViewLayoutResId;
+      if (i != 0) {
+        paramAlertController.setView(i);
+      }
     }
     
     public static abstract interface OnPrepareListViewListener
@@ -1039,14 +998,14 @@ class AlertController
     
     public void handleMessage(Message paramMessage)
     {
-      switch (paramMessage.what)
+      int i = paramMessage.what;
+      if (i != 1)
       {
-      case 0: 
-      default: 
-        return;
-      case -3: 
-      case -2: 
-      case -1: 
+        switch (i)
+        {
+        default: 
+          return;
+        }
         ((DialogInterface.OnClickListener)paramMessage.obj).onClick((DialogInterface)this.mDialog.get(), paramMessage.what);
         return;
       }
@@ -1094,29 +1053,23 @@ class AlertController
     
     public void setHasDecor(boolean paramBoolean1, boolean paramBoolean2)
     {
-      int k;
-      int i;
-      int m;
       if ((!paramBoolean2) || (!paramBoolean1))
       {
-        k = getPaddingLeft();
-        if (!paramBoolean1) {
-          break label51;
+        int k = getPaddingLeft();
+        int i;
+        if (paramBoolean1) {
+          i = getPaddingTop();
+        } else {
+          i = this.mPaddingTopNoTitle;
         }
-        i = getPaddingTop();
-        m = getPaddingRight();
-        if (!paramBoolean2) {
-          break label59;
+        int m = getPaddingRight();
+        int j;
+        if (paramBoolean2) {
+          j = getPaddingBottom();
+        } else {
+          j = this.mPaddingBottomNoButtons;
         }
-      }
-      label51:
-      label59:
-      for (int j = getPaddingBottom();; j = this.mPaddingBottomNoButtons)
-      {
         setPadding(k, i, m, j);
-        return;
-        i = this.mPaddingTopNoTitle;
-        break;
       }
     }
   }

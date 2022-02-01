@@ -32,11 +32,11 @@ public class ShortcutInfoCompat
   @VisibleForTesting
   Intent addToIntent(Intent paramIntent)
   {
-    paramIntent.putExtra("android.intent.extra.shortcut.INTENT", this.mIntents[(this.mIntents.length - 1)]).putExtra("android.intent.extra.shortcut.NAME", this.mLabel.toString());
+    Object localObject1 = this.mIntents;
+    paramIntent.putExtra("android.intent.extra.shortcut.INTENT", localObject1[(localObject1.length - 1)]).putExtra("android.intent.extra.shortcut.NAME", this.mLabel.toString());
     Object localObject3;
     Object localObject4;
     PackageManager localPackageManager;
-    Object localObject1;
     if (this.mIcon != null)
     {
       localObject3 = null;
@@ -44,13 +44,14 @@ public class ShortcutInfoCompat
       if (this.mIsAlwaysBadged)
       {
         localPackageManager = this.mContext.getPackageManager();
+        localObject3 = this.mActivity;
         localObject1 = localObject4;
-        if (this.mActivity == null) {}
+        if (localObject3 == null) {}
       }
     }
     try
     {
-      localObject1 = localPackageManager.getActivityIcon(this.mActivity);
+      localObject1 = localPackageManager.getActivityIcon((ComponentName)localObject3);
       localObject3 = localObject1;
       if (localObject1 == null) {
         localObject3 = this.mContext.getApplicationInfo().loadIcon(localPackageManager);
@@ -88,13 +89,15 @@ public class ShortcutInfoCompat
   @NonNull
   public Intent getIntent()
   {
-    return this.mIntents[(this.mIntents.length - 1)];
+    Intent[] arrayOfIntent = this.mIntents;
+    return arrayOfIntent[(arrayOfIntent.length - 1)];
   }
   
   @NonNull
   public Intent[] getIntents()
   {
-    return (Intent[])Arrays.copyOf(this.mIntents, this.mIntents.length);
+    Intent[] arrayOfIntent = this.mIntents;
+    return (Intent[])Arrays.copyOf(arrayOfIntent, arrayOfIntent.length);
   }
   
   @Nullable
@@ -113,8 +116,9 @@ public class ShortcutInfoCompat
   public ShortcutInfo toShortcutInfo()
   {
     ShortcutInfo.Builder localBuilder = new ShortcutInfo.Builder(this.mContext, this.mId).setShortLabel(this.mLabel).setIntents(this.mIntents);
-    if (this.mIcon != null) {
-      localBuilder.setIcon(this.mIcon.toIcon());
+    Object localObject = this.mIcon;
+    if (localObject != null) {
+      localBuilder.setIcon(((IconCompat)localObject).toIcon());
     }
     if (!TextUtils.isEmpty(this.mLongLabel)) {
       localBuilder.setLongLabel(this.mLongLabel);
@@ -122,8 +126,9 @@ public class ShortcutInfoCompat
     if (!TextUtils.isEmpty(this.mDisabledMessage)) {
       localBuilder.setDisabledMessage(this.mDisabledMessage);
     }
-    if (this.mActivity != null) {
-      localBuilder.setActivity(this.mActivity);
+    localObject = this.mActivity;
+    if (localObject != null) {
+      localBuilder.setActivity((ComponentName)localObject);
     }
     return localBuilder.build();
   }
@@ -141,13 +146,14 @@ public class ShortcutInfoCompat
     @NonNull
     public ShortcutInfoCompat build()
     {
-      if (TextUtils.isEmpty(this.mInfo.mLabel)) {
-        throw new IllegalArgumentException("Shortcut much have a non-empty label");
-      }
-      if ((this.mInfo.mIntents == null) || (this.mInfo.mIntents.length == 0)) {
+      if (!TextUtils.isEmpty(this.mInfo.mLabel))
+      {
+        if ((this.mInfo.mIntents != null) && (this.mInfo.mIntents.length != 0)) {
+          return this.mInfo;
+        }
         throw new IllegalArgumentException("Shortcut much have an intent");
       }
-      return this.mInfo;
+      throw new IllegalArgumentException("Shortcut much have a non-empty label");
     }
     
     @NonNull

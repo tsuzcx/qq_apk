@@ -43,15 +43,13 @@ public final class DrawableCompat
   
   public static void clearColorFilter(@NonNull Drawable paramDrawable)
   {
-    if (Build.VERSION.SDK_INT >= 23) {
-      paramDrawable.clearColorFilter();
-    }
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 23)
     {
+      paramDrawable.clearColorFilter();
       return;
-      if (Build.VERSION.SDK_INT < 21) {
-        break;
-      }
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       paramDrawable.clearColorFilter();
       if ((paramDrawable instanceof InsetDrawable))
       {
@@ -81,7 +79,10 @@ public final class DrawableCompat
         }
       }
     }
-    paramDrawable.clearColorFilter();
+    else
+    {
+      paramDrawable.clearColorFilter();
+    }
   }
   
   public static int getAlpha(@NonNull Drawable paramDrawable)
@@ -107,30 +108,30 @@ public final class DrawableCompat
     }
     if (Build.VERSION.SDK_INT >= 17)
     {
-      if (!sGetLayoutDirectionMethodFetched) {}
-      try
+      if (!sGetLayoutDirectionMethodFetched)
       {
-        sGetLayoutDirectionMethod = Drawable.class.getDeclaredMethod("getLayoutDirection", new Class[0]);
-        sGetLayoutDirectionMethod.setAccessible(true);
-        sGetLayoutDirectionMethodFetched = true;
-        if (sGetLayoutDirectionMethod == null) {}
-      }
-      catch (NoSuchMethodException localNoSuchMethodException)
-      {
-        for (;;)
+        try
         {
-          try
-          {
-            int i = ((Integer)sGetLayoutDirectionMethod.invoke(paramDrawable, new Object[0])).intValue();
-            return i;
-          }
-          catch (Exception paramDrawable)
-          {
-            Log.i("DrawableCompat", "Failed to invoke getLayoutDirection() via reflection", paramDrawable);
-            sGetLayoutDirectionMethod = null;
-          }
-          localNoSuchMethodException = localNoSuchMethodException;
+          sGetLayoutDirectionMethod = Drawable.class.getDeclaredMethod("getLayoutDirection", new Class[0]);
+          sGetLayoutDirectionMethod.setAccessible(true);
+        }
+        catch (NoSuchMethodException localNoSuchMethodException)
+        {
           Log.i("DrawableCompat", "Failed to retrieve getLayoutDirection() method", localNoSuchMethodException);
+        }
+        sGetLayoutDirectionMethodFetched = true;
+      }
+      Method localMethod = sGetLayoutDirectionMethod;
+      if (localMethod != null) {
+        try
+        {
+          int i = ((Integer)localMethod.invoke(paramDrawable, new Object[0])).intValue();
+          return i;
+        }
+        catch (Exception paramDrawable)
+        {
+          Log.i("DrawableCompat", "Failed to invoke getLayoutDirection() via reflection", paramDrawable);
+          sGetLayoutDirectionMethod = null;
         }
       }
       return 0;
@@ -190,101 +191,104 @@ public final class DrawableCompat
     }
     if (Build.VERSION.SDK_INT >= 17)
     {
-      if (!sSetLayoutDirectionMethodFetched) {}
-      try
+      if (!sSetLayoutDirectionMethodFetched)
       {
-        sSetLayoutDirectionMethod = Drawable.class.getDeclaredMethod("setLayoutDirection", new Class[] { Integer.TYPE });
-        sSetLayoutDirectionMethod.setAccessible(true);
-        sSetLayoutDirectionMethodFetched = true;
-        if (sSetLayoutDirectionMethod != null) {
-          try
-          {
-            sSetLayoutDirectionMethod.invoke(paramDrawable, new Object[] { Integer.valueOf(paramInt) });
-            return true;
-          }
-          catch (Exception paramDrawable)
-          {
-            Log.i("DrawableCompat", "Failed to invoke setLayoutDirection(int) via reflection", paramDrawable);
-            sSetLayoutDirectionMethod = null;
-          }
+        try
+        {
+          sSetLayoutDirectionMethod = Drawable.class.getDeclaredMethod("setLayoutDirection", new Class[] { Integer.TYPE });
+          sSetLayoutDirectionMethod.setAccessible(true);
         }
-        return false;
-      }
-      catch (NoSuchMethodException localNoSuchMethodException)
-      {
-        for (;;)
+        catch (NoSuchMethodException localNoSuchMethodException)
         {
           Log.i("DrawableCompat", "Failed to retrieve setLayoutDirection(int) method", localNoSuchMethodException);
         }
+        sSetLayoutDirectionMethodFetched = true;
       }
+      Method localMethod = sSetLayoutDirectionMethod;
+      if (localMethod != null) {
+        try
+        {
+          localMethod.invoke(paramDrawable, new Object[] { Integer.valueOf(paramInt) });
+          return true;
+        }
+        catch (Exception paramDrawable)
+        {
+          Log.i("DrawableCompat", "Failed to invoke setLayoutDirection(int) via reflection", paramDrawable);
+          sSetLayoutDirectionMethod = null;
+        }
+      }
+      return false;
     }
     return false;
   }
   
   public static void setTint(@NonNull Drawable paramDrawable, @ColorInt int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       paramDrawable.setTint(paramInt);
-    }
-    while (!(paramDrawable instanceof TintAwareDrawable)) {
       return;
     }
-    ((TintAwareDrawable)paramDrawable).setTint(paramInt);
+    if ((paramDrawable instanceof TintAwareDrawable)) {
+      ((TintAwareDrawable)paramDrawable).setTint(paramInt);
+    }
   }
   
   public static void setTintList(@NonNull Drawable paramDrawable, @Nullable ColorStateList paramColorStateList)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       paramDrawable.setTintList(paramColorStateList);
-    }
-    while (!(paramDrawable instanceof TintAwareDrawable)) {
       return;
     }
-    ((TintAwareDrawable)paramDrawable).setTintList(paramColorStateList);
+    if ((paramDrawable instanceof TintAwareDrawable)) {
+      ((TintAwareDrawable)paramDrawable).setTintList(paramColorStateList);
+    }
   }
   
   public static void setTintMode(@NonNull Drawable paramDrawable, @NonNull PorterDuff.Mode paramMode)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       paramDrawable.setTintMode(paramMode);
-    }
-    while (!(paramDrawable instanceof TintAwareDrawable)) {
       return;
     }
-    ((TintAwareDrawable)paramDrawable).setTintMode(paramMode);
+    if ((paramDrawable instanceof TintAwareDrawable)) {
+      ((TintAwareDrawable)paramDrawable).setTintMode(paramMode);
+    }
   }
   
   public static <T extends Drawable> T unwrap(@NonNull Drawable paramDrawable)
   {
-    Drawable localDrawable = paramDrawable;
     if ((paramDrawable instanceof WrappedDrawable)) {
-      localDrawable = ((WrappedDrawable)paramDrawable).getWrappedDrawable();
+      return ((WrappedDrawable)paramDrawable).getWrappedDrawable();
     }
-    return localDrawable;
+    return paramDrawable;
   }
   
   public static Drawable wrap(@NonNull Drawable paramDrawable)
   {
-    if (Build.VERSION.SDK_INT >= 23) {}
-    do
+    if (Build.VERSION.SDK_INT >= 23) {
+      return paramDrawable;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      do
-      {
-        do
-        {
-          return paramDrawable;
-          if (Build.VERSION.SDK_INT < 21) {
-            break;
-          }
-        } while ((paramDrawable instanceof TintAwareDrawable));
+      if (!(paramDrawable instanceof TintAwareDrawable)) {
         return new WrappedDrawableApi21(paramDrawable);
-        if (Build.VERSION.SDK_INT < 19) {
-          break;
-        }
-      } while ((paramDrawable instanceof TintAwareDrawable));
-      return new WrappedDrawableApi19(paramDrawable);
-    } while ((paramDrawable instanceof TintAwareDrawable));
-    return new WrappedDrawableApi14(paramDrawable);
+      }
+      return paramDrawable;
+    }
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      if (!(paramDrawable instanceof TintAwareDrawable)) {
+        return new WrappedDrawableApi19(paramDrawable);
+      }
+      return paramDrawable;
+    }
+    if (!(paramDrawable instanceof TintAwareDrawable)) {
+      return new WrappedDrawableApi14(paramDrawable);
+    }
+    return paramDrawable;
   }
 }
 

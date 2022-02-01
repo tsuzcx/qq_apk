@@ -17,42 +17,43 @@ public class RealNameFirstJoinActivity
   
   private void initView()
   {
-    setContentView(2130968663);
-    Button localButton = (Button)findViewById(2131558921);
-    TextView localTextView1 = (TextView)findViewById(2131558919);
-    if (this.mResult != null) {
-      localTextView1.setText(String.valueOf(this.mResult.reg_rank));
-    }
-    for (;;)
+    setContentView(2131296343);
+    Button localButton = (Button)findViewById(2131165500);
+    TextView localTextView1 = (TextView)findViewById(2131165498);
+    Object localObject = this.mResult;
+    if (localObject != null)
     {
-      localButton.setOnClickListener(new View.OnClickListener()
-      {
-        public void onClick(View paramAnonymousView)
-        {
-          RealNameFirstJoinActivity.this.setResult(1);
-          RealNameFirstJoinActivity.this.finish();
-        }
-      });
-      ((ImageView)findViewById(2131558923)).setOnClickListener(new View.OnClickListener()
-      {
-        public void onClick(View paramAnonymousView)
-        {
-          RealNameFirstJoinActivity.this.finish();
-        }
-      });
-      return;
-      TextView localTextView2 = (TextView)findViewById(2131558918);
-      TextView localTextView3 = (TextView)findViewById(2131558920);
-      localTextView2.setText(2131230784);
-      localTextView3.setVisibility(8);
+      localTextView1.setText(String.valueOf(((RealNameStatusResult)localObject).reg_rank));
+    }
+    else
+    {
+      localObject = (TextView)findViewById(2131166070);
+      TextView localTextView2 = (TextView)findViewById(2131166071);
+      ((TextView)localObject).setText(2131492926);
+      localTextView2.setVisibility(8);
       localTextView1.setVisibility(8);
     }
+    localButton.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        RealNameFirstJoinActivity.this.setResult(1);
+        RealNameFirstJoinActivity.this.finish();
+      }
+    });
+    ((ImageView)findViewById(2131165380)).setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        RealNameFirstJoinActivity.this.finish();
+      }
+    });
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setTheme(2131362067);
+    setTheme(2131558673);
     this.mResult = ((RealNameStatusResult)getIntent().getSerializableExtra("result"));
     initView();
   }

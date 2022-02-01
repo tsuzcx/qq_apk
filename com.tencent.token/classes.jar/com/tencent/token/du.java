@@ -9,14 +9,16 @@ public abstract class du
   protected int b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     byte[] arrayOfByte = b();
-    if (paramInt2 < arrayOfByte.length) {
-      throw new Exception("partial digests not returned");
-    }
-    if (paramArrayOfByte.length - paramInt1 < arrayOfByte.length) {
+    if (paramInt2 >= arrayOfByte.length)
+    {
+      if (paramArrayOfByte.length - paramInt1 >= arrayOfByte.length)
+      {
+        System.arraycopy(arrayOfByte, 0, paramArrayOfByte, paramInt1, arrayOfByte.length);
+        return arrayOfByte.length;
+      }
       throw new Exception("insufficient space in the output buffer to store the digest");
     }
-    System.arraycopy(arrayOfByte, 0, paramArrayOfByte, paramInt1, arrayOfByte.length);
-    return arrayOfByte.length;
+    throw new Exception("partial digests not returned");
   }
   
   protected abstract byte[] b();

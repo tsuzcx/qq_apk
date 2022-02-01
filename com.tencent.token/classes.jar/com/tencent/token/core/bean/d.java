@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 public class d
 {
-  public static int[] a = { 2130837589, 2130837590, 2130837591 };
-  public static int[] b = { 2131493051, 2131492921, 2131492922 };
-  public static int[] c = { 2131492945, 2131492944, 2131492943 };
+  public static int[] a = { 2131099734, 2131099735, 2131099736 };
+  public static int[] b = { 2130968787, 2130968653, 2130968654 };
+  public static int[] c = { 2130968677, 2130968676, 2130968675 };
   private RelativeLayout d;
   private TextView e;
   private TextView f;
@@ -44,37 +44,40 @@ public class d
   private String a()
   {
     String str = "";
-    if (this.k == 2) {
-      str = this.m.getResources().getString(2131231256);
+    int i1 = this.k;
+    if (i1 == 2) {
+      return this.m.getResources().getString(2131493398);
     }
-    while (this.k != 4) {
-      return str;
+    if (i1 == 4) {
+      str = this.m.getResources().getString(2131493395);
     }
-    return this.m.getResources().getString(2131231253);
+    return str;
   }
   
   private String b()
   {
     String str = "";
-    if (this.k == 2) {
-      str = this.m.getResources().getString(2131231257);
+    int i1 = this.k;
+    if (i1 == 2) {
+      return this.m.getResources().getString(2131493399);
     }
-    while (this.k != 4) {
-      return str;
+    if (i1 == 4) {
+      str = this.m.getResources().getString(2131493396);
     }
-    return this.m.getResources().getString(2131231254);
+    return str;
   }
   
   private String c()
   {
     String str = "";
-    if (this.k == 2) {
-      str = this.m.getResources().getString(2131231138);
+    int i1 = this.k;
+    if (i1 == 2) {
+      return this.m.getResources().getString(2131493280);
     }
-    while (this.k != 4) {
-      return str;
+    if (i1 == 4) {
+      str = this.m.getResources().getString(2131493273);
     }
-    return this.m.getResources().getString(2131231131);
+    return str;
   }
   
   public void a(int paramInt)
@@ -91,20 +94,30 @@ public class d
     switch (paramInt)
     {
     default: 
-    case 0: 
-      do
+      return;
+    case 3: 
+      paramInt = this.j;
+      if ((paramInt < 0) || (paramInt > b.length - 1)) {
+        this.j = 0;
+      }
+      this.e.setTextColor(this.m.getResources().getColor(c[2]));
+      this.f.setText(this.l);
+      this.f.setTextColor(this.m.getResources().getColor(b[this.j]));
+      this.g.clearAnimation();
+      if (this.j != 0)
       {
-        return;
-        this.e.setText(a());
-        this.e.setTextColor(this.m.getResources().getColor(c[2]));
-        this.f.setText(b());
-        this.f.setTextColor(this.m.getResources().getColor(c[1]));
-        this.g.setVisibility(4);
-        this.h.setVisibility(0);
-        this.g.clearAnimation();
-        this.d.setEnabled(true);
-      } while (paramOnClickListener == null);
-      this.d.setOnClickListener(paramOnClickListener);
+        this.g.setVisibility(0);
+        this.g.setImageDrawable(this.m.getResources().getDrawable(a[this.j]));
+      }
+      this.h.setVisibility(0);
+      this.d.setEnabled(true);
+      this.d.setOnClickListener(this.n);
+      return;
+    case 2: 
+      this.e.setTextColor(this.m.getResources().getColor(c[2]));
+      this.f.setText(c());
+      this.f.setTextColor(this.m.getResources().getColor(c[1]));
+      this.d.setEnabled(false);
       return;
     case 1: 
       this.e.setTextColor(this.m.getResources().getColor(c[1]));
@@ -113,28 +126,18 @@ public class d
       this.h.setVisibility(4);
       this.d.setEnabled(false);
       return;
-    case 2: 
-      this.e.setTextColor(this.m.getResources().getColor(c[2]));
-      this.f.setText(c());
-      this.f.setTextColor(this.m.getResources().getColor(c[1]));
-      this.d.setEnabled(false);
-      return;
     }
-    if ((this.j < 0) || (this.j > b.length - 1)) {
-      this.j = 0;
-    }
+    this.e.setText(a());
     this.e.setTextColor(this.m.getResources().getColor(c[2]));
-    this.f.setText(this.l);
-    this.f.setTextColor(this.m.getResources().getColor(b[this.j]));
-    this.g.clearAnimation();
-    if (this.j != 0)
-    {
-      this.g.setVisibility(0);
-      this.g.setImageDrawable(this.m.getResources().getDrawable(a[this.j]));
-    }
+    this.f.setText(b());
+    this.f.setTextColor(this.m.getResources().getColor(c[1]));
+    this.g.setVisibility(4);
     this.h.setVisibility(0);
+    this.g.clearAnimation();
     this.d.setEnabled(true);
-    this.d.setOnClickListener(this.n);
+    if (paramOnClickListener != null) {
+      this.d.setOnClickListener(paramOnClickListener);
+    }
   }
   
   public void a(View.OnClickListener paramOnClickListener)

@@ -38,34 +38,35 @@ class ResourcesFlusher
   @RequiresApi(21)
   private static boolean flushLollipops(@NonNull Resources paramResources)
   {
-    if (!sDrawableCacheFieldFetched) {}
-    try
-    {
-      sDrawableCacheField = Resources.class.getDeclaredField("mDrawableCache");
-      sDrawableCacheField.setAccessible(true);
-      sDrawableCacheFieldFetched = true;
-      if (sDrawableCacheField == null) {}
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
+    if (!sDrawableCacheFieldFetched)
     {
       try
       {
-        paramResources = (Map)sDrawableCacheField.get(paramResources);
-        if (paramResources != null)
-        {
-          paramResources.clear();
-          return true;
-          localNoSuchFieldException = localNoSuchFieldException;
-          Log.e("ResourcesFlusher", "Could not retrieve Resources#mDrawableCache field", localNoSuchFieldException);
-        }
+        sDrawableCacheField = Resources.class.getDeclaredField("mDrawableCache");
+        sDrawableCacheField.setAccessible(true);
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        Log.e("ResourcesFlusher", "Could not retrieve Resources#mDrawableCache field", localNoSuchFieldException);
+      }
+      sDrawableCacheFieldFetched = true;
+    }
+    Field localField = sDrawableCacheField;
+    if (localField != null)
+    {
+      try
+      {
+        paramResources = (Map)localField.get(paramResources);
       }
       catch (IllegalAccessException paramResources)
       {
-        for (;;)
-        {
-          Log.e("ResourcesFlusher", "Could not retrieve value from Resources#mDrawableCache", paramResources);
-          paramResources = null;
-        }
+        Log.e("ResourcesFlusher", "Could not retrieve value from Resources#mDrawableCache", paramResources);
+        paramResources = null;
+      }
+      if (paramResources != null)
+      {
+        paramResources.clear();
+        return true;
       }
     }
     return false;
@@ -74,172 +75,159 @@ class ResourcesFlusher
   @RequiresApi(23)
   private static boolean flushMarshmallows(@NonNull Resources paramResources)
   {
-    boolean bool = true;
-    if (!sDrawableCacheFieldFetched) {}
-    try
+    if (!sDrawableCacheFieldFetched)
     {
-      sDrawableCacheField = Resources.class.getDeclaredField("mDrawableCache");
-      sDrawableCacheField.setAccessible(true);
-      sDrawableCacheFieldFetched = true;
-      if (sDrawableCacheField == null) {}
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
+      try
       {
-        try
-        {
-          paramResources = sDrawableCacheField.get(paramResources);
-          if (paramResources != null) {
-            break;
-          }
-          return false;
-        }
-        catch (IllegalAccessException paramResources)
-        {
-          Log.e("ResourcesFlusher", "Could not retrieve value from Resources#mDrawableCache", paramResources);
-        }
-        localNoSuchFieldException = localNoSuchFieldException;
+        sDrawableCacheField = Resources.class.getDeclaredField("mDrawableCache");
+        sDrawableCacheField.setAccessible(true);
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
         Log.e("ResourcesFlusher", "Could not retrieve Resources#mDrawableCache field", localNoSuchFieldException);
-        continue;
-        paramResources = null;
       }
-      if (paramResources == null) {
-        break label90;
+      sDrawableCacheFieldFetched = true;
+    }
+    Object localObject2 = null;
+    Field localField = sDrawableCacheField;
+    Object localObject1 = localObject2;
+    if (localField != null) {
+      try
+      {
+        localObject1 = localField.get(paramResources);
+      }
+      catch (IllegalAccessException paramResources)
+      {
+        Log.e("ResourcesFlusher", "Could not retrieve value from Resources#mDrawableCache", paramResources);
+        localObject1 = localObject2;
       }
     }
-    if (flushThemedResourcesCache(paramResources)) {}
-    for (;;)
+    boolean bool2 = false;
+    if (localObject1 == null) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if (localObject1 != null)
     {
-      return bool;
-      label90:
-      bool = false;
+      bool1 = bool2;
+      if (flushThemedResourcesCache(localObject1)) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
   @RequiresApi(24)
   private static boolean flushNougats(@NonNull Resources paramResources)
   {
-    boolean bool = true;
-    if (!sResourcesImplFieldFetched) {}
-    for (;;)
+    if (!sResourcesImplFieldFetched)
     {
       try
       {
         sResourcesImplField = Resources.class.getDeclaredField("mResourcesImpl");
         sResourcesImplField.setAccessible(true);
-        sResourcesImplFieldFetched = true;
-        if (sResourcesImplField == null) {
-          return false;
-        }
       }
       catch (NoSuchFieldException localNoSuchFieldException1)
       {
         Log.e("ResourcesFlusher", "Could not retrieve Resources#mResourcesImpl field", localNoSuchFieldException1);
-        continue;
       }
+      sResourcesImplFieldFetched = true;
+    }
+    Field localField1 = sResourcesImplField;
+    if (localField1 == null) {
+      return false;
+    }
+    Object localObject2 = null;
+    try
+    {
+      paramResources = localField1.get(paramResources);
+    }
+    catch (IllegalAccessException paramResources)
+    {
+      Log.e("ResourcesFlusher", "Could not retrieve value from Resources#mResourcesImpl", paramResources);
+      paramResources = null;
+    }
+    if (paramResources == null) {
+      return false;
+    }
+    if (!sDrawableCacheFieldFetched)
+    {
       try
       {
-        paramResources = sResourcesImplField.get(paramResources);
-        if (paramResources == null) {
-          continue;
-        }
-        if (sDrawableCacheFieldFetched) {}
+        sDrawableCacheField = paramResources.getClass().getDeclaredField("mDrawableCache");
+        sDrawableCacheField.setAccessible(true);
+      }
+      catch (NoSuchFieldException localNoSuchFieldException2)
+      {
+        Log.e("ResourcesFlusher", "Could not retrieve ResourcesImpl#mDrawableCache field", localNoSuchFieldException2);
+      }
+      sDrawableCacheFieldFetched = true;
+    }
+    Field localField2 = sDrawableCacheField;
+    Object localObject1 = localObject2;
+    if (localField2 != null) {
+      try
+      {
+        localObject1 = localField2.get(paramResources);
       }
       catch (IllegalAccessException paramResources)
       {
-        try
-        {
-          sDrawableCacheField = paramResources.getClass().getDeclaredField("mDrawableCache");
-          sDrawableCacheField.setAccessible(true);
-          sDrawableCacheFieldFetched = true;
-          if (sDrawableCacheField != null)
-          {
-            try
-            {
-              paramResources = sDrawableCacheField.get(paramResources);
-              if ((paramResources == null) || (!flushThemedResourcesCache(paramResources))) {
-                break label161;
-              }
-              return bool;
-            }
-            catch (IllegalAccessException paramResources)
-            {
-              Log.e("ResourcesFlusher", "Could not retrieve value from ResourcesImpl#mDrawableCache", paramResources);
-            }
-            paramResources = paramResources;
-            Log.e("ResourcesFlusher", "Could not retrieve value from Resources#mResourcesImpl", paramResources);
-            paramResources = null;
-          }
-        }
-        catch (NoSuchFieldException localNoSuchFieldException2)
-        {
-          for (;;)
-          {
-            Log.e("ResourcesFlusher", "Could not retrieve ResourcesImpl#mDrawableCache field", localNoSuchFieldException2);
-            continue;
-            paramResources = null;
-            continue;
-            label161:
-            bool = false;
-          }
-        }
+        Log.e("ResourcesFlusher", "Could not retrieve value from ResourcesImpl#mDrawableCache", paramResources);
+        localObject1 = localObject2;
       }
     }
+    return (localObject1 != null) && (flushThemedResourcesCache(localObject1));
   }
   
   @RequiresApi(16)
   private static boolean flushThemedResourcesCache(@NonNull Object paramObject)
   {
-    if (!sThemedResourceCacheClazzFetched) {}
-    try
+    if (!sThemedResourceCacheClazzFetched)
     {
-      sThemedResourceCacheClazz = Class.forName("android.content.res.ThemedResourceCache");
-      sThemedResourceCacheClazzFetched = true;
-      if (sThemedResourceCacheClazz == null) {
-        return false;
+      try
+      {
+        sThemedResourceCacheClazz = Class.forName("android.content.res.ThemedResourceCache");
       }
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
+      catch (ClassNotFoundException localClassNotFoundException)
       {
         Log.e("ResourcesFlusher", "Could not find ThemedResourceCache class", localClassNotFoundException);
       }
-      if (!sThemedResourceCache_mUnthemedEntriesFieldFetched) {}
+      sThemedResourceCacheClazzFetched = true;
+    }
+    Class localClass = sThemedResourceCacheClazz;
+    if (localClass == null) {
+      return false;
+    }
+    if (!sThemedResourceCache_mUnthemedEntriesFieldFetched)
+    {
       try
       {
-        sThemedResourceCache_mUnthemedEntriesField = sThemedResourceCacheClazz.getDeclaredField("mUnthemedEntries");
+        sThemedResourceCache_mUnthemedEntriesField = localClass.getDeclaredField("mUnthemedEntries");
         sThemedResourceCache_mUnthemedEntriesField.setAccessible(true);
-        sThemedResourceCache_mUnthemedEntriesFieldFetched = true;
-        if (sThemedResourceCache_mUnthemedEntriesField == null) {
-          return false;
-        }
       }
       catch (NoSuchFieldException localNoSuchFieldException)
       {
-        for (;;)
-        {
-          Log.e("ResourcesFlusher", "Could not retrieve ThemedResourceCache#mUnthemedEntries field", localNoSuchFieldException);
-        }
-        try
-        {
-          paramObject = (LongSparseArray)sThemedResourceCache_mUnthemedEntriesField.get(paramObject);
-          if (paramObject != null)
-          {
-            paramObject.clear();
-            return true;
-          }
-        }
-        catch (IllegalAccessException paramObject)
-        {
-          for (;;)
-          {
-            Log.e("ResourcesFlusher", "Could not retrieve value from ThemedResourceCache#mUnthemedEntries", paramObject);
-            paramObject = null;
-          }
-        }
+        Log.e("ResourcesFlusher", "Could not retrieve ThemedResourceCache#mUnthemedEntries field", localNoSuchFieldException);
       }
+      sThemedResourceCache_mUnthemedEntriesFieldFetched = true;
+    }
+    Field localField = sThemedResourceCache_mUnthemedEntriesField;
+    if (localField == null) {
+      return false;
+    }
+    try
+    {
+      paramObject = (LongSparseArray)localField.get(paramObject);
+    }
+    catch (IllegalAccessException paramObject)
+    {
+      Log.e("ResourcesFlusher", "Could not retrieve value from ThemedResourceCache#mUnthemedEntries", paramObject);
+      paramObject = null;
+    }
+    if (paramObject != null)
+    {
+      paramObject.clear();
+      return true;
     }
     return false;
   }

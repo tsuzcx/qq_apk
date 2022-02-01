@@ -16,41 +16,47 @@ public class dt
   
   public int a(cy.f paramf, byte[] paramArrayOfByte)
   {
-    if ((paramf == null) || (paramArrayOfByte == null))
+    if ((paramf != null) && (paramArrayOfByte != null))
     {
-      i = -10;
-      return i;
-    }
-    int i = -1;
-    int j = 0;
-    while (j < 3)
-    {
-      if (paramf.bP())
+      int j = -1;
+      int k;
+      for (int i = 0; i < 3; i = k)
       {
-        eh.h("TmsTcpNetwork", "[tcp_control][time_out]sendDataAsync(), send time out");
-        return -17;
-      }
-      int k = this.nz.a(paramf, paramArrayOfByte);
-      eh.e("TmsTcpNetwork", "[tcp_control]sendDataAsync(), ret: " + k + " times: " + (j + 1) + " data.length: " + paramArrayOfByte.length);
-      i = k;
-      if (k == 0) {
-        break;
-      }
-      if (2 != j) {}
-      try
-      {
-        Thread.sleep(300L);
-        j += 1;
-        i = k;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
+        if (paramf.bP())
         {
-          eh.h("TmsTcpNetwork", "[tcp_control]sendDataAsync() InterruptedException e: " + localInterruptedException.toString());
+          eh.h("TmsTcpNetwork", "[tcp_control][time_out]sendDataAsync(), send time out");
+          return -17;
+        }
+        j = this.nz.a(paramf, paramArrayOfByte);
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("[tcp_control]sendDataAsync(), ret: ");
+        localStringBuilder1.append(j);
+        localStringBuilder1.append(" times: ");
+        k = i + 1;
+        localStringBuilder1.append(k);
+        localStringBuilder1.append(" data.length: ");
+        localStringBuilder1.append(paramArrayOfByte.length);
+        eh.e("TmsTcpNetwork", localStringBuilder1.toString());
+        if (j == 0) {
+          return j;
+        }
+        if (2 != i) {
+          try
+          {
+            Thread.sleep(300L);
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("[tcp_control]sendDataAsync() InterruptedException e: ");
+            localStringBuilder2.append(localInterruptedException.toString());
+            eh.h("TmsTcpNetwork", localStringBuilder2.toString());
+          }
         }
       }
+      return j;
     }
+    return -10;
   }
   
   public String cB()
@@ -73,14 +79,20 @@ public class dt
   {
     eh.f("TmsTcpNetwork", "[tcp_control]connect()");
     int i = this.nz.i(this.ny);
-    eh.e("TmsTcpNetwork", "[ocean] connect |ret|" + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[ocean] connect |ret|");
+    localStringBuilder.append(i);
+    eh.e("TmsTcpNetwork", localStringBuilder.toString());
     return i;
   }
   
   public int cN()
   {
     int i = this.nz.cC();
-    eh.e("TmsTcpNetwork", "[ocean] reconnect |ret|" + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[ocean] reconnect |ret|");
+    localStringBuilder.append(i);
+    eh.e("TmsTcpNetwork", localStringBuilder.toString());
     return i;
   }
   

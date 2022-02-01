@@ -13,7 +13,7 @@ public class SerialNumberActivity
   
   public void initialize()
   {
-    this.text = ((TextView)findViewById(2131559247));
+    this.text = ((TextView)findViewById(2131165494));
     if (cc.c().j() != null) {
       this.text.setText(cc.c().j());
     }
@@ -22,7 +22,7 @@ public class SerialNumberActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968755);
+    setContentView(2131296436);
     initialize();
   }
 }

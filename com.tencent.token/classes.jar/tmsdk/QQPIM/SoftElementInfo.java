@@ -18,16 +18,6 @@ public final class SoftElementInfo
   public String pkgname = "";
   public int softsize = 0;
   
-  static
-  {
-    if (!SoftElementInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public SoftElementInfo() {}
   
   public SoftElementInfo(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, String paramString5)
@@ -48,18 +38,17 @@ public final class SoftElementInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -76,13 +65,40 @@ public final class SoftElementInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (SoftElementInfo)paramObject;
-    } while ((!JceUtil.equals(this.pkgname, paramObject.pkgname)) || (!JceUtil.equals(this.cert, paramObject.cert)) || (!JceUtil.equals(this.softsize, paramObject.softsize)) || (!JceUtil.equals(this.path, paramObject.path)) || (!JceUtil.equals(this.name, paramObject.name)) || (!JceUtil.equals(this.isOfficial, paramObject.isOfficial)) || (!JceUtil.equals(this.expanda, paramObject.expanda)));
-    return true;
+    }
+    paramObject = (SoftElementInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.pkgname, paramObject.pkgname))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.cert, paramObject.cert))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.softsize, paramObject.softsize))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.path, paramObject.path))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.name, paramObject.name))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.isOfficial, paramObject.isOfficial))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.expanda, paramObject.expanda)) {
+                  bool1 = true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -189,15 +205,18 @@ public final class SoftElementInfo
     paramJceOutputStream.write(this.pkgname, 0);
     paramJceOutputStream.write(this.cert, 1);
     paramJceOutputStream.write(this.softsize, 3);
-    if (this.path != null) {
-      paramJceOutputStream.write(this.path, 4);
+    String str = this.path;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 5);
+    str = this.name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.isOfficial, 6);
-    if (this.expanda != null) {
-      paramJceOutputStream.write(this.expanda, 7);
+    str = this.expanda;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }

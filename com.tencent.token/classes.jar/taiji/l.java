@@ -19,38 +19,41 @@ public abstract class l<K, A>
   
   private o<K> c()
   {
-    int i = 0;
-    if (this.c.isEmpty()) {
-      throw new IllegalStateException("There are no keyframes");
-    }
-    if ((this.e != null) && (this.e.a(this.d))) {
-      return this.e;
-    }
-    o localo2 = (o)this.c.get(0);
-    o localo1 = localo2;
-    if (this.d < localo2.a())
+    if (!this.c.isEmpty())
     {
-      this.e = localo2;
-      return localo2;
+      Object localObject = this.e;
+      if ((localObject != null) && (((o)localObject).a(this.d))) {
+        return this.e;
+      }
+      localObject = this.c;
+      int i = 0;
+      o localo = (o)((List)localObject).get(0);
+      localObject = localo;
+      if (this.d < localo.a())
+      {
+        this.e = localo;
+        return localo;
+      }
+      while ((!((o)localObject).a(this.d)) && (i < this.c.size()))
+      {
+        localObject = (o)this.c.get(i);
+        i += 1;
+      }
+      this.e = ((o)localObject);
+      return localObject;
     }
-    while ((!localo1.a(this.d)) && (i < this.c.size()))
-    {
-      localo1 = (o)this.c.get(i);
-      i += 1;
-    }
-    this.e = localo1;
-    return localo1;
+    throw new IllegalStateException("There are no keyframes");
   }
   
   private float d()
   {
-    if (this.b) {}
-    o localo;
-    do
-    {
+    if (this.b) {
       return 0.0F;
-      localo = c();
-    } while (localo.c());
+    }
+    o localo = c();
+    if (localo.c()) {
+      return 0.0F;
+    }
     float f1 = this.d;
     float f2 = localo.a();
     float f3 = localo.b();
@@ -71,7 +74,8 @@ public abstract class l<K, A>
     if (this.c.isEmpty()) {
       return 1.0F;
     }
-    return ((o)this.c.get(this.c.size() - 1)).b();
+    List localList = this.c;
+    return ((o)localList.get(localList.size() - 1)).b();
   }
   
   public void a()
@@ -85,27 +89,23 @@ public abstract class l<K, A>
     if (paramFloat < e())
     {
       f = 0.0F;
-      if (f != this.d) {
-        break label37;
+    }
+    else
+    {
+      f = paramFloat;
+      if (paramFloat > f()) {
+        f = 1.0F;
       }
     }
-    for (;;)
-    {
+    if (f == this.d) {
       return;
-      f = paramFloat;
-      if (paramFloat <= f()) {
-        break;
-      }
-      f = 1.0F;
-      break;
-      label37:
-      this.d = f;
-      int i = 0;
-      while (i < this.a.size())
-      {
-        ((a)this.a.get(i)).c();
-        i += 1;
-      }
+    }
+    this.d = f;
+    int i = 0;
+    while (i < this.a.size())
+    {
+      ((a)this.a.get(i)).c();
+      i += 1;
     }
   }
   

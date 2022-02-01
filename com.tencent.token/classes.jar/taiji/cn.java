@@ -43,7 +43,15 @@ public class cn
   
   public String toString()
   {
-    return "Trim Path: {start: " + this.c + ", end: " + this.d + ", offset: " + this.e + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Trim Path: {start: ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", end: ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", offset: ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public static enum b

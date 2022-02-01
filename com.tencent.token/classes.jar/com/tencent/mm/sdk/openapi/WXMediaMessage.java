@@ -27,40 +27,58 @@ public final class WXMediaMessage
   
   final boolean checkArgs()
   {
-    if ((getType() == 8) && ((this.thumbData == null) || (this.thumbData.length == 0)))
+    Object localObject;
+    if (getType() == 8)
     {
-      Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, thumbData should not be null when send emoji");
-      return false;
+      localObject = this.thumbData;
+      if ((localObject == null) || (localObject.length == 0)) {
+        localObject = "checkArgs fail, thumbData should not be null when send emoji";
+      }
     }
-    if ((this.thumbData != null) && (this.thumbData.length > 32768))
+    for (;;)
     {
-      Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, thumbData is invalid");
+      Log.e("MicroMsg.SDK.WXMediaMessage", (String)localObject);
       return false;
+      localObject = this.thumbData;
+      if ((localObject != null) && (localObject.length > 32768))
+      {
+        localObject = "checkArgs fail, thumbData is invalid";
+      }
+      else
+      {
+        localObject = this.title;
+        if ((localObject != null) && (((String)localObject).length() > 512))
+        {
+          localObject = "checkArgs fail, title is invalid";
+        }
+        else
+        {
+          localObject = this.description;
+          if ((localObject != null) && (((String)localObject).length() > 1024))
+          {
+            localObject = "checkArgs fail, description is invalid";
+          }
+          else
+          {
+            localObject = this.mediaObject;
+            if (localObject != null) {
+              break;
+            }
+            localObject = "checkArgs fail, mediaObject is null";
+          }
+        }
+      }
     }
-    if ((this.title != null) && (this.title.length() > 512))
-    {
-      Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, title is invalid");
-      return false;
-    }
-    if ((this.description != null) && (this.description.length() > 1024))
-    {
-      Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, description is invalid");
-      return false;
-    }
-    if (this.mediaObject == null)
-    {
-      Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, mediaObject is null");
-      return false;
-    }
-    return this.mediaObject.checkArgs();
+    return ((IMediaObject)localObject).checkArgs();
   }
   
   public final int getType()
   {
-    if (this.mediaObject == null) {
+    IMediaObject localIMediaObject = this.mediaObject;
+    if (localIMediaObject == null) {
       return 0;
     }
-    return this.mediaObject.type();
+    return localIMediaObject.type();
   }
   
   public final void setThumbImage(Bitmap paramBitmap)
@@ -92,19 +110,24 @@ public final class WXMediaMessage
       localWXMediaMessage.description = paramBundle.getString("_wxobject_description");
       localWXMediaMessage.thumbData = paramBundle.getByteArray("_wxobject_thumbdata");
       String str = paramBundle.getString("_wxobject_identifier_");
-      if ((str == null) || (str.length() <= 0)) {
-        return localWXMediaMessage;
-      }
-      try
+      if (str != null)
       {
-        localWXMediaMessage.mediaObject = ((WXMediaMessage.IMediaObject)Class.forName(str).newInstance());
-        localWXMediaMessage.mediaObject.unserialize(paramBundle);
-        return localWXMediaMessage;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        Log.e("MicroMsg.SDK.WXMediaMessage", "get media object from bundle failed: unknown ident " + str);
+        if (str.length() <= 0) {
+          return localWXMediaMessage;
+        }
+        try
+        {
+          localWXMediaMessage.mediaObject = ((WXMediaMessage.IMediaObject)Class.forName(str).newInstance());
+          localWXMediaMessage.mediaObject.unserialize(paramBundle);
+          return localWXMediaMessage;
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle.printStackTrace();
+          paramBundle = new StringBuilder("get media object from bundle failed: unknown ident ");
+          paramBundle.append(str);
+          Log.e("MicroMsg.SDK.WXMediaMessage", paramBundle.toString());
+        }
       }
       return localWXMediaMessage;
     }

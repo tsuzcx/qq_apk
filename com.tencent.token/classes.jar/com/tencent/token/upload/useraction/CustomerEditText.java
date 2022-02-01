@@ -22,11 +22,6 @@ public class CustomerEditText
   private int e = 0;
   private String f = "";
   
-  public CustomerEditText(Context paramContext)
-  {
-    this(paramContext, null);
-  }
-  
   public CustomerEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 16842862);
@@ -61,38 +56,53 @@ public class CustomerEditText
       this.e = ((int)this.b.getRawY());
     }
     this.f = "";
-    if (this.a != null) {}
-    try
-    {
-      this.f = ((Activity)this.a).getLocalClassName();
-      if (paramBoolean)
+    Context localContext = this.a;
+    if (localContext != null) {
+      try
       {
-        if (getText() != null)
-        {
-          g.c("focus start:" + getText().toString());
-          a.a().a(a.c, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
-          a.a().d();
-        }
-        g.c("pagename:" + this.f);
-        g.c("ctrlName:" + getClass().getName());
-        g.c("getRawX:" + this.d);
-        g.c("getRawY:" + this.e);
-        return;
+        this.f = ((Activity)localContext).getLocalClassName();
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         localException.printStackTrace();
-        continue;
-        if (getText() != null)
-        {
-          g.c("focus end" + getText().toString());
-          a.a().a(a.d, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
-        }
       }
     }
+    if (paramBoolean)
+    {
+      if (getText() != null)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("focus start:");
+        localStringBuilder.append(getText().toString());
+        g.c(localStringBuilder.toString());
+        a.a().a(a.c, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
+        a.a().d();
+      }
+    }
+    else if (getText() != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("focus end");
+      localStringBuilder.append(getText().toString());
+      g.c(localStringBuilder.toString());
+      a.a().a(a.d, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pagename:");
+    localStringBuilder.append(this.f);
+    g.c(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ctrlName:");
+    localStringBuilder.append(getClass().getName());
+    g.c(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getRawX:");
+    localStringBuilder.append(this.d);
+    g.c(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getRawY:");
+    localStringBuilder.append(this.e);
+    g.c(localStringBuilder.toString());
   }
   
   public void onFocusChange(View paramView, boolean paramBoolean)

@@ -30,8 +30,10 @@ public final class InputContentInfoCompat
   @Nullable
   public static InputContentInfoCompat wrap(@Nullable Object paramObject)
   {
-    if (paramObject == null) {}
-    while (Build.VERSION.SDK_INT < 25) {
+    if (paramObject == null) {
+      return null;
+    }
+    if (Build.VERSION.SDK_INT < 25) {
       return null;
     }
     return new InputContentInfoCompat(new InputContentInfoCompatApi25Impl(paramObject));

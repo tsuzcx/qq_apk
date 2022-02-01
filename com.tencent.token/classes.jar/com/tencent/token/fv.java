@@ -64,40 +64,52 @@ public final class fv
   
   public z.a a(boolean paramBoolean)
   {
-    if ((this.e != 1) && (this.e != 3)) {
-      throw new IllegalStateException("state: " + this.e);
+    int i = this.e;
+    Object localObject1;
+    if ((i != 1) && (i != 3))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("state: ");
+      ((StringBuilder)localObject1).append(this.e);
+      throw new IllegalStateException(((StringBuilder)localObject1).toString());
     }
-    Object localObject;
     try
     {
-      ft localft = ft.a(f());
-      localObject = new z.a().a(localft.a).a(localft.b).a(localft.c).a(c());
-      if ((paramBoolean) && (localft.b == 100)) {
+      localObject1 = ft.a(f());
+      localObject2 = new z.a().a(((ft)localObject1).a).a(((ft)localObject1).b).a(((ft)localObject1).c).a(c());
+      if ((paramBoolean) && (((ft)localObject1).b == 100)) {
         return null;
       }
-      if (localft.b == 100)
+      if (((ft)localObject1).b == 100)
       {
         this.e = 3;
-        return localObject;
+        return localObject2;
       }
+      this.e = 4;
+      return localObject2;
     }
     catch (EOFException localEOFException)
     {
-      localObject = new IOException("unexpected end of stream on " + this.b);
-      ((IOException)localObject).initCause(localEOFException);
-      throw ((Throwable)localObject);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("unexpected end of stream on ");
+      ((StringBuilder)localObject2).append(this.b);
+      localObject2 = new IOException(((StringBuilder)localObject2).toString());
+      ((IOException)localObject2).initCause(localEOFException);
+      throw ((Throwable)localObject2);
     }
-    this.e = 4;
-    return localObject;
   }
   
   public okio.p a(long paramLong)
   {
-    if (this.e != 1) {
-      throw new IllegalStateException("state: " + this.e);
+    if (this.e == 1)
+    {
+      this.e = 2;
+      return new d(paramLong);
     }
-    this.e = 2;
-    return new d(paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("state: ");
+    localStringBuilder.append(this.e);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public okio.p a(x paramx, long paramLong)
@@ -113,11 +125,15 @@ public final class fv
   
   public q a(s params)
   {
-    if (this.e != 4) {
-      throw new IllegalStateException("state: " + this.e);
+    if (this.e == 4)
+    {
+      this.e = 5;
+      return new c(params);
     }
-    this.e = 5;
-    return new c(params);
+    params = new StringBuilder();
+    params.append("state: ");
+    params.append(this.e);
+    throw new IllegalStateException(params.toString());
   }
   
   public void a()
@@ -127,19 +143,24 @@ public final class fv
   
   public void a(okhttp3.r paramr, String paramString)
   {
-    if (this.e != 0) {
-      throw new IllegalStateException("state: " + this.e);
-    }
-    this.d.b(paramString).b("\r\n");
-    int i = 0;
-    int j = paramr.a();
-    while (i < j)
+    if (this.e == 0)
     {
-      this.d.b(paramr.a(i)).b(": ").b(paramr.b(i)).b("\r\n");
-      i += 1;
+      this.d.b(paramString).b("\r\n");
+      int i = 0;
+      int j = paramr.a();
+      while (i < j)
+      {
+        this.d.b(paramr.a(i)).b(": ").b(paramr.b(i)).b("\r\n");
+        i += 1;
+      }
+      this.d.b("\r\n");
+      this.e = 1;
+      return;
     }
-    this.d.b("\r\n");
-    this.e = 1;
+    paramr = new StringBuilder();
+    paramr.append("state: ");
+    paramr.append(this.e);
+    throw new IllegalStateException(paramr.toString());
   }
   
   public void a(x paramx)
@@ -158,11 +179,15 @@ public final class fv
   
   public q b(long paramLong)
   {
-    if (this.e != 4) {
-      throw new IllegalStateException("state: " + this.e);
+    if (this.e == 4)
+    {
+      this.e = 5;
+      return new e(paramLong);
     }
-    this.e = 5;
-    return new e(paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("state: ");
+    localStringBuilder.append(this.e);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public void b()
@@ -186,24 +211,34 @@ public final class fv
   
   public okio.p d()
   {
-    if (this.e != 1) {
-      throw new IllegalStateException("state: " + this.e);
+    if (this.e == 1)
+    {
+      this.e = 2;
+      return new b();
     }
-    this.e = 2;
-    return new b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("state: ");
+    localStringBuilder.append(this.e);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public q e()
   {
-    if (this.e != 4) {
-      throw new IllegalStateException("state: " + this.e);
-    }
-    if (this.b == null) {
+    if (this.e == 4)
+    {
+      localObject = this.b;
+      if (localObject != null)
+      {
+        this.e = 5;
+        ((f)localObject).e();
+        return new f();
+      }
       throw new IllegalStateException("streamAllocation == null");
     }
-    this.e = 5;
-    this.b.e();
-    return new f();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("state: ");
+    ((StringBuilder)localObject).append(this.e);
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   private abstract class a
@@ -239,23 +274,23 @@ public final class fv
     
     protected final void a(boolean paramBoolean, IOException paramIOException)
     {
-      if (fv.this.e == 6) {}
-      do
-      {
-        return;
-        if (fv.this.e != 5) {
-          throw new IllegalStateException("state: " + fv.this.e);
-        }
-        fv.this.a(this.a);
-        fv.this.e = 6;
-      } while (fv.this.b == null);
-      f localf = fv.this.b;
-      if (!paramBoolean) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        localf.a(paramBoolean, fv.this, this.c, paramIOException);
+      if (fv.this.e == 6) {
         return;
       }
+      if (fv.this.e == 5)
+      {
+        fv.this.a(this.a);
+        fv localfv = fv.this;
+        localfv.e = 6;
+        if (localfv.b != null) {
+          fv.this.b.a(paramBoolean ^ true, fv.this, this.c, paramIOException);
+        }
+        return;
+      }
+      paramIOException = new StringBuilder();
+      paramIOException.append("state: ");
+      paramIOException.append(fv.this.e);
+      throw new IllegalStateException(paramIOException.toString());
     }
   }
   
@@ -274,100 +309,49 @@ public final class fv
     
     public void a_(okio.c paramc, long paramLong)
     {
-      if (this.c) {
-        throw new IllegalStateException("closed");
-      }
-      if (paramLong == 0L) {
+      if (!this.c)
+      {
+        if (paramLong == 0L) {
+          return;
+        }
+        fv.this.d.k(paramLong);
+        fv.this.d.b("\r\n");
+        fv.this.d.a_(paramc, paramLong);
+        fv.this.d.b("\r\n");
         return;
       }
-      fv.this.d.k(paramLong);
-      fv.this.d.b("\r\n");
-      fv.this.d.a_(paramc, paramLong);
-      fv.this.d.b("\r\n");
+      throw new IllegalStateException("closed");
     }
     
-    /* Error */
     public void close()
     {
-      // Byte code:
-      //   0: aload_0
-      //   1: monitorenter
-      //   2: aload_0
-      //   3: getfield 42	com/tencent/token/fv$b:c	Z
-      //   6: istore_1
-      //   7: iload_1
-      //   8: ifeq +6 -> 14
-      //   11: aload_0
-      //   12: monitorexit
-      //   13: return
-      //   14: aload_0
-      //   15: iconst_1
-      //   16: putfield 42	com/tencent/token/fv$b:c	Z
-      //   19: aload_0
-      //   20: getfield 18	com/tencent/token/fv$b:a	Lcom/tencent/token/fv;
-      //   23: getfield 27	com/tencent/token/fv:d	Lokio/d;
-      //   26: ldc 63
-      //   28: invokeinterface 58 2 0
-      //   33: pop
-      //   34: aload_0
-      //   35: getfield 18	com/tencent/token/fv$b:a	Lcom/tencent/token/fv;
-      //   38: aload_0
-      //   39: getfield 37	com/tencent/token/fv$b:b	Lokio/h;
-      //   42: invokevirtual 66	com/tencent/token/fv:a	(Lokio/h;)V
-      //   45: aload_0
-      //   46: getfield 18	com/tencent/token/fv$b:a	Lcom/tencent/token/fv;
-      //   49: iconst_3
-      //   50: putfield 70	com/tencent/token/fv:e	I
-      //   53: goto -42 -> 11
-      //   56: astore_2
-      //   57: aload_0
-      //   58: monitorexit
-      //   59: aload_2
-      //   60: athrow
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	61	0	this	b
-      //   6	2	1	bool	boolean
-      //   56	4	2	localObject	Object
-      // Exception table:
-      //   from	to	target	type
-      //   2	7	56	finally
-      //   14	53	56	finally
+      try
+      {
+        boolean bool = this.c;
+        if (bool) {
+          return;
+        }
+        this.c = true;
+        fv.this.d.b("0\r\n\r\n");
+        fv.this.a(this.b);
+        fv.this.e = 3;
+        return;
+      }
+      finally {}
     }
     
-    /* Error */
     public void flush()
     {
-      // Byte code:
-      //   0: aload_0
-      //   1: monitorenter
-      //   2: aload_0
-      //   3: getfield 42	com/tencent/token/fv$b:c	Z
-      //   6: istore_1
-      //   7: iload_1
-      //   8: ifeq +6 -> 14
-      //   11: aload_0
-      //   12: monitorexit
-      //   13: return
-      //   14: aload_0
-      //   15: getfield 18	com/tencent/token/fv$b:a	Lcom/tencent/token/fv;
-      //   18: getfield 27	com/tencent/token/fv:d	Lokio/d;
-      //   21: invokeinterface 73 1 0
-      //   26: goto -15 -> 11
-      //   29: astore_2
-      //   30: aload_0
-      //   31: monitorexit
-      //   32: aload_2
-      //   33: athrow
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	34	0	this	b
-      //   6	2	1	bool	boolean
-      //   29	4	2	localObject	Object
-      // Exception table:
-      //   from	to	target	type
-      //   2	7	29	finally
-      //   14	26	29	finally
+      try
+      {
+        boolean bool = this.c;
+        if (bool) {
+          return;
+        }
+        fv.this.d.flush();
+        return;
+      }
+      finally {}
     }
   }
   
@@ -393,48 +377,69 @@ public final class fv
       {
         this.g = fv.this.c.m();
         String str = fv.this.c.p().trim();
-        if ((this.g < 0L) || ((!str.isEmpty()) && (!str.startsWith(";")))) {
-          throw new ProtocolException("expected chunk size and optional extensions but was \"" + this.g + str + "\"");
+        if (this.g >= 0L) {
+          if (!str.isEmpty())
+          {
+            boolean bool = str.startsWith(";");
+            if (!bool) {}
+          }
+          else
+          {
+            if (this.g == 0L)
+            {
+              this.h = false;
+              fn.a(fv.this.a.g(), this.f, fv.this.c());
+              a(true, null);
+            }
+            return;
+          }
         }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("expected chunk size and optional extensions but was \"");
+        localStringBuilder.append(this.g);
+        localStringBuilder.append(str);
+        localStringBuilder.append("\"");
+        throw new ProtocolException(localStringBuilder.toString());
       }
       catch (NumberFormatException localNumberFormatException)
       {
         throw new ProtocolException(localNumberFormatException.getMessage());
       }
-      if (this.g == 0L)
-      {
-        this.h = false;
-        fn.a(fv.this.a.g(), this.f, fv.this.c());
-        a(true, null);
-      }
     }
     
     public long a(okio.c paramc, long paramLong)
     {
-      if (paramLong < 0L) {
-        throw new IllegalArgumentException("byteCount < 0: " + paramLong);
-      }
-      if (this.b) {
+      if (paramLong >= 0L)
+      {
+        if (!this.b)
+        {
+          if (!this.h) {
+            return -1L;
+          }
+          long l = this.g;
+          if ((l == 0L) || (l == -1L))
+          {
+            b();
+            if (!this.h) {
+              return -1L;
+            }
+          }
+          paramLong = super.a(paramc, Math.min(paramLong, this.g));
+          if (paramLong != -1L)
+          {
+            this.g -= paramLong;
+            return paramLong;
+          }
+          paramc = new ProtocolException("unexpected end of stream");
+          a(false, paramc);
+          throw paramc;
+        }
         throw new IllegalStateException("closed");
       }
-      if (!this.h) {}
-      do
-      {
-        return -1L;
-        if ((this.g != 0L) && (this.g != -1L)) {
-          break;
-        }
-        b();
-      } while (!this.h);
-      paramLong = super.a(paramc, Math.min(paramLong, this.g));
-      if (paramLong == -1L)
-      {
-        paramc = new ProtocolException("unexpected end of stream");
-        a(false, paramc);
-        throw paramc;
-      }
-      this.g -= paramLong;
-      return paramLong;
+      paramc = new StringBuilder();
+      paramc.append("byteCount < 0: ");
+      paramc.append(paramLong);
+      throw new IllegalArgumentException(paramc.toString());
     }
     
     public void close()
@@ -468,15 +473,23 @@ public final class fv
     
     public void a_(okio.c paramc, long paramLong)
     {
-      if (this.c) {
-        throw new IllegalStateException("closed");
+      if (!this.c)
+      {
+        fc.a(paramc.b(), 0L, paramLong);
+        if (paramLong <= this.d)
+        {
+          fv.this.d.a_(paramc, paramLong);
+          this.d -= paramLong;
+          return;
+        }
+        paramc = new StringBuilder();
+        paramc.append("expected ");
+        paramc.append(this.d);
+        paramc.append(" bytes but received ");
+        paramc.append(paramLong);
+        throw new ProtocolException(paramc.toString());
       }
-      fc.a(paramc.b(), 0L, paramLong);
-      if (paramLong > this.d) {
-        throw new ProtocolException("expected " + this.d + " bytes but received " + paramLong);
-      }
-      fv.this.d.a_(paramc, paramLong);
-      this.d -= paramLong;
+      throw new IllegalStateException("closed");
     }
     
     public void close()
@@ -485,11 +498,13 @@ public final class fv
         return;
       }
       this.c = true;
-      if (this.d > 0L) {
-        throw new ProtocolException("unexpected end of stream");
+      if (this.d <= 0L)
+      {
+        fv.this.a(this.b);
+        fv.this.e = 3;
+        return;
       }
-      fv.this.a(this.b);
-      fv.this.e = 3;
+      throw new ProtocolException("unexpected end of stream");
     }
     
     public void flush()
@@ -517,27 +532,33 @@ public final class fv
     
     public long a(okio.c paramc, long paramLong)
     {
-      if (paramLong < 0L) {
-        throw new IllegalArgumentException("byteCount < 0: " + paramLong);
-      }
-      if (this.b) {
+      if (paramLong >= 0L)
+      {
+        if (!this.b)
+        {
+          long l = this.f;
+          if (l == 0L) {
+            return -1L;
+          }
+          paramLong = super.a(paramc, Math.min(l, paramLong));
+          if (paramLong != -1L)
+          {
+            this.f -= paramLong;
+            if (this.f == 0L) {
+              a(true, null);
+            }
+            return paramLong;
+          }
+          paramc = new ProtocolException("unexpected end of stream");
+          a(false, paramc);
+          throw paramc;
+        }
         throw new IllegalStateException("closed");
       }
-      if (this.f == 0L) {
-        return -1L;
-      }
-      paramLong = super.a(paramc, Math.min(this.f, paramLong));
-      if (paramLong == -1L)
-      {
-        paramc = new ProtocolException("unexpected end of stream");
-        a(false, paramc);
-        throw paramc;
-      }
-      this.f -= paramLong;
-      if (this.f == 0L) {
-        a(true, null);
-      }
-      return paramLong;
+      paramc = new StringBuilder();
+      paramc.append("byteCount < 0: ");
+      paramc.append(paramLong);
+      throw new IllegalArgumentException(paramc.toString());
     }
     
     public void close()
@@ -564,23 +585,28 @@ public final class fv
     
     public long a(okio.c paramc, long paramLong)
     {
-      if (paramLong < 0L) {
-        throw new IllegalArgumentException("byteCount < 0: " + paramLong);
-      }
-      if (this.b) {
+      if (paramLong >= 0L)
+      {
+        if (!this.b)
+        {
+          if (this.f) {
+            return -1L;
+          }
+          paramLong = super.a(paramc, paramLong);
+          if (paramLong == -1L)
+          {
+            this.f = true;
+            a(true, null);
+            return -1L;
+          }
+          return paramLong;
+        }
         throw new IllegalStateException("closed");
       }
-      if (this.f) {
-        return -1L;
-      }
-      paramLong = super.a(paramc, paramLong);
-      if (paramLong == -1L)
-      {
-        this.f = true;
-        a(true, null);
-        return -1L;
-      }
-      return paramLong;
+      paramc = new StringBuilder();
+      paramc.append("byteCount < 0: ");
+      paramc.append(paramLong);
+      throw new IllegalArgumentException(paramc.toString());
     }
     
     public void close()

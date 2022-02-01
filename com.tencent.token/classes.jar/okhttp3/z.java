@@ -52,7 +52,7 @@ public final class z
   {
     paramString1 = this.f.a(paramString1);
     if (paramString1 != null) {
-      paramString2 = paramString1;
+      return paramString1;
     }
     return paramString2;
   }
@@ -74,10 +74,13 @@ public final class z
   
   public void close()
   {
-    if (this.g == null) {
-      throw new IllegalStateException("response is not eligible for a body and must not be closed");
+    aa localaa = this.g;
+    if (localaa != null)
+    {
+      localaa.close();
+      return;
     }
-    this.g.close();
+    throw new IllegalStateException("response is not eligible for a body and must not be closed");
   }
   
   public r d()
@@ -125,7 +128,17 @@ public final class z
   
   public String toString()
   {
-    return "Response{protocol=" + this.b + ", code=" + this.c + ", message=" + this.d + ", url=" + this.a.a() + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Response{protocol=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", code=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", message=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", url=");
+    localStringBuilder.append(this.a.a());
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public static class a
@@ -167,25 +180,42 @@ public final class z
     
     private void a(String paramString, z paramz)
     {
-      if (paramz.g != null) {
-        throw new IllegalArgumentException(paramString + ".body != null");
+      if (paramz.g == null)
+      {
+        if (paramz.h == null)
+        {
+          if (paramz.i == null)
+          {
+            if (paramz.j == null) {
+              return;
+            }
+            paramz = new StringBuilder();
+            paramz.append(paramString);
+            paramz.append(".priorResponse != null");
+            throw new IllegalArgumentException(paramz.toString());
+          }
+          paramz = new StringBuilder();
+          paramz.append(paramString);
+          paramz.append(".cacheResponse != null");
+          throw new IllegalArgumentException(paramz.toString());
+        }
+        paramz = new StringBuilder();
+        paramz.append(paramString);
+        paramz.append(".networkResponse != null");
+        throw new IllegalArgumentException(paramz.toString());
       }
-      if (paramz.h != null) {
-        throw new IllegalArgumentException(paramString + ".networkResponse != null");
-      }
-      if (paramz.i != null) {
-        throw new IllegalArgumentException(paramString + ".cacheResponse != null");
-      }
-      if (paramz.j != null) {
-        throw new IllegalArgumentException(paramString + ".priorResponse != null");
-      }
+      paramz = new StringBuilder();
+      paramz.append(paramString);
+      paramz.append(".body != null");
+      throw new IllegalArgumentException(paramz.toString());
     }
     
     private void d(z paramz)
     {
-      if (paramz.g != null) {
-        throw new IllegalArgumentException("priorResponse.body != null");
+      if (paramz.g == null) {
+        return;
       }
+      throw new IllegalArgumentException("priorResponse.body != null");
     }
     
     public a a(int paramInt)
@@ -253,19 +283,25 @@ public final class z
     
     public z a()
     {
-      if (this.a == null) {
-        throw new IllegalStateException("request == null");
-      }
-      if (this.b == null) {
+      if (this.a != null)
+      {
+        if (this.b != null)
+        {
+          if (this.c >= 0)
+          {
+            if (this.d != null) {
+              return new z(this);
+            }
+            throw new IllegalStateException("message == null");
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("code < 0: ");
+          localStringBuilder.append(this.c);
+          throw new IllegalStateException(localStringBuilder.toString());
+        }
         throw new IllegalStateException("protocol == null");
       }
-      if (this.c < 0) {
-        throw new IllegalStateException("code < 0: " + this.c);
-      }
-      if (this.d == null) {
-        throw new IllegalStateException("message == null");
-      }
-      return new z(this);
+      throw new IllegalStateException("request == null");
     }
     
     public a b(long paramLong)

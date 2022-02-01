@@ -12,50 +12,39 @@ import java.io.File;
 
 public class c
 {
-  public static String a;
+  public static String a = "official";
   private static int b = 0;
-  private static String c;
-  private static int d;
-  private static boolean e;
-  private static Context f;
-  private static String g;
-  private static int h;
+  private static String c = "https://w.aq.qq.com";
+  private static int d = 1;
+  private static boolean e = true;
+  private static Context f = null;
+  private static String g = null;
+  private static int h = 0;
   
   static
   {
-    a = "official";
-    c = "https://w.aq.qq.com";
-    d = 1;
     if (j.c == 0)
     {
       c = "http://test.aq.qq.com";
       d = 0;
       a = "dev";
     }
-    for (;;)
+    else if (j.c == 1)
     {
-      e = true;
-      f = null;
-      g = null;
-      h = 0;
-      return;
-      if (j.c == 1)
-      {
-        c = "https://w.aq.qq.com";
-        d = 1;
-      }
-      else if (j.c == 2)
-      {
-        c = "http://exp.aq.qq.com";
-        d = 2;
-        a = "rdm";
-      }
-      else if (j.c == 3)
-      {
-        c = "http://gray.aq.qq.com";
-        d = 3;
-        a = "rdm";
-      }
+      c = "https://w.aq.qq.com";
+      d = 1;
+    }
+    else if (j.c == 2)
+    {
+      c = "http://exp.aq.qq.com";
+      d = 2;
+      a = "rdm";
+    }
+    else if (j.c == 3)
+    {
+      c = "http://gray.aq.qq.com";
+      d = 3;
+      a = "rdm";
     }
   }
   
@@ -67,29 +56,30 @@ public class c
   public static void a(int paramInt)
   {
     d = paramInt;
-    if (d == 0)
+    paramInt = d;
+    if (paramInt == 0)
     {
       a("http://test.aq.qq.com");
       cc.a("http://test.aq.qq.com");
-    }
-    do
-    {
       return;
-      if (d == 1)
-      {
-        a("https://w.aq.qq.com");
-        cc.a("https://aq.qq.com");
-        return;
-      }
-      if (d == 2)
-      {
-        a("http://exp.aq.qq.com");
-        cc.a("https://aq.qq.com");
-        return;
-      }
-    } while (d != 3);
-    a("http://gray.aq.qq.com");
-    cc.a("https://aq.qq.com");
+    }
+    if (paramInt == 1)
+    {
+      a("https://w.aq.qq.com");
+      cc.a("https://aq.qq.com");
+      return;
+    }
+    if (paramInt == 2)
+    {
+      a("http://exp.aq.qq.com");
+      cc.a("https://aq.qq.com");
+      return;
+    }
+    if (paramInt == 3)
+    {
+      a("http://gray.aq.qq.com");
+      cc.a("https://aq.qq.com");
+    }
   }
   
   public static void a(Context paramContext)
@@ -136,32 +126,35 @@ public class c
   
   public static Context g()
   {
-    if (f != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      g.a(bool);
-      return f;
+    boolean bool;
+    if (f != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    g.a(bool);
+    return f;
   }
   
   public static String h()
   {
     try
     {
-      String str1 = ((TelephonyManager)f.getSystemService("phone")).getDeviceId();
-      String str2 = str1;
-      if (str1 == null) {
-        str2 = "";
-      }
-      return str2;
+      str1 = ((TelephonyManager)f.getSystemService("phone")).getDeviceId();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject = null;
-      }
+      String str1;
+      label18:
+      String str2;
+      break label18;
     }
+    str1 = null;
+    str2 = str1;
+    if (str1 == null) {
+      str2 = "";
+    }
+    return str2;
   }
   
   public static boolean i()
@@ -198,12 +191,12 @@ public class c
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        g.c(localException.getMessage());
-      }
+      g.c(localException.getMessage());
     }
-    g.b("versionCode : " + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("versionCode : ");
+    localStringBuilder.append(i);
+    g.b(localStringBuilder.toString());
     return i;
   }
   
@@ -215,8 +208,19 @@ public class c
     public static final boolean d = j.i;
     public static final boolean e = j.j;
     public static final boolean f = j.k;
-    public static final String g = "Tencent" + File.separator + "QQSec" + File.separator + "log";
+    public static final String g;
     public static final int h = j.h;
+    
+    static
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Tencent");
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("QQSec");
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("log");
+      g = localStringBuilder.toString();
+    }
   }
 }
 

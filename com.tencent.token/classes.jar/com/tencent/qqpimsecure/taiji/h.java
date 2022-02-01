@@ -1,6 +1,5 @@
 package com.tencent.qqpimsecure.taiji;
 
-import Protocol.MMGRAuth.AuthDataRes;
 import Protocol.MMGRAuth.CSAuthDataRes;
 import Protocol.MMGRAuth.CSPullSolutionInfo;
 import Protocol.MMGRAuth.SCAuthDataRes;
@@ -22,7 +21,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import taiji.bj;
-import taiji.bk;
 import taiji.bn;
 import tmsdk.common.module.pgsdk.manager.ITaijiKVProfileManager;
 import tmsdk.common.module.pgsdk.manager.ITaijiKVProfileManager.IProfileUploadCallback;
@@ -49,7 +47,12 @@ public class h
   {
     public Triple<Long, Integer, JceStruct> onRecvPush(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
     {
-      bn.b("Taiji", "onRecvPush:" + paramAnonymousLong + "|" + paramAnonymousInt2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRecvPush:");
+      localStringBuilder.append(paramAnonymousLong);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramAnonymousInt2);
+      bn.b("Taiji", localStringBuilder.toString());
       h.a(h.this, paramAnonymousJceStruct, false, 0);
       return null;
     }
@@ -60,21 +63,23 @@ public class h
     this.f = paramContext;
     this.c = c.a().b();
     i locali = i.a(paramContext);
-    if ((locali.f()) && (locali.g())) {}
-    for (this.j = new d(paramContext, "taiji", 43200000L, 2);; this.j = new d(paramContext, "taiji", 14400000L, 2))
-    {
-      paramContext = new HandlerThread("taiji");
-      paramContext.start();
-      this.d = new a(paramContext.getLooper());
-      if ((this.c != null) && (this.c.isSupportPush()))
-      {
-        bn.b("Taiji", "shark support push");
-        this.c.registerSharkPush(13560, new SCSolutionRes(), 2, this.k);
-      }
-      this.d.sendEmptyMessage(3);
-      this.d.sendEmptyMessage(0);
-      return;
+    if ((locali.f()) && (locali.g())) {
+      paramContext = new d(paramContext, "taiji", 43200000L, 2);
+    } else {
+      paramContext = new d(paramContext, "taiji", 14400000L, 2);
     }
+    this.j = paramContext;
+    paramContext = new HandlerThread("taiji");
+    paramContext.start();
+    this.d = new a(paramContext.getLooper());
+    paramContext = this.c;
+    if ((paramContext != null) && (paramContext.isSupportPush()))
+    {
+      bn.b("Taiji", "shark support push");
+      this.c.registerSharkPush(13560, new SCSolutionRes(), 2, this.k);
+    }
+    this.d.sendEmptyMessage(3);
+    this.d.sendEmptyMessage(0);
   }
   
   public static h a(Context paramContext)
@@ -93,111 +98,121 @@ public class h
   private void a(Message paramMessage)
   {
     final boolean bool;
-    final Object localObject;
-    final HashMap localHashMap1;
-    final HashMap localHashMap2;
-    if (paramMessage.arg1 == 1)
-    {
+    if (paramMessage.arg1 == 1) {
       bool = true;
-      localObject = paramMessage.obj;
-      if (bool) {
-        this.d.removeMessages(0);
-      }
-      localHashMap1 = f.a(this.f);
-      localHashMap2 = f.b(this.f);
-      i locali = i.a(this.f);
-      if (locali.d() != 0L) {
-        locali.b(localHashMap1, localHashMap2);
-      }
-      bn.b("Taiji", "profile size:" + localHashMap1.size() + "|" + localHashMap2.size());
-      if ((localHashMap1.size() <= 0) && (localHashMap2.size() <= 0)) {
-        break label180;
-      }
-      bn.b("Taiji", "start upload profile");
-      if (this.c != null) {
-        break label150;
+    } else {
+      bool = false;
+    }
+    final Object localObject1 = paramMessage.obj;
+    if (bool) {
+      this.d.removeMessages(0);
+    }
+    final HashMap localHashMap1 = f.a(this.f);
+    final HashMap localHashMap2 = f.b(this.f);
+    Object localObject2 = i.a(this.f);
+    if (((i)localObject2).d() != 0L) {
+      ((i)localObject2).b(localHashMap1, localHashMap2);
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("profile size:");
+    ((StringBuilder)localObject2).append(localHashMap1.size());
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(localHashMap2.size());
+    bn.b("Taiji", ((StringBuilder)localObject2).toString());
+    if ((localHashMap1.size() <= 0) && (localHashMap2.size() <= 0))
+    {
+      bn.b("Taiji", "no need to upload profile");
+      if (paramMessage.arg1 == 1)
+      {
+        paramMessage = this.d;
+        paramMessage.sendMessage(paramMessage.obtainMessage(1, localObject1));
       }
     }
-    label150:
-    label180:
-    do
+    else
     {
-      return;
-      bool = false;
-      break;
+      bn.b("Taiji", "start upload profile");
+      if (this.c == null) {
+        return;
+      }
       c.a().c().uploadKVProfile(localHashMap1, localHashMap2, new ITaijiKVProfileManager.IProfileUploadCallback()
       {
         public void onUploadSuccess()
         {
-          bn.b("Taiji", "onUploadSuccess:isToPull?" + bool + ":profileUploadTimeInterval:" + (System.currentTimeMillis() - h.b(h.this)));
-          i locali = i.a(h.a(h.this));
-          locali.b(System.currentTimeMillis());
-          locali.a(localHashMap1, localHashMap2);
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onUploadSuccess:isToPull?");
+          ((StringBuilder)localObject).append(bool);
+          ((StringBuilder)localObject).append(":profileUploadTimeInterval:");
+          ((StringBuilder)localObject).append(System.currentTimeMillis() - h.b(h.this));
+          bn.b("Taiji", ((StringBuilder)localObject).toString());
+          localObject = i.a(h.a(h.this));
+          ((i)localObject).b(System.currentTimeMillis());
+          ((i)localObject).a(localHashMap1, localHashMap2);
           if (bool) {
-            h.c(h.this).sendMessageDelayed(h.c(h.this).obtainMessage(1, localObject), 500L);
+            h.c(h.this).sendMessageDelayed(h.c(h.this).obtainMessage(1, localObject1), 500L);
           }
         }
       });
-      return;
-      bn.b("Taiji", "no need to upload profile");
-    } while (paramMessage.arg1 != 1);
-    this.d.sendMessage(this.d.obtainMessage(1, localObject));
+    }
   }
   
   private void a(JceStruct paramJceStruct, boolean paramBoolean, int paramInt)
   {
-    bn.b("Taiji", "handleCloudSolutions isPull?" + paramBoolean + " pullType?" + paramInt);
-    Object localObject;
-    if (this.g)
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleCloudSolutions isPull?");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(" pullType?");
+    ((StringBuilder)localObject).append(paramInt);
+    bn.b("Taiji", ((StringBuilder)localObject).toString());
+    if (this.g) {
       this.g = false;
-      localObject = b(paramJceStruct, paramBoolean, paramInt);
-      if ((((CSAuthDataRes)localObject).resList != null) && (((CSAuthDataRes)localObject).resList.size() != 0)) {
-        break label172;
-      }
-      if ((paramBoolean) && (paramInt == 2))
-      {
-        localObject = new ArrayList(1);
-        if (paramJceStruct != null) {
-          break label147;
-        }
-        ((ArrayList)localObject).add("n");
-      }
+    } else {
+      this.j.b();
     }
-    for (;;)
+    localObject = b(paramJceStruct, paramBoolean, paramInt);
+    if ((((CSAuthDataRes)localObject).resList != null) && (((CSAuthDataRes)localObject).resList.size() != 0))
     {
+      this.c.sendShark(3561, (JceStruct)localObject, new SCAuthDataRes(), 2, new ISharkCallBack()
+      {
+        public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Cmd_CSAuthSolutionReport onFinish :");
+          localStringBuilder.append(paramAnonymousInt3);
+          localStringBuilder.append("|dataRetCode:");
+          localStringBuilder.append(paramAnonymousInt4);
+          bn.b("Taiji", localStringBuilder.toString());
+          if ((paramAnonymousJceStruct != null) && ((paramAnonymousJceStruct instanceof SCAuthDataRes)))
+          {
+            paramAnonymousInt1 = ((SCAuthDataRes)paramAnonymousJceStruct).ret;
+            paramAnonymousJceStruct = "Cmd_CSAuthSolutionReport success";
+          }
+          else
+          {
+            paramAnonymousJceStruct = "Cmd_CSAuthSolutionReport failure";
+          }
+          bn.b("Taiji", paramAnonymousJceStruct);
+        }
+      });
+      return;
+    }
+    if ((paramBoolean) && (paramInt == 2))
+    {
+      localObject = new ArrayList(1);
+      if (paramJceStruct == null) {}
+      for (paramJceStruct = "n";; paramJceStruct = String.valueOf(paramInt))
+      {
+        ((ArrayList)localObject).add(paramJceStruct);
+        break;
+        paramInt = ((SCSolutionRes)paramJceStruct).ret;
+        if (paramInt == 0) {
+          break;
+        }
+      }
       if (((ArrayList)localObject).size() > 0) {
         c.a().e().reportString(266935, (ArrayList)localObject);
       }
-      bn.b("Taiji", "Cmd_CSAuthSolutionReport no data");
-      return;
-      this.j.b();
-      break;
-      label147:
-      paramInt = ((SCSolutionRes)paramJceStruct).ret;
-      if (paramInt != 0) {
-        ((ArrayList)localObject).add(String.valueOf(paramInt));
-      }
     }
-    label172:
-    this.c.sendShark(3561, (JceStruct)localObject, new SCAuthDataRes(), 2, new ISharkCallBack()
-    {
-      public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
-      {
-        bn.b("Taiji", "Cmd_CSAuthSolutionReport onFinish :" + paramAnonymousInt3 + "|dataRetCode:" + paramAnonymousInt4);
-        if ((paramAnonymousJceStruct != null) && ((paramAnonymousJceStruct instanceof SCAuthDataRes)))
-        {
-          if (((SCAuthDataRes)paramAnonymousJceStruct).ret == 0)
-          {
-            bn.b("Taiji", "Cmd_CSAuthSolutionReport success");
-            return;
-          }
-          bn.b("Taiji", "Cmd_CSAuthSolutionReport success");
-          return;
-        }
-        bn.b("Taiji", "Cmd_CSAuthSolutionReport failure");
-      }
-    });
+    bn.b("Taiji", "Cmd_CSAuthSolutionReport no data");
   }
   
   private void a(ArrayList<Integer> paramArrayList)
@@ -212,105 +227,7 @@ public class h
   
   private CSAuthDataRes b(JceStruct paramJceStruct, boolean paramBoolean, int paramInt)
   {
-    CSAuthDataRes localCSAuthDataRes = new CSAuthDataRes();
-    if ((paramJceStruct == null) || (!(paramJceStruct instanceof SCSolutionRes))) {
-      return localCSAuthDataRes;
-    }
-    paramJceStruct = (SCSolutionRes)paramJceStruct;
-    if (paramJceStruct.ret != 0) {
-      return localCSAuthDataRes;
-    }
-    Object localObject1 = i.a(this.f);
-    ((i)localObject1).c(System.currentTimeMillis());
-    Object localObject2 = new ArrayList();
-    if (paramJceStruct.solutionList != null)
-    {
-      ((List)localObject2).addAll(paramJceStruct.solutionList);
-      bn.b("Taiji", "sols size:" + paramJceStruct.solutionList.size());
-    }
-    if (paramJceStruct.canceledSolutionList != null)
-    {
-      ((List)localObject2).addAll(paramJceStruct.canceledSolutionList);
-      bn.b("Taiji", "canceld sols size:" + paramJceStruct.canceledSolutionList.size());
-    }
-    int m;
-    if (((List)localObject2).size() > 0)
-    {
-      if (paramInt == 2) {
-        bn.b("Taiji", "GotSolsTime:" + (System.currentTimeMillis() - this.h));
-      }
-      localCSAuthDataRes.resList = new ArrayList(((List)localObject2).size());
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        SolutionItem localSolutionItem = (SolutionItem)((Iterator)localObject2).next();
-        AuthDataRes localAuthDataRes = new AuthDataRes();
-        localAuthDataRes.commSoluId = localSolutionItem.commSoluId;
-        localAuthDataRes.extSoluId = localSolutionItem.extSoluId;
-        localAuthDataRes.policyId = localSolutionItem.policyId;
-        localCSAuthDataRes.resList.add(localAuthDataRes);
-        bn.b("Taiji", "solution info:" + localSolutionItem.adapterId + "|" + localSolutionItem.commSoluId + "|" + localSolutionItem.extSoluId + "|" + localSolutionItem.policyId);
-      }
-      localObject2 = ((i)localObject1).e();
-      this.e = null;
-      if (((TextUtils.isEmpty((CharSequence)localObject2)) && ((!paramBoolean) || (paramInt == 3))) || ((paramBoolean) && (paramInt == 2)))
-      {
-        this.e = bk.c(bj.a(paramJceStruct));
-        bn.b("Taiji", "lastAllMd5:" + (String)localObject2 + "|currentAllMd5:" + this.e);
-      }
-      if ((!paramBoolean) || (paramInt != 2) || (!((String)localObject2).equals(this.e)))
-      {
-        localObject1 = this.d;
-        localObject2 = this.d;
-        if (paramBoolean)
-        {
-          m = 1;
-          ((a)localObject1).sendMessage(((a)localObject2).obtainMessage(2, m, paramInt, paramJceStruct));
-        }
-      }
-    }
-    for (;;)
-    {
-      return localCSAuthDataRes;
-      m = 0;
-      break;
-      if (!((i)localObject1).f())
-      {
-        ((i)localObject1).a(true);
-        continue;
-        if ((paramBoolean) && (paramInt == 2) && (this.i + 1 < 3))
-        {
-          this.i += 1;
-          this.g = true;
-          this.d.sendMessageDelayed(this.d.obtainMessage(1, null), 500L);
-          paramJceStruct = new ArrayList(1);
-          if (TextUtils.isEmpty(((i)localObject1).e())) {
-            if (!((i)localObject1).g())
-            {
-              paramJceStruct.add("r");
-              ((i)localObject1).b(true);
-            }
-          }
-          for (;;)
-          {
-            c.a().e().reportString(266935, paramJceStruct);
-            bn.b("Taiji", "no data, retry pull all");
-            break;
-            paramJceStruct.add("rr");
-            continue;
-            paramJceStruct.add("rt");
-          }
-        }
-        if (!((i)localObject1).f()) {
-          ((i)localObject1).a(true);
-        }
-        if (this.i + 1 >= 3)
-        {
-          this.g = false;
-          this.i = 0;
-        }
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void b(Message paramMessage)
@@ -320,17 +237,18 @@ public class h
     {
       localCSPullSolutionInfo.adapterIdList = ((ArrayList)paramMessage.obj);
       localCSPullSolutionInfo.pullType = 1;
-      bn.b("Taiji", "MSG_PULL_DIRECTLY EPSRT_ADAPTER");
+      paramMessage = "MSG_PULL_DIRECTLY EPSRT_ADAPTER";
     }
-    while (this.c == null)
+    for (;;)
     {
-      return;
+      bn.b("Taiji", paramMessage);
+      break;
       paramMessage = i.a(this.f);
       if (System.currentTimeMillis() - paramMessage.c() > a.longValue())
       {
         localCSPullSolutionInfo.pullType = 2;
         paramMessage.a(System.currentTimeMillis());
-        bn.b("Taiji", "MSG_PULL_DIRECTLY EPSRT_ALL");
+        paramMessage = "MSG_PULL_DIRECTLY EPSRT_ALL";
       }
       else
       {
@@ -340,49 +258,61 @@ public class h
           return;
         }
         localCSPullSolutionInfo.pullType = 3;
-        bn.b("Taiji", "MSG_PULL_DIRECTLY EPSRT_CHANGED");
+        paramMessage = "MSG_PULL_DIRECTLY EPSRT_CHANGED";
       }
     }
-    this.c.sendShark(3559, localCSPullSolutionInfo, new SCSolutionRes(), 2, new ISharkCallBack()
+    paramMessage = this.c;
+    if (paramMessage == null) {
+      return;
+    }
+    paramMessage.sendShark(3559, localCSPullSolutionInfo, new SCSolutionRes(), 2, new ISharkCallBack()
     {
       public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
       {
-        bn.b("Taiji", "onFinish pull cmdId:" + paramAnonymousInt2);
-        if ((paramAnonymousInt3 != 0) || (paramAnonymousInt4 != 0))
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onFinish pull cmdId:");
+        localStringBuilder.append(paramAnonymousInt2);
+        bn.b("Taiji", localStringBuilder.toString());
+        if ((paramAnonymousInt3 == 0) && (paramAnonymousInt4 == 0))
         {
-          bn.b("Taiji", "onFinish pull shark error:" + paramAnonymousInt3 + "|dataRetCode:" + paramAnonymousInt4);
-          if (localCSPullSolutionInfo.pullType == 2)
+          h.a(h.this, paramAnonymousJceStruct, true, localCSPullSolutionInfo.pullType);
+          return;
+        }
+        paramAnonymousJceStruct = new StringBuilder();
+        paramAnonymousJceStruct.append("onFinish pull shark error:");
+        paramAnonymousJceStruct.append(paramAnonymousInt3);
+        paramAnonymousJceStruct.append("|dataRetCode:");
+        paramAnonymousJceStruct.append(paramAnonymousInt4);
+        bn.b("Taiji", paramAnonymousJceStruct.toString());
+        if (localCSPullSolutionInfo.pullType == 2)
+        {
+          i.a(h.a(h.this)).a(0L);
+          if (h.d(h.this) + 1 < 3)
           {
-            i.a(h.a(h.this)).a(0L);
-            if (h.d(h.this) + 1 >= 3) {
-              break label195;
-            }
             h.a(h.this, true);
             h.e(h.this);
             h.c(h.this).sendMessageDelayed(h.c(h.this).obtainMessage(1, null), 500L);
             bn.b("Taiji", "retry pull all");
-            if (paramAnonymousInt3 == 0) {
-              break label216;
-            }
+          }
+          else
+          {
+            h.a(h.this, false);
+            h.a(h.this, 0);
+          }
+          if (paramAnonymousInt3 != 0)
+          {
             paramAnonymousJceStruct = new ArrayList(1);
             paramAnonymousJceStruct.add(String.valueOf(paramAnonymousInt3));
             c.a().e().reportString(266935, paramAnonymousJceStruct);
-          }
-          label195:
-          label216:
-          while (paramAnonymousInt4 == 0)
-          {
             return;
-            h.a(h.this, false);
-            h.a(h.this, 0);
-            break;
           }
-          paramAnonymousJceStruct = new ArrayList(1);
-          paramAnonymousJceStruct.add(String.valueOf(paramAnonymousInt4));
-          c.a().e().reportString(266935, paramAnonymousJceStruct);
-          return;
+          if (paramAnonymousInt4 != 0)
+          {
+            paramAnonymousJceStruct = new ArrayList(1);
+            paramAnonymousJceStruct.add(String.valueOf(paramAnonymousInt4));
+            c.a().e().reportString(266935, paramAnonymousJceStruct);
+          }
         }
-        h.a(h.this, paramAnonymousJceStruct, true, localCSPullSolutionInfo.pullType);
       }
     });
   }
@@ -390,111 +320,126 @@ public class h
   private void c(Message paramMessage)
   {
     boolean bool;
-    Object localObject2;
-    Object localObject4;
-    Object localObject1;
-    HashMap localHashMap;
-    if ((paramMessage.arg1 == 1) && (paramMessage.arg2 == 2))
-    {
+    if ((paramMessage.arg1 == 1) && (paramMessage.arg2 == 2)) {
       bool = true;
-      bn.b("Taiji", "isPullAll?" + bool);
-      localObject2 = (SCSolutionRes)paramMessage.obj;
-      localObject4 = ((SCSolutionRes)localObject2).solutionList;
-      localObject1 = a.a(this.f);
-      localHashMap = new HashMap();
-      localObject3 = new HashMap();
-      if ((localObject4 != null) && (((List)localObject4).size() > 0)) {
-        localObject4 = ((List)localObject4).iterator();
-      }
+    } else {
+      bool = false;
     }
-    else
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("isPullAll?");
+    ((StringBuilder)localObject1).append(bool);
+    bn.b("Taiji", ((StringBuilder)localObject1).toString());
+    Object localObject3 = (SCSolutionRes)paramMessage.obj;
+    localObject1 = ((SCSolutionRes)localObject3).solutionList;
+    Object localObject2 = a.a(this.f);
+    HashMap localHashMap = new HashMap();
+    Object localObject4 = new HashMap();
+    Object localObject5;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      for (;;)
+      localObject5 = ((List)localObject1).iterator();
+      while (((Iterator)localObject5).hasNext())
       {
-        if (!((Iterator)localObject4).hasNext()) {
-          break label416;
-        }
-        SolutionItem localSolutionItem = (SolutionItem)((Iterator)localObject4).next();
-        if (localSolutionItem == null)
+        localObject1 = (SolutionItem)((Iterator)localObject5).next();
+        if (localObject1 == null) {}
+        for (localObject1 = "sol is null";; localObject1 = "encode return, data null")
         {
-          bn.b("Taiji", "sol is null");
-          continue;
-          bool = false;
+          bn.b("Taiji", (String)localObject1);
           break;
+          localObject6 = b.a().a(this.f, bj.a((JceStruct)localObject1));
+          if (localObject6 != null) {
+            break label183;
+          }
         }
-        Object localObject5 = b.a().a(this.f, bj.a(localSolutionItem));
-        if (localObject5 == null)
+        label183:
+        Object localObject6 = Base64.encodeToString((byte[])localObject6, 2);
+        if (!TextUtils.isEmpty((CharSequence)localObject6))
         {
-          bn.b("Taiji", "encode return, data null");
-        }
-        else
-        {
-          localObject5 = Base64.encodeToString((byte[])localObject5, 2);
-          if (!TextUtils.isEmpty((CharSequence)localObject5)) {
-            if (((String)localObject5).equals(((a)localObject1).a(localSolutionItem.adapterId)))
-            {
-              if (bool) {
-                ((HashMap)localObject3).put(Integer.valueOf(localSolutionItem.adapterId), localObject5);
-              }
-              bn.b("Taiji", "nochanged adapter : " + (String)localObject5 + "|" + localSolutionItem.adapterId + "|" + localSolutionItem.commSoluId + "|" + localSolutionItem.extSoluId + "|" + localSolutionItem.policyId);
+          StringBuilder localStringBuilder;
+          if (((String)localObject6).equals(((a)localObject2).a(((SolutionItem)localObject1).adapterId)))
+          {
+            if (bool) {
+              ((HashMap)localObject4).put(Integer.valueOf(((SolutionItem)localObject1).adapterId), localObject6);
             }
-            else
-            {
-              localHashMap.put(Integer.valueOf(localSolutionItem.adapterId), localObject5);
-              bn.b("Taiji", "changed adapter : " + (String)localObject5 + "|" + localSolutionItem.adapterId + "|" + localSolutionItem.commSoluId + "|" + localSolutionItem.extSoluId + "|" + localSolutionItem.policyId);
-            }
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("nochanged adapter : ");
+            localStringBuilder.append((String)localObject6);
+            localStringBuilder.append("|");
+            localStringBuilder.append(((SolutionItem)localObject1).adapterId);
+            localStringBuilder.append("|");
+            localStringBuilder.append(((SolutionItem)localObject1).commSoluId);
+            localStringBuilder.append("|");
+            localStringBuilder.append(((SolutionItem)localObject1).extSoluId);
+            localStringBuilder.append("|");
+            localStringBuilder.append(((SolutionItem)localObject1).policyId);
+            bn.b("Taiji", localStringBuilder.toString());
+          }
+          else
+          {
+            localHashMap.put(Integer.valueOf(((SolutionItem)localObject1).adapterId), localObject6);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("changed adapter : ");
+            localStringBuilder.append((String)localObject6);
+            localStringBuilder.append("|");
+            localStringBuilder.append(((SolutionItem)localObject1).adapterId);
+            localStringBuilder.append("|");
+            localStringBuilder.append(((SolutionItem)localObject1).commSoluId);
+            localStringBuilder.append("|");
+            localStringBuilder.append(((SolutionItem)localObject1).extSoluId);
+            localStringBuilder.append("|");
+            localStringBuilder.append(((SolutionItem)localObject1).policyId);
+            bn.b("Taiji", localStringBuilder.toString());
           }
         }
       }
     }
-    label416:
     if (bool)
     {
-      ((a)localObject1).a();
-      ((a)localObject1).a((HashMap)localObject3);
+      ((a)localObject2).a();
+      ((a)localObject2).a((HashMap)localObject4);
     }
-    ((a)localObject1).a(localHashMap);
-    Object localObject3 = i.a(this.f);
-    if (this.e != null)
+    ((a)localObject2).a(localHashMap);
+    localObject1 = i.a(this.f);
+    localObject4 = this.e;
+    if (localObject4 != null)
     {
-      ((i)localObject3).c(this.e);
-      ((i)localObject3).a(System.currentTimeMillis());
+      ((i)localObject1).c((String)localObject4);
+      ((i)localObject1).a(System.currentTimeMillis());
     }
-    if ((((SCSolutionRes)localObject2).canceledSolutionList != null) && (((SCSolutionRes)localObject2).canceledSolutionList.size() > 0))
+    if ((((SCSolutionRes)localObject3).canceledSolutionList != null) && (((SCSolutionRes)localObject3).canceledSolutionList.size() > 0))
     {
-      localObject2 = ((SCSolutionRes)localObject2).canceledSolutionList.iterator();
-      while (((Iterator)localObject2).hasNext())
+      localObject3 = ((SCSolutionRes)localObject3).canceledSolutionList.iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        localObject4 = (SolutionItem)((Iterator)localObject2).next();
-        ((a)localObject1).b(((SolutionItem)localObject4).adapterId);
-        bn.b("Taiji", "remove " + ((SolutionItem)localObject4).adapterId);
+        localObject4 = (SolutionItem)((Iterator)localObject3).next();
+        ((a)localObject2).b(((SolutionItem)localObject4).adapterId);
+        localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append("remove ");
+        ((StringBuilder)localObject5).append(((SolutionItem)localObject4).adapterId);
+        bn.b("Taiji", ((StringBuilder)localObject5).toString());
       }
     }
-    if ((!((i)localObject3).f()) || (((i)localObject3).g()))
+    if ((!((i)localObject1).f()) || (((i)localObject1).g()))
     {
-      ((i)localObject3).a(true);
-      localObject1 = new ArrayList(1);
-      if (paramMessage.arg1 != 1) {
-        break label699;
+      ((i)localObject1).a(true);
+      localObject2 = new ArrayList(1);
+      if (paramMessage.arg1 == 1) {
+        paramMessage = "pl";
+      } else {
+        paramMessage = "ps";
       }
-      ((ArrayList)localObject1).add("pl");
-    }
-    for (;;)
-    {
-      c.a().e().reportString(266935, (ArrayList)localObject1);
-      if (((i)localObject3).g())
+      ((ArrayList)localObject2).add(paramMessage);
+      c.a().e().reportString(266935, (ArrayList)localObject2);
+      if (((i)localObject1).g())
       {
-        ((i)localObject3).b(false);
+        ((i)localObject1).b(false);
         paramMessage = new ArrayList(1);
-        ((ArrayList)localObject1).add("rs");
+        ((ArrayList)localObject2).add("rs");
         c.a().e().reportString(266935, paramMessage);
       }
-      if (localHashMap.size() > 0) {
-        a(new ArrayList(localHashMap.keySet()));
-      }
-      return;
-      label699:
-      ((ArrayList)localObject1).add("ps");
+    }
+    if (localHashMap.size() > 0) {
+      a(new ArrayList(localHashMap.keySet()));
     }
   }
   
@@ -510,12 +455,18 @@ public class h
   public void a(List<Integer> paramList)
   {
     bn.b("Taiji", "pullSolutionsFromCloud");
-    if (this.c == null) {
-      throw new RuntimeException("host was not set shark before pull solutions!");
+    if (this.c != null)
+    {
+      a locala = this.d;
+      locala.sendMessage(locala.obtainMessage(0, 1, 0, paramList));
+      this.h = System.currentTimeMillis();
+      paramList = new StringBuilder();
+      paramList.append("pullTime:");
+      paramList.append(this.h);
+      bn.b("Taiji", paramList.toString());
+      return;
     }
-    this.d.sendMessage(this.d.obtainMessage(0, 1, 0, paramList));
-    this.h = System.currentTimeMillis();
-    bn.b("Taiji", "pullTime:" + this.h);
+    throw new RuntimeException("host was not set shark before pull solutions!");
   }
   
   public boolean a()
@@ -526,29 +477,29 @@ public class h
   public List<SolutionItem> b(List<Integer> paramList)
   {
     Object localObject1 = a.a(this.f).a(paramList);
-    if ((localObject1 == null) || (((List)localObject1).size() == 0))
+    if ((localObject1 != null) && (((List)localObject1).size() != 0))
     {
-      bn.b("Taiji", "getSolutionsFromLocal datas is null");
-      return null;
-    }
-    paramList = new ArrayList(paramList.size());
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = (String)((Iterator)localObject1).next();
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      paramList = new ArrayList(paramList.size());
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (SolutionItem)bj.a(b.a().b(this.f, Base64.decode((String)localObject2, 2)), new SolutionItem(), false);
-        if (localObject2 != null) {
-          paramList.add(localObject2);
+        Object localObject2 = (String)((Iterator)localObject1).next();
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          localObject2 = (SolutionItem)bj.a(b.a().b(this.f, Base64.decode((String)localObject2, 2)), new SolutionItem(), false);
+          if (localObject2 != null) {
+            paramList.add(localObject2);
+          }
         }
       }
+      localObject1 = paramList.iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        bn.b("Taiji", String.valueOf(((SolutionItem)((Iterator)localObject1).next()).adapterId));
+      }
+      return paramList;
     }
-    localObject1 = paramList.iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      bn.b("Taiji", String.valueOf(((SolutionItem)((Iterator)localObject1).next()).adapterId));
-    }
-    return paramList;
+    bn.b("Taiji", "getSolutionsFromLocal datas is null");
+    return null;
   }
   
   class a
@@ -561,24 +512,30 @@ public class h
     
     public void handleMessage(Message paramMessage)
     {
-      bn.b("Taiji", "handleMessage :msg:" + paramMessage.what);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleMessage :msg:");
+      localStringBuilder.append(paramMessage.what);
+      bn.b("Taiji", localStringBuilder.toString());
       switch (paramMessage.what)
       {
       default: 
         return;
-      case 0: 
-        bn.b("Taiji", "MSG_UPLOAD_PROFILE:" + paramMessage.arg1);
-        h.a(h.this, paramMessage);
+      case 3: 
+        e.a().a(h.a(h.this));
+        return;
+      case 2: 
+        h.c(h.this, paramMessage);
         return;
       case 1: 
         bn.b("Taiji", "MSG_PULL_DIRECTLY");
         h.b(h.this, paramMessage);
         return;
-      case 2: 
-        h.c(h.this, paramMessage);
-        return;
       }
-      e.a().a(h.a(h.this));
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MSG_UPLOAD_PROFILE:");
+      localStringBuilder.append(paramMessage.arg1);
+      bn.b("Taiji", localStringBuilder.toString());
+      h.a(h.this, paramMessage);
     }
   }
 }

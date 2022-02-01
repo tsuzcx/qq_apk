@@ -36,9 +36,10 @@ public class GetBarcodeVerifyMsgActivity
   
   private void dismissDualDialog()
   {
-    if (this.mDualMsgShowDialog != null)
+    DualMsgShowDialog localDualMsgShowDialog = this.mDualMsgShowDialog;
+    if (localDualMsgShowDialog != null)
     {
-      if (this.mDualMsgShowDialog.isShowing()) {
+      if (localDualMsgShowDialog.isShowing()) {
         this.mDualMsgShowDialog.cancel();
       }
       this.mDualMsgShowDialog.b();
@@ -59,13 +60,16 @@ public class GetBarcodeVerifyMsgActivity
         paramAnonymousVarArgs = new e();
         if (!cr.a().o())
         {
-          e locale = cr.a().q();
-          paramAnonymousVarArgs = locale;
-          if (!locale.b()) {
-            return locale;
+          localObject = cr.a().q();
+          paramAnonymousVarArgs = (String[])localObject;
+          if (!((e)localObject).b()) {
+            return localObject;
           }
         }
-        g.c("barcode user: " + cr.a().d());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("barcode user: ");
+        ((StringBuilder)localObject).append(cr.a().d());
+        g.c(((StringBuilder)localObject).toString());
         if (cr.a().d() > 0) {
           return cn.a().a(GetBarcodeVerifyMsgActivity.this.mAqVerifyBarcodeContent);
         }
@@ -92,7 +96,8 @@ public class GetBarcodeVerifyMsgActivity
           if (cn.a().b() > 0)
           {
             GetBarcodeVerifyMsgActivity.this.dismissDualDialog();
-            GetBarcodeVerifyMsgActivity.access$502(GetBarcodeVerifyMsgActivity.this, new DualMsgShowDialog(GetBarcodeVerifyMsgActivity.this, 2131362156, 1));
+            paramAnonymouse = GetBarcodeVerifyMsgActivity.this;
+            GetBarcodeVerifyMsgActivity.access$502(paramAnonymouse, new DualMsgShowDialog(paramAnonymouse, 2131558764, 1));
             GetBarcodeVerifyMsgActivity.this.mDualMsgShowDialog.show();
             GetBarcodeVerifyMsgActivity.this.mDualMsgShowDialog.setOnDismissListener(GetBarcodeVerifyMsgActivity.this.mDismissListener);
             return;
@@ -105,41 +110,28 @@ public class GetBarcodeVerifyMsgActivity
           GetBarcodeVerifyMsgActivity.this.showDualMsgExpireDlg();
           return;
         }
-        if ((110 == paramAnonymouse.a) || (111 == paramAnonymouse.a))
+        if ((110 != paramAnonymouse.a) && (111 != paramAnonymouse.a))
         {
-          GetBarcodeVerifyMsgActivity.this.showUserDialog(2131230843, GetBarcodeVerifyMsgActivity.this.getResources().getString(2131231395), 2131230886, 2131230777, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          if (10029 == paramAnonymouse.a)
           {
-            public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+            paramAnonymouse = GetBarcodeVerifyMsgActivity.this;
+            paramAnonymouse.showUserDialog(2131492985, paramAnonymouse.getString(2131493761), 2131493802, 2131493028, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
-              GetBarcodeVerifyMsgActivity.this.dismissDialog();
-            }
-          }, new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
-          {
-            public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+              public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+              {
+                GetBarcodeVerifyMsgActivity.this.gotoVerify(GetBarcodeVerifyMsgActivity.this);
+              }
+            }, new DialogInterface.OnClickListener()
             {
-              GetBarcodeVerifyMsgActivity.this.dismissDialog();
-              paramAnonymous2DialogInterface = new Intent(GetBarcodeVerifyMsgActivity.this, WtLoginAccountInput.class);
-              paramAnonymous2DialogInterface.putExtra("page_id", 4);
-              GetBarcodeVerifyMsgActivity.this.startActivity(paramAnonymous2DialogInterface);
-            }
-          }, new DialogInterface.OnCancelListener()
-          {
-            public void onCancel(DialogInterface paramAnonymous2DialogInterface)
-            {
-              GetBarcodeVerifyMsgActivity.this.finish();
-            }
-          });
-          return;
-        }
-        if (10029 == paramAnonymouse.a)
-        {
-          GetBarcodeVerifyMsgActivity.this.showUserDialog(2131230843, GetBarcodeVerifyMsgActivity.this.getString(2131231617), 2131231658, 2131230886, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-          {
-            public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-            {
-              GetBarcodeVerifyMsgActivity.this.gotoVerify(GetBarcodeVerifyMsgActivity.this);
-            }
-          }, new DialogInterface.OnClickListener()
+              public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+              {
+                GetBarcodeVerifyMsgActivity.this.finish();
+              }
+            });
+            return;
+          }
+          e.a(GetBarcodeVerifyMsgActivity.this.getResources(), paramAnonymouse);
+          GetBarcodeVerifyMsgActivity.this.showUserDialog(2131492985, paramAnonymouse.c, 2131493039, new DialogInterface.OnClickListener()
           {
             public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -148,10 +140,25 @@ public class GetBarcodeVerifyMsgActivity
           });
           return;
         }
-        e.a(GetBarcodeVerifyMsgActivity.this.getResources(), paramAnonymouse);
-        GetBarcodeVerifyMsgActivity.this.showUserDialog(2131230843, paramAnonymouse.c, 2131230897, new DialogInterface.OnClickListener()
+        paramAnonymouse = GetBarcodeVerifyMsgActivity.this;
+        paramAnonymouse.showUserDialog(2131492985, paramAnonymouse.getResources().getString(2131493537), 2131493028, 2131492919, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+          {
+            GetBarcodeVerifyMsgActivity.this.dismissDialog();
+          }
+        }, new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
+        {
+          public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+          {
+            GetBarcodeVerifyMsgActivity.this.dismissDialog();
+            paramAnonymous2DialogInterface = new Intent(GetBarcodeVerifyMsgActivity.this, WtLoginAccountInput.class);
+            paramAnonymous2DialogInterface.putExtra("page_id", 4);
+            GetBarcodeVerifyMsgActivity.this.startActivity(paramAnonymous2DialogInterface);
+          }
+        }, new DialogInterface.OnCancelListener()
+        {
+          public void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
             GetBarcodeVerifyMsgActivity.this.finish();
           }
@@ -163,7 +170,7 @@ public class GetBarcodeVerifyMsgActivity
   
   private void showDualMsgExpireDlg()
   {
-    showUserDialog(2131230843, getString(2131230949), 2131230897, new DialogInterface.OnClickListener()
+    showUserDialog(2131492985, getString(2131493091), 2131493039, new DialogInterface.OnClickListener()
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -175,25 +182,29 @@ public class GetBarcodeVerifyMsgActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968672);
-    this.mPreparePro = ((ProgressBar)findViewById(2131558942));
-    this.mPrepareText = ((TextView)findViewById(2131558941));
-    this.mPrepareText.setText(2131230953);
-    if ((getIntent() == null) || (getIntent().getBundleExtra("com.tencent.input_param") == null))
+    setContentView(2131296352);
+    this.mPreparePro = ((ProgressBar)findViewById(2131165808));
+    this.mPrepareText = ((TextView)findViewById(2131165809));
+    this.mPrepareText.setText(2131493095);
+    if ((getIntent() != null) && (getIntent().getBundleExtra("com.tencent.input_param") != null))
     {
-      finish();
+      this.mAqVerifyBarcodeContent = getIntent().getBundleExtra("com.tencent.input_param").getString("barcode_result");
+      paramBundle = new StringBuilder();
+      paramBundle.append(", aq verify: ");
+      paramBundle.append(this.mAqVerifyBarcodeContent);
+      g.a(paramBundle.toString());
+      hideTitle();
       return;
     }
-    this.mAqVerifyBarcodeContent = getIntent().getBundleExtra("com.tencent.input_param").getString("barcode_result");
-    g.a(", aq verify: " + this.mAqVerifyBarcodeContent);
-    hideTitle();
+    finish();
   }
   
   protected void onDestroy()
   {
-    if (this.mDualMsgShowDialog != null)
+    DualMsgShowDialog localDualMsgShowDialog = this.mDualMsgShowDialog;
+    if (localDualMsgShowDialog != null)
     {
-      this.mDualMsgShowDialog.b();
+      localDualMsgShowDialog.b();
       this.mDualMsgShowDialog = null;
     }
     super.onDestroy();
@@ -201,7 +212,8 @@ public class GetBarcodeVerifyMsgActivity
   
   public void onPause()
   {
-    if ((this.mGetDualMsgTask != null) && (this.mGetDualMsgTask.b() != UserTask.Status.FINISHED)) {
+    UserTask localUserTask = this.mGetDualMsgTask;
+    if ((localUserTask != null) && (localUserTask.b() != UserTask.Status.FINISHED)) {
       this.mGetDualMsgTask.a(true);
     }
     super.onPause();
@@ -210,7 +222,8 @@ public class GetBarcodeVerifyMsgActivity
   public void onResume()
   {
     super.onResume();
-    if ((this.mDualMsgShowDialog != null) && (this.mDualMsgShowDialog.isShowing())) {
+    DualMsgShowDialog localDualMsgShowDialog = this.mDualMsgShowDialog;
+    if ((localDualMsgShowDialog != null) && (localDualMsgShowDialog.isShowing())) {
       return;
     }
     queryDualMsg();

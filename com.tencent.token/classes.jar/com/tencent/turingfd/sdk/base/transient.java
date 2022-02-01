@@ -12,8 +12,13 @@ public class transient
   
   public static String a(Context paramContext)
   {
-    if (Build.VERSION.SDK_INT >= 14) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (Build.VERSION.SDK_INT >= 14) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return System.getProperty("http.proxyHost");
     }
     return Proxy.getHost(paramContext);
@@ -21,18 +26,24 @@ public class transient
   
   public static int b(Context paramContext)
   {
-    if (Build.VERSION.SDK_INT >= 14) {}
-    for (int i = 1; i != 0; i = 0) {
-      try
-      {
-        i = Integer.parseInt(System.getProperty("http.proxyPort"));
-        return i;
-      }
-      catch (NumberFormatException paramContext)
-      {
-        return -1;
-      }
+    int i;
+    if (Build.VERSION.SDK_INT >= 14) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (i != 0) {}
+    try
+    {
+      i = Integer.parseInt(System.getProperty("http.proxyPort"));
+      return i;
+    }
+    catch (NumberFormatException paramContext)
+    {
+      label30:
+      break label30;
+    }
+    return -1;
     return Proxy.getPort(paramContext);
   }
   

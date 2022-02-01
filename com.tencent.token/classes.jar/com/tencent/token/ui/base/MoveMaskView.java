@@ -62,12 +62,12 @@ public class MoveMaskView
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, br.a.moveMaskView, 0, 0);
     try
     {
-      this.s = paramContext.getColor(0, 10526880);
-      this.t = paramContext.getColor(1, 8026746);
-      this.u = paramContext.getColor(2, -1);
-      this.v = paramContext.getColor(3, 6381664);
-      this.w = paramContext.getColor(4, 14211288);
-      this.x = paramContext.getColor(5, 0);
+      this.s = paramContext.getColor(3, 10526880);
+      this.t = paramContext.getColor(4, 8026746);
+      this.u = paramContext.getColor(5, -1);
+      this.v = paramContext.getColor(1, 6381664);
+      this.w = paramContext.getColor(0, 14211288);
+      this.x = paramContext.getColor(2, 0);
       paramContext.recycle();
       this.c = new Paint(1);
       this.c.setColor(this.t);
@@ -93,106 +93,119 @@ public class MoveMaskView
     if (i1 == 1073741824)
     {
       f1 = paramInt;
-      return (int)f1;
     }
-    if (this.l.length < this.p) {}
-    for (float f2 = this.g * this.l.length + this.k * 2.0F;; f2 = this.g * this.p + this.k * 2.0F)
+    else
     {
-      f1 = f2;
-      if (i1 != -2147483648) {
-        break;
+      char[] arrayOfChar = this.l;
+      int i2 = arrayOfChar.length;
+      int i3 = this.p;
+      if (i2 < i3) {
+        f1 = this.g * arrayOfChar.length + this.k * 2.0F;
+      } else {
+        f1 = this.g * i3 + this.k * 2.0F;
       }
-      f1 = Math.min(f2, paramInt);
-      break;
+      if (i1 == -2147483648) {
+        f1 = Math.min(f1, paramInt);
+      }
     }
+    return (int)f1;
   }
   
   private int a(int paramInt, List<Integer> paramList)
   {
-    int i2;
-    if ((paramList == null) || (paramList.size() == 0))
+    if (paramList != null)
     {
-      i2 = -1;
-      return i2;
-    }
-    int i1 = 0;
-    for (;;)
-    {
-      if (i1 >= paramList.size()) {
-        break label58;
+      if (paramList.size() == 0) {
+        return -1;
       }
-      i2 = i1;
-      if (paramInt == ((Integer)paramList.get(i1)).intValue()) {
-        break;
+      int i1 = 0;
+      while (i1 < paramList.size())
+      {
+        if (paramInt == ((Integer)paramList.get(i1)).intValue()) {
+          return i1;
+        }
+        i1 += 1;
       }
-      i1 += 1;
+      return -1;
     }
-    label58:
     return -1;
   }
   
   private int a(MotionEvent paramMotionEvent)
   {
-    return (int)(paramMotionEvent.getX() / this.e) + (int)(paramMotionEvent.getY() / (this.h + this.i)) * this.p;
+    int i1 = (int)(paramMotionEvent.getX() / this.e);
+    return (int)(paramMotionEvent.getY() / (this.h + this.i)) * this.p + i1;
   }
   
   private String a(int paramInt1, String paramString, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int i1 = 0;
-    if (i1 < paramString.length())
+    while (i1 < paramString.length())
     {
       if ((i1 >= paramInt1) && (i1 < paramInt1 + paramInt2)) {
         localStringBuilder.append("*");
-      }
-      for (;;)
-      {
-        i1 += 1;
-        break;
+      } else {
         localStringBuilder.append(paramString.charAt(i1));
       }
+      i1 += 1;
     }
     return localStringBuilder.toString();
   }
   
   private List<Integer> a(int paramInt1, char[] paramArrayOfChar, int paramInt2)
   {
-    if ((paramArrayOfChar == null) || (paramArrayOfChar.length == 0)) {}
-    while ((paramInt1 < 0) || (paramInt1 >= paramArrayOfChar.length)) {
+    if (paramArrayOfChar != null)
+    {
+      if (paramArrayOfChar.length == 0) {
+        return null;
+      }
+      if (paramInt1 >= 0)
+      {
+        if (paramInt1 >= paramArrayOfChar.length) {
+          return null;
+        }
+        ArrayList localArrayList = new ArrayList();
+        Log.e("MoveMaskView", "--------------------------:");
+        int i1 = 0;
+        while (i1 < localArrayList.size())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("maskIndexs:");
+          localStringBuilder.append(i1);
+          localStringBuilder.append("--");
+          localStringBuilder.append(localArrayList.get(i1));
+          Log.e("MoveMaskView", localStringBuilder.toString());
+          i1 += 1;
+        }
+        Log.e("MoveMaskView", "--------------------------:");
+        if ((paramInt1 >= 0) && (paramInt1 < paramArrayOfChar.length - (paramInt2 - 1))) {
+          i1 = 0;
+        }
+        while (i1 < paramInt2)
+        {
+          localArrayList.add(i1, Integer.valueOf(paramInt1));
+          i1 += 1;
+          paramInt1 += 1;
+          continue;
+          if ((paramInt1 >= paramArrayOfChar.length - (paramInt2 - 1)) && (paramInt1 < paramArrayOfChar.length))
+          {
+            paramInt1 = paramArrayOfChar.length - paramInt2;
+            i1 = paramArrayOfChar.length - 1;
+            while (i1 >= paramArrayOfChar.length - paramInt2)
+            {
+              localArrayList.add(paramArrayOfChar.length - 1 - i1, Integer.valueOf(paramInt1));
+              i1 -= 1;
+              paramInt1 += 1;
+            }
+          }
+        }
+        this.q = ((Integer)localArrayList.get(0)).intValue();
+        return localArrayList;
+      }
       return null;
     }
-    ArrayList localArrayList = new ArrayList();
-    Log.e("MoveMaskView", "--------------------------:");
-    int i1 = 0;
-    while (i1 < localArrayList.size())
-    {
-      Log.e("MoveMaskView", "maskIndexs:" + i1 + "--" + localArrayList.get(i1));
-      i1 += 1;
-    }
-    Log.e("MoveMaskView", "--------------------------:");
-    if ((paramInt1 >= 0) && (paramInt1 < paramArrayOfChar.length - (paramInt2 - 1))) {
-      i1 = 0;
-    }
-    while (i1 < paramInt2)
-    {
-      localArrayList.add(i1, Integer.valueOf(paramInt1));
-      i1 += 1;
-      paramInt1 += 1;
-      continue;
-      if ((paramInt1 >= paramArrayOfChar.length - (paramInt2 - 1)) && (paramInt1 < paramArrayOfChar.length))
-      {
-        paramInt1 = paramArrayOfChar.length - paramInt2;
-        i1 = paramArrayOfChar.length - 1;
-        while (i1 >= paramArrayOfChar.length - paramInt2)
-        {
-          localArrayList.add(paramArrayOfChar.length - 1 - i1, Integer.valueOf(paramInt1));
-          i1 -= 1;
-          paramInt1 += 1;
-        }
-      }
-    }
-    this.q = ((Integer)localArrayList.get(0)).intValue();
-    return localArrayList;
+    return null;
   }
   
   private int b(int paramInt)
@@ -200,18 +213,18 @@ public class MoveMaskView
     int i1 = View.MeasureSpec.getMode(paramInt);
     paramInt = View.MeasureSpec.getSize(paramInt);
     float f1;
-    if (i1 == 1073741824) {
+    if (i1 == 1073741824)
+    {
       f1 = paramInt;
     }
-    for (;;)
+    else
     {
-      return (int)f1;
-      float f2 = this.g * 1.5F * this.f;
-      f1 = f2;
+      f1 = this.g * 1.5F * this.f;
       if (i1 == -2147483648) {
-        f1 = Math.min(f2, paramInt);
+        f1 = Math.min(f1, paramInt);
       }
     }
+    return (int)f1;
   }
   
   public int a(String paramString, Paint paramPaint)
@@ -229,58 +242,61 @@ public class MoveMaskView
   protected void onDraw(Canvas paramCanvas)
   {
     this.m = a(this.n, this.l, this.o);
-    if ((this.B) && (this.C != null))
+    Object localObject;
+    if (this.B)
     {
-      this.C.a(this.m, a(this.n, String.valueOf(this.l), this.o));
-      this.B = false;
+      localObject = this.C;
+      if (localObject != null)
+      {
+        ((a)localObject).a(this.m, a(this.n, String.valueOf(this.l), this.o));
+        this.B = false;
+      }
     }
     int i1 = 0;
-    if (i1 < this.l.length)
+    while (i1 < this.l.length)
     {
-      String str = this.l[i1] + "";
-      float f2 = this.e / 2.0F - this.c.measureText(str) / 2.0F + i1 % this.p * this.e;
-      int i2 = a(str, this.c);
-      float f1 = this.h / 2.0F;
-      float f3 = i2 / 2.0F + f1 + i1 / this.p * (this.h + this.i);
-      float f4;
-      if (i1 % this.p == 0)
-      {
-        f1 = i1 % this.p;
-        f4 = this.e;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.l[i1]);
+      ((StringBuilder)localObject).append("");
+      localObject = ((StringBuilder)localObject).toString();
+      float f2 = this.e / 2.0F - this.c.measureText((String)localObject) / 2.0F + i1 % this.p * this.e;
+      int i2 = a((String)localObject, this.c);
+      float f1 = this.h;
+      float f3 = f1 / 2.0F;
+      float f4 = i2 / 2.0F;
+      i2 = this.p;
+      f3 = f3 + f4 + i1 / i2 * (f1 + this.i);
+      if (i1 % i2 == 0) {
+        f1 = i1 % i2 * this.e + this.k / 2.0F;
+      } else {
+        f1 = i1 % i2 * this.e;
       }
-      float f5;
-      float f6;
-      for (f1 = this.k / 2.0F + f1 * f4;; f1 = this.e * f1)
+      i2 = this.p;
+      float f6 = i1 / i2;
+      f4 = this.h;
+      float f5 = this.i;
+      f6 = f6 * (f4 + f5) + this.r;
+      float f7 = (i1 % i2 + 1) * this.e;
+      f4 = i1 / i2 * (f5 + f4) + f4;
+      this.c.setColor(this.u);
+      paramCanvas.drawRect(f1, f6, f7, f4, this.c);
+      i2 = this.q;
+      if ((i2 <= i1) && (i1 < i2 + this.o))
       {
-        f4 = i1 / this.p;
-        f5 = this.h;
-        f6 = this.i;
-        f4 = this.r + f4 * (f5 + f6);
-        f5 = i1 % this.p + 1;
-        f5 = this.e * f5;
-        f6 = i1 / this.p;
-        float f7 = this.h;
-        float f8 = this.i;
-        f6 = this.h + f6 * (f7 + f8);
-        this.c.setColor(this.u);
-        paramCanvas.drawRect(f1, f4, f5, f6, this.c);
-        if ((this.q > i1) || (i1 >= this.q + this.o)) {
-          break label761;
-        }
         this.c.setColor(this.v);
-        paramCanvas.drawRect(f1, f4, f5, f6, this.c);
+        paramCanvas.drawRect(f1, f6, f7, f4, this.c);
         this.c.setColor(this.x);
         this.y = "*";
         this.z = ((int)(this.e / 2.0F - this.c.measureText(this.y) / 2.0F + i1 % this.p * this.e));
         i2 = a(this.y, this.c);
-        f7 = this.i / 2.0F;
-        this.A = ((int)(i2 + (f7 + f6)));
+        this.A = ((int)(f4 + this.i / 2.0F + i2));
         paramCanvas.drawText(this.y, this.z, this.A, this.c);
         if (i1 == this.q)
         {
           this.d.setColor(this.v);
           this.d.setStrokeWidth(this.k);
-          paramCanvas.drawLine(f1, f4 - this.r, f1, f6 + this.r, this.d);
+          i2 = this.r;
+          paramCanvas.drawLine(f1, f6 - i2, f1, f4 + i2, this.d);
           this.d.setColor(this.w);
           this.d.setStrokeWidth(1.0F);
         }
@@ -288,57 +304,60 @@ public class MoveMaskView
         {
           this.d.setColor(this.v);
           this.d.setStrokeWidth(this.k);
-          paramCanvas.drawLine(f5, f4 - this.r, f5, f6 + this.r, this.d);
+          i2 = this.r;
+          paramCanvas.drawLine(f7, f6 - i2, f7, f4 + i2, this.d);
           this.d.setColor(this.w);
           this.d.setStrokeWidth(1.0F);
         }
         this.c.setColor(this.s);
         this.c.setStyle(Paint.Style.FILL);
-        paramCanvas.drawText(str, f2, f3, this.c);
-        i1 += 1;
-        break;
-        f1 = i1 % this.p;
+        paramCanvas.drawText((String)localObject, f2, f3, this.c);
       }
-      label761:
-      paramCanvas.drawLine(f1, f4, f5, f4, this.d);
-      paramCanvas.drawLine(f1, f6, f5, f6, this.d);
-      if (i1 % this.p == 0) {
-        paramCanvas.drawLine(f1, f4, f1, f6, this.d);
-      }
-      for (;;)
+      else
       {
-        if ((i1 == this.l.length - 1) || ((i1 + 1) % this.p == 0)) {
-          paramCanvas.drawLine(f5, f4, f5, f6, this.d);
+        paramCanvas.drawLine(f1, f6, f7, f6, this.d);
+        paramCanvas.drawLine(f1, f4, f7, f4, this.d);
+        i2 = this.p;
+        if (i1 % i2 == 0)
+        {
+          paramCanvas.drawLine(f1, f6, f1, f4, this.d);
         }
-        this.c.setColor(this.t);
-        this.c.setStyle(Paint.Style.FILL);
-        paramCanvas.drawText(str, f2, f3, this.c);
-        break;
-        if ((this.q + this.o == i1) && (i1 % this.p != 0))
+        else if ((this.q + this.o == i1) && (i1 % i2 != 0))
         {
           this.d.setColor(this.v);
           this.d.setStrokeWidth(this.k);
-          paramCanvas.drawLine(f1, f4 - this.r, f1, f6 + this.r, this.d);
+          i2 = this.r;
+          paramCanvas.drawLine(f1, f6 - i2, f1, f4 + i2, this.d);
           this.d.setColor(this.w);
           this.d.setStrokeWidth(1.0F);
         }
         else
         {
-          paramCanvas.drawLine(f1, f4, f1, f6, this.d);
+          paramCanvas.drawLine(f1, f6, f1, f4, this.d);
         }
+        if ((i1 == this.l.length - 1) || ((i1 + 1) % this.p == 0)) {
+          paramCanvas.drawLine(f7, f6, f7, f4, this.d);
+        }
+        this.c.setColor(this.t);
+        this.c.setStyle(Paint.Style.FILL);
+        paramCanvas.drawText((String)localObject, f2, f3, this.c);
       }
+      i1 += 1;
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(a(paramInt1), b(paramInt2));
-    if (this.l.length % this.p == 0)
+    char[] arrayOfChar = this.l;
+    paramInt1 = arrayOfChar.length;
+    paramInt2 = this.p;
+    if (paramInt1 % paramInt2 == 0)
     {
-      this.f = (this.l.length / this.p);
+      this.f = (arrayOfChar.length / paramInt2);
       return;
     }
-    this.f = (this.l.length / this.p + 1);
+    this.f = (arrayOfChar.length / paramInt2 + 1);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -351,60 +370,84 @@ public class MoveMaskView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    int i1;
     switch (MotionEventCompat.getActionMasked(paramMotionEvent))
     {
-    }
-    for (;;)
-    {
-      postInvalidate();
-      return true;
-      this.B = false;
-      int i1 = a(paramMotionEvent);
+    default: 
+      break;
+    case 2: 
+      i1 = a(paramMotionEvent);
       if ((i1 >= 0) && (i1 < this.l.length))
       {
-        if ((this.m == null) || (this.m.size() == 0)) {
-          this.n = i1;
-        }
-        for (this.a = i1;; this.a = i1)
+        paramMotionEvent = this.m;
+        if ((paramMotionEvent != null) && (paramMotionEvent.size() != 0))
         {
-          Log.d("MoveMaskView", "onTouchEvent: " + this.l[i1]);
-          break;
-          if ((i1 != this.a) && (a(i1, this.m) == -1)) {
-            this.n = i1;
-          }
-        }
-        i1 = a(paramMotionEvent);
-        if ((i1 >= 0) && (i1 < this.l.length)) {
-          if ((this.m == null) || (this.m.size() == 0))
+          if ((i1 != this.a) && (a(i1, this.m) == -1))
           {
-            this.n = i1;
-            this.a = i1;
+            if (a(this.a, this.m) != -1) {
+              this.n += i1 - this.a;
+            } else {
+              this.n = i1;
+            }
           }
           else
           {
-            if ((i1 != this.a) && (a(i1, this.m) == -1)) {
-              if (a(this.a, this.m) != -1) {
-                this.n += i1 - this.a;
-              }
-            }
-            for (;;)
+            int i2 = this.a;
+            this.n += i1 - i2;
+            i2 = this.n;
+            if (i2 < 0)
             {
-              this.a = i1;
-              break;
-              this.n = i1;
-              continue;
-              this.n = (i1 - this.a + this.n);
-              if (this.n < 0) {
-                this.n = 0;
-              } else if (this.n >= this.l.length - this.o) {
-                this.n = (this.l.length - this.o);
+              this.n = 0;
+            }
+            else
+            {
+              paramMotionEvent = this.l;
+              int i3 = paramMotionEvent.length;
+              int i4 = this.o;
+              if (i2 >= i3 - i4) {
+                this.n = (paramMotionEvent.length - i4);
               }
             }
-            this.B = true;
           }
+          this.a = i1;
+        }
+        else
+        {
+          this.n = i1;
+          this.a = i1;
         }
       }
+      break;
+    case 1: 
+      this.B = true;
+      break;
+    case 0: 
+      this.B = false;
+      i1 = a(paramMotionEvent);
+      if ((i1 >= 0) && (i1 < this.l.length))
+      {
+        paramMotionEvent = this.m;
+        if ((paramMotionEvent != null) && (paramMotionEvent.size() != 0))
+        {
+          if ((i1 != this.a) && (a(i1, this.m) == -1)) {
+            this.n = i1;
+          }
+          this.a = i1;
+        }
+        else
+        {
+          this.n = i1;
+          this.a = i1;
+        }
+        paramMotionEvent = new StringBuilder();
+        paramMotionEvent.append("onTouchEvent: ");
+        paramMotionEvent.append(this.l[i1]);
+        Log.d("MoveMaskView", paramMotionEvent.toString());
+      }
+      break;
     }
+    postInvalidate();
+    return true;
   }
   
   public void setMaskNum(int paramInt)

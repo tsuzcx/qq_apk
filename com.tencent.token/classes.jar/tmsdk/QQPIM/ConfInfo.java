@@ -16,16 +16,6 @@ public final class ConfInfo
   public int timestamp = 0;
   public int version = 0;
   
-  static
-  {
-    if (!ConfInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public ConfInfo()
   {
     setFilename(this.filename);
@@ -53,29 +43,51 @@ public final class ConfInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ConfInfo)paramObject;
-    } while ((!JceUtil.equals(this.filename, paramObject.filename)) || (!JceUtil.equals(this.checksum, paramObject.checksum)) || (!JceUtil.equals(this.timestamp, paramObject.timestamp)) || (!JceUtil.equals(this.pfutimestamp, paramObject.pfutimestamp)) || (!JceUtil.equals(this.gettype, paramObject.gettype)) || (!JceUtil.equals(this.version, paramObject.version)));
-    return true;
+    }
+    paramObject = (ConfInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.filename, paramObject.filename))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.checksum, paramObject.checksum))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.timestamp, paramObject.timestamp))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.pfutimestamp, paramObject.pfutimestamp))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.gettype, paramObject.gettype))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.version, paramObject.version)) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

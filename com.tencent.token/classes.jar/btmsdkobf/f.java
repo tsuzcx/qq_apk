@@ -8,10 +8,10 @@ public class f
 {
   private static Object l;
   private static Class<?> m;
-  private static Method n = null;
-  private static Method o = null;
-  private static Method p = null;
-  private static Method q = null;
+  private static Method n;
+  private static Method o;
+  private static Method p;
+  private static Method q;
   
   static
   {
@@ -38,10 +38,11 @@ public class f
   
   private static String a(Context paramContext, Method paramMethod)
   {
-    if ((l != null) && (paramMethod != null)) {
+    Object localObject = l;
+    if ((localObject != null) && (paramMethod != null)) {
       try
       {
-        paramContext = paramMethod.invoke(l, new Object[] { paramContext });
+        paramContext = paramMethod.invoke(localObject, new Object[] { paramContext });
         if (paramContext != null)
         {
           paramContext = (String)paramContext;

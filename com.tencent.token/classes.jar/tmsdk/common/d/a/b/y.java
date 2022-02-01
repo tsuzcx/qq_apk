@@ -17,7 +17,12 @@ public class y
   {
     this.a = paramLong;
     this.b = ((r)b.a(r.class));
-    new StringBuilder().append("pid: ").append(Process.myPid()).append("SharkQueueProxy mSharkProtocolQueue: ").append(this.b.hashCode()).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pid: ");
+    localStringBuilder.append(Process.myPid());
+    localStringBuilder.append("SharkQueueProxy mSharkProtocolQueue: ");
+    localStringBuilder.append(this.b.hashCode());
+    localStringBuilder.toString();
   }
   
   public eg a(int paramInt1, int paramInt2)

@@ -31,22 +31,28 @@ class ga
   {
     try
     {
-      Object localObject = Class.forName("org.eclipse.jetty.alpn.ALPN");
-      Class localClass1 = Class.forName("org.eclipse.jetty.alpn.ALPN" + "$Provider");
-      Class localClass2 = Class.forName("org.eclipse.jetty.alpn.ALPN" + "$ClientProvider");
-      Class localClass3 = Class.forName("org.eclipse.jetty.alpn.ALPN" + "$ServerProvider");
-      localObject = new ga(((Class)localObject).getMethod("put", new Class[] { SSLSocket.class, localClass1 }), ((Class)localObject).getMethod("get", new Class[] { SSLSocket.class }), ((Class)localObject).getMethod("remove", new Class[] { SSLSocket.class }), localClass2, localClass3);
-      return localObject;
+      Object localObject1 = Class.forName("org.eclipse.jetty.alpn.ALPN");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("org.eclipse.jetty.alpn.ALPN");
+      ((StringBuilder)localObject2).append("$Provider");
+      localObject2 = Class.forName(((StringBuilder)localObject2).toString());
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("org.eclipse.jetty.alpn.ALPN");
+      ((StringBuilder)localObject3).append("$ClientProvider");
+      localObject3 = Class.forName(((StringBuilder)localObject3).toString());
+      Object localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("org.eclipse.jetty.alpn.ALPN");
+      ((StringBuilder)localObject4).append("$ServerProvider");
+      localObject4 = Class.forName(((StringBuilder)localObject4).toString());
+      localObject1 = new ga(((Class)localObject1).getMethod("put", new Class[] { SSLSocket.class, localObject2 }), ((Class)localObject1).getMethod("get", new Class[] { SSLSocket.class }), ((Class)localObject1).getMethod("remove", new Class[] { SSLSocket.class }), (Class)localObject3, (Class)localObject4);
+      return localObject1;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+    catch (ClassNotFoundException|NoSuchMethodException localClassNotFoundException)
     {
-      return null;
+      label157:
+      break label157;
     }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      label140:
-      break label140;
-    }
+    return null;
   }
   
   @Nullable
@@ -61,21 +67,13 @@ class ga
         return null;
       }
       if (paramSSLSocket.a) {
-        paramSSLSocket = null;
-      } else {
-        paramSSLSocket = paramSSLSocket.b;
+        return null;
       }
+      paramSSLSocket = paramSSLSocket.b;
+      return paramSSLSocket;
     }
-    catch (IllegalAccessException paramSSLSocket)
-    {
-      throw fc.a("unable to get selected protocol", paramSSLSocket);
-    }
-    catch (InvocationTargetException paramSSLSocket)
-    {
-      label70:
-      break label70;
-    }
-    return paramSSLSocket;
+    catch (IllegalAccessException paramSSLSocket) {}catch (InvocationTargetException paramSSLSocket) {}
+    throw fc.a("unable to get selected protocol", paramSSLSocket);
   }
   
   public void a(SSLSocket paramSSLSocket, String paramString, List<Protocol> paramList)
@@ -91,15 +89,8 @@ class ga
       this.a.invoke(null, new Object[] { paramSSLSocket, paramString });
       return;
     }
-    catch (IllegalAccessException paramSSLSocket)
-    {
-      throw fc.a("unable to set alpn", paramSSLSocket);
-    }
-    catch (InvocationTargetException paramSSLSocket)
-    {
-      label77:
-      break label77;
-    }
+    catch (IllegalAccessException paramSSLSocket) {}catch (InvocationTargetException paramSSLSocket) {}
+    throw fc.a("unable to set alpn", paramSSLSocket);
   }
   
   public void b(SSLSocket paramSSLSocket)
@@ -109,15 +100,8 @@ class ga
       this.c.invoke(null, new Object[] { paramSSLSocket });
       return;
     }
-    catch (IllegalAccessException paramSSLSocket)
-    {
-      throw fc.a("unable to remove alpn", paramSSLSocket);
-    }
-    catch (InvocationTargetException paramSSLSocket)
-    {
-      label19:
-      break label19;
-    }
+    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
+    throw fc.a("unable to remove alpn", paramSSLSocket);
   }
   
   private static class a

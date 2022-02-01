@@ -4,21 +4,22 @@ import android.os.HandlerThread;
 
 public class ee
 {
-  private static volatile ee od = null;
+  private static volatile ee od;
   private em oc = new em(bc.n());
   private long t = 1L;
   
   public static ee cT()
   {
-    if (od == null) {}
-    try
-    {
-      if (od == null) {
-        od = new ee();
+    if (od == null) {
+      try
+      {
+        if (od == null) {
+          od = new ee();
+        }
       }
-      return od;
+      finally {}
     }
-    finally {}
+    return od;
   }
   
   public HandlerThread L(String paramString)

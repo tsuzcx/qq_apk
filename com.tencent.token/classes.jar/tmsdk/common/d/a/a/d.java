@@ -34,8 +34,14 @@ public class d
   
   public d(Context paramContext, boolean paramBoolean, e parame)
   {
-    new StringBuilder().append("IpPlot() isTest: ").append(paramBoolean).toString();
-    new StringBuilder().append("IpPlot() isTest: ").append(paramBoolean).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("IpPlot() isTest: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("IpPlot() isTest: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.toString();
     this.b = paramContext;
     this.c = paramBoolean;
     this.d = parame;
@@ -46,57 +52,79 @@ public class d
   
   private final ArrayList a(ArrayList paramArrayList)
   {
-    Object localObject;
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0))
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      localObject = new ArrayList();
-      return localObject;
-    }
-    int i1 = paramArrayList.size() - 1;
-    for (;;)
-    {
-      localObject = paramArrayList;
-      if (i1 <= 0) {
-        break;
+      int i1 = paramArrayList.size() - 1;
+      while (i1 > 0)
+      {
+        double d1 = i1;
+        double d2 = Math.random();
+        Double.isNaN(d1);
+        int i2 = (int)(d1 * d2);
+        String str = (String)paramArrayList.get(i1);
+        paramArrayList.set(i1, paramArrayList.get(i2));
+        paramArrayList.set(i2, str);
+        i1 -= 1;
       }
-      int i2 = (int)(i1 * Math.random());
-      localObject = (String)paramArrayList.get(i1);
-      paramArrayList.set(i1, paramArrayList.get(i2));
-      paramArrayList.set(i2, localObject);
-      i1 -= 1;
+      return paramArrayList;
     }
+    return new ArrayList();
   }
   
   private void a(String paramString, ArrayList paramArrayList)
   {
     if (paramArrayList == null)
     {
-      new StringBuilder().append("printList() ").append(paramString).append(" is null").toString();
-      new StringBuilder().append("printList() ").append(paramString).append(" is null").toString();
+      paramArrayList = new StringBuilder();
+      paramArrayList.append("printList() ");
+      paramArrayList.append(paramString);
+      paramArrayList.append(" is null");
+      paramArrayList.toString();
+      paramArrayList = new StringBuilder();
+      paramArrayList.append("printList() ");
+      paramArrayList.append(paramString);
+      paramArrayList.append(" is null");
+      paramArrayList.toString();
       return;
     }
     if (paramArrayList.size() <= 0)
     {
-      new StringBuilder().append("printList() ").append(paramString).append(".size <= 0").toString();
-      new StringBuilder().append("printList() ").append(paramString).append(".size <= 0").toString();
+      paramArrayList = new StringBuilder();
+      paramArrayList.append("printList() ");
+      paramArrayList.append(paramString);
+      paramArrayList.append(".size <= 0");
+      paramArrayList.toString();
+      paramArrayList = new StringBuilder();
+      paramArrayList.append("printList() ");
+      paramArrayList.append(paramString);
+      paramArrayList.append(".size <= 0");
+      paramArrayList.toString();
       return;
     }
     int i2 = paramArrayList.size();
     int i1 = 0;
-    label121:
-    if (i1 < i2) {
-      if (!TextUtils.isEmpty((CharSequence)paramArrayList.get(i1))) {
-        break label148;
-      }
-    }
-    for (;;)
+    while (i1 < i2)
     {
+      if (!TextUtils.isEmpty((CharSequence)paramArrayList.get(i1)))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("printList() ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("[");
+        localStringBuilder.append(i1);
+        localStringBuilder.append("]: ");
+        localStringBuilder.append((String)paramArrayList.get(i1));
+        localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("printList() ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("[");
+        localStringBuilder.append(i1);
+        localStringBuilder.append("]: ");
+        localStringBuilder.append((String)paramArrayList.get(i1));
+        localStringBuilder.toString();
+      }
       i1 += 1;
-      break label121;
-      break;
-      label148:
-      new StringBuilder().append("printList() ").append(paramString).append("[").append(i1).append("]: ").append((String)paramArrayList.get(i1)).toString();
-      new StringBuilder().append("printList() ").append(paramString).append("[").append(i1).append("]: ").append((String)paramArrayList.get(i1)).toString();
     }
   }
   
@@ -118,31 +146,34 @@ public class d
     if (paramArrayList == null) {
       return;
     }
+    ArrayList localArrayList;
     switch (p())
     {
     default: 
       return;
-    case 0: 
-      if (paramBoolean) {}
-      for (localArrayList = this.g;; localArrayList = this.m)
-      {
-        paramArrayList.addAll(localArrayList);
-        return;
+    case 2: 
+      if (paramBoolean) {
+        localArrayList = this.i;
+      } else {
+        localArrayList = this.o;
       }
+      paramArrayList.addAll(localArrayList);
+      return;
     case 1: 
-      if (paramBoolean) {}
-      for (localArrayList = this.h;; localArrayList = this.n)
-      {
-        paramArrayList.addAll(localArrayList);
-        return;
+      if (paramBoolean) {
+        localArrayList = this.h;
+      } else {
+        localArrayList = this.n;
       }
-    }
-    if (paramBoolean) {}
-    for (ArrayList localArrayList = this.i;; localArrayList = this.o)
-    {
       paramArrayList.addAll(localArrayList);
       return;
     }
+    if (paramBoolean) {
+      localArrayList = this.g;
+    } else {
+      localArrayList = this.m;
+    }
+    paramArrayList.addAll(localArrayList);
   }
   
   private String b(String paramString)
@@ -172,75 +203,89 @@ public class d
   
   private void b(boolean paramBoolean, ArrayList paramArrayList)
   {
-    if (paramArrayList == null) {}
-    int i1;
-    label46:
-    do
-    {
+    if (paramArrayList == null) {
       return;
-      i1 = p();
-      if (i1 != 0)
-      {
-        if (!paramBoolean) {
-          break;
-        }
+    }
+    int i1 = p();
+    ArrayList localArrayList;
+    if (i1 != 0)
+    {
+      if (paramBoolean) {
         localArrayList = this.g;
-        paramArrayList.addAll(localArrayList);
+      } else {
+        localArrayList = this.m;
       }
-      if (1 != i1)
-      {
-        if (!paramBoolean) {
-          break label85;
-        }
-        localArrayList = this.h;
-        paramArrayList.addAll(localArrayList);
-      }
-    } while (2 == i1);
-    if (paramBoolean) {}
-    for (ArrayList localArrayList = this.i;; localArrayList = this.o)
-    {
       paramArrayList.addAll(localArrayList);
-      return;
-      localArrayList = this.m;
-      break;
-      label85:
-      localArrayList = this.n;
-      break label46;
+    }
+    if (1 != i1)
+    {
+      if (paramBoolean) {
+        localArrayList = this.h;
+      } else {
+        localArrayList = this.n;
+      }
+      paramArrayList.addAll(localArrayList);
+    }
+    if (2 != i1)
+    {
+      if (paramBoolean) {
+        localArrayList = this.i;
+      } else {
+        localArrayList = this.o;
+      }
+      paramArrayList.addAll(localArrayList);
     }
   }
   
   private ArrayList c(ArrayList paramArrayList)
   {
-    if (paramArrayList == null) {}
-    int i1;
-    do
-    {
+    if (paramArrayList == null) {
       return null;
-      i1 = paramArrayList.size();
-    } while (i1 <= 0);
+    }
+    int i1 = paramArrayList.size();
+    if (i1 <= 0) {
+      return null;
+    }
     ArrayList localArrayList = new ArrayList();
     i1 -= 1;
-    if (i1 >= 0)
+    while (i1 >= 0)
     {
       String str = (String)paramArrayList.get(i1);
-      if (TextUtils.isEmpty(str)) {}
-      for (;;)
+      if (!TextUtils.isEmpty(str))
       {
-        i1 -= 1;
-        break;
-        new StringBuilder().append("getHttpList() ipStr[").append(i1).append("]:").append(str).toString();
-        new StringBuilder().append("getHttpList() ipStr[").append(i1).append("]:").append(str).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getHttpList() ipStr[");
+        localStringBuilder.append(i1);
+        localStringBuilder.append("]:");
+        localStringBuilder.append(str);
+        localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getHttpList() ipStr[");
+        localStringBuilder.append(i1);
+        localStringBuilder.append("]:");
+        localStringBuilder.append(str);
+        localStringBuilder.toString();
         if (!c(str))
         {
           paramArrayList.remove(i1);
-          new StringBuilder().append("getHttpList() no an ip, ipStr: ").append(str).toString();
-          new StringBuilder().append("getHttpList() no an ip, ipStr: ").append(str).toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getHttpList() no an ip, ipStr: ");
+          localStringBuilder.append(str);
+          localStringBuilder.toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getHttpList() no an ip, ipStr: ");
+          localStringBuilder.append(str);
+          localStringBuilder.toString();
         }
         else
         {
-          localArrayList.add("http://" + str);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("http://");
+          localStringBuilder.append(str);
+          localArrayList.add(localStringBuilder.toString());
         }
       }
+      i1 -= 1;
     }
     return localArrayList;
   }
@@ -251,15 +296,14 @@ public class d
     if (paramString.matches("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"))
     {
       paramString = paramString.split("\\.");
-      if (paramString.length >= 4) {
-        break label30;
+      if (paramString.length < 4) {
+        return false;
+      }
+      if ((Integer.parseInt(paramString[0]) < 255) && (Integer.parseInt(paramString[1]) < 255) && (Integer.parseInt(paramString[2]) < 255) && (Integer.parseInt(paramString[3]) < 255)) {
+        return true;
       }
     }
-    label30:
-    while ((Integer.parseInt(paramString[0]) >= 255) || (Integer.parseInt(paramString[1]) >= 255) || (Integer.parseInt(paramString[2]) >= 255) || (Integer.parseInt(paramString[3]) >= 255)) {
-      return false;
-    }
-    return true;
+    return false;
   }
   
   private void e()
@@ -293,11 +337,14 @@ public class d
   private boolean g()
   {
     long l1 = f();
-    if (l1 <= 0L) {}
-    while (System.currentTimeMillis() <= l1) {
+    boolean bool = false;
+    if (l1 <= 0L) {
       return false;
     }
-    return true;
+    if (System.currentTimeMillis() > l1) {
+      bool = true;
+    }
+    return bool;
   }
   
   private void h()
@@ -310,16 +357,17 @@ public class d
       if (m()) {
         return;
       }
-    }
-    j();
-    a(false, this.s);
-    b(this.s);
-    b(false, this.s);
-    i();
-    if (this.s.size() <= this.p.size())
-    {
-      k();
+      j();
+      a(false, this.s);
+      b(this.s);
+      b(false, this.s);
       i();
+      if (this.s.size() <= this.p.size())
+      {
+        k();
+        i();
+      }
+      return;
     }
   }
   
@@ -334,15 +382,26 @@ public class d
         i1 = 0;
         if (i1 < i2)
         {
-          if (TextUtils.isEmpty((CharSequence)this.s.get(i1))) {
-            break label135;
+          if (!TextUtils.isEmpty((CharSequence)this.s.get(i1)))
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("printWrokingIpList() mWorkingIpList[");
+            localStringBuilder.append(i1);
+            localStringBuilder.append("]: ");
+            localStringBuilder.append((String)this.s.get(i1));
+            localStringBuilder.toString();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("printWrokingIpList() mWorkingIpList[");
+            localStringBuilder.append(i1);
+            localStringBuilder.append("]: ");
+            localStringBuilder.append((String)this.s.get(i1));
+            localStringBuilder.toString();
           }
-          new StringBuilder().append("printWrokingIpList() mWorkingIpList[").append(i1).append("]: ").append((String)this.s.get(i1)).toString();
-          new StringBuilder().append("printWrokingIpList() mWorkingIpList[").append(i1).append("]: ").append((String)this.s.get(i1)).toString();
+        }
+        else {
+          return;
         }
       }
-      return;
-      label135:
       i1 += 1;
     }
   }
@@ -383,13 +442,16 @@ public class d
         this.p.clear();
         this.p.clear();
         this.p.add("http://mazutest.3g.qq.com");
-        return;
       }
-      this.g.clear();
-      this.h.clear();
-      this.i.clear();
-      this.p.clear();
-      this.p.add("http://mazu.3g.qq.com");
+      else
+      {
+        this.g.clear();
+        this.h.clear();
+        this.i.clear();
+        this.p.clear();
+        this.p.add("http://mazu.3g.qq.com");
+      }
+      return;
     }
   }
   
@@ -417,50 +479,63 @@ public class d
       int i1 = this.s.size();
       if (i1 <= 0)
       {
-        str1 = n();
-        return str1;
+        str = n();
+        return str;
       }
       if (this.r >= i1) {
         this.r = 0;
       }
-      String str1 = (String)this.s.get(this.r);
-      new StringBuilder().append("getIpInIpList() mCurIpIdx: ").append(this.r).append(" ip: ").append(str1).toString();
-      new StringBuilder().append("getIpInIpList() mCurIpIdx: ").append(this.r).append(" ip: ").append(str1).toString();
-      if (TextUtils.isEmpty(str1))
+      String str = (String)this.s.get(this.r);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getIpInIpList() mCurIpIdx: ");
+      localStringBuilder.append(this.r);
+      localStringBuilder.append(" ip: ");
+      localStringBuilder.append(str);
+      localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getIpInIpList() mCurIpIdx: ");
+      localStringBuilder.append(this.r);
+      localStringBuilder.append(" ip: ");
+      localStringBuilder.append(str);
+      localStringBuilder.toString();
+      if (TextUtils.isEmpty(str))
       {
-        str1 = n();
-        return str1;
+        str = n();
+        return str;
       }
+      return str;
     }
-    return str2;
   }
   
   private int p()
   {
-    int i2 = 2;
     int i1;
-    if (4 == c.a)
-    {
+    if (4 == c.a) {
       i1 = 1;
-      if (i1 == 0) {
-        break label66;
-      }
-      i1 = i2;
-    }
-    for (;;)
-    {
-      new StringBuilder().append("getOper() oper:").append(i1).toString();
-      new StringBuilder().append("getOper() oper:").append(i1).toString();
-      return i1;
+    } else {
       i1 = 0;
-      break;
-      label66:
-      int i3 = g.f(this.b);
+    }
+    int i2 = 2;
+    if (i1 != 0)
+    {
       i1 = i2;
-      if (-1 != i3) {
-        i1 = i3;
+    }
+    else
+    {
+      i1 = g.f(this.b);
+      if (-1 == i1) {
+        i1 = i2;
       }
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getOper() oper:");
+    localStringBuilder.append(i1);
+    localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getOper() oper:");
+    localStringBuilder.append(i1);
+    localStringBuilder.toString();
+    return i1;
   }
   
   public int a()
@@ -481,8 +556,22 @@ public class d
   
   public void a(int paramInt1, int paramInt2, int paramInt3, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3)
   {
-    new StringBuilder().append("handleNewIpList() hash: ").append(paramInt1).append(" hashSeqNo: ").append(paramInt2).append(" validperiod: ").append(paramInt3).toString();
-    new StringBuilder().append("handleNewIpList() hash: ").append(paramInt1).append(" hashSeqNo: ").append(paramInt2).append(" validperiod: ").append(paramInt3).toString();
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("handleNewIpList() hash: ");
+    ((StringBuilder)???).append(paramInt1);
+    ((StringBuilder)???).append(" hashSeqNo: ");
+    ((StringBuilder)???).append(paramInt2);
+    ((StringBuilder)???).append(" validperiod: ");
+    ((StringBuilder)???).append(paramInt3);
+    ((StringBuilder)???).toString();
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("handleNewIpList() hash: ");
+    ((StringBuilder)???).append(paramInt1);
+    ((StringBuilder)???).append(" hashSeqNo: ");
+    ((StringBuilder)???).append(paramInt2);
+    ((StringBuilder)???).append(" validperiod: ");
+    ((StringBuilder)???).append(paramInt3);
+    ((StringBuilder)???).toString();
     a("cmvips", paramArrayList1);
     a("unvips", paramArrayList2);
     a("ctvips", paramArrayList3);
@@ -508,8 +597,14 @@ public class d
   
   public void a(boolean paramBoolean)
   {
-    new StringBuilder().append("setIsTest() isTest: ").append(paramBoolean).toString();
-    new StringBuilder().append("setIsTest() isTest: ").append(paramBoolean).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setIsTest() isTest: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setIsTest() isTest: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.toString();
     this.c = paramBoolean;
     l();
     h();
@@ -524,8 +619,14 @@ public class d
   {
     m();
     String str = o();
-    new StringBuilder().append("getIp() ip: ").append(str).toString();
-    new StringBuilder().append("getIp() ip: ").append(str).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getIp() ip: ");
+    localStringBuilder.append(str);
+    localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getIp() ip: ");
+    localStringBuilder.append(str);
+    localStringBuilder.toString();
     return str;
   }
   
@@ -537,8 +638,18 @@ public class d
       if (this.r >= this.s.size()) {
         this.r = 0;
       }
-      new StringBuilder().append("gotoNextIp() size: ").append(this.s.size()).append(" mCurIpIdx: ").append(this.r).toString();
-      new StringBuilder().append("gotoNextIp() size: ").append(this.s.size()).append(" mCurIpIdx: ").append(this.r).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gotoNextIp() size: ");
+      localStringBuilder.append(this.s.size());
+      localStringBuilder.append(" mCurIpIdx: ");
+      localStringBuilder.append(this.r);
+      localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gotoNextIp() size: ");
+      localStringBuilder.append(this.s.size());
+      localStringBuilder.append(" mCurIpIdx: ");
+      localStringBuilder.append(this.r);
+      localStringBuilder.toString();
       return;
     }
   }

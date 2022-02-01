@@ -27,61 +27,73 @@ public class ProtoDoSessionInfo
     String str1 = str2;
     try
     {
-      JSONObject localJSONObject = new JSONObject();
+      localObject2 = new JSONObject();
       str1 = str2;
       int i = cb.a + 1;
       str1 = str2;
       cb.a = i;
       str1 = str2;
-      localJSONObject.put("seq_id", i);
+      ((JSONObject)localObject2).put("seq_id", i);
       str1 = str2;
-      Object localObject = h.b();
+      Object localObject3 = h.b();
       str1 = str2;
-      localJSONObject.put("rmd_ver", ((h)localObject).g);
+      ((JSONObject)localObject2).put("rmd_ver", ((h)localObject3).g);
       str1 = str2;
-      localJSONObject.put("rmd_times", ((h)localObject).h);
+      ((JSONObject)localObject2).put("rmd_times", ((h)localObject3).h);
       str1 = str2;
-      localJSONObject.put("rmd_last_time", ((h)localObject).i);
+      ((JSONObject)localObject2).put("rmd_last_time", ((h)localObject3).i);
       str1 = str2;
-      localJSONObject.put("config_ver", cs.a().h.b);
+      ((JSONObject)localObject2).put("config_ver", cs.a().h.b);
       str1 = str2;
-      localObject = RqdApplication.j();
-      if (localObject != null)
+      localObject3 = RqdApplication.j();
+      if (localObject3 != null)
       {
         str1 = str2;
-        localJSONObject.put("sec_sig", URLEncoder.encode((String)localObject));
+        ((JSONObject)localObject2).put("sec_sig", URLEncoder.encode((String)localObject3));
       }
       str1 = str2;
-      localJSONObject.put("channel_id", l.m());
+      ((JSONObject)localObject2).put("channel_id", l.m());
       str1 = str2;
-      localJSONObject.put("wtsdk_guid", l.a(bz.a(RqdApplication.l()).b()));
+      ((JSONObject)localObject2).put("wtsdk_guid", l.a(bz.a(RqdApplication.l()).b()));
       str1 = str2;
-      localJSONObject.put("device_name", URLEncoder.encode(m.x()));
+      ((JSONObject)localObject2).put("device_name", URLEncoder.encode(m.x()));
       str1 = str2;
-      localJSONObject.put("release_tag", c.a);
+      ((JSONObject)localObject2).put("release_tag", c.a);
       str1 = str2;
-      str2 = localJSONObject.toString();
+      str2 = ((JSONObject)localObject2).toString();
       str1 = str2;
       str2 = l.b(str2.getBytes());
       str1 = str2;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        g.c("JSONException:" + localException.getMessage());
-      }
-      str1 = "?aq_base_sid=" + localException + "&data=" + str1;
-      str1 = c.e() + "/cn/mbtoken3/mbtoken3_session_info" + str1;
-      g.c("url:" + str1);
+      localException.printStackTrace();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("JSONException:");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      g.c(((StringBuilder)localObject2).toString());
     }
-    str2 = ca.a().b();
-    if (str2 == null)
+    Object localObject1 = ca.a().b();
+    if (localObject1 == null)
     {
       this.a.b(104);
       return null;
     }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("?aq_base_sid=");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("&data=");
+    ((StringBuilder)localObject2).append(str1);
+    str1 = ((StringBuilder)localObject2).toString();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(c.e());
+    ((StringBuilder)localObject1).append("/cn/mbtoken3/mbtoken3_session_info");
+    ((StringBuilder)localObject1).append(str1);
+    str1 = ((StringBuilder)localObject1).toString();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("url:");
+    ((StringBuilder)localObject1).append(str1);
+    g.c(((StringBuilder)localObject1).toString());
     return str1;
   }
   
@@ -93,7 +105,13 @@ public class ProtoDoSessionInfo
     if (i != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
-      this.a.a(i, "server errcode=" + i + ":" + paramJSONObject, paramJSONObject);
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("server errcode=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      ((e)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
       return;
     }
     paramJSONObject = l.c(paramJSONObject.getString("data"));
@@ -103,15 +121,20 @@ public class ProtoDoSessionInfo
       g.c(paramJSONObject.toString());
       if (paramJSONObject.has("new_config"))
       {
-        JSONObject localJSONObject = paramJSONObject.getJSONObject("new_config");
-        cs.a().h.a(localJSONObject);
+        localObject = paramJSONObject.getJSONObject("new_config");
+        cs.a().h.a((JSONObject)localObject);
       }
-      if ((paramJSONObject.has("update")) && (!h.b().a(paramJSONObject.optJSONObject("update")))) {}
+      if (paramJSONObject.has("update")) {
+        h.b().a(paramJSONObject.optJSONObject("update"));
+      }
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseJSON error decodeData=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    g.c(((StringBuilder)localObject).toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
 }
 

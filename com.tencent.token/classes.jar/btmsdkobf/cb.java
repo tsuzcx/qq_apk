@@ -21,31 +21,44 @@ public class cb
   {
     public void handleMessage(Message arg1)
     {
-      switch (???.what)
-      {
-      default: 
+      if (???.what != 1) {
         return;
       }
-      for (;;)
+      synchronized (cb.a(cb.this))
       {
-        synchronized (cb.a(cb.this))
+        Object localObject1;
+        Object localObject3;
+        if (cb.b(cb.this) < 4)
         {
-          if (cb.b(cb.this) >= 4) {
-            break label164;
-          }
-          cb.a locala = (cb.a)cb.c(cb.this).poll();
-          if (locala != null)
+          localObject1 = (cb.a)cb.c(cb.this).poll();
+          if (localObject1 != null)
           {
-            eh.f(cb.aS(), "[http_control]handleMessage(), allow start, running tasks: " + cb.b(cb.this));
+            localObject3 = cb.aS();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[http_control]handleMessage(), allow start, running tasks: ");
+            localStringBuilder.append(cb.b(cb.this));
+            eh.f((String)localObject3, localStringBuilder.toString());
             cb.d(cb.this);
-            cb.a(cb.this, locala.b, locala.a, locala.c);
-            return;
+            cb.a(cb.this, ((cb.a)localObject1).b, ((cb.a)localObject1).a, ((cb.a)localObject1).c);
+          }
+          else
+          {
+            localObject1 = cb.aS();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("[http_control]handleMessage(), allow start but no data to send, running tasks: ");
+            ((StringBuilder)localObject3).append(cb.b(cb.this));
+            eh.e((String)localObject1, ((StringBuilder)localObject3).toString());
           }
         }
-        eh.e(cb.aS(), "[http_control]handleMessage(), allow start but no data to send, running tasks: " + cb.b(cb.this));
-        continue;
-        label164:
-        eh.g(cb.aS(), "[http_control]handleMessage(), not allow start, running tasks(>=4): " + cb.b(cb.this));
+        else
+        {
+          localObject1 = cb.aS();
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("[http_control]handleMessage(), not allow start, running tasks(>=4): ");
+          ((StringBuilder)localObject3).append(cb.b(cb.this));
+          eh.g((String)localObject1, ((StringBuilder)localObject3).toString());
+        }
+        return;
       }
     }
   };
@@ -65,41 +78,45 @@ public class cb
       public void run()
       {
         ??? = new AtomicReference();
+        final int i;
         try
         {
           i = new ca(cb.e(cb.this), cb.f(cb.this), cb.g(cb.this), cb.h(cb.this)).a(paramf, paramArrayOfByte, (AtomicReference)???);
-          ??? = new Runnable()
-          {
-            public void run()
-            {
-              if (cb.2.this.c != null) {
-                cb.2.this.c.a(i, this.b);
-              }
-            }
-          };
-          ee localee = ee.cT();
-          if (cx.ay()) {
-            localee.addUrgentTask((Runnable)???, "shark-http-callback");
-          }
         }
         catch (Throwable localThrowable)
         {
-          synchronized (cb.a(cb.this))
+          eh.b(cb.aS(), "sendDataAsyn(), exception:", localThrowable);
+          i = -1200;
+        }
+        ??? = new Runnable()
+        {
+          public void run()
           {
-            for (;;)
-            {
-              cb.i(cb.this);
-              if (cb.c(cb.this).size() > 0) {
-                cb.j(cb.this).sendEmptyMessage(1);
-              }
-              eh.e(cb.aS(), "[http_control]-------- send finish, running tasks: " + cb.b(cb.this) + ", waiting tasks: " + cb.c(cb.this).size());
-              return;
-              localThrowable = localThrowable;
-              eh.b(cb.aS(), "sendDataAsyn(), exception:", localThrowable);
-              final int i = -1200;
+            if (cb.2.this.c != null) {
+              cb.2.this.c.a(i, this.b);
             }
-            localThrowable.addTask((Runnable)???, "shark-http-callback");
           }
+        };
+        Object localObject2 = ee.cT();
+        if (cx.ay()) {
+          ((ee)localObject2).addUrgentTask((Runnable)???, "shark-http-callback");
+        } else {
+          ((ee)localObject2).addTask((Runnable)???, "shark-http-callback");
+        }
+        synchronized (cb.a(cb.this))
+        {
+          cb.i(cb.this);
+          if (cb.c(cb.this).size() > 0) {
+            cb.j(cb.this).sendEmptyMessage(1);
+          }
+          localObject2 = cb.aS();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[http_control]-------- send finish, running tasks: ");
+          localStringBuilder.append(cb.b(cb.this));
+          localStringBuilder.append(", waiting tasks: ");
+          localStringBuilder.append(cb.c(cb.this).size());
+          eh.e((String)localObject2, localStringBuilder.toString());
+          return;
         }
       }
     };
@@ -117,7 +134,11 @@ public class cb
     synchronized (this.V)
     {
       this.hk.add(new a(paramArrayOfByte, paramf, parama));
-      eh.i(TAG, "[http_control]sendDataAsyn(), waiting tasks: " + this.hk.size());
+      paramf = TAG;
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("[http_control]sendDataAsyn(), waiting tasks: ");
+      paramArrayOfByte.append(this.hk.size());
+      eh.i(paramf, paramArrayOfByte.toString());
       this.mHandler.sendEmptyMessage(1);
       return;
     }

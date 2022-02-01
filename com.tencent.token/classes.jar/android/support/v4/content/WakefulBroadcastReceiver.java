@@ -25,14 +25,17 @@ public abstract class WakefulBroadcastReceiver
     }
     synchronized (sActiveWakeLocks)
     {
-      PowerManager.WakeLock localWakeLock = (PowerManager.WakeLock)sActiveWakeLocks.get(i);
-      if (localWakeLock != null)
+      Object localObject1 = (PowerManager.WakeLock)sActiveWakeLocks.get(i);
+      if (localObject1 != null)
       {
-        localWakeLock.release();
+        ((PowerManager.WakeLock)localObject1).release();
         sActiveWakeLocks.remove(i);
         return true;
       }
-      Log.w("WakefulBroadcastReceiv.", "No active wake lock id #" + i);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("No active wake lock id #");
+      ((StringBuilder)localObject1).append(i);
+      Log.w("WakefulBroadcastReceiv.", ((StringBuilder)localObject1).toString());
       return true;
     }
   }
@@ -51,7 +54,11 @@ public abstract class WakefulBroadcastReceiver
       if (paramIntent == null) {
         return null;
       }
-      paramContext = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(1, "wake:" + paramIntent.flattenToShortString());
+      paramContext = (PowerManager)paramContext.getSystemService("power");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("wake:");
+      localStringBuilder.append(paramIntent.flattenToShortString());
+      paramContext = paramContext.newWakeLock(1, localStringBuilder.toString());
       paramContext.setReferenceCounted(false);
       paramContext.acquire(60000L);
       sActiveWakeLocks.put(i, paramContext);

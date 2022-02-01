@@ -50,40 +50,51 @@ public final class SoftUpdateInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 0);
+    Object localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.urlType != 0) {
-      paramJceOutputStream.write(this.urlType, 1);
+    int i = this.urlType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.newVersion != null) {
-      paramJceOutputStream.write(this.newVersion, 2);
+    localObject = this.newVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.newBuildno != 0) {
-      paramJceOutputStream.write(this.newBuildno, 3);
+    i = this.newBuildno;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
-    if (this.newVersionCode != 0) {
-      paramJceOutputStream.write(this.newVersionCode, 4);
+    i = this.newVersionCode;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
-    if (this.newPkgSize != 0) {
-      paramJceOutputStream.write(this.newPkgSize, 5);
+    i = this.newPkgSize;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
-    if (this.newFeature != null) {
-      paramJceOutputStream.write(this.newFeature, 6);
+    localObject = this.newFeature;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.market != null) {
-      paramJceOutputStream.write(this.market, 7);
+    localObject = this.market;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.isSilentDownload, 8);
-    if (this.silentDownloadInfo != null) {
-      paramJceOutputStream.write(this.silentDownloadInfo, 9);
+    localObject = this.silentDownloadInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
     paramJceOutputStream.write(this.isDiffUpdateByYYB, 10);
-    if (this.diffUpdate != null) {
-      paramJceOutputStream.write(this.diffUpdate, 11);
+    localObject = this.diffUpdate;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.noticeInterval != 0) {
-      paramJceOutputStream.write(this.noticeInterval, 12);
+    i = this.noticeInterval;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 12);
     }
   }
 }

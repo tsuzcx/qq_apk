@@ -44,7 +44,8 @@ public class SlidingMenuView
     {
       public void run()
       {
-        SlidingMenuView.this.scrollTo(SlidingMenuView.this.findViewById(2131558951).getWidth(), 0);
+        SlidingMenuView localSlidingMenuView = SlidingMenuView.this;
+        localSlidingMenuView.scrollTo(localSlidingMenuView.findViewById(2131165653).getWidth(), 0);
       }
     }, 1L);
   }
@@ -69,78 +70,90 @@ public class SlidingMenuView
   
   public void a(int paramInt)
   {
-    int n = 1;
-    if ((this.a != 1) && (this.m != null)) {
-      this.m.a(true);
+    int n = this.a;
+    int i1 = 1;
+    if (n != 1)
+    {
+      localObject = this.m;
+      if (localObject != null) {
+        ((a)localObject).a(true);
+      }
     }
     a();
-    int i1 = Math.max(0, Math.min(paramInt, getChildCount() - 1));
-    if (i1 != this.e) {}
-    for (paramInt = n;; paramInt = 0)
-    {
-      this.f = i1;
-      View localView = getFocusedChild();
-      if ((localView != null) && (paramInt != 0) && (localView == getChildAt(this.e))) {
-        localView.clearFocus();
-      }
-      n = 0;
+    paramInt = Math.min(paramInt, getChildCount() - 1);
+    n = 0;
+    int i2 = Math.max(0, paramInt);
+    if (i2 != this.e) {
+      paramInt = i1;
+    } else {
       paramInt = 0;
-      while (n < i1)
-      {
-        paramInt += getChildAt(n).getWidth();
-        n += 1;
-      }
+    }
+    this.f = i2;
+    Object localObject = getFocusedChild();
+    if ((localObject != null) && (paramInt != 0) && (localObject == getChildAt(this.e))) {
+      ((View)localObject).clearFocus();
+    }
+    paramInt = 0;
+    while (n < i2)
+    {
+      paramInt += getChildAt(n).getWidth();
+      n += 1;
     }
     n = getScrollX();
     this.g.startScroll(getScrollX(), 0, paramInt - n, 0, Math.abs(100) * 2);
     invalidate();
-    if (i1 == 0) {
+    if (i2 == 0) {
       TMSDKContext.saveActionData(1150082);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    findViewById(2131558951).measure(paramInt1 - getScreenWidth() / 6, paramInt2);
-    findViewById(2131558953).measure(paramInt1, paramInt2);
+    findViewById(2131165653).measure(paramInt1 - getScreenWidth() / 6, paramInt2);
+    findViewById(2131165994).measure(paramInt1, paramInt2);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.a != 1) && (this.m != null)) {
-      this.m.a(true);
+    int i1 = this.a;
+    int n = 1;
+    if (i1 != 1)
+    {
+      localObject = this.m;
+      if (localObject != null) {
+        ((a)localObject).a(true);
+      }
     }
     a();
-    int i1 = Math.max(0, Math.min(paramInt, getChildCount() - 1));
-    if (i1 != this.e) {}
-    int n;
-    for (paramInt = 1;; paramInt = 0)
-    {
-      this.f = i1;
-      View localView = getFocusedChild();
-      if ((localView != null) && (paramInt != 0) && (localView == getChildAt(this.e))) {
-        localView.clearFocus();
-      }
+    paramInt = Math.min(paramInt, getChildCount() - 1);
+    i1 = 0;
+    int i2 = Math.max(0, paramInt);
+    if (i2 != this.e) {
+      paramInt = n;
+    } else {
       paramInt = 0;
-      n = 0;
-      while (paramInt < i1)
-      {
-        n += getChildAt(paramInt).getWidth();
-        paramInt += 1;
-      }
+    }
+    this.f = i2;
+    Object localObject = getFocusedChild();
+    if ((localObject != null) && (paramInt != 0) && (localObject == getChildAt(this.e))) {
+      ((View)localObject).clearFocus();
+    }
+    n = 0;
+    paramInt = i1;
+    while (paramInt < i2)
+    {
+      n += getChildAt(paramInt).getWidth();
+      paramInt += 1;
     }
     paramInt = n - getScrollX();
     if (paramBoolean) {
       this.g.startScroll(getScrollX(), 0, paramInt, 0, 1);
-    }
-    for (;;)
-    {
-      invalidate();
-      if (i1 == 0) {
-        TMSDKContext.saveActionData(1150082);
-      }
-      return;
+    } else {
       this.g.startScroll(getScrollX(), 0, paramInt, 0, Math.abs(100) * 2);
+    }
+    invalidate();
+    if (i2 == 0) {
+      TMSDKContext.saveActionData(1150082);
     }
   }
   
@@ -157,52 +170,47 @@ public class SlidingMenuView
   
   protected void c()
   {
-    int i6 = getChildCount();
-    int i7 = getScrollX();
-    int i3 = 0;
-    int i4 = 0;
+    int i5 = getChildCount();
+    int i6 = getScrollX();
     int i1 = 0;
     int i2 = 0;
+    int i3 = 0;
     int n = 0;
-    for (;;)
+    while (i1 < i5)
     {
-      int i5;
-      if (i3 < i6)
-      {
-        i5 = getChildAt(i3).getWidth();
-        int i8 = i5 / 2;
-        if (i3 != 0) {
-          i5 = getChildAt(i3 - 1).getWidth();
-        }
-        i4 -= i5;
-        if ((i7 <= i4) || (i7 >= i8 + i1)) {}
+      int i4 = getChildAt(i1).getWidth();
+      int i7 = i4 / 2;
+      if (i1 != 0) {
+        i4 = getChildAt(i1 - 1).getWidth();
       }
-      else
-      {
-        a(n);
-        return;
+      i3 -= i4;
+      if ((i6 > i3) && (i6 < i7 + i2)) {
+        break;
       }
-      i2 += i5;
-      i1 += i5;
+      i2 += i4;
       n += 1;
-      i3 += 1;
+      i1 += 1;
     }
+    a(n);
   }
   
   public void computeScroll()
   {
-    if (this.g.computeScrollOffset()) {
+    if (this.g.computeScrollOffset())
+    {
       scrollTo(this.g.getCurrX(), this.g.getCurrY());
-    }
-    while (this.f == -1) {
       return;
     }
-    if (this.m != null) {
-      this.m.a(false);
+    if (this.f != -1)
+    {
+      a locala = this.m;
+      if (locala != null) {
+        locala.a(false);
+      }
+      this.e = Math.max(0, Math.min(this.f, getChildCount() - 1));
+      this.f = -1;
+      b();
     }
-    this.e = Math.max(0, Math.min(this.f, getChildCount() - 1));
-    this.f = -1;
-    b();
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
@@ -262,64 +270,64 @@ public class SlidingMenuView
   {
     g.a("onInterceptTouchEvent");
     int n = paramMotionEvent.getAction();
-    if ((n == 2) && (this.a != 0)) {}
-    for (;;)
-    {
+    if ((n == 2) && (this.a != 0)) {
       return true;
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      switch (n)
-      {
+    }
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    switch (n)
+    {
+    default: 
+      break;
+    case 2: 
+      int i2 = (int)Math.abs(f1 - this.i);
+      int i3 = (int)Math.abs(f2 - this.j);
+      int i1 = this.l;
+      if (i2 > i1) {
+        n = 1;
+      } else {
+        n = 0;
       }
-      while ((this.e != 0) || (f1 <= getScreenWidth() - getScreenWidth() / 6))
+      if (i3 > i1) {
+        i1 = 1;
+      } else {
+        i1 = 0;
+      }
+      if ((n != 0) || (i1 != 0))
       {
-        return false;
-        int i2 = (int)Math.abs(f1 - this.i);
-        int i3 = (int)Math.abs(f2 - this.j);
-        int i1 = this.l;
-        if (i2 > i1)
+        if ((n != 0) && (i2 > i3))
         {
-          n = 1;
-          label135:
-          if (i3 <= i1) {
-            break label225;
+          this.a = 1;
+          paramMotionEvent = this.m;
+          if (paramMotionEvent != null) {
+            paramMotionEvent.a(true);
           }
+          a();
         }
-        label225:
-        for (i1 = 1; (n != 0) || (i1 != 0); i1 = 0)
+        if (this.k)
         {
-          if ((n != 0) && (i2 > i3))
-          {
-            this.a = 1;
-            if (this.m != null) {
-              this.m.a(true);
-            }
-            a();
-          }
-          if (!this.k) {
-            break;
-          }
           this.k = false;
           getChildAt(this.e).cancelLongPress();
-          break;
-          n = 0;
-          break label135;
         }
-        g.a("mLastMotionX" + this.i);
-        this.i = f1;
-        this.j = f2;
-        this.k = true;
-        if (this.g.isFinished()) {}
-        for (n = 0;; n = 1)
-        {
-          this.a = n;
-          break;
-        }
-        b();
-        this.a = 0;
-        this.k = false;
       }
+      break;
+    case 1: 
+    case 3: 
+      b();
+      this.a = 0;
+      this.k = false;
+      break;
+    case 0: 
+      paramMotionEvent = new StringBuilder();
+      paramMotionEvent.append("mLastMotionX");
+      paramMotionEvent.append(this.i);
+      g.a(paramMotionEvent.toString());
+      this.i = f1;
+      this.j = f2;
+      this.k = true;
+      this.a = (this.g.isFinished() ^ true);
     }
+    return (this.e == 0) && (f1 > getScreenWidth() - getScreenWidth() / 6);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -332,9 +340,8 @@ public class SlidingMenuView
       paramInt3 = paramInt2;
       if (localView.getVisibility() != 8)
       {
-        paramInt3 = localView.getMeasuredWidth();
-        localView.layout(paramInt2, 0, paramInt2 + paramInt3, localView.getMeasuredHeight());
-        paramInt3 = paramInt2 + paramInt3;
+        paramInt3 = localView.getMeasuredWidth() + paramInt2;
+        localView.layout(paramInt2, 0, paramInt3, localView.getMeasuredHeight());
       }
       paramInt1 += 1;
     }
@@ -355,76 +362,84 @@ public class SlidingMenuView
     this.h.addMovement(paramMotionEvent);
     int n = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getX();
+    int i1;
     switch (n)
     {
     default: 
-    case 0: 
+      return true;
+    case 3: 
+      this.a = 0;
+      return true;
     case 2: 
-      int i1;
-      do
+      if ((int)Math.abs(f1 - this.i) > this.l) {
+        n = 1;
+      } else {
+        n = 0;
+      }
+      if (n != 0)
       {
-        do
+        this.a = 1;
+        n = (int)(this.i - f1);
+        this.i = f1;
+        if (n < 0)
         {
-          return true;
-          if (!this.g.isFinished()) {
-            this.g.abortAnimation();
-          }
-          this.i = f1;
-          return true;
-          if ((int)Math.abs(f1 - this.i) > this.l) {}
-          for (n = 1; n != 0; n = 0)
+          if (getScrollX() > 0)
           {
-            this.a = 1;
-            n = (int)(this.i - f1);
-            this.i = f1;
-            if (n >= 0) {
-              break label163;
-            }
-            if (getScrollX() <= 0) {
-              break;
-            }
             scrollBy(Math.max(-getScrollX(), n), 0);
             return true;
           }
-        } while (n <= 0);
-        i1 = getChildAt(getChildCount() - 1).getRight() - getScrollX() - getWidth();
-      } while (i1 <= 0);
-      scrollBy(Math.min(i1, n), 0);
-      return true;
+        }
+        else if (n > 0)
+        {
+          i1 = getChildAt(getChildCount() - 1).getRight() - getScrollX() - getWidth();
+          if (i1 > 0)
+          {
+            scrollBy(Math.min(i1, n), 0);
+            return true;
+          }
+        }
+      }
+      break;
     case 1: 
-      label163:
       if (this.a == 1)
       {
         paramMotionEvent = this.h;
         paramMotionEvent.computeCurrentVelocity(1000);
         n = (int)paramMotionEvent.getXVelocity();
-        if ((n > 1000) && (this.e > 0))
+        if (n > 1000)
         {
-          a(this.e - 1);
-          if (this.h != null)
+          i1 = this.e;
+          if (i1 > 0)
           {
-            this.h.recycle();
-            this.h = null;
+            a(i1 - 1);
+            break label285;
           }
         }
-      }
-      for (;;)
-      {
-        this.a = 0;
-        return true;
-        if ((n < -1000) && (this.e < getChildCount() - 1))
-        {
+        if ((n < -1000) && (this.e < getChildCount() - 1)) {
           a(this.e + 1);
-          break;
+        } else {
+          c();
         }
-        c();
-        break;
-        if ((this.e == 0) && (f1 > getScreenWidth() - getScreenWidth() / 6)) {
-          a(1);
+        paramMotionEvent = this.h;
+        if (paramMotionEvent != null)
+        {
+          paramMotionEvent.recycle();
+          this.h = null;
         }
       }
+      else if ((this.e == 0) && (f1 > getScreenWidth() - getScreenWidth() / 6))
+      {
+        a(1);
+      }
+      this.a = 0;
+      return true;
+    case 0: 
+      label285:
+      if (!this.g.isFinished()) {
+        this.g.abortAnimation();
+      }
+      this.i = f1;
     }
-    this.a = 0;
     return true;
   }
   

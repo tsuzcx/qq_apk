@@ -15,30 +15,27 @@ public final class fn
   
   public static int a(String paramString, int paramInt)
   {
-    for (;;)
+    while (paramInt < paramString.length())
     {
-      if (paramInt < paramString.length())
-      {
-        int i = paramString.charAt(paramInt);
-        if ((i == 32) || (i == 9)) {}
-      }
-      else
-      {
+      int i = paramString.charAt(paramInt);
+      if ((i != 32) && (i != 9)) {
         return paramInt;
       }
       paramInt += 1;
     }
+    return paramInt;
   }
   
   public static int a(String paramString1, int paramInt, String paramString2)
   {
-    for (;;)
+    while (paramInt < paramString1.length())
     {
-      if ((paramInt >= paramString1.length()) || (paramString2.indexOf(paramString1.charAt(paramInt)) != -1)) {
+      if (paramString2.indexOf(paramString1.charAt(paramInt)) != -1) {
         return paramInt;
       }
       paramInt += 1;
     }
+    return paramInt;
   }
   
   private static long a(String paramString)
@@ -67,12 +64,13 @@ public final class fn
   
   public static void a(m paramm, s params, r paramr)
   {
-    if (paramm == m.a) {}
-    do
-    {
+    if (paramm == m.a) {
       return;
-      paramr = l.a(params, paramr);
-    } while (paramr.isEmpty());
+    }
+    paramr = l.a(params, paramr);
+    if (paramr.isEmpty()) {
+      return;
+    }
     paramm.a(params, paramr);
   }
   
@@ -95,15 +93,16 @@ public final class fn
   
   public static boolean b(z paramz)
   {
-    if (paramz.a().b().equals("HEAD")) {}
-    do
-    {
+    if (paramz.a().b().equals("HEAD")) {
       return false;
-      int i = paramz.b();
-      if (((i < 100) || (i >= 200)) && (i != 204) && (i != 304)) {
-        return true;
-      }
-    } while ((a(paramz) == -1L) && (!"chunked".equalsIgnoreCase(paramz.a("Transfer-Encoding"))));
+    }
+    int i = paramz.b();
+    if (((i < 100) || (i >= 200)) && (i != 204) && (i != 304)) {
+      return true;
+    }
+    if (a(paramz) == -1L) {
+      return "chunked".equalsIgnoreCase(paramz.a("Transfer-Encoding"));
+    }
     return true;
   }
 }

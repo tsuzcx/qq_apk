@@ -11,7 +11,18 @@ public class CursorWindow
   extends SQLiteClosable
   implements Parcelable
 {
-  public static final Parcelable.Creator<CursorWindow> CREATOR;
+  public static final Parcelable.Creator<CursorWindow> CREATOR = new Parcelable.Creator()
+  {
+    public CursorWindow createFromParcel(Parcel paramAnonymousParcel)
+    {
+      return new CursorWindow(paramAnonymousParcel, null);
+    }
+    
+    public CursorWindow[] newArray(int paramAnonymousInt)
+    {
+      return new CursorWindow[paramAnonymousInt];
+    }
+  };
   private static final String STATS_TAG = "WCDB.CursorWindowStats";
   private static int sCursorWindowSize;
   private final String mName;
@@ -21,22 +32,10 @@ public class CursorWindow
   static
   {
     int i = Resources.getSystem().getIdentifier("config_cursorWindowSize", "integer", "android");
-    if (i != 0) {}
-    for (sCursorWindowSize = Resources.getSystem().getInteger(i) * 1024;; sCursorWindowSize = 2097152)
-    {
-      CREATOR = new Parcelable.Creator()
-      {
-        public CursorWindow createFromParcel(Parcel paramAnonymousParcel)
-        {
-          return new CursorWindow(paramAnonymousParcel, null);
-        }
-        
-        public CursorWindow[] newArray(int paramAnonymousInt)
-        {
-          return new CursorWindow[paramAnonymousInt];
-        }
-      };
-      return;
+    if (i != 0) {
+      sCursorWindowSize = Resources.getSystem().getInteger(i) * 1024;
+    } else {
+      sCursorWindowSize = 2097152;
     }
   }
   
@@ -48,17 +47,19 @@ public class CursorWindow
   public CursorWindow(String paramString)
   {
     this.mStartPos = 0;
-    if ((paramString != null) && (paramString.length() != 0)) {}
-    for (;;)
-    {
-      this.mName = paramString;
-      this.mWindowPtr = nativeCreate(this.mName, sCursorWindowSize);
-      if (this.mWindowPtr != 0L) {
-        break;
-      }
-      throw new CursorWindowAllocationException("Cursor window allocation of " + sCursorWindowSize / 1024 + " kb failed. ");
+    if ((paramString == null) || (paramString.length() == 0)) {
       paramString = "<unnamed>";
     }
+    this.mName = paramString;
+    this.mWindowPtr = nativeCreate(this.mName, sCursorWindowSize);
+    if (this.mWindowPtr != 0L) {
+      return;
+    }
+    paramString = new StringBuilder();
+    paramString.append("Cursor window allocation of ");
+    paramString.append(sCursorWindowSize / 1024);
+    paramString.append(" kb failed. ");
+    throw new CursorWindowAllocationException(paramString.toString());
   }
   
   @Deprecated
@@ -69,9 +70,10 @@ public class CursorWindow
   
   private void dispose()
   {
-    if (this.mWindowPtr != 0L)
+    long l = this.mWindowPtr;
+    if (l != 0L)
     {
-      nativeDispose(this.mWindowPtr);
+      nativeDispose(l);
       this.mWindowPtr = 0L;
     }
   }
@@ -157,19 +159,20 @@ public class CursorWindow
   
   public void copyStringToBuffer(int paramInt1, int paramInt2, CharArrayBuffer paramCharArrayBuffer)
   {
-    if (paramCharArrayBuffer == null) {
-      throw new IllegalArgumentException("CharArrayBuffer should not be null");
-    }
-    acquireReference();
-    try
+    if (paramCharArrayBuffer != null)
     {
-      nativeCopyStringToBuffer(this.mWindowPtr, paramInt1 - this.mStartPos, paramInt2, paramCharArrayBuffer);
-      return;
+      acquireReference();
+      try
+      {
+        nativeCopyStringToBuffer(this.mWindowPtr, paramInt1 - this.mStartPos, paramInt2, paramCharArrayBuffer);
+        return;
+      }
+      finally
+      {
+        releaseReference();
+      }
     }
-    finally
-    {
-      releaseReference();
-    }
+    throw new IllegalArgumentException("CharArrayBuffer should not be null");
   }
   
   public int describeContents()
@@ -441,7 +444,12 @@ public class CursorWindow
   
   public String toString()
   {
-    return getName() + " {" + Long.toHexString(this.mWindowPtr) + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getName());
+    localStringBuilder.append(" {");
+    localStringBuilder.append(Long.toHexString(this.mWindowPtr));
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

@@ -21,33 +21,32 @@ class RawDocumentFile
   private static boolean deleteContents(File paramFile)
   {
     paramFile = paramFile.listFiles();
-    boolean bool2 = true;
     boolean bool1 = true;
     if (paramFile != null)
     {
       int j = paramFile.length;
       int i = 0;
-      for (;;)
+      bool1 = true;
+      while (i < j)
       {
-        bool2 = bool1;
-        if (i >= j) {
-          break;
-        }
         File localFile = paramFile[i];
-        bool2 = bool1;
+        boolean bool2 = bool1;
         if (localFile.isDirectory()) {
           bool2 = bool1 & deleteContents(localFile);
         }
         bool1 = bool2;
         if (!localFile.delete())
         {
-          Log.w("DocumentFile", "Failed to delete " + localFile);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Failed to delete ");
+          localStringBuilder.append(localFile);
+          Log.w("DocumentFile", localStringBuilder.toString());
           bool1 = false;
         }
         i += 1;
       }
     }
-    return bool2;
+    return bool1;
   }
   
   private static String getTypeForName(String paramString)
@@ -77,18 +76,23 @@ class RawDocumentFile
   public DocumentFile createDirectory(String paramString)
   {
     paramString = new File(this.mFile, paramString);
-    if ((paramString.isDirectory()) || (paramString.mkdir())) {
-      return new RawDocumentFile(this, paramString);
+    if ((!paramString.isDirectory()) && (!paramString.mkdir())) {
+      return null;
     }
-    return null;
+    return new RawDocumentFile(this, paramString);
   }
   
   public DocumentFile createFile(String paramString1, String paramString2)
   {
     String str = MimeTypeMap.getSingleton().getExtensionFromMimeType(paramString1);
     paramString1 = paramString2;
-    if (str != null) {
-      paramString1 = paramString2 + "." + str;
+    if (str != null)
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append(paramString2);
+      paramString1.append(".");
+      paramString1.append(str);
+      paramString1 = paramString1.toString();
     }
     paramString1 = new File(this.mFile, paramString1);
     try
@@ -99,7 +103,10 @@ class RawDocumentFile
     }
     catch (IOException paramString1)
     {
-      Log.w("DocumentFile", "Failed to createFile: " + paramString1);
+      paramString2 = new StringBuilder();
+      paramString2.append("Failed to createFile: ");
+      paramString2.append(paramString1);
+      Log.w("DocumentFile", paramString2.toString());
     }
     return null;
   }

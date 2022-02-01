@@ -12,13 +12,13 @@ public class PushTransitionActivity
     {
       super.onCreate(paramBundle);
       IndexActivity.setFromWhere(19);
-      if (BaseActivity.isAppOpen()) {}
-      for (paramBundle = new Intent(this, IndexActivity.class);; paramBundle = new Intent(this, LogoActivity.class))
-      {
-        startActivity(paramBundle);
-        finish();
-        return;
+      if (BaseActivity.isAppOpen()) {
+        paramBundle = new Intent(this, IndexActivity.class);
+      } else {
+        paramBundle = new Intent(this, LogoActivity.class);
       }
+      startActivity(paramBundle);
+      finish();
       return;
     }
     catch (Exception paramBundle)

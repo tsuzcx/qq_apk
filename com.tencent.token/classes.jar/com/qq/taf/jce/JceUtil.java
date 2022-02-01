@@ -158,29 +158,13 @@ public final class JceUtil
   
   public static int compareTo(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int j = 1;
-    int i;
-    if (paramBoolean1)
-    {
-      i = 1;
-      if (!paramBoolean2) {
-        break label21;
-      }
-    }
-    for (;;)
-    {
-      return i - j;
-      i = 0;
-      break;
-      label21:
-      j = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static int compareTo(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    int i = 0;
     int j = 0;
+    int i = 0;
     while ((j < paramArrayOfByte1.length) && (i < paramArrayOfByte2.length))
     {
       int k = compareTo(paramArrayOfByte1[j], paramArrayOfByte2[i]);
@@ -195,8 +179,8 @@ public final class JceUtil
   
   public static int compareTo(char[] paramArrayOfChar1, char[] paramArrayOfChar2)
   {
-    int i = 0;
     int j = 0;
+    int i = 0;
     while ((j < paramArrayOfChar1.length) && (i < paramArrayOfChar2.length))
     {
       int k = compareTo(paramArrayOfChar1[j], paramArrayOfChar2[i]);
@@ -211,8 +195,8 @@ public final class JceUtil
   
   public static int compareTo(double[] paramArrayOfDouble1, double[] paramArrayOfDouble2)
   {
-    int i = 0;
     int j = 0;
+    int i = 0;
     while ((j < paramArrayOfDouble1.length) && (i < paramArrayOfDouble2.length))
     {
       int k = compareTo(paramArrayOfDouble1[j], paramArrayOfDouble2[i]);
@@ -227,8 +211,8 @@ public final class JceUtil
   
   public static int compareTo(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    int i = 0;
     int j = 0;
+    int i = 0;
     while ((j < paramArrayOfFloat1.length) && (i < paramArrayOfFloat2.length))
     {
       int k = compareTo(paramArrayOfFloat1[j], paramArrayOfFloat2[i]);
@@ -243,8 +227,8 @@ public final class JceUtil
   
   public static int compareTo(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    int i = 0;
     int j = 0;
+    int i = 0;
     while ((j < paramArrayOfInt1.length) && (i < paramArrayOfInt2.length))
     {
       int k = compareTo(paramArrayOfInt1[j], paramArrayOfInt2[i]);
@@ -259,8 +243,8 @@ public final class JceUtil
   
   public static int compareTo(long[] paramArrayOfLong1, long[] paramArrayOfLong2)
   {
-    int i = 0;
     int j = 0;
+    int i = 0;
     while ((j < paramArrayOfLong1.length) && (i < paramArrayOfLong2.length))
     {
       int k = compareTo(paramArrayOfLong1[j], paramArrayOfLong2[i]);
@@ -275,8 +259,8 @@ public final class JceUtil
   
   public static <T extends Comparable<T>> int compareTo(T[] paramArrayOfT1, T[] paramArrayOfT2)
   {
-    int i = 0;
     int j = 0;
+    int i = 0;
     while ((j < paramArrayOfT1.length) && (i < paramArrayOfT2.length))
     {
       int k = paramArrayOfT1[j].compareTo(paramArrayOfT2[i]);
@@ -291,8 +275,8 @@ public final class JceUtil
   
   public static int compareTo(short[] paramArrayOfShort1, short[] paramArrayOfShort2)
   {
-    int i = 0;
     int j = 0;
+    int i = 0;
     while ((j < paramArrayOfShort1.length) && (i < paramArrayOfShort2.length))
     {
       int k = compareTo(paramArrayOfShort1[j], paramArrayOfShort2[i]);
@@ -307,8 +291,8 @@ public final class JceUtil
   
   public static int compareTo(boolean[] paramArrayOfBoolean1, boolean[] paramArrayOfBoolean2)
   {
-    int i = 0;
     int j = 0;
+    int i = 0;
     while ((j < paramArrayOfBoolean1.length) && (i < paramArrayOfBoolean2.length))
     {
       int k = compareTo(paramArrayOfBoolean1[j], paramArrayOfBoolean2[i]);
@@ -429,7 +413,7 @@ public final class JceUtil
   
   public static int hashCode(long paramLong)
   {
-    return (int)(paramLong >> 32 ^ paramLong) + 629;
+    return (int)(paramLong ^ paramLong >> 32) + 629;
   }
   
   public static int hashCode(Object paramObject)
@@ -481,201 +465,142 @@ public final class JceUtil
   
   public static int hashCode(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1) {
-      return i + 629;
-    }
+    return (paramBoolean ^ true) + true;
   }
   
   public static int hashCode(byte[] paramArrayOfByte)
   {
-    int k;
-    if (paramArrayOfByte == null)
-    {
-      k = 629;
-      return k;
+    if (paramArrayOfByte == null) {
+      return 629;
     }
-    int i = 17;
-    int j = 0;
-    for (;;)
+    int j = 17;
+    int i = 0;
+    while (i < paramArrayOfByte.length)
     {
-      k = i;
-      if (j >= paramArrayOfByte.length) {
-        break;
-      }
-      i = i * 37 + paramArrayOfByte[j];
-      j += 1;
+      j = j * 37 + paramArrayOfByte[i];
+      i += 1;
     }
+    return j;
   }
   
   public static int hashCode(char[] paramArrayOfChar)
   {
-    int k;
-    if (paramArrayOfChar == null)
-    {
-      k = 629;
-      return k;
+    if (paramArrayOfChar == null) {
+      return 629;
     }
-    int i = 17;
-    int j = 0;
-    for (;;)
+    int j = 17;
+    int i = 0;
+    while (i < paramArrayOfChar.length)
     {
-      k = i;
-      if (j >= paramArrayOfChar.length) {
-        break;
-      }
-      i = i * 37 + paramArrayOfChar[j];
-      j += 1;
+      j = j * 37 + paramArrayOfChar[i];
+      i += 1;
     }
+    return j;
   }
   
   public static int hashCode(double[] paramArrayOfDouble)
   {
-    int k;
-    if (paramArrayOfDouble == null)
-    {
-      k = 629;
-      return k;
+    if (paramArrayOfDouble == null) {
+      return 629;
     }
-    int i = 17;
-    int j = 0;
-    for (;;)
+    int j = 17;
+    int i = 0;
+    while (i < paramArrayOfDouble.length)
     {
-      k = i;
-      if (j >= paramArrayOfDouble.length) {
-        break;
-      }
-      i = i * 37 + (int)(Double.doubleToLongBits(paramArrayOfDouble[j]) ^ Double.doubleToLongBits(paramArrayOfDouble[j]) >> 32);
-      j += 1;
+      j = j * 37 + (int)(Double.doubleToLongBits(paramArrayOfDouble[i]) ^ Double.doubleToLongBits(paramArrayOfDouble[i]) >> 32);
+      i += 1;
     }
+    return j;
   }
   
   public static int hashCode(float[] paramArrayOfFloat)
   {
-    int k;
-    if (paramArrayOfFloat == null)
-    {
-      k = 629;
-      return k;
+    if (paramArrayOfFloat == null) {
+      return 629;
     }
-    int i = 17;
-    int j = 0;
-    for (;;)
+    int j = 17;
+    int i = 0;
+    while (i < paramArrayOfFloat.length)
     {
-      k = i;
-      if (j >= paramArrayOfFloat.length) {
-        break;
-      }
-      i = i * 37 + Float.floatToIntBits(paramArrayOfFloat[j]);
-      j += 1;
+      j = j * 37 + Float.floatToIntBits(paramArrayOfFloat[i]);
+      i += 1;
     }
+    return j;
   }
   
   public static int hashCode(int[] paramArrayOfInt)
   {
-    int k;
-    if (paramArrayOfInt == null)
-    {
-      k = 629;
-      return k;
+    if (paramArrayOfInt == null) {
+      return 629;
     }
-    int i = 17;
-    int j = 0;
-    for (;;)
+    int j = 17;
+    int i = 0;
+    while (i < paramArrayOfInt.length)
     {
-      k = i;
-      if (j >= paramArrayOfInt.length) {
-        break;
-      }
-      i = i * 37 + paramArrayOfInt[j];
-      j += 1;
+      j = j * 37 + paramArrayOfInt[i];
+      i += 1;
     }
+    return j;
   }
   
   public static int hashCode(long[] paramArrayOfLong)
   {
-    int k;
-    if (paramArrayOfLong == null)
-    {
-      k = 629;
-      return k;
+    if (paramArrayOfLong == null) {
+      return 629;
     }
-    int i = 17;
-    int j = 0;
-    for (;;)
+    int j = 17;
+    int i = 0;
+    while (i < paramArrayOfLong.length)
     {
-      k = i;
-      if (j >= paramArrayOfLong.length) {
-        break;
-      }
-      i = i * 37 + (int)(paramArrayOfLong[j] ^ paramArrayOfLong[j] >> 32);
-      j += 1;
+      j = j * 37 + (int)(paramArrayOfLong[i] ^ paramArrayOfLong[i] >> 32);
+      i += 1;
     }
+    return j;
   }
   
   public static int hashCode(JceStruct[] paramArrayOfJceStruct)
   {
-    int k;
-    if (paramArrayOfJceStruct == null)
-    {
-      k = 629;
-      return k;
+    if (paramArrayOfJceStruct == null) {
+      return 629;
     }
-    int i = 17;
-    int j = 0;
-    for (;;)
+    int j = 17;
+    int i = 0;
+    while (i < paramArrayOfJceStruct.length)
     {
-      k = i;
-      if (j >= paramArrayOfJceStruct.length) {
-        break;
-      }
-      i = i * 37 + paramArrayOfJceStruct[j].hashCode();
-      j += 1;
+      j = j * 37 + paramArrayOfJceStruct[i].hashCode();
+      i += 1;
     }
+    return j;
   }
   
   public static int hashCode(short[] paramArrayOfShort)
   {
-    int k;
-    if (paramArrayOfShort == null)
-    {
-      k = 629;
-      return k;
+    if (paramArrayOfShort == null) {
+      return 629;
     }
-    int i = 17;
-    int j = 0;
-    for (;;)
+    int j = 17;
+    int i = 0;
+    while (i < paramArrayOfShort.length)
     {
-      k = i;
-      if (j >= paramArrayOfShort.length) {
-        break;
-      }
-      i = i * 37 + paramArrayOfShort[j];
-      j += 1;
+      j = j * 37 + paramArrayOfShort[i];
+      i += 1;
     }
+    return j;
   }
   
   public static int hashCode(boolean[] paramArrayOfBoolean)
   {
     if (paramArrayOfBoolean == null) {
-      k = 629;
+      return 629;
     }
-    int i;
-    int j;
-    do
+    int j = 17;
+    int i = 0;
+    while (i < paramArrayOfBoolean.length)
     {
-      return k;
-      i = 17;
-      j = 0;
-      k = i;
-    } while (j >= paramArrayOfBoolean.length);
-    if (paramArrayOfBoolean[j] != 0) {}
-    for (int k = 0;; k = 1)
-    {
-      i = k + i * 37;
-      j += 1;
-      break;
+      j = j * 37 + (paramArrayOfBoolean[i] ^ 0x1);
+      i += 1;
     }
+    return j;
   }
 }
 

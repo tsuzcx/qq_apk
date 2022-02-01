@@ -29,7 +29,11 @@ public final class CancellationSignal
       {
         wait();
       }
-      catch (InterruptedException localInterruptedException) {}
+      catch (InterruptedException localInterruptedException)
+      {
+        label14:
+        break label14;
+      }
     }
   }
   
@@ -60,74 +64,77 @@ public final class CancellationSignal
     //   32: aload_0
     //   33: monitorexit
     //   34: aload_1
-    //   35: ifnull +9 -> 44
+    //   35: ifnull +16 -> 51
     //   38: aload_1
     //   39: invokeinterface 55 1 0
-    //   44: aload_2
-    //   45: ifnull +9 -> 54
-    //   48: aload_2
-    //   49: invokeinterface 59 1 0
-    //   54: aload_0
-    //   55: monitorenter
-    //   56: aload_0
-    //   57: iconst_0
-    //   58: putfield 40	com/tencent/wcdb/support/CancellationSignal:mCancelInProgress	Z
-    //   61: aload_0
-    //   62: invokevirtual 62	java/lang/Object:notifyAll	()V
-    //   65: aload_0
-    //   66: monitorexit
-    //   67: return
-    //   68: astore_1
-    //   69: aload_0
-    //   70: monitorexit
-    //   71: aload_1
-    //   72: athrow
-    //   73: astore_1
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: aload_1
-    //   77: athrow
-    //   78: astore_1
-    //   79: aload_0
-    //   80: monitorenter
-    //   81: aload_0
-    //   82: iconst_0
-    //   83: putfield 40	com/tencent/wcdb/support/CancellationSignal:mCancelInProgress	Z
+    //   44: goto +7 -> 51
+    //   47: astore_1
+    //   48: goto +16 -> 64
+    //   51: aload_2
+    //   52: ifnull +32 -> 84
+    //   55: aload_2
+    //   56: invokeinterface 59 1 0
+    //   61: goto +23 -> 84
+    //   64: aload_0
+    //   65: monitorenter
+    //   66: aload_0
+    //   67: iconst_0
+    //   68: putfield 40	com/tencent/wcdb/support/CancellationSignal:mCancelInProgress	Z
+    //   71: aload_0
+    //   72: invokevirtual 62	java/lang/Object:notifyAll	()V
+    //   75: aload_0
+    //   76: monitorexit
+    //   77: aload_1
+    //   78: athrow
+    //   79: astore_1
+    //   80: aload_0
+    //   81: monitorexit
+    //   82: aload_1
+    //   83: athrow
+    //   84: aload_0
+    //   85: monitorenter
     //   86: aload_0
-    //   87: invokevirtual 62	java/lang/Object:notifyAll	()V
-    //   90: aload_0
-    //   91: monitorexit
-    //   92: aload_1
-    //   93: athrow
-    //   94: astore_1
+    //   87: iconst_0
+    //   88: putfield 40	com/tencent/wcdb/support/CancellationSignal:mCancelInProgress	Z
+    //   91: aload_0
+    //   92: invokevirtual 62	java/lang/Object:notifyAll	()V
     //   95: aload_0
     //   96: monitorexit
-    //   97: aload_1
-    //   98: athrow
-    //   99: astore_1
-    //   100: goto -46 -> 54
+    //   97: return
+    //   98: astore_1
+    //   99: aload_0
+    //   100: monitorexit
+    //   101: aload_1
+    //   102: athrow
+    //   103: astore_1
+    //   104: aload_0
+    //   105: monitorexit
+    //   106: aload_1
+    //   107: athrow
+    //   108: astore_1
+    //   109: goto -25 -> 84
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	103	0	this	CancellationSignal
+    //   0	112	0	this	CancellationSignal
     //   26	13	1	localOnCancelListener	OnCancelListener
-    //   68	4	1	localObject1	Object
-    //   73	4	1	localObject2	Object
-    //   78	15	1	localObject3	Object
-    //   94	4	1	localObject4	Object
-    //   99	1	1	localRemoteException	RemoteException
-    //   31	18	2	localICancellationSignal	ICancellationSignal
+    //   47	31	1	localObject1	Object
+    //   79	4	1	localObject2	Object
+    //   98	4	1	localObject3	Object
+    //   103	4	1	localObject4	Object
+    //   108	1	1	localRemoteException	RemoteException
+    //   31	25	2	localICancellationSignal	ICancellationSignal
     // Exception table:
     //   from	to	target	type
-    //   56	67	68	finally
-    //   69	71	68	finally
-    //   2	11	73	finally
-    //   12	34	73	finally
-    //   74	76	73	finally
-    //   38	44	78	finally
-    //   48	54	78	finally
-    //   81	92	94	finally
-    //   95	97	94	finally
-    //   48	54	99	android/os/RemoteException
+    //   38	44	47	finally
+    //   55	61	47	finally
+    //   66	77	79	finally
+    //   80	82	79	finally
+    //   86	97	98	finally
+    //   99	101	98	finally
+    //   2	11	103	finally
+    //   12	34	103	finally
+    //   104	106	103	finally
+    //   55	61	108	android/os/RemoteException
   }
   
   public boolean isCanceled()
@@ -149,16 +156,19 @@ public final class CancellationSignal
         return;
       }
       this.mOnCancelListener = paramOnCancelListener;
-      if ((!this.mIsCanceled) || (paramOnCancelListener == null)) {
+      if ((this.mIsCanceled) && (paramOnCancelListener != null))
+      {
+        paramOnCancelListener.onCancel();
         return;
       }
+      return;
     }
     finally {}
-    paramOnCancelListener.onCancel();
   }
   
   public void setRemote(ICancellationSignal paramICancellationSignal)
   {
+    label45:
     try
     {
       waitForCancelFinishedLocked();
@@ -166,8 +176,10 @@ public final class CancellationSignal
         return;
       }
       this.mRemote = paramICancellationSignal;
-      if ((!this.mIsCanceled) || (paramICancellationSignal == null)) {
-        return;
+      if (this.mIsCanceled) {
+        if (paramICancellationSignal == null) {
+          break label45;
+        }
       }
     }
     finally {}
@@ -177,13 +189,15 @@ public final class CancellationSignal
       return;
     }
     catch (RemoteException paramICancellationSignal) {}
+    return;
   }
   
   public void throwIfCanceled()
   {
-    if (isCanceled()) {
-      throw new OperationCanceledException();
+    if (!isCanceled()) {
+      return;
     }
+    throw new OperationCanceledException();
   }
   
   public static abstract interface OnCancelListener

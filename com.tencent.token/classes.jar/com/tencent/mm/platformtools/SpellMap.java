@@ -9,58 +9,61 @@ public class SpellMap
     if (paramChar <= '') {
       return paramChar;
     }
+    int j = 0;
     try
     {
       byte[] arrayOfByte = String.valueOf(paramChar).getBytes("GBK");
-      if ((arrayOfByte == null) || (arrayOfByte.length > 2) || (arrayOfByte.length <= 0)) {
-        return 0;
+      int i = j;
+      if (arrayOfByte != null)
+      {
+        i = j;
+        if (arrayOfByte.length <= 2)
+        {
+          if (arrayOfByte.length <= 0) {
+            return 0;
+          }
+          if (arrayOfByte.length == 1) {
+            return arrayOfByte[0];
+          }
+          i = j;
+          if (arrayOfByte.length == 2) {
+            i = (arrayOfByte[0] + 256 << 16) + (arrayOfByte[1] + 256);
+          }
+        }
       }
+      return i;
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      return 0;
-    }
-    if (localUnsupportedEncodingException.length == 1) {
-      return localUnsupportedEncodingException[0];
-    }
-    if (localUnsupportedEncodingException.length == 2) {
-      return (localUnsupportedEncodingException[0] + 256 << 16) + (localUnsupportedEncodingException[1] + 256);
-    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
     return 0;
   }
   
   public static String getSpell(char paramChar)
   {
-    Object localObject = null;
     int j = a(paramChar);
     if (j < 65536) {
-      localObject = String.valueOf(paramChar);
+      return String.valueOf(paramChar);
     }
-    for (;;)
+    int i = j >> 16;
+    j &= 0xFF;
+    String str1;
+    if ((i >= 129) && (i <= 253) && (j >= 63) && (j <= 254)) {
+      str1 = spellGetJni(i - 129, j - 63);
+    } else {
+      str1 = null;
+    }
+    if (str1 == null) {
+      return null;
+    }
+    String[] arrayOfString = str1.split(",");
+    String str2 = str1;
+    if (arrayOfString != null)
     {
-      return localObject;
-      int i = j >> 16;
-      j &= 0xFF;
-      String str;
-      if ((i < 129) || (i > 253)) {
-        str = null;
+      if (arrayOfString.length < 2) {
+        return str1;
       }
-      while (str != null)
-      {
-        localObject = str.split(",");
-        if ((localObject != null) && (localObject.length >= 2)) {
-          break label110;
-        }
-        return str;
-        if ((j < 63) || (j > 254)) {
-          str = null;
-        } else {
-          str = spellGetJni(i - 129, j - 63);
-        }
-      }
+      str2 = arrayOfString[0];
     }
-    label110:
-    return localObject[0];
+    return str2;
   }
   
   public static native String spellGetJni(int paramInt1, int paramInt2);

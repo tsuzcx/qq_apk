@@ -5,7 +5,7 @@ import com.tencent.token.global.RqdApplication;
 
 public class TknEncManager
 {
-  private static TknEncManager a = null;
+  private static TknEncManager a;
   
   static
   {
@@ -14,7 +14,7 @@ public class TknEncManager
   
   private TknEncManager()
   {
-    initEncKey(RqdApplication.l(), 2131231497);
+    initEncKey(RqdApplication.l(), 2131493641);
   }
   
   public static TknEncManager a()

@@ -7,58 +7,80 @@ public final class b
   
   private static byte a(char paramChar)
   {
-    if ((paramChar >= '0') && (paramChar <= '9')) {
-      return (byte)(paramChar - '0');
+    if ((paramChar >= '0') && (paramChar <= '9'))
+    {
+      paramChar -= '0';
+      return (byte)paramChar;
     }
-    if ((paramChar >= 'a') && (paramChar <= 'f')) {
-      return (byte)(paramChar - 'a' + 10);
-    }
-    if ((paramChar >= 'A') && (paramChar <= 'F')) {
-      return (byte)(paramChar - 'A' + 10);
-    }
+    char c = 'a';
+    if ((paramChar >= 'a') && (paramChar <= 'f')) {}
+    do
+    {
+      paramChar = paramChar - c + 10;
+      break;
+      c = 'A';
+    } while ((paramChar >= 'A') && (paramChar <= 'F'));
     return 0;
   }
   
   public static String a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
-    int j;
-    do
+    if (paramArrayOfByte != null)
     {
-      return null;
-      j = paramArrayOfByte.length;
-    } while ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0));
-    if (j + 0 > paramArrayOfByte.length) {
-      throw new IllegalArgumentException("offset + length(" + 0 + j + ") > bytes.length(" + paramArrayOfByte.length + ")");
+      if (paramArrayOfByte.length == 0) {
+        return null;
+      }
+      int j = paramArrayOfByte.length;
+      if (paramArrayOfByte != null)
+      {
+        if (paramArrayOfByte.length == 0) {
+          return null;
+        }
+        int k = paramArrayOfByte.length;
+        int i = 0;
+        if (j + 0 <= k)
+        {
+          localObject = new char[j * 2];
+          while (i < j)
+          {
+            k = paramArrayOfByte[i];
+            int m = i * 2;
+            char[] arrayOfChar = a;
+            localObject[(m + 1)] = arrayOfChar[(k & 0xF)];
+            localObject[m] = arrayOfChar[((byte)(k >>> 4) & 0xF)];
+            i += 1;
+          }
+          return new String((char[])localObject);
+        }
+        Object localObject = new StringBuilder("offset + length(");
+        ((StringBuilder)localObject).append(0);
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(") > bytes.length(");
+        ((StringBuilder)localObject).append(paramArrayOfByte.length);
+        ((StringBuilder)localObject).append(")");
+        throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+      }
     }
-    char[] arrayOfChar = new char[j * 2];
-    int i = 0;
-    while (i < j)
-    {
-      int k = paramArrayOfByte[i];
-      arrayOfChar[(i * 2 + 1)] = a[(k & 0xF)];
-      k = (byte)(k >>> 4);
-      arrayOfChar[(i * 2)] = a[(k & 0xF)];
-      i += 1;
-    }
-    return new String(arrayOfChar);
+    return null;
   }
   
   public static byte[] a(String paramString)
   {
-    if ((paramString == null) || (paramString.equals(""))) {
-      return b;
-    }
-    byte[] arrayOfByte = new byte[paramString.length() / 2];
-    int i = 0;
-    while (i < arrayOfByte.length)
+    if ((paramString != null) && (!paramString.equals("")))
     {
-      char c1 = paramString.charAt(i << 1);
-      char c2 = paramString.charAt((i << 1) + 1);
-      arrayOfByte[i] = ((byte)((a(c1) << 4) + a(c2)));
-      i += 1;
+      byte[] arrayOfByte = new byte[paramString.length() / 2];
+      int i = 0;
+      while (i < arrayOfByte.length)
+      {
+        int j = i << 1;
+        char c1 = paramString.charAt(j);
+        char c2 = paramString.charAt(j + 1);
+        arrayOfByte[i] = ((byte)((a(c1) << 4) + a(c2)));
+        i += 1;
+      }
+      return arrayOfByte;
     }
-    return arrayOfByte;
+    return b;
   }
 }
 

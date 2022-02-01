@@ -61,18 +61,14 @@ public class ActivityCompat
   public static Uri getReferrer(@NonNull Activity paramActivity)
   {
     if (Build.VERSION.SDK_INT >= 22) {
-      paramActivity = paramActivity.getReferrer();
+      return paramActivity.getReferrer();
     }
-    Intent localIntent;
-    Uri localUri;
-    do
-    {
-      return paramActivity;
-      localIntent = paramActivity.getIntent();
-      localUri = (Uri)localIntent.getParcelableExtra("android.intent.extra.REFERRER");
-      paramActivity = localUri;
-    } while (localUri != null);
-    paramActivity = localIntent.getStringExtra("android.intent.extra.REFERRER_NAME");
+    paramActivity = paramActivity.getIntent();
+    Uri localUri = (Uri)paramActivity.getParcelableExtra("android.intent.extra.REFERRER");
+    if (localUri != null) {
+      return localUri;
+    }
+    paramActivity = paramActivity.getStringExtra("android.intent.extra.REFERRER_NAME");
     if (paramActivity != null) {
       return Uri.parse(paramActivity);
     }
@@ -101,88 +97,93 @@ public class ActivityCompat
   
   public static void requestPermissions(@NonNull final Activity paramActivity, @NonNull String[] paramArrayOfString, @IntRange(from=0L) final int paramInt)
   {
-    if ((sDelegate != null) && (sDelegate.requestPermissions(paramActivity, paramArrayOfString, paramInt))) {}
-    do
-    {
+    PermissionCompatDelegate localPermissionCompatDelegate = sDelegate;
+    if ((localPermissionCompatDelegate != null) && (localPermissionCompatDelegate.requestPermissions(paramActivity, paramArrayOfString, paramInt))) {
       return;
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        if ((paramActivity instanceof RequestPermissionsRequestCodeValidator)) {
-          ((RequestPermissionsRequestCodeValidator)paramActivity).validateRequestPermissionsRequestCode(paramInt);
-        }
-        paramActivity.requestPermissions(paramArrayOfString, paramInt);
-        return;
-      }
-    } while (!(paramActivity instanceof OnRequestPermissionsResultCallback));
-    new Handler(Looper.getMainLooper()).post(new Runnable()
+    }
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      public void run()
-      {
-        int[] arrayOfInt = new int[this.val$permissions.length];
-        PackageManager localPackageManager = paramActivity.getPackageManager();
-        String str = paramActivity.getPackageName();
-        int j = this.val$permissions.length;
-        int i = 0;
-        while (i < j)
-        {
-          arrayOfInt[i] = localPackageManager.checkPermission(this.val$permissions[i], str);
-          i += 1;
-        }
-        ((ActivityCompat.OnRequestPermissionsResultCallback)paramActivity).onRequestPermissionsResult(paramInt, this.val$permissions, arrayOfInt);
+      if ((paramActivity instanceof RequestPermissionsRequestCodeValidator)) {
+        ((RequestPermissionsRequestCodeValidator)paramActivity).validateRequestPermissionsRequestCode(paramInt);
       }
-    });
+      paramActivity.requestPermissions(paramArrayOfString, paramInt);
+      return;
+    }
+    if ((paramActivity instanceof OnRequestPermissionsResultCallback)) {
+      new Handler(Looper.getMainLooper()).post(new Runnable()
+      {
+        public void run()
+        {
+          int[] arrayOfInt = new int[this.val$permissions.length];
+          PackageManager localPackageManager = paramActivity.getPackageManager();
+          String str = paramActivity.getPackageName();
+          int j = this.val$permissions.length;
+          int i = 0;
+          while (i < j)
+          {
+            arrayOfInt[i] = localPackageManager.checkPermission(this.val$permissions[i], str);
+            i += 1;
+          }
+          ((ActivityCompat.OnRequestPermissionsResultCallback)paramActivity).onRequestPermissionsResult(paramInt, this.val$permissions, arrayOfInt);
+        }
+      });
+    }
   }
   
   @NonNull
   public static <T extends View> T requireViewById(@NonNull Activity paramActivity, @IdRes int paramInt)
   {
     paramActivity = paramActivity.findViewById(paramInt);
-    if (paramActivity == null) {
-      throw new IllegalArgumentException("ID does not reference a View inside this Activity");
+    if (paramActivity != null) {
+      return paramActivity;
     }
-    return paramActivity;
+    throw new IllegalArgumentException("ID does not reference a View inside this Activity");
   }
   
   public static void setEnterSharedElementCallback(@NonNull Activity paramActivity, @Nullable SharedElementCallback paramSharedElementCallback)
   {
+    int i = Build.VERSION.SDK_INT;
     Object localObject2 = null;
     Object localObject1 = null;
-    if (Build.VERSION.SDK_INT >= 23)
+    if (i >= 23)
     {
       if (paramSharedElementCallback != null) {
         localObject1 = new SharedElementCallback23Impl(paramSharedElementCallback);
       }
       paramActivity.setEnterSharedElementCallback((android.app.SharedElementCallback)localObject1);
-    }
-    while (Build.VERSION.SDK_INT < 21) {
       return;
     }
-    localObject1 = localObject2;
-    if (paramSharedElementCallback != null) {
-      localObject1 = new SharedElementCallback21Impl(paramSharedElementCallback);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      localObject1 = localObject2;
+      if (paramSharedElementCallback != null) {
+        localObject1 = new SharedElementCallback21Impl(paramSharedElementCallback);
+      }
+      paramActivity.setEnterSharedElementCallback((android.app.SharedElementCallback)localObject1);
     }
-    paramActivity.setEnterSharedElementCallback((android.app.SharedElementCallback)localObject1);
   }
   
   public static void setExitSharedElementCallback(@NonNull Activity paramActivity, @Nullable SharedElementCallback paramSharedElementCallback)
   {
+    int i = Build.VERSION.SDK_INT;
     Object localObject2 = null;
     Object localObject1 = null;
-    if (Build.VERSION.SDK_INT >= 23)
+    if (i >= 23)
     {
       if (paramSharedElementCallback != null) {
         localObject1 = new SharedElementCallback23Impl(paramSharedElementCallback);
       }
       paramActivity.setExitSharedElementCallback((android.app.SharedElementCallback)localObject1);
-    }
-    while (Build.VERSION.SDK_INT < 21) {
       return;
     }
-    localObject1 = localObject2;
-    if (paramSharedElementCallback != null) {
-      localObject1 = new SharedElementCallback21Impl(paramSharedElementCallback);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      localObject1 = localObject2;
+      if (paramSharedElementCallback != null) {
+        localObject1 = new SharedElementCallback21Impl(paramSharedElementCallback);
+      }
+      paramActivity.setExitSharedElementCallback((android.app.SharedElementCallback)localObject1);
     }
-    paramActivity.setExitSharedElementCallback((android.app.SharedElementCallback)localObject1);
   }
   
   public static void setPermissionCompatDelegate(@Nullable PermissionCompatDelegate paramPermissionCompatDelegate)

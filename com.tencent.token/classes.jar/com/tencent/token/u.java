@@ -16,26 +16,16 @@ public final class u
   private static com.tencent.halley.downloader.b a(int paramInt, String paramString1, boolean paramBoolean1, String paramString2, List paramList1, String paramString3, List paramList2, String paramString4, String paramString5, c paramc, boolean paramBoolean2, long paramLong)
   {
     String str = "";
-    if (TextUtils.isEmpty(paramString2))
-    {
+    if (TextUtils.isEmpty(paramString2)) {
       str = "url is empty.";
-      if (!h.a(paramString4)) {
-        break label203;
-      }
+    } else if (paramc == null) {
+      str = "listener is null.";
+    }
+    if (h.a(paramString4)) {
       paramString4 = k.g();
     }
-    label203:
-    for (;;)
+    if ("".equals(str))
     {
-      if (!"".equals(str))
-      {
-        throw new DownloaderAddTaskException(str);
-        if (paramc != null) {
-          break;
-        }
-        str = "listener is null.";
-        break;
-      }
       paramString2 = new com.tencent.halley.downloader.c.d.b(paramString2, paramBoolean1);
       if (paramBoolean1)
       {
@@ -61,6 +51,7 @@ public final class u
       }
       return new e(paramInt, paramString1, paramString2, paramString4, paramString5, paramc, paramBoolean2, paramLong);
     }
+    throw new DownloaderAddTaskException(str);
   }
   
   public final com.tencent.halley.downloader.b a(int paramInt, String paramString1, String paramString2, List paramList1, String paramString3, List paramList2, String paramString4, String paramString5, c paramc, boolean paramBoolean, long paramLong)

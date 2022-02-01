@@ -16,15 +16,16 @@ public class g
   
   public static g a(Context paramContext)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new g(paramContext);
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new g(paramContext);
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public SolutionItem a(int paramInt)

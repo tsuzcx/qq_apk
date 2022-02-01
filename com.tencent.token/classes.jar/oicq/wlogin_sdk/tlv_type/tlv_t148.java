@@ -42,8 +42,7 @@ public class tlv_t148
     System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte3, k, j);
     j = k + j;
     util.int16_to_buf(paramArrayOfByte3, j, i);
-    j += 2;
-    System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte3, j, i);
+    System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte3, j + 2, i);
     fill_head(this._cmd);
     fill_body(paramArrayOfByte3, paramArrayOfByte3.length);
     set_length();

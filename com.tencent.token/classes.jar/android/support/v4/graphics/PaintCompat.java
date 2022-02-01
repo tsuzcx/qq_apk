@@ -14,55 +14,42 @@ public final class PaintCompat
   
   public static boolean hasGlyph(@NonNull Paint paramPaint, @NonNull String paramString)
   {
-    boolean bool2 = false;
     if (Build.VERSION.SDK_INT >= 23) {
-      bool1 = paramPaint.hasGlyph(paramString);
+      return paramPaint.hasGlyph(paramString);
     }
-    int j;
-    float f2;
-    float f1;
-    float f3;
-    do
+    int k = paramString.length();
+    if ((k == 1) && (Character.isWhitespace(paramString.charAt(0)))) {
+      return true;
+    }
+    float f2 = paramPaint.measureText("󟿽");
+    float f4 = paramPaint.measureText("m");
+    float f3 = paramPaint.measureText(paramString);
+    float f1 = 0.0F;
+    if (f3 == 0.0F) {
+      return false;
+    }
+    if (paramString.codePointCount(0, paramString.length()) > 1)
     {
-      do
-      {
-        do
-        {
-          return bool1;
-          j = paramString.length();
-          if ((j == 1) && (Character.isWhitespace(paramString.charAt(0)))) {
-            return true;
-          }
-          f2 = paramPaint.measureText("󟿽");
-          f1 = paramPaint.measureText("m");
-          f3 = paramPaint.measureText(paramString);
-          bool1 = bool2;
-        } while (f3 == 0.0F);
-        if (paramString.codePointCount(0, paramString.length()) <= 1) {
-          break;
-        }
-        bool1 = bool2;
-      } while (f3 > f1 * 2.0F);
-      f1 = 0.0F;
-      int i = 0;
-      while (i < j)
-      {
-        int k = Character.charCount(paramString.codePointAt(i));
-        f1 += paramPaint.measureText(paramString, i, i + k);
-        i += k;
+      if (f3 > f4 * 2.0F) {
+        return false;
       }
-      bool1 = bool2;
-    } while (f3 >= f1);
+      int j;
+      for (int i = 0; i < k; i = j)
+      {
+        j = Character.charCount(paramString.codePointAt(i)) + i;
+        f1 += paramPaint.measureText(paramString, i, j);
+      }
+      if (f3 >= f1) {
+        return false;
+      }
+    }
     if (f3 != f2) {
       return true;
     }
     Pair localPair = obtainEmptyRects();
-    paramPaint.getTextBounds("󟿽", 0, "󟿽".length(), (Rect)localPair.first);
-    paramPaint.getTextBounds(paramString, 0, j, (Rect)localPair.second);
-    if (!((Rect)localPair.first).equals(localPair.second)) {}
-    for (boolean bool1 = true;; bool1 = false) {
-      return bool1;
-    }
+    paramPaint.getTextBounds("󟿽", 0, 2, (Rect)localPair.first);
+    paramPaint.getTextBounds(paramString, 0, k, (Rect)localPair.second);
+    return ((Rect)localPair.first).equals(localPair.second) ^ true;
   }
   
   private static Pair<Rect, Rect> obtainEmptyRects()

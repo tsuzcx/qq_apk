@@ -30,11 +30,13 @@ public final class ap
   {
     paramJceOutputStream.write(this.cU, 0);
     paramJceOutputStream.write(this.cV, 1);
-    if (this.cW != null) {
-      paramJceOutputStream.write(this.cW, 2);
+    String str = this.cW;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.cX != null) {
-      paramJceOutputStream.write(this.cX, 3);
+    str = this.cX;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }

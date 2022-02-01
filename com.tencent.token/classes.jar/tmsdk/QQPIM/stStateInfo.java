@@ -33,12 +33,14 @@ public final class stStateInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.info != null) {
-      paramJceOutputStream.write(this.info, 0);
+    Object localObject = this.info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.ntype, 1);
-    if (this.curTemplate != null) {
-      paramJceOutputStream.write(this.curTemplate, 2);
+    localObject = this.curTemplate;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }

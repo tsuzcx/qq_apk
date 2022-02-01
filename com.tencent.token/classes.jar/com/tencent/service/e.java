@@ -9,6 +9,7 @@ import com.tencent.jni.FaceDetector;
 import com.tencent.jni.FaceInfo;
 import com.tencent.jni.FaceThreshold;
 import com.tencent.token.ec;
+import com.tencent.token.global.g;
 import java.util.ArrayList;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.RejectedExecutionHandler;
@@ -22,9 +23,9 @@ public class e
   private static final int b = a;
   private static final int c = b;
   private ArrayList<FaceDetector> d = new ArrayList();
-  private ArrayList<f> e = new ArrayList();
+  private ArrayList<h> e = new ArrayList();
   private b f = null;
-  private g g;
+  private i g;
   private ThreadPoolExecutor h;
   private a i = null;
   private Context j;
@@ -47,7 +48,7 @@ public class e
   
   private void c()
   {
-    this.g = new g(this.j);
+    this.g = new i(this.j);
     this.g.a();
   }
   
@@ -76,32 +77,37 @@ public class e
   
   private void f()
   {
-    if (this.h == null) {
+    Object localObject = this.h;
+    if (localObject == null) {
       return;
     }
-    try
+    i2 = 0;
+    for (;;)
     {
-      this.h.shutdown();
-      i1 = 0;
-      boolean bool;
-      do
+      try
       {
-        com.tencent.token.global.g.b("awaitTermination before");
-        bool = this.h.awaitTermination(100L, TimeUnit.MILLISECONDS);
-        StringBuilder localStringBuilder = new StringBuilder().append("awaitTermination after ");
+        ((ThreadPoolExecutor)localObject).shutdown();
+        i1 = 0;
+        g.b("awaitTermination before");
+        boolean bool = this.h.awaitTermination(100L, TimeUnit.MILLISECONDS);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("awaitTermination after ");
         i1 += 1;
-        com.tencent.token.global.g.b(i1);
-      } while (!bool);
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      int i1;
-      label68:
-      break label68;
-    }
-    i1 = 0;
-    while (i1 < c)
-    {
+        ((StringBuilder)localObject).append(i1);
+        g.b(((StringBuilder)localObject).toString());
+        if (!bool) {
+          continue;
+        }
+        i1 = i2;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        int i1 = i2;
+        continue;
+      }
+      if (i1 >= c) {
+        continue;
+      }
       ((FaceDetector)this.d.get(i1)).Destroy();
       i1 += 1;
     }
@@ -133,45 +139,44 @@ public class e
     Message localMessage = new Message();
     localMessage.what = 36865;
     localMessage.obj = paramb;
-    if (this.i != null) {
-      this.i.sendMessage(localMessage);
+    paramb = this.i;
+    if (paramb != null) {
+      paramb.sendMessage(localMessage);
     }
   }
   
-  public void a(f paramf, DetectType paramDetectType)
+  public void a(h paramh, DetectType paramDetectType)
   {
-    if (this.m) {}
-    for (;;)
-    {
+    if (this.m) {
       return;
-      if (this.g.a)
+    }
+    if (this.g.a)
+    {
+      this.k.b();
+      return;
+    }
+    if (this.e.size() + this.q == 0) {
+      this.n = System.currentTimeMillis();
+    }
+    if (this.e.size() + this.q == 4) {
+      return;
+    }
+    int i1 = 0;
+    while (i1 < this.d.size())
+    {
+      FaceDetector localFaceDetector = (FaceDetector)this.d.get(i1);
+      if (localFaceDetector.idle())
       {
-        this.k.b();
+        localFaceDetector.setIdle(false);
+        paramDetectType = new c(this, localFaceDetector, paramh, paramDetectType);
+        paramDetectType.a = this.n;
+        this.h.execute(paramDetectType);
+        this.e.add(paramh);
+        this.p += 1;
+        this.k.a();
         return;
       }
-      if (this.e.size() + this.q == 0) {
-        this.n = System.currentTimeMillis();
-      }
-      if (this.e.size() + this.q != 4)
-      {
-        int i1 = 0;
-        while (i1 < this.d.size())
-        {
-          FaceDetector localFaceDetector = (FaceDetector)this.d.get(i1);
-          if (localFaceDetector.idle())
-          {
-            localFaceDetector.setIdle(false);
-            paramDetectType = new c(this, localFaceDetector, paramf, paramDetectType);
-            paramDetectType.a = this.n;
-            this.h.execute(paramDetectType);
-            this.e.add(paramf);
-            this.p += 1;
-            this.k.a();
-            return;
-          }
-          i1 += 1;
-        }
-      }
+      i1 += 1;
     }
   }
   
@@ -196,50 +201,63 @@ public class e
     {
       paramMessage = (b)paramMessage.obj;
       paramMessage.a.setIdle(true);
-      if (!e.a(e.this).contains(paramMessage.b)) {
-        com.tencent.token.global.g.b("Discard pic");
-      }
-      while ((e.b(e.this) == null) || (e.c(e.this) == null)) {
+      if (!e.a(e.this).contains(paramMessage.b))
+      {
+        g.b("Discard pic");
         return;
       }
-      if (paramMessage.c == 0) {
-        if (e.d(e.this) == null)
+      if (e.b(e.this) != null)
+      {
+        if (e.c(e.this) == null) {
+          return;
+        }
+        if (paramMessage.c == 0)
         {
-          e.a(e.this, paramMessage);
+          if (e.d(e.this) == null) {
+            e.a(e.this, paramMessage);
+          } else if (paramMessage.d.qualityScore() > e.d(e.this).d.qualityScore()) {
+            e.a(e.this, paramMessage);
+          }
           e.e(e.this);
         }
-      }
-      for (;;)
-      {
+        else
+        {
+          FaceServiceDelegate.FaceDetectErrorCode localFaceDetectErrorCode = FaceServiceDelegate.FaceDetectErrorCode.values()[paramMessage.c];
+          e.b(e.this).a(localFaceDetectErrorCode);
+        }
         e.a(e.this).remove(paramMessage.b);
-        if (e.f(e.this) != 4) {
-          break label345;
+        if (e.f(e.this) == 4)
+        {
+          e.a(e.this, System.currentTimeMillis());
+          paramMessage = new StringBuilder();
+          paramMessage.append("检测了");
+          paramMessage.append(e.g(e.this));
+          paramMessage.append("帧数据 检测到");
+          paramMessage.append(4);
+          paramMessage.append("张人脸时间: ");
+          paramMessage.append(e.h(e.this) - e.i(e.this));
+          paramMessage.append(" 最大分数: ");
+          paramMessage.append(e.d(e.this).d.qualityScore());
+          g.b(paramMessage.toString());
+          e.b(e.this).a(e.d(e.this).b.a, e.d(e.this).d.faceData(), e.g(e.this));
+          e.a(e.this, null);
+          e.a(e.this, 0);
+          e.b(e.this, 0);
+          return;
         }
-        e.a(e.this, System.currentTimeMillis());
-        com.tencent.token.global.g.b("检测了" + e.g(e.this) + "帧数据 检测到" + 4 + "张人脸时间: " + (e.h(e.this) - e.i(e.this)) + " 最大分数: " + e.d(e.this).d.qualityScore());
-        e.b(e.this).a(e.d(e.this).b.a, e.d(e.this).d.faceData(), e.g(e.this));
-        e.a(e.this, null);
-        e.a(e.this, 0);
-        e.b(e.this, 0);
+        e.b(e.this).a();
         return;
-        if (paramMessage.d.qualityScore() <= e.d(e.this).d.qualityScore()) {
-          break;
-        }
-        e.a(e.this, paramMessage);
-        break;
-        FaceServiceDelegate.FaceDetectErrorCode localFaceDetectErrorCode = FaceServiceDelegate.FaceDetectErrorCode.values()[paramMessage.c];
-        e.b(e.this).a(localFaceDetectErrorCode);
       }
-      label345:
-      e.b(e.this).a();
     }
     
     public void handleMessage(Message paramMessage)
     {
-      switch (paramMessage.what)
+      if (paramMessage.what != 36865)
       {
-      default: 
-        Log.e("FaceService", "Unknown message type " + paramMessage.what);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Unknown message type ");
+        localStringBuilder.append(paramMessage.what);
+        Log.e("FaceService", localStringBuilder.toString());
         return;
       }
       a(paramMessage);

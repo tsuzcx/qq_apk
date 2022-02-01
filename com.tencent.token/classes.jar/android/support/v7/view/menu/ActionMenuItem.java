@@ -179,8 +179,9 @@ public class ActionMenuItem
   
   public CharSequence getTitleCondensed()
   {
-    if (this.mTitleCondensed != null) {
-      return this.mTitleCondensed;
+    CharSequence localCharSequence = this.mTitleCondensed;
+    if (localCharSequence != null) {
+      return localCharSequence;
     }
     return this.mTitle;
   }
@@ -197,12 +198,14 @@ public class ActionMenuItem
   
   public boolean invoke()
   {
-    if ((this.mClickListener != null) && (this.mClickListener.onMenuItemClick(this))) {
+    Object localObject = this.mClickListener;
+    if ((localObject != null) && (((MenuItem.OnMenuItemClickListener)localObject).onMenuItemClick(this))) {
       return true;
     }
-    if (this.mIntent != null)
+    localObject = this.mIntent;
+    if (localObject != null)
     {
-      this.mContext.startActivity(this.mIntent);
+      this.mContext.startActivity((Intent)localObject);
       return true;
     }
     return false;
@@ -263,24 +266,21 @@ public class ActionMenuItem
   
   public MenuItem setCheckable(boolean paramBoolean)
   {
-    int j = this.mFlags;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.mFlags = (i | j & 0xFFFFFFFE);
-      return this;
-    }
+    this.mFlags = (paramBoolean | this.mFlags & 0xFFFFFFFE);
+    return this;
   }
   
   public MenuItem setChecked(boolean paramBoolean)
   {
     int j = this.mFlags;
-    if (paramBoolean) {}
-    for (int i = 2;; i = 0)
-    {
-      this.mFlags = (i | j & 0xFFFFFFFD);
-      return this;
+    int i;
+    if (paramBoolean) {
+      i = 2;
+    } else {
+      i = 0;
     }
+    this.mFlags = (i | j & 0xFFFFFFFD);
+    return this;
   }
   
   public SupportMenuItem setContentDescription(CharSequence paramCharSequence)
@@ -292,23 +292,27 @@ public class ActionMenuItem
   public MenuItem setEnabled(boolean paramBoolean)
   {
     int j = this.mFlags;
-    if (paramBoolean) {}
-    for (int i = 16;; i = 0)
-    {
-      this.mFlags = (i | j & 0xFFFFFFEF);
-      return this;
+    int i;
+    if (paramBoolean) {
+      i = 16;
+    } else {
+      i = 0;
     }
+    this.mFlags = (i | j & 0xFFFFFFEF);
+    return this;
   }
   
   public ActionMenuItem setExclusiveCheckable(boolean paramBoolean)
   {
     int j = this.mFlags;
-    if (paramBoolean) {}
-    for (int i = 4;; i = 0)
-    {
-      this.mFlags = (i | j & 0xFFFFFFFB);
-      return this;
+    int i;
+    if (paramBoolean) {
+      i = 4;
+    } else {
+      i = 0;
     }
+    this.mFlags = (i | j & 0xFFFFFFFB);
+    return this;
   }
   
   public MenuItem setIcon(int paramInt)
@@ -429,12 +433,12 @@ public class ActionMenuItem
   public MenuItem setVisible(boolean paramBoolean)
   {
     int j = this.mFlags;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      this.mFlags = (i | j & 0x8);
-      return this;
+    int i = 8;
+    if (paramBoolean) {
+      i = 0;
     }
+    this.mFlags = (j & 0x8 | i);
+    return this;
   }
 }
 

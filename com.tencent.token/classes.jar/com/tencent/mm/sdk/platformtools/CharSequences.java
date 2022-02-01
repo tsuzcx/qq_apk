@@ -4,49 +4,46 @@ public class CharSequences
 {
   static void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt1 < 0) {
+    if (paramInt1 >= 0)
+    {
+      if (paramInt2 >= 0)
+      {
+        if (paramInt2 <= paramInt3)
+        {
+          if (paramInt1 <= paramInt2) {
+            return;
+          }
+          throw new IndexOutOfBoundsException();
+        }
+        throw new IndexOutOfBoundsException();
+      }
       throw new IndexOutOfBoundsException();
     }
-    if (paramInt2 < 0) {
-      throw new IndexOutOfBoundsException();
-    }
-    if (paramInt2 > paramInt3) {
-      throw new IndexOutOfBoundsException();
-    }
-    if (paramInt1 > paramInt2) {
-      throw new IndexOutOfBoundsException();
-    }
+    throw new IndexOutOfBoundsException();
   }
   
   public static int compareToIgnoreCase(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
-    int k = 0;
     int m = paramCharSequence1.length();
     int n = paramCharSequence2.length();
     int i;
-    int j;
-    if (m < n)
-    {
+    if (m < n) {
       i = m;
-      j = 0;
+    } else {
+      i = n;
     }
-    for (;;)
+    int k = 0;
+    int j = 0;
+    while (k < i)
     {
-      if (j < i)
-      {
-        int i1 = Character.toLowerCase(paramCharSequence1.charAt(j)) - Character.toLowerCase(paramCharSequence2.charAt(k));
-        if (i1 == 0) {
-          break label80;
-        }
+      int i1 = Character.toLowerCase(paramCharSequence1.charAt(k)) - Character.toLowerCase(paramCharSequence2.charAt(j));
+      if (i1 != 0) {
         return i1;
-        i = n;
-        break;
       }
-      return m - n;
-      label80:
       k += 1;
       j += 1;
     }
+    return m - n;
   }
   
   public static boolean equals(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
@@ -56,17 +53,13 @@ public class CharSequences
     }
     int j = paramCharSequence1.length();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label55;
-      }
       if (paramCharSequence1.charAt(i) != paramCharSequence2.charAt(i)) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label55:
     return true;
   }
   

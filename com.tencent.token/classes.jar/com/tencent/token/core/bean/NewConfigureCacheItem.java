@@ -21,12 +21,15 @@ public class NewConfigureCacheItem
   
   public void a()
   {
-    if (this.mClickVersion == this.mClientVersion) {
+    int i = this.mClickVersion;
+    int j = this.mClientVersion;
+    if (i == j) {
       return;
     }
-    this.mClickVersion = this.mClientVersion;
-    if (this.mConfIDs != null) {
-      this.mConfIDs.clear();
+    this.mClickVersion = j;
+    ArrayList localArrayList = this.mConfIDs;
+    if (localArrayList != null) {
+      localArrayList.clear();
     }
     cs.a().h.a();
   }

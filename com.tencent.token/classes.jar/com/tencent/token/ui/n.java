@@ -29,52 +29,61 @@ class n
   private void a(View paramView, final int paramInt)
   {
     Object localObject = dj.a().c();
-    if ((localObject == null) && (!this.a.mIsIniting)) {
+    if ((localObject == null) && (!this.a.mIsIniting))
+    {
       this.a.getMbInfo();
-    }
-    while ((localObject == null) || (((MbInfoResult)localObject).mMbInfoItems == null) || (((MbInfoResult)localObject).mMbInfoItems.size() <= paramInt)) {
       return;
     }
-    localObject = (MbInfoResult.MbInfoItem)((MbInfoResult)localObject).mMbInfoItems.get(paramInt);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131559409);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131559410);
-    TextView localTextView3 = (TextView)paramView.findViewById(2131559412);
-    if (((MbInfoResult.MbInfoItem)localObject).mName != null) {
-      localTextView1.setText(((MbInfoResult.MbInfoItem)localObject).mName);
-    }
-    if (((MbInfoResult.MbInfoItem)localObject).mDesc != null) {
-      localTextView2.setText(((MbInfoResult.MbInfoItem)localObject).mDesc);
-    }
-    if (((MbInfoResult.MbInfoItem)localObject).mOpName != null) {
-      localTextView3.setText(((MbInfoResult.MbInfoItem)localObject).mOpName);
-    }
-    paramView.setOnClickListener(new View.OnClickListener()
+    if ((localObject != null) && (((MbInfoResult)localObject).mMbInfoItems != null))
     {
-      public void onClick(View paramAnonymousView)
+      if (((MbInfoResult)localObject).mMbInfoItems.size() <= paramInt) {
+        return;
+      }
+      localObject = (MbInfoResult.MbInfoItem)((MbInfoResult)localObject).mMbInfoItems.get(paramInt);
+      TextView localTextView1 = (TextView)paramView.findViewById(2131166222);
+      TextView localTextView2 = (TextView)paramView.findViewById(2131166221);
+      TextView localTextView3 = (TextView)paramView.findViewById(2131166223);
+      if (((MbInfoResult.MbInfoItem)localObject).mName != null) {
+        localTextView1.setText(((MbInfoResult.MbInfoItem)localObject).mName);
+      }
+      if (((MbInfoResult.MbInfoItem)localObject).mDesc != null) {
+        localTextView2.setText(((MbInfoResult.MbInfoItem)localObject).mDesc);
+      }
+      if (((MbInfoResult.MbInfoItem)localObject).mOpName != null) {
+        localTextView3.setText(((MbInfoResult.MbInfoItem)localObject).mOpName);
+      }
+      paramView.setOnClickListener(new View.OnClickListener()
       {
-        if ((this.a.mId == 51) && (this.a.mDetail.mBtnType == 1))
+        public void onClick(View paramAnonymousView)
         {
-          paramAnonymousView = new Intent(n.a(n.this), UtilsModSetMobileStep1Activity.class);
-          paramAnonymousView.putExtra("title", n.a(n.this).getResources().getString(2131231428) + this.a.mName);
-          paramAnonymousView.putExtra("op_type", 1);
+          if ((this.a.mId == 51) && (this.a.mDetail.mBtnType == 1))
+          {
+            paramAnonymousView = new Intent(n.a(n.this), UtilsModSetMobileStep1Activity.class);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(n.a(n.this).getResources().getString(2131493571));
+            localStringBuilder.append(this.a.mName);
+            paramAnonymousView.putExtra("title", localStringBuilder.toString());
+            paramAnonymousView.putExtra("op_type", 1);
+            paramAnonymousView.putExtra("position", paramInt);
+            n.a(n.this).startActivity(paramAnonymousView);
+            return;
+          }
+          paramAnonymousView = new Intent(n.a(n.this), UtilsMbInfoItemActivity.class);
           paramAnonymousView.putExtra("position", paramInt);
           n.a(n.this).startActivity(paramAnonymousView);
-          return;
         }
-        paramAnonymousView = new Intent(n.a(n.this), UtilsMbInfoItemActivity.class);
-        paramAnonymousView.putExtra("position", paramInt);
-        n.a(n.this).startActivity(paramAnonymousView);
-      }
-    });
+      });
+      return;
+    }
   }
   
   public int getCount()
   {
     MbInfoResult localMbInfoResult = dj.a().c();
-    if ((localMbInfoResult == null) || (localMbInfoResult.mMbInfoItems == null)) {
-      return 0;
+    if ((localMbInfoResult != null) && (localMbInfoResult.mMbInfoItems != null)) {
+      return localMbInfoResult.mMbInfoItems.size();
     }
-    return localMbInfoResult.mMbInfoItems.size();
+    return 0;
   }
   
   public Object getItem(int paramInt)
@@ -91,7 +100,7 @@ class n
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = this.b.inflate(2130968806, paramViewGroup, false);
+      localView = this.b.inflate(2131296487, paramViewGroup, false);
     }
     a(localView, paramInt);
     return localView;

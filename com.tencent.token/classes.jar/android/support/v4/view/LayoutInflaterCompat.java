@@ -30,29 +30,37 @@ public final class LayoutInflaterCompat
   
   static void forceSetFactory2(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
   {
-    if (!sCheckedField) {}
-    try
+    if (!sCheckedField)
     {
-      sLayoutInflaterFactory2Field = LayoutInflater.class.getDeclaredField("mFactory2");
-      sLayoutInflaterFactory2Field.setAccessible(true);
-      sCheckedField = true;
-      if (sLayoutInflaterFactory2Field == null) {}
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
+      try
       {
-        try
-        {
-          sLayoutInflaterFactory2Field.set(paramLayoutInflater, paramFactory2);
-          return;
-        }
-        catch (IllegalAccessException paramFactory2)
-        {
-          Log.e("LayoutInflaterCompatHC", "forceSetFactory2 could not set the Factory2 on LayoutInflater " + paramLayoutInflater + "; inflation may have unexpected results.", paramFactory2);
-        }
-        localNoSuchFieldException = localNoSuchFieldException;
-        Log.e("LayoutInflaterCompatHC", "forceSetFactory2 Could not find field 'mFactory2' on class " + LayoutInflater.class.getName() + "; inflation may have unexpected results.", localNoSuchFieldException);
+        sLayoutInflaterFactory2Field = LayoutInflater.class.getDeclaredField("mFactory2");
+        sLayoutInflaterFactory2Field.setAccessible(true);
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("forceSetFactory2 Could not find field 'mFactory2' on class ");
+        localStringBuilder.append(LayoutInflater.class.getName());
+        localStringBuilder.append("; inflation may have unexpected results.");
+        Log.e("LayoutInflaterCompatHC", localStringBuilder.toString(), localNoSuchFieldException);
+      }
+      sCheckedField = true;
+    }
+    Object localObject = sLayoutInflaterFactory2Field;
+    if (localObject != null) {
+      try
+      {
+        ((Field)localObject).set(paramLayoutInflater, paramFactory2);
+        return;
+      }
+      catch (IllegalAccessException paramFactory2)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("forceSetFactory2 could not set the Factory2 on LayoutInflater ");
+        ((StringBuilder)localObject).append(paramLayoutInflater);
+        ((StringBuilder)localObject).append("; inflation may have unexpected results.");
+        Log.e("LayoutInflaterCompatHC", ((StringBuilder)localObject).toString(), paramFactory2);
       }
     }
   }
@@ -96,7 +104,12 @@ public final class LayoutInflaterCompat
     
     public String toString()
     {
-      return getClass().getName() + "{" + this.mDelegateFactory + "}";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getClass().getName());
+      localStringBuilder.append("{");
+      localStringBuilder.append(this.mDelegateFactory);
+      localStringBuilder.append("}");
+      return localStringBuilder.toString();
     }
   }
   
@@ -106,12 +119,12 @@ public final class LayoutInflaterCompat
   {
     public void setFactory(LayoutInflater paramLayoutInflater, LayoutInflaterFactory paramLayoutInflaterFactory)
     {
-      if (paramLayoutInflaterFactory != null) {}
-      for (paramLayoutInflaterFactory = new LayoutInflaterCompat.Factory2Wrapper(paramLayoutInflaterFactory);; paramLayoutInflaterFactory = null)
-      {
-        paramLayoutInflater.setFactory2(paramLayoutInflaterFactory);
-        return;
+      if (paramLayoutInflaterFactory != null) {
+        paramLayoutInflaterFactory = new LayoutInflaterCompat.Factory2Wrapper(paramLayoutInflaterFactory);
+      } else {
+        paramLayoutInflaterFactory = null;
       }
+      paramLayoutInflater.setFactory2(paramLayoutInflaterFactory);
     }
     
     public void setFactory2(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
@@ -133,12 +146,12 @@ public final class LayoutInflaterCompat
     
     public void setFactory(LayoutInflater paramLayoutInflater, LayoutInflaterFactory paramLayoutInflaterFactory)
     {
-      if (paramLayoutInflaterFactory != null) {}
-      for (paramLayoutInflaterFactory = new LayoutInflaterCompat.Factory2Wrapper(paramLayoutInflaterFactory);; paramLayoutInflaterFactory = null)
-      {
-        setFactory2(paramLayoutInflater, paramLayoutInflaterFactory);
-        return;
+      if (paramLayoutInflaterFactory != null) {
+        paramLayoutInflaterFactory = new LayoutInflaterCompat.Factory2Wrapper(paramLayoutInflaterFactory);
+      } else {
+        paramLayoutInflaterFactory = null;
       }
+      setFactory2(paramLayoutInflater, paramLayoutInflaterFactory);
     }
     
     public void setFactory2(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)

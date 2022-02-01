@@ -13,7 +13,11 @@ public class ab
   
   public String toString()
   {
-    return "AnimatableColorValue{initialValue=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AnimatableColorValue{initialValue=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

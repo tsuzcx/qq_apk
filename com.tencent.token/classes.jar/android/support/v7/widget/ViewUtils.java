@@ -21,28 +21,34 @@ public class ViewUtils
     try
     {
       sComputeFitSystemWindowsMethod = View.class.getDeclaredMethod("computeFitSystemWindows", new Class[] { Rect.class, Rect.class });
-      if (!sComputeFitSystemWindowsMethod.isAccessible()) {
-        sComputeFitSystemWindowsMethod.setAccessible(true);
+      if (sComputeFitSystemWindowsMethod.isAccessible()) {
+        break label57;
       }
+      sComputeFitSystemWindowsMethod.setAccessible(true);
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      Log.d("ViewUtils", "Could not find method computeFitSystemWindows. Oh well.");
+      label49:
+      label57:
+      break label49;
     }
+    Log.d("ViewUtils", "Could not find method computeFitSystemWindows. Oh well.");
   }
   
   public static void computeFitSystemWindows(View paramView, Rect paramRect1, Rect paramRect2)
   {
-    if (sComputeFitSystemWindowsMethod != null) {}
-    try
-    {
-      sComputeFitSystemWindowsMethod.invoke(paramView, new Object[] { paramRect1, paramRect2 });
-      return;
-    }
-    catch (Exception paramView)
-    {
-      Log.d("ViewUtils", "Could not invoke computeFitSystemWindows", paramView);
+    Method localMethod = sComputeFitSystemWindowsMethod;
+    if (localMethod != null) {
+      try
+      {
+        localMethod.invoke(paramView, new Object[] { paramRect1, paramRect2 });
+        return;
+      }
+      catch (Exception paramView)
+      {
+        Log.d("ViewUtils", "Could not invoke computeFitSystemWindows", paramView);
+      }
     }
   }
   
@@ -63,19 +69,22 @@ public class ViewUtils
       localMethod.invoke(paramView, new Object[0]);
       return;
     }
-    catch (NoSuchMethodException paramView)
+    catch (IllegalAccessException paramView)
     {
-      Log.d("ViewUtils", "Could not find method makeOptionalFitsSystemWindows. Oh well...");
+      Log.d("ViewUtils", "Could not invoke makeOptionalFitsSystemWindows", paramView);
       return;
     }
     catch (InvocationTargetException paramView)
     {
       Log.d("ViewUtils", "Could not invoke makeOptionalFitsSystemWindows", paramView);
       return;
+      Log.d("ViewUtils", "Could not find method makeOptionalFitsSystemWindows. Oh well...");
+      return;
     }
-    catch (IllegalAccessException paramView)
+    catch (NoSuchMethodException paramView)
     {
-      Log.d("ViewUtils", "Could not invoke makeOptionalFitsSystemWindows", paramView);
+      label67:
+      break label67;
     }
   }
 }

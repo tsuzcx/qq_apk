@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class VirusInfo
   extends JceStruct
@@ -134,32 +135,38 @@ public final class VirusInfo
     paramJceOutputStream.write(this.features, 5);
     paramJceOutputStream.write(this.safetype, 6);
     paramJceOutputStream.write(this.advice, 7);
-    if (this.label != null) {
-      paramJceOutputStream.write(this.label, 8);
+    Object localObject = this.label;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.optype, 9);
     paramJceOutputStream.write(this.scantype, 10);
     paramJceOutputStream.write(this.level, 11);
     paramJceOutputStream.write(this.method, 12);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 13);
+    localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.pkgnum, 14);
     paramJceOutputStream.write(this.safelevel, 15);
-    if (this.classify != null) {
-      paramJceOutputStream.write(this.classify, 16);
+    localObject = this.classify;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 16);
     }
     paramJceOutputStream.write(this.product, 17);
     paramJceOutputStream.write(this.ad_action1, 18);
     paramJceOutputStream.write(this.ad_action2, 19);
-    if (this.ad_url_list != null) {
-      paramJceOutputStream.write(this.ad_url_list, 20);
+    localObject = this.ad_url_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 20);
     }
-    if (this.ad_ip_list != null) {
-      paramJceOutputStream.write(this.ad_ip_list, 21);
+    localObject = this.ad_ip_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 21);
     }
-    if (this.descIds != null) {
-      paramJceOutputStream.write(this.descIds, 22);
+    localObject = this.descIds;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 22);
     }
     paramJceOutputStream.write(this.category, 23);
   }

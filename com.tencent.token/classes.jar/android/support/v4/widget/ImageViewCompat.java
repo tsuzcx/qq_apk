@@ -109,13 +109,12 @@ public class ImageViewCompat
       if (Build.VERSION.SDK_INT == 21)
       {
         paramColorStateList = paramImageView.getDrawable();
-        if ((paramImageView.getImageTintList() == null) || (paramImageView.getImageTintMode() == null)) {
-          break label64;
+        int i;
+        if ((paramImageView.getImageTintList() != null) && (paramImageView.getImageTintMode() != null)) {
+          i = 1;
+        } else {
+          i = 0;
         }
-      }
-      label64:
-      for (int i = 1;; i = 0)
-      {
         if ((paramColorStateList != null) && (i != 0))
         {
           if (paramColorStateList.isStateful()) {
@@ -123,7 +122,6 @@ public class ImageViewCompat
           }
           paramImageView.setImageDrawable(paramColorStateList);
         }
-        return;
       }
     }
     
@@ -133,13 +131,12 @@ public class ImageViewCompat
       if (Build.VERSION.SDK_INT == 21)
       {
         paramMode = paramImageView.getDrawable();
-        if ((paramImageView.getImageTintList() == null) || (paramImageView.getImageTintMode() == null)) {
-          break label64;
+        int i;
+        if ((paramImageView.getImageTintList() != null) && (paramImageView.getImageTintMode() != null)) {
+          i = 1;
+        } else {
+          i = 0;
         }
-      }
-      label64:
-      for (int i = 1;; i = 0)
-      {
         if ((paramMode != null) && (i != 0))
         {
           if (paramMode.isStateful()) {
@@ -147,7 +144,6 @@ public class ImageViewCompat
           }
           paramImageView.setImageDrawable(paramMode);
         }
-        return;
       }
     }
   }

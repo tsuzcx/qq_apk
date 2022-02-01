@@ -67,7 +67,10 @@ public abstract class EmbedWebBaseActivity
     {
       try
       {
-        g.a("onJsPrompt message=" + paramAnonymousString2);
+        paramAnonymousWebView = new StringBuilder();
+        paramAnonymousWebView.append("onJsPrompt message=");
+        paramAnonymousWebView.append(paramAnonymousString2);
+        g.a(paramAnonymousWebView.toString());
         if ((EmbedWebBaseActivity.this.shareurl != null) && (EmbedWebBaseActivity.this.shareurl.contains("mobile_reset_psw_uv_verify")))
         {
           paramAnonymousWebView = new Intent();
@@ -75,16 +78,13 @@ public abstract class EmbedWebBaseActivity
           EmbedWebBaseActivity.this.setResult(-1, paramAnonymousWebView);
           EmbedWebBaseActivity.this.finish();
         }
-        paramAnonymousJsPromptResult.cancel();
-        return true;
       }
       catch (Exception paramAnonymousWebView)
       {
-        for (;;)
-        {
-          paramAnonymousWebView.printStackTrace();
-        }
+        paramAnonymousWebView.printStackTrace();
       }
+      paramAnonymousJsPromptResult.cancel();
+      return true;
     }
     
     public void onProgressChanged(WebView paramAnonymousWebView, int paramAnonymousInt) {}
@@ -93,16 +93,16 @@ public abstract class EmbedWebBaseActivity
     {
       if ((paramAnonymousWebView.getUrl() != null) && (paramAnonymousWebView.getUrl().contains("sec_headline_content")))
       {
-        EmbedWebBaseActivity.this.sharetitle = paramAnonymousString;
-        EmbedWebBaseActivity.this.shareurl = paramAnonymousWebView.getUrl();
+        EmbedWebBaseActivity localEmbedWebBaseActivity = EmbedWebBaseActivity.this;
+        localEmbedWebBaseActivity.sharetitle = paramAnonymousString;
+        localEmbedWebBaseActivity.shareurl = paramAnonymousWebView.getUrl();
         EmbedWebBaseActivity.this.mRightOptionLayout.setVisibility(0);
-      }
-      do
-      {
         return;
-        EmbedWebBaseActivity.this.shareurl = paramAnonymousWebView.getUrl();
-      } while (EmbedWebBaseActivity.this.alsoShowMenu);
-      EmbedWebBaseActivity.this.mRightOptionLayout.setVisibility(8);
+      }
+      EmbedWebBaseActivity.this.shareurl = paramAnonymousWebView.getUrl();
+      if (!EmbedWebBaseActivity.this.alsoShowMenu) {
+        EmbedWebBaseActivity.this.mRightOptionLayout.setVisibility(8);
+      }
     }
   };
   private DownloadListener mDownloadlistener = new DownloadListener()
@@ -134,7 +134,7 @@ public abstract class EmbedWebBaseActivity
           {
           default: 
             return;
-          case 0: 
+          case 1: 
             if (EmbedWebBaseActivity.this.mWeChatApi.isWXAppInstalled())
             {
               if (EmbedWebBaseActivity.this.mWeChatApi.getWXAppSupportAPI() >= 553779201)
@@ -144,16 +144,16 @@ public abstract class EmbedWebBaseActivity
                 ((WXWebpageObject)localObject).webpageUrl = EmbedWebBaseActivity.this.shareurl;
                 localObject = new WXMediaMessage((WXMediaMessage.IMediaObject)localObject);
                 ((WXMediaMessage)localObject).title = EmbedWebBaseActivity.this.sharetitle;
-                ((WXMediaMessage)localObject).description = EmbedWebBaseActivity.this.getResources().getString(2131231448);
-                ((WXMediaMessage)localObject).setThumbImage(m.a(EmbedWebBaseActivity.this.getResources(), 2130838049));
+                ((WXMediaMessage)localObject).description = EmbedWebBaseActivity.this.getResources().getString(2131493591);
+                ((WXMediaMessage)localObject).setThumbImage(m.a(EmbedWebBaseActivity.this.getResources(), 2131100198));
                 localReq = new SendMessageToWX.Req();
                 localReq.transaction = String.valueOf(System.currentTimeMillis());
                 localReq.message = ((WXMediaMessage)localObject);
-                localReq.scene = 0;
+                localReq.scene = 1;
                 EmbedWebBaseActivity.this.mWeChatApi.sendReq(localReq);
                 return;
               }
-              EmbedWebBaseActivity.this.showToast(EmbedWebBaseActivity.this.getString(2131231444));
+              EmbedWebBaseActivity.this.showToast(EmbedWebBaseActivity.this.getString(2131493587));
               return;
             }
             EmbedWebBaseActivity.this.showWechatBindDialog();
@@ -168,16 +168,16 @@ public abstract class EmbedWebBaseActivity
               ((WXWebpageObject)localObject).webpageUrl = EmbedWebBaseActivity.this.shareurl;
               localObject = new WXMediaMessage((WXMediaMessage.IMediaObject)localObject);
               ((WXMediaMessage)localObject).title = EmbedWebBaseActivity.this.sharetitle;
-              ((WXMediaMessage)localObject).description = EmbedWebBaseActivity.this.getResources().getString(2131231448);
-              ((WXMediaMessage)localObject).setThumbImage(m.a(EmbedWebBaseActivity.this.getResources(), 2130838049));
+              ((WXMediaMessage)localObject).description = EmbedWebBaseActivity.this.getResources().getString(2131493591);
+              ((WXMediaMessage)localObject).setThumbImage(m.a(EmbedWebBaseActivity.this.getResources(), 2131100198));
               localReq = new SendMessageToWX.Req();
               localReq.transaction = String.valueOf(System.currentTimeMillis());
               localReq.message = ((WXMediaMessage)localObject);
-              localReq.scene = 1;
+              localReq.scene = 0;
               EmbedWebBaseActivity.this.mWeChatApi.sendReq(localReq);
               return;
             }
-            EmbedWebBaseActivity.this.showToast(EmbedWebBaseActivity.this.getString(2131231444));
+            EmbedWebBaseActivity.this.showToast(EmbedWebBaseActivity.this.getString(2131493587));
             return;
           }
           EmbedWebBaseActivity.this.showWechatBindDialog();
@@ -203,14 +203,11 @@ public abstract class EmbedWebBaseActivity
       g.c("onPageFinished");
       if (EmbedWebBaseActivity.this.mWebView.canGoBack()) {
         EmbedWebBaseActivity.this.closetext.setVisibility(0);
-      }
-      for (;;)
-      {
-        if ((paramAnonymousWebView != null) && (paramAnonymousWebView.getTitle() != null) && (paramAnonymousWebView.getTitle().length() > 0) && (EmbedWebBaseActivity.this.mDynamicTitle)) {
-          EmbedWebBaseActivity.this.setTitle(paramAnonymousWebView.getTitle());
-        }
-        return;
+      } else {
         EmbedWebBaseActivity.this.closetext.setVisibility(4);
+      }
+      if ((paramAnonymousWebView != null) && (paramAnonymousWebView.getTitle() != null) && (paramAnonymousWebView.getTitle().length() > 0) && (EmbedWebBaseActivity.this.mDynamicTitle)) {
+        EmbedWebBaseActivity.this.setTitle(paramAnonymousWebView.getTitle());
       }
     }
     
@@ -220,7 +217,11 @@ public abstract class EmbedWebBaseActivity
     
     public boolean shouldOverrideUrlLoading(WebView paramAnonymousWebView, String paramAnonymousString)
     {
-      g.a("url" + paramAnonymousString + ",override=");
+      paramAnonymousWebView = new StringBuilder();
+      paramAnonymousWebView.append("url");
+      paramAnonymousWebView.append(paramAnonymousString);
+      paramAnonymousWebView.append(",override=");
+      g.a(paramAnonymousWebView.toString());
       return EmbedWebBaseActivity.this.overrideUrlLoading(paramAnonymousString);
     }
   };
@@ -229,18 +230,19 @@ public abstract class EmbedWebBaseActivity
   
   private void initUI()
   {
-    this.backtext = ((TextView)findViewById(2131559306));
-    if (this.backtext != null) {
-      this.backtext.setVisibility(0);
+    this.backtext = ((TextView)findViewById(2131165287));
+    TextView localTextView = this.backtext;
+    if (localTextView != null) {
+      localTextView.setVisibility(0);
     }
-    ((RelativeLayout)findViewById(2131559305)).setOnClickListener(this.mBrowserListener);
-    this.closetext = ((TextView)findViewById(2131559307));
+    ((RelativeLayout)findViewById(2131165286)).setOnClickListener(this.mBrowserListener);
+    this.closetext = ((TextView)findViewById(2131165381));
     this.closetext.setOnClickListener(this.mBrowserCloseListener);
   }
   
   private void initWebView()
   {
-    this.mWebView = ((WebView)findViewById(2131559464));
+    this.mWebView = ((WebView)findViewById(2131166268));
     this.mWebView.setWebViewClient(this.mWebviewClient);
     this.mWebView.setWebChromeClient(this.mChromeClient);
     this.mWebView.setOnTouchListener(this.mTouchListener);
@@ -259,7 +261,10 @@ public abstract class EmbedWebBaseActivity
   {
     try
     {
-      paramString1 = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:" + paramString1));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("smsto:");
+      localStringBuilder.append(paramString1);
+      paramString1 = new Intent("android.intent.action.SENDTO", Uri.parse(localStringBuilder.toString()));
       paramString1.putExtra("sms_body", paramString2);
       startActivityForResult(paramString1, 0);
       return;
@@ -273,7 +278,7 @@ public abstract class EmbedWebBaseActivity
   
   private void showWechatBindDialog()
   {
-    showUserDialog(2131230843, getString(2131231435), 2131231294, 2131231265, new DialogInterface.OnClickListener()
+    showUserDialog(2131492985, getString(2131493578), 2131493436, 2131493407, new DialogInterface.OnClickListener()
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -297,7 +302,7 @@ public abstract class EmbedWebBaseActivity
     try
     {
       super.onCreate(paramBundle);
-      setContentView(2130968822);
+      setContentView(2131296503);
       initWebView();
       initUI();
       try
@@ -309,13 +314,13 @@ public abstract class EmbedWebBaseActivity
       }
       catch (Exception paramBundle)
       {
-        for (;;)
-        {
-          paramBundle.printStackTrace();
-          g.c("removeJavascriptInterface error: " + paramBundle.getMessage());
-        }
+        paramBundle.printStackTrace();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("removeJavascriptInterface error: ");
+        localStringBuilder.append(paramBundle.getMessage());
+        g.c(localStringBuilder.toString());
       }
-      setRightTitleImage(2130838013, this.mRightTitleButtonClickListener);
+      setRightTitleImage(2131100162, this.mRightTitleButtonClickListener);
       this.mTitleMenu = getDialogMenu();
       if (this.mTitleMenu != null) {
         this.mTitleMenu.setDisplayMode(5);
@@ -338,7 +343,10 @@ public abstract class EmbedWebBaseActivity
   {
     if (paramString.startsWith("sms:"))
     {
-      g.b("url" + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url");
+      localStringBuilder.append(paramString);
+      g.b(localStringBuilder.toString());
       sendBindUinSmsBySMSAPP(paramString.substring(4), "");
       return true;
     }
@@ -352,11 +360,13 @@ public abstract class EmbedWebBaseActivity
   
   public void setBackTextColor(int paramInt)
   {
-    if (this.backtext != null) {
-      this.backtext.setTextColor(paramInt);
+    TextView localTextView = this.backtext;
+    if (localTextView != null) {
+      localTextView.setTextColor(paramInt);
     }
-    if (this.closetext != null) {
-      this.closetext.setTextColor(paramInt);
+    localTextView = this.closetext;
+    if (localTextView != null) {
+      localTextView.setTextColor(paramInt);
     }
   }
 }

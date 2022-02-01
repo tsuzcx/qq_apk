@@ -10,212 +10,231 @@ public class bu
   public static byte[] a(String paramString, int paramInt)
   {
     paramString = paramString.getBytes();
-    int i = 0;
-    int j = paramString.length;
-    Object localObject = new b(paramInt, new byte[j * 3 / 4]);
-    int k = ((b)localObject).e;
-    int m;
-    byte[] arrayOfByte;
-    int[] arrayOfInt;
-    label100:
-    int n;
-    int i2;
-    if (k == 6)
+    int i = paramString.length;
+    Object localObject = new b(paramInt, new byte[i * 3 / 4]);
+    int i1 = ((b)localObject).e;
+    if (i1 == 6)
     {
       paramInt = 0;
-      if (paramInt == 0) {
-        break label771;
+    }
+    else
+    {
+      int i3 = i + 0;
+      i = ((b)localObject).f;
+      byte[] arrayOfByte = ((a)localObject).a;
+      int[] arrayOfInt = ((b)localObject).g;
+      paramInt = 0;
+      int k;
+      int m;
+      for (int j = 0;; j = k)
+      {
+        k = paramInt;
+        m = i;
+        if (j >= i3) {
+          break;
+        }
+        m = paramInt;
+        k = i;
+        int n = j;
+        if (i1 == 0)
+        {
+          for (;;)
+          {
+            m = j + 4;
+            if (m > i3) {
+              break;
+            }
+            k = arrayOfInt[(paramString[j] & 0xFF)] << 18 | arrayOfInt[(paramString[(j + 1)] & 0xFF)] << 12 | arrayOfInt[(paramString[(j + 2)] & 0xFF)] << 6 | arrayOfInt[(paramString[(j + 3)] & 0xFF)];
+            i = k;
+            if (k < 0) {
+              break;
+            }
+            arrayOfByte[(paramInt + 2)] = ((byte)k);
+            arrayOfByte[(paramInt + 1)] = ((byte)(k >> 8));
+            arrayOfByte[paramInt] = ((byte)(k >> 16));
+            paramInt += 3;
+            j = m;
+            i = k;
+          }
+          m = paramInt;
+          k = i;
+          n = j;
+          if (j >= i3)
+          {
+            k = paramInt;
+            m = i;
+            break;
+          }
+        }
+        int i2 = arrayOfInt[(paramString[n] & 0xFF)];
+        switch (i1)
+        {
+        default: 
+          paramInt = i1;
+          i = m;
+          j = k;
+          break;
+        case 5: 
+          paramInt = i1;
+          i = m;
+          j = k;
+          if (i2 == -1) {
+            break label675;
+          }
+          ((b)localObject).e = 6;
+          paramInt = 0;
+          break;
+        case 4: 
+          if (i2 == -2)
+          {
+            paramInt = i1 + 1;
+            i = m;
+            j = k;
+            break label675;
+          }
+          paramInt = i1;
+          i = m;
+          j = k;
+          if (i2 == -1) {
+            break label675;
+          }
+          ((b)localObject).e = 6;
+          paramInt = 0;
+          break;
+        case 3: 
+          if (i2 >= 0)
+          {
+            j = i2 | k << 6;
+            arrayOfByte[(m + 2)] = ((byte)j);
+            arrayOfByte[(m + 1)] = ((byte)(j >> 8));
+            arrayOfByte[m] = ((byte)(j >> 16));
+            i = m + 3;
+            paramInt = 0;
+            break label675;
+          }
+          if (i2 == -2)
+          {
+            arrayOfByte[(m + 1)] = ((byte)(k >> 2));
+            arrayOfByte[m] = ((byte)(k >> 10));
+            i = m + 2;
+            paramInt = 5;
+            j = k;
+            break label675;
+          }
+          paramInt = i1;
+          i = m;
+          j = k;
+          if (i2 == -1) {
+            break label675;
+          }
+          ((b)localObject).e = 6;
+          paramInt = 0;
+          break;
+        case 2: 
+          if (i2 < 0)
+          {
+            if (i2 == -2)
+            {
+              arrayOfByte[m] = ((byte)(k >> 4));
+              i = m + 1;
+              paramInt = 4;
+              j = k;
+              break label675;
+            }
+            paramInt = i1;
+            i = m;
+            j = k;
+            if (i2 == -1) {
+              break label675;
+            }
+            ((b)localObject).e = 6;
+            paramInt = 0;
+          }
+          break;
+        case 1: 
+          if (i2 >= 0)
+          {
+            paramInt = i1 + 1;
+            j = i2 | k << 6;
+            i = m;
+            break label675;
+          }
+          paramInt = i1;
+          i = m;
+          j = k;
+          if (i2 == -1) {
+            break label675;
+          }
+          ((b)localObject).e = 6;
+          paramInt = 0;
+          break;
+        }
+        if (i2 >= 0)
+        {
+          paramInt = i1 + 1;
+          j = i2;
+          i = m;
+        }
+        else
+        {
+          paramInt = i1;
+          i = m;
+          j = k;
+          if (i2 != -1)
+          {
+            ((b)localObject).e = 6;
+            paramInt = 0;
+            break label827;
+          }
+        }
+        label675:
+        k = n + 1;
+        i1 = paramInt;
+        paramInt = i;
+        i = j;
       }
+      paramInt = k;
+      switch (i1)
+      {
+      default: 
+        paramInt = k;
+        break;
+      case 4: 
+        ((b)localObject).e = 6;
+        paramInt = 0;
+        break;
+      case 3: 
+        i = k + 1;
+        arrayOfByte[k] = ((byte)(m >> 10));
+        paramInt = i + 1;
+        arrayOfByte[i] = ((byte)(m >> 2));
+        break;
+      case 2: 
+        arrayOfByte[k] = ((byte)(m >> 4));
+        paramInt = k + 1;
+        break;
+      case 1: 
+        ((b)localObject).e = 6;
+        paramInt = 0;
+        break;
+      }
+      ((b)localObject).e = i1;
+      ((a)localObject).b = paramInt;
+      paramInt = 1;
+    }
+    label827:
+    if (paramInt != 0)
+    {
       paramInt = ((a)localObject).b;
       paramString = ((a)localObject).a;
       if (paramInt == paramString.length) {
         return paramString;
       }
-    }
-    else
-    {
-      int i3 = j + 0;
-      j = ((b)localObject).f;
-      m = 0;
-      arrayOfByte = ((a)localObject).a;
-      arrayOfInt = ((b)localObject).g;
-      paramInt = i;
-      i = m;
-      if (paramInt >= i3) {
-        break label781;
-      }
-      m = i;
-      n = j;
-      i2 = paramInt;
-      if (k == 0)
-      {
-        int i1 = paramInt;
-        for (paramInt = j;; paramInt = j)
-        {
-          m = i1 + 4;
-          if (m > i3) {
-            break;
-          }
-          j = arrayOfInt[(paramString[i1] & 0xFF)] << 18 | arrayOfInt[(paramString[(i1 + 1)] & 0xFF)] << 12 | arrayOfInt[(paramString[(i1 + 2)] & 0xFF)] << 6 | arrayOfInt[(paramString[(i1 + 3)] & 0xFF)];
-          paramInt = j;
-          if (j < 0) {
-            break;
-          }
-          arrayOfByte[(i + 2)] = ((byte)j);
-          arrayOfByte[(i + 1)] = ((byte)(j >> 8));
-          arrayOfByte[i] = ((byte)(j >> 16));
-          i += 3;
-          i1 = m;
-        }
-        m = i;
-        n = paramInt;
-        i2 = i1;
-        if (i1 >= i3) {
-          j = paramInt;
-        }
-      }
-    }
-    label385:
-    label771:
-    label781:
-    for (;;)
-    {
-      paramInt = i;
-      switch (k)
-      {
-      default: 
-        paramInt = i;
-      case 0: 
-      case 4: 
-      case 3: 
-      case 2: 
-        for (;;)
-        {
-          ((b)localObject).e = k;
-          ((a)localObject).b = paramInt;
-          paramInt = 1;
-          break;
-          j = arrayOfInt[(paramString[i2] & 0xFF)];
-          switch (k)
-          {
-          }
-          label376:
-          do
-          {
-            paramInt = k;
-            j = n;
-            i = m;
-            for (;;)
-            {
-              k = paramInt;
-              paramInt = i2 + 1;
-              break label100;
-              if (j == -1) {
-                break label376;
-              }
-              ((b)localObject).e = 6;
-              paramInt = 0;
-              break;
-              if (j == -2)
-              {
-                paramInt = k + 1;
-                i = m;
-                j = n;
-              }
-              else
-              {
-                if (j == -1) {
-                  break label376;
-                }
-                ((b)localObject).e = 6;
-                paramInt = 0;
-                break;
-                if (j >= 0)
-                {
-                  j = n << 6 | j;
-                  arrayOfByte[(m + 2)] = ((byte)j);
-                  arrayOfByte[(m + 1)] = ((byte)(j >> 8));
-                  arrayOfByte[m] = ((byte)(j >> 16));
-                  i = m + 3;
-                  paramInt = 0;
-                }
-                else if (j == -2)
-                {
-                  arrayOfByte[(m + 1)] = ((byte)(n >> 2));
-                  arrayOfByte[m] = ((byte)(n >> 10));
-                  i = m + 2;
-                  paramInt = 5;
-                  j = n;
-                }
-                else
-                {
-                  if (j == -1) {
-                    break label376;
-                  }
-                  ((b)localObject).e = 6;
-                  paramInt = 0;
-                  break;
-                  if (j >= 0) {}
-                  do
-                  {
-                    j = n << 6 | j;
-                    paramInt = k + 1;
-                    i = m;
-                    break label385;
-                    if (j == -2)
-                    {
-                      arrayOfByte[m] = ((byte)(n >> 4));
-                      paramInt = 4;
-                      i = m + 1;
-                      j = n;
-                      break label385;
-                    }
-                    if (j == -1) {
-                      break label376;
-                    }
-                    ((b)localObject).e = 6;
-                    paramInt = 0;
-                    break;
-                  } while (j >= 0);
-                  if (j == -1) {
-                    break label376;
-                  }
-                  ((b)localObject).e = 6;
-                  paramInt = 0;
-                  break;
-                  if (j < 0) {
-                    break label667;
-                  }
-                  paramInt = k + 1;
-                  i = m;
-                }
-              }
-            }
-          } while (j == -1);
-          label667:
-          ((b)localObject).e = 6;
-          paramInt = 0;
-          break;
-          ((b)localObject).e = 6;
-          paramInt = 0;
-          break;
-          m = i + 1;
-          arrayOfByte[i] = ((byte)(j >> 10));
-          paramInt = m + 1;
-          arrayOfByte[m] = ((byte)(j >> 2));
-          continue;
-          arrayOfByte[i] = ((byte)(j >> 4));
-          paramInt = i + 1;
-        }
-      }
-      ((b)localObject).e = 6;
-      paramInt = 0;
-      break;
       localObject = new byte[paramInt];
       System.arraycopy(paramString, 0, localObject, 0, paramInt);
       return localObject;
-      throw new IllegalArgumentException("bad base-64");
     }
+    throw new IllegalArgumentException("bad base-64");
   }
   
   public static abstract class a
@@ -236,14 +255,14 @@ public class bu
     public b(int paramInt, byte[] paramArrayOfByte)
     {
       this.a = paramArrayOfByte;
-      if ((paramInt & 0x8) == 0) {}
-      for (paramArrayOfByte = c;; paramArrayOfByte = d)
-      {
-        this.g = paramArrayOfByte;
-        this.e = 0;
-        this.f = 0;
-        return;
+      if ((paramInt & 0x8) == 0) {
+        paramArrayOfByte = c;
+      } else {
+        paramArrayOfByte = d;
       }
+      this.g = paramArrayOfByte;
+      this.e = 0;
+      this.f = 0;
     }
   }
 }

@@ -86,20 +86,24 @@ class CursorFieldHelper
   
   public static void keep_getBoolean(Field paramField, Object paramObject, ContentValues paramContentValues)
   {
-    try
+    for (;;)
     {
-      String str = MAutoDBItem.getColName(paramField);
-      if (paramField.getBoolean(paramObject)) {}
-      for (int i = 1;; i = 0)
+      try
       {
-        paramContentValues.put(str, Integer.valueOf(i));
+        String str = MAutoDBItem.getColName(paramField);
+        if (paramField.getBoolean(paramObject))
+        {
+          i = 1;
+          paramContentValues.put(str, Integer.valueOf(i));
+          return;
+        }
+      }
+      catch (Exception paramField)
+      {
+        paramField.printStackTrace();
         return;
       }
-      return;
-    }
-    catch (Exception paramField)
-    {
-      paramField.printStackTrace();
+      int i = 0;
     }
   }
   

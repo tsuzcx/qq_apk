@@ -45,23 +45,29 @@ public final class FolderInfo
   {
     paramJceOutputStream.write(this.absolutepath, 0);
     paramJceOutputStream.write(this.suffixinfos, 1);
-    if (this.folderType != 0) {
-      paramJceOutputStream.write(this.folderType, 2);
+    int i = this.folderType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.clearTime != 0L) {
-      paramJceOutputStream.write(this.clearTime, 3);
+    long l = this.clearTime;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 3);
     }
-    if (this.packageName != null) {
-      paramJceOutputStream.write(this.packageName, 4);
+    String str = this.packageName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.isView) {
-      paramJceOutputStream.write(this.isView, 5);
+    boolean bool = this.isView;
+    if (bool) {
+      paramJceOutputStream.write(bool, 5);
     }
-    if (this.deleteSize != 0L) {
-      paramJceOutputStream.write(this.deleteSize, 6);
+    l = this.deleteSize;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 6);
     }
-    if (this.pathType != 0) {
-      paramJceOutputStream.write(this.pathType, 7);
+    i = this.pathType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 7);
     }
   }
 }

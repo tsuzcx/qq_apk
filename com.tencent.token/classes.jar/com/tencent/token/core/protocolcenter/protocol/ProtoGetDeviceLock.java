@@ -44,13 +44,16 @@ public class ProtoGetDeviceLock
   protected String a()
   {
     String str = ca.a().b();
-    g.c("sessId=" + str);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("sessId=");
+    ((StringBuilder)localObject1).append(str);
+    g.c(((StringBuilder)localObject1).toString());
     if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    Object localObject1 = "";
+    localObject1 = "";
     try
     {
       Object localObject2 = new JSONObject();
@@ -63,20 +66,32 @@ public class ProtoGetDeviceLock
       ((JSONObject)localObject2).put("A2", this.k);
       ((JSONObject)localObject2).put("seq_id", this.h);
       ((JSONObject)localObject2).put("op_time", (int)(cc.c().s() / 1000L));
-      g.a("devicelock data=" + localObject2);
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("devicelock data=");
+      localStringBuilder2.append(localObject2);
+      g.a(localStringBuilder2.toString());
       localObject2 = l.b(((JSONObject)localObject2).toString().getBytes());
       localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
-    localObject1 = "?aq_base_sid=" + str + "&data=" + (String)localObject1;
-    localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_get_device_lock_status_encrypt" + (String)localObject1;
-    g.c("get device lock status url =" + (String)localObject1);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("?aq_base_sid=");
+    localStringBuilder1.append(str);
+    localStringBuilder1.append("&data=");
+    localStringBuilder1.append((String)localObject1);
+    localObject1 = localStringBuilder1.toString();
+    localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append(c.e());
+    localStringBuilder1.append("/cn/mbtoken3/mbtoken3_get_device_lock_status_encrypt");
+    localStringBuilder1.append((String)localObject1);
+    localObject1 = localStringBuilder1.toString();
+    localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("get device lock status url =");
+    localStringBuilder1.append((String)localObject1);
+    g.c(localStringBuilder1.toString());
     return localObject1;
   }
   
@@ -101,15 +116,24 @@ public class ProtoGetDeviceLock
       return;
     }
     paramJSONObject = l.c(paramJSONObject.getString("data"));
+    Object localObject;
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      g.a("decode json=" + paramJSONObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("decode json=");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      g.a(((StringBuilder)localObject).toString());
       m = paramJSONObject.getInt("seq_id");
       if (m != this.h)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + m + ",right = " + cb.a().b());
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(m);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(cb.a().b());
+        g.c(paramJSONObject.toString());
         return;
       }
     }
@@ -122,45 +146,43 @@ public class ProtoGetDeviceLock
         if (m == 70)
         {
           cs.a().d(paramJSONObject);
-          this.a.c();
-          return;
         }
+        else if (m == 71)
+        {
+          cs.a().e(paramJSONObject);
+        }
+        else if ((m == 80) && (paramJSONObject != null) && (paramJSONObject.length() > 0))
+        {
+          m = 0;
+          if (m < paramJSONObject.length())
+          {
+            localObject = paramJSONObject.getJSONObject(m);
+            if (((JSONObject)localObject).getInt("id") == 71)
+            {
+              cs.a().a((JSONObject)localObject);
+              break label342;
+            }
+            ((JSONObject)localObject).getInt("id");
+            break label342;
+          }
+        }
+        this.a.c();
+        return;
       }
       catch (JSONException paramJSONObject)
       {
-        a(201, RqdApplication.l().getString(2131230767));
+        a(201, RqdApplication.l().getString(2131492909));
         paramJSONObject.printStackTrace();
         return;
       }
-      if (m == 71)
-      {
-        cs.a().e(paramJSONObject);
-      }
-      else if ((m == 80) && (paramJSONObject != null) && (paramJSONObject.length() > 0))
-      {
-        m = 0;
-        while (m < paramJSONObject.length())
-        {
-          JSONObject localJSONObject = paramJSONObject.getJSONObject(m);
-          if (localJSONObject.getInt("id") == 71)
-          {
-            cs.a().a(localJSONObject);
-          }
-          else
-          {
-            int n = localJSONObject.getInt("id");
-            if (n == 81)
-            {
-              break label327;
-              g.c("parseJSON error decodeData=" + paramJSONObject);
-              a(10022, RqdApplication.l().getString(2131230925));
-              return;
-            }
-          }
-          label327:
-          m += 1;
-        }
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("parseJSON error decodeData=");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      g.c(((StringBuilder)localObject).toString());
+      a(10022, RqdApplication.l().getString(2131493067));
+      return;
+      label342:
+      m += 1;
     }
   }
 }

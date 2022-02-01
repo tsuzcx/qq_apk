@@ -34,9 +34,9 @@ public final class a
   
   public boolean equals(Object paramObject)
   {
+    boolean bool1 = paramObject instanceof a;
     boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof a))
+    if (bool1)
     {
       paramObject = (a)paramObject;
       bool1 = bool2;
@@ -47,13 +47,14 @@ public final class a
           bool1 = true;
         }
       }
+      return bool1;
     }
-    return bool1;
+    return false;
   }
   
   public int hashCode()
   {
-    return (this.g.hashCode() + 527) * 31 + this.h.hashCode();
+    return (527 + this.g.hashCode()) * 31 + this.h.hashCode();
   }
   
   public String toString()

@@ -39,11 +39,13 @@ public final class c
     paramJceOutputStream.write(this.c, 2);
     paramJceOutputStream.write(this.d, 3);
     paramJceOutputStream.write(this.e, 4);
-    if (this.f != null) {
-      paramJceOutputStream.write(this.f, 5);
+    String str = this.f;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.g != null) {
-      paramJceOutputStream.write(this.g, 6);
+    str = this.g;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }

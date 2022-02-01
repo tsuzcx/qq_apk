@@ -22,18 +22,6 @@ public final class UrlCheckResponse
   public String title = "";
   public String url = "";
   
-  static
-  {
-    if (!UrlCheckResponse.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      fh = 0;
-      fi = 0;
-      return;
-    }
-  }
-  
   public UrlCheckResponse() {}
   
   public UrlCheckResponse(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, int paramInt4, String paramString3, String paramString4, int paramInt5)
@@ -56,18 +44,17 @@ public final class UrlCheckResponse
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -86,13 +73,48 @@ public final class UrlCheckResponse
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (UrlCheckResponse)paramObject;
-    } while ((!JceUtil.equals(this.url, paramObject.url)) || (!JceUtil.equals(this.mainHarmId, paramObject.mainHarmId)) || (!JceUtil.equals(this.subHarmId, paramObject.subHarmId)) || (!JceUtil.equals(this.seq, paramObject.seq)) || (!JceUtil.equals(this.desc, paramObject.desc)) || (!JceUtil.equals(this.UrlType, paramObject.UrlType)) || (!JceUtil.equals(this.title, paramObject.title)) || (!JceUtil.equals(this.body, paramObject.body)) || (!JceUtil.equals(this.evilclass, paramObject.evilclass)));
-    return true;
+    }
+    paramObject = (UrlCheckResponse)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.url, paramObject.url))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.mainHarmId, paramObject.mainHarmId))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.subHarmId, paramObject.subHarmId))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.seq, paramObject.seq))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.desc, paramObject.desc))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.UrlType, paramObject.UrlType))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.title, paramObject.title))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.body, paramObject.body))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.evilclass, paramObject.evilclass)) {
+                      bool1 = true;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -222,15 +244,18 @@ public final class UrlCheckResponse
     paramJceOutputStream.write(this.mainHarmId, 1);
     paramJceOutputStream.write(this.subHarmId, 2);
     paramJceOutputStream.write(this.seq, 3);
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 4);
+    String str = this.desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.UrlType, 5);
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 6);
+    str = this.title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.body != null) {
-      paramJceOutputStream.write(this.body, 7);
+    str = this.body;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.evilclass, 8);
   }

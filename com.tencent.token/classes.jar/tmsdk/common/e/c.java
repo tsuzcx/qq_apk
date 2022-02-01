@@ -12,200 +12,240 @@ class c
   public c(int paramInt, byte[] paramArrayOfByte)
   {
     this.a = paramArrayOfByte;
-    if ((paramInt & 0x8) == 0) {}
-    for (paramArrayOfByte = c;; paramArrayOfByte = d)
-    {
-      this.g = paramArrayOfByte;
-      this.e = 0;
-      this.f = 0;
-      return;
+    if ((paramInt & 0x8) == 0) {
+      paramArrayOfByte = c;
+    } else {
+      paramArrayOfByte = d;
     }
+    this.g = paramArrayOfByte;
+    this.e = 0;
+    this.f = 0;
   }
   
   public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (this.e == 6) {
+    int n = this.e;
+    if (n == 6) {
       return false;
     }
     int i2 = paramInt2 + paramInt1;
-    int j = this.e;
     paramInt2 = this.f;
-    int i = 0;
     byte[] arrayOfByte = this.a;
     int[] arrayOfInt = this.g;
+    int j = 0;
+    int i = paramInt1;
+    paramInt1 = j;
     int k;
-    int m;
-    int i1;
-    if (paramInt1 < i2)
-    {
-      k = i;
-      m = paramInt2;
-      i1 = paramInt1;
-      if (j == 0)
-      {
-        int n = paramInt1;
-        for (paramInt1 = paramInt2; n + 4 <= i2; paramInt1 = paramInt2)
-        {
-          paramInt2 = arrayOfInt[(paramArrayOfByte[n] & 0xFF)] << 18 | arrayOfInt[(paramArrayOfByte[(n + 1)] & 0xFF)] << 12 | arrayOfInt[(paramArrayOfByte[(n + 2)] & 0xFF)] << 6 | arrayOfInt[(paramArrayOfByte[(n + 3)] & 0xFF)];
-          paramInt1 = paramInt2;
-          if (paramInt2 < 0) {
-            break;
-          }
-          arrayOfByte[(i + 2)] = ((byte)paramInt2);
-          arrayOfByte[(i + 1)] = ((byte)(paramInt2 >> 8));
-          arrayOfByte[i] = ((byte)(paramInt2 >> 16));
-          i += 3;
-          n += 4;
-        }
-        k = i;
-        m = paramInt1;
-        i1 = n;
-        if (n >= i2) {
-          paramInt2 = paramInt1;
-        }
-      }
-    }
     for (;;)
     {
-      if (!paramBoolean)
-      {
-        this.e = j;
-        this.f = paramInt2;
-        this.b = i;
-        return true;
-        paramInt2 = arrayOfInt[(paramArrayOfByte[i1] & 0xFF)];
-        switch (j)
-        {
-        }
-        label292:
-        label577:
-        do
-        {
-          do
-          {
-            paramInt1 = j;
-            paramInt2 = m;
-            i = k;
-            for (;;)
-            {
-              j = paramInt1;
-              paramInt1 = i1 + 1;
-              break;
-              if (paramInt2 >= 0)
-              {
-                paramInt1 = j + 1;
-                i = k;
-              }
-              else
-              {
-                if (paramInt2 == -1) {
-                  break label292;
-                }
-                this.e = 6;
-                return false;
-                if (paramInt2 >= 0)
-                {
-                  paramInt2 = m << 6 | paramInt2;
-                  paramInt1 = j + 1;
-                  i = k;
-                }
-                else
-                {
-                  if (paramInt2 == -1) {
-                    break label292;
-                  }
-                  this.e = 6;
-                  return false;
-                  if (paramInt2 >= 0)
-                  {
-                    paramInt2 = m << 6 | paramInt2;
-                    paramInt1 = j + 1;
-                    i = k;
-                  }
-                  else if (paramInt2 == -2)
-                  {
-                    arrayOfByte[k] = ((byte)(m >> 4));
-                    paramInt1 = 4;
-                    i = k + 1;
-                    paramInt2 = m;
-                  }
-                  else
-                  {
-                    if (paramInt2 == -1) {
-                      break label292;
-                    }
-                    this.e = 6;
-                    return false;
-                    if (paramInt2 >= 0)
-                    {
-                      paramInt2 = m << 6 | paramInt2;
-                      arrayOfByte[(k + 2)] = ((byte)paramInt2);
-                      arrayOfByte[(k + 1)] = ((byte)(paramInt2 >> 8));
-                      arrayOfByte[k] = ((byte)(paramInt2 >> 16));
-                      i = k + 3;
-                      paramInt1 = 0;
-                    }
-                    else if (paramInt2 == -2)
-                    {
-                      arrayOfByte[(k + 1)] = ((byte)(m >> 2));
-                      arrayOfByte[k] = ((byte)(m >> 10));
-                      i = k + 2;
-                      paramInt1 = 5;
-                      paramInt2 = m;
-                    }
-                    else
-                    {
-                      if (paramInt2 == -1) {
-                        break label292;
-                      }
-                      this.e = 6;
-                      return false;
-                      if (paramInt2 != -2) {
-                        break label577;
-                      }
-                      paramInt1 = j + 1;
-                      i = k;
-                      paramInt2 = m;
-                    }
-                  }
-                }
-              }
-            }
-          } while (paramInt2 == -1);
-          this.e = 6;
-          return false;
-        } while (paramInt2 == -1);
-        this.e = 6;
-        return false;
+      k = paramInt2;
+      j = paramInt1;
+      if (i >= i2) {
+        break;
       }
-      paramInt1 = i;
-      switch (j)
+      k = paramInt2;
+      j = paramInt1;
+      int m = i;
+      if (n == 0)
       {
-      default: 
-        paramInt1 = i;
-      case 0: 
-      case 1: 
-      case 2: 
-      case 3: 
         for (;;)
         {
-          this.e = j;
-          this.b = paramInt1;
-          return true;
-          this.e = 6;
-          return false;
-          arrayOfByte[i] = ((byte)(paramInt2 >> 4));
-          paramInt1 = i + 1;
-          continue;
-          k = i + 1;
-          arrayOfByte[i] = ((byte)(paramInt2 >> 10));
-          paramInt1 = k + 1;
-          arrayOfByte[k] = ((byte)(paramInt2 >> 2));
+          k = i + 4;
+          if (k > i2) {
+            break;
+          }
+          j = arrayOfInt[(paramArrayOfByte[i] & 0xFF)] << 18 | arrayOfInt[(paramArrayOfByte[(i + 1)] & 0xFF)] << 12 | arrayOfInt[(paramArrayOfByte[(i + 2)] & 0xFF)] << 6 | arrayOfInt[(paramArrayOfByte[(i + 3)] & 0xFF)];
+          paramInt2 = j;
+          if (j < 0) {
+            break;
+          }
+          arrayOfByte[(paramInt1 + 2)] = ((byte)j);
+          arrayOfByte[(paramInt1 + 1)] = ((byte)(j >> 8));
+          arrayOfByte[paramInt1] = ((byte)(j >> 16));
+          paramInt1 += 3;
+          i = k;
+          paramInt2 = j;
+        }
+        k = paramInt2;
+        j = paramInt1;
+        m = i;
+        if (i >= i2)
+        {
+          k = paramInt2;
+          j = paramInt1;
+          break;
         }
       }
+      int i1 = arrayOfInt[(paramArrayOfByte[m] & 0xFF)];
+      switch (n)
+      {
+      default: 
+        paramInt1 = n;
+        paramInt2 = k;
+        i = j;
+        break;
+      case 5: 
+        paramInt1 = n;
+        paramInt2 = k;
+        i = j;
+        if (i1 != -1)
+        {
+          this.e = 6;
+          return false;
+        }
+        break;
+      case 4: 
+        if (i1 == -2)
+        {
+          paramInt1 = n + 1;
+          paramInt2 = k;
+          i = j;
+        }
+        else
+        {
+          paramInt1 = n;
+          paramInt2 = k;
+          i = j;
+          if (i1 != -1)
+          {
+            this.e = 6;
+            return false;
+          }
+        }
+        break;
+      case 3: 
+        if (i1 >= 0)
+        {
+          paramInt2 = i1 | k << 6;
+          arrayOfByte[(j + 2)] = ((byte)paramInt2);
+          arrayOfByte[(j + 1)] = ((byte)(paramInt2 >> 8));
+          arrayOfByte[j] = ((byte)(paramInt2 >> 16));
+          i = j + 3;
+          paramInt1 = 0;
+        }
+        else if (i1 == -2)
+        {
+          arrayOfByte[(j + 1)] = ((byte)(k >> 2));
+          arrayOfByte[j] = ((byte)(k >> 10));
+          i = j + 2;
+          paramInt1 = 5;
+          paramInt2 = k;
+        }
+        else
+        {
+          paramInt1 = n;
+          paramInt2 = k;
+          i = j;
+          if (i1 != -1)
+          {
+            this.e = 6;
+            return false;
+          }
+        }
+        break;
+      case 2: 
+        if (i1 >= 0)
+        {
+          paramInt1 = n + 1;
+          paramInt2 = i1 | k << 6;
+          i = j;
+        }
+        else if (i1 == -2)
+        {
+          arrayOfByte[j] = ((byte)(k >> 4));
+          i = j + 1;
+          paramInt1 = 4;
+          paramInt2 = k;
+        }
+        else
+        {
+          paramInt1 = n;
+          paramInt2 = k;
+          i = j;
+          if (i1 != -1)
+          {
+            this.e = 6;
+            return false;
+          }
+        }
+        break;
+      case 1: 
+        if (i1 >= 0)
+        {
+          paramInt1 = n + 1;
+          paramInt2 = i1 | k << 6;
+          i = j;
+        }
+        else
+        {
+          paramInt1 = n;
+          paramInt2 = k;
+          i = j;
+          if (i1 != -1)
+          {
+            this.e = 6;
+            return false;
+          }
+        }
+        break;
+      case 0: 
+        if (i1 >= 0)
+        {
+          paramInt1 = n + 1;
+          paramInt2 = i1;
+          i = j;
+        }
+        else
+        {
+          paramInt1 = n;
+          paramInt2 = k;
+          i = j;
+          if (i1 != -1)
+          {
+            this.e = 6;
+            return false;
+          }
+        }
+        break;
+      }
+      j = m + 1;
+      n = paramInt1;
+      paramInt1 = i;
+      i = j;
+    }
+    if (!paramBoolean)
+    {
+      this.e = n;
+      this.f = k;
+      this.b = j;
+      return true;
+    }
+    paramInt1 = j;
+    switch (n)
+    {
+    default: 
+      paramInt1 = j;
+      break;
+    case 4: 
+      this.e = 6;
+      return false;
+    case 3: 
+      paramInt2 = j + 1;
+      arrayOfByte[j] = ((byte)(k >> 10));
+      paramInt1 = paramInt2 + 1;
+      arrayOfByte[paramInt2] = ((byte)(k >> 2));
+      break;
+    case 2: 
+      arrayOfByte[j] = ((byte)(k >> 4));
+      paramInt1 = j + 1;
+      break;
+    case 1: 
       this.e = 6;
       return false;
     }
+    this.e = n;
+    this.b = paramInt1;
+    return true;
   }
 }
 

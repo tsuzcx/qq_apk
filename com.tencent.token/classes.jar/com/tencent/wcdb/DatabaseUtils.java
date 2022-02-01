@@ -63,13 +63,17 @@ public final class DatabaseUtils
   
   public static String[] appendSelectionArgs(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    if ((paramArrayOfString1 == null) || (paramArrayOfString1.length == 0)) {
-      return paramArrayOfString2;
+    if (paramArrayOfString1 != null)
+    {
+      if (paramArrayOfString1.length == 0) {
+        return paramArrayOfString2;
+      }
+      String[] arrayOfString = new String[paramArrayOfString1.length + paramArrayOfString2.length];
+      System.arraycopy(paramArrayOfString1, 0, arrayOfString, 0, paramArrayOfString1.length);
+      System.arraycopy(paramArrayOfString2, 0, arrayOfString, paramArrayOfString1.length, paramArrayOfString2.length);
+      return arrayOfString;
     }
-    String[] arrayOfString = new String[paramArrayOfString1.length + paramArrayOfString2.length];
-    System.arraycopy(paramArrayOfString1, 0, arrayOfString, 0, paramArrayOfString1.length);
-    System.arraycopy(paramArrayOfString2, 0, arrayOfString, paramArrayOfString1.length, paramArrayOfString2.length);
-    return arrayOfString;
+    return paramArrayOfString2;
   }
   
   public static final void appendValueToSql(StringBuilder paramStringBuilder, Object paramObject)
@@ -99,32 +103,32 @@ public final class DatabaseUtils
       paramSQLiteProgram.bindNull(paramInt);
       return;
     }
-    if (((paramObject instanceof Double)) || ((paramObject instanceof Float)))
+    if ((!(paramObject instanceof Double)) && (!(paramObject instanceof Float)))
     {
-      paramSQLiteProgram.bindDouble(paramInt, ((Number)paramObject).doubleValue());
-      return;
-    }
-    if ((paramObject instanceof Number))
-    {
-      paramSQLiteProgram.bindLong(paramInt, ((Number)paramObject).longValue());
-      return;
-    }
-    if ((paramObject instanceof Boolean))
-    {
-      if (((Boolean)paramObject).booleanValue())
+      if ((paramObject instanceof Number))
       {
-        paramSQLiteProgram.bindLong(paramInt, 1L);
+        paramSQLiteProgram.bindLong(paramInt, ((Number)paramObject).longValue());
         return;
       }
-      paramSQLiteProgram.bindLong(paramInt, 0L);
+      if ((paramObject instanceof Boolean))
+      {
+        if (((Boolean)paramObject).booleanValue())
+        {
+          paramSQLiteProgram.bindLong(paramInt, 1L);
+          return;
+        }
+        paramSQLiteProgram.bindLong(paramInt, 0L);
+        return;
+      }
+      if ((paramObject instanceof byte[]))
+      {
+        paramSQLiteProgram.bindBlob(paramInt, (byte[])paramObject);
+        return;
+      }
+      paramSQLiteProgram.bindString(paramInt, paramObject.toString());
       return;
     }
-    if ((paramObject instanceof byte[]))
-    {
-      paramSQLiteProgram.bindBlob(paramInt, (byte[])paramObject);
-      return;
-    }
-    paramSQLiteProgram.bindString(paramInt, paramObject.toString());
+    paramSQLiteProgram.bindDouble(paramInt, ((Number)paramObject).doubleValue());
   }
   
   public static String concatenateWhere(String paramString1, String paramString2)
@@ -135,7 +139,13 @@ public final class DatabaseUtils
     if (TextUtils.isEmpty(paramString2)) {
       return paramString1;
     }
-    return "(" + paramString1 + ") AND (" + paramString2 + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(") AND (");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public static void createDbFromSqlStatements(android.content.Context paramContext, String paramString1, int paramInt, String paramString2)
@@ -145,20 +155,17 @@ public final class DatabaseUtils
   
   public static void createDbFromSqlStatements(android.content.Context paramContext, String paramString1, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, int paramInt, String paramString2)
   {
-    int i = 0;
     paramContext = com.tencent.wcdb.support.Context.openOrCreateDatabase(paramContext, paramString1, paramArrayOfByte, paramSQLiteCipherSpec, 0, null);
     paramString1 = TextUtils.split(paramString2, ";\n");
     int j = paramString1.length;
-    if (i < j)
+    int i = 0;
+    while (i < j)
     {
       paramArrayOfByte = paramString1[i];
-      if (TextUtils.isEmpty(paramArrayOfByte)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
+      if (!TextUtils.isEmpty(paramArrayOfByte)) {
         paramContext.execSQL(paramArrayOfByte);
       }
+      i += 1;
     }
     paramContext.setVersion(paramInt);
     paramContext.close();
@@ -190,72 +197,72 @@ public final class DatabaseUtils
   
   public static void cursorFillWindow(Cursor paramCursor, int paramInt, CursorWindow paramCursorWindow)
   {
-    if ((paramInt < 0) || (paramInt >= paramCursor.getCount())) {
-      return;
-    }
-    int j = paramCursor.getPosition();
-    int k = paramCursor.getColumnCount();
-    paramCursorWindow.clear();
-    paramCursorWindow.setStartPosition(paramInt);
-    paramCursorWindow.setNumColumns(k);
-    if (paramCursor.moveToPosition(paramInt))
+    if (paramInt >= 0)
     {
-      if (paramCursorWindow.allocRow()) {}
-    }
-    else
-    {
-      label64:
+      if (paramInt >= paramCursor.getCount()) {
+        return;
+      }
+      int j = paramCursor.getPosition();
+      int k = paramCursor.getColumnCount();
+      paramCursorWindow.clear();
+      paramCursorWindow.setStartPosition(paramInt);
+      paramCursorWindow.setNumColumns(k);
+      if (paramCursor.moveToPosition(paramInt)) {
+        do
+        {
+          if (!paramCursorWindow.allocRow()) {
+            break;
+          }
+          int i = 0;
+          while (i < k)
+          {
+            int m = paramCursor.getType(i);
+            Object localObject;
+            boolean bool;
+            if (m != 4)
+            {
+              switch (m)
+              {
+              default: 
+                localObject = paramCursor.getString(i);
+                if (localObject != null) {
+                  bool = paramCursorWindow.putString((String)localObject, paramInt, i);
+                } else {
+                  bool = paramCursorWindow.putNull(paramInt, i);
+                }
+                break;
+              case 2: 
+                bool = paramCursorWindow.putDouble(paramCursor.getDouble(i), paramInt, i);
+                break;
+              case 1: 
+                bool = paramCursorWindow.putLong(paramCursor.getLong(i), paramInt, i);
+                break;
+              case 0: 
+                bool = paramCursorWindow.putNull(paramInt, i);
+                break;
+              }
+            }
+            else
+            {
+              localObject = paramCursor.getBlob(i);
+              if (localObject != null) {
+                bool = paramCursorWindow.putBlob((byte[])localObject, paramInt, i);
+              } else {
+                bool = paramCursorWindow.putNull(paramInt, i);
+              }
+            }
+            if (!bool)
+            {
+              paramCursorWindow.freeLastRow();
+              break;
+            }
+            i += 1;
+          }
+          paramInt += 1;
+        } while (paramCursor.moveToNext());
+      }
       paramCursor.moveToPosition(j);
       return;
-    }
-    int i = 0;
-    for (;;)
-    {
-      Object localObject;
-      boolean bool;
-      if (i < k) {
-        switch (paramCursor.getType(i))
-        {
-        case 3: 
-        default: 
-          localObject = paramCursor.getString(i);
-          if (localObject != null) {
-            bool = paramCursorWindow.putString((String)localObject, paramInt, i);
-          }
-          break;
-        }
-      }
-      for (;;)
-      {
-        if (bool) {
-          break label269;
-        }
-        paramCursorWindow.freeLastRow();
-        paramInt += 1;
-        if (paramCursor.moveToNext()) {
-          break;
-        }
-        break label64;
-        bool = paramCursorWindow.putNull(paramInt, i);
-        continue;
-        bool = paramCursorWindow.putLong(paramCursor.getLong(i), paramInt, i);
-        continue;
-        bool = paramCursorWindow.putDouble(paramCursor.getDouble(i), paramInt, i);
-        continue;
-        localObject = paramCursor.getBlob(i);
-        if (localObject != null)
-        {
-          bool = paramCursorWindow.putBlob((byte[])localObject, paramInt, i);
-        }
-        else
-        {
-          bool = paramCursorWindow.putNull(paramInt, i);
-          continue;
-          bool = paramCursorWindow.putNull(paramInt, i);
-        }
-      }
-      label269:
-      i += 1;
     }
   }
   
@@ -323,31 +330,22 @@ public final class DatabaseUtils
   public static void cursorRowToContentValues(Cursor paramCursor, ContentValues paramContentValues)
   {
     AbstractWindowedCursor localAbstractWindowedCursor;
-    String[] arrayOfString;
-    int i;
-    if ((paramCursor instanceof AbstractWindowedCursor))
-    {
+    if ((paramCursor instanceof AbstractWindowedCursor)) {
       localAbstractWindowedCursor = (AbstractWindowedCursor)paramCursor;
-      arrayOfString = paramCursor.getColumnNames();
-      int j = arrayOfString.length;
-      i = 0;
-      label27:
-      if (i >= j) {
-        return;
-      }
-      if ((localAbstractWindowedCursor == null) || (!localAbstractWindowedCursor.isBlob(i))) {
-        break label74;
-      }
-      paramContentValues.put(arrayOfString[i], paramCursor.getBlob(i));
-    }
-    for (;;)
-    {
-      i += 1;
-      break label27;
+    } else {
       localAbstractWindowedCursor = null;
-      break;
-      label74:
-      paramContentValues.put(arrayOfString[i], paramCursor.getString(i));
+    }
+    String[] arrayOfString = paramCursor.getColumnNames();
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      if ((localAbstractWindowedCursor != null) && (localAbstractWindowedCursor.isBlob(i))) {
+        paramContentValues.put(arrayOfString[i], paramCursor.getBlob(i));
+      } else {
+        paramContentValues.put(arrayOfString[i], paramCursor.getString(i));
+      }
+      i += 1;
     }
   }
   
@@ -390,26 +388,33 @@ public final class DatabaseUtils
   public static void dumpCurrentRow(Cursor paramCursor, PrintStream paramPrintStream)
   {
     String[] arrayOfString = paramCursor.getColumnNames();
-    paramPrintStream.println("" + paramCursor.getPosition() + " {");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramCursor.getPosition());
+    ((StringBuilder)localObject).append(" {");
+    paramPrintStream.println(((StringBuilder)localObject).toString());
     int j = arrayOfString.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j) {
-        try
-        {
-          String str1 = paramCursor.getString(i);
-          paramPrintStream.println("   " + arrayOfString[i] + '=' + str1);
-          i += 1;
-        }
-        catch (SQLiteException localSQLiteException)
-        {
-          for (;;)
-          {
-            String str2 = "<unprintable>";
-          }
-        }
+      try
+      {
+        localObject = paramCursor.getString(i);
       }
+      catch (SQLiteException localSQLiteException)
+      {
+        label79:
+        StringBuilder localStringBuilder;
+        break label79;
+      }
+      localObject = "<unprintable>";
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("   ");
+      localStringBuilder.append(arrayOfString[i]);
+      localStringBuilder.append('=');
+      localStringBuilder.append((String)localObject);
+      paramPrintStream.println(localStringBuilder.toString());
+      i += 1;
     }
     paramPrintStream.println("}");
   }
@@ -417,26 +422,34 @@ public final class DatabaseUtils
   public static void dumpCurrentRow(Cursor paramCursor, StringBuilder paramStringBuilder)
   {
     String[] arrayOfString = paramCursor.getColumnNames();
-    paramStringBuilder.append("" + paramCursor.getPosition() + " {\n");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramCursor.getPosition());
+    ((StringBuilder)localObject).append(" {\n");
+    paramStringBuilder.append(((StringBuilder)localObject).toString());
     int j = arrayOfString.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j) {
-        try
-        {
-          String str1 = paramCursor.getString(i);
-          paramStringBuilder.append("   " + arrayOfString[i] + '=' + str1 + "\n");
-          i += 1;
-        }
-        catch (SQLiteException localSQLiteException)
-        {
-          for (;;)
-          {
-            String str2 = "<unprintable>";
-          }
-        }
+      try
+      {
+        localObject = paramCursor.getString(i);
       }
+      catch (SQLiteException localSQLiteException)
+      {
+        label80:
+        StringBuilder localStringBuilder;
+        break label80;
+      }
+      localObject = "<unprintable>";
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("   ");
+      localStringBuilder.append(arrayOfString[i]);
+      localStringBuilder.append('=');
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("\n");
+      paramStringBuilder.append(localStringBuilder.toString());
+      i += 1;
     }
     paramStringBuilder.append("}\n");
   }
@@ -455,7 +468,10 @@ public final class DatabaseUtils
   
   public static void dumpCursor(Cursor paramCursor, PrintStream paramPrintStream)
   {
-    paramPrintStream.println(">>>>> Dumping cursor " + paramCursor);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(">>>>> Dumping cursor ");
+    localStringBuilder.append(paramCursor);
+    paramPrintStream.println(localStringBuilder.toString());
     if (paramCursor != null)
     {
       int i = paramCursor.getPosition();
@@ -470,7 +486,11 @@ public final class DatabaseUtils
   
   public static void dumpCursor(Cursor paramCursor, StringBuilder paramStringBuilder)
   {
-    paramStringBuilder.append(">>>>> Dumping cursor " + paramCursor + "\n");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(">>>>> Dumping cursor ");
+    localStringBuilder.append(paramCursor);
+    localStringBuilder.append("\n");
+    paramStringBuilder.append(localStringBuilder.toString());
     if (paramCursor != null)
     {
       int i = paramCursor.getPosition();
@@ -492,40 +512,43 @@ public final class DatabaseUtils
   
   private static char[] encodeHex(byte[] paramArrayOfByte)
   {
-    int j = 0;
     int k = paramArrayOfByte.length;
-    char[] arrayOfChar = new char[k << 1];
+    char[] arrayOfChar1 = new char[k << 1];
     int i = 0;
+    int j = 0;
     while (i < k)
     {
       int m = j + 1;
-      arrayOfChar[j] = DIGITS[((paramArrayOfByte[i] & 0xF0) >>> 4)];
+      char[] arrayOfChar2 = DIGITS;
+      arrayOfChar1[j] = arrayOfChar2[((paramArrayOfByte[i] & 0xF0) >>> 4)];
       j = m + 1;
-      arrayOfChar[m] = DIGITS[(paramArrayOfByte[i] & 0xF)];
+      arrayOfChar1[m] = arrayOfChar2[(paramArrayOfByte[i] & 0xF)];
       i += 1;
     }
-    return arrayOfChar;
+    return arrayOfChar1;
   }
   
   private static int extractSqlCode(String paramString)
   {
     int i = 0;
     int j = 0;
-    if (i < 3)
+    while (i < 3)
     {
       int m = paramString.charAt(i);
       int k;
-      if ((m >= 97) && (m <= 122)) {
+      if ((m >= 97) && (m <= 122))
+      {
         k = m - 97 + 65;
       }
-      do
+      else
       {
-        j |= (k & 0x7F) << i * 8;
-        i += 1;
-        break;
         k = m;
-      } while (m < 128);
-      return 0;
+        if (m >= 128) {
+          return 0;
+        }
+      }
+      j |= (k & 0x7F) << i * 8;
+      i += 1;
     }
     return j;
   }
@@ -552,7 +575,11 @@ public final class DatabaseUtils
       paramString = new String(paramString, 0, getKeyLen(paramString), "ISO8859_1");
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label24:
+      break label24;
+    }
     return "";
   }
   
@@ -590,29 +617,30 @@ public final class DatabaseUtils
     {
     default: 
       return 99;
-    case 4279873: 
-    case 5522756: 
-      return 9;
+    case 5526593: 
+      return 3;
+    case 5001042: 
+      return 6;
     case 4998483: 
       return 1;
+    case 4670786: 
+      return 4;
+    case 4543043: 
+    case 5198404: 
+    case 5524545: 
+      return 8;
     case 4477013: 
     case 4998468: 
     case 5260626: 
     case 5459529: 
       return 2;
-    case 5526593: 
-      return 3;
     case 4476485: 
     case 5066563: 
       return 5;
-    case 5001042: 
-      return 6;
-    case 4670786: 
-      return 4;
     case 4280912: 
       return 7;
     }
-    return 8;
+    return 9;
   }
   
   public static int getTypeOfObject(Object paramObject)
@@ -623,13 +651,14 @@ public final class DatabaseUtils
     if ((paramObject instanceof byte[])) {
       return 4;
     }
-    if (((paramObject instanceof Float)) || ((paramObject instanceof Double))) {
-      return 2;
-    }
-    if (((paramObject instanceof Long)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Short)) || ((paramObject instanceof Byte))) {
+    if ((!(paramObject instanceof Float)) && (!(paramObject instanceof Double)))
+    {
+      if ((!(paramObject instanceof Long)) && (!(paramObject instanceof Integer)) && (!(paramObject instanceof Short)) && (!(paramObject instanceof Byte))) {
+        return 3;
+      }
       return 1;
     }
-    return 3;
+    return 2;
   }
   
   public static long longForQuery(SQLiteDatabase paramSQLiteDatabase, String paramString, String[] paramArrayOfString)
@@ -659,7 +688,11 @@ public final class DatabaseUtils
   
   public static boolean queryIsEmpty(SQLiteDatabase paramSQLiteDatabase, String paramString)
   {
-    return longForQuery(paramSQLiteDatabase, "select exists(select 1 from " + paramString + ")", null) == 0L;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("select exists(select 1 from ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(")");
+    return longForQuery(paramSQLiteDatabase, localStringBuilder.toString(), null) == 0L;
   }
   
   public static long queryNumEntries(SQLiteDatabase paramSQLiteDatabase, String paramString)
@@ -674,22 +707,33 @@ public final class DatabaseUtils
   
   public static long queryNumEntries(SQLiteDatabase paramSQLiteDatabase, String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    if (!TextUtils.isEmpty(paramString2)) {}
-    for (paramString2 = " where " + paramString2;; paramString2 = "") {
-      return longForQuery(paramSQLiteDatabase, "select count(*) from " + paramString1 + paramString2, paramArrayOfString);
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" where ");
+      localStringBuilder.append(paramString2);
+      paramString2 = localStringBuilder.toString();
     }
+    else
+    {
+      paramString2 = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("select count(*) from ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    return longForQuery(paramSQLiteDatabase, localStringBuilder.toString(), paramArrayOfString);
   }
   
   private static final int readExceptionCode(Parcel paramParcel)
   {
-    int j = paramParcel.readInt();
-    int i = j;
-    if (j == -128)
+    int i = paramParcel.readInt();
+    if (i == -128)
     {
       if (paramParcel.readInt() == 0) {
         Log.e("WCDB.DatabaseUtils", "Unexpected zero-sized Parcel reply header.");
       }
-      i = 0;
+      return 0;
     }
     return i;
   }
@@ -711,24 +755,24 @@ public final class DatabaseUtils
     default: 
       paramParcel.readException(paramInt, paramString);
       return;
-    case 2: 
-      throw new IllegalArgumentException(paramString);
-    case 3: 
-      throw new UnsupportedOperationException(paramString);
-    case 4: 
-      throw new SQLiteAbortException(paramString);
-    case 5: 
-      throw new SQLiteConstraintException(paramString);
-    case 6: 
-      throw new SQLiteDatabaseCorruptException(paramString);
-    case 7: 
-      throw new SQLiteFullException(paramString);
-    case 8: 
-      throw new SQLiteDiskIOException(paramString);
+    case 11: 
+      throw new OperationCanceledException(paramString);
     case 9: 
       throw new SQLiteException(paramString);
+    case 8: 
+      throw new SQLiteDiskIOException(paramString);
+    case 7: 
+      throw new SQLiteFullException(paramString);
+    case 6: 
+      throw new SQLiteDatabaseCorruptException(paramString);
+    case 5: 
+      throw new SQLiteConstraintException(paramString);
+    case 4: 
+      throw new SQLiteAbortException(paramString);
+    case 3: 
+      throw new UnsupportedOperationException(paramString);
     }
-    throw new OperationCanceledException(paramString);
+    throw new IllegalArgumentException(paramString);
   }
   
   public static void readExceptionWithFileNotFoundExceptionFromParcel(Parcel paramParcel)
@@ -738,10 +782,12 @@ public final class DatabaseUtils
       return;
     }
     String str = paramParcel.readString();
-    if (i == 1) {
-      throw new FileNotFoundException(str);
+    if (i != 1)
+    {
+      readExceptionFromParcel(paramParcel, str, i);
+      return;
     }
-    readExceptionFromParcel(paramParcel, str, i);
+    throw new FileNotFoundException(str);
   }
   
   public static void readExceptionWithOperationApplicationExceptionFromParcel(Parcel paramParcel)
@@ -751,10 +797,12 @@ public final class DatabaseUtils
       return;
     }
     String str = paramParcel.readString();
-    if (i == 10) {
-      throw new OperationApplicationException(str);
+    if (i != 10)
+    {
+      readExceptionFromParcel(paramParcel, str, i);
+      return;
     }
-    readExceptionFromParcel(paramParcel, str, i);
+    throw new OperationApplicationException(str);
   }
   
   public static String sqlEscapeString(String paramString)
@@ -790,71 +838,69 @@ public final class DatabaseUtils
     int j;
     if ((paramException instanceof FileNotFoundException))
     {
-      i = 0;
+      i = 1;
+      j = 0;
+    }
+    else if ((paramException instanceof IllegalArgumentException))
+    {
+      i = 2;
       j = 1;
     }
-    for (;;)
+    else if ((paramException instanceof UnsupportedOperationException))
     {
-      paramParcel.writeInt(j);
-      paramParcel.writeString(paramException.getMessage());
-      if (i != 0) {
-        Log.e("WCDB.DatabaseUtils", "Writing exception to parcel", new Object[] { paramException });
-      }
-      return;
-      if ((paramException instanceof IllegalArgumentException))
-      {
-        j = 2;
-        i = 1;
-      }
-      else if ((paramException instanceof UnsupportedOperationException))
-      {
-        j = 3;
-        i = 1;
-      }
-      else if ((paramException instanceof SQLiteAbortException))
-      {
-        j = 4;
-        i = 1;
-      }
-      else if ((paramException instanceof SQLiteConstraintException))
-      {
-        j = 5;
-        i = 1;
-      }
-      else if ((paramException instanceof SQLiteDatabaseCorruptException))
-      {
-        j = 6;
-        i = 1;
-      }
-      else if ((paramException instanceof SQLiteFullException))
-      {
-        j = 7;
-        i = 1;
-      }
-      else if ((paramException instanceof SQLiteDiskIOException))
-      {
-        j = 8;
-        i = 1;
-      }
-      else if ((paramException instanceof SQLiteException))
-      {
-        j = 9;
-        i = 1;
-      }
-      else if ((paramException instanceof OperationApplicationException))
-      {
-        j = 10;
-        i = 1;
-      }
-      else
-      {
-        if (!(paramException instanceof OperationCanceledException)) {
-          break;
-        }
-        j = 11;
-        i = 0;
-      }
+      i = 3;
+      j = 1;
     }
+    else if ((paramException instanceof SQLiteAbortException))
+    {
+      i = 4;
+      j = 1;
+    }
+    else if ((paramException instanceof SQLiteConstraintException))
+    {
+      i = 5;
+      j = 1;
+    }
+    else if ((paramException instanceof SQLiteDatabaseCorruptException))
+    {
+      i = 6;
+      j = 1;
+    }
+    else if ((paramException instanceof SQLiteFullException))
+    {
+      i = 7;
+      j = 1;
+    }
+    else if ((paramException instanceof SQLiteDiskIOException))
+    {
+      i = 8;
+      j = 1;
+    }
+    else if ((paramException instanceof SQLiteException))
+    {
+      i = 9;
+      j = 1;
+    }
+    else if ((paramException instanceof OperationApplicationException))
+    {
+      i = 10;
+      j = 1;
+    }
+    else
+    {
+      if (!(paramException instanceof OperationCanceledException)) {
+        break label191;
+      }
+      i = 11;
+      j = 0;
+    }
+    paramParcel.writeInt(i);
+    paramParcel.writeString(paramException.getMessage());
+    if (j != 0) {
+      Log.e("WCDB.DatabaseUtils", "Writing exception to parcel", new Object[] { paramException });
+    }
+    return;
+    label191:
     paramParcel.writeException(paramException);
     Log.e("WCDB.DatabaseUtils", "Writing exception to parcel", new Object[] { paramException });
   }
@@ -880,85 +926,98 @@ public final class DatabaseUtils
     
     private void buildSQL()
     {
-      Object localObject1 = null;
       StringBuilder localStringBuilder1 = new StringBuilder(128);
       localStringBuilder1.append("INSERT INTO ");
       localStringBuilder1.append(this.mTableName);
       localStringBuilder1.append(" (");
       StringBuilder localStringBuilder2 = new StringBuilder(128);
       localStringBuilder2.append("VALUES (");
-      Cursor localCursor;
+      String str1 = null;
+      Object localObject1 = str1;
       for (;;)
       {
         try
         {
-          localCursor = this.mDb.rawQuery("PRAGMA table_info(" + this.mTableName + ")", null);
-          localObject1 = localCursor;
-          this.mColumns = new HashMap(localCursor.getCount());
+          Object localObject3 = this.mDb;
+          localObject1 = str1;
+          Object localObject4 = new StringBuilder();
+          localObject1 = str1;
+          ((StringBuilder)localObject4).append("PRAGMA table_info(");
+          localObject1 = str1;
+          ((StringBuilder)localObject4).append(this.mTableName);
+          localObject1 = str1;
+          ((StringBuilder)localObject4).append(")");
+          localObject1 = str1;
+          localObject3 = ((SQLiteDatabase)localObject3).rawQuery(((StringBuilder)localObject4).toString(), null);
+          localObject1 = localObject3;
+          this.mColumns = new HashMap(((Cursor)localObject3).getCount());
           int i = 1;
-          localObject1 = localCursor;
-          if (!localCursor.moveToNext()) {
-            break;
-          }
-          localObject1 = localCursor;
-          String str1 = localCursor.getString(1);
-          localObject1 = localCursor;
-          String str3 = localCursor.getString(4);
-          localObject1 = localCursor;
-          this.mColumns.put(str1, Integer.valueOf(i));
-          localObject1 = localCursor;
-          localStringBuilder1.append("'");
-          localObject1 = localCursor;
-          localStringBuilder1.append(str1);
-          localObject1 = localCursor;
-          localStringBuilder1.append("'");
-          if (str3 == null)
+          localObject1 = localObject3;
+          if (((Cursor)localObject3).moveToNext())
           {
-            localObject1 = localCursor;
-            localStringBuilder2.append("?");
-            localObject1 = localCursor;
-            if (i == localCursor.getCount())
+            localObject1 = localObject3;
+            str1 = ((Cursor)localObject3).getString(1);
+            localObject1 = localObject3;
+            localObject4 = ((Cursor)localObject3).getString(4);
+            localObject1 = localObject3;
+            this.mColumns.put(str1, Integer.valueOf(i));
+            localObject1 = localObject3;
+            localStringBuilder1.append("'");
+            localObject1 = localObject3;
+            localStringBuilder1.append(str1);
+            localObject1 = localObject3;
+            localStringBuilder1.append("'");
+            if (localObject4 == null)
+            {
+              localObject1 = localObject3;
+              localStringBuilder2.append("?");
+            }
+            else
+            {
+              localObject1 = localObject3;
+              localStringBuilder2.append("COALESCE(?, ");
+              localObject1 = localObject3;
+              localStringBuilder2.append((String)localObject4);
+              localObject1 = localObject3;
+              localStringBuilder2.append(")");
+            }
+            localObject1 = localObject3;
+            if (i == ((Cursor)localObject3).getCount())
             {
               str1 = ") ";
-              localObject1 = localCursor;
+              localObject1 = localObject3;
               localStringBuilder1.append(str1);
-              localObject1 = localCursor;
-              if (i != localCursor.getCount()) {
-                break label338;
+              localObject1 = localObject3;
+              if (i != ((Cursor)localObject3).getCount()) {
+                break label403;
               }
               str1 = ");";
-              localObject1 = localCursor;
+              localObject1 = localObject3;
               localStringBuilder2.append(str1);
               i += 1;
             }
           }
           else
           {
-            localObject1 = localCursor;
-            localStringBuilder2.append("COALESCE(?, ");
-            localObject1 = localCursor;
-            localStringBuilder2.append(str3);
-            localObject1 = localCursor;
-            localStringBuilder2.append(")");
-            continue;
+            if (localObject3 != null) {
+              ((Cursor)localObject3).close();
+            }
+            localStringBuilder1.append(localStringBuilder2);
+            this.mInsertSQL = localStringBuilder1.toString();
+            return;
           }
-          str2 = ", ";
         }
         finally
         {
           if (localObject1 != null) {
-            localObject1.close();
+            ((Cursor)localObject1).close();
           }
         }
-        continue;
-        label338:
         String str2 = ", ";
+        continue;
+        label403:
+        str2 = ", ";
       }
-      if (localCursor != null) {
-        localCursor.close();
-      }
-      localStringBuilder1.append(localStringBuilder2);
-      this.mInsertSQL = localStringBuilder1.toString();
     }
     
     private SQLiteStatement getStatement(boolean paramBoolean)
@@ -970,8 +1029,11 @@ public final class DatabaseUtils
           if (this.mInsertSQL == null) {
             buildSQL();
           }
-          String str = "INSERT OR REPLACE" + this.mInsertSQL.substring(6);
-          this.mReplaceStatement = this.mDb.compileStatement(str);
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("INSERT OR REPLACE");
+          ((StringBuilder)localObject).append(this.mInsertSQL.substring(6));
+          localObject = ((StringBuilder)localObject).toString();
+          this.mReplaceStatement = this.mDb.compileStatement((String)localObject);
         }
         return this.mReplaceStatement;
       }
@@ -1004,7 +1066,7 @@ public final class DatabaseUtils
       //   28: astore 6
       //   30: aload 6
       //   32: invokeinterface 167 1 0
-      //   37: ifeq +102 -> 139
+      //   37: ifeq +44 -> 81
       //   40: aload 6
       //   42: invokeinterface 171 1 0
       //   47: checkcast 173	java/util/Map$Entry
@@ -1019,69 +1081,80 @@ public final class DatabaseUtils
       //   70: invokeinterface 183 1 0
       //   75: invokestatic 187	com/tencent/wcdb/DatabaseUtils:bindObjectToProgram	(Lcom/tencent/wcdb/database/SQLiteProgram;ILjava/lang/Object;)V
       //   78: goto -48 -> 30
-      //   81: astore 5
-      //   83: ldc 189
-      //   85: new 46	java/lang/StringBuilder
-      //   88: dup
-      //   89: invokespecial 60	java/lang/StringBuilder:<init>	()V
-      //   92: ldc 191
-      //   94: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   97: aload_1
-      //   98: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-      //   101: ldc 196
-      //   103: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   106: aload_0
-      //   107: getfield 42	com/tencent/wcdb/DatabaseUtils$InsertHelper:mTableName	Ljava/lang/String;
-      //   110: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   113: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   116: iconst_1
-      //   117: anewarray 4	java/lang/Object
-      //   120: dup
-      //   121: iconst_0
-      //   122: aload 5
-      //   124: aastore
-      //   125: invokestatic 202	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   128: aload_0
-      //   129: getfield 40	com/tencent/wcdb/DatabaseUtils$InsertHelper:mDb	Lcom/tencent/wcdb/database/SQLiteDatabase;
-      //   132: invokevirtual 205	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
-      //   135: ldc2_w 206
-      //   138: lreturn
-      //   139: aload 5
-      //   141: invokevirtual 211	com/tencent/wcdb/database/SQLiteStatement:executeInsert	()J
-      //   144: lstore_3
-      //   145: aload_0
-      //   146: getfield 40	com/tencent/wcdb/DatabaseUtils$InsertHelper:mDb	Lcom/tencent/wcdb/database/SQLiteDatabase;
-      //   149: invokevirtual 214	com/tencent/wcdb/database/SQLiteDatabase:setTransactionSuccessful	()V
-      //   152: aload_0
-      //   153: getfield 40	com/tencent/wcdb/DatabaseUtils$InsertHelper:mDb	Lcom/tencent/wcdb/database/SQLiteDatabase;
-      //   156: invokevirtual 205	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
-      //   159: lload_3
-      //   160: lreturn
-      //   161: astore_1
-      //   162: aload_0
-      //   163: getfield 40	com/tencent/wcdb/DatabaseUtils$InsertHelper:mDb	Lcom/tencent/wcdb/database/SQLiteDatabase;
-      //   166: invokevirtual 205	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
-      //   169: aload_1
-      //   170: athrow
+      //   81: aload 5
+      //   83: invokevirtual 191	com/tencent/wcdb/database/SQLiteStatement:executeInsert	()J
+      //   86: lstore_3
+      //   87: aload_0
+      //   88: getfield 40	com/tencent/wcdb/DatabaseUtils$InsertHelper:mDb	Lcom/tencent/wcdb/database/SQLiteDatabase;
+      //   91: invokevirtual 194	com/tencent/wcdb/database/SQLiteDatabase:setTransactionSuccessful	()V
+      //   94: aload_0
+      //   95: getfield 40	com/tencent/wcdb/DatabaseUtils$InsertHelper:mDb	Lcom/tencent/wcdb/database/SQLiteDatabase;
+      //   98: invokevirtual 197	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
+      //   101: lload_3
+      //   102: lreturn
+      //   103: astore_1
+      //   104: goto +77 -> 181
+      //   107: astore 5
+      //   109: new 46	java/lang/StringBuilder
+      //   112: dup
+      //   113: invokespecial 60	java/lang/StringBuilder:<init>	()V
+      //   116: astore 6
+      //   118: aload 6
+      //   120: ldc 199
+      //   122: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   125: pop
+      //   126: aload 6
+      //   128: aload_1
+      //   129: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      //   132: pop
+      //   133: aload 6
+      //   135: ldc 204
+      //   137: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   140: pop
+      //   141: aload 6
+      //   143: aload_0
+      //   144: getfield 42	com/tencent/wcdb/DatabaseUtils$InsertHelper:mTableName	Ljava/lang/String;
+      //   147: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   150: pop
+      //   151: ldc 206
+      //   153: aload 6
+      //   155: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   158: iconst_1
+      //   159: anewarray 4	java/lang/Object
+      //   162: dup
+      //   163: iconst_0
+      //   164: aload 5
+      //   166: aastore
+      //   167: invokestatic 212	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   170: aload_0
+      //   171: getfield 40	com/tencent/wcdb/DatabaseUtils$InsertHelper:mDb	Lcom/tencent/wcdb/database/SQLiteDatabase;
+      //   174: invokevirtual 197	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
+      //   177: ldc2_w 213
+      //   180: lreturn
+      //   181: aload_0
+      //   182: getfield 40	com/tencent/wcdb/DatabaseUtils$InsertHelper:mDb	Lcom/tencent/wcdb/database/SQLiteDatabase;
+      //   185: invokevirtual 197	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
+      //   188: aload_1
+      //   189: athrow
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	171	0	this	InsertHelper
-      //   0	171	1	paramContentValues	ContentValues
-      //   0	171	2	paramBoolean	boolean
-      //   144	16	3	l	long
-      //   12	41	5	localSQLiteStatement	SQLiteStatement
-      //   81	59	5	localSQLException	SQLException
-      //   28	13	6	localIterator	java.util.Iterator
+      //   0	190	0	this	InsertHelper
+      //   0	190	1	paramContentValues	ContentValues
+      //   0	190	2	paramBoolean	boolean
+      //   86	16	3	l	long
+      //   12	70	5	localSQLiteStatement	SQLiteStatement
+      //   107	58	5	localSQLException	SQLException
+      //   28	126	6	localObject	Object
       //   50	19	7	localEntry	java.util.Map.Entry
       // Exception table:
       //   from	to	target	type
-      //   7	30	81	com/tencent/wcdb/SQLException
-      //   30	78	81	com/tencent/wcdb/SQLException
-      //   139	152	81	com/tencent/wcdb/SQLException
-      //   7	30	161	finally
-      //   30	78	161	finally
-      //   83	128	161	finally
-      //   139	152	161	finally
+      //   7	30	103	finally
+      //   30	78	103	finally
+      //   81	94	103	finally
+      //   109	170	103	finally
+      //   7	30	107	com/tencent/wcdb/SQLException
+      //   30	78	107	com/tencent/wcdb/SQLException
+      //   81	94	107	com/tencent/wcdb/SQLException
     }
     
     public void bind(int paramInt, double paramDouble)
@@ -1117,12 +1190,13 @@ public final class DatabaseUtils
     public void bind(int paramInt, boolean paramBoolean)
     {
       SQLiteStatement localSQLiteStatement = this.mPreparedStatement;
-      if (paramBoolean) {}
-      for (long l = 1L;; l = 0L)
-      {
-        localSQLiteStatement.bindLong(paramInt, l);
-        return;
+      long l;
+      if (paramBoolean) {
+        l = 1L;
+      } else {
+        l = 0L;
       }
+      localSQLiteStatement.bindLong(paramInt, l);
     }
     
     public void bind(int paramInt, byte[] paramArrayOfByte)
@@ -1142,49 +1216,107 @@ public final class DatabaseUtils
     
     public void close()
     {
-      if (this.mInsertStatement != null)
+      SQLiteStatement localSQLiteStatement = this.mInsertStatement;
+      if (localSQLiteStatement != null)
       {
-        this.mInsertStatement.close();
+        localSQLiteStatement.close();
         this.mInsertStatement = null;
       }
-      if (this.mReplaceStatement != null)
+      localSQLiteStatement = this.mReplaceStatement;
+      if (localSQLiteStatement != null)
       {
-        this.mReplaceStatement.close();
+        localSQLiteStatement.close();
         this.mReplaceStatement = null;
       }
       this.mInsertSQL = null;
       this.mColumns = null;
     }
     
+    /* Error */
     public long execute()
     {
-      if (this.mPreparedStatement == null) {
-        throw new IllegalStateException("you must prepare this inserter before calling execute");
-      }
-      try
-      {
-        long l = this.mPreparedStatement.executeInsert();
-        return l;
-      }
-      catch (SQLException localSQLException)
-      {
-        Log.e("WCDB.DatabaseUtils", "Error executing InsertHelper with table " + this.mTableName, new Object[] { localSQLException });
-        return -1L;
-      }
-      finally
-      {
-        this.mPreparedStatement = null;
-      }
+      // Byte code:
+      //   0: aload_0
+      //   1: getfield 38	com/tencent/wcdb/DatabaseUtils$InsertHelper:mPreparedStatement	Lcom/tencent/wcdb/database/SQLiteStatement;
+      //   4: astore_3
+      //   5: aload_3
+      //   6: ifnull +81 -> 87
+      //   9: aload_3
+      //   10: invokevirtual 191	com/tencent/wcdb/database/SQLiteStatement:executeInsert	()J
+      //   13: lstore_1
+      //   14: aload_0
+      //   15: aconst_null
+      //   16: putfield 38	com/tencent/wcdb/DatabaseUtils$InsertHelper:mPreparedStatement	Lcom/tencent/wcdb/database/SQLiteStatement;
+      //   19: lload_1
+      //   20: lreturn
+      //   21: astore_3
+      //   22: goto +58 -> 80
+      //   25: astore_3
+      //   26: new 46	java/lang/StringBuilder
+      //   29: dup
+      //   30: invokespecial 60	java/lang/StringBuilder:<init>	()V
+      //   33: astore 4
+      //   35: aload 4
+      //   37: ldc 241
+      //   39: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   42: pop
+      //   43: aload 4
+      //   45: aload_0
+      //   46: getfield 42	com/tencent/wcdb/DatabaseUtils$InsertHelper:mTableName	Ljava/lang/String;
+      //   49: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   52: pop
+      //   53: ldc 206
+      //   55: aload 4
+      //   57: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   60: iconst_1
+      //   61: anewarray 4	java/lang/Object
+      //   64: dup
+      //   65: iconst_0
+      //   66: aload_3
+      //   67: aastore
+      //   68: invokestatic 212	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   71: aload_0
+      //   72: aconst_null
+      //   73: putfield 38	com/tencent/wcdb/DatabaseUtils$InsertHelper:mPreparedStatement	Lcom/tencent/wcdb/database/SQLiteStatement;
+      //   76: ldc2_w 213
+      //   79: lreturn
+      //   80: aload_0
+      //   81: aconst_null
+      //   82: putfield 38	com/tencent/wcdb/DatabaseUtils$InsertHelper:mPreparedStatement	Lcom/tencent/wcdb/database/SQLiteStatement;
+      //   85: aload_3
+      //   86: athrow
+      //   87: new 243	java/lang/IllegalStateException
+      //   90: dup
+      //   91: ldc 245
+      //   93: invokespecial 248	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+      //   96: athrow
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	97	0	this	InsertHelper
+      //   13	7	1	l	long
+      //   4	6	3	localSQLiteStatement	SQLiteStatement
+      //   21	1	3	localObject	Object
+      //   25	61	3	localSQLException	SQLException
+      //   33	23	4	localStringBuilder	StringBuilder
+      // Exception table:
+      //   from	to	target	type
+      //   9	14	21	finally
+      //   26	71	21	finally
+      //   9	14	25	com/tencent/wcdb/SQLException
     }
     
     public int getColumnIndex(String paramString)
     {
       getStatement(false);
-      Integer localInteger = (Integer)this.mColumns.get(paramString);
-      if (localInteger == null) {
-        throw new IllegalArgumentException("column '" + paramString + "' is invalid");
+      Object localObject = (Integer)this.mColumns.get(paramString);
+      if (localObject != null) {
+        return ((Integer)localObject).intValue();
       }
-      return localInteger.intValue();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("column '");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("' is invalid");
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
     
     public long insert(ContentValues paramContentValues)

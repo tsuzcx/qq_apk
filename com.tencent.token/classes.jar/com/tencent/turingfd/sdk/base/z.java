@@ -26,79 +26,68 @@ public class z
   {
     ArrayList localArrayList1 = new ArrayList();
     int j = 0;
-    Object localObject2;
     for (;;)
     {
-      localObject1 = this.b;
+      Object localObject1 = this.b;
       if (j >= localObject1.length) {
-        break label347;
-      }
-      localObject2 = (List)localObject1[j];
-      if ((localObject2 != null) && (((List)localObject2).size() != 0)) {
         break;
+      }
+      Object localObject2 = (List)localObject1[j];
+      if ((localObject2 != null) && (((List)localObject2).size() != 0))
+      {
+        localObject1 = new Herbaceous();
+        ArrayList localArrayList2 = new ArrayList();
+        Object localObject3 = (List)this.b[j];
+        int k = 2;
+        if (localObject3 != null)
+        {
+          i = 0;
+          while (i < ((List)localObject3).size())
+          {
+            ab localab = (ab)((List)localObject3).get(i);
+            Haw localHaw = new Haw();
+            float[] arrayOfFloat = localab.c;
+            localHaw.x = arrayOfFloat[0];
+            localHaw.y = arrayOfFloat[1];
+            localHaw.z = arrayOfFloat[2];
+            localHaw.Rc = localab.b;
+            localArrayList2.add(localHaw);
+            i += 1;
+          }
+        }
+        localObject3 = new HashMap();
+        int i = this.a;
+        if (i == 1) {
+          i = 0;
+        } else if (i == 4) {
+          i = k;
+        } else if (i == 9) {
+          i = 4;
+        } else if (i == 2) {
+          i = 5;
+        } else {
+          i = -1;
+        }
+        ((Map)localObject3).put(Integer.valueOf(i), localArrayList2);
+        ((Herbaceous)localObject1).Uc = ((Map)localObject3);
+        localObject2 = (ab)((List)localObject2).get(0);
+        if (localObject2 != null)
+        {
+          ((Herbaceous)localObject1).Tc = ((ab)localObject2).b;
+          if (paramList.size() > j)
+          {
+            localObject2 = (ac)paramList.get(j);
+            if (localObject2 != null)
+            {
+              ((Herbaceous)localObject1).Xc = ((ac)localObject2).a;
+              ((Herbaceous)localObject1).Yc = ((ac)localObject2).b;
+            }
+          }
+          localArrayList1.add(localObject1);
+        }
       }
       j += 1;
     }
-    Object localObject1 = new Herbaceous();
-    ArrayList localArrayList2 = new ArrayList();
-    Object localObject3 = (List)this.b[j];
-    label89:
-    int i;
-    if (localObject3 == null)
-    {
-      localObject3 = new HashMap();
-      i = this.a;
-      if (i != 1) {
-        break label311;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      ((Map)localObject3).put(Integer.valueOf(i), localArrayList2);
-      ((Herbaceous)localObject1).Uc = ((Map)localObject3);
-      localObject2 = (ab)((List)localObject2).get(0);
-      if (localObject2 == null) {
-        break;
-      }
-      ((Herbaceous)localObject1).Tc = ((ab)localObject2).b;
-      if (paramList.size() > j)
-      {
-        localObject2 = (ac)paramList.get(j);
-        if (localObject2 != null)
-        {
-          ((Herbaceous)localObject1).Xc = ((ac)localObject2).a;
-          ((Herbaceous)localObject1).Yc = ((ac)localObject2).b;
-        }
-      }
-      localArrayList1.add(localObject1);
-      break;
-      i = 0;
-      while (i < ((List)localObject3).size())
-      {
-        ab localab = (ab)((List)localObject3).get(i);
-        Haw localHaw = new Haw();
-        float[] arrayOfFloat = localab.c;
-        localHaw.x = arrayOfFloat[0];
-        localHaw.y = arrayOfFloat[1];
-        localHaw.z = arrayOfFloat[2];
-        localHaw.Rc = localab.b;
-        localArrayList2.add(localHaw);
-        i += 1;
-      }
-      break label89;
-      label311:
-      if (i == 4) {
-        i = 2;
-      } else if (i == 9) {
-        i = 4;
-      } else if (i == 2) {
-        i = 5;
-      } else {
-        i = -1;
-      }
-    }
-    label347:
     return localArrayList1;
   }
 }

@@ -42,15 +42,23 @@ public final class bd
     if (parambg == null) {
       return;
     }
-    b.b("AccessSchedulerConfiguration", "updateSdkCfInfo...SdkCfgInfo:" + parambg);
+    StringBuilder localStringBuilder = new StringBuilder("updateSdkCfInfo...SdkCfgInfo:");
+    localStringBuilder.append(parambg);
+    b.b("AccessSchedulerConfiguration", localStringBuilder.toString());
     if ((parambg.a < 2000) || (parambg.a > 60000))
     {
-      b.c("AccessSchedulerConfiguration", "updateSdkCfInfo...connectTimeout:" + parambg.a + " is checked to 20s");
+      localStringBuilder = new StringBuilder("updateSdkCfInfo...connectTimeout:");
+      localStringBuilder.append(parambg.a);
+      localStringBuilder.append(" is checked to 20s");
+      b.c("AccessSchedulerConfiguration", localStringBuilder.toString());
       parambg.a = 20000;
     }
     if ((parambg.b < 2000) || (parambg.b > 60000))
     {
-      b.c("AccessSchedulerConfiguration", "updateSdkCfInfo...readTimeout:" + parambg.b + " is checked to 20s");
+      localStringBuilder = new StringBuilder("updateSdkCfInfo...readTimeout:");
+      localStringBuilder.append(parambg.b);
+      localStringBuilder.append(" is checked to 20s");
+      b.c("AccessSchedulerConfiguration", localStringBuilder.toString());
       parambg.b = 20000;
     }
     this.b = parambg;

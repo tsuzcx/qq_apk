@@ -39,13 +39,10 @@ public abstract class d
   {
     if (paramString != null) {
       this.a.a(paramInt, paramString, paramString);
-    }
-    for (;;)
-    {
-      c();
-      return;
+    } else {
       this.a.b(paramInt);
     }
+    c();
   }
   
   protected abstract void a(do paramdo);
@@ -59,12 +56,14 @@ public abstract class d
   
   protected void b()
   {
-    g.b("------------------------------\nhandler:" + this.b.d);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("------------------------------\nhandler:");
+    localStringBuilder.append(this.b.d);
+    g.b(localStringBuilder.toString());
   }
   
   public e c(do paramdo)
   {
-    Object localObject2 = null;
     this.b = paramdo;
     a(paramdo);
     String str = a();
@@ -73,111 +72,191 @@ public abstract class d
       c();
       return this.a;
     }
-    Object localObject3 = new ez();
-    g.c("cmd:" + paramdo.a);
-    TmsLog.i("ProtocolBase", "@" + hashCode() + " start req--> [url]" + str + " [seqid]" + cb.a);
-    if (paramdo.m == 0) {
-      paramdo = ((ez)localObject3).a(str);
-    }
-    for (;;)
+    ez localez = new ez();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("cmd:");
+    ((StringBuilder)localObject).append(paramdo.a);
+    g.c(((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("@");
+    ((StringBuilder)localObject).append(hashCode());
+    ((StringBuilder)localObject).append(" start req--> [url]");
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(" [seqid]");
+    ((StringBuilder)localObject).append(cb.a);
+    TmsLog.i("ProtocolBase", ((StringBuilder)localObject).toString());
+    int i = paramdo.m;
+    StringBuilder localStringBuilder = null;
+    if (i == 0)
     {
-      Object localObject1;
-      if (paramdo == null)
+      paramdo = localez.a(str);
+    }
+    else
+    {
+      if (paramdo.m == 1)
       {
-        this.a.a(((ez)localObject3).a());
-        c();
-        TmsLog.i("ProtocolBase", "@" + hashCode() + " recv response, ret: " + this.a.a);
-        return this.a;
-        if (paramdo.m == 1)
+        if (paramdo.n != null)
         {
-          if (paramdo.n != null)
-          {
-            localObject1 = paramdo;
-            if (paramdo.k) {
-              localObject1 = b(paramdo);
-            }
-            paramdo = ((ez)localObject3).a(str, ((do)localObject1).n);
+          localObject = paramdo;
+          if (paramdo.k) {
+            localObject = b(paramdo);
           }
-        }
-        else if (paramdo.m == 2)
-        {
-          if ((paramdo.o != null) && (!TextUtils.isEmpty(paramdo.p))) {
-            paramdo = ((ez)localObject3).a(str, paramdo.o, paramdo.n, paramdo.p);
-          }
-        }
-        else if ((paramdo.m == 3) && (paramdo.q != null) && (!TextUtils.isEmpty(paramdo.p))) {
-          paramdo = ((ez)localObject3).a(str, paramdo.q, paramdo.n, paramdo.p);
+          paramdo = localez.a(str, ((do)localObject).n);
+          break label298;
         }
       }
-      else
+      else if (paramdo.m == 2)
       {
-        for (;;)
+        if ((paramdo.o != null) && (!TextUtils.isEmpty(paramdo.p)))
         {
-          try
-          {
-            if (!this.b.a.equals("token.getstartupimg")) {
-              continue;
-            }
-            g.a(this + "device config" + paramdo);
-            localObject3 = new JSONObject();
-            ((JSONObject)localObject3).put("startup_img", m.a(paramdo));
-            localObject1 = localObject2;
-            paramdo = (do)localObject3;
-          }
-          catch (JSONException paramdo)
-          {
-            g.c(this + "\nPARSE JSON FAILED: \n" + paramdo.toString());
-            TmsLog.e("mod_seed", "cmd " + this.b.a + " has exception: " + paramdo.toString());
-            this.a.a(10020, "JSONException:" + paramdo.toString(), c.g().getString(2131230963));
-            c();
-            continue;
-            localObject1 = new String(paramdo);
-            g.a(this + "--responseString--" + (String)localObject1);
-            paramdo = new JSONObject((String)localObject1);
-            continue;
-          }
-          catch (Exception paramdo)
-          {
-            paramdo.printStackTrace();
-            g.c(this + "\nE X C E P T I O N: \n" + paramdo.toString());
-            TmsLog.e("mod_seed", "cmd " + this.b.a + " has exception: " + paramdo.toString());
-            this.a.a(10000, "Exception:" + paramdo.toString(), c.g().getString(2131230963));
-            c();
-            continue;
-            if (localObject1 == null) {
-              continue;
-            }
-            g.a(this + "\nR E S P O N S E: \n" + (String)localObject1);
-            b();
-            continue;
-          }
-          a(paramdo);
-          if (this.a.b()) {
-            continue;
-          }
-          if (localObject1 != null) {
-            g.c(this + "\nR E S P O N S E: \n" + (String)localObject1);
-          }
-          c();
-          TmsLog.i("ProtocolBase", "@" + hashCode() + " recv response, ret: " + this.a.a);
-          return this.a;
-          if (!this.b.a.equals("token.getcommonimg")) {
-            continue;
-          }
-          g.a(this + "device config" + paramdo);
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("img", m.a(paramdo));
-          paramdo = (do)localObject1;
-          localObject1 = localObject2;
+          paramdo = localez.a(str, paramdo.o, paramdo.n, paramdo.p);
+          break label298;
         }
+      }
+      else if ((paramdo.m == 3) && (paramdo.q != null) && (!TextUtils.isEmpty(paramdo.p)))
+      {
+        paramdo = localez.a(str, paramdo.q, paramdo.n, paramdo.p);
+        break label298;
       }
       paramdo = null;
     }
+    label298:
+    if (paramdo == null)
+    {
+      this.a.a(localez.a());
+      c();
+      paramdo = new StringBuilder();
+      paramdo.append("@");
+      paramdo.append(hashCode());
+      paramdo.append(" recv response, ret: ");
+      paramdo.append(this.a.a);
+      TmsLog.i("ProtocolBase", paramdo.toString());
+      return this.a;
+    }
+    try
+    {
+      if (this.b.a.equals("token.getstartupimg"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this);
+        ((StringBuilder)localObject).append("device config");
+        ((StringBuilder)localObject).append(paramdo);
+        g.a(((StringBuilder)localObject).toString());
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("startup_img", m.a(paramdo));
+        paramdo = (do)localObject;
+        localObject = localStringBuilder;
+      }
+      else if (this.b.a.equals("token.getcommonimg"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this);
+        ((StringBuilder)localObject).append("device config");
+        ((StringBuilder)localObject).append(paramdo);
+        g.a(((StringBuilder)localObject).toString());
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("img", m.a(paramdo));
+        paramdo = (do)localObject;
+        localObject = localStringBuilder;
+      }
+      else
+      {
+        localObject = new String(paramdo);
+        paramdo = new StringBuilder();
+        paramdo.append(this);
+        paramdo.append("--responseString--");
+        paramdo.append((String)localObject);
+        g.a(paramdo.toString());
+        paramdo = new JSONObject((String)localObject);
+      }
+      a(paramdo);
+      if (!this.a.b())
+      {
+        if (localObject != null)
+        {
+          paramdo = new StringBuilder();
+          paramdo.append(this);
+          paramdo.append("\nR E S P O N S E: \n");
+          paramdo.append((String)localObject);
+          g.c(paramdo.toString());
+        }
+        c();
+      }
+      else
+      {
+        if (localObject != null)
+        {
+          paramdo = new StringBuilder();
+          paramdo.append(this);
+          paramdo.append("\nR E S P O N S E: \n");
+          paramdo.append((String)localObject);
+          g.a(paramdo.toString());
+        }
+        b();
+      }
+    }
+    catch (Exception paramdo)
+    {
+      paramdo.printStackTrace();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append("\nE X C E P T I O N: \n");
+      ((StringBuilder)localObject).append(paramdo.toString());
+      g.c(((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cmd ");
+      ((StringBuilder)localObject).append(this.b.a);
+      ((StringBuilder)localObject).append(" has exception: ");
+      ((StringBuilder)localObject).append(paramdo.toString());
+      TmsLog.e("mod_seed", ((StringBuilder)localObject).toString());
+      localObject = this.a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Exception:");
+      localStringBuilder.append(paramdo.toString());
+      ((e)localObject).a(10000, localStringBuilder.toString(), c.g().getString(2131493105));
+      c();
+    }
+    catch (JSONException paramdo)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append("\nPARSE JSON FAILED: \n");
+      ((StringBuilder)localObject).append(paramdo.toString());
+      g.c(((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cmd ");
+      ((StringBuilder)localObject).append(this.b.a);
+      ((StringBuilder)localObject).append(" has exception: ");
+      ((StringBuilder)localObject).append(paramdo.toString());
+      TmsLog.e("mod_seed", ((StringBuilder)localObject).toString());
+      localObject = this.a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("JSONException:");
+      localStringBuilder.append(paramdo.toString());
+      ((e)localObject).a(10020, localStringBuilder.toString(), c.g().getString(2131493105));
+      c();
+    }
+    paramdo = new StringBuilder();
+    paramdo.append("@");
+    paramdo.append(hashCode());
+    paramdo.append(" recv response, ret: ");
+    paramdo.append(this.a.a);
+    TmsLog.i("ProtocolBase", paramdo.toString());
+    return this.a;
   }
   
   protected void c()
   {
-    g.c("------------------------------\nhandler:" + this.b.d + "    \nError=" + this.a.a + "    \nstrdebug:" + this.a.b + "    \nstruser:" + this.a.c);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("------------------------------\nhandler:");
+    localStringBuilder.append(this.b.d);
+    localStringBuilder.append("    \nError=");
+    localStringBuilder.append(this.a.a);
+    localStringBuilder.append("    \nstrdebug:");
+    localStringBuilder.append(this.a.b);
+    localStringBuilder.append("    \nstruser:");
+    localStringBuilder.append(this.a.c);
+    g.c(localStringBuilder.toString());
   }
   
   public dp d(do paramdo)

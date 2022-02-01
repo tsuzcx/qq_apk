@@ -16,12 +16,18 @@ class b
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!this.a.equals(paramContext)) || (this.b == null)) {
+    if (paramContext == null) {
       return;
     }
-    a.a(this.c).post(this.b);
-    this.c.a(paramContext);
+    if (this.a.equals(paramContext))
+    {
+      if (this.b == null) {
+        return;
+      }
+      a.a(this.c).post(this.b);
+      this.c.a(paramContext);
+      return;
+    }
   }
 }
 

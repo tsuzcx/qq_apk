@@ -198,7 +198,11 @@ public enum Gooseberry
   
   public String toString()
   {
-    return name() + ":" + this.value;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(name());
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.value);
+    return localStringBuilder.toString();
   }
 }
 

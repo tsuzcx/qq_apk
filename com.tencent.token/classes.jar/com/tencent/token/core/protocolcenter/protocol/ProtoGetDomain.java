@@ -28,20 +28,29 @@ public class ProtoGetDomain
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    String str2 = l.a(new Object[] { "uin", Long.valueOf(this.d) });
-    if (str2 == null)
+    Object localObject = l.a(new Object[] { "uin", Long.valueOf(this.d) });
+    if (localObject == null)
     {
       this.a.a(10000, "encrypt  failed");
       return null;
     }
-    str1 = "?data=" + str2 + "&aq_base_sid=" + str1;
-    return c.e() + "/cn/mbtoken3/mbtoken3_get_domain_v2" + str1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?data=");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("&aq_base_sid=");
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_get_domain_v2");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -61,13 +70,19 @@ public class ProtoGetDomain
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      g.a("domain name:" + paramJSONObject);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("domain name:");
+      localStringBuilder.append(paramJSONObject);
+      g.a(localStringBuilder.toString());
       this.e = paramJSONObject.optJSONArray("domain_list");
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

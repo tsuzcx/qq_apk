@@ -14,33 +14,38 @@ public class b
     if (localObject1 != null) {
       return localObject1;
     }
-    for (;;)
+    Object localObject2 = localObject1;
+    try
     {
+      Object localObject4 = b;
+      localObject2 = localObject1;
       try
       {
-        Object localObject2;
-        synchronized (b)
+        Object localObject3 = c.get(paramClass);
+        localObject2 = localObject3;
+        if (localObject3 == null)
         {
-          localObject2 = c.get(paramClass);
+          localObject1 = localObject3;
+          localObject2 = paramClass.newInstance();
           localObject1 = localObject2;
-          localObject2 = localObject1;
-          if (localObject1 != null) {}
+          c.put(paramClass, localObject2);
         }
+        localObject1 = localObject2;
+        return localObject2;
       }
-      catch (Exception paramClass)
+      finally
       {
-        continue;
-      }
-      try
-      {
-        throw paramClass;
-      }
-      catch (Exception paramClass)
-      {
-        paramClass = a;
-        return localObject1;
+        localObject2 = localObject1;
+        localObject2 = localObject1;
       }
     }
+    catch (Exception paramClass)
+    {
+      label75:
+      break label75;
+    }
+    paramClass = a;
+    return localObject2;
   }
 }
 

@@ -114,18 +114,19 @@ public final class az
     public final String d()
     {
       Object localObject = this.c;
-      if ((localObject == null) || (((List)localObject).size() == 0)) {
-        return "";
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      if ((localObject != null) && (((List)localObject).size() != 0))
       {
-        localStringBuilder.append(((ay)((Iterator)localObject).next()).c());
-        localStringBuilder.append(",");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          localStringBuilder.append(((ay)((Iterator)localObject).next()).c());
+          localStringBuilder.append(",");
+        }
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+        return localStringBuilder.toString();
       }
-      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-      return localStringBuilder.toString();
+      return "";
     }
     
     public final String e()

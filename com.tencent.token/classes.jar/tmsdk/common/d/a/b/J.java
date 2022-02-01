@@ -20,22 +20,21 @@ class J
   {
     super.handleMessage(paramMessage);
     z localz = (z)this.a.get();
-    if (localz == null) {}
-    do
-    {
+    if (localz == null) {
       return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
+    }
+    if (paramMessage.what != 0) {
+      return;
+    }
+    if (localz.l() < localz.m())
+    {
+      if (localz.g()) {
+        localz.n();
       }
-      if (localz.l() >= localz.m()) {
-        break;
-      }
-    } while (!localz.g());
-    localz.n();
-    return;
-    localz.f();
+    }
+    else {
+      localz.f();
+    }
   }
 }
 

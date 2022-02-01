@@ -55,14 +55,14 @@ public class FaceRecognitionCameraPreview
       localWindow.setAttributes(localLayoutParams);
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      return;
-    }
     catch (Error localError)
     {
       localError.printStackTrace();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
@@ -81,9 +81,10 @@ public class FaceRecognitionCameraPreview
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2)
   {
     setStop(false);
-    if (this.d != null)
+    h localh = this.d;
+    if (localh != null)
     {
-      this.d.a(0L);
+      localh.a(0L);
       this.d.a(paramBoolean2, paramInt1, paramInt2, true);
       this.d.b(paramBoolean1);
     }
@@ -100,9 +101,9 @@ public class FaceRecognitionCameraPreview
       localWindow.setAttributes(localLayoutParams);
       return;
     }
-    catch (Settings.SettingNotFoundException localSettingNotFoundException)
+    catch (Error localError)
     {
-      localSettingNotFoundException.printStackTrace();
+      localError.printStackTrace();
       return;
     }
     catch (Exception localException)
@@ -110,18 +111,19 @@ public class FaceRecognitionCameraPreview
       localException.printStackTrace();
       return;
     }
-    catch (Error localError)
+    catch (Settings.SettingNotFoundException localSettingNotFoundException)
     {
-      localError.printStackTrace();
+      localSettingNotFoundException.printStackTrace();
     }
   }
   
   public void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2)
   {
     setStop(false);
-    if (this.d != null)
+    h localh = this.d;
+    if (localh != null)
     {
-      this.d.a(0L);
+      localh.a(0L);
       this.d.a(paramBoolean2, paramInt1, paramInt2, false);
       this.d.b(paramBoolean1);
     }
@@ -129,9 +131,10 @@ public class FaceRecognitionCameraPreview
   
   public void c()
   {
-    if (this.d != null)
+    h localh = this.d;
+    if (localh != null)
     {
-      this.d.d();
+      localh.d();
       this.d = null;
     }
     this.e = null;
@@ -140,16 +143,18 @@ public class FaceRecognitionCameraPreview
   
   public Camera getCamera()
   {
-    if (this.d != null) {
-      return this.d.a;
+    h localh = this.d;
+    if (localh != null) {
+      return localh.a;
     }
     return null;
   }
   
   public void setStop(boolean paramBoolean)
   {
-    if (this.d != null) {
-      this.d.a(paramBoolean);
+    h localh = this.d;
+    if (localh != null) {
+      localh.a(paramBoolean);
     }
   }
   
@@ -168,12 +173,15 @@ public class FaceRecognitionCameraPreview
     try
     {
       b();
-      g.a("set brightvalue=" + Settings.System.getInt(this.e.getContentResolver(), "screen_brightness"));
+      paramSurfaceHolder = new StringBuilder();
+      paramSurfaceHolder.append("set brightvalue=");
+      paramSurfaceHolder.append(Settings.System.getInt(this.e.getContentResolver(), "screen_brightness"));
+      g.a(paramSurfaceHolder.toString());
       if (this.b != 5)
       {
-        this.i = ((ImageView)((Activity)this.e).findViewById(2131558697));
-        this.j = ((Activity)this.e).findViewById(2131558860);
-        this.k = ((Activity)this.e).findViewById(2131558861);
+        this.i = ((ImageView)((Activity)this.e).findViewById(2131165293));
+        this.j = ((Activity)this.e).findViewById(2131165295);
+        this.k = ((Activity)this.e).findViewById(2131165320);
         if (!m.v())
         {
           this.k.setVisibility(0);
@@ -197,31 +205,34 @@ public class FaceRecognitionCameraPreview
                 try
                 {
                   bool = FaceRecognitionCameraPreview.b(FaceRecognitionCameraPreview.this).getBrightMode();
-                  if (!bool) {
-                    continue;
+                  if (bool)
+                  {
+                    FaceRecognitionCameraPreview.d(FaceRecognitionCameraPreview.this).setImageDrawable(FaceRecognitionCameraPreview.c(FaceRecognitionCameraPreview.this).getResources().getDrawable(2131099844));
                   }
-                  FaceRecognitionCameraPreview.d(FaceRecognitionCameraPreview.this).setImageDrawable(FaceRecognitionCameraPreview.c(FaceRecognitionCameraPreview.this).getResources().getDrawable(2130837698));
+                  else
+                  {
+                    FaceRecognitionCameraPreview.d(FaceRecognitionCameraPreview.this).setImageDrawable(FaceRecognitionCameraPreview.c(FaceRecognitionCameraPreview.this).getResources().getDrawable(2131099845));
+                    bu.a().a(System.currentTimeMillis(), 201);
+                  }
                   paramAnonymousView = FaceRecognitionCameraPreview.b(FaceRecognitionCameraPreview.this);
-                  if (bool) {
-                    continue;
+                  if (!bool)
+                  {
+                    bool = true;
+                    paramAnonymousView.setBrightMode(bool);
+                    return;
                   }
-                  bool = true;
+                }
+                catch (Error paramAnonymousView)
+                {
+                  paramAnonymousView.printStackTrace();
+                  return;
                 }
                 catch (Exception paramAnonymousView)
                 {
                   paramAnonymousView.printStackTrace();
                   return;
-                  boolean bool = false;
-                  continue;
                 }
-                catch (Error paramAnonymousView)
-                {
-                  paramAnonymousView.printStackTrace();
-                }
-                paramAnonymousView.setBrightMode(bool);
-                return;
-                FaceRecognitionCameraPreview.d(FaceRecognitionCameraPreview.this).setImageDrawable(FaceRecognitionCameraPreview.c(FaceRecognitionCameraPreview.this).getResources().getDrawable(2130837699));
-                bu.a().a(System.currentTimeMillis(), 201);
+                boolean bool = false;
               }
             }
           });
@@ -230,10 +241,7 @@ public class FaceRecognitionCameraPreview
     }
     catch (Exception paramSurfaceHolder)
     {
-      for (;;)
-      {
-        paramSurfaceHolder.printStackTrace();
-      }
+      paramSurfaceHolder.printStackTrace();
     }
     if (this.d == null) {
       this.d = new h(this.e, this.a, this.c, this.l, this.b, this.f, this.g, this.k);
@@ -249,16 +257,12 @@ public class FaceRecognitionCameraPreview
       if (this.d != null) {
         this.d.e();
       }
-      a();
-      return;
     }
     catch (Exception paramSurfaceHolder)
     {
-      for (;;)
-      {
-        paramSurfaceHolder.printStackTrace();
-      }
+      paramSurfaceHolder.printStackTrace();
     }
+    a();
   }
 }
 

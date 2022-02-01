@@ -49,8 +49,17 @@ public class ProtoGetRealNameStatus
       this.f = cr.a().e().mRealUin;
     }
     localObject = l.a(new Object[] { "uin", Long.valueOf(this.e), "token_seq", localObject, "guid", l.a(bz.a(RqdApplication.l()).b()), "seq_id", Integer.valueOf(this.g), "op_time", Long.valueOf(cc.c().s() / 1000L) });
-    str = "?aq_base_sid=" + str + "&data=" + (String)localObject;
-    return c.e() + "/cn/mbtoken3/mbtoken3_realname_status_encrypt" + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_realname_status_encrypt");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -76,15 +85,23 @@ public class ProtoGetRealNameStatus
       if (i != this.g)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.g);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.g);
+        g.c(paramJSONObject.toString());
         return;
       }
       this.d = new RealNameStatusResult(paramJSONObject);
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

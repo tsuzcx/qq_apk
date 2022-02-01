@@ -142,26 +142,26 @@ public class ct
   
   public static String a(int[] paramArrayOfInt)
   {
+    byte[] arrayOfByte = aB;
     int i1 = 0;
-    if (aB == null) {}
+    if (arrayOfByte == null) {}
     try
     {
       aB = cd.a(aC);
-      byte[] arrayOfByte = new byte[paramArrayOfInt.length];
-      while (i1 < paramArrayOfInt.length)
-      {
-        arrayOfByte[i1] = ((byte)paramArrayOfInt[i1]);
-        i1 += 1;
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        aB = new byte[0];
-      }
-      return new String(cm.b(localException, aB));
+      label22:
+      break label22;
     }
+    aB = new byte[0];
+    arrayOfByte = new byte[paramArrayOfInt.length];
+    while (i1 < paramArrayOfInt.length)
+    {
+      arrayOfByte[i1] = ((byte)paramArrayOfInt[i1]);
+      i1 += 1;
+    }
+    return new String(cm.b(arrayOfByte, aB));
   }
 }
 

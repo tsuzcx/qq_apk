@@ -9,7 +9,7 @@ public final class ESubPlatform
   public static final ESubPlatform ESP_Android_HD;
   public static final ESubPlatform ESP_Android_Pad;
   public static final ESubPlatform ESP_BB_General;
-  public static final ESubPlatform ESP_END;
+  public static final ESubPlatform ESP_END = new ESubPlatform(19, 902, "ESP_END");
   public static final ESubPlatform ESP_Ipad;
   public static final ESubPlatform ESP_Iphone_General;
   public static final ESubPlatform ESP_Ipod;
@@ -45,39 +45,31 @@ public final class ESubPlatform
   public static final int _ESP_Symbian_V5 = 102;
   public static final int _ESP_WinPhone_General = 601;
   public static final int _ESP_WinPhone_Tablet = 602;
-  private static ESubPlatform[] ev;
+  private static ESubPlatform[] ev = new ESubPlatform[20];
   private int eb;
   private String ec = new String();
   
   static
   {
-    if (!ESubPlatform.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      ev = new ESubPlatform[20];
-      ESP_NONE = new ESubPlatform(0, 0, "ESP_NONE");
-      ESP_Symbian_V3 = new ESubPlatform(1, 101, "ESP_Symbian_V3");
-      ESP_Symbian_V5 = new ESubPlatform(2, 102, "ESP_Symbian_V5");
-      ESP_Symbian_V2 = new ESubPlatform(3, 103, "ESP_Symbian_V2");
-      ESP_Symbian_3 = new ESubPlatform(4, 104, "ESP_Symbian_3");
-      ESP_Android_General = new ESubPlatform(5, 201, "ESP_Android_General");
-      ESP_Android_Pad = new ESubPlatform(6, 202, "ESP_Android_Pad");
-      ESP_Android_HD = new ESubPlatform(7, 203, "ESP_Android_HD");
-      ESP_Iphone_General = new ESubPlatform(8, 301, "ESP_Iphone_General");
-      ESP_Ipad = new ESubPlatform(9, 302, "ESP_Ipad");
-      ESP_Ipod = new ESubPlatform(10, 303, "ESP_Ipod");
-      ESP_Kjava_General = new ESubPlatform(11, 401, "ESP_Kjava_General");
-      ESP_NK_Kjava_General = new ESubPlatform(12, 402, "ESP_NK_Kjava_General");
-      ESP_Server_General = new ESubPlatform(13, 501, "ESP_Server_General");
-      ESP_WinPhone_General = new ESubPlatform(14, 601, "ESP_WinPhone_General");
-      ESP_WinPhone_Tablet = new ESubPlatform(15, 602, "ESP_WinPhone_Tablet");
-      ESP_MTK_General = new ESubPlatform(16, 701, "ESP_MTK_General");
-      ESP_BB_General = new ESubPlatform(17, 801, "ESP_BB_General");
-      ESP_PC_WindowsGeneral = new ESubPlatform(18, 901, "ESP_PC_WindowsGeneral");
-      ESP_END = new ESubPlatform(19, 902, "ESP_END");
-      return;
-    }
+    ESP_NONE = new ESubPlatform(0, 0, "ESP_NONE");
+    ESP_Symbian_V3 = new ESubPlatform(1, 101, "ESP_Symbian_V3");
+    ESP_Symbian_V5 = new ESubPlatform(2, 102, "ESP_Symbian_V5");
+    ESP_Symbian_V2 = new ESubPlatform(3, 103, "ESP_Symbian_V2");
+    ESP_Symbian_3 = new ESubPlatform(4, 104, "ESP_Symbian_3");
+    ESP_Android_General = new ESubPlatform(5, 201, "ESP_Android_General");
+    ESP_Android_Pad = new ESubPlatform(6, 202, "ESP_Android_Pad");
+    ESP_Android_HD = new ESubPlatform(7, 203, "ESP_Android_HD");
+    ESP_Iphone_General = new ESubPlatform(8, 301, "ESP_Iphone_General");
+    ESP_Ipad = new ESubPlatform(9, 302, "ESP_Ipad");
+    ESP_Ipod = new ESubPlatform(10, 303, "ESP_Ipod");
+    ESP_Kjava_General = new ESubPlatform(11, 401, "ESP_Kjava_General");
+    ESP_NK_Kjava_General = new ESubPlatform(12, 402, "ESP_NK_Kjava_General");
+    ESP_Server_General = new ESubPlatform(13, 501, "ESP_Server_General");
+    ESP_WinPhone_General = new ESubPlatform(14, 601, "ESP_WinPhone_General");
+    ESP_WinPhone_Tablet = new ESubPlatform(15, 602, "ESP_WinPhone_Tablet");
+    ESP_MTK_General = new ESubPlatform(16, 701, "ESP_MTK_General");
+    ESP_BB_General = new ESubPlatform(17, 801, "ESP_BB_General");
+    ESP_PC_WindowsGeneral = new ESubPlatform(18, 901, "ESP_PC_WindowsGeneral");
   }
   
   private ESubPlatform(int paramInt1, int paramInt2, String paramString)
@@ -90,15 +82,16 @@ public final class ESubPlatform
   public static ESubPlatform convert(int paramInt)
   {
     int i = 0;
-    while (i < ev.length)
+    for (;;)
     {
-      if (ev[i].value() == paramInt) {
+      ESubPlatform[] arrayOfESubPlatform = ev;
+      if (i >= arrayOfESubPlatform.length) {
+        break;
+      }
+      if (arrayOfESubPlatform[i].value() == paramInt) {
         return ev[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -106,15 +99,16 @@ public final class ESubPlatform
   public static ESubPlatform convert(String paramString)
   {
     int i = 0;
-    while (i < ev.length)
+    for (;;)
     {
-      if (ev[i].toString().equals(paramString)) {
+      ESubPlatform[] arrayOfESubPlatform = ev;
+      if (i >= arrayOfESubPlatform.length) {
+        break;
+      }
+      if (arrayOfESubPlatform[i].toString().equals(paramString)) {
         return ev[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }

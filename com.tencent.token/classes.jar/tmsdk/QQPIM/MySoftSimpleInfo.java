@@ -16,16 +16,6 @@ public final class MySoftSimpleInfo
   public SoftSimpleInfo softSimpleInfo = null;
   public int update = 0;
   
-  static
-  {
-    if (!MySoftSimpleInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public MySoftSimpleInfo()
   {
     setSoftSimpleInfo(this.softSimpleInfo);
@@ -51,29 +41,47 @@ public final class MySoftSimpleInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (MySoftSimpleInfo)paramObject;
-    } while ((!JceUtil.equals(this.softSimpleInfo, paramObject.softSimpleInfo)) || (!JceUtil.equals(this.reportFeature, paramObject.reportFeature)) || (!JceUtil.equals(this.official, paramObject.official)) || (!JceUtil.equals(this.update, paramObject.update)) || (!JceUtil.equals(this.function, paramObject.function)));
-    return true;
+    }
+    paramObject = (MySoftSimpleInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.softSimpleInfo, paramObject.softSimpleInfo))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.reportFeature, paramObject.reportFeature))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.official, paramObject.official))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.update, paramObject.update))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.function, paramObject.function)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -162,8 +170,9 @@ public final class MySoftSimpleInfo
     paramJceOutputStream.write(this.reportFeature, 1);
     paramJceOutputStream.write(this.official, 2);
     paramJceOutputStream.write(this.update, 3);
-    if (this.function != null) {
-      paramJceOutputStream.write(this.function, 4);
+    String str = this.function;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }

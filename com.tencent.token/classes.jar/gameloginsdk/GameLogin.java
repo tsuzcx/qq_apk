@@ -74,19 +74,13 @@ public class GameLogin
       return "未知错误";
     case 0: 
       return "";
-    case -10: 
-    case -9: 
-    case -5: 
-    case -4: 
-    case -3: 
-    case -2: 
-    case -1: 
-      return "网络错误，请检查网络";
+    case -6: 
+      return "需要wifi验证，请先进行wifi验证";
     case -8: 
     case -7: 
       return "服务器繁忙，请稍后重试";
     }
-    return "需要wifi验证，请先进行wifi验证";
+    return "网络错误，请检查网络";
   }
   
   private String a(byte[] paramArrayOfByte)
@@ -104,33 +98,33 @@ public class GameLogin
   
   private byte[] a(String paramString)
   {
-    if ((paramString == null) || ("".equals(paramString))) {}
-    for (;;)
+    if (paramString != null) {
+      if ("".equals(paramString)) {
+        return null;
+      }
+    }
+    try
     {
-      return null;
+      localMessageDigest = MessageDigest.getInstance("MD5");
+    }
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+    {
       try
       {
-        localMessageDigest = MessageDigest.getInstance("MD5");
-        if (localMessageDigest == null) {
-          continue;
-        }
+        MessageDigest localMessageDigest;
+        localMessageDigest.update(paramString.getBytes("UTF-8"));
+        return localMessageDigest.digest();
+        return null;
+        localNoSuchAlgorithmException = localNoSuchAlgorithmException;
       }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+      catch (UnsupportedEncodingException paramString)
       {
-        try
-        {
-          MessageDigest localMessageDigest;
-          localMessageDigest.update(paramString.getBytes("UTF-8"));
-          label35:
-          return localMessageDigest.digest();
-          localNoSuchAlgorithmException = localNoSuchAlgorithmException;
-          Object localObject = null;
-        }
-        catch (UnsupportedEncodingException paramString)
-        {
-          break label35;
-        }
+        break label42;
       }
+    }
+    localMessageDigest = null;
+    if (localMessageDigest == null) {
+      return null;
     }
   }
   
@@ -144,28 +138,39 @@ public class GameLogin
     if (this.n == null) {
       return -1;
     }
-    new StringBuilder().append("获取计数 : ").append(this.n.get()).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("获取计数 : ");
+    localStringBuilder.append(this.n.get());
+    localStringBuilder.toString();
     return this.n.get();
   }
   
   private void g()
   {
-    if (this.n == null) {
+    Object localObject = this.n;
+    if (localObject == null) {
       return;
     }
-    if (this.n.decrementAndGet() < 0) {
+    if (((AtomicInteger)localObject).decrementAndGet() < 0) {
       this.n.set(0);
     }
-    new StringBuilder().append("计数-1 : ").append(this.n.get()).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("计数-1 : ");
+    ((StringBuilder)localObject).append(this.n.get());
+    ((StringBuilder)localObject).toString();
   }
   
   private void h()
   {
-    if (this.n == null) {
+    Object localObject = this.n;
+    if (localObject == null) {
       return;
     }
-    this.n.incrementAndGet();
-    new StringBuilder().append("计数+1 : ").append(this.n.get()).toString();
+    ((AtomicInteger)localObject).incrementAndGet();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("计数+1 : ");
+    ((StringBuilder)localObject).append(this.n.get());
+    ((StringBuilder)localObject).toString();
   }
   
   private byte[] i()
@@ -200,7 +205,18 @@ public class GameLogin
   
   void b()
   {
-    new StringBuilder().append("tryCloseConn isKeepConnection : ").append(this.c).append(" gameLoginVsPushCount : ").append(f()).append(" latestGameLoginTimestamp : ").append(this.o.get()).append(" latestPushInfoTimestamp : ").append(this.p.get()).append(" qrcodeSet.size() : ").append(this.s.size()).toString();
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("tryCloseConn isKeepConnection : ");
+    ((StringBuilder)???).append(this.c);
+    ((StringBuilder)???).append(" gameLoginVsPushCount : ");
+    ((StringBuilder)???).append(f());
+    ((StringBuilder)???).append(" latestGameLoginTimestamp : ");
+    ((StringBuilder)???).append(this.o.get());
+    ((StringBuilder)???).append(" latestPushInfoTimestamp : ");
+    ((StringBuilder)???).append(this.p.get());
+    ((StringBuilder)???).append(" qrcodeSet.size() : ");
+    ((StringBuilder)???).append(this.s.size());
+    ((StringBuilder)???).toString();
     synchronized (this.k)
     {
       if ((this.c) && (f() <= 0) && (this.o.get() < this.p.get()) && (this.s.isEmpty())) {
@@ -225,7 +241,14 @@ public class GameLogin
   
   void c()
   {
-    new StringBuilder().append("tryCloseConn_2 isKeepConnection : ").append(this.c).append(" getGameLoginVsPushCount() : ").append(f()).append(" qrcodeSet.size() : ").append(this.s.size()).toString();
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("tryCloseConn_2 isKeepConnection : ");
+    ((StringBuilder)???).append(this.c);
+    ((StringBuilder)???).append(" getGameLoginVsPushCount() : ");
+    ((StringBuilder)???).append(f());
+    ((StringBuilder)???).append(" qrcodeSet.size() : ");
+    ((StringBuilder)???).append(this.s.size());
+    ((StringBuilder)???).toString();
     synchronized (this.k)
     {
       if ((this.c) && (f() <= 0) && (this.s.isEmpty())) {
@@ -267,30 +290,40 @@ public class GameLogin
     if (!this.u) {
       return -1;
     }
-    if ((paramString == null) || (paramArrayOfByte == null)) {
-      return -2;
+    if ((paramString != null) && (paramArrayOfByte != null))
+    {
+      int i1 = e();
+      b.a.a locala = new b.a.a();
+      locala.b = ((Long)this.m.pop()).longValue();
+      locala.a = i1;
+      locala.c = paramString;
+      locala.d = paramArrayOfByte;
+      locala.e = this.q.a();
+      locala.f = j.d(paramInt);
+      this.g.a(locala.a, this.b);
+      paramInt = ee.a;
+      long l1 = locala.b;
+      l1 = locala.a;
+      paramInt = locala.f;
+      paramString = locala.c;
+      a(locala.e);
+      a(locala.d);
+      paramString = new StringBuilder();
+      paramString.append("CSConfirm confirm : ");
+      paramString.append(locala.f);
+      paramString.toString();
+      paramString = new StringBuilder();
+      paramString.append("reqid : ");
+      paramString.append(locala.a);
+      paramString.toString();
+      paramString = new StringBuilder();
+      paramString.append("session : ");
+      paramString.append(a(locala.e));
+      paramString.toString();
+      this.e.a(654, locala, new b.a.e(), 1, new g(this, locala.a, locala), this.b);
+      return i1;
     }
-    int i1 = e();
-    b.a.a locala = new b.a.a();
-    locala.b = ((Long)this.m.pop()).longValue();
-    locala.a = i1;
-    locala.c = paramString;
-    locala.d = paramArrayOfByte;
-    locala.e = this.q.a();
-    locala.f = j.d(paramInt);
-    this.g.a(locala.a, this.b);
-    paramInt = ee.a;
-    long l1 = locala.b;
-    l1 = locala.a;
-    paramInt = locala.f;
-    paramString = locala.c;
-    a(locala.e);
-    a(locala.d);
-    new StringBuilder().append("CSConfirm confirm : ").append(locala.f).toString();
-    new StringBuilder().append("reqid : ").append(locala.a).toString();
-    new StringBuilder().append("session : ").append(a(locala.e)).toString();
-    this.e.a(654, locala, new b.a.e(), 1, new g(this, locala.a, locala), this.b);
-    return i1;
+    return -2;
   }
   
   public int sendGameLoginInfo(String paramString1, byte[] paramArrayOfByte, String paramString2)
@@ -298,49 +331,56 @@ public class GameLogin
     if (!this.u) {
       return -1;
     }
-    if ((paramString1 == null) || (paramString2 == null) || (paramArrayOfByte == null)) {
-      return -2;
-    }
-    if ((!this.c) || (!this.d)) {}
-    synchronized (this.k)
+    if ((paramString1 != null) && (paramString2 != null) && (paramArrayOfByte != null))
     {
-      if (!this.c)
+      if ((!this.c) || (!this.d)) {}
+      synchronized (this.k)
       {
-        this.c = true;
-        this.e.a(5);
+        if (!this.c)
+        {
+          this.c = true;
+          this.e.a(5);
+        }
+        if (!this.d)
+        {
+          this.d = true;
+          a();
+        }
+        int i1 = e();
+        ??? = new b.a.c();
+        ((b.a.c)???).c = this.l;
+        ((b.a.c)???).d = paramArrayOfByte;
+        ((b.a.c)???).b = paramString1;
+        ((b.a.c)???).a = i1;
+        paramString1 = a(paramString2);
+        if (paramString1 != null)
+        {
+          ((b.a.c)???).g = d.a(paramString1);
+          this.t.a(((b.a.c)???).c, ((b.a.c)???).g);
+        }
+        paramString1 = ((b.a.c)???).g;
+        this.s.add(paramString1);
+        int i2 = ee.a;
+        long l1 = ((b.a.c)???).a;
+        l1 = ((b.a.c)???).c;
+        a(((b.a.c)???).d);
+        paramArrayOfByte = ((b.a.c)???).e;
+        paramArrayOfByte = ((b.a.c)???).b;
+        this.g.a(((b.a.c)???).a, this.b);
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("reqid : ");
+        paramArrayOfByte.append(((b.a.c)???).a);
+        paramArrayOfByte.toString();
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("picmd5 : ");
+        paramArrayOfByte.append(((b.a.c)???).g);
+        paramArrayOfByte.toString();
+        tmsdk.common.c.a.a.a().a(((b.a.c)???).g, this.a, new e(this, paramString1));
+        this.e.a(653, (JceStruct)???, new b.a.g(), 1, new h(this, ((b.a.c)???).a, (JceStruct)???), this.b);
+        return i1;
       }
-      if (!this.d)
-      {
-        this.d = true;
-        a();
-      }
-      int i1 = e();
-      ??? = new b.a.c();
-      ((b.a.c)???).c = this.l;
-      ((b.a.c)???).d = paramArrayOfByte;
-      ((b.a.c)???).b = paramString1;
-      ((b.a.c)???).a = i1;
-      paramString1 = a(paramString2);
-      if (paramString1 != null)
-      {
-        ((b.a.c)???).g = d.a(paramString1);
-        this.t.a(((b.a.c)???).c, ((b.a.c)???).g);
-      }
-      paramString1 = ((b.a.c)???).g;
-      this.s.add(paramString1);
-      int i2 = ee.a;
-      long l1 = ((b.a.c)???).a;
-      l1 = ((b.a.c)???).c;
-      a(((b.a.c)???).d);
-      paramArrayOfByte = ((b.a.c)???).e;
-      paramArrayOfByte = ((b.a.c)???).b;
-      this.g.a(((b.a.c)???).a, this.b);
-      new StringBuilder().append("reqid : ").append(((b.a.c)???).a).toString();
-      new StringBuilder().append("picmd5 : ").append(((b.a.c)???).g).toString();
-      tmsdk.common.c.a.a.a().a(((b.a.c)???).g, this.a, new e(this, paramString1));
-      this.e.a(653, (JceStruct)???, new b.a.g(), 1, new h(this, ((b.a.c)???).a, (JceStruct)???), this.b);
-      return i1;
     }
+    return -2;
   }
   
   public int sendGetFlowType(long paramLong)
@@ -352,8 +392,14 @@ public class GameLogin
     b.a.b localb = new b.a.b();
     localb.b = paramLong;
     localb.a = i1;
-    new StringBuilder().append("appid : ").append(localb.b).toString();
-    new StringBuilder().append("reqid : ").append(localb.a).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("appid : ");
+    localStringBuilder.append(localb.b);
+    localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reqid : ");
+    localStringBuilder.append(localb.a);
+    localStringBuilder.toString();
     int i2 = ee.a;
     long l1 = localb.b;
     l1 = localb.a;

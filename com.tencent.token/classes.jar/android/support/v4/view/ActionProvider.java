@@ -75,8 +75,13 @@ public abstract class ActionProvider
   
   public void setVisibilityListener(VisibilityListener paramVisibilityListener)
   {
-    if ((this.mVisibilityListener != null) && (paramVisibilityListener != null)) {
-      Log.w("ActionProvider(support)", "setVisibilityListener: Setting a new ActionProvider.VisibilityListener when one is already set. Are you reusing this " + getClass().getSimpleName() + " instance while it is still in use somewhere else?");
+    if ((this.mVisibilityListener != null) && (paramVisibilityListener != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setVisibilityListener: Setting a new ActionProvider.VisibilityListener when one is already set. Are you reusing this ");
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append(" instance while it is still in use somewhere else?");
+      Log.w("ActionProvider(support)", localStringBuilder.toString());
     }
     this.mVisibilityListener = paramVisibilityListener;
   }
@@ -84,8 +89,9 @@ public abstract class ActionProvider
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void subUiVisibilityChanged(boolean paramBoolean)
   {
-    if (this.mSubUiVisibilityListener != null) {
-      this.mSubUiVisibilityListener.onSubUiVisibilityChanged(paramBoolean);
+    SubUiVisibilityListener localSubUiVisibilityListener = this.mSubUiVisibilityListener;
+    if (localSubUiVisibilityListener != null) {
+      localSubUiVisibilityListener.onSubUiVisibilityChanged(paramBoolean);
     }
   }
   

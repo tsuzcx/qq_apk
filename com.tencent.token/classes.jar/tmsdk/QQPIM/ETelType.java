@@ -2,7 +2,7 @@ package tmsdk.QQPIM;
 
 public final class ETelType
 {
-  public static final ETelType ETT_MAX;
+  public static final ETelType ETT_MAX = new ETelType(5, 5, "ETT_MAX");
   public static final ETelType ETT_MIN;
   public static final ETelType ETT_MISS_CALL;
   public static final ETelType ETT_RING_ONE_SOUND;
@@ -14,25 +14,17 @@ public final class ETelType
   public static final int _ETT_RING_ONE_SOUND = 1;
   public static final int _ETT_USER_CANCEL = 2;
   public static final int _ETT_USER_HANG_UP = 4;
-  private static ETelType[] ew;
+  private static ETelType[] ew = new ETelType[6];
   private int eb;
   private String ec = new String();
   
   static
   {
-    if (!ETelType.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      ew = new ETelType[6];
-      ETT_MIN = new ETelType(0, 0, "ETT_MIN");
-      ETT_RING_ONE_SOUND = new ETelType(1, 1, "ETT_RING_ONE_SOUND");
-      ETT_USER_CANCEL = new ETelType(2, 2, "ETT_USER_CANCEL");
-      ETT_MISS_CALL = new ETelType(3, 3, "ETT_MISS_CALL");
-      ETT_USER_HANG_UP = new ETelType(4, 4, "ETT_USER_HANG_UP");
-      ETT_MAX = new ETelType(5, 5, "ETT_MAX");
-      return;
-    }
+    ETT_MIN = new ETelType(0, 0, "ETT_MIN");
+    ETT_RING_ONE_SOUND = new ETelType(1, 1, "ETT_RING_ONE_SOUND");
+    ETT_USER_CANCEL = new ETelType(2, 2, "ETT_USER_CANCEL");
+    ETT_MISS_CALL = new ETelType(3, 3, "ETT_MISS_CALL");
+    ETT_USER_HANG_UP = new ETelType(4, 4, "ETT_USER_HANG_UP");
   }
   
   private ETelType(int paramInt1, int paramInt2, String paramString)
@@ -45,15 +37,16 @@ public final class ETelType
   public static ETelType convert(int paramInt)
   {
     int i = 0;
-    while (i < ew.length)
+    for (;;)
     {
-      if (ew[i].value() == paramInt) {
+      ETelType[] arrayOfETelType = ew;
+      if (i >= arrayOfETelType.length) {
+        break;
+      }
+      if (arrayOfETelType[i].value() == paramInt) {
         return ew[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -61,15 +54,16 @@ public final class ETelType
   public static ETelType convert(String paramString)
   {
     int i = 0;
-    while (i < ew.length)
+    for (;;)
     {
-      if (ew[i].toString().equals(paramString)) {
+      ETelType[] arrayOfETelType = ew;
+      if (i >= arrayOfETelType.length) {
+        break;
+      }
+      if (arrayOfETelType[i].toString().equals(paramString)) {
         return ew[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }

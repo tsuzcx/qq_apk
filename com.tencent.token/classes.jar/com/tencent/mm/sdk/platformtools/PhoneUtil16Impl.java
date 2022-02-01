@@ -19,68 +19,80 @@ class PhoneUtil16Impl
   public List<PhoneUtil.CellInfo> getCellInfoList(Context paramContext)
   {
     LinkedList localLinkedList = new LinkedList();
-    TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
-    Object localObject3 = localTelephonyManager.getNetworkOperator();
-    if ((localObject3 == null) || (((String)localObject3).equals(""))) {
+    Object localObject6 = (TelephonyManager)paramContext.getSystemService("phone");
+    Object localObject5 = ((TelephonyManager)localObject6).getNetworkOperator();
+    Object localObject3;
+    Object localObject2;
+    if (localObject5 != null)
+    {
+      if (((String)localObject5).equals("")) {
+        return localLinkedList;
+      }
+      paramContext = "460";
+      localObject3 = "";
+      try
+      {
+        Object localObject1 = ((String)localObject5).substring(0, 3);
+        paramContext = (Context)localObject1;
+        localObject5 = ((String)localObject5).substring(3);
+        paramContext = (Context)localObject1;
+        localObject1 = localObject5;
+      }
+      catch (Exception localException1)
+      {
+        localException1.printStackTrace();
+        localObject2 = localObject3;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject3 = (GsmCellLocation)((TelephonyManager)localObject6).getCellLocation();
+        if (localObject3 == null) {
+          break label226;
+        }
+        i = ((GsmCellLocation)localObject3).getCid();
+        j = ((GsmCellLocation)localObject3).getLac();
+        if ((j >= 65535) || (j == -1) || (i == -1)) {
+          break label226;
+        }
+        if (aK == aJ)
+        {
+          localObject3 = "";
+        }
+        else
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(aK);
+          localObject3 = ((StringBuilder)localObject3).toString();
+        }
+      }
+      catch (Exception localException2)
+      {
+        int i;
+        int j;
+        localException2.printStackTrace();
+      }
+      localLinkedList.add(new PhoneUtil.CellInfo(paramContext, localObject2, String.valueOf(j), String.valueOf(i), (String)localObject3, "gsm", "", "", ""));
+      label226:
+      Object localObject4 = ((TelephonyManager)localObject6).getNeighboringCellInfo();
+      if ((localObject4 != null) && (((List)localObject4).size() > 0))
+      {
+        localObject4 = ((List)localObject4).iterator();
+        while (((Iterator)localObject4).hasNext())
+        {
+          localObject5 = (NeighboringCellInfo)((Iterator)localObject4).next();
+          if (((NeighboringCellInfo)localObject5).getCid() != -1)
+          {
+            localObject6 = new StringBuilder();
+            ((StringBuilder)localObject6).append(((NeighboringCellInfo)localObject5).getCid());
+            localLinkedList.add(new PhoneUtil.CellInfo(paramContext, localObject2, "", ((StringBuilder)localObject6).toString(), "", "gsm", "", "", ""));
+          }
+        }
+      }
       return localLinkedList;
     }
-    paramContext = "460";
-    Object localObject1 = "";
-    try
-    {
-      localObject2 = ((String)localObject3).substring(0, 3);
-      paramContext = (Context)localObject2;
-      localObject3 = ((String)localObject3).substring(3);
-      localObject1 = localObject3;
-      paramContext = (Context)localObject2;
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        label171:
-        localException1.printStackTrace();
-        continue;
-        String str = aK;
-      }
-    }
-    try
-    {
-      localObject2 = (GsmCellLocation)localTelephonyManager.getCellLocation();
-      if (localObject2 != null)
-      {
-        int i = ((GsmCellLocation)localObject2).getCid();
-        int j = ((GsmCellLocation)localObject2).getLac();
-        if ((j < 65535) && (j != -1) && (i != -1))
-        {
-          if (aK != aJ) {
-            break label294;
-          }
-          localObject2 = "";
-          localLinkedList.add(new PhoneUtil.CellInfo(paramContext, (String)localObject1, String.valueOf(j), String.valueOf(i), (String)localObject2, "gsm", "", "", ""));
-        }
-      }
-    }
-    catch (Exception localException2)
-    {
-      localException2.printStackTrace();
-      break label171;
-    }
-    localObject2 = localTelephonyManager.getNeighboringCellInfo();
-    if ((localObject2 != null) && (((List)localObject2).size() > 0))
-    {
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (NeighboringCellInfo)((Iterator)localObject2).next();
-        if (((NeighboringCellInfo)localObject3).getCid() != -1) {
-          localLinkedList.add(new PhoneUtil.CellInfo(paramContext, (String)localObject1, "", ((NeighboringCellInfo)localObject3).getCid(), "", "gsm", "", "", ""));
-        }
-      }
-    }
-    label294:
-    return localLinkedList;
   }
   
   public void getSignalStrength(Context paramContext)

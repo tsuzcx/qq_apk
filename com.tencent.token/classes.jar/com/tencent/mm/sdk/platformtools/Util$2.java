@@ -11,20 +11,25 @@ final class Util$2
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    boolean bool;
     switch (paramMotionEvent.getAction())
     {
     default: 
       return false;
-    case 0: 
-      this.bD.setSelected(true);
-      return false;
+    case 2: 
+      paramView = this.bD;
+      bool = this.bE.isPressed();
+      break;
     case 1: 
     case 3: 
     case 4: 
       this.bD.setSelected(false);
       return false;
+    case 0: 
+      paramView = this.bD;
+      bool = true;
     }
-    this.bD.setSelected(this.bE.isPressed());
+    paramView.setSelected(bool);
     return false;
   }
 }

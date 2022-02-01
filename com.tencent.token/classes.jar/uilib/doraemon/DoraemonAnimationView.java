@@ -8,7 +8,7 @@ import android.provider.Settings.Global;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
-import com.tencent.token.gj;
+import com.tencent.token.gi;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +16,7 @@ import java.util.Map;
 public class DoraemonAnimationView
   extends ImageView
 {
-  private static final String a = DoraemonAnimationView.class.getSimpleName();
+  private static final String a = "DoraemonAnimationView";
   private static final Map<String, a> b = new HashMap();
   private static final Map<String, WeakReference<a>> c = new HashMap();
   private final e d = new e(this);
@@ -53,22 +53,25 @@ public class DoraemonAnimationView
   @TargetApi(11)
   private void e()
   {
+    boolean bool = this.h;
     int k = 1;
-    if ((this.h) && (this.d.f())) {}
-    for (int j = 1;; j = 0)
-    {
-      if (j != 0) {
-        k = 2;
-      }
-      setLayerType(k, null);
-      return;
+    int j;
+    if ((bool) && (this.d.f())) {
+      j = 1;
+    } else {
+      j = 0;
     }
+    if (j != 0) {
+      k = 2;
+    }
+    setLayerType(k, null);
   }
   
   void a()
   {
-    if (this.d != null) {
-      this.d.c();
+    e locale = this.d;
+    if (locale != null) {
+      locale.c();
     }
   }
   
@@ -96,8 +99,9 @@ public class DoraemonAnimationView
   
   public long getDuration()
   {
-    if (this.i != null) {
-      return this.i.c();
+    a locala = this.i;
+    if (locala != null) {
+      return locala.c();
     }
     return 0L;
   }
@@ -124,9 +128,11 @@ public class DoraemonAnimationView
   
   public void invalidateDrawable(Drawable paramDrawable)
   {
-    if (getDrawable() == this.d)
+    Drawable localDrawable = getDrawable();
+    e locale = this.d;
+    if (localDrawable == locale)
     {
-      super.invalidateDrawable(this.d);
+      super.invalidateDrawable(locale);
       return;
     }
     super.invalidateDrawable(paramDrawable);
@@ -158,7 +164,11 @@ public class DoraemonAnimationView
   
   public void setComposition(a parama)
   {
-    Log.v(a, "Set Composition \n" + parama);
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Set Composition \n");
+    localStringBuilder.append(parama);
+    Log.v(str, localStringBuilder.toString());
     this.d.setCallback(this);
     boolean bool = this.d.a(parama);
     e();
@@ -226,9 +236,9 @@ public class DoraemonAnimationView
     }
   }
   
-  public void setShapeStrokeDelegate(gj paramgj)
+  public void setShapeStrokeDelegate(gi paramgi)
   {
-    this.d.a(paramgj);
+    this.d.a(paramgi);
   }
   
   public void setSpeed(float paramFloat)

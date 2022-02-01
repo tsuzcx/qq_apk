@@ -48,8 +48,9 @@ public class StandaloneActionMode
   
   public View getCustomView()
   {
-    if (this.mCustomView != null) {
-      return (View)this.mCustomView.get();
+    WeakReference localWeakReference = this.mCustomView;
+    if (localWeakReference != null) {
+      return (View)localWeakReference.get();
     }
     return null;
   }
@@ -116,12 +117,12 @@ public class StandaloneActionMode
   public void setCustomView(View paramView)
   {
     this.mContextView.setCustomView(paramView);
-    if (paramView != null) {}
-    for (paramView = new WeakReference(paramView);; paramView = null)
-    {
-      this.mCustomView = paramView;
-      return;
+    if (paramView != null) {
+      paramView = new WeakReference(paramView);
+    } else {
+      paramView = null;
     }
+    this.mCustomView = paramView;
   }
   
   public void setSubtitle(int paramInt)

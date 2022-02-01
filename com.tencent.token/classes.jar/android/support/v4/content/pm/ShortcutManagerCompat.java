@@ -28,15 +28,16 @@ public class ShortcutManagerCompat
   @NonNull
   public static Intent createShortcutResultIntent(@NonNull Context paramContext, @NonNull ShortcutInfoCompat paramShortcutInfoCompat)
   {
-    Intent localIntent = null;
     if (Build.VERSION.SDK_INT >= 26) {
-      localIntent = ((ShortcutManager)paramContext.getSystemService(ShortcutManager.class)).createShortcutResultIntent(paramShortcutInfoCompat.toShortcutInfo());
+      paramContext = ((ShortcutManager)paramContext.getSystemService(ShortcutManager.class)).createShortcutResultIntent(paramShortcutInfoCompat.toShortcutInfo());
+    } else {
+      paramContext = null;
     }
-    paramContext = localIntent;
-    if (localIntent == null) {
-      paramContext = new Intent();
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = new Intent();
     }
-    return paramShortcutInfoCompat.addToIntent(paramContext);
+    return paramShortcutInfoCompat.addToIntent((Intent)localObject);
   }
   
   public static boolean isRequestPinShortcutSupported(@NonNull Context paramContext)

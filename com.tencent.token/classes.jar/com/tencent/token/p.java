@@ -16,7 +16,7 @@ import java.net.Proxy.Type;
 public class p
 {
   public static String a = "";
-  public static int b;
+  public static int b = 0;
   private static String c = "cmwap";
   private static String d = "3gwap";
   private static String e = "uniwap";
@@ -61,391 +61,393 @@ public class p
   public static void b()
   {
     // Byte code:
-    //   0: ldc 112
-    //   2: ldc 114
-    //   4: invokestatic 119	com/tencent/halley/common/b:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   7: getstatic 65	com/tencent/token/p:m	Z
+    //   0: ldc 96
+    //   2: ldc 98
+    //   4: invokestatic 103	com/tencent/halley/common/b:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   7: getstatic 49	com/tencent/token/p:m	Z
     //   10: ifeq +4 -> 14
     //   13: return
     //   14: iconst_1
-    //   15: putstatic 65	com/tencent/token/p:m	Z
+    //   15: putstatic 49	com/tencent/token/p:m	Z
     //   18: ldc 2
     //   20: monitorenter
-    //   21: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   24: astore_1
-    //   25: invokestatic 86	com/tencent/halley/common/f:a	()Landroid/content/Context;
-    //   28: ldc 121
-    //   30: invokevirtual 98	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   33: checkcast 123	android/net/ConnectivityManager
-    //   36: astore_2
-    //   37: aload_2
-    //   38: ifnonnull +69 -> 107
-    //   41: ldc 48
-    //   43: putstatic 50	com/tencent/token/p:a	Ljava/lang/String;
+    //   21: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   24: astore_2
+    //   25: invokestatic 70	com/tencent/halley/common/f:a	()Landroid/content/Context;
+    //   28: ldc 107
+    //   30: invokevirtual 82	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   33: checkcast 109	android/net/ConnectivityManager
+    //   36: astore_1
+    //   37: aload_1
+    //   38: ifnonnull +63 -> 101
+    //   41: ldc 13
+    //   43: putstatic 105	com/tencent/token/p:a	Ljava/lang/String;
     //   46: iconst_0
-    //   47: putstatic 52	com/tencent/token/p:h	I
+    //   47: putstatic 111	com/tencent/token/p:h	I
     //   50: iconst_0
-    //   51: putstatic 54	com/tencent/token/p:i	Z
-    //   54: ldc 48
-    //   56: putstatic 56	com/tencent/token/p:j	Ljava/lang/String;
+    //   51: putstatic 113	com/tencent/token/p:i	Z
+    //   54: ldc 13
+    //   56: putstatic 115	com/tencent/token/p:j	Ljava/lang/String;
     //   59: iconst_0
-    //   60: putstatic 46	com/tencent/token/p:g	Z
-    //   63: aload_1
-    //   64: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   67: invokevirtual 129	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   60: putstatic 117	com/tencent/token/p:g	Z
+    //   63: aload_2
+    //   64: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   67: invokevirtual 123	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   70: ifne +23 -> 93
-    //   73: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   73: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
     //   76: ifnull +17 -> 93
-    //   79: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
-    //   82: getstatic 52	com/tencent/token/p:h	I
-    //   85: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   88: invokeinterface 132 3 0
+    //   79: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   82: getstatic 111	com/tencent/token/p:h	I
+    //   85: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   88: invokeinterface 126 3 0
     //   93: iconst_0
-    //   94: putstatic 65	com/tencent/token/p:m	Z
+    //   94: putstatic 49	com/tencent/token/p:m	Z
     //   97: ldc 2
     //   99: monitorexit
     //   100: return
-    //   101: astore_1
-    //   102: ldc 2
-    //   104: monitorexit
-    //   105: aload_1
-    //   106: athrow
-    //   107: aload_2
-    //   108: invokevirtual 136	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
-    //   111: astore_2
-    //   112: aload_2
-    //   113: ifnonnull +63 -> 176
-    //   116: ldc 48
-    //   118: putstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   121: iconst_0
-    //   122: putstatic 52	com/tencent/token/p:h	I
-    //   125: iconst_0
-    //   126: putstatic 54	com/tencent/token/p:i	Z
-    //   129: ldc 48
-    //   131: putstatic 56	com/tencent/token/p:j	Ljava/lang/String;
-    //   134: iconst_0
-    //   135: putstatic 46	com/tencent/token/p:g	Z
-    //   138: aload_1
-    //   139: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   142: invokevirtual 129	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   145: ifne +23 -> 168
-    //   148: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
-    //   151: ifnull +17 -> 168
-    //   154: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
-    //   157: getstatic 52	com/tencent/token/p:h	I
-    //   160: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   163: invokeinterface 132 3 0
-    //   168: iconst_0
-    //   169: putstatic 65	com/tencent/token/p:m	Z
-    //   172: ldc 2
-    //   174: monitorexit
-    //   175: return
-    //   176: aload_2
-    //   177: invokevirtual 142	android/net/NetworkInfo:isConnected	()Z
-    //   180: ifeq +143 -> 323
-    //   183: iconst_1
-    //   184: putstatic 46	com/tencent/token/p:g	Z
-    //   187: aload_2
-    //   188: invokevirtual 146	android/net/NetworkInfo:getType	()I
-    //   191: istore_0
-    //   192: iload_0
-    //   193: iconst_1
-    //   194: if_icmpne +225 -> 419
-    //   197: iconst_1
-    //   198: putstatic 52	com/tencent/token/p:h	I
-    //   201: iconst_0
-    //   202: putstatic 54	com/tencent/token/p:i	Z
-    //   205: ldc 48
-    //   207: putstatic 56	com/tencent/token/p:j	Ljava/lang/String;
-    //   210: invokestatic 86	com/tencent/halley/common/f:a	()Landroid/content/Context;
-    //   213: ldc 148
-    //   215: invokevirtual 98	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   218: checkcast 150	android/net/wifi/WifiManager
-    //   221: invokevirtual 154	android/net/wifi/WifiManager:getConnectionInfo	()Landroid/net/wifi/WifiInfo;
-    //   224: astore_2
-    //   225: aload_2
-    //   226: invokevirtual 160	android/net/wifi/WifiInfo:getBSSID	()Ljava/lang/String;
-    //   229: ifnull +22 -> 251
-    //   232: aload_2
-    //   233: invokevirtual 163	android/net/wifi/WifiInfo:getRssi	()I
-    //   236: istore_0
-    //   237: getstatic 168	android/os/Build$VERSION:SDK_INT	I
-    //   240: bipush 14
-    //   242: if_icmplt +149 -> 391
-    //   245: iload_0
-    //   246: iconst_5
-    //   247: invokestatic 172	android/net/wifi/WifiManager:calculateSignalLevel	(II)I
-    //   250: pop
-    //   251: new 174	java/lang/StringBuilder
-    //   254: dup
-    //   255: ldc 176
-    //   257: invokespecial 177	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   260: aload_2
-    //   261: invokevirtual 180	android/net/wifi/WifiInfo:getSSID	()Ljava/lang/String;
-    //   264: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: ldc 186
-    //   269: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   272: aload_2
-    //   273: invokevirtual 160	android/net/wifi/WifiInfo:getBSSID	()Ljava/lang/String;
-    //   276: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   279: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   282: putstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   285: aload_1
-    //   286: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   289: invokevirtual 129	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   292: ifne +23 -> 315
-    //   295: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
-    //   298: ifnull +17 -> 315
-    //   301: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
-    //   304: getstatic 52	com/tencent/token/p:h	I
-    //   307: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   310: invokeinterface 132 3 0
-    //   315: iconst_0
-    //   316: putstatic 65	com/tencent/token/p:m	Z
-    //   319: ldc 2
-    //   321: monitorexit
-    //   322: return
-    //   323: iconst_0
-    //   324: putstatic 46	com/tencent/token/p:g	Z
-    //   327: goto -140 -> 187
-    //   330: astore_2
-    //   331: aload_2
-    //   332: invokevirtual 192	java/lang/Throwable:printStackTrace	()V
-    //   335: ldc 48
-    //   337: putstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   340: iconst_0
-    //   341: putstatic 52	com/tencent/token/p:h	I
-    //   344: iconst_0
-    //   345: putstatic 54	com/tencent/token/p:i	Z
-    //   348: ldc 48
-    //   350: putstatic 56	com/tencent/token/p:j	Ljava/lang/String;
-    //   353: aload_1
-    //   354: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   357: invokevirtual 129	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   360: ifne +23 -> 383
-    //   363: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
-    //   366: ifnull +17 -> 383
-    //   369: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
-    //   372: getstatic 52	com/tencent/token/p:h	I
-    //   375: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   378: invokeinterface 132 3 0
-    //   383: iconst_0
-    //   384: putstatic 65	com/tencent/token/p:m	Z
-    //   387: ldc 2
-    //   389: monitorexit
-    //   390: return
-    //   391: iload_0
-    //   392: bipush 156
-    //   394: if_icmple -143 -> 251
-    //   397: iload_0
-    //   398: bipush 201
-    //   400: if_icmpge -149 -> 251
-    //   403: iload_0
-    //   404: bipush 100
-    //   406: iadd
-    //   407: i2f
-    //   408: ldc 193
-    //   410: fmul
-    //   411: ldc 194
-    //   413: fdiv
-    //   414: f2i
-    //   415: istore_0
-    //   416: goto -165 -> 251
-    //   419: aload_2
-    //   420: invokevirtual 197	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
-    //   423: astore_3
-    //   424: aload_3
-    //   425: ifnonnull +59 -> 484
-    //   428: ldc 48
-    //   430: putstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   433: iconst_0
-    //   434: putstatic 52	com/tencent/token/p:h	I
-    //   437: iconst_0
-    //   438: putstatic 54	com/tencent/token/p:i	Z
-    //   441: ldc 48
-    //   443: putstatic 56	com/tencent/token/p:j	Ljava/lang/String;
-    //   446: aload_1
-    //   447: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   450: invokevirtual 129	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   453: ifne +23 -> 476
-    //   456: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
-    //   459: ifnull +17 -> 476
-    //   462: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
-    //   465: getstatic 52	com/tencent/token/p:h	I
-    //   468: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   471: invokeinterface 132 3 0
-    //   476: iconst_0
-    //   477: putstatic 65	com/tencent/token/p:m	Z
-    //   480: ldc 2
-    //   482: monitorexit
-    //   483: return
-    //   484: aload_3
-    //   485: invokevirtual 200	java/lang/String:trim	()Ljava/lang/String;
-    //   488: invokevirtual 203	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   491: putstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   494: iload_0
-    //   495: ifne +27 -> 522
-    //   498: aload_2
-    //   499: invokevirtual 206	android/net/NetworkInfo:getSubtype	()I
-    //   502: istore_0
-    //   503: iload_0
-    //   504: iconst_1
-    //   505: if_icmpeq +13 -> 518
-    //   508: iload_0
-    //   509: iconst_2
-    //   510: if_icmpeq +8 -> 518
-    //   513: iload_0
-    //   514: iconst_4
-    //   515: if_icmpne +65 -> 580
-    //   518: iconst_2
-    //   519: putstatic 52	com/tencent/token/p:h	I
-    //   522: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   525: getstatic 36	com/tencent/token/p:d	Ljava/lang/String;
-    //   528: invokevirtual 210	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   531: ifeq +106 -> 637
-    //   534: iconst_1
-    //   535: putstatic 54	com/tencent/token/p:i	Z
-    //   538: ldc 212
-    //   540: putstatic 56	com/tencent/token/p:j	Ljava/lang/String;
-    //   543: aload_1
-    //   544: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   547: invokevirtual 129	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   550: ifne +23 -> 573
-    //   553: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
-    //   556: ifnull +17 -> 573
-    //   559: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
-    //   562: getstatic 52	com/tencent/token/p:h	I
-    //   565: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   568: invokeinterface 132 3 0
-    //   573: iconst_0
-    //   574: putstatic 65	com/tencent/token/p:m	Z
-    //   577: goto -190 -> 387
-    //   580: iload_0
-    //   581: bipush 13
-    //   583: if_icmpne +47 -> 630
-    //   586: iconst_4
-    //   587: putstatic 52	com/tencent/token/p:h	I
-    //   590: goto -68 -> 522
-    //   593: astore_2
-    //   594: aload_1
-    //   595: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   598: invokevirtual 129	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   601: ifne +23 -> 624
-    //   604: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
-    //   607: ifnull +17 -> 624
-    //   610: getstatic 108	com/tencent/token/p:k	Lcom/tencent/token/p$a;
-    //   613: getstatic 52	com/tencent/token/p:h	I
-    //   616: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   619: invokeinterface 132 3 0
-    //   624: iconst_0
-    //   625: putstatic 65	com/tencent/token/p:m	Z
-    //   628: aload_2
-    //   629: athrow
-    //   630: iconst_3
-    //   631: putstatic 52	com/tencent/token/p:h	I
-    //   634: goto -112 -> 522
-    //   637: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   640: getstatic 32	com/tencent/token/p:c	Ljava/lang/String;
-    //   643: invokevirtual 210	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   646: ifeq +15 -> 661
-    //   649: iconst_1
-    //   650: putstatic 54	com/tencent/token/p:i	Z
-    //   653: ldc 212
-    //   655: putstatic 56	com/tencent/token/p:j	Ljava/lang/String;
-    //   658: goto -115 -> 543
-    //   661: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   664: getstatic 40	com/tencent/token/p:e	Ljava/lang/String;
-    //   667: invokevirtual 210	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   670: ifeq +15 -> 685
-    //   673: iconst_1
-    //   674: putstatic 54	com/tencent/token/p:i	Z
-    //   677: ldc 212
-    //   679: putstatic 56	com/tencent/token/p:j	Ljava/lang/String;
-    //   682: goto -139 -> 543
-    //   685: getstatic 50	com/tencent/token/p:a	Ljava/lang/String;
-    //   688: getstatic 44	com/tencent/token/p:f	Ljava/lang/String;
-    //   691: invokevirtual 210	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   694: ifeq +15 -> 709
-    //   697: iconst_1
-    //   698: putstatic 54	com/tencent/token/p:i	Z
-    //   701: ldc 214
-    //   703: putstatic 56	com/tencent/token/p:j	Ljava/lang/String;
-    //   706: goto -163 -> 543
-    //   709: iconst_0
-    //   710: putstatic 54	com/tencent/token/p:i	Z
-    //   713: ldc 48
-    //   715: putstatic 56	com/tencent/token/p:j	Ljava/lang/String;
-    //   718: goto -175 -> 543
+    //   101: aload_1
+    //   102: invokevirtual 130	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
+    //   105: astore_1
+    //   106: aload_1
+    //   107: ifnonnull +63 -> 170
+    //   110: ldc 13
+    //   112: putstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   115: iconst_0
+    //   116: putstatic 111	com/tencent/token/p:h	I
+    //   119: iconst_0
+    //   120: putstatic 113	com/tencent/token/p:i	Z
+    //   123: ldc 13
+    //   125: putstatic 115	com/tencent/token/p:j	Ljava/lang/String;
+    //   128: iconst_0
+    //   129: putstatic 117	com/tencent/token/p:g	Z
+    //   132: aload_2
+    //   133: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   136: invokevirtual 123	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   139: ifne +23 -> 162
+    //   142: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   145: ifnull +17 -> 162
+    //   148: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   151: getstatic 111	com/tencent/token/p:h	I
+    //   154: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   157: invokeinterface 126 3 0
+    //   162: iconst_0
+    //   163: putstatic 49	com/tencent/token/p:m	Z
+    //   166: ldc 2
+    //   168: monitorexit
+    //   169: return
+    //   170: aload_1
+    //   171: invokevirtual 136	android/net/NetworkInfo:isConnected	()Z
+    //   174: ifeq +10 -> 184
+    //   177: iconst_1
+    //   178: putstatic 117	com/tencent/token/p:g	Z
+    //   181: goto +7 -> 188
+    //   184: iconst_0
+    //   185: putstatic 117	com/tencent/token/p:g	Z
+    //   188: aload_1
+    //   189: invokevirtual 140	android/net/NetworkInfo:getType	()I
+    //   192: istore_0
+    //   193: iload_0
+    //   194: iconst_1
+    //   195: if_icmpne +140 -> 335
+    //   198: iconst_1
+    //   199: putstatic 111	com/tencent/token/p:h	I
+    //   202: iconst_0
+    //   203: putstatic 113	com/tencent/token/p:i	Z
+    //   206: ldc 13
+    //   208: putstatic 115	com/tencent/token/p:j	Ljava/lang/String;
+    //   211: invokestatic 70	com/tencent/halley/common/f:a	()Landroid/content/Context;
+    //   214: ldc 142
+    //   216: invokevirtual 82	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   219: checkcast 144	android/net/wifi/WifiManager
+    //   222: invokevirtual 148	android/net/wifi/WifiManager:getConnectionInfo	()Landroid/net/wifi/WifiInfo;
+    //   225: astore_1
+    //   226: aload_1
+    //   227: invokevirtual 154	android/net/wifi/WifiInfo:getBSSID	()Ljava/lang/String;
+    //   230: ifnull +25 -> 255
+    //   233: aload_1
+    //   234: invokevirtual 157	android/net/wifi/WifiInfo:getRssi	()I
+    //   237: istore_0
+    //   238: getstatic 162	android/os/Build$VERSION:SDK_INT	I
+    //   241: bipush 14
+    //   243: if_icmplt +463 -> 706
+    //   246: iload_0
+    //   247: iconst_5
+    //   248: invokestatic 166	android/net/wifi/WifiManager:calculateSignalLevel	(II)I
+    //   251: pop
+    //   252: goto +3 -> 255
+    //   255: new 168	java/lang/StringBuilder
+    //   258: dup
+    //   259: ldc 170
+    //   261: invokespecial 171	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   264: astore_3
+    //   265: aload_3
+    //   266: aload_1
+    //   267: invokevirtual 174	android/net/wifi/WifiInfo:getSSID	()Ljava/lang/String;
+    //   270: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   273: pop
+    //   274: aload_3
+    //   275: ldc 180
+    //   277: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   280: pop
+    //   281: aload_3
+    //   282: aload_1
+    //   283: invokevirtual 154	android/net/wifi/WifiInfo:getBSSID	()Ljava/lang/String;
+    //   286: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   289: pop
+    //   290: aload_3
+    //   291: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   294: putstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   297: aload_2
+    //   298: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   301: invokevirtual 123	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   304: ifne +23 -> 327
+    //   307: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   310: ifnull +17 -> 327
+    //   313: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   316: getstatic 111	com/tencent/token/p:h	I
+    //   319: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   322: invokeinterface 126 3 0
+    //   327: iconst_0
+    //   328: putstatic 49	com/tencent/token/p:m	Z
+    //   331: ldc 2
+    //   333: monitorexit
+    //   334: return
+    //   335: aload_1
+    //   336: invokevirtual 186	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   339: astore_3
+    //   340: aload_3
+    //   341: ifnonnull +59 -> 400
+    //   344: ldc 13
+    //   346: putstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   349: iconst_0
+    //   350: putstatic 111	com/tencent/token/p:h	I
+    //   353: iconst_0
+    //   354: putstatic 113	com/tencent/token/p:i	Z
+    //   357: ldc 13
+    //   359: putstatic 115	com/tencent/token/p:j	Ljava/lang/String;
+    //   362: aload_2
+    //   363: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   366: invokevirtual 123	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   369: ifne +23 -> 392
+    //   372: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   375: ifnull +17 -> 392
+    //   378: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   381: getstatic 111	com/tencent/token/p:h	I
+    //   384: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   387: invokeinterface 126 3 0
+    //   392: iconst_0
+    //   393: putstatic 49	com/tencent/token/p:m	Z
+    //   396: ldc 2
+    //   398: monitorexit
+    //   399: return
+    //   400: aload_3
+    //   401: invokevirtual 189	java/lang/String:trim	()Ljava/lang/String;
+    //   404: invokevirtual 192	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   407: putstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   410: iload_0
+    //   411: ifne +50 -> 461
+    //   414: aload_1
+    //   415: invokevirtual 195	android/net/NetworkInfo:getSubtype	()I
+    //   418: istore_0
+    //   419: iload_0
+    //   420: iconst_1
+    //   421: if_icmpeq +36 -> 457
+    //   424: iload_0
+    //   425: iconst_2
+    //   426: if_icmpeq +31 -> 457
+    //   429: iload_0
+    //   430: iconst_4
+    //   431: if_icmpne +6 -> 437
+    //   434: goto +23 -> 457
+    //   437: iload_0
+    //   438: bipush 13
+    //   440: if_icmpne +10 -> 450
+    //   443: iconst_4
+    //   444: putstatic 111	com/tencent/token/p:h	I
+    //   447: goto +14 -> 461
+    //   450: iconst_3
+    //   451: putstatic 111	com/tencent/token/p:h	I
+    //   454: goto +7 -> 461
+    //   457: iconst_2
+    //   458: putstatic 111	com/tencent/token/p:h	I
+    //   461: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   464: getstatic 197	com/tencent/token/p:d	Ljava/lang/String;
+    //   467: invokevirtual 201	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   470: ifeq +17 -> 487
+    //   473: iconst_1
+    //   474: putstatic 113	com/tencent/token/p:i	Z
+    //   477: ldc 203
+    //   479: astore_1
+    //   480: aload_1
+    //   481: putstatic 115	com/tencent/token/p:j	Ljava/lang/String;
+    //   484: goto +79 -> 563
+    //   487: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   490: getstatic 205	com/tencent/token/p:c	Ljava/lang/String;
+    //   493: invokevirtual 201	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   496: ifeq +13 -> 509
+    //   499: iconst_1
+    //   500: putstatic 113	com/tencent/token/p:i	Z
+    //   503: ldc 203
+    //   505: astore_1
+    //   506: goto -26 -> 480
+    //   509: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   512: getstatic 207	com/tencent/token/p:e	Ljava/lang/String;
+    //   515: invokevirtual 201	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   518: ifeq +13 -> 531
+    //   521: iconst_1
+    //   522: putstatic 113	com/tencent/token/p:i	Z
+    //   525: ldc 203
+    //   527: astore_1
+    //   528: goto -48 -> 480
+    //   531: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   534: getstatic 209	com/tencent/token/p:f	Ljava/lang/String;
+    //   537: invokevirtual 201	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   540: ifeq +13 -> 553
+    //   543: iconst_1
+    //   544: putstatic 113	com/tencent/token/p:i	Z
+    //   547: ldc 211
+    //   549: astore_1
+    //   550: goto -70 -> 480
+    //   553: iconst_0
+    //   554: putstatic 113	com/tencent/token/p:i	Z
+    //   557: ldc 13
+    //   559: astore_1
+    //   560: goto -80 -> 480
+    //   563: aload_2
+    //   564: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   567: invokevirtual 123	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   570: ifne +23 -> 593
+    //   573: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   576: ifnull +17 -> 593
+    //   579: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   582: getstatic 111	com/tencent/token/p:h	I
+    //   585: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   588: invokeinterface 126 3 0
+    //   593: iconst_0
+    //   594: putstatic 49	com/tencent/token/p:m	Z
+    //   597: goto +63 -> 660
+    //   600: astore_1
+    //   601: goto +63 -> 664
+    //   604: astore_1
+    //   605: aload_1
+    //   606: invokevirtual 214	java/lang/Throwable:printStackTrace	()V
+    //   609: ldc 13
+    //   611: putstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   614: iconst_0
+    //   615: putstatic 111	com/tencent/token/p:h	I
+    //   618: iconst_0
+    //   619: putstatic 113	com/tencent/token/p:i	Z
+    //   622: ldc 13
+    //   624: putstatic 115	com/tencent/token/p:j	Ljava/lang/String;
+    //   627: aload_2
+    //   628: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   631: invokevirtual 123	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   634: ifne -41 -> 593
+    //   637: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   640: ifnull -47 -> 593
+    //   643: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   646: getstatic 111	com/tencent/token/p:h	I
+    //   649: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   652: invokeinterface 126 3 0
+    //   657: goto -64 -> 593
+    //   660: ldc 2
+    //   662: monitorexit
+    //   663: return
+    //   664: aload_2
+    //   665: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   668: invokevirtual 123	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   671: ifne +23 -> 694
+    //   674: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   677: ifnull +17 -> 694
+    //   680: getstatic 92	com/tencent/token/p:k	Lcom/tencent/token/p$a;
+    //   683: getstatic 111	com/tencent/token/p:h	I
+    //   686: getstatic 105	com/tencent/token/p:a	Ljava/lang/String;
+    //   689: invokeinterface 126 3 0
+    //   694: iconst_0
+    //   695: putstatic 49	com/tencent/token/p:m	Z
+    //   698: aload_1
+    //   699: athrow
+    //   700: astore_1
+    //   701: ldc 2
+    //   703: monitorexit
+    //   704: aload_1
+    //   705: athrow
+    //   706: iload_0
+    //   707: bipush 156
+    //   709: if_icmpgt +6 -> 715
+    //   712: goto -457 -> 255
+    //   715: goto -460 -> 255
     // Local variable table:
     //   start	length	slot	name	signature
-    //   191	393	0	n	int
-    //   24	40	1	str1	String
-    //   101	494	1	localObject1	Object
-    //   36	237	2	localObject2	Object
-    //   330	169	2	localThrowable	java.lang.Throwable
-    //   593	36	2	localObject3	Object
-    //   423	62	3	str2	String
+    //   192	518	0	n	int
+    //   36	524	1	localObject1	Object
+    //   600	1	1	localObject2	Object
+    //   604	95	1	localThrowable	java.lang.Throwable
+    //   700	5	1	localObject3	Object
+    //   24	641	2	str	String
+    //   264	137	3	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   21	25	101	finally
-    //   63	93	101	finally
-    //   93	100	101	finally
-    //   138	168	101	finally
-    //   168	175	101	finally
-    //   285	315	101	finally
-    //   315	322	101	finally
-    //   353	383	101	finally
-    //   383	387	101	finally
-    //   387	390	101	finally
-    //   446	476	101	finally
-    //   476	483	101	finally
-    //   543	573	101	finally
-    //   573	577	101	finally
-    //   594	624	101	finally
-    //   624	630	101	finally
-    //   25	37	330	java/lang/Throwable
-    //   41	63	330	java/lang/Throwable
-    //   107	112	330	java/lang/Throwable
-    //   116	138	330	java/lang/Throwable
-    //   176	187	330	java/lang/Throwable
-    //   187	192	330	java/lang/Throwable
-    //   197	251	330	java/lang/Throwable
-    //   251	285	330	java/lang/Throwable
-    //   323	327	330	java/lang/Throwable
-    //   419	424	330	java/lang/Throwable
-    //   428	446	330	java/lang/Throwable
-    //   484	494	330	java/lang/Throwable
-    //   498	503	330	java/lang/Throwable
-    //   518	522	330	java/lang/Throwable
-    //   522	543	330	java/lang/Throwable
-    //   586	590	330	java/lang/Throwable
-    //   630	634	330	java/lang/Throwable
-    //   637	658	330	java/lang/Throwable
-    //   661	682	330	java/lang/Throwable
-    //   685	706	330	java/lang/Throwable
-    //   709	718	330	java/lang/Throwable
-    //   25	37	593	finally
-    //   41	63	593	finally
-    //   107	112	593	finally
-    //   116	138	593	finally
-    //   176	187	593	finally
-    //   187	192	593	finally
-    //   197	251	593	finally
-    //   251	285	593	finally
-    //   323	327	593	finally
-    //   331	353	593	finally
-    //   419	424	593	finally
-    //   428	446	593	finally
-    //   484	494	593	finally
-    //   498	503	593	finally
-    //   518	522	593	finally
-    //   522	543	593	finally
-    //   586	590	593	finally
-    //   630	634	593	finally
-    //   637	658	593	finally
-    //   661	682	593	finally
-    //   685	706	593	finally
-    //   709	718	593	finally
+    //   25	37	600	finally
+    //   41	63	600	finally
+    //   101	106	600	finally
+    //   110	132	600	finally
+    //   170	181	600	finally
+    //   184	188	600	finally
+    //   188	193	600	finally
+    //   198	252	600	finally
+    //   255	297	600	finally
+    //   335	340	600	finally
+    //   344	362	600	finally
+    //   400	410	600	finally
+    //   414	419	600	finally
+    //   443	447	600	finally
+    //   450	454	600	finally
+    //   457	461	600	finally
+    //   461	477	600	finally
+    //   480	484	600	finally
+    //   487	503	600	finally
+    //   509	525	600	finally
+    //   531	547	600	finally
+    //   553	557	600	finally
+    //   605	627	600	finally
+    //   25	37	604	java/lang/Throwable
+    //   41	63	604	java/lang/Throwable
+    //   101	106	604	java/lang/Throwable
+    //   110	132	604	java/lang/Throwable
+    //   170	181	604	java/lang/Throwable
+    //   184	188	604	java/lang/Throwable
+    //   188	193	604	java/lang/Throwable
+    //   198	252	604	java/lang/Throwable
+    //   255	297	604	java/lang/Throwable
+    //   335	340	604	java/lang/Throwable
+    //   344	362	604	java/lang/Throwable
+    //   400	410	604	java/lang/Throwable
+    //   414	419	604	java/lang/Throwable
+    //   443	447	604	java/lang/Throwable
+    //   450	454	604	java/lang/Throwable
+    //   457	461	604	java/lang/Throwable
+    //   461	477	604	java/lang/Throwable
+    //   480	484	604	java/lang/Throwable
+    //   487	503	604	java/lang/Throwable
+    //   509	525	604	java/lang/Throwable
+    //   531	547	604	java/lang/Throwable
+    //   553	557	604	java/lang/Throwable
+    //   21	25	700	finally
+    //   63	93	700	finally
+    //   93	100	700	finally
+    //   132	162	700	finally
+    //   162	169	700	finally
+    //   297	327	700	finally
+    //   327	334	700	finally
+    //   362	392	700	finally
+    //   392	399	700	finally
+    //   563	593	700	finally
+    //   593	597	700	finally
+    //   627	657	700	finally
+    //   660	663	700	finally
+    //   664	694	700	finally
+    //   694	700	700	finally
   }
   
   public static Proxy c()
@@ -473,20 +475,31 @@ public class p
   
   public static void g()
   {
-    b.b("DownloaderApn", "showApnInfo... Apn:" + a + ",sIsNetworkOk:" + g + ",sNetType:" + h + ",sIsProxy:" + i + ",sProxyAddress:" + j);
+    StringBuilder localStringBuilder = new StringBuilder("showApnInfo... Apn:");
+    localStringBuilder.append(a);
+    localStringBuilder.append(",sIsNetworkOk:");
+    localStringBuilder.append(g);
+    localStringBuilder.append(",sNetType:");
+    localStringBuilder.append(h);
+    localStringBuilder.append(",sIsProxy:");
+    localStringBuilder.append(i);
+    localStringBuilder.append(",sProxyAddress:");
+    localStringBuilder.append(j);
+    b.b("DownloaderApn", localStringBuilder.toString());
   }
   
   public static boolean h()
   {
-    boolean bool = false;
-    if ((h == 2) || (h == 3)) {}
-    for (int n = 1;; n = 0)
-    {
-      if (n != 0) {
-        bool = r.b();
-      }
-      return bool;
+    int n = h;
+    if ((n != 2) && (n != 3)) {
+      n = 0;
+    } else {
+      n = 1;
     }
+    if (n != 0) {
+      return r.b();
+    }
+    return false;
   }
   
   public static abstract interface a

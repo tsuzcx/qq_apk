@@ -38,14 +38,13 @@ public class MMPluginAPIImpl
   
   private Object e(String paramString)
   {
-    Object localObject = null;
     Cursor localCursor = this.q.getContentResolver().query(MMPluginProviderConstants.PluginDB.CONTENT_URI, columns, null, new String[] { paramString }, null);
+    paramString = null;
     if (localCursor == null) {
       return null;
     }
     int i = localCursor.getColumnIndex("type");
     int j = localCursor.getColumnIndex("value");
-    paramString = localObject;
     if (localCursor.moveToFirst()) {
       paramString = MMPluginProviderConstants.Resolver.resolveObj(localCursor.getInt(i), localCursor.getString(j));
     }
@@ -55,7 +54,15 @@ public class MMPluginAPIImpl
   
   public boolean appendNetStat(int paramInt1, int paramInt2, int paramInt3)
   {
-    return Util.nullAsFalse((Boolean)e("plugindb://" + this.am + "/action.appnetstat?recv=" + paramInt1 + "&send=" + paramInt2 + "&type=" + paramInt3));
+    StringBuilder localStringBuilder = new StringBuilder("plugindb://");
+    localStringBuilder.append(this.am);
+    localStringBuilder.append("/action.appnetstat?recv=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("&send=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("&type=");
+    localStringBuilder.append(paramInt3);
+    return Util.nullAsFalse((Boolean)e(localStringBuilder.toString()));
   }
   
   public void createMsgController(String paramString) {}
@@ -77,14 +84,13 @@ public class MMPluginAPIImpl
   
   public Profile getCurrentProfile(String paramString)
   {
-    Object localObject = null;
     Cursor localCursor = this.q.getContentResolver().query(Profile.CONTENT_URI, Profile.columns, null, new String[] { paramString }, null);
+    paramString = null;
     if (localCursor == null)
     {
       Log.e("MicroMsg.SDK.MMPluginMgrImpl", "get current profile failed");
       return null;
     }
-    paramString = localObject;
     if (localCursor.moveToFirst())
     {
       paramString = new Profile();
@@ -96,17 +102,26 @@ public class MMPluginAPIImpl
   
   public String getPluginKey(String paramString)
   {
-    return (String)e("plugindb://" + paramString + "/comm.pluginkey");
+    StringBuilder localStringBuilder = new StringBuilder("plugindb://");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("/comm.pluginkey");
+    return (String)e(localStringBuilder.toString());
   }
   
   public boolean installPlugin(String paramString)
   {
-    return Util.nullAsFalse((Boolean)e("plugindb://" + paramString + "/action.install"));
+    StringBuilder localStringBuilder = new StringBuilder("plugindb://");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("/action.install");
+    return Util.nullAsFalse((Boolean)e(localStringBuilder.toString()));
   }
   
   public boolean isPluginInstalled(String paramString)
   {
-    return Util.nullAsFalse((Boolean)e("plugindb://" + paramString + "/comm.installed"));
+    StringBuilder localStringBuilder = new StringBuilder("plugindb://");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("/comm.installed");
+    return Util.nullAsFalse((Boolean)e(localStringBuilder.toString()));
   }
   
   public void jumpToBindEmail(String paramString)
@@ -136,7 +151,13 @@ public class MMPluginAPIImpl
   
   public boolean registerAutoMsg(String paramString1, String paramString2)
   {
-    return Util.nullAsFalse((Boolean)e("plugindb://" + this.am + "/action.automsg?pluginMsgUsername=" + paramString1 + "&pluginUsername=" + paramString2));
+    StringBuilder localStringBuilder = new StringBuilder("plugindb://");
+    localStringBuilder.append(this.am);
+    localStringBuilder.append("/action.automsg?pluginMsgUsername=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("&pluginUsername=");
+    localStringBuilder.append(paramString2);
+    return Util.nullAsFalse((Boolean)e(localStringBuilder.toString()));
   }
   
   public boolean registerPattern(String paramString1, MMessage.CallBack paramCallBack, String paramString2)
@@ -146,20 +167,26 @@ public class MMPluginAPIImpl
   
   public boolean registerQRCodePattern(String paramString1, MMessage.CallBack paramCallBack, String paramString2)
   {
-    if (this.bF != null) {
-      this.q.unregisterReceiver(this.bF);
+    MMessage.Receiver localReceiver = this.bF;
+    if (localReceiver != null) {
+      this.q.unregisterReceiver(localReceiver);
     }
     this.bF = new MMessage.Receiver(paramCallBack);
     this.q.registerReceiver(this.bF, new IntentFilter("com.tencent.mm.sdk.plugin.Intent.ACTION_QRCODE_SCANNED"));
-    return Util.nullAsFalse((Boolean)e("plugindb://" + paramString1 + "/action.register_qrcode_result?pattern=" + paramString2));
+    paramCallBack = new StringBuilder("plugindb://");
+    paramCallBack.append(paramString1);
+    paramCallBack.append("/action.register_qrcode_result?pattern=");
+    paramCallBack.append(paramString2);
+    return Util.nullAsFalse((Boolean)e(paramCallBack.toString()));
   }
   
   public void release()
   {
     Log.d("MicroMsg.SDK.MMPluginMgrImpl", "release plugin mgr implemetation");
-    if (this.bF != null)
+    MMessage.Receiver localReceiver = this.bF;
+    if (localReceiver != null)
     {
-      this.q.unregisterReceiver(this.bF);
+      this.q.unregisterReceiver(localReceiver);
       Log.d("MicroMsg.SDK.MMPluginMgrImpl", "unregister qrcode scan result receiver");
     }
   }
@@ -169,12 +196,30 @@ public class MMPluginAPIImpl
     if (paramClass == null) {
       return false;
     }
-    return Util.nullAsFalse((Boolean)e("plugindb://" + this.am + "/action.msgnotify?username=" + paramString1 + "&msgContent=" + paramString2 + "&msgType=" + paramInt + "&customNotify=" + paramString3 + "&intentUri=" + Base64.encodeToString(new Intent(this.q, paramClass).toUri(0).getBytes(), false)));
+    StringBuilder localStringBuilder = new StringBuilder("plugindb://");
+    localStringBuilder.append(this.am);
+    localStringBuilder.append("/action.msgnotify?username=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("&msgContent=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("&msgType=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("&customNotify=");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append("&intentUri=");
+    localStringBuilder.append(Base64.encodeToString(new Intent(this.q, paramClass).toUri(0).getBytes(), false));
+    return Util.nullAsFalse((Boolean)e(localStringBuilder.toString()));
   }
   
   public boolean unregisterAutoMsg(String paramString1, String paramString2)
   {
-    return Util.nullAsFalse((Boolean)e("plugindb://" + this.am + "/action.unautomsg?pluginMsgUsername=" + paramString1 + "&pluginUsername=" + paramString2));
+    StringBuilder localStringBuilder = new StringBuilder("plugindb://");
+    localStringBuilder.append(this.am);
+    localStringBuilder.append("/action.unautomsg?pluginMsgUsername=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("&pluginUsername=");
+    localStringBuilder.append(paramString2);
+    return Util.nullAsFalse((Boolean)e(localStringBuilder.toString()));
   }
 }
 

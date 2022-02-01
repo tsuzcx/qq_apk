@@ -28,41 +28,47 @@ public class q
     if (localtlv_t104 == null) {
       localtlv_t104 = new tlv_t104();
     }
-    for (;;)
+    Object localObject2 = localasync_context._t402;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new tlv_t402();
+    }
+    tlv_t403 localtlv_t403 = localasync_context._t403;
+    localObject2 = localtlv_t403;
+    if (localtlv_t403 == null) {
+      localObject2 = new tlv_t403();
+    }
+    localasync_context._dpwd = util.get_mpasswd().getBytes();
+    localasync_context._G = c(t.A, localasync_context._dpwd, ((tlv_t402)localObject1).get_data());
+    if ((((tlv_t402)localObject1).get_data_len() > 0) && (((tlv_t403)localObject2).get_data_len() > 0)) {
+      localasync_context._sec_guid_flag = true;
+    }
+    int k;
+    for (int i = 0;; i = k)
     {
-      Object localObject2 = localasync_context._t402;
-      Object localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new tlv_t402();
+      localObject1 = a(localtlv_t104.get_data(), paramInt1, paramInt2, paramArrayOfLong, localasync_context._G);
+      a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, (byte[])localObject1);
+      k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
+      if (k != 0) {
+        return k;
       }
-      tlv_t403 localtlv_t403 = localasync_context._t403;
-      localObject2 = localtlv_t403;
-      if (localtlv_t403 == null) {
-        localObject2 = new tlv_t403();
+      int m = b();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("retry num:");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(" ret:");
+      ((StringBuilder)localObject1).append(m);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(this.x.f);
+      util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
+      if (m != 180) {
+        return m;
       }
-      localasync_context._dpwd = util.get_mpasswd().getBytes();
-      localasync_context._G = c(t.A, localasync_context._dpwd, ((tlv_t402)localObject1).get_data());
-      if ((((tlv_t402)localObject1).get_data_len() > 0) && (((tlv_t403)localObject2).get_data_len() > 0)) {
-        localasync_context._sec_guid_flag = true;
-      }
-      int i = 0;
-      for (;;)
-      {
-        localObject1 = a(localtlv_t104.get_data(), paramInt1, paramInt2, paramArrayOfLong, localasync_context._G);
-        a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, (byte[])localObject1);
-        int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
-        if (k != 0) {
-          return k;
-        }
-        k = b();
-        util.LOGI("retry num:" + i + " ret:" + k, "" + this.x.f);
-        if (k != 180) {
-          return k;
-        }
-        if (i >= 1) {
-          return k;
-        }
-        i += 1;
+      k = i + 1;
+      if (i >= 1) {
+        return m;
       }
     }
   }
@@ -83,8 +89,7 @@ public class q
     System.arraycopy(paramArrayOfByte1, 0, localObject2, paramInt1, paramArrayOfByte1.length);
     paramInt1 += paramArrayOfByte1.length;
     System.arraycopy(paramArrayOfLong, 0, localObject2, paramInt1, paramArrayOfLong.length);
-    paramInt1 += paramArrayOfLong.length;
-    System.arraycopy(paramArrayOfByte2, 0, localObject2, paramInt1, paramArrayOfByte2.length);
+    System.arraycopy(paramArrayOfByte2, 0, localObject2, paramInt1 + paramArrayOfLong.length, paramArrayOfByte2.length);
     paramInt1 = paramArrayOfByte2.length;
     return b((byte[])localObject2, this.u, 4);
   }

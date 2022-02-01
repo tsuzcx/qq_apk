@@ -29,117 +29,113 @@ public abstract class SharedElementCallback
   {
     int i = paramDrawable.getIntrinsicWidth();
     int j = paramDrawable.getIntrinsicHeight();
-    if ((i <= 0) || (j <= 0)) {
-      return null;
+    if ((i > 0) && (j > 0))
+    {
+      float f = Math.min(1.0F, MAX_IMAGE_SIZE / (i * j));
+      if (((paramDrawable instanceof BitmapDrawable)) && (f == 1.0F)) {
+        return ((BitmapDrawable)paramDrawable).getBitmap();
+      }
+      i = (int)(i * f);
+      j = (int)(j * f);
+      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      Rect localRect = paramDrawable.getBounds();
+      int k = localRect.left;
+      int m = localRect.top;
+      int n = localRect.right;
+      int i1 = localRect.bottom;
+      paramDrawable.setBounds(0, 0, i, j);
+      paramDrawable.draw(localCanvas);
+      paramDrawable.setBounds(k, m, n, i1);
+      return localBitmap;
     }
-    float f = Math.min(1.0F, MAX_IMAGE_SIZE / (i * j));
-    if (((paramDrawable instanceof BitmapDrawable)) && (f == 1.0F)) {
-      return ((BitmapDrawable)paramDrawable).getBitmap();
-    }
-    i = (int)(i * f);
-    j = (int)(j * f);
-    Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(localBitmap);
-    Rect localRect = paramDrawable.getBounds();
-    int k = localRect.left;
-    int m = localRect.top;
-    int n = localRect.right;
-    int i1 = localRect.bottom;
-    paramDrawable.setBounds(0, 0, i, j);
-    paramDrawable.draw(localCanvas);
-    paramDrawable.setBounds(k, m, n, i1);
-    return localBitmap;
+    return null;
   }
   
   public Parcelable onCaptureSharedElementSnapshot(View paramView, Matrix paramMatrix, RectF paramRectF)
   {
-    ImageView localImageView;
-    Object localObject1;
     if ((paramView instanceof ImageView))
     {
-      localImageView = (ImageView)paramView;
-      localObject1 = localImageView.getDrawable();
-      Object localObject2 = localImageView.getBackground();
-      if ((localObject1 != null) && (localObject2 == null))
+      localObject1 = (ImageView)paramView;
+      localObject2 = ((ImageView)localObject1).getDrawable();
+      Drawable localDrawable = ((ImageView)localObject1).getBackground();
+      if ((localObject2 != null) && (localDrawable == null))
       {
-        localObject2 = createDrawableBitmap((Drawable)localObject1);
+        localObject2 = createDrawableBitmap((Drawable)localObject2);
         if (localObject2 != null)
         {
-          localObject1 = new Bundle();
-          ((Bundle)localObject1).putParcelable("sharedElement:snapshot:bitmap", (Parcelable)localObject2);
-          ((Bundle)localObject1).putString("sharedElement:snapshot:imageScaleType", localImageView.getScaleType().toString());
-          if (localImageView.getScaleType() == ImageView.ScaleType.MATRIX)
+          paramView = new Bundle();
+          paramView.putParcelable("sharedElement:snapshot:bitmap", (Parcelable)localObject2);
+          paramView.putString("sharedElement:snapshot:imageScaleType", ((ImageView)localObject1).getScaleType().toString());
+          if (((ImageView)localObject1).getScaleType() == ImageView.ScaleType.MATRIX)
           {
-            paramView = localImageView.getImageMatrix();
-            paramMatrix = new float[9];
-            paramView.getValues(paramMatrix);
-            ((Bundle)localObject1).putFloatArray("sharedElement:snapshot:imageMatrix", paramMatrix);
+            paramMatrix = ((ImageView)localObject1).getImageMatrix();
+            paramRectF = new float[9];
+            paramMatrix.getValues(paramRectF);
+            paramView.putFloatArray("sharedElement:snapshot:imageMatrix", paramRectF);
           }
+          return paramView;
         }
       }
     }
-    do
+    int j = Math.round(paramRectF.width());
+    int i = Math.round(paramRectF.height());
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (j > 0)
     {
-      do
+      localObject1 = localObject2;
+      if (i > 0)
       {
-        return localObject1;
-        j = Math.round(paramRectF.width());
-        i = Math.round(paramRectF.height());
-        localImageView = null;
-        localObject1 = localImageView;
-      } while (j <= 0);
-      localObject1 = localImageView;
-    } while (i <= 0);
-    float f = Math.min(1.0F, MAX_IMAGE_SIZE / (j * i));
-    int j = (int)(j * f);
-    int i = (int)(i * f);
-    if (this.mTempMatrix == null) {
-      this.mTempMatrix = new Matrix();
+        float f = Math.min(1.0F, MAX_IMAGE_SIZE / (j * i));
+        j = (int)(j * f);
+        i = (int)(i * f);
+        if (this.mTempMatrix == null) {
+          this.mTempMatrix = new Matrix();
+        }
+        this.mTempMatrix.set(paramMatrix);
+        this.mTempMatrix.postTranslate(-paramRectF.left, -paramRectF.top);
+        this.mTempMatrix.postScale(f, f);
+        localObject1 = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
+        paramMatrix = new Canvas((Bitmap)localObject1);
+        paramMatrix.concat(this.mTempMatrix);
+        paramView.draw(paramMatrix);
+      }
     }
-    this.mTempMatrix.set(paramMatrix);
-    this.mTempMatrix.postTranslate(-paramRectF.left, -paramRectF.top);
-    this.mTempMatrix.postScale(f, f);
-    paramMatrix = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
-    paramRectF = new Canvas(paramMatrix);
-    paramRectF.concat(this.mTempMatrix);
-    paramView.draw(paramRectF);
-    return paramMatrix;
+    return localObject1;
   }
   
   public View onCreateSnapshotView(Context paramContext, Parcelable paramParcelable)
   {
-    if ((paramParcelable instanceof Bundle))
+    boolean bool = paramParcelable instanceof Bundle;
+    Object localObject = null;
+    if (bool)
     {
       paramParcelable = (Bundle)paramParcelable;
-      Object localObject = (Bitmap)paramParcelable.getParcelable("sharedElement:snapshot:bitmap");
+      localObject = (Bitmap)paramParcelable.getParcelable("sharedElement:snapshot:bitmap");
       if (localObject == null) {
         return null;
       }
       paramContext = new ImageView(paramContext);
       paramContext.setImageBitmap((Bitmap)localObject);
       paramContext.setScaleType(ImageView.ScaleType.valueOf(paramParcelable.getString("sharedElement:snapshot:imageScaleType")));
+      localObject = paramContext;
       if (paramContext.getScaleType() == ImageView.ScaleType.MATRIX)
       {
         paramParcelable = paramParcelable.getFloatArray("sharedElement:snapshot:imageMatrix");
         localObject = new Matrix();
         ((Matrix)localObject).setValues(paramParcelable);
         paramContext.setImageMatrix((Matrix)localObject);
+        return paramContext;
       }
     }
-    for (;;)
+    else if ((paramParcelable instanceof Bitmap))
     {
-      return paramContext;
-      if ((paramParcelable instanceof Bitmap))
-      {
-        paramParcelable = (Bitmap)paramParcelable;
-        paramContext = new ImageView(paramContext);
-        paramContext.setImageBitmap(paramParcelable);
-      }
-      else
-      {
-        paramContext = null;
-      }
+      paramParcelable = (Bitmap)paramParcelable;
+      localObject = new ImageView(paramContext);
+      ((ImageView)localObject).setImageBitmap(paramParcelable);
     }
+    return localObject;
   }
   
   public void onMapSharedElements(List<String> paramList, Map<String, View> paramMap) {}

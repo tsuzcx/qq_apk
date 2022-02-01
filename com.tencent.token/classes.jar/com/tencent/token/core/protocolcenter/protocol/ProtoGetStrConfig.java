@@ -53,8 +53,15 @@ public class ProtoGetStrConfig
       this.a.b(104);
       return null;
     }
-    str = "?aq_base_sid=" + str;
-    return c.e() + "/cn/mbtoken3/mbtoken3_get_key_value_conf_v2" + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c.e());
+    localStringBuilder.append("/cn/mbtoken3/mbtoken3_get_key_value_conf_v2");
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
   
   protected void a(do paramdo) {}
@@ -71,15 +78,18 @@ public class ProtoGetStrConfig
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      dp localdp = new dp();
-      localdp.a = paramJSONObject.toString();
-      RqdApplication.k().a(this, localdp, null);
+      localObject = new dp();
+      ((dp)localObject).a = paramJSONObject.toString();
+      RqdApplication.k().a(this, (dp)localObject, null);
       this.d = paramJSONObject.getJSONObject("data").toString();
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseJSON error decodeData=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    g.c(((StringBuilder)localObject).toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

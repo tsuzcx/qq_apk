@@ -56,14 +56,17 @@ public final class SQueryResult
     paramJceOutputStream.write(this.phonenum, 0);
     paramJceOutputStream.write(this.queryrst, 1);
     paramJceOutputStream.write(this.reportnum, 2);
-    if (this.firsttag != null) {
-      paramJceOutputStream.write(this.firsttag, 3);
+    STagStats localSTagStats = this.firsttag;
+    if (localSTagStats != null) {
+      paramJceOutputStream.write(localSTagStats, 3);
     }
-    if (this.secondtag != null) {
-      paramJceOutputStream.write(this.secondtag, 4);
+    localSTagStats = this.secondtag;
+    if (localSTagStats != null) {
+      paramJceOutputStream.write(localSTagStats, 4);
     }
-    if (this.thirdtag != null) {
-      paramJceOutputStream.write(this.thirdtag, 5);
+    localSTagStats = this.thirdtag;
+    if (localSTagStats != null) {
+      paramJceOutputStream.write(localSTagStats, 5);
     }
     paramJceOutputStream.write(this.confirmtype, 6);
   }

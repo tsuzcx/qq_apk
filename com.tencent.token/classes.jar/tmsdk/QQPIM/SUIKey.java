@@ -32,16 +32,6 @@ public final class SUIKey
   public String uuid = "";
   public String version = "";
   
-  static
-  {
-    if (!SUIKey.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public SUIKey()
   {
     setLc(this.lc);
@@ -99,18 +89,17 @@ public final class SUIKey
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -141,13 +130,96 @@ public final class SUIKey
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (SUIKey)paramObject;
-    } while ((!JceUtil.equals(this.lc, paramObject.lc)) || (!JceUtil.equals(this.name, paramObject.name)) || (!JceUtil.equals(this.version, paramObject.version)) || (!JceUtil.equals(this.imei, paramObject.imei)) || (!JceUtil.equals(this.imsi, paramObject.imsi)) || (!JceUtil.equals(this.qq, paramObject.qq)) || (!JceUtil.equals(this.ip, paramObject.ip)) || (!JceUtil.equals(this.type, paramObject.type)) || (!JceUtil.equals(this.osversion, paramObject.osversion)) || (!JceUtil.equals(this.machineuid, paramObject.machineuid)) || (!JceUtil.equals(this.machineconf, paramObject.machineconf)) || (!JceUtil.equals(this.phone, paramObject.phone)) || (!JceUtil.equals(this.subplatform, paramObject.subplatform)) || (!JceUtil.equals(this.channelid, paramObject.channelid)) || (!JceUtil.equals(this.isbuildin, paramObject.isbuildin)) || (!JceUtil.equals(this.uuid, paramObject.uuid)) || (!JceUtil.equals(this.lang, paramObject.lang)) || (!JceUtil.equals(this.guid, paramObject.guid)) || (!JceUtil.equals(this.sdk, paramObject.sdk)) || (!JceUtil.equals(this.sid, paramObject.sid)) || (!JceUtil.equals(this.newguid, paramObject.newguid)));
-    return true;
+    }
+    paramObject = (SUIKey)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.lc, paramObject.lc))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.name, paramObject.name))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.version, paramObject.version))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.imei, paramObject.imei))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.imsi, paramObject.imsi))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.qq, paramObject.qq))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.ip, paramObject.ip))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.type, paramObject.type))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.osversion, paramObject.osversion))
+                    {
+                      bool1 = bool2;
+                      if (JceUtil.equals(this.machineuid, paramObject.machineuid))
+                      {
+                        bool1 = bool2;
+                        if (JceUtil.equals(this.machineconf, paramObject.machineconf))
+                        {
+                          bool1 = bool2;
+                          if (JceUtil.equals(this.phone, paramObject.phone))
+                          {
+                            bool1 = bool2;
+                            if (JceUtil.equals(this.subplatform, paramObject.subplatform))
+                            {
+                              bool1 = bool2;
+                              if (JceUtil.equals(this.channelid, paramObject.channelid))
+                              {
+                                bool1 = bool2;
+                                if (JceUtil.equals(this.isbuildin, paramObject.isbuildin))
+                                {
+                                  bool1 = bool2;
+                                  if (JceUtil.equals(this.uuid, paramObject.uuid))
+                                  {
+                                    bool1 = bool2;
+                                    if (JceUtil.equals(this.lang, paramObject.lang))
+                                    {
+                                      bool1 = bool2;
+                                      if (JceUtil.equals(this.guid, paramObject.guid))
+                                      {
+                                        bool1 = bool2;
+                                        if (JceUtil.equals(this.sdk, paramObject.sdk))
+                                        {
+                                          bool1 = bool2;
+                                          if (JceUtil.equals(this.sid, paramObject.sid))
+                                          {
+                                            bool1 = bool2;
+                                            if (JceUtil.equals(this.newguid, paramObject.newguid)) {
+                                              bool1 = true;
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -410,45 +482,57 @@ public final class SUIKey
     paramJceOutputStream.write(this.version, 2);
     paramJceOutputStream.write(this.imei, 3);
     paramJceOutputStream.write(this.imsi, 4);
-    if (this.qq != null) {
-      paramJceOutputStream.write(this.qq, 5);
+    String str = this.qq;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.ip != null) {
-      paramJceOutputStream.write(this.ip, 6);
+    str = this.ip;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.type, 7);
-    if (this.osversion != null) {
-      paramJceOutputStream.write(this.osversion, 8);
+    str = this.osversion;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.machineuid != null) {
-      paramJceOutputStream.write(this.machineuid, 9);
+    str = this.machineuid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.machineconf != null) {
-      paramJceOutputStream.write(this.machineconf, 10);
+    str = this.machineconf;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.phone != null) {
-      paramJceOutputStream.write(this.phone, 11);
+    str = this.phone;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
     paramJceOutputStream.write(this.subplatform, 12);
-    if (this.channelid != null) {
-      paramJceOutputStream.write(this.channelid, 13);
+    str = this.channelid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
     paramJceOutputStream.write(this.isbuildin, 14);
-    if (this.uuid != null) {
-      paramJceOutputStream.write(this.uuid, 15);
+    str = this.uuid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 15);
     }
     paramJceOutputStream.write(this.lang, 16);
-    if (this.guid != null) {
-      paramJceOutputStream.write(this.guid, 17);
+    str = this.guid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 17);
     }
-    if (this.sdk != null) {
-      paramJceOutputStream.write(this.sdk, 18);
+    str = this.sdk;
+    if (str != null) {
+      paramJceOutputStream.write(str, 18);
     }
-    if (this.sid != null) {
-      paramJceOutputStream.write(this.sid, 19);
+    str = this.sid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 19);
     }
-    if (this.newguid != null) {
-      paramJceOutputStream.write(this.newguid, 20);
+    str = this.newguid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 20);
     }
   }
 }

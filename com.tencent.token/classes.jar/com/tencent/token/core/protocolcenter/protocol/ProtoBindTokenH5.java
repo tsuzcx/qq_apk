@@ -33,44 +33,62 @@ public class ProtoBindTokenH5
     String str1 = str2;
     try
     {
-      JSONObject localJSONObject = new JSONObject();
+      localObject = new JSONObject();
       str1 = str2;
-      localJSONObject.put("real_uin", this.d);
+      ((JSONObject)localObject).put("real_uin", this.d);
       str1 = str2;
       int i = cb.a + 1;
       str1 = str2;
       cb.a = i;
       str1 = str2;
-      localJSONObject.put("seq_id", i);
+      ((JSONObject)localObject).put("seq_id", i);
       str1 = str2;
-      localJSONObject.put("op_time", cc.c().s() / 1000L);
+      ((JSONObject)localObject).put("op_time", cc.c().s() / 1000L);
       str1 = str2;
-      localJSONObject.put("token_seq", cc.c().k());
+      ((JSONObject)localObject).put("token_seq", cc.c().k());
       str1 = str2;
-      localJSONObject.put("token_code", cc.c().o());
+      ((JSONObject)localObject).put("token_code", cc.c().o());
       str1 = str2;
-      localJSONObject.put("imei", l.b(RqdApplication.l()));
+      ((JSONObject)localObject).put("imei", l.b(RqdApplication.l()));
       str1 = str2;
-      localJSONObject.put("signature", this.e);
+      ((JSONObject)localObject).put("signature", this.e);
       str1 = str2;
-      str2 = localJSONObject.toString();
+      str2 = ((JSONObject)localObject).toString();
       str1 = str2;
-      g.a("plain:" + str2);
+      localObject = new StringBuilder();
+      str1 = str2;
+      ((StringBuilder)localObject).append("plain:");
+      str1 = str2;
+      ((StringBuilder)localObject).append(str2);
+      str1 = str2;
+      g.a(((StringBuilder)localObject).toString());
       str1 = str2;
       str2 = l.b(str2.getBytes());
       str1 = str2;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        g.c("JSONException:" + localException.getMessage());
-      }
+      localException.printStackTrace();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("JSONException:");
+      ((StringBuilder)localObject).append(localException.getMessage());
+      g.c(((StringBuilder)localObject).toString());
     }
-    str1 = "?aq_base_sid=" + str3 + "&data=" + str1;
-    str1 = c.e() + "/cn/mbtoken3/mbtoken3_bind_token_h5" + str1;
-    g.c("url:" + str1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str3);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append(str1);
+    str1 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c.e());
+    localStringBuilder.append("/cn/mbtoken3/mbtoken3_bind_token_h5");
+    localStringBuilder.append(str1);
+    str1 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("url:");
+    localStringBuilder.append(str1);
+    g.c(localStringBuilder.toString());
     return str1;
   }
   
@@ -86,7 +104,13 @@ public class ProtoBindTokenH5
     if (i != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
-      this.a.a(i, "server errcode=" + i + ":" + paramJSONObject, paramJSONObject);
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("server errcode=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      ((e)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
       return;
     }
     paramJSONObject = l.c(paramJSONObject.getString("data"));
@@ -95,11 +119,11 @@ public class ProtoBindTokenH5
       paramJSONObject = new JSONObject(new String(paramJSONObject));
       if (paramJSONObject.getInt("seed_available") == 1)
       {
-        byte[] arrayOfByte = l.d(paramJSONObject.getString("seed"));
-        if (arrayOfByte != null)
+        localObject = l.d(paramJSONObject.getString("seed"));
+        if (localObject != null)
         {
           cc.c().e();
-          cc.c().a(arrayOfByte);
+          cc.c().a((byte[])localObject);
           cc.c().i();
         }
       }
@@ -112,8 +136,11 @@ public class ProtoBindTokenH5
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseJSON error decodeData=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    g.c(((StringBuilder)localObject).toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
 }
 

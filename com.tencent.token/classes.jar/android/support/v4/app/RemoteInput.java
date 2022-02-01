@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Map<Ljava.lang.String;Landroid.net.Uri;>;
 import java.util.Set;
 
 public final class RemoteInput
@@ -46,18 +47,13 @@ public final class RemoteInput
       android.app.RemoteInput.addDataResultToIntent(fromCompat(paramRemoteInput), paramIntent, paramMap);
       return;
     }
-    Intent localIntent;
     if (Build.VERSION.SDK_INT >= 16)
     {
-      localIntent = getClipDataIntentFromIntent(paramIntent);
-      if (localIntent != null) {
-        break label178;
+      Object localObject2 = getClipDataIntentFromIntent(paramIntent);
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new Intent();
       }
-      localIntent = new Intent();
-    }
-    label178:
-    for (;;)
-    {
       Iterator localIterator = paramMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
@@ -66,90 +62,80 @@ public final class RemoteInput
         Uri localUri = (Uri)paramMap.getValue();
         if (str != null)
         {
-          Bundle localBundle = localIntent.getBundleExtra(getExtraResultsKeyForData(str));
-          paramMap = localBundle;
-          if (localBundle == null) {
+          localObject2 = ((Intent)localObject1).getBundleExtra(getExtraResultsKeyForData(str));
+          paramMap = (Map<String, Uri>)localObject2;
+          if (localObject2 == null) {
             paramMap = new Bundle();
           }
           paramMap.putString(paramRemoteInput.getResultKey(), localUri.toString());
-          localIntent.putExtra(getExtraResultsKeyForData(str), paramMap);
+          ((Intent)localObject1).putExtra(getExtraResultsKeyForData(str), paramMap);
         }
       }
-      paramIntent.setClipData(ClipData.newIntent("android.remoteinput.results", localIntent));
-      return;
-      Log.w("RemoteInput", "RemoteInput is only supported from API Level 16");
+      paramIntent.setClipData(ClipData.newIntent("android.remoteinput.results", (Intent)localObject1));
       return;
     }
+    Log.w("RemoteInput", "RemoteInput is only supported from API Level 16");
   }
   
   public static void addResultsToIntent(RemoteInput[] paramArrayOfRemoteInput, Intent paramIntent, Bundle paramBundle)
   {
-    int i = 0;
     if (Build.VERSION.SDK_INT >= 26)
     {
       android.app.RemoteInput.addResultsToIntent(fromCompat(paramArrayOfRemoteInput), paramIntent, paramBundle);
       return;
     }
+    int j = Build.VERSION.SDK_INT;
+    int i = 0;
     Object localObject1;
-    int j;
     Object localObject2;
-    if (Build.VERSION.SDK_INT >= 20)
+    if (j >= 20)
     {
       localObject1 = getResultsFromIntent(paramIntent);
-      if (localObject1 == null) {}
-      for (;;)
+      if (localObject1 != null)
       {
-        j = paramArrayOfRemoteInput.length;
-        i = 0;
-        while (i < j)
-        {
-          localObject1 = paramArrayOfRemoteInput[i];
-          localObject2 = getDataResultsFromIntent(paramIntent, ((RemoteInput)localObject1).getResultKey());
-          android.app.RemoteInput.addResultsToIntent(fromCompat(new RemoteInput[] { localObject1 }), paramIntent, paramBundle);
-          if (localObject2 != null) {
-            addDataResultToIntent((RemoteInput)localObject1, paramIntent, (Map)localObject2);
-          }
-          i += 1;
-        }
-        break;
         ((Bundle)localObject1).putAll(paramBundle);
         paramBundle = (Bundle)localObject1;
+      }
+      j = paramArrayOfRemoteInput.length;
+      i = 0;
+      while (i < j)
+      {
+        localObject1 = paramArrayOfRemoteInput[i];
+        localObject2 = getDataResultsFromIntent(paramIntent, ((RemoteInput)localObject1).getResultKey());
+        android.app.RemoteInput.addResultsToIntent(fromCompat(new RemoteInput[] { localObject1 }), paramIntent, paramBundle);
+        if (localObject2 != null) {
+          addDataResultToIntent((RemoteInput)localObject1, paramIntent, (Map)localObject2);
+        }
+        i += 1;
       }
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
-      localObject1 = getClipDataIntentFromIntent(paramIntent);
-      if (localObject1 != null) {
-        break label257;
-      }
-      localObject1 = new Intent();
-    }
-    label257:
-    for (;;)
-    {
-      localObject2 = ((Intent)localObject1).getBundleExtra("android.remoteinput.resultsData");
+      localObject2 = getClipDataIntentFromIntent(paramIntent);
+      localObject1 = localObject2;
       if (localObject2 == null) {
+        localObject1 = new Intent();
+      }
+      Object localObject3 = ((Intent)localObject1).getBundleExtra("android.remoteinput.resultsData");
+      localObject2 = localObject3;
+      if (localObject3 == null) {
         localObject2 = new Bundle();
       }
-      for (;;)
+      j = paramArrayOfRemoteInput.length;
+      while (i < j)
       {
-        j = paramArrayOfRemoteInput.length;
-        while (i < j)
-        {
-          RemoteInput localRemoteInput = paramArrayOfRemoteInput[i];
-          Object localObject3 = paramBundle.get(localRemoteInput.getResultKey());
-          if ((localObject3 instanceof CharSequence)) {
-            ((Bundle)localObject2).putCharSequence(localRemoteInput.getResultKey(), (CharSequence)localObject3);
-          }
-          i += 1;
+        localObject3 = paramArrayOfRemoteInput[i];
+        Object localObject4 = paramBundle.get(((RemoteInput)localObject3).getResultKey());
+        if ((localObject4 instanceof CharSequence)) {
+          ((Bundle)localObject2).putCharSequence(((RemoteInput)localObject3).getResultKey(), (CharSequence)localObject4);
         }
-        ((Intent)localObject1).putExtra("android.remoteinput.resultsData", (Bundle)localObject2);
-        paramIntent.setClipData(ClipData.newIntent("android.remoteinput.results", (Intent)localObject1));
-        return;
-        Log.w("RemoteInput", "RemoteInput is only supported from API Level 16");
-        return;
+        i += 1;
       }
+      ((Intent)localObject1).putExtra("android.remoteinput.resultsData", (Bundle)localObject2);
+      paramIntent.setClipData(ClipData.newIntent("android.remoteinput.results", (Intent)localObject1));
+      return;
     }
+    Log.w("RemoteInput", "RemoteInput is only supported from API Level 16");
   }
   
   @RequiresApi(20)
@@ -178,54 +164,51 @@ public final class RemoteInput
   private static Intent getClipDataIntentFromIntent(Intent paramIntent)
   {
     paramIntent = paramIntent.getClipData();
-    if (paramIntent == null) {}
-    ClipDescription localClipDescription;
-    do
-    {
+    if (paramIntent == null) {
       return null;
-      localClipDescription = paramIntent.getDescription();
-    } while ((!localClipDescription.hasMimeType("text/vnd.android.intent")) || (!localClipDescription.getLabel().equals("android.remoteinput.results")));
+    }
+    ClipDescription localClipDescription = paramIntent.getDescription();
+    if (!localClipDescription.hasMimeType("text/vnd.android.intent")) {
+      return null;
+    }
+    if (!localClipDescription.getLabel().equals("android.remoteinput.results")) {
+      return null;
+    }
     return paramIntent.getItemAt(0).getIntent();
   }
   
   public static Map<String, Uri> getDataResultsFromIntent(Intent paramIntent, String paramString)
   {
-    Iterator localIterator = null;
     if (Build.VERSION.SDK_INT >= 26) {
-      paramIntent = android.app.RemoteInput.getDataResultsFromIntent(paramIntent, paramString);
+      return android.app.RemoteInput.getDataResultsFromIntent(paramIntent, paramString);
     }
-    Intent localIntent;
-    do
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      return paramIntent;
-      if (Build.VERSION.SDK_INT < 16) {
-        break;
+      paramIntent = getClipDataIntentFromIntent(paramIntent);
+      if (paramIntent == null) {
+        return null;
       }
-      localIntent = getClipDataIntentFromIntent(paramIntent);
-      paramIntent = localIterator;
-    } while (localIntent == null);
-    paramIntent = new HashMap();
-    localIterator = localIntent.getExtras().keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str2 = (String)localIterator.next();
-      if (str2.startsWith("android.remoteinput.dataTypeResultsData"))
+      HashMap localHashMap = new HashMap();
+      Iterator localIterator = paramIntent.getExtras().keySet().iterator();
+      while (localIterator.hasNext())
       {
-        String str1 = str2.substring("android.remoteinput.dataTypeResultsData".length());
-        if (!str1.isEmpty())
+        String str2 = (String)localIterator.next();
+        if (str2.startsWith("android.remoteinput.dataTypeResultsData"))
         {
-          str2 = localIntent.getBundleExtra(str2).getString(paramString);
-          if ((str2 != null) && (!str2.isEmpty())) {
-            paramIntent.put(str1, Uri.parse(str2));
+          String str1 = str2.substring(39);
+          if (!str1.isEmpty())
+          {
+            str2 = paramIntent.getBundleExtra(str2).getString(paramString);
+            if ((str2 != null) && (!str2.isEmpty())) {
+              localHashMap.put(str1, Uri.parse(str2));
+            }
           }
         }
       }
-    }
-    if (paramIntent.isEmpty()) {
-      paramIntent = null;
-    }
-    for (;;)
-    {
+      paramIntent = localHashMap;
+      if (localHashMap.isEmpty()) {
+        paramIntent = null;
+      }
       return paramIntent;
     }
     Log.w("RemoteInput", "RemoteInput is only supported from API Level 16");
@@ -234,26 +217,25 @@ public final class RemoteInput
   
   private static String getExtraResultsKeyForData(String paramString)
   {
-    return "android.remoteinput.dataTypeResultsData" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("android.remoteinput.dataTypeResultsData");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static Bundle getResultsFromIntent(Intent paramIntent)
   {
-    Object localObject = null;
     if (Build.VERSION.SDK_INT >= 20) {
-      paramIntent = android.app.RemoteInput.getResultsFromIntent(paramIntent);
+      return android.app.RemoteInput.getResultsFromIntent(paramIntent);
     }
-    Intent localIntent;
-    do
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      return paramIntent;
-      if (Build.VERSION.SDK_INT < 16) {
-        break;
+      paramIntent = getClipDataIntentFromIntent(paramIntent);
+      if (paramIntent == null) {
+        return null;
       }
-      localIntent = getClipDataIntentFromIntent(paramIntent);
-      paramIntent = localObject;
-    } while (localIntent == null);
-    return (Bundle)localIntent.getExtras().getParcelable("android.remoteinput.resultsData");
+      return (Bundle)paramIntent.getExtras().getParcelable("android.remoteinput.resultsData");
+    }
     Log.w("RemoteInput", "RemoteInput is only supported from API Level 16");
     return null;
   }
@@ -304,10 +286,12 @@ public final class RemoteInput
     
     public Builder(String paramString)
     {
-      if (paramString == null) {
-        throw new IllegalArgumentException("Result key can't be null");
+      if (paramString != null)
+      {
+        this.mResultKey = paramString;
+        return;
       }
-      this.mResultKey = paramString;
+      throw new IllegalArgumentException("Result key can't be null");
     }
     
     public Builder addExtras(Bundle paramBundle)

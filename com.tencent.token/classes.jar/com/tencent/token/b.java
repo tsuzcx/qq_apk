@@ -41,7 +41,11 @@ public class b
       long l = Long.parseLong(paramString);
       return l;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label7:
+      break label7;
+    }
     return 0L;
   }
   
@@ -52,7 +56,11 @@ public class b
       int i = Integer.parseInt(paramString);
       return i;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label7:
+      break label7;
+    }
     return 0;
   }
   
@@ -63,7 +71,11 @@ public class b
       boolean bool = Boolean.parseBoolean(paramString);
       return bool;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label7:
+      break label7;
+    }
     return false;
   }
   
@@ -199,7 +211,11 @@ public class b
       long l = Long.parseLong(str);
       return l;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label16:
+      break label16;
+    }
     return 0L;
   }
   
@@ -216,7 +232,11 @@ public class b
       long l = Long.parseLong(str);
       return l;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label16:
+      break label16;
+    }
     return 0L;
   }
   
@@ -233,7 +253,11 @@ public class b
       int i = Integer.parseInt(str);
       return i;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label16:
+      break label16;
+    }
     return 0;
   }
   
@@ -250,7 +274,11 @@ public class b
       int i = Integer.parseInt(str);
       return i;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label16:
+      break label16;
+    }
     return 0;
   }
   
@@ -262,7 +290,11 @@ public class b
       long l = Long.parseLong(str);
       return l;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label17:
+      break label17;
+    }
     return 0L;
   }
   
@@ -310,7 +342,11 @@ public class b
       int i = Integer.parseInt(str);
       return i;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label17:
+      break label17;
+    }
     return 0;
   }
   

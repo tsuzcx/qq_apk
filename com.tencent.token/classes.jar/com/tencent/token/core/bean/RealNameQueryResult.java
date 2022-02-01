@@ -19,27 +19,29 @@ public class RealNameQueryResult
     try
     {
       this.zzb_rebind_type = paramJSONObject.getInt("zzb_rebind_type");
+    }
+    catch (Exception localException1)
+    {
       try
       {
-        label24:
-        this.mask_mobile = paramJSONObject.getString("mobile_mask");
-        try
+        for (;;)
         {
-          label34:
-          this.sms_port = paramJSONObject.getString("sms_port");
-          this.sms_up_code = paramJSONObject.getString("sms_up_code");
-          return;
+          this.mask_mobile = paramJSONObject.getString("mobile_mask");
+          try
+          {
+            label34:
+            this.sms_port = paramJSONObject.getString("sms_port");
+            this.sms_up_code = paramJSONObject.getString("sms_up_code");
+            return;
+          }
+          catch (Exception paramJSONObject) {}
+          localException1 = localException1;
         }
-        catch (Exception paramJSONObject) {}
       }
-      catch (Exception localException1)
+      catch (Exception localException2)
       {
         break label34;
       }
-    }
-    catch (Exception localException2)
-    {
-      break label24;
     }
   }
   

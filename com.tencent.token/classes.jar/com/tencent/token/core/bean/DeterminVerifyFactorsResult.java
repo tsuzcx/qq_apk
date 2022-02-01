@@ -24,24 +24,42 @@ public class DeterminVerifyFactorsResult
   public static int s_SourceId = 0;
   private static final long serialVersionUID = -233992462595624579L;
   private boolean isAddAccountFlag;
-  private int mCanVerify = 0;
-  private int mHaveMobile = 0;
-  private int mIsZzb = 0;
-  private int mMobileAppear = 0;
-  private String mMobileMask = "";
-  private int mMobileUp = 0;
-  private int mQuesAppear = 0;
-  private List<QuesInfoItem> mQuesInfo = new ArrayList();
-  private String mSMSChannel = "";
-  private String mSMSContent = "";
-  private String mSMSLeftMsg = "";
-  private int mScene = 0;
-  private String mSmsPrefix = "";
-  private List<VerifyTypeItem> mVerifyTypeList = new ArrayList();
+  private int mCanVerify;
+  private int mHaveMobile;
+  private int mIsZzb;
+  private int mMobileAppear;
+  private String mMobileMask;
+  private int mMobileUp;
+  private int mQuesAppear;
+  private List<QuesInfoItem> mQuesInfo;
+  private String mSMSChannel;
+  private String mSMSContent;
+  private String mSMSLeftMsg;
+  private int mScene;
+  private String mSmsPrefix;
+  private List<VerifyTypeItem> mVerifyTypeList;
   
   public DeterminVerifyFactorsResult(JSONObject paramJSONObject)
   {
-    g.a("DeterminVerifyFactorsResult jsonObject=" + paramJSONObject.toString());
+    int j = 0;
+    this.mHaveMobile = 0;
+    this.mCanVerify = 0;
+    this.mScene = 0;
+    this.mMobileMask = "";
+    this.mSMSContent = "";
+    this.mSMSChannel = "";
+    this.mSMSLeftMsg = "";
+    this.mIsZzb = 0;
+    this.mMobileAppear = 0;
+    this.mQuesAppear = 0;
+    this.mMobileUp = 0;
+    this.mSmsPrefix = "";
+    this.mQuesInfo = new ArrayList();
+    this.mVerifyTypeList = new ArrayList();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("DeterminVerifyFactorsResult jsonObject=");
+    ((StringBuilder)localObject).append(paramJSONObject.toString());
+    g.a(((StringBuilder)localObject).toString());
     s_SourceId = 0;
     this.mCanVerify = paramJSONObject.getInt("can_verify");
     this.mScene = paramJSONObject.optInt("scene");
@@ -55,31 +73,32 @@ public class DeterminVerifyFactorsResult
     this.mSMSContent = paramJSONObject.optString("mobile_sms_content");
     this.mSMSChannel = paramJSONObject.optString("mobile_sms_port");
     this.mSMSLeftMsg = paramJSONObject.optString("no_sms_left");
-    Object localObject;
     if (this.mQuesAppear == 1)
     {
       localObject = paramJSONObject.getJSONArray("ques_info");
-      if ((localObject != null) && (((JSONArray)localObject).length() != 0)) {}
-    }
-    for (;;)
-    {
+      if (localObject != null)
+      {
+        if (((JSONArray)localObject).length() == 0) {
+          return;
+        }
+        this.mQuesInfo = new ArrayList();
+        i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          QuesInfoItem localQuesInfoItem = new QuesInfoItem(((JSONArray)localObject).getJSONObject(i));
+          this.mQuesInfo.add(localQuesInfoItem);
+          i += 1;
+        }
+      }
       return;
-      this.mQuesInfo = new ArrayList();
-      int i = 0;
-      while (i < ((JSONArray)localObject).length())
-      {
-        QuesInfoItem localQuesInfoItem = new QuesInfoItem(((JSONArray)localObject).getJSONObject(i));
-        this.mQuesInfo.add(localQuesInfoItem);
-        i += 1;
-      }
-      paramJSONObject = paramJSONObject.getJSONArray("verify_type");
-      i = j;
-      while (i < paramJSONObject.length())
-      {
-        localObject = new VerifyTypeItem(paramJSONObject.getJSONObject(i));
-        this.mVerifyTypeList.add(localObject);
-        i += 1;
-      }
+    }
+    paramJSONObject = paramJSONObject.getJSONArray("verify_type");
+    int i = j;
+    while (i < paramJSONObject.length())
+    {
+      localObject = new VerifyTypeItem(paramJSONObject.getJSONObject(i));
+      this.mVerifyTypeList.add(localObject);
+      i += 1;
     }
   }
   
@@ -217,12 +236,10 @@ public class DeterminVerifyFactorsResult
       paramInt = ((Integer)this.factorPositionMap.get(Integer.valueOf(paramInt))).intValue();
       if (paramInt < this.mVerifyFactorList.size() - 1) {
         paramInt += 1;
-      }
-      for (;;)
-      {
-        return ((Integer)this.mVerifyFactorList.get(paramInt)).intValue();
+      } else {
         paramInt = this.mVerifyFactorList.size() - 1;
       }
+      return ((Integer)this.mVerifyFactorList.get(paramInt)).intValue();
     }
     
     public boolean a(Integer paramInteger)

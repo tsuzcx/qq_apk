@@ -48,8 +48,41 @@ public class cl
     ArrayList localArrayList = new ArrayList();
     Object localObject2 = new ArrayList();
     Object localObject1 = new File("/proc").list();
+    int j;
+    int i;
     Object localObject3;
-    if (localObject1 == null)
+    if (localObject1 != null)
+    {
+      j = localObject1.length;
+      i = 0;
+      while (i < j)
+      {
+        localObject3 = localObject1[i];
+        if (!TextUtils.isEmpty((CharSequence)localObject3)) {}
+        try
+        {
+          int k = ((String)localObject3).charAt(0);
+          if ((k <= 57) && (k >= 48))
+          {
+            localObject3 = cm.b(Integer.parseInt((String)localObject3));
+            if (localObject3 != null) {
+              ((List)localObject2).add(localObject3);
+            }
+          }
+        }
+        catch (Exception localException)
+        {
+          label111:
+          Object localObject4;
+          Object localObject5;
+          Iterator localIterator;
+          String str;
+          break label111;
+        }
+        i += 1;
+      }
+    }
+    else
     {
       localObject3 = new ArrayList();
       j = Process.myPid();
@@ -57,161 +90,129 @@ public class cl
       i = 0;
       while (((Iterator)localObject1).hasNext())
       {
-        localObject5 = (w)((Iterator)localObject1).next();
-        if (j == ((w)localObject5).a) {
-          i = ((w)localObject5).e;
+        localObject4 = (w)((Iterator)localObject1).next();
+        if (j == ((w)localObject4).a) {
+          i = ((w)localObject4).e;
         }
       }
-    }
-    int j = localObject1.length;
-    int i = 0;
-    label101:
-    if (i < j)
-    {
-      localObject3 = localObject1[i];
-      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        break label126;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label101;
-      break;
-      try
+      if (i != 0)
       {
-        label126:
-        int k = ((String)localObject3).charAt(0);
-        if ((k <= 57) && (k >= 48))
+        localObject1 = "";
+        localObject4 = ((List)localObject2).iterator();
+        while (((Iterator)localObject4).hasNext())
         {
-          localObject3 = cm.b(Integer.parseInt((String)localObject3));
-          if (localObject3 != null) {
-            ((List)localObject2).add(localObject3);
+          localObject5 = (w)((Iterator)localObject4).next();
+          if (i == ((w)localObject5).a) {
+            localObject1 = ((w)localObject5).d;
           }
         }
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          localObject4 = new Flat();
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append(da.c);
+          ((StringBuilder)localObject5).append(da.l);
+          ((Flat)localObject4).sc = ((StringBuilder)localObject5).toString();
+          ((Flat)localObject4).tc = ((String)localObject1);
+          ((List)localObject3).add(localObject4);
+        }
       }
-      catch (Exception localException) {}
-    }
-    if (i == 0) {}
-    w localw;
-    Iterator localIterator;
-    String str;
-    for (;;)
-    {
-      localArrayList.addAll(localException);
-      localObject4 = new StringBuilder();
+      localArrayList.addAll((Collection)localObject3);
+      localObject3 = new StringBuilder();
       localObject1 = new ArrayList();
-      localObject5 = ((List)localObject2).iterator();
-      while (((Iterator)localObject5).hasNext())
+      localObject4 = ((List)localObject2).iterator();
+      while (((Iterator)localObject4).hasNext())
       {
-        localw = (w)((Iterator)localObject5).next();
+        localObject5 = (w)((Iterator)localObject4).next();
         localIterator = a.iterator();
         while (localIterator.hasNext())
         {
           str = (String)localIterator.next();
-          if (localw.d.contains(str))
+          if (((w)localObject5).d.contains(str))
           {
-            ((StringBuilder)localObject4).append(localw.d);
-            ((StringBuilder)localObject4).append("_");
+            ((StringBuilder)localObject3).append(((w)localObject5).d);
+            ((StringBuilder)localObject3).append("_");
           }
         }
       }
-      localObject5 = ((List)localObject2).iterator();
-      localObject1 = "";
-      while (((Iterator)localObject5).hasNext())
+      localObject3 = ((StringBuilder)localObject3).toString();
+      if (!TextUtils.isEmpty((CharSequence)localObject3))
       {
-        localw = (w)((Iterator)localObject5).next();
-        if (i == localw.a) {
-          localObject1 = localw.d;
-        }
+        localObject4 = new Flat();
+        localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append(da.c);
+        ((StringBuilder)localObject5).append(da.h);
+        ((Flat)localObject4).sc = ((StringBuilder)localObject5).toString();
+        ((Flat)localObject4).tc = ((String)localObject3).substring(0, ((String)localObject3).length() - 1);
+        ((List)localObject1).add(localObject4);
       }
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      localArrayList.addAll((Collection)localObject1);
+      localObject1 = new ArrayList();
+      localObject3 = new StringBuilder();
+      localObject4 = new HashSet();
+      localObject2 = ((List)localObject2).iterator();
+      i = 0;
+      while (((Iterator)localObject2).hasNext())
       {
-        localObject5 = new Flat();
-        ((Flat)localObject5).sc = (da.c + da.l);
-        ((Flat)localObject5).tc = ((String)localObject1);
-        ((List)localObject4).add(localObject5);
-      }
-    }
-    Object localObject4 = ((StringBuilder)localObject4).toString();
-    if (!TextUtils.isEmpty((CharSequence)localObject4))
-    {
-      localObject5 = new Flat();
-      ((Flat)localObject5).sc = (da.c + da.h);
-      ((Flat)localObject5).tc = ((String)localObject4).substring(0, ((String)localObject4).length() - 1);
-      ((List)localObject1).add(localObject5);
-    }
-    localArrayList.addAll((Collection)localObject1);
-    localObject1 = new ArrayList();
-    localObject4 = new StringBuilder();
-    Object localObject5 = new HashSet();
-    localObject2 = ((List)localObject2).iterator();
-    i = 0;
-    label974:
-    label979:
-    for (;;)
-    {
-      if (((Iterator)localObject2).hasNext())
-      {
-        localw = (w)((Iterator)localObject2).next();
-        if ((localw.c == 0) && (localw.d.startsWith("/")) && (!localw.d.startsWith("/system")) && (!localw.d.startsWith("/dev")) && (!localw.d.startsWith("/sbin")) && (!localw.d.startsWith("/init")) && (!localw.d.startsWith("/vendor")) && (!localw.d.startsWith("/bin")) && (!localw.d.startsWith("/usr")) && (!localw.d.contains("kinguser")) && (!localw.d.endsWith("so")))
+        localObject5 = (w)((Iterator)localObject2).next();
+        if ((((w)localObject5).c == 0) && (((w)localObject5).d.startsWith("/")) && (!((w)localObject5).d.startsWith("/system")) && (!((w)localObject5).d.startsWith("/dev")) && (!((w)localObject5).d.startsWith("/sbin")) && (!((w)localObject5).d.startsWith("/init")) && (!((w)localObject5).d.startsWith("/vendor")) && (!((w)localObject5).d.startsWith("/bin")) && (!((w)localObject5).d.startsWith("/usr")) && (!((w)localObject5).d.contains("kinguser")) && (!((w)localObject5).d.endsWith("so")))
         {
           localIterator = a.iterator();
-          do
+          while (localIterator.hasNext())
           {
-            if (!localIterator.hasNext()) {
-              break;
-            }
             str = (String)localIterator.next();
-          } while (!localw.d.contains(str));
-        }
-      }
-      else
-      {
-        for (j = 1;; j = 0)
-        {
-          if (j != 0) {
-            break label979;
-          }
-          localIterator = c.iterator();
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            str = (String)localIterator.next();
-          } while (!localw.d.contains(str));
-          for (j = 1;; j = 0)
-          {
-            if (j != 0) {
-              break label974;
-            }
-            ((Set)localObject5).add(localw.d);
-            if (i >= 8)
+            if (((w)localObject5).d.contains(str))
             {
-              if (((Set)localObject5).size() > 0)
-              {
-                localObject2 = ((Set)localObject5).iterator();
-                while (((Iterator)localObject2).hasNext())
-                {
-                  ((StringBuilder)localObject4).append((String)((Iterator)localObject2).next());
-                  ((StringBuilder)localObject4).append("_");
-                }
-                localObject2 = ((StringBuilder)localObject4).toString();
-                localObject4 = new Flat();
-                ((Flat)localObject4).sc = (da.c + da.i);
-                ((Flat)localObject4).tc = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
-                ((List)localObject1).add(localObject4);
-              }
-              localArrayList.addAll((Collection)localObject1);
-              return localArrayList;
+              j = 1;
+              break label814;
             }
-            i += 1;
-            break;
           }
-          break;
+          j = 0;
+          label814:
+          if (j == 0)
+          {
+            localIterator = c.iterator();
+            while (localIterator.hasNext())
+            {
+              str = (String)localIterator.next();
+              if (((w)localObject5).d.contains(str))
+              {
+                j = 1;
+                break label873;
+              }
+            }
+            j = 0;
+            label873:
+            if (j == 0)
+            {
+              ((Set)localObject4).add(((w)localObject5).d);
+              if (i >= 8) {
+                break;
+              }
+              i += 1;
+            }
+          }
         }
       }
+      if (((Set)localObject4).size() > 0)
+      {
+        localObject2 = ((Set)localObject4).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          ((StringBuilder)localObject3).append((String)((Iterator)localObject2).next());
+          ((StringBuilder)localObject3).append("_");
+        }
+        localObject2 = ((StringBuilder)localObject3).toString();
+        localObject3 = new Flat();
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(da.c);
+        ((StringBuilder)localObject4).append(da.i);
+        ((Flat)localObject3).sc = ((StringBuilder)localObject4).toString();
+        ((Flat)localObject3).tc = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
+        ((List)localObject1).add(localObject3);
+      }
+      localArrayList.addAll((Collection)localObject1);
+      return localArrayList;
     }
   }
 }

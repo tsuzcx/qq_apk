@@ -68,13 +68,13 @@ final class FragmentManagerImpl
   public static final int ANIM_STYLE_OPEN_EXIT = 2;
   static boolean DEBUG = false;
   static final Interpolator DECELERATE_CUBIC;
-  static final Interpolator DECELERATE_QUINT;
+  static final Interpolator DECELERATE_QUINT = new DecelerateInterpolator(2.5F);
   static final String TAG = "FragmentManager";
   static final String TARGET_REQUEST_CODE_STATE_TAG = "android:target_req_state";
   static final String TARGET_STATE_TAG = "android:target_state";
   static final String USER_VISIBLE_HINT_TAG = "android:user_visible_hint";
   static final String VIEW_STATE_TAG = "android:view_state";
-  static Field sAnimationListenerField = null;
+  static Field sAnimationListenerField;
   SparseArray<Fragment> mActive;
   final ArrayList<Fragment> mAdded = new ArrayList();
   ArrayList<Integer> mAvailBackStackIndices;
@@ -114,32 +114,30 @@ final class FragmentManagerImpl
   
   static
   {
-    DECELERATE_QUINT = new DecelerateInterpolator(2.5F);
     DECELERATE_CUBIC = new DecelerateInterpolator(1.5F);
     ACCELERATE_QUINT = new AccelerateInterpolator(2.5F);
   }
   
   private void addAddedFragments(ArraySet<Fragment> paramArraySet)
   {
-    if (this.mCurState < 1) {}
-    for (;;)
-    {
+    int i = this.mCurState;
+    if (i < 1) {
       return;
-      int j = Math.min(this.mCurState, 4);
-      int k = this.mAdded.size();
-      int i = 0;
-      while (i < k)
+    }
+    int j = Math.min(i, 4);
+    int k = this.mAdded.size();
+    i = 0;
+    while (i < k)
+    {
+      Fragment localFragment = (Fragment)this.mAdded.get(i);
+      if (localFragment.mState < j)
       {
-        Fragment localFragment = (Fragment)this.mAdded.get(i);
-        if (localFragment.mState < j)
-        {
-          moveToState(localFragment, j, localFragment.getNextAnim(), localFragment.getNextTransition(), false);
-          if ((localFragment.mView != null) && (!localFragment.mHidden) && (localFragment.mIsNewlyAdded)) {
-            paramArraySet.add(localFragment);
-          }
+        moveToState(localFragment, j, localFragment.getNextAnim(), localFragment.getNextTransition(), false);
+        if ((localFragment.mView != null) && (!localFragment.mHidden) && (localFragment.mIsNewlyAdded)) {
+          paramArraySet.add(localFragment);
         }
-        i += 1;
       }
+      i += 1;
     }
   }
   
@@ -184,8 +182,11 @@ final class FragmentManagerImpl
         localViewGroup.endViewTransition(localView);
         paramAnonymousAnimator = paramFragment.getAnimator();
         paramFragment.setAnimator(null);
-        if ((paramAnonymousAnimator != null) && (localViewGroup.indexOfChild(localView) < 0)) {
-          FragmentManagerImpl.this.moveToState(paramFragment, paramFragment.getStateAfterAnimating(), 0, 0, false);
+        if ((paramAnonymousAnimator != null) && (localViewGroup.indexOfChild(localView) < 0))
+        {
+          paramAnonymousAnimator = FragmentManagerImpl.this;
+          Fragment localFragment = paramFragment;
+          paramAnonymousAnimator.moveToState(localFragment, localFragment.getStateAfterAnimating(), 0, 0, false);
         }
       }
     });
@@ -196,13 +197,16 @@ final class FragmentManagerImpl
   
   private void burpActive()
   {
-    if (this.mActive != null)
+    SparseArray localSparseArray = this.mActive;
+    if (localSparseArray != null)
     {
-      int i = this.mActive.size() - 1;
+      int i = localSparseArray.size() - 1;
       while (i >= 0)
       {
-        if (this.mActive.valueAt(i) == null) {
-          this.mActive.delete(this.mActive.keyAt(i));
+        if (this.mActive.valueAt(i) == null)
+        {
+          localSparseArray = this.mActive;
+          localSparseArray.delete(localSparseArray.keyAt(i));
         }
         i -= 1;
       }
@@ -211,12 +215,17 @@ final class FragmentManagerImpl
   
   private void checkStateLoss()
   {
-    if (isStateSaved()) {
-      throw new IllegalStateException("Can not perform this action after onSaveInstanceState");
+    if (!isStateSaved())
+    {
+      if (this.mNoTransactionsBecause == null) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Can not perform this action inside of ");
+      localStringBuilder.append(this.mNoTransactionsBecause);
+      throw new IllegalStateException(localStringBuilder.toString());
     }
-    if (this.mNoTransactionsBecause != null) {
-      throw new IllegalStateException("Can not perform this action inside of " + this.mNoTransactionsBecause);
-    }
+    throw new IllegalStateException("Can not perform this action after onSaveInstanceState");
   }
   
   private void cleanupExec()
@@ -228,51 +237,46 @@ final class FragmentManagerImpl
   
   private void completeExecute(BackStackRecord paramBackStackRecord, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    Object localObject;
-    int i;
-    if (paramBoolean1)
-    {
+    if (paramBoolean1) {
       paramBackStackRecord.executePopOps(paramBoolean3);
-      localObject = new ArrayList(1);
-      ArrayList localArrayList = new ArrayList(1);
-      ((ArrayList)localObject).add(paramBackStackRecord);
-      localArrayList.add(Boolean.valueOf(paramBoolean1));
-      if (paramBoolean2) {
-        FragmentTransition.startTransitions(this, (ArrayList)localObject, localArrayList, 0, 1, true);
-      }
-      if (paramBoolean3) {
-        moveToState(this.mCurState, true);
-      }
-      if (this.mActive == null) {
-        return;
-      }
-      int j = this.mActive.size();
-      i = 0;
-      label95:
-      if (i >= j) {
-        return;
-      }
-      localObject = (Fragment)this.mActive.valueAt(i);
-      if ((localObject != null) && (((Fragment)localObject).mView != null) && (((Fragment)localObject).mIsNewlyAdded) && (paramBackStackRecord.interactsWith(((Fragment)localObject).mContainerId)))
-      {
-        if (((Fragment)localObject).mPostponedAlpha > 0.0F) {
-          ((Fragment)localObject).mView.setAlpha(((Fragment)localObject).mPostponedAlpha);
-        }
-        if (!paramBoolean3) {
-          break label199;
-        }
-        ((Fragment)localObject).mPostponedAlpha = 0.0F;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label95;
+    } else {
       paramBackStackRecord.executeOps();
-      break;
-      label199:
-      ((Fragment)localObject).mPostponedAlpha = -1.0F;
-      ((Fragment)localObject).mIsNewlyAdded = false;
+    }
+    Object localObject = new ArrayList(1);
+    ArrayList localArrayList = new ArrayList(1);
+    ((ArrayList)localObject).add(paramBackStackRecord);
+    localArrayList.add(Boolean.valueOf(paramBoolean1));
+    if (paramBoolean2) {
+      FragmentTransition.startTransitions(this, (ArrayList)localObject, localArrayList, 0, 1, true);
+    }
+    if (paramBoolean3) {
+      moveToState(this.mCurState, true);
+    }
+    localObject = this.mActive;
+    if (localObject != null)
+    {
+      int j = ((SparseArray)localObject).size();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (Fragment)this.mActive.valueAt(i);
+        if ((localObject != null) && (((Fragment)localObject).mView != null) && (((Fragment)localObject).mIsNewlyAdded) && (paramBackStackRecord.interactsWith(((Fragment)localObject).mContainerId)))
+        {
+          if (((Fragment)localObject).mPostponedAlpha > 0.0F) {
+            ((Fragment)localObject).mView.setAlpha(((Fragment)localObject).mPostponedAlpha);
+          }
+          if (paramBoolean3)
+          {
+            ((Fragment)localObject).mPostponedAlpha = 0.0F;
+          }
+          else
+          {
+            ((Fragment)localObject).mPostponedAlpha = -1.0F;
+            ((Fragment)localObject).mIsNewlyAdded = false;
+          }
+        }
+        i += 1;
+      }
     }
   }
   
@@ -294,146 +298,127 @@ final class FragmentManagerImpl
   
   private void endAnimatingAwayFragments()
   {
+    Object localObject = this.mActive;
+    int j = 0;
     int i;
-    int j;
-    label11:
-    Fragment localFragment;
-    if (this.mActive == null)
-    {
+    if (localObject == null) {
       i = 0;
-      j = 0;
-      if (j >= i) {
-        return;
-      }
-      localFragment = (Fragment)this.mActive.valueAt(j);
-      if (localFragment != null)
-      {
-        if (localFragment.getAnimatingAway() == null) {
-          break label111;
-        }
-        int k = localFragment.getStateAfterAnimating();
-        View localView = localFragment.getAnimatingAway();
-        Animation localAnimation = localView.getAnimation();
-        if (localAnimation != null)
-        {
-          localAnimation.cancel();
-          localView.clearAnimation();
-        }
-        localFragment.setAnimatingAway(null);
-        moveToState(localFragment, k, 0, 0, false);
-      }
+    } else {
+      i = ((SparseArray)localObject).size();
     }
-    for (;;)
+    while (j < i)
     {
-      j += 1;
-      break label11;
-      i = this.mActive.size();
-      break;
-      label111:
-      if (localFragment.getAnimator() != null) {
-        localFragment.getAnimator().end();
+      localObject = (Fragment)this.mActive.valueAt(j);
+      if (localObject != null) {
+        if (((Fragment)localObject).getAnimatingAway() != null)
+        {
+          int k = ((Fragment)localObject).getStateAfterAnimating();
+          View localView = ((Fragment)localObject).getAnimatingAway();
+          Animation localAnimation = localView.getAnimation();
+          if (localAnimation != null)
+          {
+            localAnimation.cancel();
+            localView.clearAnimation();
+          }
+          ((Fragment)localObject).setAnimatingAway(null);
+          moveToState((Fragment)localObject, k, 0, 0, false);
+        }
+        else if (((Fragment)localObject).getAnimator() != null)
+        {
+          ((Fragment)localObject).getAnimator().end();
+        }
       }
+      j += 1;
     }
   }
   
   private void ensureExecReady(boolean paramBoolean)
   {
-    if (this.mExecutingActions) {
-      throw new IllegalStateException("FragmentManager is already executing transactions");
-    }
-    if (this.mHost == null) {
+    if (!this.mExecutingActions)
+    {
+      if (this.mHost != null)
+      {
+        if (Looper.myLooper() == this.mHost.getHandler().getLooper())
+        {
+          if (!paramBoolean) {
+            checkStateLoss();
+          }
+          if (this.mTmpRecords == null)
+          {
+            this.mTmpRecords = new ArrayList();
+            this.mTmpIsPop = new ArrayList();
+          }
+          this.mExecutingActions = true;
+          try
+          {
+            executePostponedTransaction(null, null);
+            return;
+          }
+          finally
+          {
+            this.mExecutingActions = false;
+          }
+        }
+        throw new IllegalStateException("Must be called from main thread of fragment host");
+      }
       throw new IllegalStateException("Fragment host has been destroyed");
     }
-    if (Looper.myLooper() != this.mHost.getHandler().getLooper()) {
-      throw new IllegalStateException("Must be called from main thread of fragment host");
-    }
-    if (!paramBoolean) {
-      checkStateLoss();
-    }
-    if (this.mTmpRecords == null)
-    {
-      this.mTmpRecords = new ArrayList();
-      this.mTmpIsPop = new ArrayList();
-    }
-    this.mExecutingActions = true;
-    try
-    {
-      executePostponedTransaction(null, null);
-      return;
-    }
-    finally
-    {
-      this.mExecutingActions = false;
-    }
+    throw new IllegalStateException("FragmentManager is already executing transactions");
   }
   
   private static void executeOps(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1, int paramInt1, int paramInt2)
   {
-    if (paramInt1 < paramInt2)
+    while (paramInt1 < paramInt2)
     {
       BackStackRecord localBackStackRecord = (BackStackRecord)paramArrayList.get(paramInt1);
-      boolean bool;
-      if (((Boolean)paramArrayList1.get(paramInt1)).booleanValue())
+      boolean bool2 = ((Boolean)paramArrayList1.get(paramInt1)).booleanValue();
+      boolean bool1 = true;
+      if (bool2)
       {
         localBackStackRecord.bumpBackStackNesting(-1);
-        if (paramInt1 == paramInt2 - 1)
-        {
-          bool = true;
-          label45:
-          localBackStackRecord.executePopOps(bool);
+        if (paramInt1 != paramInt2 - 1) {
+          bool1 = false;
         }
+        localBackStackRecord.executePopOps(bool1);
       }
-      for (;;)
+      else
       {
-        paramInt1 += 1;
-        break;
-        bool = false;
-        break label45;
         localBackStackRecord.bumpBackStackNesting(1);
         localBackStackRecord.executeOps();
       }
+      paramInt1 += 1;
     }
   }
   
   private void executeOpsTogether(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1, int paramInt1, int paramInt2)
   {
-    boolean bool = ((BackStackRecord)paramArrayList.get(paramInt1)).mReorderingAllowed;
-    Object localObject;
-    int j;
-    label55:
-    BackStackRecord localBackStackRecord;
-    if (this.mTmpAddedFragments == null)
-    {
+    int i = paramInt1;
+    boolean bool = ((BackStackRecord)paramArrayList.get(i)).mReorderingAllowed;
+    Object localObject = this.mTmpAddedFragments;
+    if (localObject == null) {
       this.mTmpAddedFragments = new ArrayList();
-      this.mTmpAddedFragments.addAll(this.mAdded);
-      localObject = getPrimaryNavigationFragment();
-      j = paramInt1;
-      i = 0;
-      if (j >= paramInt2) {
-        break label158;
-      }
-      localBackStackRecord = (BackStackRecord)paramArrayList.get(j);
-      if (((Boolean)paramArrayList1.get(j)).booleanValue()) {
-        break label136;
-      }
-      localObject = localBackStackRecord.expandOps(this.mTmpAddedFragments, (Fragment)localObject);
-      label101:
-      if ((i == 0) && (!localBackStackRecord.mAddToBackStack)) {
-        break label152;
-      }
+    } else {
+      ((ArrayList)localObject).clear();
     }
-    label136:
-    label152:
-    for (int i = 1;; i = 0)
+    this.mTmpAddedFragments.addAll(this.mAdded);
+    localObject = getPrimaryNavigationFragment();
+    int k = i;
+    int j = 0;
+    while (k < paramInt2)
     {
-      j += 1;
-      break label55;
-      this.mTmpAddedFragments.clear();
-      break;
-      localObject = localBackStackRecord.trackAddedFragmentsInPop(this.mTmpAddedFragments, (Fragment)localObject);
-      break label101;
+      BackStackRecord localBackStackRecord = (BackStackRecord)paramArrayList.get(k);
+      if (!((Boolean)paramArrayList1.get(k)).booleanValue()) {
+        localObject = localBackStackRecord.expandOps(this.mTmpAddedFragments, (Fragment)localObject);
+      } else {
+        localObject = localBackStackRecord.trackAddedFragmentsInPop(this.mTmpAddedFragments, (Fragment)localObject);
+      }
+      if ((j == 0) && (!localBackStackRecord.mAddToBackStack)) {
+        j = 0;
+      } else {
+        j = 1;
+      }
+      k += 1;
     }
-    label158:
     this.mTmpAddedFragments.clear();
     if (!bool) {
       FragmentTransition.startTransitions(this, paramArrayList, paramArrayList1, paramInt1, paramInt2, false);
@@ -443,133 +428,119 @@ final class FragmentManagerImpl
     {
       localObject = new ArraySet();
       addAddedFragments((ArraySet)localObject);
-      j = postponePostponableTransactions(paramArrayList, paramArrayList1, paramInt1, paramInt2, (ArraySet)localObject);
+      k = postponePostponableTransactions(paramArrayList, paramArrayList1, paramInt1, paramInt2, (ArraySet)localObject);
       makeRemovedFragmentsInvisible((ArraySet)localObject);
     }
-    for (;;)
+    else
     {
-      int k = paramInt1;
-      if (j != paramInt1)
+      k = paramInt2;
+    }
+    int m = i;
+    if (k != i)
+    {
+      m = i;
+      if (bool)
       {
-        k = paramInt1;
-        if (bool)
-        {
-          FragmentTransition.startTransitions(this, paramArrayList, paramArrayList1, paramInt1, j, true);
-          moveToState(this.mCurState, true);
-          k = paramInt1;
-        }
+        FragmentTransition.startTransitions(this, paramArrayList, paramArrayList1, paramInt1, k, true);
+        moveToState(this.mCurState, true);
+        m = i;
       }
-      while (k < paramInt2)
+    }
+    while (m < paramInt2)
+    {
+      localObject = (BackStackRecord)paramArrayList.get(m);
+      if ((((Boolean)paramArrayList1.get(m)).booleanValue()) && (((BackStackRecord)localObject).mIndex >= 0))
       {
-        localObject = (BackStackRecord)paramArrayList.get(k);
-        if ((((Boolean)paramArrayList1.get(k)).booleanValue()) && (((BackStackRecord)localObject).mIndex >= 0))
-        {
-          freeBackStackIndex(((BackStackRecord)localObject).mIndex);
-          ((BackStackRecord)localObject).mIndex = -1;
-        }
-        ((BackStackRecord)localObject).runOnCommitRunnables();
-        k += 1;
+        freeBackStackIndex(((BackStackRecord)localObject).mIndex);
+        ((BackStackRecord)localObject).mIndex = -1;
       }
-      if (i != 0) {
-        reportBackStackChanged();
-      }
-      return;
-      j = paramInt2;
+      ((BackStackRecord)localObject).runOnCommitRunnables();
+      m += 1;
+    }
+    if (j != 0) {
+      reportBackStackChanged();
     }
   }
   
   private void executePostponedTransaction(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1)
   {
-    int i;
-    int j;
-    label12:
-    StartEnterTransitionListener localStartEnterTransitionListener;
-    int k;
-    if (this.mPostponedTransactions == null)
-    {
+    Object localObject = this.mPostponedTransactions;
+    if (localObject == null) {
       i = 0;
-      j = 0;
-      if (j >= i) {
-        return;
-      }
-      localStartEnterTransitionListener = (StartEnterTransitionListener)this.mPostponedTransactions.get(j);
-      if ((paramArrayList == null) || (localStartEnterTransitionListener.mIsBack)) {
-        break label101;
-      }
-      k = paramArrayList.indexOf(localStartEnterTransitionListener.mRecord);
-      if ((k == -1) || (!((Boolean)paramArrayList1.get(k)).booleanValue())) {
-        break label101;
-      }
-      localStartEnterTransitionListener.cancelTransaction();
+    } else {
+      i = ((ArrayList)localObject).size();
     }
-    for (;;)
+    int k = 0;
+    int j = i;
+    int i = k;
+    while (i < j)
     {
-      j += 1;
-      break label12;
-      i = this.mPostponedTransactions.size();
-      break;
-      label101:
+      localObject = (StartEnterTransitionListener)this.mPostponedTransactions.get(i);
       int m;
-      if (!localStartEnterTransitionListener.isReady())
+      if ((paramArrayList != null) && (!((StartEnterTransitionListener)localObject).mIsBack))
       {
-        m = j;
-        k = i;
+        k = paramArrayList.indexOf(((StartEnterTransitionListener)localObject).mRecord);
+        if ((k != -1) && (((Boolean)paramArrayList1.get(k)).booleanValue()))
+        {
+          ((StartEnterTransitionListener)localObject).cancelTransaction();
+          m = i;
+          k = j;
+          break label226;
+        }
+      }
+      if (!((StartEnterTransitionListener)localObject).isReady())
+      {
+        m = i;
+        k = j;
         if (paramArrayList != null)
         {
-          m = j;
-          k = i;
-          if (!localStartEnterTransitionListener.mRecord.interactsWith(paramArrayList, 0, paramArrayList.size())) {}
+          m = i;
+          k = j;
+          if (!((StartEnterTransitionListener)localObject).mRecord.interactsWith(paramArrayList, 0, paramArrayList.size())) {}
         }
       }
       else
       {
-        this.mPostponedTransactions.remove(j);
-        m = j - 1;
-        k = i - 1;
-        if ((paramArrayList != null) && (!localStartEnterTransitionListener.mIsBack))
+        this.mPostponedTransactions.remove(i);
+        m = i - 1;
+        k = j - 1;
+        if ((paramArrayList != null) && (!((StartEnterTransitionListener)localObject).mIsBack))
         {
-          i = paramArrayList.indexOf(localStartEnterTransitionListener.mRecord);
+          i = paramArrayList.indexOf(((StartEnterTransitionListener)localObject).mRecord);
           if ((i != -1) && (((Boolean)paramArrayList1.get(i)).booleanValue()))
           {
-            localStartEnterTransitionListener.cancelTransaction();
-            j = m;
-            i = k;
-            continue;
+            ((StartEnterTransitionListener)localObject).cancelTransaction();
+            break label226;
           }
         }
-        localStartEnterTransitionListener.completeTransaction();
+        ((StartEnterTransitionListener)localObject).completeTransaction();
       }
-      j = m;
-      i = k;
+      label226:
+      i = m + 1;
+      j = k;
     }
   }
   
   private Fragment findFragmentUnder(Fragment paramFragment)
   {
     ViewGroup localViewGroup = paramFragment.mContainer;
-    Object localObject = paramFragment.mView;
-    if ((localViewGroup == null) || (localObject == null))
+    View localView = paramFragment.mView;
+    if (localViewGroup != null)
     {
-      paramFragment = null;
-      return paramFragment;
-    }
-    int i = this.mAdded.indexOf(paramFragment) - 1;
-    for (;;)
-    {
-      if (i < 0) {
-        break label76;
+      if (localView == null) {
+        return null;
       }
-      localObject = (Fragment)this.mAdded.get(i);
-      if (((Fragment)localObject).mContainer == localViewGroup)
+      int i = this.mAdded.indexOf(paramFragment) - 1;
+      while (i >= 0)
       {
-        paramFragment = (Fragment)localObject;
-        if (((Fragment)localObject).mView != null) {
-          break;
+        paramFragment = (Fragment)this.mAdded.get(i);
+        if ((paramFragment.mContainer == localViewGroup) && (paramFragment.mView != null)) {
+          return paramFragment;
         }
+        i -= 1;
       }
-      i -= 1;
+      return null;
     }
-    label76:
     return null;
   }
   
@@ -586,20 +557,22 @@ final class FragmentManagerImpl
   {
     try
     {
-      if ((this.mPendingActions == null) || (this.mPendingActions.size() == 0)) {
-        return false;
-      }
-      int j = this.mPendingActions.size();
+      ArrayList localArrayList = this.mPendingActions;
       int i = 0;
-      boolean bool = false;
-      while (i < j)
+      if ((localArrayList != null) && (this.mPendingActions.size() != 0))
       {
-        bool |= ((OpGenerator)this.mPendingActions.get(i)).generateOps(paramArrayList, paramArrayList1);
-        i += 1;
+        int j = this.mPendingActions.size();
+        boolean bool = false;
+        while (i < j)
+        {
+          bool |= ((OpGenerator)this.mPendingActions.get(i)).generateOps(paramArrayList, paramArrayList1);
+          i += 1;
+        }
+        this.mPendingActions.clear();
+        this.mHost.getHandler().removeCallbacks(this.mExecCommit);
+        return bool;
       }
-      this.mPendingActions.clear();
-      this.mHost.getHandler().removeCallbacks(this.mExecCommit);
-      return bool;
+      return false;
     }
     finally {}
   }
@@ -616,14 +589,13 @@ final class FragmentManagerImpl
       paramAnimation = (Animation.AnimationListener)sAnimationListenerField.get(paramAnimation);
       return paramAnimation;
     }
-    catch (NoSuchFieldException paramAnimation)
-    {
-      Log.e("FragmentManager", "No field with the name mListener is found in Animation class", paramAnimation);
-      return null;
-    }
     catch (IllegalAccessException paramAnimation)
     {
       Log.e("FragmentManager", "Cannot access Animation's mListener field", paramAnimation);
+    }
+    catch (NoSuchFieldException paramAnimation)
+    {
+      Log.e("FragmentManager", "No field with the name mListener is found in Animation class", paramAnimation);
     }
     return null;
   }
@@ -669,62 +641,54 @@ final class FragmentManagerImpl
   
   static boolean modifiesAlpha(Animator paramAnimator)
   {
-    if (paramAnimator == null) {}
-    for (;;)
-    {
+    if (paramAnimator == null) {
       return false;
-      int i;
-      if ((paramAnimator instanceof ValueAnimator))
+    }
+    int i;
+    if ((paramAnimator instanceof ValueAnimator))
+    {
+      paramAnimator = ((ValueAnimator)paramAnimator).getValues();
+      i = 0;
+      while (i < paramAnimator.length)
       {
-        paramAnimator = ((ValueAnimator)paramAnimator).getValues();
-        i = 0;
-        while (i < paramAnimator.length)
-        {
-          if ("alpha".equals(paramAnimator[i].getPropertyName())) {
-            return true;
-          }
-          i += 1;
+        if ("alpha".equals(paramAnimator[i].getPropertyName())) {
+          return true;
         }
-      }
-      else if ((paramAnimator instanceof AnimatorSet))
-      {
-        paramAnimator = ((AnimatorSet)paramAnimator).getChildAnimations();
-        i = 0;
-        while (i < paramAnimator.size())
-        {
-          if (modifiesAlpha((Animator)paramAnimator.get(i))) {
-            return true;
-          }
-          i += 1;
-        }
+        i += 1;
       }
     }
+    if ((paramAnimator instanceof AnimatorSet))
+    {
+      paramAnimator = ((AnimatorSet)paramAnimator).getChildAnimations();
+      i = 0;
+      while (i < paramAnimator.size())
+      {
+        if (modifiesAlpha((Animator)paramAnimator.get(i))) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+    return false;
   }
   
   static boolean modifiesAlpha(AnimationOrAnimator paramAnimationOrAnimator)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramAnimationOrAnimator.animation instanceof AlphaAnimation))
-    {
-      bool1 = true;
-      return bool1;
+    if ((paramAnimationOrAnimator.animation instanceof AlphaAnimation)) {
+      return true;
     }
     if ((paramAnimationOrAnimator.animation instanceof AnimationSet))
     {
       paramAnimationOrAnimator = ((AnimationSet)paramAnimationOrAnimator.animation).getAnimations();
       int i = 0;
-      for (;;)
+      while (i < paramAnimationOrAnimator.size())
       {
-        bool1 = bool2;
-        if (i >= paramAnimationOrAnimator.size()) {
-          break;
-        }
         if ((paramAnimationOrAnimator.get(i) instanceof AlphaAnimation)) {
           return true;
         }
         i += 1;
       }
+      return false;
     }
     return modifiesAlpha(paramAnimationOrAnimator.animator);
   }
@@ -733,10 +697,11 @@ final class FragmentManagerImpl
   {
     execPendingActions();
     ensureExecReady(true);
-    if ((this.mPrimaryNav != null) && (paramInt1 < 0) && (paramString == null))
+    Object localObject = this.mPrimaryNav;
+    if ((localObject != null) && (paramInt1 < 0) && (paramString == null))
     {
-      FragmentManager localFragmentManager = this.mPrimaryNav.peekChildFragmentManager();
-      if ((localFragmentManager != null) && (localFragmentManager.popBackStackImmediate())) {
+      localObject = ((Fragment)localObject).peekChildFragmentManager();
+      if ((localObject != null) && (((FragmentManager)localObject).popBackStackImmediate())) {
         return true;
       }
     }
@@ -748,229 +713,238 @@ final class FragmentManagerImpl
     {
       removeRedundantOperationsAndExecute(this.mTmpRecords, this.mTmpIsPop);
       cleanupExec();
-      doPendingDeferredStart();
-      return bool;
     }
     finally
     {
       cleanupExec();
     }
+    burpActive();
+    return bool;
   }
   
   private int postponePostponableTransactions(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1, int paramInt1, int paramInt2, ArraySet<Fragment> paramArraySet)
   {
-    int j = paramInt2 - 1;
-    int i = paramInt2;
-    BackStackRecord localBackStackRecord;
+    int i = paramInt2 - 1;
     int k;
-    if (j >= paramInt1)
+    for (int j = paramInt2; i >= paramInt1; j = k)
     {
-      localBackStackRecord = (BackStackRecord)paramArrayList.get(j);
-      boolean bool = ((Boolean)paramArrayList1.get(j)).booleanValue();
-      if ((localBackStackRecord.isPostponed()) && (!localBackStackRecord.interactsWith(paramArrayList, j + 1, paramInt2)))
+      BackStackRecord localBackStackRecord = (BackStackRecord)paramArrayList.get(i);
+      boolean bool = ((Boolean)paramArrayList1.get(i)).booleanValue();
+      int m;
+      if ((localBackStackRecord.isPostponed()) && (!localBackStackRecord.interactsWith(paramArrayList, i + 1, paramInt2))) {
+        m = 1;
+      } else {
+        m = 0;
+      }
+      k = j;
+      if (m != 0)
       {
-        k = 1;
-        label67:
-        if (k == 0) {
-          break label191;
-        }
         if (this.mPostponedTransactions == null) {
           this.mPostponedTransactions = new ArrayList();
         }
         StartEnterTransitionListener localStartEnterTransitionListener = new StartEnterTransitionListener(localBackStackRecord, bool);
         this.mPostponedTransactions.add(localStartEnterTransitionListener);
         localBackStackRecord.setOnStartPostponedListener(localStartEnterTransitionListener);
-        if (!bool) {
-          break label179;
+        if (bool) {
+          localBackStackRecord.executeOps();
+        } else {
+          localBackStackRecord.executePopOps(false);
         }
-        localBackStackRecord.executeOps();
-        label130:
-        i -= 1;
-        if (j != i)
+        k = j - 1;
+        if (i != k)
         {
-          paramArrayList.remove(j);
-          paramArrayList.add(i, localBackStackRecord);
+          paramArrayList.remove(i);
+          paramArrayList.add(k, localBackStackRecord);
         }
         addAddedFragments(paramArraySet);
       }
+      i -= 1;
     }
-    label179:
-    label191:
-    for (;;)
-    {
-      j -= 1;
-      break;
-      k = 0;
-      break label67;
-      localBackStackRecord.executePopOps(false);
-      break label130;
-      return i;
-    }
+    return j;
   }
   
   private void removeRedundantOperationsAndExecute(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1)
   {
-    int i = 0;
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
-      return;
-    }
-    if ((paramArrayList1 == null) || (paramArrayList.size() != paramArrayList1.size())) {
-      throw new IllegalStateException("Internal error with the back stack records");
-    }
-    executePostponedTransaction(paramArrayList, paramArrayList1);
-    int m = paramArrayList.size();
-    int j = 0;
-    label55:
-    if (i < m)
+    if (paramArrayList != null)
     {
-      if (((BackStackRecord)paramArrayList.get(i)).mReorderingAllowed) {
-        break label220;
+      if (paramArrayList.isEmpty()) {
+        return;
       }
-      if (j != i) {
-        executeOpsTogether(paramArrayList, paramArrayList1, j, i);
-      }
-      int k = i + 1;
-      j = k;
-      if (((Boolean)paramArrayList1.get(i)).booleanValue()) {
-        for (;;)
+      if ((paramArrayList1 != null) && (paramArrayList.size() == paramArrayList1.size()))
+      {
+        executePostponedTransaction(paramArrayList, paramArrayList1);
+        int n = paramArrayList.size();
+        int i = 0;
+        int j;
+        for (int k = 0; i < n; k = j)
         {
+          int m = i;
           j = k;
-          if (k >= m) {
-            break;
+          if (!((BackStackRecord)paramArrayList.get(i)).mReorderingAllowed)
+          {
+            if (k != i) {
+              executeOpsTogether(paramArrayList, paramArrayList1, k, i);
+            }
+            k = i + 1;
+            j = k;
+            if (((Boolean)paramArrayList1.get(i)).booleanValue()) {
+              for (;;)
+              {
+                j = k;
+                if (k >= n) {
+                  break;
+                }
+                j = k;
+                if (!((Boolean)paramArrayList1.get(k)).booleanValue()) {
+                  break;
+                }
+                j = k;
+                if (((BackStackRecord)paramArrayList.get(k)).mReorderingAllowed) {
+                  break;
+                }
+                k += 1;
+              }
+            }
+            executeOpsTogether(paramArrayList, paramArrayList1, i, j);
+            m = j - 1;
           }
-          j = k;
-          if (!((Boolean)paramArrayList1.get(k)).booleanValue()) {
-            break;
-          }
-          j = k;
-          if (((BackStackRecord)paramArrayList.get(k)).mReorderingAllowed) {
-            break;
-          }
-          k += 1;
+          i = m + 1;
         }
+        if (k != n) {
+          executeOpsTogether(paramArrayList, paramArrayList1, k, n);
+        }
+        return;
       }
-      executeOpsTogether(paramArrayList, paramArrayList1, i, j);
-      i = j;
-      k = j - 1;
-      j = i;
-      i = k;
-    }
-    label220:
-    for (;;)
-    {
-      i += 1;
-      break label55;
-      if (j == m) {
-        break;
-      }
-      executeOpsTogether(paramArrayList, paramArrayList1, j, m);
-      return;
+      throw new IllegalStateException("Internal error with the back stack records");
     }
   }
   
   public static int reverseTransit(int paramInt)
   {
-    switch (paramInt)
+    int i = 8194;
+    if (paramInt != 4097)
     {
-    default: 
-      return 0;
-    case 4097: 
-      return 8194;
-    case 8194: 
-      return 4097;
+      if (paramInt != 4099)
+      {
+        if (paramInt != 8194) {
+          return 0;
+        }
+        return 4097;
+      }
+      i = 4099;
     }
-    return 4099;
+    return i;
   }
   
   private void scheduleCommit()
   {
-    int j = 1;
-    label44:
-    label73:
-    label92:
-    label97:
-    label100:
     for (;;)
     {
-      int i;
+      int j;
       try
       {
-        if ((this.mPostponedTransactions == null) || (this.mPostponedTransactions.isEmpty())) {
-          break label92;
+        ArrayList localArrayList = this.mPostponedTransactions;
+        int k = 0;
+        if ((localArrayList == null) || (this.mPostponedTransactions.isEmpty())) {
+          break label96;
         }
         i = 1;
-        if ((this.mPendingActions == null) || (this.mPendingActions.size() != 1)) {
-          break label97;
+        j = k;
+        if (this.mPendingActions == null) {
+          break label101;
         }
+        j = k;
+        if (this.mPendingActions.size() != 1) {
+          break label101;
+        }
+        j = 1;
       }
       finally {}
       this.mHost.getHandler().removeCallbacks(this.mExecCommit);
       this.mHost.getHandler().post(this.mExecCommit);
       return;
-      for (;;)
-      {
-        if (i != 0) {
-          break label100;
-        }
-        if (j == 0) {
-          break label73;
-        }
-        break label44;
-        i = 0;
-        break;
-        j = 0;
+      label96:
+      int i = 0;
+      continue;
+      label101:
+      if (i == 0) {
+        if (j == 0) {}
       }
     }
   }
   
   private static void setHWLayerAnimListenerIfAlpha(View paramView, AnimationOrAnimator paramAnimationOrAnimator)
   {
-    if ((paramView == null) || (paramAnimationOrAnimator == null)) {}
-    while (!shouldRunOnHWLayer(paramView, paramAnimationOrAnimator)) {
-      return;
-    }
-    if (paramAnimationOrAnimator.animator != null)
+    if (paramView != null)
     {
-      paramAnimationOrAnimator.animator.addListener(new AnimatorOnHWLayerIfNeededListener(paramView));
+      if (paramAnimationOrAnimator == null) {
+        return;
+      }
+      if (shouldRunOnHWLayer(paramView, paramAnimationOrAnimator))
+      {
+        if (paramAnimationOrAnimator.animator != null)
+        {
+          paramAnimationOrAnimator.animator.addListener(new AnimatorOnHWLayerIfNeededListener(paramView));
+          return;
+        }
+        Animation.AnimationListener localAnimationListener = getAnimationListener(paramAnimationOrAnimator.animation);
+        paramView.setLayerType(2, null);
+        paramAnimationOrAnimator.animation.setAnimationListener(new AnimateOnHWLayerIfNeededListener(paramView, localAnimationListener));
+      }
       return;
     }
-    Animation.AnimationListener localAnimationListener = getAnimationListener(paramAnimationOrAnimator.animation);
-    paramView.setLayerType(2, null);
-    paramAnimationOrAnimator.animation.setAnimationListener(new AnimateOnHWLayerIfNeededListener(paramView, localAnimationListener));
   }
   
   private static void setRetaining(FragmentManagerNonConfig paramFragmentManagerNonConfig)
   {
-    if (paramFragmentManagerNonConfig == null) {}
-    for (;;)
-    {
+    if (paramFragmentManagerNonConfig == null) {
       return;
-      Object localObject = paramFragmentManagerNonConfig.getFragments();
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((Fragment)((Iterator)localObject).next()).mRetaining = true;
-        }
+    }
+    Object localObject = paramFragmentManagerNonConfig.getFragments();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((Fragment)((Iterator)localObject).next()).mRetaining = true;
       }
-      paramFragmentManagerNonConfig = paramFragmentManagerNonConfig.getChildNonConfigs();
-      if (paramFragmentManagerNonConfig != null)
-      {
-        paramFragmentManagerNonConfig = paramFragmentManagerNonConfig.iterator();
-        while (paramFragmentManagerNonConfig.hasNext()) {
-          setRetaining((FragmentManagerNonConfig)paramFragmentManagerNonConfig.next());
-        }
+    }
+    paramFragmentManagerNonConfig = paramFragmentManagerNonConfig.getChildNonConfigs();
+    if (paramFragmentManagerNonConfig != null)
+    {
+      paramFragmentManagerNonConfig = paramFragmentManagerNonConfig.iterator();
+      while (paramFragmentManagerNonConfig.hasNext()) {
+        setRetaining((FragmentManagerNonConfig)paramFragmentManagerNonConfig.next());
       }
     }
   }
   
   static boolean shouldRunOnHWLayer(View paramView, AnimationOrAnimator paramAnimationOrAnimator)
   {
-    if ((paramView == null) || (paramAnimationOrAnimator == null)) {}
-    while ((Build.VERSION.SDK_INT < 19) || (paramView.getLayerType() != 0) || (!ViewCompat.hasOverlappingRendering(paramView)) || (!modifiesAlpha(paramAnimationOrAnimator))) {
-      return false;
+    boolean bool2 = false;
+    if (paramView != null)
+    {
+      if (paramAnimationOrAnimator == null) {
+        return false;
+      }
+      boolean bool1 = bool2;
+      if (Build.VERSION.SDK_INT >= 19)
+      {
+        bool1 = bool2;
+        if (paramView.getLayerType() == 0)
+        {
+          bool1 = bool2;
+          if (ViewCompat.hasOverlappingRendering(paramView))
+          {
+            bool1 = bool2;
+            if (modifiesAlpha(paramAnimationOrAnimator)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+      return bool1;
     }
-    return true;
+    return false;
   }
   
   private void throwException(RuntimeException paramRuntimeException)
@@ -978,19 +952,17 @@ final class FragmentManagerImpl
     Log.e("FragmentManager", paramRuntimeException.getMessage());
     Log.e("FragmentManager", "Activity state:");
     PrintWriter localPrintWriter = new PrintWriter(new LogWriter("FragmentManager"));
-    if (this.mHost != null) {}
-    for (;;)
-    {
+    FragmentHostCallback localFragmentHostCallback = this.mHost;
+    if (localFragmentHostCallback != null) {
       try
       {
-        this.mHost.onDump("  ", null, localPrintWriter, new String[0]);
-        throw paramRuntimeException;
+        localFragmentHostCallback.onDump("  ", null, localPrintWriter, new String[0]);
       }
       catch (Exception localException1)
       {
         Log.e("FragmentManager", "Failed dumping state", localException1);
-        continue;
       }
+    } else {
       try
       {
         dump("  ", null, localException1, new String[0]);
@@ -1000,29 +972,32 @@ final class FragmentManagerImpl
         Log.e("FragmentManager", "Failed dumping state", localException2);
       }
     }
+    throw paramRuntimeException;
   }
   
   public static int transitToStyleIndex(int paramInt, boolean paramBoolean)
   {
-    switch (paramInt)
+    if (paramInt != 4097)
     {
-    default: 
-      return -1;
-    case 4097: 
-      if (paramBoolean) {
-        return 1;
+      if (paramInt != 4099)
+      {
+        if (paramInt != 8194) {
+          return -1;
+        }
+        if (paramBoolean) {
+          return 3;
+        }
+        return 4;
       }
-      return 2;
-    case 8194: 
       if (paramBoolean) {
-        return 3;
+        return 5;
       }
-      return 4;
+      return 6;
     }
     if (paramBoolean) {
-      return 5;
+      return 1;
     }
-    return 6;
+    return 2;
   }
   
   void addBackStackState(BackStackRecord paramBackStackRecord)
@@ -1035,30 +1010,39 @@ final class FragmentManagerImpl
   
   public void addFragment(Fragment paramFragment, boolean paramBoolean)
   {
-    if (DEBUG) {
-      Log.v("FragmentManager", "add: " + paramFragment);
+    if (DEBUG)
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("add: ");
+      ((StringBuilder)???).append(paramFragment);
+      Log.v("FragmentManager", ((StringBuilder)???).toString());
     }
     makeActive(paramFragment);
-    if (!paramFragment.mDetached) {
-      if (this.mAdded.contains(paramFragment)) {
-        throw new IllegalStateException("Fragment already added: " + paramFragment);
-      }
-    }
-    synchronized (this.mAdded)
+    if (!paramFragment.mDetached)
     {
-      this.mAdded.add(paramFragment);
-      paramFragment.mAdded = true;
-      paramFragment.mRemoving = false;
-      if (paramFragment.mView == null) {
-        paramFragment.mHiddenChanged = false;
+      if (!this.mAdded.contains(paramFragment)) {
+        synchronized (this.mAdded)
+        {
+          this.mAdded.add(paramFragment);
+          paramFragment.mAdded = true;
+          paramFragment.mRemoving = false;
+          if (paramFragment.mView == null) {
+            paramFragment.mHiddenChanged = false;
+          }
+          if ((paramFragment.mHasMenu) && (paramFragment.mMenuVisible)) {
+            this.mNeedMenuInvalidate = true;
+          }
+          if (!paramBoolean) {
+            return;
+          }
+          moveToState(paramFragment);
+          return;
+        }
       }
-      if ((paramFragment.mHasMenu) && (paramFragment.mMenuVisible)) {
-        this.mNeedMenuInvalidate = true;
-      }
-      if (paramBoolean) {
-        moveToState(paramFragment);
-      }
-      return;
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("Fragment already added: ");
+      ((StringBuilder)???).append(paramFragment);
+      throw new IllegalStateException(((StringBuilder)???).toString());
     }
   }
   
@@ -1074,23 +1058,36 @@ final class FragmentManagerImpl
   {
     try
     {
-      if ((this.mAvailBackStackIndices == null) || (this.mAvailBackStackIndices.size() <= 0))
+      StringBuilder localStringBuilder;
+      if ((this.mAvailBackStackIndices != null) && (this.mAvailBackStackIndices.size() > 0))
       {
-        if (this.mBackStackIndices == null) {
-          this.mBackStackIndices = new ArrayList();
+        i = ((Integer)this.mAvailBackStackIndices.remove(this.mAvailBackStackIndices.size() - 1)).intValue();
+        if (DEBUG)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Adding back stack index ");
+          localStringBuilder.append(i);
+          localStringBuilder.append(" with ");
+          localStringBuilder.append(paramBackStackRecord);
+          Log.v("FragmentManager", localStringBuilder.toString());
         }
-        i = this.mBackStackIndices.size();
-        if (DEBUG) {
-          Log.v("FragmentManager", "Setting back stack index " + i + " to " + paramBackStackRecord);
-        }
-        this.mBackStackIndices.add(paramBackStackRecord);
+        this.mBackStackIndices.set(i, paramBackStackRecord);
         return i;
       }
-      int i = ((Integer)this.mAvailBackStackIndices.remove(this.mAvailBackStackIndices.size() - 1)).intValue();
-      if (DEBUG) {
-        Log.v("FragmentManager", "Adding back stack index " + i + " with " + paramBackStackRecord);
+      if (this.mBackStackIndices == null) {
+        this.mBackStackIndices = new ArrayList();
       }
-      this.mBackStackIndices.set(i, paramBackStackRecord);
+      int i = this.mBackStackIndices.size();
+      if (DEBUG)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Setting back stack index ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" to ");
+        localStringBuilder.append(paramBackStackRecord);
+        Log.v("FragmentManager", localStringBuilder.toString());
+      }
+      this.mBackStackIndices.add(paramBackStackRecord);
       return i;
     }
     finally {}
@@ -1098,40 +1095,55 @@ final class FragmentManagerImpl
   
   public void attachController(FragmentHostCallback paramFragmentHostCallback, FragmentContainer paramFragmentContainer, Fragment paramFragment)
   {
-    if (this.mHost != null) {
-      throw new IllegalStateException("Already attached");
+    if (this.mHost == null)
+    {
+      this.mHost = paramFragmentHostCallback;
+      this.mContainer = paramFragmentContainer;
+      this.mParent = paramFragment;
+      return;
     }
-    this.mHost = paramFragmentHostCallback;
-    this.mContainer = paramFragmentContainer;
-    this.mParent = paramFragment;
+    throw new IllegalStateException("Already attached");
   }
   
   public void attachFragment(Fragment paramFragment)
   {
-    if (DEBUG) {
-      Log.v("FragmentManager", "attach: " + paramFragment);
+    if (DEBUG)
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("attach: ");
+      ((StringBuilder)???).append(paramFragment);
+      Log.v("FragmentManager", ((StringBuilder)???).toString());
     }
     if (paramFragment.mDetached)
     {
       paramFragment.mDetached = false;
       if (!paramFragment.mAdded)
       {
-        if (this.mAdded.contains(paramFragment)) {
-          throw new IllegalStateException("Fragment already added: " + paramFragment);
+        if (!this.mAdded.contains(paramFragment))
+        {
+          if (DEBUG)
+          {
+            ??? = new StringBuilder();
+            ((StringBuilder)???).append("add from attach: ");
+            ((StringBuilder)???).append(paramFragment);
+            Log.v("FragmentManager", ((StringBuilder)???).toString());
+          }
+          synchronized (this.mAdded)
+          {
+            this.mAdded.add(paramFragment);
+            paramFragment.mAdded = true;
+            if ((!paramFragment.mHasMenu) || (!paramFragment.mMenuVisible)) {
+              return;
+            }
+            this.mNeedMenuInvalidate = true;
+            return;
+          }
         }
-        if (DEBUG) {
-          Log.v("FragmentManager", "add from attach: " + paramFragment);
-        }
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("Fragment already added: ");
+        ((StringBuilder)???).append(paramFragment);
+        throw new IllegalStateException(((StringBuilder)???).toString());
       }
-    }
-    synchronized (this.mAdded)
-    {
-      this.mAdded.add(paramFragment);
-      paramFragment.mAdded = true;
-      if ((paramFragment.mHasMenu) && (paramFragment.mMenuVisible)) {
-        this.mNeedMenuInvalidate = true;
-      }
-      return;
     }
   }
   
@@ -1142,101 +1154,100 @@ final class FragmentManagerImpl
   
   void completeShowHideFragment(final Fragment paramFragment)
   {
-    boolean bool;
-    AnimationOrAnimator localAnimationOrAnimator;
     if (paramFragment.mView != null)
     {
-      i = paramFragment.getNextTransition();
-      if (paramFragment.mHidden) {
-        break label135;
-      }
-      bool = true;
-      localAnimationOrAnimator = loadAnimation(paramFragment, i, bool, paramFragment.getNextTransitionStyle());
-      if ((localAnimationOrAnimator == null) || (localAnimationOrAnimator.animator == null)) {
-        break label194;
-      }
-      localAnimationOrAnimator.animator.setTarget(paramFragment.mView);
-      if (!paramFragment.mHidden) {
-        break label183;
-      }
-      if (!paramFragment.isHideReplaced()) {
-        break label140;
-      }
-      paramFragment.setHideReplaced(false);
-    }
-    for (;;)
-    {
-      setHWLayerAnimListenerIfAlpha(paramFragment.mView, localAnimationOrAnimator);
-      localAnimationOrAnimator.animator.start();
-      if ((paramFragment.mAdded) && (paramFragment.mHasMenu) && (paramFragment.mMenuVisible)) {
-        this.mNeedMenuInvalidate = true;
-      }
-      paramFragment.mHiddenChanged = false;
-      paramFragment.onHiddenChanged(paramFragment.mHidden);
-      return;
-      label135:
-      bool = false;
-      break;
-      label140:
-      final ViewGroup localViewGroup = paramFragment.mContainer;
-      final View localView = paramFragment.mView;
-      localViewGroup.startViewTransition(localView);
-      localAnimationOrAnimator.animator.addListener(new AnimatorListenerAdapter()
+      AnimationOrAnimator localAnimationOrAnimator = loadAnimation(paramFragment, paramFragment.getNextTransition(), paramFragment.mHidden ^ true, paramFragment.getNextTransitionStyle());
+      if ((localAnimationOrAnimator != null) && (localAnimationOrAnimator.animator != null))
       {
-        public void onAnimationEnd(Animator paramAnonymousAnimator)
+        localAnimationOrAnimator.animator.setTarget(paramFragment.mView);
+        if (paramFragment.mHidden)
         {
-          localViewGroup.endViewTransition(localView);
-          paramAnonymousAnimator.removeListener(this);
-          if (paramFragment.mView != null) {
-            paramFragment.mView.setVisibility(8);
+          if (paramFragment.isHideReplaced())
+          {
+            paramFragment.setHideReplaced(false);
+          }
+          else
+          {
+            final ViewGroup localViewGroup = paramFragment.mContainer;
+            final View localView = paramFragment.mView;
+            localViewGroup.startViewTransition(localView);
+            localAnimationOrAnimator.animator.addListener(new AnimatorListenerAdapter()
+            {
+              public void onAnimationEnd(Animator paramAnonymousAnimator)
+              {
+                localViewGroup.endViewTransition(localView);
+                paramAnonymousAnimator.removeListener(this);
+                if (paramFragment.mView != null) {
+                  paramFragment.mView.setVisibility(8);
+                }
+              }
+            });
           }
         }
-      });
-      continue;
-      label183:
-      paramFragment.mView.setVisibility(0);
-    }
-    label194:
-    if (localAnimationOrAnimator != null)
-    {
-      setHWLayerAnimListenerIfAlpha(paramFragment.mView, localAnimationOrAnimator);
-      paramFragment.mView.startAnimation(localAnimationOrAnimator.animation);
-      localAnimationOrAnimator.animation.start();
-    }
-    if ((paramFragment.mHidden) && (!paramFragment.isHideReplaced())) {}
-    for (int i = 8;; i = 0)
-    {
-      paramFragment.mView.setVisibility(i);
-      if (!paramFragment.isHideReplaced()) {
-        break;
+        else {
+          paramFragment.mView.setVisibility(0);
+        }
+        setHWLayerAnimListenerIfAlpha(paramFragment.mView, localAnimationOrAnimator);
+        localAnimationOrAnimator.animator.start();
       }
-      paramFragment.setHideReplaced(false);
-      break;
+      else
+      {
+        if (localAnimationOrAnimator != null)
+        {
+          setHWLayerAnimListenerIfAlpha(paramFragment.mView, localAnimationOrAnimator);
+          paramFragment.mView.startAnimation(localAnimationOrAnimator.animation);
+          localAnimationOrAnimator.animation.start();
+        }
+        int i;
+        if ((paramFragment.mHidden) && (!paramFragment.isHideReplaced())) {
+          i = 8;
+        } else {
+          i = 0;
+        }
+        paramFragment.mView.setVisibility(i);
+        if (paramFragment.isHideReplaced()) {
+          paramFragment.setHideReplaced(false);
+        }
+      }
     }
+    if ((paramFragment.mAdded) && (paramFragment.mHasMenu) && (paramFragment.mMenuVisible)) {
+      this.mNeedMenuInvalidate = true;
+    }
+    paramFragment.mHiddenChanged = false;
+    paramFragment.onHiddenChanged(paramFragment.mHidden);
   }
   
   public void detachFragment(Fragment paramFragment)
   {
-    if (DEBUG) {
-      Log.v("FragmentManager", "detach: " + paramFragment);
+    if (DEBUG)
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("detach: ");
+      ((StringBuilder)???).append(paramFragment);
+      Log.v("FragmentManager", ((StringBuilder)???).toString());
     }
     if (!paramFragment.mDetached)
     {
       paramFragment.mDetached = true;
-      if (paramFragment.mAdded) {
-        if (DEBUG) {
-          Log.v("FragmentManager", "remove from detach: " + paramFragment);
+      if (paramFragment.mAdded)
+      {
+        if (DEBUG)
+        {
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("remove from detach: ");
+          ((StringBuilder)???).append(paramFragment);
+          Log.v("FragmentManager", ((StringBuilder)???).toString());
+        }
+        synchronized (this.mAdded)
+        {
+          this.mAdded.remove(paramFragment);
+          if ((paramFragment.mHasMenu) && (paramFragment.mMenuVisible)) {
+            this.mNeedMenuInvalidate = true;
+          }
+          paramFragment.mAdded = false;
+          return;
         }
       }
-    }
-    synchronized (this.mAdded)
-    {
-      this.mAdded.remove(paramFragment);
-      if ((paramFragment.mHasMenu) && (paramFragment.mMenuVisible)) {
-        this.mNeedMenuInvalidate = true;
-      }
-      paramFragment.mAdded = false;
-      return;
     }
   }
   
@@ -1262,20 +1273,19 @@ final class FragmentManagerImpl
   
   public boolean dispatchContextItemSelected(MenuItem paramMenuItem)
   {
-    if (this.mCurState < 1) {}
-    for (;;)
-    {
+    if (this.mCurState < 1) {
       return false;
-      int i = 0;
-      while (i < this.mAdded.size())
-      {
-        Fragment localFragment = (Fragment)this.mAdded.get(i);
-        if ((localFragment != null) && (localFragment.performContextItemSelected(paramMenuItem))) {
-          return true;
-        }
-        i += 1;
-      }
     }
+    int i = 0;
+    while (i < this.mAdded.size())
+    {
+      Fragment localFragment = (Fragment)this.mAdded.get(i);
+      if ((localFragment != null) && (localFragment.performContextItemSelected(paramMenuItem))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
   
   public void dispatchCreate()
@@ -1287,47 +1297,50 @@ final class FragmentManagerImpl
   
   public boolean dispatchCreateOptionsMenu(Menu paramMenu, MenuInflater paramMenuInflater)
   {
+    int i = this.mCurState;
     int j = 0;
-    if (this.mCurState < 1) {
+    if (i < 1) {
       return false;
     }
     Object localObject1 = null;
-    int i = 0;
-    boolean bool = false;
-    if (i < this.mAdded.size())
+    i = 0;
+    boolean bool2;
+    for (boolean bool1 = false; i < this.mAdded.size(); bool1 = bool2)
     {
       Fragment localFragment = (Fragment)this.mAdded.get(i);
-      if ((localFragment == null) || (!localFragment.performCreateOptionsMenu(paramMenu, paramMenuInflater))) {
-        break label167;
-      }
       Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = new ArrayList();
-      }
-      ((ArrayList)localObject2).add(localFragment);
-      bool = true;
-      localObject1 = localObject2;
-    }
-    label167:
-    for (;;)
-    {
-      i += 1;
-      break;
-      if (this.mCreatedMenus != null)
+      bool2 = bool1;
+      if (localFragment != null)
       {
-        i = j;
-        while (i < this.mCreatedMenus.size())
+        localObject2 = localObject1;
+        bool2 = bool1;
+        if (localFragment.performCreateOptionsMenu(paramMenu, paramMenuInflater))
         {
-          paramMenu = (Fragment)this.mCreatedMenus.get(i);
-          if ((localObject1 == null) || (!localObject1.contains(paramMenu))) {
-            paramMenu.onDestroyOptionsMenu();
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = new ArrayList();
           }
-          i += 1;
+          ((ArrayList)localObject2).add(localFragment);
+          bool2 = true;
         }
       }
-      this.mCreatedMenus = localObject1;
-      return bool;
+      i += 1;
+      localObject1 = localObject2;
     }
+    if (this.mCreatedMenus != null)
+    {
+      i = j;
+      while (i < this.mCreatedMenus.size())
+      {
+        paramMenu = (Fragment)this.mCreatedMenus.get(i);
+        if ((localObject1 == null) || (!localObject1.contains(paramMenu))) {
+          paramMenu.onDestroyOptionsMenu();
+        }
+        i += 1;
+      }
+    }
+    this.mCreatedMenus = localObject1;
+    return bool1;
   }
   
   public void dispatchDestroy()
@@ -1373,14 +1386,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentActivityCreated(Fragment paramFragment, Bundle paramBundle, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentActivityCreated(paramFragment, paramBundle, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1392,14 +1406,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentAttached(Fragment paramFragment, Context paramContext, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentAttached(paramFragment, paramContext, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1411,14 +1426,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentCreated(Fragment paramFragment, Bundle paramBundle, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentCreated(paramFragment, paramBundle, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1430,14 +1446,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentDestroyed(Fragment paramFragment, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentDestroyed(paramFragment, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1449,14 +1466,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentDetached(Fragment paramFragment, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentDetached(paramFragment, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1468,14 +1486,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentPaused(Fragment paramFragment, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentPaused(paramFragment, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1487,14 +1506,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentPreAttached(Fragment paramFragment, Context paramContext, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentPreAttached(paramFragment, paramContext, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1506,14 +1526,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentPreCreated(Fragment paramFragment, Bundle paramBundle, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentPreCreated(paramFragment, paramBundle, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1525,14 +1546,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentResumed(Fragment paramFragment, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentResumed(paramFragment, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1544,14 +1566,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentSaveInstanceState(Fragment paramFragment, Bundle paramBundle, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentSaveInstanceState(paramFragment, paramBundle, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1563,14 +1586,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentStarted(Fragment paramFragment, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentStarted(paramFragment, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1582,14 +1606,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentStopped(Fragment paramFragment, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentStopped(paramFragment, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1601,14 +1626,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentViewCreated(Fragment paramFragment, View paramView, Bundle paramBundle, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentViewCreated(paramFragment, paramView, paramBundle, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1620,14 +1646,15 @@ final class FragmentManagerImpl
   
   void dispatchOnFragmentViewDestroyed(Fragment paramFragment, boolean paramBoolean)
   {
-    if (this.mParent != null)
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
-      localObject = this.mParent.getFragmentManager();
+      localObject = ((Fragment)localObject).getFragmentManager();
       if ((localObject instanceof FragmentManagerImpl)) {
         ((FragmentManagerImpl)localObject).dispatchOnFragmentViewDestroyed(paramFragment, true);
       }
     }
-    Object localObject = this.mLifecycleCallbacks.iterator();
+    localObject = this.mLifecycleCallbacks.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Pair localPair = (Pair)((Iterator)localObject).next();
@@ -1639,37 +1666,34 @@ final class FragmentManagerImpl
   
   public boolean dispatchOptionsItemSelected(MenuItem paramMenuItem)
   {
-    if (this.mCurState < 1) {}
-    for (;;)
-    {
+    if (this.mCurState < 1) {
       return false;
-      int i = 0;
-      while (i < this.mAdded.size())
-      {
-        Fragment localFragment = (Fragment)this.mAdded.get(i);
-        if ((localFragment != null) && (localFragment.performOptionsItemSelected(paramMenuItem))) {
-          return true;
-        }
-        i += 1;
-      }
     }
+    int i = 0;
+    while (i < this.mAdded.size())
+    {
+      Fragment localFragment = (Fragment)this.mAdded.get(i);
+      if ((localFragment != null) && (localFragment.performOptionsItemSelected(paramMenuItem))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
   
   public void dispatchOptionsMenuClosed(Menu paramMenu)
   {
-    if (this.mCurState < 1) {}
-    for (;;)
-    {
+    if (this.mCurState < 1) {
       return;
-      int i = 0;
-      while (i < this.mAdded.size())
-      {
-        Fragment localFragment = (Fragment)this.mAdded.get(i);
-        if (localFragment != null) {
-          localFragment.performOptionsMenuClosed(paramMenu);
-        }
-        i += 1;
+    }
+    int i = 0;
+    while (i < this.mAdded.size())
+    {
+      Fragment localFragment = (Fragment)this.mAdded.get(i);
+      if (localFragment != null) {
+        localFragment.performOptionsMenuClosed(paramMenu);
       }
+      i += 1;
     }
   }
   
@@ -1693,10 +1717,11 @@ final class FragmentManagerImpl
   
   public boolean dispatchPrepareOptionsMenu(Menu paramMenu)
   {
-    if (this.mCurState < 1) {
+    int j = this.mCurState;
+    int i = 0;
+    if (j < 1) {
       return false;
     }
-    int i = 0;
     boolean bool2;
     for (boolean bool1 = false; i < this.mAdded.size(); bool1 = bool2)
     {
@@ -1750,13 +1775,16 @@ final class FragmentManagerImpl
   
   public void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append("    ");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = this.mActive;
     int j = 0;
-    String str = paramString + "    ";
     int i;
-    Object localObject;
-    if (this.mActive != null)
+    if (localObject2 != null)
     {
-      k = this.mActive.size();
+      k = ((SparseArray)localObject2).size();
       if (k > 0)
       {
         paramPrintWriter.print(paramString);
@@ -1766,14 +1794,14 @@ final class FragmentManagerImpl
         i = 0;
         while (i < k)
         {
-          localObject = (Fragment)this.mActive.valueAt(i);
+          localObject2 = (Fragment)this.mActive.valueAt(i);
           paramPrintWriter.print(paramString);
           paramPrintWriter.print("  #");
           paramPrintWriter.print(i);
           paramPrintWriter.print(": ");
-          paramPrintWriter.println(localObject);
-          if (localObject != null) {
-            ((Fragment)localObject).dump(str, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+          paramPrintWriter.println(localObject2);
+          if (localObject2 != null) {
+            ((Fragment)localObject2).dump((String)localObject1, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
           }
           i += 1;
         }
@@ -1787,18 +1815,19 @@ final class FragmentManagerImpl
       i = 0;
       while (i < k)
       {
-        localObject = (Fragment)this.mAdded.get(i);
+        localObject2 = (Fragment)this.mAdded.get(i);
         paramPrintWriter.print(paramString);
         paramPrintWriter.print("  #");
         paramPrintWriter.print(i);
         paramPrintWriter.print(": ");
-        paramPrintWriter.println(((Fragment)localObject).toString());
+        paramPrintWriter.println(((Fragment)localObject2).toString());
         i += 1;
       }
     }
-    if (this.mCreatedMenus != null)
+    localObject2 = this.mCreatedMenus;
+    if (localObject2 != null)
     {
-      k = this.mCreatedMenus.size();
+      k = ((ArrayList)localObject2).size();
       if (k > 0)
       {
         paramPrintWriter.print(paramString);
@@ -1806,19 +1835,20 @@ final class FragmentManagerImpl
         i = 0;
         while (i < k)
         {
-          localObject = (Fragment)this.mCreatedMenus.get(i);
+          localObject2 = (Fragment)this.mCreatedMenus.get(i);
           paramPrintWriter.print(paramString);
           paramPrintWriter.print("  #");
           paramPrintWriter.print(i);
           paramPrintWriter.print(": ");
-          paramPrintWriter.println(((Fragment)localObject).toString());
+          paramPrintWriter.println(((Fragment)localObject2).toString());
           i += 1;
         }
       }
     }
-    if (this.mBackStack != null)
+    localObject2 = this.mBackStack;
+    if (localObject2 != null)
     {
-      k = this.mBackStack.size();
+      k = ((ArrayList)localObject2).size();
       if (k > 0)
       {
         paramPrintWriter.print(paramString);
@@ -1826,13 +1856,13 @@ final class FragmentManagerImpl
         i = 0;
         while (i < k)
         {
-          localObject = (BackStackRecord)this.mBackStack.get(i);
+          localObject2 = (BackStackRecord)this.mBackStack.get(i);
           paramPrintWriter.print(paramString);
           paramPrintWriter.print("  #");
           paramPrintWriter.print(i);
           paramPrintWriter.print(": ");
-          paramPrintWriter.println(((BackStackRecord)localObject).toString());
-          ((BackStackRecord)localObject).dump(str, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+          paramPrintWriter.println(((BackStackRecord)localObject2).toString());
+          ((BackStackRecord)localObject2).dump((String)localObject1, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
           i += 1;
         }
       }
@@ -1865,9 +1895,10 @@ final class FragmentManagerImpl
         paramPrintWriter.print("mAvailBackStackIndices: ");
         paramPrintWriter.println(Arrays.toString(this.mAvailBackStackIndices.toArray()));
       }
-      if (this.mPendingActions != null)
+      paramFileDescriptor = this.mPendingActions;
+      if (paramFileDescriptor != null)
       {
-        k = this.mPendingActions.size();
+        k = paramFileDescriptor.size();
         if (k > 0)
         {
           paramPrintWriter.print(paramString);
@@ -1886,42 +1917,43 @@ final class FragmentManagerImpl
         }
       }
       paramPrintWriter.print(paramString);
+      paramPrintWriter.println("FragmentManager misc state:");
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.print("  mHost=");
+      paramPrintWriter.println(this.mHost);
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.print("  mContainer=");
+      paramPrintWriter.println(this.mContainer);
+      if (this.mParent != null)
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("  mParent=");
+        paramPrintWriter.println(this.mParent);
+      }
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.print("  mCurState=");
+      paramPrintWriter.print(this.mCurState);
+      paramPrintWriter.print(" mStateSaved=");
+      paramPrintWriter.print(this.mStateSaved);
+      paramPrintWriter.print(" mStopped=");
+      paramPrintWriter.print(this.mStopped);
+      paramPrintWriter.print(" mDestroyed=");
+      paramPrintWriter.println(this.mDestroyed);
+      if (this.mNeedMenuInvalidate)
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("  mNeedMenuInvalidate=");
+        paramPrintWriter.println(this.mNeedMenuInvalidate);
+      }
+      if (this.mNoTransactionsBecause != null)
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("  mNoTransactionsBecause=");
+        paramPrintWriter.println(this.mNoTransactionsBecause);
+      }
+      return;
     }
     finally {}
-    paramPrintWriter.println("FragmentManager misc state:");
-    paramPrintWriter.print(paramString);
-    paramPrintWriter.print("  mHost=");
-    paramPrintWriter.println(this.mHost);
-    paramPrintWriter.print(paramString);
-    paramPrintWriter.print("  mContainer=");
-    paramPrintWriter.println(this.mContainer);
-    if (this.mParent != null)
-    {
-      paramPrintWriter.print(paramString);
-      paramPrintWriter.print("  mParent=");
-      paramPrintWriter.println(this.mParent);
-    }
-    paramPrintWriter.print(paramString);
-    paramPrintWriter.print("  mCurState=");
-    paramPrintWriter.print(this.mCurState);
-    paramPrintWriter.print(" mStateSaved=");
-    paramPrintWriter.print(this.mStateSaved);
-    paramPrintWriter.print(" mStopped=");
-    paramPrintWriter.print(this.mStopped);
-    paramPrintWriter.print(" mDestroyed=");
-    paramPrintWriter.println(this.mDestroyed);
-    if (this.mNeedMenuInvalidate)
-    {
-      paramPrintWriter.print(paramString);
-      paramPrintWriter.print("  mNeedMenuInvalidate=");
-      paramPrintWriter.println(this.mNeedMenuInvalidate);
-    }
-    if (this.mNoTransactionsBecause != null)
-    {
-      paramPrintWriter.print(paramString);
-      paramPrintWriter.print("  mNoTransactionsBecause=");
-      paramPrintWriter.println(this.mNoTransactionsBecause);
-    }
   }
   
   public void enqueueAction(OpGenerator paramOpGenerator, boolean paramBoolean)
@@ -1931,20 +1963,21 @@ final class FragmentManagerImpl
     }
     try
     {
-      if ((this.mDestroyed) || (this.mHost == null))
+      if ((!this.mDestroyed) && (this.mHost != null))
       {
-        if (paramBoolean) {
-          return;
+        if (this.mPendingActions == null) {
+          this.mPendingActions = new ArrayList();
         }
-        throw new IllegalStateException("Activity has been destroyed");
+        this.mPendingActions.add(paramOpGenerator);
+        scheduleCommit();
+        return;
       }
+      if (paramBoolean) {
+        return;
+      }
+      throw new IllegalStateException("Activity has been destroyed");
     }
     finally {}
-    if (this.mPendingActions == null) {
-      this.mPendingActions = new ArrayList();
-    }
-    this.mPendingActions.add(paramOpGenerator);
-    scheduleCommit();
   }
   
   void ensureInflatedFragmentView(Fragment paramFragment)
@@ -1961,13 +1994,10 @@ final class FragmentManagerImpl
         }
         paramFragment.onViewCreated(paramFragment.mView, paramFragment.mSavedFragmentState);
         dispatchOnFragmentViewCreated(paramFragment, paramFragment.mView, paramFragment.mSavedFragmentState, false);
+        return;
       }
+      paramFragment.mInnerView = null;
     }
-    else
-    {
-      return;
-    }
-    paramFragment.mInnerView = null;
   }
   
   public boolean execPendingActions()
@@ -2007,13 +2037,12 @@ final class FragmentManagerImpl
     {
       removeRedundantOperationsAndExecute(this.mTmpRecords, this.mTmpIsPop);
       cleanupExec();
-      doPendingDeferredStart();
-      return;
     }
     finally
     {
       cleanupExec();
     }
+    burpActive();
   }
   
   public boolean executePendingTransactions()
@@ -2026,7 +2055,6 @@ final class FragmentManagerImpl
   public Fragment findFragmentById(int paramInt)
   {
     int i = this.mAdded.size() - 1;
-    Object localObject;
     while (i >= 0)
     {
       localObject = (Fragment)this.mAdded.get(i);
@@ -2035,33 +2063,25 @@ final class FragmentManagerImpl
       }
       i -= 1;
     }
-    if (this.mActive != null)
+    Object localObject = this.mActive;
+    if (localObject != null)
     {
-      i = this.mActive.size() - 1;
-      for (;;)
+      i = ((SparseArray)localObject).size() - 1;
+      while (i >= 0)
       {
-        if (i < 0) {
-          break label105;
-        }
-        Fragment localFragment = (Fragment)this.mActive.valueAt(i);
-        if (localFragment != null)
-        {
-          localObject = localFragment;
-          if (localFragment.mFragmentId == paramInt) {
-            break;
-          }
+        localObject = (Fragment)this.mActive.valueAt(i);
+        if ((localObject != null) && (((Fragment)localObject).mFragmentId == paramInt)) {
+          return localObject;
         }
         i -= 1;
       }
     }
-    label105:
     return null;
   }
   
   public Fragment findFragmentByTag(String paramString)
   {
     int i;
-    Object localObject;
     if (paramString != null)
     {
       i = this.mAdded.size() - 1;
@@ -2074,42 +2094,36 @@ final class FragmentManagerImpl
         i -= 1;
       }
     }
-    if ((this.mActive != null) && (paramString != null))
+    Object localObject = this.mActive;
+    if ((localObject != null) && (paramString != null))
     {
-      i = this.mActive.size() - 1;
-      for (;;)
+      i = ((SparseArray)localObject).size() - 1;
+      while (i >= 0)
       {
-        if (i < 0) {
-          break label119;
-        }
-        Fragment localFragment = (Fragment)this.mActive.valueAt(i);
-        if (localFragment != null)
-        {
-          localObject = localFragment;
-          if (paramString.equals(localFragment.mTag)) {
-            break;
-          }
+        localObject = (Fragment)this.mActive.valueAt(i);
+        if ((localObject != null) && (paramString.equals(((Fragment)localObject).mTag))) {
+          return localObject;
         }
         i -= 1;
       }
     }
-    label119:
     return null;
   }
   
   public Fragment findFragmentByWho(String paramString)
   {
-    if ((this.mActive != null) && (paramString != null))
+    Object localObject = this.mActive;
+    if ((localObject != null) && (paramString != null))
     {
-      int i = this.mActive.size() - 1;
+      int i = ((SparseArray)localObject).size() - 1;
       while (i >= 0)
       {
-        Fragment localFragment = (Fragment)this.mActive.valueAt(i);
-        if (localFragment != null)
+        localObject = (Fragment)this.mActive.valueAt(i);
+        if (localObject != null)
         {
-          localFragment = localFragment.findFragmentByWho(paramString);
-          if (localFragment != null) {
-            return localFragment;
+          localObject = ((Fragment)localObject).findFragmentByWho(paramString);
+          if (localObject != null) {
+            return localObject;
           }
         }
         i -= 1;
@@ -2126,8 +2140,12 @@ final class FragmentManagerImpl
       if (this.mAvailBackStackIndices == null) {
         this.mAvailBackStackIndices = new ArrayList();
       }
-      if (DEBUG) {
-        Log.v("FragmentManager", "Freeing back stack index " + paramInt);
+      if (DEBUG)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Freeing back stack index ");
+        localStringBuilder.append(paramInt);
+        Log.v("FragmentManager", localStringBuilder.toString());
       }
       this.mAvailBackStackIndices.add(Integer.valueOf(paramInt));
       return;
@@ -2137,32 +2155,28 @@ final class FragmentManagerImpl
   
   int getActiveFragmentCount()
   {
-    if (this.mActive == null) {
+    SparseArray localSparseArray = this.mActive;
+    if (localSparseArray == null) {
       return 0;
     }
-    return this.mActive.size();
+    return localSparseArray.size();
   }
   
   List<Fragment> getActiveFragments()
   {
-    Object localObject;
-    if (this.mActive == null)
-    {
-      localObject = null;
-      return localObject;
+    Object localObject = this.mActive;
+    if (localObject == null) {
+      return null;
     }
-    int j = this.mActive.size();
-    ArrayList localArrayList = new ArrayList(j);
+    int j = ((SparseArray)localObject).size();
+    localObject = new ArrayList(j);
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      localObject = localArrayList;
-      if (i >= j) {
-        break;
-      }
-      localArrayList.add(this.mActive.valueAt(i));
+      ((ArrayList)localObject).add(this.mActive.valueAt(i));
       i += 1;
     }
+    return localObject;
   }
   
   public FragmentManager.BackStackEntry getBackStackEntryAt(int paramInt)
@@ -2172,8 +2186,9 @@ final class FragmentManagerImpl
   
   public int getBackStackEntryCount()
   {
-    if (this.mBackStack != null) {
-      return this.mBackStack.size();
+    ArrayList localArrayList = this.mBackStack;
+    if (localArrayList != null) {
+      return localArrayList.size();
     }
     return 0;
   }
@@ -2182,17 +2197,19 @@ final class FragmentManagerImpl
   {
     int i = paramBundle.getInt(paramString, -1);
     if (i == -1) {
-      paramBundle = null;
+      return null;
     }
-    Fragment localFragment;
-    do
+    paramBundle = (Fragment)this.mActive.get(i);
+    if (paramBundle == null)
     {
-      return paramBundle;
-      localFragment = (Fragment)this.mActive.get(i);
-      paramBundle = localFragment;
-    } while (localFragment != null);
-    throwException(new IllegalStateException("Fragment no longer exists for key " + paramString + ": index " + i));
-    return localFragment;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Fragment no longer exists for key ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": index ");
+      localStringBuilder.append(i);
+      throwException(new IllegalStateException(localStringBuilder.toString()));
+    }
+    return paramBundle;
   }
   
   public List<Fragment> getFragments()
@@ -2219,23 +2236,17 @@ final class FragmentManagerImpl
   
   public void hideFragment(Fragment paramFragment)
   {
-    boolean bool = true;
-    if (DEBUG) {
-      Log.v("FragmentManager", "hide: " + paramFragment);
+    if (DEBUG)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hide: ");
+      localStringBuilder.append(paramFragment);
+      Log.v("FragmentManager", localStringBuilder.toString());
     }
     if (!paramFragment.mHidden)
     {
       paramFragment.mHidden = true;
-      if (paramFragment.mHiddenChanged) {
-        break label59;
-      }
-    }
-    for (;;)
-    {
-      paramFragment.mHiddenChanged = bool;
-      return;
-      label59:
-      bool = false;
+      paramFragment.mHiddenChanged = (true ^ paramFragment.mHiddenChanged);
     }
   }
   
@@ -2256,124 +2267,129 @@ final class FragmentManagerImpl
   
   AnimationOrAnimator loadAnimation(Fragment paramFragment, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    int j = paramFragment.getNextAnim();
-    Animation localAnimation = paramFragment.onCreateAnimation(paramInt1, paramBoolean, j);
+    int k = paramFragment.getNextAnim();
+    Animation localAnimation = paramFragment.onCreateAnimation(paramInt1, paramBoolean, k);
     if (localAnimation != null) {
       return new AnimationOrAnimator(localAnimation, null);
     }
-    paramFragment = paramFragment.onCreateAnimator(paramInt1, paramBoolean, j);
+    paramFragment = paramFragment.onCreateAnimator(paramInt1, paramBoolean, k);
     if (paramFragment != null) {
       return new AnimationOrAnimator(paramFragment, null);
     }
     boolean bool;
-    if (j != 0)
+    if (k != 0)
     {
-      bool = "anim".equals(this.mHost.getContext().getResources().getResourceTypeName(j));
-      if (!bool) {
-        break label387;
-      }
+      bool = "anim".equals(this.mHost.getContext().getResources().getResourceTypeName(k));
+      j = 0;
+      i = j;
+      if (!bool) {}
     }
-    for (;;)
+    try
     {
       try
       {
-        paramFragment = AnimationUtils.loadAnimation(this.mHost.getContext(), j);
+        paramFragment = AnimationUtils.loadAnimation(this.mHost.getContext(), k);
+        if (paramFragment != null)
+        {
+          paramFragment = new AnimationOrAnimator(paramFragment, null);
+          return paramFragment;
+        }
+        i = 1;
+      }
+      catch (Resources.NotFoundException paramFragment)
+      {
+        throw paramFragment;
+      }
+    }
+    catch (RuntimeException paramFragment)
+    {
+      for (;;)
+      {
+        i = j;
+      }
+    }
+    if (i == 0) {
+      try
+      {
+        paramFragment = AnimatorInflater.loadAnimator(this.mHost.getContext(), k);
         if (paramFragment != null)
         {
           paramFragment = new AnimationOrAnimator(paramFragment, null);
           return paramFragment;
         }
       }
-      catch (Resources.NotFoundException paramFragment)
+      catch (RuntimeException paramFragment)
       {
-        throw paramFragment;
-        i = 1;
-        if (i == 0)
+        if (!bool)
         {
-          try
-          {
-            paramFragment = AnimatorInflater.loadAnimator(this.mHost.getContext(), j);
-            if (paramFragment == null) {
-              break label199;
-            }
-            paramFragment = new AnimationOrAnimator(paramFragment, null);
-            return paramFragment;
+          paramFragment = AnimationUtils.loadAnimation(this.mHost.getContext(), k);
+          if (paramFragment != null) {
+            return new AnimationOrAnimator(paramFragment, null);
           }
-          catch (RuntimeException paramFragment)
-          {
-            if (!bool) {
-              continue;
-            }
-          }
+        }
+        else
+        {
           throw paramFragment;
         }
       }
-      catch (RuntimeException paramFragment)
-      {
-        i = 0;
-        continue;
-        paramFragment = AnimationUtils.loadAnimation(this.mHost.getContext(), j);
-        if (paramFragment != null) {
-          return new AnimationOrAnimator(paramFragment, null);
-        }
-      }
-      label199:
-      if (paramInt1 == 0) {
-        return null;
-      }
-      paramInt1 = transitToStyleIndex(paramInt1, paramBoolean);
-      if (paramInt1 < 0) {
-        return null;
-      }
-      switch (paramInt1)
-      {
-      default: 
-        paramInt1 = paramInt2;
-        if (paramInt2 == 0)
-        {
-          paramInt1 = paramInt2;
-          if (this.mHost.onHasWindowAnimations()) {
-            paramInt1 = this.mHost.onGetWindowAnimations();
-          }
-        }
-        if (paramInt1 == 0) {
-          return null;
-        }
-        break;
-      case 1: 
-        return makeOpenCloseAnimation(this.mHost.getContext(), 1.125F, 1.0F, 0.0F, 1.0F);
-      case 2: 
-        return makeOpenCloseAnimation(this.mHost.getContext(), 1.0F, 0.975F, 1.0F, 0.0F);
-      case 3: 
-        return makeOpenCloseAnimation(this.mHost.getContext(), 0.975F, 1.0F, 0.0F, 1.0F);
-      case 4: 
-        return makeOpenCloseAnimation(this.mHost.getContext(), 1.0F, 1.075F, 1.0F, 0.0F);
-      case 5: 
-        return makeFadeAnimation(this.mHost.getContext(), 0.0F, 1.0F);
-      case 6: 
-        return makeFadeAnimation(this.mHost.getContext(), 1.0F, 0.0F);
-      }
-      return null;
-      label387:
-      int i = 0;
     }
+    if (paramInt1 == 0) {
+      return null;
+    }
+    paramInt1 = transitToStyleIndex(paramInt1, paramBoolean);
+    if (paramInt1 < 0) {
+      return null;
+    }
+    switch (paramInt1)
+    {
+    default: 
+      paramInt1 = paramInt2;
+      if (paramInt2 == 0)
+      {
+        paramInt1 = paramInt2;
+        if (this.mHost.onHasWindowAnimations()) {
+          paramInt1 = this.mHost.onGetWindowAnimations();
+        }
+      }
+      break;
+    case 6: 
+      return makeFadeAnimation(this.mHost.getContext(), 1.0F, 0.0F);
+    case 5: 
+      return makeFadeAnimation(this.mHost.getContext(), 0.0F, 1.0F);
+    case 4: 
+      return makeOpenCloseAnimation(this.mHost.getContext(), 1.0F, 1.075F, 1.0F, 0.0F);
+    case 3: 
+      return makeOpenCloseAnimation(this.mHost.getContext(), 0.975F, 1.0F, 0.0F, 1.0F);
+    case 2: 
+      return makeOpenCloseAnimation(this.mHost.getContext(), 1.0F, 0.975F, 1.0F, 0.0F);
+    case 1: 
+      return makeOpenCloseAnimation(this.mHost.getContext(), 1.125F, 1.0F, 0.0F, 1.0F);
+    }
+    if (paramInt1 == 0) {
+      return null;
+    }
+    return null;
   }
   
   void makeActive(Fragment paramFragment)
   {
-    if (paramFragment.mIndex >= 0) {}
-    do
-    {
+    if (paramFragment.mIndex >= 0) {
       return;
-      int i = this.mNextFragmentIndex;
-      this.mNextFragmentIndex = (i + 1);
-      paramFragment.setIndex(i, this.mParent);
-      if (this.mActive == null) {
-        this.mActive = new SparseArray();
-      }
-      this.mActive.put(paramFragment.mIndex, paramFragment);
-    } while (!DEBUG);
-    Log.v("FragmentManager", "Allocated fragment index " + paramFragment);
+    }
+    int i = this.mNextFragmentIndex;
+    this.mNextFragmentIndex = (i + 1);
+    paramFragment.setIndex(i, this.mParent);
+    if (this.mActive == null) {
+      this.mActive = new SparseArray();
+    }
+    this.mActive.put(paramFragment.mIndex, paramFragment);
+    if (DEBUG)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Allocated fragment index ");
+      localStringBuilder.append(paramFragment);
+      Log.v("FragmentManager", localStringBuilder.toString());
+    }
   }
   
   void makeInactive(Fragment paramFragment)
@@ -2381,8 +2397,12 @@ final class FragmentManagerImpl
     if (paramFragment.mIndex < 0) {
       return;
     }
-    if (DEBUG) {
-      Log.v("FragmentManager", "Freeing fragment index " + paramFragment);
+    if (DEBUG)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Freeing fragment index ");
+      localStringBuilder.append(paramFragment);
+      Log.v("FragmentManager", localStringBuilder.toString());
     }
     this.mActive.put(paramFragment.mIndex, null);
     paramFragment.initState();
@@ -2390,70 +2410,58 @@ final class FragmentManagerImpl
   
   void moveFragmentToExpectedState(Fragment paramFragment)
   {
-    if (paramFragment == null) {}
-    label234:
-    label255:
-    for (;;)
-    {
+    if (paramFragment == null) {
       return;
-      int j = this.mCurState;
-      int i = j;
-      Object localObject;
-      if (paramFragment.mRemoving)
-      {
-        if (paramFragment.isInBackStack()) {
-          i = Math.min(j, 1);
-        }
+    }
+    int i = this.mCurState;
+    if (paramFragment.mRemoving) {
+      if (paramFragment.isInBackStack()) {
+        i = Math.min(i, 1);
+      } else {
+        i = Math.min(i, 0);
       }
-      else
+    }
+    moveToState(paramFragment, i, paramFragment.getNextTransition(), paramFragment.getNextTransitionStyle(), false);
+    if (paramFragment.mView != null)
+    {
+      Object localObject = findFragmentUnder(paramFragment);
+      if (localObject != null)
       {
-        moveToState(paramFragment, i, paramFragment.getNextTransition(), paramFragment.getNextTransitionStyle(), false);
-        if (paramFragment.mView != null)
+        localObject = ((Fragment)localObject).mView;
+        ViewGroup localViewGroup = paramFragment.mContainer;
+        i = localViewGroup.indexOfChild((View)localObject);
+        int j = localViewGroup.indexOfChild(paramFragment.mView);
+        if (j < i)
         {
-          localObject = findFragmentUnder(paramFragment);
-          if (localObject != null)
-          {
-            localObject = ((Fragment)localObject).mView;
-            ViewGroup localViewGroup = paramFragment.mContainer;
-            i = localViewGroup.indexOfChild((View)localObject);
-            j = localViewGroup.indexOfChild(paramFragment.mView);
-            if (j < i)
-            {
-              localViewGroup.removeViewAt(j);
-              localViewGroup.addView(paramFragment.mView, i);
-            }
-          }
-          if ((paramFragment.mIsNewlyAdded) && (paramFragment.mContainer != null))
-          {
-            if (paramFragment.mPostponedAlpha > 0.0F) {
-              paramFragment.mView.setAlpha(paramFragment.mPostponedAlpha);
-            }
-            paramFragment.mPostponedAlpha = 0.0F;
-            paramFragment.mIsNewlyAdded = false;
-            localObject = loadAnimation(paramFragment, paramFragment.getNextTransition(), true, paramFragment.getNextTransitionStyle());
-            if (localObject != null)
-            {
-              setHWLayerAnimListenerIfAlpha(paramFragment.mView, (AnimationOrAnimator)localObject);
-              if (((AnimationOrAnimator)localObject).animation == null) {
-                break label234;
-              }
-              paramFragment.mView.startAnimation(((AnimationOrAnimator)localObject).animation);
-            }
-          }
+          localViewGroup.removeViewAt(j);
+          localViewGroup.addView(paramFragment.mView, i);
         }
       }
-      for (;;)
+      if ((paramFragment.mIsNewlyAdded) && (paramFragment.mContainer != null))
       {
-        if (!paramFragment.mHiddenChanged) {
-          break label255;
+        if (paramFragment.mPostponedAlpha > 0.0F) {
+          paramFragment.mView.setAlpha(paramFragment.mPostponedAlpha);
         }
-        completeShowHideFragment(paramFragment);
-        return;
-        i = Math.min(j, 0);
-        break;
-        ((AnimationOrAnimator)localObject).animator.setTarget(paramFragment.mView);
-        ((AnimationOrAnimator)localObject).animator.start();
+        paramFragment.mPostponedAlpha = 0.0F;
+        paramFragment.mIsNewlyAdded = false;
+        localObject = loadAnimation(paramFragment, paramFragment.getNextTransition(), true, paramFragment.getNextTransitionStyle());
+        if (localObject != null)
+        {
+          setHWLayerAnimListenerIfAlpha(paramFragment.mView, (AnimationOrAnimator)localObject);
+          if (((AnimationOrAnimator)localObject).animation != null)
+          {
+            paramFragment.mView.startAnimation(((AnimationOrAnimator)localObject).animation);
+          }
+          else
+          {
+            ((AnimationOrAnimator)localObject).animator.setTarget(paramFragment.mView);
+            ((AnimationOrAnimator)localObject).animator.start();
+          }
+        }
       }
+    }
+    if (paramFragment.mHiddenChanged) {
+      completeShowHideFragment(paramFragment);
     }
   }
   
@@ -2462,14 +2470,12 @@ final class FragmentManagerImpl
     if ((this.mHost == null) && (paramInt != 0)) {
       throw new IllegalStateException("No activity");
     }
-    if ((!paramBoolean) && (paramInt == this.mCurState)) {}
-    do
+    if ((!paramBoolean) && (paramInt == this.mCurState)) {
+      return;
+    }
+    this.mCurState = paramInt;
+    if (this.mActive != null)
     {
-      do
-      {
-        return;
-        this.mCurState = paramInt;
-      } while (this.mActive == null);
       int i = this.mAdded.size();
       paramInt = 0;
       while (paramInt < i)
@@ -2479,18 +2485,26 @@ final class FragmentManagerImpl
       }
       i = this.mActive.size();
       paramInt = 0;
+      Object localObject;
       while (paramInt < i)
       {
-        Fragment localFragment = (Fragment)this.mActive.valueAt(paramInt);
-        if ((localFragment != null) && ((localFragment.mRemoving) || (localFragment.mDetached)) && (!localFragment.mIsNewlyAdded)) {
-          moveFragmentToExpectedState(localFragment);
+        localObject = (Fragment)this.mActive.valueAt(paramInt);
+        if ((localObject != null) && ((((Fragment)localObject).mRemoving) || (((Fragment)localObject).mDetached)) && (!((Fragment)localObject).mIsNewlyAdded)) {
+          moveFragmentToExpectedState((Fragment)localObject);
         }
         paramInt += 1;
       }
       startPendingDeferredFragments();
-    } while ((!this.mNeedMenuInvalidate) || (this.mHost == null) || (this.mCurState != 5));
-    this.mHost.onSupportInvalidateOptionsMenu();
-    this.mNeedMenuInvalidate = false;
+      if (this.mNeedMenuInvalidate)
+      {
+        localObject = this.mHost;
+        if ((localObject != null) && (this.mCurState == 5))
+        {
+          ((FragmentHostCallback)localObject).onSupportInvalidateOptionsMenu();
+          this.mNeedMenuInvalidate = false;
+        }
+      }
+    }
   }
   
   void moveToState(Fragment paramFragment)
@@ -2500,396 +2514,444 @@ final class FragmentManagerImpl
   
   void moveToState(Fragment paramFragment, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    boolean bool = true;
-    int j;
-    if (paramFragment.mAdded)
-    {
-      j = paramInt1;
-      if (!paramFragment.mDetached) {}
+    boolean bool2 = paramFragment.mAdded;
+    int j = 1;
+    boolean bool1 = true;
+    if ((bool2) && (!paramFragment.mDetached)) {
+      break label44;
     }
-    else
-    {
-      j = paramInt1;
-      if (paramInt1 > 1) {
-        j = 1;
-      }
+    int i = paramInt1;
+    paramInt1 = i;
+    if (i > 1) {
+      paramInt1 = 1;
     }
-    int i = j;
+    label44:
+    i = paramInt1;
     if (paramFragment.mRemoving)
     {
-      i = j;
-      if (j > paramFragment.mState)
-      {
-        if ((paramFragment.mState != 0) || (!paramFragment.isInBackStack())) {
-          break label127;
+      i = paramInt1;
+      if (paramInt1 > paramFragment.mState) {
+        if ((paramFragment.mState == 0) && (paramFragment.isInBackStack())) {
+          i = 1;
+        } else {
+          i = paramFragment.mState;
         }
-        i = 1;
       }
     }
-    paramInt1 = i;
-    if (paramFragment.mDeferStart)
-    {
+    if ((paramFragment.mDeferStart) && (paramFragment.mState < 4) && (i > 3)) {
+      paramInt1 = 3;
+    } else {
       paramInt1 = i;
-      if (paramFragment.mState < 4)
-      {
-        paramInt1 = i;
-        if (i > 3) {
-          paramInt1 = 3;
-        }
-      }
     }
-    label127:
-    Object localObject1;
-    label571:
-    label600:
-    label623:
-    ViewGroup localViewGroup;
+    Object localObject2;
     if (paramFragment.mState <= paramInt1)
     {
-      if ((paramFragment.mFromLayout) && (!paramFragment.mInLayout)) {}
-      do
-      {
+      if ((paramFragment.mFromLayout) && (!paramFragment.mInLayout)) {
         return;
-        i = paramFragment.mState;
-        break;
-        if ((paramFragment.getAnimatingAway() != null) || (paramFragment.getAnimator() != null))
-        {
-          paramFragment.setAnimatingAway(null);
-          paramFragment.setAnimator(null);
-          moveToState(paramFragment, paramFragment.getStateAfterAnimating(), 0, 0, true);
-        }
-        paramInt3 = paramInt1;
-        i = paramInt1;
-        j = paramInt1;
-        paramInt2 = paramInt1;
-        switch (paramFragment.mState)
-        {
-        default: 
-          i = paramInt1;
-        }
-      } while (paramFragment.mState == i);
-      Log.w("FragmentManager", "moveToState: Fragment state for " + paramFragment + " not updated inline; " + "expected state " + i + " found " + paramFragment.mState);
-      paramFragment.mState = i;
-      return;
+      }
+      if ((paramFragment.getAnimatingAway() != null) || (paramFragment.getAnimator() != null))
+      {
+        paramFragment.setAnimatingAway(null);
+        paramFragment.setAnimator(null);
+        moveToState(paramFragment, paramFragment.getStateAfterAnimating(), 0, 0, true);
+      }
+      paramInt2 = paramInt1;
       paramInt3 = paramInt1;
-      if (paramInt1 > 0)
-      {
-        if (DEBUG) {
-          Log.v("FragmentManager", "moveto CREATED: " + paramFragment);
-        }
-        paramInt3 = paramInt1;
-        if (paramFragment.mSavedFragmentState != null)
-        {
-          paramFragment.mSavedFragmentState.setClassLoader(this.mHost.getContext().getClassLoader());
-          paramFragment.mSavedViewState = paramFragment.mSavedFragmentState.getSparseParcelableArray("android:view_state");
-          paramFragment.mTarget = getFragment(paramFragment.mSavedFragmentState, "android:target_state");
-          if (paramFragment.mTarget != null) {
-            paramFragment.mTargetRequestCode = paramFragment.mSavedFragmentState.getInt("android:target_req_state", 0);
-          }
-          if (paramFragment.mSavedUserVisibleHint == null) {
-            break label571;
-          }
-          paramFragment.mUserVisibleHint = paramFragment.mSavedUserVisibleHint.booleanValue();
-          paramFragment.mSavedUserVisibleHint = null;
-          paramInt3 = paramInt1;
-          if (!paramFragment.mUserVisibleHint)
-          {
-            paramFragment.mDeferStart = true;
-            paramInt3 = paramInt1;
-            if (paramInt1 > 3) {
-              paramInt3 = 3;
-            }
-          }
-        }
-        paramFragment.mHost = this.mHost;
-        paramFragment.mParentFragment = this.mParent;
-        if (this.mParent != null) {}
-        for (localObject1 = this.mParent.mChildFragmentManager;; localObject1 = this.mHost.getFragmentManagerImpl())
-        {
-          paramFragment.mFragmentManager = ((FragmentManagerImpl)localObject1);
-          if (paramFragment.mTarget == null) {
-            break label623;
-          }
-          if (this.mActive.get(paramFragment.mTarget.mIndex) == paramFragment.mTarget) {
-            break label600;
-          }
-          throw new IllegalStateException("Fragment " + paramFragment + " declared target fragment " + paramFragment.mTarget + " that does not belong to this FragmentManager!");
-          paramFragment.mUserVisibleHint = paramFragment.mSavedFragmentState.getBoolean("android:user_visible_hint", true);
-          break;
-        }
-        if (paramFragment.mTarget.mState < 1) {
-          moveToState(paramFragment.mTarget, 1, 0, 0, true);
-        }
-        dispatchOnFragmentPreAttached(paramFragment, this.mHost.getContext(), false);
-        paramFragment.mCalled = false;
-        paramFragment.onAttach(this.mHost.getContext());
-        if (!paramFragment.mCalled) {
-          throw new SuperNotCalledException("Fragment " + paramFragment + " did not call through to super.onAttach()");
-        }
-        if (paramFragment.mParentFragment == null)
-        {
-          this.mHost.onAttachFragment(paramFragment);
-          label708:
-          dispatchOnFragmentAttached(paramFragment, this.mHost.getContext(), false);
-          if (paramFragment.mIsCreated) {
-            break label1304;
-          }
-          dispatchOnFragmentPreCreated(paramFragment, paramFragment.mSavedFragmentState, false);
-          paramFragment.performCreate(paramFragment.mSavedFragmentState);
-          dispatchOnFragmentCreated(paramFragment, paramFragment.mSavedFragmentState, false);
-          paramFragment.mRetaining = false;
-        }
-      }
-      else
-      {
-        ensureInflatedFragmentView(paramFragment);
-        i = paramInt3;
-        if (paramInt3 > 1)
-        {
-          if (DEBUG) {
-            Log.v("FragmentManager", "moveto ACTIVITY_CREATED: " + paramFragment);
-          }
-          if (!paramFragment.mFromLayout)
-          {
-            if (paramFragment.mContainerId == 0) {
-              break label1947;
-            }
-            if (paramFragment.mContainerId == -1) {
-              throwException(new IllegalArgumentException("Cannot create fragment " + paramFragment + " for a container view with no id"));
-            }
-            localViewGroup = (ViewGroup)this.mContainer.onFindViewById(paramFragment.mContainerId);
-            localObject1 = localViewGroup;
-            if (localViewGroup == null)
-            {
-              localObject1 = localViewGroup;
-              if (paramFragment.mRestored) {}
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      label1304:
-      Object localObject2;
-      try
-      {
-        localObject1 = paramFragment.getResources().getResourceName(paramFragment.mContainerId);
-        throwException(new IllegalArgumentException("No view found for id 0x" + Integer.toHexString(paramFragment.mContainerId) + " (" + (String)localObject1 + ") for fragment " + paramFragment));
-        localObject1 = localViewGroup;
-        paramFragment.mContainer = ((ViewGroup)localObject1);
-        paramFragment.mView = paramFragment.performCreateView(paramFragment.performGetLayoutInflater(paramFragment.mSavedFragmentState), (ViewGroup)localObject1, paramFragment.mSavedFragmentState);
-        if (paramFragment.mView != null)
-        {
-          paramFragment.mInnerView = paramFragment.mView;
-          paramFragment.mView.setSaveFromParentEnabled(false);
-          if (localObject1 != null) {
-            ((ViewGroup)localObject1).addView(paramFragment.mView);
-          }
-          if (paramFragment.mHidden) {
-            paramFragment.mView.setVisibility(8);
-          }
-          paramFragment.onViewCreated(paramFragment.mView, paramFragment.mSavedFragmentState);
-          dispatchOnFragmentViewCreated(paramFragment, paramFragment.mView, paramFragment.mSavedFragmentState, false);
-          if ((paramFragment.mView.getVisibility() == 0) && (paramFragment.mContainer != null))
-          {
-            paramBoolean = bool;
-            paramFragment.mIsNewlyAdded = paramBoolean;
-            paramFragment.performActivityCreated(paramFragment.mSavedFragmentState);
-            dispatchOnFragmentActivityCreated(paramFragment, paramFragment.mSavedFragmentState, false);
-            if (paramFragment.mView != null) {
-              paramFragment.restoreViewState(paramFragment.mSavedFragmentState);
-            }
-            paramFragment.mSavedFragmentState = null;
-            i = paramInt3;
-            j = i;
-            if (i > 2)
-            {
-              paramFragment.mState = 3;
-              j = i;
-            }
-            paramInt2 = j;
-            if (j > 3)
-            {
-              if (DEBUG) {
-                Log.v("FragmentManager", "moveto STARTED: " + paramFragment);
-              }
-              paramFragment.performStart();
-              dispatchOnFragmentStarted(paramFragment, false);
-              paramInt2 = j;
-            }
-            i = paramInt2;
-            if (paramInt2 <= 4) {
-              break;
-            }
-            if (DEBUG) {
-              Log.v("FragmentManager", "moveto RESUMED: " + paramFragment);
-            }
-            paramFragment.performResume();
-            dispatchOnFragmentResumed(paramFragment, false);
-            paramFragment.mSavedFragmentState = null;
-            paramFragment.mSavedViewState = null;
-            i = paramInt2;
-            break;
-            paramFragment.mParentFragment.onAttachFragment(paramFragment);
-            break label708;
-            paramFragment.restoreChildFragmentState(paramFragment.mSavedFragmentState);
-            paramFragment.mState = 1;
-          }
-        }
-      }
-      catch (Resources.NotFoundException localNotFoundException)
-      {
-        localObject2 = "unknown";
-        continue;
-        paramBoolean = false;
-        continue;
-        paramFragment.mInnerView = null;
-        continue;
-      }
       i = paramInt1;
-      if (paramFragment.mState <= paramInt1) {
-        break;
-      }
+      j = paramInt1;
       switch (paramFragment.mState)
       {
       default: 
-        i = paramInt1;
         break;
-      case 1: 
-      case 5: 
-      case 4: 
-      case 3: 
-      case 2: 
-        label1398:
-        do
+      case 0: 
+        paramInt2 = paramInt1;
+        if (paramInt1 > 0)
         {
-          i = paramInt1;
-          if (paramInt1 >= 1) {
-            break;
-          }
-          if (this.mDestroyed)
+          if (DEBUG)
           {
-            if (paramFragment.getAnimatingAway() == null) {
-              break label1801;
-            }
-            localObject2 = paramFragment.getAnimatingAway();
-            paramFragment.setAnimatingAway(null);
-            ((View)localObject2).clearAnimation();
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("moveto CREATED: ");
+            ((StringBuilder)localObject1).append(paramFragment);
+            Log.v("FragmentManager", ((StringBuilder)localObject1).toString());
           }
-          if ((paramFragment.getAnimatingAway() == null) && (paramFragment.getAnimator() == null)) {
-            break label1827;
-          }
-          paramFragment.setStateAfterAnimating(paramInt1);
-          i = 1;
-          break;
-          if (paramInt1 < 5)
+          paramInt2 = paramInt1;
+          if (paramFragment.mSavedFragmentState != null)
           {
-            if (DEBUG) {
-              Log.v("FragmentManager", "movefrom RESUMED: " + paramFragment);
+            paramFragment.mSavedFragmentState.setClassLoader(this.mHost.getContext().getClassLoader());
+            paramFragment.mSavedViewState = paramFragment.mSavedFragmentState.getSparseParcelableArray("android:view_state");
+            paramFragment.mTarget = getFragment(paramFragment.mSavedFragmentState, "android:target_state");
+            if (paramFragment.mTarget != null) {
+              paramFragment.mTargetRequestCode = paramFragment.mSavedFragmentState.getInt("android:target_req_state", 0);
             }
-            paramFragment.performPause();
-            dispatchOnFragmentPaused(paramFragment, false);
-          }
-          if (paramInt1 < 4)
-          {
-            if (DEBUG) {
-              Log.v("FragmentManager", "movefrom STARTED: " + paramFragment);
+            if (paramFragment.mSavedUserVisibleHint != null)
+            {
+              paramFragment.mUserVisibleHint = paramFragment.mSavedUserVisibleHint.booleanValue();
+              paramFragment.mSavedUserVisibleHint = null;
             }
-            paramFragment.performStop();
-            dispatchOnFragmentStopped(paramFragment, false);
-          }
-          if (paramInt1 < 3)
-          {
-            if (DEBUG) {
-              Log.v("FragmentManager", "movefrom STOPPED: " + paramFragment);
+            else
+            {
+              paramFragment.mUserVisibleHint = paramFragment.mSavedFragmentState.getBoolean("android:user_visible_hint", true);
             }
-            paramFragment.performReallyStop();
+            paramInt2 = paramInt1;
+            if (!paramFragment.mUserVisibleHint)
+            {
+              paramFragment.mDeferStart = true;
+              paramInt2 = paramInt1;
+              if (paramInt1 > 3) {
+                paramInt2 = 3;
+              }
+            }
           }
-        } while (paramInt1 >= 2);
-        label1436:
-        if (DEBUG) {
-          Log.v("FragmentManager", "movefrom ACTIVITY_CREATED: " + paramFragment);
-        }
-        if ((paramFragment.mView != null) && (this.mHost.onShouldSaveFragmentState(paramFragment)) && (paramFragment.mSavedViewState == null)) {
-          saveFragmentViewState(paramFragment);
-        }
-        paramFragment.performDestroyView();
-        dispatchOnFragmentViewDestroyed(paramFragment, false);
-        if ((paramFragment.mView != null) && (paramFragment.mContainer != null))
-        {
-          paramFragment.mContainer.endViewTransition(paramFragment.mView);
-          paramFragment.mView.clearAnimation();
-          if ((this.mCurState <= 0) || (this.mDestroyed) || (paramFragment.mView.getVisibility() != 0) || (paramFragment.mPostponedAlpha < 0.0F)) {
-            break label1941;
-          }
-        }
-        label1801:
-        label1941:
-        for (localObject2 = loadAnimation(paramFragment, paramInt2, false, paramInt3);; localObject2 = null)
-        {
-          paramFragment.mPostponedAlpha = 0.0F;
+          localObject1 = this.mHost;
+          paramFragment.mHost = ((FragmentHostCallback)localObject1);
+          localObject2 = this.mParent;
+          paramFragment.mParentFragment = ((Fragment)localObject2);
           if (localObject2 != null) {
-            animateRemoveFragment(paramFragment, (AnimationOrAnimator)localObject2, paramInt1);
+            localObject1 = ((Fragment)localObject2).mChildFragmentManager;
+          } else {
+            localObject1 = ((FragmentHostCallback)localObject1).getFragmentManagerImpl();
           }
-          paramFragment.mContainer.removeView(paramFragment.mView);
+          paramFragment.mFragmentManager = ((FragmentManagerImpl)localObject1);
+          if (paramFragment.mTarget != null) {
+            if (this.mActive.get(paramFragment.mTarget.mIndex) == paramFragment.mTarget)
+            {
+              if (paramFragment.mTarget.mState < 1) {
+                moveToState(paramFragment.mTarget, 1, 0, 0, true);
+              }
+            }
+            else
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("Fragment ");
+              ((StringBuilder)localObject1).append(paramFragment);
+              ((StringBuilder)localObject1).append(" declared target fragment ");
+              ((StringBuilder)localObject1).append(paramFragment.mTarget);
+              ((StringBuilder)localObject1).append(" that does not belong to this FragmentManager!");
+              throw new IllegalStateException(((StringBuilder)localObject1).toString());
+            }
+          }
+          dispatchOnFragmentPreAttached(paramFragment, this.mHost.getContext(), false);
+          paramFragment.mCalled = false;
+          paramFragment.onAttach(this.mHost.getContext());
+          if (paramFragment.mCalled)
+          {
+            if (paramFragment.mParentFragment == null) {
+              this.mHost.onAttachFragment(paramFragment);
+            } else {
+              paramFragment.mParentFragment.onAttachFragment(paramFragment);
+            }
+            dispatchOnFragmentAttached(paramFragment, this.mHost.getContext(), false);
+            if (!paramFragment.mIsCreated)
+            {
+              dispatchOnFragmentPreCreated(paramFragment, paramFragment.mSavedFragmentState, false);
+              paramFragment.performCreate(paramFragment.mSavedFragmentState);
+              dispatchOnFragmentCreated(paramFragment, paramFragment.mSavedFragmentState, false);
+            }
+            else
+            {
+              paramFragment.restoreChildFragmentState(paramFragment.mSavedFragmentState);
+              paramFragment.mState = 1;
+            }
+            paramFragment.mRetaining = false;
+          }
+          else
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("Fragment ");
+            ((StringBuilder)localObject1).append(paramFragment);
+            ((StringBuilder)localObject1).append(" did not call through to super.onAttach()");
+            throw new SuperNotCalledException(((StringBuilder)localObject1).toString());
+          }
+        }
+      case 1: 
+        ensureInflatedFragmentView(paramFragment);
+        paramInt3 = paramInt2;
+        if (paramInt2 > 1)
+        {
+          if (DEBUG)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("moveto ACTIVITY_CREATED: ");
+            ((StringBuilder)localObject1).append(paramFragment);
+            Log.v("FragmentManager", ((StringBuilder)localObject1).toString());
+          }
+          if (!paramFragment.mFromLayout) {
+            if (paramFragment.mContainerId != 0)
+            {
+              if (paramFragment.mContainerId == -1)
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("Cannot create fragment ");
+                ((StringBuilder)localObject1).append(paramFragment);
+                ((StringBuilder)localObject1).append(" for a container view with no id");
+                throwException(new IllegalArgumentException(((StringBuilder)localObject1).toString()));
+              }
+              localObject2 = (ViewGroup)this.mContainer.onFindViewById(paramFragment.mContainerId);
+              localObject1 = localObject2;
+              if (localObject2 != null) {
+                break label1043;
+              }
+              localObject1 = localObject2;
+              if (paramFragment.mRestored) {
+                break label1043;
+              }
+            }
+          }
+        }
+        break;
+      }
+    }
+    try
+    {
+      localObject1 = paramFragment.getResources().getResourceName(paramFragment.mContainerId);
+    }
+    catch (Resources.NotFoundException localNotFoundException)
+    {
+      label948:
+      StringBuilder localStringBuilder;
+      break label948;
+    }
+    Object localObject1 = "unknown";
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("No view found for id 0x");
+    localStringBuilder.append(Integer.toHexString(paramFragment.mContainerId));
+    localStringBuilder.append(" (");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(") for fragment ");
+    localStringBuilder.append(paramFragment);
+    throwException(new IllegalArgumentException(localStringBuilder.toString()));
+    localObject1 = localObject2;
+    break label1043;
+    localObject1 = null;
+    label1043:
+    paramFragment.mContainer = ((ViewGroup)localObject1);
+    paramFragment.mView = paramFragment.performCreateView(paramFragment.performGetLayoutInflater(paramFragment.mSavedFragmentState), (ViewGroup)localObject1, paramFragment.mSavedFragmentState);
+    if (paramFragment.mView != null)
+    {
+      paramFragment.mInnerView = paramFragment.mView;
+      paramFragment.mView.setSaveFromParentEnabled(false);
+      if (localObject1 != null) {
+        ((ViewGroup)localObject1).addView(paramFragment.mView);
+      }
+      if (paramFragment.mHidden) {
+        paramFragment.mView.setVisibility(8);
+      }
+      paramFragment.onViewCreated(paramFragment.mView, paramFragment.mSavedFragmentState);
+      dispatchOnFragmentViewCreated(paramFragment, paramFragment.mView, paramFragment.mSavedFragmentState, false);
+      if ((paramFragment.mView.getVisibility() == 0) && (paramFragment.mContainer != null)) {
+        paramBoolean = bool1;
+      } else {
+        paramBoolean = false;
+      }
+      paramFragment.mIsNewlyAdded = paramBoolean;
+    }
+    else
+    {
+      paramFragment.mInnerView = null;
+    }
+    paramFragment.performActivityCreated(paramFragment.mSavedFragmentState);
+    dispatchOnFragmentActivityCreated(paramFragment, paramFragment.mSavedFragmentState, false);
+    if (paramFragment.mView != null) {
+      paramFragment.restoreViewState(paramFragment.mSavedFragmentState);
+    }
+    paramFragment.mSavedFragmentState = null;
+    paramInt3 = paramInt2;
+    i = paramInt3;
+    if (paramInt3 > 2)
+    {
+      paramFragment.mState = 3;
+      i = paramInt3;
+    }
+    j = i;
+    if (i > 3)
+    {
+      if (DEBUG)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("moveto STARTED: ");
+        ((StringBuilder)localObject1).append(paramFragment);
+        Log.v("FragmentManager", ((StringBuilder)localObject1).toString());
+      }
+      paramFragment.performStart();
+      dispatchOnFragmentStarted(paramFragment, false);
+      j = i;
+    }
+    if (j > 4)
+    {
+      if (DEBUG)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("moveto RESUMED: ");
+        ((StringBuilder)localObject1).append(paramFragment);
+        Log.v("FragmentManager", ((StringBuilder)localObject1).toString());
+      }
+      paramFragment.performResume();
+      dispatchOnFragmentResumed(paramFragment, false);
+      paramFragment.mSavedFragmentState = null;
+      paramFragment.mSavedViewState = null;
+    }
+    paramInt1 = j;
+    break label2026;
+    if (paramFragment.mState > paramInt1)
+    {
+      switch (paramFragment.mState)
+      {
+      default: 
+        break;
+      case 5: 
+        if (paramInt1 < 5)
+        {
+          if (DEBUG)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("movefrom RESUMED: ");
+            ((StringBuilder)localObject1).append(paramFragment);
+            Log.v("FragmentManager", ((StringBuilder)localObject1).toString());
+          }
+          paramFragment.performPause();
+          dispatchOnFragmentPaused(paramFragment, false);
+        }
+      case 4: 
+        if (paramInt1 < 4)
+        {
+          if (DEBUG)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("movefrom STARTED: ");
+            ((StringBuilder)localObject1).append(paramFragment);
+            Log.v("FragmentManager", ((StringBuilder)localObject1).toString());
+          }
+          paramFragment.performStop();
+          dispatchOnFragmentStopped(paramFragment, false);
+        }
+      case 3: 
+        if (paramInt1 < 3)
+        {
+          if (DEBUG)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("movefrom STOPPED: ");
+            ((StringBuilder)localObject1).append(paramFragment);
+            Log.v("FragmentManager", ((StringBuilder)localObject1).toString());
+          }
+          paramFragment.performReallyStop();
+        }
+      case 2: 
+        if (paramInt1 < 2)
+        {
+          if (DEBUG)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("movefrom ACTIVITY_CREATED: ");
+            ((StringBuilder)localObject1).append(paramFragment);
+            Log.v("FragmentManager", ((StringBuilder)localObject1).toString());
+          }
+          if ((paramFragment.mView != null) && (this.mHost.onShouldSaveFragmentState(paramFragment)) && (paramFragment.mSavedViewState == null)) {
+            saveFragmentViewState(paramFragment);
+          }
+          paramFragment.performDestroyView();
+          dispatchOnFragmentViewDestroyed(paramFragment, false);
+          if ((paramFragment.mView != null) && (paramFragment.mContainer != null))
+          {
+            paramFragment.mContainer.endViewTransition(paramFragment.mView);
+            paramFragment.mView.clearAnimation();
+            if ((this.mCurState > 0) && (!this.mDestroyed) && (paramFragment.mView.getVisibility() == 0) && (paramFragment.mPostponedAlpha >= 0.0F)) {
+              localObject1 = loadAnimation(paramFragment, paramInt2, false, paramInt3);
+            } else {
+              localObject1 = null;
+            }
+            paramFragment.mPostponedAlpha = 0.0F;
+            if (localObject1 != null) {
+              animateRemoveFragment(paramFragment, (AnimationOrAnimator)localObject1, paramInt1);
+            }
+            paramFragment.mContainer.removeView(paramFragment.mView);
+          }
           paramFragment.mContainer = null;
           paramFragment.mView = null;
           paramFragment.mInnerView = null;
           paramFragment.mInLayout = false;
-          break label1398;
-          if (paramFragment.getAnimator() == null) {
-            break label1436;
+        }
+        break;
+      }
+      if (paramInt1 < 1)
+      {
+        if (this.mDestroyed) {
+          if (paramFragment.getAnimatingAway() != null)
+          {
+            localObject1 = paramFragment.getAnimatingAway();
+            paramFragment.setAnimatingAway(null);
+            ((View)localObject1).clearAnimation();
           }
-          localObject2 = paramFragment.getAnimator();
-          paramFragment.setAnimator(null);
-          ((Animator)localObject2).cancel();
-          break label1436;
-          label1827:
-          if (DEBUG) {
-            Log.v("FragmentManager", "movefrom CREATED: " + paramFragment);
+          else if (paramFragment.getAnimator() != null)
+          {
+            localObject1 = paramFragment.getAnimator();
+            paramFragment.setAnimator(null);
+            ((Animator)localObject1).cancel();
+          }
+        }
+        if ((paramFragment.getAnimatingAway() == null) && (paramFragment.getAnimator() == null))
+        {
+          if (DEBUG)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("movefrom CREATED: ");
+            ((StringBuilder)localObject1).append(paramFragment);
+            Log.v("FragmentManager", ((StringBuilder)localObject1).toString());
           }
           if (!paramFragment.mRetaining)
           {
             paramFragment.performDestroy();
             dispatchOnFragmentDestroyed(paramFragment, false);
           }
-          for (;;)
+          else
           {
-            paramFragment.performDetach();
-            dispatchOnFragmentDetached(paramFragment, false);
-            i = paramInt1;
-            if (paramBoolean) {
-              break;
-            }
-            if (paramFragment.mRetaining) {
-              break label1920;
-            }
-            makeInactive(paramFragment);
-            i = paramInt1;
-            break;
             paramFragment.mState = 0;
           }
-          paramFragment.mHost = null;
-          paramFragment.mParentFragment = null;
-          paramFragment.mFragmentManager = null;
-          i = paramInt1;
-          break;
+          paramFragment.performDetach();
+          dispatchOnFragmentDetached(paramFragment, false);
+          if (!paramBoolean) {
+            if (!paramFragment.mRetaining)
+            {
+              makeInactive(paramFragment);
+            }
+            else
+            {
+              paramFragment.mHost = null;
+              paramFragment.mParentFragment = null;
+              paramFragment.mFragmentManager = null;
+            }
+          }
         }
-        label1920:
-        label1947:
-        localObject2 = null;
+        else
+        {
+          paramFragment.setStateAfterAnimating(paramInt1);
+          paramInt1 = j;
+        }
       }
+    }
+    label2026:
+    if (paramFragment.mState != paramInt1)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("moveToState: Fragment state for ");
+      ((StringBuilder)localObject1).append(paramFragment);
+      ((StringBuilder)localObject1).append(" not updated inline; ");
+      ((StringBuilder)localObject1).append("expected state ");
+      ((StringBuilder)localObject1).append(paramInt1);
+      ((StringBuilder)localObject1).append(" found ");
+      ((StringBuilder)localObject1).append(paramFragment.mState);
+      Log.w("FragmentManager", ((StringBuilder)localObject1).toString());
+      paramFragment.mState = paramInt1;
     }
   }
   
   public void noteStateNotSaved()
   {
     this.mSavedNonConfig = null;
+    int i = 0;
     this.mStateSaved = false;
     this.mStopped = false;
     int j = this.mAdded.size();
-    int i = 0;
     while (i < j)
     {
       Fragment localFragment = (Fragment)this.mAdded.get(i);
@@ -2907,94 +2969,98 @@ final class FragmentManagerImpl
     }
     String str1 = paramAttributeSet.getAttributeValue(null, "class");
     paramString = paramContext.obtainStyledAttributes(paramAttributeSet, FragmentTag.Fragment);
+    int i = 0;
     if (str1 == null) {
       str1 = paramString.getString(0);
     }
-    for (;;)
+    int k = paramString.getResourceId(1, -1);
+    String str2 = paramString.getString(2);
+    paramString.recycle();
+    if (!Fragment.isSupportFragmentClass(this.mHost.getContext(), str1)) {
+      return null;
+    }
+    if (paramView != null) {
+      i = paramView.getId();
+    }
+    if ((i == -1) && (k == -1) && (str2 == null))
     {
-      int k = paramString.getResourceId(1, -1);
-      String str2 = paramString.getString(2);
-      paramString.recycle();
-      if (!Fragment.isSupportFragmentClass(this.mHost.getContext(), str1)) {
-        return null;
+      paramView = new StringBuilder();
+      paramView.append(paramAttributeSet.getPositionDescription());
+      paramView.append(": Must specify unique android:id, android:tag, or have a parent with an id for ");
+      paramView.append(str1);
+      throw new IllegalArgumentException(paramView.toString());
+    }
+    if (k != -1) {
+      paramString = findFragmentById(k);
+    } else {
+      paramString = null;
+    }
+    paramView = paramString;
+    if (paramString == null)
+    {
+      paramView = paramString;
+      if (str2 != null) {
+        paramView = findFragmentByTag(str2);
       }
-      if (paramView != null) {}
-      for (int i = paramView.getId(); (i == -1) && (k == -1) && (str2 == null); i = 0) {
-        throw new IllegalArgumentException(paramAttributeSet.getPositionDescription() + ": Must specify unique android:id, android:tag, or have a parent with an id for " + str1);
+    }
+    paramString = paramView;
+    if (paramView == null)
+    {
+      paramString = paramView;
+      if (i != -1) {
+        paramString = findFragmentById(i);
       }
+    }
+    if (DEBUG)
+    {
+      paramView = new StringBuilder();
+      paramView.append("onCreateView: id=0x");
+      paramView.append(Integer.toHexString(k));
+      paramView.append(" fname=");
+      paramView.append(str1);
+      paramView.append(" existing=");
+      paramView.append(paramString);
+      Log.v("FragmentManager", paramView.toString());
+    }
+    if (paramString == null)
+    {
+      paramView = this.mContainer.instantiate(paramContext, str1, null);
+      paramView.mFromLayout = true;
       int j;
-      if (k != -1)
-      {
-        paramString = findFragmentById(k);
-        paramView = paramString;
-        if (paramString == null)
-        {
-          paramView = paramString;
-          if (str2 != null) {
-            paramView = findFragmentByTag(str2);
-          }
-        }
-        paramString = paramView;
-        if (paramView == null)
-        {
-          paramString = paramView;
-          if (i != -1) {
-            paramString = findFragmentById(i);
-          }
-        }
-        if (DEBUG) {
-          Log.v("FragmentManager", "onCreateView: id=0x" + Integer.toHexString(k) + " fname=" + str1 + " existing=" + paramString);
-        }
-        if (paramString != null) {
-          break label433;
-        }
-        paramView = this.mContainer.instantiate(paramContext, str1, null);
-        paramView.mFromLayout = true;
-        if (k == 0) {
-          break label426;
-        }
+      if (k != 0) {
         j = k;
-        label296:
-        paramView.mFragmentId = j;
-        paramView.mContainerId = i;
-        paramView.mTag = str2;
-        paramView.mInLayout = true;
-        paramView.mFragmentManager = this;
-        paramView.mHost = this.mHost;
-        paramView.onInflate(this.mHost.getContext(), paramAttributeSet, paramView.mSavedFragmentState);
-        addFragment(paramView, true);
-        label355:
-        if ((this.mCurState >= 1) || (!paramView.mFromLayout)) {
-          break label560;
-        }
-        moveToState(paramView, 1, 0, 0, false);
-      }
-      for (;;)
-      {
-        if (paramView.mView != null) {
-          break label568;
-        }
-        throw new IllegalStateException("Fragment " + str1 + " did not create a view.");
-        paramString = null;
-        break;
-        label426:
+      } else {
         j = i;
-        break label296;
-        label433:
-        if (paramString.mInLayout) {
-          throw new IllegalArgumentException(paramAttributeSet.getPositionDescription() + ": Duplicate id 0x" + Integer.toHexString(k) + ", tag " + str2 + ", or parent id 0x" + Integer.toHexString(i) + " with another fragment for " + str1);
-        }
-        paramString.mInLayout = true;
-        paramString.mHost = this.mHost;
-        if (!paramString.mRetaining) {
-          paramString.onInflate(this.mHost.getContext(), paramAttributeSet, paramString.mSavedFragmentState);
-        }
-        paramView = paramString;
-        break label355;
-        label560:
-        moveToState(paramView);
       }
-      label568:
+      paramView.mFragmentId = j;
+      paramView.mContainerId = i;
+      paramView.mTag = str2;
+      paramView.mInLayout = true;
+      paramView.mFragmentManager = this;
+      paramString = this.mHost;
+      paramView.mHost = paramString;
+      paramView.onInflate(paramString.getContext(), paramAttributeSet, paramView.mSavedFragmentState);
+      addFragment(paramView, true);
+    }
+    else
+    {
+      if (paramString.mInLayout) {
+        break label560;
+      }
+      paramString.mInLayout = true;
+      paramString.mHost = this.mHost;
+      if (!paramString.mRetaining) {
+        paramString.onInflate(this.mHost.getContext(), paramAttributeSet, paramString.mSavedFragmentState);
+      }
+      paramView = paramString;
+    }
+    if ((this.mCurState < 1) && (paramView.mFromLayout)) {
+      moveToState(paramView, 1, 0, 0, false);
+    } else {
+      moveToState(paramView);
+    }
+    if (paramView.mView != null)
+    {
       if (k != 0) {
         paramView.mView.setId(k);
       }
@@ -3003,6 +3069,23 @@ final class FragmentManagerImpl
       }
       return paramView.mView;
     }
+    paramView = new StringBuilder();
+    paramView.append("Fragment ");
+    paramView.append(str1);
+    paramView.append(" did not create a view.");
+    throw new IllegalStateException(paramView.toString());
+    label560:
+    paramView = new StringBuilder();
+    paramView.append(paramAttributeSet.getPositionDescription());
+    paramView.append(": Duplicate id 0x");
+    paramView.append(Integer.toHexString(k));
+    paramView.append(", tag ");
+    paramView.append(str2);
+    paramView.append(", or parent id 0x");
+    paramView.append(Integer.toHexString(i));
+    paramView.append(" with another fragment for ");
+    paramView.append(str1);
+    throw new IllegalArgumentException(paramView.toString());
   }
   
   public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
@@ -3014,15 +3097,14 @@ final class FragmentManagerImpl
   {
     if (paramFragment.mDeferStart)
     {
-      if (this.mExecutingActions) {
+      if (this.mExecutingActions)
+      {
         this.mHavePendingDeferredStart = true;
+        return;
       }
+      paramFragment.mDeferStart = false;
+      moveToState(paramFragment, this.mCurState, 0, 0, false);
     }
-    else {
-      return;
-    }
-    paramFragment.mDeferStart = false;
-    moveToState(paramFragment, this.mCurState, 0, 0, false);
   }
   
   public void popBackStack()
@@ -3032,10 +3114,15 @@ final class FragmentManagerImpl
   
   public void popBackStack(int paramInt1, int paramInt2)
   {
-    if (paramInt1 < 0) {
-      throw new IllegalArgumentException("Bad id: " + paramInt1);
+    if (paramInt1 >= 0)
+    {
+      enqueueAction(new PopBackStackState(null, paramInt1, paramInt2), false);
+      return;
     }
-    enqueueAction(new PopBackStackState(null, paramInt1, paramInt2), false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Bad id: ");
+    localStringBuilder.append(paramInt1);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void popBackStack(String paramString, int paramInt)
@@ -3053,10 +3140,13 @@ final class FragmentManagerImpl
   {
     checkStateLoss();
     execPendingActions();
-    if (paramInt1 < 0) {
-      throw new IllegalArgumentException("Bad id: " + paramInt1);
+    if (paramInt1 >= 0) {
+      return popBackStackImmediate(null, paramInt1, paramInt2);
     }
-    return popBackStackImmediate(null, paramInt1, paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Bad id: ");
+    localStringBuilder.append(paramInt1);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public boolean popBackStackImmediate(String paramString, int paramInt)
@@ -3067,88 +3157,87 @@ final class FragmentManagerImpl
   
   boolean popBackStackState(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1, String paramString, int paramInt1, int paramInt2)
   {
-    if (this.mBackStack == null) {
+    Object localObject = this.mBackStack;
+    if (localObject == null) {
       return false;
     }
     if ((paramString == null) && (paramInt1 < 0) && ((paramInt2 & 0x1) == 0))
     {
-      paramInt1 = this.mBackStack.size() - 1;
+      paramInt1 = ((ArrayList)localObject).size() - 1;
       if (paramInt1 < 0) {
         return false;
       }
       paramArrayList.add(this.mBackStack.remove(paramInt1));
       paramArrayList1.add(Boolean.valueOf(true));
-    }
-    for (;;)
-    {
       return true;
-      int i = -1;
-      if ((paramString != null) || (paramInt1 >= 0))
+    }
+    int i;
+    if ((paramString == null) && (paramInt1 < 0))
+    {
+      i = -1;
+    }
+    else
+    {
+      int j = this.mBackStack.size() - 1;
+      while (j >= 0)
       {
-        int j = this.mBackStack.size() - 1;
-        BackStackRecord localBackStackRecord;
-        for (;;)
-        {
-          if (j >= 0)
-          {
-            localBackStackRecord = (BackStackRecord)this.mBackStack.get(j);
-            if ((paramString == null) || (!paramString.equals(localBackStackRecord.getName()))) {
-              break label133;
-            }
-          }
-          label133:
-          while ((paramInt1 >= 0) && (paramInt1 == localBackStackRecord.mIndex))
-          {
-            if (j >= 0) {
-              break;
-            }
-            return false;
-          }
-          j -= 1;
+        localObject = (BackStackRecord)this.mBackStack.get(j);
+        if (((paramString != null) && (paramString.equals(((BackStackRecord)localObject).getName()))) || ((paramInt1 >= 0) && (paramInt1 == ((BackStackRecord)localObject).mIndex))) {
+          break;
         }
-        i = j;
-        if ((paramInt2 & 0x1) != 0)
-        {
-          paramInt2 = j - 1;
-          for (;;)
-          {
-            i = paramInt2;
-            if (paramInt2 < 0) {
-              break;
-            }
-            localBackStackRecord = (BackStackRecord)this.mBackStack.get(paramInt2);
-            if ((paramString == null) || (!paramString.equals(localBackStackRecord.getName())))
-            {
-              i = paramInt2;
-              if (paramInt1 < 0) {
-                break;
-              }
-              i = paramInt2;
-              if (paramInt1 != localBackStackRecord.mIndex) {
-                break;
-              }
-            }
-            paramInt2 -= 1;
-          }
-        }
+        j -= 1;
       }
-      if (i == this.mBackStack.size() - 1) {
+      if (j < 0) {
         return false;
       }
-      paramInt1 = this.mBackStack.size() - 1;
-      while (paramInt1 > i)
+      i = j;
+      if ((paramInt2 & 0x1) != 0)
       {
-        paramArrayList.add(this.mBackStack.remove(paramInt1));
-        paramArrayList1.add(Boolean.valueOf(true));
-        paramInt1 -= 1;
+        paramInt2 = j - 1;
+        for (;;)
+        {
+          i = paramInt2;
+          if (paramInt2 < 0) {
+            break;
+          }
+          localObject = (BackStackRecord)this.mBackStack.get(paramInt2);
+          if ((paramString == null) || (!paramString.equals(((BackStackRecord)localObject).getName())))
+          {
+            i = paramInt2;
+            if (paramInt1 < 0) {
+              break;
+            }
+            i = paramInt2;
+            if (paramInt1 != ((BackStackRecord)localObject).mIndex) {
+              break;
+            }
+          }
+          paramInt2 -= 1;
+        }
       }
     }
+    if (i == this.mBackStack.size() - 1) {
+      return false;
+    }
+    paramInt1 = this.mBackStack.size() - 1;
+    while (paramInt1 > i)
+    {
+      paramArrayList.add(this.mBackStack.remove(paramInt1));
+      paramArrayList1.add(Boolean.valueOf(true));
+      paramInt1 -= 1;
+    }
+    return true;
   }
   
   public void putFragment(Bundle paramBundle, String paramString, Fragment paramFragment)
   {
-    if (paramFragment.mIndex < 0) {
-      throwException(new IllegalStateException("Fragment " + paramFragment + " is not currently in the FragmentManager"));
+    if (paramFragment.mIndex < 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Fragment ");
+      localStringBuilder.append(paramFragment);
+      localStringBuilder.append(" is not currently in the FragmentManager");
+      throwException(new IllegalStateException(localStringBuilder.toString()));
     }
     paramBundle.putInt(paramString, paramFragment.mIndex);
   }
@@ -3160,34 +3249,34 @@ final class FragmentManagerImpl
   
   public void removeFragment(Fragment paramFragment)
   {
-    if (DEBUG) {
-      Log.v("FragmentManager", "remove: " + paramFragment + " nesting=" + paramFragment.mBackStackNesting);
-    }
-    int i;
-    if (!paramFragment.isInBackStack()) {
-      i = 1;
-    }
-    for (;;)
+    if (DEBUG)
     {
-      if ((!paramFragment.mDetached) || (i != 0)) {}
-      synchronized (this.mAdded)
-      {
-        this.mAdded.remove(paramFragment);
-        if ((paramFragment.mHasMenu) && (paramFragment.mMenuVisible)) {
-          this.mNeedMenuInvalidate = true;
-        }
-        paramFragment.mAdded = false;
-        paramFragment.mRemoving = true;
-        return;
-        i = 0;
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("remove: ");
+      ((StringBuilder)???).append(paramFragment);
+      ((StringBuilder)???).append(" nesting=");
+      ((StringBuilder)???).append(paramFragment.mBackStackNesting);
+      Log.v("FragmentManager", ((StringBuilder)???).toString());
+    }
+    boolean bool = paramFragment.isInBackStack();
+    if ((!paramFragment.mDetached) || ((bool ^ true))) {}
+    synchronized (this.mAdded)
+    {
+      this.mAdded.remove(paramFragment);
+      if ((paramFragment.mHasMenu) && (paramFragment.mMenuVisible)) {
+        this.mNeedMenuInvalidate = true;
       }
+      paramFragment.mAdded = false;
+      paramFragment.mRemoving = true;
+      return;
     }
   }
   
   public void removeOnBackStackChangedListener(FragmentManager.OnBackStackChangedListener paramOnBackStackChangedListener)
   {
-    if (this.mBackStackChangeListeners != null) {
-      this.mBackStackChangeListeners.remove(paramOnBackStackChangedListener);
+    ArrayList localArrayList = this.mBackStackChangeListeners;
+    if (localArrayList != null) {
+      localArrayList.remove(paramOnBackStackChangedListener);
     }
   }
   
@@ -3204,175 +3293,205 @@ final class FragmentManagerImpl
     }
   }
   
-  void restoreAllState(Parcelable arg1, FragmentManagerNonConfig paramFragmentManagerNonConfig)
+  void restoreAllState(Parcelable paramParcelable, FragmentManagerNonConfig arg2)
   {
-    if (??? == null) {}
-    FragmentManagerState localFragmentManagerState;
-    do
-    {
+    if (paramParcelable == null) {
       return;
-      localFragmentManagerState = (FragmentManagerState)???;
-    } while (localFragmentManagerState.mActive == null);
-    Object localObject1;
-    List localList;
-    int i;
-    int j;
+    }
+    FragmentManagerState localFragmentManagerState = (FragmentManagerState)paramParcelable;
+    if (localFragmentManagerState.mActive == null) {
+      return;
+    }
+    Object localObject4;
     Object localObject2;
-    FragmentState localFragmentState;
-    if (paramFragmentManagerNonConfig != null)
+    Object localObject3;
+    int j;
+    if (??? != null)
     {
-      localObject1 = paramFragmentManagerNonConfig.getFragments();
-      localList = paramFragmentManagerNonConfig.getChildNonConfigs();
-      ??? = paramFragmentManagerNonConfig.getViewModelStores();
-      if (localObject1 != null)
-      {
-        i = ((List)localObject1).size();
-        j = 0;
+      localObject4 = ???.getFragments();
+      localObject2 = ???.getChildNonConfigs();
+      localObject3 = ???.getViewModelStores();
+      if (localObject4 != null) {
+        i = ((List)localObject4).size();
+      } else {
+        i = 0;
       }
+      j = 0;
       for (;;)
       {
+        localObject1 = localObject2;
+        paramParcelable = (Parcelable)localObject3;
         if (j >= i) {
-          break label309;
+          break;
         }
-        localObject2 = (Fragment)((List)localObject1).get(j);
-        if (DEBUG) {
-          Log.v("FragmentManager", "restoreAllState: re-attaching retained " + localObject2);
+        paramParcelable = (Fragment)((List)localObject4).get(j);
+        if (DEBUG)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("restoreAllState: re-attaching retained ");
+          ((StringBuilder)localObject1).append(paramParcelable);
+          Log.v("FragmentManager", ((StringBuilder)localObject1).toString());
         }
         int k = 0;
-        for (;;)
-        {
-          if ((k < localFragmentManagerState.mActive.length) && (localFragmentManagerState.mActive[k].mIndex != ((Fragment)localObject2).mIndex))
-          {
-            k += 1;
-            continue;
-            i = 0;
-            break;
-          }
+        while ((k < localFragmentManagerState.mActive.length) && (localFragmentManagerState.mActive[k].mIndex != paramParcelable.mIndex)) {
+          k += 1;
         }
-        if (k == localFragmentManagerState.mActive.length) {
-          throwException(new IllegalStateException("Could not find active fragment with index " + ((Fragment)localObject2).mIndex));
-        }
-        localFragmentState = localFragmentManagerState.mActive[k];
-        localFragmentState.mInstance = ((Fragment)localObject2);
-        ((Fragment)localObject2).mSavedViewState = null;
-        ((Fragment)localObject2).mBackStackNesting = 0;
-        ((Fragment)localObject2).mInLayout = false;
-        ((Fragment)localObject2).mAdded = false;
-        ((Fragment)localObject2).mTarget = null;
-        if (localFragmentState.mSavedFragmentState != null)
+        if (k == localFragmentManagerState.mActive.length)
         {
-          localFragmentState.mSavedFragmentState.setClassLoader(this.mHost.getContext().getClassLoader());
-          ((Fragment)localObject2).mSavedViewState = localFragmentState.mSavedFragmentState.getSparseParcelableArray("android:view_state");
-          ((Fragment)localObject2).mSavedFragmentState = localFragmentState.mSavedFragmentState;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("Could not find active fragment with index ");
+          ((StringBuilder)localObject1).append(paramParcelable.mIndex);
+          throwException(new IllegalStateException(((StringBuilder)localObject1).toString()));
+        }
+        localObject1 = localFragmentManagerState.mActive[k];
+        ((FragmentState)localObject1).mInstance = paramParcelable;
+        paramParcelable.mSavedViewState = null;
+        paramParcelable.mBackStackNesting = 0;
+        paramParcelable.mInLayout = false;
+        paramParcelable.mAdded = false;
+        paramParcelable.mTarget = null;
+        if (((FragmentState)localObject1).mSavedFragmentState != null)
+        {
+          ((FragmentState)localObject1).mSavedFragmentState.setClassLoader(this.mHost.getContext().getClassLoader());
+          paramParcelable.mSavedViewState = ((FragmentState)localObject1).mSavedFragmentState.getSparseParcelableArray("android:view_state");
+          paramParcelable.mSavedFragmentState = ((FragmentState)localObject1).mSavedFragmentState;
         }
         j += 1;
       }
     }
-    for (;;)
+    Object localObject1 = null;
+    paramParcelable = (Parcelable)localObject1;
+    this.mActive = new SparseArray(localFragmentManagerState.mActive.length);
+    int i = 0;
+    while (i < localFragmentManagerState.mActive.length)
     {
-      label309:
-      this.mActive = new SparseArray(localFragmentManagerState.mActive.length);
-      i = 0;
-      if (i < localFragmentManagerState.mActive.length)
+      localObject4 = localFragmentManagerState.mActive[i];
+      if (localObject4 != null)
       {
-        localFragmentState = localFragmentManagerState.mActive[i];
-        if (localFragmentState != null) {
-          if ((localList == null) || (i >= localList.size())) {
-            break label1025;
-          }
+        if ((localObject1 != null) && (i < ((List)localObject1).size())) {
+          localObject2 = (FragmentManagerNonConfig)((List)localObject1).get(i);
+        } else {
+          localObject2 = null;
         }
-      }
-      label1025:
-      for (localObject1 = (FragmentManagerNonConfig)localList.get(i);; localObject1 = null)
-      {
-        if ((??? != null) && (i < ???.size())) {}
-        for (localObject2 = (ViewModelStore)???.get(i);; localObject2 = null)
+        if ((paramParcelable != null) && (i < paramParcelable.size())) {
+          localObject3 = (ViewModelStore)paramParcelable.get(i);
+        } else {
+          localObject3 = null;
+        }
+        localObject2 = ((FragmentState)localObject4).instantiate(this.mHost, this.mContainer, this.mParent, (FragmentManagerNonConfig)localObject2, (ViewModelStore)localObject3);
+        if (DEBUG)
         {
-          localObject1 = localFragmentState.instantiate(this.mHost, this.mContainer, this.mParent, (FragmentManagerNonConfig)localObject1, (ViewModelStore)localObject2);
-          if (DEBUG) {
-            Log.v("FragmentManager", "restoreAllState: active #" + i + ": " + localObject1);
-          }
-          this.mActive.put(((Fragment)localObject1).mIndex, localObject1);
-          localFragmentState.mInstance = null;
-          i += 1;
-          break;
-          if (paramFragmentManagerNonConfig != null)
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("restoreAllState: active #");
+          ((StringBuilder)localObject3).append(i);
+          ((StringBuilder)localObject3).append(": ");
+          ((StringBuilder)localObject3).append(localObject2);
+          Log.v("FragmentManager", ((StringBuilder)localObject3).toString());
+        }
+        this.mActive.put(((Fragment)localObject2).mIndex, localObject2);
+        ((FragmentState)localObject4).mInstance = null;
+      }
+      i += 1;
+    }
+    if (??? != null)
+    {
+      paramParcelable = ???.getFragments();
+      if (paramParcelable != null) {
+        i = paramParcelable.size();
+      } else {
+        i = 0;
+      }
+      j = 0;
+      while (j < i)
+      {
+        ??? = (Fragment)paramParcelable.get(j);
+        if (???.mTargetIndex >= 0)
+        {
+          ???.mTarget = ((Fragment)this.mActive.get(???.mTargetIndex));
+          if (???.mTarget == null)
           {
-            ??? = paramFragmentManagerNonConfig.getFragments();
-            if (??? != null) {}
-            for (i = ???.size();; i = 0)
-            {
-              j = 0;
-              while (j < i)
-              {
-                paramFragmentManagerNonConfig = (Fragment)???.get(j);
-                if (paramFragmentManagerNonConfig.mTargetIndex >= 0)
-                {
-                  paramFragmentManagerNonConfig.mTarget = ((Fragment)this.mActive.get(paramFragmentManagerNonConfig.mTargetIndex));
-                  if (paramFragmentManagerNonConfig.mTarget == null) {
-                    Log.w("FragmentManager", "Re-attaching retained fragment " + paramFragmentManagerNonConfig + " target no longer exists: " + paramFragmentManagerNonConfig.mTargetIndex);
-                  }
-                }
-                j += 1;
-              }
-            }
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("Re-attaching retained fragment ");
+            ((StringBuilder)localObject1).append(???);
+            ((StringBuilder)localObject1).append(" target no longer exists: ");
+            ((StringBuilder)localObject1).append(???.mTargetIndex);
+            Log.w("FragmentManager", ((StringBuilder)localObject1).toString());
           }
-          this.mAdded.clear();
-          if (localFragmentManagerState.mAdded != null)
+        }
+        j += 1;
+      }
+    }
+    this.mAdded.clear();
+    if (localFragmentManagerState.mAdded != null)
+    {
+      i = 0;
+      for (;;)
+      {
+        if (i >= localFragmentManagerState.mAdded.length) {
+          break label894;
+        }
+        paramParcelable = (Fragment)this.mActive.get(localFragmentManagerState.mAdded[i]);
+        if (paramParcelable == null)
+        {
+          ??? = new StringBuilder();
+          ???.append("No instantiated fragment for index #");
+          ???.append(localFragmentManagerState.mAdded[i]);
+          throwException(new IllegalStateException(???.toString()));
+        }
+        paramParcelable.mAdded = true;
+        if (DEBUG)
+        {
+          ??? = new StringBuilder();
+          ???.append("restoreAllState: added #");
+          ???.append(i);
+          ???.append(": ");
+          ???.append(paramParcelable);
+          Log.v("FragmentManager", ???.toString());
+        }
+        if (!this.mAdded.contains(paramParcelable)) {
+          synchronized (this.mAdded)
           {
-            i = 0;
-            while (i < localFragmentManagerState.mAdded.length)
-            {
-              paramFragmentManagerNonConfig = (Fragment)this.mActive.get(localFragmentManagerState.mAdded[i]);
-              if (paramFragmentManagerNonConfig == null) {
-                throwException(new IllegalStateException("No instantiated fragment for index #" + localFragmentManagerState.mAdded[i]));
-              }
-              paramFragmentManagerNonConfig.mAdded = true;
-              if (DEBUG) {
-                Log.v("FragmentManager", "restoreAllState: added #" + i + ": " + paramFragmentManagerNonConfig);
-              }
-              if (this.mAdded.contains(paramFragmentManagerNonConfig)) {
-                throw new IllegalStateException("Already added!");
-              }
-              synchronized (this.mAdded)
-              {
-                this.mAdded.add(paramFragmentManagerNonConfig);
-                i += 1;
-              }
-            }
+            this.mAdded.add(paramParcelable);
+            i += 1;
           }
-          if (localFragmentManagerState.mBackStack != null)
-          {
-            this.mBackStack = new ArrayList(localFragmentManagerState.mBackStack.length);
-            i = 0;
-            while (i < localFragmentManagerState.mBackStack.length)
-            {
-              ??? = localFragmentManagerState.mBackStack[i].instantiate(this);
-              if (DEBUG)
-              {
-                Log.v("FragmentManager", "restoreAllState: back stack #" + i + " (index " + ???.mIndex + "): " + ???);
-                paramFragmentManagerNonConfig = new PrintWriter(new LogWriter("FragmentManager"));
-                ???.dump("  ", paramFragmentManagerNonConfig, false);
-                paramFragmentManagerNonConfig.close();
-              }
-              this.mBackStack.add(???);
-              if (???.mIndex >= 0) {
-                setBackStackIndex(???.mIndex, ???);
-              }
-              i += 1;
-            }
-          }
-          this.mBackStack = null;
-          if (localFragmentManagerState.mPrimaryNavActiveIndex >= 0) {
-            this.mPrimaryNav = ((Fragment)this.mActive.get(localFragmentManagerState.mPrimaryNavActiveIndex));
-          }
-          this.mNextFragmentIndex = localFragmentManagerState.mNextFragmentIndex;
-          return;
         }
       }
-      ??? = null;
-      localList = null;
+      throw new IllegalStateException("Already added!");
     }
+    label894:
+    if (localFragmentManagerState.mBackStack != null)
+    {
+      this.mBackStack = new ArrayList(localFragmentManagerState.mBackStack.length);
+      i = 0;
+      while (i < localFragmentManagerState.mBackStack.length)
+      {
+        paramParcelable = localFragmentManagerState.mBackStack[i].instantiate(this);
+        if (DEBUG)
+        {
+          ??? = new StringBuilder();
+          ???.append("restoreAllState: back stack #");
+          ???.append(i);
+          ???.append(" (index ");
+          ???.append(paramParcelable.mIndex);
+          ???.append("): ");
+          ???.append(paramParcelable);
+          Log.v("FragmentManager", ???.toString());
+          ??? = new PrintWriter(new LogWriter("FragmentManager"));
+          paramParcelable.dump("  ", ???, false);
+          ???.close();
+        }
+        this.mBackStack.add(paramParcelable);
+        if (paramParcelable.mIndex >= 0) {
+          setBackStackIndex(paramParcelable.mIndex, paramParcelable);
+        }
+        i += 1;
+      }
+    }
+    this.mBackStack = null;
+    if (localFragmentManagerState.mPrimaryNavActiveIndex >= 0) {
+      this.mPrimaryNav = ((Fragment)this.mActive.get(localFragmentManagerState.mPrimaryNavActiveIndex));
+    }
+    this.mNextFragmentIndex = localFragmentManagerState.mNextFragmentIndex;
   }
   
   FragmentManagerNonConfig retainNonConfig()
@@ -3383,69 +3502,84 @@ final class FragmentManagerImpl
   
   Parcelable saveAllState()
   {
-    Object localObject3 = null;
     forcePostponedTransactions();
     endAnimatingAwayFragments();
     execPendingActions();
     this.mStateSaved = true;
+    Object localObject3 = null;
     this.mSavedNonConfig = null;
-    if ((this.mActive == null) || (this.mActive.size() <= 0)) {
-      return null;
-    }
-    int k = this.mActive.size();
-    FragmentState[] arrayOfFragmentState = new FragmentState[k];
-    int j = 0;
-    int i = 0;
-    label63:
-    Object localObject1;
-    Object localObject2;
-    if (j < k)
+    Object localObject1 = this.mActive;
+    if (localObject1 != null)
     {
-      localObject1 = (Fragment)this.mActive.valueAt(j);
-      if (localObject1 == null) {
-        break label748;
+      if (((SparseArray)localObject1).size() <= 0) {
+        return null;
       }
-      if (((Fragment)localObject1).mIndex < 0) {
-        throwException(new IllegalStateException("Failure saving state: active " + localObject1 + " has cleared index: " + ((Fragment)localObject1).mIndex));
-      }
-      localObject2 = new FragmentState((Fragment)localObject1);
-      arrayOfFragmentState[j] = localObject2;
-      if ((((Fragment)localObject1).mState > 0) && (((FragmentState)localObject2).mSavedFragmentState == null))
+      int m = this.mActive.size();
+      FragmentState[] arrayOfFragmentState = new FragmentState[m];
+      int k = 0;
+      int i = 0;
+      int j = 0;
+      while (i < m)
       {
-        ((FragmentState)localObject2).mSavedFragmentState = saveFragmentBasicState((Fragment)localObject1);
-        if (((Fragment)localObject1).mTarget != null)
+        localObject1 = (Fragment)this.mActive.valueAt(i);
+        if (localObject1 != null)
         {
-          if (((Fragment)localObject1).mTarget.mIndex < 0) {
-            throwException(new IllegalStateException("Failure saving state: " + localObject1 + " has target not in fragment manager: " + ((Fragment)localObject1).mTarget));
+          if (((Fragment)localObject1).mIndex < 0)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("Failure saving state: active ");
+            ((StringBuilder)localObject2).append(localObject1);
+            ((StringBuilder)localObject2).append(" has cleared index: ");
+            ((StringBuilder)localObject2).append(((Fragment)localObject1).mIndex);
+            throwException(new IllegalStateException(((StringBuilder)localObject2).toString()));
           }
-          if (((FragmentState)localObject2).mSavedFragmentState == null) {
-            ((FragmentState)localObject2).mSavedFragmentState = new Bundle();
+          localObject2 = new FragmentState((Fragment)localObject1);
+          arrayOfFragmentState[i] = localObject2;
+          if ((((Fragment)localObject1).mState > 0) && (((FragmentState)localObject2).mSavedFragmentState == null))
+          {
+            ((FragmentState)localObject2).mSavedFragmentState = saveFragmentBasicState((Fragment)localObject1);
+            if (((Fragment)localObject1).mTarget != null)
+            {
+              if (((Fragment)localObject1).mTarget.mIndex < 0)
+              {
+                localObject4 = new StringBuilder();
+                ((StringBuilder)localObject4).append("Failure saving state: ");
+                ((StringBuilder)localObject4).append(localObject1);
+                ((StringBuilder)localObject4).append(" has target not in fragment manager: ");
+                ((StringBuilder)localObject4).append(((Fragment)localObject1).mTarget);
+                throwException(new IllegalStateException(((StringBuilder)localObject4).toString()));
+              }
+              if (((FragmentState)localObject2).mSavedFragmentState == null) {
+                ((FragmentState)localObject2).mSavedFragmentState = new Bundle();
+              }
+              putFragment(((FragmentState)localObject2).mSavedFragmentState, "android:target_state", ((Fragment)localObject1).mTarget);
+              if (((Fragment)localObject1).mTargetRequestCode != 0) {
+                ((FragmentState)localObject2).mSavedFragmentState.putInt("android:target_req_state", ((Fragment)localObject1).mTargetRequestCode);
+              }
+            }
           }
-          putFragment(((FragmentState)localObject2).mSavedFragmentState, "android:target_state", ((Fragment)localObject1).mTarget);
-          if (((Fragment)localObject1).mTargetRequestCode != 0) {
-            ((FragmentState)localObject2).mSavedFragmentState.putInt("android:target_req_state", ((Fragment)localObject1).mTargetRequestCode);
+          else
+          {
+            ((FragmentState)localObject2).mSavedFragmentState = ((Fragment)localObject1).mSavedFragmentState;
           }
+          if (DEBUG)
+          {
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("Saved state of ");
+            ((StringBuilder)localObject4).append(localObject1);
+            ((StringBuilder)localObject4).append(": ");
+            ((StringBuilder)localObject4).append(((FragmentState)localObject2).mSavedFragmentState);
+            Log.v("FragmentManager", ((StringBuilder)localObject4).toString());
+          }
+          j = 1;
         }
-        label308:
-        if (DEBUG) {
-          Log.v("FragmentManager", "Saved state of " + localObject1 + ": " + ((FragmentState)localObject2).mSavedFragmentState);
-        }
-        i = 1;
+        i += 1;
       }
-    }
-    label748:
-    for (;;)
-    {
-      j += 1;
-      break label63;
-      ((FragmentState)localObject2).mSavedFragmentState = ((Fragment)localObject1).mSavedFragmentState;
-      break label308;
-      if (i == 0)
+      if (j == 0)
       {
-        if (!DEBUG) {
-          break;
+        if (DEBUG) {
+          Log.v("FragmentManager", "saveAllState: no fragments!");
         }
-        Log.v("FragmentManager", "saveAllState: no fragments!");
         return null;
       }
       j = this.mAdded.size();
@@ -3460,25 +3594,38 @@ final class FragmentManagerImpl
             break;
           }
           localObject2[i] = ((Fragment)this.mAdded.get(i)).mIndex;
-          if (localObject2[i] < 0) {
-            throwException(new IllegalStateException("Failure saving state: active " + this.mAdded.get(i) + " has cleared index: " + localObject2[i]));
+          if (localObject2[i] < 0)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("Failure saving state: active ");
+            ((StringBuilder)localObject1).append(this.mAdded.get(i));
+            ((StringBuilder)localObject1).append(" has cleared index: ");
+            ((StringBuilder)localObject1).append(localObject2[i]);
+            throwException(new IllegalStateException(((StringBuilder)localObject1).toString()));
           }
-          if (DEBUG) {
-            Log.v("FragmentManager", "saveAllState: adding fragment #" + i + ": " + this.mAdded.get(i));
+          if (DEBUG)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("saveAllState: adding fragment #");
+            ((StringBuilder)localObject1).append(i);
+            ((StringBuilder)localObject1).append(": ");
+            ((StringBuilder)localObject1).append(this.mAdded.get(i));
+            Log.v("FragmentManager", ((StringBuilder)localObject1).toString());
           }
           i += 1;
         }
       }
       localObject1 = null;
-      localObject2 = localObject3;
-      if (this.mBackStack != null)
+      Object localObject4 = this.mBackStack;
+      Object localObject2 = localObject3;
+      if (localObject4 != null)
       {
-        j = this.mBackStack.size();
+        j = ((ArrayList)localObject4).size();
         localObject2 = localObject3;
         if (j > 0)
         {
           localObject3 = new BackStackState[j];
-          i = 0;
+          i = k;
           for (;;)
           {
             localObject2 = localObject3;
@@ -3486,8 +3633,14 @@ final class FragmentManagerImpl
               break;
             }
             localObject3[i] = new BackStackState((BackStackRecord)this.mBackStack.get(i));
-            if (DEBUG) {
-              Log.v("FragmentManager", "saveAllState: adding back stack #" + i + ": " + this.mBackStack.get(i));
+            if (DEBUG)
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("saveAllState: adding back stack #");
+              ((StringBuilder)localObject2).append(i);
+              ((StringBuilder)localObject2).append(": ");
+              ((StringBuilder)localObject2).append(this.mBackStack.get(i));
+              Log.v("FragmentManager", ((StringBuilder)localObject2).toString());
             }
             i += 1;
           }
@@ -3497,13 +3650,15 @@ final class FragmentManagerImpl
       ((FragmentManagerState)localObject3).mActive = arrayOfFragmentState;
       ((FragmentManagerState)localObject3).mAdded = ((int[])localObject1);
       ((FragmentManagerState)localObject3).mBackStack = ((BackStackState[])localObject2);
-      if (this.mPrimaryNav != null) {
-        ((FragmentManagerState)localObject3).mPrimaryNavActiveIndex = this.mPrimaryNav.mIndex;
+      localObject1 = this.mPrimaryNav;
+      if (localObject1 != null) {
+        ((FragmentManagerState)localObject3).mPrimaryNavActiveIndex = ((Fragment)localObject1).mIndex;
       }
       ((FragmentManagerState)localObject3).mNextFragmentIndex = this.mNextFragmentIndex;
       saveNonConfig();
       return localObject3;
     }
+    return null;
   }
   
   Bundle saveFragmentBasicState(Fragment paramFragment)
@@ -3513,56 +3668,61 @@ final class FragmentManagerImpl
     }
     paramFragment.performSaveInstanceState(this.mStateBundle);
     dispatchOnFragmentSaveInstanceState(paramFragment, this.mStateBundle, false);
-    Object localObject2;
     if (!this.mStateBundle.isEmpty())
     {
       localObject2 = this.mStateBundle;
       this.mStateBundle = null;
     }
-    for (;;)
+    else
     {
-      if (paramFragment.mView != null) {
-        saveFragmentViewState(paramFragment);
-      }
-      Object localObject1 = localObject2;
-      if (paramFragment.mSavedViewState != null)
-      {
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = new Bundle();
-        }
-        ((Bundle)localObject1).putSparseParcelableArray("android:view_state", paramFragment.mSavedViewState);
-      }
-      localObject2 = localObject1;
-      if (!paramFragment.mUserVisibleHint)
-      {
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = new Bundle();
-        }
-        ((Bundle)localObject2).putBoolean("android:user_visible_hint", paramFragment.mUserVisibleHint);
-      }
-      return localObject2;
       localObject2 = null;
     }
+    if (paramFragment.mView != null) {
+      saveFragmentViewState(paramFragment);
+    }
+    Object localObject1 = localObject2;
+    if (paramFragment.mSavedViewState != null)
+    {
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new Bundle();
+      }
+      ((Bundle)localObject1).putSparseParcelableArray("android:view_state", paramFragment.mSavedViewState);
+    }
+    Object localObject2 = localObject1;
+    if (!paramFragment.mUserVisibleHint)
+    {
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = new Bundle();
+      }
+      ((Bundle)localObject2).putBoolean("android:user_visible_hint", paramFragment.mUserVisibleHint);
+    }
+    return localObject2;
   }
   
   public Fragment.SavedState saveFragmentInstanceState(Fragment paramFragment)
   {
-    Object localObject2 = null;
-    if (paramFragment.mIndex < 0) {
-      throwException(new IllegalStateException("Fragment " + paramFragment + " is not currently in the FragmentManager"));
-    }
-    Object localObject1 = localObject2;
-    if (paramFragment.mState > 0)
+    if (paramFragment.mIndex < 0)
     {
-      paramFragment = saveFragmentBasicState(paramFragment);
-      localObject1 = localObject2;
-      if (paramFragment != null) {
-        localObject1 = new Fragment.SavedState(paramFragment);
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Fragment ");
+      localStringBuilder.append(paramFragment);
+      localStringBuilder.append(" is not currently in the FragmentManager");
+      throwException(new IllegalStateException(localStringBuilder.toString()));
     }
-    return localObject1;
+    int i = paramFragment.mState;
+    StringBuilder localStringBuilder = null;
+    if (i > 0)
+    {
+      Bundle localBundle = saveFragmentBasicState(paramFragment);
+      paramFragment = localStringBuilder;
+      if (localBundle != null) {
+        paramFragment = new Fragment.SavedState(localBundle);
+      }
+      return paramFragment;
+    }
+    return null;
   }
   
   void saveFragmentViewState(Fragment paramFragment)
@@ -3570,19 +3730,17 @@ final class FragmentManagerImpl
     if (paramFragment.mInnerView == null) {
       return;
     }
-    if (this.mStateArray == null) {
+    SparseArray localSparseArray = this.mStateArray;
+    if (localSparseArray == null) {
       this.mStateArray = new SparseArray();
+    } else {
+      localSparseArray.clear();
     }
-    for (;;)
+    paramFragment.mInnerView.saveHierarchyState(this.mStateArray);
+    if (this.mStateArray.size() > 0)
     {
-      paramFragment.mInnerView.saveHierarchyState(this.mStateArray);
-      if (this.mStateArray.size() <= 0) {
-        break;
-      }
       paramFragment.mSavedViewState = this.mStateArray;
       this.mStateArray = null;
-      return;
-      this.mStateArray.clear();
     }
   }
   
@@ -3590,22 +3748,22 @@ final class FragmentManagerImpl
   {
     if (this.mActive != null)
     {
+      localObject1 = null;
+      Object localObject3 = localObject1;
+      Object localObject2 = localObject3;
       int i = 0;
-      Object localObject2 = null;
-      Object localObject3 = null;
-      Object localObject1 = null;
       for (;;)
       {
-        localObject6 = localObject2;
+        localObject6 = localObject1;
         localObject5 = localObject3;
-        localObject4 = localObject1;
+        localObject4 = localObject2;
         if (i >= this.mActive.size()) {
           break;
         }
         Fragment localFragment = (Fragment)this.mActive.valueAt(i);
-        localObject5 = localObject2;
+        localObject5 = localObject1;
         localObject6 = localObject3;
-        Object localObject7 = localObject1;
+        Object localObject7 = localObject2;
         if (localFragment != null)
         {
           localObject4 = localObject1;
@@ -3617,49 +3775,52 @@ final class FragmentManagerImpl
               localObject5 = new ArrayList();
             }
             ((ArrayList)localObject5).add(localFragment);
-            if (localFragment.mTarget == null) {
-              break label249;
+            if (localFragment.mTarget != null) {
+              j = localFragment.mTarget.mIndex;
+            } else {
+              j = -1;
             }
-            j = localFragment.mTarget.mIndex;
             localFragment.mTargetIndex = j;
             localObject4 = localObject5;
             if (DEBUG)
             {
-              Log.v("FragmentManager", "retainNonConfig: keeping retained " + localFragment);
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("retainNonConfig: keeping retained ");
+              ((StringBuilder)localObject1).append(localFragment);
+              Log.v("FragmentManager", ((StringBuilder)localObject1).toString());
               localObject4 = localObject5;
             }
           }
-          if (localFragment.mChildFragmentManager != null) {
+          if (localFragment.mChildFragmentManager != null)
+          {
             localFragment.mChildFragmentManager.saveNonConfig();
+            localObject5 = localFragment.mChildFragmentManager.mSavedNonConfig;
           }
-          for (localObject5 = localFragment.mChildFragmentManager.mSavedNonConfig;; localObject5 = localFragment.mChildNonConfig)
+          else
+          {
+            localObject5 = localFragment.mChildNonConfig;
+          }
+          localObject1 = localObject3;
+          if (localObject3 == null)
           {
             localObject1 = localObject3;
-            if (localObject3 != null) {
-              break label264;
-            }
-            localObject1 = localObject3;
-            if (localObject5 == null) {
-              break label264;
-            }
-            localObject3 = new ArrayList(this.mActive.size());
-            j = 0;
-            for (;;)
+            if (localObject5 != null)
             {
-              localObject1 = localObject3;
-              if (j >= i) {
-                break;
+              localObject3 = new ArrayList(this.mActive.size());
+              j = 0;
+              for (;;)
+              {
+                localObject1 = localObject3;
+                if (j >= i) {
+                  break;
+                }
+                ((ArrayList)localObject3).add(null);
+                j += 1;
               }
-              ((ArrayList)localObject3).add(null);
-              j += 1;
             }
-            label249:
-            j = -1;
-            break;
           }
-          label264:
           if (localObject1 != null) {
-            localObject1.add(localObject5);
+            ((ArrayList)localObject1).add(localObject5);
           }
           localObject3 = localObject2;
           if (localObject2 == null)
@@ -3680,212 +3841,135 @@ final class FragmentManagerImpl
               }
             }
           }
-          localObject5 = localObject3;
+          localObject5 = localObject4;
           localObject6 = localObject1;
-          localObject7 = localObject4;
+          localObject7 = localObject3;
           if (localObject3 != null)
           {
             ((ArrayList)localObject3).add(localFragment.mViewModelStore);
-            localObject7 = localObject4;
+            localObject7 = localObject3;
             localObject6 = localObject1;
-            localObject5 = localObject3;
+            localObject5 = localObject4;
           }
         }
         i += 1;
-        localObject1 = localObject7;
+        localObject1 = localObject5;
         localObject3 = localObject6;
-        localObject2 = localObject5;
+        localObject2 = localObject7;
       }
     }
     Object localObject6 = null;
-    Object localObject5 = null;
-    Object localObject4 = null;
-    if ((localObject4 == null) && (localObject5 == null) && (localObject6 == null))
+    Object localObject1 = localObject6;
+    Object localObject4 = localObject1;
+    Object localObject5 = localObject1;
+    if ((localObject6 == null) && (localObject5 == null) && (localObject4 == null))
     {
       this.mSavedNonConfig = null;
       return;
     }
-    this.mSavedNonConfig = new FragmentManagerNonConfig(localObject4, (List)localObject5, localObject6);
+    this.mSavedNonConfig = new FragmentManagerNonConfig(localObject6, (List)localObject5, localObject4);
   }
   
-  /* Error */
   public void setBackStackIndex(int paramInt, BackStackRecord paramBackStackRecord)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 889	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
-    //   6: ifnonnull +14 -> 20
-    //   9: aload_0
-    //   10: new 167	java/util/ArrayList
-    //   13: dup
-    //   14: invokespecial 168	java/util/ArrayList:<init>	()V
-    //   17: putfield 889	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
-    //   20: aload_0
-    //   21: getfield 889	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
-    //   24: invokevirtual 208	java/util/ArrayList:size	()I
-    //   27: istore 4
-    //   29: iload 4
-    //   31: istore_3
-    //   32: iload_1
-    //   33: iload 4
-    //   35: if_icmpge +58 -> 93
-    //   38: getstatic 139	android/support/v4/app/FragmentManagerImpl:DEBUG	Z
-    //   41: ifeq +39 -> 80
-    //   44: ldc 72
-    //   46: new 351	java/lang/StringBuilder
-    //   49: dup
-    //   50: invokespecial 352	java/lang/StringBuilder:<init>	()V
-    //   53: ldc_w 891
-    //   56: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: iload_1
-    //   60: invokevirtual 894	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   63: ldc_w 896
-    //   66: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: aload_2
-    //   70: invokevirtual 848	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   73: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: invokestatic 851	android/util/Log:v	(Ljava/lang/String;Ljava/lang/String;)I
-    //   79: pop
-    //   80: aload_0
-    //   81: getfield 889	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
-    //   84: iload_1
-    //   85: aload_2
-    //   86: invokevirtual 909	java/util/ArrayList:set	(ILjava/lang/Object;)Ljava/lang/Object;
-    //   89: pop
-    //   90: aload_0
-    //   91: monitorexit
-    //   92: return
-    //   93: iload_3
-    //   94: iload_1
-    //   95: if_icmpge +81 -> 176
-    //   98: aload_0
-    //   99: getfield 889	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
-    //   102: aconst_null
-    //   103: invokevirtual 381	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   106: pop
-    //   107: aload_0
-    //   108: getfield 887	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
-    //   111: ifnonnull +14 -> 125
-    //   114: aload_0
-    //   115: new 167	java/util/ArrayList
-    //   118: dup
-    //   119: invokespecial 168	java/util/ArrayList:<init>	()V
-    //   122: putfield 887	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
-    //   125: getstatic 139	android/support/v4/app/FragmentManagerImpl:DEBUG	Z
-    //   128: ifeq +29 -> 157
-    //   131: ldc 72
-    //   133: new 351	java/lang/StringBuilder
-    //   136: dup
-    //   137: invokespecial 352	java/lang/StringBuilder:<init>	()V
-    //   140: ldc_w 1884
-    //   143: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: iload_3
-    //   147: invokevirtual 894	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   150: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 851	android/util/Log:v	(Ljava/lang/String;Ljava/lang/String;)I
-    //   156: pop
-    //   157: aload_0
-    //   158: getfield 887	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
-    //   161: iload_3
-    //   162: invokestatic 1262	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   165: invokevirtual 381	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   168: pop
-    //   169: iload_3
-    //   170: iconst_1
-    //   171: iadd
-    //   172: istore_3
-    //   173: goto -80 -> 93
-    //   176: getstatic 139	android/support/v4/app/FragmentManagerImpl:DEBUG	Z
-    //   179: ifeq +39 -> 218
-    //   182: ldc 72
-    //   184: new 351	java/lang/StringBuilder
-    //   187: dup
-    //   188: invokespecial 352	java/lang/StringBuilder:<init>	()V
-    //   191: ldc_w 903
-    //   194: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: iload_1
-    //   198: invokevirtual 894	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   201: ldc_w 905
-    //   204: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   207: aload_2
-    //   208: invokevirtual 848	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   211: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   214: invokestatic 851	android/util/Log:v	(Ljava/lang/String;Ljava/lang/String;)I
-    //   217: pop
-    //   218: aload_0
-    //   219: getfield 889	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
-    //   222: aload_2
-    //   223: invokevirtual 381	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   226: pop
-    //   227: goto -137 -> 90
-    //   230: astore_2
-    //   231: aload_0
-    //   232: monitorexit
-    //   233: aload_2
-    //   234: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	235	0	this	FragmentManagerImpl
-    //   0	235	1	paramInt	int
-    //   0	235	2	paramBackStackRecord	BackStackRecord
-    //   31	142	3	i	int
-    //   27	9	4	j	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	20	230	finally
-    //   20	29	230	finally
-    //   38	80	230	finally
-    //   80	90	230	finally
-    //   90	92	230	finally
-    //   98	125	230	finally
-    //   125	157	230	finally
-    //   157	169	230	finally
-    //   176	218	230	finally
-    //   218	227	230	finally
-    //   231	233	230	finally
+    try
+    {
+      if (this.mBackStackIndices == null) {
+        this.mBackStackIndices = new ArrayList();
+      }
+      int j = this.mBackStackIndices.size();
+      int i = j;
+      StringBuilder localStringBuilder;
+      if (paramInt < j)
+      {
+        if (DEBUG)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Setting back stack index ");
+          localStringBuilder.append(paramInt);
+          localStringBuilder.append(" to ");
+          localStringBuilder.append(paramBackStackRecord);
+          Log.v("FragmentManager", localStringBuilder.toString());
+        }
+        this.mBackStackIndices.set(paramInt, paramBackStackRecord);
+      }
+      else
+      {
+        while (i < paramInt)
+        {
+          this.mBackStackIndices.add(null);
+          if (this.mAvailBackStackIndices == null) {
+            this.mAvailBackStackIndices = new ArrayList();
+          }
+          if (DEBUG)
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("Adding available back stack index ");
+            localStringBuilder.append(i);
+            Log.v("FragmentManager", localStringBuilder.toString());
+          }
+          this.mAvailBackStackIndices.add(Integer.valueOf(i));
+          i += 1;
+        }
+        if (DEBUG)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Adding back stack index ");
+          localStringBuilder.append(paramInt);
+          localStringBuilder.append(" with ");
+          localStringBuilder.append(paramBackStackRecord);
+          Log.v("FragmentManager", localStringBuilder.toString());
+        }
+        this.mBackStackIndices.add(paramBackStackRecord);
+      }
+      return;
+    }
+    finally {}
   }
   
   public void setPrimaryNavigationFragment(Fragment paramFragment)
   {
-    if ((paramFragment != null) && ((this.mActive.get(paramFragment.mIndex) != paramFragment) || ((paramFragment.mHost != null) && (paramFragment.getFragmentManager() != this)))) {
-      throw new IllegalArgumentException("Fragment " + paramFragment + " is not an active fragment of FragmentManager " + this);
+    if ((paramFragment != null) && ((this.mActive.get(paramFragment.mIndex) != paramFragment) || ((paramFragment.mHost != null) && (paramFragment.getFragmentManager() != this))))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Fragment ");
+      localStringBuilder.append(paramFragment);
+      localStringBuilder.append(" is not an active fragment of FragmentManager ");
+      localStringBuilder.append(this);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
     this.mPrimaryNav = paramFragment;
   }
   
   public void showFragment(Fragment paramFragment)
   {
-    boolean bool = false;
-    if (DEBUG) {
-      Log.v("FragmentManager", "show: " + paramFragment);
+    if (DEBUG)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("show: ");
+      localStringBuilder.append(paramFragment);
+      Log.v("FragmentManager", localStringBuilder.toString());
     }
     if (paramFragment.mHidden)
     {
       paramFragment.mHidden = false;
-      if (!paramFragment.mHiddenChanged) {
-        bool = true;
-      }
-      paramFragment.mHiddenChanged = bool;
+      paramFragment.mHiddenChanged ^= true;
     }
   }
   
   void startPendingDeferredFragments()
   {
-    if (this.mActive == null) {}
-    for (;;)
-    {
+    if (this.mActive == null) {
       return;
-      int i = 0;
-      while (i < this.mActive.size())
-      {
-        Fragment localFragment = (Fragment)this.mActive.valueAt(i);
-        if (localFragment != null) {
-          performPendingDeferredStart(localFragment);
-        }
-        i += 1;
+    }
+    int i = 0;
+    while (i < this.mActive.size())
+    {
+      Fragment localFragment = (Fragment)this.mActive.valueAt(i);
+      if (localFragment != null) {
+        performPendingDeferredStart(localFragment);
       }
+      i += 1;
     }
   }
   
@@ -3895,36 +3979,36 @@ final class FragmentManagerImpl
     localStringBuilder.append("FragmentManager{");
     localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
     localStringBuilder.append(" in ");
-    if (this.mParent != null) {
-      DebugUtils.buildShortClassTag(this.mParent, localStringBuilder);
-    }
-    for (;;)
-    {
-      localStringBuilder.append("}}");
-      return localStringBuilder.toString();
+    Fragment localFragment = this.mParent;
+    if (localFragment != null) {
+      DebugUtils.buildShortClassTag(localFragment, localStringBuilder);
+    } else {
       DebugUtils.buildShortClassTag(this.mHost, localStringBuilder);
     }
+    localStringBuilder.append("}}");
+    return localStringBuilder.toString();
   }
   
   public void unregisterFragmentLifecycleCallbacks(FragmentManager.FragmentLifecycleCallbacks paramFragmentLifecycleCallbacks)
   {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.mLifecycleCallbacks;
+    int i = 0;
     for (;;)
     {
-      int i;
-      synchronized (this.mLifecycleCallbacks)
+      try
       {
         int j = this.mLifecycleCallbacks.size();
-        i = 0;
         if (i < j)
         {
-          if (((Pair)this.mLifecycleCallbacks.get(i)).first == paramFragmentLifecycleCallbacks) {
-            this.mLifecycleCallbacks.remove(i);
+          if (((Pair)this.mLifecycleCallbacks.get(i)).first != paramFragmentLifecycleCallbacks) {
+            break label64;
           }
+          this.mLifecycleCallbacks.remove(i);
         }
-        else {
-          return;
-        }
+        return;
       }
+      finally {}
+      label64:
       i += 1;
     }
   }
@@ -3943,7 +4027,9 @@ final class FragmentManagerImpl
     @CallSuper
     public void onAnimationEnd(Animation paramAnimation)
     {
-      if ((ViewCompat.isAttachedToWindow(this.mView)) || (Build.VERSION.SDK_INT >= 24)) {
+      if ((!ViewCompat.isAttachedToWindow(this.mView)) && (Build.VERSION.SDK_INT < 24)) {
+        this.mView.setLayerType(0, null);
+      } else {
         this.mView.post(new Runnable()
         {
           public void run()
@@ -3952,12 +4038,7 @@ final class FragmentManagerImpl
           }
         });
       }
-      for (;;)
-      {
-        super.onAnimationEnd(paramAnimation);
-        return;
-        this.mView.setLayerType(0, null);
-      }
+      super.onAnimationEnd(paramAnimation);
     }
   }
   
@@ -3974,24 +4055,27 @@ final class FragmentManagerImpl
     @CallSuper
     public void onAnimationEnd(Animation paramAnimation)
     {
-      if (this.mWrapped != null) {
-        this.mWrapped.onAnimationEnd(paramAnimation);
+      Animation.AnimationListener localAnimationListener = this.mWrapped;
+      if (localAnimationListener != null) {
+        localAnimationListener.onAnimationEnd(paramAnimation);
       }
     }
     
     @CallSuper
     public void onAnimationRepeat(Animation paramAnimation)
     {
-      if (this.mWrapped != null) {
-        this.mWrapped.onAnimationRepeat(paramAnimation);
+      Animation.AnimationListener localAnimationListener = this.mWrapped;
+      if (localAnimationListener != null) {
+        localAnimationListener.onAnimationRepeat(paramAnimation);
       }
     }
     
     @CallSuper
     public void onAnimationStart(Animation paramAnimation)
     {
-      if (this.mWrapped != null) {
-        this.mWrapped.onAnimationStart(paramAnimation);
+      Animation.AnimationListener localAnimationListener = this.mWrapped;
+      if (localAnimationListener != null) {
+        localAnimationListener.onAnimationStart(paramAnimation);
       }
     }
   }
@@ -4005,18 +4089,20 @@ final class FragmentManagerImpl
     {
       this.animation = null;
       this.animator = paramAnimator;
-      if (paramAnimator == null) {
-        throw new IllegalStateException("Animator cannot be null");
+      if (paramAnimator != null) {
+        return;
       }
+      throw new IllegalStateException("Animator cannot be null");
     }
     
     private AnimationOrAnimator(Animation paramAnimation)
     {
       this.animation = paramAnimation;
       this.animator = null;
-      if (paramAnimation == null) {
-        throw new IllegalStateException("Animation cannot be null");
+      if (paramAnimation != null) {
+        return;
       }
+      throw new IllegalStateException("Animation cannot be null");
     }
   }
   
@@ -4062,30 +4148,26 @@ final class FragmentManagerImpl
     public boolean getTransformation(long paramLong, Transformation paramTransformation)
     {
       if (this.mEnded) {
-        if (this.mTransitionEnded) {}
+        return this.mTransitionEnded ^ true;
       }
-      while (super.getTransformation(paramLong, paramTransformation))
+      if (!super.getTransformation(paramLong, paramTransformation))
       {
-        return true;
-        return false;
+        this.mEnded = true;
+        OneShotPreDrawListener.add(this.mParent, this);
       }
-      this.mEnded = true;
-      OneShotPreDrawListener.add(this.mParent, this);
       return true;
     }
     
     public boolean getTransformation(long paramLong, Transformation paramTransformation, float paramFloat)
     {
       if (this.mEnded) {
-        if (this.mTransitionEnded) {}
+        return this.mTransitionEnded ^ true;
       }
-      while (super.getTransformation(paramLong, paramTransformation, paramFloat))
+      if (!super.getTransformation(paramLong, paramTransformation, paramFloat))
       {
-        return true;
-        return false;
+        this.mEnded = true;
+        OneShotPreDrawListener.add(this.mParent, this);
       }
-      this.mEnded = true;
-      OneShotPreDrawListener.add(this.mParent, this);
       return true;
     }
     
@@ -4156,30 +4238,25 @@ final class FragmentManagerImpl
     
     public void completeTransaction()
     {
-      boolean bool1 = false;
-      if (this.mNumPostponed > 0) {}
-      for (int i = 1;; i = 0)
-      {
-        localFragmentManagerImpl = this.mRecord.mManager;
-        int k = localFragmentManagerImpl.mAdded.size();
-        int j = 0;
-        while (j < k)
-        {
-          localObject = (Fragment)localFragmentManagerImpl.mAdded.get(j);
-          ((Fragment)localObject).setOnStartEnterTransitionListener(null);
-          if ((i != 0) && (((Fragment)localObject).isPostponed())) {
-            ((Fragment)localObject).startPostponedEnterTransition();
-          }
-          j += 1;
-        }
+      int i = this.mNumPostponed;
+      int j = 0;
+      if (i > 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
       FragmentManagerImpl localFragmentManagerImpl = this.mRecord.mManager;
-      Object localObject = this.mRecord;
-      boolean bool2 = this.mIsBack;
-      if (i == 0) {
-        bool1 = true;
+      int k = localFragmentManagerImpl.mAdded.size();
+      while (j < k)
+      {
+        Fragment localFragment = (Fragment)localFragmentManagerImpl.mAdded.get(j);
+        localFragment.setOnStartEnterTransitionListener(null);
+        if ((i != 0) && (localFragment.isPostponed())) {
+          localFragment.startPostponedEnterTransition();
+        }
+        j += 1;
       }
-      localFragmentManagerImpl.completeExecute((BackStackRecord)localObject, bool2, bool1, true);
+      this.mRecord.mManager.completeExecute(this.mRecord, this.mIsBack, i ^ 0x1, true);
     }
     
     public boolean isReady()

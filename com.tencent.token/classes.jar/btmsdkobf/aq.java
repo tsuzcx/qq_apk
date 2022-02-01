@@ -28,14 +28,17 @@ public final class aq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cZ, 0);
-    if (this.da != null) {
-      paramJceOutputStream.write(this.da, 1);
+    String str = this.da;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.cS != null) {
-      paramJceOutputStream.write(this.cS, 2);
+    str = this.cS;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.cT != null) {
-      paramJceOutputStream.write(this.cT, 3);
+    str = this.cT;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }

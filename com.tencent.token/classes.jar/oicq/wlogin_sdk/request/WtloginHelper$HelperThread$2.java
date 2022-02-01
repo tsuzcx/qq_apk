@@ -25,7 +25,12 @@ class WtloginHelper$HelperThread$2
     }
     if ((this.val$ret == 0) && (localasync_context.tlv528 != null))
     {
-      util.LOGI("context from seq " + this.this$1.mUserSigInfo._seqence + " tlv528 length " + localasync_context.tlv528.get_data_len(), this.this$1.mUserAccount);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("context from seq ");
+      localStringBuilder.append(this.this$1.mUserSigInfo._seqence);
+      localStringBuilder.append(" tlv528 length ");
+      localStringBuilder.append(localasync_context.tlv528.get_data_len());
+      util.LOGI(localStringBuilder.toString(), this.this$1.mUserAccount);
       this.this$1.mUserSigInfo.loginResultTLVMap.put(new Integer(1320), localasync_context.tlv528);
     }
     if (this.this$1.mDwSubAppidList == null)

@@ -15,10 +15,10 @@ public class CompositeGeneratedAdaptersObserver
   
   public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
   {
-    int j = 0;
     MethodCallsLogger localMethodCallsLogger = new MethodCallsLogger();
     GeneratedAdapter[] arrayOfGeneratedAdapter = this.mGeneratedAdapters;
     int k = arrayOfGeneratedAdapter.length;
+    int j = 0;
     int i = 0;
     while (i < k)
     {

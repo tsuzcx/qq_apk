@@ -46,12 +46,14 @@ public final class u
     paramJceOutputStream.write(this.ay, 0);
     paramJceOutputStream.write(this.aG, 1);
     paramJceOutputStream.write(this.aH, 2);
-    if (this.aI) {
-      paramJceOutputStream.write(this.aI, 3);
+    boolean bool = this.aI;
+    if (bool) {
+      paramJceOutputStream.write(bool, 3);
     }
     paramJceOutputStream.write(this.apn, 4);
-    if (this.aJ != null) {
-      paramJceOutputStream.write(this.aJ, 5);
+    Map localMap = this.aJ;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 5);
     }
   }
 }

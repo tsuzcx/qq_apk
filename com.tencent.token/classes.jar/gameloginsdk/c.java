@@ -24,12 +24,8 @@ class c
     }
     paramJceStruct = (h)paramJceStruct;
     Object localObject = paramJceStruct.k;
-    if ((GameLogin.a(this.a).b((byte[])localObject)) || (!GameLogin.b(this.a).contains(paramJceStruct.o))) {
-      paramInt1 = ee.a;
-    }
-    for (;;)
+    if ((!GameLogin.a(this.a).b((byte[])localObject)) && (GameLogin.b(this.a).contains(paramJceStruct.o)))
     {
-      return new Pair(Integer.valueOf(51), new b.a.d(paramJceStruct.a, paramJceStruct.b));
       paramInt1 = ee.a;
       localObject = paramJceStruct.c;
       long l = paramJceStruct.b;
@@ -53,18 +49,54 @@ class c
       GameLogin.a(this.a).a(paramJceStruct.k);
       GameLogin.e(this.a).push(Long.valueOf(paramJceStruct.b));
       this.a.i.postDelayed(new d(this), this.a.a);
-      new StringBuilder().append("SCPushGameInfo appid : ").append(paramJceStruct.b).toString();
-      new StringBuilder().append("SCPushGameInfo qq : ").append(paramJceStruct.c).toString();
-      new StringBuilder().append("SCPushGameInfo schemeflag : ").append(paramJceStruct.d).toString();
-      new StringBuilder().append("SCPushGameInfo expirttime : ").append(paramJceStruct.f).toString();
-      new StringBuilder().append("SCPushGameInfo player : ").append(paramJceStruct.g).toString();
-      new StringBuilder().append("SCPushGameInfo world : ").append(paramJceStruct.h).toString();
-      new StringBuilder().append("SCPushGameInfo scene : ").append(paramJceStruct.i).toString();
-      new StringBuilder().append("SCPushGameInfo name : ").append(paramJceStruct.j).toString();
-      new StringBuilder().append("SCPushGameInfo md5 : ").append(paramJceStruct.l).toString();
-      new StringBuilder().append("SCPushGameInfo qrcodemd5 : ").append(paramJceStruct.o).toString();
-      new StringBuilder().append("SCPushGameInfo timestamp : ").append(paramJceStruct.m).toString();
-      new StringBuilder().append("SCPushGameInfo session : ").append(GameLogin.a(this.a, paramJceStruct.k)).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SCPushGameInfo appid : ");
+      ((StringBuilder)localObject).append(paramJceStruct.b);
+      ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SCPushGameInfo qq : ");
+      ((StringBuilder)localObject).append(paramJceStruct.c);
+      ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SCPushGameInfo schemeflag : ");
+      ((StringBuilder)localObject).append(paramJceStruct.d);
+      ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SCPushGameInfo expirttime : ");
+      ((StringBuilder)localObject).append(paramJceStruct.f);
+      ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SCPushGameInfo player : ");
+      ((StringBuilder)localObject).append(paramJceStruct.g);
+      ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SCPushGameInfo world : ");
+      ((StringBuilder)localObject).append(paramJceStruct.h);
+      ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SCPushGameInfo scene : ");
+      ((StringBuilder)localObject).append(paramJceStruct.i);
+      ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SCPushGameInfo name : ");
+      ((StringBuilder)localObject).append(paramJceStruct.j);
+      ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SCPushGameInfo md5 : ");
+      ((StringBuilder)localObject).append(paramJceStruct.l);
+      ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SCPushGameInfo qrcodemd5 : ");
+      ((StringBuilder)localObject).append(paramJceStruct.o);
+      ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SCPushGameInfo timestamp : ");
+      ((StringBuilder)localObject).append(paramJceStruct.m);
+      ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SCPushGameInfo session : ");
+      ((StringBuilder)localObject).append(GameLogin.a(this.a, paramJceStruct.k));
+      ((StringBuilder)localObject).toString();
       if (this.a.f != null)
       {
         localObject = new CallbackPushStruct();
@@ -79,6 +111,11 @@ class c
         this.a.f.onPush(0, localObject);
       }
     }
+    else
+    {
+      paramInt1 = ee.a;
+    }
+    return new Pair(Integer.valueOf(51), new b.a.d(paramJceStruct.a, paramJceStruct.b));
   }
 }
 

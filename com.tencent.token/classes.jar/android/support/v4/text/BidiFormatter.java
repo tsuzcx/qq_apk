@@ -125,46 +125,39 @@ public final class BidiFormatter
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     if ((getStereoReset()) && (paramBoolean))
     {
-      if (bool)
-      {
+      if (bool) {
         paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.RTL;
-        localSpannableStringBuilder.append(markBefore(paramCharSequence, paramTextDirectionHeuristicCompat));
+      } else {
+        paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.LTR;
       }
+      localSpannableStringBuilder.append(markBefore(paramCharSequence, paramTextDirectionHeuristicCompat));
     }
-    else
+    if (bool != this.mIsRtlContext)
     {
-      if (bool == this.mIsRtlContext) {
-        break label149;
+      int i;
+      if (bool) {
+        i = 8235;
+      } else {
+        i = 8234;
       }
-      if (!bool) {
-        break label141;
-      }
-      int i = 8235;
-      label82:
       localSpannableStringBuilder.append(i);
       localSpannableStringBuilder.append(paramCharSequence);
       localSpannableStringBuilder.append('‬');
-      label106:
-      if (paramBoolean) {
-        if (!bool) {
-          break label159;
-        }
-      }
     }
-    label141:
-    label149:
-    label159:
-    for (paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.RTL;; paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.LTR)
+    else
     {
-      localSpannableStringBuilder.append(markAfter(paramCharSequence, paramTextDirectionHeuristicCompat));
-      return localSpannableStringBuilder;
-      paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.LTR;
-      break;
-      int j = 8234;
-      break label82;
       localSpannableStringBuilder.append(paramCharSequence);
-      break label106;
     }
+    if (paramBoolean)
+    {
+      if (bool) {
+        paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.RTL;
+      } else {
+        paramTextDirectionHeuristicCompat = TextDirectionHeuristicsCompat.LTR;
+      }
+      localSpannableStringBuilder.append(markAfter(paramCharSequence, paramTextDirectionHeuristicCompat));
+    }
+    return localSpannableStringBuilder;
   }
   
   public CharSequence unicodeWrap(CharSequence paramCharSequence, boolean paramBoolean)
@@ -295,19 +288,22 @@ public final class BidiFormatter
     private byte skipEntityBackward()
     {
       int i = this.charIndex;
+      int j;
       do
       {
-        if (this.charIndex <= 0) {
+        j = this.charIndex;
+        if (j <= 0) {
           break;
         }
         CharSequence localCharSequence = this.text;
-        int j = this.charIndex - 1;
+        j -= 1;
         this.charIndex = j;
         this.lastChar = localCharSequence.charAt(j);
-        if (this.lastChar == '&') {
+        j = this.lastChar;
+        if (j == 38) {
           return 12;
         }
-      } while (this.lastChar != ';');
+      } while (j != 59);
       this.charIndex = i;
       this.lastChar = ';';
       return 13;
@@ -318,11 +314,11 @@ public final class BidiFormatter
       char c;
       do
       {
-        if (this.charIndex >= this.length) {
+        int i = this.charIndex;
+        if (i >= this.length) {
           break;
         }
         CharSequence localCharSequence = this.text;
-        int i = this.charIndex;
         this.charIndex = (i + 1);
         c = localCharSequence.charAt(i);
         this.lastChar = c;
@@ -333,79 +329,77 @@ public final class BidiFormatter
     private byte skipTagBackward()
     {
       int j = this.charIndex;
-      label148:
+      CharSequence localCharSequence;
+      do
+      {
+        k = this.charIndex;
+        if (k <= 0) {
+          break;
+        }
+        localCharSequence = this.text;
+        k -= 1;
+        this.charIndex = k;
+        this.lastChar = localCharSequence.charAt(k);
+        k = this.lastChar;
+        if (k == 60) {
+          return 12;
+        }
+        if (k == 62) {
+          break;
+        }
+      } while ((k != 34) && (k != 39));
+      int k = this.lastChar;
       for (;;)
       {
-        CharSequence localCharSequence;
-        int k;
-        if (this.charIndex > 0)
-        {
-          localCharSequence = this.text;
-          k = this.charIndex - 1;
-          this.charIndex = k;
-          this.lastChar = localCharSequence.charAt(k);
-          if (this.lastChar == '<') {
-            return 12;
-          }
-          if (this.lastChar != '>') {}
+        int m = this.charIndex;
+        if (m <= 0) {
+          break;
         }
-        else
-        {
-          this.charIndex = j;
-          this.lastChar = '>';
-          return 13;
-        }
-        if ((this.lastChar == '"') || (this.lastChar == '\''))
-        {
-          k = this.lastChar;
-          for (;;)
-          {
-            if (this.charIndex <= 0) {
-              break label148;
-            }
-            localCharSequence = this.text;
-            int m = this.charIndex - 1;
-            this.charIndex = m;
-            int i = localCharSequence.charAt(m);
-            this.lastChar = i;
-            if (i == k) {
-              break;
-            }
-          }
+        localCharSequence = this.text;
+        m -= 1;
+        this.charIndex = m;
+        int i = localCharSequence.charAt(m);
+        this.lastChar = i;
+        if (i == k) {
+          break;
         }
       }
+      this.charIndex = j;
+      this.lastChar = '>';
+      return 13;
     }
     
     private byte skipTagForward()
     {
       int j = this.charIndex;
-      label133:
-      while (this.charIndex < this.length)
+      CharSequence localCharSequence;
+      do
       {
-        CharSequence localCharSequence = this.text;
-        int k = this.charIndex;
+        k = this.charIndex;
+        if (k >= this.length) {
+          break;
+        }
+        localCharSequence = this.text;
         this.charIndex = (k + 1);
         this.lastChar = localCharSequence.charAt(k);
-        if (this.lastChar == '>') {
+        k = this.lastChar;
+        if (k == 62) {
           return 12;
         }
-        if ((this.lastChar == '"') || (this.lastChar == '\''))
-        {
-          k = this.lastChar;
-          for (;;)
-          {
-            if (this.charIndex >= this.length) {
-              break label133;
-            }
-            localCharSequence = this.text;
-            int m = this.charIndex;
-            this.charIndex = (m + 1);
-            int i = localCharSequence.charAt(m);
-            this.lastChar = i;
-            if (i == k) {
-              break;
-            }
-          }
+      } while ((k != 34) && (k != 39));
+      int k = this.lastChar;
+      for (;;)
+      {
+        int m = this.charIndex;
+        if (m >= this.length) {
+          break;
+        }
+        localCharSequence = this.text;
+        this.charIndex = (m + 1);
+        int i = localCharSequence.charAt(m);
+        this.lastChar = i;
+        if (i == k) {
+          break;
         }
       }
       this.charIndex = j;
@@ -416,212 +410,188 @@ public final class BidiFormatter
     byte dirTypeBackward()
     {
       this.lastChar = this.text.charAt(this.charIndex - 1);
-      byte b1;
+      int i;
       if (Character.isLowSurrogate(this.lastChar))
       {
-        int i = Character.codePointBefore(this.text, this.charIndex);
+        i = Character.codePointBefore(this.text, this.charIndex);
         this.charIndex -= Character.charCount(i);
-        b1 = Character.getDirectionality(i);
+        return Character.getDirectionality(i);
       }
-      do
+      this.charIndex -= 1;
+      byte b2 = getCachedDirectionality(this.lastChar);
+      byte b1 = b2;
+      if (this.isHtml)
       {
-        byte b2;
-        do
-        {
-          return b1;
-          this.charIndex -= 1;
-          b2 = getCachedDirectionality(this.lastChar);
-          b1 = b2;
-        } while (!this.isHtml);
-        if (this.lastChar == '>') {
+        i = this.lastChar;
+        if (i == 62) {
           return skipTagBackward();
         }
         b1 = b2;
-      } while (this.lastChar != ';');
-      return skipEntityBackward();
+        if (i == 59) {
+          b1 = skipEntityBackward();
+        }
+      }
+      return b1;
     }
     
     byte dirTypeForward()
     {
       this.lastChar = this.text.charAt(this.charIndex);
-      byte b1;
+      int i;
       if (Character.isHighSurrogate(this.lastChar))
       {
-        int i = Character.codePointAt(this.text, this.charIndex);
+        i = Character.codePointAt(this.text, this.charIndex);
         this.charIndex += Character.charCount(i);
-        b1 = Character.getDirectionality(i);
+        return Character.getDirectionality(i);
       }
-      do
+      this.charIndex += 1;
+      byte b2 = getCachedDirectionality(this.lastChar);
+      byte b1 = b2;
+      if (this.isHtml)
       {
-        byte b2;
-        do
-        {
-          return b1;
-          this.charIndex += 1;
-          b2 = getCachedDirectionality(this.lastChar);
-          b1 = b2;
-        } while (!this.isHtml);
-        if (this.lastChar == '<') {
+        i = this.lastChar;
+        if (i == 60) {
           return skipTagForward();
         }
         b1 = b2;
-      } while (this.lastChar != '&');
-      return skipEntityForward();
+        if (i == 38) {
+          b1 = skipEntityForward();
+        }
+      }
+      return b1;
     }
     
     int getEntryDir()
     {
       this.charIndex = 0;
-      int j = 0;
       int k = 0;
+      int j = 0;
       int i = 0;
-      while ((this.charIndex < this.length) && (j == 0)) {
-        switch (dirTypeForward())
-        {
-        case 9: 
-        case 3: 
-        case 4: 
-        case 5: 
-        case 6: 
-        case 7: 
-        case 8: 
-        case 10: 
-        case 11: 
-        case 12: 
-        case 13: 
-        default: 
-          j = i;
-          break;
-        case 14: 
-        case 15: 
-          i += 1;
-          k = -1;
-          break;
-        case 16: 
-        case 17: 
-          i += 1;
-          k = 1;
-          break;
-        case 18: 
-          i -= 1;
-          k = 0;
-          break;
-        case 0: 
-          if (i == 0) {
-            return -1;
+      while ((this.charIndex < this.length) && (k == 0))
+      {
+        int m = dirTypeForward();
+        if (m != 9) {
+          switch (m)
+          {
+          default: 
+            switch (m)
+            {
+            default: 
+              break;
+            case 18: 
+              i -= 1;
+              j = 0;
+              break;
+            case 16: 
+            case 17: 
+              i += 1;
+              j = 1;
+              break;
+            case 14: 
+            case 15: 
+              i += 1;
+              j = -1;
+            }
+            break;
+          case 1: 
+          case 2: 
+            if (i == 0) {
+              return 1;
+            }
+          case 0: 
+            if (i == 0) {
+              return -1;
+            }
+            k = i;
           }
-          j = i;
-          break;
-        case 1: 
-        case 2: 
-          if (i == 0) {
-            return 1;
-          }
-          j = i;
         }
       }
-      if (j == 0) {
+      if (k == 0) {
         return 0;
       }
-      if (k != 0) {
-        return k;
+      if (j != 0) {
+        return j;
       }
-      for (;;)
-      {
-        if (this.charIndex <= 0) {
-          break label268;
-        }
+      while (this.charIndex > 0) {
         switch (dirTypeBackward())
         {
         default: 
           break;
-        case 14: 
-        case 15: 
-          if (j == i) {
-            break;
-          }
-          i -= 1;
+        case 18: 
+          i += 1;
           break;
         case 16: 
         case 17: 
-          if (j == i) {
+          if (k == i) {
             return 1;
           }
           i -= 1;
           break;
-        case 18: 
-          i += 1;
+        case 14: 
+        case 15: 
+          if (k == i) {
+            return -1;
+          }
+          i -= 1;
         }
       }
-      label268:
       return 0;
     }
     
     int getExitDir()
     {
-      int m = 0;
       this.charIndex = this.length;
       int j = 0;
       int i = 0;
-      for (;;)
+      while (this.charIndex > 0)
       {
-        int k = m;
-        if (this.charIndex > 0) {}
-        switch (dirTypeBackward())
-        {
-        case 9: 
-        case 3: 
-        case 4: 
-        case 5: 
-        case 6: 
-        case 7: 
-        case 8: 
-        case 10: 
-        case 11: 
-        case 12: 
-        case 13: 
-        default: 
-          if (j == 0) {
-            j = i;
-          }
-          break;
-        case 0: 
-          if (i == 0)
+        int k = dirTypeBackward();
+        if (k != 9) {
+          switch (k)
           {
-            k = -1;
-            return k;
+          default: 
+            switch (k)
+            {
+            default: 
+              if (j != 0) {}
+              break;
+            case 18: 
+              i += 1;
+              break;
+            case 16: 
+            case 17: 
+              if (j == i) {
+                return 1;
+              }
+              i -= 1;
+              break;
+            case 14: 
+            case 15: 
+              if (j == i) {
+                return -1;
+              }
+              i -= 1;
+            }
+            break;
+          case 1: 
+          case 2: 
+            if (i == 0) {
+              return 1;
+            }
+            if (j != 0) {}
+            break;
+          case 0: 
+            if (i == 0) {
+              return -1;
+            }
+            if (j == 0) {
+              j = i;
+            }
+            break;
           }
-          if (j == 0) {
-            j = i;
-          }
-          break;
-        case 14: 
-        case 15: 
-          if (j == i) {
-            return -1;
-          }
-          i -= 1;
-          break;
-        case 1: 
-        case 2: 
-          if (i == 0) {
-            return 1;
-          }
-          if (j == 0) {
-            j = i;
-          }
-          break;
-        case 16: 
-        case 17: 
-          if (j == i) {
-            return 1;
-          }
-          i -= 1;
-          break;
-        case 18: 
-          i += 1;
         }
       }
+      return 0;
     }
   }
 }

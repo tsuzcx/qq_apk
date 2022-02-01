@@ -13,11 +13,12 @@ class c
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while (!paramContext.equals("com.tencent.tmsdk.HeartBeatPlot.ACTION_HEARTBEAT_PLOT_ALARM_CYCLE")) {
+    if (paramContext == null) {
       return;
     }
-    b.a(this.a).sendEmptyMessage(0);
+    if (paramContext.equals("com.tencent.tmsdk.HeartBeatPlot.ACTION_HEARTBEAT_PLOT_ALARM_CYCLE")) {
+      b.a(this.a).sendEmptyMessage(0);
+    }
   }
 }
 

@@ -79,24 +79,22 @@ public class UpdateDownloadDialog
     {
     default: 
       return;
-    case 1: 
-    case 2: 
-    case 3: 
-      e locale = e.a();
-      locale.k(2);
-      locale.e(true);
-      a.a().c(this.a);
-      TMSDKContext.saveActionData(1150107);
+    case 7: 
+      a.a().d(this.a);
+      return;
+    case 6: 
+      a.a(this.g, new File(a.b(), this.a.d));
       return;
     case 4: 
     case 5: 
       a.a().b(this.a);
       return;
-    case 6: 
-      a.a(this.g, new File(a.b(), this.a.d));
-      return;
     }
-    a.a().d(this.a);
+    e locale = e.a();
+    locale.k(2);
+    locale.e(true);
+    a.a().c(this.a);
+    TMSDKContext.saveActionData(1150107);
   }
   
   void a(a.a parama)
@@ -118,21 +116,26 @@ public class UpdateDownloadDialog
     case 3: 
     default: 
       return;
-    case 1: 
-      this.b.setText("重试");
-      return;
-    case 2: 
-      this.b.setText("立即体验");
-      return;
-    case 4: 
-    case 5: 
-      this.b.setText("下载中...(" + this.a.e + "%)");
+    case 7: 
+      this.b.setText("继续");
       return;
     case 6: 
       this.b.setText("安装");
       return;
+    case 4: 
+    case 5: 
+      Button localButton = this.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("下载中...(");
+      localStringBuilder.append(this.a.e);
+      localStringBuilder.append("%)");
+      localButton.setText(localStringBuilder.toString());
+      return;
+    case 2: 
+      this.b.setText("立即体验");
+      return;
     }
-    this.b.setText("继续");
+    this.b.setText("重试");
   }
   
   void c()
@@ -156,15 +159,15 @@ public class UpdateDownloadDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968786);
+    setContentView(2131296467);
     paramBundle = getWindow();
     Object localObject = paramBundle.getAttributes();
-    ((WindowManager.LayoutParams)localObject).width = ((int)(((Activity)this.g).getWindowManager().getDefaultDisplay().getWidth() - 46.0F * IndexActivity.S_DENSITY));
+    ((WindowManager.LayoutParams)localObject).width = ((int)(((Activity)this.g).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
     paramBundle.setAttributes((WindowManager.LayoutParams)localObject);
-    this.b = ((Button)findViewById(2131558680));
-    this.c = ((TextView)findViewById(2131558419));
-    this.d = ((TextView)findViewById(2131558796));
-    findViewById(2131558949).setOnClickListener(new View.OnClickListener()
+    this.b = ((Button)findViewById(2131165820));
+    this.c = ((TextView)findViewById(2131166104));
+    this.d = ((TextView)findViewById(2131165740));
+    findViewById(2131165378).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {

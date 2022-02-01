@@ -18,16 +18,6 @@ public final class stCtrlResult
   public long uin = 0L;
   public long ulkey = 0L;
   
-  static
-  {
-    if (!stCtrlResult.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public stCtrlResult() {}
   
   public stCtrlResult(short paramShort1, short paramShort2, long paramLong1, String paramString, long paramLong2, double paramDouble1, double paramDouble2, double paramDouble3)
@@ -49,29 +39,59 @@ public final class stCtrlResult
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stCtrlResult)paramObject;
-    } while ((!JceUtil.equals(this.cmd, paramObject.cmd)) || (!JceUtil.equals(this.result, paramObject.result)) || (!JceUtil.equals(this.uin, paramObject.uin)) || (!JceUtil.equals(this.imei, paramObject.imei)) || (!JceUtil.equals(this.ulkey, paramObject.ulkey)) || (!JceUtil.equals(this.longitude, paramObject.longitude)) || (!JceUtil.equals(this.latitude, paramObject.latitude)) || (!JceUtil.equals(this.accuracy, paramObject.accuracy)));
-    return true;
+    }
+    paramObject = (stCtrlResult)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.cmd, paramObject.cmd))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.result, paramObject.result))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.uin, paramObject.uin))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.imei, paramObject.imei))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.ulkey, paramObject.ulkey))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.longitude, paramObject.longitude))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.latitude, paramObject.latitude))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.accuracy, paramObject.accuracy)) {
+                    bool1 = true;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

@@ -22,35 +22,36 @@ public final class CursorToBulkCursorAdaptor
   {
     if ((??? instanceof CrossProcessCursor)) {
       this.mCursor = ((CrossProcessCursor)???);
+    } else {
+      this.mCursor = new CrossProcessCursorWrapper(???);
     }
-    for (;;)
+    this.mProviderName = paramString;
+    synchronized (this.mLock)
     {
-      this.mProviderName = paramString;
-      synchronized (this.mLock)
-      {
-        createAndRegisterObserverProxyLocked(paramIContentObserver);
-        return;
-        this.mCursor = new CrossProcessCursorWrapper(???);
-      }
+      createAndRegisterObserverProxyLocked(paramIContentObserver);
+      return;
     }
   }
   
   private void closeFilledWindowLocked()
   {
-    if (this.mFilledWindow != null)
+    CursorWindow localCursorWindow = this.mFilledWindow;
+    if (localCursorWindow != null)
     {
-      this.mFilledWindow.close();
+      localCursorWindow.close();
       this.mFilledWindow = null;
     }
   }
   
   private void createAndRegisterObserverProxyLocked(IContentObserver paramIContentObserver)
   {
-    if (this.mObserver != null) {
-      throw new IllegalStateException("an observer is already registered");
+    if (this.mObserver == null)
+    {
+      this.mObserver = new ContentObserverProxy(paramIContentObserver, this);
+      this.mCursor.registerContentObserver(this.mObserver);
+      return;
     }
-    this.mObserver = new ContentObserverProxy(paramIContentObserver, this);
-    this.mCursor.registerContentObserver(this.mObserver);
+    throw new IllegalStateException("an observer is already registered");
   }
   
   private void disposeLocked()
@@ -66,16 +67,18 @@ public final class CursorToBulkCursorAdaptor
   
   private void throwIfCursorIsClosed()
   {
-    if (this.mCursor == null) {
-      throw new StaleDataException("Attempted to access a cursor after it has been closed.");
+    if (this.mCursor != null) {
+      return;
     }
+    throw new StaleDataException("Attempted to access a cursor after it has been closed.");
   }
   
   private void unregisterObserverProxyLocked()
   {
-    if (this.mObserver != null)
+    ContentObserverProxy localContentObserverProxy = this.mObserver;
+    if (localContentObserverProxy != null)
     {
-      this.mCursor.unregisterContentObserver(this.mObserver);
+      this.mCursor.unregisterContentObserver(localContentObserverProxy);
       this.mObserver.unlinkToDeath(this);
       this.mObserver = null;
     }
@@ -151,37 +154,35 @@ public final class CursorToBulkCursorAdaptor
         closeFilledWindowLocked();
         return null;
       }
-      CursorWindow localCursorWindow1 = this.mCursor.getWindow();
-      if (localCursorWindow1 != null)
+      Object localObject1 = this.mCursor.getWindow();
+      if (localObject1 != null)
       {
         closeFilledWindowLocked();
-        if (localCursorWindow1 != null) {
-          localCursorWindow1.acquireReference();
-        }
-        return localCursorWindow1;
-      }
-    }
-    CursorWindow localCursorWindow2 = this.mFilledWindow;
-    Object localObject2;
-    if (localCursorWindow2 == null)
-    {
-      this.mFilledWindow = new CursorWindow(this.mProviderName);
-      localObject2 = this.mFilledWindow;
-    }
-    for (;;)
-    {
-      this.mCursor.fillWindow(paramInt, (CursorWindow)localObject2);
-      break;
-      if (paramInt >= localCursorWindow2.getStartPosition())
-      {
-        localObject2 = localCursorWindow2;
-        if (paramInt < localCursorWindow2.getStartPosition() + localCursorWindow2.getNumRows()) {}
       }
       else
       {
-        localCursorWindow2.clear();
-        localObject2 = localCursorWindow2;
+        CursorWindow localCursorWindow = this.mFilledWindow;
+        if (localCursorWindow == null)
+        {
+          this.mFilledWindow = new CursorWindow(this.mProviderName);
+          localObject1 = this.mFilledWindow;
+        }
+        else if (paramInt >= localCursorWindow.getStartPosition())
+        {
+          localObject1 = localCursorWindow;
+          if (paramInt < localCursorWindow.getStartPosition() + localCursorWindow.getNumRows()) {}
+        }
+        else
+        {
+          localCursorWindow.clear();
+          localObject1 = localCursorWindow;
+        }
+        this.mCursor.fillWindow(paramInt, (CursorWindow)localObject1);
       }
+      if (localObject1 != null) {
+        ((CursorWindow)localObject1).acquireReference();
+      }
+      return localObject1;
     }
   }
   
@@ -207,16 +208,20 @@ public final class CursorToBulkCursorAdaptor
         if (!bool) {
           return -1;
         }
+        unregisterObserverProxyLocked();
+        createAndRegisterObserverProxyLocked(paramIContentObserver);
+        int i = this.mCursor.getCount();
+        return i;
       }
       catch (IllegalStateException paramIContentObserver)
       {
-        throw new IllegalStateException(this.mProviderName + " Requery misuse db, mCursor isClosed:" + this.mCursor.isClosed(), paramIContentObserver);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.mProviderName);
+        localStringBuilder.append(" Requery misuse db, mCursor isClosed:");
+        localStringBuilder.append(this.mCursor.isClosed());
+        throw new IllegalStateException(localStringBuilder.toString(), paramIContentObserver);
       }
     }
-    unregisterObserverProxyLocked();
-    createAndRegisterObserverProxyLocked(paramIContentObserver);
-    int i = this.mCursor.getCount();
-    return i;
   }
   
   public Bundle respond(Bundle paramBundle)

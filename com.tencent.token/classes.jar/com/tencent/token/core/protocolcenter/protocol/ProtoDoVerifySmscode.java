@@ -28,8 +28,8 @@ public class ProtoDoVerifySmscode
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
@@ -37,14 +37,23 @@ public class ProtoDoVerifySmscode
     int i = cb.a + 1;
     cb.a = i;
     this.f = i;
-    String str2 = l.a(new Object[] { "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L), "uin", Long.valueOf(this.e), "mobile_code", this.d, "verify_type_id", Integer.valueOf(this.g) });
-    if (str2 == null)
+    Object localObject = l.a(new Object[] { "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L), "uin", Long.valueOf(this.e), "mobile_code", this.d, "verify_type_id", Integer.valueOf(this.g) });
+    if (localObject == null)
     {
       this.a.a(10000, "encrypt qqtoken code failed");
       return null;
     }
-    str1 = "?aq_base_sid=" + str1 + "&data=" + str2;
-    return c.e() + "/cn/mbtoken3/mbtoken3_verify_mobile_code_v2" + str1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_verify_mobile_code_v2");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)

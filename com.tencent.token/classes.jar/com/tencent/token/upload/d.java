@@ -15,7 +15,7 @@ import org.json.JSONObject;
 
 public class d
 {
-  private static d a = null;
+  private static d a;
   private int b;
   
   public static d a()
@@ -132,96 +132,137 @@ public class d
     com.tencent.token.global.e locale = new com.tencent.token.global.e();
     try
     {
-      Object localObject1 = cr.a();
+      Object localObject2 = cr.a();
       com.tencent.token.global.g.c("====上报信息开始====");
-      i = cb.a + 1;
+      int i = cb.a + 1;
       cb.a = i;
       this.b = i;
       Object localObject4 = new JSONObject();
+      Object localObject1 = "";
       try
       {
-        ((JSONObject)localObject4).put("uin", ((cr)localObject1).e().mUin);
-        com.tencent.token.global.g.a("mRealUin=" + ((cr)localObject1).e().mRealUin + ",uinHash=" + ((cr)localObject1).e().mUin);
+        ((JSONObject)localObject4).put("uin", ((cr)localObject2).e().mUin);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mRealUin=");
+        localStringBuilder.append(((cr)localObject2).e().mRealUin);
+        localStringBuilder.append(",uinHash=");
+        localStringBuilder.append(((cr)localObject2).e().mUin);
+        com.tencent.token.global.g.a(localStringBuilder.toString());
         ((JSONObject)localObject4).put("seq_id", this.b);
         ((JSONObject)localObject4).put("op_time", (int)(cc.c().s() / 1000L));
         ((JSONObject)localObject4).put("token_seq", cc.c().k());
         a((JSONObject)localObject4);
-        localObject1 = com.tencent.token.utils.l.b(((JSONObject)localObject4).toString().getBytes());
-        localObject4 = com.tencent.token.global.c.e() + "/cn/mbtoken3/mbtoken3_device_info_report_encrypt";
-        ContentValues localContentValues = new ContentValues(3);
-        localContentValues.put("aq_base_sid", ca.a().b());
-        localContentValues.put("data", (String)localObject1);
-        com.tencent.token.global.g.a("deviceinfo aq_base_sid=" + ca.a().b());
-        com.tencent.token.global.g.a("deviceinfo data=" + (String)localObject1);
-        localObject1 = new ez();
-        localObject4 = ((ez)localObject1).a((String)localObject4, localContentValues);
-        if (localObject4 == null)
+        localObject2 = com.tencent.token.utils.l.b(((JSONObject)localObject4).toString().getBytes());
+        localObject1 = localObject2;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(com.tencent.token.global.c.e());
+      ((StringBuilder)localObject3).append("/cn/mbtoken3/mbtoken3_device_info_report_encrypt");
+      localObject3 = ((StringBuilder)localObject3).toString();
+      localObject4 = new ContentValues(3);
+      ((ContentValues)localObject4).put("aq_base_sid", ca.a().b());
+      ((ContentValues)localObject4).put("data", (String)localObject1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("deviceinfo aq_base_sid=");
+      localStringBuilder.append(ca.a().b());
+      com.tencent.token.global.g.a(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("deviceinfo data=");
+      localStringBuilder.append((String)localObject1);
+      com.tencent.token.global.g.a(localStringBuilder.toString());
+      localObject1 = new ez();
+      localObject3 = ((ez)localObject1).a((String)localObject3, (ContentValues)localObject4);
+      if (localObject3 == null)
+      {
+        locale.a(((ez)localObject1).a());
+        return locale;
+      }
+      localObject1 = new JSONObject(new String((byte[])localObject3));
+      i = ((JSONObject)localObject1).getInt("err");
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("errCode:");
+      ((StringBuilder)localObject3).append(i);
+      com.tencent.token.global.g.c(((StringBuilder)localObject3).toString());
+      com.tencent.token.global.g.c("====上报信息结束====");
+      if (i != 0)
+      {
+        localObject1 = ((JSONObject)localObject1).getString("info");
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(i);
+        ((StringBuilder)localObject3).append("--");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        com.tencent.token.global.g.c(((StringBuilder)localObject3).toString());
+        locale.a(i, (String)localObject1, (String)localObject1);
+        return locale;
+      }
+      localObject1 = com.tencent.token.utils.l.c(((JSONObject)localObject1).getString("data"));
+      if (localObject1 != null)
+      {
+        localObject1 = new JSONObject(new String((byte[])localObject1));
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(this);
+        ((StringBuilder)localObject3).append("json=");
+        ((StringBuilder)localObject3).append(localObject1);
+        com.tencent.token.global.g.a(((StringBuilder)localObject3).toString());
+        i = ((JSONObject)localObject1).optInt("seq_id");
+        if (i != this.b)
         {
-          locale.a(((ez)localObject1).a());
+          locale.b(10030);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("parseJSON error seq is wrong seq=");
+          ((StringBuilder)localObject1).append(i);
+          ((StringBuilder)localObject1).append(",right = ");
+          ((StringBuilder)localObject1).append(this.b);
+          com.tencent.token.global.g.c(((StringBuilder)localObject1).toString());
           return locale;
         }
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
+        if (1 == ((JSONObject)localObject1).optInt("user_action_report"))
         {
-          localException1.printStackTrace();
-          localObject2 = "";
+          a.a().a(true);
+          com.tencent.token.global.g.c("isNeedUpload:true");
         }
-        localObject2 = new JSONObject(new String((byte[])localObject4));
-        i = ((JSONObject)localObject2).getInt("err");
-        com.tencent.token.global.g.c("errCode:" + i);
-        com.tencent.token.global.g.c("====上报信息结束====");
-        if (i == 0) {
-          break label482;
+        else
+        {
+          a.a().a(false);
+          com.tencent.token.global.g.c("isNeedUpload:false");
         }
+        locale.c();
+        return locale;
       }
-      Object localObject2 = ((JSONObject)localObject2).getString("info");
-      com.tencent.token.global.g.c(i + "--" + (String)localObject2);
-      locale.a(i, (String)localObject2, (String)localObject2);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("parseJSON error decodeData=");
+      ((StringBuilder)localObject3).append(localObject1);
+      com.tencent.token.global.g.c(((StringBuilder)localObject3).toString());
+      locale.a(10022, RqdApplication.l().getString(2131493067));
+      return locale;
+    }
+    catch (Exception localException1)
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("unknown err: ");
+      ((StringBuilder)localObject3).append(localException1.toString());
+      com.tencent.token.global.g.c(((StringBuilder)localObject3).toString());
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("JSONException:");
+      ((StringBuilder)localObject3).append(localException1.toString());
+      locale.a(10021, ((StringBuilder)localObject3).toString());
       return locale;
     }
     catch (JSONException localJSONException)
     {
-      com.tencent.token.global.g.c("parse json failed: " + localJSONException.toString());
-      locale.a(10020, "JSONException:" + localJSONException.toString());
-      return locale;
-      Object localObject3 = com.tencent.token.utils.l.c(localJSONException.getString("data"));
-      if (localObject3 == null) {
-        break label706;
-      }
-      localObject3 = new JSONObject(new String((byte[])localObject3));
-      com.tencent.token.global.g.a(this + "json=" + localObject3);
-      int i = ((JSONObject)localObject3).optInt("seq_id");
-      if (i != this.b)
-      {
-        locale.b(10030);
-        com.tencent.token.global.g.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.b);
-        return locale;
-      }
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("parse json failed: ");
+      ((StringBuilder)localObject3).append(localJSONException.toString());
+      com.tencent.token.global.g.c(((StringBuilder)localObject3).toString());
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("JSONException:");
+      ((StringBuilder)localObject3).append(localJSONException.toString());
+      locale.a(10020, ((StringBuilder)localObject3).toString());
     }
-    catch (Exception localException2)
-    {
-      label482:
-      com.tencent.token.global.g.c("unknown err: " + localException2.toString());
-      locale.a(10021, "JSONException:" + localException2.toString());
-      return locale;
-    }
-    if (1 == localException2.optInt("user_action_report"))
-    {
-      a.a().a(true);
-      com.tencent.token.global.g.c("isNeedUpload:true");
-    }
-    for (;;)
-    {
-      locale.c();
-      return locale;
-      a.a().a(false);
-      com.tencent.token.global.g.c("isNeedUpload:false");
-    }
-    label706:
-    com.tencent.token.global.g.c("parseJSON error decodeData=" + localException2);
-    locale.a(10022, RqdApplication.l().getString(2131230925));
     return locale;
   }
 }

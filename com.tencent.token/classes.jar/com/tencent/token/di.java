@@ -52,7 +52,7 @@ public class di
             localf.a = ((JSONObject)localObject).getInt("id");
             localf.b = ((JSONObject)localObject).getString("name");
             if (((JSONObject)localObject).getInt("value") == 0) {
-              break label267;
+              break label270;
             }
             bool = true;
             localf.c = bool;
@@ -62,7 +62,7 @@ public class di
               this.b = new ArrayList();
               int j = 0;
               if (j >= ((JSONArray)localObject).length()) {
-                break label273;
+                break label276;
               }
               JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
               DeviceInfo localDeviceInfo = new DeviceInfo();
@@ -78,7 +78,7 @@ public class di
               continue;
             }
             this.b = new ArrayList();
-            break label273;
+            break label276;
           }
         }
         a(localf);
@@ -89,10 +89,10 @@ public class di
         paramJSONArray.printStackTrace();
         return false;
       }
-      label267:
+      label270:
       boolean bool = false;
       continue;
-      label273:
+      label276:
       i += 1;
     }
   }

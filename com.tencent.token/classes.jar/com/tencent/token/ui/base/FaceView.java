@@ -81,39 +81,53 @@ public class FaceView
   {
     super(paramContext, paramAttributeSet);
     this.l = paramContext;
-    this.E = this.l.getResources().getColor(2131492923);
+    this.E = this.l.getResources().getColor(2130968655);
     this.F = -1;
     paramAttributeSet = new BitmapFactory.Options();
     paramAttributeSet.inSampleSize = 2;
-    this.i = BitmapFactory.decodeResource(paramContext.getResources(), 2130837693, paramAttributeSet);
-    this.N = BitmapFactory.decodeResource(paramContext.getResources(), 2130837786, null);
-    this.P = BitmapFactory.decodeResource(paramContext.getResources(), 2130837785, null);
-    this.O = BitmapFactory.decodeResource(paramContext.getResources(), 2130837942, null);
-    this.Q = BitmapFactory.decodeResource(paramContext.getResources(), 2130837941, null);
+    this.i = BitmapFactory.decodeResource(paramContext.getResources(), 2131099839, paramAttributeSet);
+    this.N = BitmapFactory.decodeResource(paramContext.getResources(), 2131099932, null);
+    this.P = BitmapFactory.decodeResource(paramContext.getResources(), 2131099931, null);
+    this.O = BitmapFactory.decodeResource(paramContext.getResources(), 2131100091, null);
+    this.Q = BitmapFactory.decodeResource(paramContext.getResources(), 2131100090, null);
     this.L = this.N.getWidth();
     this.M = this.N.getHeight();
     this.e = paramContext.getResources().getDisplayMetrics().density;
     paramContext = paramContext.getResources().getDisplayMetrics();
     this.f = paramContext.widthPixels;
     this.g = (paramContext.heightPixels - IndexActivity.S_STATUS_HEIGHT);
-    g.c("changescreenWidth=" + this.f + ",screenHeight=" + this.g + ",scale=" + this.e);
+    paramContext = new StringBuilder();
+    paramContext.append("changescreenWidth=");
+    paramContext.append(this.f);
+    paramContext.append(",screenHeight=");
+    paramContext.append(this.g);
+    paramContext.append(",scale=");
+    paramContext.append(this.e);
+    g.c(paramContext.toString());
     this.j = new Rect(0, 0, this.f, this.g);
-    this.r = (this.f / 2);
-    this.s = ((this.g - 40.0F * this.e) / 2.0F);
-    this.m = (145.0F * this.e);
-    this.n = this.m;
-    this.o = (this.n + 60.0F * this.e);
-    this.p = (this.m - 2.5F * this.e);
-    this.A = (5.0F * this.e);
-    this.B = (1.7F * this.e);
-    this.q = (28.0F * this.e);
-    this.C = (2.6F * this.e);
-    this.t = this.r;
-    this.u = this.s;
-    a = (this.r - this.m) / this.f;
-    b = (this.s - this.m) / this.g;
-    c = this.m * 2.0F / this.f;
-    d = this.m * 2.0F / this.g;
+    int i1 = this.f;
+    this.r = (i1 / 2);
+    int i2 = this.g;
+    float f1 = i2;
+    float f2 = this.e;
+    this.s = ((f1 - 40.0F * f2) / 2.0F);
+    this.m = (145.0F * f2);
+    f1 = this.m;
+    this.n = f1;
+    this.o = (this.n + 60.0F * f2);
+    this.p = (f1 - 2.5F * f2);
+    this.A = (5.0F * f2);
+    this.B = (1.7F * f2);
+    this.q = (28.0F * f2);
+    this.C = (f2 * 2.6F);
+    f2 = this.r;
+    this.t = f2;
+    float f3 = this.s;
+    this.u = f3;
+    a = (f2 - f1) / i1;
+    b = (f3 - f1) / i2;
+    c = f1 * 2.0F / i1;
+    d = f1 * 2.0F / i2;
     this.x = new Paint();
     b();
   }
@@ -123,7 +137,7 @@ public class FaceView
     this.x.setAntiAlias(true);
     this.x.setStyle(Paint.Style.STROKE);
     this.x.setColor(-1);
-    this.x.setTextSize(18.0F * this.e);
+    this.x.setTextSize(this.e * 18.0F);
     this.x.setTextAlign(Paint.Align.CENTER);
   }
   
@@ -135,30 +149,41 @@ public class FaceView
   
   public void a(int paramInt1, int paramInt2)
   {
-    g.c("changescreenwidth=" + paramInt1 + ", screenheight=" + paramInt2 + ", titleheight=" + IndexActivity.S_STATUS_HEIGHT);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("changescreenwidth=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", screenheight=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", titleheight=");
+    localStringBuilder.append(IndexActivity.S_STATUS_HEIGHT);
+    g.c(localStringBuilder.toString());
     if (paramInt2 != this.g)
     {
       this.f = paramInt1;
       this.g = paramInt2;
-      this.r = (this.f / 2);
-      this.s = ((int)((this.g - 40.0F * this.e) / 2.0F));
-      a = (this.r - this.m) / this.f;
-      b = (this.s - this.m) / this.g;
-      c = this.m * 2.0F / this.f;
-      d = this.m * 2.0F / this.g;
+      paramInt1 = this.f;
+      this.r = (paramInt1 / 2);
+      paramInt2 = this.g;
+      this.s = ((int)((paramInt2 - this.e * 40.0F) / 2.0F));
+      float f1 = this.r;
+      float f2 = this.m;
+      a = (f1 - f2) / paramInt1;
+      float f3 = this.s;
+      b = (f3 - f2) / paramInt2;
+      c = f2 * 2.0F / paramInt1;
+      d = f2 * 2.0F / paramInt2;
       paramInt1 = 1;
-      this.t = this.r;
-      this.u = this.s;
+      this.t = f1;
+      this.u = f3;
     }
-    for (;;)
+    else
     {
-      if ((this.j == null) || (paramInt1 != 0))
-      {
-        this.j = new Rect(0, 0, this.f, this.g);
-        invalidate();
-      }
-      return;
       paramInt1 = 0;
+    }
+    if ((this.j == null) || (paramInt1 != 0))
+    {
+      this.j = new Rect(0, 0, this.f, this.g);
+      invalidate();
     }
   }
   
@@ -178,39 +203,40 @@ public class FaceView
     {
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inSampleSize = 2;
-      this.i = BitmapFactory.decodeResource(this.l.getResources(), 2130837694, localOptions);
+      this.i = BitmapFactory.decodeResource(this.l.getResources(), 2131099840, localOptions);
     }
     this.D = false;
     if (paramBoolean1)
     {
-      this.F = this.l.getResources().getColor(2131492924);
+      this.F = this.l.getResources().getColor(2130968656);
       this.E = this.F;
       if (paramBoolean2)
       {
-        this.R = BitmapFactory.decodeResource(this.l.getResources(), 2130837994, null);
-        this.S = BitmapFactory.decodeResource(this.l.getResources(), 2130837995, null);
-      }
-    }
-    for (;;)
-    {
-      invalidate();
-      return;
-      this.R = BitmapFactory.decodeResource(this.l.getResources(), 2130837663, null);
-      this.S = BitmapFactory.decodeResource(this.l.getResources(), 2130837662, null);
-      continue;
-      this.F = this.l.getResources().getColor(2131492923);
-      this.E = this.F;
-      if (paramBoolean2)
-      {
-        this.R = BitmapFactory.decodeResource(this.l.getResources(), 2130837994, null);
-        this.S = BitmapFactory.decodeResource(this.l.getResources(), 2130837995, null);
+        this.R = BitmapFactory.decodeResource(this.l.getResources(), 2131100143, null);
+        this.S = BitmapFactory.decodeResource(this.l.getResources(), 2131100144, null);
       }
       else
       {
-        this.R = BitmapFactory.decodeResource(this.l.getResources(), 2130837659, null);
-        this.S = BitmapFactory.decodeResource(this.l.getResources(), 2130837662, null);
+        this.R = BitmapFactory.decodeResource(this.l.getResources(), 2131099809, null);
+        this.S = BitmapFactory.decodeResource(this.l.getResources(), 2131099808, null);
       }
     }
+    else
+    {
+      this.F = this.l.getResources().getColor(2130968655);
+      this.E = this.F;
+      if (paramBoolean2)
+      {
+        this.R = BitmapFactory.decodeResource(this.l.getResources(), 2131100143, null);
+        this.S = BitmapFactory.decodeResource(this.l.getResources(), 2131100144, null);
+      }
+      else
+      {
+        this.R = BitmapFactory.decodeResource(this.l.getResources(), 2131099805, null);
+        this.S = BitmapFactory.decodeResource(this.l.getResources(), 2131099808, null);
+      }
+    }
+    invalidate();
   }
   
   public boolean getBrightMode()
@@ -250,9 +276,10 @@ public class FaceView
       return;
     }
     this.x.setAlpha(255);
-    if (this.ad != null)
+    Bitmap localBitmap = this.ad;
+    if (localBitmap != null)
     {
-      paramCanvas.drawBitmap(this.ad, null, this.j, this.x);
+      paramCanvas.drawBitmap(localBitmap, null, this.j, this.x);
       paramCanvas.saveLayer(0.0F, 0.0F, this.f, this.g, null, 31);
     }
     if (this.ac)
@@ -261,177 +288,76 @@ public class FaceView
       this.x.setStyle(Paint.Style.FILL);
       paramCanvas.drawRect(this.j, this.x);
     }
-    for (;;)
+    else
     {
-      this.x.setStyle(Paint.Style.FILL);
-      this.x.setXfermode(this.y);
-      this.x.setColor(0);
-      paramCanvas.drawCircle(this.r, this.s, this.m, this.x);
-      this.x.setXfermode(null);
-      switch (this.h)
-      {
-      case 1: 
-      case 2: 
-      default: 
-        return;
-      case 0: 
-        this.x.setStyle(Paint.Style.STROKE);
-        this.x.setStrokeWidth(this.A);
-        this.x.setColor(this.F);
-        paramCanvas.drawCircle(this.r, this.s, this.m, this.x);
-        this.x.setAlpha(128);
-        this.x.setStrokeWidth(this.B);
-        paramCanvas.drawCircle(this.r, this.s, this.n, this.x);
-        this.x.setAlpha(51);
-        paramCanvas.drawCircle(this.r, this.s, this.o, this.x);
-        this.n += 5.0F * this.e;
-        this.o += 5.0F * this.e;
-        if (this.n + this.s >= this.g)
-        {
-          this.n = this.m;
-          this.o = (this.n + 60.0F * this.e);
-        }
-        invalidate();
-        return;
-        paramCanvas.drawBitmap(this.i, null, this.j, this.x);
-      }
+      paramCanvas.drawBitmap(this.i, null, this.j, this.x);
     }
-    this.x.setStyle(Paint.Style.STROKE);
-    this.x.setStrokeWidth(this.A);
-    this.x.setColor(this.E);
-    paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
-    return;
-    this.x.setStyle(Paint.Style.STROKE);
-    this.x.setStrokeWidth(this.A);
-    this.x.setColor(this.E);
-    paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
-    return;
-    this.x.setStyle(Paint.Style.STROKE);
-    this.x.setStrokeWidth(this.A);
-    this.x.setColor(this.E);
-    this.x.setAlpha(255);
-    paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
-    paramCanvas.drawBitmap(this.N, this.H, this.I, this.x);
-    paramCanvas.drawBitmap(this.O, this.H + this.J - this.L, this.I, this.x);
-    paramCanvas.drawBitmap(this.P, this.H, this.I + this.K - this.M, this.x);
-    paramCanvas.drawBitmap(this.Q, this.H + this.J - this.L, this.I + this.K - this.M, this.x);
     this.x.setStyle(Paint.Style.FILL);
-    this.x.setColor(-1);
-    this.x.setStrokeWidth(1.0F);
-    this.x.setAlpha(100);
-    float f1 = this.H;
-    float f2 = this.L;
-    float f3 = this.I;
-    float f4 = this.H;
-    float f5 = this.J;
-    float f6 = this.L;
-    float f7 = this.I;
-    paramCanvas.drawRect(f2 + f1, f3, f4 + f5 - f6, this.B + f7, this.x);
-    f1 = this.H;
-    f2 = this.I;
-    f3 = this.M;
-    f4 = this.H;
-    paramCanvas.drawRect(f1, f3 + f2, this.B + f4, this.I + this.K - this.M, this.x);
-    f1 = this.H;
-    f2 = this.J;
-    f3 = this.B;
-    f4 = this.I;
-    f5 = this.M;
-    f6 = this.H;
-    paramCanvas.drawRect(f1 + f2 - f3, f5 + f4, this.J + f6, this.I + this.K - this.M, this.x);
-    f1 = this.H;
-    f2 = this.L;
-    f3 = this.I;
-    f4 = this.K;
-    f5 = this.B;
-    f6 = this.H;
-    f7 = this.J;
-    float f8 = this.L;
-    float f9 = this.I;
-    paramCanvas.drawRect(f2 + f1, f3 + f4 - f5, f6 + f7 - f8, this.K + f9, this.x);
-    return;
-    this.x.setStyle(Paint.Style.STROKE);
-    this.x.setStrokeWidth(this.A);
-    this.x.setColor(this.E);
-    paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
-    return;
-    this.x.setStyle(Paint.Style.STROKE);
-    this.x.setStrokeWidth(this.A);
-    this.x.setColor(this.E);
-    paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
-    this.x.setStyle(Paint.Style.STROKE);
-    this.x.setAlpha(128);
-    this.x.setColor(this.E);
-    this.x.setStrokeWidth(this.C);
-    paramCanvas.drawCircle(this.t, this.u, this.q, this.x);
-    this.x.setStyle(Paint.Style.FILL);
-    this.x.setStrokeWidth(1.0F);
-    this.x.setAlpha(70);
-    paramCanvas.drawCircle(this.t, this.u, this.q, this.x);
-    this.x.setColor(-1);
-    this.x.setStyle(Paint.Style.STROKE);
-    this.x.setAlpha(128);
-    this.x.setStrokeWidth(this.C);
-    paramCanvas.drawCircle(this.v, this.w, this.q, this.x);
-    this.x.setStyle(Paint.Style.FILL);
-    this.x.setStrokeWidth(1.0F);
-    this.x.setAlpha(70);
-    paramCanvas.drawCircle(this.v, this.w, this.q, this.x);
-    this.x.setAlpha(255);
-    paramCanvas.drawBitmap(this.R, this.v - this.R.getWidth() / 2, this.w - this.R.getHeight() / 2, this.x);
-    this.W += 100;
-    this.W %= 255;
-    this.aa += 1;
-    if (this.aa < 10)
+    this.x.setXfermode(this.y);
+    this.x.setColor(0);
+    paramCanvas.drawCircle(this.r, this.s, this.m, this.x);
+    this.x.setXfermode(null);
+    float f1;
+    float f2;
+    float f3;
+    float f4;
+    switch (this.h)
     {
-      this.x.setAlpha(this.W);
-      paramCanvas.drawBitmap(this.T, this.V.left, this.V.top, this.x);
-      invalidate();
-      return;
-    }
-    this.W = 255;
-    this.x.setAlpha(this.W);
-    paramCanvas.drawBitmap(this.T, this.V.left, this.V.top, this.x);
-    return;
-    this.x.setStyle(Paint.Style.STROKE);
-    this.x.setStrokeWidth(this.A);
-    this.x.setColor(this.E);
-    paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
-    switch (this.G)
-    {
-    }
-    for (;;)
-    {
-      this.x.setColor(-1);
+    case 2: 
+    default: 
+    case 9: 
       this.x.setStyle(Paint.Style.STROKE);
-      this.x.setAlpha(128);
+      this.x.setStrokeWidth(this.A);
+      this.x.setColor(this.E);
+      paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
+      this.x.setColor(this.E);
+      this.x.setStyle(Paint.Style.STROKE);
+      this.x.setAlpha(70);
       this.x.setStrokeWidth(this.C);
       paramCanvas.drawCircle(this.v, this.w, this.q, this.x);
       this.x.setStyle(Paint.Style.FILL);
       this.x.setStrokeWidth(1.0F);
-      this.x.setAlpha(70);
+      this.x.setAlpha(255);
       paramCanvas.drawCircle(this.v, this.w, this.q, this.x);
       this.x.setAlpha(255);
-      paramCanvas.drawBitmap(this.R, this.v - this.R.getWidth() / 2, this.w - this.R.getHeight() / 2, this.x);
-      this.x.setStyle(Paint.Style.STROKE);
-      this.x.setAlpha(128);
-      this.x.setColor(this.E);
-      this.x.setStrokeWidth(this.C);
-      paramCanvas.drawCircle(this.t, this.u, this.q, this.x);
-      this.x.setStyle(Paint.Style.FILL);
-      this.x.setStrokeWidth(1.0F);
-      this.x.setAlpha(70);
-      paramCanvas.drawCircle(this.t, this.u, this.q, this.x);
+      localBitmap = this.S;
+      paramCanvas.drawBitmap(localBitmap, this.v - localBitmap.getWidth() / 2, this.w - this.S.getHeight() / 2, this.x);
       return;
-      if (this.u - this.q > this.V.top)
+    case 8: 
+      this.x.setStyle(Paint.Style.STROKE);
+      this.x.setStrokeWidth(this.A);
+      this.x.setColor(this.E);
+      paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
+      switch (this.G)
       {
-        paramCanvas.drawBitmap(this.T, this.V.left, this.V.top, this.x);
-        this.x.setStyle(Paint.Style.FILL);
-        this.x.setXfermode(this.y);
-        this.x.setColor(0);
-        paramCanvas.drawRect(this.V.left, this.u - this.q, this.V.right, this.V.bottom, this.x);
-        this.x.setXfermode(null);
-        continue;
+      default: 
+        break;
+      case 4: 
+        if (this.t + this.q < this.V.right)
+        {
+          paramCanvas.drawBitmap(this.T, this.V.left, this.V.top, this.x);
+          this.x.setStyle(Paint.Style.FILL);
+          this.x.setXfermode(this.y);
+          this.x.setColor(0);
+          f1 = this.V.left;
+          f2 = this.V.top;
+          f3 = this.t;
+          paramCanvas.drawRect(f1, f2, this.q + f3, this.V.bottom, this.x);
+          this.x.setXfermode(null);
+        }
+        break;
+      case 3: 
+        if (this.t - this.q > this.V.left)
+        {
+          paramCanvas.drawBitmap(this.T, this.V.left, this.V.top, this.x);
+          this.x.setStyle(Paint.Style.FILL);
+          this.x.setXfermode(this.y);
+          this.x.setColor(0);
+          paramCanvas.drawRect(this.t - this.q, this.V.top, this.V.right, this.V.bottom, this.x);
+          this.x.setXfermode(null);
+        }
+        break;
+      case 2: 
         if (this.u + this.q < this.V.bottom)
         {
           paramCanvas.drawBitmap(this.T, this.V.left, this.V.top, this.x);
@@ -444,47 +370,155 @@ public class FaceView
           f4 = this.u;
           paramCanvas.drawRect(f1, f2, f3, this.q + f4, this.x);
           this.x.setXfermode(null);
-          continue;
-          if (this.t - this.q > this.V.left)
-          {
-            paramCanvas.drawBitmap(this.T, this.V.left, this.V.top, this.x);
-            this.x.setStyle(Paint.Style.FILL);
-            this.x.setXfermode(this.y);
-            this.x.setColor(0);
-            paramCanvas.drawRect(this.t - this.q, this.V.top, this.V.right, this.V.bottom, this.x);
-            this.x.setXfermode(null);
-            continue;
-            if (this.t + this.q < this.V.right)
-            {
-              paramCanvas.drawBitmap(this.T, this.V.left, this.V.top, this.x);
-              this.x.setStyle(Paint.Style.FILL);
-              this.x.setXfermode(this.y);
-              this.x.setColor(0);
-              f1 = this.V.left;
-              f2 = this.V.top;
-              f3 = this.t;
-              paramCanvas.drawRect(f1, f2, this.q + f3, this.V.bottom, this.x);
-              this.x.setXfermode(null);
-            }
-          }
         }
+        break;
+      case 1: 
+        if (this.u - this.q > this.V.top)
+        {
+          paramCanvas.drawBitmap(this.T, this.V.left, this.V.top, this.x);
+          this.x.setStyle(Paint.Style.FILL);
+          this.x.setXfermode(this.y);
+          this.x.setColor(0);
+          paramCanvas.drawRect(this.V.left, this.u - this.q, this.V.right, this.V.bottom, this.x);
+          this.x.setXfermode(null);
+        }
+        break;
       }
+      this.x.setColor(-1);
+      this.x.setStyle(Paint.Style.STROKE);
+      this.x.setAlpha(128);
+      this.x.setStrokeWidth(this.C);
+      paramCanvas.drawCircle(this.v, this.w, this.q, this.x);
+      this.x.setStyle(Paint.Style.FILL);
+      this.x.setStrokeWidth(1.0F);
+      this.x.setAlpha(70);
+      paramCanvas.drawCircle(this.v, this.w, this.q, this.x);
+      this.x.setAlpha(255);
+      localBitmap = this.R;
+      paramCanvas.drawBitmap(localBitmap, this.v - localBitmap.getWidth() / 2, this.w - this.R.getHeight() / 2, this.x);
+      this.x.setStyle(Paint.Style.STROKE);
+      this.x.setAlpha(128);
+      this.x.setColor(this.E);
+      this.x.setStrokeWidth(this.C);
+      paramCanvas.drawCircle(this.t, this.u, this.q, this.x);
+      this.x.setStyle(Paint.Style.FILL);
+      this.x.setStrokeWidth(1.0F);
+      this.x.setAlpha(70);
+      paramCanvas.drawCircle(this.t, this.u, this.q, this.x);
+      return;
+    case 7: 
+      this.x.setStyle(Paint.Style.STROKE);
+      this.x.setStrokeWidth(this.A);
+      this.x.setColor(this.E);
+      paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
+      this.x.setStyle(Paint.Style.STROKE);
+      this.x.setAlpha(128);
+      this.x.setColor(this.E);
+      this.x.setStrokeWidth(this.C);
+      paramCanvas.drawCircle(this.t, this.u, this.q, this.x);
+      this.x.setStyle(Paint.Style.FILL);
+      this.x.setStrokeWidth(1.0F);
+      this.x.setAlpha(70);
+      paramCanvas.drawCircle(this.t, this.u, this.q, this.x);
+      this.x.setColor(-1);
+      this.x.setStyle(Paint.Style.STROKE);
+      this.x.setAlpha(128);
+      this.x.setStrokeWidth(this.C);
+      paramCanvas.drawCircle(this.v, this.w, this.q, this.x);
+      this.x.setStyle(Paint.Style.FILL);
+      this.x.setStrokeWidth(1.0F);
+      this.x.setAlpha(70);
+      paramCanvas.drawCircle(this.v, this.w, this.q, this.x);
+      this.x.setAlpha(255);
+      localBitmap = this.R;
+      paramCanvas.drawBitmap(localBitmap, this.v - localBitmap.getWidth() / 2, this.w - this.R.getHeight() / 2, this.x);
+      this.W += 100;
+      this.W %= 255;
+      this.aa += 1;
+      if (this.aa < 10)
+      {
+        this.x.setAlpha(this.W);
+        paramCanvas.drawBitmap(this.T, this.V.left, this.V.top, this.x);
+        invalidate();
+        return;
+      }
+      this.W = 255;
+      this.x.setAlpha(this.W);
+      paramCanvas.drawBitmap(this.T, this.V.left, this.V.top, this.x);
+      return;
+    case 6: 
+      this.x.setStyle(Paint.Style.STROKE);
+      this.x.setStrokeWidth(this.A);
+      this.x.setColor(this.E);
+      paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
+      return;
+    case 5: 
+      this.x.setStyle(Paint.Style.STROKE);
+      this.x.setStrokeWidth(this.A);
+      this.x.setColor(this.E);
+      this.x.setAlpha(255);
+      paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
+      paramCanvas.drawBitmap(this.N, this.H, this.I, this.x);
+      paramCanvas.drawBitmap(this.O, this.H + this.J - this.L, this.I, this.x);
+      paramCanvas.drawBitmap(this.P, this.H, this.I + this.K - this.M, this.x);
+      paramCanvas.drawBitmap(this.Q, this.H + this.J - this.L, this.I + this.K - this.M, this.x);
+      this.x.setStyle(Paint.Style.FILL);
+      this.x.setColor(-1);
+      this.x.setStrokeWidth(1.0F);
+      this.x.setAlpha(100);
+      f1 = this.H;
+      f2 = this.L;
+      f3 = this.I;
+      paramCanvas.drawRect(f1 + f2, f3, f1 + this.J - f2, f3 + this.B, this.x);
+      f1 = this.H;
+      f2 = this.I;
+      f3 = this.M;
+      paramCanvas.drawRect(f1, f2 + f3, this.B + f1, f2 + this.K - f3, this.x);
+      f1 = this.H;
+      f2 = this.J;
+      f3 = this.B;
+      f4 = this.I;
+      float f5 = this.M;
+      paramCanvas.drawRect(f1 + f2 - f3, f4 + f5, f1 + f2, f4 + this.K - f5, this.x);
+      f1 = this.H;
+      f2 = this.L;
+      f3 = this.I;
+      f4 = this.K;
+      paramCanvas.drawRect(f1 + f2, f3 + f4 - this.B, f1 + this.J - f2, f4 + f3, this.x);
+      return;
+    case 4: 
+      this.x.setStyle(Paint.Style.STROKE);
+      this.x.setStrokeWidth(this.A);
+      this.x.setColor(this.E);
+      paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
+      return;
+    case 3: 
+      this.x.setStyle(Paint.Style.STROKE);
+      this.x.setStrokeWidth(this.A);
+      this.x.setColor(this.E);
+      paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
+      return;
+    case 0: 
+      this.x.setStyle(Paint.Style.STROKE);
+      this.x.setStrokeWidth(this.A);
+      this.x.setColor(this.F);
+      paramCanvas.drawCircle(this.r, this.s, this.m, this.x);
+      this.x.setAlpha(128);
+      this.x.setStrokeWidth(this.B);
+      paramCanvas.drawCircle(this.r, this.s, this.n, this.x);
+      this.x.setAlpha(51);
+      paramCanvas.drawCircle(this.r, this.s, this.o, this.x);
+      f1 = this.n;
+      f2 = this.e;
+      this.n = (f1 + f2 * 5.0F);
+      this.o += 5.0F * f2;
+      if (this.n + this.s >= this.g)
+      {
+        this.n = this.m;
+        this.o = (this.n + f2 * 60.0F);
+      }
+      invalidate();
     }
-    this.x.setStyle(Paint.Style.STROKE);
-    this.x.setStrokeWidth(this.A);
-    this.x.setColor(this.E);
-    paramCanvas.drawCircle(this.r, this.s, this.p, this.x);
-    this.x.setColor(this.E);
-    this.x.setStyle(Paint.Style.STROKE);
-    this.x.setAlpha(70);
-    this.x.setStrokeWidth(this.C);
-    paramCanvas.drawCircle(this.v, this.w, this.q, this.x);
-    this.x.setStyle(Paint.Style.FILL);
-    this.x.setStrokeWidth(1.0F);
-    this.x.setAlpha(255);
-    paramCanvas.drawCircle(this.v, this.w, this.q, this.x);
-    this.x.setAlpha(255);
-    paramCanvas.drawBitmap(this.S, this.v - this.S.getWidth() / 2, this.w - this.S.getHeight() / 2, this.x);
   }
   
   public void setBeautyBitmap(Bitmap paramBitmap)
@@ -509,25 +543,31 @@ public class FaceView
   
   public void setVryMoveDistance(int paramInt)
   {
-    if ((paramInt == 0) || (this.U == paramInt) || (this.aa < 10)) {
-      return;
-    }
-    this.U = paramInt;
-    switch (this.G)
+    if ((paramInt != 0) && (this.U != paramInt))
     {
-    }
-    for (;;)
-    {
+      if (this.aa < 10) {
+        return;
+      }
+      this.U = paramInt;
+      switch (this.G)
+      {
+      default: 
+        break;
+      case 4: 
+        this.t = (this.r + this.m * this.U / h.h);
+        break;
+      case 3: 
+        this.t = (this.r - this.m * this.U / h.h);
+        break;
+      case 2: 
+        this.u = (this.s + this.m * this.U / h.h);
+        break;
+      case 1: 
+        this.u = (this.s - this.m * this.U / h.h);
+      }
       this.h = 8;
       invalidate();
       return;
-      this.u = (this.s - this.m * this.U / h.h);
-      continue;
-      this.u = (this.s + this.m * this.U / h.h);
-      continue;
-      this.t = (this.r - this.m * this.U / h.h);
-      continue;
-      this.t = (this.r + this.m * this.U / h.h);
     }
   }
   
@@ -538,38 +578,42 @@ public class FaceView
     this.G = paramInt;
     switch (paramInt)
     {
-    }
-    for (;;)
-    {
-      if (this.T != null)
-      {
-        this.V.right = (this.V.left + this.T.getWidth());
-        this.V.bottom = (this.V.top + this.T.getHeight());
-      }
-      return;
-      this.v = this.r;
-      this.w = (this.s - this.m);
-      this.T = BitmapFactory.decodeResource(this.l.getResources(), 2130837611, null);
-      this.V.left = ((int)(this.r - this.T.getWidth() / 2));
-      this.V.top = ((int)(this.s - this.m / 2.0F - this.T.getHeight() / 2));
-      continue;
-      this.v = this.r;
-      this.w = (this.s + this.m);
-      this.T = BitmapFactory.decodeResource(this.l.getResources(), 2130837612, null);
-      this.V.left = ((int)(this.r - this.T.getWidth() / 2));
-      this.V.top = ((int)(this.s + this.m / 2.0F - this.T.getHeight() / 2));
-      continue;
-      this.v = (this.r - this.m);
-      this.w = this.s;
-      this.T = BitmapFactory.decodeResource(this.l.getResources(), 2130837613, null);
-      this.V.left = ((int)(this.r - this.m / 2.0F - this.T.getWidth() / 2));
-      this.V.top = ((int)(this.s - this.T.getHeight() / 2));
-      continue;
+    default: 
+      break;
+    case 4: 
       this.v = (this.r + this.m);
       this.w = this.s;
-      this.T = BitmapFactory.decodeResource(this.l.getResources(), 2130837614, null);
+      this.T = BitmapFactory.decodeResource(this.l.getResources(), 2131099759, null);
       this.V.left = ((int)(this.r + this.m / 2.0F - this.T.getWidth() / 2));
       this.V.top = ((int)(this.s - this.T.getHeight() / 2));
+      break;
+    case 3: 
+      this.v = (this.r - this.m);
+      this.w = this.s;
+      this.T = BitmapFactory.decodeResource(this.l.getResources(), 2131099758, null);
+      this.V.left = ((int)(this.r - this.m / 2.0F - this.T.getWidth() / 2));
+      this.V.top = ((int)(this.s - this.T.getHeight() / 2));
+      break;
+    case 2: 
+      this.v = this.r;
+      this.w = (this.s + this.m);
+      this.T = BitmapFactory.decodeResource(this.l.getResources(), 2131099757, null);
+      this.V.left = ((int)(this.r - this.T.getWidth() / 2));
+      this.V.top = ((int)(this.s + this.m / 2.0F - this.T.getHeight() / 2));
+      break;
+    case 1: 
+      this.v = this.r;
+      this.w = (this.s - this.m);
+      this.T = BitmapFactory.decodeResource(this.l.getResources(), 2131099756, null);
+      this.V.left = ((int)(this.r - this.T.getWidth() / 2));
+      this.V.top = ((int)(this.s - this.m / 2.0F - this.T.getHeight() / 2));
+    }
+    if (this.T != null)
+    {
+      Rect localRect = this.V;
+      localRect.right = (localRect.left + this.T.getWidth());
+      localRect = this.V;
+      localRect.bottom = (localRect.top + this.T.getHeight());
     }
   }
 }

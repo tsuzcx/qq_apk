@@ -37,22 +37,26 @@ public final class ab
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bg != 0L) {
-      paramJceOutputStream.write(this.bg, 0);
+    long l = this.bg;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 0);
     }
-    if (this.bh != 0L) {
-      paramJceOutputStream.write(this.bh, 1);
+    l = this.bh;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 1);
     }
     paramJceOutputStream.write(this.action, 2);
-    if (this.ba != 0) {
-      paramJceOutputStream.write(this.ba, 3);
+    int i = this.ba;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
     paramJceOutputStream.write(this.cmdId, 4);
     paramJceOutputStream.write(this.phase, 5);
     paramJceOutputStream.write(this.bi, 6);
     paramJceOutputStream.write(this.bj, 7);
-    if (this.time != 0) {
-      paramJceOutputStream.write(this.time, 8);
+    i = this.time;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 8);
     }
   }
 }

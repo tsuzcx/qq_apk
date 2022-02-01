@@ -67,20 +67,17 @@ public final class AppCompatResources
   public static ColorStateList getColorStateList(@NonNull Context paramContext, @ColorRes int paramInt)
   {
     if (Build.VERSION.SDK_INT >= 23) {
-      localObject = paramContext.getColorStateList(paramInt);
+      return paramContext.getColorStateList(paramInt);
     }
-    ColorStateList localColorStateList;
-    do
+    ColorStateList localColorStateList = getCachedColorStateList(paramContext, paramInt);
+    if (localColorStateList != null) {
+      return localColorStateList;
+    }
+    localColorStateList = inflateColorStateList(paramContext, paramInt);
+    if (localColorStateList != null)
     {
-      return localObject;
-      localColorStateList = getCachedColorStateList(paramContext, paramInt);
-      localObject = localColorStateList;
-    } while (localColorStateList != null);
-    Object localObject = inflateColorStateList(paramContext, paramInt);
-    if (localObject != null)
-    {
-      addColorStateListToCache(paramContext, paramInt, (ColorStateList)localObject);
-      return localObject;
+      addColorStateListToCache(paramContext, paramInt, localColorStateList);
+      return localColorStateList;
     }
     return ContextCompat.getColorStateList(paramContext, paramInt);
   }

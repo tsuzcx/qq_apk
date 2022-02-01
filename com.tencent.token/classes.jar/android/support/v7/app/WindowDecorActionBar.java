@@ -64,8 +64,8 @@ public class WindowDecorActionBar
   private static final long FADE_OUT_DURATION_MS = 100L;
   private static final int INVALID_POSITION = -1;
   private static final String TAG = "WindowDecorActionBar";
-  private static final Interpolator sHideInterpolator;
-  private static final Interpolator sShowInterpolator;
+  private static final Interpolator sHideInterpolator = new AccelerateInterpolator();
+  private static final Interpolator sShowInterpolator = new DecelerateInterpolator();
   ActionModeImpl mActionMode;
   private Activity mActivity;
   ActionBarContainer mContainerView;
@@ -94,8 +94,9 @@ public class WindowDecorActionBar
       }
       WindowDecorActionBar.this.mContainerView.setVisibility(8);
       WindowDecorActionBar.this.mContainerView.setTransitioning(false);
-      WindowDecorActionBar.this.mCurrentShowAnim = null;
-      WindowDecorActionBar.this.completeDeferredDestroyActionMode();
+      paramAnonymousView = WindowDecorActionBar.this;
+      paramAnonymousView.mCurrentShowAnim = null;
+      paramAnonymousView.completeDeferredDestroyActionMode();
       if (WindowDecorActionBar.this.mOverlayLayout != null) {
         ViewCompat.requestApplyInsets(WindowDecorActionBar.this.mOverlayLayout);
       }
@@ -113,8 +114,9 @@ public class WindowDecorActionBar
   {
     public void onAnimationEnd(View paramAnonymousView)
     {
-      WindowDecorActionBar.this.mCurrentShowAnim = null;
-      WindowDecorActionBar.this.mContainerView.requestLayout();
+      paramAnonymousView = WindowDecorActionBar.this;
+      paramAnonymousView.mCurrentShowAnim = null;
+      paramAnonymousView.mContainerView.requestLayout();
     }
   };
   private boolean mShowingForMode;
@@ -128,18 +130,6 @@ public class WindowDecorActionBar
       ((View)WindowDecorActionBar.this.mContainerView.getParent()).invalidate();
     }
   };
-  
-  static
-  {
-    if (!WindowDecorActionBar.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      sHideInterpolator = new AccelerateInterpolator();
-      sShowInterpolator = new DecelerateInterpolator();
-      return;
-    }
-  }
   
   public WindowDecorActionBar(Activity paramActivity, boolean paramBoolean)
   {
@@ -160,17 +150,15 @@ public class WindowDecorActionBar
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public WindowDecorActionBar(View paramView)
   {
-    assert (paramView.isInEditMode());
     init(paramView);
   }
   
   static boolean checkShowingFlags(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (paramBoolean3) {}
-    while ((!paramBoolean1) && (!paramBoolean2)) {
+    if (paramBoolean3) {
       return true;
     }
-    return false;
+    return (!paramBoolean1) && (!paramBoolean2);
   }
   
   private void cleanupTabs()
@@ -179,8 +167,9 @@ public class WindowDecorActionBar
       selectTab(null);
     }
     this.mTabs.clear();
-    if (this.mTabScrollView != null) {
-      this.mTabScrollView.removeAllTabs();
+    ScrollingTabContainerView localScrollingTabContainerView = this.mTabScrollView;
+    if (localScrollingTabContainerView != null) {
+      localScrollingTabContainerView.removeAllTabs();
     }
     this.mSavedTabPosition = -1;
   }
@@ -188,18 +177,22 @@ public class WindowDecorActionBar
   private void configureTab(ActionBar.Tab paramTab, int paramInt)
   {
     paramTab = (TabImpl)paramTab;
-    if (paramTab.getCallback() == null) {
-      throw new IllegalStateException("Action Bar Tab must have a Callback");
-    }
-    paramTab.setPosition(paramInt);
-    this.mTabs.add(paramInt, paramTab);
-    int i = this.mTabs.size();
-    paramInt += 1;
-    while (paramInt < i)
+    if (paramTab.getCallback() != null)
     {
-      ((TabImpl)this.mTabs.get(paramInt)).setPosition(paramInt);
-      paramInt += 1;
+      paramTab.setPosition(paramInt);
+      this.mTabs.add(paramInt, paramTab);
+      int i = this.mTabs.size();
+      for (;;)
+      {
+        paramInt += 1;
+        if (paramInt >= i) {
+          break;
+        }
+        ((TabImpl)this.mTabs.get(paramInt)).setPosition(paramInt);
+      }
+      return;
     }
+    throw new IllegalStateException("Action Bar Tab must have a Callback");
   }
   
   private void ensureTabsExist()
@@ -212,22 +205,24 @@ public class WindowDecorActionBar
     {
       localScrollingTabContainerView.setVisibility(0);
       this.mDecorToolbar.setEmbeddedTabView(localScrollingTabContainerView);
-      this.mTabScrollView = localScrollingTabContainerView;
-      return;
     }
-    if (getNavigationMode() == 2)
+    else
     {
-      localScrollingTabContainerView.setVisibility(0);
-      if (this.mOverlayLayout != null) {
-        ViewCompat.requestApplyInsets(this.mOverlayLayout);
+      if (getNavigationMode() == 2)
+      {
+        localScrollingTabContainerView.setVisibility(0);
+        ActionBarOverlayLayout localActionBarOverlayLayout = this.mOverlayLayout;
+        if (localActionBarOverlayLayout != null) {
+          ViewCompat.requestApplyInsets(localActionBarOverlayLayout);
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        localScrollingTabContainerView.setVisibility(8);
+      }
       this.mContainerView.setTabContainer(localScrollingTabContainerView);
-      break;
-      localScrollingTabContainerView.setVisibility(8);
     }
+    this.mTabScrollView = localScrollingTabContainerView;
   }
   
   private DecorToolbar getDecorToolbar(View paramView)
@@ -238,10 +233,15 @@ public class WindowDecorActionBar
     if ((paramView instanceof Toolbar)) {
       return ((Toolbar)paramView).getWrapper();
     }
-    if ("Can't make a decor toolbar out of " + paramView != null) {}
-    for (paramView = paramView.getClass().getSimpleName();; paramView = "null") {
-      throw new IllegalStateException(paramView);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Can't make a decor toolbar out of ");
+    localStringBuilder.append(paramView);
+    if (localStringBuilder.toString() != null) {
+      paramView = paramView.getClass().getSimpleName();
+    } else {
+      paramView = "null";
     }
+    throw new IllegalStateException(paramView);
   }
   
   private void hideForActionMode()
@@ -249,8 +249,9 @@ public class WindowDecorActionBar
     if (this.mShowingForMode)
     {
       this.mShowingForMode = false;
-      if (this.mOverlayLayout != null) {
-        this.mOverlayLayout.setShowingForActionMode(false);
+      ActionBarOverlayLayout localActionBarOverlayLayout = this.mOverlayLayout;
+      if (localActionBarOverlayLayout != null) {
+        localActionBarOverlayLayout.setShowingForActionMode(false);
       }
       updateVisibility(false);
     }
@@ -259,104 +260,101 @@ public class WindowDecorActionBar
   private void init(View paramView)
   {
     this.mOverlayLayout = ((ActionBarOverlayLayout)paramView.findViewById(R.id.decor_content_parent));
-    if (this.mOverlayLayout != null) {
-      this.mOverlayLayout.setActionBarVisibilityCallback(this);
+    ActionBarOverlayLayout localActionBarOverlayLayout = this.mOverlayLayout;
+    if (localActionBarOverlayLayout != null) {
+      localActionBarOverlayLayout.setActionBarVisibilityCallback(this);
     }
     this.mDecorToolbar = getDecorToolbar(paramView.findViewById(R.id.action_bar));
     this.mContextView = ((ActionBarContextView)paramView.findViewById(R.id.action_context_bar));
     this.mContainerView = ((ActionBarContainer)paramView.findViewById(R.id.action_bar_container));
-    if ((this.mDecorToolbar == null) || (this.mContextView == null) || (this.mContainerView == null)) {
-      throw new IllegalStateException(getClass().getSimpleName() + " can only be used " + "with a compatible window decor layout");
-    }
-    this.mContext = this.mDecorToolbar.getContext();
-    int i;
-    if ((this.mDecorToolbar.getDisplayOptions() & 0x4) != 0)
+    paramView = this.mDecorToolbar;
+    if ((paramView != null) && (this.mContextView != null) && (this.mContainerView != null))
     {
-      i = 1;
+      this.mContext = paramView.getContext();
+      if ((this.mDecorToolbar.getDisplayOptions() & 0x4) != 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       if (i != 0) {
         this.mDisplayHomeAsUpSet = true;
       }
       paramView = ActionBarPolicy.get(this.mContext);
+      boolean bool;
       if ((!paramView.enableHomeButtonByDefault()) && (i == 0)) {
-        break label266;
+        bool = false;
+      } else {
+        bool = true;
       }
-    }
-    label266:
-    for (boolean bool = true;; bool = false)
-    {
       setHomeButtonEnabled(bool);
       setHasEmbeddedTabs(paramView.hasEmbeddedTabs());
       paramView = this.mContext.obtainStyledAttributes(null, R.styleable.ActionBar, R.attr.actionBarStyle, 0);
       if (paramView.getBoolean(R.styleable.ActionBar_hideOnContentScroll, false)) {
         setHideOnContentScrollEnabled(true);
       }
-      i = paramView.getDimensionPixelSize(R.styleable.ActionBar_elevation, 0);
+      int i = paramView.getDimensionPixelSize(R.styleable.ActionBar_elevation, 0);
       if (i != 0) {
         setElevation(i);
       }
       paramView.recycle();
       return;
-      i = 0;
-      break;
     }
+    paramView = new StringBuilder();
+    paramView.append(getClass().getSimpleName());
+    paramView.append(" can only be used ");
+    paramView.append("with a compatible window decor layout");
+    throw new IllegalStateException(paramView.toString());
   }
   
   private void setHasEmbeddedTabs(boolean paramBoolean)
   {
-    boolean bool = true;
     this.mHasEmbeddedTabs = paramBoolean;
-    int i;
-    label45:
-    label78:
-    Object localObject;
     if (!this.mHasEmbeddedTabs)
     {
       this.mDecorToolbar.setEmbeddedTabView(null);
       this.mContainerView.setTabContainer(this.mTabScrollView);
-      if (getNavigationMode() != 2) {
-        break label155;
-      }
-      i = 1;
-      if (this.mTabScrollView != null)
-      {
-        if (i == 0) {
-          break label160;
-        }
-        this.mTabScrollView.setVisibility(0);
-        if (this.mOverlayLayout != null) {
-          ViewCompat.requestApplyInsets(this.mOverlayLayout);
-        }
-      }
-      localObject = this.mDecorToolbar;
-      if ((this.mHasEmbeddedTabs) || (i == 0)) {
-        break label172;
-      }
-      paramBoolean = true;
-      label97:
-      ((DecorToolbar)localObject).setCollapsible(paramBoolean);
-      localObject = this.mOverlayLayout;
-      if ((this.mHasEmbeddedTabs) || (i == 0)) {
-        break label177;
-      }
     }
-    label155:
-    label160:
-    label172:
-    label177:
-    for (paramBoolean = bool;; paramBoolean = false)
+    else
     {
-      ((ActionBarOverlayLayout)localObject).setHasNonEmbeddedTabs(paramBoolean);
-      return;
       this.mContainerView.setTabContainer(null);
       this.mDecorToolbar.setEmbeddedTabView(this.mTabScrollView);
-      break;
-      i = 0;
-      break label45;
-      this.mTabScrollView.setVisibility(8);
-      break label78;
-      paramBoolean = false;
-      break label97;
     }
+    int i = getNavigationMode();
+    boolean bool = true;
+    if (i == 2) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    Object localObject = this.mTabScrollView;
+    if (localObject != null) {
+      if (i != 0)
+      {
+        ((ScrollingTabContainerView)localObject).setVisibility(0);
+        localObject = this.mOverlayLayout;
+        if (localObject != null) {
+          ViewCompat.requestApplyInsets((View)localObject);
+        }
+      }
+      else
+      {
+        ((ScrollingTabContainerView)localObject).setVisibility(8);
+      }
+    }
+    localObject = this.mDecorToolbar;
+    if ((!this.mHasEmbeddedTabs) && (i != 0)) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
+    }
+    ((DecorToolbar)localObject).setCollapsible(paramBoolean);
+    localObject = this.mOverlayLayout;
+    if ((!this.mHasEmbeddedTabs) && (i != 0)) {
+      paramBoolean = bool;
+    } else {
+      paramBoolean = false;
+    }
+    ((ActionBarOverlayLayout)localObject).setHasNonEmbeddedTabs(paramBoolean);
   }
   
   private boolean shouldAnimateContextView()
@@ -369,8 +367,9 @@ public class WindowDecorActionBar
     if (!this.mShowingForMode)
     {
       this.mShowingForMode = true;
-      if (this.mOverlayLayout != null) {
-        this.mOverlayLayout.setShowingForActionMode(true);
+      ActionBarOverlayLayout localActionBarOverlayLayout = this.mOverlayLayout;
+      if (localActionBarOverlayLayout != null) {
+        localActionBarOverlayLayout.setShowingForActionMode(true);
       }
       updateVisibility(false);
     }
@@ -378,18 +377,19 @@ public class WindowDecorActionBar
   
   private void updateVisibility(boolean paramBoolean)
   {
-    if (checkShowingFlags(this.mHiddenByApp, this.mHiddenBySystem, this.mShowingForMode)) {
+    if (checkShowingFlags(this.mHiddenByApp, this.mHiddenBySystem, this.mShowingForMode))
+    {
       if (!this.mNowShowing)
       {
         this.mNowShowing = true;
         doShow(paramBoolean);
       }
     }
-    while (!this.mNowShowing) {
-      return;
+    else if (this.mNowShowing)
+    {
+      this.mNowShowing = false;
+      doHide(paramBoolean);
     }
-    this.mNowShowing = false;
-    doHide(paramBoolean);
   }
   
   public void addOnMenuVisibilityListener(ActionBar.OnMenuVisibilityListener paramOnMenuVisibilityListener)
@@ -429,33 +429,30 @@ public class WindowDecorActionBar
   
   public void animateToMode(boolean paramBoolean)
   {
-    ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat1;
-    ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat2;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       showForActionMode();
-      if (!shouldAnimateContextView()) {
-        break label105;
-      }
-      if (!paramBoolean) {
-        break label75;
-      }
-      localViewPropertyAnimatorCompat1 = this.mDecorToolbar.setupAnimatorToVisibility(4, 100L);
-      localViewPropertyAnimatorCompat2 = this.mContextView.setupAnimatorToVisibility(0, 200L);
+    } else {
+      hideForActionMode();
     }
-    for (;;)
+    if (shouldAnimateContextView())
     {
+      ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat2;
+      ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat1;
+      if (paramBoolean)
+      {
+        localViewPropertyAnimatorCompat2 = this.mDecorToolbar.setupAnimatorToVisibility(4, 100L);
+        localViewPropertyAnimatorCompat1 = this.mContextView.setupAnimatorToVisibility(0, 200L);
+      }
+      else
+      {
+        localViewPropertyAnimatorCompat1 = this.mDecorToolbar.setupAnimatorToVisibility(0, 200L);
+        localViewPropertyAnimatorCompat2 = this.mContextView.setupAnimatorToVisibility(8, 100L);
+      }
       ViewPropertyAnimatorCompatSet localViewPropertyAnimatorCompatSet = new ViewPropertyAnimatorCompatSet();
-      localViewPropertyAnimatorCompatSet.playSequentially(localViewPropertyAnimatorCompat1, localViewPropertyAnimatorCompat2);
+      localViewPropertyAnimatorCompatSet.playSequentially(localViewPropertyAnimatorCompat2, localViewPropertyAnimatorCompat1);
       localViewPropertyAnimatorCompatSet.start();
       return;
-      hideForActionMode();
-      break;
-      label75:
-      localViewPropertyAnimatorCompat2 = this.mDecorToolbar.setupAnimatorToVisibility(0, 200L);
-      localViewPropertyAnimatorCompat1 = this.mContextView.setupAnimatorToVisibility(8, 100L);
     }
-    label105:
     if (paramBoolean)
     {
       this.mDecorToolbar.setVisibility(4);
@@ -468,7 +465,8 @@ public class WindowDecorActionBar
   
   public boolean collapseActionView()
   {
-    if ((this.mDecorToolbar != null) && (this.mDecorToolbar.hasExpandedActionView()))
+    DecorToolbar localDecorToolbar = this.mDecorToolbar;
+    if ((localDecorToolbar != null) && (localDecorToolbar.hasExpandedActionView()))
     {
       this.mDecorToolbar.collapseActionView();
       return true;
@@ -478,9 +476,10 @@ public class WindowDecorActionBar
   
   void completeDeferredDestroyActionMode()
   {
-    if (this.mDeferredModeDestroyCallback != null)
+    ActionMode.Callback localCallback = this.mDeferredModeDestroyCallback;
+    if (localCallback != null)
     {
-      this.mDeferredModeDestroyCallback.onDestroyActionMode(this.mDeferredDestroyActionMode);
+      localCallback.onDestroyActionMode(this.mDeferredDestroyActionMode);
       this.mDeferredDestroyActionMode = null;
       this.mDeferredModeDestroyCallback = null;
     }
@@ -488,49 +487,52 @@ public class WindowDecorActionBar
   
   public void dispatchMenuVisibilityChanged(boolean paramBoolean)
   {
-    if (paramBoolean == this.mLastMenuVisibility) {}
-    for (;;)
-    {
+    if (paramBoolean == this.mLastMenuVisibility) {
       return;
-      this.mLastMenuVisibility = paramBoolean;
-      int j = this.mMenuVisibilityListeners.size();
-      int i = 0;
-      while (i < j)
-      {
-        ((ActionBar.OnMenuVisibilityListener)this.mMenuVisibilityListeners.get(i)).onMenuVisibilityChanged(paramBoolean);
-        i += 1;
-      }
+    }
+    this.mLastMenuVisibility = paramBoolean;
+    int j = this.mMenuVisibilityListeners.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((ActionBar.OnMenuVisibilityListener)this.mMenuVisibilityListeners.get(i)).onMenuVisibilityChanged(paramBoolean);
+      i += 1;
     }
   }
   
   public void doHide(boolean paramBoolean)
   {
-    if (this.mCurrentShowAnim != null) {
-      this.mCurrentShowAnim.cancel();
+    ViewPropertyAnimatorCompatSet localViewPropertyAnimatorCompatSet = this.mCurrentShowAnim;
+    if (localViewPropertyAnimatorCompatSet != null) {
+      localViewPropertyAnimatorCompatSet.cancel();
     }
     if ((this.mCurWindowVisibility == 0) && ((this.mShowHideAnimationEnabled) || (paramBoolean)))
     {
       this.mContainerView.setAlpha(1.0F);
       this.mContainerView.setTransitioning(true);
-      ViewPropertyAnimatorCompatSet localViewPropertyAnimatorCompatSet = new ViewPropertyAnimatorCompatSet();
+      localViewPropertyAnimatorCompatSet = new ViewPropertyAnimatorCompatSet();
       float f2 = -this.mContainerView.getHeight();
       float f1 = f2;
       if (paramBoolean)
       {
         localObject = new int[2];
-        Object tmp80_78 = localObject;
-        tmp80_78[0] = 0;
-        Object tmp84_80 = tmp80_78;
-        tmp84_80[1] = 0;
-        tmp84_80;
+        Object tmp82_80 = localObject;
+        tmp82_80[0] = 0;
+        Object tmp86_82 = tmp82_80;
+        tmp86_82[1] = 0;
+        tmp86_82;
         this.mContainerView.getLocationInWindow((int[])localObject);
         f1 = f2 - localObject[1];
       }
       Object localObject = ViewCompat.animate(this.mContainerView).translationY(f1);
       ((ViewPropertyAnimatorCompat)localObject).setUpdateListener(this.mUpdateListener);
       localViewPropertyAnimatorCompatSet.play((ViewPropertyAnimatorCompat)localObject);
-      if ((this.mContentAnimations) && (this.mContentView != null)) {
-        localViewPropertyAnimatorCompatSet.play(ViewCompat.animate(this.mContentView).translationY(f1));
+      if (this.mContentAnimations)
+      {
+        localObject = this.mContentView;
+        if (localObject != null) {
+          localViewPropertyAnimatorCompatSet.play(ViewCompat.animate((View)localObject).translationY(f1));
+        }
       }
       localViewPropertyAnimatorCompatSet.setInterpolator(sHideInterpolator);
       localViewPropertyAnimatorCompatSet.setDuration(250L);
@@ -544,8 +546,9 @@ public class WindowDecorActionBar
   
   public void doShow(boolean paramBoolean)
   {
-    if (this.mCurrentShowAnim != null) {
-      this.mCurrentShowAnim.cancel();
+    Object localObject1 = this.mCurrentShowAnim;
+    if (localObject1 != null) {
+      ((ViewPropertyAnimatorCompatSet)localObject1).cancel();
     }
     this.mContainerView.setVisibility(0);
     if ((this.mCurWindowVisibility == 0) && ((this.mShowHideAnimationEnabled) || (paramBoolean)))
@@ -555,43 +558,51 @@ public class WindowDecorActionBar
       float f1 = f2;
       if (paramBoolean)
       {
-        localObject = new int[2];
-        Object tmp71_69 = localObject;
-        tmp71_69[0] = 0;
-        Object tmp75_71 = tmp71_69;
-        tmp75_71[1] = 0;
-        tmp75_71;
-        this.mContainerView.getLocationInWindow((int[])localObject);
-        f1 = f2 - localObject[1];
+        localObject1 = new int[2];
+        Object tmp73_71 = localObject1;
+        tmp73_71[0] = 0;
+        Object tmp77_73 = tmp73_71;
+        tmp77_73[1] = 0;
+        tmp77_73;
+        this.mContainerView.getLocationInWindow((int[])localObject1);
+        f1 = f2 - localObject1[1];
       }
       this.mContainerView.setTranslationY(f1);
-      Object localObject = new ViewPropertyAnimatorCompatSet();
-      ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat = ViewCompat.animate(this.mContainerView).translationY(0.0F);
-      localViewPropertyAnimatorCompat.setUpdateListener(this.mUpdateListener);
-      ((ViewPropertyAnimatorCompatSet)localObject).play(localViewPropertyAnimatorCompat);
-      if ((this.mContentAnimations) && (this.mContentView != null))
+      localObject1 = new ViewPropertyAnimatorCompatSet();
+      Object localObject2 = ViewCompat.animate(this.mContainerView).translationY(0.0F);
+      ((ViewPropertyAnimatorCompat)localObject2).setUpdateListener(this.mUpdateListener);
+      ((ViewPropertyAnimatorCompatSet)localObject1).play((ViewPropertyAnimatorCompat)localObject2);
+      if (this.mContentAnimations)
       {
-        this.mContentView.setTranslationY(f1);
-        ((ViewPropertyAnimatorCompatSet)localObject).play(ViewCompat.animate(this.mContentView).translationY(0.0F));
+        localObject2 = this.mContentView;
+        if (localObject2 != null)
+        {
+          ((View)localObject2).setTranslationY(f1);
+          ((ViewPropertyAnimatorCompatSet)localObject1).play(ViewCompat.animate(this.mContentView).translationY(0.0F));
+        }
       }
-      ((ViewPropertyAnimatorCompatSet)localObject).setInterpolator(sShowInterpolator);
-      ((ViewPropertyAnimatorCompatSet)localObject).setDuration(250L);
-      ((ViewPropertyAnimatorCompatSet)localObject).setListener(this.mShowListener);
-      this.mCurrentShowAnim = ((ViewPropertyAnimatorCompatSet)localObject);
-      ((ViewPropertyAnimatorCompatSet)localObject).start();
+      ((ViewPropertyAnimatorCompatSet)localObject1).setInterpolator(sShowInterpolator);
+      ((ViewPropertyAnimatorCompatSet)localObject1).setDuration(250L);
+      ((ViewPropertyAnimatorCompatSet)localObject1).setListener(this.mShowListener);
+      this.mCurrentShowAnim = ((ViewPropertyAnimatorCompatSet)localObject1);
+      ((ViewPropertyAnimatorCompatSet)localObject1).start();
     }
-    for (;;)
+    else
     {
-      if (this.mOverlayLayout != null) {
-        ViewCompat.requestApplyInsets(this.mOverlayLayout);
-      }
-      return;
       this.mContainerView.setAlpha(1.0F);
       this.mContainerView.setTranslationY(0.0F);
-      if ((this.mContentAnimations) && (this.mContentView != null)) {
-        this.mContentView.setTranslationY(0.0F);
+      if (this.mContentAnimations)
+      {
+        localObject1 = this.mContentView;
+        if (localObject1 != null) {
+          ((View)localObject1).setTranslationY(0.0F);
+        }
       }
       this.mShowListener.onAnimationEnd(null);
+    }
+    localObject1 = this.mOverlayLayout;
+    if (localObject1 != null) {
+      ViewCompat.requestApplyInsets((View)localObject1);
     }
   }
   
@@ -644,15 +655,18 @@ public class WindowDecorActionBar
   
   public int getSelectedNavigationIndex()
   {
-    switch (this.mDecorToolbar.getNavigationMode())
+    int j = this.mDecorToolbar.getNavigationMode();
+    int i = -1;
+    switch (j)
     {
     default: 
+      return -1;
     case 2: 
-      do
-      {
-        return -1;
-      } while (this.mSelectedTab == null);
-      return this.mSelectedTab.getPosition();
+      TabImpl localTabImpl = this.mSelectedTab;
+      if (localTabImpl != null) {
+        i = localTabImpl.getPosition();
+      }
+      return i;
     }
     return this.mDecorToolbar.getDropdownSelectedPosition();
   }
@@ -679,20 +693,18 @@ public class WindowDecorActionBar
   
   public Context getThemedContext()
   {
-    int i;
     if (this.mThemedContext == null)
     {
       TypedValue localTypedValue = new TypedValue();
       this.mContext.getTheme().resolveAttribute(R.attr.actionBarWidgetTheme, localTypedValue, true);
-      i = localTypedValue.resourceId;
-      if (i == 0) {
-        break label61;
+      int i = localTypedValue.resourceId;
+      if (i != 0) {
+        this.mThemedContext = new ContextThemeWrapper(this.mContext, i);
+      } else {
+        this.mThemedContext = this.mContext;
       }
     }
-    label61:
-    for (this.mThemedContext = new ContextThemeWrapper(this.mContext, i);; this.mThemedContext = this.mContext) {
-      return this.mThemedContext;
-    }
+    return this.mThemedContext;
   }
   
   public CharSequence getTitle()
@@ -741,7 +753,8 @@ public class WindowDecorActionBar
   
   public boolean isTitleTruncated()
   {
-    return (this.mDecorToolbar != null) && (this.mDecorToolbar.isTitleTruncated());
+    DecorToolbar localDecorToolbar = this.mDecorToolbar;
+    return (localDecorToolbar != null) && (localDecorToolbar.isTitleTruncated());
   }
   
   public ActionBar.Tab newTab()
@@ -756,9 +769,10 @@ public class WindowDecorActionBar
   
   public void onContentScrollStarted()
   {
-    if (this.mCurrentShowAnim != null)
+    ViewPropertyAnimatorCompatSet localViewPropertyAnimatorCompatSet = this.mCurrentShowAnim;
+    if (localViewPropertyAnimatorCompatSet != null)
     {
-      this.mCurrentShowAnim.cancel();
+      localViewPropertyAnimatorCompatSet.cancel();
       this.mCurrentShowAnim = null;
     }
   }
@@ -767,29 +781,27 @@ public class WindowDecorActionBar
   
   public boolean onKeyShortcut(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.mActionMode == null) {}
-    Menu localMenu;
-    do
-    {
+    Object localObject = this.mActionMode;
+    if (localObject == null) {
       return false;
-      localMenu = this.mActionMode.getMenu();
-    } while (localMenu == null);
-    int i;
-    if (paramKeyEvent != null)
+    }
+    localObject = ((ActionModeImpl)localObject).getMenu();
+    if (localObject != null)
     {
-      i = paramKeyEvent.getDeviceId();
-      if (KeyCharacterMap.load(i).getKeyboardType() == 1) {
-        break label71;
+      if (paramKeyEvent != null) {
+        i = paramKeyEvent.getDeviceId();
+      } else {
+        i = -1;
       }
+      int i = KeyCharacterMap.load(i).getKeyboardType();
+      boolean bool = true;
+      if (i == 1) {
+        bool = false;
+      }
+      ((Menu)localObject).setQwertyMode(bool);
+      return ((Menu)localObject).performShortcut(paramInt, paramKeyEvent, 0);
     }
-    label71:
-    for (boolean bool = true;; bool = false)
-    {
-      localMenu.setQwertyMode(bool);
-      return localMenu.performShortcut(paramInt, paramKeyEvent, 0);
-      i = -1;
-      break;
-    }
+    return false;
   }
   
   public void onWindowVisibilityChanged(int paramInt)
@@ -814,33 +826,36 @@ public class WindowDecorActionBar
   
   public void removeTabAt(int paramInt)
   {
-    if (this.mTabScrollView == null) {}
+    if (this.mTabScrollView == null) {
+      return;
+    }
+    TabImpl localTabImpl = this.mSelectedTab;
     int i;
-    do
+    if (localTabImpl != null) {
+      i = localTabImpl.getPosition();
+    } else {
+      i = this.mSavedTabPosition;
+    }
+    this.mTabScrollView.removeTabAt(paramInt);
+    localTabImpl = (TabImpl)this.mTabs.remove(paramInt);
+    if (localTabImpl != null) {
+      localTabImpl.setPosition(-1);
+    }
+    int k = this.mTabs.size();
+    int j = paramInt;
+    while (j < k)
     {
-      return;
-      if (this.mSelectedTab != null) {}
-      for (i = this.mSelectedTab.getPosition();; i = this.mSavedTabPosition)
-      {
-        this.mTabScrollView.removeTabAt(paramInt);
-        localTabImpl = (TabImpl)this.mTabs.remove(paramInt);
-        if (localTabImpl != null) {
-          localTabImpl.setPosition(-1);
-        }
-        int k = this.mTabs.size();
-        int j = paramInt;
-        while (j < k)
-        {
-          ((TabImpl)this.mTabs.get(j)).setPosition(j);
-          j += 1;
-        }
+      ((TabImpl)this.mTabs.get(j)).setPosition(j);
+      j += 1;
+    }
+    if (i == paramInt)
+    {
+      if (this.mTabs.isEmpty()) {
+        localTabImpl = null;
+      } else {
+        localTabImpl = (TabImpl)this.mTabs.get(Math.max(0, paramInt - 1));
       }
-    } while (i != paramInt);
-    if (this.mTabs.isEmpty()) {}
-    for (TabImpl localTabImpl = null;; localTabImpl = (TabImpl)this.mTabs.get(Math.max(0, paramInt - 1)))
-    {
       selectTab(localTabImpl);
-      return;
     }
   }
   
@@ -857,56 +872,50 @@ public class WindowDecorActionBar
   
   public void selectTab(ActionBar.Tab paramTab)
   {
+    int j = getNavigationMode();
     int i = -1;
-    if (getNavigationMode() != 2) {
-      if (paramTab != null)
-      {
+    if (j != 2)
+    {
+      if (paramTab != null) {
         i = paramTab.getPosition();
-        this.mSavedTabPosition = i;
+      }
+      this.mSavedTabPosition = i;
+      return;
+    }
+    FragmentTransaction localFragmentTransaction;
+    if (((this.mActivity instanceof FragmentActivity)) && (!this.mDecorToolbar.getViewGroup().isInEditMode())) {
+      localFragmentTransaction = ((FragmentActivity)this.mActivity).getSupportFragmentManager().beginTransaction().disallowAddToBackStack();
+    } else {
+      localFragmentTransaction = null;
+    }
+    Object localObject = this.mSelectedTab;
+    if (localObject == paramTab)
+    {
+      if (localObject != null)
+      {
+        ((TabImpl)localObject).getCallback().onTabReselected(this.mSelectedTab, localFragmentTransaction);
+        this.mTabScrollView.animateToTab(paramTab.getPosition());
       }
     }
-    label137:
-    label215:
-    for (;;)
+    else
     {
-      return;
-      i = -1;
-      break;
-      FragmentTransaction localFragmentTransaction;
-      if (((this.mActivity instanceof FragmentActivity)) && (!this.mDecorToolbar.getViewGroup().isInEditMode()))
-      {
-        localFragmentTransaction = ((FragmentActivity)this.mActivity).getSupportFragmentManager().beginTransaction().disallowAddToBackStack();
-        if (this.mSelectedTab != paramTab) {
-          break label137;
-        }
-        if (this.mSelectedTab != null)
-        {
-          this.mSelectedTab.getCallback().onTabReselected(this.mSelectedTab, localFragmentTransaction);
-          this.mTabScrollView.animateToTab(paramTab.getPosition());
-        }
+      localObject = this.mTabScrollView;
+      if (paramTab != null) {
+        i = paramTab.getPosition();
       }
-      for (;;)
-      {
-        if ((localFragmentTransaction == null) || (localFragmentTransaction.isEmpty())) {
-          break label215;
-        }
-        localFragmentTransaction.commit();
-        return;
-        localFragmentTransaction = null;
-        break;
-        ScrollingTabContainerView localScrollingTabContainerView = this.mTabScrollView;
-        if (paramTab != null) {
-          i = paramTab.getPosition();
-        }
-        localScrollingTabContainerView.setTabSelected(i);
-        if (this.mSelectedTab != null) {
-          this.mSelectedTab.getCallback().onTabUnselected(this.mSelectedTab, localFragmentTransaction);
-        }
-        this.mSelectedTab = ((TabImpl)paramTab);
-        if (this.mSelectedTab != null) {
-          this.mSelectedTab.getCallback().onTabSelected(this.mSelectedTab, localFragmentTransaction);
-        }
+      ((ScrollingTabContainerView)localObject).setTabSelected(i);
+      localObject = this.mSelectedTab;
+      if (localObject != null) {
+        ((TabImpl)localObject).getCallback().onTabUnselected(this.mSelectedTab, localFragmentTransaction);
       }
+      this.mSelectedTab = ((TabImpl)paramTab);
+      paramTab = this.mSelectedTab;
+      if (paramTab != null) {
+        paramTab.getCallback().onTabSelected(this.mSelectedTab, localFragmentTransaction);
+      }
+    }
+    if ((localFragmentTransaction != null) && (!localFragmentTransaction.isEmpty())) {
+      localFragmentTransaction.commit();
     }
   }
   
@@ -940,12 +949,13 @@ public class WindowDecorActionBar
   
   public void setDisplayHomeAsUpEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 4;; i = 0)
-    {
-      setDisplayOptions(i, 4);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 4;
+    } else {
+      i = 0;
     }
+    setDisplayOptions(i, 4);
   }
   
   public void setDisplayOptions(int paramInt)
@@ -962,47 +972,45 @@ public class WindowDecorActionBar
     if ((paramInt2 & 0x4) != 0) {
       this.mDisplayHomeAsUpSet = true;
     }
-    this.mDecorToolbar.setDisplayOptions(i & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
+    this.mDecorToolbar.setDisplayOptions(paramInt1 & paramInt2 | (paramInt2 ^ 0xFFFFFFFF) & i);
   }
   
   public void setDisplayShowCustomEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 16;; i = 0)
-    {
-      setDisplayOptions(i, 16);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 16;
+    } else {
+      i = 0;
     }
+    setDisplayOptions(i, 16);
   }
   
   public void setDisplayShowHomeEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 2;; i = 0)
-    {
-      setDisplayOptions(i, 2);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 2;
+    } else {
+      i = 0;
     }
+    setDisplayOptions(i, 2);
   }
   
   public void setDisplayShowTitleEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 8;; i = 0)
-    {
-      setDisplayOptions(i, 8);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 8;
+    } else {
+      i = 0;
     }
+    setDisplayOptions(i, 8);
   }
   
   public void setDisplayUseLogoEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      setDisplayOptions(i, 1);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setElevation(float paramFloat)
@@ -1079,55 +1087,50 @@ public class WindowDecorActionBar
   
   public void setNavigationMode(int paramInt)
   {
-    boolean bool2 = true;
     int i = this.mDecorToolbar.getNavigationMode();
-    label88:
-    Object localObject;
-    switch (i)
+    if (i == 2)
     {
-    default: 
-      if ((i != paramInt) && (!this.mHasEmbeddedTabs) && (this.mOverlayLayout != null)) {
-        ViewCompat.requestApplyInsets(this.mOverlayLayout);
-      }
-      this.mDecorToolbar.setNavigationMode(paramInt);
-      switch (paramInt)
-      {
-      default: 
-        localObject = this.mDecorToolbar;
-        if ((paramInt == 2) && (!this.mHasEmbeddedTabs))
-        {
-          bool1 = true;
-          label108:
-          ((DecorToolbar)localObject).setCollapsible(bool1);
-          localObject = this.mOverlayLayout;
-          if ((paramInt != 2) || (this.mHasEmbeddedTabs)) {
-            break label210;
-          }
-        }
-        break;
-      }
-      break;
-    }
-    label210:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ((ActionBarOverlayLayout)localObject).setHasNonEmbeddedTabs(bool1);
-      return;
       this.mSavedTabPosition = getSelectedNavigationIndex();
       selectTab(null);
       this.mTabScrollView.setVisibility(8);
-      break;
+    }
+    if ((i != paramInt) && (!this.mHasEmbeddedTabs))
+    {
+      localObject = this.mOverlayLayout;
+      if (localObject != null) {
+        ViewCompat.requestApplyInsets((View)localObject);
+      }
+    }
+    this.mDecorToolbar.setNavigationMode(paramInt);
+    boolean bool2 = false;
+    if (paramInt == 2)
+    {
       ensureTabsExist();
       this.mTabScrollView.setVisibility(0);
-      if (this.mSavedTabPosition == -1) {
-        break label88;
+      i = this.mSavedTabPosition;
+      if (i != -1)
+      {
+        setSelectedNavigationItem(i);
+        this.mSavedTabPosition = -1;
       }
-      setSelectedNavigationItem(this.mSavedTabPosition);
-      this.mSavedTabPosition = -1;
-      break label88;
-      bool1 = false;
-      break label108;
     }
+    Object localObject = this.mDecorToolbar;
+    if ((paramInt == 2) && (!this.mHasEmbeddedTabs)) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    ((DecorToolbar)localObject).setCollapsible(bool1);
+    localObject = this.mOverlayLayout;
+    boolean bool1 = bool2;
+    if (paramInt == 2)
+    {
+      bool1 = bool2;
+      if (!this.mHasEmbeddedTabs) {
+        bool1 = true;
+      }
+    }
+    ((ActionBarOverlayLayout)localObject).setHasNonEmbeddedTabs(bool1);
   }
   
   public void setSelectedNavigationItem(int paramInt)
@@ -1146,8 +1149,12 @@ public class WindowDecorActionBar
   public void setShowHideAnimationEnabled(boolean paramBoolean)
   {
     this.mShowHideAnimationEnabled = paramBoolean;
-    if ((!paramBoolean) && (this.mCurrentShowAnim != null)) {
-      this.mCurrentShowAnim.cancel();
+    if (!paramBoolean)
+    {
+      ViewPropertyAnimatorCompatSet localViewPropertyAnimatorCompatSet = this.mCurrentShowAnim;
+      if (localViewPropertyAnimatorCompatSet != null) {
+        localViewPropertyAnimatorCompatSet.cancel();
+      }
     }
   }
   
@@ -1203,8 +1210,9 @@ public class WindowDecorActionBar
   
   public ActionMode startActionMode(ActionMode.Callback paramCallback)
   {
-    if (this.mActionMode != null) {
-      this.mActionMode.finish();
+    ActionModeImpl localActionModeImpl = this.mActionMode;
+    if (localActionModeImpl != null) {
+      localActionModeImpl.finish();
     }
     this.mOverlayLayout.setHideOnContentScrollEnabled(false);
     this.mContextView.killMode();
@@ -1260,26 +1268,27 @@ public class WindowDecorActionBar
       }
       if (!WindowDecorActionBar.checkShowingFlags(WindowDecorActionBar.this.mHiddenByApp, WindowDecorActionBar.this.mHiddenBySystem, false))
       {
-        WindowDecorActionBar.this.mDeferredDestroyActionMode = this;
-        WindowDecorActionBar.this.mDeferredModeDestroyCallback = this.mCallback;
+        WindowDecorActionBar localWindowDecorActionBar = WindowDecorActionBar.this;
+        localWindowDecorActionBar.mDeferredDestroyActionMode = this;
+        localWindowDecorActionBar.mDeferredModeDestroyCallback = this.mCallback;
       }
-      for (;;)
+      else
       {
-        this.mCallback = null;
-        WindowDecorActionBar.this.animateToMode(false);
-        WindowDecorActionBar.this.mContextView.closeMode();
-        WindowDecorActionBar.this.mDecorToolbar.getViewGroup().sendAccessibilityEvent(32);
-        WindowDecorActionBar.this.mOverlayLayout.setHideOnContentScrollEnabled(WindowDecorActionBar.this.mHideOnContentScroll);
-        WindowDecorActionBar.this.mActionMode = null;
-        return;
         this.mCallback.onDestroyActionMode(this);
       }
+      this.mCallback = null;
+      WindowDecorActionBar.this.animateToMode(false);
+      WindowDecorActionBar.this.mContextView.closeMode();
+      WindowDecorActionBar.this.mDecorToolbar.getViewGroup().sendAccessibilityEvent(32);
+      WindowDecorActionBar.this.mOverlayLayout.setHideOnContentScrollEnabled(WindowDecorActionBar.this.mHideOnContentScroll);
+      WindowDecorActionBar.this.mActionMode = null;
     }
     
     public View getCustomView()
     {
-      if (this.mCustomView != null) {
-        return (View)this.mCustomView.get();
+      WeakReference localWeakReference = this.mCustomView;
+      if (localWeakReference != null) {
+        return (View)localWeakReference.get();
       }
       return null;
     }
@@ -1332,8 +1341,9 @@ public class WindowDecorActionBar
     
     public boolean onMenuItemSelected(MenuBuilder paramMenuBuilder, MenuItem paramMenuItem)
     {
-      if (this.mCallback != null) {
-        return this.mCallback.onActionItemClicked(this, paramMenuItem);
+      paramMenuBuilder = this.mCallback;
+      if (paramMenuBuilder != null) {
+        return paramMenuBuilder.onActionItemClicked(this, paramMenuItem);
       }
       return false;
     }
@@ -1349,12 +1359,11 @@ public class WindowDecorActionBar
     
     public boolean onSubMenuSelected(SubMenuBuilder paramSubMenuBuilder)
     {
-      boolean bool = true;
       if (this.mCallback == null) {
-        bool = false;
+        return false;
       }
-      while (!paramSubMenuBuilder.hasVisibleItems()) {
-        return bool;
+      if (!paramSubMenuBuilder.hasVisibleItems()) {
+        return true;
       }
       new MenuPopupHelper(WindowDecorActionBar.this.getThemedContext(), paramSubMenuBuilder).show();
       return true;

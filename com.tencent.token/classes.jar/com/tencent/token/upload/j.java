@@ -90,7 +90,9 @@ public class j
   public static String e(Context paramContext)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(d(paramContext)).append(" * ").append(f(paramContext));
+    localStringBuffer.append(d(paramContext));
+    localStringBuffer.append(" * ");
+    localStringBuffer.append(f(paramContext));
     return localStringBuffer.toString();
   }
   

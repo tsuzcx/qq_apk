@@ -39,11 +39,13 @@ public final class f
   {
     paramb.a(this.c, 0);
     paramb.a(this.a, 1);
-    if (this.b != null) {
-      paramb.a(this.b, 2);
+    Object localObject = this.b;
+    if (localObject != null) {
+      paramb.a((String)localObject, 2);
     }
-    if (this.d != null) {
-      paramb.a(this.d, 3);
+    localObject = this.d;
+    if (localObject != null) {
+      paramb.a((Map)localObject, 3);
     }
   }
 }

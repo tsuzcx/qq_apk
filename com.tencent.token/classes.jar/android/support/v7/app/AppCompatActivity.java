@@ -102,10 +102,12 @@ public class AppCompatActivity
     if ((this.mResources == null) && (VectorEnabledTintResources.shouldBeUsed())) {
       this.mResources = new VectorEnabledTintResources(this, super.getResources());
     }
-    if (this.mResources == null) {
-      return super.getResources();
+    Resources localResources2 = this.mResources;
+    Resources localResources1 = localResources2;
+    if (localResources2 == null) {
+      localResources1 = super.getResources();
     }
-    return this.mResources;
+    return localResources1;
   }
   
   @Nullable
@@ -146,20 +148,14 @@ public class AppCompatActivity
     AppCompatDelegate localAppCompatDelegate = getDelegate();
     localAppCompatDelegate.installViewFactory();
     localAppCompatDelegate.onCreate(paramBundle);
-    if ((localAppCompatDelegate.applyDayNight()) && (this.mThemeId != 0))
-    {
-      if (Build.VERSION.SDK_INT < 23) {
-        break label55;
+    if ((localAppCompatDelegate.applyDayNight()) && (this.mThemeId != 0)) {
+      if (Build.VERSION.SDK_INT >= 23) {
+        onApplyThemeResource(getTheme(), this.mThemeId, false);
+      } else {
+        setTheme(this.mThemeId);
       }
-      onApplyThemeResource(getTheme(), this.mThemeId, false);
     }
-    for (;;)
-    {
-      super.onCreate(paramBundle);
-      return;
-      label55:
-      setTheme(this.mThemeId);
-    }
+    super.onCreate(paramBundle);
   }
   
   public void onCreateSupportNavigateUpTaskStack(@NonNull TaskStackBuilder paramTaskStackBuilder)
@@ -247,8 +243,7 @@ public class AppCompatActivity
   public boolean onSupportNavigateUp()
   {
     Object localObject = getSupportParentActivityIntent();
-    if (localObject != null)
-    {
+    if (localObject != null) {
       if (supportShouldUpRecreateTask((Intent)localObject))
       {
         localObject = TaskStackBuilder.create(this);
@@ -256,21 +251,21 @@ public class AppCompatActivity
         onPrepareSupportNavigateUpTaskStack((TaskStackBuilder)localObject);
         ((TaskStackBuilder)localObject).startActivities();
       }
-      for (;;)
-      {
-        try
-        {
-          ActivityCompat.finishAffinity(this);
-          return true;
-        }
-        catch (IllegalStateException localIllegalStateException)
-        {
-          finish();
-          continue;
-        }
-        supportNavigateUpTo(localIllegalStateException);
-      }
     }
+    try
+    {
+      ActivityCompat.finishAffinity(this);
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      label43:
+      break label43;
+    }
+    finish();
+    break label55;
+    supportNavigateUpTo((Intent)localObject);
+    label55:
+    return true;
     return false;
   }
   

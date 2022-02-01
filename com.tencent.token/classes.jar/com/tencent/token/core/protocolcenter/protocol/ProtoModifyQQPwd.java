@@ -30,8 +30,8 @@ public class ProtoModifyQQPwd
   
   protected String a()
   {
-    String str2 = ca.a().b();
-    if (str2 == null)
+    Object localObject = ca.a().b();
+    if (localObject == null)
     {
       this.a.b(104);
       return null;
@@ -39,14 +39,27 @@ public class ProtoModifyQQPwd
     int i = cb.a + 1;
     cb.a = i;
     this.c = i;
-    if (this.f == 0) {}
-    for (String str1 = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cc.c().s() / 1000L) }); str1 == null; str1 = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cc.c().s() / 1000L), "scene_id", Integer.valueOf(this.f) }))
+    if (this.f == 0) {
+      str = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    } else {
+      str = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cc.c().s() / 1000L), "scene_id", Integer.valueOf(this.f) });
+    }
+    if (str == null)
     {
       this.a.a(10000, "encrypt qqtoken code failed");
       return null;
     }
-    str1 = "?aq_base_sid=" + str2 + "&data=" + str1;
-    return c.e() + "/cn/mbtoken3/mbtoken3_modify_pwd_encrypt" + str1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append(str);
+    String str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_modify_pwd_encrypt");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -71,13 +84,18 @@ public class ProtoModifyQQPwd
       if (this.c != i)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.c);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.c);
+        g.c(paramJSONObject.toString());
         return;
       }
       this.a.c();
       return;
     }
-    a(10022, RqdApplication.l().getString(2131230925));
+    a(10022, RqdApplication.l().getString(2131493067));
   }
 }
 

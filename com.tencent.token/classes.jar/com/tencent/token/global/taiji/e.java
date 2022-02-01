@@ -26,43 +26,41 @@ public class e
   
   public static Looper a(long paramLong)
   {
-    if (1L == paramLong)
+    if (1L == paramLong) {}
+    try
     {
-      try
+      if (b != null)
       {
-        if (b != null) {
-          if (!b.isAlive())
-          {
-            b = new d("hostHandlerThread", 5, paramLong, true);
-            b.start();
-          }
-        }
-        for (;;)
+        if (!b.isAlive())
         {
-          Looper localLooper1 = b.getLooper();
-          return localLooper1;
           b = new d("hostHandlerThread", 5, paramLong, true);
           b.start();
         }
-        if (c == null) {
-          break label133;
-        }
       }
-      finally {}
+      else
+      {
+        b = new d("hostHandlerThread", 5, paramLong, true);
+        b.start();
+      }
+      localLooper = b.getLooper();
+      return localLooper;
     }
-    else if (!c.isAlive())
+    finally {}
+    if (c != null)
+    {
+      if (!c.isAlive())
+      {
+        c = new d("otherHandlerThread", 5, paramLong, true);
+        c.start();
+      }
+    }
+    else
     {
       c = new d("otherHandlerThread", 5, paramLong, true);
       c.start();
     }
-    for (;;)
-    {
-      Looper localLooper2 = c.getLooper();
-      break;
-      label133:
-      c = new d("otherHandlerThread", 5, paramLong, true);
-      c.start();
-    }
+    Looper localLooper = c.getLooper();
+    return localLooper;
   }
 }
 

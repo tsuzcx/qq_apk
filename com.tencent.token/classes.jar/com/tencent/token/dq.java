@@ -1,7 +1,5 @@
 package com.tencent.token;
 
-import [I;
-
 public class dq
 {
   public static final dq c;
@@ -30,12 +28,13 @@ public class dq
   static
   {
     int i1 = 1;
+    Object localObject;
     while (i1 <= 16)
     {
-      int[] arrayOfInt = new int[1];
-      arrayOfInt[0] = i1;
-      o[i1] = new dq(arrayOfInt, 1);
-      p[i1] = new dq(arrayOfInt, -1);
+      localObject = new int[1];
+      localObject[0] = i1;
+      o[i1] = new dq((int[])localObject, 1);
+      p[i1] = new dq((int[])localObject, -1);
       i1 += 1;
     }
     c = new dq(new int[0], 0);
@@ -49,7 +48,8 @@ public class dq
     i1 = 0;
     while (i1 < 63)
     {
-      r[i1] = r[63].substring(0, i1);
+      localObject = r;
+      localObject[i1] = localObject[63].substring(0, i1);
       i1 += 1;
     }
   }
@@ -57,18 +57,21 @@ public class dq
   private dq(int paramInt, int[] paramArrayOfInt)
   {
     this.b = b(paramArrayOfInt);
-    if ((paramInt < -1) || (paramInt > 1)) {
-      throw new NumberFormatException("Invalid signum value");
-    }
-    if (this.b.length == 0)
+    if ((paramInt >= -1) && (paramInt <= 1))
     {
-      this.a = 0;
-      return;
-    }
-    if (paramInt == 0) {
+      if (this.b.length == 0)
+      {
+        this.a = 0;
+        return;
+      }
+      if (paramInt != 0)
+      {
+        this.a = paramInt;
+        return;
+      }
       throw new NumberFormatException("signum-magnitude mismatch");
     }
-    this.a = paramInt;
+    throw new NumberFormatException("Invalid signum value");
   }
   
   private dq(long paramLong)
@@ -78,46 +81,43 @@ public class dq
       this.a = -1;
       paramLong = -paramLong;
     }
-    int i1;
-    for (;;)
+    else
     {
-      i1 = (int)(paramLong >>> 32);
-      if (i1 != 0) {
-        break;
-      }
+      this.a = 1;
+    }
+    int i1 = (int)(paramLong >>> 32);
+    if (i1 == 0)
+    {
       this.b = new int[1];
       this.b[0] = ((int)paramLong);
       return;
-      this.a = 1;
     }
     this.b = new int[2];
-    this.b[0] = i1;
-    this.b[1] = ((int)paramLong);
+    int[] arrayOfInt = this.b;
+    arrayOfInt[0] = i1;
+    arrayOfInt[1] = ((int)paramLong);
   }
   
   dq(dr paramdr, int paramInt)
   {
-    int i1;
-    if ((paramdr.c > 0) || (paramdr.a.length != paramdr.b))
+    if ((paramdr.c <= 0) && (paramdr.a.length == paramdr.b))
     {
-      this.b = new int[paramdr.b];
-      i1 = 0;
-    }
-    while (i1 < paramdr.b)
-    {
-      this.b[i1] = paramdr.a[(paramdr.c + i1)];
-      i1 += 1;
-      continue;
       this.b = paramdr.a;
     }
-    if (paramdr.b == 0) {
-      paramInt = i2;
-    }
-    for (;;)
+    else
     {
-      this.a = paramInt;
-      return;
+      this.b = new int[paramdr.b];
+      int i1 = 0;
+      while (i1 < paramdr.b)
+      {
+        this.b[i1] = paramdr.a[(paramdr.c + i1)];
+        i1 += 1;
+      }
     }
+    if (paramdr.b == 0) {
+      paramInt = 0;
+    }
+    this.a = paramInt;
   }
   
   public dq(String paramString)
@@ -128,34 +128,36 @@ public class dq
   public dq(String paramString, int paramInt)
   {
     int i2 = paramString.length();
-    if ((paramInt < 2) || (paramInt > 36)) {
-      throw new NumberFormatException("Radix out of range");
-    }
-    if (paramString.length() == 0) {
-      throw new NumberFormatException("Zero length BigInteger");
-    }
-    this.a = 1;
-    int i1 = paramString.lastIndexOf('-');
-    if (i1 != -1) {
-      if (i1 == 0)
-      {
-        if (paramString.length() == 1) {
-          throw new NumberFormatException("Zero length BigInteger");
-        }
-        this.a = -1;
-        i1 = 1;
-      }
-    }
-    for (;;)
+    if ((paramInt >= 2) && (paramInt <= 36))
     {
-      if ((i1 < i2) && (Character.digit(paramString.charAt(i1), paramInt) == 0))
+      if (paramString.length() != 0)
       {
-        i1 += 1;
-        continue;
-        throw new NumberFormatException("Illegal embedded minus sign");
-      }
-      else
-      {
+        this.a = 1;
+        int i1 = paramString.lastIndexOf('-');
+        if (i1 != -1)
+        {
+          if (i1 == 0)
+          {
+            if (paramString.length() != 1)
+            {
+              this.a = -1;
+              i1 = 1;
+            }
+            else
+            {
+              throw new NumberFormatException("Zero length BigInteger");
+            }
+          }
+          else {
+            throw new NumberFormatException("Illegal embedded minus sign");
+          }
+        }
+        else {
+          i1 = 0;
+        }
+        while ((i1 < i2) && (Character.digit(paramString.charAt(i1), paramInt) == 0)) {
+          i1 += 1;
+        }
         if (i1 == i2)
         {
           this.a = 0;
@@ -164,53 +166,64 @@ public class dq
         }
         i2 -= i1;
         this.b = new int[((int)((i2 * m[paramInt] >>> 10) + 1L) + 31) / 32];
-        int i3 = i2 % u[paramInt];
+        Object localObject = u;
+        int i3 = i2 % localObject[paramInt];
         i2 = i3;
         if (i3 == 0) {
-          i2 = u[paramInt];
+          i2 = localObject[paramInt];
         }
         i2 += i1;
-        String str = paramString.substring(i1, i2);
-        this.b[(this.b.length - 1)] = Integer.parseInt(str, paramInt);
-        if (this.b[(this.b.length - 1)] < 0) {
-          throw new NumberFormatException("Illegal digit");
-        }
-        i3 = v[paramInt];
-        for (i1 = i2; i1 < paramString.length(); i1 = i2)
+        localObject = paramString.substring(i1, i2);
+        int[] arrayOfInt = this.b;
+        arrayOfInt[(arrayOfInt.length - 1)] = Integer.parseInt((String)localObject, paramInt);
+        localObject = this.b;
+        if (localObject[(localObject.length - 1)] >= 0)
         {
-          i2 = u[paramInt] + i1;
-          i1 = Integer.parseInt(paramString.substring(i1, i2), paramInt);
-          if (i1 < 0) {
-            throw new NumberFormatException("Illegal digit");
+          i3 = v[paramInt];
+          i1 = i2;
+          while (i1 < paramString.length())
+          {
+            i2 = u[paramInt] + i1;
+            i1 = Integer.parseInt(paramString.substring(i1, i2), paramInt);
+            if (i1 >= 0)
+            {
+              c(this.b, i3, i1);
+              i1 = i2;
+            }
+            else
+            {
+              throw new NumberFormatException("Illegal digit");
+            }
           }
-          c(this.b, i3, i1);
+          this.b = c(this.b);
+          return;
         }
-        this.b = c(this.b);
-        return;
-        i1 = 0;
+        throw new NumberFormatException("Illegal digit");
       }
+      throw new NumberFormatException("Zero length BigInteger");
     }
+    throw new NumberFormatException("Radix out of range");
   }
   
   public dq(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte.length == 0) {
-      throw new NumberFormatException("Zero length BigInteger");
-    }
-    if (paramArrayOfByte[0] < 0)
+    if (paramArrayOfByte.length != 0)
     {
-      this.b = b(paramArrayOfByte);
-      this.a = -1;
-      return;
-    }
-    this.b = a(paramArrayOfByte);
-    if (this.b.length == 0) {}
-    for (;;)
-    {
+      int i1 = 0;
+      if (paramArrayOfByte[0] < 0)
+      {
+        this.b = b(paramArrayOfByte);
+        this.a = -1;
+        return;
+      }
+      this.b = a(paramArrayOfByte);
+      if (this.b.length != 0) {
+        i1 = 1;
+      }
       this.a = i1;
       return;
-      i1 = 1;
     }
+    throw new NumberFormatException("Zero length BigInteger");
   }
   
   private dq(int[] paramArrayOfInt, int paramInt)
@@ -227,13 +240,13 @@ public class dq
     if (paramInt == 0) {
       return 0;
     }
-    return d(paramArrayOfInt[0]) + (paramInt - 1 << 5);
+    return (paramInt - 1 << 5) + d(paramArrayOfInt[0]);
   }
   
   static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
   {
     paramInt1 = paramArrayOfInt.length - 1 - paramInt2 - paramInt1;
-    long l1 = (paramArrayOfInt[paramInt1] & 0xFFFFFFFF) + (paramInt3 & 0xFFFFFFFF);
+    long l1 = (paramArrayOfInt[paramInt1] & 0xFFFFFFFF) + (0xFFFFFFFF & paramInt3);
     paramArrayOfInt[paramInt1] = ((int)l1);
     if (l1 >>> 32 == 0L) {
       return 0;
@@ -257,41 +270,31 @@ public class dq
   
   private static int a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt)
   {
-    int i3 = 0;
     int i1 = 0;
-    for (;;)
+    while (i1 < paramInt)
     {
-      int i2 = i3;
-      long l1;
-      long l2;
-      if (i1 < paramInt)
-      {
-        l1 = paramArrayOfInt1[i1] & 0xFFFFFFFF;
-        l2 = paramArrayOfInt2[i1] & 0xFFFFFFFF;
-        if (l1 < l2) {
-          i2 = -1;
-        }
-      }
-      else
-      {
-        return i2;
+      long l1 = paramArrayOfInt1[i1] & 0xFFFFFFFF;
+      long l2 = 0xFFFFFFFF & paramArrayOfInt2[i1];
+      if (l1 < l2) {
+        return -1;
       }
       if (l1 > l2) {
         return 1;
       }
       i1 += 1;
     }
+    return 0;
   }
   
   static int a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, int paramInt3)
   {
     long l2 = paramInt3;
-    long l1 = 0L;
     paramInt1 = paramArrayOfInt1.length - paramInt1 - 1;
     paramInt2 -= 1;
+    long l1 = 0L;
     while (paramInt2 >= 0)
     {
-      l1 += (paramArrayOfInt2[paramInt2] & 0xFFFFFFFF) * (l2 & 0xFFFFFFFF) + (paramArrayOfInt1[paramInt1] & 0xFFFFFFFF);
+      l1 = (paramArrayOfInt2[paramInt2] & 0xFFFFFFFF) * (l2 & 0xFFFFFFFF) + (paramArrayOfInt1[paramInt1] & 0xFFFFFFFF) + l1;
       paramArrayOfInt1[paramInt1] = ((int)l1);
       l1 >>>= 32;
       paramInt2 -= 1;
@@ -317,51 +320,45 @@ public class dq
   private dq a(dq paramdq, int paramInt)
   {
     Object localObject2 = a(1L);
-    Object localObject1 = h(paramInt);
-    int i2 = paramdq.d();
-    int i1;
-    Object localObject3;
-    int i3;
+    dq localdq2 = h(paramInt);
+    int i4 = paramdq.d();
+    int i3 = 0;
+    Object localObject1 = localObject2;
+    dq localdq1 = localdq2;
+    int i2 = i4;
+    int i1 = i3;
     if (c(0))
     {
-      i1 = i2;
-      if (paramInt - 1 < i2) {
-        i1 = paramInt - 1;
-      }
-      localObject3 = localObject2;
-      i3 = 0;
-      i2 = i1;
-      localObject2 = localObject1;
+      int i5 = paramInt - 1;
+      localObject1 = localObject2;
+      localdq1 = localdq2;
+      i2 = i4;
       i1 = i3;
-      localObject1 = localObject3;
-    }
-    for (;;)
-    {
-      if (i1 < i2)
+      if (i5 < i4)
       {
-        localObject3 = localObject1;
-        if (paramdq.c(i1)) {
-          localObject3 = ((dq)localObject1).b((dq)localObject2).h(paramInt);
-        }
-        i3 = i1 + 1;
-        localObject1 = localObject3;
+        i2 = i5;
         i1 = i3;
-        if (i3 < i2)
-        {
-          localObject2 = ((dq)localObject2).g().h(paramInt);
-          localObject1 = localObject3;
-          i1 = i3;
-        }
-      }
-      else
-      {
-        return localObject1;
-        localObject3 = localObject1;
-        i1 = 0;
+        localdq1 = localdq2;
         localObject1 = localObject2;
-        localObject2 = localObject3;
       }
     }
+    while (i1 < i2)
+    {
+      localObject2 = localObject1;
+      if (paramdq.c(i1)) {
+        localObject2 = localObject1.b(localdq1).h(paramInt);
+      }
+      i3 = i1 + 1;
+      localObject1 = localObject2;
+      i1 = i3;
+      if (i3 < i2)
+      {
+        localdq1 = localdq1.g().h(paramInt);
+        localObject1 = localObject2;
+        i1 = i3;
+      }
+    }
+    return localObject1;
   }
   
   static void a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
@@ -386,20 +383,19 @@ public class dq
     }
     int i3 = (i1 - i2 + 3) / 4;
     int[] arrayOfInt = new int[i3];
-    i3 -= 1;
     i1 -= 1;
+    i3 -= 1;
     while (i3 >= 0)
     {
       int i4 = i1 - 1;
       paramArrayOfByte[i1] &= 0xFF;
-      int i6 = Math.min(3, i4 - i2 + 1);
-      int i5 = 8;
+      int i5 = Math.min(3, i4 - i2 + 1);
       i1 = i4;
-      i4 = i5;
-      while (i4 <= i6 * 8)
+      i4 = 8;
+      while (i4 <= i5 * 8)
       {
-        i5 = arrayOfInt[i3];
-        arrayOfInt[i3] = ((paramArrayOfByte[i1] & 0xFF) << i4 | i5);
+        int i6 = arrayOfInt[i3];
+        arrayOfInt[i3] = ((paramArrayOfByte[i1] & 0xFF) << i4 | i6);
         i4 += 8;
         i1 -= 1;
       }
@@ -410,7 +406,6 @@ public class dq
   
   private static final int[] a(int[] paramArrayOfInt1, int paramInt, int[] paramArrayOfInt2)
   {
-    int i2 = 0;
     int i4 = paramInt << 1;
     int[] arrayOfInt;
     if (paramArrayOfInt2 != null)
@@ -423,6 +418,7 @@ public class dq
       arrayOfInt = new int[i4];
     }
     int i1 = 0;
+    int i2 = 0;
     int i3 = 0;
     while (i1 < paramInt)
     {
@@ -437,17 +433,19 @@ public class dq
       i3 = (int)l1;
       i1 += 1;
     }
-    i1 = 1;
     i2 = paramInt;
+    i1 = 1;
     while (i2 > 0)
     {
-      a(arrayOfInt, i1 - 1, i2, a(arrayOfInt, paramArrayOfInt1, i1, i2 - 1, paramArrayOfInt1[(i2 - 1)]));
+      i3 = i2 - 1;
+      a(arrayOfInt, i1 - 1, i2, a(arrayOfInt, paramArrayOfInt1, i1, i3, paramArrayOfInt1[i3]));
       i2 -= 1;
       i1 += 2;
     }
     b(arrayOfInt, i4, 1);
     i1 = i4 - 1;
-    arrayOfInt[i1] |= paramArrayOfInt1[(paramInt - 1)] & 0x1;
+    i2 = arrayOfInt[i1];
+    arrayOfInt[i1] = (paramArrayOfInt1[(paramInt - 1)] & 0x1 | i2);
     return arrayOfInt;
   }
   
@@ -465,12 +463,13 @@ public class dq
     {
       arrayOfInt = new int[paramInt1 + paramInt2];
     }
+    int i3 = i1 + 1;
+    paramInt1 = i3 + i2;
     long l1 = 0L;
-    paramInt1 = i1 + 1 + i2;
     paramInt2 = i1;
     while (paramInt2 >= 0)
     {
-      l1 += (paramArrayOfInt2[paramInt2] & 0xFFFFFFFF) * (paramArrayOfInt1[i2] & 0xFFFFFFFF);
+      l1 = (paramArrayOfInt2[paramInt2] & 0xFFFFFFFF) * (paramArrayOfInt1[i2] & 0xFFFFFFFF) + l1;
       arrayOfInt[paramInt1] = ((int)l1);
       l1 >>>= 32;
       paramInt2 -= 1;
@@ -480,21 +479,19 @@ public class dq
     paramInt1 = i2 - 1;
     while (paramInt1 >= 0)
     {
+      paramInt2 = i3 + paramInt1;
       l1 = 0L;
       i2 = i1;
-      paramInt2 = i1 + 1 + paramInt1;
-      if (i2 >= 0)
+      while (i2 >= 0)
       {
-        if (paramInt2 < 0) {}
-        for (;;)
+        if (paramInt2 >= 0)
         {
-          i2 -= 1;
-          paramInt2 -= 1;
-          break;
-          l1 += (paramArrayOfInt2[i2] & 0xFFFFFFFF) * (paramArrayOfInt1[paramInt1] & 0xFFFFFFFF) + (arrayOfInt[paramInt2] & 0xFFFFFFFF);
+          l1 = (paramArrayOfInt2[i2] & 0xFFFFFFFF) * (paramArrayOfInt1[paramInt1] & 0xFFFFFFFF) + (arrayOfInt[paramInt2] & 0xFFFFFFFF) + l1;
           arrayOfInt[paramInt2] = ((int)l1);
           l1 >>>= 32;
         }
+        i2 -= 1;
+        paramInt2 -= 1;
       }
       arrayOfInt[paramInt1] = ((int)l1);
       paramInt1 -= 1;
@@ -504,74 +501,70 @@ public class dq
   
   private static int[] a(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    if (paramArrayOfInt1.length < paramArrayOfInt2.length) {}
+    int i1 = paramArrayOfInt1.length;
+    int[] arrayOfInt2 = paramArrayOfInt1;
+    int[] arrayOfInt1 = paramArrayOfInt2;
+    if (i1 < paramArrayOfInt2.length)
+    {
+      arrayOfInt1 = paramArrayOfInt1;
+      arrayOfInt2 = paramArrayOfInt2;
+    }
+    int i2 = arrayOfInt2.length;
+    i1 = arrayOfInt1.length;
+    paramArrayOfInt1 = new int[i2];
+    long l1 = 0L;
+    while (i1 > 0)
+    {
+      i2 -= 1;
+      long l2 = arrayOfInt2[i2];
+      i1 -= 1;
+      l1 = (l1 >>> 32) + ((l2 & 0xFFFFFFFF) + (0xFFFFFFFF & arrayOfInt1[i1]));
+      paramArrayOfInt1[i2] = ((int)l1);
+    }
+    if (l1 >>> 32 != 0L) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    int i3;
     for (;;)
     {
-      int i1 = paramArrayOfInt2.length;
-      int i2 = paramArrayOfInt1.length;
-      int[] arrayOfInt = new int[i1];
-      long l1 = 0L;
-      while (i2 > 0)
-      {
-        i1 -= 1;
-        long l2 = paramArrayOfInt2[i1];
-        i2 -= 1;
-        l1 = (l2 & 0xFFFFFFFF) + (paramArrayOfInt1[i2] & 0xFFFFFFFF) + (l1 >>> 32);
-        arrayOfInt[i1] = ((int)l1);
-      }
-      int i3;
-      if (l1 >>> 32 != 0L)
-      {
-        i2 = 1;
-        i3 = i1;
-        if (i1 <= 0) {
-          break label140;
-        }
-        i3 = i1;
-        if (i2 == 0) {
-          break label140;
-        }
-        i2 = i1 - 1;
-        i1 = paramArrayOfInt2[i2] + 1;
-        arrayOfInt[i2] = i1;
-        if (i1 != 0) {
-          break label135;
-        }
-      }
-      label135:
-      for (i1 = 1;; i1 = 0)
-      {
-        i3 = i1;
-        i1 = i2;
-        i2 = i3;
-        break;
-        i2 = 0;
+      i3 = i2;
+      if (i2 <= 0) {
         break;
       }
-      label140:
-      while (i3 > 0)
-      {
-        i3 -= 1;
-        arrayOfInt[i3] = paramArrayOfInt2[i3];
+      i3 = i2;
+      if (i1 == 0) {
+        break;
       }
-      if (i2 != 0)
-      {
-        i2 = arrayOfInt.length + 1;
-        paramArrayOfInt1 = new int[i2];
+      i2 -= 1;
+      i1 = arrayOfInt2[i2] + 1;
+      paramArrayOfInt1[i2] = i1;
+      if (i1 == 0) {
         i1 = 1;
-        while (i1 < i2)
-        {
-          paramArrayOfInt1[i1] = arrayOfInt[(i1 - 1)];
-          i1 += 1;
-        }
-        paramArrayOfInt1[0] = 1;
-        return paramArrayOfInt1;
+      } else {
+        i1 = 0;
       }
-      return arrayOfInt;
-      arrayOfInt = paramArrayOfInt1;
-      paramArrayOfInt1 = paramArrayOfInt2;
-      paramArrayOfInt2 = arrayOfInt;
     }
+    while (i3 > 0)
+    {
+      i3 -= 1;
+      paramArrayOfInt1[i3] = arrayOfInt2[i3];
+    }
+    if (i1 != 0)
+    {
+      i2 = paramArrayOfInt1.length + 1;
+      paramArrayOfInt2 = new int[i2];
+      i1 = 1;
+      while (i1 < i2)
+      {
+        paramArrayOfInt2[i1] = paramArrayOfInt1[(i1 - 1)];
+        i1 += 1;
+      }
+      paramArrayOfInt2[0] = 1;
+      return paramArrayOfInt2;
+    }
+    return paramArrayOfInt1;
   }
   
   private static int[] a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2)
@@ -586,8 +579,8 @@ public class dq
       i3 = i2 + a(paramArrayOfInt1, i4, paramInt1, a(paramArrayOfInt1, paramArrayOfInt2, i4, paramInt1, paramArrayOfInt1[(paramArrayOfInt1.length - 1 - i4)] * paramInt2));
       i4 += 1;
       i5 = i1 - 1;
-      i1 = i5;
       i2 = i3;
+      i1 = i5;
     } while (i5 > 0);
     while (i3 > 0) {
       i3 += b(paramArrayOfInt1, paramArrayOfInt2, paramInt1);
@@ -607,7 +600,7 @@ public class dq
       if (paramInt < 0) {
         break;
       }
-      l1 = (l1 >> 32) + ((paramArrayOfInt1[paramInt] & 0xFFFFFFFF) - (paramArrayOfInt2[paramInt] & 0xFFFFFFFF));
+      l1 = (l1 >> 32) + ((paramArrayOfInt1[paramInt] & 0xFFFFFFFF) - (0xFFFFFFFF & paramArrayOfInt2[paramInt]));
       paramArrayOfInt1[paramInt] = ((int)l1);
     }
     return (int)(l1 >> 32);
@@ -621,45 +614,40 @@ public class dq
     if (this.a == 0) {
       return c;
     }
-    Object localObject1 = new int[this.b.length];
-    System.arraycopy(this.b, 0, localObject1, 0, this.b.length);
-    int[] arrayOfInt1 = paramdq1.b;
-    int[] arrayOfInt2 = paramdq2.b;
-    int i12 = arrayOfInt2.length;
-    int i8 = 0;
-    int i2 = 0;
-    int i11 = a(arrayOfInt1, arrayOfInt1.length);
-    int i1 = i2;
-    if (i11 == 17)
+    int[] arrayOfInt1 = this.b;
+    Object localObject = new int[arrayOfInt1.length];
+    System.arraycopy(arrayOfInt1, 0, localObject, 0, arrayOfInt1.length);
+    int[] arrayOfInt2 = paramdq1.b;
+    int[] arrayOfInt3 = paramdq2.b;
+    int i12 = arrayOfInt3.length;
+    int i11 = a(arrayOfInt2, arrayOfInt2.length);
+    int i7;
+    if ((i11 == 17) && (arrayOfInt2[0] == 65537))
     {
-      if (arrayOfInt1[0] != 65537) {
-        i1 = i2;
-      }
+      i7 = 0;
     }
-    else {
-      for (;;)
-      {
-        i8 = i1;
-        if (i11 <= f[i1]) {
-          break;
-        }
+    else
+    {
+      i1 = 0;
+      while (i11 > f[i1]) {
         i1 += 1;
       }
+      i7 = i1;
     }
-    int i13 = 1 << i8;
+    int i13 = 1 << i7;
     int[][] arrayOfInt = new int[i13][];
-    i1 = 0;
+    int i1 = 0;
     while (i1 < i13)
     {
       arrayOfInt[i1] = new int[i12];
       i1 += 1;
     }
-    int i14 = -dr.d(arrayOfInt2[(i12 - 1)]);
-    paramdq1 = d((int[])localObject1, localObject1.length, i12 << 5);
+    int i8 = -dr.d(arrayOfInt3[(i12 - 1)]);
+    paramdq1 = d((int[])localObject, localObject.length, i12 << 5);
     paramdq2 = new dr();
-    localObject1 = new dr();
-    new dr(paramdq1).a(new dr(arrayOfInt2), paramdq2, (dr)localObject1);
-    arrayOfInt[0] = ((dr)localObject1).d();
+    localObject = new dr();
+    new dr(paramdq1).a(new dr(arrayOfInt3), paramdq2, (dr)localObject);
+    arrayOfInt[0] = ((dr)localObject).d();
     if (arrayOfInt[0].length < i12)
     {
       i2 = arrayOfInt[0].length;
@@ -672,238 +660,233 @@ public class dq
       }
       arrayOfInt[0] = paramdq2;
     }
-    paramdq2 = a(a(arrayOfInt[0], i12, null), arrayOfInt2, i12, i14);
-    localObject1 = new int[i12];
+    arrayOfInt1 = a(a(arrayOfInt[0], i12, null), arrayOfInt3, i12, i8);
+    paramdq2 = new int[i12];
     i1 = 0;
     while (i1 < i12)
     {
-      localObject1[i1] = paramdq2[i1];
+      paramdq2[i1] = arrayOfInt1[i1];
       i1 += 1;
     }
     i1 = 1;
     while (i1 < i13)
     {
-      arrayOfInt[i1] = a(a((int[])localObject1, i12, arrayOfInt[(i1 - 1)], i12, null), arrayOfInt2, i12, i14);
+      arrayOfInt[i1] = a(a(paramdq2, i12, arrayOfInt[(i1 - 1)], i12, null), arrayOfInt3, i12, i8);
       i1 += 1;
     }
-    i2 = 1 << (i11 - 1 & 0x1F);
-    i1 = arrayOfInt1.length;
-    int i3 = 0;
-    int i5 = 0;
+    int i2 = arrayOfInt2.length;
+    int i5 = 1 << (i11 - 1 & 0x1F);
     int i4 = 0;
-    int i7;
-    if (i4 <= i8)
+    i1 = 0;
+    int i3 = 0;
+    int i10;
+    while (i4 <= i7)
     {
-      if ((arrayOfInt1[i3] & i2) != 0) {}
-      for (i6 = 1;; i6 = 0)
-      {
-        i10 = i2 >>> 1;
-        i9 = i3;
-        i7 = i1;
-        i2 = i10;
-        if (i10 == 0)
-        {
-          i9 = i3 + 1;
-          i2 = -2147483648;
-          i7 = i1 - 1;
-        }
-        i4 += 1;
-        i5 = i5 << 1 | i6;
-        i3 = i9;
-        i1 = i7;
-        break;
+      if ((arrayOfInt2[i3] & i5) != 0) {
+        i6 = 1;
+      } else {
+        i6 = 0;
       }
-    }
-    int i6 = i11 - 1;
-    int i9 = 1;
-    i4 = i6 - i8;
-    while ((i5 & 0x1) == 0)
-    {
-      i5 >>>= 1;
+      i1 = i1 << 1 | i6;
+      i10 = i5 >>> 1;
+      i9 = i3;
+      i5 = i10;
+      i6 = i2;
+      if (i10 == 0)
+      {
+        i9 = i3 + 1;
+        i6 = i2 - 1;
+        i5 = -2147483648;
+      }
       i4 += 1;
+      i3 = i9;
+      i2 = i6;
     }
-    [I local[I = arrayOfInt[(i5 >>> 1)];
-    int i10 = 0;
-    if (i4 == i6)
+    int i9 = i11 - 1;
+    int i6 = i9 - i7;
+    i4 = i1;
+    i1 = i6;
+    while ((i4 & 0x1) == 0)
     {
-      i11 = 0;
-      localObject1 = paramdq1;
-      i9 = i4;
-      paramdq1 = paramdq2;
-      i5 = i2;
-      i7 = i10;
-      i4 = i1;
-      i1 = i11;
-      paramdq2 = (dq)localObject1;
-      localObject1 = local[I;
-      i2 = i9;
+      i4 >>>= 1;
+      i1 += 1;
+    }
+    paramdq2 = arrayOfInt[(i4 >>> 1)];
+    if (i1 == i9)
+    {
+      i6 = 0;
+      i4 = 0;
+      localObject = paramdq1;
+      paramdq1 = arrayOfInt1;
+    }
+    else
+    {
+      localObject = paramdq1;
+      i6 = 1;
+      i4 = 0;
+      paramdq1 = arrayOfInt1;
     }
     for (;;)
     {
-      i9 = i6 - 1;
-      i10 = i7 << 1;
-      i6 = i10;
-      i7 = i5;
-      if (i4 != 0) {
-        if ((arrayOfInt1[i3] & i5) != 0)
+      i11 = i9 - 1;
+      i9 = i4 << 1;
+      if (i2 != 0)
+      {
+        if ((arrayOfInt2[i3] & i5) != 0) {
+          i4 = 1;
+        } else {
+          i4 = 0;
+        }
+        i10 = i9 | i4;
+        i4 = i5 >>> 1;
+        if (i4 == 0)
         {
-          i6 = 1;
-          i10 |= i6;
-          i5 >>>= 1;
-          i6 = i10;
-          i7 = i5;
-          if (i5 != 0) {
-            break label980;
-          }
-          i5 = i4 - 1;
+          i9 = i3 + 1;
+          i3 = i2 - 1;
           i4 = -2147483648;
-          i7 = i3 + 1;
-          i6 = i10;
-          i3 = i5;
-          i5 = i7;
+          i5 = i10;
+          i2 = i9;
+        }
+        else
+        {
+          i9 = i3;
+          i5 = i10;
+          i3 = i2;
+          i2 = i9;
         }
       }
-      for (;;)
+      else
       {
-        if ((i6 & i13) != 0)
+        i4 = i5;
+        i5 = i2;
+        i2 = i3;
+        i3 = i5;
+        i5 = i9;
+      }
+      if ((i5 & i13) != 0)
+      {
+        i1 = i11 - i7;
+        while ((i5 & 0x1) == 0)
         {
-          i2 = i9 - i8;
-          for (;;)
-          {
-            if ((i6 & 0x1) == 0)
-            {
-              i6 >>>= 1;
-              i2 += 1;
-              continue;
-              i6 = 0;
-              break;
-            }
-          }
-          localObject1 = arrayOfInt[(i6 >>> 1)];
+          i5 >>>= 1;
+          i1 += 1;
+        }
+        paramdq2 = arrayOfInt[(i5 >>> 1)];
+        i9 = 0;
+        i5 = i1;
+        i1 = i9;
+      }
+      else
+      {
+        i9 = i1;
+        i1 = i5;
+        i5 = i9;
+      }
+      if (i11 == i5) {
+        if (i6 != 0)
+        {
+          paramdq1 = new int[paramdq2.length];
+          System.arraycopy(paramdq2, 0, paramdq1, 0, paramdq2.length);
           i6 = 0;
         }
-        for (;;)
+        else
         {
-          if (i9 == i2) {
-            if (i1 != 0)
-            {
-              paramdq1 = new int[localObject1.length];
-              System.arraycopy(localObject1, 0, paramdq1, 0, localObject1.length);
-              i1 = 0;
-            }
-          }
-          for (;;)
-          {
-            if (i9 == 0)
-            {
-              paramdq2 = new int[i12 * 2];
-              i1 = 0;
-              while (i1 < i12)
-              {
-                paramdq2[(i1 + i12)] = paramdq1[i1];
-                i1 += 1;
-              }
-              localObject2 = a(a(paramdq1, i12, (int[])localObject1, i12, paramdq2), arrayOfInt2, i12, i14);
-              paramdq2 = paramdq1;
-              paramdq1 = (dq)localObject2;
-            }
-            else
-            {
-              if (i1 == 0)
-              {
-                localObject2 = a(a(paramdq1, i12, paramdq2), arrayOfInt2, i12, i14);
-                paramdq2 = paramdq1;
-                paramdq1 = (dq)localObject2;
-                i10 = i5;
-                i7 = i3;
-                i5 = i4;
-                i3 = i10;
-                i4 = i7;
-                i7 = i6;
-                i6 = i9;
-                break;
-                paramdq1 = a(paramdq2, arrayOfInt2, i12, i14);
-                paramdq2 = new int[i12];
-                i1 = 0;
-                while (i1 < i12)
-                {
-                  paramdq2[i1] = paramdq1[i1];
-                  i1 += 1;
-                }
-                return new dq(1, paramdq2);
-              }
-              i7 = i5;
-              i5 = i4;
-              i4 = i3;
-              i3 = i7;
-              i7 = i6;
-              i6 = i9;
-              break;
-            }
-          }
+          arrayOfInt1 = a(a(paramdq1, i12, paramdq2, i12, (int[])localObject), arrayOfInt3, i12, i8);
+          localObject = paramdq1;
+          paramdq1 = arrayOfInt1;
         }
-        label980:
-        i5 = i3;
-        i3 = i4;
-        i4 = i7;
       }
-      Object localObject2 = paramdq1;
-      i7 = i4;
-      i4 = i1;
-      paramdq1 = paramdq2;
-      i5 = i2;
-      i2 = i7;
-      localObject1 = local[I;
-      paramdq2 = (dq)localObject2;
-      i1 = i9;
-      i7 = i10;
+      if (i11 == 0)
+      {
+        paramdq2 = new int[i12 * 2];
+        i1 = 0;
+        while (i1 < i12)
+        {
+          paramdq2[(i1 + i12)] = paramdq1[i1];
+          i1 += 1;
+        }
+        paramdq1 = a(paramdq2, arrayOfInt3, i12, i8);
+        paramdq2 = new int[i12];
+        i1 = 0;
+        while (i1 < i12)
+        {
+          paramdq2[i1] = paramdq1[i1];
+          i1 += 1;
+        }
+        return new dq(1, paramdq2);
+      }
+      if (i6 == 0)
+      {
+        arrayOfInt1 = a(a(paramdq1, i12, (int[])localObject), arrayOfInt3, i12, i8);
+        i9 = i4;
+        i10 = i3;
+        i4 = i1;
+        i1 = i5;
+        i3 = i2;
+        i5 = i9;
+        i2 = i10;
+        localObject = paramdq1;
+        i9 = i11;
+        paramdq1 = arrayOfInt1;
+      }
+      else
+      {
+        i9 = i4;
+        i10 = i3;
+        i4 = i1;
+        i1 = i5;
+        i3 = i2;
+        i5 = i9;
+        i2 = i10;
+        i9 = i11;
+      }
     }
   }
   
   static void b(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
+    if (paramInt1 != 0)
+    {
+      if (paramInt2 == 0) {
+        return;
+      }
+      int i1 = 0;
+      int i3;
+      for (int i2 = paramArrayOfInt[0]; i1 < paramInt1 + 0 - 1; i2 = i3)
+      {
+        int i4 = i1 + 1;
+        i3 = paramArrayOfInt[i4];
+        paramArrayOfInt[i1] = (i2 << paramInt2 | i3 >>> 32 - paramInt2);
+        i1 = i4;
+      }
+      paramInt1 -= 1;
+      paramArrayOfInt[paramInt1] <<= paramInt2;
       return;
     }
-    int i1 = paramArrayOfInt[0];
-    int i2 = 0;
-    while (i2 < 0 + paramInt1 - 1)
-    {
-      int i3 = paramArrayOfInt[(i2 + 1)];
-      paramArrayOfInt[i2] = (i1 << paramInt2 | i3 >>> 32 - paramInt2);
-      i2 += 1;
-      i1 = i3;
-    }
-    paramInt1 -= 1;
-    paramArrayOfInt[paramInt1] <<= paramInt2;
   }
   
   private static int[] b(byte[] paramArrayOfByte)
   {
-    int i4 = paramArrayOfByte.length;
+    int i3 = paramArrayOfByte.length;
     int i1 = 0;
-    while ((i1 < i4) && (paramArrayOfByte[i1] == -1)) {
+    while ((i1 < i3) && (paramArrayOfByte[i1] == -1)) {
       i1 += 1;
     }
     int i2 = i1;
-    while ((i2 < i4) && (paramArrayOfByte[i2] == 0)) {
+    while ((i2 < i3) && (paramArrayOfByte[i2] == 0)) {
       i2 += 1;
     }
-    int[] arrayOfInt;
-    int i3;
-    if (i2 == i4)
-    {
+    if (i2 == i3) {
       i2 = 1;
-      i2 = (i2 + (i4 - i1) + 3) / 4;
-      arrayOfInt = new int[i2];
-      i3 = i2 - 1;
-      i2 = i4 - 1;
+    } else {
+      i2 = 0;
     }
-    for (;;)
+    int i4 = (i3 - i1 + i2 + 3) / 4;
+    int[] arrayOfInt = new int[i4];
+    i2 = i3 - 1;
+    i3 = i4 - 1;
+    while (i3 >= 0)
     {
-      if (i3 < 0) {
-        break label211;
-      }
       int i5 = i2 - 1;
       paramArrayOfByte[i2] &= 0xFF;
       i2 = Math.min(3, i5 - i1 + 1);
@@ -911,46 +894,34 @@ public class dq
       if (i2 < 0) {
         i4 = 0;
       }
-      int i6 = 8;
       i2 = i5;
-      i5 = i6;
-      for (;;)
+      i5 = 8;
+      while (i5 <= i4 * 8)
       {
-        if (i5 <= i4 * 8)
-        {
-          i6 = arrayOfInt[i3];
-          arrayOfInt[i3] = ((paramArrayOfByte[i2] & 0xFF) << i5 | i6);
-          i5 += 8;
-          i2 -= 1;
-          continue;
-          i2 = 0;
-          break;
-        }
+        int i6 = arrayOfInt[i3];
+        arrayOfInt[i3] = ((paramArrayOfByte[i2] & 0xFF) << i5 | i6);
+        i5 += 8;
+        i2 -= 1;
       }
       arrayOfInt[i3] = (-1 >>> (3 - i4) * 8 & (arrayOfInt[i3] ^ 0xFFFFFFFF));
       i3 -= 1;
     }
-    label211:
     i1 = arrayOfInt.length - 1;
-    for (;;)
+    while (i1 >= 0)
     {
-      if (i1 >= 0)
-      {
-        arrayOfInt[i1] = ((int)((arrayOfInt[i1] & 0xFFFFFFFF) + 1L));
-        if (arrayOfInt[i1] == 0) {}
-      }
-      else
-      {
+      arrayOfInt[i1] = ((int)((arrayOfInt[i1] & 0xFFFFFFFF) + 1L));
+      if (arrayOfInt[i1] != 0) {
         return arrayOfInt;
       }
       i1 -= 1;
     }
+    return arrayOfInt;
   }
   
   private static int[] b(int[] paramArrayOfInt)
   {
-    int i2 = 0;
     int i1 = paramArrayOfInt.length;
+    int i2 = 0;
     i1 = 0;
     while ((i1 < paramArrayOfInt.length) && (paramArrayOfInt[i1] == 0)) {
       i1 += 1;
@@ -966,48 +937,43 @@ public class dq
   
   private static int[] b(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    int i1 = paramArrayOfInt1.length;
-    int[] arrayOfInt = new int[i1];
-    int i2 = paramArrayOfInt2.length;
+    int i2 = paramArrayOfInt1.length;
+    int[] arrayOfInt = new int[i2];
+    int i1 = paramArrayOfInt2.length;
     long l1 = 0L;
-    while (i2 > 0)
+    while (i1 > 0)
     {
-      i1 -= 1;
-      long l2 = paramArrayOfInt1[i1];
       i2 -= 1;
-      l1 = (l2 & 0xFFFFFFFF) - (paramArrayOfInt2[i2] & 0xFFFFFFFF) + (l1 >> 32);
-      arrayOfInt[i1] = ((int)l1);
+      long l2 = paramArrayOfInt1[i2];
+      i1 -= 1;
+      l1 = (l1 >> 32) + ((l2 & 0xFFFFFFFF) - (0xFFFFFFFF & paramArrayOfInt2[i1]));
+      arrayOfInt[i2] = ((int)l1);
+    }
+    if (l1 >> 32 != 0L) {
+      i1 = 1;
+    } else {
+      i1 = 0;
     }
     int i3;
-    if (l1 >> 32 != 0L)
+    for (;;)
     {
-      i2 = 1;
-      i3 = i1;
-      if (i1 <= 0) {
-        break label134;
+      i3 = i2;
+      if (i2 <= 0) {
+        break;
       }
-      i3 = i1;
-      if (i2 == 0) {
-        break label134;
+      i3 = i2;
+      if (i1 == 0) {
+        break;
       }
-      i2 = i1 - 1;
+      i2 -= 1;
       i1 = paramArrayOfInt1[i2] - 1;
       arrayOfInt[i2] = i1;
-      if (i1 != -1) {
-        break label129;
+      if (i1 == -1) {
+        i1 = 1;
+      } else {
+        i1 = 0;
       }
     }
-    label129:
-    for (i1 = 1;; i1 = 0)
-    {
-      i3 = i1;
-      i1 = i2;
-      i2 = i3;
-      break;
-      i2 = 0;
-      break;
-    }
-    label134:
     while (i3 > 0)
     {
       i3 -= 1;
@@ -1018,56 +984,50 @@ public class dq
   
   private static int c(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    int i3 = 0;
-    int i1;
-    if (paramArrayOfInt1.length < paramArrayOfInt2.length)
-    {
-      i1 = -1;
-      return i1;
+    if (paramArrayOfInt1.length < paramArrayOfInt2.length) {
+      return -1;
     }
     if (paramArrayOfInt1.length > paramArrayOfInt2.length) {
       return 1;
     }
-    int i2 = 0;
-    for (;;)
+    int i1 = 0;
+    while (i1 < paramArrayOfInt1.length)
     {
-      i1 = i3;
-      if (i2 >= paramArrayOfInt1.length) {
-        break;
-      }
-      long l1 = paramArrayOfInt1[i2] & 0xFFFFFFFF;
-      long l2 = paramArrayOfInt2[i2] & 0xFFFFFFFF;
+      long l1 = paramArrayOfInt1[i1] & 0xFFFFFFFF;
+      long l2 = 0xFFFFFFFF & paramArrayOfInt2[i1];
       if (l1 < l2) {
         return -1;
       }
       if (l1 > l2) {
         return 1;
       }
-      i2 += 1;
+      i1 += 1;
     }
+    return 0;
   }
   
   private static void c(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     long l2 = paramInt1;
     long l3 = paramInt2;
-    paramInt2 = paramArrayOfInt.length;
+    int i1 = paramArrayOfInt.length;
+    paramInt2 = i1 - 1;
     long l1 = 0L;
-    paramInt1 = paramInt2 - 1;
+    paramInt1 = paramInt2;
     while (paramInt1 >= 0)
     {
-      l1 += (paramArrayOfInt[paramInt1] & 0xFFFFFFFF) * (l2 & 0xFFFFFFFF);
+      l1 = (paramArrayOfInt[paramInt1] & 0xFFFFFFFF) * (l2 & 0xFFFFFFFF) + l1;
       paramArrayOfInt[paramInt1] = ((int)l1);
       l1 >>>= 32;
       paramInt1 -= 1;
     }
-    l1 = (paramArrayOfInt[(paramInt2 - 1)] & 0xFFFFFFFF) + (l3 & 0xFFFFFFFF);
-    paramArrayOfInt[(paramInt2 - 1)] = ((int)l1);
+    l1 = (paramArrayOfInt[paramInt2] & 0xFFFFFFFF) + (l3 & 0xFFFFFFFF);
+    paramArrayOfInt[paramInt2] = ((int)l1);
     l1 >>>= 32;
-    paramInt1 = paramInt2 - 2;
+    paramInt1 = i1 - 2;
     while (paramInt1 >= 0)
     {
-      l1 += (paramArrayOfInt[paramInt1] & 0xFFFFFFFF);
+      l1 = (paramArrayOfInt[paramInt1] & 0xFFFFFFFF) + l1;
       paramArrayOfInt[paramInt1] = ((int)l1);
       l1 >>>= 32;
       paramInt1 -= 1;
@@ -1076,23 +1036,23 @@ public class dq
   
   private static int[] c(int[] paramArrayOfInt)
   {
-    int i2 = 0;
     int i1 = paramArrayOfInt.length;
+    int i2 = 0;
     i1 = 0;
     while ((i1 < paramArrayOfInt.length) && (paramArrayOfInt[i1] == 0)) {
       i1 += 1;
     }
-    int[] arrayOfInt = paramArrayOfInt;
     if (i1 > 0)
     {
-      arrayOfInt = new int[paramArrayOfInt.length - i1];
+      int[] arrayOfInt = new int[paramArrayOfInt.length - i1];
       while (i2 < paramArrayOfInt.length - i1)
       {
         arrayOfInt[i2] = paramArrayOfInt[(i1 + i2)];
         i2 += 1;
       }
+      return arrayOfInt;
     }
-    return arrayOfInt;
+    return paramArrayOfInt;
   }
   
   static int d(int paramInt)
@@ -1109,125 +1069,135 @@ public class dq
             if (paramInt < 1)
             {
               if (paramInt < 0) {
-                i1 = 32;
+                return 32;
               }
+              return 0;
             }
-            else {
-              return i1;
+          }
+          else
+          {
+            if (paramInt < 4) {
+              return 2;
             }
-            return 0;
+            return 3;
           }
-          if (paramInt < 4) {
-            return 2;
-          }
-          return 3;
         }
-        if (paramInt < 32)
+        else
         {
-          if (paramInt < 16) {
-            return 4;
+          if (paramInt < 32)
+          {
+            if (paramInt < 16) {
+              return 4;
+            }
+            return 5;
           }
-          return 5;
+          if (paramInt < 64) {
+            return 6;
+          }
+          return 7;
         }
-        if (paramInt < 64) {
-          return 6;
-        }
-        return 7;
       }
-      if (paramInt < 2048)
+      else
       {
-        if (paramInt < 512)
+        if (paramInt < 2048)
         {
-          if (paramInt < 256) {
-            return 8;
+          if (paramInt < 512)
+          {
+            if (paramInt < 256) {
+              return 8;
+            }
+            return 9;
           }
-          return 9;
+          if (paramInt < 1024) {
+            return 10;
+          }
+          return 11;
         }
-        if (paramInt < 1024) {
-          return 10;
-        }
-        return 11;
-      }
-      if (paramInt < 8192)
-      {
-        if (paramInt < 4096) {
-          return 12;
-        }
-        return 13;
-      }
-      if (paramInt < 16384) {
-        return 14;
-      }
-      return 15;
-    }
-    if (paramInt < 8388608)
-    {
-      if (paramInt < 524288)
-      {
-        if (paramInt < 131072)
+        if (paramInt < 8192)
         {
-          if (paramInt < 65536) {
-            return 16;
+          if (paramInt < 4096) {
+            return 12;
           }
-          return 17;
+          return 13;
         }
-        if (paramInt < 262144) {
-          return 18;
+        if (paramInt < 16384) {
+          return 14;
         }
-        return 19;
+        return 15;
       }
-      if (paramInt < 2097152)
-      {
-        if (paramInt < 1048576) {
-          return 20;
-        }
-        return 21;
-      }
-      if (paramInt < 4194304) {
-        return 22;
-      }
-      return 23;
     }
-    if (paramInt < 134217728)
+    else
     {
-      if (paramInt < 33554432)
+      if (paramInt < 8388608)
       {
-        if (paramInt < 16777216) {
-          return 24;
+        if (paramInt < 524288)
+        {
+          if (paramInt < 131072)
+          {
+            if (paramInt < 65536) {
+              return 16;
+            }
+            return 17;
+          }
+          if (paramInt < 262144) {
+            return 18;
+          }
+          return 19;
         }
-        return 25;
+        if (paramInt < 2097152)
+        {
+          if (paramInt < 1048576) {
+            return 20;
+          }
+          return 21;
+        }
+        if (paramInt < 4194304) {
+          return 22;
+        }
+        return 23;
       }
-      if (paramInt < 67108864) {
-        return 26;
+      if (paramInt < 134217728)
+      {
+        if (paramInt < 33554432)
+        {
+          if (paramInt < 16777216) {
+            return 24;
+          }
+          return 25;
+        }
+        if (paramInt < 67108864) {
+          return 26;
+        }
+        return 27;
       }
-      return 27;
-    }
-    if (paramInt < 536870912)
-    {
-      if (paramInt < 268435456) {
-        return 28;
+      if (paramInt < 536870912)
+      {
+        if (paramInt < 268435456) {
+          return 28;
+        }
+        return 29;
       }
-      return 29;
+      if (paramInt < 1073741824) {
+        return 30;
+      }
+      i1 = 31;
     }
-    if (paramInt < 1073741824) {
-      return 30;
-    }
-    return 31;
+    return i1;
   }
   
   private static int[] d(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    int i2 = 0;
-    int i1 = 0;
     int i4 = paramInt2 >>> 5;
     int i3 = paramInt2 & 0x1F;
-    int i5 = d(paramArrayOfInt[0]);
-    if (paramInt2 <= 32 - i5)
+    int i2 = 0;
+    int i1 = 0;
+    int i5 = 32 - d(paramArrayOfInt[0]);
+    if (paramInt2 <= i5)
     {
       b(paramArrayOfInt, paramInt1, i3);
       return paramArrayOfInt;
     }
-    if (i3 <= 32 - i5)
+    if (i3 <= i5)
     {
       arrayOfInt = new int[i4 + paramInt1];
       paramInt2 = i1;
@@ -1253,8 +1223,8 @@ public class dq
   static int e(int paramInt)
   {
     paramInt -= ((0xAAAAAAAA & paramInt) >>> 1);
-    paramInt = (paramInt >>> 2 & 0x33333333) + (paramInt & 0x33333333);
-    paramInt = paramInt + (paramInt >>> 4) & 0xF0F0F0F;
+    paramInt = (paramInt & 0x33333333) + (paramInt >>> 2 & 0x33333333);
+    paramInt = 0xF0F0F0F & paramInt + (paramInt >>> 4);
     paramInt += (paramInt >>> 8);
     return paramInt + (paramInt >>> 16) & 0xFF;
   }
@@ -1281,7 +1251,8 @@ public class dq
     if (this.a == 0) {
       return c;
     }
-    return new dq(c(a(this.b, this.b.length, null)), 1);
+    int[] arrayOfInt = this.b;
+    return new dq(c(a(arrayOfInt, arrayOfInt.length, null)), 1);
   }
   
   private int h()
@@ -1298,18 +1269,19 @@ public class dq
       return this;
     }
     int i2 = (paramInt + 31) / 32;
-    Object localObject = new int[i2];
+    int[] arrayOfInt1 = new int[i2];
     int i1 = 0;
     while (i1 < i2)
     {
-      localObject[i1] = this.b[(this.b.length - i2 + i1)];
+      int[] arrayOfInt2 = this.b;
+      arrayOfInt1[i1] = arrayOfInt2[(arrayOfInt2.length - i2 + i1)];
       i1 += 1;
     }
-    localObject[0] = ((int)(localObject[0] & (1L << 32 - ((i2 << 5) - paramInt)) - 1L));
-    if (localObject[0] == 0) {}
-    for (localObject = new dq(1, (int[])localObject);; localObject = new dq((int[])localObject, 1)) {
-      return localObject;
+    arrayOfInt1[0] = ((int)(arrayOfInt1[0] & (1L << 32 - ((i2 << 5) - paramInt)) - 1L));
+    if (arrayOfInt1[0] == 0) {
+      return new dq(1, arrayOfInt1);
     }
+    return new dq(arrayOfInt1, 1);
   }
   
   private int i()
@@ -1327,24 +1299,21 @@ public class dq
   
   private int i(int paramInt)
   {
-    int i1;
     if (paramInt < 0) {
-      i1 = 0;
+      return 0;
     }
-    int i2;
-    do
-    {
+    int[] arrayOfInt = this.b;
+    if (paramInt >= arrayOfInt.length) {
+      return h();
+    }
+    int i1 = arrayOfInt[(arrayOfInt.length - paramInt - 1)];
+    if (this.a >= 0) {
       return i1;
-      if (paramInt >= this.b.length) {
-        return h();
-      }
-      i2 = this.b[(this.b.length - paramInt - 1)];
-      i1 = i2;
-    } while (this.a >= 0);
-    if (paramInt <= i()) {
-      return -i2;
     }
-    return i2 ^ 0xFFFFFFFF;
+    if (paramInt <= i()) {
+      return -i1;
+    }
+    return i1 ^ 0xFFFFFFFF;
   }
   
   public dq a()
@@ -1357,28 +1326,25 @@ public class dq
   
   public dq a(int paramInt)
   {
-    int i1 = 0;
-    int i2 = 0;
-    Object localObject;
     if (this.a == 0) {
-      localObject = c;
+      return c;
     }
-    do
-    {
-      return localObject;
-      localObject = this;
-    } while (paramInt == 0);
+    if (paramInt == 0) {
+      return this;
+    }
     if (paramInt < 0) {
       return b(-paramInt);
     }
-    int i6 = paramInt >>> 5;
+    int i2 = paramInt >>> 5;
     int i4 = paramInt & 0x1F;
-    int i3 = this.b.length;
+    Object localObject = this.b;
+    int i3 = localObject.length;
+    int i1 = 0;
+    paramInt = 0;
     int[] arrayOfInt;
     if (i4 == 0)
     {
-      arrayOfInt = new int[i6 + i3];
-      paramInt = i2;
+      arrayOfInt = new int[i2 + i3];
       for (;;)
       {
         localObject = arrayOfInt;
@@ -1390,23 +1356,25 @@ public class dq
       }
     }
     int i5 = 32 - i4;
-    i2 = this.b[0] >>> i5;
-    if (i2 != 0)
+    paramInt = localObject[0] >>> i5;
+    if (paramInt != 0)
     {
-      localObject = new int[i6 + i3 + 1];
+      localObject = new int[i2 + i3 + 1];
+      localObject[0] = paramInt;
       paramInt = 1;
-      localObject[0] = i2;
+    }
+    else
+    {
+      localObject = new int[i2 + i3];
+      paramInt = 0;
     }
     while (i1 < i3 - 1)
     {
       arrayOfInt = this.b;
       i2 = i1 + 1;
-      localObject[paramInt] = (arrayOfInt[i1] << i4 | this.b[i2] >>> i5);
-      i1 = i2;
+      localObject[paramInt] = (arrayOfInt[i1] << i4 | arrayOfInt[i2] >>> i5);
       paramInt += 1;
-      continue;
-      localObject = new int[i6 + i3];
-      paramInt = 0;
+      i1 = i2;
     }
     localObject[paramInt] = (this.b[i1] << i4);
     return new dq((int[])localObject, this.a);
@@ -1414,107 +1382,103 @@ public class dq
   
   public dq a(dq paramdq)
   {
-    if (paramdq.a == 0) {
+    int i1 = paramdq.a;
+    if (i1 == 0) {
       return this;
     }
-    if (this.a == 0) {
+    int i2 = this.a;
+    if (i2 == 0) {
       return paramdq;
     }
-    if (paramdq.a == this.a) {
+    if (i1 == i2) {
       return new dq(a(this.b, paramdq.b), this.a);
     }
-    int i1 = c(this.b, paramdq.b);
+    i1 = c(this.b, paramdq.b);
     if (i1 == 0) {
       return c;
     }
-    if (i1 > 0) {}
-    for (paramdq = b(this.b, paramdq.b);; paramdq = b(paramdq.b, this.b)) {
-      return new dq(c(paramdq), i1 * this.a);
+    if (i1 > 0) {
+      paramdq = b(this.b, paramdq.b);
+    } else {
+      paramdq = b(paramdq.b, this.b);
     }
+    return new dq(c(paramdq), i1 * this.a);
   }
   
   public dq a(dq paramdq1, dq paramdq2)
   {
-    if (paramdq2.a <= 0) {
-      throw new ArithmeticException("BigInteger: modulus not positive");
-    }
-    dq localdq1;
-    if (paramdq1.a == 0)
+    if (paramdq2.a > 0)
     {
-      if (paramdq2.equals(d))
+      if (paramdq1.a == 0)
       {
-        localdq1 = c;
-        return localdq1;
+        if (paramdq2.equals(d)) {
+          return c;
+        }
+        return d;
       }
-      return d;
-    }
-    if (equals(d))
-    {
-      if (paramdq2.equals(d)) {
+      if (equals(d))
+      {
+        if (paramdq2.equals(d)) {
+          return c;
+        }
+        return d;
+      }
+      if ((equals(c)) && (paramdq1.a >= 0)) {
         return c;
       }
-      return d;
-    }
-    if ((equals(c)) && (paramdq1.a >= 0)) {
-      return c;
-    }
-    if ((equals(p[1])) && (!paramdq1.c(0)))
-    {
-      if (paramdq2.equals(d)) {
-        return c;
+      Object localObject = p;
+      int i1 = 1;
+      if ((equals(localObject[1])) && (!paramdq1.c(0)))
+      {
+        if (paramdq2.equals(d)) {
+          return c;
+        }
+        return d;
       }
-      return d;
-    }
-    int i1;
-    if (paramdq1.a < 0)
-    {
-      i1 = 1;
-      label143:
-      localdq1 = paramdq1;
+      if (paramdq1.a >= 0) {
+        i1 = 0;
+      }
+      localObject = paramdq1;
       if (i1 != 0) {
-        localdq1 = paramdq1.b();
+        localObject = paramdq1.b();
       }
       if ((this.a >= 0) && (f(paramdq2) < 0)) {
-        break label211;
+        paramdq1 = this;
+      } else {
+        paramdq1 = c(paramdq2);
       }
-    }
-    label211:
-    for (paramdq1 = c(paramdq2);; paramdq1 = this)
-    {
-      if (!paramdq2.c(0)) {
-        break label216;
+      if (paramdq2.c(0))
+      {
+        paramdq1 = paramdq1.b((dq)localObject, paramdq2);
       }
-      paramdq1 = paramdq1.b(localdq1, paramdq2);
-      localdq1 = paramdq1;
-      if (i1 == 0) {
-        break;
+      else
+      {
+        int i2 = paramdq2.c();
+        dq localdq2 = paramdq2.b(i2);
+        dq localdq3 = d.a(i2);
+        dq localdq1;
+        if ((this.a >= 0) && (f(localdq2) < 0)) {
+          localdq1 = this;
+        } else {
+          localdq1 = c(localdq2);
+        }
+        if (localdq2.equals(d)) {
+          localdq1 = c;
+        } else {
+          localdq1 = localdq1.b((dq)localObject, localdq2);
+        }
+        paramdq1 = paramdq1.a((dq)localObject, i2);
+        localObject = localdq3.e(localdq2);
+        dq localdq4 = localdq2.e(localdq3);
+        paramdq1 = localdq1.b(localdq3).b((dq)localObject).a(paramdq1.b(localdq2).b(localdq4)).c(paramdq2);
       }
-      return paramdq1.e(paramdq2);
-      i1 = 0;
-      break label143;
+      localObject = paramdq1;
+      if (i1 != 0) {
+        localObject = paramdq1.e(paramdq2);
+      }
+      return localObject;
     }
-    label216:
-    int i2 = paramdq2.c();
-    dq localdq3 = paramdq2.b(i2);
-    dq localdq4 = d.a(i2);
-    if (this.a >= 0)
-    {
-      localdq2 = this;
-      if (f(localdq3) < 0) {}
-    }
-    else
-    {
-      localdq2 = c(localdq3);
-    }
-    if (localdq3.equals(d)) {}
-    for (dq localdq2 = c;; localdq2 = localdq2.b(localdq1, localdq3))
-    {
-      paramdq1 = paramdq1.a(localdq1, i2);
-      localdq1 = localdq4.e(localdq3);
-      dq localdq5 = localdq3.e(localdq4);
-      paramdq1 = localdq2.b(localdq4).b(localdq1).a(paramdq1.b(localdq3).b(localdq5)).c(paramdq2);
-      break;
-    }
+    throw new ArithmeticException("BigInteger: modulus not positive");
   }
   
   int[] a(int[] paramArrayOfInt)
@@ -1543,7 +1507,6 @@ public class dq
   
   public dq b(int paramInt)
   {
-    int i2 = 1;
     if (paramInt == 0) {
       return this;
     }
@@ -1551,20 +1514,19 @@ public class dq
       return a(-paramInt);
     }
     int i4 = paramInt >>> 5;
-    int i5 = paramInt & 0x1F;
-    int i6 = this.b.length;
-    Object localObject1;
-    if (i4 >= i6)
+    int i3 = paramInt & 0x1F;
+    Object localObject1 = this.b;
+    int i5 = localObject1.length;
+    if (i4 >= i5)
     {
-      if (this.a >= 0) {}
-      for (localObject1 = c;; localObject1 = p[1]) {
-        return localObject1;
+      if (this.a >= 0) {
+        return c;
       }
+      return p[1];
     }
-    int i1;
-    if (i5 == 0)
+    if (i3 == 0)
     {
-      i1 = i6 - i4;
+      i1 = i5 - i4;
       localObject2 = new int[i1];
       paramInt = 0;
       for (;;)
@@ -1577,164 +1539,170 @@ public class dq
         paramInt += 1;
       }
     }
-    paramInt = this.b[0] >>> i5;
+    paramInt = localObject1[0] >>> i3;
     if (paramInt != 0)
     {
-      localObject2 = new int[i6 - i4];
+      localObject2 = new int[i5 - i4];
       localObject2[0] = paramInt;
+      paramInt = 1;
     }
-    for (paramInt = 1;; paramInt = 0)
+    else
     {
-      i1 = 0;
-      for (;;)
-      {
-        localObject1 = localObject2;
-        if (i1 >= i6 - i4 - 1) {
-          break;
-        }
-        localObject1 = this.b;
-        int i3 = i1 + 1;
-        localObject2[paramInt] = (localObject1[i1] << 32 - i5 | this.b[i3] >>> i5);
-        i1 = i3;
-        paramInt += 1;
+      localObject2 = new int[i5 - i4 - 1];
+      paramInt = 0;
+    }
+    int i2 = 0;
+    int i1 = paramInt;
+    for (paramInt = i2;; paramInt = i2)
+    {
+      localObject1 = localObject2;
+      if (paramInt >= i5 - i4 - 1) {
+        break;
       }
-      localObject2 = new int[i6 - i4 - 1];
+      localObject1 = this.b;
+      i2 = paramInt + 1;
+      localObject2[i1] = (localObject1[paramInt] << 32 - i3 | localObject1[i2] >>> i3);
+      i1 += 1;
     }
     Object localObject2 = localObject1;
     if (this.a < 0)
     {
-      i1 = i6 - 1;
+      i1 = i5 - 1;
+      i2 = i5 - i4;
       paramInt = 0;
-      if ((i1 >= i6 - i4) && (paramInt == 0))
+      while ((i1 >= i2) && (paramInt == 0))
       {
-        if (this.b[i1] != 0) {}
-        for (paramInt = 1;; paramInt = 0)
-        {
-          i1 -= 1;
-          break;
+        if (this.b[i1] != 0) {
+          paramInt = 1;
+        } else {
+          paramInt = 0;
+        }
+        i1 -= 1;
+      }
+      i1 = paramInt;
+      if (paramInt == 0)
+      {
+        i1 = paramInt;
+        if (i3 != 0) {
+          if (this.b[(i2 - 1)] << 32 - i3 != 0) {
+            i1 = 1;
+          } else {
+            i1 = 0;
+          }
         }
       }
-      if ((paramInt != 0) || (i5 == 0)) {
-        break label343;
-      }
-      if (this.b[(i6 - i4 - 1)] << 32 - i5 == 0) {
-        break label338;
-      }
-      paramInt = i2;
-    }
-    label338:
-    label343:
-    for (;;)
-    {
       localObject2 = localObject1;
-      if (paramInt != 0) {
+      if (i1 != 0) {
         localObject2 = a((int[])localObject1);
       }
-      return new dq((int[])localObject2, this.a);
-      paramInt = 0;
     }
+    return new dq((int[])localObject2, this.a);
   }
   
   public dq b(dq paramdq)
   {
-    if ((this.a == 0) || (paramdq.a == 0)) {
-      return c;
+    if ((this.a != 0) && (paramdq.a != 0))
+    {
+      int[] arrayOfInt1 = this.b;
+      int i1 = arrayOfInt1.length;
+      int[] arrayOfInt2 = paramdq.b;
+      return new dq(c(a(arrayOfInt1, i1, arrayOfInt2, arrayOfInt2.length, null)), this.a * paramdq.a);
     }
-    return new dq(c(a(this.b, this.b.length, paramdq.b, paramdq.b.length, null)), this.a * paramdq.a);
+    return c;
   }
   
   public int c()
   {
     if (this.j == -2) {
-      if (this.a != 0) {
-        break label26;
-      }
-    }
-    label26:
-    int i1;
-    int i2;
-    for (this.j = -1;; this.j = ((i1 << 5) + f(i2)))
-    {
-      return this.j;
-      i1 = 0;
-      for (;;)
+      if (this.a == 0)
       {
-        i2 = i(i1);
-        if (i2 != 0) {
-          break;
+        this.j = -1;
+      }
+      else
+      {
+        int i1 = 0;
+        int i2;
+        for (;;)
+        {
+          i2 = i(i1);
+          if (i2 != 0) {
+            break;
+          }
+          i1 += 1;
         }
-        i1 += 1;
+        this.j = ((i1 << 5) + f(i2));
       }
     }
+    return this.j;
   }
   
   public dq c(dq paramdq)
   {
-    if (paramdq.a <= 0) {
-      throw new ArithmeticException("BigInteger: modulus not positive");
+    if (paramdq.a > 0)
+    {
+      dq localdq = d(paramdq);
+      if (localdq.a >= 0) {
+        return localdq;
+      }
+      return localdq.a(paramdq);
     }
-    dq localdq = d(paramdq);
-    if (localdq.a >= 0) {
-      return localdq;
-    }
-    return localdq.a(paramdq);
+    throw new ArithmeticException("BigInteger: modulus not positive");
   }
   
   public boolean c(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new ArithmeticException("Negative bit address");
+    if (paramInt >= 0) {
+      return (1 << paramInt % 32 & i(paramInt / 32)) != 0;
     }
-    return (i(paramInt / 32) & 1 << paramInt % 32) != 0;
+    throw new ArithmeticException("Negative bit address");
   }
   
   public int d()
   {
-    if (this.i == -1)
-    {
-      if (this.a != 0) {
-        break label25;
-      }
-      this.i = 0;
-    }
-    for (;;)
-    {
-      return this.i;
-      label25:
-      int i3 = (this.b.length - 1 << 5) + d(this.b[0]);
-      if (this.a < 0)
+    if (this.i == -1) {
+      if (this.a == 0)
       {
-        int i2;
-        if (e(this.b[0]) == 1)
+        this.i = 0;
+      }
+      else
+      {
+        int[] arrayOfInt = this.b;
+        int i3 = (arrayOfInt.length - 1 << 5) + d(arrayOfInt[0]);
+        if (this.a < 0)
         {
-          i1 = 1;
-          i2 = 1;
-          label69:
-          if ((i2 >= this.b.length) || (i1 == 0)) {
-            break label110;
+          int i1;
+          if (e(this.b[0]) == 1) {
+            i1 = 1;
+          } else {
+            i1 = 0;
           }
-          if (this.b[i2] != 0) {
-            break label105;
+          int i2 = 1;
+          for (;;)
+          {
+            arrayOfInt = this.b;
+            if ((i2 >= arrayOfInt.length) || (i1 == 0)) {
+              break;
+            }
+            if (arrayOfInt[i2] == 0) {
+              i1 = 1;
+            } else {
+              i1 = 0;
+            }
+            i2 += 1;
           }
+          i2 = i3;
+          if (i1 != 0) {
+            i2 = i3 - 1;
+          }
+          this.i = i2;
         }
-        label105:
-        for (int i1 = 1;; i1 = 0)
+        else
         {
-          i2 += 1;
-          break label69;
-          i1 = 0;
-          break;
-        }
-        label110:
-        if (i1 != 0) {}
-        for (i1 = i3 - 1;; i1 = i3)
-        {
-          this.i = i1;
-          break;
+          this.i = i3;
         }
       }
-      this.i = i3;
     }
+    return this.i;
   }
   
   public dq d(dq paramdq)
@@ -1747,81 +1715,78 @@ public class dq
   
   public dq e(dq paramdq)
   {
-    if (paramdq.a != 1) {
-      throw new ArithmeticException("BigInteger: modulus not positive");
-    }
-    if (paramdq.equals(d)) {
-      return c;
-    }
-    dq localdq;
-    if (this.a >= 0)
+    if (paramdq.a == 1)
     {
-      localdq = this;
-      if (c(this.b, paramdq.b) < 0) {}
+      if (paramdq.equals(d)) {
+        return c;
+      }
+      dq localdq;
+      if ((this.a >= 0) && (c(this.b, paramdq.b) < 0)) {
+        localdq = this;
+      } else {
+        localdq = c(paramdq);
+      }
+      if (localdq.equals(d)) {
+        return d;
+      }
+      return new dq(new dr(localdq).e(new dr(paramdq)), 1);
     }
-    else
-    {
-      localdq = c(paramdq);
-    }
-    if (localdq.equals(d)) {
-      return d;
-    }
-    return new dq(new dr(localdq).e(new dr(paramdq)), 1);
+    throw new ArithmeticException("BigInteger: modulus not positive");
   }
   
   public String e()
   {
-    String str2 = g(16);
-    String str1 = str2;
-    if (str2.length() % 2 != 0) {
-      str1 = "0" + str2;
+    String str = g(16);
+    Object localObject = str;
+    if (str.length() % 2 != 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("0");
+      ((StringBuilder)localObject).append(str);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    return str1;
+    return localObject;
   }
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (paramObject == this) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (!(paramObject instanceof dq)) {
+      return false;
+    }
+    paramObject = (dq)paramObject;
+    if (paramObject.a == this.a)
     {
-      do
+      if (paramObject.b.length != this.b.length) {
+        return false;
+      }
+      int i1 = 0;
+      for (;;)
       {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (!(paramObject instanceof dq));
-        paramObject = (dq)paramObject;
-        bool1 = bool2;
-      } while (paramObject.a != this.a);
-      bool1 = bool2;
-    } while (paramObject.b.length != this.b.length);
-    int i1 = 0;
-    for (;;)
-    {
-      if (i1 >= this.b.length) {
-        break label93;
+        int[] arrayOfInt = this.b;
+        if (i1 >= arrayOfInt.length) {
+          break;
+        }
+        if (paramObject.b[i1] != arrayOfInt[i1]) {
+          return false;
+        }
+        i1 += 1;
       }
-      bool1 = bool2;
-      if (paramObject.b[i1] != this.b[i1]) {
-        break;
-      }
-      i1 += 1;
+      return true;
     }
-    label93:
-    return true;
+    return false;
   }
   
   public int f(dq paramdq)
   {
-    if (this.a == paramdq.a) {
-      return this.a * c(this.b, paramdq.b);
+    int i1 = this.a;
+    int i2 = paramdq.a;
+    if (i1 == i2) {
+      return i1 * c(this.b, paramdq.b);
     }
-    if (this.a > paramdq.a) {
+    if (i1 > i2) {
       return 1;
     }
     return -1;
@@ -1890,12 +1855,16 @@ public class dq
   {
     int i1 = 0;
     int i2 = 0;
-    while (i1 < this.b.length)
+    for (;;)
     {
-      i2 = (int)(i2 * 31 + (this.b[i1] & 0xFFFFFFFF));
+      int[] arrayOfInt = this.b;
+      if (i1 >= arrayOfInt.length) {
+        break;
+      }
+      i2 = (int)(i2 * 31 + (arrayOfInt[i1] & 0xFFFFFFFF));
       i1 += 1;
     }
-    return this.a * i2;
+    return i2 * this.a;
   }
   
   public String toString()

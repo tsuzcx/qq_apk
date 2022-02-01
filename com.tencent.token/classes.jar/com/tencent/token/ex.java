@@ -19,16 +19,17 @@ public class ex
   {
     this.f = paramString;
     this.i = paramey;
-    if (paramArrayOfByte == null) {
+    if (paramArrayOfByte == null)
+    {
       this.j = null;
     }
-    for (;;)
+    else
     {
-      this.e = paramBoolean;
-      return;
       this.j = new byte[paramArrayOfByte.length];
-      System.arraycopy(paramArrayOfByte, 0, this.j, 0, this.j.length);
+      paramString = this.j;
+      System.arraycopy(paramArrayOfByte, 0, paramString, 0, paramString.length);
     }
+    this.e = paramBoolean;
   }
   
   public String a()
@@ -53,12 +54,13 @@ public class ex
   
   public byte[] c()
   {
-    if (this.j == null) {
+    byte[] arrayOfByte1 = this.j;
+    if (arrayOfByte1 == null) {
       return null;
     }
-    byte[] arrayOfByte = new byte[this.j.length];
-    System.arraycopy(this.j, 0, arrayOfByte, 0, arrayOfByte.length);
-    return arrayOfByte;
+    byte[] arrayOfByte2 = new byte[arrayOfByte1.length];
+    System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte2.length);
+    return arrayOfByte2;
   }
   
   public int d()

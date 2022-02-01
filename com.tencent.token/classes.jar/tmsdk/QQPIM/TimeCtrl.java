@@ -14,16 +14,6 @@ public final class TimeCtrl
   public int time = 0;
   public int validEndTime = 0;
   
-  static
-  {
-    if (!TimeCtrl.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public TimeCtrl()
   {
     setTime(this.time);
@@ -47,29 +37,43 @@ public final class TimeCtrl
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (TimeCtrl)paramObject;
-    } while ((!JceUtil.equals(this.time, paramObject.time)) || (!JceUtil.equals(this.bEngross, paramObject.bEngross)) || (!JceUtil.equals(this.validEndTime, paramObject.validEndTime)) || (!JceUtil.equals(this.exectime, paramObject.exectime)));
-    return true;
+    }
+    paramObject = (TimeCtrl)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.time, paramObject.time))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.bEngross, paramObject.bEngross))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.validEndTime, paramObject.validEndTime))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.exectime, paramObject.exectime)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

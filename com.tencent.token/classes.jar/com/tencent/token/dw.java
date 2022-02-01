@@ -25,67 +25,79 @@ public class dw
   
   public void a(Writer paramWriter, char[] paramArrayOfChar)
   {
-    if ((paramWriter == null) || (paramArrayOfChar == null) || (paramArrayOfChar.length == 0)) {
-      return;
-    }
-    int n = paramArrayOfChar.length;
-    for (;;)
+    int i1;
+    int i2;
+    int k;
+    int m;
+    int j;
+    int i;
+    if ((paramWriter != null) && (paramArrayOfChar != null))
     {
-      int j;
-      int k;
-      int i1;
-      int i2;
+      if (paramArrayOfChar.length == 0) {
+        return;
+      }
+      int n = paramArrayOfChar.length;
       try
       {
         Iterator localIterator = iterator();
-        j = 0;
-        i = n;
+        i1 = n;
+        i2 = 0;
         if (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
           k = str.length();
           m = 0;
-          break label169;
-          str.getChars(m, m + i1, paramArrayOfChar, j);
-          i2 = i - i1;
-          k -= i1;
-          i = i1 + m;
-          if (i2 == 0)
-          {
-            paramWriter.write(paramArrayOfChar, 0, n);
-            i1 = 0;
-            j = n;
-            m = i;
-            i = j;
-            j = i1;
-            break label169;
+          j = i2;
+          i = i1;
+          break label161;
+          label73:
+          i1 = m + i2;
+          str.getChars(m, i1, paramArrayOfChar, j);
+          i -= i2;
+          j += i2;
+          k -= i2;
+          if (i != 0) {
+            break label192;
           }
+          paramWriter.write(paramArrayOfChar, 0, n);
+          i = n;
+          m = i1;
+          j = 0;
+          break label161;
         }
-        else
-        {
-          if (j > 0) {
-            paramWriter.write(paramArrayOfChar, 0, j);
-          }
-          paramWriter.flush();
-          return;
+        if (i2 > 0) {
+          paramWriter.write(paramArrayOfChar, 0, i2);
         }
+        paramWriter.flush();
+        return;
       }
       catch (Exception paramWriter)
       {
         paramWriter.printStackTrace();
         return;
       }
-      j += i1;
-      int m = i;
-      int i = i2;
-      label169:
-      if (k > 0) {
-        if (i > k) {
-          i1 = k;
-        } else {
-          i1 = i;
-        }
+    }
+    else
+    {
+      return;
+    }
+    for (;;)
+    {
+      label161:
+      i2 = j;
+      i1 = i;
+      if (k <= 0) {
+        break;
       }
+      if (i > k)
+      {
+        i2 = k;
+        break label73;
+      }
+      i2 = i;
+      break label73;
+      label192:
+      m = i1;
     }
   }
   

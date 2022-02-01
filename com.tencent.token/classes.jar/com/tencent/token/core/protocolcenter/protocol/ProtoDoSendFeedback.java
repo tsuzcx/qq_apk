@@ -28,8 +28,8 @@ public class ProtoDoSendFeedback
   
   protected String a()
   {
-    Object localObject1 = null;
     String str = ca.a().b();
+    Object localObject1 = null;
     if (str == null)
     {
       this.a.b(104);
@@ -47,19 +47,31 @@ public class ProtoDoSendFeedback
       ((JSONObject)localObject2).put("comment", this.d);
       ((JSONObject)localObject2).put("uin", this.f);
       localObject2 = ((JSONObject)localObject2).toString();
-      g.a("plain:" + (String)localObject2);
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("plain:");
+      localStringBuilder2.append((String)localObject2);
+      g.a(localStringBuilder2.toString());
       localObject2 = l.b(((String)localObject2).getBytes());
       localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        g.c("JSONException:" + localJSONException.getMessage());
-      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("JSONException:");
+      localStringBuilder2.append(localJSONException.getMessage());
+      g.c(localStringBuilder2.toString());
     }
-    localObject1 = "?aq_base_sid=" + str + "&data=" + (String)localObject1;
-    return c.e() + "/cn/mbtoken3/mbtoken3_feedback_v2" + (String)localObject1;
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("?aq_base_sid=");
+    localStringBuilder1.append(str);
+    localStringBuilder1.append("&data=");
+    localStringBuilder1.append((String)localObject1);
+    localObject1 = localStringBuilder1.toString();
+    localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append(c.e());
+    localStringBuilder1.append("/cn/mbtoken3/mbtoken3_feedback_v2");
+    localStringBuilder1.append((String)localObject1);
+    return localStringBuilder1.toString();
   }
   
   protected void a(do paramdo)

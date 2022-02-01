@@ -94,13 +94,26 @@ public class ErrMsg
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("(");
-    if (this.type < 0) {}
-    for (Object localObject = Integer.valueOf(this.type);; localObject = Integer.toString(this.type))
-    {
-      localObject = localObject + ")[";
-      return (String)localObject + this.title + "]" + this.message + "[" + this.otherinfo + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(");
+    int i = this.type;
+    if (i < 0) {
+      localObject = Integer.valueOf(i);
+    } else {
+      localObject = Integer.toString(i);
     }
+    localStringBuilder.append(localObject);
+    localStringBuilder.append(")[");
+    Object localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(this.title);
+    localStringBuilder.append("]");
+    localStringBuilder.append(this.message);
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.otherinfo);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

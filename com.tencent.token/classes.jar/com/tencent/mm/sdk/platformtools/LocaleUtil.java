@@ -34,18 +34,22 @@ public final class LocaleUtil
   
   private static String d(String paramString)
   {
-    String str = Locale.getDefault().getLanguage().trim();
-    if (str.equals("en")) {
-      paramString = str;
+    Object localObject = Locale.getDefault().getLanguage().trim();
+    if (((String)localObject).equals("en")) {
+      return localObject;
     }
-    do
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Locale.getDefault().getLanguage().trim());
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(Locale.getDefault().getCountry().trim());
+    localObject = ((StringBuilder)localObject).toString();
+    if ((!((String)localObject).equals("zh_TW")) && (!((String)localObject).equals("zh_HK")))
     {
-      return paramString;
-      str = Locale.getDefault().getLanguage().trim() + "_" + Locale.getDefault().getCountry().trim();
-      if ((str.equals("zh_TW")) || (str.equals("zh_HK"))) {
-        return "zh_TW";
-      }
-      if ((Locale.getDefault().getLanguage().trim() + "_" + Locale.getDefault().getCountry().trim()).equals("zh_CN")) {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Locale.getDefault().getLanguage().trim());
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(Locale.getDefault().getCountry().trim());
+      if (((StringBuilder)localObject).toString().equals("zh_CN")) {
         return "zh_CN";
       }
       if (Locale.getDefault().getLanguage().trim().equals("th")) {
@@ -90,8 +94,12 @@ public final class LocaleUtil
       if (Locale.getDefault().getLanguage().trim().equals("ms")) {
         return "ms";
       }
-    } while (!Locale.getDefault().getLanguage().trim().equals("tr"));
-    return "tr";
+      if (Locale.getDefault().getLanguage().trim().equals("tr")) {
+        paramString = "tr";
+      }
+      return paramString;
+    }
+    return "zh_TW";
   }
   
   public static String getApplicationLanguage()
@@ -110,24 +118,22 @@ public final class LocaleUtil
   
   public static boolean isLanguageSupported(String paramString)
   {
-    if (Util.isNullOrNil(paramString)) {}
-    while ((!paramString.equalsIgnoreCase("zh_TW")) && (!paramString.equalsIgnoreCase("zh_HK")) && (!paramString.equalsIgnoreCase("zh_CN")) && (!paramString.equalsIgnoreCase("en")) && (!paramString.equalsIgnoreCase("th")) && (!paramString.equals("id")) && (!paramString.equals("vi")) && (!paramString.equalsIgnoreCase("pt")) && (!paramString.equalsIgnoreCase("es")) && (!paramString.equalsIgnoreCase("ru")) && (!paramString.equalsIgnoreCase("ar")) && (!paramString.equalsIgnoreCase("iw")) && (!paramString.equalsIgnoreCase("pl")) && (!paramString.equalsIgnoreCase("hi")) && (!paramString.equalsIgnoreCase("ja")) && (!paramString.equalsIgnoreCase("it")) && (!paramString.equalsIgnoreCase("ko")) && (!paramString.equalsIgnoreCase("ms")) && (!paramString.equalsIgnoreCase("tr"))) {
+    if (Util.isNullOrNil(paramString)) {
       return false;
     }
-    return true;
+    return (paramString.equalsIgnoreCase("zh_TW")) || (paramString.equalsIgnoreCase("zh_HK")) || (paramString.equalsIgnoreCase("zh_CN")) || (paramString.equalsIgnoreCase("en")) || (paramString.equalsIgnoreCase("th")) || (paramString.equals("id")) || (paramString.equals("vi")) || (paramString.equalsIgnoreCase("pt")) || (paramString.equalsIgnoreCase("es")) || (paramString.equalsIgnoreCase("ru")) || (paramString.equalsIgnoreCase("ar")) || (paramString.equalsIgnoreCase("iw")) || (paramString.equalsIgnoreCase("pl")) || (paramString.equalsIgnoreCase("hi")) || (paramString.equalsIgnoreCase("ja")) || (paramString.equalsIgnoreCase("it")) || (paramString.equalsIgnoreCase("ko")) || (paramString.equalsIgnoreCase("ms")) || (paramString.equalsIgnoreCase("tr"));
   }
   
   public static String loadApplicationLanguage(SharedPreferences paramSharedPreferences, Context paramContext)
   {
     paramSharedPreferences = Util.nullAsNil(paramSharedPreferences.getString("language_key", null));
-    if ((paramSharedPreferences.length() > 0) && (!paramSharedPreferences.equals("language_default")))
+    if ((paramSharedPreferences.length() > 0) && (!paramSharedPreferences.equals("language_default"))) {}
+    for (;;)
     {
       SystemProperty.setProperty("language_key", paramSharedPreferences);
       return paramSharedPreferences;
+      paramSharedPreferences = d("en");
     }
-    paramSharedPreferences = d("en");
-    SystemProperty.setProperty("language_key", paramSharedPreferences);
-    return paramSharedPreferences;
   }
   
   public static String loadApplicationLanguageSettings(SharedPreferences paramSharedPreferences, Context paramContext)
@@ -144,7 +150,9 @@ public final class LocaleUtil
     if (paramSharedPreferences.edit().putString("language_key", paramString).commit())
     {
       SystemProperty.setProperty("language_key", paramString);
-      Log.w("MicroMsg.LocaleUtil", "save application lang as:" + paramString);
+      paramSharedPreferences = new StringBuilder("save application lang as:");
+      paramSharedPreferences.append(paramString);
+      Log.w("MicroMsg.LocaleUtil", paramSharedPreferences.toString());
       return;
     }
     Log.e("MicroMsg.LocaleUtil", "saving application lang failed");
@@ -152,62 +160,65 @@ public final class LocaleUtil
   
   public static Locale transLanguageToLocale(String paramString)
   {
-    if ((paramString.equals("zh_TW")) || (paramString.equals("zh_HK"))) {
-      return Locale.TAIWAN;
-    }
-    if (paramString.equals("en")) {
+    if ((!paramString.equals("zh_TW")) && (!paramString.equals("zh_HK")))
+    {
+      if (paramString.equals("en")) {
+        return Locale.ENGLISH;
+      }
+      if (paramString.equals("zh_CN")) {
+        return Locale.CHINA;
+      }
+      if (paramString.equalsIgnoreCase("th")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("id")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("vi")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("pt")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("es")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("ru")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("ar")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("iw")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("pl")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("hi")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("ja")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("it")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("ko")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("ms")) {
+        return new Locale(paramString);
+      }
+      if (paramString.equalsIgnoreCase("tr")) {
+        return new Locale(paramString);
+      }
+      StringBuilder localStringBuilder = new StringBuilder("transLanguageToLocale country = ");
+      localStringBuilder.append(paramString);
+      Log.e("MicroMsg.LocaleUtil", localStringBuilder.toString());
       return Locale.ENGLISH;
     }
-    if (paramString.equals("zh_CN")) {
-      return Locale.CHINA;
-    }
-    if (paramString.equalsIgnoreCase("th")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("id")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("vi")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("pt")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("es")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("ru")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("ar")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("iw")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("pl")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("hi")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("ja")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("it")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("ko")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("ms")) {
-      return new Locale(paramString);
-    }
-    if (paramString.equalsIgnoreCase("tr")) {
-      return new Locale(paramString);
-    }
-    Log.e("MicroMsg.LocaleUtil", "transLanguageToLocale country = " + paramString);
-    return Locale.ENGLISH;
+    return Locale.TAIWAN;
   }
   
   public static void updateApplicationResourceLocale(Context paramContext, Locale paramLocale)

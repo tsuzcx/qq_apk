@@ -35,7 +35,13 @@ public class PlugInInfo
   
   public String toString()
   {
-    return "plid:" + this.plugInId + " plV:" + this.plugInVersion + " plUUID:" + this.plugInUUID;
+    StringBuilder localStringBuilder = new StringBuilder("plid:");
+    localStringBuilder.append(this.plugInId);
+    localStringBuilder.append(" plV:");
+    localStringBuilder.append(this.plugInVersion);
+    localStringBuilder.append(" plUUID:");
+    localStringBuilder.append(this.plugInUUID);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

@@ -32,16 +32,21 @@ public class RectView
   public RectView(Context paramContext, int paramInt1, int paramInt2)
   {
     super(paramContext);
-    this.width = ((int)(paramInt1 * 0.6D));
-    this.height = ((int)(this.width * 1.0D));
+    double d = paramInt1;
+    Double.isNaN(d);
+    this.width = ((int)(d * 0.6D));
+    d = this.width;
+    Double.isNaN(d);
+    this.height = ((int)(d * 1.0D));
     this.top = ((paramInt2 - this.height - IndexActivity.S_STATUS_HEIGHT - IndexActivity.S_TITLE_HEIGHT) / 2);
-    this.bottom = ((this.height + paramInt2 - IndexActivity.S_STATUS_HEIGHT - IndexActivity.S_TITLE_HEIGHT) / 2);
-    this.left = ((paramInt1 - this.width) / 2);
-    this.right = ((this.width + paramInt1) / 2);
+    this.bottom = ((paramInt2 + this.height - IndexActivity.S_STATUS_HEIGHT - IndexActivity.S_TITLE_HEIGHT) / 2);
+    paramInt2 = this.width;
+    this.left = ((paramInt1 - paramInt2) / 2);
+    this.right = ((paramInt1 + paramInt2) / 2);
     this.pen = new Paint();
     paramContext = getResources();
-    this.mMaskColor = paramContext.getColor(2131493074);
-    this.mCornerColor = paramContext.getColor(2131492895);
+    this.mMaskColor = paramContext.getColor(2130968810);
+    this.mCornerColor = paramContext.getColor(2130968626);
   }
   
   public Paint getPen()
@@ -55,46 +60,69 @@ public class RectView
     int i = paramCanvas.getWidth();
     int j = paramCanvas.getHeight();
     this.pen.setColor(this.mMaskColor);
-    paramCanvas.drawRect(0.0F, 50.0F * IndexActivity.S_DENSITY, i, this.top, this.pen);
+    float f1 = IndexActivity.S_DENSITY;
+    float f2 = i;
+    paramCanvas.drawRect(0.0F, f1 * 50.0F, f2, this.top, this.pen);
     paramCanvas.drawRect(0.0F, this.top, this.left, this.bottom + 1, this.pen);
-    paramCanvas.drawRect(this.right + 1, this.top, i, this.bottom + 1, this.pen);
-    paramCanvas.drawRect(0.0F, this.bottom + 1, i, j, this.pen);
+    paramCanvas.drawRect(this.right + 1, this.top, f2, this.bottom + 1, this.pen);
+    paramCanvas.drawRect(0.0F, this.bottom + 1, f2, j, this.pen);
     if (this.mScanLine == null) {
-      this.mScanLine = m.a(getResources(), 2130837945, this.width);
+      this.mScanLine = m.a(getResources(), 2131100094, this.width);
     }
-    String str = getResources().getString(2131230859);
-    this.pen.setColor(getResources().getColor(2131492933));
-    this.pen.setTextSize(getResources().getDimension(2131296400));
-    float f = this.pen.measureText(str);
-    paramCanvas.drawText(str, (i - f) / 2.0F, this.bottom + 30.0F * IndexActivity.S_DENSITY, this.pen);
+    Object localObject = getResources().getString(2131493001);
+    this.pen.setColor(getResources().getColor(2130968665));
+    this.pen.setTextSize(getResources().getDimension(2131034250));
+    paramCanvas.drawText((String)localObject, (f2 - this.pen.measureText((String)localObject)) / 2.0F, this.bottom + IndexActivity.S_DENSITY * 30.0F, this.pen);
     j = this.CORNER_HEIGHT / 2;
     this.pen.setColor(this.mCornerColor);
-    paramCanvas.drawRect(this.left - j, this.top - j, this.left + this.CORNER_WIDTH - j, this.top + this.CORNER_HEIGHT - j, this.pen);
-    paramCanvas.drawRect(this.left - j, this.top - j, this.left + this.CORNER_HEIGHT - j, this.top + this.CORNER_WIDTH - j, this.pen);
-    paramCanvas.drawRect(this.left - j, this.bottom - this.CORNER_HEIGHT + j, this.left + this.CORNER_WIDTH - j, this.bottom + 1 + j, this.pen);
-    paramCanvas.drawRect(this.left - j, this.bottom - this.CORNER_WIDTH + j, this.left + this.CORNER_HEIGHT - j, this.bottom + 1 + j, this.pen);
-    paramCanvas.drawRect(this.right - this.CORNER_HEIGHT + j, this.top - j, this.right + 1 + j, this.top + this.CORNER_WIDTH - j, this.pen);
-    paramCanvas.drawRect(this.right - this.CORNER_WIDTH + j, this.top - j, this.right + 1 + j, this.top + this.CORNER_HEIGHT - j, this.pen);
-    paramCanvas.drawRect(this.right - this.CORNER_HEIGHT + j, this.bottom - this.CORNER_WIDTH + j, this.right + 1 + j, this.bottom + 1 + j, this.pen);
-    paramCanvas.drawRect(this.right - this.CORNER_WIDTH + j, this.bottom - this.CORNER_HEIGHT + j, this.right + 1 + j, this.bottom + 1 + j, this.pen);
-    long l;
+    int k = this.left;
+    f1 = k - j;
+    int m = this.top;
+    paramCanvas.drawRect(f1, m - j, k + this.CORNER_WIDTH - j, m + this.CORNER_HEIGHT - j, this.pen);
+    k = this.left;
+    f1 = k - j;
+    m = this.top;
+    paramCanvas.drawRect(f1, m - j, k + this.CORNER_HEIGHT - j, m + this.CORNER_WIDTH - j, this.pen);
+    k = this.left;
+    f1 = k - j;
+    m = this.bottom;
+    paramCanvas.drawRect(f1, m - this.CORNER_HEIGHT + j, k + this.CORNER_WIDTH - j, m + 1 + j, this.pen);
+    k = this.left;
+    f1 = k - j;
+    m = this.bottom;
+    paramCanvas.drawRect(f1, m - this.CORNER_WIDTH + j, k + this.CORNER_HEIGHT - j, m + 1 + j, this.pen);
+    k = this.right;
+    f1 = k - this.CORNER_HEIGHT + j;
+    m = this.top;
+    paramCanvas.drawRect(f1, m - j, k + 1 + j, m + this.CORNER_WIDTH - j, this.pen);
+    k = this.right;
+    f1 = k - this.CORNER_WIDTH + j;
+    m = this.top;
+    paramCanvas.drawRect(f1, m - j, k + 1 + j, m + this.CORNER_HEIGHT - j, this.pen);
+    k = this.right;
+    f1 = k - this.CORNER_HEIGHT + j;
+    m = this.bottom;
+    paramCanvas.drawRect(f1, m - this.CORNER_WIDTH + j, k + 1 + j, m + 1 + j, this.pen);
+    k = this.right;
+    f1 = k - this.CORNER_WIDTH + j;
+    m = this.bottom;
+    paramCanvas.drawRect(f1, m - this.CORNER_HEIGHT + j, k + 1 + j, m + 1 + j, this.pen);
     if ((this.mScanLine != null) && (this.mIsDrawLineImg))
     {
-      l = System.currentTimeMillis();
-      if (this.mLastTime != 0L) {
-        break label723;
+      long l1 = System.currentTimeMillis();
+      long l2 = this.mLastTime;
+      if (l2 == 0L)
+      {
+        this.mLastTime = l1;
       }
-      this.mLastTime = l;
-    }
-    for (;;)
-    {
+      else
+      {
+        l1 -= l2;
+        j = ((int)(l1 / 1000L) % 5 * 1000 + (int)(l1 % 1000L)) * this.height / 5000;
+        localObject = this.mScanLine;
+        paramCanvas.drawBitmap((Bitmap)localObject, (i - this.width) / 2, this.top + j - ((Bitmap)localObject).getHeight(), this.pen);
+      }
       postInvalidateDelayed(20L, this.left, this.top, this.right, this.bottom);
-      return;
-      label723:
-      l -= this.mLastTime;
-      j = (int)(l / 1000L);
-      j = ((int)(l % 1000L) + j % 5 * 1000) * this.height / 5000;
-      paramCanvas.drawBitmap(this.mScanLine, (i - this.width) / 2, j + this.top - this.mScanLine.getHeight(), this.pen);
     }
   }
   

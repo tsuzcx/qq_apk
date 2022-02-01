@@ -14,16 +14,6 @@ public final class HitTelReport
   public int iTelType = 0;
   public String sPhonenum = "";
   
-  static
-  {
-    if (!HitTelReport.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public HitTelReport() {}
   
   public HitTelReport(String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -41,29 +31,43 @@ public final class HitTelReport
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (HitTelReport)paramObject;
-    } while ((!JceUtil.equals(this.sPhonenum, paramObject.sPhonenum)) || (!JceUtil.equals(this.iHitTime, paramObject.iHitTime)) || (!JceUtil.equals(this.iFileStamp, paramObject.iFileStamp)) || (!JceUtil.equals(this.iTelType, paramObject.iTelType)));
-    return true;
+    }
+    paramObject = (HitTelReport)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.sPhonenum, paramObject.sPhonenum))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.iHitTime, paramObject.iHitTime))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.iFileStamp, paramObject.iFileStamp))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.iTelType, paramObject.iTelType)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

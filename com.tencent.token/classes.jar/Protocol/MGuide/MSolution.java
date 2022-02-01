@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -76,49 +77,63 @@ public final class MSolution
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mJumpIntent != null) {
-      paramJceOutputStream.write(this.mJumpIntent, 0);
+    Object localObject = this.mJumpIntent;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.mHelpInfo != null) {
-      paramJceOutputStream.write(this.mHelpInfo, 1);
+    localObject = this.mHelpInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.mHelpDuration != 0L) {
-      paramJceOutputStream.write(this.mHelpDuration, 2);
+    long l = this.mHelpDuration;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 2);
     }
-    if (this.mHelpInfoAdapter != null) {
-      paramJceOutputStream.write(this.mHelpInfoAdapter, 3);
+    localObject = this.mHelpInfoAdapter;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
-    if (this.mHelpStyle != 0) {
-      paramJceOutputStream.write(this.mHelpStyle, 4);
+    int i = this.mHelpStyle;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
-    if (this.mHelpImageList != null) {
-      paramJceOutputStream.write(this.mHelpImageList, 5);
+    localObject = this.mHelpImageList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
     paramJceOutputStream.write(this.mHelpImageLocal, 6);
-    if (this.mIntentCheck != 0) {
-      paramJceOutputStream.write(this.mIntentCheck, 7);
+    i = this.mIntentCheck;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 7);
     }
-    if (this.mVersion != 0) {
-      paramJceOutputStream.write(this.mVersion, 8);
+    i = this.mVersion;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 8);
     }
-    if (this.mBackupList != null) {
-      paramJceOutputStream.write(this.mBackupList, 9);
+    localObject = this.mBackupList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
     }
-    if (this.mHelpAnimation != 0) {
-      paramJceOutputStream.write(this.mHelpAnimation, 10);
+    i = this.mHelpAnimation;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 10);
     }
-    if (this.mHelpTech != 0) {
-      paramJceOutputStream.write(this.mHelpTech, 11);
+    i = this.mHelpTech;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 11);
     }
-    if (this.mHelpTextList != null) {
-      paramJceOutputStream.write(this.mHelpTextList, 12);
+    localObject = this.mHelpTextList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 12);
     }
     paramJceOutputStream.write(this.mNoTrustAll, 13);
-    if (this.mHelpDoraemonResList != null) {
-      paramJceOutputStream.write(this.mHelpDoraemonResList, 14);
+    localObject = this.mHelpDoraemonResList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 14);
     }
-    if (this.mHelpDoraemonZip != null) {
-      paramJceOutputStream.write(this.mHelpDoraemonZip, 15);
+    localObject = this.mHelpDoraemonZip;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
     }
   }
 }

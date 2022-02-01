@@ -28,18 +28,20 @@ public class tlv_t199
     if (this._body_len < 2) {
       return Boolean.valueOf(false);
     }
-    int i = util.buf_to_int16(this._buf, this._head_len + 0);
-    if (this._body_len < i + 2) {
+    int j = util.buf_to_int16(this._buf, this._head_len + 0);
+    int k = this._body_len;
+    int i = 2 + j;
+    if (k < i) {
       return Boolean.valueOf(false);
     }
-    this.openid = new byte[i];
-    System.arraycopy(this._buf, this._head_len + 2, this.openid, 0, i);
-    int j = i + 2;
-    if (this._body_len < j + 2) {
+    this.openid = new byte[j];
+    System.arraycopy(this._buf, this._head_len + 2, this.openid, 0, j);
+    k = this._body_len;
+    j = i + 2;
+    if (k < j) {
       return Boolean.valueOf(false);
     }
-    i = util.buf_to_int16(this._buf, this._head_len + j);
-    j += 2;
+    i = util.buf_to_int16(this._buf, this._head_len + i);
     if (this._body_len < j + i) {
       return Boolean.valueOf(false);
     }

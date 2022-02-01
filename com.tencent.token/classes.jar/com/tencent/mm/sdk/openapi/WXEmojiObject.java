@@ -28,36 +28,46 @@ public class WXEmojiObject
   
   public boolean checkArgs()
   {
-    if (((this.emojiData == null) || (this.emojiData.length == 0)) && ((this.emojiPath == null) || (this.emojiPath.length() == 0)))
+    Object localObject = this.emojiData;
+    if ((localObject == null) || (localObject.length == 0))
     {
-      Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, both arguments is null");
-      return false;
+      localObject = this.emojiPath;
+      if ((localObject == null) || (((String)localObject).length() == 0)) {}
     }
-    if ((this.emojiData != null) && (this.emojiData.length > 10485760))
+    else
     {
-      Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, emojiData is too large");
-      return false;
-    }
-    if (this.emojiPath != null)
-    {
-      Object localObject = this.emojiPath;
-      int i;
-      if ((localObject == null) || (((String)localObject).length() == 0)) {
-        i = 0;
+      localObject = this.emojiData;
+      if ((localObject != null) && (localObject.length > 10485760)) {
+        localObject = "checkArgs fail, emojiData is too large";
       }
-      while (i > 10485760)
+    }
+    for (;;)
+    {
+      Log.e("MicroMsg.SDK.WXEmojiObject", (String)localObject);
+      return false;
+      localObject = this.emojiPath;
+      if (localObject != null)
       {
-        Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, emojiSize is too large");
-        return false;
-        localObject = new File((String)localObject);
-        if (!((File)localObject).exists()) {
-          i = 0;
-        } else {
-          i = (int)((File)localObject).length();
+        if ((localObject != null) && (((String)localObject).length() != 0))
+        {
+          localObject = new File((String)localObject);
+          if (((File)localObject).exists())
+          {
+            i = (int)((File)localObject).length();
+            break label113;
+          }
+        }
+        int i = 0;
+        label113:
+        if (i > 10485760)
+        {
+          localObject = "checkArgs fail, emojiSize is too large";
+          continue;
         }
       }
+      return true;
+      localObject = "checkArgs fail, both arguments is null";
     }
-    return true;
   }
   
   public void serialize(Bundle paramBundle)

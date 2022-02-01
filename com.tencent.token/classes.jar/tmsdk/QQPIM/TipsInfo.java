@@ -16,16 +16,6 @@ public final class TipsInfo
   public String title = "";
   public int type = 0;
   
-  static
-  {
-    if (!TipsInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public TipsInfo() {}
   
   public TipsInfo(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -45,29 +35,51 @@ public final class TipsInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (TipsInfo)paramObject;
-    } while ((!JceUtil.equals(this.title, paramObject.title)) || (!JceUtil.equals(this.msg, paramObject.msg)) || (!JceUtil.equals(this.type, paramObject.type)) || (!JceUtil.equals(this.atype, paramObject.atype)) || (!JceUtil.equals(this.icontype, paramObject.icontype)) || (!JceUtil.equals(this.bgcolor, paramObject.bgcolor)));
-    return true;
+    }
+    paramObject = (TipsInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.title, paramObject.title))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.msg, paramObject.msg))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.type, paramObject.type))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.atype, paramObject.atype))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.icontype, paramObject.icontype))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.bgcolor, paramObject.bgcolor)) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

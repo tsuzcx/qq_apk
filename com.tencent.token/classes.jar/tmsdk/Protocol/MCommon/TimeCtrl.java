@@ -24,11 +24,13 @@ public final class TimeCtrl
   {
     paramJceOutputStream.write(this.time, 0);
     paramJceOutputStream.write(this.bEngross, 1);
-    if (this.validEndTime != 0) {
-      paramJceOutputStream.write(this.validEndTime, 2);
+    int i = this.validEndTime;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.exectime != 0) {
-      paramJceOutputStream.write(this.exectime, 3);
+    i = this.exectime;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
   }
 }

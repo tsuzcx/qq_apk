@@ -19,7 +19,11 @@ class v
     f localf = new f();
     localf.d = -50004;
     localf.c = paramMessage.what;
-    new StringBuilder().append("seq : ").append(paramMessage.what).append("超时").toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seq : ");
+    localStringBuilder.append(paramMessage.what);
+    localStringBuilder.append("超时");
+    localStringBuilder.toString();
     u.a(this.a, localf);
   }
 }

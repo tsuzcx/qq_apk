@@ -32,11 +32,12 @@ public class b
   
   public void a(long paramLong)
   {
-    long l = paramLong;
-    if (paramLong < this.f) {
-      l = this.f;
+    long l2 = this.f;
+    long l1 = paramLong;
+    if (paramLong < l2) {
+      l1 = l2;
     }
-    this.e = l;
+    this.e = l1;
   }
   
   public void b()
@@ -79,8 +80,9 @@ public class b
   
   void e()
   {
-    if (this.g != null) {
-      this.g.j();
+    d locald = this.g;
+    if (locald != null) {
+      locald.j();
     }
   }
   

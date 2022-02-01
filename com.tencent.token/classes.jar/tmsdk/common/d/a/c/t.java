@@ -14,10 +14,11 @@ public class t
   
   private ArrayList a(g paramg)
   {
-    if (this.h == null) {
+    o localo = this.h;
+    if (localo == null) {
       return null;
     }
-    return this.h.a(paramg);
+    return localo.a(paramg);
   }
   
   public void a(int paramInt1, int paramInt2, f paramf) {}
@@ -26,16 +27,14 @@ public class t
   {
     paramArrayOfByte = h.a(paramArrayOfByte);
     Object localObject = a(paramArrayOfByte);
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        f localf = (f)((Iterator)localObject).next();
-        a(paramArrayOfByte.a, paramArrayOfByte.b, localf);
-      }
+    }
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      f localf = (f)((Iterator)localObject).next();
+      a(paramArrayOfByte.a, paramArrayOfByte.b, localf);
     }
   }
 }

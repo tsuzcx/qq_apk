@@ -46,34 +46,33 @@ class fx
     {
       try
       {
-        localClass1 = Class.forName("com.android.org.conscrypt.SSLParametersImpl");
+        localObject = Class.forName("com.android.org.conscrypt.SSLParametersImpl");
       }
       catch (ClassNotFoundException localClassNotFoundException1)
       {
         try
         {
-          Class localClass1;
+          Object localObject = Class.forName("org.apache.harmony.xnet.provider.jsse.SSLParametersImpl");
           gb localgb3 = new gb(null, "setUseSessionTickets", new Class[] { Boolean.TYPE });
           gb localgb4 = new gb(null, "setHostname", new Class[] { String.class });
           if (!e()) {
-            break label117;
+            break label125;
           }
           localgb1 = new gb([B.class, "getAlpnSelectedProtocol", new Class[0]);
           localgb2 = new gb(null, "setAlpnProtocols", new Class[] { [B.class });
-          return new fx(localClass1, localgb3, localgb4, localgb1, localgb2);
+          localObject = new fx((Class)localObject, localgb3, localgb4, localgb1, localgb2);
+          return localObject;
         }
         catch (ClassNotFoundException localClassNotFoundException2)
         {
-          Class localClass2;
           return null;
         }
         localClassNotFoundException1 = localClassNotFoundException1;
-        localClass2 = Class.forName("org.apache.harmony.xnet.provider.jsse.SSLParametersImpl");
         continue;
       }
-      label117:
-      gb localgb2 = null;
+      label125:
       gb localgb1 = null;
+      gb localgb2 = localgb1;
     }
   }
   
@@ -84,7 +83,11 @@ class fx
       boolean bool = ((Boolean)paramClass.getMethod("isCleartextTrafficPermitted", new Class[] { String.class }).invoke(paramObject, new Object[] { paramString })).booleanValue();
       return bool;
     }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      label38:
+      break label38;
+    }
     return b(paramString, paramClass, paramObject);
   }
   
@@ -95,7 +98,11 @@ class fx
       boolean bool = ((Boolean)paramClass.getMethod("isCleartextTrafficPermitted", new Class[0]).invoke(paramObject, new Object[0])).booleanValue();
       return bool;
     }
-    catch (NoSuchMethodException paramClass) {}
+    catch (NoSuchMethodException paramClass)
+    {
+      label29:
+      break label29;
+    }
     return super.b(paramString);
   }
   
@@ -109,11 +116,15 @@ class fx
       Class.forName("android.net.Network");
       return true;
     }
-    catch (ClassNotFoundException localClassNotFoundException) {}
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      label18:
+      break label18;
+    }
     return false;
   }
   
-  public gg a(X509TrustManager paramX509TrustManager)
+  public gf a(X509TrustManager paramX509TrustManager)
   {
     try
     {
@@ -121,7 +132,11 @@ class fx
       localObject = new a(((Class)localObject).getConstructor(new Class[] { X509TrustManager.class }).newInstance(new Object[] { paramX509TrustManager }), ((Class)localObject).getMethod("checkServerTrusted", new Class[] { [Ljava.security.cert.X509Certificate.class, String.class, String.class }));
       return localObject;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label65:
+      break label65;
+    }
     return super.a(paramX509TrustManager);
   }
   
@@ -133,58 +148,56 @@ class fx
   @Nullable
   public String a(SSLSocket paramSSLSocket)
   {
-    if (this.d == null) {}
-    while (!this.d.a(paramSSLSocket)) {
+    Object localObject2 = this.d;
+    Object localObject1 = null;
+    if (localObject2 == null) {
       return null;
     }
-    paramSSLSocket = (byte[])this.d.d(paramSSLSocket, new Object[0]);
-    if (paramSSLSocket != null) {}
-    for (paramSSLSocket = new String(paramSSLSocket, fc.e);; paramSSLSocket = null) {
-      return paramSSLSocket;
+    if (!((gb)localObject2).a(paramSSLSocket)) {
+      return null;
     }
+    localObject2 = (byte[])this.d.d(paramSSLSocket, new Object[0]);
+    paramSSLSocket = localObject1;
+    if (localObject2 != null) {
+      paramSSLSocket = new String((byte[])localObject2, fc.e);
+    }
+    return paramSSLSocket;
   }
   
   public void a(int paramInt, String paramString, Throwable paramThrowable)
   {
-    int i;
-    String str;
-    int k;
-    label52:
-    int j;
-    if (paramInt == 5)
-    {
-      i = 5;
-      str = paramString;
-      if (paramThrowable != null) {
-        str = paramString + '\n' + Log.getStackTraceString(paramThrowable);
-      }
-      paramInt = 0;
-      k = str.length();
-      if (paramInt >= k) {
-        break label130;
-      }
-      j = str.indexOf('\n', paramInt);
-      if (j == -1) {
-        break label123;
-      }
+    int i = 5;
+    if (paramInt != 5) {
+      i = 3;
     }
-    for (;;)
+    Object localObject = paramString;
+    if (paramThrowable != null)
     {
-      int m = Math.min(j, paramInt + 4000);
-      Log.println(i, "OkHttp", str.substring(paramInt, m));
-      if (m >= j)
-      {
-        paramInt = m + 1;
-        break label52;
-        i = 3;
-        break;
-        label123:
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append('\n');
+      ((StringBuilder)localObject).append(Log.getStackTraceString(paramThrowable));
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    paramInt = 0;
+    int k = ((String)localObject).length();
+    if (paramInt < k)
+    {
+      int j = ((String)localObject).indexOf('\n', paramInt);
+      if (j == -1) {
         j = k;
-        continue;
-        label130:
-        return;
       }
-      paramInt = m;
+      for (;;)
+      {
+        int m = Math.min(j, paramInt + 4000);
+        Log.println(i, "OkHttp", ((String)localObject).substring(paramInt, m));
+        if (m >= j)
+        {
+          paramInt = m + 1;
+          break;
+        }
+        paramInt = m;
+      }
     }
   }
   
@@ -202,10 +215,13 @@ class fx
       paramSocket.connect(paramInetSocketAddress, paramInt);
       return;
     }
-    catch (AssertionError paramSocket)
+    catch (ClassCastException paramSocket)
     {
-      if (fc.a(paramSocket)) {
-        throw new IOException(paramSocket);
+      if (Build.VERSION.SDK_INT == 26)
+      {
+        paramInetSocketAddress = new IOException("Exception in connect");
+        paramInetSocketAddress.initCause(paramSocket);
+        throw paramInetSocketAddress;
       }
       throw paramSocket;
     }
@@ -215,13 +231,10 @@ class fx
       paramInetSocketAddress.initCause(paramSocket);
       throw paramInetSocketAddress;
     }
-    catch (ClassCastException paramSocket)
+    catch (AssertionError paramSocket)
     {
-      if (Build.VERSION.SDK_INT == 26)
-      {
-        paramInetSocketAddress = new IOException("Exception in connect");
-        paramInetSocketAddress.initCause(paramSocket);
-        throw paramInetSocketAddress;
+      if (fc.a(paramSocket)) {
+        throw new IOException(paramSocket);
       }
       throw paramSocket;
     }
@@ -234,14 +247,15 @@ class fx
       this.b.b(paramSSLSocket, new Object[] { Boolean.valueOf(true) });
       this.c.b(paramSSLSocket, new Object[] { paramString });
     }
-    if ((this.e != null) && (this.e.a(paramSSLSocket)))
+    paramString = this.e;
+    if ((paramString != null) && (paramString.a(paramSSLSocket)))
     {
       paramString = b(paramList);
       this.e.d(paramSSLSocket, new Object[] { paramString });
     }
   }
   
-  public gi b(X509TrustManager paramX509TrustManager)
+  public gh b(X509TrustManager paramX509TrustManager)
   {
     try
     {
@@ -250,28 +264,38 @@ class fx
       localObject = new b(paramX509TrustManager, (Method)localObject);
       return localObject;
     }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      label38:
+      break label38;
+    }
     return super.b(paramX509TrustManager);
   }
   
   public SSLContext b()
   {
-    if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT < 22)) {
+    if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT < 22)) {}
+    for (;;)
+    {
       try
       {
-        SSLContext localSSLContext1 = SSLContext.getInstance("TLSv1.2");
-        return localSSLContext1;
+        localSSLContext = SSLContext.getInstance("TLSv1.2");
+        return localSSLContext;
       }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1) {}
-    }
-    try
-    {
-      SSLContext localSSLContext2 = SSLContext.getInstance("TLS");
-      return localSSLContext2;
-    }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
-    {
-      throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException2);
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
+      {
+        SSLContext localSSLContext;
+        continue;
+      }
+      try
+      {
+        localSSLContext = SSLContext.getInstance("TLS");
+        return localSSLContext;
+      }
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
+      {
+        throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException1);
+      }
     }
   }
   
@@ -279,36 +303,25 @@ class fx
   {
     try
     {
-      Class localClass = Class.forName("android.security.NetworkSecurityPolicy");
-      boolean bool = a(paramString, localClass, localClass.getMethod("getInstance", new Class[0]).invoke(null, new Object[0]));
-      return bool;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      return super.b(paramString);
-    }
-    catch (IllegalAccessException paramString)
-    {
+      try
+      {
+        Class localClass = Class.forName("android.security.NetworkSecurityPolicy");
+        boolean bool = a(paramString, localClass, localClass.getMethod("getInstance", new Class[0]).invoke(null, new Object[0]));
+        return bool;
+      }
+      catch (InvocationTargetException paramString) {}catch (IllegalArgumentException paramString) {}catch (IllegalAccessException paramString) {}
       throw fc.a("unable to determine cleartext support", paramString);
     }
-    catch (IllegalArgumentException paramString)
+    catch (ClassNotFoundException|NoSuchMethodException localClassNotFoundException)
     {
-      break label43;
+      label52:
+      break label52;
     }
-    catch (InvocationTargetException paramString)
-    {
-      break label43;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      label36:
-      label43:
-      break label36;
-    }
+    return super.b(paramString);
   }
   
   static final class a
-    extends gg
+    extends gf
   {
     private final Object a;
     private final Method b;
@@ -327,15 +340,15 @@ class fx
         paramList = (List)this.b.invoke(this.a, new Object[] { paramList, "RSA", paramString });
         return paramList;
       }
+      catch (IllegalAccessException paramList)
+      {
+        throw new AssertionError(paramList);
+      }
       catch (InvocationTargetException paramList)
       {
         paramString = new SSLPeerUnverifiedException(paramList.getMessage());
         paramString.initCause(paramList);
         throw paramString;
-      }
-      catch (IllegalAccessException paramList)
-      {
-        throw new AssertionError(paramList);
       }
     }
     
@@ -351,7 +364,7 @@ class fx
   }
   
   static final class b
-    implements gi
+    implements gh
   {
     private final X509TrustManager a;
     private final Method b;
@@ -364,15 +377,15 @@ class fx
     
     public X509Certificate a(X509Certificate paramX509Certificate)
     {
+      Object localObject = null;
       try
       {
-        paramX509Certificate = (TrustAnchor)this.b.invoke(this.a, new Object[] { paramX509Certificate });
-        if (paramX509Certificate != null)
-        {
-          paramX509Certificate = paramX509Certificate.getTrustedCert();
-          return paramX509Certificate;
+        TrustAnchor localTrustAnchor = (TrustAnchor)this.b.invoke(this.a, new Object[] { paramX509Certificate });
+        paramX509Certificate = localObject;
+        if (localTrustAnchor != null) {
+          paramX509Certificate = localTrustAnchor.getTrustedCert();
         }
-        return null;
+        return paramX509Certificate;
       }
       catch (IllegalAccessException paramX509Certificate)
       {
@@ -384,16 +397,14 @@ class fx
     
     public boolean equals(Object paramObject)
     {
-      if (paramObject == this) {}
-      do
-      {
+      if (paramObject == this) {
         return true;
-        if (!(paramObject instanceof b)) {
-          return false;
-        }
-        paramObject = (b)paramObject;
-      } while ((this.a.equals(paramObject.a)) && (this.b.equals(paramObject.b)));
-      return false;
+      }
+      if (!(paramObject instanceof b)) {
+        return false;
+      }
+      paramObject = (b)paramObject;
+      return (this.a.equals(paramObject.a)) && (this.b.equals(paramObject.b));
     }
     
     public int hashCode()
@@ -417,38 +428,39 @@ class fx
     
     static c a()
     {
-      Object localObject1 = null;
+      Object localObject2 = null;
       try
       {
-        Object localObject3 = Class.forName("dalvik.system.CloseGuard");
-        localMethod2 = ((Class)localObject3).getMethod("get", new Class[0]);
-        localMethod1 = ((Class)localObject3).getMethod("open", new Class[] { String.class });
-        localObject3 = ((Class)localObject3).getMethod("warnIfOpen", new Class[0]);
-        localObject1 = localObject3;
+        localObject1 = Class.forName("dalvik.system.CloseGuard");
+        Method localMethod = ((Class)localObject1).getMethod("get", new Class[0]);
+        localObject3 = ((Class)localObject1).getMethod("open", new Class[] { String.class });
+        localObject1 = ((Class)localObject1).getMethod("warnIfOpen", new Class[0]);
+        localObject2 = localMethod;
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          Method localMethod1;
-          Object localObject2 = null;
-          Method localMethod2 = null;
-        }
+        Object localObject1;
+        Object localObject3;
+        label51:
+        break label51;
       }
-      return new c(localMethod2, localMethod1, localObject1);
+      localObject1 = null;
+      localObject3 = localObject1;
+      return new c(localObject2, (Method)localObject3, (Method)localObject1);
     }
     
     Object a(String paramString)
     {
-      if (this.a != null) {
-        try
-        {
-          Object localObject = this.a.invoke(null, new Object[0]);
-          this.b.invoke(localObject, new Object[] { paramString });
-          return localObject;
-        }
-        catch (Exception paramString) {}
+      Object localObject = this.a;
+      if (localObject != null) {}
+      try
+      {
+        localObject = ((Method)localObject).invoke(null, new Object[0]);
+        this.b.invoke(localObject, new Object[] { paramString });
+        return localObject;
       }
+      catch (Exception paramString) {}
+      return null;
       return null;
     }
     

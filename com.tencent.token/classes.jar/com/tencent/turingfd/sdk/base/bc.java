@@ -13,12 +13,13 @@ public class bc
   {
     Object localObject = a.g(paramContext);
     paramContext = new HashMap();
-    if (localObject == null) {}
-    do
-    {
+    if (localObject == null) {
       return paramContext;
-      localObject = ((Hickory)localObject).gd;
-    } while (localObject == null);
+    }
+    localObject = ((Hickory)localObject).gd;
+    if (localObject == null) {
+      return paramContext;
+    }
     return localObject;
   }
   
@@ -44,13 +45,13 @@ public class bc
   public long c(Context paramContext)
   {
     paramContext = a.g(paramContext);
-    if (paramContext == null) {}
-    long l;
-    do
-    {
+    if (paramContext == null) {
       return 57600L;
-      l = paramContext.hd;
-    } while (l <= 0L);
+    }
+    long l = paramContext.hd;
+    if (l <= 0L) {
+      return 57600L;
+    }
     return l;
   }
   
@@ -70,35 +71,43 @@ public class bc
     if (paramContext == null) {
       return "";
     }
-    paramContext = new File(ci.a(new StringBuilder().append(paramContext.getAbsolutePath()), File.separator, "12"));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getAbsolutePath());
+    paramContext = new File(ci.a(localStringBuilder, File.separator, "12"));
     if ((!paramContext.exists()) && (!paramContext.mkdirs())) {
       return "";
     }
-    return paramContext.getAbsolutePath() + File.separator + cv.a + "_" + "baseFull" + "_" + "1";
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(cv.a);
+    localStringBuilder.append("_");
+    localStringBuilder.append("baseFull");
+    localStringBuilder.append("_");
+    localStringBuilder.append("1");
+    return localStringBuilder.toString();
   }
   
   public long f(Context paramContext)
   {
     paramContext = a.g(paramContext);
-    if (paramContext == null) {}
-    do
-    {
+    if (paramContext == null) {
       return 0L;
-      paramContext = paramContext.jd;
-    } while ((paramContext == null) || (!paramContext.containsKey("1")));
+    }
+    paramContext = paramContext.jd;
+    if (paramContext == null) {
+      return 0L;
+    }
+    if (!paramContext.containsKey("1")) {
+      return 0L;
+    }
     try
     {
-      l = Long.valueOf((String)paramContext.get("1")).longValue();
-      l = l * 3600L * 1000L;
+      long l = Long.valueOf((String)paramContext.get("1")).longValue();
+      return l * 3600L * 1000L;
     }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        long l = 0L;
-      }
-    }
-    return l;
+    catch (Throwable paramContext) {}
+    return 0L;
   }
   
   public final Hickory g(Context paramContext)
@@ -109,7 +118,11 @@ public class bc
       localHickory.a(new cy(cm.b(e(paramContext))));
       return localHickory;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label29:
+      break label29;
+    }
     return null;
   }
 }

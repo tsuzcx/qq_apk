@@ -40,22 +40,23 @@ public class ProDialog
   
   protected void onCreate(Bundle paramBundle)
   {
-    if ((this.a == null) || ((this.a != null) && (this.a.isFinishing())))
+    Activity localActivity = this.a;
+    if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
     {
-      dismiss();
+      super.onCreate(paramBundle);
+      setContentView(2131296398);
+      getWindow().setBackgroundDrawableResource(2131099876);
+      ((ImageView)findViewById(2131165817)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
+      setOnDismissListener(new DialogInterface.OnDismissListener()
+      {
+        public void onDismiss(DialogInterface paramAnonymousDialogInterface)
+        {
+          ProDialog.a(ProDialog.this);
+        }
+      });
       return;
     }
-    super.onCreate(paramBundle);
-    setContentView(2130968717);
-    getWindow().setBackgroundDrawableResource(2130837730);
-    ((ImageView)findViewById(2131559125)).startAnimation(AnimationUtils.loadAnimation(this.a, 2131034130));
-    setOnDismissListener(new DialogInterface.OnDismissListener()
-    {
-      public void onDismiss(DialogInterface paramAnonymousDialogInterface)
-      {
-        ProDialog.a(ProDialog.this);
-      }
-    });
+    dismiss();
   }
 }
 

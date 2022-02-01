@@ -36,92 +36,115 @@ public class WtloginCaptchaDialog
   {
     public void handleMessage(Message paramAnonymousMessage)
     {
-      if ((WtloginCaptchaDialog.a(WtloginCaptchaDialog.this) == null) || (WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).isFinishing()) || (WtloginCaptchaDialog.a() == null)) {
-        return;
-      }
-      ((t)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).dismissDialog();
-      g.c("wtlogin : ret=" + paramAnonymousMessage.arg1 + ", what=" + paramAnonymousMessage.what);
-      switch (paramAnonymousMessage.what)
+      if ((WtloginCaptchaDialog.a(WtloginCaptchaDialog.this) != null) && (!WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).isFinishing()))
       {
-      case 4101: 
-      case 4102: 
-      case 4103: 
-      default: 
-        return;
-      case 4099: 
-        int i = paramAnonymousMessage.arg1;
-        long l2 = 523005419L;
-        long l1 = l2;
-        if (paramAnonymousMessage.getData() != null)
+        if (WtloginCaptchaDialog.a() == null) {
+          return;
+        }
+        ((t)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).dismissDialog();
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("wtlogin : ret=");
+        ((StringBuilder)localObject).append(paramAnonymousMessage.arg1);
+        ((StringBuilder)localObject).append(", what=");
+        ((StringBuilder)localObject).append(paramAnonymousMessage.what);
+        g.c(((StringBuilder)localObject).toString());
+        int i = paramAnonymousMessage.what;
+        StringBuilder localStringBuilder;
+        if (i != 4104)
         {
-          l1 = l2;
-          if (paramAnonymousMessage.getData().getLong("appid") != 0L) {
-            l1 = paramAnonymousMessage.getData().getLong("appid");
+          switch (i)
+          {
+          default: 
+            return;
+          case 4100: 
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("K_MSGCODE_REFRESH_PICTURE ret=");
+            ((StringBuilder)localObject).append(paramAnonymousMessage.arg1);
+            g.b(((StringBuilder)localObject).toString());
+            WtloginCaptchaDialog.e(WtloginCaptchaDialog.this);
+            return;
           }
-        }
-        if (i == 0)
-        {
-          Message localMessage = WtloginCaptchaDialog.a().obtainMessage(1019);
-          localMessage.obj = paramAnonymousMessage.obj;
-          paramAnonymousMessage = new Bundle();
-          paramAnonymousMessage.putLong("appid", l1);
-          localMessage.setData(paramAnonymousMessage);
-          WtloginCaptchaDialog.a().sendMessage(localMessage);
-          WtloginCaptchaDialog.this.dismiss();
-          WtloginCaptchaDialog.a(null);
-          WtloginCaptchaDialog.a(WtloginCaptchaDialog.this, null);
-          return;
-        }
-        if (i == -1000)
-        {
-          WtloginCaptchaDialog.this.a(2131230960);
-          return;
-        }
-        if (i == 8192)
-        {
-          WtloginCaptchaDialog.this.a(2131231407);
-          return;
-        }
-        if (i == 2)
-        {
-          WtloginCaptchaDialog.this.a(2131231410);
-          WtloginCaptchaDialog.this.a.a(WtloginCaptchaDialog.b(WtloginCaptchaDialog.this), WtloginCaptchaDialog.this.b);
-          WtloginCaptchaDialog.c(WtloginCaptchaDialog.this).setVisibility(0);
-          WtloginCaptchaDialog.d(WtloginCaptchaDialog.this).setText("");
-          return;
-        }
-        if (i == 1)
-        {
-          WtloginCaptchaDialog.this.a(2131231405);
-          WtloginCaptchaDialog.this.dismiss();
-          WtloginCaptchaDialog.a(null);
-          WtloginCaptchaDialog.a(WtloginCaptchaDialog.this, null);
-          return;
-        }
-        if ((i == 40) || (i == 42) || (i == 64))
-        {
+          i = paramAnonymousMessage.arg1;
+          long l2 = 523005419L;
+          long l1 = l2;
+          if (paramAnonymousMessage.getData() != null)
+          {
+            l1 = l2;
+            if (paramAnonymousMessage.getData().getLong("appid") != 0L) {
+              l1 = paramAnonymousMessage.getData().getLong("appid");
+            }
+          }
+          if (i == 0)
+          {
+            localObject = WtloginCaptchaDialog.a().obtainMessage(1019);
+            ((Message)localObject).obj = paramAnonymousMessage.obj;
+            paramAnonymousMessage = new Bundle();
+            paramAnonymousMessage.putLong("appid", l1);
+            ((Message)localObject).setData(paramAnonymousMessage);
+            WtloginCaptchaDialog.a().sendMessage((Message)localObject);
+            WtloginCaptchaDialog.this.dismiss();
+            WtloginCaptchaDialog.a(null);
+            WtloginCaptchaDialog.a(WtloginCaptchaDialog.this, null);
+            return;
+          }
+          if (i == -1000)
+          {
+            WtloginCaptchaDialog.this.a(2131493102);
+            return;
+          }
+          if (i == 8192)
+          {
+            WtloginCaptchaDialog.this.a(2131493549);
+            return;
+          }
+          if (i == 2)
+          {
+            WtloginCaptchaDialog.this.a(2131493552);
+            WtloginCaptchaDialog.this.a.a(WtloginCaptchaDialog.b(WtloginCaptchaDialog.this), WtloginCaptchaDialog.this.b);
+            WtloginCaptchaDialog.c(WtloginCaptchaDialog.this).setVisibility(0);
+            WtloginCaptchaDialog.d(WtloginCaptchaDialog.this).setText("");
+            return;
+          }
+          if (i == 1)
+          {
+            WtloginCaptchaDialog.this.a(2131493547);
+            WtloginCaptchaDialog.this.dismiss();
+            WtloginCaptchaDialog.a(null);
+            WtloginCaptchaDialog.a(WtloginCaptchaDialog.this, null);
+            return;
+          }
+          if ((i != 40) && (i != 42) && (i != 64))
+          {
+            if ((paramAnonymousMessage.getData() != null) && (paramAnonymousMessage.getData().getString("loginerror") != null))
+            {
+              localObject = WtloginCaptchaDialog.this;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getResources().getString(2131493553));
+              localStringBuilder.append(":");
+              localStringBuilder.append(paramAnonymousMessage.getData().getString("loginerror"));
+              ((WtloginCaptchaDialog)localObject).a(localStringBuilder.toString());
+              return;
+            }
+            WtloginCaptchaDialog.this.a(2131493553);
+            return;
+          }
           WtloginCaptchaDialog.this.dismiss();
           ((BaseActivity)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).goToRemoveProtectH5(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this), paramAnonymousMessage, i);
           return;
         }
-        if ((paramAnonymousMessage.getData() != null) && (paramAnonymousMessage.getData().getString("loginerror") != null))
+        if ((paramAnonymousMessage.getData() != null) && (paramAnonymousMessage.getData().getString("exception") != null))
         {
-          WtloginCaptchaDialog.this.a(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getResources().getString(2131231411) + ":" + paramAnonymousMessage.getData().getString("loginerror"));
+          localObject = WtloginCaptchaDialog.this;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getResources().getString(2131493553));
+          localStringBuilder.append(":");
+          localStringBuilder.append(paramAnonymousMessage.getData().getString("exception"));
+          ((WtloginCaptchaDialog)localObject).a(localStringBuilder.toString());
           return;
         }
-        WtloginCaptchaDialog.this.a(2131231411);
-        return;
-      case 4100: 
-        g.b("K_MSGCODE_REFRESH_PICTURE ret=" + paramAnonymousMessage.arg1);
-        WtloginCaptchaDialog.e(WtloginCaptchaDialog.this);
+        WtloginCaptchaDialog.this.a(2131493553);
         return;
       }
-      if ((paramAnonymousMessage.getData() != null) && (paramAnonymousMessage.getData().getString("exception") != null))
-      {
-        WtloginCaptchaDialog.this.a(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getResources().getString(2131231411) + ":" + paramAnonymousMessage.getData().getString("exception"));
-        return;
-      }
-      WtloginCaptchaDialog.this.a(2131231411);
     }
   };
   private Activity c;
@@ -162,80 +185,86 @@ public class WtloginCaptchaDialog
   
   public void a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0) || (this.c.isFinishing())) {
-      return;
-    }
-    if (this.k == null) {
-      this.k = Toast.makeText(this.c, paramString, 0);
-    }
-    for (;;)
+    Toast localToast;
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      this.k.setGravity(48, 0, IndexActivity.S_TITLE_HEIGHT + 5);
-      this.k.show();
-      return;
-      try
-      {
-        this.k.setText(paramString);
+      if (this.c.isFinishing()) {
+        return;
       }
-      catch (Exception localException)
-      {
+      localToast = this.k;
+      if (localToast == null) {
         this.k = Toast.makeText(this.c, paramString, 0);
       }
     }
+    try
+    {
+      localToast.setText(paramString);
+    }
+    catch (Exception localException)
+    {
+      label55:
+      break label55;
+    }
+    this.k = Toast.makeText(this.c, paramString, 0);
+    this.k.setGravity(48, 0, IndexActivity.S_TITLE_HEIGHT + 5);
+    this.k.show();
+    return;
   }
   
   protected void onCreate(Bundle paramBundle)
   {
-    if ((this.c == null) || ((this.c != null) && (this.c.isFinishing())))
+    Activity localActivity = this.c;
+    if ((localActivity != null) && ((localActivity == null) || (!localActivity.isFinishing())))
     {
-      dismiss();
+      super.onCreate(paramBundle);
+      this.a = bz.a(RqdApplication.l());
+      setContentView(2131296507);
+      paramBundle = getWindow();
+      paramBundle.setBackgroundDrawableResource(2131099876);
+      ((ViewGroup.MarginLayoutParams)findViewById(2131165356).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
+      this.i = findViewById(2131165824);
+      this.d = ((EditText)findViewById(2131165358));
+      paramBundle = this.d;
+      if (paramBundle != null) {
+        paramBundle.clearFocus();
+      }
+      this.h = ((ImageView)findViewById(2131165357));
+      this.f = ((Button)findViewById(2131165360));
+      this.f.setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          if (WtloginCaptchaDialog.a(WtloginCaptchaDialog.this) == null) {
+            return;
+          }
+          if (WtloginCaptchaDialog.d(WtloginCaptchaDialog.this) != null) {
+            WtloginCaptchaDialog.d(WtloginCaptchaDialog.this).clearFocus();
+          }
+          paramAnonymousView = WtloginCaptchaDialog.d(WtloginCaptchaDialog.this).getText().toString();
+          if ((paramAnonymousView != null) && (paramAnonymousView.length() != 0))
+          {
+            ((InputMethodManager)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getSystemService("input_method")).hideSoftInputFromWindow(WtloginCaptchaDialog.this.getWindow().peekDecorView().getWindowToken(), 0);
+            paramAnonymousView = paramAnonymousView.trim();
+            ((t)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).showProDialog(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this), 2131492985, null);
+            WtloginCaptchaDialog.this.a.a(WtloginCaptchaDialog.b(WtloginCaptchaDialog.this), paramAnonymousView.getBytes(), WtloginCaptchaDialog.this.b);
+            return;
+          }
+          WtloginCaptchaDialog.this.a(2131493031);
+        }
+      });
+      this.e = ((TextView)findViewById(2131165355));
+      this.e.setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          WtloginCaptchaDialog.this.a.a(WtloginCaptchaDialog.b(WtloginCaptchaDialog.this), WtloginCaptchaDialog.this.b);
+          WtloginCaptchaDialog.c(WtloginCaptchaDialog.this).setVisibility(0);
+        }
+      });
+      b();
       return;
     }
-    super.onCreate(paramBundle);
-    this.a = bz.a(RqdApplication.l());
-    setContentView(2130968826);
-    paramBundle = getWindow();
-    paramBundle.setBackgroundDrawableResource(2130837730);
-    ((ViewGroup.MarginLayoutParams)findViewById(2131559509).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
-    this.i = findViewById(2131559512);
-    this.d = ((EditText)findViewById(2131559514));
-    if (this.d != null) {
-      this.d.clearFocus();
-    }
-    this.h = ((ImageView)findViewById(2131559511));
-    this.f = ((Button)findViewById(2131559515));
-    this.f.setOnClickListener(new View.OnClickListener()
-    {
-      public void onClick(View paramAnonymousView)
-      {
-        if (WtloginCaptchaDialog.a(WtloginCaptchaDialog.this) == null) {
-          return;
-        }
-        if (WtloginCaptchaDialog.d(WtloginCaptchaDialog.this) != null) {
-          WtloginCaptchaDialog.d(WtloginCaptchaDialog.this).clearFocus();
-        }
-        paramAnonymousView = WtloginCaptchaDialog.d(WtloginCaptchaDialog.this).getText().toString();
-        if ((paramAnonymousView == null) || (paramAnonymousView.length() == 0))
-        {
-          WtloginCaptchaDialog.this.a(2131230889);
-          return;
-        }
-        ((InputMethodManager)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this).getSystemService("input_method")).hideSoftInputFromWindow(WtloginCaptchaDialog.this.getWindow().peekDecorView().getWindowToken(), 0);
-        paramAnonymousView = paramAnonymousView.trim();
-        ((t)WtloginCaptchaDialog.a(WtloginCaptchaDialog.this)).showProDialog(WtloginCaptchaDialog.a(WtloginCaptchaDialog.this), 2131230843, null);
-        WtloginCaptchaDialog.this.a.a(WtloginCaptchaDialog.b(WtloginCaptchaDialog.this), paramAnonymousView.getBytes(), WtloginCaptchaDialog.this.b);
-      }
-    });
-    this.e = ((TextView)findViewById(2131559513));
-    this.e.setOnClickListener(new View.OnClickListener()
-    {
-      public void onClick(View paramAnonymousView)
-      {
-        WtloginCaptchaDialog.this.a.a(WtloginCaptchaDialog.b(WtloginCaptchaDialog.this), WtloginCaptchaDialog.this.b);
-        WtloginCaptchaDialog.c(WtloginCaptchaDialog.this).setVisibility(0);
-      }
-    });
-    b();
+    dismiss();
   }
 }
 

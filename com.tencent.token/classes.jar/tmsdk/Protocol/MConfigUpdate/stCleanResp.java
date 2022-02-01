@@ -38,8 +38,9 @@ public final class stCleanResp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.vecRoot, 0);
-    if (this.vecChild != null) {
-      paramJceOutputStream.write(this.vecChild, 1);
+    byte[] arrayOfByte = this.vecChild;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }

@@ -22,7 +22,11 @@ public class a
       paramContext = new ak(paramContext, localVirgo);
       return paramContext;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label40:
+      break label40;
+    }
     return null;
   }
   
@@ -54,11 +58,19 @@ public class a
     if (paramContext == null) {
       return "";
     }
-    paramContext = new File(ci.a(new StringBuilder().append(paramContext.getAbsolutePath()), File.separator, "11"));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getAbsolutePath());
+    paramContext = new File(ci.a(localStringBuilder, File.separator, "11"));
     if ((!paramContext.exists()) && (!paramContext.mkdirs())) {
       return "";
     }
-    return paramContext.getAbsolutePath() + File.separator + 49 + "_" + paramInt;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(49);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public static final class a

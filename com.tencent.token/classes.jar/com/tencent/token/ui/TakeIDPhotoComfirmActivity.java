@@ -25,11 +25,11 @@ public class TakeIDPhotoComfirmActivity
       finish();
       return;
     }
-    Object localObject = (TextView)findViewById(2131558849);
+    Object localObject = (TextView)findViewById(2131166102);
     if (this.mFlag == 2) {
-      ((TextView)localObject).setText(2131231342);
+      ((TextView)localObject).setText(2131493484);
     }
-    localObject = (ImageView)findViewById(2131558846);
+    localObject = (ImageView)findViewById(2131165508);
     ((ImageView)localObject).postDelayed(new Runnable()
     {
       public void run()
@@ -38,7 +38,7 @@ public class TakeIDPhotoComfirmActivity
         this.b.setImageBitmap(localBitmap);
       }
     }, 100L);
-    ((TextView)findViewById(2131558848)).setOnClickListener(new View.OnClickListener()
+    ((TextView)findViewById(2131166050)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -46,7 +46,7 @@ public class TakeIDPhotoComfirmActivity
         TakeIDPhotoComfirmActivity.this.finish();
       }
     });
-    ((TextView)findViewById(2131558649)).setOnClickListener(new View.OnClickListener()
+    ((TextView)findViewById(2131165400)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -62,7 +62,7 @@ public class TakeIDPhotoComfirmActivity
     setNeverShowLockVerifyView();
     g.a("TakeIDPhotoComfirmActivity");
     this.mFlag = getIntent().getIntExtra("flag", -1);
-    setContentView(2130968648);
+    setContentView(2131296328);
     init();
   }
 }

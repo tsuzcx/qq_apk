@@ -77,120 +77,140 @@ public class LogoActivity
   
   private void decryptAndCheck(String paramString, int paramInt1, int paramInt2)
   {
-    boolean bool = true;
     loadSchemaParm();
     for (;;)
     {
       try
       {
-        if (this.schemaTimeout <= 0) {
-          return;
-        }
-        if (TextUtils.isEmpty(this.schemaKey)) {
-          return;
-        }
-        Object localObject = new a();
-        byte[] arrayOfByte = cj.a(paramString);
-        g.b("decryptAndCheck sig=" + paramString + " schemaKey=" + this.schemaKey);
-        paramString = ((a)localObject).a(arrayOfByte, this.schemaKey.getBytes());
-        localObject = new StringBuilder().append("temp =");
-        if (paramString == null)
+        if (this.schemaTimeout > 0)
         {
-          g.b(bool);
-          if ((paramString == null) || (paramString.length < 0)) {
+          if (TextUtils.isEmpty(this.schemaKey)) {
             return;
           }
-          paramString = new String(paramString);
-          g.b("result=" + paramString);
-          paramString = paramString.split("&");
-          if (paramString.length != 2) {
-            return;
+          Object localObject = new a();
+          byte[] arrayOfByte = cj.a(paramString);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("decryptAndCheck sig=");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" schemaKey=");
+          localStringBuilder.append(this.schemaKey);
+          g.b(localStringBuilder.toString());
+          paramString = ((a)localObject).a(arrayOfByte, this.schemaKey.getBytes());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("temp =");
+          if (paramString != null) {
+            break label343;
           }
-          int i = Integer.valueOf(paramString[0]).intValue();
-          long l = Long.valueOf(paramString[1]).longValue();
-          int j = (int)(cc.c().s() / 1000L);
-          g.a("timeStamp=" + i + "ad=" + l);
-          if (Math.abs(j - i) >= this.schemaTimeout) {
-            return;
+          bool = true;
+          ((StringBuilder)localObject).append(bool);
+          g.b(((StringBuilder)localObject).toString());
+          if ((paramString != null) && (paramString.length >= 0))
+          {
+            paramString = new String(paramString);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("result=");
+            ((StringBuilder)localObject).append(paramString);
+            g.b(((StringBuilder)localObject).toString());
+            paramString = paramString.split("&");
+            if (paramString.length == 2)
+            {
+              int i = Integer.valueOf(paramString[0]).intValue();
+              long l = Long.valueOf(paramString[1]).longValue();
+              int j = (int)(cc.c().s() / 1000L);
+              paramString = new StringBuilder();
+              paramString.append("timeStamp=");
+              paramString.append(i);
+              paramString.append("ad=");
+              paramString.append(l);
+              g.a(paramString.toString());
+              if (Math.abs(j - i) < this.schemaTimeout)
+              {
+                this.success = cr.a().a(l);
+                if (this.success)
+                {
+                  launchActivity(paramInt2, paramInt1);
+                  return;
+                }
+                this.mFromH5 = true;
+              }
+            }
           }
-          this.success = cr.a().a(l);
-          if (!this.success) {
-            break;
-          }
-          launchActivity(paramInt2, paramInt1);
+        }
+        else
+        {
           return;
         }
       }
       catch (Exception paramString)
       {
         g.c(paramString.getMessage());
-        return;
       }
-      bool = false;
+      return;
+      label343:
+      boolean bool = false;
     }
-    this.mFromH5 = true;
   }
   
   private void gotoWelcomeActivity()
   {
-    if ((this.mFromOtherApp) || (this.mFromH5))
+    if ((!this.mFromOtherApp) && (!this.mFromH5))
     {
-      if (!cc.c().g())
-      {
-        if (cr.a().d() == 0)
-        {
-          localIntent = new Intent(this, WtLoginAccountInput.class);
-          localIntent.putExtra("page_id", 3);
-          startActivity(localIntent);
-          finish();
-          return;
-        }
-        if (!this.success)
-        {
-          this.dialog = new AlertDialog.Builder(this).setTitle(2131230935).setMessage(2131231119).setPositiveButton(2131230867, new DialogInterface.OnClickListener()
-          {
-            public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-            {
-              if (paramAnonymousDialogInterface != null)
-              {
-                paramAnonymousDialogInterface.dismiss();
-                LogoActivity.this.jumpActivity();
-              }
-            }
-          }).setNegativeButton(2131231400, new DialogInterface.OnClickListener()
-          {
-            public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-            {
-              paramAnonymousDialogInterface = new Intent(LogoActivity.this, WtLoginAccountInput.class);
-              paramAnonymousDialogInterface.putExtra("page_id", 3);
-              LogoActivity.this.startActivity(paramAnonymousDialogInterface);
-              LogoActivity.this.finish();
-            }
-          }).create();
-          this.dialog.setOnCancelListener(new DialogInterface.OnCancelListener()
-          {
-            public void onCancel(DialogInterface paramAnonymousDialogInterface)
-            {
-              if (paramAnonymousDialogInterface != null)
-              {
-                paramAnonymousDialogInterface.dismiss();
-                LogoActivity.this.jumpActivity();
-              }
-            }
-          });
-          this.dialog.show();
-          return;
-        }
-        jumpActivity();
-        return;
-      }
-      Intent localIntent = new Intent(this, WtLoginAccountInput.class);
-      localIntent.putExtra("page_id", 3);
-      startActivity(localIntent);
+      startActivity(new Intent(this, WelcomeActivity.class));
       finish();
       return;
     }
-    startActivity(new Intent(this, WelcomeActivity.class));
+    if (!cc.c().g())
+    {
+      if (cr.a().d() == 0)
+      {
+        localIntent = new Intent(this, WtLoginAccountInput.class);
+        localIntent.putExtra("page_id", 3);
+        startActivity(localIntent);
+        finish();
+        return;
+      }
+      if (!this.success)
+      {
+        this.dialog = new AlertDialog.Builder(this).setTitle(2131493077).setMessage(2131493261).setPositiveButton(2131493009, new DialogInterface.OnClickListener()
+        {
+          public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            if (paramAnonymousDialogInterface != null)
+            {
+              paramAnonymousDialogInterface.dismiss();
+              LogoActivity.this.jumpActivity();
+            }
+          }
+        }).setNegativeButton(2131493542, new DialogInterface.OnClickListener()
+        {
+          public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            paramAnonymousDialogInterface = new Intent(LogoActivity.this, WtLoginAccountInput.class);
+            paramAnonymousDialogInterface.putExtra("page_id", 3);
+            LogoActivity.this.startActivity(paramAnonymousDialogInterface);
+            LogoActivity.this.finish();
+          }
+        }).create();
+        this.dialog.setOnCancelListener(new DialogInterface.OnCancelListener()
+        {
+          public void onCancel(DialogInterface paramAnonymousDialogInterface)
+          {
+            if (paramAnonymousDialogInterface != null)
+            {
+              paramAnonymousDialogInterface.dismiss();
+              LogoActivity.this.jumpActivity();
+            }
+          }
+        });
+        this.dialog.show();
+        return;
+      }
+      jumpActivity();
+      return;
+    }
+    Intent localIntent = new Intent(this, WtLoginAccountInput.class);
+    localIntent.putExtra("page_id", 3);
+    startActivity(localIntent);
     finish();
   }
   
@@ -208,8 +228,8 @@ public class LogoActivity
     }
     if (m.a.mStartUpImg != null)
     {
-      setContentView(2130968772);
-      localObject = (ImageView)findViewById(2131559298);
+      setContentView(2131296453);
+      localObject = (ImageView)findViewById(2131166026);
       ((ImageView)localObject).setImageBitmap(m.a.mStartUpImg);
       ((ImageView)localObject).postDelayed(new Runnable()
       {
@@ -241,29 +261,30 @@ public class LogoActivity
   
   private void launchActivity(int paramInt1, int paramInt2)
   {
+    Intent localIntent;
     if (paramInt1 == 0)
     {
       localIntent = new Intent(this, UtilsGameLockActivity.class);
       localIntent.putExtra("indexid", paramInt2);
       startActivity(localIntent);
       finish();
-    }
-    do
-    {
       return;
-      if (paramInt1 == 1)
-      {
-        localIntent = new Intent(this, UtilsGameProtectActivity.class);
-        localIntent.putExtra("indexid", paramInt2);
-        startActivity(localIntent);
-        finish();
-        return;
-      }
-    } while (paramInt1 != 2);
-    Intent localIntent = new Intent(this, ModifyQQPwdActivity.class);
-    localIntent.putExtra("indexid", paramInt2);
-    o.a().a(this, localIntent, o.b);
-    finish();
+    }
+    if (paramInt1 == 1)
+    {
+      localIntent = new Intent(this, UtilsGameProtectActivity.class);
+      localIntent.putExtra("indexid", paramInt2);
+      startActivity(localIntent);
+      finish();
+      return;
+    }
+    if (paramInt1 == 2)
+    {
+      localIntent = new Intent(this, ModifyQQPwdActivity.class);
+      localIntent.putExtra("indexid", paramInt2);
+      o.a().a(this, localIntent, o.b);
+      finish();
+    }
   }
   
   private void loadSchemaParm()
@@ -274,12 +295,20 @@ public class LogoActivity
       localObject = ((Context)localObject).getSharedPreferences("schemaparm_name", 0);
       this.schemaKey = ((SharedPreferences)localObject).getString("key_schemaparm_key", "");
       this.schemaTimeout = ((SharedPreferences)localObject).getInt("key_schemaparm_timeout", 0);
-      g.b("load schemaKey=" + this.schemaKey + " schemaTimeout=" + this.schemaTimeout);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("load schemaKey=");
+      ((StringBuilder)localObject).append(this.schemaKey);
+      ((StringBuilder)localObject).append(" schemaTimeout=");
+      ((StringBuilder)localObject).append(this.schemaTimeout);
+      g.b(((StringBuilder)localObject).toString());
       return;
     }
     catch (Exception localException)
     {
-      g.c("SharedPreferences msg " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      g.c(localStringBuilder.toString());
     }
   }
   
@@ -288,13 +317,13 @@ public class LogoActivity
     if (isFinishing()) {
       return;
     }
-    new AlertDialog.Builder(this).setMessage(2131231107).setNegativeButton(2131231143, new DialogInterface.OnClickListener()
+    new AlertDialog.Builder(this).setMessage(2131493249).setNegativeButton(2131493285, new DialogInterface.OnClickListener()
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         LogoActivity.this.gotoWelcomeActivity();
       }
-    }).setPositiveButton(2131231096, new DialogInterface.OnClickListener()
+    }).setPositiveButton(2131493238, new DialogInterface.OnClickListener()
     {
       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -340,117 +369,101 @@ public class LogoActivity
   
   private void showPrivacyDialog()
   {
-    int j = 1;
     boolean bool = RqdApplication.b();
-    Log.i("SecureGuideUtil", "是否新用户|" + bool);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("是否新用户|");
+    ((StringBuilder)localObject1).append(bool);
+    Log.i("SecureGuideUtil", ((StringBuilder)localObject1).toString());
     long l = ed.b("privacy_dialog_agree_time", 0L);
-    Log.i("SecureGuideUtil", "隐私条款上次允许时间戳|" + l);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("隐私条款上次允许时间戳|");
+    ((StringBuilder)localObject1).append(l);
+    Log.i("SecureGuideUtil", ((StringBuilder)localObject1).toString());
     int i;
-    if (l > 0L)
-    {
+    if (l > 0L) {
       i = 1;
-      if (bool) {
-        break label475;
-      }
-      if (l == -1L) {
-        break label116;
-      }
-      i = j;
+    } else {
+      i = 0;
     }
-    label475:
-    for (;;)
+    if (!bool) {
+      if (l != -1L) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+    }
+    if (i != 0)
     {
-      if (i != 0)
+      if (Build.VERSION.SDK_INT >= 23)
       {
-        if (Build.VERSION.SDK_INT >= 23)
-        {
-          showPermissionDialog();
-          return;
-          i = 0;
-          break;
-          label116:
-          i = 0;
-          continue;
-        }
-        Log.i("SecureGuideUtil", "andriod 版本小于23，无需引导权限");
-        gotonext();
+        showPermissionDialog();
         return;
       }
-      Object localObject2 = ed.c("privacy_dialog_line2_wording", null);
-      Object localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = "为了向您提供QQ帐号安全体检、QQ帐号足迹、QQ密保管理、QQ密码管理、动态密码、QQ帐号保护等多项功能和服务，我们需要收集设备信息等个人信息；您可以在相关页面访问、更正、删除您的个人信息并管理您的授权。";
+      Log.i("SecureGuideUtil", "andriod 版本小于23，无需引导权限");
+      gotonext();
+      return;
+    }
+    Object localObject2 = ed.c("privacy_dialog_line2_wording", null);
+    localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "为了向您提供QQ帐号安全体检、QQ帐号足迹、QQ密保管理、QQ密码管理、动态密码、QQ帐号保护等多项功能和服务，我们需要收集设备信息等个人信息；您可以在相关页面访问、更正、删除您的个人信息并管理您的授权。";
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("用户服务及隐私协议\n我们将通过《软件许可及服务协议》和《隐私保护指引》帮助您了解我们收集、使用、存储和共享个人信息的情况，以及您所享有的相关权利。");
+    ((StringBuilder)localObject2).append("\n\n");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    Object localObject3 = ((StringBuilder)localObject2).toString();
+    localObject1 = new ClickableSpan()
+    {
+      public void onClick(@NonNull View paramAnonymousView)
+      {
+        l.a(LogoActivity.this, "https://sdi.3g.qq.com/v/2019120415543611159");
       }
-      Object localObject3 = "用户服务及隐私协议\n我们将通过《软件许可及服务协议》和《隐私保护指引》帮助您了解我们收集、使用、存储和共享个人信息的情况，以及您所享有的相关权利。" + "\n\n" + (String)localObject1;
-      localObject1 = new ClickableSpan()
+      
+      public void updateDrawState(@NonNull TextPaint paramAnonymousTextPaint)
       {
-        public void onClick(@NonNull View paramAnonymousView)
-        {
-          l.a(LogoActivity.this, "https://sdi.3g.qq.com/v/2019120415543611159");
-        }
-        
-        public void updateDrawState(@NonNull TextPaint paramAnonymousTextPaint)
-        {
-          paramAnonymousTextPaint.setColor(-16740609);
-        }
-      };
-      localObject2 = new ClickableSpan()
-      {
-        public void onClick(@NonNull View paramAnonymousView)
-        {
-          l.a(LogoActivity.this, "https://www.qq.com/privacy.htm");
-        }
-        
-        public void updateDrawState(@NonNull TextPaint paramAnonymousTextPaint)
-        {
-          paramAnonymousTextPaint.setColor(-16740609);
-        }
-      };
-      localObject3 = new SpannableString((CharSequence)localObject3);
-      ((SpannableString)localObject3).setSpan(localObject1, 15, 26, 33);
-      ((SpannableString)localObject3).setSpan(localObject2, 27, 35, 33);
-      localObject1 = new TextView(this);
-      ((TextView)localObject1).setTextSize(0, getResources().getDimensionPixelSize(2131296403));
-      ((TextView)localObject1).setTextColor(-1);
-      ((TextView)localObject1).setPadding(l.a(this, 5.0F), 0, l.a(this, 5.0F), 0);
-      ((TextView)localObject1).setMovementMethod(LinkMovementMethod.getInstance());
-      ((TextView)localObject1).setText((CharSequence)localObject3);
-      if (bool)
-      {
-        localObject1 = new AlertDialog.Builder(this).setTitle("欢迎使用QQ安全中心").setView((View)localObject1).setPositiveButton("暂不使用", null).setNegativeButton("同意", null).setCancelable(false).create();
-        ((Dialog)localObject1).show();
-        ((AlertDialog)localObject1).getButton(-1).setOnClickListener(new View.OnClickListener()
-        {
-          public void onClick(View paramAnonymousView)
-          {
-            Toast.makeText(RqdApplication.l(), "需要获得您的同意后才可继续使用QQ安全中心提供的服务", 0).show();
-          }
-        });
-        ((AlertDialog)localObject1).getButton(-2).setOnClickListener(new View.OnClickListener()
-        {
-          public void onClick(View paramAnonymousView)
-          {
-            this.a.dismiss();
-            RqdApplication.a();
-            ed.a("privacy_dialog_agree_time", System.currentTimeMillis());
-            if (Build.VERSION.SDK_INT >= 23)
-            {
-              LogoActivity.this.showPermissionDialog();
-              return;
-            }
-            Log.i("SecureGuideUtil", "andriod 版本小于23，无需引导权限");
-            LogoActivity.this.gotonext();
-          }
-        });
-        return;
+        paramAnonymousTextPaint.setColor(-16740609);
       }
-      localObject1 = new AlertDialog.Builder(this).setTitle("欢迎使用QQ安全中心").setView((View)localObject1).setPositiveButton("我知道了", null).setCancelable(false).create();
+    };
+    localObject2 = new ClickableSpan()
+    {
+      public void onClick(@NonNull View paramAnonymousView)
+      {
+        l.a(LogoActivity.this, "https://www.qq.com/privacy.htm");
+      }
+      
+      public void updateDrawState(@NonNull TextPaint paramAnonymousTextPaint)
+      {
+        paramAnonymousTextPaint.setColor(-16740609);
+      }
+    };
+    localObject3 = new SpannableString((CharSequence)localObject3);
+    ((SpannableString)localObject3).setSpan(localObject1, 15, 26, 33);
+    ((SpannableString)localObject3).setSpan(localObject2, 27, 35, 33);
+    localObject1 = new TextView(this);
+    ((TextView)localObject1).setTextSize(0, getResources().getDimensionPixelSize(2131034253));
+    ((TextView)localObject1).setTextColor(-1);
+    ((TextView)localObject1).setPadding(l.a(this, 5.0F), 0, l.a(this, 5.0F), 0);
+    ((TextView)localObject1).setMovementMethod(LinkMovementMethod.getInstance());
+    ((TextView)localObject1).setText((CharSequence)localObject3);
+    if (bool)
+    {
+      localObject1 = new AlertDialog.Builder(this).setTitle("欢迎使用QQ安全中心").setView((View)localObject1).setPositiveButton("暂不使用", null).setNegativeButton("同意", null).setCancelable(false).create();
       ((Dialog)localObject1).show();
-      ((AlertDialog)localObject1).getButton(-1).setOnClickListener(new View.OnClickListener()
+      localObject2 = (AlertDialog)localObject1;
+      ((AlertDialog)localObject2).getButton(-1).setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          Toast.makeText(RqdApplication.l(), "需要获得您的同意后才可继续使用QQ安全中心提供的服务", 0).show();
+        }
+      });
+      ((AlertDialog)localObject2).getButton(-2).setOnClickListener(new View.OnClickListener()
       {
         public void onClick(View paramAnonymousView)
         {
           this.a.dismiss();
+          RqdApplication.a();
           ed.a("privacy_dialog_agree_time", System.currentTimeMillis());
           if (Build.VERSION.SDK_INT >= 23)
           {
@@ -463,14 +476,31 @@ public class LogoActivity
       });
       return;
     }
+    localObject1 = new AlertDialog.Builder(this).setTitle("欢迎使用QQ安全中心").setView((View)localObject1).setPositiveButton("我知道了", null).setCancelable(false).create();
+    ((Dialog)localObject1).show();
+    ((AlertDialog)localObject1).getButton(-1).setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        this.a.dismiss();
+        ed.a("privacy_dialog_agree_time", System.currentTimeMillis());
+        if (Build.VERSION.SDK_INT >= 23)
+        {
+          LogoActivity.this.showPermissionDialog();
+          return;
+        }
+        Log.i("SecureGuideUtil", "andriod 版本小于23，无需引导权限");
+        LogoActivity.this.gotonext();
+      }
+    });
   }
   
   boolean need2RequestPermission()
   {
-    boolean bool = false;
     ArrayList localArrayList = new ArrayList();
     String[] arrayOfString = PERMISSIONS_DYNAMIC;
     int j = arrayOfString.length;
+    boolean bool = false;
     int i = 0;
     for (;;)
     {
@@ -508,278 +538,269 @@ public class LogoActivity
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramInt1 == 256) {
-      if (paramInt2 == 257) {
-        startActivityForResult(new Intent(this, StartPwdUpdateInfoActivity.class), 258);
-      }
-    }
-    do
+    if (paramInt1 == 256)
     {
-      return;
-      finish();
-      return;
-      if (paramInt1 == 258)
+      if (paramInt2 == 257)
       {
-        if (paramInt2 == 259)
-        {
-          gotoWelcomeActivity();
-          return;
-        }
-        cd.a().a(this, null);
-        showOldPwdDeleteAlert();
+        startActivityForResult(new Intent(this, StartPwdUpdateInfoActivity.class), 258);
         return;
       }
-      if (paramInt1 == 260)
+      finish();
+      return;
+    }
+    if (paramInt1 == 258)
+    {
+      if (paramInt2 == 259)
       {
-        if (!cd.a().c())
-        {
-          showOldPwdDeleteAlert();
-          return;
-        }
-        h.b();
-        h.a();
         gotoWelcomeActivity();
         return;
       }
-      if (paramInt1 == 261)
-      {
-        setResult(paramInt2);
-        finish();
-        return;
-      }
-    } while (paramInt1 != 262);
-    if (paramInt2 == 263)
-    {
-      gotonext();
+      cd.a().a(this, null);
+      showOldPwdDeleteAlert();
       return;
     }
-    finish();
+    if (paramInt1 == 260)
+    {
+      if (!cd.a().c())
+      {
+        showOldPwdDeleteAlert();
+        return;
+      }
+      h.b();
+      h.a();
+      gotoWelcomeActivity();
+      return;
+    }
+    if (paramInt1 == 261)
+    {
+      setResult(paramInt2);
+      finish();
+      return;
+    }
+    if (paramInt1 == 262)
+    {
+      if (paramInt2 == 263)
+      {
+        gotonext();
+        return;
+      }
+      finish();
+    }
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    g.b(this + ",task" + getTaskId());
+    paramBundle = new StringBuilder();
+    paramBundle.append(this);
+    paramBundle.append(",task");
+    paramBundle.append(getTaskId());
+    g.b(paramBundle.toString());
     requestWindowFeature(1);
     RqdApplication.e();
     c.a(true);
     Intent localIntent = getIntent();
-    label186:
-    label470:
-    for (;;)
+    try
     {
-      int i;
-      try
+      Bundle localBundle = localIntent.getBundleExtra("com.tencent.input_param");
+      paramBundle = localIntent.getData();
+      Object localObject1;
+      if (paramBundle != null)
       {
-        Bundle localBundle = localIntent.getBundleExtra("com.tencent.input_param");
-        paramBundle = localIntent.getData();
-        if (paramBundle != null)
+        paramBundle = paramBundle.toString();
+        int i;
+        if (paramBundle.startsWith("qmtoken://dual_verify?"))
         {
-          paramBundle = paramBundle.toString();
-          if (!paramBundle.startsWith("qmtoken://dual_verify?")) {
-            break label357;
-          }
-          paramBundle = paramBundle.substring("qmtoken://dual_verify?".length()).split("&");
+          paramBundle = paramBundle.substring(22).split("&");
           i = paramBundle.length - 1;
-          if (i >= 0)
+          while (i >= 0)
           {
-            localObject = paramBundle[i].split("=");
-            if ((localObject.length != 2) || (!localObject[0].equals("uin")) || (!localObject[1].matches("^\\d+$"))) {
-              break label350;
+            localObject1 = paramBundle[i].split("=");
+            if ((localObject1.length == 2) && (localObject1[0].equals("uin")) && (localObject1[1].matches("^\\d+$")))
+            {
+              this.mFromOtherApp = true;
+              this.mUin = l.f(Long.parseLong(localObject1[1]));
+              break;
             }
-            this.mFromOtherApp = true;
-            this.mUin = l.f(Long.parseLong(localObject[1]));
+            i -= 1;
           }
         }
-        if (localBundle == null) {
-          break label963;
-        }
-        paramBundle = localBundle.getString("package");
-        if (paramBundle != null) {
-          break label920;
-        }
-        setContentView(2130968689);
-        m.a(this, findViewById(2131558692), 2131492946);
-        this.mLogoBmp = m.a(getResources(), 2130837813);
-        this.cur_time = System.currentTimeMillis();
-        if (this.mLogoBmp != null) {
-          break label892;
-        }
-        this.cur_time = 0L;
-        label244:
-        paramBundle = (NotificationManager)getSystemService("notification");
-        paramBundle.cancel(1);
-        paramBundle.cancel(2);
-        paramBundle.cancel(3);
-        if (this.cur_time != 0L) {
-          break label932;
-        }
-        nextPage();
-        m.a();
-        i -= 1;
-      }
-      catch (Exception paramBundle)
-      {
-        try
+        Object localObject2;
+        if (paramBundle.startsWith("qmtoken://index_activity?"))
         {
-          paramBundle = new Intent(this, NetInfoService.class);
-          localIntent.setAction("com.tencent.token.upload.NetInfoService");
-          startService(paramBundle);
-          return;
-        }
-        catch (Exception paramBundle)
-        {
-          Object localObject;
-          String[] arrayOfString1;
-          String[] arrayOfString2;
-          paramBundle.printStackTrace();
-          return;
-        }
-        paramBundle = paramBundle;
-        paramBundle.printStackTrace();
-        g.d("OpenAppCrash " + paramBundle.toString());
-        finish();
-        return;
-      }
-      label350:
-      continue;
-      label357:
-      if (paramBundle.startsWith("qmtoken://index_activity?"))
-      {
-        paramBundle = paramBundle.substring("qmtoken://index_activity?".length()).split("&");
-        i = paramBundle.length - 1;
-        for (;;)
-        {
-          if (i < 0) {
-            break label470;
-          }
-          localObject = paramBundle[i];
-          g.c("path: " + (String)localObject);
-          localObject = ((String)localObject).split("=");
-          if ((localObject.length == 2) && (localObject[0].equals("tab")) && (localObject[1].equals("2")))
+          paramBundle = paramBundle.substring(25).split("&");
+          i = paramBundle.length - 1;
+          while (i >= 0)
           {
-            this.mFromH5 = true;
-            break;
+            localObject1 = paramBundle[i];
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("path: ");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            g.c(((StringBuilder)localObject2).toString());
+            localObject1 = ((String)localObject1).split("=");
+            if ((localObject1.length == 2) && (localObject1[0].equals("tab")) && (localObject1[1].equals("2")))
+            {
+              this.mFromH5 = true;
+              break;
+            }
+            i -= 1;
           }
-          i -= 1;
+        }
+        String[] arrayOfString;
+        if (paramBundle.startsWith("qmtoken://gamelock_activity?"))
+        {
+          localObject2 = paramBundle.substring(28).split("&");
+          localObject1 = "";
+          if (localObject2.length == 2)
+          {
+            arrayOfString = localObject2[0].split("=");
+            paramBundle = (Bundle)localObject1;
+            if (arrayOfString.length == 2)
+            {
+              paramBundle = (Bundle)localObject1;
+              if (arrayOfString[0].equals("sig")) {
+                paramBundle = arrayOfString[1];
+              }
+            }
+            localObject1 = localObject2[1].split("=");
+            if ((localObject1.length == 2) && (localObject1[0].equals("page"))) {
+              i = Integer.valueOf(localObject1[1]).intValue();
+            } else {
+              i = -1;
+            }
+            if ((!TextUtils.isEmpty(paramBundle)) && (i != -1)) {
+              decryptAndCheck(paramBundle, i, 0);
+            }
+          }
+        }
+        else if (paramBundle.startsWith("qmtoken://gameprotect_activity?"))
+        {
+          localObject2 = paramBundle.substring(31).split("&");
+          localObject1 = "";
+          if (localObject2.length == 2)
+          {
+            arrayOfString = localObject2[0].split("=");
+            paramBundle = (Bundle)localObject1;
+            if (arrayOfString.length == 2)
+            {
+              paramBundle = (Bundle)localObject1;
+              if (arrayOfString[0].equals("sig")) {
+                paramBundle = arrayOfString[1];
+              }
+            }
+            localObject1 = localObject2[1].split("=");
+            if ((localObject1.length == 2) && (localObject1[0].equals("page"))) {
+              i = Integer.valueOf(localObject1[1]).intValue();
+            } else {
+              i = -1;
+            }
+            if ((!TextUtils.isEmpty(paramBundle)) && (i != -1)) {
+              decryptAndCheck(paramBundle, i, 1);
+            }
+          }
+        }
+        else if (paramBundle.startsWith("qmtoken://modifypwd_activity?"))
+        {
+          localObject2 = paramBundle.substring(29).split("&");
+          localObject1 = "";
+          if (localObject2.length == 2)
+          {
+            arrayOfString = localObject2[0].split("=");
+            paramBundle = (Bundle)localObject1;
+            if (arrayOfString.length == 2)
+            {
+              paramBundle = (Bundle)localObject1;
+              if (arrayOfString[0].equals("sig")) {
+                paramBundle = arrayOfString[1];
+              }
+            }
+            localObject1 = localObject2[1].split("=");
+            if ((localObject1.length == 2) && (localObject1[0].equals("page"))) {
+              i = Integer.valueOf(localObject1[1]).intValue();
+            } else {
+              i = -1;
+            }
+            if ((!TextUtils.isEmpty(paramBundle)) && (i != -1)) {
+              decryptAndCheck(paramBundle, i, 2);
+            }
+          }
+        }
+      }
+      if (localBundle != null) {
+        paramBundle = localBundle.getString("package");
+      } else {
+        paramBundle = null;
+      }
+      if (paramBundle == null)
+      {
+        setContentView(2131296370);
+        m.a(this, findViewById(2131166109), 2130968678);
+        this.mLogoBmp = m.a(getResources(), 2131099959);
+        this.cur_time = System.currentTimeMillis();
+        if (this.mLogoBmp == null)
+        {
+          this.cur_time = 0L;
+        }
+        else
+        {
+          this.mLogoView = ((ImageView)findViewById(2131165708));
+          this.mLogoView.setImageBitmap(this.mLogoBmp);
         }
       }
       else
       {
-        if (paramBundle.startsWith("qmtoken://gamelock_activity?"))
-        {
-          arrayOfString1 = paramBundle.substring("qmtoken://gamelock_activity?".length()).split("&");
-          localObject = "";
-          if (arrayOfString1.length != 2) {
-            continue;
-          }
-          arrayOfString2 = arrayOfString1[0].split("=");
-          paramBundle = (Bundle)localObject;
-          if (arrayOfString2.length == 2)
-          {
-            paramBundle = (Bundle)localObject;
-            if (arrayOfString2[0].equals("sig")) {
-              paramBundle = arrayOfString2[1];
-            }
-          }
-          localObject = arrayOfString1[1].split("=");
-          if ((localObject.length != 2) || (!localObject[0].equals("page"))) {
-            break label978;
-          }
-        }
-        for (i = Integer.valueOf(localObject[1]).intValue();; i = -1)
-        {
-          if ((TextUtils.isEmpty(paramBundle)) || (i == -1)) {
-            break label981;
-          }
-          decryptAndCheck(paramBundle, i, 0);
-          break;
-          if (paramBundle.startsWith("qmtoken://gameprotect_activity?"))
-          {
-            arrayOfString1 = paramBundle.substring("qmtoken://gameprotect_activity?".length()).split("&");
-            localObject = "";
-            if (arrayOfString1.length != 2) {
-              break;
-            }
-            arrayOfString2 = arrayOfString1[0].split("=");
-            paramBundle = (Bundle)localObject;
-            if (arrayOfString2.length == 2)
-            {
-              paramBundle = (Bundle)localObject;
-              if (arrayOfString2[0].equals("sig")) {
-                paramBundle = arrayOfString2[1];
-              }
-            }
-            localObject = arrayOfString1[1].split("=");
-            if ((localObject.length != 2) || (!localObject[0].equals("page"))) {
-              break label973;
-            }
-          }
-          for (i = Integer.valueOf(localObject[1]).intValue();; i = -1)
-          {
-            if ((TextUtils.isEmpty(paramBundle)) || (i == -1)) {
-              break label976;
-            }
-            decryptAndCheck(paramBundle, i, 1);
-            break;
-            if (!paramBundle.startsWith("qmtoken://modifypwd_activity?")) {
-              break;
-            }
-            arrayOfString1 = paramBundle.substring("qmtoken://modifypwd_activity?".length()).split("&");
-            localObject = "";
-            if (arrayOfString1.length != 2) {
-              break;
-            }
-            arrayOfString2 = arrayOfString1[0].split("=");
-            paramBundle = (Bundle)localObject;
-            if (arrayOfString2.length == 2)
-            {
-              paramBundle = (Bundle)localObject;
-              if (arrayOfString2[0].equals("sig")) {
-                paramBundle = arrayOfString2[1];
-              }
-            }
-            localObject = arrayOfString1[1].split("=");
-            if ((localObject.length == 2) && (localObject[0].equals("page"))) {}
-            for (i = Integer.valueOf(localObject[1]).intValue();; i = -1)
-            {
-              if ((TextUtils.isEmpty(paramBundle)) || (i == -1)) {
-                break label971;
-              }
-              decryptAndCheck(paramBundle, i, 2);
-              break;
-              label892:
-              this.mLogoView = ((ImageView)findViewById(2131559010));
-              this.mLogoView.setImageBitmap(this.mLogoBmp);
-              break label244;
-              c.a(false);
-              this.cur_time = 0L;
-              break label244;
-              new Handler().postDelayed(new Runnable()
-              {
-                public void run()
-                {
-                  LogoActivity.this.nextPage();
-                }
-              }, 800L);
-              break label283;
-              paramBundle = null;
-              break label186;
-            }
-            break;
-          }
-          break;
-        }
+        c.a(false);
+        this.cur_time = 0L;
       }
+      paramBundle = (NotificationManager)getSystemService("notification");
+      paramBundle.cancel(1);
+      paramBundle.cancel(2);
+      paramBundle.cancel(3);
+      if (this.cur_time == 0L) {
+        nextPage();
+      } else {
+        new Handler().postDelayed(new Runnable()
+        {
+          public void run()
+          {
+            LogoActivity.this.nextPage();
+          }
+        }, 800L);
+      }
+      m.a();
+      ed.b();
+      try
+      {
+        paramBundle = new Intent(this, NetInfoService.class);
+        localIntent.setAction("com.tencent.token.upload.NetInfoService");
+        startService(paramBundle);
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("OpenAppCrash ");
+      ((StringBuilder)localObject1).append(paramBundle.toString());
+      g.d(((StringBuilder)localObject1).toString());
+      finish();
     }
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    if (this.mLogoBmp != null)
+    Bitmap localBitmap = this.mLogoBmp;
+    if (localBitmap != null)
     {
-      this.mLogoBmp.recycle();
+      localBitmap.recycle();
       this.mLogoBmp = null;
     }
     if (m.a.mStartUpImg != null)
@@ -793,35 +814,34 @@ public class LogoActivity
   {
     for (;;)
     {
-      ArrayList localArrayList;
       try
       {
         super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
         if (paramArrayOfInt.length > 0)
         {
-          localArrayList = new ArrayList();
+          ArrayList localArrayList = new ArrayList();
           paramInt = 0;
-          if (paramInt >= paramArrayOfInt.length) {
-            break label58;
-          }
-          if (paramArrayOfInt[paramInt] == 0) {
+          if (paramInt < paramArrayOfInt.length)
+          {
+            if (paramArrayOfInt[paramInt] == 0) {
+              break label90;
+            }
+            localArrayList.add(paramArrayOfString[paramInt]);
             break label90;
           }
-          localArrayList.add(paramArrayOfString[paramInt]);
+          if (!localArrayList.isEmpty())
+          {
+            this.mListener.a(localArrayList);
+            return;
+          }
+          this.mListener.a();
+          return;
         }
       }
       catch (Exception paramArrayOfString)
       {
         paramArrayOfString.printStackTrace();
       }
-      return;
-      label58:
-      if (!localArrayList.isEmpty())
-      {
-        this.mListener.a(localArrayList);
-        return;
-      }
-      this.mListener.a();
       return;
       label90:
       paramInt += 1;
@@ -834,10 +854,22 @@ public class LogoActivity
     if (e.a)
     {
       e.c = System.currentTimeMillis();
-      String str = e.a() + "";
-      g.c("start:" + e.b);
-      g.c("end:" + e.c);
-      g.c("appTime:" + str);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(e.a());
+      ((StringBuilder)localObject).append("");
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start:");
+      localStringBuilder.append(e.b);
+      g.c(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("end:");
+      localStringBuilder.append(e.c);
+      g.c(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("appTime:");
+      localStringBuilder.append((String)localObject);
+      g.c(localStringBuilder.toString());
     }
   }
   

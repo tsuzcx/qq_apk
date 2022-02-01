@@ -59,8 +59,9 @@ public class DialogFragment
     }
     this.mDismissed = true;
     this.mShownByMe = false;
-    if (this.mDialog != null) {
-      this.mDialog.dismiss();
+    Object localObject = this.mDialog;
+    if (localObject != null) {
+      ((Dialog)localObject).dismiss();
     }
     this.mViewDestroyed = true;
     if (this.mBackStackId >= 0)
@@ -69,14 +70,14 @@ public class DialogFragment
       this.mBackStackId = -1;
       return;
     }
-    FragmentTransaction localFragmentTransaction = getFragmentManager().beginTransaction();
-    localFragmentTransaction.remove(this);
+    localObject = getFragmentManager().beginTransaction();
+    ((FragmentTransaction)localObject).remove(this);
     if (paramBoolean)
     {
-      localFragmentTransaction.commitAllowingStateLoss();
+      ((FragmentTransaction)localObject).commitAllowingStateLoss();
       return;
     }
-    localFragmentTransaction.commit();
+    ((FragmentTransaction)localObject).commit();
   }
   
   public Dialog getDialog()
@@ -103,31 +104,31 @@ public class DialogFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    if (!this.mShowsDialog) {}
-    do
+    if (!this.mShowsDialog) {
+      return;
+    }
+    Object localObject = getView();
+    if (localObject != null) {
+      if (((View)localObject).getParent() == null) {
+        this.mDialog.setContentView((View)localObject);
+      } else {
+        throw new IllegalStateException("DialogFragment can not be attached to a container view");
+      }
+    }
+    localObject = getActivity();
+    if (localObject != null) {
+      this.mDialog.setOwnerActivity((Activity)localObject);
+    }
+    this.mDialog.setCancelable(this.mCancelable);
+    this.mDialog.setOnCancelListener(this);
+    this.mDialog.setOnDismissListener(this);
+    if (paramBundle != null)
     {
-      do
-      {
-        return;
-        Object localObject = getView();
-        if (localObject != null)
-        {
-          if (((View)localObject).getParent() != null) {
-            throw new IllegalStateException("DialogFragment can not be attached to a container view");
-          }
-          this.mDialog.setContentView((View)localObject);
-        }
-        localObject = getActivity();
-        if (localObject != null) {
-          this.mDialog.setOwnerActivity((Activity)localObject);
-        }
-        this.mDialog.setCancelable(this.mCancelable);
-        this.mDialog.setOnCancelListener(this);
-        this.mDialog.setOnDismissListener(this);
-      } while (paramBundle == null);
       paramBundle = paramBundle.getBundle("android:savedDialogState");
-    } while (paramBundle == null);
-    this.mDialog.onRestoreInstanceState(paramBundle);
+      if (paramBundle != null) {
+        this.mDialog.onRestoreInstanceState(paramBundle);
+      }
+    }
   }
   
   public void onAttach(Context paramContext)
@@ -143,19 +144,20 @@ public class DialogFragment
   public void onCreate(@Nullable Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if (this.mContainerId == 0) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (this.mContainerId == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.mShowsDialog = bool;
+    if (paramBundle != null)
     {
-      this.mShowsDialog = bool;
-      if (paramBundle != null)
-      {
-        this.mStyle = paramBundle.getInt("android:style", 0);
-        this.mTheme = paramBundle.getInt("android:theme", 0);
-        this.mCancelable = paramBundle.getBoolean("android:cancelable", true);
-        this.mShowsDialog = paramBundle.getBoolean("android:showsDialog", this.mShowsDialog);
-        this.mBackStackId = paramBundle.getInt("android:backStackId", -1);
-      }
-      return;
+      this.mStyle = paramBundle.getInt("android:style", 0);
+      this.mTheme = paramBundle.getInt("android:theme", 0);
+      this.mCancelable = paramBundle.getBoolean("android:cancelable", true);
+      this.mShowsDialog = paramBundle.getBoolean("android:showsDialog", this.mShowsDialog);
+      this.mBackStackId = paramBundle.getInt("android:backStackId", -1);
     }
   }
   
@@ -168,10 +170,11 @@ public class DialogFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (this.mDialog != null)
+    Dialog localDialog = this.mDialog;
+    if (localDialog != null)
     {
       this.mViewDestroyed = true;
-      this.mDialog.dismiss();
+      localDialog.dismiss();
       this.mDialog = null;
     }
   }
@@ -197,9 +200,10 @@ public class DialogFragment
       return super.onGetLayoutInflater(paramBundle);
     }
     this.mDialog = onCreateDialog(paramBundle);
-    if (this.mDialog != null)
+    paramBundle = this.mDialog;
+    if (paramBundle != null)
     {
-      setupDialog(this.mDialog, this.mStyle);
+      setupDialog(paramBundle, this.mStyle);
       return (LayoutInflater)this.mDialog.getContext().getSystemService("layout_inflater");
     }
     return (LayoutInflater)this.mHost.getContext().getSystemService("layout_inflater");
@@ -208,53 +212,62 @@ public class DialogFragment
   public void onSaveInstanceState(Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
-    if (this.mDialog != null)
+    Object localObject = this.mDialog;
+    if (localObject != null)
     {
-      Bundle localBundle = this.mDialog.onSaveInstanceState();
-      if (localBundle != null) {
-        paramBundle.putBundle("android:savedDialogState", localBundle);
+      localObject = ((Dialog)localObject).onSaveInstanceState();
+      if (localObject != null) {
+        paramBundle.putBundle("android:savedDialogState", (Bundle)localObject);
       }
     }
-    if (this.mStyle != 0) {
-      paramBundle.putInt("android:style", this.mStyle);
+    int i = this.mStyle;
+    if (i != 0) {
+      paramBundle.putInt("android:style", i);
     }
-    if (this.mTheme != 0) {
-      paramBundle.putInt("android:theme", this.mTheme);
+    i = this.mTheme;
+    if (i != 0) {
+      paramBundle.putInt("android:theme", i);
     }
-    if (!this.mCancelable) {
-      paramBundle.putBoolean("android:cancelable", this.mCancelable);
+    boolean bool = this.mCancelable;
+    if (!bool) {
+      paramBundle.putBoolean("android:cancelable", bool);
     }
-    if (!this.mShowsDialog) {
-      paramBundle.putBoolean("android:showsDialog", this.mShowsDialog);
+    bool = this.mShowsDialog;
+    if (!bool) {
+      paramBundle.putBoolean("android:showsDialog", bool);
     }
-    if (this.mBackStackId != -1) {
-      paramBundle.putInt("android:backStackId", this.mBackStackId);
+    i = this.mBackStackId;
+    if (i != -1) {
+      paramBundle.putInt("android:backStackId", i);
     }
   }
   
   public void onStart()
   {
     super.onStart();
-    if (this.mDialog != null)
+    Dialog localDialog = this.mDialog;
+    if (localDialog != null)
     {
       this.mViewDestroyed = false;
-      this.mDialog.show();
+      localDialog.show();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.mDialog != null) {
-      this.mDialog.hide();
+    Dialog localDialog = this.mDialog;
+    if (localDialog != null) {
+      localDialog.hide();
     }
   }
   
   public void setCancelable(boolean paramBoolean)
   {
     this.mCancelable = paramBoolean;
-    if (this.mDialog != null) {
-      this.mDialog.setCancelable(paramBoolean);
+    Dialog localDialog = this.mDialog;
+    if (localDialog != null) {
+      localDialog.setCancelable(paramBoolean);
     }
   }
   
@@ -266,7 +279,8 @@ public class DialogFragment
   public void setStyle(int paramInt1, @StyleRes int paramInt2)
   {
     this.mStyle = paramInt1;
-    if ((this.mStyle == 2) || (this.mStyle == 3)) {
+    paramInt1 = this.mStyle;
+    if ((paramInt1 == 2) || (paramInt1 == 3)) {
       this.mTheme = 16973913;
     }
     if (paramInt2 != 0) {

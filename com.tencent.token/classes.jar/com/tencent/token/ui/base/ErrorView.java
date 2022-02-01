@@ -46,16 +46,17 @@ public class ErrorView
   
   private void c()
   {
-    if (this.f) {}
-    for (int i = 2130968644;; i = 2130968643)
-    {
-      this.b = ((LayoutInflater)this.a.getSystemService("layout_inflater"));
-      this.c = this.b.inflate(i, null);
-      removeAllViews();
-      addView(this.c, new LinearLayout.LayoutParams(-1, -1));
-      this.c.setOnClickListener(this.g);
-      return;
+    int i;
+    if (this.f) {
+      i = 2131296324;
+    } else {
+      i = 2131296323;
     }
+    this.b = ((LayoutInflater)this.a.getSystemService("layout_inflater"));
+    this.c = this.b.inflate(i, null);
+    removeAllViews();
+    addView(this.c, new LinearLayout.LayoutParams(-1, -1));
+    this.c.setOnClickListener(this.g);
   }
   
   public void a()
@@ -79,12 +80,14 @@ public class ErrorView
       return;
     }
     this.e = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      this.f = false;
-      c();
-      return;
+    if ((paramInt != 10005) && (paramInt != 100004)) {
+      switch (paramInt)
+      {
+      default: 
+        this.f = false;
+        c();
+        return;
+      }
     }
     this.f = true;
     c();

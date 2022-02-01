@@ -29,8 +29,12 @@ public final class RoundedBitmapDrawableFactory
   public static RoundedBitmapDrawable create(@NonNull Resources paramResources, @NonNull InputStream paramInputStream)
   {
     paramResources = create(paramResources, BitmapFactory.decodeStream(paramInputStream));
-    if (paramResources.getBitmap() == null) {
-      Log.w("RoundedBitmapDrawableFa", "RoundedBitmapDrawable cannot decode " + paramInputStream);
+    if (paramResources.getBitmap() == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RoundedBitmapDrawable cannot decode ");
+      localStringBuilder.append(paramInputStream);
+      Log.w("RoundedBitmapDrawableFa", localStringBuilder.toString());
     }
     return paramResources;
   }
@@ -39,8 +43,12 @@ public final class RoundedBitmapDrawableFactory
   public static RoundedBitmapDrawable create(@NonNull Resources paramResources, @NonNull String paramString)
   {
     paramResources = create(paramResources, BitmapFactory.decodeFile(paramString));
-    if (paramResources.getBitmap() == null) {
-      Log.w("RoundedBitmapDrawableFa", "RoundedBitmapDrawable cannot decode " + paramString);
+    if (paramResources.getBitmap() == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RoundedBitmapDrawable cannot decode ");
+      localStringBuilder.append(paramString);
+      Log.w("RoundedBitmapDrawableFa", localStringBuilder.toString());
     }
     return paramResources;
   }

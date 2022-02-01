@@ -12,31 +12,39 @@ public class cy
   
   public static cy f()
   {
-    if (c == null) {}
-    try
-    {
-      if (c == null) {
-        c = new cy();
+    if (c == null) {
+      try
+      {
+        if (c == null) {
+          c = new cy();
+        }
       }
-      return c;
+      finally {}
     }
-    finally {}
+    return c;
   }
   
   private String h()
   {
-    if (TextUtils.isEmpty(this.a)) {
-      this.a = (Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "qqpimdownload" + File.separator);
+    if (TextUtils.isEmpty(this.a))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("qqpimdownload");
+      localStringBuilder.append(File.separator);
+      this.a = localStringBuilder.toString();
     }
     return this.a;
   }
   
   public void a()
   {
-    if (this.b == null) {
+    cz localcz = this.b;
+    if (localcz == null) {
       return;
     }
-    this.b.a();
+    localcz.a();
   }
   
   public void a(cx paramcx)
@@ -69,10 +77,11 @@ public class cy
   
   public void c()
   {
-    if (this.b == null) {
+    cz localcz = this.b;
+    if (localcz == null) {
       return;
     }
-    this.b.b();
+    localcz.b();
   }
   
   public boolean d()
@@ -105,10 +114,11 @@ public class cy
   
   public boolean g()
   {
-    if (this.b == null) {
+    cz localcz = this.b;
+    if (localcz == null) {
       return false;
     }
-    return this.b.c();
+    return localcz.c();
   }
 }
 

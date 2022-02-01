@@ -20,12 +20,13 @@ class AppCompatPopupWindow
   
   static
   {
-    if (Build.VERSION.SDK_INT < 21) {}
-    for (boolean bool = true;; bool = false)
-    {
-      COMPAT_OVERLAP_ANCHOR = bool;
-      return;
+    boolean bool;
+    if (Build.VERSION.SDK_INT < 21) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    COMPAT_OVERLAP_ANCHOR = bool;
   }
   
   public AppCompatPopupWindow(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @AttrRes int paramInt)
@@ -91,11 +92,7 @@ class AppCompatPopupWindow
     if ((COMPAT_OVERLAP_ANCHOR) && (this.mOverlapAnchor)) {
       paramInt2 -= paramView.getHeight();
     }
-    for (;;)
-    {
-      super.update(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-      return;
-    }
+    super.update(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
   }
 }
 

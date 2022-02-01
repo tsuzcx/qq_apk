@@ -15,16 +15,6 @@ public final class ShareContentConf
   public String title = "";
   public String url = "";
   
-  static
-  {
-    if (!ShareContentConf.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public ShareContentConf() {}
   
   public ShareContentConf(int paramInt, String paramString1, String paramString2, String paramString3)
@@ -42,18 +32,17 @@ public final class ShareContentConf
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -67,13 +56,28 @@ public final class ShareContentConf
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ShareContentConf)paramObject;
-    } while ((!JceUtil.equals(this.cls, paramObject.cls)) || (!JceUtil.equals(this.title, paramObject.title)) || (!JceUtil.equals(this.content, paramObject.content)) || (!JceUtil.equals(this.url, paramObject.url)));
-    return true;
+    }
+    paramObject = (ShareContentConf)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.cls, paramObject.cls))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.title, paramObject.title))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.content, paramObject.content))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.url, paramObject.url)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -147,8 +151,9 @@ public final class ShareContentConf
     paramJceOutputStream.write(this.cls, 0);
     paramJceOutputStream.write(this.title, 1);
     paramJceOutputStream.write(this.content, 2);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 3);
+    String str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }

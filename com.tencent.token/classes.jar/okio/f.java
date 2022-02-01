@@ -7,10 +7,12 @@ public abstract class f
   
   public f(p paramp)
   {
-    if (paramp == null) {
-      throw new IllegalArgumentException("delegate == null");
+    if (paramp != null)
+    {
+      this.a = paramp;
+      return;
     }
-    this.a = paramp;
+    throw new IllegalArgumentException("delegate == null");
   }
   
   public r a()
@@ -35,7 +37,12 @@ public abstract class f
   
   public String toString()
   {
-    return getClass().getSimpleName() + "(" + this.a.toString() + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append("(");
+    localStringBuilder.append(this.a.toString());
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 

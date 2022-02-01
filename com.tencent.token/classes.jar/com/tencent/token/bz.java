@@ -38,20 +38,20 @@ public class bz
         bz.this.b.a(paramAnonymousInt, ???.getMessage(), ???.getMessage());
         bz.this.b.d = ???;
       }
-      for (;;)
+      else
       {
-        bz.a(bz.this, false);
-        synchronized (bz.c)
+        ??? = bz.b(bz.this).GetLocalTicket(paramAnonymousString, paramAnonymousLong, 64);
+        if ((bz.this.b != null) && (??? != null))
         {
-          bz.c.notifyAll();
-          return;
-          ??? = bz.b(bz.this).GetLocalTicket(paramAnonymousString, paramAnonymousLong, 64);
-          if ((bz.this.b == null) || (??? == null)) {
-            continue;
-          }
           bz.this.b.d = ???._sig;
           bz.this.b.c();
         }
+      }
+      bz.a(bz.this, false);
+      synchronized (bz.c)
+      {
+        bz.c.notifyAll();
+        return;
       }
     }
     
@@ -59,41 +59,40 @@ public class bz
     {
       int i = bz.c(bz.this);
       bz.a(bz.this, 0);
-      label223:
-      for (;;)
+      synchronized (bz.d(bz.this))
       {
-        synchronized (bz.d(bz.this))
+        bz.e(bz.this).cancel();
+        if (bz.a(bz.this) == null)
         {
-          bz.e(bz.this).cancel();
-          if (bz.a(bz.this) == null)
-          {
-            g.c("onCheckPictureAndGetSt, handler is null");
-            return;
-          }
-          paramAnonymousWUserSigInfo = bz.a(bz.this).obtainMessage(4099);
-          paramAnonymousWUserSigInfo.arg1 = paramAnonymousInt;
-          if (paramAnonymousInt != 0)
-          {
-            paramAnonymousString = new Bundle();
-            paramAnonymousString.putString("loginerror", paramAnonymousErrMsg.getMessage());
-            paramAnonymousWUserSigInfo.setData(paramAnonymousString);
-            bz.a(bz.this).sendMessage(paramAnonymousWUserSigInfo);
-            bz.a(bz.this, null);
-            return;
-          }
+          g.c("onCheckPictureAndGetSt, handler is null");
+          return;
         }
-        if (i != 0) {}
-        for (paramAnonymousString = bz.b(bz.this).GetLocalTicket(paramAnonymousString, bz.g(bz.this), i);; paramAnonymousString = bz.b(bz.this).GetLocalTicket(paramAnonymousString, bz.g(bz.this), 64))
+        paramAnonymousWUserSigInfo = bz.a(bz.this).obtainMessage(4099);
+        paramAnonymousWUserSigInfo.arg1 = paramAnonymousInt;
+        if (paramAnonymousInt != 0)
         {
-          if (paramAnonymousString == null) {
-            break label223;
-          }
-          paramAnonymousWUserSigInfo.obj = paramAnonymousString._sig;
           paramAnonymousString = new Bundle();
-          paramAnonymousString.putLong("appid", bz.g(bz.this));
+          paramAnonymousString.putString("loginerror", paramAnonymousErrMsg.getMessage());
           paramAnonymousWUserSigInfo.setData(paramAnonymousString);
-          break;
         }
+        else
+        {
+          if (i != 0) {
+            paramAnonymousString = bz.b(bz.this).GetLocalTicket(paramAnonymousString, bz.g(bz.this), i);
+          } else {
+            paramAnonymousString = bz.b(bz.this).GetLocalTicket(paramAnonymousString, bz.g(bz.this), 64);
+          }
+          if (paramAnonymousString != null)
+          {
+            paramAnonymousWUserSigInfo.obj = paramAnonymousString._sig;
+            paramAnonymousString = new Bundle();
+            paramAnonymousString.putLong("appid", bz.g(bz.this));
+            paramAnonymousWUserSigInfo.setData(paramAnonymousString);
+          }
+        }
+        bz.a(bz.this).sendMessage(paramAnonymousWUserSigInfo);
+        bz.a(bz.this, null);
+        return;
       }
     }
     
@@ -122,7 +121,10 @@ public class bz
     
     public void OnException(ErrMsg paramAnonymousErrMsg, int paramAnonymousInt, WUserSigInfo arg3)
     {
-      g.c("Wtlogin exception " + paramAnonymousErrMsg.getMessage());
+      ??? = new StringBuilder();
+      ???.append("Wtlogin exception ");
+      ???.append(paramAnonymousErrMsg.getMessage());
+      g.c(???.toString());
       bz.a(bz.this, 0);
       synchronized (bz.d(bz.this))
       {
@@ -160,33 +162,43 @@ public class bz
           g.c("onGetStWithPasswd, handler is null");
           return;
         }
-      }
-      g.c(this + "getMessage----" + paramAnonymousErrMsg.getMessage() + "\ndwAppid" + paramAnonymousLong1);
-      g.c(this + "getOtherinfo----" + paramAnonymousErrMsg.getOtherinfo() + "\ndwAppid" + paramAnonymousLong1);
-      paramAnonymousWUserSigInfo = bz.a(bz.this).obtainMessage(4098);
-      paramAnonymousWUserSigInfo.arg1 = paramAnonymousInt2;
-      if (paramAnonymousInt2 != 0)
-      {
-        paramAnonymousString1 = new Bundle();
-        paramAnonymousString1.putString("loginerror", paramAnonymousErrMsg.getMessage());
-        paramAnonymousString1.putString("loginurl", paramAnonymousErrMsg.getOtherinfo());
-        paramAnonymousWUserSigInfo.setData(paramAnonymousString1);
-      }
-      label320:
-      for (;;)
-      {
+        paramAnonymousWUserSigInfo = new StringBuilder();
+        paramAnonymousWUserSigInfo.append(this);
+        paramAnonymousWUserSigInfo.append("getMessage----");
+        paramAnonymousWUserSigInfo.append(paramAnonymousErrMsg.getMessage());
+        paramAnonymousWUserSigInfo.append("\ndwAppid");
+        paramAnonymousWUserSigInfo.append(paramAnonymousLong1);
+        g.c(paramAnonymousWUserSigInfo.toString());
+        paramAnonymousWUserSigInfo = new StringBuilder();
+        paramAnonymousWUserSigInfo.append(this);
+        paramAnonymousWUserSigInfo.append("getOtherinfo----");
+        paramAnonymousWUserSigInfo.append(paramAnonymousErrMsg.getOtherinfo());
+        paramAnonymousWUserSigInfo.append("\ndwAppid");
+        paramAnonymousWUserSigInfo.append(paramAnonymousLong1);
+        g.c(paramAnonymousWUserSigInfo.toString());
+        paramAnonymousWUserSigInfo = bz.a(bz.this).obtainMessage(4098);
+        paramAnonymousWUserSigInfo.arg1 = paramAnonymousInt2;
+        if (paramAnonymousInt2 != 0)
+        {
+          paramAnonymousString1 = new Bundle();
+          paramAnonymousString1.putString("loginerror", paramAnonymousErrMsg.getMessage());
+          paramAnonymousString1.putString("loginurl", paramAnonymousErrMsg.getOtherinfo());
+          paramAnonymousWUserSigInfo.setData(paramAnonymousString1);
+        }
+        else
+        {
+          if (paramAnonymousInt1 != 0) {
+            paramAnonymousString1 = bz.b(bz.this).GetLocalTicket(paramAnonymousString1, bz.g(bz.this), paramAnonymousInt1);
+          } else {
+            paramAnonymousString1 = bz.b(bz.this).GetLocalTicket(paramAnonymousString1, bz.g(bz.this), 64);
+          }
+          if (paramAnonymousString1 != null) {
+            paramAnonymousWUserSigInfo.obj = paramAnonymousString1._sig;
+          }
+        }
         bz.a(bz.this).sendMessage(paramAnonymousWUserSigInfo);
         bz.a(bz.this, null);
         return;
-        if (paramAnonymousInt1 != 0) {}
-        for (paramAnonymousString1 = bz.b(bz.this).GetLocalTicket(paramAnonymousString1, bz.g(bz.this), paramAnonymousInt1);; paramAnonymousString1 = bz.b(bz.this).GetLocalTicket(paramAnonymousString1, bz.g(bz.this), 64))
-        {
-          if (paramAnonymousString1 == null) {
-            break label320;
-          }
-          paramAnonymousWUserSigInfo.obj = paramAnonymousString1._sig;
-          break;
-        }
       }
     }
     
@@ -207,39 +219,52 @@ public class bz
           g.c("onGetStWithoutPasswd, handler is null");
           return;
         }
-      }
-      g.c(this + "getMessage----" + paramAnonymousErrMsg.getMessage() + "\ndwSrcAppid" + paramAnonymousLong1);
-      g.c(this + "getOtherinfo----" + paramAnonymousErrMsg.getOtherinfo() + "\ndwSrcAppid" + paramAnonymousLong1);
-      Message localMessage = bz.a(bz.this).obtainMessage(4097);
-      localMessage.arg1 = paramAnonymousInt2;
-      if (paramAnonymousInt2 != 0)
-      {
-        paramAnonymousString = new Bundle();
-        paramAnonymousString.putString("loginerror", paramAnonymousErrMsg.getMessage());
-        paramAnonymousString.putString("loginurl", paramAnonymousErrMsg.getOtherinfo());
-        localMessage.setData(paramAnonymousString);
-      }
-      label308:
-      for (;;)
-      {
-        bz.a(bz.this).sendMessage(localMessage);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this);
+        ((StringBuilder)localObject).append("getMessage----");
+        ((StringBuilder)localObject).append(paramAnonymousErrMsg.getMessage());
+        ((StringBuilder)localObject).append("\ndwSrcAppid");
+        ((StringBuilder)localObject).append(paramAnonymousLong1);
+        g.c(((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this);
+        ((StringBuilder)localObject).append("getOtherinfo----");
+        ((StringBuilder)localObject).append(paramAnonymousErrMsg.getOtherinfo());
+        ((StringBuilder)localObject).append("\ndwSrcAppid");
+        ((StringBuilder)localObject).append(paramAnonymousLong1);
+        g.c(((StringBuilder)localObject).toString());
+        localObject = bz.a(bz.this).obtainMessage(4097);
+        ((Message)localObject).arg1 = paramAnonymousInt2;
+        if (paramAnonymousInt2 != 0)
+        {
+          paramAnonymousString = new Bundle();
+          paramAnonymousString.putString("loginerror", paramAnonymousErrMsg.getMessage());
+          paramAnonymousString.putString("loginurl", paramAnonymousErrMsg.getOtherinfo());
+          ((Message)localObject).setData(paramAnonymousString);
+        }
+        else
+        {
+          if (paramAnonymousInt1 != 0) {
+            paramAnonymousString = bz.b(bz.this).GetLocalTicket(paramAnonymousString, paramAnonymousLong1, paramAnonymousInt1);
+          } else {
+            paramAnonymousString = bz.b(bz.this).GetLocalTicket(paramAnonymousString, paramAnonymousLong1, 64);
+          }
+          if (paramAnonymousString != null) {
+            ((Message)localObject).obj = paramAnonymousString._sig;
+          }
+        }
+        bz.a(bz.this).sendMessage((Message)localObject);
         bz.a(bz.this, null);
         return;
-        if (paramAnonymousInt1 != 0) {}
-        for (paramAnonymousString = bz.b(bz.this).GetLocalTicket(paramAnonymousString, paramAnonymousLong1, paramAnonymousInt1);; paramAnonymousString = bz.b(bz.this).GetLocalTicket(paramAnonymousString, paramAnonymousLong1, 64))
-        {
-          if (paramAnonymousString == null) {
-            break label308;
-          }
-          localMessage.obj = paramAnonymousString._sig;
-          break;
-        }
       }
     }
     
     public void OnInit(int paramAnonymousInt)
     {
-      g.b("Wtlogin init result " + paramAnonymousInt);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Wtlogin init result ");
+      localStringBuilder.append(paramAnonymousInt);
+      g.b(localStringBuilder.toString());
     }
     
     public void OnRefreshPictureData(String arg1, WUserSigInfo paramAnonymousWUserSigInfo, byte[] paramAnonymousArrayOfByte, int paramAnonymousInt, ErrMsg paramAnonymousErrMsg)
@@ -295,12 +320,16 @@ public class bz
       {
         try
         {
-          paramAnonymousErrMsg = new StringBuilder().append("onQuickLogin").append(paramAnonymousInt).append("mUIHandler!=null:");
+          paramAnonymousErrMsg = new StringBuilder();
+          paramAnonymousErrMsg.append("onQuickLogin");
+          paramAnonymousErrMsg.append(paramAnonymousInt);
+          paramAnonymousErrMsg.append("mUIHandler!=null:");
           if (bz.a(bz.this) == null) {
-            break label183;
+            break label198;
           }
           bool = true;
-          g.a(bool);
+          paramAnonymousErrMsg.append(bool);
+          g.a(paramAnonymousErrMsg.toString());
           if (paramAnonymousInt != 0)
           {
             if (true == util.shouldKick(paramAnonymousInt)) {
@@ -329,7 +358,7 @@ public class bz
           paramAnonymousString.printStackTrace();
         }
         return;
-        label183:
+        label198:
         boolean bool = false;
       }
     }
@@ -378,15 +407,12 @@ public class bz
     {
       this.f.quickLogin(paramActivity, paramLong, this.n, j.b, a(paramLong));
       this.g = paramHandler;
-      return -1;
     }
     catch (Exception paramActivity)
     {
-      for (;;)
-      {
-        paramActivity.printStackTrace();
-      }
+      paramActivity.printStackTrace();
     }
+    return -1;
   }
   
   public int a(Activity paramActivity, long paramLong, Handler paramHandler, String paramString)
@@ -401,15 +427,12 @@ public class bz
       localQuickLoginParam.isUserAccountLocked = true;
       this.f.quickLogin(paramActivity, paramLong, this.n, j.b, localQuickLoginParam);
       this.g = paramHandler;
-      return -1;
     }
     catch (Exception paramActivity)
     {
-      for (;;)
-      {
-        paramActivity.printStackTrace();
-      }
+      paramActivity.printStackTrace();
     }
+    return -1;
   }
   
   public int a(String paramString, Handler paramHandler)
@@ -430,36 +453,34 @@ public class bz
     {
       this.l = paramLong;
       Handler localHandler = this.g;
-      if (localHandler == null) {
+      if (localHandler == null)
+      {
         try
         {
           this.h.cancel();
-          this.f.GetStWithoutPasswd(paramString, paramLong, paramLong, this.n, d, new WUserSigInfo());
-          this.g = paramHandler;
-          this.h = new Timer();
-          this.h.schedule(new TimerTask()
-          {
-            public void run()
-            {
-              bz.this.e.OnGetStWithoutPasswd(null, 0L, 0L, 0, 0L, null, 8192, new ErrMsg());
-            }
-          }, 30000L);
-          return 0;
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            localException.printStackTrace();
-          }
+          localException.printStackTrace();
         }
+        this.f.GetStWithoutPasswd(paramString, paramLong, paramLong, this.n, d, new WUserSigInfo());
+        this.g = paramHandler;
+        this.h = new Timer();
+        this.h.schedule(new TimerTask()
+        {
+          public void run()
+          {
+            bz.this.e.OnGetStWithoutPasswd(null, 0L, 0L, 0, 0L, null, 8192, new ErrMsg());
+          }
+        }, 30000L);
+        return 0;
       }
-      return -1;
     }
     catch (Exception paramString)
     {
       paramString.printStackTrace();
     }
+    return -1;
   }
   
   public int a(String paramString, Handler paramHandler, long paramLong, int paramInt)
@@ -512,10 +533,8 @@ public class bz
       }
       catch (Exception paramString1)
       {
-        for (;;)
-        {
-          paramString1.printStackTrace();
-        }
+        paramString1.printStackTrace();
+        return 0;
       }
     }
     return -1;
@@ -531,42 +550,40 @@ public class bz
         paramArrayOfByte2 = new ArrayList();
         paramArrayOfByte2.add(a(8, paramString2.getBytes()));
       }
-      for (;;)
+      else
       {
-        this.f.CloseCode(paramString1, paramLong, paramArrayOfByte1, 1, paramArrayOfByte2, new WUserSigInfo());
-        this.g = paramHandler;
-        this.h = new Timer();
-        try
-        {
-          this.h.schedule(new TimerTask()
-          {
-            public void run()
-            {
-              bz.this.e.OnCloseCode(null, null, 0L, new WUserSigInfo(), null, 8192);
-            }
-          }, 30000L);
-          return 0;
-          ArrayList localArrayList = new ArrayList();
-          localArrayList.add(a(1, paramArrayOfByte2));
-          localArrayList.add(a(8, paramString2.getBytes()));
-          paramArrayOfByte2 = localArrayList;
-        }
-        catch (Exception paramString1)
-        {
-          for (;;)
-          {
-            paramString1.printStackTrace();
-          }
-        }
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(a(1, paramArrayOfByte2));
+        localArrayList.add(a(8, paramString2.getBytes()));
+        paramArrayOfByte2 = localArrayList;
       }
+      this.f.CloseCode(paramString1, paramLong, paramArrayOfByte1, 1, paramArrayOfByte2, new WUserSigInfo());
+      this.g = paramHandler;
+      this.h = new Timer();
+      try
+      {
+        this.h.schedule(new TimerTask()
+        {
+          public void run()
+          {
+            bz.this.e.OnCloseCode(null, null, 0L, new WUserSigInfo(), null, 8192);
+          }
+        }, 30000L);
+      }
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+      }
+      return 0;
     }
     return -1;
   }
   
   public long a()
   {
-    if (this.a != null) {
-      return this.f.GetAppidFromUrl(this.a);
+    String str = this.a;
+    if (str != null) {
+      return this.f.GetAppidFromUrl(str);
     }
     return 0L;
   }
@@ -621,9 +638,13 @@ public class bz
   
   public byte[] b(long paramLong)
   {
-    Ticket localTicket = this.f.GetLocalTicket("" + paramLong, 523005419L, 64);
-    if (localTicket != null) {
-      return localTicket._sig;
+    Object localObject = this.f;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong);
+    localObject = ((WtloginHelper)localObject).GetLocalTicket(localStringBuilder.toString(), 523005419L, 64);
+    if (localObject != null) {
+      return ((Ticket)localObject)._sig;
     }
     return null;
   }

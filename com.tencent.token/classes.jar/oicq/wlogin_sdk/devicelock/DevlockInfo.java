@@ -102,9 +102,10 @@ public class DevlockInfo
     paramParcel.writeInt(this.BakMobileState);
     paramParcel.writeString(this.BakCountryCode);
     paramParcel.writeString(this.BakMobile);
-    if ((this.TransferInfo != null) && (this.TransferInfo.length > 0))
+    byte[] arrayOfByte = this.TransferInfo;
+    if ((arrayOfByte != null) && (arrayOfByte.length > 0))
     {
-      paramParcel.writeInt(this.TransferInfo.length);
+      paramParcel.writeInt(arrayOfByte.length);
       paramParcel.writeByteArray(this.TransferInfo);
       return;
     }

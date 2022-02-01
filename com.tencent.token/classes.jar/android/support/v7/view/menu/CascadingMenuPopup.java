@@ -71,22 +71,17 @@ final class CascadingMenuPopup
   {
     public void onGlobalLayout()
     {
-      Object localObject;
       if ((CascadingMenuPopup.this.isShowing()) && (CascadingMenuPopup.this.mShowingMenus.size() > 0) && (!((CascadingMenuPopup.CascadingMenuInfo)CascadingMenuPopup.this.mShowingMenus.get(0)).window.isModal()))
       {
-        localObject = CascadingMenuPopup.this.mShownAnchorView;
+        Object localObject = CascadingMenuPopup.this.mShownAnchorView;
         if ((localObject != null) && (((View)localObject).isShown())) {
-          break label77;
+          localObject = CascadingMenuPopup.this.mShowingMenus.iterator();
         }
-        CascadingMenuPopup.this.dismiss();
-      }
-      for (;;)
-      {
-        return;
-        label77:
-        localObject = CascadingMenuPopup.this.mShowingMenus.iterator();
-        while (((Iterator)localObject).hasNext()) {
+        while (((Iterator)localObject).hasNext())
+        {
           ((CascadingMenuPopup.CascadingMenuInfo)((Iterator)localObject).next()).window.show();
+          continue;
+          CascadingMenuPopup.this.dismiss();
         }
       }
     }
@@ -98,45 +93,44 @@ final class CascadingMenuPopup
   {
     public void onItemHoverEnter(@NonNull final MenuBuilder paramAnonymousMenuBuilder, @NonNull final MenuItem paramAnonymousMenuItem)
     {
-      CascadingMenuPopup.this.mSubMenuHoverHandler.removeCallbacksAndMessages(null);
-      int i = 0;
+      Handler localHandler = CascadingMenuPopup.this.mSubMenuHoverHandler;
+      final CascadingMenuPopup.CascadingMenuInfo localCascadingMenuInfo = null;
+      localHandler.removeCallbacksAndMessages(null);
       int j = CascadingMenuPopup.this.mShowingMenus.size();
-      if (i < j) {
-        if (paramAnonymousMenuBuilder != ((CascadingMenuPopup.CascadingMenuInfo)CascadingMenuPopup.this.mShowingMenus.get(i)).menu) {}
-      }
-      for (;;)
+      int i = 0;
+      while (i < j)
       {
-        if (i == -1)
-        {
-          return;
-          i += 1;
-          break;
+        if (paramAnonymousMenuBuilder == ((CascadingMenuPopup.CascadingMenuInfo)CascadingMenuPopup.this.mShowingMenus.get(i)).menu) {
+          break label75;
         }
         i += 1;
-        if (i < CascadingMenuPopup.this.mShowingMenus.size()) {}
-        for (final CascadingMenuPopup.CascadingMenuInfo localCascadingMenuInfo = (CascadingMenuPopup.CascadingMenuInfo)CascadingMenuPopup.this.mShowingMenus.get(i);; localCascadingMenuInfo = null)
-        {
-          paramAnonymousMenuItem = new Runnable()
-          {
-            public void run()
-            {
-              if (localCascadingMenuInfo != null)
-              {
-                CascadingMenuPopup.this.mShouldCloseImmediately = true;
-                localCascadingMenuInfo.menu.close(false);
-                CascadingMenuPopup.this.mShouldCloseImmediately = false;
-              }
-              if ((paramAnonymousMenuItem.isEnabled()) && (paramAnonymousMenuItem.hasSubMenu())) {
-                paramAnonymousMenuBuilder.performItemAction(paramAnonymousMenuItem, 4);
-              }
-            }
-          };
-          long l = SystemClock.uptimeMillis();
-          CascadingMenuPopup.this.mSubMenuHoverHandler.postAtTime(paramAnonymousMenuItem, paramAnonymousMenuBuilder, l + 200L);
-          return;
-        }
-        i = -1;
       }
+      i = -1;
+      label75:
+      if (i == -1) {
+        return;
+      }
+      i += 1;
+      if (i < CascadingMenuPopup.this.mShowingMenus.size()) {
+        localCascadingMenuInfo = (CascadingMenuPopup.CascadingMenuInfo)CascadingMenuPopup.this.mShowingMenus.get(i);
+      }
+      paramAnonymousMenuItem = new Runnable()
+      {
+        public void run()
+        {
+          if (localCascadingMenuInfo != null)
+          {
+            CascadingMenuPopup.this.mShouldCloseImmediately = true;
+            localCascadingMenuInfo.menu.close(false);
+            CascadingMenuPopup.this.mShouldCloseImmediately = false;
+          }
+          if ((paramAnonymousMenuItem.isEnabled()) && (paramAnonymousMenuItem.hasSubMenu())) {
+            paramAnonymousMenuBuilder.performItemAction(paramAnonymousMenuItem, 4);
+          }
+        }
+      };
+      long l = SystemClock.uptimeMillis();
+      CascadingMenuPopup.this.mSubMenuHoverHandler.postAtTime(paramAnonymousMenuItem, paramAnonymousMenuBuilder, l + 200L);
     }
     
     public void onItemHoverExit(@NonNull MenuBuilder paramAnonymousMenuBuilder, @NonNull MenuItem paramAnonymousMenuItem)
@@ -190,8 +184,8 @@ final class CascadingMenuPopup
   
   private int findIndexOfAddedMenu(@NonNull MenuBuilder paramMenuBuilder)
   {
-    int i = 0;
     int j = this.mShowingMenus.size();
+    int i = 0;
     while (i < j)
     {
       if (paramMenuBuilder == ((CascadingMenuInfo)this.mShowingMenus.get(i)).menu) {
@@ -220,54 +214,55 @@ final class CascadingMenuPopup
   @Nullable
   private View findParentViewForSubmenu(@NonNull CascadingMenuInfo paramCascadingMenuInfo, @NonNull MenuBuilder paramMenuBuilder)
   {
-    int i = 0;
     paramMenuBuilder = findMenuItemForSubmenu(paramCascadingMenuInfo.menu, paramMenuBuilder);
     if (paramMenuBuilder == null) {
       return null;
     }
     ListView localListView = paramCascadingMenuInfo.getListView();
     paramCascadingMenuInfo = localListView.getAdapter();
+    boolean bool = paramCascadingMenuInfo instanceof HeaderViewListAdapter;
+    int i = 0;
     int j;
-    if ((paramCascadingMenuInfo instanceof HeaderViewListAdapter))
+    if (bool)
     {
       paramCascadingMenuInfo = (HeaderViewListAdapter)paramCascadingMenuInfo;
       j = paramCascadingMenuInfo.getHeadersCount();
       paramCascadingMenuInfo = (MenuAdapter)paramCascadingMenuInfo.getWrappedAdapter();
-      int k = paramCascadingMenuInfo.getCount();
-      label62:
-      if (i >= k) {
-        break label135;
-      }
-      if (paramMenuBuilder != paramCascadingMenuInfo.getItem(i)) {
-        break label95;
-      }
     }
-    for (;;)
+    else
     {
-      if (i == -1)
-      {
-        return null;
-        paramCascadingMenuInfo = (MenuAdapter)paramCascadingMenuInfo;
-        j = 0;
-        break;
-        label95:
-        i += 1;
-        break label62;
+      paramCascadingMenuInfo = (MenuAdapter)paramCascadingMenuInfo;
+      j = 0;
+    }
+    int k = paramCascadingMenuInfo.getCount();
+    while (i < k)
+    {
+      if (paramMenuBuilder == paramCascadingMenuInfo.getItem(i)) {
+        break label104;
       }
-      i = i + j - localListView.getFirstVisiblePosition();
-      if ((i < 0) || (i >= localListView.getChildCount())) {
+      i += 1;
+    }
+    i = -1;
+    label104:
+    if (i == -1) {
+      return null;
+    }
+    i = i + j - localListView.getFirstVisiblePosition();
+    if (i >= 0)
+    {
+      if (i >= localListView.getChildCount()) {
         return null;
       }
       return localListView.getChildAt(i);
-      label135:
-      i = -1;
     }
+    return null;
   }
   
   private int getInitialMenuPosition()
   {
+    int j = ViewCompat.getLayoutDirection(this.mAnchorView);
     int i = 1;
-    if (ViewCompat.getLayoutDirection(this.mAnchorView) == 1) {
+    if (j == 1) {
       i = 0;
     }
     return i;
@@ -275,15 +270,15 @@ final class CascadingMenuPopup
   
   private int getNextMenuPosition(int paramInt)
   {
-    ListView localListView = ((CascadingMenuInfo)this.mShowingMenus.get(this.mShowingMenus.size() - 1)).getListView();
+    Object localObject = this.mShowingMenus;
+    localObject = ((CascadingMenuInfo)((List)localObject).get(((List)localObject).size() - 1)).getListView();
     int[] arrayOfInt = new int[2];
-    localListView.getLocationOnScreen(arrayOfInt);
+    ((ListView)localObject).getLocationOnScreen(arrayOfInt);
     Rect localRect = new Rect();
     this.mShownAnchorView.getWindowVisibleDisplayFrame(localRect);
     if (this.mLastPosition == 1)
     {
-      int i = arrayOfInt[0];
-      if (localListView.getWidth() + i + paramInt > localRect.right) {
+      if (arrayOfInt[0] + ((ListView)localObject).getWidth() + paramInt > localRect.right) {
         return 0;
       }
       return 1;
@@ -298,111 +293,79 @@ final class CascadingMenuPopup
   {
     Object localObject3 = LayoutInflater.from(this.mContext);
     Object localObject1 = new MenuAdapter(paramMenuBuilder, (LayoutInflater)localObject3, this.mOverflowOnly);
-    int m;
-    MenuPopupWindow localMenuPopupWindow;
-    Object localObject2;
-    label136:
-    int j;
-    int i;
-    label167:
-    int k;
-    if ((!isShowing()) && (this.mForceShowIcon))
-    {
+    if ((!isShowing()) && (this.mForceShowIcon)) {
       ((MenuAdapter)localObject1).setForceShowIcon(true);
-      m = measureIndividualMenuWidth((ListAdapter)localObject1, null, this.mContext, this.mMenuMaxWidth);
-      localMenuPopupWindow = createPopupWindow();
-      localMenuPopupWindow.setAdapter((ListAdapter)localObject1);
-      localMenuPopupWindow.setContentWidth(m);
-      localMenuPopupWindow.setDropDownGravity(this.mDropDownGravity);
-      if (this.mShowingMenus.size() <= 0) {
-        break label373;
-      }
-      localObject1 = (CascadingMenuInfo)this.mShowingMenus.get(this.mShowingMenus.size() - 1);
+    } else if (isShowing()) {
+      ((MenuAdapter)localObject1).setForceShowIcon(MenuPopup.shouldPreserveIconSpacing(paramMenuBuilder));
+    }
+    int m = measureIndividualMenuWidth((ListAdapter)localObject1, null, this.mContext, this.mMenuMaxWidth);
+    MenuPopupWindow localMenuPopupWindow = createPopupWindow();
+    localMenuPopupWindow.setAdapter((ListAdapter)localObject1);
+    localMenuPopupWindow.setContentWidth(m);
+    localMenuPopupWindow.setDropDownGravity(this.mDropDownGravity);
+    if (this.mShowingMenus.size() > 0)
+    {
+      localObject1 = this.mShowingMenus;
+      localObject1 = (CascadingMenuInfo)((List)localObject1).get(((List)localObject1).size() - 1);
       localObject2 = findParentViewForSubmenu((CascadingMenuInfo)localObject1, paramMenuBuilder);
-      if (localObject2 == null) {
-        break label515;
-      }
+    }
+    else
+    {
+      localObject1 = null;
+      localObject2 = localObject1;
+    }
+    if (localObject2 != null)
+    {
       localMenuPopupWindow.setTouchModal(false);
       localMenuPopupWindow.setEnterTransition(null);
-      j = getNextMenuPosition(m);
-      if (j != 1) {
-        break label382;
+      int j = getNextMenuPosition(m);
+      int i;
+      if (j == 1) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
       this.mLastPosition = j;
-      if (Build.VERSION.SDK_INT < 26) {
-        break label387;
+      int k;
+      if (Build.VERSION.SDK_INT >= 26)
+      {
+        localMenuPopupWindow.setAnchorView((View)localObject2);
+        j = 0;
+        k = 0;
       }
-      localMenuPopupWindow.setAnchorView((View)localObject2);
-      j = 0;
-      k = 0;
-      label192:
-      if ((this.mDropDownGravity & 0x5) != 5) {
-        break label490;
+      else
+      {
+        int[] arrayOfInt1 = new int[2];
+        this.mAnchorView.getLocationOnScreen(arrayOfInt1);
+        int[] arrayOfInt2 = new int[2];
+        ((View)localObject2).getLocationOnScreen(arrayOfInt2);
+        if ((this.mDropDownGravity & 0x7) == 5)
+        {
+          arrayOfInt1[0] += this.mAnchorView.getWidth();
+          arrayOfInt2[0] += ((View)localObject2).getWidth();
+        }
+        k = arrayOfInt2[0] - arrayOfInt1[0];
+        j = arrayOfInt2[1] - arrayOfInt1[1];
       }
-      if (i == 0) {
-        break label478;
+      if ((this.mDropDownGravity & 0x5) == 5)
+      {
+        if (i != 0) {
+          i = k + m;
+        } else {
+          i = k - ((View)localObject2).getWidth();
+        }
       }
-      i = k + m;
-      label212:
+      else if (i != 0) {
+        i = k + ((View)localObject2).getWidth();
+      } else {
+        i = k - m;
+      }
       localMenuPopupWindow.setHorizontalOffset(i);
       localMenuPopupWindow.setOverlapAnchor(true);
       localMenuPopupWindow.setVerticalOffset(j);
     }
-    for (;;)
+    else
     {
-      localObject2 = new CascadingMenuInfo(localMenuPopupWindow, paramMenuBuilder, this.mLastPosition);
-      this.mShowingMenus.add(localObject2);
-      localMenuPopupWindow.show();
-      localObject2 = localMenuPopupWindow.getListView();
-      ((ListView)localObject2).setOnKeyListener(this);
-      if ((localObject1 == null) && (this.mShowTitle) && (paramMenuBuilder.getHeaderTitle() != null))
-      {
-        localObject1 = (FrameLayout)((LayoutInflater)localObject3).inflate(R.layout.abc_popup_menu_header_item_layout, (ViewGroup)localObject2, false);
-        localObject3 = (TextView)((FrameLayout)localObject1).findViewById(16908310);
-        ((FrameLayout)localObject1).setEnabled(false);
-        ((TextView)localObject3).setText(paramMenuBuilder.getHeaderTitle());
-        ((ListView)localObject2).addHeaderView((View)localObject1, null, false);
-        localMenuPopupWindow.show();
-      }
-      return;
-      if (!isShowing()) {
-        break;
-      }
-      ((MenuAdapter)localObject1).setForceShowIcon(MenuPopup.shouldPreserveIconSpacing(paramMenuBuilder));
-      break;
-      label373:
-      localObject2 = null;
-      localObject1 = null;
-      break label136;
-      label382:
-      i = 0;
-      break label167;
-      label387:
-      int[] arrayOfInt1 = new int[2];
-      this.mAnchorView.getLocationOnScreen(arrayOfInt1);
-      int[] arrayOfInt2 = new int[2];
-      ((View)localObject2).getLocationOnScreen(arrayOfInt2);
-      if ((this.mDropDownGravity & 0x7) == 5)
-      {
-        arrayOfInt1[0] += this.mAnchorView.getWidth();
-        arrayOfInt2[0] += ((View)localObject2).getWidth();
-      }
-      k = arrayOfInt2[0] - arrayOfInt1[0];
-      j = arrayOfInt2[1] - arrayOfInt1[1];
-      break label192;
-      label478:
-      i = k - ((View)localObject2).getWidth();
-      break label212;
-      label490:
-      if (i != 0)
-      {
-        i = ((View)localObject2).getWidth() + k;
-        break label212;
-      }
-      i = k - m;
-      break label212;
-      label515:
       if (this.mHasXOffset) {
         localMenuPopupWindow.setHorizontalOffset(this.mXOffset);
       }
@@ -410,6 +373,20 @@ final class CascadingMenuPopup
         localMenuPopupWindow.setVerticalOffset(this.mYOffset);
       }
       localMenuPopupWindow.setEpicenterBounds(getEpicenterBounds());
+    }
+    Object localObject2 = new CascadingMenuInfo(localMenuPopupWindow, paramMenuBuilder, this.mLastPosition);
+    this.mShowingMenus.add(localObject2);
+    localMenuPopupWindow.show();
+    localObject2 = localMenuPopupWindow.getListView();
+    ((ListView)localObject2).setOnKeyListener(this);
+    if ((localObject1 == null) && (this.mShowTitle) && (paramMenuBuilder.getHeaderTitle() != null))
+    {
+      localObject1 = (FrameLayout)((LayoutInflater)localObject3).inflate(R.layout.abc_popup_menu_header_item_layout, (ViewGroup)localObject2, false);
+      localObject3 = (TextView)((FrameLayout)localObject1).findViewById(16908310);
+      ((FrameLayout)localObject1).setEnabled(false);
+      ((TextView)localObject3).setText(paramMenuBuilder.getHeaderTitle());
+      ((ListView)localObject2).addHeaderView((View)localObject1, null, false);
+      localMenuPopupWindow.show();
     }
   }
   
@@ -457,75 +434,89 @@ final class CascadingMenuPopup
     if (this.mShowingMenus.isEmpty()) {
       return null;
     }
-    return ((CascadingMenuInfo)this.mShowingMenus.get(this.mShowingMenus.size() - 1)).getListView();
+    List localList = this.mShowingMenus;
+    return ((CascadingMenuInfo)localList.get(localList.size() - 1)).getListView();
   }
   
   public boolean isShowing()
   {
-    return (this.mShowingMenus.size() > 0) && (((CascadingMenuInfo)this.mShowingMenus.get(0)).window.isShowing());
+    int i = this.mShowingMenus.size();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (i > 0)
+    {
+      bool1 = bool2;
+      if (((CascadingMenuInfo)this.mShowingMenus.get(0)).window.isShowing()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
   {
     int i = findIndexOfAddedMenu(paramMenuBuilder);
-    if (i < 0) {}
-    do
-    {
+    if (i < 0) {
       return;
-      int j = i + 1;
-      if (j < this.mShowingMenus.size()) {
-        ((CascadingMenuInfo)this.mShowingMenus.get(j)).menu.close(false);
+    }
+    int j = i + 1;
+    if (j < this.mShowingMenus.size()) {
+      ((CascadingMenuInfo)this.mShowingMenus.get(j)).menu.close(false);
+    }
+    Object localObject = (CascadingMenuInfo)this.mShowingMenus.remove(i);
+    ((CascadingMenuInfo)localObject).menu.removeMenuPresenter(this);
+    if (this.mShouldCloseImmediately)
+    {
+      ((CascadingMenuInfo)localObject).window.setExitTransition(null);
+      ((CascadingMenuInfo)localObject).window.setAnimationStyle(0);
+    }
+    ((CascadingMenuInfo)localObject).window.dismiss();
+    i = this.mShowingMenus.size();
+    if (i > 0) {
+      this.mLastPosition = ((CascadingMenuInfo)this.mShowingMenus.get(i - 1)).position;
+    } else {
+      this.mLastPosition = getInitialMenuPosition();
+    }
+    if (i == 0)
+    {
+      dismiss();
+      localObject = this.mPresenterCallback;
+      if (localObject != null) {
+        ((MenuPresenter.Callback)localObject).onCloseMenu(paramMenuBuilder, true);
       }
-      CascadingMenuInfo localCascadingMenuInfo = (CascadingMenuInfo)this.mShowingMenus.remove(i);
-      localCascadingMenuInfo.menu.removeMenuPresenter(this);
-      if (this.mShouldCloseImmediately)
+      paramMenuBuilder = this.mTreeObserver;
+      if (paramMenuBuilder != null)
       {
-        localCascadingMenuInfo.window.setExitTransition(null);
-        localCascadingMenuInfo.window.setAnimationStyle(0);
-      }
-      localCascadingMenuInfo.window.dismiss();
-      i = this.mShowingMenus.size();
-      if (i > 0) {}
-      for (this.mLastPosition = ((CascadingMenuInfo)this.mShowingMenus.get(i - 1)).position; i == 0; this.mLastPosition = getInitialMenuPosition())
-      {
-        dismiss();
-        if (this.mPresenterCallback != null) {
-          this.mPresenterCallback.onCloseMenu(paramMenuBuilder, true);
+        if (paramMenuBuilder.isAlive()) {
+          this.mTreeObserver.removeGlobalOnLayoutListener(this.mGlobalLayoutListener);
         }
-        if (this.mTreeObserver != null)
-        {
-          if (this.mTreeObserver.isAlive()) {
-            this.mTreeObserver.removeGlobalOnLayoutListener(this.mGlobalLayoutListener);
-          }
-          this.mTreeObserver = null;
-        }
-        this.mShownAnchorView.removeOnAttachStateChangeListener(this.mAttachStateChangeListener);
-        this.mOnDismissListener.onDismiss();
-        return;
+        this.mTreeObserver = null;
       }
-    } while (!paramBoolean);
-    ((CascadingMenuInfo)this.mShowingMenus.get(0)).menu.close(false);
+      this.mShownAnchorView.removeOnAttachStateChangeListener(this.mAttachStateChangeListener);
+      this.mOnDismissListener.onDismiss();
+      return;
+    }
+    if (paramBoolean) {
+      ((CascadingMenuInfo)this.mShowingMenus.get(0)).menu.close(false);
+    }
   }
   
   public void onDismiss()
   {
     int j = this.mShowingMenus.size();
     int i = 0;
-    CascadingMenuInfo localCascadingMenuInfo;
-    if (i < j)
+    while (i < j)
     {
       localCascadingMenuInfo = (CascadingMenuInfo)this.mShowingMenus.get(i);
-      if (localCascadingMenuInfo.window.isShowing()) {}
-    }
-    for (;;)
-    {
-      if (localCascadingMenuInfo != null) {
-        localCascadingMenuInfo.menu.close(false);
+      if (!localCascadingMenuInfo.window.isShowing()) {
+        break label53;
       }
-      return;
       i += 1;
-      break;
-      localCascadingMenuInfo = null;
+    }
+    CascadingMenuInfo localCascadingMenuInfo = null;
+    label53:
+    if (localCascadingMenuInfo != null) {
+      localCascadingMenuInfo.menu.close(false);
     }
   }
   
@@ -548,10 +539,10 @@ final class CascadingMenuPopup
   
   public boolean onSubMenuSelected(SubMenuBuilder paramSubMenuBuilder)
   {
-    Iterator localIterator = this.mShowingMenus.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.mShowingMenus.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      CascadingMenuInfo localCascadingMenuInfo = (CascadingMenuInfo)localIterator.next();
+      CascadingMenuInfo localCascadingMenuInfo = (CascadingMenuInfo)((Iterator)localObject).next();
       if (paramSubMenuBuilder == localCascadingMenuInfo.menu)
       {
         localCascadingMenuInfo.getListView().requestFocus();
@@ -561,8 +552,9 @@ final class CascadingMenuPopup
     if (paramSubMenuBuilder.hasVisibleItems())
     {
       addMenu(paramSubMenuBuilder);
-      if (this.mPresenterCallback != null) {
-        this.mPresenterCallback.onOpenSubMenu(paramSubMenuBuilder);
+      localObject = this.mPresenterCallback;
+      if (localObject != null) {
+        ((MenuPresenter.Callback)localObject).onOpenSubMenu(paramSubMenuBuilder);
       }
       return true;
     }
@@ -621,26 +613,28 @@ final class CascadingMenuPopup
   
   public void show()
   {
-    if (isShowing()) {}
-    do
-    {
+    if (isShowing()) {
       return;
-      Iterator localIterator = this.mPendingMenus.iterator();
-      while (localIterator.hasNext()) {
-        showMenu((MenuBuilder)localIterator.next());
-      }
-      this.mPendingMenus.clear();
-      this.mShownAnchorView = this.mAnchorView;
-    } while (this.mShownAnchorView == null);
-    if (this.mTreeObserver == null) {}
-    for (int i = 1;; i = 0)
+    }
+    Iterator localIterator = this.mPendingMenus.iterator();
+    while (localIterator.hasNext()) {
+      showMenu((MenuBuilder)localIterator.next());
+    }
+    this.mPendingMenus.clear();
+    this.mShownAnchorView = this.mAnchorView;
+    if (this.mShownAnchorView != null)
     {
+      int i;
+      if (this.mTreeObserver == null) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       this.mTreeObserver = this.mShownAnchorView.getViewTreeObserver();
       if (i != 0) {
         this.mTreeObserver.addOnGlobalLayoutListener(this.mGlobalLayoutListener);
       }
       this.mShownAnchorView.addOnAttachStateChangeListener(this.mAttachStateChangeListener);
-      return;
     }
   }
   

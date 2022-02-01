@@ -64,6 +64,7 @@ public class PagerTitleStrip
     this.mNextText = localTextView;
     addView(localTextView);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, ATTRS);
+    boolean bool = false;
     int i = paramAttributeSet.getResourceId(0, 0);
     if (i != 0)
     {
@@ -101,14 +102,13 @@ public class PagerTitleStrip
       setSingleLineAllCaps(this.mCurrText);
       setSingleLineAllCaps(this.mNextText);
     }
-    for (;;)
+    else
     {
-      this.mScaledTextSpacing = ((int)(paramContext.getResources().getDisplayMetrics().density * 16.0F));
-      return;
       this.mPrevText.setSingleLine();
       this.mCurrText.setSingleLine();
       this.mNextText.setSingleLine();
     }
+    this.mScaledTextSpacing = ((int)(paramContext.getResources().getDisplayMetrics().density * 16.0F));
   }
   
   private static void setSingleLineAllCaps(TextView paramTextView)
@@ -118,12 +118,11 @@ public class PagerTitleStrip
   
   int getMinHeight()
   {
-    int i = 0;
     Drawable localDrawable = getBackground();
     if (localDrawable != null) {
-      i = localDrawable.getIntrinsicHeight();
+      return localDrawable.getIntrinsicHeight();
     }
-    return i;
+    return 0;
   }
   
   public int getTextSpacing()
@@ -135,28 +134,32 @@ public class PagerTitleStrip
   {
     super.onAttachedToWindow();
     Object localObject = getParent();
-    if (!(localObject instanceof ViewPager)) {
-      throw new IllegalStateException("PagerTitleStrip must be a direct child of a ViewPager.");
-    }
-    localObject = (ViewPager)localObject;
-    PagerAdapter localPagerAdapter = ((ViewPager)localObject).getAdapter();
-    ((ViewPager)localObject).setInternalPageChangeListener(this.mPageListener);
-    ((ViewPager)localObject).addOnAdapterChangeListener(this.mPageListener);
-    this.mPager = ((ViewPager)localObject);
-    if (this.mWatchingAdapter != null) {}
-    for (localObject = (PagerAdapter)this.mWatchingAdapter.get();; localObject = null)
+    if ((localObject instanceof ViewPager))
     {
+      localObject = (ViewPager)localObject;
+      PagerAdapter localPagerAdapter = ((ViewPager)localObject).getAdapter();
+      ((ViewPager)localObject).setInternalPageChangeListener(this.mPageListener);
+      ((ViewPager)localObject).addOnAdapterChangeListener(this.mPageListener);
+      this.mPager = ((ViewPager)localObject);
+      localObject = this.mWatchingAdapter;
+      if (localObject != null) {
+        localObject = (PagerAdapter)((WeakReference)localObject).get();
+      } else {
+        localObject = null;
+      }
       updateAdapter((PagerAdapter)localObject, localPagerAdapter);
       return;
     }
+    throw new IllegalStateException("PagerTitleStrip must be a direct child of a ViewPager.");
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.mPager != null)
+    ViewPager localViewPager = this.mPager;
+    if (localViewPager != null)
     {
-      updateAdapter(this.mPager.getAdapter(), null);
+      updateAdapter(localViewPager.getAdapter(), null);
       this.mPager.setInternalPageChangeListener(null);
       this.mPager.removeOnAdapterChangeListener(this.mPageListener);
       this.mPager = null;
@@ -165,11 +168,11 @@ public class PagerTitleStrip
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    float f = 0.0F;
     if (this.mPager != null)
     {
-      if (this.mLastKnownPositionOffset >= 0.0F) {
-        f = this.mLastKnownPositionOffset;
+      float f = this.mLastKnownPositionOffset;
+      if (f < 0.0F) {
+        f = 0.0F;
       }
       updateTextPositions(this.mLastKnownCurrentPage, f, true);
     }
@@ -177,23 +180,28 @@ public class PagerTitleStrip
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (View.MeasureSpec.getMode(paramInt1) != 1073741824) {
-      throw new IllegalStateException("Must measure with an exact width");
-    }
-    int j = getPaddingTop() + getPaddingBottom();
-    int k = getChildMeasureSpec(paramInt2, j, -2);
-    int i = View.MeasureSpec.getSize(paramInt1);
-    paramInt1 = getChildMeasureSpec(paramInt1, (int)(i * 0.2F), -2);
-    this.mPrevText.measure(paramInt1, k);
-    this.mCurrText.measure(paramInt1, k);
-    this.mNextText.measure(paramInt1, k);
-    if (View.MeasureSpec.getMode(paramInt2) == 1073741824) {}
-    for (paramInt1 = View.MeasureSpec.getSize(paramInt2);; paramInt1 = Math.max(getMinHeight(), j + paramInt1))
+    if (View.MeasureSpec.getMode(paramInt1) == 1073741824)
     {
+      int j = getPaddingTop() + getPaddingBottom();
+      int k = getChildMeasureSpec(paramInt2, j, -2);
+      int i = View.MeasureSpec.getSize(paramInt1);
+      paramInt1 = getChildMeasureSpec(paramInt1, (int)(i * 0.2F), -2);
+      this.mPrevText.measure(paramInt1, k);
+      this.mCurrText.measure(paramInt1, k);
+      this.mNextText.measure(paramInt1, k);
+      if (View.MeasureSpec.getMode(paramInt2) == 1073741824)
+      {
+        paramInt1 = View.MeasureSpec.getSize(paramInt2);
+      }
+      else
+      {
+        paramInt1 = this.mCurrText.getMeasuredHeight();
+        paramInt1 = Math.max(getMinHeight(), paramInt1 + j);
+      }
       setMeasuredDimension(i, View.resolveSizeAndState(paramInt1, paramInt2, this.mCurrText.getMeasuredState() << 16));
       return;
-      paramInt1 = this.mCurrText.getMeasuredHeight();
     }
+    throw new IllegalStateException("Must measure with an exact width");
   }
   
   public void requestLayout()
@@ -211,7 +219,7 @@ public class PagerTitleStrip
   
   public void setNonPrimaryAlpha(@FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
-    this.mNonPrimaryAlpha = ((int)(255.0F * paramFloat) & 0xFF);
+    this.mNonPrimaryAlpha = ((int)(paramFloat * 255.0F) & 0xFF);
     int i = this.mNonPrimaryAlpha << 24 | this.mTextColor & 0xFFFFFF;
     this.mPrevText.setTextColor(i);
     this.mNextText.setTextColor(i);
@@ -251,142 +259,131 @@ public class PagerTitleStrip
       paramPagerAdapter2.registerDataSetObserver(this.mPageListener);
       this.mWatchingAdapter = new WeakReference(paramPagerAdapter2);
     }
-    if (this.mPager != null)
+    paramPagerAdapter1 = this.mPager;
+    if (paramPagerAdapter1 != null)
     {
       this.mLastKnownCurrentPage = -1;
       this.mLastKnownPositionOffset = -1.0F;
-      updateText(this.mPager.getCurrentItem(), paramPagerAdapter2);
+      updateText(paramPagerAdapter1.getCurrentItem(), paramPagerAdapter2);
       requestLayout();
     }
   }
   
   void updateText(int paramInt, PagerAdapter paramPagerAdapter)
   {
-    Object localObject2 = null;
-    int i;
-    if (paramPagerAdapter != null)
-    {
+    if (paramPagerAdapter != null) {
       i = paramPagerAdapter.getCount();
-      this.mUpdatingText = true;
-      if ((paramInt < 1) || (paramPagerAdapter == null)) {
-        break label236;
-      }
+    } else {
+      i = 0;
     }
-    label236:
-    for (Object localObject1 = paramPagerAdapter.getPageTitle(paramInt - 1);; localObject1 = null)
+    this.mUpdatingText = true;
+    Object localObject2 = null;
+    if ((paramInt >= 1) && (paramPagerAdapter != null)) {
+      localObject1 = paramPagerAdapter.getPageTitle(paramInt - 1);
+    } else {
+      localObject1 = null;
+    }
+    this.mPrevText.setText((CharSequence)localObject1);
+    TextView localTextView = this.mCurrText;
+    if ((paramPagerAdapter != null) && (paramInt < i)) {
+      localObject1 = paramPagerAdapter.getPageTitle(paramInt);
+    } else {
+      localObject1 = null;
+    }
+    localTextView.setText((CharSequence)localObject1);
+    int j = paramInt + 1;
+    Object localObject1 = localObject2;
+    if (j < i)
     {
-      this.mPrevText.setText((CharSequence)localObject1);
-      TextView localTextView = this.mCurrText;
-      if ((paramPagerAdapter != null) && (paramInt < i)) {}
-      for (localObject1 = paramPagerAdapter.getPageTitle(paramInt);; localObject1 = null)
-      {
-        localTextView.setText((CharSequence)localObject1);
-        localObject1 = localObject2;
-        if (paramInt + 1 < i)
-        {
-          localObject1 = localObject2;
-          if (paramPagerAdapter != null) {
-            localObject1 = paramPagerAdapter.getPageTitle(paramInt + 1);
-          }
-        }
-        this.mNextText.setText((CharSequence)localObject1);
-        i = View.MeasureSpec.makeMeasureSpec(Math.max(0, (int)((getWidth() - getPaddingLeft() - getPaddingRight()) * 0.8F)), -2147483648);
-        int j = View.MeasureSpec.makeMeasureSpec(Math.max(0, getHeight() - getPaddingTop() - getPaddingBottom()), -2147483648);
-        this.mPrevText.measure(i, j);
-        this.mCurrText.measure(i, j);
-        this.mNextText.measure(i, j);
-        this.mLastKnownCurrentPage = paramInt;
-        if (!this.mUpdatingPositions) {
-          updateTextPositions(paramInt, this.mLastKnownPositionOffset, false);
-        }
-        this.mUpdatingText = false;
-        return;
-        i = 0;
-        break;
+      localObject1 = localObject2;
+      if (paramPagerAdapter != null) {
+        localObject1 = paramPagerAdapter.getPageTitle(j);
       }
     }
+    this.mNextText.setText((CharSequence)localObject1);
+    int i = View.MeasureSpec.makeMeasureSpec(Math.max(0, (int)((getWidth() - getPaddingLeft() - getPaddingRight()) * 0.8F)), -2147483648);
+    j = View.MeasureSpec.makeMeasureSpec(Math.max(0, getHeight() - getPaddingTop() - getPaddingBottom()), -2147483648);
+    this.mPrevText.measure(i, j);
+    this.mCurrText.measure(i, j);
+    this.mNextText.measure(i, j);
+    this.mLastKnownCurrentPage = paramInt;
+    if (!this.mUpdatingPositions) {
+      updateTextPositions(paramInt, this.mLastKnownPositionOffset, false);
+    }
+    this.mUpdatingText = false;
   }
   
   void updateTextPositions(int paramInt, float paramFloat, boolean paramBoolean)
   {
-    int m;
-    int i4;
-    int k;
-    int i3;
-    int n;
-    int i;
-    int i2;
-    int i1;
-    int j;
-    int i5;
-    int i7;
-    int i6;
-    int i8;
-    if (paramInt != this.mLastKnownCurrentPage)
-    {
+    if (paramInt != this.mLastKnownCurrentPage) {
       updateText(paramInt, this.mPager.getAdapter());
-      this.mUpdatingPositions = true;
-      m = this.mPrevText.getMeasuredWidth();
-      i4 = this.mCurrText.getMeasuredWidth();
-      k = this.mNextText.getMeasuredWidth();
-      i3 = i4 / 2;
-      n = getWidth();
-      i = getHeight();
-      i2 = getPaddingLeft();
-      i1 = getPaddingRight();
-      paramInt = getPaddingTop();
-      j = getPaddingBottom();
-      i5 = i1 + i3;
-      float f2 = 0.5F + paramFloat;
-      float f1 = f2;
-      if (f2 > 1.0F) {
-        f1 = f2 - 1.0F;
-      }
-      i3 = n - i5 - (int)(f1 * (n - (i2 + i3) - i5)) - i4 / 2;
-      i4 = i3 + i4;
-      i7 = this.mPrevText.getBaseline();
-      i6 = this.mCurrText.getBaseline();
-      i5 = this.mNextText.getBaseline();
-      i8 = Math.max(Math.max(i7, i6), i5);
-      i7 = i8 - i7;
-      i6 = i8 - i6;
-      i5 = i8 - i5;
-      i8 = this.mPrevText.getMeasuredHeight();
-      int i9 = this.mCurrText.getMeasuredHeight();
-      int i10 = this.mNextText.getMeasuredHeight();
-      i8 = Math.max(Math.max(i8 + i7, i9 + i6), i10 + i5);
-      switch (this.mGravity & 0x70)
-      {
-      default: 
-        j = paramInt + i7;
-        i = i6 + paramInt;
-        paramInt += i5;
-      }
+    } else if ((!paramBoolean) && (paramFloat == this.mLastKnownPositionOffset)) {
+      return;
     }
-    for (;;)
+    this.mUpdatingPositions = true;
+    int m = this.mPrevText.getMeasuredWidth();
+    int i4 = this.mCurrText.getMeasuredWidth();
+    int k = this.mNextText.getMeasuredWidth();
+    int i3 = i4 / 2;
+    int n = getWidth();
+    paramInt = getHeight();
+    int i2 = getPaddingLeft();
+    int i1 = getPaddingRight();
+    int i = getPaddingTop();
+    int j = getPaddingBottom();
+    int i5 = i1 + i3;
+    float f2 = 0.5F + paramFloat;
+    float f1 = f2;
+    if (f2 > 1.0F) {
+      f1 = f2 - 1.0F;
+    }
+    i3 = n - i5 - (int)((n - (i2 + i3) - i5) * f1) - i3;
+    i4 += i3;
+    int i7 = this.mPrevText.getBaseline();
+    int i6 = this.mCurrText.getBaseline();
+    i5 = this.mNextText.getBaseline();
+    int i8 = Math.max(Math.max(i7, i6), i5);
+    i7 = i8 - i7;
+    i6 = i8 - i6;
+    i5 = i8 - i5;
+    i8 = this.mPrevText.getMeasuredHeight();
+    int i9 = this.mCurrText.getMeasuredHeight();
+    int i10 = this.mNextText.getMeasuredHeight();
+    i8 = Math.max(Math.max(i8 + i7, i9 + i6), i10 + i5);
+    i9 = this.mGravity & 0x70;
+    if (i9 != 16)
     {
-      this.mCurrText.layout(i3, i, i4, this.mCurrText.getMeasuredHeight() + i);
-      i = Math.min(i2, i3 - this.mScaledTextSpacing - m);
-      this.mPrevText.layout(i, j, m + i, this.mPrevText.getMeasuredHeight() + j);
-      i = Math.max(n - i1 - k, this.mScaledTextSpacing + i4);
-      this.mNextText.layout(i, paramInt, i + k, this.mNextText.getMeasuredHeight() + paramInt);
-      this.mLastKnownPositionOffset = paramFloat;
-      this.mUpdatingPositions = false;
-      return;
-      if ((paramBoolean) || (paramFloat != this.mLastKnownPositionOffset)) {
-        break;
+      if (i9 != 80)
+      {
+        paramInt = i7 + i;
+        j = i6 + i;
+        i += i5;
       }
-      return;
-      paramInt = (i - paramInt - j - i8) / 2;
-      j = paramInt + i7;
-      i = i6 + paramInt;
-      paramInt += i5;
-      continue;
-      paramInt = i - j - i8;
-      j = paramInt + i7;
-      i = i6 + paramInt;
-      paramInt += i5;
+      else
+      {
+        i = paramInt - j - i8;
+        paramInt = i7 + i;
+        j = i6 + i;
+        i += i5;
+      }
     }
+    else
+    {
+      i = (paramInt - i - j - i8) / 2;
+      paramInt = i7 + i;
+      j = i6 + i;
+      i += i5;
+    }
+    TextView localTextView = this.mCurrText;
+    localTextView.layout(i3, j, i4, localTextView.getMeasuredHeight() + j);
+    j = Math.min(i2, i3 - this.mScaledTextSpacing - m);
+    localTextView = this.mPrevText;
+    localTextView.layout(j, paramInt, m + j, localTextView.getMeasuredHeight() + paramInt);
+    paramInt = Math.max(n - i1 - k, i4 + this.mScaledTextSpacing);
+    localTextView = this.mNextText;
+    localTextView.layout(paramInt, i, paramInt + k, localTextView.getMeasuredHeight() + i);
+    this.mLastKnownPositionOffset = paramFloat;
+    this.mUpdatingPositions = false;
   }
   
   private class PageListener
@@ -404,12 +401,15 @@ public class PagerTitleStrip
     
     public void onChanged()
     {
-      float f = 0.0F;
-      PagerTitleStrip.this.updateText(PagerTitleStrip.this.mPager.getCurrentItem(), PagerTitleStrip.this.mPager.getAdapter());
-      if (PagerTitleStrip.this.mLastKnownPositionOffset >= 0.0F) {
-        f = PagerTitleStrip.this.mLastKnownPositionOffset;
+      PagerTitleStrip localPagerTitleStrip = PagerTitleStrip.this;
+      localPagerTitleStrip.updateText(localPagerTitleStrip.mPager.getCurrentItem(), PagerTitleStrip.this.mPager.getAdapter());
+      float f2 = PagerTitleStrip.this.mLastKnownPositionOffset;
+      float f1 = 0.0F;
+      if (f2 >= 0.0F) {
+        f1 = PagerTitleStrip.this.mLastKnownPositionOffset;
       }
-      PagerTitleStrip.this.updateTextPositions(PagerTitleStrip.this.mPager.getCurrentItem(), f, true);
+      localPagerTitleStrip = PagerTitleStrip.this;
+      localPagerTitleStrip.updateTextPositions(localPagerTitleStrip.mPager.getCurrentItem(), f1, true);
     }
     
     public void onPageScrollStateChanged(int paramInt)
@@ -428,14 +428,17 @@ public class PagerTitleStrip
     
     public void onPageSelected(int paramInt)
     {
-      float f = 0.0F;
       if (this.mScrollState == 0)
       {
-        PagerTitleStrip.this.updateText(PagerTitleStrip.this.mPager.getCurrentItem(), PagerTitleStrip.this.mPager.getAdapter());
-        if (PagerTitleStrip.this.mLastKnownPositionOffset >= 0.0F) {
-          f = PagerTitleStrip.this.mLastKnownPositionOffset;
+        PagerTitleStrip localPagerTitleStrip = PagerTitleStrip.this;
+        localPagerTitleStrip.updateText(localPagerTitleStrip.mPager.getCurrentItem(), PagerTitleStrip.this.mPager.getAdapter());
+        float f2 = PagerTitleStrip.this.mLastKnownPositionOffset;
+        float f1 = 0.0F;
+        if (f2 >= 0.0F) {
+          f1 = PagerTitleStrip.this.mLastKnownPositionOffset;
         }
-        PagerTitleStrip.this.updateTextPositions(PagerTitleStrip.this.mPager.getCurrentItem(), f, true);
+        localPagerTitleStrip = PagerTitleStrip.this;
+        localPagerTitleStrip.updateTextPositions(localPagerTitleStrip.mPager.getCurrentItem(), f1, true);
       }
     }
   }

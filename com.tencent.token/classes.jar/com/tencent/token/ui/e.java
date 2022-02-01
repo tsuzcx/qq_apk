@@ -61,25 +61,28 @@ public class e
   
   private static String a(Collection<String> paramCollection, String... paramVarArgs)
   {
-    int i1;
-    String str;
     if (paramCollection != null)
     {
       int i2 = paramVarArgs.length;
-      i1 = 0;
-      if (i1 < i2)
+      int i1 = 0;
+      while (i1 < i2)
       {
-        str = paramVarArgs[i1];
-        if (!paramCollection.contains(str)) {}
+        String str = paramVarArgs[i1];
+        if (paramCollection.contains(str))
+        {
+          paramCollection = str;
+          break label45;
+        }
+        i1 += 1;
       }
     }
-    for (paramCollection = str;; paramCollection = null)
-    {
-      g.b("resolution Settable value: " + paramCollection);
-      return paramCollection;
-      i1 += 1;
-      break;
-    }
+    paramCollection = null;
+    label45:
+    paramVarArgs = new StringBuilder();
+    paramVarArgs.append("resolution Settable value: ");
+    paramVarArgs.append(paramCollection);
+    g.b(paramVarArgs.toString());
+    return paramCollection;
   }
   
   private void a(Camera paramCamera, int paramInt)
@@ -100,74 +103,87 @@ public class e
     if (this.j == null) {
       return;
     }
-    DisplayMetrics localDisplayMetrics = this.f.getResources().getDisplayMetrics();
-    int i6 = localDisplayMetrics.widthPixels;
-    int i7 = localDisplayMetrics.heightPixels;
-    Object localObject2;
-    int i3;
-    int i2;
-    int i1;
+    Object localObject1 = this.f.getResources().getDisplayMetrics();
+    int i5 = ((DisplayMetrics)localObject1).widthPixels;
+    int i6 = ((DisplayMetrics)localObject1).heightPixels;
     try
     {
-      localObject2 = this.j.getParameters().getSupportedPreviewSizes();
-      i3 = ((Camera.Size)((List)localObject2).get(0)).width;
-      i2 = ((Camera.Size)((List)localObject2).get(0)).height;
-      int i4 = 1;
-      while (i4 < ((List)localObject2).size())
+      Object localObject3 = this.j.getParameters().getSupportedPreviewSizes();
+      int i4 = ((Camera.Size)((List)localObject3).get(0)).width;
+      int i1 = ((Camera.Size)((List)localObject3).get(0)).height;
+      int i3 = 1;
+      while (i3 < ((List)localObject3).size())
       {
-        double d1 = Math.abs(i3 / i2 - i6 / i7);
-        double d2 = Math.abs(((Camera.Size)((List)localObject2).get(i4)).width / ((Camera.Size)((List)localObject2).get(i4)).height - i6 / i7);
-        i1 = i3;
-        if (d1 >= d2)
+        double d1 = i4;
+        double d2 = i1;
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        d2 = d1 / d2;
+        d1 = i5;
+        double d3 = i6;
+        Double.isNaN(d1);
+        Double.isNaN(d3);
+        d1 /= d3;
+        d2 = Math.abs(d2 - d1);
+        d3 = ((Camera.Size)((List)localObject3).get(i3)).width;
+        double d4 = ((Camera.Size)((List)localObject3).get(i3)).height;
+        Double.isNaN(d3);
+        Double.isNaN(d4);
+        d1 = Math.abs(d3 / d4 - d1);
+        if (d2 >= d1)
         {
-          i3 = ((Camera.Size)((List)localObject2).get(i4)).width;
-          int i5 = ((Camera.Size)((List)localObject2).get(i4)).height;
-          i2 = i5;
-          i1 = i3;
-          if (d1 == d2)
+          i2 = ((Camera.Size)((List)localObject3).get(i3)).width;
+          i1 = ((Camera.Size)((List)localObject3).get(i3)).height;
+          if ((d2 == d1) && (i2 < ((Camera.Size)((List)localObject3).get(i3)).width))
           {
-            i2 = i5;
-            i1 = i3;
-            if (i3 < ((Camera.Size)((List)localObject2).get(i4)).width)
-            {
-              i1 = ((Camera.Size)((List)localObject2).get(i4)).width;
-              i2 = ((Camera.Size)((List)localObject2).get(i4)).height;
-            }
+            i2 = ((Camera.Size)((List)localObject3).get(i3)).width;
+            i1 = ((Camera.Size)((List)localObject3).get(i3)).height;
           }
         }
-        i4 += 1;
-        i3 = i1;
+        else
+        {
+          i2 = i4;
+        }
+        i3 += 1;
+        i4 = i2;
       }
-      g.c("debug------------bestPreviewWidth=" + i3 + ",bestPreviewHeight=" + i2 + ", screenWidth=" + i6 + ",screenHeight=" + i7 + ",density=" + ((DisplayMetrics)localObject1).density);
-    }
-    catch (Exception localException1)
-    {
-      localException1.printStackTrace();
-      g.c("Camera getParameters failed" + this.j);
-      localObject1 = this.h.obtainMessage(0);
-      ((Message)localObject1).what = 2;
-      ((Message)localObject1).sendToTarget();
-      return;
-    }
-    Object localObject1 = this.j.getParameters();
-    ((Camera.Parameters)localObject1).setPictureFormat(256);
-    ((Camera.Parameters)localObject1).setPreviewFormat(17);
-    if (this.f.getResources().getConfiguration().orientation != 2) {
-      i1 = 90;
-    }
-    for (this.n = 90;; this.n = 0)
-    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("debug------------bestPreviewWidth=");
+      ((StringBuilder)localObject3).append(i4);
+      ((StringBuilder)localObject3).append(",bestPreviewHeight=");
+      ((StringBuilder)localObject3).append(i1);
+      ((StringBuilder)localObject3).append(", screenWidth=");
+      ((StringBuilder)localObject3).append(i5);
+      ((StringBuilder)localObject3).append(",screenHeight=");
+      ((StringBuilder)localObject3).append(i6);
+      ((StringBuilder)localObject3).append(",density=");
+      ((StringBuilder)localObject3).append(((DisplayMetrics)localObject1).density);
+      g.c(((StringBuilder)localObject3).toString());
+      localObject1 = this.j.getParameters();
+      ((Camera.Parameters)localObject1).setPictureFormat(256);
+      ((Camera.Parameters)localObject1).setPreviewFormat(17);
+      i3 = this.f.getResources().getConfiguration().orientation;
+      int i2 = 90;
+      if (i3 != 2)
+      {
+        this.n = 90;
+      }
+      else
+      {
+        this.n = 0;
+        i2 = 0;
+      }
       if (ProtoAutoIDCardDetect.d != -1) {
-        i1 = ProtoAutoIDCardDetect.d;
+        i2 = ProtoAutoIDCardDetect.d;
       }
       if (ProtoAutoIDCardDetect.e != -1) {
         this.n = ProtoAutoIDCardDetect.e;
       }
-      a(this.j, i1);
-      ((Camera.Parameters)localObject1).setPreviewSize(i3, i2);
-      localObject2 = a(((Camera.Parameters)localObject1).getSupportedFocusModes(), new String[] { "auto" });
-      if (localObject2 != null) {
-        ((Camera.Parameters)localObject1).setFocusMode((String)localObject2);
+      a(this.j, i2);
+      ((Camera.Parameters)localObject1).setPreviewSize(i4, i1);
+      localObject3 = a(((Camera.Parameters)localObject1).getSupportedFocusModes(), new String[] { "auto" });
+      if (localObject3 != null) {
+        ((Camera.Parameters)localObject1).setFocusMode((String)localObject3);
       }
       this.j.setParameters((Camera.Parameters)localObject1);
       this.j.setPreviewCallback(this);
@@ -179,29 +195,38 @@ public class e
           e();
         }
       }
-      catch (Exception localException2)
+      catch (Exception localException1)
       {
-        for (;;)
+        localException1.printStackTrace();
+        Camera localCamera = this.j;
+        if (localCamera != null)
         {
-          localException2.printStackTrace();
-          if (this.j != null)
-          {
-            this.j.release();
-            this.j = null;
-          }
+          localCamera.release();
+          this.j = null;
         }
-        d = 0;
-        c = 0;
-        bu.a().a(System.currentTimeMillis(), 132);
       }
-      if (this.s != FaceDetector.IdCardDirection.DT_FRONT) {
-        break;
+      if (this.s == FaceDetector.IdCardDirection.DT_FRONT)
+      {
+        b = 0;
+        a = 0;
+        bu.a().a(System.currentTimeMillis(), 130);
+        return;
       }
-      b = 0;
-      a = 0;
-      bu.a().a(System.currentTimeMillis(), 130);
+      d = 0;
+      c = 0;
+      bu.a().a(System.currentTimeMillis(), 132);
       return;
-      i1 = 0;
+    }
+    catch (Exception localException2)
+    {
+      localException2.printStackTrace();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Camera getParameters failed");
+      ((StringBuilder)localObject2).append(this.j);
+      g.c(((StringBuilder)localObject2).toString());
+      localObject2 = this.h.obtainMessage(0);
+      ((Message)localObject2).what = 2;
+      ((Message)localObject2).sendToTarget();
     }
   }
   
@@ -210,30 +235,31 @@ public class e
     Object localObject = new Camera.CameraInfo();
     int i2 = Camera.getNumberOfCameras();
     int i1 = 0;
-    for (;;)
+    while (i1 < i2)
     {
-      if (i1 < i2)
-      {
-        Camera.getCameraInfo(i1, (Camera.CameraInfo)localObject);
-        if (((Camera.CameraInfo)localObject).facing == 0) {}
+      Camera.getCameraInfo(i1, (Camera.CameraInfo)localObject);
+      if (((Camera.CameraInfo)localObject).facing == 0) {
         try
         {
           this.j = Camera.open(i1);
-          i1 += 1;
         }
         catch (RuntimeException localRuntimeException)
         {
-          for (;;)
-          {
-            g.c("CameraOpen camera=" + this.j);
-            localRuntimeException.printStackTrace();
-          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("CameraOpen camera=");
+          localStringBuilder.append(this.j);
+          g.c(localStringBuilder.toString());
+          localRuntimeException.printStackTrace();
         }
       }
+      i1 += 1;
     }
     if (this.j == null)
     {
-      g.c("CameraOpen camera=" + this.j);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("CameraOpen camera=");
+      ((StringBuilder)localObject).append(this.j);
+      g.c(((StringBuilder)localObject).toString());
       localObject = this.h.obtainMessage(0);
       ((Message)localObject).what = 2;
       ((Message)localObject).sendToTarget();
@@ -246,186 +272,188 @@ public class e
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: aload_0
-    //   3: getfield 68	com/tencent/token/ui/e:f	Landroid/content/Context;
-    //   6: invokevirtual 149	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   9: invokevirtual 362	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
-    //   12: ldc_w 364
-    //   15: invokevirtual 369	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   18: astore_2
-    //   19: new 371	java/io/File
-    //   22: dup
-    //   23: aload_0
-    //   24: getfield 68	com/tencent/token/ui/e:f	Landroid/content/Context;
-    //   27: ldc_w 373
-    //   30: iconst_0
-    //   31: invokevirtual 377	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
-    //   34: ldc_w 364
-    //   37: invokespecial 380	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   40: astore 5
-    //   42: aload 5
-    //   44: invokevirtual 384	java/io/File:exists	()Z
-    //   47: ifeq +39 -> 86
-    //   50: aload_0
-    //   51: aload 5
-    //   53: invokevirtual 387	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   56: putfield 140	com/tencent/token/ui/e:t	Ljava/lang/String;
-    //   59: aload_2
-    //   60: ifnull +7 -> 67
-    //   63: aload_2
-    //   64: invokevirtual 392	java/io/InputStream:close	()V
-    //   67: iconst_0
-    //   68: ifeq +11 -> 79
-    //   71: new 394	java/lang/NullPointerException
-    //   74: dup
-    //   75: invokespecial 395	java/lang/NullPointerException:<init>	()V
-    //   78: athrow
+    //   2: aconst_null
+    //   3: astore 5
+    //   5: aload_0
+    //   6: getfield 68	com/tencent/token/ui/e:f	Landroid/content/Context;
+    //   9: invokevirtual 149	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   12: invokevirtual 368	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
+    //   15: ldc_w 370
+    //   18: invokevirtual 375	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   21: astore 4
+    //   23: new 377	java/io/File
+    //   26: dup
+    //   27: aload_0
+    //   28: getfield 68	com/tencent/token/ui/e:f	Landroid/content/Context;
+    //   31: ldc_w 379
+    //   34: iconst_0
+    //   35: invokevirtual 383	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
+    //   38: ldc_w 370
+    //   41: invokespecial 386	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   44: astore 5
+    //   46: aload 5
+    //   48: invokevirtual 390	java/io/File:exists	()Z
+    //   51: ifeq +29 -> 80
+    //   54: aload_0
+    //   55: aload 5
+    //   57: invokevirtual 393	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   60: putfield 140	com/tencent/token/ui/e:t	Ljava/lang/String;
+    //   63: aload 4
+    //   65: ifnull +14 -> 79
+    //   68: aload 4
+    //   70: invokevirtual 398	java/io/InputStream:close	()V
+    //   73: return
+    //   74: astore_2
+    //   75: aload_2
+    //   76: invokevirtual 297	java/lang/Exception:printStackTrace	()V
     //   79: return
-    //   80: astore_2
-    //   81: aload_2
-    //   82: invokevirtual 202	java/lang/Exception:printStackTrace	()V
-    //   85: return
-    //   86: new 397	java/io/FileOutputStream
-    //   89: dup
-    //   90: aload 5
-    //   92: invokespecial 400	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   95: astore 4
-    //   97: sipush 8192
-    //   100: newarray byte
-    //   102: astore_3
-    //   103: aload_2
-    //   104: aload_3
-    //   105: invokevirtual 404	java/io/InputStream:read	([B)I
-    //   108: istore_1
-    //   109: iload_1
-    //   110: iconst_m1
-    //   111: if_icmpeq +47 -> 158
-    //   114: aload 4
-    //   116: aload_3
-    //   117: iconst_0
-    //   118: iload_1
-    //   119: invokevirtual 408	java/io/FileOutputStream:write	([BII)V
-    //   122: goto -19 -> 103
-    //   125: astore_3
-    //   126: aload 4
-    //   128: astore_3
-    //   129: ldc_w 410
-    //   132: invokestatic 100	com/tencent/token/global/g:b	(Ljava/lang/String;)V
-    //   135: aload_2
-    //   136: ifnull +7 -> 143
-    //   139: aload_2
-    //   140: invokevirtual 392	java/io/InputStream:close	()V
-    //   143: aload_3
-    //   144: ifnull -65 -> 79
-    //   147: aload_3
-    //   148: invokevirtual 411	java/io/FileOutputStream:close	()V
-    //   151: return
+    //   80: new 400	java/io/FileOutputStream
+    //   83: dup
+    //   84: aload 5
+    //   86: invokespecial 403	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   89: astore_2
+    //   90: sipush 8192
+    //   93: newarray byte
+    //   95: astore_3
+    //   96: aload 4
+    //   98: aload_3
+    //   99: invokevirtual 407	java/io/InputStream:read	([B)I
+    //   102: istore_1
+    //   103: iload_1
+    //   104: iconst_m1
+    //   105: if_icmpeq +13 -> 118
+    //   108: aload_2
+    //   109: aload_3
+    //   110: iconst_0
+    //   111: iload_1
+    //   112: invokevirtual 411	java/io/FileOutputStream:write	([BII)V
+    //   115: goto -19 -> 96
+    //   118: aload_0
+    //   119: aload 5
+    //   121: invokevirtual 393	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   124: putfield 140	com/tencent/token/ui/e:t	Ljava/lang/String;
+    //   127: aload 4
+    //   129: ifnull +8 -> 137
+    //   132: aload 4
+    //   134: invokevirtual 398	java/io/InputStream:close	()V
+    //   137: aload_2
+    //   138: invokevirtual 412	java/io/FileOutputStream:close	()V
+    //   141: return
+    //   142: astore 5
+    //   144: aload_2
+    //   145: astore_3
+    //   146: aload 5
+    //   148: astore_2
+    //   149: goto +72 -> 221
     //   152: astore_2
-    //   153: aload_2
-    //   154: invokevirtual 202	java/lang/Exception:printStackTrace	()V
-    //   157: return
-    //   158: aload_0
-    //   159: aload 5
-    //   161: invokevirtual 387	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   164: putfield 140	com/tencent/token/ui/e:t	Ljava/lang/String;
-    //   167: aload_2
-    //   168: ifnull +7 -> 175
-    //   171: aload_2
-    //   172: invokevirtual 392	java/io/InputStream:close	()V
-    //   175: aload 4
-    //   177: ifnull -98 -> 79
-    //   180: aload 4
-    //   182: invokevirtual 411	java/io/FileOutputStream:close	()V
-    //   185: return
-    //   186: astore_2
-    //   187: aload_2
-    //   188: invokevirtual 202	java/lang/Exception:printStackTrace	()V
-    //   191: return
-    //   192: astore_3
-    //   193: aconst_null
-    //   194: astore_2
-    //   195: aconst_null
-    //   196: astore 4
-    //   198: aload_2
-    //   199: ifnull +7 -> 206
+    //   153: goto +68 -> 221
+    //   156: aconst_null
+    //   157: astore_2
+    //   158: aload 4
+    //   160: astore_3
+    //   161: goto +15 -> 176
+    //   164: astore_2
+    //   165: aconst_null
+    //   166: astore 4
+    //   168: goto +53 -> 221
+    //   171: aconst_null
+    //   172: astore_2
+    //   173: aload 5
+    //   175: astore_3
+    //   176: ldc_w 414
+    //   179: invokestatic 100	com/tencent/token/global/g:b	(Ljava/lang/String;)V
+    //   182: aload_3
+    //   183: ifnull +10 -> 193
+    //   186: aload_3
+    //   187: invokevirtual 398	java/io/InputStream:close	()V
+    //   190: goto +3 -> 193
+    //   193: aload_2
+    //   194: ifnull +12 -> 206
+    //   197: aload_2
+    //   198: invokevirtual 412	java/io/FileOutputStream:close	()V
+    //   201: return
     //   202: aload_2
-    //   203: invokevirtual 392	java/io/InputStream:close	()V
-    //   206: aload 4
-    //   208: ifnull +8 -> 216
-    //   211: aload 4
-    //   213: invokevirtual 411	java/io/FileOutputStream:close	()V
-    //   216: aload_3
-    //   217: athrow
-    //   218: astore_2
-    //   219: aload_2
-    //   220: invokevirtual 202	java/lang/Exception:printStackTrace	()V
-    //   223: goto -7 -> 216
-    //   226: astore_3
-    //   227: aconst_null
-    //   228: astore 4
-    //   230: goto -32 -> 198
-    //   233: astore_3
-    //   234: goto -36 -> 198
-    //   237: astore 5
-    //   239: aload_3
-    //   240: astore 4
-    //   242: aload 5
-    //   244: astore_3
-    //   245: goto -47 -> 198
-    //   248: astore_2
-    //   249: aconst_null
-    //   250: astore_2
-    //   251: goto -122 -> 129
-    //   254: astore 4
-    //   256: goto -127 -> 129
+    //   203: invokevirtual 297	java/lang/Exception:printStackTrace	()V
+    //   206: return
+    //   207: astore 4
+    //   209: aload_2
+    //   210: astore 5
+    //   212: aload 4
+    //   214: astore_2
+    //   215: aload_3
+    //   216: astore 4
+    //   218: aload 5
+    //   220: astore_3
+    //   221: aload 4
+    //   223: ifnull +11 -> 234
+    //   226: aload 4
+    //   228: invokevirtual 398	java/io/InputStream:close	()V
+    //   231: goto +3 -> 234
+    //   234: aload_3
+    //   235: ifnull +14 -> 249
+    //   238: aload_3
+    //   239: invokevirtual 412	java/io/FileOutputStream:close	()V
+    //   242: goto +7 -> 249
+    //   245: aload_3
+    //   246: invokevirtual 297	java/lang/Exception:printStackTrace	()V
+    //   249: aload_2
+    //   250: athrow
+    //   251: astore_2
+    //   252: goto -81 -> 171
+    //   255: astore_2
+    //   256: goto -100 -> 156
+    //   259: astore_3
+    //   260: goto -102 -> 158
+    //   263: astore_2
+    //   264: goto -62 -> 202
+    //   267: astore_3
+    //   268: goto -23 -> 245
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	259	0	this	e
-    //   108	11	1	i1	int
-    //   18	46	2	localInputStream	java.io.InputStream
-    //   80	60	2	localException1	Exception
-    //   152	20	2	localException2	Exception
-    //   186	2	2	localException3	Exception
-    //   194	9	2	localObject1	Object
-    //   218	2	2	localException4	Exception
-    //   248	1	2	localIOException1	java.io.IOException
-    //   250	1	2	localObject2	Object
-    //   1	116	3	arrayOfByte	byte[]
-    //   125	1	3	localIOException2	java.io.IOException
-    //   128	20	3	localObject3	Object
-    //   192	25	3	localObject4	Object
-    //   226	1	3	localObject5	Object
-    //   233	7	3	localObject6	Object
-    //   244	1	3	localObject7	Object
-    //   95	146	4	localObject8	Object
-    //   254	1	4	localIOException3	java.io.IOException
-    //   40	120	5	localFile	java.io.File
-    //   237	6	5	localObject9	Object
+    //   0	271	0	this	e
+    //   102	10	1	i1	int
+    //   74	2	2	localException1	Exception
+    //   89	60	2	localObject1	Object
+    //   152	1	2	localObject2	Object
+    //   157	1	2	localObject3	Object
+    //   164	1	2	localObject4	Object
+    //   172	78	2	localObject5	Object
+    //   251	1	2	localIOException1	java.io.IOException
+    //   255	1	2	localIOException2	java.io.IOException
+    //   263	1	2	localException2	Exception
+    //   1	245	3	localObject6	Object
+    //   259	1	3	localIOException3	java.io.IOException
+    //   267	1	3	localException3	Exception
+    //   21	146	4	localInputStream	java.io.InputStream
+    //   207	6	4	localObject7	Object
+    //   216	11	4	localObject8	Object
+    //   3	117	5	localFile	java.io.File
+    //   142	32	5	localObject9	Object
+    //   210	9	5	localObject10	Object
     // Exception table:
     //   from	to	target	type
-    //   63	67	80	java/lang/Exception
-    //   71	79	80	java/lang/Exception
-    //   97	103	125	java/io/IOException
-    //   103	109	125	java/io/IOException
-    //   114	122	125	java/io/IOException
-    //   158	167	125	java/io/IOException
-    //   139	143	152	java/lang/Exception
-    //   147	151	152	java/lang/Exception
-    //   171	175	186	java/lang/Exception
-    //   180	185	186	java/lang/Exception
-    //   2	19	192	finally
-    //   202	206	218	java/lang/Exception
-    //   211	216	218	java/lang/Exception
-    //   19	59	226	finally
-    //   86	97	226	finally
-    //   97	103	233	finally
-    //   103	109	233	finally
-    //   114	122	233	finally
-    //   158	167	233	finally
-    //   129	135	237	finally
-    //   2	19	248	java/io/IOException
-    //   19	59	254	java/io/IOException
-    //   86	97	254	java/io/IOException
+    //   68	73	74	java/lang/Exception
+    //   90	96	142	finally
+    //   96	103	142	finally
+    //   108	115	142	finally
+    //   118	127	142	finally
+    //   23	63	152	finally
+    //   80	90	152	finally
+    //   5	23	164	finally
+    //   176	182	207	finally
+    //   5	23	251	java/io/IOException
+    //   23	63	255	java/io/IOException
+    //   80	90	255	java/io/IOException
+    //   90	96	259	java/io/IOException
+    //   96	103	259	java/io/IOException
+    //   108	115	259	java/io/IOException
+    //   118	127	259	java/io/IOException
+    //   132	137	263	java/lang/Exception
+    //   137	141	263	java/lang/Exception
+    //   186	190	263	java/lang/Exception
+    //   197	201	263	java/lang/Exception
+    //   226	231	267	java/lang/Exception
+    //   238	242	267	java/lang/Exception
   }
   
   public void a()
@@ -466,37 +494,46 @@ public class e
   
   public void c()
   {
-    if (this.j == null) {
+    Camera localCamera = this.j;
+    if (localCamera == null) {
       return;
     }
     try
     {
-      this.j.autoFocus(this);
-      return;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      localRuntimeException.printStackTrace();
-      g.d("camera auto focus " + localRuntimeException.toString());
+      localCamera.autoFocus(this);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      g.d("camera auto focus " + localException.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("camera auto focus ");
+      localStringBuilder.append(localException.toString());
+      g.d(localStringBuilder.toString());
+      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      localRuntimeException.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("camera auto focus ");
+      localStringBuilder.append(localRuntimeException.toString());
+      g.d(localStringBuilder.toString());
     }
   }
   
   public void d()
   {
-    if (this.l != null)
+    Object localObject = this.l;
+    if (localObject != null)
     {
-      this.l.cancel();
+      ((Timer)localObject).cancel();
       this.l = null;
     }
-    if (this.m != null)
+    localObject = this.m;
+    if (localObject != null)
     {
-      this.m.cancel();
+      ((TimerTask)localObject).cancel();
       this.m = null;
     }
   }
@@ -518,157 +555,160 @@ public class e
   
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    if (this.g) {}
-    do
-    {
-      do
-      {
-        return;
-        if ((!this.q) && (!this.p)) {
-          new Thread(new Runnable()
-          {
-            public void run()
-            {
-              try
-              {
-                synchronized (e.this.e)
-                {
-                  try
-                  {
-                    e.a(e.this, true);
-                    e.a(e.this);
-                    e.b(e.this, FaceDetector.IdCardDetectInitial(e.b(e.this)));
-                    g.c("IdCardDetectInitial: " + e.c(e.this) + ",mIdCardModelPath=" + e.b(e.this));
-                    e.c(e.this, true);
-                    e.a(e.this, false);
-                    return;
-                  }
-                  catch (Exception localException)
-                  {
-                    for (;;)
-                    {
-                      localException.printStackTrace();
-                    }
-                  }
-                }
-              }
-              catch (Error localError)
-              {
-                for (;;)
-                {
-                  localError.printStackTrace();
-                }
-              }
-            }
-          }).start();
-        }
-      } while (this.p);
-      this.o += 1;
-    } while (this.o % 2 == 0);
-    label84:
-    Object localObject1;
-    int i1;
-    int i2;
-    IdCardInfo localIdCardInfo;
-    long l2;
-    if (this.s == FaceDetector.IdCardDirection.DT_FRONT)
-    {
-      a += 1;
-      localObject1 = paramCamera.getParameters();
-      i1 = ((Camera.Parameters)localObject1).getPreviewSize().width;
-      i2 = ((Camera.Parameters)localObject1).getPreviewSize().height;
-      localIdCardInfo = new IdCardInfo();
-      l2 = System.currentTimeMillis();
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!this.r) {
-          break label681;
-        }
-        i1 = FaceDetector.IdCardDetect(localIdCardInfo, this.s, paramArrayOfByte, i1, i2, this.n);
-        l1 = i1;
-      }
-      catch (Exception localException1)
-      {
-        long l3;
-        l1 = -1L;
-        localException1.printStackTrace();
-        continue;
-      }
-      catch (Error localError1)
-      {
-        l1 = -1L;
-        localError1.printStackTrace();
-        continue;
-        if (this.s != FaceDetector.IdCardDirection.DT_BACK) {
-          continue;
-        }
-        d = (int)(System.currentTimeMillis() - this.i);
-        Object localObject2 = com.tencent.token.utils.e.a(localIdCardInfo.data(), "backdata");
-        Message localMessage = this.h.obtainMessage(0);
-        localMessage.what = 1;
-        localMessage.obj = localObject2;
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putByteArray("info", localIdCardInfo.info());
-        localMessage.setData((Bundle)localObject2);
-        localMessage.arg1 = 2;
-        localMessage.sendToTarget();
-        bu.a().a(System.currentTimeMillis(), 133);
-        continue;
-        g.a("ret=" + l1);
-        if ((l1 == 3L) || (l1 == 5L))
-        {
-          this.h.obtainMessage(6).sendToTarget();
-          return;
-        }
-      }
-      try
-      {
-        g.c("IdCardDetect detect ret: " + l1);
-        l3 = System.currentTimeMillis();
-        localObject1 = "id_card ret: " + l1 + " time: " + (l3 - l2) + " info: " + localIdCardInfo.info() + ", side=" + this.s;
-        if (l1 != 0L) {
-          continue;
-        }
-        g.c((String)localObject1 + ", totaltime=" + (System.currentTimeMillis() - this.i));
-        if (this.s != FaceDetector.IdCardDirection.DT_FRONT) {
-          continue;
-        }
-        b = (int)(System.currentTimeMillis() - this.i);
-        localObject2 = com.tencent.token.utils.e.a(localIdCardInfo.data(), "frontdata");
-        localObject1 = this.h.obtainMessage(0);
-        ((Message)localObject1).what = 1;
-        ((Message)localObject1).obj = localObject2;
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putByteArray("info", localIdCardInfo.info());
-        ((Message)localObject1).setData((Bundle)localObject2);
-        ((Message)localObject1).arg1 = 1;
-        ((Message)localObject1).sendToTarget();
-        bu.a().a(System.currentTimeMillis(), 131);
-        g.a("take id photo data=" + paramArrayOfByte.length);
-        paramCamera.stopPreview();
-        this.g = true;
-        return;
-      }
-      catch (Error localError2)
-      {
-        continue;
-      }
-      catch (Exception localException2)
-      {
-        continue;
-      }
-      c += 1;
-      break label84;
-      if ((l1 != 2L) && (l1 != 4L)) {
-        break;
-      }
-      this.h.obtainMessage(7).sendToTarget();
+    if (this.g) {
       return;
-      label681:
-      long l1 = -1L;
+    }
+    if ((!this.q) && (!this.p)) {
+      new Thread(new Runnable()
+      {
+        public void run()
+        {
+          try
+          {
+            synchronized (e.this.e)
+            {
+              e.a(e.this, true);
+              e.a(e.this);
+              e.b(e.this, FaceDetector.IdCardDetectInitial(e.b(e.this)));
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("IdCardDetectInitial: ");
+              localStringBuilder.append(e.c(e.this));
+              localStringBuilder.append(",mIdCardModelPath=");
+              localStringBuilder.append(e.b(e.this));
+              g.c(localStringBuilder.toString());
+              e.c(e.this, true);
+              e.a(e.this, false);
+            }
+          }
+          catch (Error localError)
+          {
+            localError.printStackTrace();
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+        }
+      }).start();
+    }
+    if (this.p) {
+      return;
+    }
+    this.o += 1;
+    if (this.o % 2 == 0) {
+      return;
+    }
+    if (this.s == FaceDetector.IdCardDirection.DT_FRONT) {
+      a += 1;
+    } else {
+      c += 1;
+    }
+    Object localObject1 = paramCamera.getParameters();
+    int i1 = ((Camera.Parameters)localObject1).getPreviewSize().width;
+    int i2 = ((Camera.Parameters)localObject1).getPreviewSize().height;
+    localObject1 = new IdCardInfo();
+    long l5 = System.currentTimeMillis();
+    long l4 = -1L;
+    long l1 = l4;
+    long l2 = l4;
+    long l3 = l4;
+    try
+    {
+      if (this.r)
+      {
+        l2 = l4;
+        l3 = l4;
+        l1 = FaceDetector.IdCardDetect((IdCardInfo)localObject1, this.s, paramArrayOfByte, i1, i2, this.n);
+      }
+      l2 = l1;
+      l3 = l1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      l2 = l1;
+      l3 = l1;
+      localStringBuilder.append("IdCardDetect detect ret: ");
+      l2 = l1;
+      l3 = l1;
+      localStringBuilder.append(l1);
+      l2 = l1;
+      l3 = l1;
+      g.c(localStringBuilder.toString());
+    }
+    catch (Error localError)
+    {
+      localError.printStackTrace();
+      l1 = l2;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      l1 = l3;
+    }
+    l2 = System.currentTimeMillis();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("id_card ret: ");
+    ((StringBuilder)localObject2).append(l1);
+    ((StringBuilder)localObject2).append(" time: ");
+    ((StringBuilder)localObject2).append(l2 - l5);
+    ((StringBuilder)localObject2).append(" info: ");
+    ((StringBuilder)localObject2).append(((IdCardInfo)localObject1).info());
+    ((StringBuilder)localObject2).append(", side=");
+    ((StringBuilder)localObject2).append(this.s);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    if (l1 == 0L)
+    {
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject2);
+      ((StringBuilder)localObject3).append(", totaltime=");
+      ((StringBuilder)localObject3).append(System.currentTimeMillis() - this.i);
+      g.c(((StringBuilder)localObject3).toString());
+      if (this.s == FaceDetector.IdCardDirection.DT_FRONT)
+      {
+        b = (int)(System.currentTimeMillis() - this.i);
+        localObject3 = com.tencent.token.utils.e.a(((IdCardInfo)localObject1).data(), "frontdata");
+        localObject2 = this.h.obtainMessage(0);
+        ((Message)localObject2).what = 1;
+        ((Message)localObject2).obj = localObject3;
+        localObject3 = new Bundle();
+        ((Bundle)localObject3).putByteArray("info", ((IdCardInfo)localObject1).info());
+        ((Message)localObject2).setData((Bundle)localObject3);
+        ((Message)localObject2).arg1 = 1;
+        ((Message)localObject2).sendToTarget();
+        bu.a().a(System.currentTimeMillis(), 131);
+      }
+      else if (this.s == FaceDetector.IdCardDirection.DT_BACK)
+      {
+        d = (int)(System.currentTimeMillis() - this.i);
+        localObject3 = com.tencent.token.utils.e.a(((IdCardInfo)localObject1).data(), "backdata");
+        localObject2 = this.h.obtainMessage(0);
+        ((Message)localObject2).what = 1;
+        ((Message)localObject2).obj = localObject3;
+        localObject3 = new Bundle();
+        ((Bundle)localObject3).putByteArray("info", ((IdCardInfo)localObject1).info());
+        ((Message)localObject2).setData((Bundle)localObject3);
+        ((Message)localObject2).arg1 = 2;
+        ((Message)localObject2).sendToTarget();
+        bu.a().a(System.currentTimeMillis(), 133);
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("take id photo data=");
+      ((StringBuilder)localObject1).append(paramArrayOfByte.length);
+      g.a(((StringBuilder)localObject1).toString());
+      paramCamera.stopPreview();
+      this.g = true;
+      return;
+    }
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("ret=");
+    paramArrayOfByte.append(l1);
+    g.a(paramArrayOfByte.toString());
+    if ((l1 != 3L) && (l1 != 5L))
+    {
+      if ((l1 == 2L) || (l1 == 4L)) {
+        this.h.obtainMessage(7).sendToTarget();
+      }
+    }
+    else {
+      this.h.obtainMessage(6).sendToTarget();
     }
   }
 }

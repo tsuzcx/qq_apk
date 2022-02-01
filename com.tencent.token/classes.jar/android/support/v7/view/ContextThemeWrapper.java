@@ -39,50 +39,47 @@ public class ContextThemeWrapper
   
   private Resources getResourcesInternal()
   {
-    if (this.mResources == null)
-    {
-      if (this.mOverrideConfiguration != null) {
-        break label27;
-      }
-      this.mResources = super.getResources();
-    }
-    for (;;)
-    {
-      return this.mResources;
-      label27:
-      if (Build.VERSION.SDK_INT >= 17) {
+    if (this.mResources == null) {
+      if (this.mOverrideConfiguration == null) {
+        this.mResources = super.getResources();
+      } else if (Build.VERSION.SDK_INT >= 17) {
         this.mResources = createConfigurationContext(this.mOverrideConfiguration).getResources();
       }
     }
+    return this.mResources;
   }
   
   private void initializeTheme()
   {
-    if (this.mTheme == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (bool)
-      {
-        this.mTheme = getResources().newTheme();
-        Resources.Theme localTheme = getBaseContext().getTheme();
-        if (localTheme != null) {
-          this.mTheme.setTo(localTheme);
-        }
-      }
-      onApplyThemeResource(this.mTheme, this.mThemeResource, bool);
-      return;
+    boolean bool;
+    if (this.mTheme == null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    if (bool)
+    {
+      this.mTheme = getResources().newTheme();
+      Resources.Theme localTheme = getBaseContext().getTheme();
+      if (localTheme != null) {
+        this.mTheme.setTo(localTheme);
+      }
+    }
+    onApplyThemeResource(this.mTheme, this.mThemeResource, bool);
   }
   
   public void applyOverrideConfiguration(Configuration paramConfiguration)
   {
-    if (this.mResources != null) {
-      throw new IllegalStateException("getResources() or getAssets() has already been called");
-    }
-    if (this.mOverrideConfiguration != null) {
+    if (this.mResources == null)
+    {
+      if (this.mOverrideConfiguration == null)
+      {
+        this.mOverrideConfiguration = new Configuration(paramConfiguration);
+        return;
+      }
       throw new IllegalStateException("Override configuration has already been set");
     }
-    this.mOverrideConfiguration = new Configuration(paramConfiguration);
+    throw new IllegalStateException("getResources() or getAssets() has already been called");
   }
   
   protected void attachBaseContext(Context paramContext)
@@ -114,8 +111,9 @@ public class ContextThemeWrapper
   
   public Resources.Theme getTheme()
   {
-    if (this.mTheme != null) {
-      return this.mTheme;
+    Resources.Theme localTheme = this.mTheme;
+    if (localTheme != null) {
+      return localTheme;
     }
     if (this.mThemeResource == 0) {
       this.mThemeResource = R.style.Theme_AppCompat_Light;

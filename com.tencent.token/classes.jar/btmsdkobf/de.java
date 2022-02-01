@@ -3,6 +3,7 @@ package btmsdkobf;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -30,19 +31,21 @@ public class de
   {
     public void handleMessage(Message paramAnonymousMessage)
     {
-      switch (paramAnonymousMessage.what)
+      int i = paramAnonymousMessage.what;
+      if (i != 3)
       {
-      case 2: 
-      default: 
-        return;
-      case 0: 
+        switch (i)
+        {
+        default: 
+          return;
+        case 1: 
+          eh.f("SharkTcpControler", "[tcp_control][shark_conf] MSG_EXE_RULE_CLOSE");
+          de.this.ci();
+          return;
+        }
         eh.f("SharkTcpControler", "[tcp_control][shark_conf] MSG_EXE_RULE_OPEN");
         de.a(de.this);
         de.b(de.this).cp();
-        return;
-      case 1: 
-        eh.f("SharkTcpControler", "[tcp_control][shark_conf] MSG_EXE_RULE_CLOSE");
-        de.this.ci();
         return;
       }
       eh.f("SharkTcpControler", "[tcp_control][shark_conf] MSG_EXE_RULE_CYCLE");
@@ -93,32 +96,39 @@ public class de
   
   private static void b(List<t> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    if (((t)paramList.get(0)).aD > 0)
+    if (paramList != null)
     {
-      t localt1 = (t)paramList.get(paramList.size() - 1);
-      t localt2 = new t();
-      localt2.aD = H(0);
-      localt2.aE = localt1.aE;
-      localt2.aF = localt1.aF;
-      paramList.add(0, localt2);
-    }
-    try
-    {
-      Collections.sort(paramList, new Comparator()
+      if (paramList.size() == 0) {
+        return;
+      }
+      Object localObject;
+      if (((t)paramList.get(0)).aD > 0)
       {
-        public int a(t paramAnonymoust1, t paramAnonymoust2)
+        localObject = (t)paramList.get(paramList.size() - 1);
+        t localt = new t();
+        localt.aD = H(0);
+        localt.aE = ((t)localObject).aE;
+        localt.aF = ((t)localObject).aF;
+        paramList.add(0, localt);
+      }
+      try
+      {
+        Collections.sort(paramList, new Comparator()
         {
-          return paramAnonymoust1.aD - paramAnonymoust2.aD;
-        }
-      });
-      return;
-    }
-    catch (Throwable paramList)
-    {
-      eh.b("SharkTcpControler", "[tcp_control][shark_conf]checkAndSort() exception: " + paramList, paramList);
+          public int a(t paramAnonymoust1, t paramAnonymoust2)
+          {
+            return paramAnonymoust1.aD - paramAnonymoust2.aD;
+          }
+        });
+        return;
+      }
+      catch (Throwable paramList)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[tcp_control][shark_conf]checkAndSort() exception: ");
+        ((StringBuilder)localObject).append(paramList);
+        eh.b("SharkTcpControler", ((StringBuilder)localObject).toString(), paramList);
+      }
     }
   }
   
@@ -128,7 +138,10 @@ public class de
       this.lZ.set(0);
     }
     int i = this.lZ.incrementAndGet();
-    eh.f("SharkTcpControler", "[tcp_control][shark_conf]markKeepAlive(), refCount: " + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[tcp_control][shark_conf]markKeepAlive(), refCount: ");
+    localStringBuilder.append(i);
+    eh.f("SharkTcpControler", localStringBuilder.toString());
   }
   
   private static ArrayList<t> ck()
@@ -165,17 +178,22 @@ public class de
     {
       this.mHandler.sendEmptyMessage(0);
       dm.a(this.mContext, "action_keep_alive_close", localt.aE * 1000);
-      eh.i("SharkTcpControler", "[tcp_control][shark_conf]now open connection, after " + localt.aE + "s close connection");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[tcp_control][shark_conf]now open connection, after ");
+      localStringBuilder.append(localt.aE);
+      localStringBuilder.append("s close connection");
+      eh.i("SharkTcpControler", localStringBuilder.toString());
     }
-    for (;;)
+    else
     {
-      dm.a(this.mContext, "action_keep_alive_cycle", (localt.aE + localt.aF) * 1000);
-      StringBuilder localStringBuilder = new StringBuilder().append("[tcp_control][shark_conf]execRule(), next cycle in ");
-      int i = localt.aE;
-      eh.i("SharkTcpControler", localt.aF + i + "s");
-      return;
       eh.g("SharkTcpControler", "[tcp_control][f_p][h_b][shark_conf]execRule(), scSharkConf: donnot keepAlive!");
     }
+    dm.a(this.mContext, "action_keep_alive_cycle", (localt.aE + localt.aF) * 1000);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[tcp_control][shark_conf]execRule(), next cycle in ");
+    localStringBuilder.append(localt.aE + localt.aF);
+    localStringBuilder.append("s");
+    eh.i("SharkTcpControler", localStringBuilder.toString());
   }
   
   private void cm()
@@ -195,25 +213,34 @@ public class de
       int i;
       try
       {
-        v localv = aq();
-        if ((localv != null) && (localv.aO != null) && (localv.aO.size() > 0))
+        Object localObject2 = aq();
+        if ((localObject2 != null) && (((v)localObject2).aO != null) && (((v)localObject2).aO.size() > 0))
         {
           int j = co();
-          i = localv.aO.size() - 1;
+          i = ((v)localObject2).aO.size() - 1;
           if (i >= 0)
           {
-            t localt = (t)localv.aO.get(i);
+            t localt = (t)((v)localObject2).aO.get(i);
             if (localt.aD > j) {
-              break label158;
+              break label185;
             }
-            eh.f("SharkTcpControler", "[tcp_control][shark_conf]getRuleAtNow(), fixed policy: start hour: " + localt.aD / 3600 + " start: " + localt.aD + " keep: " + localt.aE + " close: " + localt.aF);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("[tcp_control][shark_conf]getRuleAtNow(), fixed policy: start hour: ");
+            ((StringBuilder)localObject2).append(localt.aD / 3600);
+            ((StringBuilder)localObject2).append(" start: ");
+            ((StringBuilder)localObject2).append(localt.aD);
+            ((StringBuilder)localObject2).append(" keep: ");
+            ((StringBuilder)localObject2).append(localt.aE);
+            ((StringBuilder)localObject2).append(" close: ");
+            ((StringBuilder)localObject2).append(localt.aF);
+            eh.f("SharkTcpControler", ((StringBuilder)localObject2).toString());
             return localt;
           }
         }
         return null;
       }
       finally {}
-      label158:
+      label185:
       i -= 1;
     }
   }
@@ -224,9 +251,7 @@ public class de
     if (localCalendar == null) {
       return 0;
     }
-    int i = localCalendar.get(11);
-    int j = localCalendar.get(12);
-    return localCalendar.get(13) + (i * 3600 + j * 60);
+    return localCalendar.get(11) * 3600 + localCalendar.get(12) * 60 + localCalendar.get(13);
   }
   
   private static void d(v paramv)
@@ -236,131 +261,170 @@ public class de
     }
     if ((paramv.aO != null) && (paramv.aO.size() > 0)) {
       b(paramv.aO);
-    }
-    for (;;)
-    {
-      if (paramv.aM <= 30) {
-        paramv.aM = 30;
-      }
-      if (paramv.aP <= 0) {
-        paramv.aP = 300;
-      }
-      if (paramv.aS <= 0) {
-        paramv.aS = 120;
-      }
-      if (paramv.aT <= 0) {
-        paramv.aT = 2;
-      }
-      eh.e("SharkTcpControler", "[shark_push][shark_conf]------------- ensureValid() ---------------------");
-      eh.f("SharkTcpControler", "[shark_push][shark_conf] hash : " + paramv.ay);
-      if (paramv.az != null) {
-        eh.f("SharkTcpControler", "[shark_push][shark_conf] info.taskNo: " + paramv.az.aB + " info.seqNo: " + paramv.az.aC);
-      }
-      eh.f("SharkTcpControler", "[shark_push][shark_conf] hb interval: " + paramv.aM);
-      eh.f("SharkTcpControler", "[shark_push][shark_conf] KeepAliveAfterSendInSeconds: " + paramv.aP);
-      if (paramv.aO == null) {
-        break;
-      }
-      eh.f("SharkTcpControler", "[shark_push][shark_conf]scSharkConf.policy.size(): " + paramv.aO.size());
-      Iterator localIterator = paramv.aO.iterator();
-      while (localIterator.hasNext())
-      {
-        t localt = (t)localIterator.next();
-        eh.f("SharkTcpControler", "[shark_push][shark_conf]start: " + localt.aD + " keepAlive: " + localt.aE + " connPan: " + localt.aF);
-      }
+    } else {
       paramv.aO = ck();
     }
-    eh.f("SharkTcpControler", "[shark_push][shark_conf] scSharkConf.connIfNotWifi: " + paramv.aQ);
-    eh.f("SharkTcpControler", "[shark_push][shark_conf] scSharkConf.connIfScreenOff: " + paramv.aR);
-    eh.f("SharkTcpControler", "[shark_push][shark_conf] scSharkConf.reconnectInterval: " + paramv.aS);
-    eh.f("SharkTcpControler", "[shark_push][shark_conf] scSharkConf.delayOnNetworkChanging: " + paramv.aT);
+    if (paramv.aM <= 30) {
+      paramv.aM = 30;
+    }
+    if (paramv.aP <= 0) {
+      paramv.aP = 300;
+    }
+    if (paramv.aS <= 0) {
+      paramv.aS = 120;
+    }
+    if (paramv.aT <= 0) {
+      paramv.aT = 2;
+    }
+    eh.e("SharkTcpControler", "[shark_push][shark_conf]------------- ensureValid() ---------------------");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[shark_push][shark_conf] hash : ");
+    ((StringBuilder)localObject).append(paramv.ay);
+    eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
+    if (paramv.az != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[shark_push][shark_conf] info.taskNo: ");
+      ((StringBuilder)localObject).append(paramv.az.aB);
+      ((StringBuilder)localObject).append(" info.seqNo: ");
+      ((StringBuilder)localObject).append(paramv.az.aC);
+      eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[shark_push][shark_conf] hb interval: ");
+    ((StringBuilder)localObject).append(paramv.aM);
+    eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[shark_push][shark_conf] KeepAliveAfterSendInSeconds: ");
+    ((StringBuilder)localObject).append(paramv.aP);
+    eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
+    if (paramv.aO != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[shark_push][shark_conf]scSharkConf.policy.size(): ");
+      ((StringBuilder)localObject).append(paramv.aO.size());
+      eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
+      localObject = paramv.aO.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        t localt = (t)((Iterator)localObject).next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[shark_push][shark_conf]start: ");
+        localStringBuilder.append(localt.aD);
+        localStringBuilder.append(" keepAlive: ");
+        localStringBuilder.append(localt.aE);
+        localStringBuilder.append(" connPan: ");
+        localStringBuilder.append(localt.aF);
+        eh.f("SharkTcpControler", localStringBuilder.toString());
+      }
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[shark_push][shark_conf] scSharkConf.connIfNotWifi: ");
+    ((StringBuilder)localObject).append(paramv.aQ);
+    eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[shark_push][shark_conf] scSharkConf.connIfScreenOff: ");
+    ((StringBuilder)localObject).append(paramv.aR);
+    eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[shark_push][shark_conf] scSharkConf.reconnectInterval: ");
+    ((StringBuilder)localObject).append(paramv.aS);
+    eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[shark_push][shark_conf] scSharkConf.delayOnNetworkChanging: ");
+    ((StringBuilder)localObject).append(paramv.aT);
+    eh.f("SharkTcpControler", ((StringBuilder)localObject).toString());
     eh.e("SharkTcpControler", "[shark_push][shark_conf]-----------------------------------------------------------");
   }
   
   boolean B(String paramString)
   {
-    int i = 1;
-    boolean bool2 = false;
-    v localv = aq();
-    if (localv == null) {
+    Object localObject = aq();
+    if (localObject == null) {
       return true;
     }
-    if ((!localv.aQ) && (ConnectType.CT_WIFI != NetworkUtil.getNetworkType())) {
-      eh.i("SharkTcpControler", "[tcp_control][shark_conf] shouldKeepAlive(), not allow in none wifi! timing: " + paramString);
-    }
-    for (boolean bool1 = false;; bool1 = true)
+    boolean bool1;
+    if ((!((v)localObject).aQ) && (ConnectType.CT_WIFI != NetworkUtil.getNetworkType()))
     {
-      if ((bool1) && (!localv.aR)) {
-        if (this.iB == null) {
-          break label144;
-        }
-      }
-      for (;;)
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[tcp_control][shark_conf] shouldKeepAlive(), not allow in none wifi! timing: ");
+      localStringBuilder.append(paramString);
+      eh.i("SharkTcpControler", localStringBuilder.toString());
+      bool1 = false;
+    }
+    else
+    {
+      bool1 = true;
+    }
+    boolean bool2 = bool1;
+    if (bool1)
+    {
+      bool2 = bool1;
+      if (!((v)localObject).aR)
       {
-        try
-        {
-          boolean bool3 = this.iB.isScreenOn();
-          if (bool3) {
-            continue;
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          i = 0;
-          continue;
-        }
-        if (i != 0)
-        {
-          eh.i("SharkTcpControler", "[tcp_control][shark_conf] shouldKeepAlive(), not allow on screen off! timing: " + paramString);
-          bool1 = bool2;
-          return bool1;
-          i = 0;
-        }
-        else
-        {
-          continue;
-          label144:
-          i = 0;
-        }
+        localObject = this.iB;
+        if (localObject == null) {}
       }
     }
+    try
+    {
+      bool2 = ((PowerManager)localObject).isScreenOn();
+      i = bool2 ^ true;
+    }
+    catch (Throwable localThrowable)
+    {
+      int i;
+      label116:
+      break label116;
+    }
+    i = 0;
+    bool2 = bool1;
+    if (i != 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[tcp_control][shark_conf] shouldKeepAlive(), not allow on screen off! timing: ");
+      ((StringBuilder)localObject).append(paramString);
+      eh.i("SharkTcpControler", ((StringBuilder)localObject).toString());
+      bool2 = false;
+    }
+    return bool2;
   }
   
   public v aq()
   {
-    for (;;)
+    try
     {
-      try
+      if (this.lY == null)
       {
-        if (this.lY == null)
+        this.lY = this.he.aL();
+        if (this.lY != null)
         {
-          this.lY = this.he.aL();
-          if (this.lY != null) {
-            d(this.lY);
-          }
+          d(this.lY);
         }
         else
         {
-          return this.lY;
-        }
-        this.lY = new v();
-        if (cx.bB())
-        {
-          this.lY.aM = 30;
-          this.lY.aP = 60;
+          this.lY = new v();
+          if (cx.bB())
+          {
+            this.lY.aM = 30;
+            this.lY.aP = 60;
+          }
+          else
+          {
+            this.lY.aM = 270;
+            this.lY.aP = 300;
+          }
           this.lY.aN = new ArrayList();
           this.lY.aO = ck();
           this.lY.aQ = true;
           this.lY.aR = true;
           this.lY.aS = 120;
           this.lY.aT = 2;
-          continue;
         }
-        this.lY.aM = 270;
       }
-      finally {}
-      this.lY.aP = 300;
+      return this.lY;
     }
+    finally {}
   }
   
   public void c(v paramv)
@@ -380,163 +444,70 @@ public class de
     finally {}
   }
   
-  /* Error */
   public void cc()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 71	btmsdkobf/de:mc	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: ldc 145
-    //   16: ldc_w 420
-    //   19: invokestatic 249	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   22: aload_0
-    //   23: getfield 422	btmsdkobf/de:lX	Lbtmsdkobf/de$b;
-    //   26: ifnonnull +49 -> 75
-    //   29: aload_0
-    //   30: new 15	btmsdkobf/de$b
-    //   33: dup
-    //   34: aload_0
-    //   35: aconst_null
-    //   36: invokespecial 425	btmsdkobf/de$b:<init>	(Lbtmsdkobf/de;Lbtmsdkobf/de$1;)V
-    //   39: putfield 422	btmsdkobf/de:lX	Lbtmsdkobf/de$b;
-    //   42: new 427	android/content/IntentFilter
-    //   45: dup
-    //   46: invokespecial 428	android/content/IntentFilter:<init>	()V
-    //   49: astore_2
-    //   50: aload_2
-    //   51: ldc 224
-    //   53: invokevirtual 432	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   56: aload_2
-    //   57: ldc 238
-    //   59: invokevirtual 432	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   62: aload_0
-    //   63: getfield 79	btmsdkobf/de:mContext	Landroid/content/Context;
-    //   66: aload_0
-    //   67: getfield 422	btmsdkobf/de:lX	Lbtmsdkobf/de$b;
-    //   70: aload_2
-    //   71: invokevirtual 436	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-    //   74: pop
-    //   75: aload_0
-    //   76: getfield 64	btmsdkobf/de:mHandler	Landroid/os/Handler;
-    //   79: iconst_3
-    //   80: invokevirtual 222	android/os/Handler:sendEmptyMessage	(I)Z
-    //   83: pop
-    //   84: aload_0
-    //   85: iconst_1
-    //   86: putfield 71	btmsdkobf/de:mc	Z
-    //   89: goto -78 -> 11
-    //   92: astore_2
-    //   93: aload_0
-    //   94: monitorexit
-    //   95: aload_2
-    //   96: athrow
-    //   97: astore_2
-    //   98: ldc 145
-    //   100: new 147	java/lang/StringBuilder
-    //   103: dup
-    //   104: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   107: ldc_w 438
-    //   110: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: aload_2
-    //   114: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   117: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   120: invokestatic 207	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
-    //   123: goto -48 -> 75
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	126	0	this	de
-    //   6	2	1	bool	boolean
-    //   49	22	2	localIntentFilter	android.content.IntentFilter
-    //   92	4	2	localObject	Object
-    //   97	17	2	localThrowable	Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	92	finally
-    //   14	62	92	finally
-    //   62	75	92	finally
-    //   75	89	92	finally
-    //   98	123	92	finally
-    //   62	75	97	java/lang/Throwable
+    try
+    {
+      boolean bool = this.mc;
+      if (bool) {
+        return;
+      }
+      eh.e("SharkTcpControler", "[tcp_control][shark_conf]startTcpControl()");
+      if (this.lX == null)
+      {
+        this.lX = new b(null);
+        IntentFilter localIntentFilter = new IntentFilter();
+        localIntentFilter.addAction("action_keep_alive_close");
+        localIntentFilter.addAction("action_keep_alive_cycle");
+        try
+        {
+          this.mContext.registerReceiver(this.lX, localIntentFilter);
+        }
+        catch (Throwable localThrowable)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[tcp_control][shark_conf]registerReceiver exception: ");
+          localStringBuilder.append(localThrowable);
+          eh.g("SharkTcpControler", localStringBuilder.toString());
+        }
+      }
+      this.mHandler.sendEmptyMessage(3);
+      this.mc = true;
+      return;
+    }
+    finally {}
   }
   
-  /* Error */
   public void cd()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 71	btmsdkobf/de:mc	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifne +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: ldc 145
-    //   16: ldc_w 441
-    //   19: invokestatic 249	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   22: aload_0
-    //   23: invokespecial 210	btmsdkobf/de:cm	()V
-    //   26: aload_0
-    //   27: getfield 422	btmsdkobf/de:lX	Lbtmsdkobf/de$b;
-    //   30: astore_2
-    //   31: aload_2
-    //   32: ifnull +19 -> 51
-    //   35: aload_0
-    //   36: getfield 79	btmsdkobf/de:mContext	Landroid/content/Context;
-    //   39: aload_0
-    //   40: getfield 422	btmsdkobf/de:lX	Lbtmsdkobf/de$b;
-    //   43: invokevirtual 445	android/content/Context:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
-    //   46: aload_0
-    //   47: aconst_null
-    //   48: putfield 422	btmsdkobf/de:lX	Lbtmsdkobf/de$b;
-    //   51: aload_0
-    //   52: invokevirtual 448	btmsdkobf/de:ci	()V
-    //   55: aload_0
-    //   56: iconst_0
-    //   57: putfield 71	btmsdkobf/de:mc	Z
-    //   60: goto -49 -> 11
-    //   63: astore_2
-    //   64: aload_0
-    //   65: monitorexit
-    //   66: aload_2
-    //   67: athrow
-    //   68: astore_2
-    //   69: ldc 145
-    //   71: new 147	java/lang/StringBuilder
-    //   74: dup
-    //   75: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   78: ldc_w 450
-    //   81: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: aload_2
-    //   85: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   88: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   91: invokestatic 207	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
-    //   94: goto -43 -> 51
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	97	0	this	de
-    //   6	2	1	bool	boolean
-    //   30	2	2	localb	b
-    //   63	4	2	localObject	Object
-    //   68	17	2	localThrowable	Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	63	finally
-    //   14	31	63	finally
-    //   35	51	63	finally
-    //   51	60	63	finally
-    //   69	94	63	finally
-    //   35	51	68	java/lang/Throwable
+    try
+    {
+      boolean bool = this.mc;
+      if (!bool) {
+        return;
+      }
+      eh.e("SharkTcpControler", "[tcp_control][shark_conf]stopTcpControl()");
+      cm();
+      b localb = this.lX;
+      if (localb != null) {
+        try
+        {
+          this.mContext.unregisterReceiver(this.lX);
+          this.lX = null;
+        }
+        catch (Throwable localThrowable)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[tcp_control][shark_conf]unregisterReceiver exception: ");
+          localStringBuilder.append(localThrowable);
+          eh.g("SharkTcpControler", localStringBuilder.toString());
+        }
+      }
+      ci();
+      this.mc = false;
+      return;
+    }
+    finally {}
   }
   
   public int cg()
@@ -552,7 +523,10 @@ public class de
   void ci()
   {
     int i = this.lZ.decrementAndGet();
-    eh.f("SharkTcpControler", "[tcp_control][shark_conf]tryCloseConnectionAsyn, refCount: " + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[tcp_control][shark_conf]tryCloseConnectionAsyn, refCount: ");
+    localStringBuilder.append(i);
+    eh.f("SharkTcpControler", localStringBuilder.toString());
     if (i <= 0)
     {
       this.lZ.set(0);
@@ -562,10 +536,9 @@ public class de
   
   void g(long paramLong)
   {
-    long l2 = 1000L * aq().aP;
-    long l1 = l2;
-    if (l2 < paramLong) {
-      l1 = paramLong;
+    long l = aq().aP * 1000L;
+    if (l >= paramLong) {
+      paramLong = l;
     }
     try
     {
@@ -575,9 +548,12 @@ public class de
         cj();
         this.ma = true;
       }
-      eh.f("SharkTcpControler", "[tcp_control][shark_conf] " + l1 / 1000L);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[tcp_control][shark_conf] ");
+      localStringBuilder.append(paramLong / 1000L);
+      eh.f("SharkTcpControler", localStringBuilder.toString());
       dv.cQ().D("action_keep_alive_after_send_end");
-      dv.cQ().a("action_keep_alive_after_send_end", l1, this.mb, 0);
+      dv.cQ().a("action_keep_alive_after_send_end", paramLong, this.mb, 0);
       return;
     }
     finally {}
@@ -600,19 +576,23 @@ public class de
       eh.e("SharkTcpControler", "[tcp_control][shark_conf]doOnRecv()");
       paramContext = paramIntent.getAction();
       paramIntent = paramIntent.getPackage();
-      if ((paramContext == null) || (paramIntent == null) || (!paramIntent.equals(bc.n().getPackageName()))) {
-        eh.e("SharkTcpControler", "[tcp_control][shark_conf]TcpControlReceiver.onReceive(), null action or from other pkg, ignore");
-      }
-      do
+      if ((paramContext != null) && (paramIntent != null) && (paramIntent.equals(bc.n().getPackageName())))
       {
-        return;
-        if (paramContext.equals("action_keep_alive_cycle"))
-        {
-          de.e(de.this).sendEmptyMessage(3);
-          return;
+        if (paramContext.equals("action_keep_alive_cycle")) {
+          paramContext = de.e(de.this);
         }
-      } while (!paramContext.equals("action_keep_alive_close"));
-      de.e(de.this).sendEmptyMessage(1);
+        for (int i = 3;; i = 1)
+        {
+          paramContext.sendEmptyMessage(i);
+          return;
+          if (!paramContext.equals("action_keep_alive_close")) {
+            break;
+          }
+          paramContext = de.e(de.this);
+        }
+        return;
+      }
+      eh.e("SharkTcpControler", "[tcp_control][shark_conf]TcpControlReceiver.onReceive(), null action or from other pkg, ignore");
     }
   }
 }

@@ -12,26 +12,15 @@ public class AbnormalLoginActivity
   private a mAdapter;
   private ListView mListView;
   
-  static
-  {
-    if (!AbnormalLoginActivity.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968603);
-    this.mListView = ((ListView)findViewById(2131558521));
-    assert (this.mListView != null);
+    setContentView(2131296283);
+    this.mListView = ((ListView)findViewById(2131165750));
     this.mAdapter = new a(this);
     this.mListView.setScrollingCacheEnabled(true);
     this.mListView.setAdapter(this.mAdapter);
-    findViewById(2131558523).setOnClickListener(new View.OnClickListener()
+    findViewById(2131165191).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {

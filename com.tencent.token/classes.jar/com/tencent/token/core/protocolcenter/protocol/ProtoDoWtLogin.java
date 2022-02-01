@@ -32,8 +32,8 @@ public class ProtoDoWtLogin
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
@@ -41,14 +41,23 @@ public class ProtoDoWtLogin
     int i = cb.a + 1;
     cb.a = i;
     this.c = i;
-    String str2 = l.a(new Object[] { "uin", this.d, "wtlogin_sig", l.a(this.e), "wtlogin_type", Integer.valueOf(this.f), "seq_id", Integer.valueOf(this.c), "op_time", Integer.valueOf((int)(cc.c().s() / 1000L)) });
-    if (str2 == null)
+    Object localObject = l.a(new Object[] { "uin", this.d, "wtlogin_sig", l.a(this.e), "wtlogin_type", Integer.valueOf(this.f), "seq_id", Integer.valueOf(this.c), "op_time", Integer.valueOf((int)(cc.c().s() / 1000L)) });
+    if (localObject == null)
     {
       this.a.b(10000);
       return null;
     }
-    str1 = "?aq_base_sid=" + str1 + "&data=" + str2;
-    return c.e() + "/cn/mbtoken3/mbtoken3_vfy_wtlogin_encrypt" + str1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_vfy_wtlogin_encrypt");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -67,6 +76,7 @@ public class ProtoDoWtLogin
       return;
     }
     paramJSONObject = l.c(paramJSONObject.getString("data"));
+    long l1;
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
@@ -76,31 +86,37 @@ public class ProtoDoWtLogin
         this.a.b(10030);
         return;
       }
-      long l1 = Long.parseLong(paramJSONObject.getString("uin"));
+      l1 = Long.parseLong(paramJSONObject.getString("uin"));
       paramJSONObject = paramJSONObject.getString("uin_mask");
-      try
-      {
-        long l2 = Long.parseLong(this.d);
-        QQUser localQQUser = cr.a().d(l2);
-        if (localQQUser != null)
-        {
-          localQQUser.mUin = l1;
-          localQQUser.mUinMask = paramJSONObject;
-        }
-        this.b.c.put("param.uinhash", Long.valueOf(l1));
-        this.b.c.put("param.wtlogin.a2", this.e);
-        cr.a().e(l2);
-        this.a.c();
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        this.a.b(10000);
-        return;
-      }
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    try
+    {
+      long l2 = Long.parseLong(this.d);
+      localObject = cr.a().d(l2);
+      if (localObject != null)
+      {
+        ((QQUser)localObject).mUin = l1;
+        ((QQUser)localObject).mUinMask = paramJSONObject;
+      }
+      this.b.c.put("param.uinhash", Long.valueOf(l1));
+      this.b.c.put("param.wtlogin.a2", this.e);
+      cr.a().e(l2);
+      this.a.c();
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      Object localObject;
+      label182:
+      break label182;
+    }
+    this.a.b(10000);
+    return;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseJSON error decodeData=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    g.c(((StringBuilder)localObject).toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
 }
 

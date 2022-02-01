@@ -25,17 +25,20 @@ public class ProtoSetSuperCode
   
   protected String a()
   {
-    String str = ca.a().b();
-    if (str == null)
+    Object localObject4 = ca.a().b();
+    if (localObject4 == null)
     {
       this.a.b(104);
-      g.c(this + "sessId null ");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this);
+      ((StringBuilder)localObject1).append("sessId null ");
+      g.c(((StringBuilder)localObject1).toString());
       return null;
     }
     Object localObject1 = "";
     try
     {
-      localObject2 = new JSONObject();
+      Object localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("uin", this.d);
       ((JSONObject)localObject2).put("seq_id", this.e);
       ((JSONObject)localObject2).put("config_val", this.f);
@@ -44,23 +47,37 @@ public class ProtoSetSuperCode
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject2;
-        g.c(localException.getMessage());
-        localException.printStackTrace();
-      }
-      this.a.b(10000);
-      g.c(this + "ProtoSetSuperCode url data is null ");
+      g.c(localException.getMessage());
+      localException.printStackTrace();
     }
-    localObject2 = "?aq_base_sid=" + str;
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("?aq_base_sid=");
+    ((StringBuilder)localObject3).append((String)localObject4);
+    localObject3 = ((StringBuilder)localObject3).toString();
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localObject1 = (String)localObject2 + "&data=" + (String)localObject1;
-      localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_set_super_code" + (String)localObject1;
-      g.c(this + "ProtoSetSuperCode url " + (String)localObject1);
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append((String)localObject3);
+      ((StringBuilder)localObject4).append("&data=");
+      ((StringBuilder)localObject4).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject4).toString();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(c.e());
+      ((StringBuilder)localObject3).append("/cn/mbtoken3/mbtoken3_set_super_code");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject3).toString();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(this);
+      ((StringBuilder)localObject3).append("ProtoSetSuperCode url ");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      g.c(((StringBuilder)localObject3).toString());
       return localObject1;
     }
+    this.a.b(10000);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this);
+    ((StringBuilder)localObject1).append("ProtoSetSuperCode url data is null ");
+    g.c(((StringBuilder)localObject1).toString());
     return null;
   }
   
@@ -77,27 +94,51 @@ public class ProtoSetSuperCode
     if (i != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
-      g.a("error" + paramJSONObject + ",error code =" + i);
-      this.a.a(i, "server errcode=" + i + ":" + paramJSONObject, paramJSONObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("error");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      ((StringBuilder)localObject).append(",error code =");
+      ((StringBuilder)localObject).append(i);
+      g.a(((StringBuilder)localObject).toString());
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("server errcode=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      ((e)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
       return;
     }
     paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
-      g.a(this + "--data:" + new String(paramJSONObject));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append("--data:");
+      ((StringBuilder)localObject).append(new String(paramJSONObject));
+      g.a(((StringBuilder)localObject).toString());
       paramJSONObject = new JSONObject(new String(paramJSONObject));
       if (paramJSONObject.getInt("seq_id") != this.e)
       {
         this.a.b(10030);
-        g.c(this + "parseJSON error seq is wrong seq=" + paramJSONObject.getInt("seq_id") + ",right = " + this.e);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this);
+        ((StringBuilder)localObject).append("parseJSON error seq is wrong seq=");
+        ((StringBuilder)localObject).append(paramJSONObject.getInt("seq_id"));
+        ((StringBuilder)localObject).append(",right = ");
+        ((StringBuilder)localObject).append(this.e);
+        g.c(((StringBuilder)localObject).toString());
         return;
       }
       this.g = paramJSONObject.optInt("config_val_ret");
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseJSON error decodeData=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    g.c(((StringBuilder)localObject).toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

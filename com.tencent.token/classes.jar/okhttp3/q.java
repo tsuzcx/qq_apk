@@ -27,47 +27,46 @@ public final class q
   public static q a(SSLSession paramSSLSession)
   {
     Object localObject = paramSSLSession.getCipherSuite();
-    if (localObject == null) {
-      throw new IllegalStateException("cipherSuite == null");
+    h localh;
+    TlsVersion localTlsVersion;
+    if (localObject != null) {
+      if (!"SSL_NULL_WITH_NULL_NULL".equals(localObject))
+      {
+        localh = h.a((String)localObject);
+        localObject = paramSSLSession.getProtocol();
+        if (localObject != null) {
+          if (!"NONE".equals(localObject)) {
+            localTlsVersion = TlsVersion.a((String)localObject);
+          }
+        }
+      }
     }
-    if ("SSL_NULL_WITH_NULL_NULL".equals(localObject)) {
-      throw new IOException("cipherSuite == SSL_NULL_WITH_NULL_NULL");
-    }
-    h localh = h.a((String)localObject);
-    localObject = paramSSLSession.getProtocol();
-    if (localObject == null) {
-      throw new IllegalStateException("tlsVersion == null");
-    }
-    if ("NONE".equals(localObject)) {
-      throw new IOException("tlsVersion == NONE");
-    }
-    TlsVersion localTlsVersion = TlsVersion.a((String)localObject);
     try
     {
       localObject = paramSSLSession.getPeerCertificates();
-      if (localObject != null)
-      {
-        localObject = fc.a((Object[])localObject);
-        paramSSLSession = paramSSLSession.getLocalCertificates();
-        if (paramSSLSession == null) {
-          break label147;
-        }
-        paramSSLSession = fc.a(paramSSLSession);
-        return new q(localTlsVersion, localh, (List)localObject, paramSSLSession);
-      }
     }
     catch (SSLPeerUnverifiedException localSSLPeerUnverifiedException)
     {
-      for (;;)
-      {
-        List localList = null;
-        continue;
-        localList = Collections.emptyList();
-        continue;
-        label147:
-        paramSSLSession = Collections.emptyList();
-      }
+      label60:
+      break label60;
     }
+    localObject = null;
+    if (localObject != null) {
+      localObject = fc.a((Object[])localObject);
+    } else {
+      localObject = Collections.emptyList();
+    }
+    paramSSLSession = paramSSLSession.getLocalCertificates();
+    if (paramSSLSession != null) {
+      paramSSLSession = fc.a(paramSSLSession);
+    } else {
+      paramSSLSession = Collections.emptyList();
+    }
+    return new q(localTlsVersion, localh, (List)localObject, paramSSLSession);
+    throw new IOException("tlsVersion == NONE");
+    throw new IllegalStateException("tlsVersion == null");
+    throw new IOException("cipherSuite == SSL_NULL_WITH_NULL_NULL");
+    throw new IllegalStateException("cipherSuite == null");
   }
   
   public h a()
@@ -82,18 +81,34 @@ public final class q
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (!(paramObject instanceof q)) {}
-    do
-    {
+    boolean bool1 = paramObject instanceof q;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramObject = (q)paramObject;
-    } while ((!this.a.equals(paramObject.a)) || (!this.b.equals(paramObject.b)) || (!this.c.equals(paramObject.c)) || (!this.d.equals(paramObject.d)));
-    return true;
+    }
+    paramObject = (q)paramObject;
+    bool1 = bool2;
+    if (this.a.equals(paramObject.a))
+    {
+      bool1 = bool2;
+      if (this.b.equals(paramObject.b))
+      {
+        bool1 = bool2;
+        if (this.c.equals(paramObject.c))
+        {
+          bool1 = bool2;
+          if (this.d.equals(paramObject.d)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
   {
-    return (((this.a.hashCode() + 527) * 31 + this.b.hashCode()) * 31 + this.c.hashCode()) * 31 + this.d.hashCode();
+    return (((527 + this.a.hashCode()) * 31 + this.b.hashCode()) * 31 + this.c.hashCode()) * 31 + this.d.hashCode();
   }
 }
 

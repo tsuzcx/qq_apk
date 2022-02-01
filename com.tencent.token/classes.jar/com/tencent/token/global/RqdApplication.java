@@ -29,11 +29,11 @@ public class RqdApplication
   extends Application
 {
   public static int a = 0;
-  public static boolean b;
+  public static boolean b = false;
   public static volatile int c = 1;
   public static volatile int d = 60;
   public static String e;
-  public static boolean f;
+  public static boolean f = false;
   public static final boolean g = com.tencent.token.utils.j.d;
   public static boolean h = false;
   private static Context i;
@@ -87,45 +87,49 @@ public class RqdApplication
   
   public static String c()
   {
+    Object localObject1 = "testUserId";
+    if ((cr.a().e() != null) && (cr.a().e().mRealUin != 0L))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(cr.a().e().mRealUin);
+      return ((StringBuilder)localObject1).toString();
+    }
+    Object localObject2 = l.b(i);
+    String str = l.c(i);
     int n = 1;
-    Object localObject = "testUserId";
-    if ((cr.a().e() != null) && (cr.a().e().mRealUin != 0L)) {
-      return "" + cr.a().e().mRealUin;
-    }
-    String str1 = l.b(i);
-    String str2 = l.c(i);
     int m;
-    if (str1 == null)
-    {
+    if (localObject2 == null) {
       m = 1;
-      if (str2 != null) {
-        break label152;
-      }
-      label82:
-      if ((m == 0) || (n == 0))
-      {
-        if ((m != 0) || (n != 0)) {
-          break label157;
-        }
-        localObject = str1 + ";" + str2;
-      }
-    }
-    for (;;)
-    {
-      g.c("RqdApplication: userId =" + (String)localObject);
-      return localObject;
+    } else {
       m = 0;
-      break;
-      label152:
+    }
+    if (str != null) {
       n = 0;
-      break label82;
-      label157:
-      if (m != 0) {
-        localObject = str2;
-      } else {
-        localObject = str1;
+    }
+    if ((m == 0) || (n == 0)) {
+      if ((m == 0) && (n == 0))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append((String)localObject2);
+        ((StringBuilder)localObject1).append(";");
+        ((StringBuilder)localObject1).append(str);
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      else if (m != 0)
+      {
+        localObject1 = str;
+      }
+      else
+      {
+        localObject1 = localObject2;
       }
     }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("RqdApplication: userId =");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    g.c(((StringBuilder)localObject2).toString());
+    return localObject1;
   }
   
   public static void d()
@@ -148,21 +152,15 @@ public class RqdApplication
   public static boolean f()
   {
     int m;
-    if ((a & 0x1) == 1)
-    {
+    if ((a & 0x1) == 1) {
       m = 1;
-      if (m == 0) {
-        break label22;
-      }
-    }
-    label22:
-    while ((a & 0x2) == 2)
-    {
-      return true;
+    } else {
       m = 0;
-      break;
     }
-    return false;
+    if (m != 0) {
+      return true;
+    }
+    return (a & 0x2) == 2;
   }
   
   public static boolean g()
@@ -173,13 +171,16 @@ public class RqdApplication
   public static boolean h()
   {
     cr localcr = cr.a();
-    if ((localcr == null) || (localcr.e() == null)) {
-      m.b(0L);
+    boolean bool = false;
+    if ((localcr != null) && (localcr.e() != null))
+    {
+      if ((a & 0x2) == 2) {
+        bool = true;
+      }
+      return bool;
     }
-    while ((a & 0x2) != 2) {
-      return false;
-    }
-    return true;
+    m.b(0L);
+    return false;
   }
   
   public static void i()
@@ -189,23 +190,21 @@ public class RqdApplication
   
   public static String j()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (k == 0)
-    {
-      localObject1 = localObject2;
-      if (!c.l()) {
-        localObject1 = new Safeguard(i, "safeguard_pref").getSafeguardInfo();
-      }
+    String str;
+    if ((k == 0) && (!c.l())) {
+      str = new Safeguard(i, "safeguard_pref").getSafeguardInfo();
+    } else {
+      str = null;
     }
     k += 1;
-    return localObject1;
+    return str;
   }
   
   public static dd k()
   {
-    if (j != null) {
-      return j;
+    dd localdd = j;
+    if (localdd != null) {
+      return localdd;
     }
     j = new de(l());
     return j;
@@ -286,39 +285,36 @@ public class RqdApplication
     {
       public void run()
       {
-        for (;;)
+        try
         {
-          try
+          for (;;)
           {
-            if ((!cd.a().d()) && (m.e() == 0L)) {
-              break label82;
+            if ((!cd.a().d()) && (m.e() == 0L))
+            {
+              Thread.sleep(60000L);
             }
-            if (RqdApplication.d < 60)
+            else if (RqdApplication.d < 60)
             {
               RqdApplication.c = 1;
               Thread.sleep(60000L);
               RqdApplication.d = 60;
-              continue;
             }
-            Thread.sleep(1000L);
+            else
+            {
+              Thread.sleep(1000L);
+              if (l.d()) {
+                RqdApplication.c = 1;
+              } else {
+                RqdApplication.c = 0;
+              }
+            }
           }
-          catch (Exception localException)
-          {
-            g.b(localException.toString());
-            localException.printStackTrace();
-            return;
-          }
-          if (l.d())
-          {
-            RqdApplication.c = 1;
-          }
-          else
-          {
-            RqdApplication.c = 0;
-            continue;
-            label82:
-            Thread.sleep(60000L);
-          }
+          return;
+        }
+        catch (Exception localException)
+        {
+          g.b(localException.toString());
+          localException.printStackTrace();
         }
       }
     }.start();

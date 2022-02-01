@@ -40,30 +40,29 @@ public class LoginProtectResult
     public int a;
     public String b;
     public boolean c;
-    public boolean d = false;
+    public boolean d;
     public boolean e;
     
     public a(JSONObject paramJSONObject)
     {
+      boolean bool2 = false;
+      this.d = false;
       this.a = paramJSONObject.getInt("id");
       this.b = paramJSONObject.getString("title");
-      if (paramJSONObject.getInt("is_set") == 1)
-      {
+      boolean bool1;
+      if (paramJSONObject.getInt("is_set") == 1) {
         bool1 = true;
-        this.c = bool1;
-        if (this.a == 80) {
-          if (paramJSONObject.getInt("is_device_set") != 1) {
-            break label87;
-          }
-        }
-      }
-      label87:
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        this.e = bool1;
-        return;
+      } else {
         bool1 = false;
-        break;
+      }
+      this.c = bool1;
+      if (this.a == 80)
+      {
+        bool1 = bool2;
+        if (paramJSONObject.getInt("is_device_set") == 1) {
+          bool1 = true;
+        }
+        this.e = bool1;
       }
     }
   }

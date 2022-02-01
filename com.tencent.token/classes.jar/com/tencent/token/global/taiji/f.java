@@ -16,12 +16,14 @@ public class f
   
   public void run()
   {
-    if (this.a != null) {
-      this.a.b(this, this.b);
+    a locala = this.a;
+    if (locala != null) {
+      locala.b(this, this.b);
     }
     super.run();
-    if (this.a != null) {
-      this.a.c(this, this.b);
+    locala = this.a;
+    if (locala != null) {
+      locala.c(this, this.b);
     }
   }
   

@@ -7,7 +7,7 @@ final class CharSequences$2
   
   public final char charAt(int paramInt)
   {
-    return (char)this.u[(this.v + paramInt)];
+    return (char)this.u[(paramInt + this.v)];
   }
   
   public final int length()
@@ -17,8 +17,9 @@ final class CharSequences$2
   
   public final CharSequence subSequence(int paramInt1, int paramInt2)
   {
-    paramInt1 -= this.v;
-    paramInt2 -= this.v;
+    int i = this.v;
+    paramInt1 -= i;
+    paramInt2 -= i;
     CharSequences.a(paramInt1, paramInt2, length());
     return CharSequences.forAsciiBytes(this.u, paramInt1, paramInt2);
   }

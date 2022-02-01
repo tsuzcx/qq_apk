@@ -9,28 +9,17 @@ import java.io.File;
 
 public final class k
 {
-  public static String a;
-  public static String b;
-  public static String c;
-  public static int d;
-  public static boolean e;
+  public static String a = "";
+  public static String b = "";
+  public static String c = "";
+  public static int d = 5;
+  public static boolean e = true;
   public static int f = 50;
   private static int g = 2;
   private static int h = 3;
-  private static String i;
-  private static volatile int j;
+  private static String i = ".temp";
+  private static volatile int j = 500;
   private static int k = 20000;
-  
-  static
-  {
-    a = "";
-    b = "";
-    c = "";
-    d = 5;
-    i = ".temp";
-    e = true;
-    j = 500;
-  }
   
   public static int a()
   {
@@ -39,7 +28,10 @@ public final class k
   
   public static String a(String paramString)
   {
-    return paramString + ".bdcfg";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".bdcfg");
+    return localStringBuilder.toString();
   }
   
   public static void a(int paramInt)
@@ -54,7 +46,10 @@ public final class k
   
   public static String b(String paramString)
   {
-    return paramString + i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(i);
+    return localStringBuilder.toString();
   }
   
   public static void b(int paramInt)
@@ -81,14 +76,16 @@ public final class k
   
   public static int e()
   {
-    switch ()
+    int n = p.e();
+    int m = 1048576;
+    switch (n)
     {
-    case 1: 
-    case 2: 
     default: 
       return 1048576;
+    case 3: 
+      m = 524288;
     }
-    return 524288;
+    return m;
   }
   
   public static int f()
@@ -99,27 +96,27 @@ public final class k
   public static String g()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int m;
+    String str;
     if ("mounted".equals(Environment.getExternalStorageState()))
     {
-      m = 1;
-      if (m == 0) {
-        break label98;
-      }
-      str1 = h.e();
+      str = h.e();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("/HalleyDownload");
+      str = ((StringBuilder)localObject).toString();
     }
-    label98:
-    for (String str1 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + str1 + "/HalleyDownload";; str1 = "")
+    else
     {
-      String str2 = str1;
-      if (TextUtils.isEmpty(str1)) {
-        str2 = f.a().getFilesDir().toString();
-      }
-      localStringBuilder.append(str2);
-      return localStringBuilder.toString();
-      m = 0;
-      break;
+      str = "";
     }
+    Object localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = f.a().getFilesDir().toString();
+    }
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
   }
   
   public static int h()

@@ -2,7 +2,7 @@ package com.tencent.token;
 
 public final class aj
 {
-  private static ai a = null;
+  private static ai a;
   
   public static ai a()
   {

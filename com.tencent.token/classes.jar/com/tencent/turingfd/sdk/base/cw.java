@@ -54,7 +54,6 @@ public class cw
             Object localObject1;
             int n;
             Object localObject2;
-            label381:
             int i1;
             int i2;
             int i3;
@@ -75,181 +74,202 @@ public class cw
               case 1048835: 
                 k = b(this.j + 16);
                 a(b(this.j + 20));
-                if (k == -1) {}
-                for (;;)
-                {
-                  this.b.a.pop();
-                  this.j += 24;
-                  break;
+                if (k != -1) {
                   a(k);
                 }
+                this.b.a.pop();
+                this.j += 24;
+                break;
               case 1048834: 
                 k = b(this.j + 16);
                 n = b(this.j + 20);
                 m = this.j + 28;
                 paramInputStream = this.d;
-                m = paramInputStream[(m + 1)] << 8 & 0xFF00 | paramInputStream[(m + 0)] << 0 & 0xFF;
-                String str = a(n);
-                cc[] arrayOfcc;
-                cc localcc;
+                m = 0xFF00 & paramInputStream[(m + 1)] << 8 | paramInputStream[(m + 0)] << 0 & 0xFF;
+                localObject2 = a(n);
+                String str;
                 if (k == -1)
                 {
-                  localObject1 = str;
-                  localObject2 = "";
-                  this.j += 36;
-                  arrayOfcc = new cc[m];
-                  k = 0;
-                  if (k >= m) {
-                    break label963;
+                  str = "";
+                  localObject1 = localObject2;
+                }
+                else
+                {
+                  str = a(k);
+                  if (this.c.containsKey(str))
+                  {
+                    paramInputStream = new StringBuilder();
+                    paramInputStream.append((String)this.c.get(str));
+                    paramInputStream.append(':');
+                    paramInputStream.append((String)localObject2);
+                    localObject1 = paramInputStream.toString();
                   }
+                  else
+                  {
+                    localObject1 = localObject2;
+                  }
+                }
+                this.j += 36;
+                cc[] arrayOfcc = new cc[m];
+                k = 0;
+                while (k < m)
+                {
                   n = b(this.j);
                   i1 = b(this.j + 4);
                   i2 = b(this.j + 8);
                   i3 = b(this.j + 12);
                   i4 = b(this.j + 16);
-                  localcc = new cc();
+                  cc localcc = new cc();
                   localcc.a = a(i1);
-                  if (n != -1) {
-                    break label722;
-                  }
-                  localcc.b(null);
-                  localcc.a(null);
-                  if (i2 != -1) {
-                    break label949;
-                  }
-                  switch (i3)
+                  if (n == -1)
                   {
-                  default: 
-                    paramInputStream = String.format("%08X/0x%08X", new Object[] { Integer.valueOf(i3), Integer.valueOf(i4) });
+                    localcc.b(null);
+                    localcc.a(null);
+                  }
+                  else
+                  {
+                    paramInputStream = a(n);
+                    if (this.c.containsKey(paramInputStream))
+                    {
+                      localcc.b(paramInputStream);
+                      localcc.a((String)this.c.get(paramInputStream));
+                    }
+                  }
+                  if (i2 == -1)
+                  {
+                    switch (i3)
+                    {
+                    default: 
+                      paramInputStream = String.format("%08X/0x%08X", new Object[] { Integer.valueOf(i3), Integer.valueOf(i4) });
+                      break;
+                    case 469762056: 
+                    case 486539272: 
+                      paramInputStream = String.format("#%08X", new Object[] { Integer.valueOf(i4) });
+                      break;
+                    case 301989896: 
+                      boolean bool;
+                      if (i4 != 0) {
+                        bool = true;
+                      } else {
+                        bool = false;
+                      }
+                      paramInputStream = Boolean.toString(bool);
+                      break;
+                    case 268435464: 
+                    case 285212680: 
+                      paramInputStream = Integer.toString(i4);
+                      break;
+                    case 100663304: 
+                      double d1 = i4;
+                      Double.isNaN(d1);
+                      d1 /= 2147483647.0D;
+                      paramInputStream = new DecimalFormat("#.##%").format(d1);
+                      break;
+                    case 83886088: 
+                      paramInputStream = new StringBuilder();
+                      paramInputStream.append(Integer.toString(i4 >> 8));
+                      paramInputStream.append(a[(i4 & 0xFF)]);
+                      paramInputStream = paramInputStream.toString();
+                      break;
+                    case 67108872: 
+                      paramInputStream = Float.toString(Float.intBitsToFloat(i4));
+                      break;
+                    case 50331656: 
+                      paramInputStream = a(i4);
+                      break;
+                    case 33554440: 
+                      paramInputStream = String.format("?id/0x%08X", new Object[] { Integer.valueOf(i4) });
+                      break;
+                    case 16777224: 
+                      paramInputStream = String.format("@id/0x%08X", new Object[] { Integer.valueOf(i4) });
+                    }
                     localcc.c(paramInputStream);
                   }
-                }
-                for (;;)
-                {
+                  else
+                  {
+                    localcc.c(a(i2));
+                  }
                   arrayOfcc[k] = localcc;
                   this.j += 20;
                   k += 1;
-                  break label381;
-                  localObject2 = a(k);
-                  if (this.c.containsKey(localObject2))
-                  {
-                    localObject1 = (String)this.c.get(localObject2) + ':' + str;
-                    break;
-                  }
-                  localObject1 = str;
-                  break;
-                  paramInputStream = a(n);
-                  if (!this.c.containsKey(paramInputStream)) {
-                    break label487;
-                  }
-                  localcc.b(paramInputStream);
-                  localcc.a((String)this.c.get(paramInputStream));
-                  break label487;
-                  paramInputStream = String.format("#%08X", new Object[] { Integer.valueOf(i4) });
-                  break label618;
-                  if (i4 != 0) {}
-                  for (boolean bool = true;; bool = false)
-                  {
-                    paramInputStream = Boolean.toString(bool);
-                    break;
-                  }
-                  paramInputStream = Integer.toString(i4);
-                  break label618;
-                  double d1 = i4 / 2147483647.0D;
-                  paramInputStream = new DecimalFormat("#.##%").format(d1);
-                  break label618;
-                  paramInputStream = Integer.toString(i4 >> 8) + a[(i4 & 0xFF)];
-                  break label618;
-                  paramInputStream = Float.toString(Float.intBitsToFloat(i4));
-                  break label618;
-                  paramInputStream = a(i4);
-                  break label618;
-                  paramInputStream = String.format("?id/0x%08X", new Object[] { Integer.valueOf(i4) });
-                  break label618;
-                  paramInputStream = String.format("@id/0x%08X", new Object[] { Integer.valueOf(i4) });
-                  break label618;
-                  localcc.c(a(i2));
                 }
-                this.b.a((String)localObject2, str, (String)localObject1, arrayOfcc);
+                this.b.a(str, (String)localObject2, (String)localObject1, arrayOfcc);
                 break;
               case 1048833: 
-                label949:
-                label963:
                 a(false);
                 break;
               case 1048832: 
-                label487:
-                label618:
                 a(true);
-                label722:
                 break;
               }
             }
             else
             {
-              n = b(this.j + 4);
+              n = 0;
+              i1 = b(this.j + 4);
               this.g = b(this.j + 8);
               this.h = b(this.j + 12);
-              i1 = this.j;
-              i2 = b(i1 + 20);
-              i3 = b(this.j + 24);
+              i2 = this.j;
+              i3 = b(i2 + 20);
+              i4 = b(this.j + 24);
               this.e = new String[this.g];
               k = 0;
               while (k < this.g)
               {
-                i4 = b(this.j + (k + 7) * 4) + (i2 + i1);
+                int i5 = b((k + 7) * 4 + this.j) + (i3 + i2);
                 localObject2 = this.e;
                 paramInputStream = this.d;
-                m = i4 + 1;
-                if (paramInputStream[m] == paramInputStream[i4])
+                m = i5 + 1;
+                if (paramInputStream[m] == paramInputStream[i5])
                 {
-                  i5 = paramInputStream[i4];
-                  localObject1 = new byte[i5];
+                  i6 = paramInputStream[i5];
+                  localObject1 = new byte[i6];
                   m = 0;
                   for (;;)
                   {
                     paramInputStream = (InputStream)localObject1;
-                    if (m >= i5) {
+                    if (m >= i6) {
                       break;
                     }
-                    localObject1[m] = this.d[(i4 + 2 + m)];
+                    localObject1[m] = this.d[(i5 + 2 + m)];
                     m += 1;
                   }
                 }
-                int i5 = paramInputStream[m] << 8 & 0xFF00 | paramInputStream[i4] & 0xFF;
-                localObject1 = new byte[i5];
+                m = paramInputStream[m];
+                int i6 = paramInputStream[i5] & 0xFF | m << 8 & 0xFF00;
+                localObject1 = new byte[i6];
                 m = 0;
                 for (;;)
                 {
                   paramInputStream = (InputStream)localObject1;
-                  if (m >= i5) {
+                  if (m >= i6) {
                     break;
                   }
-                  localObject1[m] = this.d[(i4 + 2 + m * 2)];
+                  localObject1[m] = this.d[(m * 2 + (i5 + 2))];
                   m += 1;
                 }
                 localObject2[k] = new String(paramInputStream);
                 k += 1;
               }
-              if (i3 > 0)
+              if (i4 > 0)
               {
-                k = 0;
+                k = n;
                 while (k < this.h) {
                   k += 1;
                 }
               }
-              this.j += n;
+              this.j += i1;
             }
           }
           else
           {
+            k = 0;
             m = b(this.j + 4);
             this.i = (m / 4 - 2);
             this.f = new int[this.i];
-            k = 0;
             while (k < this.i)
             {
-              this.f[k] = b(this.j + (k + 2) * 4);
+              this.f[k] = b((k + 2) * 4 + this.j);
               k += 1;
             }
             this.j += m;
@@ -281,13 +301,12 @@ public class cw
       this.b.a(str2, str1);
       this.c.put(str1, str2);
     }
-    for (;;)
+    else
     {
-      this.j += 24;
-      return;
       this.b.b(str2, str1);
       this.c.remove(str1);
     }
+    this.j += 24;
   }
   
   public final int b(int paramInt)

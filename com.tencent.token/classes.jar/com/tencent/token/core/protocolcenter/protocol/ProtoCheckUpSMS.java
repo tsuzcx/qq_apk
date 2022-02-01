@@ -34,15 +34,26 @@ public class ProtoCheckUpSMS
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    String str2 = l.a(new Object[] { "real_uin", Long.valueOf(this.e), "verify_type_id", Integer.valueOf(this.h), "scene_id", Integer.valueOf(this.g), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L) });
-    str1 = "?uin=" + this.d + "&aq_base_sid=" + str1 + "&data=" + str2;
-    return c.e() + "/cn/mbtoken3/mbtoken3_check_up_sms" + str1;
+    Object localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.e), "verify_type_id", Integer.valueOf(this.h), "scene_id", Integer.valueOf(this.g), "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?uin=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("&aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_check_up_sms");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -69,14 +80,22 @@ public class ProtoCheckUpSMS
       if (j != this.f)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + j + ",right = " + this.f);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(j);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.f);
+        g.c(paramJSONObject.toString());
         return;
       }
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
 }
 

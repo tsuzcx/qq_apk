@@ -6,8 +6,8 @@ import java.util.Map;
 public final class e
   extends c
 {
-  private static byte[] k = null;
-  private static Map l = null;
+  private static byte[] k;
+  private static Map l;
   public short a = 3;
   public int b = 0;
   public String c = null;

@@ -40,31 +40,63 @@ public class ProtoSetServiceStatusV2
       this.a.b(10000);
       return null;
     }
-    Object localObject = new StringBuffer("");
-    if ((this.e == null) || (this.f == null) || (this.e.length != this.f.length))
+    Object localObject1 = new StringBuffer("");
+    Object localObject2 = this.e;
+    if (localObject2 != null)
     {
-      this.a.b(10000);
-      return null;
-    }
-    int i = 0;
-    while (i < this.e.length)
-    {
-      ((StringBuffer)localObject).append("{\"id\":" + this.e[i] + ",\"value\":" + this.f[i] + "}");
-      if (i < this.e.length - 1) {
-        ((StringBuffer)localObject).append(",");
+      int[] arrayOfInt = this.f;
+      if ((arrayOfInt != null) && (localObject2.length == arrayOfInt.length))
+      {
+        int i = 0;
+        while (i < this.e.length)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("{\"id\":");
+          ((StringBuilder)localObject2).append(this.e[i]);
+          ((StringBuilder)localObject2).append(",\"value\":");
+          ((StringBuilder)localObject2).append(this.f[i]);
+          ((StringBuilder)localObject2).append("}");
+          ((StringBuffer)localObject1).append(((StringBuilder)localObject2).toString());
+          if (i < this.e.length - 1) {
+            ((StringBuffer)localObject1).append(",");
+          }
+          i += 1;
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("{\"conf_data\":[");
+        ((StringBuilder)localObject2).append(((StringBuffer)localObject1).toString());
+        ((StringBuilder)localObject2).append("], \"A2\":\"");
+        ((StringBuilder)localObject2).append(this.g);
+        ((StringBuilder)localObject2).append("\", \"seq_id\":");
+        ((StringBuilder)localObject2).append(this.h);
+        ((StringBuilder)localObject2).append(", \"op_time\":");
+        ((StringBuilder)localObject2).append((int)(cc.c().s() / 1000L));
+        ((StringBuilder)localObject2).append(",\"uin\":");
+        ((StringBuilder)localObject2).append(this.d);
+        ((StringBuilder)localObject2).append("}");
+        localObject1 = ((StringBuilder)localObject2).toString();
+        g.a((String)localObject1);
+        localObject1 = l.b(((String)localObject1).getBytes());
+        if (localObject1 == null)
+        {
+          this.a.b(10000);
+          return null;
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("?aq_base_sid=");
+        ((StringBuilder)localObject2).append(str);
+        ((StringBuilder)localObject2).append("&data=");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        str = ((StringBuilder)localObject2).toString();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(c.e());
+        ((StringBuilder)localObject1).append("/cn/mbtoken3/mbtoken3_set_service_status_encrypt");
+        ((StringBuilder)localObject1).append(str);
+        return ((StringBuilder)localObject1).toString();
       }
-      i += 1;
     }
-    localObject = "{\"conf_data\":[" + ((StringBuffer)localObject).toString() + "], \"A2\":\"" + this.g + "\", \"seq_id\":" + this.h + ", \"op_time\":" + (int)(cc.c().s() / 1000L) + ",\"uin\":" + this.d + "}";
-    g.a((String)localObject);
-    localObject = l.b(((String)localObject).getBytes());
-    if (localObject == null)
-    {
-      this.a.b(10000);
-      return null;
-    }
-    str = "?aq_base_sid=" + str + "&data=" + (String)localObject;
-    return c.e() + "/cn/mbtoken3/mbtoken3_set_service_status_encrypt" + str;
+    this.a.b(10000);
+    return null;
   }
   
   protected void a(do paramdo)
@@ -88,7 +120,10 @@ public class ProtoSetServiceStatusV2
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      g.b("ProtoSetServiceStatusV2:" + paramJSONObject);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ProtoSetServiceStatusV2:");
+      localStringBuilder.append(paramJSONObject);
+      g.b(localStringBuilder.toString());
       paramJSONObject.getLong("uin");
       if (paramJSONObject.getInt("seq_id") != this.h)
       {
@@ -98,8 +133,11 @@ public class ProtoSetServiceStatusV2
       this.a.c();
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

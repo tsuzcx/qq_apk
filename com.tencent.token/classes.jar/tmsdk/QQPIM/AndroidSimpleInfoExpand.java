@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class AndroidSimpleInfoExpand
   extends JceStruct
@@ -15,16 +16,6 @@ public final class AndroidSimpleInfoExpand
   public String recommend = "";
   public int sign = 0;
   public String signature = "";
-  
-  static
-  {
-    if (!AndroidSimpleInfoExpand.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
   
   public AndroidSimpleInfoExpand()
   {
@@ -49,29 +40,43 @@ public final class AndroidSimpleInfoExpand
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (AndroidSimpleInfoExpand)paramObject;
-    } while ((!JceUtil.equals(this.recommend, paramObject.recommend)) || (!JceUtil.equals(this.sign, paramObject.sign)) || (!JceUtil.equals(this.signature, paramObject.signature)) || (!JceUtil.equals(this.picurls, paramObject.picurls)));
-    return true;
+    }
+    paramObject = (AndroidSimpleInfoExpand)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.recommend, paramObject.recommend))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.sign, paramObject.sign))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.signature, paramObject.signature))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.picurls, paramObject.picurls)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -147,15 +152,18 @@ public final class AndroidSimpleInfoExpand
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.recommend != null) {
-      paramJceOutputStream.write(this.recommend, 0);
+    Object localObject = this.recommend;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.sign, 1);
-    if (this.signature != null) {
-      paramJceOutputStream.write(this.signature, 2);
+    localObject = this.signature;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.picurls != null) {
-      paramJceOutputStream.write(this.picurls, 3);
+    localObject = this.picurls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
   }
 }

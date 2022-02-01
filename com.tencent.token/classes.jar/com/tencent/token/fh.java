@@ -14,7 +14,7 @@ import okio.d;
 public final class fh
   implements Closeable, Flushable
 {
-  static final Pattern a;
+  static final Pattern a = Pattern.compile("[a-z0-9_-]{1,120}");
   final fw b;
   final int c;
   d d;
@@ -29,128 +29,123 @@ public final class fh
   private final Executor n;
   private final Runnable o;
   
-  static
-  {
-    if (!fh.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      j = bool;
-      a = Pattern.compile("[a-z0-9_-]{1,120}");
-      return;
-    }
-  }
-  
   private void d()
   {
     try
     {
-      if (b()) {
-        throw new IllegalStateException("cache is closed");
+      boolean bool = b();
+      if (!bool) {
+        return;
       }
+      throw new IllegalStateException("cache is closed");
     }
     finally {}
   }
   
   void a(a parama, boolean paramBoolean)
   {
-    int i3 = 0;
-    b localb;
-    try
-    {
-      localb = parama.a;
-      if (localb.f != parama) {
-        throw new IllegalStateException();
-      }
-    }
-    finally {}
-    int i2 = i3;
-    if (paramBoolean)
-    {
-      i2 = i3;
-      if (!localb.e)
-      {
-        int i1 = 0;
-        for (;;)
-        {
-          i2 = i3;
-          if (i1 >= this.c) {
-            break;
-          }
-          if (parama.b[i1] == 0)
-          {
-            parama.b();
-            throw new IllegalStateException("Newly created entry didn't create value for index " + i1);
-          }
-          if (!this.b.b(localb.d[i1]))
-          {
-            parama.b();
-            return;
-          }
-          i1 += 1;
-        }
-      }
-    }
     for (;;)
     {
-      long l1;
-      if (i2 < this.c)
+      int i2;
+      try
       {
-        parama = localb.d[i2];
-        if (paramBoolean)
+        b localb = parama.a;
+        if (localb.f == parama)
         {
-          if (this.b.b(parama))
-          {
-            File localFile = localb.c[i2];
-            this.b.a(parama, localFile);
-            l1 = localb.b[i2];
-            long l2 = this.b.c(localFile);
-            localb.b[i2] = l2;
-            this.l = (this.l - l1 + l2);
-          }
-        }
-        else {
-          this.b.a(parama);
-        }
-      }
-      else
-      {
-        this.f += 1;
-        localb.f = null;
-        if ((localb.e | paramBoolean))
-        {
-          localb.e = true;
-          this.d.b("CLEAN").i(32);
-          this.d.b(localb.a);
-          localb.a(this.d);
-          this.d.i(10);
+          int i3 = 0;
+          i2 = i3;
           if (paramBoolean)
           {
-            l1 = this.m;
-            this.m = (1L + l1);
-            localb.g = l1;
+            i2 = i3;
+            if (!localb.e)
+            {
+              int i1 = 0;
+              i2 = i3;
+              if (i1 < this.c)
+              {
+                if (parama.b[i1] != 0)
+                {
+                  if (!this.b.b(localb.d[i1]))
+                  {
+                    parama.b();
+                    return;
+                  }
+                  i1 += 1;
+                  continue;
+                }
+                parama.b();
+                parama = new StringBuilder();
+                parama.append("Newly created entry didn't create value for index ");
+                parama.append(i1);
+                throw new IllegalStateException(parama.toString());
+              }
+            }
+          }
+          long l1;
+          if (i2 < this.c)
+          {
+            parama = localb.d[i2];
+            if (paramBoolean)
+            {
+              if (this.b.b(parama))
+              {
+                File localFile = localb.c[i2];
+                this.b.a(parama, localFile);
+                l1 = localb.b[i2];
+                long l2 = this.b.c(localFile);
+                localb.b[i2] = l2;
+                this.l = (this.l - l1 + l2);
+              }
+            }
+            else {
+              this.b.a(parama);
+            }
+          }
+          else
+          {
+            this.f += 1;
+            localb.f = null;
+            if ((localb.e | paramBoolean))
+            {
+              localb.e = true;
+              this.d.b("CLEAN").i(32);
+              this.d.b(localb.a);
+              localb.a(this.d);
+              this.d.i(10);
+              if (paramBoolean)
+              {
+                l1 = this.m;
+                this.m = (1L + l1);
+                localb.g = l1;
+              }
+            }
+            else
+            {
+              this.e.remove(localb.a);
+              this.d.b("REMOVE").i(32);
+              this.d.b(localb.a);
+              this.d.i(10);
+            }
+            this.d.flush();
+            if ((this.l > this.k) || (a())) {
+              this.n.execute(this.o);
+            }
           }
         }
-        for (;;)
+        else
         {
-          this.d.flush();
-          if ((this.l <= this.k) && (!a())) {
-            break;
-          }
-          this.n.execute(this.o);
-          break;
-          this.e.remove(localb.a);
-          this.d.b("REMOVE").i(32);
-          this.d.b(localb.a);
-          this.d.i(10);
+          throw new IllegalStateException();
         }
       }
+      finally {}
       i2 += 1;
     }
   }
   
   boolean a()
   {
-    return (this.f >= 2000) && (this.f >= this.e.size());
+    int i1 = this.f;
+    return (i1 >= 2000) && (i1 >= this.e.size());
   }
   
   boolean a(b paramb)
@@ -201,73 +196,54 @@ public final class fh
   {
     for (;;)
     {
+      int i1;
       try
       {
-        if ((!this.g) || (this.h))
+        if ((this.g) && (!this.h))
         {
-          this.h = true;
-          return;
-        }
-        b[] arrayOfb = (b[])this.e.values().toArray(new b[this.e.size()]);
-        int i2 = arrayOfb.length;
-        int i1 = 0;
-        if (i1 < i2)
-        {
-          b localb = arrayOfb[i1];
-          if (localb.f != null) {
-            localb.f.b();
+          b[] arrayOfb = (b[])this.e.values().toArray(new b[this.e.size()]);
+          int i2 = arrayOfb.length;
+          i1 = 0;
+          if (i1 < i2)
+          {
+            b localb = arrayOfb[i1];
+            if (localb.f != null) {
+              localb.f.b();
+            }
+          }
+          else
+          {
+            c();
+            this.d.close();
+            this.d = null;
+            this.h = true;
           }
         }
         else
         {
-          c();
-          this.d.close();
-          this.d = null;
           this.h = true;
-          continue;
+          return;
         }
-        i1 += 1;
       }
       finally {}
+      i1 += 1;
     }
   }
   
-  /* Error */
   public void flush()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 211	com/tencent/token/fh:g	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifne +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: invokespecial 223	com/tencent/token/fh:d	()V
-    //   18: aload_0
-    //   19: invokevirtual 219	com/tencent/token/fh:c	()V
-    //   22: aload_0
-    //   23: getfield 132	com/tencent/token/fh:d	Lokio/d;
-    //   26: invokeinterface 155 1 0
-    //   31: goto -20 -> 11
-    //   34: astore_2
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: aload_2
-    //   38: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	39	0	this	fh
-    //   6	2	1	bool	boolean
-    //   34	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	34	finally
-    //   14	31	34	finally
+    try
+    {
+      boolean bool = this.g;
+      if (!bool) {
+        return;
+      }
+      d();
+      c();
+      this.d.flush();
+      return;
+    }
+    finally {}
   }
   
   public final class a
@@ -305,14 +281,16 @@ public final class fh
     {
       synchronized (this.c)
       {
-        if (this.d) {
-          throw new IllegalStateException();
+        if (!this.d)
+        {
+          if (this.a.f == this) {
+            this.c.a(this, false);
+          }
+          this.d = true;
+          return;
         }
+        throw new IllegalStateException();
       }
-      if (this.a.f == this) {
-        this.c.a(this, false);
-      }
-      this.d = true;
     }
   }
   

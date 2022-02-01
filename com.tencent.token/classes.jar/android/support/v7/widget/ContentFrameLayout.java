@@ -96,165 +96,126 @@ public class ContentFrameLayout
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.mAttachListener != null) {
-      this.mAttachListener.onAttachedFromWindow();
+    OnAttachListener localOnAttachListener = this.mAttachListener;
+    if (localOnAttachListener != null) {
+      localOnAttachListener.onAttachedFromWindow();
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.mAttachListener != null) {
-      this.mAttachListener.onDetachedFromWindow();
+    OnAttachListener localOnAttachListener = this.mAttachListener;
+    if (localOnAttachListener != null) {
+      localOnAttachListener.onDetachedFromWindow();
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int n = 0;
     DisplayMetrics localDisplayMetrics = getContext().getResources().getDisplayMetrics();
-    int j;
-    int i1;
-    int i2;
-    TypedValue localTypedValue;
-    label61:
-    int i;
-    if (localDisplayMetrics.widthPixels < localDisplayMetrics.heightPixels)
-    {
+    int i = localDisplayMetrics.widthPixels;
+    int j = localDisplayMetrics.heightPixels;
+    int n = 1;
+    if (i < j) {
       j = 1;
-      i1 = View.MeasureSpec.getMode(paramInt1);
-      i2 = View.MeasureSpec.getMode(paramInt2);
-      if (i1 != -2147483648) {
-        break label495;
-      }
-      if (j == 0) {
-        break label353;
-      }
-      localTypedValue = this.mFixedWidthMinor;
-      if ((localTypedValue == null) || (localTypedValue.type == 0)) {
-        break label495;
-      }
-      if (localTypedValue.type != 5) {
-        break label362;
-      }
-      i = (int)localTypedValue.getDimension(localDisplayMetrics);
+    } else {
+      j = 0;
     }
-    for (;;)
+    int i1 = View.MeasureSpec.getMode(paramInt1);
+    int i2 = View.MeasureSpec.getMode(paramInt2);
+    TypedValue localTypedValue;
+    if (i1 == -2147483648)
     {
-      label92:
-      int m;
-      int k;
-      if (i > 0)
-      {
-        m = View.MeasureSpec.makeMeasureSpec(Math.min(i - (this.mDecorPadding.left + this.mDecorPadding.right), View.MeasureSpec.getSize(paramInt1)), 1073741824);
-        k = 1;
+      if (j != 0) {
+        localTypedValue = this.mFixedWidthMinor;
+      } else {
+        localTypedValue = this.mFixedWidthMajor;
       }
-      for (;;)
+      if ((localTypedValue != null) && (localTypedValue.type != 0))
+      {
+        if (localTypedValue.type == 5) {
+          i = (int)localTypedValue.getDimension(localDisplayMetrics);
+        } else if (localTypedValue.type == 6) {
+          i = (int)localTypedValue.getFraction(localDisplayMetrics.widthPixels, localDisplayMetrics.widthPixels);
+        } else {
+          i = 0;
+        }
+        if (i > 0)
+        {
+          m = View.MeasureSpec.makeMeasureSpec(Math.min(i - (this.mDecorPadding.left + this.mDecorPadding.right), View.MeasureSpec.getSize(paramInt1)), 1073741824);
+          k = 1;
+          break label197;
+        }
+      }
+    }
+    int k = 0;
+    int m = paramInt1;
+    label197:
+    i = paramInt2;
+    if (i2 == -2147483648)
+    {
+      if (j != 0) {
+        localTypedValue = this.mFixedHeightMajor;
+      } else {
+        localTypedValue = this.mFixedHeightMinor;
+      }
+      i = paramInt2;
+      if (localTypedValue != null)
       {
         i = paramInt2;
-        if (i2 == -2147483648)
+        if (localTypedValue.type != 0)
         {
-          if (j == 0) {
-            break label394;
+          if (localTypedValue.type == 5) {
+            paramInt1 = (int)localTypedValue.getDimension(localDisplayMetrics);
+          } else if (localTypedValue.type == 6) {
+            paramInt1 = (int)localTypedValue.getFraction(localDisplayMetrics.heightPixels, localDisplayMetrics.heightPixels);
+          } else {
+            paramInt1 = 0;
           }
-          localTypedValue = this.mFixedHeightMajor;
-          label150:
-          i = paramInt2;
-          if (localTypedValue != null)
-          {
-            i = paramInt2;
-            if (localTypedValue.type != 0)
-            {
-              if (localTypedValue.type != 5) {
-                break label403;
-              }
-              paramInt1 = (int)localTypedValue.getDimension(localDisplayMetrics);
-            }
-          }
-        }
-        for (;;)
-        {
-          label185:
           i = paramInt2;
           if (paramInt1 > 0) {
             i = View.MeasureSpec.makeMeasureSpec(Math.min(paramInt1 - (this.mDecorPadding.top + this.mDecorPadding.bottom), View.MeasureSpec.getSize(paramInt2)), 1073741824);
           }
-          super.onMeasure(m, i);
-          i2 = getMeasuredWidth();
-          m = View.MeasureSpec.makeMeasureSpec(i2, 1073741824);
-          if ((k == 0) && (i1 == -2147483648)) {
-            if (j != 0)
-            {
-              localTypedValue = this.mMinWidthMinor;
-              label266:
-              if ((localTypedValue == null) || (localTypedValue.type == 0)) {
-                break label476;
-              }
-              if (localTypedValue.type != 5) {
-                break label444;
-              }
-              paramInt1 = (int)localTypedValue.getDimension(localDisplayMetrics);
-            }
-          }
-          for (;;)
-          {
-            label297:
-            paramInt2 = paramInt1;
-            if (paramInt1 > 0) {
-              paramInt2 = paramInt1 - (this.mDecorPadding.left + this.mDecorPadding.right);
-            }
-            if (i2 < paramInt2) {
-              paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824);
-            }
-            for (paramInt2 = 1;; paramInt2 = n)
-            {
-              if (paramInt2 != 0) {
-                super.onMeasure(paramInt1, i);
-              }
-              return;
-              j = 0;
-              break;
-              label353:
-              localTypedValue = this.mFixedWidthMajor;
-              break label61;
-              label362:
-              if (localTypedValue.type != 6) {
-                break label504;
-              }
-              i = (int)localTypedValue.getFraction(localDisplayMetrics.widthPixels, localDisplayMetrics.widthPixels);
-              break label92;
-              label394:
-              localTypedValue = this.mFixedHeightMinor;
-              break label150;
-              label403:
-              if (localTypedValue.type != 6) {
-                break label490;
-              }
-              paramInt1 = (int)localTypedValue.getFraction(localDisplayMetrics.heightPixels, localDisplayMetrics.heightPixels);
-              break label185;
-              localTypedValue = this.mMinWidthMajor;
-              break label266;
-              label444:
-              if (localTypedValue.type != 6) {
-                break label485;
-              }
-              paramInt1 = (int)localTypedValue.getFraction(localDisplayMetrics.widthPixels, localDisplayMetrics.widthPixels);
-              break label297;
-              label476:
-              paramInt1 = m;
-            }
-            label485:
-            paramInt1 = 0;
-          }
-          label490:
+        }
+      }
+    }
+    super.onMeasure(m, i);
+    i2 = getMeasuredWidth();
+    m = View.MeasureSpec.makeMeasureSpec(i2, 1073741824);
+    if ((k == 0) && (i1 == -2147483648))
+    {
+      if (j != 0) {
+        localTypedValue = this.mMinWidthMinor;
+      } else {
+        localTypedValue = this.mMinWidthMajor;
+      }
+      if ((localTypedValue != null) && (localTypedValue.type != 0))
+      {
+        if (localTypedValue.type == 5) {
+          paramInt1 = (int)localTypedValue.getDimension(localDisplayMetrics);
+        } else if (localTypedValue.type == 6) {
+          paramInt1 = (int)localTypedValue.getFraction(localDisplayMetrics.widthPixels, localDisplayMetrics.widthPixels);
+        } else {
           paramInt1 = 0;
         }
-        label495:
-        k = 0;
-        m = paramInt1;
+        paramInt2 = paramInt1;
+        if (paramInt1 > 0) {
+          paramInt2 = paramInt1 - (this.mDecorPadding.left + this.mDecorPadding.right);
+        }
+        if (i2 < paramInt2)
+        {
+          paramInt2 = View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824);
+          paramInt1 = n;
+          break label504;
+        }
       }
-      label504:
-      i = 0;
+    }
+    paramInt1 = 0;
+    paramInt2 = m;
+    label504:
+    if (paramInt1 != 0) {
+      super.onMeasure(paramInt2, i);
     }
   }
   

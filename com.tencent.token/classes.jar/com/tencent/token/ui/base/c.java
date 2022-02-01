@@ -20,14 +20,12 @@ public class c
   {
     public void handleMessage(Message paramMessage)
     {
-      switch (paramMessage.what)
-      {
-      }
-      do
-      {
+      if (paramMessage.what != 1000) {
         return;
-      } while (paramMessage.obj == null);
-      ((Runnable)paramMessage.obj).run();
+      }
+      if (paramMessage.obj != null) {
+        ((Runnable)paramMessage.obj).run();
+      }
     }
   }
 }

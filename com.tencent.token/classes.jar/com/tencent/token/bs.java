@@ -27,15 +27,18 @@ public class bs
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
+      Object localObject = new JSONObject();
       int i = 0;
       while (i < paramVarArgs.length)
       {
-        localJSONObject.put(paramVarArgs[i], paramVarArgs[(i + 1)]);
+        ((JSONObject)localObject).put(paramVarArgs[i], paramVarArgs[(i + 1)]);
         i += 2;
       }
-      paramVarArgs = localJSONObject.toString();
-      g.a("palin: " + paramVarArgs);
+      paramVarArgs = ((JSONObject)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("palin: ");
+      ((StringBuilder)localObject).append(paramVarArgs);
+      g.a(((StringBuilder)localObject).toString());
       paramArrayOfByte = a(paramVarArgs.getBytes(), paramArrayOfByte);
       return paramArrayOfByte;
     }

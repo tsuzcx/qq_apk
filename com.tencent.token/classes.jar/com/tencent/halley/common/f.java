@@ -7,7 +7,7 @@ import android.os.Handler;
 
 public final class f
 {
-  private static Context a = null;
+  private static Context a;
   private static String b = "";
   private static String c = "null";
   private static int d = 0;

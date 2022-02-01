@@ -45,7 +45,8 @@ public class KnowTokenActivity
     {
       try
       {
-        if (paramAnonymousMotionEvent1.getX() - paramAnonymousMotionEvent2.getX() > 0.0F) {
+        if (paramAnonymousMotionEvent1.getX() - paramAnonymousMotionEvent2.getX() > 0.0F)
+        {
           if (KnowTokenActivity.this.mLevel < KnowTokenActivity.IMAGE_LEVEL_COUNT - 1)
           {
             paramAnonymousMotionEvent1 = m.a(KnowTokenActivity.this, KnowTokenActivity.mBitmapIds[KnowTokenActivity.access$004(KnowTokenActivity.this)], KnowTokenActivity.this.mLowQuality);
@@ -55,21 +56,33 @@ public class KnowTokenActivity
               return true;
             }
             KnowTokenActivity.this.mPageCurlView.a(paramAnonymousMotionEvent1);
-            if ((KnowTokenActivity.this.mLevel != KnowTokenActivity.IMAGE_LEVEL_COUNT - 1) || (KnowTokenActivity.this.mEndBtn == null)) {
-              break label250;
+            if ((KnowTokenActivity.this.mLevel == KnowTokenActivity.IMAGE_LEVEL_COUNT - 1) && (KnowTokenActivity.this.mEndBtn != null))
+            {
+              KnowTokenActivity.this.mEndBtn.setVisibility(0);
+              return true;
             }
-            KnowTokenActivity.this.mEndBtn.setVisibility(0);
+          }
+          else
+          {
+            KnowTokenActivity.this.finish();
             return true;
           }
         }
-      }
-      catch (OutOfMemoryError paramAnonymousMotionEvent1)
-      {
-        paramAnonymousMotionEvent1.printStackTrace();
-        KnowTokenActivity.this.doOutOfMemory();
-        return true;
-        KnowTokenActivity.this.finish();
-        return true;
+        else if ((paramAnonymousMotionEvent2.getX() - paramAnonymousMotionEvent1.getX() > 0.0F) && (KnowTokenActivity.this.mLevel > 0))
+        {
+          paramAnonymousMotionEvent1 = m.a(KnowTokenActivity.this, KnowTokenActivity.mBitmapIds[KnowTokenActivity.access$006(KnowTokenActivity.this)], KnowTokenActivity.this.mLowQuality);
+          if (paramAnonymousMotionEvent1 == null)
+          {
+            KnowTokenActivity.this.doOutOfMemory();
+            return true;
+          }
+          KnowTokenActivity.this.mPageCurlView.b(paramAnonymousMotionEvent1);
+          if (KnowTokenActivity.this.mEndBtn != null)
+          {
+            KnowTokenActivity.this.mEndBtn.setVisibility(8);
+            return true;
+          }
+        }
       }
       catch (Exception paramAnonymousMotionEvent1)
       {
@@ -77,20 +90,11 @@ public class KnowTokenActivity
         KnowTokenActivity.this.doOutOfMemory();
         return true;
       }
-      if ((paramAnonymousMotionEvent2.getX() - paramAnonymousMotionEvent1.getX() > 0.0F) && (KnowTokenActivity.this.mLevel > 0))
+      catch (OutOfMemoryError paramAnonymousMotionEvent1)
       {
-        paramAnonymousMotionEvent1 = m.a(KnowTokenActivity.this, KnowTokenActivity.mBitmapIds[KnowTokenActivity.access$006(KnowTokenActivity.this)], KnowTokenActivity.this.mLowQuality);
-        if (paramAnonymousMotionEvent1 == null)
-        {
-          KnowTokenActivity.this.doOutOfMemory();
-          return true;
-        }
-        KnowTokenActivity.this.mPageCurlView.b(paramAnonymousMotionEvent1);
-        if (KnowTokenActivity.this.mEndBtn != null) {
-          KnowTokenActivity.this.mEndBtn.setVisibility(8);
-        }
+        paramAnonymousMotionEvent1.printStackTrace();
+        KnowTokenActivity.this.doOutOfMemory();
       }
-      label250:
       return true;
     }
     
@@ -119,16 +123,19 @@ public class KnowTokenActivity
   
   private void doOutOfMemory()
   {
-    if (this.mDotEmpty != null) {
-      this.mDotEmpty.recycle();
+    Object localObject = this.mDotEmpty;
+    if (localObject != null) {
+      ((Bitmap)localObject).recycle();
     }
     this.mDotEmpty = null;
-    if (this.mDotFull != null) {
-      this.mDotFull.recycle();
+    localObject = this.mDotFull;
+    if (localObject != null) {
+      ((Bitmap)localObject).recycle();
     }
     this.mDotFull = null;
-    if (this.mPageCurlView != null) {
-      this.mPageCurlView.c();
+    localObject = this.mPageCurlView;
+    if (localObject != null) {
+      ((g)localObject).c();
     }
     this.mPageCurlView = null;
     finish();
@@ -138,18 +145,15 @@ public class KnowTokenActivity
   {
     int j = this.DOT_OFFSET_X;
     int i = 0;
-    if (i < IMAGE_LEVEL_COUNT)
+    while (i < IMAGE_LEVEL_COUNT)
     {
       if (i == paramInt) {
         paramCanvas.drawBitmap(this.mDotEmpty, j, this.DOT_OFFSET_Y, null);
-      }
-      for (;;)
-      {
-        j += this.DOT_SIZE * 2;
-        i += 1;
-        break;
+      } else {
         paramCanvas.drawBitmap(this.mDotFull, j, this.DOT_OFFSET_Y, null);
       }
+      j += this.DOT_SIZE * 2;
+      i += 1;
     }
   }
   
@@ -159,8 +163,8 @@ public class KnowTokenActivity
     requestWindowFeature(1);
     try
     {
-      this.mDotEmpty = BitmapFactory.decodeResource(getResources(), 2130837676);
-      this.mDotFull = BitmapFactory.decodeResource(getResources(), 2130837677);
+      this.mDotEmpty = BitmapFactory.decodeResource(getResources(), 2131099822);
+      this.mDotFull = BitmapFactory.decodeResource(getResources(), 2131099823);
       paramBundle = getWindowManager().getDefaultDisplay();
       this.mWidth = paramBundle.getWidth();
       this.mHeight = paramBundle.getHeight();
@@ -169,14 +173,14 @@ public class KnowTokenActivity
       this.DOT_OFFSET_Y = (this.mHeight * 9 / 10);
       this.mLowQuality = m.a(this.mWidth, this.mHeight, 1);
       this.mPageCurlView = new g(this, this, this.mWidth, this.mHeight);
-      this.mPageCurlView.setBackgroundColor(getResources().getColor(2131492981));
+      this.mPageCurlView.setBackgroundColor(getResources().getColor(2130968713));
       paramBundle = new RelativeLayout(this);
       paramBundle.addView(this.mPageCurlView, new ViewGroup.LayoutParams(-1, -1));
       Object localObject = new DisplayMetrics();
       getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
       this.mEndBtn = new Button(this);
-      this.mEndBtn.setBackgroundResource(2130837708);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(200.0F * ((DisplayMetrics)localObject).density), (int)(45.0F * ((DisplayMetrics)localObject).density));
+      this.mEndBtn.setBackgroundResource(2131099854);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(((DisplayMetrics)localObject).density * 200.0F), (int)(((DisplayMetrics)localObject).density * 45.0F));
       localLayoutParams.addRule(12, -1);
       localLayoutParams.addRule(14, -1);
       localLayoutParams.bottomMargin = ((int)(((DisplayMetrics)localObject).density * 110.0F));
@@ -192,33 +196,33 @@ public class KnowTokenActivity
       this.mEndBtn.setGravity(17);
       paramBundle.addView(this.mEndBtn, localLayoutParams);
       localObject = m.a(this, mBitmapIds[0], this.mLowQuality);
-      if ((localObject == null) || (this.mDotEmpty == null) || (this.mDotFull == null))
+      if ((localObject != null) && (this.mDotEmpty != null) && (this.mDotFull != null))
       {
-        doOutOfMemory();
+        this.mPageCurlView.a((Bitmap)localObject, null);
+        this.mPageCurlView.setOnTouchListener(new View.OnTouchListener()
+        {
+          public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+          {
+            if ((paramAnonymousView == KnowTokenActivity.this.mPageCurlView) && (paramAnonymousMotionEvent.getAction() == 0)) {
+              KnowTokenActivity.this.mPageCurlView.b();
+            }
+            return false;
+          }
+        });
+        setContentView(paramBundle);
+        hideTitle();
         return;
       }
-      this.mPageCurlView.a((Bitmap)localObject, null);
-      this.mPageCurlView.setOnTouchListener(new View.OnTouchListener()
-      {
-        public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-        {
-          if ((paramAnonymousView == KnowTokenActivity.this.mPageCurlView) && (paramAnonymousMotionEvent.getAction() == 0)) {
-            KnowTokenActivity.this.mPageCurlView.b();
-          }
-          return false;
-        }
-      });
-      setContentView(paramBundle);
-      hideTitle();
+      doOutOfMemory();
       return;
     }
-    catch (OutOfMemoryError paramBundle)
+    catch (Exception paramBundle)
     {
       paramBundle.printStackTrace();
       doOutOfMemory();
       return;
     }
-    catch (Exception paramBundle)
+    catch (OutOfMemoryError paramBundle)
     {
       paramBundle.printStackTrace();
       doOutOfMemory();

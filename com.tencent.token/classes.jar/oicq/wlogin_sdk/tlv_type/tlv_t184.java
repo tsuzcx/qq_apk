@@ -24,8 +24,7 @@ public class tlv_t184
     int i = paramString.length;
     byte[] arrayOfByte = new byte[i + 8];
     System.arraycopy(paramString, 0, arrayOfByte, 0, i);
-    i = 0 + i;
-    util.int64_to_buf(arrayOfByte, i, paramLong);
+    util.int64_to_buf(arrayOfByte, i + 0, paramLong);
     paramString = MD5.toMD5Byte(arrayOfByte);
     fill_head(this._cmd);
     fill_body(paramString, paramString.length);

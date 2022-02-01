@@ -49,7 +49,10 @@ public class j
   {
     synchronized (this.c)
     {
-      new StringBuilder().append("添加网络监听 : ").append(paramm.getClass().getName()).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("添加网络监听 : ");
+      localStringBuilder.append(paramm.getClass().getName());
+      localStringBuilder.toString();
       this.c.add(paramm);
       return;
     }
@@ -80,22 +83,22 @@ public class j
     if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramContext))
     {
       paramContext = ((NetworkInfo)paramIntent.getParcelable("networkInfo")).getState();
-      if (paramContext != NetworkInfo.State.CONNECTED) {
-        break label74;
+      if (paramContext == NetworkInfo.State.CONNECTED)
+      {
+        if (this.b.compareTo(NetworkInfo.State.DISCONNECTED) == 0) {
+          f.a().a(new k(this), "无网络 -> 有网络");
+        }
+        this.b = paramContext;
+        return;
       }
-      if (this.b.compareTo(NetworkInfo.State.DISCONNECTED) == 0) {
-        f.a().a(new k(this), "无网络 -> 有网络");
+      if (paramContext == NetworkInfo.State.DISCONNECTED)
+      {
+        if (this.b.compareTo(NetworkInfo.State.CONNECTED) == 0) {
+          f.a().a(new l(this), "有网络 -> 无网络");
+        }
+        this.b = paramContext;
       }
-      this.b = paramContext;
     }
-    label74:
-    while (paramContext != NetworkInfo.State.DISCONNECTED) {
-      return;
-    }
-    if (this.b.compareTo(NetworkInfo.State.CONNECTED) == 0) {
-      f.a().a(new l(this), "有网络 -> 无网络");
-    }
-    this.b = paramContext;
   }
 }
 

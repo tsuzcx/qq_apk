@@ -28,8 +28,9 @@ public final class AuthSolutionConfig
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.authSolutionConfigList != null) {
-      paramJceOutputStream.write(this.authSolutionConfigList, 0);
+    ArrayList localArrayList = this.authSolutionConfigList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }

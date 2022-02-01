@@ -39,8 +39,9 @@ public class c
     this.d = new char[paramd.f()];
     g();
     this.j = new HandlerThread(paramd.c(), paramd.i());
-    if (this.j != null) {
-      this.j.start();
+    paramdy = this.j;
+    if (paramdy != null) {
+      paramdy.start();
     }
     if (this.j.isAlive()) {
       this.k = new Handler(this.j.getLooper(), this);
@@ -76,145 +77,127 @@ public class c
     //   10: return
     //   11: aload_0
     //   12: getfield 34	com/tencent/token/utils/c:i	Z
-    //   15: ifne -5 -> 10
-    //   18: aload_0
-    //   19: iconst_1
-    //   20: putfield 34	com/tencent/token/utils/c:i	Z
-    //   23: aconst_null
-    //   24: astore_1
-    //   25: aconst_null
-    //   26: astore_3
-    //   27: aload_0
-    //   28: invokespecial 134	com/tencent/token/utils/c:i	()V
-    //   31: aload_1
-    //   32: astore_2
-    //   33: aload_0
-    //   34: invokespecial 60	com/tencent/token/utils/c:g	()Ljava/io/FileOutputStream;
-    //   37: astore 4
-    //   39: aload_3
-    //   40: astore_2
-    //   41: aload 4
-    //   43: ifnull +48 -> 91
-    //   46: aload_1
-    //   47: astore_2
-    //   48: aload 4
-    //   50: invokevirtual 140	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   53: invokevirtual 146	java/nio/channels/FileChannel:lock	()Ljava/nio/channels/FileLock;
-    //   56: astore_1
-    //   57: aload_1
-    //   58: astore_2
-    //   59: new 148	java/io/OutputStreamWriter
-    //   62: dup
-    //   63: aload 4
-    //   65: invokespecial 151	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
-    //   68: astore_3
-    //   69: aload_1
-    //   70: astore_2
-    //   71: aload_3
-    //   72: ifnull +19 -> 91
-    //   75: aload_1
-    //   76: astore_2
-    //   77: aload_0
-    //   78: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dw;
-    //   81: aload_3
-    //   82: aload_0
-    //   83: getfield 57	com/tencent/token/utils/c:d	[C
-    //   86: invokevirtual 154	com/tencent/token/dw:a	(Ljava/io/Writer;[C)V
-    //   89: aload_1
-    //   90: astore_2
-    //   91: aload_2
-    //   92: ifnull +7 -> 99
-    //   95: aload_2
-    //   96: invokevirtual 159	java/nio/channels/FileLock:release	()V
-    //   99: aload_0
-    //   100: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dw;
-    //   103: invokevirtual 161	com/tencent/token/dw:b	()V
-    //   106: aload_0
-    //   107: iconst_0
-    //   108: putfield 34	com/tencent/token/utils/c:i	Z
-    //   111: return
-    //   112: astore_1
-    //   113: aload_2
-    //   114: ifnull +7 -> 121
-    //   117: aload_2
-    //   118: invokevirtual 159	java/nio/channels/FileLock:release	()V
-    //   121: aload_0
-    //   122: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dw;
-    //   125: invokevirtual 161	com/tencent/token/dw:b	()V
-    //   128: goto -22 -> 106
-    //   131: astore_1
-    //   132: aconst_null
-    //   133: astore_2
-    //   134: aload_2
-    //   135: ifnull +7 -> 142
-    //   138: aload_2
-    //   139: invokevirtual 159	java/nio/channels/FileLock:release	()V
+    //   15: ifeq +4 -> 19
+    //   18: return
+    //   19: aload_0
+    //   20: iconst_1
+    //   21: putfield 34	com/tencent/token/utils/c:i	Z
+    //   24: aconst_null
+    //   25: astore 4
+    //   27: aconst_null
+    //   28: astore 5
+    //   30: aconst_null
+    //   31: astore_2
+    //   32: aload_0
+    //   33: invokespecial 134	com/tencent/token/utils/c:i	()V
+    //   36: aload 4
+    //   38: astore_3
+    //   39: aload 5
+    //   41: astore_1
+    //   42: aload_0
+    //   43: invokespecial 60	com/tencent/token/utils/c:g	()Ljava/io/FileOutputStream;
+    //   46: astore 6
+    //   48: aload 6
+    //   50: ifnull +50 -> 100
+    //   53: aload 4
+    //   55: astore_3
+    //   56: aload 5
+    //   58: astore_1
+    //   59: aload 6
+    //   61: invokevirtual 140	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   64: invokevirtual 146	java/nio/channels/FileChannel:lock	()Ljava/nio/channels/FileLock;
+    //   67: astore_2
+    //   68: aload_2
+    //   69: astore_3
+    //   70: aload_2
+    //   71: astore_1
+    //   72: new 148	java/io/OutputStreamWriter
+    //   75: dup
+    //   76: aload 6
+    //   78: invokespecial 151	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
+    //   81: astore 4
+    //   83: aload_2
+    //   84: astore_3
+    //   85: aload_2
+    //   86: astore_1
+    //   87: aload_0
+    //   88: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dw;
+    //   91: aload 4
+    //   93: aload_0
+    //   94: getfield 57	com/tencent/token/utils/c:d	[C
+    //   97: invokevirtual 154	com/tencent/token/dw:a	(Ljava/io/Writer;[C)V
+    //   100: aload_2
+    //   101: ifnull +34 -> 135
+    //   104: aload_2
+    //   105: astore_1
+    //   106: goto +25 -> 131
+    //   109: astore_1
+    //   110: aload_3
+    //   111: ifnull +7 -> 118
+    //   114: aload_3
+    //   115: invokevirtual 159	java/nio/channels/FileLock:release	()V
+    //   118: aload_0
+    //   119: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dw;
+    //   122: invokevirtual 161	com/tencent/token/dw:b	()V
+    //   125: aload_1
+    //   126: athrow
+    //   127: aload_1
+    //   128: ifnull +7 -> 135
+    //   131: aload_1
+    //   132: invokevirtual 159	java/nio/channels/FileLock:release	()V
+    //   135: aload_0
+    //   136: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dw;
+    //   139: invokevirtual 161	com/tencent/token/dw:b	()V
     //   142: aload_0
-    //   143: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dw;
-    //   146: invokevirtual 161	com/tencent/token/dw:b	()V
-    //   149: aload_1
-    //   150: athrow
-    //   151: astore_1
-    //   152: goto -53 -> 99
-    //   155: astore_1
-    //   156: goto -35 -> 121
-    //   159: astore_2
-    //   160: goto -18 -> 142
-    //   163: astore_3
-    //   164: aload_1
-    //   165: astore_2
-    //   166: aload_3
-    //   167: astore_1
-    //   168: goto -34 -> 134
+    //   143: iconst_0
+    //   144: putfield 34	com/tencent/token/utils/c:i	Z
+    //   147: return
+    //   148: astore_2
+    //   149: goto -22 -> 127
+    //   152: astore_2
+    //   153: goto -35 -> 118
+    //   156: astore_1
+    //   157: goto -22 -> 135
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	171	0	this	c
-    //   24	66	1	localFileLock	java.nio.channels.FileLock
-    //   112	1	1	localException1	Exception
-    //   131	19	1	localObject1	Object
-    //   151	1	1	localException2	Exception
-    //   155	10	1	localException3	Exception
-    //   167	1	1	localObject2	Object
-    //   32	107	2	localObject3	Object
-    //   159	1	2	localException4	Exception
-    //   165	1	2	localException5	Exception
-    //   26	56	3	localOutputStreamWriter	java.io.OutputStreamWriter
-    //   163	4	3	localObject4	Object
-    //   37	27	4	localFileOutputStream	FileOutputStream
+    //   0	160	0	this	c
+    //   41	65	1	localObject1	Object
+    //   109	23	1	localObject2	Object
+    //   156	1	1	localException1	Exception
+    //   31	74	2	localFileLock	java.nio.channels.FileLock
+    //   148	1	2	localException2	Exception
+    //   152	1	2	localException3	Exception
+    //   38	77	3	localObject3	Object
+    //   25	67	4	localOutputStreamWriter	java.io.OutputStreamWriter
+    //   28	29	5	localObject4	Object
+    //   46	31	6	localFileOutputStream	FileOutputStream
     // Exception table:
     //   from	to	target	type
-    //   33	39	112	java/lang/Exception
-    //   48	57	112	java/lang/Exception
-    //   59	69	112	java/lang/Exception
-    //   77	89	112	java/lang/Exception
-    //   33	39	131	finally
-    //   48	57	131	finally
-    //   95	99	151	java/lang/Exception
-    //   117	121	155	java/lang/Exception
-    //   138	142	159	java/lang/Exception
-    //   59	69	163	finally
-    //   77	89	163	finally
+    //   42	48	109	finally
+    //   59	68	109	finally
+    //   72	83	109	finally
+    //   87	100	109	finally
+    //   42	48	148	java/lang/Exception
+    //   59	68	148	java/lang/Exception
+    //   72	83	148	java/lang/Exception
+    //   87	100	148	java/lang/Exception
+    //   114	118	152	java/lang/Exception
+    //   131	135	156	java/lang/Exception
   }
   
   private FileOutputStream g()
   {
-    int n = 0;
-    File localFile = b().a();
-    int m = n;
-    if (this.c != null) {
-      if (this.c.exists())
-      {
-        m = n;
-        if (this.c.canWrite()) {}
-      }
-      else
-      {
-        m = 1;
-      }
+    File localFile1 = b().a();
+    File localFile2 = this.c;
+    int m;
+    if ((localFile2 != null) && ((!localFile2.exists()) || (!this.c.canWrite()))) {
+      m = 1;
+    } else {
+      m = 0;
     }
-    if ((m != 0) || ((localFile != null) && (!localFile.equals(this.c))))
+    if ((m != 0) || ((localFile1 != null) && (!localFile1.equals(this.c))))
     {
-      this.c = localFile;
+      this.c = localFile1;
       h();
     }
     try
@@ -222,7 +205,11 @@ public class c
       this.b = new FileOutputStream(this.c, true);
       return this.b;
     }
-    catch (IOException localIOException) {}
+    catch (IOException localIOException)
+    {
+      label90:
+      break label90;
+    }
     return null;
   }
   
@@ -234,8 +221,8 @@ public class c
       {
         this.b.flush();
         this.b.close();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -243,52 +230,23 @@ public class c
     }
   }
   
-  /* Error */
   private void i()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 48	com/tencent/token/utils/c:g	Lcom/tencent/token/dw;
-    //   6: aload_0
-    //   7: getfield 44	com/tencent/token/utils/c:e	Lcom/tencent/token/dw;
-    //   10: if_acmpne +22 -> 32
-    //   13: aload_0
-    //   14: aload_0
-    //   15: getfield 46	com/tencent/token/utils/c:f	Lcom/tencent/token/dw;
-    //   18: putfield 48	com/tencent/token/utils/c:g	Lcom/tencent/token/dw;
-    //   21: aload_0
-    //   22: aload_0
-    //   23: getfield 44	com/tencent/token/utils/c:e	Lcom/tencent/token/dw;
-    //   26: putfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dw;
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: return
-    //   32: aload_0
-    //   33: aload_0
-    //   34: getfield 44	com/tencent/token/utils/c:e	Lcom/tencent/token/dw;
-    //   37: putfield 48	com/tencent/token/utils/c:g	Lcom/tencent/token/dw;
-    //   40: aload_0
-    //   41: aload_0
-    //   42: getfield 46	com/tencent/token/utils/c:f	Lcom/tencent/token/dw;
-    //   45: putfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dw;
-    //   48: goto -19 -> 29
-    //   51: astore_1
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: aload_1
-    //   55: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	56	0	this	c
-    //   51	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	29	51	finally
-    //   29	31	51	finally
-    //   32	48	51	finally
-    //   52	54	51	finally
+    try
+    {
+      if (this.g == this.e)
+      {
+        this.g = this.f;
+        this.h = this.e;
+      }
+      else
+      {
+        this.g = this.e;
+        this.h = this.f;
+      }
+      return;
+    }
+    finally {}
   }
   
   public void a()
@@ -324,15 +282,12 @@ public class c
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 1024)
     {
-    }
-    for (;;)
-    {
-      return true;
       f();
       e();
     }
+    return true;
   }
 }
 

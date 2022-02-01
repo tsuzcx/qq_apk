@@ -36,8 +36,9 @@ public final class b
   {
     paramb.a(this.a, 0);
     paramb.a(this.b, 1);
-    if (this.c != null) {
-      paramb.a(this.c, 2);
+    Map localMap = this.c;
+    if (localMap != null) {
+      paramb.a(localMap, 2);
     }
   }
 }

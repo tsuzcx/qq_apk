@@ -61,21 +61,21 @@ public class DownloadQQSecureActivity
     {
     default: 
       return;
-    case 1: 
-      a.a().c(this.mDownloadInfo);
-      return;
-    case 2: 
-    case 3: 
-      a.a().b(this.mDownloadInfo);
-      return;
-    case 4: 
-      a.a(this, new File(a.b(), this.mDownloadInfo.d));
-      return;
-    case 5: 
+    case 7: 
       a.a().c(this.mDownloadInfo);
       return;
     case 6: 
       a.a().d(this.mDownloadInfo);
+      return;
+    case 5: 
+      a.a().c(this.mDownloadInfo);
+      return;
+    case 4: 
+      a.a(this, new File(a.b(), this.mDownloadInfo.d));
+      return;
+    case 2: 
+    case 3: 
+      a.a().b(this.mDownloadInfo);
       return;
     }
     a.a().c(this.mDownloadInfo);
@@ -85,8 +85,8 @@ public class DownloadQQSecureActivity
   {
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    setContentView(2130968615);
-    this.mButton = ((Button)findViewById(2131558680));
+    setContentView(2131296295);
+    this.mButton = ((Button)findViewById(2131165820));
     this.mDownloadInfo = a.a().a("http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
     if (this.mDownloadInfo == null) {
       this.mDownloadInfo = ed.a("com.tencent.qqpimsecure", "http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
@@ -126,21 +126,26 @@ public class DownloadQQSecureActivity
     {
     default: 
       return;
-    case 1: 
-      this.mButton.setText("立即体验");
-      return;
-    case 2: 
-    case 3: 
-      this.mButton.setText("下载中...(" + this.mDownloadInfo.e + "%)");
-      return;
-    case 4: 
-      this.mButton.setText("安装");
+    case 6: 
+      this.mButton.setText("继续");
       return;
     case 5: 
       this.mButton.setText("重试");
       return;
+    case 4: 
+      this.mButton.setText("安装");
+      return;
+    case 2: 
+    case 3: 
+      Button localButton = this.mButton;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("下载中...(");
+      localStringBuilder.append(this.mDownloadInfo.e);
+      localStringBuilder.append("%)");
+      localButton.setText(localStringBuilder.toString());
+      return;
     }
-    this.mButton.setText("继续");
+    this.mButton.setText("立即体验");
   }
 }
 

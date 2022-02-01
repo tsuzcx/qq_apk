@@ -2,7 +2,7 @@ package com.tencent.token;
 
 public class ee
 {
-  public static int a = 0;
+  public static int a;
 }
 
 

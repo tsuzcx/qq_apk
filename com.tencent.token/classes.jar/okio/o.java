@@ -27,24 +27,26 @@ final class o
   
   static void a(n paramn)
   {
-    if ((paramn.f != null) || (paramn.g != null)) {
-      throw new IllegalArgumentException();
-    }
-    if (paramn.d) {
-      return;
-    }
-    try
+    if ((paramn.f == null) && (paramn.g == null))
     {
-      if (b + 8192L > 65536L) {
+      if (paramn.d) {
         return;
       }
+      try
+      {
+        if (b + 8192L > 65536L) {
+          return;
+        }
+        b += 8192L;
+        paramn.f = a;
+        paramn.c = 0;
+        paramn.b = 0;
+        a = paramn;
+        return;
+      }
+      finally {}
     }
-    finally {}
-    b += 8192L;
-    paramn.f = a;
-    paramn.c = 0;
-    paramn.b = 0;
-    a = paramn;
+    throw new IllegalArgumentException();
   }
 }
 

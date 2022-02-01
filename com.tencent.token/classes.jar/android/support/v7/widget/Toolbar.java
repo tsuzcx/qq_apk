@@ -208,22 +208,21 @@ public class Toolbar
   
   private void addCustomViewsWithGravity(List<View> paramList, int paramInt)
   {
-    int i = 1;
+    int i = ViewCompat.getLayoutDirection(this);
     int j = 0;
-    if (ViewCompat.getLayoutDirection(this) == 1) {}
-    int m;
-    int k;
+    if (i == 1) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int m = getChildCount();
+    int k = GravityCompat.getAbsoluteGravity(paramInt, ViewCompat.getLayoutDirection(this));
+    paramList.clear();
+    paramInt = j;
     View localView;
     LayoutParams localLayoutParams;
-    for (;;)
+    if (i != 0)
     {
-      m = getChildCount();
-      k = GravityCompat.getAbsoluteGravity(paramInt, ViewCompat.getLayoutDirection(this));
-      paramList.clear();
-      paramInt = j;
-      if (i == 0) {
-        break;
-      }
       paramInt = m - 1;
       while (paramInt >= 0)
       {
@@ -234,7 +233,6 @@ public class Toolbar
         }
         paramInt -= 1;
       }
-      i = 0;
     }
     while (paramInt < m)
     {
@@ -252,21 +250,17 @@ public class Toolbar
     Object localObject = paramView.getLayoutParams();
     if (localObject == null) {
       localObject = generateDefaultLayoutParams();
+    } else if (!checkLayoutParams((ViewGroup.LayoutParams)localObject)) {
+      localObject = generateLayoutParams((ViewGroup.LayoutParams)localObject);
+    } else {
+      localObject = (LayoutParams)localObject;
     }
-    for (;;)
+    ((LayoutParams)localObject).mViewType = 1;
+    if ((paramBoolean) && (this.mExpandedActionView != null))
     {
-      ((LayoutParams)localObject).mViewType = 1;
-      if ((!paramBoolean) || (this.mExpandedActionView == null)) {
-        break;
-      }
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.mHiddenViews.add(paramView);
       return;
-      if (!checkLayoutParams((ViewGroup.LayoutParams)localObject)) {
-        localObject = generateLayoutParams((ViewGroup.LayoutParams)localObject);
-      } else {
-        localObject = (LayoutParams)localObject;
-      }
     }
     addView(paramView, (ViewGroup.LayoutParams)localObject);
   }
@@ -327,71 +321,64 @@ public class Toolbar
   
   private int getChildHorizontalGravity(int paramInt)
   {
-    int j = ViewCompat.getLayoutDirection(this);
-    int i = GravityCompat.getAbsoluteGravity(paramInt, j) & 0x7;
-    paramInt = i;
-    switch (i)
+    int i = ViewCompat.getLayoutDirection(this);
+    int j = GravityCompat.getAbsoluteGravity(paramInt, i) & 0x7;
+    if (j != 1)
     {
-    case 2: 
-    case 4: 
-    default: 
-      if (j == 1) {
-        paramInt = 5;
+      paramInt = 3;
+      if ((j != 3) && (j != 5))
+      {
+        if (i == 1) {
+          paramInt = 5;
+        }
+        return paramInt;
       }
-      break;
-    case 1: 
-    case 3: 
-    case 5: 
-      return paramInt;
     }
-    return 3;
+    return j;
   }
   
   private int getChildTop(View paramView, int paramInt)
   {
     LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     int j = paramView.getMeasuredHeight();
-    int i;
-    int k;
-    int m;
-    if (paramInt > 0)
-    {
+    if (paramInt > 0) {
       paramInt = (j - paramInt) / 2;
-      switch (getChildVerticalGravity(localLayoutParams.gravity))
+    } else {
+      paramInt = 0;
+    }
+    int i = getChildVerticalGravity(localLayoutParams.gravity);
+    if (i != 48)
+    {
+      if (i != 80)
       {
-      default: 
-        i = getPaddingTop();
-        k = getPaddingBottom();
-        m = getHeight();
-        paramInt = (m - i - k - j) / 2;
-        if (paramInt < localLayoutParams.topMargin) {
+        int k = getPaddingTop();
+        paramInt = getPaddingBottom();
+        int m = getHeight();
+        i = (m - k - paramInt - j) / 2;
+        if (i < localLayoutParams.topMargin)
+        {
           paramInt = localLayoutParams.topMargin;
         }
-        break;
+        else
+        {
+          j = m - paramInt - j - i - k;
+          paramInt = i;
+          if (j < localLayoutParams.bottomMargin) {
+            paramInt = Math.max(0, i - (localLayoutParams.bottomMargin - j));
+          }
+        }
+        return k + paramInt;
       }
-    }
-    for (;;)
-    {
-      return paramInt + i;
-      paramInt = 0;
-      break;
-      return getPaddingTop() - paramInt;
       return getHeight() - getPaddingBottom() - j - localLayoutParams.bottomMargin - paramInt;
-      j = m - k - j - paramInt - i;
-      if (j < localLayoutParams.bottomMargin) {
-        paramInt = Math.max(0, paramInt - (localLayoutParams.bottomMargin - j));
-      }
     }
+    return getPaddingTop() - paramInt;
   }
   
   private int getChildVerticalGravity(int paramInt)
   {
-    int i = paramInt & 0x70;
-    paramInt = i;
-    switch (i)
-    {
-    default: 
-      paramInt = this.mGravity & 0x70;
+    paramInt &= 0x70;
+    if ((paramInt != 16) && (paramInt != 48) && (paramInt != 80)) {
+      return this.mGravity & 0x70;
     }
     return paramInt;
   }
@@ -399,8 +386,7 @@ public class Toolbar
   private int getHorizontalMargins(View paramView)
   {
     paramView = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-    int i = MarginLayoutParamsCompat.getMarginStart(paramView);
-    return MarginLayoutParamsCompat.getMarginEnd(paramView) + i;
+    return MarginLayoutParamsCompat.getMarginStart(paramView) + MarginLayoutParamsCompat.getMarginEnd(paramView);
   }
   
   private MenuInflater getMenuInflater()
@@ -411,8 +397,7 @@ public class Toolbar
   private int getVerticalMargins(View paramView)
   {
     paramView = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-    int i = paramView.topMargin;
-    return paramView.bottomMargin + i;
+    return paramView.topMargin + paramView.bottomMargin;
   }
   
   private int getViewListMeasuredWidth(List<View> paramList, int[] paramArrayOfInt)
@@ -420,11 +405,11 @@ public class Toolbar
     int m = paramArrayOfInt[0];
     int k = paramArrayOfInt[1];
     int n = paramList.size();
-    int j = 0;
     int i = 0;
-    while (j < n)
+    int j = 0;
+    while (i < n)
     {
-      paramArrayOfInt = (View)paramList.get(j);
+      paramArrayOfInt = (View)paramList.get(i);
       LayoutParams localLayoutParams = (LayoutParams)paramArrayOfInt.getLayoutParams();
       m = localLayoutParams.leftMargin - m;
       k = localLayoutParams.rightMargin - k;
@@ -432,11 +417,10 @@ public class Toolbar
       int i2 = Math.max(0, k);
       m = Math.max(0, -m);
       k = Math.max(0, -k);
-      int i3 = paramArrayOfInt.getMeasuredWidth();
-      j += 1;
-      i += i3 + i1 + i2;
+      j += i1 + paramArrayOfInt.getMeasuredWidth() + i2;
+      i += 1;
     }
-    return i;
+    return j;
   }
   
   private boolean isChildOrHidden(View paramView)
@@ -453,12 +437,12 @@ public class Toolbar
   {
     LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     int i = localLayoutParams.leftMargin - paramArrayOfInt[0];
-    paramInt1 = Math.max(0, i) + paramInt1;
+    paramInt1 += Math.max(0, i);
     paramArrayOfInt[0] = Math.max(0, -i);
     paramInt2 = getChildTop(paramView, paramInt2);
     i = paramView.getMeasuredWidth();
     paramView.layout(paramInt1, paramInt2, paramInt1 + i, paramView.getMeasuredHeight() + paramInt2);
-    return localLayoutParams.rightMargin + i + paramInt1;
+    return paramInt1 + (i + localLayoutParams.rightMargin);
   }
   
   private int layoutChildRight(View paramView, int paramInt1, int[] paramArrayOfInt, int paramInt2)
@@ -470,7 +454,7 @@ public class Toolbar
     paramInt2 = getChildTop(paramView, paramInt2);
     i = paramView.getMeasuredWidth();
     paramView.layout(paramInt1 - i, paramInt2, paramInt1, paramView.getMeasuredHeight() + paramInt2);
-    return paramInt1 - (localLayoutParams.leftMargin + i);
+    return paramInt1 - (i + localLayoutParams.leftMargin);
   }
   
   private int measureChildCollapseMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
@@ -520,18 +504,14 @@ public class Toolbar
     }
     int j = getChildCount();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label56;
-      }
       View localView = getChildAt(i);
       if ((shouldLayout(localView)) && (localView.getMeasuredWidth() > 0) && (localView.getMeasuredHeight() > 0)) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label56:
     return true;
   }
   
@@ -554,7 +534,14 @@ public class Toolbar
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public boolean canShowOverflowMenu()
   {
-    return (getVisibility() == 0) && (this.mMenuView != null) && (this.mMenuView.isOverflowReserved());
+    if (getVisibility() == 0)
+    {
+      ActionMenuView localActionMenuView = this.mMenuView;
+      if ((localActionMenuView != null) && (localActionMenuView.isOverflowReserved())) {
+        return true;
+      }
+    }
+    return false;
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -564,20 +551,22 @@ public class Toolbar
   
   public void collapseActionView()
   {
-    if (this.mExpandedMenuPresenter == null) {}
-    for (MenuItemImpl localMenuItemImpl = null;; localMenuItemImpl = this.mExpandedMenuPresenter.mCurrentExpandedItem)
-    {
-      if (localMenuItemImpl != null) {
-        localMenuItemImpl.collapseActionView();
-      }
-      return;
+    Object localObject = this.mExpandedMenuPresenter;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = ((ExpandedActionViewMenuPresenter)localObject).mCurrentExpandedItem;
+    }
+    if (localObject != null) {
+      ((MenuItemImpl)localObject).collapseActionView();
     }
   }
   
   public void dismissPopupMenus()
   {
-    if (this.mMenuView != null) {
-      this.mMenuView.dismissPopupMenus();
+    ActionMenuView localActionMenuView = this.mMenuView;
+    if (localActionMenuView != null) {
+      localActionMenuView.dismissPopupMenus();
     }
   }
   
@@ -628,75 +617,79 @@ public class Toolbar
   
   public int getContentInsetEnd()
   {
-    if (this.mContentInsets != null) {
-      return this.mContentInsets.getEnd();
+    RtlSpacingHelper localRtlSpacingHelper = this.mContentInsets;
+    if (localRtlSpacingHelper != null) {
+      return localRtlSpacingHelper.getEnd();
     }
     return 0;
   }
   
   public int getContentInsetEndWithActions()
   {
-    if (this.mContentInsetEndWithActions != -2147483648) {
-      return this.mContentInsetEndWithActions;
+    int i = this.mContentInsetEndWithActions;
+    if (i != -2147483648) {
+      return i;
     }
     return getContentInsetEnd();
   }
   
   public int getContentInsetLeft()
   {
-    if (this.mContentInsets != null) {
-      return this.mContentInsets.getLeft();
+    RtlSpacingHelper localRtlSpacingHelper = this.mContentInsets;
+    if (localRtlSpacingHelper != null) {
+      return localRtlSpacingHelper.getLeft();
     }
     return 0;
   }
   
   public int getContentInsetRight()
   {
-    if (this.mContentInsets != null) {
-      return this.mContentInsets.getRight();
+    RtlSpacingHelper localRtlSpacingHelper = this.mContentInsets;
+    if (localRtlSpacingHelper != null) {
+      return localRtlSpacingHelper.getRight();
     }
     return 0;
   }
   
   public int getContentInsetStart()
   {
-    if (this.mContentInsets != null) {
-      return this.mContentInsets.getStart();
+    RtlSpacingHelper localRtlSpacingHelper = this.mContentInsets;
+    if (localRtlSpacingHelper != null) {
+      return localRtlSpacingHelper.getStart();
     }
     return 0;
   }
   
   public int getContentInsetStartWithNavigation()
   {
-    if (this.mContentInsetStartWithNavigation != -2147483648) {
-      return this.mContentInsetStartWithNavigation;
+    int i = this.mContentInsetStartWithNavigation;
+    if (i != -2147483648) {
+      return i;
     }
     return getContentInsetStart();
   }
   
   public int getCurrentContentInsetEnd()
   {
+    Object localObject = this.mMenuView;
     int i;
-    if (this.mMenuView != null)
+    if (localObject != null)
     {
-      MenuBuilder localMenuBuilder = this.mMenuView.peekMenu();
-      if ((localMenuBuilder != null) && (localMenuBuilder.hasVisibleItems())) {
+      localObject = ((ActionMenuView)localObject).peekMenu();
+      if ((localObject != null) && (((MenuBuilder)localObject).hasVisibleItems())) {
         i = 1;
+      } else {
+        i = 0;
       }
     }
-    for (;;)
+    else
     {
-      if (i != 0)
-      {
-        return Math.max(getContentInsetEnd(), Math.max(this.mContentInsetEndWithActions, 0));
-        i = 0;
-      }
-      else
-      {
-        return getContentInsetEnd();
-        i = 0;
-      }
+      i = 0;
     }
+    if (i != 0) {
+      return Math.max(getContentInsetEnd(), Math.max(this.mContentInsetEndWithActions, 0));
+    }
+    return getContentInsetEnd();
   }
   
   public int getCurrentContentInsetLeft()
@@ -725,16 +718,18 @@ public class Toolbar
   
   public Drawable getLogo()
   {
-    if (this.mLogoView != null) {
-      return this.mLogoView.getDrawable();
+    ImageView localImageView = this.mLogoView;
+    if (localImageView != null) {
+      return localImageView.getDrawable();
     }
     return null;
   }
   
   public CharSequence getLogoDescription()
   {
-    if (this.mLogoView != null) {
-      return this.mLogoView.getContentDescription();
+    ImageView localImageView = this.mLogoView;
+    if (localImageView != null) {
+      return localImageView.getContentDescription();
     }
     return null;
   }
@@ -748,8 +743,9 @@ public class Toolbar
   @Nullable
   public CharSequence getNavigationContentDescription()
   {
-    if (this.mNavButtonView != null) {
-      return this.mNavButtonView.getContentDescription();
+    ImageButton localImageButton = this.mNavButtonView;
+    if (localImageButton != null) {
+      return localImageButton.getContentDescription();
     }
     return null;
   }
@@ -757,8 +753,9 @@ public class Toolbar
   @Nullable
   public Drawable getNavigationIcon()
   {
-    if (this.mNavButtonView != null) {
-      return this.mNavButtonView.getDrawable();
+    ImageButton localImageButton = this.mNavButtonView;
+    if (localImageButton != null) {
+      return localImageButton.getDrawable();
     }
     return null;
   }
@@ -826,12 +823,14 @@ public class Toolbar
   
   public boolean hasExpandedActionView()
   {
-    return (this.mExpandedMenuPresenter != null) && (this.mExpandedMenuPresenter.mCurrentExpandedItem != null);
+    ExpandedActionViewMenuPresenter localExpandedActionViewMenuPresenter = this.mExpandedMenuPresenter;
+    return (localExpandedActionViewMenuPresenter != null) && (localExpandedActionViewMenuPresenter.mCurrentExpandedItem != null);
   }
   
   public boolean hideOverflowMenu()
   {
-    return (this.mMenuView != null) && (this.mMenuView.hideOverflowMenu());
+    ActionMenuView localActionMenuView = this.mMenuView;
+    return (localActionMenuView != null) && (localActionMenuView.hideOverflowMenu());
   }
   
   public void inflateMenu(@MenuRes int paramInt)
@@ -842,35 +841,37 @@ public class Toolbar
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public boolean isOverflowMenuShowPending()
   {
-    return (this.mMenuView != null) && (this.mMenuView.isOverflowMenuShowPending());
+    ActionMenuView localActionMenuView = this.mMenuView;
+    return (localActionMenuView != null) && (localActionMenuView.isOverflowMenuShowPending());
   }
   
   public boolean isOverflowMenuShowing()
   {
-    return (this.mMenuView != null) && (this.mMenuView.isOverflowMenuShowing());
+    ActionMenuView localActionMenuView = this.mMenuView;
+    return (localActionMenuView != null) && (localActionMenuView.isOverflowMenuShowing());
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public boolean isTitleTruncated()
   {
-    if (this.mTitleTextView == null) {}
-    for (;;)
-    {
+    Object localObject = this.mTitleTextView;
+    if (localObject == null) {
       return false;
-      Layout localLayout = this.mTitleTextView.getLayout();
-      if (localLayout != null)
-      {
-        int j = localLayout.getLineCount();
-        int i = 0;
-        while (i < j)
-        {
-          if (localLayout.getEllipsisCount(i) > 0) {
-            return true;
-          }
-          i += 1;
-        }
-      }
     }
+    localObject = ((TextView)localObject).getLayout();
+    if (localObject == null) {
+      return false;
+    }
+    int j = ((Layout)localObject).getLineCount();
+    int i = 0;
+    while (i < j)
+    {
+      if (((Layout)localObject).getEllipsisCount(i) > 0) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
   
   protected void onDetachedFromWindow()
@@ -900,484 +901,442 @@ public class Toolbar
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int k;
-    int i1;
-    int i4;
-    int j;
-    int i2;
-    int i3;
-    int i5;
-    int[] arrayOfInt;
-    int i;
-    if (ViewCompat.getLayoutDirection(this) == 1)
-    {
+    if (ViewCompat.getLayoutDirection(this) == 1) {
       k = 1;
-      i1 = getWidth();
-      i4 = getHeight();
-      j = getPaddingLeft();
-      i2 = getPaddingRight();
-      i3 = getPaddingTop();
-      i5 = getPaddingBottom();
-      paramInt1 = i1 - i2;
-      arrayOfInt = this.mTempMargins;
-      arrayOfInt[1] = 0;
-      arrayOfInt[0] = 0;
-      paramInt3 = ViewCompat.getMinimumHeight(this);
-      if (paramInt3 < 0) {
-        break label892;
-      }
-      i = Math.min(paramInt3, paramInt4 - paramInt2);
-      label91:
-      if (!shouldLayout(this.mNavButtonView)) {
-        break label1587;
-      }
-      if (k == 0) {
-        break label898;
-      }
-      paramInt1 = layoutChildRight(this.mNavButtonView, paramInt1, arrayOfInt, i);
-      paramInt2 = j;
+    } else {
+      k = 0;
     }
-    for (;;)
+    int n = getWidth();
+    int i3 = getHeight();
+    paramInt3 = getPaddingLeft();
+    int i1 = getPaddingRight();
+    int i2 = getPaddingTop();
+    int i4 = getPaddingBottom();
+    int m = n - i1;
+    int[] arrayOfInt = this.mTempMargins;
+    arrayOfInt[1] = 0;
+    arrayOfInt[0] = 0;
+    paramInt1 = ViewCompat.getMinimumHeight(this);
+    if (paramInt1 >= 0) {
+      paramInt4 = Math.min(paramInt1, paramInt4 - paramInt2);
+    } else {
+      paramInt4 = 0;
+    }
+    if (shouldLayout(this.mNavButtonView))
     {
-      label124:
-      paramInt3 = paramInt1;
-      paramInt4 = paramInt2;
-      if (shouldLayout(this.mCollapseButtonView))
+      if (k != 0)
       {
-        if (k != 0)
-        {
-          paramInt3 = layoutChildRight(this.mCollapseButtonView, paramInt1, arrayOfInt, i);
-          paramInt4 = paramInt2;
-        }
+        paramInt2 = layoutChildRight(this.mNavButtonView, m, arrayOfInt, paramInt4);
+        paramInt1 = paramInt3;
       }
       else
       {
-        label164:
-        paramInt1 = paramInt3;
-        paramInt2 = paramInt4;
-        if (shouldLayout(this.mMenuView))
-        {
-          if (k == 0) {
-            break label937;
-          }
-          paramInt2 = layoutChildLeft(this.mMenuView, paramInt4, arrayOfInt, i);
-          paramInt1 = paramInt3;
-        }
-        label204:
-        paramInt3 = getCurrentContentInsetLeft();
-        paramInt4 = getCurrentContentInsetRight();
-        arrayOfInt[0] = Math.max(0, paramInt3 - paramInt2);
-        arrayOfInt[1] = Math.max(0, paramInt4 - (i1 - i2 - paramInt1));
-        paramInt3 = Math.max(paramInt2, paramInt3);
-        paramInt4 = Math.min(paramInt1, i1 - i2 - paramInt4);
-        paramInt2 = paramInt4;
-        paramInt1 = paramInt3;
-        if (shouldLayout(this.mExpandedActionView))
-        {
-          if (k == 0) {
-            break label958;
-          }
-          paramInt2 = layoutChildRight(this.mExpandedActionView, paramInt4, arrayOfInt, i);
-          paramInt1 = paramInt3;
-        }
-        label308:
-        if (!shouldLayout(this.mLogoView)) {
-          break label1581;
-        }
-        if (k == 0) {
-          break label979;
-        }
-        paramInt2 = layoutChildRight(this.mLogoView, paramInt2, arrayOfInt, i);
-        paramInt3 = paramInt1;
+        paramInt1 = layoutChildLeft(this.mNavButtonView, paramInt3, arrayOfInt, paramInt4);
+        paramInt2 = m;
       }
-      for (;;)
+    }
+    else
+    {
+      paramInt1 = paramInt3;
+      paramInt2 = m;
+    }
+    int i = paramInt1;
+    int j = paramInt2;
+    if (shouldLayout(this.mCollapseButtonView)) {
+      if (k != 0)
       {
-        label341:
-        paramBoolean = shouldLayout(this.mTitleTextView);
-        boolean bool = shouldLayout(this.mSubtitleTextView);
-        paramInt1 = 0;
-        Object localObject1;
-        if (paramBoolean)
+        j = layoutChildRight(this.mCollapseButtonView, paramInt2, arrayOfInt, paramInt4);
+        i = paramInt1;
+      }
+      else
+      {
+        i = layoutChildLeft(this.mCollapseButtonView, paramInt1, arrayOfInt, paramInt4);
+        j = paramInt2;
+      }
+    }
+    paramInt2 = i;
+    paramInt1 = j;
+    if (shouldLayout(this.mMenuView)) {
+      if (k != 0)
+      {
+        paramInt2 = layoutChildLeft(this.mMenuView, i, arrayOfInt, paramInt4);
+        paramInt1 = j;
+      }
+      else
+      {
+        paramInt1 = layoutChildRight(this.mMenuView, j, arrayOfInt, paramInt4);
+        paramInt2 = i;
+      }
+    }
+    j = getCurrentContentInsetLeft();
+    i = getCurrentContentInsetRight();
+    arrayOfInt[0] = Math.max(0, j - paramInt2);
+    arrayOfInt[1] = Math.max(0, i - (m - paramInt1));
+    paramInt2 = Math.max(paramInt2, j);
+    i = Math.min(paramInt1, m - i);
+    paramInt1 = paramInt2;
+    j = i;
+    if (shouldLayout(this.mExpandedActionView)) {
+      if (k != 0)
+      {
+        j = layoutChildRight(this.mExpandedActionView, i, arrayOfInt, paramInt4);
+        paramInt1 = paramInt2;
+      }
+      else
+      {
+        paramInt1 = layoutChildLeft(this.mExpandedActionView, paramInt2, arrayOfInt, paramInt4);
+        j = i;
+      }
+    }
+    paramInt2 = paramInt1;
+    i = j;
+    if (shouldLayout(this.mLogoView)) {
+      if (k != 0)
+      {
+        i = layoutChildRight(this.mLogoView, j, arrayOfInt, paramInt4);
+        paramInt2 = paramInt1;
+      }
+      else
+      {
+        paramInt2 = layoutChildLeft(this.mLogoView, paramInt1, arrayOfInt, paramInt4);
+        i = j;
+      }
+    }
+    paramBoolean = shouldLayout(this.mTitleTextView);
+    boolean bool = shouldLayout(this.mSubtitleTextView);
+    Object localObject1;
+    if (paramBoolean)
+    {
+      localObject1 = (LayoutParams)this.mTitleTextView.getLayoutParams();
+      paramInt1 = ((LayoutParams)localObject1).topMargin + this.mTitleTextView.getMeasuredHeight() + ((LayoutParams)localObject1).bottomMargin + 0;
+    }
+    else
+    {
+      paramInt1 = 0;
+    }
+    if (bool)
+    {
+      localObject1 = (LayoutParams)this.mSubtitleTextView.getLayoutParams();
+      paramInt1 += ((LayoutParams)localObject1).topMargin + this.mSubtitleTextView.getMeasuredHeight() + ((LayoutParams)localObject1).bottomMargin;
+    }
+    if ((!paramBoolean) && (!bool))
+    {
+      paramInt1 = paramInt2;
+      paramInt2 = i;
+    }
+    else
+    {
+      if (paramBoolean) {
+        localObject1 = this.mTitleTextView;
+      } else {
+        localObject1 = this.mSubtitleTextView;
+      }
+      if (bool) {
+        localObject2 = this.mSubtitleTextView;
+      } else {
+        localObject2 = this.mTitleTextView;
+      }
+      localObject1 = (LayoutParams)((View)localObject1).getLayoutParams();
+      Object localObject2 = (LayoutParams)((View)localObject2).getLayoutParams();
+      if (((paramBoolean) && (this.mTitleTextView.getMeasuredWidth() > 0)) || ((bool) && (this.mSubtitleTextView.getMeasuredWidth() > 0))) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      m = this.mGravity & 0x70;
+      if (m != 48)
+      {
+        if (m != 80)
         {
-          localObject1 = (LayoutParams)this.mTitleTextView.getLayoutParams();
-          paramInt1 = ((LayoutParams)localObject1).topMargin;
-          paramInt4 = this.mTitleTextView.getMeasuredHeight();
-          paramInt1 = 0 + (((LayoutParams)localObject1).bottomMargin + (paramInt1 + paramInt4));
-        }
-        int m;
-        if (bool)
-        {
-          localObject1 = (LayoutParams)this.mSubtitleTextView.getLayoutParams();
-          paramInt4 = ((LayoutParams)localObject1).topMargin;
-          m = this.mSubtitleTextView.getMeasuredHeight();
-        }
-        for (int n = ((LayoutParams)localObject1).bottomMargin + (paramInt4 + m) + paramInt1;; n = paramInt1)
-        {
-          label479:
-          Object localObject2;
-          if (!paramBoolean)
+          m = (i3 - i2 - i4 - paramInt1) / 2;
+          if (m < ((LayoutParams)localObject1).topMargin + this.mTitleMarginTop)
           {
-            paramInt4 = paramInt2;
-            paramInt1 = paramInt3;
-            if (!bool) {}
+            paramInt1 = ((LayoutParams)localObject1).topMargin + this.mTitleMarginTop;
           }
           else
           {
-            if (!paramBoolean) {
-              break label997;
-            }
-            localObject1 = this.mTitleTextView;
-            if (!bool) {
-              break label1006;
-            }
-            localObject2 = this.mSubtitleTextView;
-            label490:
-            localObject1 = (LayoutParams)((View)localObject1).getLayoutParams();
-            localObject2 = (LayoutParams)((View)localObject2).getLayoutParams();
-            if (((!paramBoolean) || (this.mTitleTextView.getMeasuredWidth() <= 0)) && ((!bool) || (this.mSubtitleTextView.getMeasuredWidth() <= 0))) {
-              break label1015;
-            }
-            m = 1;
-            label542:
-            switch (this.mGravity & 0x70)
-            {
-            default: 
-              paramInt1 = (i4 - i3 - i5 - n) / 2;
-              if (paramInt1 < ((LayoutParams)localObject1).topMargin + this.mTitleMarginTop) {
-                paramInt1 = ((LayoutParams)localObject1).topMargin + this.mTitleMarginTop;
-              }
-              break;
+            i3 = i3 - i4 - paramInt1 - m - i2;
+            paramInt1 = m;
+            if (i3 < ((LayoutParams)localObject1).bottomMargin + this.mTitleMarginBottom) {
+              paramInt1 = Math.max(0, m - (((LayoutParams)localObject2).bottomMargin + this.mTitleMarginBottom - i3));
             }
           }
-          label898:
-          label1549:
-          label1566:
-          label1572:
-          for (;;)
-          {
-            label615:
-            paramInt1 = i3 + paramInt1;
-            label620:
-            if (k != 0) {
-              if (m != 0)
-              {
-                paramInt4 = this.mTitleMarginStart;
-                label636:
-                paramInt4 -= arrayOfInt[1];
-                paramInt2 -= Math.max(0, paramInt4);
-                arrayOfInt[1] = Math.max(0, -paramInt4);
-                if (!paramBoolean) {
-                  break label1566;
-                }
-                localObject1 = (LayoutParams)this.mTitleTextView.getLayoutParams();
-                paramInt4 = paramInt2 - this.mTitleTextView.getMeasuredWidth();
-                k = this.mTitleTextView.getMeasuredHeight() + paramInt1;
-                this.mTitleTextView.layout(paramInt4, paramInt1, paramInt2, k);
-                n = this.mTitleMarginEnd;
-                paramInt1 = k + ((LayoutParams)localObject1).bottomMargin;
-                paramInt4 -= n;
-              }
-            }
-            for (;;)
-            {
-              if (bool)
-              {
-                localObject1 = (LayoutParams)this.mSubtitleTextView.getLayoutParams();
-                paramInt1 = ((LayoutParams)localObject1).topMargin + paramInt1;
-                k = this.mSubtitleTextView.getMeasuredWidth();
-                n = this.mSubtitleTextView.getMeasuredHeight() + paramInt1;
-                this.mSubtitleTextView.layout(paramInt2 - k, paramInt1, paramInt2, n);
-                paramInt1 = this.mTitleMarginEnd;
-                k = ((LayoutParams)localObject1).bottomMargin;
-              }
-              for (paramInt1 = paramInt2 - paramInt1;; paramInt1 = paramInt2)
-              {
-                if (m != 0) {}
-                for (paramInt1 = Math.min(paramInt4, paramInt1);; paramInt1 = paramInt2)
-                {
-                  paramInt4 = paramInt1;
-                  paramInt1 = paramInt3;
-                  addCustomViewsWithGravity(this.mTempViews, 3);
-                  paramInt3 = this.mTempViews.size();
-                  paramInt2 = 0;
-                  for (;;)
-                  {
-                    if (paramInt2 < paramInt3)
-                    {
-                      paramInt1 = layoutChildLeft((View)this.mTempViews.get(paramInt2), paramInt1, arrayOfInt, i);
-                      paramInt2 += 1;
-                      continue;
-                      k = 0;
-                      break;
-                      label892:
-                      i = 0;
-                      break label91;
-                      paramInt2 = layoutChildLeft(this.mNavButtonView, j, arrayOfInt, i);
-                      break label124;
-                      paramInt4 = layoutChildLeft(this.mCollapseButtonView, paramInt2, arrayOfInt, i);
-                      paramInt3 = paramInt1;
-                      break label164;
-                      label937:
-                      paramInt1 = layoutChildRight(this.mMenuView, paramInt3, arrayOfInt, i);
-                      paramInt2 = paramInt4;
-                      break label204;
-                      label958:
-                      paramInt1 = layoutChildLeft(this.mExpandedActionView, paramInt3, arrayOfInt, i);
-                      paramInt2 = paramInt4;
-                      break label308;
-                      label979:
-                      paramInt3 = layoutChildLeft(this.mLogoView, paramInt1, arrayOfInt, i);
-                      break label341;
-                      label997:
-                      localObject1 = this.mSubtitleTextView;
-                      break label479;
-                      label1006:
-                      localObject2 = this.mTitleTextView;
-                      break label490;
-                      label1015:
-                      m = 0;
-                      break label542;
-                      paramInt1 = getPaddingTop();
-                      paramInt1 = ((LayoutParams)localObject1).topMargin + paramInt1 + this.mTitleMarginTop;
-                      break label620;
-                      paramInt4 = i4 - i5 - n - paramInt1 - i3;
-                      if (paramInt4 >= ((LayoutParams)localObject1).bottomMargin + this.mTitleMarginBottom) {
-                        break label1572;
-                      }
-                      paramInt1 = Math.max(0, paramInt1 - (((LayoutParams)localObject2).bottomMargin + this.mTitleMarginBottom - paramInt4));
-                      break label615;
-                      paramInt1 = i4 - i5 - ((LayoutParams)localObject2).bottomMargin - this.mTitleMarginBottom - n;
-                      break label620;
-                      paramInt4 = 0;
-                      break label636;
-                      if (m != 0)
-                      {
-                        paramInt4 = this.mTitleMarginStart;
-                        label1135:
-                        paramInt4 -= arrayOfInt[0];
-                        paramInt3 += Math.max(0, paramInt4);
-                        arrayOfInt[0] = Math.max(0, -paramInt4);
-                        if (!paramBoolean) {
-                          break label1549;
-                        }
-                        localObject1 = (LayoutParams)this.mTitleTextView.getLayoutParams();
-                        k = this.mTitleTextView.getMeasuredWidth() + paramInt3;
-                        paramInt4 = this.mTitleTextView.getMeasuredHeight() + paramInt1;
-                        this.mTitleTextView.layout(paramInt3, paramInt1, k, paramInt4);
-                        n = this.mTitleMarginEnd;
-                        paramInt1 = ((LayoutParams)localObject1).bottomMargin;
-                        k += n;
-                        paramInt1 += paramInt4;
-                      }
-                    }
-                  }
-                  for (;;)
-                  {
-                    if (bool)
-                    {
-                      localObject1 = (LayoutParams)this.mSubtitleTextView.getLayoutParams();
-                      paramInt4 = paramInt1 + ((LayoutParams)localObject1).topMargin;
-                      paramInt1 = this.mSubtitleTextView.getMeasuredWidth() + paramInt3;
-                      n = this.mSubtitleTextView.getMeasuredHeight() + paramInt4;
-                      this.mSubtitleTextView.layout(paramInt3, paramInt4, paramInt1, n);
-                      paramInt4 = this.mTitleMarginEnd;
-                      n = ((LayoutParams)localObject1).bottomMargin;
-                    }
-                    for (n = paramInt4 + paramInt1;; n = paramInt3)
-                    {
-                      paramInt4 = paramInt2;
-                      paramInt1 = paramInt3;
-                      if (m == 0) {
-                        break;
-                      }
-                      paramInt1 = Math.max(k, n);
-                      paramInt4 = paramInt2;
-                      break;
-                      paramInt4 = 0;
-                      break label1135;
-                      addCustomViewsWithGravity(this.mTempViews, 5);
-                      paramInt3 = this.mTempViews.size();
-                      paramInt2 = 0;
-                      while (paramInt2 < paramInt3)
-                      {
-                        paramInt4 = layoutChildRight((View)this.mTempViews.get(paramInt2), paramInt4, arrayOfInt, i);
-                        paramInt2 += 1;
-                      }
-                      addCustomViewsWithGravity(this.mTempViews, 1);
-                      paramInt3 = getViewListMeasuredWidth(this.mTempViews, arrayOfInt);
-                      paramInt2 = (i1 - j - i2) / 2 + j - paramInt3 / 2;
-                      paramInt3 += paramInt2;
-                      if (paramInt2 < paramInt1) {}
-                      for (;;)
-                      {
-                        paramInt4 = this.mTempViews.size();
-                        paramInt3 = 0;
-                        paramInt2 = paramInt1;
-                        paramInt1 = paramInt3;
-                        while (paramInt1 < paramInt4)
-                        {
-                          paramInt2 = layoutChildLeft((View)this.mTempViews.get(paramInt1), paramInt2, arrayOfInt, i);
-                          paramInt1 += 1;
-                        }
-                        paramInt1 = paramInt2;
-                        if (paramInt3 > paramInt4) {
-                          paramInt1 = paramInt2 - (paramInt3 - paramInt4);
-                        }
-                      }
-                      this.mTempViews.clear();
-                      return;
-                    }
-                    k = paramInt3;
-                  }
-                }
-              }
-              paramInt4 = paramInt2;
-            }
-          }
+          paramInt1 = i2 + paramInt1;
         }
-        label1581:
-        paramInt3 = paramInt1;
+        else
+        {
+          paramInt1 = i3 - i4 - ((LayoutParams)localObject2).bottomMargin - this.mTitleMarginBottom - paramInt1;
+        }
       }
-      label1587:
-      paramInt2 = j;
+      else {
+        paramInt1 = getPaddingTop() + ((LayoutParams)localObject1).topMargin + this.mTitleMarginTop;
+      }
+      m = paramInt2;
+      if (k != 0)
+      {
+        if (j != 0) {
+          paramInt2 = this.mTitleMarginStart;
+        } else {
+          paramInt2 = 0;
+        }
+        k = paramInt2 - arrayOfInt[1];
+        paramInt2 = i - Math.max(0, k);
+        arrayOfInt[1] = Math.max(0, -k);
+        if (paramBoolean)
+        {
+          localObject1 = (LayoutParams)this.mTitleTextView.getLayoutParams();
+          k = paramInt2 - this.mTitleTextView.getMeasuredWidth();
+          i = this.mTitleTextView.getMeasuredHeight() + paramInt1;
+          this.mTitleTextView.layout(k, paramInt1, paramInt2, i);
+          paramInt1 = k - this.mTitleMarginEnd;
+          k = i + ((LayoutParams)localObject1).bottomMargin;
+        }
+        else
+        {
+          i = paramInt2;
+          k = paramInt1;
+          paramInt1 = i;
+        }
+        if (bool)
+        {
+          localObject1 = (LayoutParams)this.mSubtitleTextView.getLayoutParams();
+          i = k + ((LayoutParams)localObject1).topMargin;
+          k = this.mSubtitleTextView.getMeasuredWidth();
+          i2 = this.mSubtitleTextView.getMeasuredHeight();
+          this.mSubtitleTextView.layout(paramInt2 - k, i, paramInt2, i2 + i);
+          i = paramInt2 - this.mTitleMarginEnd;
+          k = ((LayoutParams)localObject1).bottomMargin;
+        }
+        else
+        {
+          i = paramInt2;
+        }
+        if (j != 0) {
+          paramInt2 = Math.min(paramInt1, i);
+        }
+        paramInt1 = m;
+      }
+      else
+      {
+        if (j != 0) {
+          paramInt2 = this.mTitleMarginStart;
+        } else {
+          paramInt2 = 0;
+        }
+        k = paramInt2 - arrayOfInt[0];
+        paramInt2 = m + Math.max(0, k);
+        arrayOfInt[0] = Math.max(0, -k);
+        if (paramBoolean)
+        {
+          localObject1 = (LayoutParams)this.mTitleTextView.getLayoutParams();
+          k = this.mTitleTextView.getMeasuredWidth() + paramInt2;
+          m = this.mTitleTextView.getMeasuredHeight() + paramInt1;
+          this.mTitleTextView.layout(paramInt2, paramInt1, k, m);
+          k += this.mTitleMarginEnd;
+          paramInt1 = m + ((LayoutParams)localObject1).bottomMargin;
+        }
+        else
+        {
+          k = paramInt2;
+        }
+        if (bool)
+        {
+          localObject1 = (LayoutParams)this.mSubtitleTextView.getLayoutParams();
+          paramInt1 += ((LayoutParams)localObject1).topMargin;
+          m = this.mSubtitleTextView.getMeasuredWidth() + paramInt2;
+          i2 = this.mSubtitleTextView.getMeasuredHeight();
+          this.mSubtitleTextView.layout(paramInt2, paramInt1, m, i2 + paramInt1);
+          m += this.mTitleMarginEnd;
+          paramInt1 = ((LayoutParams)localObject1).bottomMargin;
+        }
+        else
+        {
+          m = paramInt2;
+        }
+        paramInt1 = paramInt2;
+        paramInt2 = i;
+        if (j != 0)
+        {
+          paramInt1 = Math.max(k, m);
+          paramInt2 = i;
+        }
+      }
     }
+    j = paramInt3;
+    i = 0;
+    addCustomViewsWithGravity(this.mTempViews, 3);
+    int k = this.mTempViews.size();
+    paramInt3 = 0;
+    while (paramInt3 < k)
+    {
+      paramInt1 = layoutChildLeft((View)this.mTempViews.get(paramInt3), paramInt1, arrayOfInt, paramInt4);
+      paramInt3 += 1;
+    }
+    addCustomViewsWithGravity(this.mTempViews, 5);
+    k = this.mTempViews.size();
+    paramInt3 = 0;
+    while (paramInt3 < k)
+    {
+      paramInt2 = layoutChildRight((View)this.mTempViews.get(paramInt3), paramInt2, arrayOfInt, paramInt4);
+      paramInt3 += 1;
+    }
+    addCustomViewsWithGravity(this.mTempViews, 1);
+    k = getViewListMeasuredWidth(this.mTempViews, arrayOfInt);
+    paramInt3 = j + (n - j - i1) / 2 - k / 2;
+    j = k + paramInt3;
+    if (paramInt3 >= paramInt1) {
+      if (j > paramInt2) {
+        paramInt1 = paramInt3 - (j - paramInt2);
+      } else {
+        paramInt1 = paramInt3;
+      }
+    }
+    paramInt3 = this.mTempViews.size();
+    paramInt2 = i;
+    while (paramInt2 < paramInt3)
+    {
+      paramInt1 = layoutChildLeft((View)this.mTempViews.get(paramInt2), paramInt1, arrayOfInt, paramInt4);
+      paramInt2 += 1;
+    }
+    this.mTempViews.clear();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int m = 0;
-    int k = 0;
     int[] arrayOfInt = this.mTempMargins;
-    int n;
-    int i1;
-    int i;
-    int i2;
-    int j;
-    int i3;
-    label529:
-    View localView;
     if (ViewUtils.isLayoutRtl(this))
     {
-      n = 0;
       i1 = 1;
-      i = 0;
-      if (shouldLayout(this.mNavButtonView))
-      {
-        measureChildConstrained(this.mNavButtonView, paramInt1, 0, paramInt2, 0, this.mMaxButtonHeight);
-        i = this.mNavButtonView.getMeasuredWidth() + getHorizontalMargins(this.mNavButtonView);
-        m = Math.max(0, this.mNavButtonView.getMeasuredHeight() + getVerticalMargins(this.mNavButtonView));
-        k = View.combineMeasuredStates(0, this.mNavButtonView.getMeasuredState());
-      }
-      i2 = i;
-      i = k;
-      j = m;
-      if (shouldLayout(this.mCollapseButtonView))
-      {
-        measureChildConstrained(this.mCollapseButtonView, paramInt1, 0, paramInt2, 0, this.mMaxButtonHeight);
-        i2 = this.mCollapseButtonView.getMeasuredWidth() + getHorizontalMargins(this.mCollapseButtonView);
-        j = Math.max(m, this.mCollapseButtonView.getMeasuredHeight() + getVerticalMargins(this.mCollapseButtonView));
-        i = View.combineMeasuredStates(k, this.mCollapseButtonView.getMeasuredState());
-      }
-      k = getCurrentContentInsetStart();
-      i3 = 0 + Math.max(k, i2);
-      arrayOfInt[i1] = Math.max(0, k - i2);
-      i1 = 0;
-      k = i;
-      m = j;
-      if (shouldLayout(this.mMenuView))
-      {
-        measureChildConstrained(this.mMenuView, paramInt1, i3, paramInt2, 0, this.mMaxButtonHeight);
-        i1 = this.mMenuView.getMeasuredWidth() + getHorizontalMargins(this.mMenuView);
-        m = Math.max(j, this.mMenuView.getMeasuredHeight() + getVerticalMargins(this.mMenuView));
-        k = View.combineMeasuredStates(i, this.mMenuView.getMeasuredState());
-      }
-      i = getCurrentContentInsetEnd();
-      i2 = i3 + Math.max(i, i1);
-      arrayOfInt[n] = Math.max(0, i - i1);
-      i1 = i2;
-      i = k;
-      j = m;
-      if (shouldLayout(this.mExpandedActionView))
-      {
-        i1 = i2 + measureChildCollapseMargins(this.mExpandedActionView, paramInt1, i2, paramInt2, 0, arrayOfInt);
-        j = Math.max(m, this.mExpandedActionView.getMeasuredHeight() + getVerticalMargins(this.mExpandedActionView));
-        i = View.combineMeasuredStates(k, this.mExpandedActionView.getMeasuredState());
-      }
-      k = i1;
-      m = i;
-      n = j;
-      if (shouldLayout(this.mLogoView))
-      {
-        k = i1 + measureChildCollapseMargins(this.mLogoView, paramInt1, i1, paramInt2, 0, arrayOfInt);
-        n = Math.max(j, this.mLogoView.getMeasuredHeight() + getVerticalMargins(this.mLogoView));
-        m = View.combineMeasuredStates(i, this.mLogoView.getMeasuredState());
-      }
-      i2 = getChildCount();
-      i1 = 0;
-      j = n;
-      i = m;
-      m = i1;
-      i1 = k;
-      if (m >= i2) {
-        break label635;
-      }
-      localView = getChildAt(m);
-      if (((LayoutParams)localView.getLayoutParams()).mViewType != 0) {
-        break label938;
-      }
-      if (shouldLayout(localView)) {
-        break label585;
-      }
-    }
-    label938:
-    for (;;)
-    {
-      m += 1;
-      break label529;
-      n = 1;
-      i1 = 0;
-      break;
-      label585:
-      i1 += measureChildCollapseMargins(localView, paramInt1, i1, paramInt2, 0, arrayOfInt);
-      j = Math.max(j, localView.getMeasuredHeight() + getVerticalMargins(localView));
-      i = View.combineMeasuredStates(i, localView.getMeasuredState());
-      continue;
-      label635:
       n = 0;
-      m = 0;
-      int i4 = this.mTitleMarginTop + this.mTitleMarginBottom;
-      int i5 = this.mTitleMarginStart + this.mTitleMarginEnd;
-      k = i;
-      if (shouldLayout(this.mTitleTextView))
-      {
-        measureChildCollapseMargins(this.mTitleTextView, paramInt1, i1 + i5, paramInt2, i4, arrayOfInt);
-        k = this.mTitleTextView.getMeasuredWidth();
-        n = getHorizontalMargins(this.mTitleTextView) + k;
-        m = this.mTitleTextView.getMeasuredHeight() + getVerticalMargins(this.mTitleTextView);
-        k = View.combineMeasuredStates(i, this.mTitleTextView.getMeasuredState());
-      }
-      i3 = m;
-      i2 = n;
-      i = k;
-      if (shouldLayout(this.mSubtitleTextView))
-      {
-        i2 = Math.max(n, measureChildCollapseMargins(this.mSubtitleTextView, paramInt1, i1 + i5, paramInt2, i4 + m, arrayOfInt));
-        i3 = m + (this.mSubtitleTextView.getMeasuredHeight() + getVerticalMargins(this.mSubtitleTextView));
-        i = View.combineMeasuredStates(k, this.mSubtitleTextView.getMeasuredState());
-      }
-      j = Math.max(j, i3);
-      n = getPaddingLeft();
-      i3 = getPaddingRight();
-      k = getPaddingTop();
-      m = getPaddingBottom();
-      n = View.resolveSizeAndState(Math.max(i2 + i1 + (n + i3), getSuggestedMinimumWidth()), paramInt1, 0xFF000000 & i);
-      paramInt1 = View.resolveSizeAndState(Math.max(j + (k + m), getSuggestedMinimumHeight()), paramInt2, i << 16);
-      if (shouldCollapse()) {
-        paramInt1 = 0;
-      }
-      setMeasuredDimension(n, paramInt1);
-      return;
     }
+    else
+    {
+      i1 = 0;
+      n = 1;
+    }
+    if (shouldLayout(this.mNavButtonView))
+    {
+      measureChildConstrained(this.mNavButtonView, paramInt1, 0, paramInt2, 0, this.mMaxButtonHeight);
+      i = this.mNavButtonView.getMeasuredWidth() + getHorizontalMargins(this.mNavButtonView);
+      m = Math.max(0, this.mNavButtonView.getMeasuredHeight() + getVerticalMargins(this.mNavButtonView));
+      k = View.combineMeasuredStates(0, this.mNavButtonView.getMeasuredState());
+    }
+    else
+    {
+      i = 0;
+      m = 0;
+      k = 0;
+    }
+    int i2 = i;
+    int j = m;
+    int i = k;
+    if (shouldLayout(this.mCollapseButtonView))
+    {
+      measureChildConstrained(this.mCollapseButtonView, paramInt1, 0, paramInt2, 0, this.mMaxButtonHeight);
+      i2 = this.mCollapseButtonView.getMeasuredWidth() + getHorizontalMargins(this.mCollapseButtonView);
+      j = Math.max(m, this.mCollapseButtonView.getMeasuredHeight() + getVerticalMargins(this.mCollapseButtonView));
+      i = View.combineMeasuredStates(k, this.mCollapseButtonView.getMeasuredState());
+    }
+    int k = getCurrentContentInsetStart();
+    int m = 0 + Math.max(k, i2);
+    arrayOfInt[i1] = Math.max(0, k - i2);
+    if (shouldLayout(this.mMenuView))
+    {
+      measureChildConstrained(this.mMenuView, paramInt1, m, paramInt2, 0, this.mMaxButtonHeight);
+      k = this.mMenuView.getMeasuredWidth() + getHorizontalMargins(this.mMenuView);
+      j = Math.max(j, this.mMenuView.getMeasuredHeight() + getVerticalMargins(this.mMenuView));
+      i = View.combineMeasuredStates(i, this.mMenuView.getMeasuredState());
+    }
+    else
+    {
+      k = 0;
+    }
+    i2 = getCurrentContentInsetEnd();
+    int i1 = m + Math.max(i2, k);
+    arrayOfInt[n] = Math.max(0, i2 - k);
+    int n = i1;
+    m = j;
+    k = i;
+    if (shouldLayout(this.mExpandedActionView))
+    {
+      n = i1 + measureChildCollapseMargins(this.mExpandedActionView, paramInt1, i1, paramInt2, 0, arrayOfInt);
+      m = Math.max(j, this.mExpandedActionView.getMeasuredHeight() + getVerticalMargins(this.mExpandedActionView));
+      k = View.combineMeasuredStates(i, this.mExpandedActionView.getMeasuredState());
+    }
+    j = n;
+    i1 = m;
+    i = k;
+    if (shouldLayout(this.mLogoView))
+    {
+      j = n + measureChildCollapseMargins(this.mLogoView, paramInt1, n, paramInt2, 0, arrayOfInt);
+      i1 = Math.max(m, this.mLogoView.getMeasuredHeight() + getVerticalMargins(this.mLogoView));
+      i = View.combineMeasuredStates(k, this.mLogoView.getMeasuredState());
+    }
+    int i3 = getChildCount();
+    n = i1;
+    k = 0;
+    m = j;
+    j = k;
+    while (j < i3)
+    {
+      View localView = getChildAt(j);
+      i2 = m;
+      i1 = i;
+      k = n;
+      if (((LayoutParams)localView.getLayoutParams()).mViewType == 0) {
+        if (!shouldLayout(localView))
+        {
+          i2 = m;
+          i1 = i;
+          k = n;
+        }
+        else
+        {
+          i2 = m + measureChildCollapseMargins(localView, paramInt1, m, paramInt2, 0, arrayOfInt);
+          k = Math.max(n, localView.getMeasuredHeight() + getVerticalMargins(localView));
+          i1 = View.combineMeasuredStates(i, localView.getMeasuredState());
+        }
+      }
+      j += 1;
+      m = i2;
+      i = i1;
+      n = k;
+    }
+    i1 = this.mTitleMarginTop + this.mTitleMarginBottom;
+    i2 = this.mTitleMarginStart + this.mTitleMarginEnd;
+    if (shouldLayout(this.mTitleTextView))
+    {
+      measureChildCollapseMargins(this.mTitleTextView, paramInt1, m + i2, paramInt2, i1, arrayOfInt);
+      j = this.mTitleTextView.getMeasuredWidth();
+      i3 = getHorizontalMargins(this.mTitleTextView);
+      k = this.mTitleTextView.getMeasuredHeight();
+      int i4 = getVerticalMargins(this.mTitleTextView);
+      i = View.combineMeasuredStates(i, this.mTitleTextView.getMeasuredState());
+      k += i4;
+      j += i3;
+    }
+    else
+    {
+      j = 0;
+      k = 0;
+    }
+    if (shouldLayout(this.mSubtitleTextView))
+    {
+      j = Math.max(j, measureChildCollapseMargins(this.mSubtitleTextView, paramInt1, m + i2, paramInt2, k + i1, arrayOfInt));
+      k += this.mSubtitleTextView.getMeasuredHeight() + getVerticalMargins(this.mSubtitleTextView);
+      i = View.combineMeasuredStates(i, this.mSubtitleTextView.getMeasuredState());
+    }
+    k = Math.max(n, k);
+    i2 = getPaddingLeft();
+    i3 = getPaddingRight();
+    n = getPaddingTop();
+    i1 = getPaddingBottom();
+    j = View.resolveSizeAndState(Math.max(m + j + (i2 + i3), getSuggestedMinimumWidth()), paramInt1, 0xFF000000 & i);
+    paramInt1 = View.resolveSizeAndState(Math.max(k + (n + i1), getSuggestedMinimumHeight()), paramInt2, i << 16);
+    if (shouldCollapse()) {
+      paramInt1 = 0;
+    }
+    setMeasuredDimension(j, paramInt1);
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
@@ -1389,45 +1348,43 @@ public class Toolbar
     }
     SavedState localSavedState = (SavedState)paramParcelable;
     super.onRestoreInstanceState(localSavedState.getSuperState());
-    if (this.mMenuView != null) {}
-    for (paramParcelable = this.mMenuView.peekMenu();; paramParcelable = null)
+    paramParcelable = this.mMenuView;
+    if (paramParcelable != null) {
+      paramParcelable = paramParcelable.peekMenu();
+    } else {
+      paramParcelable = null;
+    }
+    if ((localSavedState.expandedMenuItemId != 0) && (this.mExpandedMenuPresenter != null) && (paramParcelable != null))
     {
-      if ((localSavedState.expandedMenuItemId != 0) && (this.mExpandedMenuPresenter != null) && (paramParcelable != null))
-      {
-        paramParcelable = paramParcelable.findItem(localSavedState.expandedMenuItemId);
-        if (paramParcelable != null) {
-          paramParcelable.expandActionView();
-        }
+      paramParcelable = paramParcelable.findItem(localSavedState.expandedMenuItemId);
+      if (paramParcelable != null) {
+        paramParcelable.expandActionView();
       }
-      if (!localSavedState.isOverflowOpen) {
-        break;
-      }
+    }
+    if (localSavedState.isOverflowOpen) {
       postShowOverflowMenu();
-      return;
     }
   }
   
   public void onRtlPropertiesChanged(int paramInt)
   {
-    boolean bool = true;
     if (Build.VERSION.SDK_INT >= 17) {
       super.onRtlPropertiesChanged(paramInt);
     }
     ensureContentInsets();
     RtlSpacingHelper localRtlSpacingHelper = this.mContentInsets;
-    if (paramInt == 1) {}
-    for (;;)
-    {
-      localRtlSpacingHelper.setDirection(bool);
-      return;
+    boolean bool = true;
+    if (paramInt != 1) {
       bool = false;
     }
+    localRtlSpacingHelper.setDirection(bool);
   }
   
   protected Parcelable onSaveInstanceState()
   {
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
-    if ((this.mExpandedMenuPresenter != null) && (this.mExpandedMenuPresenter.mCurrentExpandedItem != null)) {
+    ExpandedActionViewMenuPresenter localExpandedActionViewMenuPresenter = this.mExpandedMenuPresenter;
+    if ((localExpandedActionViewMenuPresenter != null) && (localExpandedActionViewMenuPresenter.mCurrentExpandedItem != null)) {
       localSavedState.expandedMenuItemId = this.mExpandedMenuPresenter.mCurrentExpandedItem.getItemId();
     }
     localSavedState.isOverflowOpen = isOverflowMenuShowing();
@@ -1531,17 +1488,18 @@ public class Toolbar
         addSystemView(this.mLogoView, true);
       }
     }
-    for (;;)
+    else
     {
-      if (this.mLogoView != null) {
-        this.mLogoView.setImageDrawable(paramDrawable);
-      }
-      return;
-      if ((this.mLogoView != null) && (isChildOrHidden(this.mLogoView)))
+      localImageView = this.mLogoView;
+      if ((localImageView != null) && (isChildOrHidden(localImageView)))
       {
         removeView(this.mLogoView);
         this.mHiddenViews.remove(this.mLogoView);
       }
+    }
+    ImageView localImageView = this.mLogoView;
+    if (localImageView != null) {
+      localImageView.setImageDrawable(paramDrawable);
     }
   }
   
@@ -1555,22 +1513,23 @@ public class Toolbar
     if (!TextUtils.isEmpty(paramCharSequence)) {
       ensureLogoView();
     }
-    if (this.mLogoView != null) {
-      this.mLogoView.setContentDescription(paramCharSequence);
+    ImageView localImageView = this.mLogoView;
+    if (localImageView != null) {
+      localImageView.setContentDescription(paramCharSequence);
     }
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void setMenu(MenuBuilder paramMenuBuilder, ActionMenuPresenter paramActionMenuPresenter)
   {
-    if ((paramMenuBuilder == null) && (this.mMenuView == null)) {}
-    MenuBuilder localMenuBuilder;
-    do
-    {
+    if ((paramMenuBuilder == null) && (this.mMenuView == null)) {
       return;
-      ensureMenuView();
-      localMenuBuilder = this.mMenuView.peekMenu();
-    } while (localMenuBuilder == paramMenuBuilder);
+    }
+    ensureMenuView();
+    MenuBuilder localMenuBuilder = this.mMenuView.peekMenu();
+    if (localMenuBuilder == paramMenuBuilder) {
+      return;
+    }
     if (localMenuBuilder != null)
     {
       localMenuBuilder.removeMenuPresenter(this.mOuterActionMenuPresenter);
@@ -1585,17 +1544,16 @@ public class Toolbar
       paramMenuBuilder.addMenuPresenter(paramActionMenuPresenter, this.mPopupContext);
       paramMenuBuilder.addMenuPresenter(this.mExpandedMenuPresenter, this.mPopupContext);
     }
-    for (;;)
+    else
     {
-      this.mMenuView.setPopupTheme(this.mPopupTheme);
-      this.mMenuView.setPresenter(paramActionMenuPresenter);
-      this.mOuterActionMenuPresenter = paramActionMenuPresenter;
-      return;
       paramActionMenuPresenter.initForMenu(this.mPopupContext, null);
       this.mExpandedMenuPresenter.initForMenu(this.mPopupContext, null);
       paramActionMenuPresenter.updateMenuView(true);
       this.mExpandedMenuPresenter.updateMenuView(true);
     }
+    this.mMenuView.setPopupTheme(this.mPopupTheme);
+    this.mMenuView.setPresenter(paramActionMenuPresenter);
+    this.mOuterActionMenuPresenter = paramActionMenuPresenter;
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
@@ -1603,19 +1561,21 @@ public class Toolbar
   {
     this.mActionMenuPresenterCallback = paramCallback;
     this.mMenuBuilderCallback = paramCallback1;
-    if (this.mMenuView != null) {
-      this.mMenuView.setMenuCallbacks(paramCallback, paramCallback1);
+    ActionMenuView localActionMenuView = this.mMenuView;
+    if (localActionMenuView != null) {
+      localActionMenuView.setMenuCallbacks(paramCallback, paramCallback1);
     }
   }
   
   public void setNavigationContentDescription(@StringRes int paramInt)
   {
-    if (paramInt != 0) {}
-    for (CharSequence localCharSequence = getContext().getText(paramInt);; localCharSequence = null)
-    {
-      setNavigationContentDescription(localCharSequence);
-      return;
+    CharSequence localCharSequence;
+    if (paramInt != 0) {
+      localCharSequence = getContext().getText(paramInt);
+    } else {
+      localCharSequence = null;
     }
+    setNavigationContentDescription(localCharSequence);
   }
   
   public void setNavigationContentDescription(@Nullable CharSequence paramCharSequence)
@@ -1623,8 +1583,9 @@ public class Toolbar
     if (!TextUtils.isEmpty(paramCharSequence)) {
       ensureNavButtonView();
     }
-    if (this.mNavButtonView != null) {
-      this.mNavButtonView.setContentDescription(paramCharSequence);
+    ImageButton localImageButton = this.mNavButtonView;
+    if (localImageButton != null) {
+      localImageButton.setContentDescription(paramCharSequence);
     }
   }
   
@@ -1642,17 +1603,18 @@ public class Toolbar
         addSystemView(this.mNavButtonView, true);
       }
     }
-    for (;;)
+    else
     {
-      if (this.mNavButtonView != null) {
-        this.mNavButtonView.setImageDrawable(paramDrawable);
-      }
-      return;
-      if ((this.mNavButtonView != null) && (isChildOrHidden(this.mNavButtonView)))
+      localImageButton = this.mNavButtonView;
+      if ((localImageButton != null) && (isChildOrHidden(localImageButton)))
       {
         removeView(this.mNavButtonView);
         this.mHiddenViews.remove(this.mNavButtonView);
       }
+    }
+    ImageButton localImageButton = this.mNavButtonView;
+    if (localImageButton != null) {
+      localImageButton.setImageDrawable(paramDrawable);
     }
   }
   
@@ -1678,15 +1640,13 @@ public class Toolbar
     if (this.mPopupTheme != paramInt)
     {
       this.mPopupTheme = paramInt;
-      if (paramInt == 0) {
+      if (paramInt == 0)
+      {
         this.mPopupContext = getContext();
+        return;
       }
+      this.mPopupContext = new ContextThemeWrapper(getContext(), paramInt);
     }
-    else
-    {
-      return;
-    }
-    this.mPopupContext = new ContextThemeWrapper(getContext(), paramInt);
   }
   
   public void setSubtitle(@StringRes int paramInt)
@@ -1700,49 +1660,54 @@ public class Toolbar
     {
       if (this.mSubtitleTextView == null)
       {
-        Context localContext = getContext();
-        this.mSubtitleTextView = new AppCompatTextView(localContext);
+        localObject = getContext();
+        this.mSubtitleTextView = new AppCompatTextView((Context)localObject);
         this.mSubtitleTextView.setSingleLine();
         this.mSubtitleTextView.setEllipsize(TextUtils.TruncateAt.END);
-        if (this.mSubtitleTextAppearance != 0) {
-          this.mSubtitleTextView.setTextAppearance(localContext, this.mSubtitleTextAppearance);
+        int i = this.mSubtitleTextAppearance;
+        if (i != 0) {
+          this.mSubtitleTextView.setTextAppearance((Context)localObject, i);
         }
-        if (this.mSubtitleTextColor != 0) {
-          this.mSubtitleTextView.setTextColor(this.mSubtitleTextColor);
+        i = this.mSubtitleTextColor;
+        if (i != 0) {
+          this.mSubtitleTextView.setTextColor(i);
         }
       }
       if (!isChildOrHidden(this.mSubtitleTextView)) {
         addSystemView(this.mSubtitleTextView, true);
       }
     }
-    for (;;)
+    else
     {
-      if (this.mSubtitleTextView != null) {
-        this.mSubtitleTextView.setText(paramCharSequence);
-      }
-      this.mSubtitleText = paramCharSequence;
-      return;
-      if ((this.mSubtitleTextView != null) && (isChildOrHidden(this.mSubtitleTextView)))
+      localObject = this.mSubtitleTextView;
+      if ((localObject != null) && (isChildOrHidden((View)localObject)))
       {
         removeView(this.mSubtitleTextView);
         this.mHiddenViews.remove(this.mSubtitleTextView);
       }
     }
+    Object localObject = this.mSubtitleTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setText(paramCharSequence);
+    }
+    this.mSubtitleText = paramCharSequence;
   }
   
   public void setSubtitleTextAppearance(Context paramContext, @StyleRes int paramInt)
   {
     this.mSubtitleTextAppearance = paramInt;
-    if (this.mSubtitleTextView != null) {
-      this.mSubtitleTextView.setTextAppearance(paramContext, paramInt);
+    TextView localTextView = this.mSubtitleTextView;
+    if (localTextView != null) {
+      localTextView.setTextAppearance(paramContext, paramInt);
     }
   }
   
   public void setSubtitleTextColor(@ColorInt int paramInt)
   {
     this.mSubtitleTextColor = paramInt;
-    if (this.mSubtitleTextView != null) {
-      this.mSubtitleTextView.setTextColor(paramInt);
+    TextView localTextView = this.mSubtitleTextView;
+    if (localTextView != null) {
+      localTextView.setTextColor(paramInt);
     }
   }
   
@@ -1757,34 +1722,37 @@ public class Toolbar
     {
       if (this.mTitleTextView == null)
       {
-        Context localContext = getContext();
-        this.mTitleTextView = new AppCompatTextView(localContext);
+        localObject = getContext();
+        this.mTitleTextView = new AppCompatTextView((Context)localObject);
         this.mTitleTextView.setSingleLine();
         this.mTitleTextView.setEllipsize(TextUtils.TruncateAt.END);
-        if (this.mTitleTextAppearance != 0) {
-          this.mTitleTextView.setTextAppearance(localContext, this.mTitleTextAppearance);
+        int i = this.mTitleTextAppearance;
+        if (i != 0) {
+          this.mTitleTextView.setTextAppearance((Context)localObject, i);
         }
-        if (this.mTitleTextColor != 0) {
-          this.mTitleTextView.setTextColor(this.mTitleTextColor);
+        i = this.mTitleTextColor;
+        if (i != 0) {
+          this.mTitleTextView.setTextColor(i);
         }
       }
       if (!isChildOrHidden(this.mTitleTextView)) {
         addSystemView(this.mTitleTextView, true);
       }
     }
-    for (;;)
+    else
     {
-      if (this.mTitleTextView != null) {
-        this.mTitleTextView.setText(paramCharSequence);
-      }
-      this.mTitleText = paramCharSequence;
-      return;
-      if ((this.mTitleTextView != null) && (isChildOrHidden(this.mTitleTextView)))
+      localObject = this.mTitleTextView;
+      if ((localObject != null) && (isChildOrHidden((View)localObject)))
       {
         removeView(this.mTitleTextView);
         this.mHiddenViews.remove(this.mTitleTextView);
       }
     }
+    Object localObject = this.mTitleTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setText(paramCharSequence);
+    }
+    this.mTitleText = paramCharSequence;
   }
   
   public void setTitleMargin(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -1823,22 +1791,25 @@ public class Toolbar
   public void setTitleTextAppearance(Context paramContext, @StyleRes int paramInt)
   {
     this.mTitleTextAppearance = paramInt;
-    if (this.mTitleTextView != null) {
-      this.mTitleTextView.setTextAppearance(paramContext, paramInt);
+    TextView localTextView = this.mTitleTextView;
+    if (localTextView != null) {
+      localTextView.setTextAppearance(paramContext, paramInt);
     }
   }
   
   public void setTitleTextColor(@ColorInt int paramInt)
   {
     this.mTitleTextColor = paramInt;
-    if (this.mTitleTextView != null) {
-      this.mTitleTextView.setTextColor(paramInt);
+    TextView localTextView = this.mTitleTextView;
+    if (localTextView != null) {
+      localTextView.setTextColor(paramInt);
     }
   }
   
   public boolean showOverflowMenu()
   {
-    return (this.mMenuView != null) && (this.mMenuView.showOverflowMenu());
+    ActionMenuView localActionMenuView = this.mMenuView;
+    return (localActionMenuView != null) && (localActionMenuView.showOverflowMenu());
   }
   
   private class ExpandedActionViewMenuPresenter
@@ -1854,10 +1825,13 @@ public class Toolbar
       if ((Toolbar.this.mExpandedActionView instanceof CollapsibleActionView)) {
         ((CollapsibleActionView)Toolbar.this.mExpandedActionView).onActionViewCollapsed();
       }
-      Toolbar.this.removeView(Toolbar.this.mExpandedActionView);
-      Toolbar.this.removeView(Toolbar.this.mCollapseButtonView);
-      Toolbar.this.mExpandedActionView = null;
-      Toolbar.this.addChildrenForExpandedActionView();
+      paramMenuBuilder = Toolbar.this;
+      paramMenuBuilder.removeView(paramMenuBuilder.mExpandedActionView);
+      paramMenuBuilder = Toolbar.this;
+      paramMenuBuilder.removeView(paramMenuBuilder.mCollapseButtonView);
+      paramMenuBuilder = Toolbar.this;
+      paramMenuBuilder.mExpandedActionView = null;
+      paramMenuBuilder.addChildrenForExpandedActionView();
       this.mCurrentExpandedItem = null;
       Toolbar.this.requestLayout();
       paramMenuItemImpl.setActionViewExpanded(false);
@@ -1868,26 +1842,30 @@ public class Toolbar
     {
       Toolbar.this.ensureCollapseButtonView();
       paramMenuBuilder = Toolbar.this.mCollapseButtonView.getParent();
-      if (paramMenuBuilder != Toolbar.this)
+      Toolbar localToolbar = Toolbar.this;
+      if (paramMenuBuilder != localToolbar)
       {
         if ((paramMenuBuilder instanceof ViewGroup)) {
-          ((ViewGroup)paramMenuBuilder).removeView(Toolbar.this.mCollapseButtonView);
+          ((ViewGroup)paramMenuBuilder).removeView(localToolbar.mCollapseButtonView);
         }
-        Toolbar.this.addView(Toolbar.this.mCollapseButtonView);
+        paramMenuBuilder = Toolbar.this;
+        paramMenuBuilder.addView(paramMenuBuilder.mCollapseButtonView);
       }
       Toolbar.this.mExpandedActionView = paramMenuItemImpl.getActionView();
       this.mCurrentExpandedItem = paramMenuItemImpl;
       paramMenuBuilder = Toolbar.this.mExpandedActionView.getParent();
-      if (paramMenuBuilder != Toolbar.this)
+      localToolbar = Toolbar.this;
+      if (paramMenuBuilder != localToolbar)
       {
         if ((paramMenuBuilder instanceof ViewGroup)) {
-          ((ViewGroup)paramMenuBuilder).removeView(Toolbar.this.mExpandedActionView);
+          ((ViewGroup)paramMenuBuilder).removeView(localToolbar.mExpandedActionView);
         }
         paramMenuBuilder = Toolbar.this.generateDefaultLayoutParams();
         paramMenuBuilder.gravity = (0x800003 | Toolbar.this.mButtonGravity & 0x70);
         paramMenuBuilder.mViewType = 2;
         Toolbar.this.mExpandedActionView.setLayoutParams(paramMenuBuilder);
-        Toolbar.this.addView(Toolbar.this.mExpandedActionView);
+        paramMenuBuilder = Toolbar.this;
+        paramMenuBuilder.addView(paramMenuBuilder.mExpandedActionView);
       }
       Toolbar.this.removeChildrenForExpandedActionView();
       Toolbar.this.requestLayout();
@@ -1915,8 +1893,13 @@ public class Toolbar
     
     public void initForMenu(Context paramContext, MenuBuilder paramMenuBuilder)
     {
-      if ((this.mMenu != null) && (this.mCurrentExpandedItem != null)) {
-        this.mMenu.collapseItemActionView(this.mCurrentExpandedItem);
+      paramContext = this.mMenu;
+      if (paramContext != null)
+      {
+        MenuItemImpl localMenuItemImpl = this.mCurrentExpandedItem;
+        if (localMenuItemImpl != null) {
+          paramContext.collapseItemActionView(localMenuItemImpl);
+        }
       }
       this.mMenu = paramMenuBuilder;
     }
@@ -1939,36 +1922,32 @@ public class Toolbar
     
     public void updateMenuView(boolean paramBoolean)
     {
-      int k = 0;
-      int j;
-      int m;
-      int i;
       if (this.mCurrentExpandedItem != null)
       {
-        j = k;
-        if (this.mMenu != null)
+        MenuBuilder localMenuBuilder = this.mMenu;
+        int k = 0;
+        int j = k;
+        if (localMenuBuilder != null)
         {
-          m = this.mMenu.size();
-          i = 0;
-        }
-      }
-      for (;;)
-      {
-        j = k;
-        if (i < m)
-        {
-          if (this.mMenu.getItem(i) == this.mCurrentExpandedItem) {
-            j = 1;
+          int m = localMenuBuilder.size();
+          int i = 0;
+          for (;;)
+          {
+            j = k;
+            if (i >= m) {
+              break;
+            }
+            if (this.mMenu.getItem(i) == this.mCurrentExpandedItem)
+            {
+              j = 1;
+              break;
+            }
+            i += 1;
           }
         }
-        else
-        {
-          if (j == 0) {
-            collapseItemActionView(this.mMenu, this.mCurrentExpandedItem);
-          }
-          return;
+        if (j == 0) {
+          collapseItemActionView(this.mMenu, this.mCurrentExpandedItem);
         }
-        i += 1;
       }
     }
   }
@@ -2071,12 +2050,13 @@ public class Toolbar
     {
       super(paramClassLoader);
       this.expandedMenuItemId = paramParcel.readInt();
-      if (paramParcel.readInt() != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.isOverflowOpen = bool;
-        return;
+      boolean bool;
+      if (paramParcel.readInt() != 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      this.isOverflowOpen = bool;
     }
     
     public SavedState(Parcelable paramParcelable)
@@ -2086,14 +2066,7 @@ public class Toolbar
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.expandedMenuItemId);
-      if (this.isOverflowOpen) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        paramParcel.writeInt(paramInt);
-        return;
-      }
+      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
     }
   }
 }

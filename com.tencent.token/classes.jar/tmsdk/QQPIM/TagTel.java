@@ -15,16 +15,6 @@ public final class TagTel
   public int tagtype = 0;
   public int white = 0;
   
-  static
-  {
-    if (!TagTel.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public TagTel()
   {
     setPhonenum(this.phonenum);
@@ -50,29 +40,47 @@ public final class TagTel
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (TagTel)paramObject;
-    } while ((!JceUtil.equals(this.phonenum, paramObject.phonenum)) || (!JceUtil.equals(this.white, paramObject.white)) || (!JceUtil.equals(this.black, paramObject.black)) || (!JceUtil.equals(this.tagtype, paramObject.tagtype)) || (!JceUtil.equals(this.tagmsg, paramObject.tagmsg)));
-    return true;
+    }
+    paramObject = (TagTel)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.phonenum, paramObject.phonenum))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.white, paramObject.white))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.black, paramObject.black))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.tagtype, paramObject.tagtype))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.tagmsg, paramObject.tagmsg)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -158,8 +166,9 @@ public final class TagTel
     paramJceOutputStream.write(this.white, 1);
     paramJceOutputStream.write(this.black, 2);
     paramJceOutputStream.write(this.tagtype, 3);
-    if (this.tagmsg != null) {
-      paramJceOutputStream.write(this.tagmsg, 4);
+    String str = this.tagmsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }

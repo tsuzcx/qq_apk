@@ -24,10 +24,10 @@ public class NestedScrollingChildHelper
     {
     default: 
       return null;
-    case 0: 
-      return this.mNestedScrollingParentTouch;
+    case 1: 
+      return this.mNestedScrollingParentNonTouch;
     }
-    return this.mNestedScrollingParentNonTouch;
+    return this.mNestedScrollingParentTouch;
   }
   
   private void setNestedScrollingParentForType(int paramInt, ViewParent paramViewParent)
@@ -36,41 +36,35 @@ public class NestedScrollingChildHelper
     {
     default: 
       return;
-    case 0: 
-      this.mNestedScrollingParentTouch = paramViewParent;
+    case 1: 
+      this.mNestedScrollingParentNonTouch = paramViewParent;
       return;
     }
-    this.mNestedScrollingParentNonTouch = paramViewParent;
+    this.mNestedScrollingParentTouch = paramViewParent;
   }
   
   public boolean dispatchNestedFling(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (isNestedScrollingEnabled())
     {
       ViewParent localViewParent = getNestedScrollingParentForType(0);
-      bool1 = bool2;
       if (localViewParent != null) {
-        bool1 = ViewParentCompat.onNestedFling(localViewParent, this.mView, paramFloat1, paramFloat2, paramBoolean);
+        return ViewParentCompat.onNestedFling(localViewParent, this.mView, paramFloat1, paramFloat2, paramBoolean);
       }
     }
-    return bool1;
+    return false;
   }
   
   public boolean dispatchNestedPreFling(float paramFloat1, float paramFloat2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (isNestedScrollingEnabled())
     {
       ViewParent localViewParent = getNestedScrollingParentForType(0);
-      bool1 = bool2;
       if (localViewParent != null) {
-        bool1 = ViewParentCompat.onNestedPreFling(localViewParent, this.mView, paramFloat1, paramFloat2);
+        return ViewParentCompat.onNestedPreFling(localViewParent, this.mView, paramFloat1, paramFloat2);
       }
     }
-    return bool1;
+    return false;
   }
   
   public boolean dispatchNestedPreScroll(int paramInt1, int paramInt2, @Nullable int[] paramArrayOfInt1, @Nullable int[] paramArrayOfInt2)
@@ -80,62 +74,65 @@ public class NestedScrollingChildHelper
   
   public boolean dispatchNestedPreScroll(int paramInt1, int paramInt2, @Nullable int[] paramArrayOfInt1, @Nullable int[] paramArrayOfInt2, int paramInt3)
   {
-    ViewParent localViewParent;
     if (isNestedScrollingEnabled())
     {
-      localViewParent = getNestedScrollingParentForType(paramInt3);
-      if (localViewParent != null) {}
-    }
-    else
-    {
-      return false;
-    }
-    int j;
-    int i;
-    if ((paramInt1 != 0) || (paramInt2 != 0))
-    {
-      if (paramArrayOfInt2 == null) {
-        break label181;
+      ViewParent localViewParent = getNestedScrollingParentForType(paramInt3);
+      if (localViewParent == null) {
+        return false;
       }
-      this.mView.getLocationInWindow(paramArrayOfInt2);
-      j = paramArrayOfInt2[0];
-      i = paramArrayOfInt2[1];
-    }
-    for (;;)
-    {
-      if (paramArrayOfInt1 == null)
+      boolean bool = true;
+      if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (this.mTempNestedScrollConsumed == null) {
-          this.mTempNestedScrollConsumed = new int[2];
+        if (paramArrayOfInt2 != null)
+        {
+          paramArrayOfInt2[0] = 0;
+          paramArrayOfInt2[1] = 0;
+          return false;
         }
-        paramArrayOfInt1 = this.mTempNestedScrollConsumed;
       }
-      for (;;)
+      else
       {
-        paramArrayOfInt1[0] = 0;
-        paramArrayOfInt1[1] = 0;
-        ViewParentCompat.onNestedPreScroll(localViewParent, this.mView, paramInt1, paramInt2, paramArrayOfInt1, paramInt3);
+        int i;
+        int j;
         if (paramArrayOfInt2 != null)
         {
           this.mView.getLocationInWindow(paramArrayOfInt2);
-          paramArrayOfInt2[0] -= j;
-          paramArrayOfInt2[1] -= i;
+          i = paramArrayOfInt2[0];
+          j = paramArrayOfInt2[1];
         }
-        if ((paramArrayOfInt1[0] != 0) || (paramArrayOfInt1[1] != 0)) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
+        else
+        {
+          i = 0;
+          j = 0;
         }
-        if (paramArrayOfInt2 == null) {
-          break;
+        int[] arrayOfInt = paramArrayOfInt1;
+        if (paramArrayOfInt1 == null)
+        {
+          if (this.mTempNestedScrollConsumed == null) {
+            this.mTempNestedScrollConsumed = new int[2];
+          }
+          arrayOfInt = this.mTempNestedScrollConsumed;
         }
-        paramArrayOfInt2[0] = 0;
-        paramArrayOfInt2[1] = 0;
-        return false;
+        arrayOfInt[0] = 0;
+        arrayOfInt[1] = 0;
+        ViewParentCompat.onNestedPreScroll(localViewParent, this.mView, paramInt1, paramInt2, arrayOfInt, paramInt3);
+        if (paramArrayOfInt2 != null)
+        {
+          this.mView.getLocationInWindow(paramArrayOfInt2);
+          paramArrayOfInt2[0] -= i;
+          paramArrayOfInt2[1] -= j;
+        }
+        if (arrayOfInt[0] == 0)
+        {
+          if (arrayOfInt[1] != 0) {
+            return true;
+          }
+          bool = false;
+        }
+        return bool;
       }
-      label181:
-      i = 0;
-      j = 0;
     }
+    return false;
   }
   
   public boolean dispatchNestedScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, @Nullable int[] paramArrayOfInt)
@@ -145,45 +142,47 @@ public class NestedScrollingChildHelper
   
   public boolean dispatchNestedScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, @Nullable int[] paramArrayOfInt, int paramInt5)
   {
-    ViewParent localViewParent;
-    int j;
-    int i;
     if (isNestedScrollingEnabled())
     {
-      localViewParent = getNestedScrollingParentForType(paramInt5);
+      ViewParent localViewParent = getNestedScrollingParentForType(paramInt5);
       if (localViewParent == null) {
         return false;
       }
-      if ((paramInt1 != 0) || (paramInt2 != 0) || (paramInt3 != 0) || (paramInt4 != 0))
+      if ((paramInt1 == 0) && (paramInt2 == 0) && (paramInt3 == 0) && (paramInt4 == 0))
       {
-        if (paramArrayOfInt == null) {
-          break label136;
+        if (paramArrayOfInt != null)
+        {
+          paramArrayOfInt[0] = 0;
+          paramArrayOfInt[1] = 0;
+          return false;
         }
-        this.mView.getLocationInWindow(paramArrayOfInt);
-        j = paramArrayOfInt[0];
-        i = paramArrayOfInt[1];
+      }
+      else
+      {
+        int i;
+        int j;
+        if (paramArrayOfInt != null)
+        {
+          this.mView.getLocationInWindow(paramArrayOfInt);
+          i = paramArrayOfInt[0];
+          j = paramArrayOfInt[1];
+        }
+        else
+        {
+          i = 0;
+          j = 0;
+        }
+        ViewParentCompat.onNestedScroll(localViewParent, this.mView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+        if (paramArrayOfInt != null)
+        {
+          this.mView.getLocationInWindow(paramArrayOfInt);
+          paramArrayOfInt[0] -= i;
+          paramArrayOfInt[1] -= j;
+        }
+        return true;
       }
     }
-    for (;;)
-    {
-      ViewParentCompat.onNestedScroll(localViewParent, this.mView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
-      if (paramArrayOfInt != null)
-      {
-        this.mView.getLocationInWindow(paramArrayOfInt);
-        paramArrayOfInt[0] -= j;
-        paramArrayOfInt[1] -= i;
-      }
-      return true;
-      if (paramArrayOfInt != null)
-      {
-        paramArrayOfInt[0] = 0;
-        paramArrayOfInt[1] = 0;
-      }
-      return false;
-      label136:
-      i = 0;
-      j = 0;
-    }
+    return false;
   }
   
   public boolean hasNestedScrollingParent()

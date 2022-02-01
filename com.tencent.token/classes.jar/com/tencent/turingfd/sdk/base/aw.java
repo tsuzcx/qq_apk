@@ -12,8 +12,17 @@ import java.util.Set;
 
 public class aw
 {
-  public static final String a = cv.a + "_" + "baseFull";
+  public static final String a;
   public Handler b;
+  
+  static
+  {
+    StringBuilder localStringBuilder = ci.a("turingfd_conf_");
+    localStringBuilder.append(cv.a);
+    localStringBuilder.append("_");
+    localStringBuilder.append("baseFull");
+    a = localStringBuilder.toString();
+  }
   
   public aw(Handler paramHandler)
   {
@@ -27,52 +36,56 @@ public class aw
       long l = Long.valueOf(a(paramContext, "503")).longValue();
       return l;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label15:
+      break label15;
+    }
     return 0L;
   }
   
   public static String a(Context paramContext, String paramString)
   {
+    int i = 0;
     try
     {
       paramContext = paramContext.getSharedPreferences(a, 0);
-      if (paramContext == null)
-      {
-        paramContext = "";
-        return paramContext;
-      }
     }
     catch (Throwable paramContext)
     {
-      do
+      label14:
+      break label14;
+    }
+    paramContext = null;
+    if (paramContext == null) {
+      return "";
+    }
+    paramString = paramContext.getString(paramString, "");
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    try
+    {
+      int j = paramString.length() / 2;
+      paramContext = new byte[j];
+      paramString = paramString.toUpperCase().toCharArray();
+      while (i < j)
       {
-        for (;;)
-        {
-          paramContext = null;
-        }
-        paramString = paramContext.getString(paramString, "");
-        paramContext = paramString;
-      } while (TextUtils.isEmpty(paramString));
-      try
-      {
-        int j = paramString.length() / 2;
-        paramContext = new byte[j];
-        paramString = paramString.toUpperCase().toCharArray();
-        int i = 0;
-        while (i < j)
-        {
-          int k = i * 2;
-          int m = paramString[k];
-          m = (byte)"0123456789ABCDEF".indexOf(m);
-          k = paramString[(k + 1)];
-          paramContext[i] = ((byte)((byte)"0123456789ABCDEF".indexOf(k) | m << 4));
-          i += 1;
-        }
-        paramContext = cm.b(paramContext, cm.b());
-        paramContext = new String(paramContext, "UTF-8");
-        return paramContext;
+        int k = i * 2;
+        int m = paramString[k];
+        m = (byte)"0123456789ABCDEF".indexOf(m);
+        k = paramString[(k + 1)];
+        paramContext[i] = ((byte)((byte)"0123456789ABCDEF".indexOf(k) | m << 4));
+        i += 1;
       }
-      catch (Throwable paramContext) {}
+      paramContext = cm.b(paramContext, cm.b());
+      paramContext = new String(paramContext, "UTF-8");
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      label140:
+      break label140;
     }
     return "";
   }
@@ -104,31 +117,50 @@ public class aw
   
   public void a(Context paramContext, long paramLong)
   {
-    a(paramContext, "107", "" + paramLong, true);
-    a(paramContext, "108", "" + System.currentTimeMillis() / 1000L, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong);
+    a(paramContext, "107", localStringBuilder.toString(), true);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(System.currentTimeMillis() / 1000L);
+    a(paramContext, "108", localStringBuilder.toString(), true);
   }
   
   public void a(Context paramContext, long paramLong, int paramInt)
   {
-    a(paramContext, "203", "" + paramLong + "_" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    a(paramContext, "203", localStringBuilder.toString());
   }
   
   public void a(Context paramContext, long paramLong, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("").append(paramLong).append("_");
-    if (paramBoolean) {}
-    for (String str = "1";; str = "0")
-    {
-      a(paramContext, "204", str);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("_");
+    String str;
+    if (paramBoolean) {
+      str = "1";
+    } else {
+      str = "0";
     }
+    localStringBuilder.append(str);
+    a(paramContext, "204", localStringBuilder.toString());
   }
   
   public void a(Context paramContext, ao paramao)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("101", paramao.b);
-    localHashMap.put("102", "" + paramao.c);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramao.c);
+    localHashMap.put("102", localStringBuilder.toString());
     if (!TextUtils.isEmpty(paramao.e)) {
       localHashMap.put("104", paramao.e);
     }
@@ -182,37 +214,43 @@ public class aw
     try
     {
       paramContext = paramContext.getSharedPreferences(a, 0);
-      if (paramContext == null) {
-        return;
-      }
     }
     catch (Throwable paramContext)
     {
-      do
+      for (;;)
       {
-        for (;;)
-        {
-          paramContext = null;
-        }
-        paramContext = paramContext.edit();
-      } while (paramContext == null);
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        String str2 = (String)paramMap.get(str1);
         try
         {
-          paramContext.putString(str1, cm.f(cm.a(str2.getBytes(), cm.b())));
+          Iterator localIterator;
+          label102:
+          paramContext.commit();
+          return;
         }
-        catch (Throwable localThrowable) {}
+        catch (Throwable paramContext) {}
+        paramContext = paramContext;
       }
+    }
+    paramContext = null;
+    if (paramContext == null) {
+      return;
+    }
+    paramContext = paramContext.edit();
+    if (paramContext == null) {
+      return;
+    }
+    localIterator = paramMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramMap.get(str1);
       try
       {
-        paramContext.commit();
-        return;
+        paramContext.putString(str1, cm.f(cm.a(str2.getBytes(), cm.b())));
       }
-      catch (Throwable paramContext) {}
+      catch (Throwable localThrowable)
+      {
+        break label102;
+      }
     }
   }
   
@@ -228,7 +266,10 @@ public class aw
   
   public void a(Context paramContext, boolean paramBoolean)
   {
-    a(paramContext, "403", "" + paramBoolean, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramBoolean);
+    a(paramContext, "403", localStringBuilder.toString(), true);
   }
   
   public ao b(Context paramContext)
@@ -275,7 +316,10 @@ public class aw
     if (paramLong >= 9223372036854775807L) {
       l = 9223372036854775807L;
     }
-    a(paramContext, "401", "" + l, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(l);
+    a(paramContext, "401", localStringBuilder.toString(), true);
   }
   
   public void b(Context paramContext, String paramString)
@@ -291,7 +335,11 @@ public class aw
       long l = Long.valueOf(paramContext).longValue();
       return l;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label17:
+      break label17;
+    }
     return 0L;
   }
   
@@ -303,13 +351,20 @@ public class aw
       long l = Long.valueOf(paramContext).longValue();
       return l;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label16:
+      break label16;
+    }
     return 0L;
   }
   
   public void c(Context paramContext, long paramLong)
   {
-    a(paramContext, "109", "" + paramLong, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong);
+    a(paramContext, "109", localStringBuilder.toString(), true);
   }
   
   public String d(Context paramContext)
@@ -319,7 +374,10 @@ public class aw
   
   public void d(Context paramContext, long paramLong)
   {
-    a(paramContext, "503", "" + paramLong, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong);
+    a(paramContext, "503", localStringBuilder.toString(), true);
   }
   
   public long e(Context paramContext)
@@ -330,7 +388,11 @@ public class aw
       long l = Long.valueOf(paramContext).longValue();
       return l;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label18:
+      break label18;
+    }
     return 0L;
   }
   
@@ -376,7 +438,9 @@ public class aw
   
   public void l(Context paramContext)
   {
-    a(paramContext, "501", System.currentTimeMillis(), true);
+    StringBuilder localStringBuilder = ci.a("");
+    localStringBuilder.append(System.currentTimeMillis());
+    a(paramContext, "501", localStringBuilder.toString(), true);
   }
   
   public String m(Context paramContext)

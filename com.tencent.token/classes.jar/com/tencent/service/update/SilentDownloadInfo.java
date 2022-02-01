@@ -31,20 +31,25 @@ public final class SilentDownloadInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 0);
+    String str = this.title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.type != 0) {
-      paramJceOutputStream.write(this.type, 2);
+    int i = this.type;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.askType != 0) {
-      paramJceOutputStream.write(this.askType, 3);
+    i = this.askType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 4);
+    str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }

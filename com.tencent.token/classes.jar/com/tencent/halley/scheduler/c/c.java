@@ -34,8 +34,9 @@ public final class c
     paramb.a(this.c, 2);
     paramb.a(this.d, 3);
     paramb.a(this.e, 4);
-    if (this.f != null) {
-      paramb.a(this.f, 5);
+    i locali = this.f;
+    if (locali != null) {
+      paramb.a(locali, 5);
     }
   }
 }

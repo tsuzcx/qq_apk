@@ -11,14 +11,13 @@ final class b
 {
   public final boolean retryRequest(IOException paramIOException, int paramInt, HttpContext paramHttpContext)
   {
-    if (paramInt >= 3) {}
-    do
-    {
+    if (paramInt >= 3) {
       return false;
-      if ((paramIOException instanceof NoHttpResponseException)) {
-        return true;
-      }
-    } while (!(paramIOException instanceof SSLHandshakeException));
+    }
+    if ((paramIOException instanceof NoHttpResponseException)) {
+      return true;
+    }
+    if ((paramIOException instanceof SSLHandshakeException)) {}
     return false;
   }
 }

@@ -16,8 +16,9 @@ class NavItemSelectedListener
   
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.mListener != null) {
-      this.mListener.onNavigationItemSelected(paramInt, paramLong);
+    paramAdapterView = this.mListener;
+    if (paramAdapterView != null) {
+      paramAdapterView.onNavigationItemSelected(paramInt, paramLong);
     }
   }
   

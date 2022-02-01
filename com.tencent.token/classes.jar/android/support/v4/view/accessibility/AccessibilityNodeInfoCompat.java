@@ -79,42 +79,42 @@ public class AccessibilityNodeInfoCompat
     {
     default: 
       return "ACTION_UNKNOWN";
-    case 1: 
-      return "ACTION_FOCUS";
-    case 2: 
-      return "ACTION_CLEAR_FOCUS";
-    case 4: 
-      return "ACTION_SELECT";
-    case 8: 
-      return "ACTION_CLEAR_SELECTION";
-    case 16: 
-      return "ACTION_CLICK";
-    case 32: 
-      return "ACTION_LONG_CLICK";
-    case 64: 
-      return "ACTION_ACCESSIBILITY_FOCUS";
-    case 128: 
-      return "ACTION_CLEAR_ACCESSIBILITY_FOCUS";
-    case 256: 
-      return "ACTION_NEXT_AT_MOVEMENT_GRANULARITY";
-    case 512: 
-      return "ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY";
-    case 1024: 
-      return "ACTION_NEXT_HTML_ELEMENT";
-    case 2048: 
-      return "ACTION_PREVIOUS_HTML_ELEMENT";
-    case 4096: 
-      return "ACTION_SCROLL_FORWARD";
-    case 8192: 
-      return "ACTION_SCROLL_BACKWARD";
+    case 131072: 
+      return "ACTION_SET_SELECTION";
     case 65536: 
       return "ACTION_CUT";
-    case 16384: 
-      return "ACTION_COPY";
     case 32768: 
       return "ACTION_PASTE";
+    case 16384: 
+      return "ACTION_COPY";
+    case 8192: 
+      return "ACTION_SCROLL_BACKWARD";
+    case 4096: 
+      return "ACTION_SCROLL_FORWARD";
+    case 2048: 
+      return "ACTION_PREVIOUS_HTML_ELEMENT";
+    case 1024: 
+      return "ACTION_NEXT_HTML_ELEMENT";
+    case 512: 
+      return "ACTION_PREVIOUS_AT_MOVEMENT_GRANULARITY";
+    case 256: 
+      return "ACTION_NEXT_AT_MOVEMENT_GRANULARITY";
+    case 128: 
+      return "ACTION_CLEAR_ACCESSIBILITY_FOCUS";
+    case 64: 
+      return "ACTION_ACCESSIBILITY_FOCUS";
+    case 32: 
+      return "ACTION_LONG_CLICK";
+    case 16: 
+      return "ACTION_CLICK";
+    case 8: 
+      return "ACTION_CLEAR_SELECTION";
+    case 4: 
+      return "ACTION_SELECT";
+    case 2: 
+      return "ACTION_CLEAR_FOCUS";
     }
-    return "ACTION_SET_SELECTION";
+    return "ACTION_FOCUS";
   }
   
   public static AccessibilityNodeInfoCompat obtain()
@@ -187,26 +187,27 @@ public class AccessibilityNodeInfoCompat
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
-      do
-      {
-        return true;
-        if (paramObject == null) {
-          return false;
-        }
-        if (getClass() != paramObject.getClass()) {
-          return false;
-        }
-        paramObject = (AccessibilityNodeInfoCompat)paramObject;
-        if (this.mInfo != null) {
-          break;
-        }
-      } while (paramObject.mInfo == null);
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
       return false;
-    } while (this.mInfo.equals(paramObject.mInfo));
-    return false;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (AccessibilityNodeInfoCompat)paramObject;
+    AccessibilityNodeInfo localAccessibilityNodeInfo = this.mInfo;
+    if (localAccessibilityNodeInfo == null)
+    {
+      if (paramObject.mInfo != null) {
+        return false;
+      }
+    }
+    else if (!localAccessibilityNodeInfo.equals(paramObject.mInfo)) {
+      return false;
+    }
+    return true;
   }
   
   public List<AccessibilityNodeInfoCompat> findAccessibilityNodeInfosByText(String paramString)
@@ -256,27 +257,25 @@ public class AccessibilityNodeInfoCompat
   
   public List<AccessibilityActionCompat> getActionList()
   {
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (List localList = this.mInfo.getActionList();; localList = null)
-    {
-      if (localList != null)
-      {
-        ArrayList localArrayList = new ArrayList();
-        int j = localList.size();
-        int i = 0;
-        for (;;)
-        {
-          localObject = localArrayList;
-          if (i >= j) {
-            break;
-          }
-          localArrayList.add(new AccessibilityActionCompat(localList.get(i)));
-          i += 1;
-        }
-      }
-      Object localObject = Collections.emptyList();
-      return localObject;
+    List localList;
+    if (Build.VERSION.SDK_INT >= 21) {
+      localList = this.mInfo.getActionList();
+    } else {
+      localList = null;
     }
+    if (localList != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      int j = localList.size();
+      int i = 0;
+      while (i < j)
+      {
+        localArrayList.add(new AccessibilityActionCompat(localList.get(i)));
+        i += 1;
+      }
+      return localArrayList;
+    }
+    return Collections.emptyList();
   }
   
   public int getActions()
@@ -507,10 +506,11 @@ public class AccessibilityNodeInfoCompat
   
   public int hashCode()
   {
-    if (this.mInfo == null) {
+    AccessibilityNodeInfo localAccessibilityNodeInfo = this.mInfo;
+    if (localAccessibilityNodeInfo == null) {
       return 0;
     }
-    return this.mInfo.hashCode();
+    return localAccessibilityNodeInfo.hashCode();
   }
   
   public boolean isAccessibilityFocused()
@@ -987,44 +987,67 @@ public class AccessibilityNodeInfoCompat
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    Rect localRect = new Rect();
-    getBoundsInParent(localRect);
-    localStringBuilder.append("; boundsInParent: " + localRect);
-    getBoundsInScreen(localRect);
-    localStringBuilder.append("; boundsInScreen: " + localRect);
-    localStringBuilder.append("; packageName: ").append(getPackageName());
-    localStringBuilder.append("; className: ").append(getClassName());
-    localStringBuilder.append("; text: ").append(getText());
-    localStringBuilder.append("; contentDescription: ").append(getContentDescription());
-    localStringBuilder.append("; viewId: ").append(getViewIdResourceName());
-    localStringBuilder.append("; checkable: ").append(isCheckable());
-    localStringBuilder.append("; checked: ").append(isChecked());
-    localStringBuilder.append("; focusable: ").append(isFocusable());
-    localStringBuilder.append("; focused: ").append(isFocused());
-    localStringBuilder.append("; selected: ").append(isSelected());
-    localStringBuilder.append("; clickable: ").append(isClickable());
-    localStringBuilder.append("; longClickable: ").append(isLongClickable());
-    localStringBuilder.append("; enabled: ").append(isEnabled());
-    localStringBuilder.append("; password: ").append(isPassword());
-    localStringBuilder.append("; scrollable: " + isScrollable());
-    localStringBuilder.append("; [");
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append(super.toString());
+    Object localObject = new Rect();
+    getBoundsInParent((Rect)localObject);
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("; boundsInParent: ");
+    localStringBuilder2.append(localObject);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    getBoundsInScreen((Rect)localObject);
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("; boundsInScreen: ");
+    localStringBuilder2.append(localObject);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append("; packageName: ");
+    localStringBuilder1.append(getPackageName());
+    localStringBuilder1.append("; className: ");
+    localStringBuilder1.append(getClassName());
+    localStringBuilder1.append("; text: ");
+    localStringBuilder1.append(getText());
+    localStringBuilder1.append("; contentDescription: ");
+    localStringBuilder1.append(getContentDescription());
+    localStringBuilder1.append("; viewId: ");
+    localStringBuilder1.append(getViewIdResourceName());
+    localStringBuilder1.append("; checkable: ");
+    localStringBuilder1.append(isCheckable());
+    localStringBuilder1.append("; checked: ");
+    localStringBuilder1.append(isChecked());
+    localStringBuilder1.append("; focusable: ");
+    localStringBuilder1.append(isFocusable());
+    localStringBuilder1.append("; focused: ");
+    localStringBuilder1.append(isFocused());
+    localStringBuilder1.append("; selected: ");
+    localStringBuilder1.append(isSelected());
+    localStringBuilder1.append("; clickable: ");
+    localStringBuilder1.append(isClickable());
+    localStringBuilder1.append("; longClickable: ");
+    localStringBuilder1.append(isLongClickable());
+    localStringBuilder1.append("; enabled: ");
+    localStringBuilder1.append(isEnabled());
+    localStringBuilder1.append("; password: ");
+    localStringBuilder1.append(isPassword());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("; scrollable: ");
+    ((StringBuilder)localObject).append(isScrollable());
+    localStringBuilder1.append(((StringBuilder)localObject).toString());
+    localStringBuilder1.append("; [");
     int i = getActions();
     while (i != 0)
     {
       int k = 1 << Integer.numberOfTrailingZeros(i);
       int j = i & (k ^ 0xFFFFFFFF);
-      localStringBuilder.append(getActionSymbolicName(k));
+      localStringBuilder1.append(getActionSymbolicName(k));
       i = j;
       if (j != 0)
       {
-        localStringBuilder.append(", ");
+        localStringBuilder1.append(", ");
         i = j;
       }
     }
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+    localStringBuilder1.append("]");
+    return localStringBuilder1.toString();
   }
   
   public AccessibilityNodeInfo unwrap()
@@ -1091,75 +1114,59 @@ public class AccessibilityNodeInfoCompat
       ACTION_COLLAPSE = new AccessibilityActionCompat(524288, null);
       ACTION_DISMISS = new AccessibilityActionCompat(1048576, null);
       ACTION_SET_TEXT = new AccessibilityActionCompat(2097152, null);
-      if (Build.VERSION.SDK_INT >= 23)
-      {
+      if (Build.VERSION.SDK_INT >= 23) {
         localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN;
-        ACTION_SHOW_ON_SCREEN = new AccessibilityActionCompat(localObject1);
-        if (Build.VERSION.SDK_INT < 23) {
-          break label485;
-        }
+      } else {
+        localObject1 = null;
+      }
+      ACTION_SHOW_ON_SCREEN = new AccessibilityActionCompat(localObject1);
+      if (Build.VERSION.SDK_INT >= 23) {
         localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_TO_POSITION;
-        label328:
-        ACTION_SCROLL_TO_POSITION = new AccessibilityActionCompat(localObject1);
-        if (Build.VERSION.SDK_INT < 23) {
-          break label490;
-        }
+      } else {
+        localObject1 = null;
+      }
+      ACTION_SCROLL_TO_POSITION = new AccessibilityActionCompat(localObject1);
+      if (Build.VERSION.SDK_INT >= 23) {
         localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_UP;
-        label351:
-        ACTION_SCROLL_UP = new AccessibilityActionCompat(localObject1);
-        if (Build.VERSION.SDK_INT < 23) {
-          break label495;
-        }
+      } else {
+        localObject1 = null;
+      }
+      ACTION_SCROLL_UP = new AccessibilityActionCompat(localObject1);
+      if (Build.VERSION.SDK_INT >= 23) {
         localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_LEFT;
-        label374:
-        ACTION_SCROLL_LEFT = new AccessibilityActionCompat(localObject1);
-        if (Build.VERSION.SDK_INT < 23) {
-          break label500;
-        }
+      } else {
+        localObject1 = null;
+      }
+      ACTION_SCROLL_LEFT = new AccessibilityActionCompat(localObject1);
+      if (Build.VERSION.SDK_INT >= 23) {
         localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_DOWN;
-        label397:
-        ACTION_SCROLL_DOWN = new AccessibilityActionCompat(localObject1);
-        if (Build.VERSION.SDK_INT < 23) {
-          break label505;
-        }
+      } else {
+        localObject1 = null;
+      }
+      ACTION_SCROLL_DOWN = new AccessibilityActionCompat(localObject1);
+      if (Build.VERSION.SDK_INT >= 23) {
         localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_RIGHT;
-        label420:
-        ACTION_SCROLL_RIGHT = new AccessibilityActionCompat(localObject1);
-        if (Build.VERSION.SDK_INT < 23) {
-          break label510;
-        }
+      } else {
+        localObject1 = null;
       }
-      label485:
-      label490:
-      label495:
-      label500:
-      label505:
-      label510:
-      for (Object localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_CONTEXT_CLICK;; localObject1 = null)
-      {
-        ACTION_CONTEXT_CLICK = new AccessibilityActionCompat(localObject1);
-        localObject1 = localObject2;
-        if (Build.VERSION.SDK_INT >= 24) {
-          localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SET_PROGRESS;
-        }
-        ACTION_SET_PROGRESS = new AccessibilityActionCompat(localObject1);
-        return;
+      ACTION_SCROLL_RIGHT = new AccessibilityActionCompat(localObject1);
+      if (Build.VERSION.SDK_INT >= 23) {
+        localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_CONTEXT_CLICK;
+      } else {
         localObject1 = null;
-        break;
-        localObject1 = null;
-        break label328;
-        localObject1 = null;
-        break label351;
-        localObject1 = null;
-        break label374;
-        localObject1 = null;
-        break label397;
-        localObject1 = null;
-        break label420;
       }
+      ACTION_CONTEXT_CLICK = new AccessibilityActionCompat(localObject1);
+      Object localObject1 = localObject2;
+      if (Build.VERSION.SDK_INT >= 24) {
+        localObject1 = AccessibilityNodeInfo.AccessibilityAction.ACTION_SET_PROGRESS;
+      }
+      ACTION_SET_PROGRESS = new AccessibilityActionCompat(localObject1);
     }
     
-    public AccessibilityActionCompat(int paramInt, CharSequence paramCharSequence) {}
+    public AccessibilityActionCompat(int paramInt, CharSequence paramCharSequence)
+    {
+      this(paramCharSequence);
+    }
     
     AccessibilityActionCompat(Object paramObject)
     {

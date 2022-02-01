@@ -2,7 +2,7 @@ package taiji;
 
 import android.graphics.Path;
 import android.graphics.PointF;
-import com.tencent.token.go;
+import com.tencent.token.gn;
 import java.util.List;
 import uilib.doraemon.e;
 
@@ -33,33 +33,36 @@ public class i
     this.g = paramce.e().a();
     this.i = paramce.g().a();
     this.k = paramce.i().a();
-    if (this.d == ce.b.a) {
-      this.h = paramce.f().a();
-    }
-    for (this.j = paramce.h().a();; this.j = null)
+    if (this.d == ce.b.a)
     {
-      paramar.a(this.e);
-      paramar.a(this.f);
-      paramar.a(this.g);
-      paramar.a(this.i);
-      paramar.a(this.k);
-      if (this.d == ce.b.a)
-      {
-        paramar.a(this.h);
-        paramar.a(this.j);
-      }
-      this.e.a(this);
-      this.f.a(this);
-      this.g.a(this);
+      this.h = paramce.f().a();
+      parame = paramce.h().a();
+    }
+    else
+    {
+      parame = null;
+      this.h = null;
+    }
+    this.j = parame;
+    paramar.a(this.e);
+    paramar.a(this.f);
+    paramar.a(this.g);
+    paramar.a(this.i);
+    paramar.a(this.k);
+    if (this.d == ce.b.a)
+    {
+      paramar.a(this.h);
+      paramar.a(this.j);
+    }
+    this.e.a(this);
+    this.f.a(this);
+    this.g.a(this);
+    this.i.a(this);
+    this.k.a(this);
+    if (this.d == ce.b.a)
+    {
       this.i.a(this);
       this.k.a(this);
-      if (this.d == ce.b.a)
-      {
-        this.i.a(this);
-        this.k.a(this);
-      }
-      return;
-      this.h = null;
     }
   }
   
@@ -71,248 +74,249 @@ public class i
   
   private void e()
   {
-    float f8 = ((Float)this.e.b()).floatValue();
-    double d1;
-    float f17;
-    float f14;
-    float f18;
-    if (this.g == null)
-    {
+    float f1 = ((Float)this.e.b()).floatValue();
+    Object localObject = this.g;
+    if (localObject == null) {
       d1 = 0.0D;
-      d1 = Math.toRadians(d1 - 90.0D);
-      f17 = (float)(6.283185307179586D / f8);
-      f14 = f17 / 2.0F;
-      f18 = f8 - (int)f8;
-      if (f18 == 0.0F) {
-        break label840;
-      }
-      d1 += (1.0F - f18) * f14;
+    } else {
+      d1 = ((Float)((l)localObject).b()).floatValue();
     }
-    label265:
-    label551:
-    label560:
-    label569:
-    label578:
-    label709:
-    label840:
+    double d2 = Math.toRadians(d1 - 90.0D);
+    double d3 = f1;
+    Double.isNaN(d3);
+    float f10 = (float)(6.283185307179586D / d3);
+    float f8 = f10 / 2.0F;
+    float f22 = f1 - (int)f1;
+    double d1 = d2;
+    if (f22 != 0.0F)
+    {
+      d1 = (1.0F - f22) * f8;
+      Double.isNaN(d1);
+      d1 = d2 + d1;
+    }
+    float f7 = ((Float)this.i.b()).floatValue();
+    f1 = ((Float)this.h.b()).floatValue();
+    localObject = this.j;
+    float f4;
+    if (localObject != null) {
+      f4 = ((Float)((l)localObject).b()).floatValue() / 100.0F;
+    } else {
+      f4 = 0.0F;
+    }
+    localObject = this.k;
+    float f6;
+    if (localObject != null) {
+      f6 = ((Float)((l)localObject).b()).floatValue() / 100.0F;
+    } else {
+      f6 = 0.0F;
+    }
+    float f3;
+    double d4;
+    if (f22 != 0.0F)
+    {
+      f3 = (f7 - f1) * f22 + f1;
+      d2 = f3;
+      d4 = Math.cos(d1);
+      Double.isNaN(d2);
+      f2 = (float)(d2 * d4);
+      d4 = Math.sin(d1);
+      Double.isNaN(d2);
+      f5 = (float)(d2 * d4);
+      this.a.moveTo(f2, f5);
+      d2 = f10 * f22 / 2.0F;
+      Double.isNaN(d2);
+      d1 += d2;
+    }
+    else
+    {
+      d2 = f7;
+      d4 = Math.cos(d1);
+      Double.isNaN(d2);
+      f2 = (float)(d2 * d4);
+      d4 = Math.sin(d1);
+      Double.isNaN(d2);
+      f5 = (float)(d2 * d4);
+      this.a.moveTo(f2, f5);
+      d2 = f8;
+      Double.isNaN(d2);
+      d1 += d2;
+      f3 = 0.0F;
+    }
+    d2 = Math.ceil(d3) * 2.0D;
+    int n = 0;
+    int i1 = 0;
+    float f12 = f5;
+    float f11 = f2;
+    float f5 = f8;
+    float f2 = f7;
     for (;;)
     {
-      float f3 = ((Float)this.i.b()).floatValue();
-      float f4 = ((Float)this.h.b()).floatValue();
-      if (this.j != null) {}
-      for (float f1 = ((Float)this.j.b()).floatValue() / 100.0F;; f1 = 0.0F)
-      {
-        float f2 = 0.0F;
-        if (this.k != null) {
-          f2 = ((Float)this.k.b()).floatValue() / 100.0F;
-        }
-        float f5;
-        float f6;
-        float f7;
-        label223:
-        double d2;
-        int i1;
-        int n;
-        float f10;
-        float f9;
-        if (f18 != 0.0F)
-        {
-          f5 = (f3 - f4) * f18 + f4;
-          f6 = (float)(f5 * Math.cos(d1));
-          f7 = (float)(f5 * Math.sin(d1));
-          this.a.moveTo(f6, f7);
-          d1 += f17 * f18 / 2.0F;
-          d2 = Math.ceil(f8) * 2.0D;
-          i1 = 0;
-          n = 0;
-          f10 = f6;
-          f9 = f7;
-          label248:
-          if (i1 >= d2) {
-            break label771;
-          }
-          if (n == 0) {
-            break label467;
-          }
-          f6 = f3;
-          if ((f5 == 0.0F) || (i1 != d2 - 2.0D)) {
-            break label827;
-          }
-        }
-        for (float f11 = f17 * f18 / 2.0F;; f11 = f14)
-        {
-          f7 = f6;
-          if (f5 != 0.0F)
-          {
-            f7 = f6;
-            if (i1 == d2 - 1.0D) {
-              f7 = f5;
-            }
-          }
-          float f15 = (float)(f7 * Math.cos(d1));
-          float f16 = (float)(f7 * Math.sin(d1));
-          if ((f1 == 0.0F) && (f2 == 0.0F))
-          {
-            this.a.lineTo(f15, f16);
-            double d3 = f11;
-            if (n != 0) {
-              break label765;
-            }
-            n = 1;
-            label382:
-            i1 += 1;
-            f9 = f16;
-            f10 = f15;
-            d1 += d3;
-            break label248;
-            d1 = ((Float)this.g.b()).floatValue();
-            break;
-            f6 = (float)(f3 * Math.cos(d1));
-            f7 = (float)(f3 * Math.sin(d1));
-            this.a.moveTo(f6, f7);
-            d1 += f14;
-            f5 = 0.0F;
-            break label223;
-            label467:
-            f6 = f4;
-            break label265;
-          }
-          f6 = (float)(Math.atan2(f9, f10) - 1.570796326794897D);
-          f8 = (float)Math.cos(f6);
-          float f21 = (float)Math.sin(f6);
-          f6 = (float)(Math.atan2(f16, f15) - 1.570796326794897D);
-          float f19 = (float)Math.cos(f6);
-          float f20 = (float)Math.sin(f6);
-          float f12;
-          float f13;
-          if (n != 0)
-          {
-            f6 = f1;
-            if (n == 0) {
-              break label709;
-            }
-            f7 = f2;
-            if (n == 0) {
-              break label716;
-            }
-            f12 = f4;
-            if (n == 0) {
-              break label723;
-            }
-            f13 = f3;
-            f8 *= f12 * f6 * 0.47829F;
-            f12 = f12 * f6 * 0.47829F * f21;
-            f6 = f13 * f7 * 0.47829F * f19;
-            f7 = f13 * f7 * 0.47829F * f20;
-            if (f18 == 0.0F) {
-              break label808;
-            }
-            if (i1 != 0) {
-              break label730;
-            }
-            f12 *= f18;
-            f13 = f8 * f18;
-            f8 = f7;
-            f7 = f6;
-            f6 = f13;
-          }
-          for (;;)
-          {
-            this.a.cubicTo(f10 - f6, f9 - f12, f7 + f15, f8 + f16, f15, f16);
-            break;
-            f6 = f2;
-            break label551;
-            f7 = f1;
-            break label560;
-            label716:
-            f12 = f3;
-            break label569;
-            label723:
-            f13 = f4;
-            break label578;
-            label730:
-            if (i1 == d2 - 1.0D)
-            {
-              f13 = f7 * f18;
-              f7 = f6 * f18;
-              f6 = f8;
-              f8 = f13;
-              continue;
-              label765:
-              n = 0;
-              break label382;
-              PointF localPointF = (PointF)this.f.b();
-              this.a.offset(localPointF.x, localPointF.y);
-              this.a.close();
-              return;
-            }
-            f13 = f7;
-            f7 = f6;
-            f6 = f8;
-            f8 = f13;
-          }
-        }
+      d3 = n;
+      if (d3 >= d2) {
+        break;
       }
+      if (i1 != 0) {
+        f7 = f2;
+      } else {
+        f7 = f1;
+      }
+      float f14;
+      if ((f3 != 0.0F) && (d3 == d2 - 2.0D)) {
+        f14 = f10 * f22 / 2.0F;
+      } else {
+        f14 = f5;
+      }
+      if ((f3 != 0.0F) && (d3 == d2 - 1.0D)) {
+        f7 = f3;
+      }
+      d4 = f7;
+      double d5 = Math.cos(d1);
+      Double.isNaN(d4);
+      float f16 = (float)(d4 * d5);
+      d5 = Math.sin(d1);
+      Double.isNaN(d4);
+      float f13 = (float)(d4 * d5);
+      if ((f4 == 0.0F) && (f6 == 0.0F))
+      {
+        this.a.lineTo(f16, f13);
+      }
+      else
+      {
+        d4 = f12;
+        f7 = f1;
+        f8 = f4;
+        d4 = (float)(Math.atan2(d4, f11) - 1.570796326794897D);
+        float f18 = (float)Math.cos(d4);
+        float f19 = (float)Math.sin(d4);
+        float f9 = f6;
+        d4 = f13;
+        float f17 = f13;
+        d4 = (float)(Math.atan2(d4, f16) - 1.570796326794897D);
+        float f20 = (float)Math.cos(d4);
+        float f21 = (float)Math.sin(d4);
+        if (i1 != 0) {
+          f15 = f8;
+        } else {
+          f15 = f9;
+        }
+        if (i1 != 0) {
+          f8 = f9;
+        }
+        if (i1 != 0) {
+          f9 = f7;
+        } else {
+          f9 = f2;
+        }
+        if (i1 != 0) {
+          f7 = f2;
+        }
+        f9 = f9 * f15 * 0.47829F;
+        f18 *= f9;
+        f19 = f9 * f19;
+        f7 = f7 * f8 * 0.47829F;
+        f20 *= f7;
+        f21 = f7 * f21;
+        f7 = f18;
+        f8 = f20;
+        f9 = f19;
+        float f15 = f21;
+        if (f22 != 0.0F) {
+          if (n == 0)
+          {
+            f7 = f18 * f22;
+            f9 = f19 * f22;
+            f8 = f20;
+            f15 = f21;
+          }
+          else
+          {
+            f7 = f18;
+            f8 = f20;
+            f9 = f19;
+            f15 = f21;
+            if (d3 == d2 - 1.0D)
+            {
+              f8 = f20 * f22;
+              f15 = f21 * f22;
+              f9 = f19;
+              f7 = f18;
+            }
+          }
+        }
+        this.a.cubicTo(f11 - f7, f12 - f9, f16 + f8, f17 + f15, f16, f17);
+      }
+      d3 = f14;
+      Double.isNaN(d3);
+      d1 += d3;
+      i1 ^= 0x1;
+      n += 1;
+      f11 = f16;
+      f12 = f13;
     }
+    localObject = (PointF)this.f.b();
+    this.a.offset(((PointF)localObject).x, ((PointF)localObject).y);
+    this.a.close();
   }
   
   private void f()
   {
     int n = (int)Math.floor(((Float)this.e.b()).floatValue());
-    double d1;
-    float f5;
-    float f1;
-    float f2;
-    double d3;
-    label134:
-    float f4;
-    float f3;
-    if (this.g == null)
-    {
+    Object localObject = this.g;
+    if (localObject == null) {
       d1 = 0.0D;
-      d1 = Math.toRadians(d1 - 90.0D);
-      f5 = (float)(6.283185307179586D / n);
-      float f6 = ((Float)this.k.b()).floatValue() / 100.0F;
-      float f7 = ((Float)this.i.b()).floatValue();
-      f1 = (float)(f7 * Math.cos(d1));
-      f2 = (float)(f7 * Math.sin(d1));
-      this.a.moveTo(f1, f2);
-      d3 = f5;
-      double d2 = Math.ceil(n);
-      n = 0;
-      d1 += d3;
-      if (n >= d2) {
-        break label365;
-      }
-      f4 = (float)(f7 * Math.cos(d1));
-      f3 = (float)(f7 * Math.sin(d1));
-      if (f6 == 0.0F) {
-        break label351;
-      }
-      float f9 = (float)(Math.atan2(f2, f1) - 1.570796326794897D);
-      float f8 = (float)Math.cos(f9);
-      f9 = (float)Math.sin(f9);
-      float f11 = (float)(Math.atan2(f3, f4) - 1.570796326794897D);
-      float f10 = (float)Math.cos(f11);
-      f11 = (float)Math.sin(f11);
-      this.a.cubicTo(f1 - f8 * (f7 * f6 * 0.25F), f2 - f7 * f6 * 0.25F * f9, f4 + f10 * (f7 * f6 * 0.25F), f11 * (f7 * f6 * 0.25F) + f3, f4, f3);
+    } else {
+      d1 = ((Float)((l)localObject).b()).floatValue();
     }
-    for (;;)
+    double d4 = Math.toRadians(d1 - 90.0D);
+    double d3 = n;
+    Double.isNaN(d3);
+    float f3 = (float)(6.283185307179586D / d3);
+    float f5 = ((Float)this.k.b()).floatValue() / 100.0F;
+    float f6 = ((Float)this.i.b()).floatValue();
+    double d2 = f6;
+    double d1 = Math.cos(d4);
+    Double.isNaN(d2);
+    float f1 = (float)(d1 * d2);
+    d1 = Math.sin(d4);
+    Double.isNaN(d2);
+    float f2 = (float)(d1 * d2);
+    this.a.moveTo(f1, f2);
+    d1 = f3;
+    Double.isNaN(d1);
+    d4 += d1;
+    d3 = Math.ceil(d3);
+    n = 0;
+    while (n < d3)
     {
-      d3 = f5;
+      double d5 = Math.cos(d4);
+      Double.isNaN(d2);
+      f3 = (float)(d5 * d2);
+      d5 = Math.sin(d4);
+      Double.isNaN(d2);
+      float f4 = (float)(d2 * d5);
+      if (f5 != 0.0F)
+      {
+        d5 = (float)(Math.atan2(f2, f1) - 1.570796326794897D);
+        float f7 = (float)Math.cos(d5);
+        float f8 = (float)Math.sin(d5);
+        d5 = (float)(Math.atan2(f4, f3) - 1.570796326794897D);
+        float f9 = (float)Math.cos(d5);
+        float f10 = (float)Math.sin(d5);
+        float f11 = f6 * f5 * 0.25F;
+        this.a.cubicTo(f1 - f7 * f11, f2 - f8 * f11, f3 + f9 * f11, f4 + f11 * f10, f3, f4);
+      }
+      else
+      {
+        this.a.lineTo(f3, f4);
+      }
+      Double.isNaN(d1);
+      d4 += d1;
       n += 1;
-      f1 = f4;
-      d1 += d3;
-      f2 = f3;
-      break label134;
-      d1 = ((Float)this.g.b()).floatValue();
-      break;
-      label351:
-      this.a.lineTo(f4, f3);
+      f2 = f4;
+      f1 = f3;
     }
-    label365:
-    PointF localPointF = (PointF)this.f.b();
-    this.a.offset(localPointF.x, localPointF.y);
+    localObject = (PointF)this.f.b();
+    this.a.offset(((PointF)localObject).x, ((PointF)localObject).y);
     this.a.close();
   }
   
@@ -324,17 +328,18 @@ public class i
     this.a.reset();
     switch (1.a[this.d.ordinal()])
     {
-    }
-    for (;;)
-    {
-      this.a.close();
-      go.a(this.a, this.l);
-      this.m = true;
-      return this.a;
-      e();
-      continue;
+    default: 
+      break;
+    case 2: 
       f();
+      break;
+    case 1: 
+      e();
     }
+    this.a.close();
+    gn.a(this.a, this.l);
+    this.m = true;
+    return this.a;
   }
   
   public void a(List<br> paramList1, List<br> paramList2)
@@ -343,10 +348,14 @@ public class i
     while (n < paramList1.size())
     {
       paramList2 = (br)paramList1.get(n);
-      if (((paramList2 instanceof k)) && (((k)paramList2).a() == cn.b.a))
+      if ((paramList2 instanceof k))
       {
-        this.l = ((k)paramList2);
-        this.l.a(this);
+        paramList2 = (k)paramList2;
+        if (paramList2.a() == cn.b.a)
+        {
+          this.l = paramList2;
+          this.l.a(this);
+        }
       }
       n += 1;
     }

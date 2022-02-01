@@ -19,28 +19,22 @@ public class u
   public static String a()
   {
     StringBuilder localStringBuilder1 = new StringBuilder();
-    InputStream localInputStream;
+    StringBuilder localStringBuilder2;
     try
     {
-      localInputStream = new ProcessBuilder(new String[] { "/system/bin/cat", "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq" }).start().getInputStream();
+      InputStream localInputStream = new ProcessBuilder(new String[] { "/system/bin/cat", "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq" }).start().getInputStream();
       byte[] arrayOfByte = new byte[24];
-      while (localInputStream.read(arrayOfByte) != -1)
-      {
+      while (localInputStream.read(arrayOfByte) != -1) {
         localStringBuilder1.append(new String(arrayOfByte));
-        continue;
-        StringBuilder localStringBuilder2;
-        return localStringBuilder2.toString().trim();
       }
+      localInputStream.close();
     }
     catch (IOException localIOException)
     {
       localIOException.printStackTrace();
       localStringBuilder2 = new StringBuilder("N/A");
     }
-    for (;;)
-    {
-      localInputStream.close();
-    }
+    return localStringBuilder2.toString().trim();
   }
   
   public static String a(String paramString)
@@ -53,18 +47,17 @@ public class u
       paramString = new String(paramString);
       paramString = (String)localMethod.invoke(localObject, new Object[] { paramString, new String("") });
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        Object localObject;
-        paramString = "";
-      }
-    }
     catch (IllegalArgumentException paramString)
     {
+      Object localObject;
       throw paramString;
     }
+    catch (Exception paramString)
+    {
+      label76:
+      break label76;
+    }
+    paramString = "";
     localObject = paramString;
     if (paramString == null) {
       localObject = "";
@@ -93,144 +86,145 @@ public class u
     //   29: new 15	java/lang/StringBuilder
     //   32: dup
     //   33: ldc 106
-    //   35: invokespecial 61	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   35: invokespecial 64	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   38: astore_2
     //   39: aload_3
     //   40: invokevirtual 133	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   43: astore 4
     //   45: aload 4
-    //   47: ifnull +42 -> 89
+    //   47: ifnull +13 -> 60
     //   50: aload_2
     //   51: aload 4
     //   53: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: pop
     //   57: goto -18 -> 39
-    //   60: astore 4
-    //   62: getstatic 135	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
-    //   65: aload 4
-    //   67: invokestatic 140	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   70: aload_3
-    //   71: invokevirtual 141	java/io/BufferedReader:close	()V
-    //   74: aload_1
-    //   75: invokevirtual 142	java/io/FileInputStream:close	()V
-    //   78: aload_2
-    //   79: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: aload_3
+    //   61: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   64: goto +11 -> 75
+    //   67: astore_3
+    //   68: getstatic 136	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
+    //   71: aload_3
+    //   72: invokestatic 141	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   75: aload_1
+    //   76: invokevirtual 142	java/io/FileInputStream:close	()V
+    //   79: goto +52 -> 131
     //   82: astore_1
-    //   83: iload_0
-    //   84: ifne +49 -> 133
-    //   87: aload_1
-    //   88: areturn
-    //   89: aload_3
-    //   90: invokevirtual 141	java/io/BufferedReader:close	()V
-    //   93: aload_1
-    //   94: invokevirtual 142	java/io/FileInputStream:close	()V
-    //   97: goto -19 -> 78
-    //   100: astore_1
-    //   101: getstatic 135	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
-    //   104: aload_1
-    //   105: invokestatic 140	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   108: goto -30 -> 78
-    //   111: astore_3
-    //   112: getstatic 135	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
-    //   115: aload_3
-    //   116: invokestatic 140	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   119: goto -26 -> 93
-    //   122: astore_3
-    //   123: getstatic 135	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
-    //   126: aload_3
-    //   127: invokestatic 140	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   130: goto -56 -> 74
-    //   133: aload_1
-    //   134: ifnull +48 -> 182
-    //   137: aload_1
-    //   138: ldc 106
-    //   140: invokevirtual 146	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   143: ifne +39 -> 182
+    //   83: goto +41 -> 124
+    //   86: astore 4
+    //   88: goto +106 -> 194
+    //   91: astore 4
+    //   93: getstatic 136	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
+    //   96: aload 4
+    //   98: invokestatic 141	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   101: aload_3
+    //   102: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   105: goto +11 -> 116
+    //   108: astore_3
+    //   109: getstatic 136	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
+    //   112: aload_3
+    //   113: invokestatic 141	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   116: aload_1
+    //   117: invokevirtual 142	java/io/FileInputStream:close	()V
+    //   120: goto +11 -> 131
+    //   123: astore_1
+    //   124: getstatic 136	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
+    //   127: aload_1
+    //   128: invokestatic 141	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   131: aload_2
+    //   132: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: astore_1
+    //   136: iload_0
+    //   137: ifne +5 -> 142
+    //   140: aload_1
+    //   141: areturn
+    //   142: aload_1
+    //   143: ifnull +48 -> 191
     //   146: aload_1
-    //   147: aload_1
-    //   148: ldc 148
-    //   150: invokevirtual 152	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   153: bipush 8
-    //   155: iadd
-    //   156: invokevirtual 156	java/lang/String:substring	(I)Ljava/lang/String;
-    //   159: astore_1
-    //   160: aload_1
-    //   161: iconst_0
-    //   162: aload_1
-    //   163: ldc 158
-    //   165: invokevirtual 152	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   168: invokevirtual 161	java/lang/String:substring	(II)Ljava/lang/String;
-    //   171: astore_1
-    //   172: aload_1
-    //   173: areturn
-    //   174: astore_1
-    //   175: getstatic 135	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
-    //   178: aload_1
-    //   179: invokestatic 140	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   182: ldc 106
-    //   184: areturn
-    //   185: astore 4
-    //   187: aload_3
-    //   188: invokevirtual 141	java/io/BufferedReader:close	()V
-    //   191: aload_1
-    //   192: invokevirtual 142	java/io/FileInputStream:close	()V
-    //   195: aload_2
-    //   196: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   199: pop
-    //   200: aload 4
-    //   202: athrow
-    //   203: astore_3
-    //   204: getstatic 135	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
-    //   207: aload_3
-    //   208: invokestatic 140	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   211: goto -20 -> 191
-    //   214: astore_1
-    //   215: getstatic 135	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
-    //   218: aload_1
-    //   219: invokestatic 140	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   222: goto -27 -> 195
-    //   225: astore_1
-    //   226: getstatic 135	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
-    //   229: aload_1
-    //   230: invokestatic 140	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   233: ldc 106
-    //   235: areturn
-    //   236: astore_1
-    //   237: goto -136 -> 101
+    //   147: ldc 106
+    //   149: invokevirtual 146	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   152: ifne +39 -> 191
+    //   155: aload_1
+    //   156: aload_1
+    //   157: ldc 148
+    //   159: invokevirtual 152	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   162: bipush 8
+    //   164: iadd
+    //   165: invokevirtual 156	java/lang/String:substring	(I)Ljava/lang/String;
+    //   168: astore_1
+    //   169: aload_1
+    //   170: iconst_0
+    //   171: aload_1
+    //   172: ldc 158
+    //   174: invokevirtual 152	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   177: invokevirtual 161	java/lang/String:substring	(II)Ljava/lang/String;
+    //   180: astore_1
+    //   181: aload_1
+    //   182: areturn
+    //   183: astore_1
+    //   184: getstatic 136	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
+    //   187: aload_1
+    //   188: invokestatic 141	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   191: ldc 106
+    //   193: areturn
+    //   194: aload_3
+    //   195: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   198: goto +11 -> 209
+    //   201: astore_3
+    //   202: getstatic 136	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
+    //   205: aload_3
+    //   206: invokestatic 141	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   209: aload_1
+    //   210: invokevirtual 142	java/io/FileInputStream:close	()V
+    //   213: goto +11 -> 224
+    //   216: astore_1
+    //   217: getstatic 136	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
+    //   220: aload_1
+    //   221: invokestatic 141	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   224: aload_2
+    //   225: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   228: pop
+    //   229: aload 4
+    //   231: athrow
+    //   232: astore_1
+    //   233: getstatic 136	com/tencent/turingfd/sdk/base/u:a	Ljava/lang/String;
+    //   236: aload_1
+    //   237: invokestatic 141	com/tencent/turingfd/sdk/base/bv:a	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   240: ldc 106
+    //   242: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	240	0	paramBoolean	boolean
-    //   9	85	1	localObject1	Object
-    //   100	48	1	localThrowable1	Throwable
-    //   159	14	1	str1	String
-    //   174	18	1	localThrowable2	Throwable
-    //   214	5	1	localThrowable3	Throwable
-    //   225	5	1	localThrowable4	Throwable
-    //   236	1	1	localThrowable5	Throwable
-    //   38	158	2	localStringBuilder	StringBuilder
-    //   28	62	3	localBufferedReader	java.io.BufferedReader
-    //   111	5	3	localThrowable6	Throwable
-    //   122	66	3	localThrowable7	Throwable
-    //   203	5	3	localThrowable8	Throwable
+    //   0	243	0	paramBoolean	boolean
+    //   9	67	1	localFileInputStream	java.io.FileInputStream
+    //   82	35	1	localThrowable1	Throwable
+    //   123	5	1	localThrowable2	Throwable
+    //   135	47	1	str1	String
+    //   183	27	1	localThrowable3	Throwable
+    //   216	5	1	localThrowable4	Throwable
+    //   232	5	1	localThrowable5	Throwable
+    //   38	187	2	localStringBuilder	StringBuilder
+    //   28	33	3	localBufferedReader	java.io.BufferedReader
+    //   67	35	3	localThrowable6	Throwable
+    //   108	87	3	localThrowable7	Throwable
+    //   201	5	3	localThrowable8	Throwable
     //   43	9	4	str2	String
-    //   60	6	4	localThrowable9	Throwable
-    //   185	16	4	localObject2	Object
+    //   86	1	4	localObject	Object
+    //   91	139	4	localThrowable9	Throwable
     // Exception table:
     //   from	to	target	type
-    //   39	45	60	java/lang/Throwable
-    //   50	57	60	java/lang/Throwable
-    //   93	97	100	java/lang/Throwable
-    //   89	93	111	java/lang/Throwable
-    //   70	74	122	java/lang/Throwable
-    //   146	160	174	java/lang/Throwable
-    //   160	172	174	java/lang/Throwable
-    //   39	45	185	finally
-    //   50	57	185	finally
-    //   62	70	185	finally
-    //   187	191	203	java/lang/Throwable
-    //   191	195	214	java/lang/Throwable
-    //   0	10	225	java/lang/Throwable
-    //   74	78	236	java/lang/Throwable
+    //   60	64	67	java/lang/Throwable
+    //   75	79	82	java/lang/Throwable
+    //   39	45	86	finally
+    //   50	57	86	finally
+    //   93	101	86	finally
+    //   39	45	91	java/lang/Throwable
+    //   50	57	91	java/lang/Throwable
+    //   101	105	108	java/lang/Throwable
+    //   116	120	123	java/lang/Throwable
+    //   155	169	183	java/lang/Throwable
+    //   169	181	183	java/lang/Throwable
+    //   194	198	201	java/lang/Throwable
+    //   209	213	216	java/lang/Throwable
+    //   0	10	232	java/lang/Throwable
   }
   
   public static long b()
@@ -306,8 +300,6 @@ public class u
   
   public static String e()
   {
-    label302:
-    String str;
     for (;;)
     {
       try
@@ -334,21 +326,23 @@ public class u
         {
           localObject1 = by.a("ro.gn.extvernumber");
           bool = TextUtils.isEmpty((CharSequence)localObject1);
-          if (!bool) {
-            break;
+          if (bool) {
+            localObject1 = by.a("ro.build.display.id");
           }
-          localObject1 = by.a("ro.build.display.id");
           return localObject1;
         }
         bool = ((String)localObject1).contains("vivo");
         if (bool)
         {
-          localObject2 = by.a("ro.vivo.os.name");
-          localObject1 = by.a("ro.vivo.os.version");
-          if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+          localObject1 = by.a("ro.vivo.os.name");
+          str = by.a("ro.vivo.os.version");
+          if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)))
           {
-            localObject2 = new StringBuilder().append((String)localObject2);
-            localObject1 = "_" + (String)localObject1;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append((String)localObject1);
+            localStringBuilder.append("_");
+            localStringBuilder.append(str);
+            localObject1 = localStringBuilder.toString();
             return localObject1;
           }
           localObject1 = by.a("ro.vivo.os.build.display.id");
@@ -366,18 +360,17 @@ public class u
           localObject1 = by.a("ro.lenovo.lvp.version");
           bool = TextUtils.isEmpty((CharSequence)localObject1);
           if (bool) {
-            break label302;
+            break label311;
           }
           localObject1 = ((String)localObject1).split("_");
           if ((localObject1 == null) || (localObject1.length <= 0)) {
-            break label302;
+            break label311;
           }
           localObject1 = localObject1[0];
           bool = TextUtils.isEmpty((CharSequence)localObject1);
-          if (!bool) {
-            break;
+          if (bool) {
+            localObject1 = by.a("ro.build.version.incremental");
           }
-          localObject1 = by.a("ro.build.version.incremental");
           return localObject1;
         }
         bool = ((String)localObject1).contains("letv");
@@ -389,13 +382,13 @@ public class u
       }
       catch (Exception localException)
       {
-        Object localObject2 = a;
-        bv.a.a(5, (String)localObject2, bv.a(localException));
+        String str = a;
+        bv.a.a(5, str, bv.a(localException));
       }
       return null;
-      str = null;
+      label311:
+      Object localObject2 = null;
     }
-    return str;
   }
 }
 

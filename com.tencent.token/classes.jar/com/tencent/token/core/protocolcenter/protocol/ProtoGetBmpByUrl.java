@@ -29,13 +29,13 @@ public class ProtoGetBmpByUrl
   protected void a(JSONObject paramJSONObject)
   {
     paramJSONObject = (Bitmap)paramJSONObject.get("img");
-    if ((paramJSONObject == null) || (paramJSONObject.getWidth() == 0) || (paramJSONObject.getHeight() == 0))
+    if ((paramJSONObject != null) && (paramJSONObject.getWidth() != 0) && (paramJSONObject.getHeight() != 0))
     {
-      this.a.b(104);
+      this.a.c();
+      this.e = new CommonImgResult(this.d, paramJSONObject);
       return;
     }
-    this.a.c();
-    this.e = new CommonImgResult(this.d, paramJSONObject);
+    this.a.b(104);
   }
   
   protected void b()

@@ -7,7 +7,7 @@ import java.util.List;
 public class ConchServiceProxy
   implements ConchService
 {
-  private static volatile ConchServiceProxy u = null;
+  private static volatile ConchServiceProxy u;
   private long t;
   
   private ConchServiceProxy(long paramLong)
@@ -17,15 +17,16 @@ public class ConchServiceProxy
   
   public static ConchServiceProxy getInstance()
   {
-    if (u == null) {}
-    try
-    {
-      if (u == null) {
-        u = new ConchServiceProxy(4294967296L);
+    if (u == null) {
+      try
+      {
+        if (u == null) {
+          u = new ConchServiceProxy(4294967296L);
+        }
       }
-      return u;
+      finally {}
     }
-    finally {}
+    return u;
   }
   
   public void pullConch(int paramInt)

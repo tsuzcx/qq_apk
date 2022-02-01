@@ -31,15 +31,17 @@ public class o<T>
   
   float b()
   {
-    if (this.i == 1.4E-45F) {
-      if (this.e != null) {
-        break label27;
+    if (this.i == 1.4E-45F)
+    {
+      float f1;
+      if (this.e == null) {
+        f1 = 1.0F;
+      } else {
+        f1 = a() + (this.e.floatValue() - this.d) / this.g.i();
       }
+      this.i = f1;
     }
-    label27:
-    for (this.i = 1.0F;; this.i = (a() + (this.e.floatValue() - this.d) / this.g.i())) {
-      return this.i;
-    }
+    return this.i;
   }
   
   boolean c()
@@ -49,7 +51,19 @@ public class o<T>
   
   public String toString()
   {
-    return "Keyframe{startValue=" + this.a + ", endValue=" + this.b + ", startFrame=" + this.d + ", endFrame=" + this.e + ", interpolator=" + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Keyframe{startValue=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", endValue=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", startFrame=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", endFrame=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", interpolator=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

@@ -29,31 +29,45 @@ public class ProtoDoActiveToken
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
     }
     this.f = b.a();
-    String str2 = b.a(this.f, 2L, e);
-    if ((this.f == null) || (str2 == null) || (str2.length() == 0))
+    Object localObject = b.a(this.f, 2L, e);
+    if ((this.f != null) && (localObject != null) && (((String)localObject).length() != 0))
     {
-      this.a.b(10025);
-      return null;
+      int i = cb.a + 1;
+      cb.a = i;
+      this.c = i;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("client_pub_key=");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(", length=");
+      localStringBuilder.append(((String)localObject).length());
+      g.a(localStringBuilder.toString());
+      localObject = l.a(new Object[] { "imei", cc.b(), "clt_pub_key", localObject, "seq_id", Integer.valueOf(this.c), "op_time", Integer.valueOf((int)(cc.c().s() / 1000L)), "turingd_ticket_id", k.c() });
+      if (localObject == null)
+      {
+        this.a.a(10000, "encrypt imei failed");
+        return null;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("?aq_base_sid=");
+      localStringBuilder.append(str);
+      localStringBuilder.append("&data=");
+      localStringBuilder.append((String)localObject);
+      str = localStringBuilder.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(c.e());
+      ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_activate_token_encrypt");
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
     }
-    int i = cb.a + 1;
-    cb.a = i;
-    this.c = i;
-    g.a("client_pub_key=" + str2 + ", length=" + str2.length());
-    str2 = l.a(new Object[] { "imei", cc.b(), "clt_pub_key", str2, "seq_id", Integer.valueOf(this.c), "op_time", Integer.valueOf((int)(cc.c().s() / 1000L)), "turingd_ticket_id", k.c() });
-    if (str2 == null)
-    {
-      this.a.a(10000, "encrypt imei failed");
-      return null;
-    }
-    str1 = "?aq_base_sid=" + str1 + "&data=" + str2;
-    return c.e() + "/cn/mbtoken3/mbtoken3_activate_token_encrypt" + str1;
+    this.a.b(10025);
+    return null;
   }
   
   protected void a(do paramdo) {}
@@ -61,11 +75,20 @@ public class ProtoDoActiveToken
   protected void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
-    TmsLog.i("mod_seed", "active token parseJon, errcode: " + i);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("active token parseJon, errcode: ");
+    ((StringBuilder)localObject).append(i);
+    TmsLog.i("mod_seed", ((StringBuilder)localObject).toString());
     if (i != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
-      this.a.a(i, "server errcode=" + i + ":" + paramJSONObject, paramJSONObject);
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("server errcode=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      ((e)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
       return;
     }
     paramJSONObject = l.c(paramJSONObject.getString("data"));
@@ -78,14 +101,18 @@ public class ProtoDoActiveToken
         this.a.b(10030);
         return;
       }
-      Object localObject = paramJSONObject.getString("svc_pub_key");
-      if (((String)localObject).length() <= 0) {
-        throw new JSONException("");
-      }
-      try
+      localObject = paramJSONObject.getString("svc_pub_key");
+      if (((String)localObject).length() > 0)
       {
-        l = paramJSONObject.getLong("seed_expire_time");
-        this.g.c(l);
+        try
+        {
+          l = paramJSONObject.getLong("seed_expire_time");
+          this.g.c(l);
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
         this.g.e();
         localObject = new dq((String)localObject, 16);
         localObject = b.b(this.f, (dq)localObject, e);
@@ -93,13 +120,6 @@ public class ProtoDoActiveToken
         {
           this.a.b(10026);
           return;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
         }
         this.g.a((dq)localObject);
         this.g.n();
@@ -110,9 +130,13 @@ public class ProtoDoActiveToken
         this.a.c();
         return;
       }
+      throw new JSONException("");
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseJSON error decodeData=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    g.c(((StringBuilder)localObject).toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
 }
 

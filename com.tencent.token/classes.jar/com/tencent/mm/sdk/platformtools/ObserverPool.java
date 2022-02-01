@@ -14,81 +14,27 @@ public final class ObserverPool
 {
   private final HashMap<String, LinkedList<Listener>> ay = new HashMap();
   
-  /* Error */
   public final boolean add(String paramString, Listener paramListener)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_2
-    //   3: invokestatic 31	junit/framework/Assert:assertNotNull	(Ljava/lang/Object;)V
-    //   6: aload_0
-    //   7: getfield 22	com/tencent/mm/sdk/platformtools/ObserverPool:ay	Ljava/util/HashMap;
-    //   10: aload_1
-    //   11: invokevirtual 35	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   14: checkcast 37	java/util/LinkedList
-    //   17: astore 5
-    //   19: aload 5
-    //   21: astore 4
-    //   23: aload 5
-    //   25: ifnonnull +23 -> 48
-    //   28: new 37	java/util/LinkedList
-    //   31: dup
-    //   32: invokespecial 38	java/util/LinkedList:<init>	()V
-    //   35: astore 4
-    //   37: aload_0
-    //   38: getfield 22	com/tencent/mm/sdk/platformtools/ObserverPool:ay	Ljava/util/HashMap;
-    //   41: aload_1
-    //   42: aload 4
-    //   44: invokevirtual 42	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   47: pop
-    //   48: aload 4
-    //   50: aload_2
-    //   51: invokevirtual 46	java/util/LinkedList:contains	(Ljava/lang/Object;)Z
-    //   54: ifeq +30 -> 84
-    //   57: ldc 48
-    //   59: ldc 50
-    //   61: iconst_2
-    //   62: anewarray 4	java/lang/Object
-    //   65: dup
-    //   66: iconst_0
-    //   67: aload_1
-    //   68: aastore
-    //   69: dup
-    //   70: iconst_1
-    //   71: invokestatic 56	com/tencent/mm/sdk/platformtools/Util:getStack	()Ljava/lang/String;
-    //   74: aastore
-    //   75: invokestatic 62	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   78: iconst_0
-    //   79: istore_3
-    //   80: aload_0
-    //   81: monitorexit
-    //   82: iload_3
-    //   83: ireturn
-    //   84: aload 4
-    //   86: aload_2
-    //   87: invokevirtual 64	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   90: istore_3
-    //   91: goto -11 -> 80
-    //   94: astore_1
-    //   95: aload_0
-    //   96: monitorexit
-    //   97: aload_1
-    //   98: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	99	0	this	ObserverPool
-    //   0	99	1	paramString	String
-    //   0	99	2	paramListener	Listener
-    //   79	12	3	bool	boolean
-    //   21	64	4	localLinkedList1	LinkedList
-    //   17	7	5	localLinkedList2	LinkedList
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	94	finally
-    //   28	48	94	finally
-    //   48	78	94	finally
-    //   84	91	94	finally
+    try
+    {
+      Assert.assertNotNull(paramListener);
+      LinkedList localLinkedList2 = (LinkedList)this.ay.get(paramString);
+      LinkedList localLinkedList1 = localLinkedList2;
+      if (localLinkedList2 == null)
+      {
+        localLinkedList1 = new LinkedList();
+        this.ay.put(paramString, localLinkedList1);
+      }
+      if (localLinkedList1.contains(paramListener))
+      {
+        Log.e("MicroMsg.ObserverPool", "Cannot add the same listener twice. EventId: %s, Stack: %s.", new Object[] { paramString, Util.getStack() });
+        return false;
+      }
+      boolean bool = localLinkedList1.add(paramListener);
+      return bool;
+    }
+    finally {}
   }
   
   public final void asyncPublish(Event paramEvent)
@@ -104,10 +50,10 @@ public final class ObserverPool
   
   public final boolean publish(Event paramEvent)
   {
-    int i = 0;
     Assert.assertNotNull(paramEvent);
     Object localObject = paramEvent.getId();
     LinkedList localLinkedList = (LinkedList)this.ay.get(localObject);
+    int i = 0;
     if (localLinkedList == null)
     {
       Log.w("MicroMsg.ObserverPool", "No listener for this event %s, Stack: %s.", new Object[] { localObject, Util.getStack() });
@@ -204,13 +150,19 @@ public final class ObserverPool
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ObserverPool profile:\n");
-    localStringBuilder.append("\tEvent number: ").append(this.ay.size()).append("\n");
+    localStringBuilder.append("\tEvent number: ");
+    localStringBuilder.append(this.ay.size());
+    localStringBuilder.append("\n");
     localStringBuilder.append("\tDetail:\n");
     Iterator localIterator = this.ay.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localStringBuilder.append("\t").append(str).append(" : ").append(((LinkedList)this.ay.get(str)).size()).append("\n");
+      localStringBuilder.append("\t");
+      localStringBuilder.append(str);
+      localStringBuilder.append(" : ");
+      localStringBuilder.append(((LinkedList)this.ay.get(str)).size());
+      localStringBuilder.append("\n");
     }
     localStringBuilder.append("End...");
     return localStringBuilder.toString();

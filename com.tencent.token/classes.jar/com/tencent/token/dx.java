@@ -19,7 +19,7 @@ public class dx
   implements SharedPreferences.OnSharedPreferenceChangeListener
 {
   public static d a;
-  private static dx c = null;
+  private static dx c;
   protected c b;
   private volatile boolean d = c.a.a;
   private volatile boolean e = c.a.b;
@@ -41,15 +41,16 @@ public class dx
   
   public static dx a()
   {
-    if (c == null) {}
-    try
-    {
-      if (c == null) {
-        c = new dx();
+    if (c == null) {
+      try
+      {
+        if (c == null) {
+          c = new dx();
+        }
       }
-      return c;
+      finally {}
     }
-    finally {}
+    return c;
   }
   
   public static void a(int paramInt)
@@ -69,10 +70,11 @@ public class dx
   
   public static void a(File paramFile)
   {
-    if ((paramFile == null) || (!paramFile.exists())) {}
-    for (;;)
+    if (paramFile != null)
     {
-      return;
+      if (!paramFile.exists()) {
+        return;
+      }
       if (paramFile.isFile())
       {
         paramFile.delete();
@@ -86,30 +88,35 @@ public class dx
         a(paramFile[i]);
         i += 1;
       }
+      return;
     }
   }
   
   public static BufferedReader b(int paramInt)
   {
     Object localObject = a.a(System.currentTimeMillis());
-    if ((localObject == null) || (!((File)localObject).isDirectory())) {
-      return null;
-    }
-    localObject = a.b((File)localObject);
-    localObject = a.a((File[])localObject);
-    if ((paramInt >= 0) && (paramInt < localObject.length))
+    if (localObject != null)
     {
-      localObject = localObject[(localObject.length - paramInt - 1)];
-      try
-      {
-        localObject = new BufferedReader(new FileReader((File)localObject));
-        return localObject;
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
+      if (!((File)localObject).isDirectory()) {
         return null;
       }
+      localObject = a.b((File)localObject);
+      localObject = a.a((File[])localObject);
+      if ((paramInt >= 0) && (paramInt < localObject.length)) {
+        localObject = localObject[(localObject.length - paramInt - 1)];
+      }
     }
+    try
+    {
+      localObject = new BufferedReader(new FileReader((File)localObject));
+      return localObject;
+    }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      label76:
+      break label76;
+    }
+    return null;
     return null;
   }
   
@@ -145,8 +152,12 @@ public class dx
   
   public void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if ((d()) && (e()) && (this.b != null)) {
-      this.b.b(paramInt, Thread.currentThread(), cc.c().s(), paramString1, paramString2, paramThrowable);
+    if ((d()) && (e()))
+    {
+      c localc = this.b;
+      if (localc != null) {
+        localc.b(paramInt, Thread.currentThread(), cc.c().s(), paramString1, paramString2, paramThrowable);
+      }
     }
   }
   
@@ -185,7 +196,10 @@ public class dx
     if (("debug.file.tracelevel".equals(paramString)) || (paramString == null))
     {
       int i = i.a("debug.file.tracelevel", c.a.h);
-      a(16, "SecTracer", "File Trace Level Changed = " + i, null);
+      paramSharedPreferences = new StringBuilder();
+      paramSharedPreferences.append("File Trace Level Changed = ");
+      paramSharedPreferences.append(i);
+      a(16, "SecTracer", paramSharedPreferences.toString(), null);
       this.b.a(i);
     }
   }

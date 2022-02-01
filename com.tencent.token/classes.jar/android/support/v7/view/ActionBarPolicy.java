@@ -44,16 +44,18 @@ public class ActionBarPolicy
     Configuration localConfiguration = this.mContext.getResources().getConfiguration();
     int i = localConfiguration.screenWidthDp;
     int j = localConfiguration.screenHeightDp;
-    if ((localConfiguration.smallestScreenWidthDp > 600) || (i > 600) || ((i > 960) && (j > 720)) || ((i > 720) && (j > 960))) {
-      return 5;
-    }
-    if ((i >= 500) || ((i > 640) && (j > 480)) || ((i > 480) && (j > 640))) {
+    if ((localConfiguration.smallestScreenWidthDp <= 600) && (i <= 600) && ((i <= 960) || (j <= 720)) && ((i <= 720) || (j <= 960)))
+    {
+      if ((i < 500) && ((i <= 640) || (j <= 480)) && ((i <= 480) || (j <= 640)))
+      {
+        if (i >= 360) {
+          return 3;
+        }
+        return 2;
+      }
       return 4;
     }
-    if (i >= 360) {
-      return 3;
-    }
-    return 2;
+    return 5;
   }
   
   public int getStackedTabMaxWidth()
@@ -81,11 +83,10 @@ public class ActionBarPolicy
   
   public boolean showsOverflowMenuButton()
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    while (!ViewConfiguration.get(this.mContext).hasPermanentMenuKey()) {
+    if (Build.VERSION.SDK_INT >= 19) {
       return true;
     }
-    return false;
+    return ViewConfiguration.get(this.mContext).hasPermanentMenuKey() ^ true;
   }
 }
 

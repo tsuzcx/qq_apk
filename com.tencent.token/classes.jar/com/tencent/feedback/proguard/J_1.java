@@ -24,8 +24,9 @@ public final class J
   public final void a(i parami)
   {
     parami.a(this.a, 0);
-    if (this.b != null) {
-      parami.a(this.b, 1);
+    ArrayList localArrayList = this.b;
+    if (localArrayList != null) {
+      parami.a(localArrayList, 1);
     }
   }
   

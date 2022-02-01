@@ -34,16 +34,6 @@ public final class f
   private boolean n;
   private fl o;
   
-  static
-  {
-    if (!f.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      d = bool;
-      return;
-    }
-  }
-  
   public f(j paramj, a parama, okhttp3.e parame, p paramp, Object paramObject)
   {
     this.g = paramj;
@@ -56,7 +46,6 @@ public final class f
   
   private Socket a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    Object localObject2 = null;
     if ((!d) && (!Thread.holdsLock(this.g))) {
       throw new AssertionError();
     }
@@ -66,179 +55,179 @@ public final class f
     if (paramBoolean2) {
       this.m = true;
     }
-    Object localObject1 = localObject2;
-    if (this.k != null)
+    Object localObject = this.k;
+    if (localObject != null)
     {
       if (paramBoolean1) {
-        this.k.a = true;
+        ((c)localObject).a = true;
       }
-      localObject1 = localObject2;
-      if (this.o == null) {
-        if (!this.m)
+      if ((this.o == null) && ((this.m) || (this.k.a)))
+      {
+        b(this.k);
+        if (this.k.d.isEmpty())
         {
-          localObject1 = localObject2;
-          if (!this.k.a) {}
-        }
-        else
-        {
-          b(this.k);
-          if (!this.k.d.isEmpty()) {
-            break label167;
-          }
           this.k.e = System.nanoTime();
-          if (!fa.a.a(this.g, this.k)) {
-            break label167;
+          if (fa.a.a(this.g, this.k))
+          {
+            localObject = this.k.b();
+            break label155;
           }
         }
+        localObject = null;
+        label155:
+        this.k = null;
+        return localObject;
       }
     }
-    label167:
-    for (localObject1 = this.k.b();; localObject1 = null)
-    {
-      this.k = null;
-      return localObject1;
-    }
+    return null;
   }
   
   private c a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    int i2 = 0;
-    Object localObject6 = null;
-    ab localab = null;
-    synchronized (this.g)
-    {
-      if (this.m) {
-        throw new IllegalStateException("released");
-      }
-    }
-    if (this.o != null) {
-      throw new IllegalStateException("codec != null");
-    }
-    if (this.n) {
-      throw new IOException("Canceled");
-    }
-    Object localObject2 = this.k;
-    Socket localSocket = g();
-    if (this.k != null)
-    {
-      localObject6 = this.k;
-      localObject2 = null;
-    }
-    ??? = localObject2;
-    if (!this.l) {
-      ??? = null;
-    }
-    Object localObject7 = localObject6;
-    localObject2 = localab;
-    int i1 = i2;
-    if (localObject6 == null)
-    {
-      fa.a.a(this.g, this.a, this, null);
-      if (this.k == null) {
-        break label225;
-      }
-      i1 = 1;
-      localObject7 = this.k;
-      localObject2 = localab;
-    }
     for (;;)
     {
-      fc.a(localSocket);
-      if (??? != null) {
-        this.c.b(this.b, (i)???);
-      }
-      if (i1 != 0) {
-        this.c.a(this.b, (i)localObject7);
-      }
-      if (localObject7 == null) {
-        break;
-      }
-      return localObject7;
-      label225:
-      localObject2 = this.f;
-      localObject7 = localObject6;
-      i1 = i2;
-    }
-    int i3 = 0;
-    i2 = i3;
-    if (localObject2 == null) {
-      if (this.e != null)
+      int i3;
+      synchronized (this.g)
       {
-        i2 = i3;
-        if (this.e.a()) {}
-      }
-      else
-      {
-        i2 = 1;
-        this.e = this.i.b();
-      }
-    }
-    synchronized (this.g)
-    {
-      if (this.n) {
-        throw new IOException("Canceled");
-      }
-    }
-    if (i2 != 0)
-    {
-      localObject6 = this.e.c();
-      i3 = ((List)localObject6).size();
-      i2 = 0;
-      if (i2 < i3)
-      {
-        localab = (ab)((List)localObject6).get(i2);
-        fa.a.a(this.g, this.a, this, localab);
-        if (this.k != null)
+        if (!this.m)
         {
-          i1 = 1;
-          localObject6 = this.k;
-          this.f = localab;
-        }
-      }
-    }
-    for (;;)
-    {
-      Object localObject4;
-      if (i1 == 0)
-      {
-        if (localObject3 != null) {
-          break label623;
-        }
-        localObject4 = this.e.b();
-      }
-      label623:
-      for (;;)
-      {
-        this.f = ((ab)localObject4);
-        this.j = 0;
-        localObject6 = new c(this.g, (ab)localObject4);
-        a((c)localObject6, false);
-        if (i1 != 0)
-        {
-          this.c.a(this.b, (i)localObject6);
-          return localObject6;
-          i2 += 1;
-          break;
-        }
-        ((c)localObject6).a(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, this.b, this.c);
-        h().b(((c)localObject6).a());
-        localObject7 = null;
-        synchronized (this.g)
-        {
-          this.l = true;
-          fa.a.b(this.g, (c)localObject6);
-          localObject4 = localObject6;
-          if (((c)localObject6).d())
+          if (this.o == null)
           {
-            localObject7 = fa.a.a(this.g, this.a, this);
-            localObject4 = this.k;
+            if (!this.n)
+            {
+              localObject6 = this.k;
+              Object localObject9 = g();
+              Object localObject1 = this.k;
+              Object localObject8 = null;
+              if (localObject1 != null)
+              {
+                localObject1 = this.k;
+                localObject6 = null;
+                Object localObject7 = localObject6;
+                if (!this.l) {
+                  localObject7 = null;
+                }
+                if (localObject1 != null) {
+                  break label631;
+                }
+                fa.a.a(this.g, this.a, this, null);
+                if (this.k != null)
+                {
+                  localObject1 = this.k;
+                  localObject6 = null;
+                  i1 = 1;
+                }
+                else
+                {
+                  localObject6 = this.f;
+                  i1 = 0;
+                }
+                fc.a((Socket)localObject9);
+                if (localObject7 != null) {
+                  this.c.b(this.b, (i)localObject7);
+                }
+                if (i1 != 0) {
+                  this.c.a(this.b, (i)localObject1);
+                }
+                if (localObject1 != null) {
+                  return localObject1;
+                }
+                if (localObject6 == null)
+                {
+                  localObject7 = this.e;
+                  if ((localObject7 == null) || (!((e.a)localObject7).a()))
+                  {
+                    this.e = this.i.b();
+                    i3 = 1;
+                    continue;
+                  }
+                }
+                i3 = 0;
+                synchronized (this.g)
+                {
+                  if (!this.n)
+                  {
+                    int i2 = i1;
+                    localObject7 = localObject1;
+                    if (i3 != 0)
+                    {
+                      localObject9 = this.e.c();
+                      int i4 = ((List)localObject9).size();
+                      i3 = 0;
+                      i2 = i1;
+                      localObject7 = localObject1;
+                      if (i3 < i4)
+                      {
+                        ab localab = (ab)((List)localObject9).get(i3);
+                        fa.a.a(this.g, this.a, this, localab);
+                        if (this.k == null) {
+                          break label640;
+                        }
+                        localObject7 = this.k;
+                        this.f = localab;
+                        i2 = 1;
+                      }
+                    }
+                    localObject1 = localObject7;
+                    if (i2 == 0)
+                    {
+                      localObject1 = localObject6;
+                      if (localObject6 == null) {
+                        localObject1 = this.e.b();
+                      }
+                      this.f = ((ab)localObject1);
+                      this.j = 0;
+                      localObject1 = new c(this.g, (ab)localObject1);
+                      a((c)localObject1, false);
+                    }
+                    if (i2 != 0)
+                    {
+                      this.c.a(this.b, (i)localObject1);
+                      return localObject1;
+                    }
+                    ((c)localObject1).a(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, this.b, this.c);
+                    h().b(((c)localObject1).a());
+                    synchronized (this.g)
+                    {
+                      this.l = true;
+                      fa.a.b(this.g, (c)localObject1);
+                      localObject7 = localObject8;
+                      localObject6 = localObject1;
+                      if (((c)localObject1).d())
+                      {
+                        localObject7 = fa.a.a(this.g, this.a, this);
+                        localObject6 = this.k;
+                      }
+                      fc.a((Socket)localObject7);
+                      this.c.a(this.b, (i)localObject6);
+                      return localObject6;
+                    }
+                  }
+                  throw new IOException("Canceled");
+                }
+              }
+            }
+            else
+            {
+              throw new IOException("Canceled");
+            }
           }
-          fc.a((Socket)localObject7);
-          this.c.a(this.b, (i)localObject4);
-          return localObject4;
+          else {
+            throw new IllegalStateException("codec != null");
+          }
+        }
+        else {
+          throw new IllegalStateException("released");
         }
       }
-      localObject6 = localObject7;
+      Object localObject5 = null;
+      continue;
+      label631:
+      Object localObject6 = null;
+      int i1 = 0;
+      continue;
+      label640:
+      i3 += 1;
     }
   }
   
@@ -246,18 +235,20 @@ public final class f
   {
     for (;;)
     {
-      c localc1 = a(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean1);
+      c localc = a(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean1);
       synchronized (this.g)
       {
-        if (localc1.b == 0) {
-          return localc1;
+        if (localc.b == 0) {
+          return localc;
         }
-        if (!localc1.a(paramBoolean2)) {
+        if (!localc.a(paramBoolean2))
+        {
           e();
+          continue;
         }
+        return localc;
       }
     }
-    return localc2;
   }
   
   private void b(c paramc)
@@ -380,20 +371,19 @@ public final class f
     if ((!d) && (!Thread.holdsLock(this.g))) {
       throw new AssertionError();
     }
-    if ((this.o != null) || (this.k.d.size() != 1)) {
-      throw new IllegalStateException();
+    if ((this.o == null) && (this.k.d.size() == 1))
+    {
+      Reference localReference = (Reference)this.k.d.get(0);
+      Socket localSocket = a(true, false, false);
+      this.k = paramc;
+      paramc.d.add(localReference);
+      return localSocket;
     }
-    Reference localReference = (Reference)this.k.d.get(0);
-    Socket localSocket = a(true, false, false);
-    this.k = paramc;
-    paramc.d.add(localReference);
-    return localSocket;
+    throw new IllegalStateException();
   }
   
   public void a(IOException paramIOException)
   {
-    boolean bool2 = false;
-    boolean bool1 = true;
     for (;;)
     {
       synchronized (this.g)
@@ -405,53 +395,56 @@ public final class f
           {
             this.j += 1;
             if (this.j <= 1) {
-              break label209;
+              break label199;
             }
             this.f = null;
-            break label211;
-            paramIOException = this.k;
-            Socket localSocket = a(bool1, false, true);
-            if ((this.k != null) || (!this.l)) {
-              break label214;
-            }
-            fc.a(localSocket);
-            if (paramIOException != null) {
-              this.c.b(this.b, paramIOException);
-            }
-            return;
+            bool = true;
           }
-          if (paramIOException == ErrorCode.CANCEL) {
-            break label209;
+          else
+          {
+            if (paramIOException == ErrorCode.CANCEL) {
+              break label199;
+            }
+            this.f = null;
+            bool = true;
           }
-          this.f = null;
-        }
-      }
-      bool1 = bool2;
-      if (this.k != null) {
-        if (this.k.d())
-        {
-          bool1 = bool2;
-          if (!(paramIOException instanceof ConnectionShutdownException)) {}
         }
         else
         {
-          if (this.k.b == 0)
-          {
-            if ((this.f != null) && (paramIOException != null)) {
-              this.i.a(this.f, paramIOException);
-            }
-            this.f = null;
+          if ((this.k == null) || ((this.k.d()) && (!(paramIOException instanceof ConnectionShutdownException)))) {
+            break label209;
           }
-          bool1 = true;
-          continue;
-          label209:
-          bool1 = false;
-          label211:
-          continue;
-          label214:
-          paramIOException = null;
+          if (this.k.b != 0) {
+            break label204;
+          }
+          if ((this.f != null) && (paramIOException != null)) {
+            this.i.a(this.f, paramIOException);
+          }
+          this.f = null;
+          break label204;
         }
+        paramIOException = this.k;
+        Socket localSocket = a(bool, false, true);
+        if ((this.k != null) || (!this.l)) {
+          break label214;
+        }
+        fc.a(localSocket);
+        if (paramIOException != null) {
+          this.c.b(this.b, paramIOException);
+        }
+        return;
       }
+      label199:
+      boolean bool = false;
+      continue;
+      label204:
+      bool = true;
+      continue;
+      label209:
+      bool = false;
+      continue;
+      label214:
+      paramIOException = null;
     }
   }
   
@@ -460,132 +453,58 @@ public final class f
     if ((!d) && (!Thread.holdsLock(this.g))) {
       throw new AssertionError();
     }
-    if (this.k != null) {
-      throw new IllegalStateException();
+    if (this.k == null)
+    {
+      this.k = paramc;
+      this.l = paramBoolean;
+      paramc.d.add(new a(this, this.h));
+      return;
     }
-    this.k = paramc;
-    this.l = paramBoolean;
-    paramc.d.add(new a(this, this.h));
+    throw new IllegalStateException();
   }
   
-  /* Error */
   public void a(boolean paramBoolean, fl paramfl, long paramLong, IOException paramIOException)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 56	okhttp3/internal/connection/f:c	Lokhttp3/p;
-    //   4: aload_0
-    //   5: getfield 54	okhttp3/internal/connection/f:b	Lokhttp3/e;
-    //   8: lload_3
-    //   9: invokevirtual 288	okhttp3/p:b	(Lokhttp3/e;J)V
-    //   12: aload_0
-    //   13: getfield 50	okhttp3/internal/connection/f:g	Lokhttp3/j;
-    //   16: astore 6
-    //   18: aload 6
-    //   20: monitorenter
-    //   21: aload_2
-    //   22: ifnull +11 -> 33
-    //   25: aload_2
-    //   26: aload_0
-    //   27: getfield 80	okhttp3/internal/connection/f:o	Lcom/tencent/token/fl;
-    //   30: if_acmpeq +50 -> 80
-    //   33: new 122	java/lang/IllegalStateException
-    //   36: dup
-    //   37: new 290	java/lang/StringBuilder
-    //   40: dup
-    //   41: invokespecial 291	java/lang/StringBuilder:<init>	()V
-    //   44: ldc_w 293
-    //   47: invokevirtual 297	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: aload_0
-    //   51: getfield 80	okhttp3/internal/connection/f:o	Lcom/tencent/token/fl;
-    //   54: invokevirtual 300	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   57: ldc_w 302
-    //   60: invokevirtual 297	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: aload_2
-    //   64: invokevirtual 300	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   67: invokevirtual 306	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   70: invokespecial 127	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
-    //   73: athrow
-    //   74: astore_2
-    //   75: aload 6
-    //   77: monitorexit
-    //   78: aload_2
-    //   79: athrow
-    //   80: iload_1
-    //   81: ifne +18 -> 99
-    //   84: aload_0
-    //   85: getfield 84	okhttp3/internal/connection/f:k	Lokhttp3/internal/connection/c;
-    //   88: astore_2
-    //   89: aload_2
-    //   90: aload_2
-    //   91: getfield 213	okhttp3/internal/connection/c:b	I
-    //   94: iconst_1
-    //   95: iadd
-    //   96: putfield 213	okhttp3/internal/connection/c:b	I
-    //   99: aload_0
-    //   100: getfield 84	okhttp3/internal/connection/f:k	Lokhttp3/internal/connection/c;
-    //   103: astore_2
-    //   104: aload_0
-    //   105: iload_1
-    //   106: iconst_0
-    //   107: iconst_1
-    //   108: invokespecial 229	okhttp3/internal/connection/f:a	(ZZZ)Ljava/net/Socket;
-    //   111: astore 7
-    //   113: aload_0
-    //   114: getfield 84	okhttp3/internal/connection/f:k	Lokhttp3/internal/connection/c;
-    //   117: ifnull +5 -> 122
-    //   120: aconst_null
-    //   121: astore_2
-    //   122: aload_0
-    //   123: getfield 82	okhttp3/internal/connection/f:m	Z
-    //   126: istore_1
-    //   127: aload 6
-    //   129: monitorexit
-    //   130: aload 7
-    //   132: invokestatic 148	com/tencent/token/fc:a	(Ljava/net/Socket;)V
-    //   135: aload_2
-    //   136: ifnull +15 -> 151
-    //   139: aload_0
-    //   140: getfield 56	okhttp3/internal/connection/f:c	Lokhttp3/p;
-    //   143: aload_0
-    //   144: getfield 54	okhttp3/internal/connection/f:b	Lokhttp3/e;
-    //   147: aload_2
-    //   148: invokevirtual 153	okhttp3/p:b	(Lokhttp3/e;Lokhttp3/i;)V
-    //   151: aload 5
-    //   153: ifnull +17 -> 170
-    //   156: aload_0
-    //   157: getfield 56	okhttp3/internal/connection/f:c	Lokhttp3/p;
-    //   160: aload_0
-    //   161: getfield 54	okhttp3/internal/connection/f:b	Lokhttp3/e;
-    //   164: aload 5
-    //   166: invokevirtual 309	okhttp3/p:a	(Lokhttp3/e;Ljava/io/IOException;)V
-    //   169: return
-    //   170: iload_1
-    //   171: ifeq -2 -> 169
-    //   174: aload_0
-    //   175: getfield 56	okhttp3/internal/connection/f:c	Lokhttp3/p;
-    //   178: aload_0
-    //   179: getfield 54	okhttp3/internal/connection/f:b	Lokhttp3/e;
-    //   182: invokevirtual 312	okhttp3/p:g	(Lokhttp3/e;)V
-    //   185: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	186	0	this	f
-    //   0	186	1	paramBoolean	boolean
-    //   0	186	2	paramfl	fl
-    //   0	186	3	paramLong	long
-    //   0	186	5	paramIOException	IOException
-    //   16	112	6	localj	j
-    //   111	20	7	localSocket	Socket
-    // Exception table:
-    //   from	to	target	type
-    //   25	33	74	finally
-    //   33	74	74	finally
-    //   75	78	74	finally
-    //   84	99	74	finally
-    //   99	113	74	finally
-    //   113	120	74	finally
-    //   122	130	74	finally
+    this.c.b(this.b, paramLong);
+    j localj = this.g;
+    if (paramfl != null) {}
+    try
+    {
+      if (paramfl == this.o)
+      {
+        if (!paramBoolean)
+        {
+          paramfl = this.k;
+          paramfl.b += 1;
+        }
+        paramfl = this.k;
+        Socket localSocket = a(paramBoolean, false, true);
+        if (this.k != null) {
+          paramfl = null;
+        }
+        paramBoolean = this.m;
+        fc.a(localSocket);
+        if (paramfl != null) {
+          this.c.b(this.b, paramfl);
+        }
+        if (paramIOException != null)
+        {
+          this.c.a(this.b, paramIOException);
+          return;
+        }
+        if (paramBoolean) {
+          this.c.g(this.b);
+        }
+        return;
+      }
+      paramIOException = new StringBuilder();
+      paramIOException.append("expected ");
+      paramIOException.append(this.o);
+      paramIOException.append(" but was ");
+      paramIOException.append(paramfl);
+      throw new IllegalStateException(paramIOException.toString());
+    }
+    finally {}
   }
   
   public ab b()
@@ -645,7 +564,14 @@ public final class f
   
   public boolean f()
   {
-    return (this.f != null) || ((this.e != null) && (this.e.a())) || (this.i.a());
+    if (this.f == null)
+    {
+      e.a locala = this.e;
+      if (((locala == null) || (!locala.a())) && (!this.i.a())) {
+        return false;
+      }
+    }
+    return true;
   }
   
   public String toString()

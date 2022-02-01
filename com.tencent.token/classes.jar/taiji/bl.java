@@ -21,22 +21,19 @@ public class bl
     try
     {
       paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-      if (paramContext == null) {
-        break label37;
-      }
-      paramContext = paramContext.getDeviceId();
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        Object localObject;
-        paramContext = "00000000000001";
-        continue;
-        label37:
+      if (paramContext != null) {
+        paramContext = paramContext.getDeviceId();
+      } else {
         paramContext = null;
       }
     }
+    catch (Throwable paramContext)
+    {
+      label27:
+      Object localObject;
+      break label27;
+    }
+    paramContext = "00000000000001";
     localObject = paramContext;
     if (paramContext == null) {
       localObject = "00000000000000";
@@ -91,75 +88,80 @@ public class bl
   
   public static String d()
   {
-    Object localObject3;
-    for (;;)
+    String str1;
+    for (Object localObject = null;; str1 = null)
     {
       try
       {
-        Object localObject1 = Build.MANUFACTURER;
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        String str2 = Build.MANUFACTURER;
+        if (TextUtils.isEmpty(str2)) {
           return null;
         }
-        localObject1 = ((String)localObject1).toLowerCase(Locale.ENGLISH);
-        if (((String)localObject1).contains("huawei")) {
+        str2 = str2.toLowerCase(Locale.ENGLISH);
+        if (str2.contains("huawei")) {
           return a("ro.build.version.emui");
         }
-        if (((String)localObject1).contains("xiaomi")) {
+        if (str2.contains("xiaomi")) {
           return a("ro.miui.ui.version.name");
         }
-        if (((String)localObject1).contains("gionee"))
+        if (str2.contains("gionee"))
         {
-          localObject1 = a("ro.gn.extvernumber");
-          localObject3 = localObject1;
-          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            break;
+          localObject = a("ro.gn.extvernumber");
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            return a("ro.build.display.id");
           }
-          return a("ro.build.display.id");
         }
-        if (((String)localObject1).contains("vivo"))
+        else
         {
-          localObject1 = a("ro.vivo.os.name");
-          localObject3 = a("ro.vivo.os.version");
-          if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject3))) {
-            return (String)localObject1 + "_" + (String)localObject3;
+          if (str2.contains("vivo"))
+          {
+            localObject = a("ro.vivo.os.name");
+            str2 = a("ro.vivo.os.version");
+            if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str2)))
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append("_");
+              localStringBuilder.append(str2);
+              return localStringBuilder.toString();
+            }
+            return a("ro.vivo.os.build.display.id");
           }
-          return a("ro.vivo.os.build.display.id");
-        }
-        if (((String)localObject1).contains("meizu")) {
-          return a("ro.build.display.id");
-        }
-        if (((String)localObject1).contains("lenovo"))
-        {
-          localObject1 = a("ro.lenovo.lvp.version");
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label253;
+          if (str2.contains("meizu")) {
+            return a("ro.build.display.id");
           }
-          localObject1 = ((String)localObject1).split("_");
-          if ((localObject1 == null) || (localObject1.length <= 0)) {
-            break label253;
+          if (str2.contains("lenovo"))
+          {
+            localObject = a("ro.lenovo.lvp.version");
+            if (TextUtils.isEmpty((CharSequence)localObject)) {
+              continue;
+            }
+            localObject = ((String)localObject).split("_");
+            if ((localObject == null) || (localObject.length <= 0)) {
+              continue;
+            }
+            localObject = localObject[0];
+            if (!TextUtils.isEmpty((CharSequence)localObject)) {
+              break;
+            }
+            return a("ro.build.version.incremental");
           }
-          localObject1 = localObject1[0];
-          localObject3 = localObject1;
-          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            break;
+          if (str2.contains("letv")) {
+            return a("ro.letv.eui");
           }
-          return a("ro.build.version.incremental");
-        }
-        if (((String)localObject1).contains("letv")) {
-          return a("ro.letv.eui");
-        }
-        if (((String)localObject1).contains("oppo"))
-        {
-          localObject1 = a("ro.build.version.opporom");
-          return localObject1;
+          if (str2.contains("oppo")) {
+            localObject = a("ro.build.version.opporom");
+          }
+          return localObject;
         }
       }
-      catch (Throwable localThrowable) {}
-      return null;
-      label253:
-      Object localObject2 = null;
+      catch (Throwable localThrowable)
+      {
+        return null;
+      }
+      return localThrowable;
     }
-    return localObject3;
+    return str1;
   }
 }
 

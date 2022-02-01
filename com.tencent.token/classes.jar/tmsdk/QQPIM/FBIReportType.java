@@ -2,25 +2,17 @@ package tmsdk.QQPIM;
 
 public final class FBIReportType
 {
-  public static final FBIReportType FBI_FEEDBACK;
+  public static final FBIReportType FBI_FEEDBACK = new FBIReportType(1, 1, "FBI_FEEDBACK");
   public static final FBIReportType FBI_REPORT;
   public static final int _FBI_FEEDBACK = 1;
   public static final int _FBI_REPORT = 0;
-  private static FBIReportType[] ey;
+  private static FBIReportType[] ey = new FBIReportType[2];
   private int eb;
   private String ec = new String();
   
   static
   {
-    if (!FBIReportType.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      ey = new FBIReportType[2];
-      FBI_REPORT = new FBIReportType(0, 0, "FBI_REPORT");
-      FBI_FEEDBACK = new FBIReportType(1, 1, "FBI_FEEDBACK");
-      return;
-    }
+    FBI_REPORT = new FBIReportType(0, 0, "FBI_REPORT");
   }
   
   private FBIReportType(int paramInt1, int paramInt2, String paramString)
@@ -33,15 +25,16 @@ public final class FBIReportType
   public static FBIReportType convert(int paramInt)
   {
     int i = 0;
-    while (i < ey.length)
+    for (;;)
     {
-      if (ey[i].value() == paramInt) {
+      FBIReportType[] arrayOfFBIReportType = ey;
+      if (i >= arrayOfFBIReportType.length) {
+        break;
+      }
+      if (arrayOfFBIReportType[i].value() == paramInt) {
         return ey[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -49,15 +42,16 @@ public final class FBIReportType
   public static FBIReportType convert(String paramString)
   {
     int i = 0;
-    while (i < ey.length)
+    for (;;)
     {
-      if (ey[i].toString().equals(paramString)) {
+      FBIReportType[] arrayOfFBIReportType = ey;
+      if (i >= arrayOfFBIReportType.length) {
+        break;
+      }
+      if (arrayOfFBIReportType[i].toString().equals(paramString)) {
         return ey[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }

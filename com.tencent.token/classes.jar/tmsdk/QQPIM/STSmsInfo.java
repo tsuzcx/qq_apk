@@ -27,16 +27,6 @@ public final class STSmsInfo
   public String strsimtype = "";
   public String strversion = "";
   
-  static
-  {
-    if (!STSmsInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public STSmsInfo() {}
   
   public STSmsInfo(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, int paramInt3, String paramString6, int paramInt4, boolean paramBoolean, String paramString7, stStateInfo paramstStateInfo, int paramInt5, stAdditionInfo paramstAdditionInfo)
@@ -65,29 +55,87 @@ public final class STSmsInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (STSmsInfo)paramObject;
-    } while ((!JceUtil.equals(this.ntime, paramObject.ntime)) || (!JceUtil.equals(this.sender, paramObject.sender)) || (!JceUtil.equals(this.sms, paramObject.sms)) || (!JceUtil.equals(this.strarea, paramObject.strarea)) || (!JceUtil.equals(this.strsimtype, paramObject.strsimtype)) || (!JceUtil.equals(this.strqueryorder, paramObject.strqueryorder)) || (!JceUtil.equals(this.nrework, paramObject.nrework)) || (!JceUtil.equals(this.ntrafficnum, paramObject.ntrafficnum)) || (!JceUtil.equals(this.strHardInfo, paramObject.strHardInfo)) || (!JceUtil.equals(this.nCollocateNum, paramObject.nCollocateNum)) || (!JceUtil.equals(this.bAuto, paramObject.bAuto)) || (!JceUtil.equals(this.strversion, paramObject.strversion)) || (!JceUtil.equals(this.stateinfo, paramObject.stateinfo)) || (!JceUtil.equals(this.nSys, paramObject.nSys)) || (!JceUtil.equals(this.additionalInfo, paramObject.additionalInfo)));
-    return true;
+    }
+    paramObject = (STSmsInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.ntime, paramObject.ntime))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.sender, paramObject.sender))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.sms, paramObject.sms))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.strarea, paramObject.strarea))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.strsimtype, paramObject.strsimtype))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.strqueryorder, paramObject.strqueryorder))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.nrework, paramObject.nrework))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.ntrafficnum, paramObject.ntrafficnum))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.strHardInfo, paramObject.strHardInfo))
+                    {
+                      bool1 = bool2;
+                      if (JceUtil.equals(this.nCollocateNum, paramObject.nCollocateNum))
+                      {
+                        bool1 = bool2;
+                        if (JceUtil.equals(this.bAuto, paramObject.bAuto))
+                        {
+                          bool1 = bool2;
+                          if (JceUtil.equals(this.strversion, paramObject.strversion))
+                          {
+                            bool1 = bool2;
+                            if (JceUtil.equals(this.stateinfo, paramObject.stateinfo))
+                            {
+                              bool1 = bool2;
+                              if (JceUtil.equals(this.nSys, paramObject.nSys))
+                              {
+                                bool1 = bool2;
+                                if (JceUtil.equals(this.additionalInfo, paramObject.additionalInfo)) {
+                                  bool1 = true;
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -288,31 +336,38 @@ public final class STSmsInfo
     paramJceOutputStream.write(this.ntime, 0);
     paramJceOutputStream.write(this.sender, 1);
     paramJceOutputStream.write(this.sms, 2);
-    if (this.strarea != null) {
-      paramJceOutputStream.write(this.strarea, 3);
+    Object localObject = this.strarea;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.strsimtype != null) {
-      paramJceOutputStream.write(this.strsimtype, 4);
+    localObject = this.strsimtype;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.strqueryorder != null) {
-      paramJceOutputStream.write(this.strqueryorder, 5);
+    localObject = this.strqueryorder;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.nrework, 6);
     paramJceOutputStream.write(this.ntrafficnum, 7);
-    if (this.strHardInfo != null) {
-      paramJceOutputStream.write(this.strHardInfo, 8);
+    localObject = this.strHardInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.nCollocateNum, 9);
     paramJceOutputStream.write(this.bAuto, 10);
-    if (this.strversion != null) {
-      paramJceOutputStream.write(this.strversion, 11);
+    localObject = this.strversion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.stateinfo != null) {
-      paramJceOutputStream.write(this.stateinfo, 12);
+    localObject = this.stateinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
     paramJceOutputStream.write(this.nSys, 13);
-    if (this.additionalInfo != null) {
-      paramJceOutputStream.write(this.additionalInfo, 14);
+    localObject = this.additionalInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
   }
 }

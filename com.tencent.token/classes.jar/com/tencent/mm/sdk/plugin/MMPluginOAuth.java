@@ -58,7 +58,9 @@ public class MMPluginOAuth
       }
       paramHandler.close();
     }
-    Log.i("MicroMsg.SDK.MMPluginOAuth", "request token = " + this.bI);
+    paramHandler = new StringBuilder("request token = ");
+    paramHandler.append(this.bI);
+    Log.i("MicroMsg.SDK.MMPluginOAuth", paramHandler.toString());
     if (this.bI == null)
     {
       Log.e("MicroMsg.SDK.MMPluginOAuth", "request token failed");
@@ -74,17 +76,24 @@ public class MMPluginOAuth
     paramHandler.setClassName("com.tencent.mm", "com.tencent.mm.plugin.PluginOAuthUI");
     paramHandler.putExtra("com.tencent.mm.sdk.plugin.Intent.REQUEST_TOKEN", this.bI);
     paramHandler.putExtra("com.tencent.mm.sdk.plugin.Intent.PACKAGE", this.q.getPackageName());
-    if (this.q.getPackageManager().resolveActivity(paramHandler, 65536) == null) {
-      Log.e("MicroMsg.SDK.MMPluginOAuth", "show oauth page failed, activity not found");
-    }
-    for (int i = 0; i != 0; i = 1)
+    int i;
+    if (this.q.getPackageManager().resolveActivity(paramHandler, 65536) == null)
     {
-      Receiver.register(this.bI, this);
-      return true;
+      Log.e("MicroMsg.SDK.MMPluginOAuth", "show oauth page failed, activity not found");
+      i = 0;
+    }
+    else
+    {
       if (!(this.q instanceof Activity)) {
         paramHandler.setFlags(268435456);
       }
       this.q.startActivity(paramHandler);
+      i = 1;
+    }
+    if (i != 0)
+    {
+      Receiver.register(this.bI, this);
+      return true;
     }
     return false;
   }
@@ -127,21 +136,20 @@ public class MMPluginOAuth
       Log.d("MicroMsg.SDK.MMPluginOAuth", "receive oauth result");
       String str = paramIntent.getStringExtra("com.tencent.mm.sdk.plugin.Intent.REQUEST_TOKEN");
       paramIntent = paramIntent.getStringExtra("com.tencent.mm.sdk.plugin.Intent.ACCESS_TOKEN");
-      if (this.bK != null) {
-        paramContext = this.bK;
-      }
-      for (;;)
+      paramContext = this.bK;
+      if (paramContext == null)
       {
-        new Handler().post(new MMPluginOAuth.Receiver.1(this, paramContext, paramIntent));
-        return;
         paramContext = (MMPluginOAuth)ah.get(str);
         if (paramContext == null)
         {
-          Log.e("MicroMsg.SDK.MMPluginOAuth", "oauth unregistered, request token = " + str);
+          paramContext = new StringBuilder("oauth unregistered, request token = ");
+          paramContext.append(str);
+          Log.e("MicroMsg.SDK.MMPluginOAuth", paramContext.toString());
           return;
         }
         unregister(MMPluginOAuth.a(paramContext));
       }
+      new Handler().post(new MMPluginOAuth.Receiver.1(this, paramContext, paramIntent));
     }
   }
 }

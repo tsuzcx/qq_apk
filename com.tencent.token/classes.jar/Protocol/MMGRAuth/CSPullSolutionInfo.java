@@ -30,11 +30,13 @@ public final class CSPullSolutionInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.pullType != 0) {
-      paramJceOutputStream.write(this.pullType, 0);
+    int i = this.pullType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.adapterIdList != null) {
-      paramJceOutputStream.write(this.adapterIdList, 1);
+    ArrayList localArrayList = this.adapterIdList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }

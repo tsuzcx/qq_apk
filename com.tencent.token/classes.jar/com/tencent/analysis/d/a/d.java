@@ -13,7 +13,12 @@ public final class d
   
   public final String toString()
   {
-    return "Key [keySerial=" + this.a + ", aesCoding=" + this.b + "]";
+    StringBuilder localStringBuilder = new StringBuilder("Key [keySerial=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", aesCoding=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

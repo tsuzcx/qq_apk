@@ -47,7 +47,10 @@ public class EvalAccountResult
   public EvalAccountResult(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
     JSONObject localJSONObject = paramJSONObject1.getJSONObject("check_result");
-    g.b("check_result:" + localJSONObject.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("check_result:");
+    localStringBuilder.append(localJSONObject.toString());
+    g.b(localStringBuilder.toString());
     this.mStatus = localJSONObject.getInt("status");
     this.mSubStatus = localJSONObject.getInt("sub_status");
     this.mTitle = localJSONObject.getString("title");
@@ -63,25 +66,32 @@ public class EvalAccountResult
       this.mCanZzb = localJSONObject.getInt("can_zzb");
     }
     this.mSummary = paramJSONObject2.getString("summary");
-    if (paramJSONObject2.getInt("out_of_date") == 0) {}
-    for (boolean bool = false;; bool = true)
+    int j = paramJSONObject2.getInt("out_of_date");
+    int i = 0;
+    boolean bool;
+    if (j == 0) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    this.mOutOfDate = bool;
+    if (this.mOutOfDate)
     {
-      this.mOutOfDate = bool;
-      if (this.mOutOfDate)
-      {
-        this.mUpdateInfo = paramJSONObject2.getString("update_note");
-        if (paramJSONObject2.has("market_url")) {
-          this.mMarketUrl = paramJSONObject2.getString("market_url");
-        }
+      this.mUpdateInfo = paramJSONObject2.getString("update_note");
+      if (paramJSONObject2.has("market_url")) {
+        this.mMarketUrl = paramJSONObject2.getString("market_url");
       }
-      paramJSONObject1 = paramJSONObject1.getJSONArray("recommends");
-      while (i < paramJSONObject1.length())
-      {
-        g.b("一级推荐列表" + paramJSONObject1.getJSONObject(i).toString());
-        paramJSONObject2 = new RecommendItem(paramJSONObject1.getJSONObject(i));
-        this.mRecommends.add(paramJSONObject2);
-        i += 1;
-      }
+    }
+    paramJSONObject1 = paramJSONObject1.getJSONArray("recommends");
+    while (i < paramJSONObject1.length())
+    {
+      paramJSONObject2 = new StringBuilder();
+      paramJSONObject2.append("一级推荐列表");
+      paramJSONObject2.append(paramJSONObject1.getJSONObject(i).toString());
+      g.b(paramJSONObject2.toString());
+      paramJSONObject2 = new RecommendItem(paramJSONObject1.getJSONObject(i));
+      this.mRecommends.add(paramJSONObject2);
+      i += 1;
     }
   }
   
@@ -96,7 +106,10 @@ public class EvalAccountResult
     
     public DetailItem(JSONObject paramJSONObject)
     {
-      g.b("DetailItem:" + paramJSONObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DetailItem:");
+      localStringBuilder.append(paramJSONObject.toString());
+      g.b(localStringBuilder.toString());
       this.mRecommendId = paramJSONObject.getInt("recommend_id");
       this.mDegree = paramJSONObject.getInt("degree");
       this.mTitle = paramJSONObject.getString("title");
@@ -126,9 +139,12 @@ public class EvalAccountResult
       int i = 0;
       while (i < paramJSONObject.length())
       {
-        g.b("二级推荐列表" + paramJSONObject.getJSONObject(i).toString());
-        EvalAccountResult.DetailItem localDetailItem = new EvalAccountResult.DetailItem(paramJSONObject.getJSONObject(i));
-        this.mDetails.add(localDetailItem);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("二级推荐列表");
+        ((StringBuilder)localObject).append(paramJSONObject.getJSONObject(i).toString());
+        g.b(((StringBuilder)localObject).toString());
+        localObject = new EvalAccountResult.DetailItem(paramJSONObject.getJSONObject(i));
+        this.mDetails.add(localObject);
         i += 1;
       }
     }

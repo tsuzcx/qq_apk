@@ -103,134 +103,177 @@ public final class a
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.a, 0);
-    if (this.b != null) {
-      paramJceOutputStream.write(this.b, 1);
+    String str = this.b;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 2);
+    str = this.c;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.d != null) {
-      paramJceOutputStream.write(this.d, 3);
+    str = this.d;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.e != null) {
-      paramJceOutputStream.write(this.e, 4);
+    str = this.e;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (1 != this.f) {
-      paramJceOutputStream.write(this.f, 5);
+    int i1 = this.f;
+    if (1 != i1) {
+      paramJceOutputStream.write(i1, 5);
     }
-    if (this.g != null) {
-      paramJceOutputStream.write(this.g, 6);
+    str = this.g;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.h != 0) {
-      paramJceOutputStream.write(this.h, 7);
+    i1 = this.h;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 7);
     }
-    if (this.i != null) {
-      paramJceOutputStream.write(this.i, 8);
+    str = this.i;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.j != 0) {
-      paramJceOutputStream.write(this.j, 9);
+    i1 = this.j;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 9);
     }
-    if (this.k != 0) {
-      paramJceOutputStream.write(this.k, 10);
+    i1 = this.k;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 10);
     }
-    if (this.l) {
-      paramJceOutputStream.write(this.l, 11);
+    boolean bool = this.l;
+    if (bool) {
+      paramJceOutputStream.write(bool, 11);
     }
-    if (this.m != null) {
-      paramJceOutputStream.write(this.m, 12);
+    str = this.m;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
-    if (this.n != null) {
-      paramJceOutputStream.write(this.n, 13);
+    str = this.n;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
-    if (this.o != 0) {
-      paramJceOutputStream.write(this.o, 14);
+    i1 = this.o;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 14);
     }
-    if (this.p != null) {
-      paramJceOutputStream.write(this.p, 15);
+    str = this.p;
+    if (str != null) {
+      paramJceOutputStream.write(str, 15);
     }
-    if (this.q != 0) {
-      paramJceOutputStream.write(this.q, 16);
+    short s1 = this.q;
+    if (s1 != 0) {
+      paramJceOutputStream.write(s1, 16);
     }
-    if (this.r != 0) {
-      paramJceOutputStream.write(this.r, 17);
+    i1 = this.r;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 17);
     }
-    if (this.s != null) {
-      paramJceOutputStream.write(this.s, 18);
+    str = this.s;
+    if (str != null) {
+      paramJceOutputStream.write(str, 18);
     }
-    if (this.t != null) {
-      paramJceOutputStream.write(this.t, 19);
+    str = this.t;
+    if (str != null) {
+      paramJceOutputStream.write(str, 19);
     }
-    if (this.u != 0) {
-      paramJceOutputStream.write(this.u, 20);
+    i1 = this.u;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 20);
     }
-    if (this.v != null) {
-      paramJceOutputStream.write(this.v, 21);
+    str = this.v;
+    if (str != null) {
+      paramJceOutputStream.write(str, 21);
     }
-    if (this.w != 0L) {
-      paramJceOutputStream.write(this.w, 22);
+    long l1 = this.w;
+    if (l1 != 0L) {
+      paramJceOutputStream.write(l1, 22);
     }
-    if (this.x != 0L) {
-      paramJceOutputStream.write(this.x, 23);
+    l1 = this.x;
+    if (l1 != 0L) {
+      paramJceOutputStream.write(l1, 23);
     }
-    if (this.y != 0L) {
-      paramJceOutputStream.write(this.y, 24);
+    l1 = this.y;
+    if (l1 != 0L) {
+      paramJceOutputStream.write(l1, 24);
     }
-    if (this.z != null) {
-      paramJceOutputStream.write(this.z, 25);
+    str = this.z;
+    if (str != null) {
+      paramJceOutputStream.write(str, 25);
     }
-    if (this.A != null) {
-      paramJceOutputStream.write(this.A, 26);
+    str = this.A;
+    if (str != null) {
+      paramJceOutputStream.write(str, 26);
     }
-    if (this.B != null) {
-      paramJceOutputStream.write(this.B, 27);
+    str = this.B;
+    if (str != null) {
+      paramJceOutputStream.write(str, 27);
     }
-    if (this.C != null) {
-      paramJceOutputStream.write(this.C, 28);
+    str = this.C;
+    if (str != null) {
+      paramJceOutputStream.write(str, 28);
     }
-    if (this.D != null) {
-      paramJceOutputStream.write(this.D, 29);
+    str = this.D;
+    if (str != null) {
+      paramJceOutputStream.write(str, 29);
     }
-    if (this.E != null) {
-      paramJceOutputStream.write(this.E, 30);
+    str = this.E;
+    if (str != null) {
+      paramJceOutputStream.write(str, 30);
     }
-    if (this.F != null) {
-      paramJceOutputStream.write(this.F, 31);
+    str = this.F;
+    if (str != null) {
+      paramJceOutputStream.write(str, 31);
     }
-    if (this.G != null) {
-      paramJceOutputStream.write(this.G, 32);
+    str = this.G;
+    if (str != null) {
+      paramJceOutputStream.write(str, 32);
     }
-    if (this.H != 0) {
-      paramJceOutputStream.write(this.H, 33);
+    i1 = this.H;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 33);
     }
-    if (this.I != 0) {
-      paramJceOutputStream.write(this.I, 34);
+    i1 = this.I;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 34);
     }
-    if (this.J) {
-      paramJceOutputStream.write(this.J, 35);
+    bool = this.J;
+    if (bool) {
+      paramJceOutputStream.write(bool, 35);
     }
-    if (this.K != null) {
-      paramJceOutputStream.write(this.K, 36);
+    str = this.K;
+    if (str != null) {
+      paramJceOutputStream.write(str, 36);
     }
-    if (this.L != null) {
-      paramJceOutputStream.write(this.L, 37);
+    str = this.L;
+    if (str != null) {
+      paramJceOutputStream.write(str, 37);
     }
-    if (this.M != null) {
-      paramJceOutputStream.write(this.M, 38);
+    str = this.M;
+    if (str != null) {
+      paramJceOutputStream.write(str, 38);
     }
-    if (this.N) {
-      paramJceOutputStream.write(this.N, 39);
+    bool = this.N;
+    if (bool) {
+      paramJceOutputStream.write(bool, 39);
     }
-    if (this.O) {
-      paramJceOutputStream.write(this.O, 40);
+    bool = this.O;
+    if (bool) {
+      paramJceOutputStream.write(bool, 40);
     }
-    if (this.P != null) {
-      paramJceOutputStream.write(this.P, 41);
+    str = this.P;
+    if (str != null) {
+      paramJceOutputStream.write(str, 41);
     }
-    if (this.Q != 1) {
-      paramJceOutputStream.write(this.Q, 42);
+    i1 = this.Q;
+    if (i1 != 1) {
+      paramJceOutputStream.write(i1, 42);
     }
-    if (this.R != null) {
-      paramJceOutputStream.write(this.R, 43);
+    str = this.R;
+    if (str != null) {
+      paramJceOutputStream.write(str, 43);
     }
   }
 }

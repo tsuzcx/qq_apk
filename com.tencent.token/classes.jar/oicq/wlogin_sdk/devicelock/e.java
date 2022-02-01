@@ -13,9 +13,11 @@ public class e
   
   public void fill_body(byte[] paramArrayOfByte, int paramInt)
   {
-    if (paramInt > this._max - this._head_len)
+    int i = this._max;
+    int j = this._head_len;
+    if (paramInt > i - j)
     {
-      this._max = (this._head_len + paramInt + 64);
+      this._max = (j + paramInt + 64);
       byte[] arrayOfByte = new byte[this._max];
       System.arraycopy(this._buf, 0, arrayOfByte, 0, this._pos);
       this._buf = arrayOfByte;
@@ -36,15 +38,17 @@ public class e
   
   public byte[] get_buf()
   {
-    byte[] arrayOfByte = new byte[this._pos];
-    System.arraycopy(this._buf, 0, arrayOfByte, 0, this._pos);
+    int i = this._pos;
+    byte[] arrayOfByte = new byte[i];
+    System.arraycopy(this._buf, 0, arrayOfByte, 0, i);
     return arrayOfByte;
   }
   
   public byte[] get_data()
   {
-    byte[] arrayOfByte = new byte[this._body_len];
-    System.arraycopy(this._buf, this._head_len, arrayOfByte, 0, this._body_len);
+    int i = this._body_len;
+    byte[] arrayOfByte = new byte[i];
+    System.arraycopy(this._buf, this._head_len, arrayOfByte, 0, i);
     return arrayOfByte;
   }
   
@@ -71,7 +75,7 @@ public class e
     util.int16_to_buf(this._buf, paramInt, i);
     paramInt += 2;
     System.arraycopy(paramArrayOfByte, 0, this._buf, paramInt, i);
-    return i + paramInt;
+    return paramInt + i;
   }
   
   public int put_int16(int paramInt1, int paramInt2)
@@ -114,21 +118,27 @@ public class e
       parse();
       return 0;
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      label68:
+      break label68;
+    }
     return -1009;
   }
   
   public int set_data(byte[] paramArrayOfByte, int paramInt)
   {
-    if (this._head_len + paramInt > this._max)
+    int i = this._head_len;
+    if (paramInt + i > this._max)
     {
-      this._max = (this._head_len + paramInt + 128);
+      this._max = (paramInt + i + 128);
       byte[] arrayOfByte = new byte[this._max];
-      System.arraycopy(this._buf, 0, arrayOfByte, 0, this._head_len);
+      System.arraycopy(this._buf, 0, arrayOfByte, 0, i);
       this._buf = arrayOfByte;
     }
-    this._pos = (this._head_len + paramInt);
-    System.arraycopy(paramArrayOfByte, 0, this._buf, this._head_len, paramInt);
+    i = this._head_len;
+    this._pos = (paramInt + i);
+    System.arraycopy(paramArrayOfByte, 0, this._buf, i, paramInt);
     this._body_len = paramInt;
     util.int16_to_buf(this._buf, 0, this._type);
     util.int16_to_buf(this._buf, 2, this._body_len);
@@ -137,7 +147,11 @@ public class e
       parse();
       return 0;
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      label110:
+      break label110;
+    }
     return -1009;
   }
   
@@ -152,8 +166,14 @@ public class e
     int i = 0;
     while (i < this._pos)
     {
-      str = str + Integer.toHexString(this._buf[i] >> 4 & 0xF);
-      str = str + Integer.toHexString(this._buf[i] & 0xF);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(Integer.toHexString(this._buf[i] >> 4 & 0xF));
+      str = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(Integer.toHexString(this._buf[i] & 0xF));
+      str = localStringBuilder.toString();
       i += 1;
     }
     return str;

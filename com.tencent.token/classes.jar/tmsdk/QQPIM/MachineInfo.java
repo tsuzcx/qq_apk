@@ -30,16 +30,6 @@ public final class MachineInfo
   public String uuid = "";
   public ProductVersion version = null;
   
-  static
-  {
-    if (!MachineInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public MachineInfo()
   {
     setLc(this.lc);
@@ -91,29 +81,99 @@ public final class MachineInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (MachineInfo)paramObject;
-    } while ((!JceUtil.equals(this.lc, paramObject.lc)) || (!JceUtil.equals(this.imei, paramObject.imei)) || (!JceUtil.equals(this.sp, paramObject.sp)) || (!JceUtil.equals(this.product, paramObject.product)) || (!JceUtil.equals(this.channelid, paramObject.channelid)) || (!JceUtil.equals(this.ip, paramObject.ip)) || (!JceUtil.equals(this.phonetype, paramObject.phonetype)) || (!JceUtil.equals(this.machine, paramObject.machine)) || (!JceUtil.equals(this.imsi, paramObject.imsi)) || (!JceUtil.equals(this.isbuildin, paramObject.isbuildin)) || (!JceUtil.equals(this.isroot, paramObject.isroot)) || (!JceUtil.equals(this.ct, paramObject.ct)) || (!JceUtil.equals(this.version, paramObject.version)) || (!JceUtil.equals(this.guid, paramObject.guid)) || (!JceUtil.equals(this.sdkversion, paramObject.sdkversion)) || (!JceUtil.equals(this.buildno, paramObject.buildno)) || (!JceUtil.equals(this.uuid, paramObject.uuid)) || (!JceUtil.equals(this.lang, paramObject.lang)));
-    return true;
+    }
+    paramObject = (MachineInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.lc, paramObject.lc))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.imei, paramObject.imei))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.sp, paramObject.sp))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.product, paramObject.product))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.channelid, paramObject.channelid))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.ip, paramObject.ip))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.phonetype, paramObject.phonetype))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.machine, paramObject.machine))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.imsi, paramObject.imsi))
+                    {
+                      bool1 = bool2;
+                      if (JceUtil.equals(this.isbuildin, paramObject.isbuildin))
+                      {
+                        bool1 = bool2;
+                        if (JceUtil.equals(this.isroot, paramObject.isroot))
+                        {
+                          bool1 = bool2;
+                          if (JceUtil.equals(this.ct, paramObject.ct))
+                          {
+                            bool1 = bool2;
+                            if (JceUtil.equals(this.version, paramObject.version))
+                            {
+                              bool1 = bool2;
+                              if (JceUtil.equals(this.guid, paramObject.guid))
+                              {
+                                bool1 = bool2;
+                                if (JceUtil.equals(this.sdkversion, paramObject.sdkversion))
+                                {
+                                  bool1 = bool2;
+                                  if (JceUtil.equals(this.buildno, paramObject.buildno))
+                                  {
+                                    bool1 = bool2;
+                                    if (JceUtil.equals(this.uuid, paramObject.uuid))
+                                    {
+                                      bool1 = bool2;
+                                      if (JceUtil.equals(this.lang, paramObject.lang)) {
+                                        bool1 = true;
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -348,34 +408,42 @@ public final class MachineInfo
     paramJceOutputStream.write(this.imei, 1);
     paramJceOutputStream.write(this.sp, 2);
     paramJceOutputStream.write(this.product, 3);
-    if (this.channelid != null) {
-      paramJceOutputStream.write(this.channelid, 4);
+    Object localObject = this.channelid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.ip != null) {
-      paramJceOutputStream.write(this.ip, 5);
+    localObject = this.ip;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.phonetype != null) {
-      paramJceOutputStream.write(this.phonetype, 6);
+    localObject = this.phonetype;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.machine != null) {
-      paramJceOutputStream.write(this.machine, 7);
+    localObject = this.machine;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.imsi != null) {
-      paramJceOutputStream.write(this.imsi, 8);
+    localObject = this.imsi;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.isbuildin, 9);
     paramJceOutputStream.write(this.isroot, 10);
     paramJceOutputStream.write(this.ct, 11);
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 12);
+    localObject = this.version;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
-    if (this.guid != null) {
-      paramJceOutputStream.write(this.guid, 13);
+    localObject = this.guid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.sdkversion, 14);
     paramJceOutputStream.write(this.buildno, 15);
-    if (this.uuid != null) {
-      paramJceOutputStream.write(this.uuid, 16);
+    localObject = this.uuid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
     paramJceOutputStream.write(this.lang, 17);
   }

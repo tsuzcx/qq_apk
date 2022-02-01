@@ -21,8 +21,9 @@ public final class ar
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.db != 0L) {
-      paramJceOutputStream.write(this.db, 0);
+    long l = this.db;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 0);
     }
   }
 }

@@ -35,63 +35,66 @@ class AppCompatProgressBarHelper
   
   private Drawable tileify(Drawable paramDrawable, boolean paramBoolean)
   {
-    int j = 0;
+    Object localObject1;
+    Object localObject2;
     if ((paramDrawable instanceof WrappedDrawable))
     {
-      localObject1 = ((WrappedDrawable)paramDrawable).getWrappedDrawable();
-      if (localObject1 != null)
+      localObject1 = (WrappedDrawable)paramDrawable;
+      localObject2 = ((WrappedDrawable)localObject1).getWrappedDrawable();
+      if (localObject2 != null)
       {
-        localObject1 = tileify((Drawable)localObject1, paramBoolean);
-        ((WrappedDrawable)paramDrawable).setWrappedDrawable((Drawable)localObject1);
+        ((WrappedDrawable)localObject1).setWrappedDrawable(tileify((Drawable)localObject2, paramBoolean));
+        return paramDrawable;
       }
     }
-    do
+    else
     {
-      return paramDrawable;
       if ((paramDrawable instanceof LayerDrawable))
       {
-        localObject2 = (LayerDrawable)paramDrawable;
-        int k = ((LayerDrawable)localObject2).getNumberOfLayers();
-        paramDrawable = new Drawable[k];
+        paramDrawable = (LayerDrawable)paramDrawable;
+        int k = paramDrawable.getNumberOfLayers();
+        localObject1 = new Drawable[k];
+        int j = 0;
         int i = 0;
-        if (i < k)
+        while (i < k)
         {
-          int m = ((LayerDrawable)localObject2).getId(i);
-          localObject1 = ((LayerDrawable)localObject2).getDrawable(i);
-          if ((m == 16908301) || (m == 16908303)) {}
-          for (paramBoolean = true;; paramBoolean = false)
-          {
-            paramDrawable[i] = tileify((Drawable)localObject1, paramBoolean);
-            i += 1;
-            break;
+          int m = paramDrawable.getId(i);
+          localObject2 = paramDrawable.getDrawable(i);
+          if ((m != 16908301) && (m != 16908303)) {
+            paramBoolean = false;
+          } else {
+            paramBoolean = true;
           }
-        }
-        localObject1 = new LayerDrawable(paramDrawable);
-        i = j;
-        for (;;)
-        {
-          paramDrawable = (Drawable)localObject1;
-          if (i >= k) {
-            break;
-          }
-          ((LayerDrawable)localObject1).setId(i, ((LayerDrawable)localObject2).getId(i));
+          localObject1[i] = tileify((Drawable)localObject2, paramBoolean);
           i += 1;
         }
+        localObject1 = new LayerDrawable((Drawable[])localObject1);
+        i = j;
+        while (i < k)
+        {
+          ((LayerDrawable)localObject1).setId(i, paramDrawable.getId(i));
+          i += 1;
+        }
+        return localObject1;
       }
-    } while (!(paramDrawable instanceof BitmapDrawable));
-    paramDrawable = (BitmapDrawable)paramDrawable;
-    Object localObject2 = paramDrawable.getBitmap();
-    if (this.mSampleTile == null) {
-      this.mSampleTile = ((Bitmap)localObject2);
+      if ((paramDrawable instanceof BitmapDrawable))
+      {
+        paramDrawable = (BitmapDrawable)paramDrawable;
+        localObject2 = paramDrawable.getBitmap();
+        if (this.mSampleTile == null) {
+          this.mSampleTile = ((Bitmap)localObject2);
+        }
+        localObject1 = new ShapeDrawable(getDrawableShape());
+        localObject2 = new BitmapShader((Bitmap)localObject2, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
+        ((ShapeDrawable)localObject1).getPaint().setShader((Shader)localObject2);
+        ((ShapeDrawable)localObject1).getPaint().setColorFilter(paramDrawable.getPaint().getColorFilter());
+        if (paramBoolean) {
+          return new ClipDrawable((Drawable)localObject1, 3, 1);
+        }
+        return localObject1;
+      }
     }
-    Object localObject1 = new ShapeDrawable(getDrawableShape());
-    localObject2 = new BitmapShader((Bitmap)localObject2, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
-    ((ShapeDrawable)localObject1).getPaint().setShader((Shader)localObject2);
-    ((ShapeDrawable)localObject1).getPaint().setColorFilter(paramDrawable.getPaint().getColorFilter());
-    if (paramBoolean) {
-      return new ClipDrawable((Drawable)localObject1, 3, 1);
-    }
-    return localObject1;
+    return paramDrawable;
   }
   
   private Drawable tileifyIndeterminate(Drawable paramDrawable)

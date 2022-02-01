@@ -28,19 +28,20 @@ public class WidgetReceiver
         ((AlarmManager)paramContext.getSystemService("alarm")).cancel(paramIntent);
         return;
       }
+      if (paramIntent.equals("com.tencent.token.widget.SPEECH"))
+      {
+        paramIntent = cc.c();
+        cd localcd = cd.a();
+        if ((!paramIntent.g()) && (!localcd.c()))
+        {
+          ce.a(paramContext).a(paramIntent.l(), 0);
+          return;
+        }
+      }
     }
     catch (Exception paramContext)
     {
       paramContext.printStackTrace();
-      return;
-    }
-    if (paramIntent.equals("com.tencent.token.widget.SPEECH"))
-    {
-      paramIntent = cc.c();
-      cd localcd = cd.a();
-      if ((!paramIntent.g()) && (!localcd.c())) {
-        ce.a(paramContext).a(paramIntent.l(), 0);
-      }
     }
   }
 }

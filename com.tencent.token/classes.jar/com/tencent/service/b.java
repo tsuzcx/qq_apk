@@ -6,7 +6,7 @@ import com.tencent.jni.FaceInfo;
 public class b
 {
   public FaceDetector a;
-  public f b;
+  public h b;
   public int c;
   public FaceInfo d;
 }

@@ -10,9 +10,13 @@ public class JceField
   static
   {
     int i = 0;
-    while (i < zs.length)
+    for (;;)
     {
-      zs[i] = new ZeroField(i);
+      ZeroField[] arrayOfZeroField = zs;
+      if (i >= arrayOfZeroField.length) {
+        break;
+      }
+      arrayOfZeroField[i] = new ZeroField(i);
       i += 1;
     }
   }
@@ -79,10 +83,13 @@ public class JceField
   
   public static JceField createZero(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= 255)) {
-      throw new JceDecodeException("invalid tag: " + paramInt);
+    if ((paramInt >= 0) && (paramInt < 255)) {
+      return zs[paramInt];
     }
-    return zs[paramInt];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("invalid tag: ");
+    localStringBuilder.append(paramInt);
+    throw new JceDecodeException(localStringBuilder.toString());
   }
   
   public int getTag()

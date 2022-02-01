@@ -132,7 +132,10 @@ public class ProtoDeviceInfoReport
       this.a.b(104);
       return null;
     }
-    return com.tencent.token.global.c.e() + "/cn/mbtoken3/mbtoken3_device_info_report_encrypt";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(com.tencent.token.global.c.e());
+    localStringBuilder.append("/cn/mbtoken3/mbtoken3_device_info_report_encrypt");
+    return localStringBuilder.toString();
   }
   
   protected void a(do paramdo)
@@ -154,12 +157,21 @@ public class ProtoDeviceInfoReport
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      com.tencent.token.global.g.a(this + "json=" + paramJSONObject);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this);
+      localStringBuilder.append("json=");
+      localStringBuilder.append(paramJSONObject);
+      com.tencent.token.global.g.a(localStringBuilder.toString());
       i = paramJSONObject.optInt("seq_id");
       if (i != this.d)
       {
         this.a.b(10030);
-        com.tencent.token.global.g.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.d);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.d);
+        com.tencent.token.global.g.c(paramJSONObject.toString());
         return;
       }
       if (1 == paramJSONObject.optInt("user_action_report"))
@@ -167,16 +179,19 @@ public class ProtoDeviceInfoReport
         a.a().a(true);
         com.tencent.token.global.g.c("isNeedUpload:true");
       }
-      for (;;)
+      else
       {
-        this.a.c();
-        return;
         a.a().a(false);
         com.tencent.token.global.g.c("isNeedUpload:false");
       }
+      this.a.c();
+      return;
     }
-    com.tencent.token.global.g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    com.tencent.token.global.g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   public do b(do paramdo)
@@ -189,7 +204,12 @@ public class ProtoDeviceInfoReport
     try
     {
       ((JSONObject)localObject).put("uin", this.f);
-      com.tencent.token.global.g.a("mRealUin=" + this.e + ",uinHash=" + this.f);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mRealUin=");
+      localStringBuilder.append(this.e);
+      localStringBuilder.append(",uinHash=");
+      localStringBuilder.append(this.f);
+      com.tencent.token.global.g.a(localStringBuilder.toString());
       ((JSONObject)localObject).put("seq_id", i);
       ((JSONObject)localObject).put("op_time", (int)(cc.c().s() / 1000L));
       ((JSONObject)localObject).put("token_seq", cc.c().k());

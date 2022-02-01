@@ -27,15 +27,16 @@ public class i
   
   public static i a(Context paramContext)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new i(paramContext);
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new i(paramContext);
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public String a()
@@ -109,7 +110,10 @@ public class i
       localObject2 = (Map.Entry)((Iterator)localObject1).next();
       if (localITaijiPreferenceManager.getString(String.valueOf(((Map.Entry)localObject2).getKey()), "").equals(paramHashMap.get(((Map.Entry)localObject2).getKey())))
       {
-        bn.b("TaijiShareDao", "kvStringProfile remove:" + ((Map.Entry)localObject2).getKey());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("kvStringProfile remove:");
+        localStringBuilder.append(((Map.Entry)localObject2).getKey());
+        bn.b("TaijiShareDao", localStringBuilder.toString());
         ((Iterator)localObject1).remove();
       }
     }
@@ -120,7 +124,10 @@ public class i
       localObject2 = (Integer)paramHashMap1.get(((Map.Entry)localObject1).getKey());
       if ((localObject2 == null) || (localITaijiPreferenceManager.getInt(String.valueOf(((Map.Entry)localObject1).getKey()), -1) == ((Integer)localObject2).intValue()))
       {
-        bn.b("TaijiShareDao", "kvIntProfile remove:" + ((Map.Entry)localObject1).getKey());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("kvIntProfile remove:");
+        ((StringBuilder)localObject2).append(((Map.Entry)localObject1).getKey());
+        bn.b("TaijiShareDao", ((StringBuilder)localObject2).toString());
         paramHashMap.remove();
       }
     }

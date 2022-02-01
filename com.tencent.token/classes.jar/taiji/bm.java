@@ -9,59 +9,59 @@ public class bm
 {
   public static boolean a(Context paramContext, String paramString)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
-        if (paramContext != null) {
-          return true;
-        }
+    if (paramContext != null) {
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
       }
-      catch (Throwable paramContext) {}
     }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+      return paramContext != null;
+    }
+    catch (Throwable paramContext) {}
     return false;
   }
   
   public static String b(Context paramContext, String paramString)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
-        if (paramContext != null)
-        {
-          paramContext = paramContext.versionName;
-          return paramContext;
-        }
+    if (paramContext != null) {
+      if (TextUtils.isEmpty(paramString)) {
+        return null;
       }
-      catch (Throwable paramContext) {}
     }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+      if (paramContext != null)
+      {
+        paramContext = paramContext.versionName;
+        return paramContext;
+      }
+      return null;
+    }
+    catch (Throwable paramContext) {}
     return null;
   }
   
   public static int c(Context paramContext, String paramString)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
-    {
-      return 0;
-      try
-      {
-        paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
-        if (paramContext != null)
-        {
-          int i = paramContext.versionCode;
-          return i;
-        }
+    if (paramContext != null) {
+      if (TextUtils.isEmpty(paramString)) {
+        return 0;
       }
-      catch (Throwable paramContext) {}
     }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+      if (paramContext != null)
+      {
+        int i = paramContext.versionCode;
+        return i;
+      }
+      return 0;
+    }
+    catch (Throwable paramContext) {}
     return 0;
   }
 }

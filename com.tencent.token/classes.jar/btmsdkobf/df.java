@@ -28,12 +28,13 @@ public class df
       this.mg = new cg(paramContext, paramBoolean2, paramcl, paramString);
       this.me = new cb(paramContext, paramcl, this.mg, this.hi);
       this.mf = new di(paramcl, this.mg, parama, paramd, this, paramd1, this.hF);
-    }
-    while (!cx.ay()) {
       return;
     }
-    this.mg = new cg(paramContext, paramBoolean2, paramcl, paramString);
-    this.me = new cb(paramContext, paramcl, this.mg, this.hi);
+    if (cx.ay())
+    {
+      this.mg = new cg(paramContext, paramBoolean2, paramcl, paramString);
+      this.me = new cb(paramContext, paramcl, this.mg, this.hi);
+    }
   }
   
   public static void a(cy.f paramf, int paramInt1, int paramInt2, int paramInt3)
@@ -45,22 +46,20 @@ public class df
       while (i < j)
       {
         as localas = (as)paramf.jT.get(i);
-        if (localas == null)
-        {
-          i += 1;
-        }
-        else
+        if (localas != null)
         {
           cv localcv = cv.by();
           int k = localas.bM;
           int m = localas.dc;
-          if (paramInt3 > 0) {}
-          for (String str = String.format("%d/%d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(j) });; str = null)
-          {
-            localcv.a("SharkWharf", k, m, localas, paramInt1, paramInt2, str);
-            break;
+          String str;
+          if (paramInt3 > 0) {
+            str = String.format("%d/%d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(j) });
+          } else {
+            str = null;
           }
+          localcv.a("SharkWharf", k, m, localas, paramInt1, paramInt2, str);
         }
+        i += 1;
       }
     }
   }
@@ -70,14 +69,14 @@ public class df
     boolean bool = true;
     if (paramf == null)
     {
-      localObject = new StringBuilder().append("onSendTcpFailed() sharkSend is null? ");
-      if (paramf == null) {}
-      for (;;)
-      {
-        eh.h("SharkWharf", bool);
-        return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onSendTcpFailed() sharkSend is null? ");
+      if (paramf != null) {
         bool = false;
       }
+      ((StringBuilder)localObject).append(bool);
+      eh.h("SharkWharf", ((StringBuilder)localObject).toString());
+      return;
     }
     if (paramf.jH == 1024)
     {
@@ -108,7 +107,10 @@ public class df
         if (paramAnonymousInt != 0) {
           i = paramAnonymousInt - 42000000;
         }
-        eh.e("SharkWharf", "onSendTcpFailed(), retry with http, http errCode: " + i);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onSendTcpFailed(), retry with http, http errCode: ");
+        localStringBuilder.append(i);
+        eh.e("SharkWharf", localStringBuilder.toString());
         df.a(paramf, 16, i, 0);
         df.a(df.this).a(false, i, paramAnonymousArrayOfByte, paramf);
       }
@@ -117,10 +119,10 @@ public class df
   
   public di bJ()
   {
-    if (!this.gW) {
-      throw new RuntimeException("getTmsTcpManager(), not in sending process!");
+    if (this.gW) {
+      return this.mf;
     }
-    return this.mf;
+    throw new RuntimeException("getTmsTcpManager(), not in sending process!");
   }
   
   public dp cq()
@@ -130,85 +132,99 @@ public class df
   
   public void d(final cy.f paramf)
   {
-    boolean bool3 = false;
-    try
-    {
-      if ((!this.gW) && (!cx.ay())) {
-        throw new RuntimeException("sendData(), not in sending or semiSending process!");
-      }
-    }
-    finally {}
-    if (paramf == null) {
-      eh.h("SharkWharf", "sendData(), sharkSend is null");
-    }
-    Object localObject;
-    int i;
     for (;;)
     {
-      return;
-      if ((paramf.jT != null) && (paramf.jT.size() > 0))
+      try
       {
-        localObject = paramf.jT.iterator();
-        i = 0;
-        while (((Iterator)localObject).hasNext())
-        {
-          as localas = (as)((Iterator)localObject).next();
-          eh.f("SharkWharf_CMDID", "[" + i + "]发包：cmd id:[" + localas.bM + "]seqNo:[" + localas.dc + "]refSeqNo:[" + localas.dd + "]retCode:[" + localas.df + "]dataRetCode:[" + localas.dg + "]");
-          i += 1;
+        if ((!this.gW) && (!cx.ay())) {
+          throw new RuntimeException("sendData(), not in sending or semiSending process!");
         }
-      }
-      if (!paramf.bQ()) {
-        break;
-      }
-      if (!paramf.jO) {
-        break label576;
-      }
-      eh.g("SharkWharf", "[tcp_control][http_control]sendData(), cloudcmd not allow tcp and this is tcp vip, failed!");
-      this.jv.b(true, -30000007, paramf);
-    }
-    label256:
-    boolean bool1;
-    label273:
-    label314:
-    int j;
-    if ((this.mf != null) && (!this.mf.cu()))
-    {
-      i = 1;
-      if ((i == 0) || (paramf.jH == 1024)) {
-        break label591;
-      }
-      bool1 = true;
-      if ((!cx.ay()) && (paramf.jH != 2048) && (paramf.jH != 512) && (!paramf.jO))
-      {
-        if (!bool1) {
-          break label597;
-        }
-        break label581;
-        j = i;
-        if (i != 0)
+        if (paramf == null)
         {
-          localObject = new StringBuilder().append("[tcp_control][http_control]sendData(), use http channel, for:  only http enable? false isSemiSendProcess? ").append(cx.ay()).append(" user select CHANNEL_LARGE_DATA ? ");
-          if (paramf.jH != 2048) {
-            break label602;
+          eh.h("SharkWharf", "sendData(), sharkSend is null");
+          return;
+        }
+        Object localObject;
+        if ((paramf.jT != null) && (paramf.jT.size() > 0))
+        {
+          localObject = paramf.jT.iterator();
+          i = 0;
+          if (((Iterator)localObject).hasNext())
+          {
+            as localas = (as)((Iterator)localObject).next();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[");
+            localStringBuilder.append(i);
+            localStringBuilder.append("]发包：cmd id:[");
+            localStringBuilder.append(localas.bM);
+            localStringBuilder.append("]seqNo:[");
+            localStringBuilder.append(localas.dc);
+            localStringBuilder.append("]refSeqNo:[");
+            localStringBuilder.append(localas.dd);
+            localStringBuilder.append("]retCode:[");
+            localStringBuilder.append(localas.df);
+            localStringBuilder.append("]dataRetCode:[");
+            localStringBuilder.append(localas.dg);
+            localStringBuilder.append("]");
+            eh.f("SharkWharf_CMDID", localStringBuilder.toString());
+            i += 1;
+            continue;
           }
         }
-      }
-    }
-    label576:
-    label581:
-    label591:
-    label597:
-    label602:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      localObject = ((StringBuilder)localObject).append(bool2).append(" user select ONLY_HTTP ? ");
-      bool2 = bool3;
-      if (paramf.jH == 512) {
-        bool2 = true;
-      }
-      eh.g("SharkWharf", bool2 + " cloud cmd not allow tcp? " + paramf.jO + " prefer http? " + bool1);
-      for (j = i;; j = 0)
-      {
+        int j;
+        if (paramf.bQ())
+        {
+          if (paramf.jO)
+          {
+            eh.g("SharkWharf", "[tcp_control][http_control]sendData(), cloudcmd not allow tcp and this is tcp vip, failed!");
+            this.jv.b(true, -30000007, paramf);
+            return;
+          }
+          j = 0;
+        }
+        else
+        {
+          if ((this.mf == null) || (this.mf.cu())) {
+            break label658;
+          }
+          i = 1;
+          if ((i == 0) || (paramf.jH == 1024)) {
+            break label663;
+          }
+          bool1 = true;
+          if ((cx.ay()) || (paramf.jH == 2048) || (paramf.jH == 512) || (paramf.jO)) {
+            break label674;
+          }
+          if (!bool1) {
+            break label669;
+          }
+          break label674;
+          j = i;
+          if (i != 0)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("[tcp_control][http_control]sendData(), use http channel, for:  only http enable? false isSemiSendProcess? ");
+            ((StringBuilder)localObject).append(cx.ay());
+            ((StringBuilder)localObject).append(" user select CHANNEL_LARGE_DATA ? ");
+            if (paramf.jH != 2048) {
+              break label679;
+            }
+            bool2 = true;
+            ((StringBuilder)localObject).append(bool2);
+            ((StringBuilder)localObject).append(" user select ONLY_HTTP ? ");
+            if (paramf.jH != 512) {
+              break label685;
+            }
+            bool2 = true;
+            ((StringBuilder)localObject).append(bool2);
+            ((StringBuilder)localObject).append(" cloud cmd not allow tcp? ");
+            ((StringBuilder)localObject).append(paramf.jO);
+            ((StringBuilder)localObject).append(" prefer http? ");
+            ((StringBuilder)localObject).append(bool1);
+            eh.g("SharkWharf", ((StringBuilder)localObject).toString());
+            j = i;
+          }
+        }
         if (j != 0)
         {
           eh.f("SharkWharf", "[tcp_control][http_control]sendData(), use http channel");
@@ -217,7 +233,7 @@ public class df
           if (localObject == null)
           {
             eh.g("SharkWharf", "[tcp_control][http_control][shark_v4]sendData(), ConverterUtil.createSendBytes() return null!");
-            break;
+            return;
           }
           a(paramf, 15, 0, localObject.length);
           this.me.a(paramf, (byte[])localObject, new ca.a()
@@ -229,35 +245,50 @@ public class df
                 i = paramAnonymousInt - 42000000;
               }
               df.a(paramf, 16, i, 0);
-              eh.e("SharkWharf", "[tcp_control][http_control]sendData(), http callback, errCode: " + i);
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("[tcp_control][http_control]sendData(), http callback, errCode: ");
+              localStringBuilder.append(i);
+              eh.e("SharkWharf", localStringBuilder.toString());
               df.a(df.this).a(false, i, paramAnonymousArrayOfByte, paramf);
             }
           });
-          break;
         }
-        eh.f("SharkWharf", "[tcp_control][http_control]sendData(), use tcp channel");
-        paramf.jN = true;
-        if (paramf.jM)
+        else
         {
-          this.mf.f(paramf);
-          break;
+          eh.f("SharkWharf", "[tcp_control][http_control]sendData(), use tcp channel");
+          paramf.jN = true;
+          if (paramf.jM)
+          {
+            this.mf.f(paramf);
+            return;
+          }
+          if (paramf.bR())
+          {
+            this.mf.f(paramf);
+            return;
+          }
+          this.mf.e(paramf);
         }
-        if (paramf.bR())
-        {
-          this.mf.f(paramf);
-          break;
-        }
-        this.mf.e(paramf);
-        break;
+        return;
       }
+      finally {}
+      label658:
+      int i = 0;
+      continue;
+      label663:
+      boolean bool1 = false;
+      continue;
+      label669:
+      i = 0;
+      continue;
+      label674:
       i = 1;
-      break label314;
-      i = 0;
-      break label256;
-      bool1 = false;
-      break label273;
-      i = 0;
-      break label314;
+      continue;
+      label679:
+      boolean bool2 = false;
+      continue;
+      label685:
+      bool2 = false;
     }
   }
   

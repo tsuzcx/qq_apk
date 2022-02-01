@@ -15,16 +15,6 @@ public final class FBMobile
   public int sp = 0;
   public String state = "";
   
-  static
-  {
-    if (!FBMobile.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public FBMobile()
   {
     setPhone(this.phone);
@@ -50,29 +40,47 @@ public final class FBMobile
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (FBMobile)paramObject;
-    } while ((!JceUtil.equals(this.phone, paramObject.phone)) || (!JceUtil.equals(this.mtype, paramObject.mtype)) || (!JceUtil.equals(this.state, paramObject.state)) || (!JceUtil.equals(this.city, paramObject.city)) || (!JceUtil.equals(this.sp, paramObject.sp)));
-    return true;
+    }
+    paramObject = (FBMobile)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.phone, paramObject.phone))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.mtype, paramObject.mtype))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.state, paramObject.state))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.city, paramObject.city))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.sp, paramObject.sp)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

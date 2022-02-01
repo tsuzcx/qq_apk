@@ -56,8 +56,12 @@ public class SQLiteQueryBuilder
     if ((TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString4))) {
       throw new IllegalArgumentException("HAVING clauses are only permitted when using a groupBy clause");
     }
-    if ((!TextUtils.isEmpty(paramString6)) && (!sLimitPattern.matcher(paramString6).matches())) {
-      throw new IllegalArgumentException("invalid LIMIT clauses:" + paramString6);
+    if ((!TextUtils.isEmpty(paramString6)) && (!sLimitPattern.matcher(paramString6).matches()))
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("invalid LIMIT clauses:");
+      paramString1.append(paramString6);
+      throw new IllegalArgumentException(paramString1.toString());
     }
     StringBuilder localStringBuilder = new StringBuilder(120);
     localStringBuilder.append("SELECT ");
@@ -66,75 +70,75 @@ public class SQLiteQueryBuilder
     }
     if ((paramArrayOfString != null) && (paramArrayOfString.length != 0)) {
       appendColumns(localStringBuilder, paramArrayOfString);
-    }
-    for (;;)
-    {
-      localStringBuilder.append("FROM ");
-      localStringBuilder.append(paramString1);
-      appendClause(localStringBuilder, " WHERE ", paramString2);
-      appendClause(localStringBuilder, " GROUP BY ", paramString3);
-      appendClause(localStringBuilder, " HAVING ", paramString4);
-      appendClause(localStringBuilder, " ORDER BY ", paramString5);
-      appendClause(localStringBuilder, " LIMIT ", paramString6);
-      return localStringBuilder.toString();
+    } else {
       localStringBuilder.append("* ");
     }
+    localStringBuilder.append("FROM ");
+    localStringBuilder.append(paramString1);
+    appendClause(localStringBuilder, " WHERE ", paramString2);
+    appendClause(localStringBuilder, " GROUP BY ", paramString3);
+    appendClause(localStringBuilder, " HAVING ", paramString4);
+    appendClause(localStringBuilder, " ORDER BY ", paramString5);
+    appendClause(localStringBuilder, " LIMIT ", paramString6);
+    return localStringBuilder.toString();
   }
   
   private String[] computeProjection(String[] paramArrayOfString)
   {
+    int j = 0;
+    int i = 0;
     Object localObject1;
-    int i;
     Object localObject2;
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
     {
-      localObject1 = paramArrayOfString;
       if (this.mProjectionMap != null)
       {
         localObject1 = new String[paramArrayOfString.length];
-        int j = paramArrayOfString.length;
-        i = 0;
-        if (i < j)
+        j = paramArrayOfString.length;
+        while (i < j)
         {
           localObject2 = paramArrayOfString[i];
           String str = (String)this.mProjectionMap.get(localObject2);
-          if (str != null) {
+          if (str != null)
+          {
             localObject1[i] = str;
           }
-          for (;;)
+          else
           {
-            i += 1;
-            break;
             if ((this.mStrict) || ((!((String)localObject2).contains(" AS ")) && (!((String)localObject2).contains(" as ")))) {
-              break label111;
+              break label110;
             }
             localObject1[i] = localObject2;
           }
-          label111:
-          throw new IllegalArgumentException("Invalid column " + paramArrayOfString[i]);
+          i += 1;
+          continue;
+          label110:
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("Invalid column ");
+          ((StringBuilder)localObject1).append(paramArrayOfString[i]);
+          throw new IllegalArgumentException(((StringBuilder)localObject1).toString());
         }
+        return localObject1;
       }
-      return localObject1;
+      return paramArrayOfString;
     }
-    if (this.mProjectionMap != null)
+    paramArrayOfString = this.mProjectionMap;
+    if (paramArrayOfString != null)
     {
-      localObject1 = this.mProjectionMap.entrySet();
+      localObject1 = paramArrayOfString.entrySet();
       paramArrayOfString = new String[((Set)localObject1).size()];
-      localObject2 = ((Set)localObject1).iterator();
-      i = 0;
-      for (;;)
+      localObject1 = ((Set)localObject1).iterator();
+      i = j;
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject1 = paramArrayOfString;
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        localObject1 = (Map.Entry)((Iterator)localObject2).next();
-        if (!((String)((Map.Entry)localObject1).getKey()).equals("_count"))
+        localObject2 = (Map.Entry)((Iterator)localObject1).next();
+        if (!((String)((Map.Entry)localObject2).getKey()).equals("_count"))
         {
-          paramArrayOfString[i] = ((String)((Map.Entry)localObject1).getValue());
+          paramArrayOfString[i] = ((String)((Map.Entry)localObject2).getValue());
           i += 1;
         }
       }
+      return paramArrayOfString;
     }
     return null;
   }
@@ -169,26 +173,29 @@ public class SQLiteQueryBuilder
   public String buildQuery(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     paramArrayOfString = computeProjection(paramArrayOfString);
-    StringBuilder localStringBuilder = new StringBuilder();
-    if ((this.mWhereClause != null) && (this.mWhereClause.length() > 0)) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        localStringBuilder.append(this.mWhereClause.toString());
-        localStringBuilder.append(')');
-      }
-      if ((paramString1 != null) && (paramString1.length() > 0))
-      {
-        if (i != 0) {
-          localStringBuilder.append(" AND ");
-        }
-        localStringBuilder.append('(');
-        localStringBuilder.append(paramString1);
-        localStringBuilder.append(')');
-      }
-      return buildQueryString(this.mDistinct, this.mTables, paramArrayOfString, localStringBuilder.toString(), paramString2, paramString3, paramString4, paramString5);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = this.mWhereClause;
+    int i;
+    if ((localStringBuilder2 != null) && (localStringBuilder2.length() > 0)) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (i != 0)
+    {
+      localStringBuilder1.append(this.mWhereClause.toString());
+      localStringBuilder1.append(')');
+    }
+    if ((paramString1 != null) && (paramString1.length() > 0))
+    {
+      if (i != 0) {
+        localStringBuilder1.append(" AND ");
+      }
+      localStringBuilder1.append('(');
+      localStringBuilder1.append(paramString1);
+      localStringBuilder1.append(')');
+    }
+    return buildQueryString(this.mDistinct, this.mTables, paramArrayOfString, localStringBuilder1.toString(), paramString2, paramString3, paramString4, paramString5);
   }
   
   @Deprecated
@@ -201,18 +208,20 @@ public class SQLiteQueryBuilder
   {
     StringBuilder localStringBuilder = new StringBuilder(128);
     int j = paramArrayOfString.length;
-    if (this.mDistinct) {}
-    for (String str = " UNION ";; str = " UNION ALL ")
+    String str;
+    if (this.mDistinct) {
+      str = " UNION ";
+    } else {
+      str = " UNION ALL ";
+    }
+    int i = 0;
+    while (i < j)
     {
-      int i = 0;
-      while (i < j)
-      {
-        if (i > 0) {
-          localStringBuilder.append(str);
-        }
-        localStringBuilder.append(paramArrayOfString[i]);
-        i += 1;
+      if (i > 0) {
+        localStringBuilder.append(str);
       }
+      localStringBuilder.append(paramArrayOfString[i]);
+      i += 1;
     }
     appendClause(localStringBuilder, " ORDER BY ", paramString1);
     appendClause(localStringBuilder, " LIMIT ", paramString2);
@@ -224,22 +233,30 @@ public class SQLiteQueryBuilder
     int j = paramArrayOfString.length;
     String[] arrayOfString = new String[j];
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      String str = paramArrayOfString[i];
-      if (str.equals(paramString1)) {
-        arrayOfString[i] = ("'" + paramString2 + "' AS " + paramString1);
-      }
-      for (;;)
+      Object localObject = paramArrayOfString[i];
+      if (((String)localObject).equals(paramString1))
       {
-        i += 1;
-        break;
-        if ((i <= paramInt) || (paramSet.contains(str))) {
-          arrayOfString[i] = str;
-        } else {
-          arrayOfString[i] = ("NULL AS " + str);
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("'");
+        ((StringBuilder)localObject).append(paramString2);
+        ((StringBuilder)localObject).append("' AS ");
+        ((StringBuilder)localObject).append(paramString1);
+        arrayOfString[i] = ((StringBuilder)localObject).toString();
       }
+      else if ((i > paramInt) && (!paramSet.contains(localObject)))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("NULL AS ");
+        localStringBuilder.append((String)localObject);
+        arrayOfString[i] = localStringBuilder.toString();
+      }
+      else
+      {
+        arrayOfString[i] = localObject;
+      }
+      i += 1;
     }
     return buildQuery(arrayOfString, paramString3, paramString4, paramString5, null, null);
   }
@@ -270,11 +287,19 @@ public class SQLiteQueryBuilder
     if (this.mTables == null) {
       return null;
     }
-    if ((this.mStrict) && (paramString1 != null) && (paramString1.length() > 0)) {
-      validateQuerySql(paramSQLiteDatabase, buildQuery(paramArrayOfString1, "(" + paramString1 + ")", paramString2, paramString3, paramString4, paramString5), paramCancellationSignal);
+    if ((this.mStrict) && (paramString1 != null) && (paramString1.length() > 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("(");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(")");
+      validateQuerySql(paramSQLiteDatabase, buildQuery(paramArrayOfString1, localStringBuilder.toString(), paramString2, paramString3, paramString4, paramString5), paramCancellationSignal);
     }
     paramArrayOfString1 = buildQuery(paramArrayOfString1, paramString1, paramString2, paramString3, paramString4, paramString5);
-    Log.d("WCDB.SQLiteQueryBuilder", "Performing query: " + paramArrayOfString1);
+    paramString1 = new StringBuilder();
+    paramString1.append("Performing query: ");
+    paramString1.append(paramArrayOfString1);
+    Log.d("WCDB.SQLiteQueryBuilder", paramString1.toString());
     return paramSQLiteDatabase.rawQueryWithFactory(this.mFactory, paramArrayOfString1, paramArrayOfString2, SQLiteDatabase.findEditTable(this.mTables), paramCancellationSignal);
   }
   

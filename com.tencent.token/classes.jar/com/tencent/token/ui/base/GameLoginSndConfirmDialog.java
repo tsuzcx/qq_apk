@@ -38,22 +38,20 @@ public class GameLoginSndConfirmDialog
   {
     public void handleMessage(Message paramAnonymousMessage)
     {
-      Object localObject1 = bw.a(RqdApplication.l()).d();
-      int i;
-      Object localObject2;
-      if ((paramAnonymousMessage.what == 3040) && (localObject1 != null))
+      Object localObject2 = bw.a(RqdApplication.l()).d();
+      if ((paramAnonymousMessage.what == 3040) && (localObject2 != null))
       {
         if (GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this) != null) {
           GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this).dismiss();
         }
-        i = paramAnonymousMessage.arg1;
+        int i = paramAnonymousMessage.arg1;
         int j = paramAnonymousMessage.arg2;
-        localObject2 = (CallbackGameConfirmStruct)paramAnonymousMessage.obj;
-        paramAnonymousMessage = ((CallbackGameConfirmStruct)localObject2).wording;
+        paramAnonymousMessage = (CallbackGameConfirmStruct)paramAnonymousMessage.obj;
+        Object localObject1 = paramAnonymousMessage.wording;
         GameLoginSndConfirmDialog.b(GameLoginSndConfirmDialog.this).a(i);
         if (j != 0)
         {
-          localObject1 = ((CallbackGameConfirmStruct)localObject2).errMsg;
+          localObject1 = paramAnonymousMessage.errMsg;
           if (localObject1 != null)
           {
             paramAnonymousMessage = (Message)localObject1;
@@ -61,9 +59,65 @@ public class GameLoginSndConfirmDialog
           }
           else
           {
-            paramAnonymousMessage = GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131230963) + "(" + j + ")";
+            paramAnonymousMessage = new StringBuilder();
+            paramAnonymousMessage.append(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493105));
+            paramAnonymousMessage.append("(");
+            paramAnonymousMessage.append(j);
+            paramAnonymousMessage.append(")");
+            paramAnonymousMessage = paramAnonymousMessage.toString();
           }
-          new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(2131230843).setMessage(paramAnonymousMessage).setPositiveButton(2131230897, new DialogInterface.OnClickListener()
+          new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(2131492985).setMessage(paramAnonymousMessage).setPositiveButton(2131493039, new DialogInterface.OnClickListener()
+          {
+            public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+            {
+              paramAnonymous2DialogInterface.dismiss();
+              GameLoginSndConfirmDialog.this.dismiss();
+            }
+          }).create().show();
+          return;
+        }
+        if (i == 1)
+        {
+          if (localObject1 != null)
+          {
+            paramAnonymousMessage = (Message)localObject1;
+            if (((String)localObject1).length() > 0) {}
+          }
+          else
+          {
+            paramAnonymousMessage = new StringBuilder();
+            paramAnonymousMessage.append(" ");
+            paramAnonymousMessage.append(((CallbackPushStruct)localObject2).expirtTime);
+            paramAnonymousMessage.append(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493218));
+            paramAnonymousMessage = paramAnonymousMessage.toString();
+          }
+          localObject1 = GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getLayoutInflater().inflate(2131296461, null);
+          localObject2 = new Toast(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this));
+          ((Toast)localObject2).setView((View)localObject1);
+          ((Toast)localObject2).setDuration(0);
+          ((Toast)localObject2).setGravity(55, 0, IndexActivity.S_TITLE_HEIGHT);
+          TextView localTextView = (TextView)((View)localObject1).findViewById(2131166118);
+          ((ImageView)((View)localObject1).findViewById(2131166116)).setBackgroundResource(2131100167);
+          localTextView.setText(paramAnonymousMessage);
+          ((Toast)localObject2).show();
+          return;
+        }
+        if (i == 2)
+        {
+          paramAnonymousMessage = new StringBuilder();
+          paramAnonymousMessage.append(((CallbackPushStruct)localObject2).gameName);
+          paramAnonymousMessage.append(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493230));
+          paramAnonymousMessage = paramAnonymousMessage.toString();
+          new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(paramAnonymousMessage).setMessage(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493229)).setPositiveButton(2131493385, new DialogInterface.OnClickListener()
+          {
+            public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+            {
+              paramAnonymous2DialogInterface.dismiss();
+              GameLoginSndConfirmDialog.this.dismiss();
+              paramAnonymous2DialogInterface = new Intent(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), ModifyQQPwdActivity.class);
+              o.a().a(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), paramAnonymous2DialogInterface, o.b);
+            }
+          }).setNegativeButton(2131493028, new DialogInterface.OnClickListener()
           {
             public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -72,53 +126,6 @@ public class GameLoginSndConfirmDialog
             }
           }).create().show();
         }
-      }
-      else
-      {
-        return;
-      }
-      if (i == 1)
-      {
-        if ((paramAnonymousMessage != null) && (paramAnonymousMessage.length() > 0)) {
-          break label461;
-        }
-        paramAnonymousMessage = " " + ((CallbackPushStruct)localObject1).expirtTime + GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131231076);
-      }
-      label461:
-      for (;;)
-      {
-        localObject1 = GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getLayoutInflater().inflate(2130968780, null);
-        localObject2 = new Toast(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this));
-        ((Toast)localObject2).setView((View)localObject1);
-        ((Toast)localObject2).setDuration(0);
-        ((Toast)localObject2).setGravity(55, 0, IndexActivity.S_TITLE_HEIGHT);
-        TextView localTextView = (TextView)((View)localObject1).findViewById(2131558988);
-        ((ImageView)((View)localObject1).findViewById(2131558987)).setBackgroundResource(2130838018);
-        localTextView.setText(paramAnonymousMessage);
-        ((Toast)localObject2).show();
-        return;
-        if (i != 2) {
-          break;
-        }
-        paramAnonymousMessage = ((CallbackPushStruct)localObject1).gameName + GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131231088);
-        new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(paramAnonymousMessage).setMessage(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131231087)).setPositiveButton(2131231243, new DialogInterface.OnClickListener()
-        {
-          public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-          {
-            paramAnonymous2DialogInterface.dismiss();
-            GameLoginSndConfirmDialog.this.dismiss();
-            paramAnonymous2DialogInterface = new Intent(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), ModifyQQPwdActivity.class);
-            o.a().a(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), paramAnonymous2DialogInterface, o.b);
-          }
-        }).setNegativeButton(2131230886, new DialogInterface.OnClickListener()
-        {
-          public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-          {
-            paramAnonymous2DialogInterface.dismiss();
-            GameLoginSndConfirmDialog.this.dismiss();
-          }
-        }).create().show();
-        return;
       }
     }
   };
@@ -142,13 +149,15 @@ public class GameLoginSndConfirmDialog
       
       public void a(int paramAnonymousInt)
       {
-        bw localbw = bw.a(RqdApplication.l());
-        CallbackPushStruct localCallbackPushStruct = localbw.d();
+        Object localObject = bw.a(RqdApplication.l());
+        CallbackPushStruct localCallbackPushStruct = ((bw)localObject).d();
         if (localCallbackPushStruct != null)
         {
-          localbw.a(localCallbackPushStruct.uin, bz.a(RqdApplication.l()).b(), paramAnonymousInt, GameLoginSndConfirmDialog.d(GameLoginSndConfirmDialog.this));
-          if (GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this) == null) {
-            GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this, new ProDialog(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), 2131362182));
+          ((bw)localObject).a(localCallbackPushStruct.uin, bz.a(RqdApplication.l()).b(), paramAnonymousInt, GameLoginSndConfirmDialog.d(GameLoginSndConfirmDialog.this));
+          if (GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this) == null)
+          {
+            localObject = GameLoginSndConfirmDialog.this;
+            GameLoginSndConfirmDialog.a((GameLoginSndConfirmDialog)localObject, new ProDialog(GameLoginSndConfirmDialog.c((GameLoginSndConfirmDialog)localObject), 2131558791));
           }
           GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this).show();
         }
@@ -157,42 +166,44 @@ public class GameLoginSndConfirmDialog
       public void b()
       {
         CallbackPushStruct localCallbackPushStruct = bw.a(RqdApplication.l()).d();
-        if (localCallbackPushStruct != null)
-        {
-          if (localCallbackPushStruct.schemeFlag != 2) {
-            break label111;
+        if (localCallbackPushStruct != null) {
+          if (localCallbackPushStruct.schemeFlag == 2)
+          {
+            AlertDialog.Builder localBuilder = new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(2131492985);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("");
+            localStringBuilder.append(localCallbackPushStruct.expirtTime);
+            localStringBuilder.append(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493223));
+            localBuilder.setMessage(localStringBuilder.toString()).setPositiveButton(2131493224, new DialogInterface.OnClickListener()
+            {
+              public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+              {
+                paramAnonymous2DialogInterface.dismiss();
+                GameLoginSndConfirmDialog.this.dismiss();
+              }
+            }).create().show();
           }
-          new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(2131230843).setMessage("" + localCallbackPushStruct.expirtTime + GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131231081)).setPositiveButton(2131231082, new DialogInterface.OnClickListener()
+          else
           {
-            public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+            new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(2131492985).setMessage(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131493222)).setPositiveButton(2131493227, new DialogInterface.OnClickListener()
             {
-              paramAnonymous2DialogInterface.dismiss();
-              GameLoginSndConfirmDialog.this.dismiss();
-            }
-          }).create().show();
+              public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+              {
+                GameLoginSndConfirmDialog.this.dismiss();
+                paramAnonymous2DialogInterface = new Intent(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), VerifyStartScanActivity.class);
+                GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).startActivity(paramAnonymous2DialogInterface);
+              }
+            }).setNegativeButton(2131493028, new DialogInterface.OnClickListener()
+            {
+              public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+              {
+                paramAnonymous2DialogInterface.dismiss();
+                GameLoginSndConfirmDialog.this.dismiss();
+              }
+            }).create().show();
+          }
         }
-        for (;;)
-        {
-          GameLoginSndConfirmDialog.this.dismiss();
-          return;
-          label111:
-          new AlertDialog.Builder(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this)).setTitle(2131230843).setMessage(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).getResources().getString(2131231080)).setPositiveButton(2131231085, new DialogInterface.OnClickListener()
-          {
-            public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-            {
-              GameLoginSndConfirmDialog.this.dismiss();
-              paramAnonymous2DialogInterface = new Intent(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), VerifyStartScanActivity.class);
-              GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this).startActivity(paramAnonymous2DialogInterface);
-            }
-          }).setNegativeButton(2131230886, new DialogInterface.OnClickListener()
-          {
-            public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-            {
-              paramAnonymous2DialogInterface.dismiss();
-              GameLoginSndConfirmDialog.this.dismiss();
-            }
-          }).create().show();
-        }
+        GameLoginSndConfirmDialog.this.dismiss();
       }
     });
     if (!this.b.a(this.a))

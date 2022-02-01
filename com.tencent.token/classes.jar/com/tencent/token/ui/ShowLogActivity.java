@@ -13,11 +13,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.token.dx;
-import com.tencent.token.global.g;
 import com.tencent.token.ui.base.PullToRefreshListView;
 import com.tencent.token.ui.base.PullToRefreshListView.a;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -46,57 +44,107 @@ public class ShowLogActivity
   private PullToRefreshListView mListView;
   private List<d> mLogs;
   
+  /* Error */
   private void addData(BufferedReader paramBufferedReader)
   {
-    if (paramBufferedReader == null) {
-      return;
-    }
-    a locala = ((d)this.mLogs.get(this.mCurrType)).a;
-    try
-    {
-      ArrayList localArrayList = new ArrayList();
-      for (Object localObject1 = paramBufferedReader.readLine(); localObject1 != null; localObject1 = paramBufferedReader.readLine()) {
-        localArrayList.add(highlightLog((String)localObject1));
-      }
-      locala.a(localArrayList);
-      updateData(locala);
-      localObject1 = this.mListView;
-      if (localArrayList.size() - 3 > 0) {}
-      for (int i = localArrayList.size() - 3;; i = 0)
-      {
-        ((PullToRefreshListView)localObject1).setSelection(i);
-        try
-        {
-          paramBufferedReader.close();
-          return;
-        }
-        catch (IOException paramBufferedReader)
-        {
-          return;
-        }
-      }
-      try
-      {
-        paramBufferedReader.close();
-        throw localObject2;
-      }
-      catch (IOException paramBufferedReader)
-      {
-        break label142;
-      }
-    }
-    catch (IOException localIOException)
-    {
-      localIOException = localIOException;
-      g.c(localIOException.getMessage());
-      try
-      {
-        paramBufferedReader.close();
-        return;
-      }
-      catch (IOException paramBufferedReader) {}
-    }
-    finally {}
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +4 -> 5
+    //   4: return
+    //   5: aload_0
+    //   6: getfield 94	com/tencent/token/ui/ShowLogActivity:mLogs	Ljava/util/List;
+    //   9: aload_0
+    //   10: getfield 62	com/tencent/token/ui/ShowLogActivity:mCurrType	I
+    //   13: invokeinterface 110 2 0
+    //   18: checkcast 23	com/tencent/token/ui/ShowLogActivity$d
+    //   21: getfield 113	com/tencent/token/ui/ShowLogActivity$d:a	Lcom/tencent/token/ui/ShowLogActivity$a;
+    //   24: astore 5
+    //   26: new 115	java/util/ArrayList
+    //   29: dup
+    //   30: invokespecial 116	java/util/ArrayList:<init>	()V
+    //   33: astore 4
+    //   35: aload_1
+    //   36: invokevirtual 122	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   39: astore_3
+    //   40: aload_3
+    //   41: ifnull +24 -> 65
+    //   44: aload 4
+    //   46: aload_0
+    //   47: aload_3
+    //   48: invokespecial 126	com/tencent/token/ui/ShowLogActivity:highlightLog	(Ljava/lang/String;)Landroid/text/SpannableString;
+    //   51: invokeinterface 130 2 0
+    //   56: pop
+    //   57: aload_1
+    //   58: invokevirtual 122	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   61: astore_3
+    //   62: goto -22 -> 40
+    //   65: aload 5
+    //   67: aload 4
+    //   69: invokevirtual 133	com/tencent/token/ui/ShowLogActivity$a:a	(Ljava/util/List;)V
+    //   72: aload_0
+    //   73: aload 5
+    //   75: invokespecial 100	com/tencent/token/ui/ShowLogActivity:updateData	(Lcom/tencent/token/ui/ShowLogActivity$a;)V
+    //   78: aload_0
+    //   79: getfield 135	com/tencent/token/ui/ShowLogActivity:mListView	Lcom/tencent/token/ui/base/PullToRefreshListView;
+    //   82: astore_3
+    //   83: aload 4
+    //   85: invokeinterface 139 1 0
+    //   90: iconst_3
+    //   91: isub
+    //   92: ifle +53 -> 145
+    //   95: aload 4
+    //   97: invokeinterface 139 1 0
+    //   102: iconst_3
+    //   103: isub
+    //   104: istore_2
+    //   105: goto +3 -> 108
+    //   108: aload_3
+    //   109: iload_2
+    //   110: invokevirtual 144	com/tencent/token/ui/base/PullToRefreshListView:setSelection	(I)V
+    //   113: aload_1
+    //   114: invokevirtual 147	java/io/BufferedReader:close	()V
+    //   117: return
+    //   118: astore_3
+    //   119: goto +14 -> 133
+    //   122: astore_3
+    //   123: aload_3
+    //   124: invokevirtual 150	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   127: invokestatic 155	com/tencent/token/global/g:c	(Ljava/lang/String;)V
+    //   130: goto -17 -> 113
+    //   133: aload_1
+    //   134: invokevirtual 147	java/io/BufferedReader:close	()V
+    //   137: aload_3
+    //   138: athrow
+    //   139: astore_1
+    //   140: return
+    //   141: astore_1
+    //   142: goto -5 -> 137
+    //   145: iconst_0
+    //   146: istore_2
+    //   147: goto -39 -> 108
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	150	0	this	ShowLogActivity
+    //   0	150	1	paramBufferedReader	BufferedReader
+    //   104	43	2	i	int
+    //   39	70	3	localObject1	Object
+    //   118	1	3	localObject2	Object
+    //   122	16	3	localIOException	java.io.IOException
+    //   33	63	4	localArrayList	ArrayList
+    //   24	50	5	locala	a
+    // Exception table:
+    //   from	to	target	type
+    //   26	40	118	finally
+    //   44	62	118	finally
+    //   65	105	118	finally
+    //   108	113	118	finally
+    //   123	130	118	finally
+    //   26	40	122	java/io/IOException
+    //   44	62	122	java/io/IOException
+    //   65	105	122	java/io/IOException
+    //   108	113	122	java/io/IOException
+    //   113	117	139	java/io/IOException
+    //   133	137	141	java/io/IOException
   }
   
   private void clearLog()
@@ -107,34 +155,33 @@ public class ShowLogActivity
   private SpannableString highlightLog(String paramString)
   {
     SpannableString localSpannableString = new SpannableString(paramString);
-    if (TextUtils.isEmpty(paramString)) {}
-    String str;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return localSpannableString;
-      str = paramString.substring(0, 1);
-      if (str.equals("V"))
-      {
-        localSpannableString.setSpan(this.ColorV, 0, paramString.length(), 33);
-        return localSpannableString;
-      }
-      if (str.equals("D"))
-      {
-        localSpannableString.setSpan(this.ColorD, 0, paramString.length(), 33);
-        return localSpannableString;
-      }
-      if (str.equals("I"))
-      {
-        localSpannableString.setSpan(this.ColorI, 0, paramString.length(), 33);
-        return localSpannableString;
-      }
-      if (str.equals("W"))
-      {
-        localSpannableString.setSpan(this.ColorW, 0, paramString.length(), 33);
-        return localSpannableString;
-      }
-    } while (!str.equals("E"));
-    localSpannableString.setSpan(this.ColorE, 0, paramString.length(), 33);
+    }
+    String str = paramString.substring(0, 1);
+    if (str.equals("V"))
+    {
+      localSpannableString.setSpan(this.ColorV, 0, paramString.length(), 33);
+      return localSpannableString;
+    }
+    if (str.equals("D"))
+    {
+      localSpannableString.setSpan(this.ColorD, 0, paramString.length(), 33);
+      return localSpannableString;
+    }
+    if (str.equals("I"))
+    {
+      localSpannableString.setSpan(this.ColorI, 0, paramString.length(), 33);
+      return localSpannableString;
+    }
+    if (str.equals("W"))
+    {
+      localSpannableString.setSpan(this.ColorW, 0, paramString.length(), 33);
+      return localSpannableString;
+    }
+    if (str.equals("E")) {
+      localSpannableString.setSpan(this.ColorE, 0, paramString.length(), 33);
+    }
     return localSpannableString;
   }
   
@@ -166,52 +213,64 @@ public class ShowLogActivity
   
   private void initUI()
   {
-    setContentView(2130968761);
-    this.mListView = ((PullToRefreshListView)findViewById(2131559266));
-    View localView = LayoutInflater.from(this).inflate(2130968698, this.mListView, false);
+    setContentView(2131296442);
+    this.mListView = ((PullToRefreshListView)findViewById(2131165683));
+    View localView = LayoutInflater.from(this).inflate(2131296379, this.mListView, false);
     localView.setVisibility(8);
     this.mListView.addFooterView(localView);
-    localView = LayoutInflater.from(this).inflate(2130968695, this.mListView, false);
+    localView = LayoutInflater.from(this).inflate(2131296376, this.mListView, false);
     localView.setVisibility(8);
     this.mListView.addFooterView(localView);
-    localView = LayoutInflater.from(this).inflate(2130968694, this.mListView, false);
+    localView = LayoutInflater.from(this).inflate(2131296375, this.mListView, false);
     localView.setVisibility(8);
     this.mListView.addFooterView(localView);
     this.mListView.setScrollingCacheEnabled(true);
-    this.mListView.a(2131231171);
+    this.mListView.a(2131493313);
   }
   
   private void loadMoreLogs()
   {
-    if ((this.mCurrType < 0) || (this.mLogs == null) || (this.mCurrType >= this.mLogs.size())) {}
-    d locald;
-    BufferedReader localBufferedReader;
-    do
+    int i = this.mCurrType;
+    if (i >= 0)
     {
-      do
+      Object localObject = this.mLogs;
+      if (localObject != null)
       {
+        if (i >= ((List)localObject).size()) {
+          return;
+        }
+        localObject = (d)this.mLogs.get(this.mCurrType);
+        if (((d)localObject).b + 1 >= 2) {
+          return;
+        }
+        BufferedReader localBufferedReader = dx.b(((d)localObject).b + 1);
+        if (localBufferedReader != null)
+        {
+          addData(localBufferedReader);
+          ((d)localObject).b += 1;
+        }
         return;
-        locald = (d)this.mLogs.get(this.mCurrType);
-      } while (locald.b + 1 >= 2);
-      localBufferedReader = dx.b(locald.b + 1);
-    } while (localBufferedReader == null);
-    addData(localBufferedReader);
-    locald.b += 1;
+      }
+    }
   }
   
   private void showlog(int paramInt)
   {
-    if ((paramInt < 0) || (this.mLogs == null)) {}
-    a locala;
-    do
+    if (paramInt >= 0)
     {
-      return;
+      Object localObject = this.mLogs;
+      if (localObject == null) {
+        return;
+      }
       this.mCurrType = paramInt;
-      locala = ((d)this.mLogs.get(this.mCurrType)).a;
-      updateData(locala);
+      localObject = ((d)((List)localObject).get(this.mCurrType)).a;
+      updateData((a)localObject);
       this.mListView.setSelection(this.mAdapter.getCount() - 1);
-    } while (locala.a() > 0);
-    loadMoreLogs();
+      if (((a)localObject).a() <= 0) {
+        loadMoreLogs();
+      }
+      return;
+    }
   }
   
   private void updateData(a parama)
@@ -241,7 +300,7 @@ public class ShowLogActivity
     
     public a(int paramInt, boolean paramBoolean)
     {
-      if ((paramInt >= 0) && (paramInt > 1073741824)) {}
+      if (paramInt >= 0) {}
       this.b = paramBoolean;
     }
     
@@ -266,23 +325,19 @@ public class ShowLogActivity
     
     public void a(List<CharSequence> paramList)
     {
-      if (paramList != null) {}
-      for (;;)
-      {
+      if (paramList != null) {
         try
         {
-          int i = paramList.size();
-          if (i == 0) {
-            return;
-          }
-          if (this.b)
+          if (paramList.size() != 0)
           {
-            i = 0;
+            int i;
+            if (this.b) {
+              i = 0;
+            } else {
+              i = this.a.size();
+            }
             this.a.addAll(i, paramList);
-          }
-          else
-          {
-            i = this.a.size();
+            return;
           }
         }
         finally {}
@@ -330,7 +385,8 @@ public class ShowLogActivity
     
     protected void onPreExecute()
     {
-      ShowLogActivity.this.showProDialog(ShowLogActivity.this, 2131231424, new View.OnClickListener()
+      ShowLogActivity localShowLogActivity = ShowLogActivity.this;
+      localShowLogActivity.showProDialog(localShowLogActivity, 2131493566, new View.OnClickListener()
       {
         public void onClick(View paramAnonymousView)
         {
@@ -375,26 +431,26 @@ public class ShowLogActivity
     {
       if (paramView == null)
       {
-        paramView = ShowLogActivity.this.getLayoutInflater().inflate(2130968762, null);
+        paramView = ShowLogActivity.this.getLayoutInflater().inflate(2131296443, null);
         paramViewGroup = new a(null);
-        paramViewGroup.a = ((TextView)paramView.findViewById(2131559267));
+        paramViewGroup.a = ((TextView)paramView.findViewById(2131165684));
         paramView.setTag(paramViewGroup);
       }
-      for (;;)
+      else
       {
-        CharSequence localCharSequence = a(paramInt);
-        paramViewGroup = paramViewGroup.a;
-        paramViewGroup.setText(localCharSequence);
-        paramViewGroup.setOnLongClickListener(new View.OnLongClickListener()
-        {
-          public boolean onLongClick(View paramAnonymousView)
-          {
-            return true;
-          }
-        });
-        return paramView;
         paramViewGroup = (a)paramView.getTag();
       }
+      CharSequence localCharSequence = a(paramInt);
+      paramViewGroup = paramViewGroup.a;
+      paramViewGroup.setText(localCharSequence);
+      paramViewGroup.setOnLongClickListener(new View.OnLongClickListener()
+      {
+        public boolean onLongClick(View paramAnonymousView)
+        {
+          return true;
+        }
+      });
+      return paramView;
     }
     
     private class a

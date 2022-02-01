@@ -29,38 +29,43 @@ public class c
   
   public byte[] a()
   {
-    if ((this.l != null) && (this.l.length > 0)) {}
-    for (int m = this.l.length;; m = 0)
-    {
-      this.a = ((short)(m + 41 + 1));
-      g.a("socket req msg total len: " + this.a);
-      this.h = System.currentTimeMillis();
-      byte[] arrayOfByte = new byte[this.a];
-      arrayOfByte[0] = 2;
-      cj.a(arrayOfByte, 1, this.a);
-      cj.a(arrayOfByte, 3, this.b);
-      cj.a(arrayOfByte, 5, this.c);
-      cj.a(arrayOfByte, 9, d);
-      cj.a(arrayOfByte, 13, this.e);
-      cj.a(arrayOfByte, 15, this.f);
-      cj.a(arrayOfByte, 17, this.g);
-      cj.a(arrayOfByte, 19, this.h);
-      arrayOfByte[23] = this.i;
-      arrayOfByte[24] = this.j;
-      cj.a(arrayOfByte, 25, k, 0, k.length);
-      int n = k.length + 25;
-      if (m > 0)
-      {
-        cj.a(arrayOfByte, n, this.l, 0, m);
-        m += n;
-      }
-      for (;;)
-      {
-        arrayOfByte[m] = 3;
-        return arrayOfByte;
-        m = n;
-      }
+    Object localObject = this.l;
+    int m;
+    if ((localObject != null) && (localObject.length > 0)) {
+      m = localObject.length;
+    } else {
+      m = 0;
     }
+    this.a = ((short)(m + 41 + 1));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("socket req msg total len: ");
+    ((StringBuilder)localObject).append(this.a);
+    g.a(((StringBuilder)localObject).toString());
+    this.h = System.currentTimeMillis();
+    short s = this.a;
+    localObject = new byte[s];
+    localObject[0] = 2;
+    cj.a((byte[])localObject, 1, s);
+    cj.a((byte[])localObject, 3, this.b);
+    cj.a((byte[])localObject, 5, this.c);
+    cj.a((byte[])localObject, 9, d);
+    cj.a((byte[])localObject, 13, this.e);
+    cj.a((byte[])localObject, 15, this.f);
+    cj.a((byte[])localObject, 17, this.g);
+    cj.a((byte[])localObject, 19, this.h);
+    localObject[23] = this.i;
+    localObject[24] = this.j;
+    byte[] arrayOfByte = k;
+    cj.a((byte[])localObject, 25, arrayOfByte, 0, arrayOfByte.length);
+    int i1 = 25 + k.length;
+    int n = i1;
+    if (m > 0)
+    {
+      cj.a((byte[])localObject, i1, this.l, 0, m);
+      n = i1 + m;
+    }
+    localObject[n] = 3;
+    return localObject;
   }
 }
 

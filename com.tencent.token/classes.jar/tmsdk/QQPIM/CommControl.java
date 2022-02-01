@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class CommControl
   extends JceStruct
@@ -41,26 +42,33 @@ public final class CommControl
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.cmdId != 0) {
-      paramJceOutputStream.write(this.cmdId, 0);
+    int i = this.cmdId;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 1);
+    Object localObject = this.version;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.versionCode != 0) {
-      paramJceOutputStream.write(this.versionCode, 2);
+    i = this.versionCode;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.lc != null) {
-      paramJceOutputStream.write(this.lc, 3);
+    localObject = this.lc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.buildNoList != null) {
-      paramJceOutputStream.write(this.buildNoList, 4);
+    localObject = this.buildNoList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.time != 0) {
-      paramJceOutputStream.write(this.time, 5);
+    i = this.time;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
-    if (this.count != 0) {
-      paramJceOutputStream.write(this.count, 6);
+    i = this.count;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 6);
     }
   }
 }

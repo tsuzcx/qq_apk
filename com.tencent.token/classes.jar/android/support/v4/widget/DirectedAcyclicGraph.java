@@ -23,23 +23,25 @@ public final class DirectedAcyclicGraph<T>
     if (paramArrayList.contains(paramT)) {
       return;
     }
-    if (paramHashSet.contains(paramT)) {
-      throw new RuntimeException("This graph contains cyclic dependencies");
-    }
-    paramHashSet.add(paramT);
-    ArrayList localArrayList = (ArrayList)this.mGraph.get(paramT);
-    if (localArrayList != null)
+    if (!paramHashSet.contains(paramT))
     {
-      int i = 0;
-      int j = localArrayList.size();
-      while (i < j)
+      paramHashSet.add(paramT);
+      ArrayList localArrayList = (ArrayList)this.mGraph.get(paramT);
+      if (localArrayList != null)
       {
-        dfs(localArrayList.get(i), paramArrayList, paramHashSet);
-        i += 1;
+        int i = 0;
+        int j = localArrayList.size();
+        while (i < j)
+        {
+          dfs(localArrayList.get(i), paramArrayList, paramHashSet);
+          i += 1;
+        }
       }
+      paramHashSet.remove(paramT);
+      paramArrayList.add(paramT);
+      return;
     }
-    paramHashSet.remove(paramT);
-    paramArrayList.add(paramT);
+    throw new RuntimeException("This graph contains cyclic dependencies");
   }
   
   @NonNull
@@ -61,17 +63,19 @@ public final class DirectedAcyclicGraph<T>
   
   public void addEdge(@NonNull T paramT1, @NonNull T paramT2)
   {
-    if ((!this.mGraph.containsKey(paramT1)) || (!this.mGraph.containsKey(paramT2))) {
-      throw new IllegalArgumentException("All nodes must be present in the graph before being added as an edge");
-    }
-    ArrayList localArrayList2 = (ArrayList)this.mGraph.get(paramT1);
-    ArrayList localArrayList1 = localArrayList2;
-    if (localArrayList2 == null)
+    if ((this.mGraph.containsKey(paramT1)) && (this.mGraph.containsKey(paramT2)))
     {
-      localArrayList1 = getEmptyList();
-      this.mGraph.put(paramT1, localArrayList1);
+      ArrayList localArrayList2 = (ArrayList)this.mGraph.get(paramT1);
+      ArrayList localArrayList1 = localArrayList2;
+      if (localArrayList2 == null)
+      {
+        localArrayList1 = getEmptyList();
+        this.mGraph.put(paramT1, localArrayList1);
+      }
+      localArrayList1.add(paramT2);
+      return;
     }
-    localArrayList1.add(paramT2);
+    throw new IllegalArgumentException("All nodes must be present in the graph before being added as an edge");
   }
   
   public void addNode(@NonNull T paramT)
@@ -110,36 +114,29 @@ public final class DirectedAcyclicGraph<T>
   @Nullable
   public List<T> getOutgoingEdges(@NonNull T paramT)
   {
-    Object localObject1 = null;
     int j = this.mGraph.size();
+    Object localObject1 = null;
     int i = 0;
-    Object localObject2;
-    if (i < j)
+    while (i < j)
     {
       ArrayList localArrayList = (ArrayList)this.mGraph.valueAt(i);
-      localObject2 = localObject1;
+      Object localObject2 = localObject1;
       if (localArrayList != null)
       {
         localObject2 = localObject1;
         if (localArrayList.contains(paramT))
         {
-          if (localObject1 != null) {
-            break label99;
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = new ArrayList();
           }
-          localObject1 = new ArrayList();
+          ((ArrayList)localObject2).add(this.mGraph.keyAt(i));
         }
       }
-    }
-    label99:
-    for (;;)
-    {
-      ((ArrayList)localObject1).add(this.mGraph.keyAt(i));
-      localObject2 = localObject1;
       i += 1;
       localObject1 = localObject2;
-      break;
-      return localObject1;
     }
+    return localObject1;
   }
   
   @NonNull
@@ -147,8 +144,8 @@ public final class DirectedAcyclicGraph<T>
   {
     this.mSortResult.clear();
     this.mSortTmpMarked.clear();
-    int i = 0;
     int j = this.mGraph.size();
+    int i = 0;
     while (i < j)
     {
       dfs(this.mGraph.keyAt(i), this.mSortResult, this.mSortTmpMarked);

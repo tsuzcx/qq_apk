@@ -23,7 +23,7 @@ public class c
     localLemon.od = paramLong1;
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
-    if (paramList.hasNext())
+    while (paramList.hasNext())
     {
       c localc = (c)paramList.next();
       Lichee localLichee = new Lichee();
@@ -31,23 +31,24 @@ public class c
       {
       default: 
         localLichee.qd = 0;
-      }
-      for (;;)
-      {
-        localLichee.x = localc.b;
-        localLichee.y = localc.c;
-        localLichee.rd = localc.d;
-        localLichee.radius = localc.e;
-        localArrayList.add(localLichee);
         break;
+      case 3: 
         localLichee.qd = 4;
-        continue;
+        break;
+      case 2: 
         localLichee.qd = 2;
-        continue;
+        break;
+      case 1: 
         localLichee.qd = 3;
-        continue;
+        break;
+      case 0: 
         localLichee.qd = 1;
       }
+      localLichee.x = localc.b;
+      localLichee.y = localc.c;
+      localLichee.rd = localc.d;
+      localLichee.radius = localc.e;
+      localArrayList.add(localLichee);
     }
     localLemon.pd = localArrayList;
     return localLemon;
@@ -62,12 +63,13 @@ public class c
       return localArrayList;
     }
     c localc1 = (c)paramList.get(0);
-    c localc2 = (c)paramList.get(paramList.size() - 1);
+    int j = paramList.size();
+    int i = 1;
+    c localc2 = (c)paramList.get(j - 1);
     paramList.remove(localc1);
     paramList.remove(localc2);
-    int j = (int)Math.ceil(paramList.size() / 18);
+    j = (int)Math.ceil(paramList.size() / 18);
     localArrayList.add(localc1);
-    int i = 1;
     while (i < paramList.size())
     {
       localArrayList.add(paramList.get(i));

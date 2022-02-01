@@ -92,10 +92,11 @@ public final class PopupWindowCompat
     
     public boolean getOverlapAnchor(PopupWindow paramPopupWindow)
     {
-      if (sOverlapAnchorField != null) {
+      Field localField = sOverlapAnchorField;
+      if (localField != null) {
         try
         {
-          boolean bool = ((Boolean)sOverlapAnchorField.get(paramPopupWindow)).booleanValue();
+          boolean bool = ((Boolean)localField.get(paramPopupWindow)).booleanValue();
           return bool;
         }
         catch (IllegalAccessException paramPopupWindow)
@@ -108,15 +109,17 @@ public final class PopupWindowCompat
     
     public void setOverlapAnchor(PopupWindow paramPopupWindow, boolean paramBoolean)
     {
-      if (sOverlapAnchorField != null) {}
-      try
-      {
-        sOverlapAnchorField.set(paramPopupWindow, Boolean.valueOf(paramBoolean));
-        return;
-      }
-      catch (IllegalAccessException paramPopupWindow)
-      {
-        Log.i("PopupWindowCompatApi21", "Could not set overlap anchor field in PopupWindow", paramPopupWindow);
+      Field localField = sOverlapAnchorField;
+      if (localField != null) {
+        try
+        {
+          localField.set(paramPopupWindow, Boolean.valueOf(paramBoolean));
+          return;
+        }
+        catch (IllegalAccessException paramPopupWindow)
+        {
+          Log.i("PopupWindowCompatApi21", "Could not set overlap anchor field in PopupWindow", paramPopupWindow);
+        }
       }
     }
   }
@@ -167,20 +170,21 @@ public final class PopupWindowCompat
         sGetWindowLayoutTypeMethod.setAccessible(true);
         label27:
         sGetWindowLayoutTypeMethodAttempted = true;
-        if (sGetWindowLayoutTypeMethod != null) {
-          try
-          {
-            int i = ((Integer)sGetWindowLayoutTypeMethod.invoke(paramPopupWindow, new Object[0])).intValue();
-            return i;
-          }
-          catch (Exception paramPopupWindow) {}
+        Method localMethod = sGetWindowLayoutTypeMethod;
+        if (localMethod != null) {}
+        try
+        {
+          int i = ((Integer)localMethod.invoke(paramPopupWindow, new Object[0])).intValue();
+          return i;
         }
+        catch (Exception paramPopupWindow) {}
         return 0;
       }
       catch (Exception localException)
       {
         break label27;
       }
+      return 0;
     }
     
     public void setOverlapAnchor(PopupWindow paramPopupWindow, boolean paramBoolean) {}
@@ -192,19 +196,23 @@ public final class PopupWindowCompat
       {
         sSetWindowLayoutTypeMethod = PopupWindow.class.getDeclaredMethod("setWindowLayoutType", new Class[] { Integer.TYPE });
         sSetWindowLayoutTypeMethod.setAccessible(true);
-        label33:
         sSetWindowLayoutTypeMethodAttempted = true;
-        if (sSetWindowLayoutTypeMethod != null) {}
-        try
-        {
-          sSetWindowLayoutTypeMethod.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
-          return;
-        }
-        catch (Exception paramPopupWindow) {}
+        localMethod = sSetWindowLayoutTypeMethod;
+        if (localMethod == null) {}
       }
       catch (Exception localException)
       {
-        break label33;
+        for (;;)
+        {
+          try
+          {
+            Method localMethod;
+            localMethod.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
+            return;
+          }
+          catch (Exception paramPopupWindow) {}
+          localException = localException;
+        }
       }
     }
     

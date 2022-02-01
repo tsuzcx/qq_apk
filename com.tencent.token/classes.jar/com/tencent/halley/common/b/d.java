@@ -6,7 +6,7 @@ import java.util.Set;
 
 public final class d
 {
-  private static HashMap e = null;
+  private static HashMap e;
   private HashMap a = new HashMap();
   private a b = new a();
   private String c = "GBK";
@@ -24,49 +24,53 @@ public final class d
   
   public final void a(String paramString, Object paramObject)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("put key can not is null");
-    }
-    if (paramObject == null) {
+    if (paramString != null)
+    {
+      if (paramObject != null)
+      {
+        if (!(paramObject instanceof Set))
+        {
+          Object localObject = new b();
+          ((b)localObject).a(this.c);
+          ((b)localObject).a(paramObject, 0);
+          paramObject = ((b)localObject).a();
+          localObject = new byte[paramObject.position()];
+          System.arraycopy(paramObject.array(), 0, localObject, 0, localObject.length);
+          this.a.put(paramString, localObject);
+          return;
+        }
+        throw new IllegalArgumentException("can not support Set");
+      }
       throw new IllegalArgumentException("put value can not is null");
     }
-    if ((paramObject instanceof Set)) {
-      throw new IllegalArgumentException("can not support Set");
-    }
-    Object localObject = new b();
-    ((b)localObject).a(this.c);
-    ((b)localObject).a(paramObject, 0);
-    paramObject = ((b)localObject).a();
-    localObject = new byte[paramObject.position()];
-    System.arraycopy(paramObject.array(), 0, localObject, 0, localObject.length);
-    this.a.put(paramString, localObject);
+    throw new IllegalArgumentException("put key can not is null");
   }
   
   public final void a(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
-    }
-    try
-    {
-      paramArrayOfByte = new a(paramArrayOfByte, 4);
-      paramArrayOfByte.a(this.c);
-      this.d.a(paramArrayOfByte);
-      paramArrayOfByte = new a(this.d.e);
-      paramArrayOfByte.a(this.c);
-      if (e == null)
+    if (paramArrayOfByte.length >= 4) {
+      try
       {
-        HashMap localHashMap = new HashMap();
-        e = localHashMap;
-        localHashMap.put("", new byte[0]);
+        paramArrayOfByte = new a(paramArrayOfByte, 4);
+        paramArrayOfByte.a(this.c);
+        this.d.a(paramArrayOfByte);
+        paramArrayOfByte = new a(this.d.e);
+        paramArrayOfByte.a(this.c);
+        if (e == null)
+        {
+          HashMap localHashMap = new HashMap();
+          e = localHashMap;
+          localHashMap.put("", new byte[0]);
+        }
+        this.a = paramArrayOfByte.a(e, 0, false);
+        return;
       }
-      this.a = paramArrayOfByte.a(e, 0, false);
-      return;
+      catch (Exception paramArrayOfByte)
+      {
+        throw new RuntimeException(paramArrayOfByte);
+      }
     }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    throw new IllegalArgumentException("decode package must include size head");
   }
   
   public final byte[] a()
@@ -74,8 +78,8 @@ public final class d
     Object localObject2 = new b(0);
     ((b)localObject2).a(this.c);
     ((b)localObject2).a(this.a, 0);
-    this.d.a = 3;
     Object localObject1 = this.d;
+    ((e)localObject1).a = 3;
     localObject2 = ((b)localObject2).a();
     byte[] arrayOfByte = new byte[((ByteBuffer)localObject2).position()];
     System.arraycopy(((ByteBuffer)localObject2).array(), 0, arrayOfByte, 0, arrayOfByte.length);
@@ -86,9 +90,9 @@ public final class d
     localObject2 = ((b)localObject1).a();
     localObject1 = new byte[((ByteBuffer)localObject2).position()];
     System.arraycopy(((ByteBuffer)localObject2).array(), 0, localObject1, 0, localObject1.length);
-    int i = localObject1.length;
-    localObject2 = ByteBuffer.allocate(i + 4);
-    ((ByteBuffer)localObject2).putInt(i + 4).put((byte[])localObject1).flip();
+    int i = localObject1.length + 4;
+    localObject2 = ByteBuffer.allocate(i);
+    ((ByteBuffer)localObject2).putInt(i).put((byte[])localObject1).flip();
     return ((ByteBuffer)localObject2).array();
   }
   

@@ -31,8 +31,11 @@ public final class b
     if (b())
     {
       long l = this.c.longValue();
-      if ((this.d + l < System.currentTimeMillis()) && (this.c.compareAndSet(l, System.currentTimeMillis() + 1L)))
+      if (this.d + l < System.currentTimeMillis())
       {
+        if (!this.c.compareAndSet(l, System.currentTimeMillis() + 1L)) {
+          return;
+        }
         Thread.currentThread().setUncaughtExceptionHandler(new c(this));
         throw new RuntimeException("Stopping thread to avoid potential memory leaks after a context was stopped.");
       }

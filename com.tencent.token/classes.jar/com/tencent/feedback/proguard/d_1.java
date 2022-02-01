@@ -6,8 +6,8 @@ import java.util.HashMap;
 public final class d
   extends c
 {
-  private static HashMap<String, byte[]> f = null;
-  private static HashMap<String, HashMap<String, byte[]>> g = null;
+  private static HashMap<String, byte[]> f;
+  private static HashMap<String, HashMap<String, byte[]>> g;
   private f e = new f();
   
   public d()
@@ -22,64 +22,71 @@ public final class d
   
   public final <T> void a(String paramString, T paramT)
   {
-    if (paramString.startsWith(".")) {
-      throw new IllegalArgumentException("put name can not startwith . , now is " + paramString);
+    if (!paramString.startsWith("."))
+    {
+      super.a(paramString, paramT);
+      return;
     }
-    super.a(paramString, paramT);
+    paramT = new StringBuilder("put name can not startwith . , now is ");
+    paramT.append(paramString);
+    throw new IllegalArgumentException(paramT.toString());
   }
   
   public final void a(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
-    }
-    try
-    {
-      paramArrayOfByte = new h(paramArrayOfByte, 4);
-      paramArrayOfByte.a(this.b);
-      this.e.a(paramArrayOfByte);
-      HashMap localHashMap;
-      if (this.e.a == 3)
+    if (paramArrayOfByte.length >= 4) {
+      try
       {
+        paramArrayOfByte = new h(paramArrayOfByte, 4);
+        paramArrayOfByte.a(this.b);
+        this.e.a(paramArrayOfByte);
+        HashMap localHashMap;
+        if (this.e.a == 3)
+        {
+          paramArrayOfByte = new h(this.e.e);
+          paramArrayOfByte.a(this.b);
+          if (f == null)
+          {
+            localHashMap = new HashMap();
+            f = localHashMap;
+            localHashMap.put("", new byte[0]);
+          }
+          this.d = paramArrayOfByte.a(f, 0, false);
+          return;
+        }
         paramArrayOfByte = new h(this.e.e);
         paramArrayOfByte.a(this.b);
-        if (f == null)
+        if (g == null)
         {
+          g = new HashMap();
           localHashMap = new HashMap();
-          f = localHashMap;
           localHashMap.put("", new byte[0]);
+          g.put("", localHashMap);
         }
-        this.d = paramArrayOfByte.a(f, 0, false);
+        this.a = paramArrayOfByte.a(g, 0, false);
+        new HashMap();
         return;
       }
-      paramArrayOfByte = new h(this.e.e);
-      paramArrayOfByte.a(this.b);
-      if (g == null)
+      catch (Exception paramArrayOfByte)
       {
-        g = new HashMap();
-        localHashMap = new HashMap();
-        localHashMap.put("", new byte[0]);
-        g.put("", localHashMap);
+        throw new RuntimeException(paramArrayOfByte);
       }
-      this.a = paramArrayOfByte.a(g, 0, false);
-      new HashMap();
-      return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    throw new IllegalArgumentException("decode package must include size head");
   }
   
   public final byte[] a()
   {
     if (this.e.a == 2)
     {
-      if (this.e.c.equals("")) {
-        throw new IllegalArgumentException("servantName can not is null");
+      if (!this.e.c.equals(""))
+      {
+        if (this.e.d.equals("")) {
+          throw new IllegalArgumentException("funcName can not is null");
+        }
       }
-      if (this.e.d.equals("")) {
-        throw new IllegalArgumentException("funcName can not is null");
+      else {
+        throw new IllegalArgumentException("servantName can not is null");
       }
     }
     else
@@ -95,20 +102,18 @@ public final class d
     ((i)localObject).a(this.b);
     if (this.e.a == 2) {
       ((i)localObject).a(this.a, 0);
-    }
-    for (;;)
-    {
-      this.e.e = k.a(((i)localObject).a());
-      localObject = new i(0);
-      ((i)localObject).a(this.b);
-      this.e.a((i)localObject);
-      localObject = k.a(((i)localObject).a());
-      int i = localObject.length;
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
-      localByteBuffer.putInt(i + 4).put((byte[])localObject).flip();
-      return localByteBuffer.array();
+    } else {
       ((i)localObject).a(this.d, 0);
     }
+    this.e.e = k.a(((i)localObject).a());
+    localObject = new i(0);
+    ((i)localObject).a(this.b);
+    this.e.a((i)localObject);
+    localObject = k.a(((i)localObject).a());
+    int i = localObject.length + 4;
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(i);
+    localByteBuffer.putInt(i).put((byte[])localObject).flip();
+    return localByteBuffer.array();
   }
   
   public final void c(String paramString)

@@ -53,13 +53,16 @@ public class g
       public void a(Bitmap paramAnonymousBitmap)
       {
         g localg = (g)g.d.remove(paramString1);
-        if ((paramAnonymousBitmap == null) || (localg == null)) {
-          return;
+        if (paramAnonymousBitmap != null)
+        {
+          if (localg == null) {
+            return;
+          }
+          paramAnonymousBitmap = new BitmapDrawable(paramAnonymousBitmap);
+          paramAnonymousBitmap.setBounds(g.a(localg).getBounds());
+          g.a(localg, paramAnonymousBitmap);
+          localg.invalidateSelf();
         }
-        paramAnonymousBitmap = new BitmapDrawable(paramAnonymousBitmap);
-        paramAnonymousBitmap.setBounds(g.a(localg).getBounds());
-        g.a(localg, paramAnonymousBitmap);
-        localg.invalidateSelf();
       }
     }.c(new String[] { "" });
   }
@@ -71,24 +74,19 @@ public class g
     {
       public Bitmap a(String... paramAnonymousVarArgs)
       {
-        paramAnonymousVarArgs = null;
-        String str1 = cr.a().a(paramString1, null);
-        if ((str1 != null) && (str1.equals(paramString3))) {}
-        Bitmap localBitmap;
-        String str2;
-        do
+        paramAnonymousVarArgs = cr.a().a(paramString1, null);
+        if ((paramAnonymousVarArgs != null) && (paramAnonymousVarArgs.equals(paramString3))) {
+          return null;
+        }
+        Bitmap localBitmap = cr.a().a(paramAnonymousVarArgs);
+        if (localBitmap != null)
         {
-          do
-          {
-            return paramAnonymousVarArgs;
-            localBitmap = cr.a().a(str1);
-            paramAnonymousVarArgs = localBitmap;
-          } while (localBitmap == null);
           g.c.b(paramString2, localBitmap);
-          str2 = g.c.c(paramString2);
-          paramAnonymousVarArgs = localBitmap;
-        } while (!g.c.a(str2, localBitmap));
-        g.c(paramString2, str1);
+          String str = g.c.c(paramString2);
+          if (g.c.a(str, localBitmap)) {
+            g.c(paramString2, paramAnonymousVarArgs);
+          }
+        }
         return localBitmap;
       }
       
@@ -96,14 +94,16 @@ public class g
       {
         g.e.remove(paramString2);
         g localg = (g)g.d.remove(paramString1);
-        if (localg == null) {}
-        while (paramAnonymousBitmap == null) {
+        if (localg == null) {
           return;
         }
-        paramAnonymousBitmap = new BitmapDrawable(paramAnonymousBitmap);
-        paramAnonymousBitmap.setBounds(g.a(localg).getBounds());
-        g.a(localg, paramAnonymousBitmap);
-        localg.invalidateSelf();
+        if (paramAnonymousBitmap != null)
+        {
+          paramAnonymousBitmap = new BitmapDrawable(paramAnonymousBitmap);
+          paramAnonymousBitmap.setBounds(g.a(localg).getBounds());
+          g.a(localg, paramAnonymousBitmap);
+          localg.invalidateSelf();
+        }
       }
     }.c(new String[] { "" });
   }
@@ -122,50 +122,64 @@ public class g
       localObject = paramString2;
       if (paramString2.length() > 4) {}
     }
-    else if ((paramString1 == null) || (paramString1.length() <= 4))
+    else
     {
-      paramString2 = new BitmapDrawable(a);
-    }
-    Bitmap localBitmap;
-    do
-    {
-      do
-      {
-        return paramString2;
-        localObject = c.d(paramString1);
-        localBitmap = c.a(localObject);
-        if (localBitmap == null) {
-          break;
-        }
-        com.tencent.token.global.g.a("face:from cache");
-        localObject = a(paramString1, (String)localObject, localBitmap);
-        paramString2 = (String)localObject;
-      } while (localObject != null);
-      com.tencent.token.global.g.b("from memcache" + paramString1);
-      return new BitmapDrawable(localBitmap);
-      localBitmap = c.b(c.c((String)localObject));
-      if (localBitmap == null) {
-        break;
+      if ((paramString1 == null) || (paramString1.length() <= 4)) {
+        break label325;
       }
-      c.b((String)localObject, localBitmap);
-      localObject = a(paramString1, (String)localObject, localBitmap);
-      paramString2 = (String)localObject;
-    } while (localObject != null);
-    com.tencent.token.global.g.b("from cache,don't update" + paramString1);
-    return new BitmapDrawable(localBitmap);
-    if ((paramString1 == null) || (paramString1.length() <= 4)) {
-      return new BitmapDrawable(a);
+      localObject = c.d(paramString1);
     }
-    paramString2 = (g)d.get(paramString1);
+    paramString2 = c.a(localObject);
     if (paramString2 != null)
     {
-      com.tencent.token.global.g.b("from loading task" + paramString1);
+      com.tencent.token.global.g.a("face:from cache");
+      localObject = a(paramString1, (String)localObject, paramString2);
+      if (localObject != null) {
+        return localObject;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("from memcache");
+      ((StringBuilder)localObject).append(paramString1);
+      com.tencent.token.global.g.b(((StringBuilder)localObject).toString());
+      return new BitmapDrawable(paramString2);
+    }
+    paramString2 = c;
+    paramString2 = paramString2.b(paramString2.c((String)localObject));
+    if (paramString2 != null)
+    {
+      c.b((String)localObject, paramString2);
+      localObject = a(paramString1, (String)localObject, paramString2);
+      if (localObject != null) {
+        return localObject;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("from cache,don't update");
+      ((StringBuilder)localObject).append(paramString1);
+      com.tencent.token.global.g.b(((StringBuilder)localObject).toString());
+      return new BitmapDrawable(paramString2);
+    }
+    if ((paramString1 != null) && (paramString1.length() > 4))
+    {
+      paramString2 = (g)d.get(paramString1);
+      if (paramString2 != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("from loading task");
+        ((StringBuilder)localObject).append(paramString1);
+        com.tencent.token.global.g.b(((StringBuilder)localObject).toString());
+        return paramString2;
+      }
+      paramString2 = new StringBuilder();
+      paramString2.append("from new task");
+      paramString2.append(paramString1);
+      com.tencent.token.global.g.b(paramString2.toString());
+      paramString2 = new g(paramString1, (String)localObject);
+      d.put(paramString1, paramString2);
       return paramString2;
     }
-    com.tencent.token.global.g.b("from new task" + paramString1);
-    paramString2 = new g(paramString1, (String)localObject);
-    d.put(paramString1, paramString2);
-    return paramString2;
+    return new BitmapDrawable(a);
+    label325:
+    return new BitmapDrawable(a);
   }
   
   private static BitmapDrawable a(String paramString1, String paramString2, Bitmap paramBitmap)
@@ -201,7 +215,7 @@ public class g
       {
         ep localep = (ep)((Iterator)localObject).next();
         if (localep == null) {
-          break;
+          return true;
         }
         paramMap.put(localep.a, localep.b);
       }
@@ -211,8 +225,8 @@ public class g
     {
       paramMap.printStackTrace();
       com.tencent.token.global.g.c(paramMap.toString());
-      return false;
     }
+    return false;
   }
   
   public static BitmapDrawable b(String paramString1, String paramString2)
@@ -223,29 +237,37 @@ public class g
       f = true;
       a(e);
     }
-    String str;
+    Object localObject;
     if (paramString2 != null)
     {
-      str = paramString2;
+      localObject = paramString2;
       if (paramString2.length() > 4) {}
     }
     else
     {
       if ((paramString1 == null) || (paramString1.length() <= 4)) {
-        return new BitmapDrawable(a);
+        break label155;
       }
-      str = c.d(paramString1);
+      localObject = c.d(paramString1);
     }
     paramString2 = (g)d.get(paramString1);
     if (paramString2 != null)
     {
-      com.tencent.token.global.g.b("from loading task" + paramString1);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("from loading task");
+      ((StringBuilder)localObject).append(paramString1);
+      com.tencent.token.global.g.b(((StringBuilder)localObject).toString());
       return paramString2;
     }
-    com.tencent.token.global.g.b("from new task" + paramString1);
-    paramString2 = new g(paramString1, str);
+    paramString2 = new StringBuilder();
+    paramString2.append("from new task");
+    paramString2.append(paramString1);
+    com.tencent.token.global.g.b(paramString2.toString());
+    paramString2 = new g(paramString1, (String)localObject);
     d.put(paramString1, paramString2);
     return paramString2;
+    label155:
+    return new BitmapDrawable(a);
   }
   
   private static void b()
@@ -253,8 +275,8 @@ public class g
     if (!h)
     {
       Resources localResources = RqdApplication.l().getResources();
-      a = m.a(localResources, 2130837666);
-      b = m.a(localResources, 2130837622);
+      a = m.a(localResources, 2131099812);
+      b = m.a(localResources, 2131099767);
       c = new ImageCache("", 30, RqdApplication.l());
       e = Collections.synchronizedMap(new HashMap());
       d = Collections.synchronizedMap(new HashMap());
@@ -282,38 +304,43 @@ public class g
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.g != null) {
-      this.g.draw(paramCanvas);
+    BitmapDrawable localBitmapDrawable = this.g;
+    if (localBitmapDrawable != null) {
+      localBitmapDrawable.draw(paramCanvas);
     }
   }
   
   public int getOpacity()
   {
-    if (this.g != null) {
-      return this.g.getOpacity();
+    BitmapDrawable localBitmapDrawable = this.g;
+    if (localBitmapDrawable != null) {
+      return localBitmapDrawable.getOpacity();
     }
     return -2;
   }
   
   public void onBoundsChange(Rect paramRect)
   {
-    if (this.g != null) {
-      this.g.setBounds(paramRect);
+    BitmapDrawable localBitmapDrawable = this.g;
+    if (localBitmapDrawable != null) {
+      localBitmapDrawable.setBounds(paramRect);
     }
     super.onBoundsChange(paramRect);
   }
   
   public void setAlpha(int paramInt)
   {
-    if (this.g != null) {
-      this.g.setAlpha(paramInt);
+    BitmapDrawable localBitmapDrawable = this.g;
+    if (localBitmapDrawable != null) {
+      localBitmapDrawable.setAlpha(paramInt);
     }
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    if (this.g != null) {
-      this.g.setColorFilter(paramColorFilter);
+    BitmapDrawable localBitmapDrawable = this.g;
+    if (localBitmapDrawable != null) {
+      localBitmapDrawable.setColorFilter(paramColorFilter);
     }
   }
 }

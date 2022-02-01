@@ -60,33 +60,42 @@ public final class CSReportProfile
     paramJceOutputStream.write(this.lastVerifyKey, 1);
     paramJceOutputStream.write(this.presentVerifyKey, 2);
     paramJceOutputStream.write(this.param, 3);
-    if (this.actionID != 0) {
-      paramJceOutputStream.write(this.actionID, 4);
+    int i = this.actionID;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
     paramJceOutputStream.write(this.isCheckKey, 5);
-    if (this.reportType != 0) {
-      paramJceOutputStream.write(this.reportType, 6);
+    i = this.reportType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 6);
     }
-    if (this.reportTime != 0) {
-      paramJceOutputStream.write(this.reportTime, 7);
+    i = this.reportTime;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 7);
     }
-    if (this.profileSource != 0) {
-      paramJceOutputStream.write(this.profileSource, 8);
+    i = this.profileSource;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 8);
     }
-    if (this.getTime != 0L) {
-      paramJceOutputStream.write(this.getTime, 9);
+    long l = this.getTime;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 9);
     }
-    if (this.sdcardState != 0) {
-      paramJceOutputStream.write(this.sdcardState, 10);
+    i = this.sdcardState;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 10);
     }
-    if (this.sdcardNum != -1) {
-      paramJceOutputStream.write(this.sdcardNum, 11);
+    i = this.sdcardNum;
+    if (i != -1) {
+      paramJceOutputStream.write(i, 11);
     }
-    if (this.reportProfileVer != 0) {
-      paramJceOutputStream.write(this.reportProfileVer, 12);
+    i = this.reportProfileVer;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 12);
     }
-    if (this.tryCount != 0) {
-      paramJceOutputStream.write(this.tryCount, 13);
+    i = this.tryCount;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 13);
     }
   }
 }

@@ -39,20 +39,24 @@ public class InputMethodRelativeLayout
   
   public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.a != null) && (paramInt1 == paramInt3) && (paramInt3 != 0) && (paramInt4 != 0)) {
-      if ((paramInt2 >= paramInt4) || (Math.abs(paramInt2 - paramInt4) <= 50)) {
-        break label87;
-      }
-    }
-    for (this.f = true;; this.f = false)
+    if ((this.a != null) && (paramInt1 == paramInt3) && (paramInt3 != 0) && (paramInt4 != 0))
     {
+      if ((paramInt2 < paramInt4) && (Math.abs(paramInt2 - paramInt4) > 50))
+      {
+        this.f = true;
+      }
+      else
+      {
+        if ((paramInt2 <= paramInt4) || (Math.abs(paramInt2 - paramInt4) <= 50)) {
+          break label113;
+        }
+        this.f = false;
+      }
       this.a.a(this.f, paramInt4, paramInt2);
       measure(this.b - paramInt1 + getWidth(), this.c - paramInt2 + getHeight());
-      label87:
-      do
-      {
-        return;
-      } while ((paramInt2 <= paramInt4) || (Math.abs(paramInt2 - paramInt4) <= 50));
+      return;
+      label113:
+      return;
     }
   }
   

@@ -13,152 +13,138 @@ public class cn
   
   public static Object a(Class<?> paramClass, String paramString, Object paramObject)
   {
-    Object localObject;
-    if (paramClass == null) {
-      localObject = null;
-    }
-    for (;;)
+    Object localObject2;
+    if (paramClass == null)
     {
-      if (localObject == null) {
+      paramClass = null;
+    }
+    else
+    {
+      Object localObject1;
+      try
+      {
+        localObject2 = (HashMap)b.get(paramClass);
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = new HashMap();
+          b.put(paramClass, localObject1);
+        }
+        localObject2 = (Field)((HashMap)localObject1).get(paramString);
+        if (localObject2 != null) {
+          break label108;
+        }
+        paramClass = paramClass.getDeclaredField(paramString);
+      }
+      catch (Throwable paramClass) {}
+      paramClass.setAccessible(true);
+      ((HashMap)localObject1).put(paramString, paramClass);
+    }
+    label108:
+    while (paramClass != null)
+    {
+      try
+      {
+        paramClass.printStackTrace();
+      }
+      catch (Throwable paramClass)
+      {
+        paramClass.printStackTrace();
         return null;
       }
-      label115:
-      label118:
-      do
-      {
-        for (;;)
-        {
-          try
-          {
-            localHashMap = (HashMap)b.get(paramClass);
-            if (localHashMap != null) {
-              break label115;
-            }
-            localHashMap = new HashMap();
-            b.put(paramClass, localHashMap);
-            Field localField = (Field)localHashMap.get(paramString);
-            localObject = localField;
-            if (localField != null) {
-              break label118;
-            }
-            localObject = paramClass.getDeclaredField(paramString);
-          }
-          catch (Throwable paramClass)
-          {
-            try
-            {
-              HashMap localHashMap;
-              paramClass.printStackTrace();
-            }
-            catch (Throwable paramClass)
-            {
-              paramClass.printStackTrace();
-              return null;
-            }
-          }
-          ((Field)localObject).setAccessible(true);
-          localHashMap.put(paramString, localObject);
-          break;
-          paramClass = ((Field)localObject).get(paramObject);
-          return paramClass;
-        }
-      } while (localObject != null);
-      localObject = null;
+      paramClass = paramClass.get(paramObject);
+      return paramClass;
+      paramClass = (Class<?>)localObject2;
+      if (paramClass != null) {
+        break;
+      }
+      paramClass = null;
     }
+    return null;
   }
   
   public static Object a(String paramString1, String paramString2)
   {
+    Class localClass1;
     try
     {
       Class localClass2 = (Class)a.get(paramString1);
       localClass1 = localClass2;
-      if (localClass2 == null) {
-        localClass1 = Class.forName(paramString1);
+      if (localClass2 != null) {
+        break label61;
       }
-      if (localClass1 != null) {
-        break label37;
-      }
+      localClass1 = Class.forName(paramString1);
     }
-    catch (Throwable paramString1)
-    {
-      for (;;)
-      {
-        Class localClass1;
-        label37:
-        paramString1.printStackTrace();
-      }
-    }
-    localClass1 = null;
+    catch (Throwable paramString1) {}
+    a.put(paramString1, localClass1);
     for (;;)
     {
       try
       {
-        paramString1 = a(localClass1, paramString2, null);
-        return paramString1;
+        paramString1.printStackTrace();
       }
       catch (Throwable paramString1)
       {
         paramString1.printStackTrace();
+        return null;
       }
-      a.put(paramString1, localClass1);
+      paramString1 = a(localClass1, paramString2, null);
+      return paramString1;
+      label61:
+      if (localClass1 != null) {
+        break;
+      }
+      localClass1 = null;
     }
-    return null;
   }
   
   public static Method a(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
   {
     if (paramClass != null) {}
     Object localObject2;
-    label168:
-    label173:
     do
     {
-      for (;;)
+      try
       {
-        try
-        {
-          if (TextUtils.isEmpty(paramString)) {
-            break;
-          }
-          localObject1 = new StringBuffer(paramString);
-          if (paramVarArgs != null)
-          {
-            int i = 0;
-            if (i < paramVarArgs.length)
-            {
-              localObject2 = paramVarArgs[i];
-              ((StringBuffer)localObject1).append("+");
-              ((StringBuffer)localObject1).append(((Class)localObject2).getName());
-              i += 1;
-              continue;
-            }
-          }
-          str = ((StringBuffer)localObject1).toString();
-          localObject1 = (HashMap)c.get(paramClass);
-          if (localObject1 != null) {
-            break label168;
-          }
-          localObject1 = new HashMap();
-          c.put(paramClass, localObject1);
-          Method localMethod = (Method)((HashMap)localObject1).get(str);
-          localObject2 = localMethod;
-          if (localMethod != null) {
-            break label173;
-          }
-          localObject2 = paramClass.getDeclaredMethod(paramString, paramVarArgs);
-        }
-        catch (Throwable paramClass)
-        {
-          Object localObject1;
-          String str;
-          paramClass.printStackTrace();
+        if (TextUtils.isEmpty(paramString)) {
           return null;
         }
-        ((Method)localObject2).setAccessible(true);
-        ((HashMap)localObject1).put(str, localObject2);
-        return localObject2;
+        localObject1 = new StringBuffer(paramString);
+        if (paramVarArgs != null)
+        {
+          int i = 0;
+          while (i < paramVarArgs.length)
+          {
+            localObject2 = paramVarArgs[i];
+            ((StringBuffer)localObject1).append("+");
+            ((StringBuffer)localObject1).append(((Class)localObject2).getName());
+            i += 1;
+          }
+        }
+        str = ((StringBuffer)localObject1).toString();
+        localObject2 = (HashMap)c.get(paramClass);
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = new HashMap();
+          c.put(paramClass, localObject1);
+        }
+        Method localMethod = (Method)((HashMap)localObject1).get(str);
+        localObject2 = localMethod;
+        if (localMethod != null) {
+          continue;
+        }
+        localObject2 = paramClass.getDeclaredMethod(paramString, paramVarArgs);
       }
+      catch (Throwable paramClass)
+      {
+        Object localObject1;
+        String str;
+        paramClass.printStackTrace();
+      }
+      ((Method)localObject2).setAccessible(true);
+      ((HashMap)localObject1).put(str, localObject2);
+      return localObject2;
       return null;
     } while (localObject2 != null);
     return null;

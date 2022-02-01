@@ -14,16 +14,6 @@ public final class UploadFileInfo
   public String id = "";
   public ArrayList<UploadFile> vecUploadFile = null;
   
-  static
-  {
-    if (!UploadFileInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public UploadFileInfo()
   {
     setId(this.id);
@@ -43,29 +33,35 @@ public final class UploadFileInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (UploadFileInfo)paramObject;
-    } while ((!JceUtil.equals(this.id, paramObject.id)) || (!JceUtil.equals(this.vecUploadFile, paramObject.vecUploadFile)));
-    return true;
+    }
+    paramObject = (UploadFileInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.id, paramObject.id))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.vecUploadFile, paramObject.vecUploadFile)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -88,9 +84,13 @@ public final class UploadFileInfo
     try
     {
       throw new Exception("Need define key first!");
+      label10:
+      return 0;
     }
-    catch (Exception localException) {}
-    return 0;
+    catch (Exception localException)
+    {
+      break label10;
+    }
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

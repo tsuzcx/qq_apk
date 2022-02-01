@@ -49,13 +49,33 @@ public class i
   private void a(boolean paramBoolean)
   {
     this.a = h.a("key_dialog_cofig_6348", ed.c("key_dialog_cofig_6348", null));
-    TmsLog.i("GuideMgr", "dialog config fromCloud(" + paramBoolean + "): " + this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dialog config fromCloud(");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("): ");
+    localStringBuilder.append(this.a);
+    TmsLog.i("GuideMgr", localStringBuilder.toString());
     this.b = h.a("key_tips1_cofig_6348", ed.c("key_tips1_cofig_6348", null));
-    TmsLog.i("GuideMgr", "tips1 config fromCloud(" + paramBoolean + "): " + this.b);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tips1 config fromCloud(");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("): ");
+    localStringBuilder.append(this.b);
+    TmsLog.i("GuideMgr", localStringBuilder.toString());
     this.c = h.a("key_tips2_cofig_6348", ed.c("key_tips2_cofig_6348", null));
-    TmsLog.i("GuideMgr", "tips2 config fromCloud(" + paramBoolean + "): " + this.c);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tips2 config fromCloud(");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("): ");
+    localStringBuilder.append(this.c);
+    TmsLog.i("GuideMgr", localStringBuilder.toString());
     this.d = h.a("key_eval_cofig_6348", ed.c("key_eval_cofig_6348", null));
-    TmsLog.i("GuideMgr", "eval config fromCloud(" + paramBoolean + "): " + this.d);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("eval config fromCloud(");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("): ");
+    localStringBuilder.append(this.d);
+    TmsLog.i("GuideMgr", localStringBuilder.toString());
   }
   
   static String b(String paramString)
@@ -101,57 +121,55 @@ public class i
   public void a(Context paramContext)
   {
     TmsLog.i("GuideMgr", "invoke tryShowGuideDialog()");
-    h localh;
-    j localj;
     try
     {
-      localh = a("key_dialog_cofig_6348");
-      if ((localh == null) || (!localh.a()))
+      h localh = a("key_dialog_cofig_6348");
+      if ((localh != null) && (localh.a()))
       {
-        TmsLog.w("GuideMgr", "@tryShowGuideDialog() json data invalid, or time is not ok.");
+        j localj = localh.a(paramContext, null);
+        if (localj == null)
+        {
+          TmsLog.w("GuideMgr", "@tryShowGuideDialog() no pkg matched.");
+          return;
+        }
+        if (TextUtils.isEmpty(localj.a)) {
+          return;
+        }
+        if ((!TextUtils.isEmpty(localj.b)) && (!TextUtils.isEmpty(localj.c)) && (!TextUtils.isEmpty(localj.d)) && (!TextUtils.isEmpty(localj.f)))
+        {
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.add(localj.d);
+          localArrayList.add(localj.e);
+          localArrayList.add(localj.f);
+          if (!TextUtils.isEmpty(localj.c)) {
+            localj.h.add(localj.c);
+          }
+          paramContext = new GuideQQPimSecureDialog(paramContext, localj.a, localj.b, localArrayList, localj.h);
+          try
+          {
+            paramContext.show();
+            localh.a(localj.a);
+            this.e = localj.a;
+            TmsLog.w("GuideMgr", "@tryShowGuideDialog() show sucess.");
+            c();
+            TMSDKContext.SaveStringData(1150161, localj.a);
+            return;
+          }
+          catch (Exception paramContext)
+          {
+            paramContext.printStackTrace();
+            return;
+          }
+        }
+        TmsLog.w("GuideMgr", "@tryShowGuideDialog() ui data illegal.");
         return;
       }
-      localj = localh.a(paramContext, null);
-      if (localj == null)
-      {
-        TmsLog.w("GuideMgr", "@tryShowGuideDialog() no pkg matched.");
-        return;
-      }
+      TmsLog.w("GuideMgr", "@tryShowGuideDialog() json data invalid, or time is not ok.");
+      return;
     }
     catch (Exception paramContext)
     {
       TmsLog.e("GuideMgr", "", paramContext);
-      return;
-    }
-    if (!TextUtils.isEmpty(localj.a))
-    {
-      if ((TextUtils.isEmpty(localj.b)) || (TextUtils.isEmpty(localj.c)) || (TextUtils.isEmpty(localj.d)) || (TextUtils.isEmpty(localj.f)))
-      {
-        TmsLog.w("GuideMgr", "@tryShowGuideDialog() ui data illegal.");
-        return;
-      }
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(localj.d);
-      localArrayList.add(localj.e);
-      localArrayList.add(localj.f);
-      if (!TextUtils.isEmpty(localj.c)) {
-        localj.h.add(localj.c);
-      }
-      paramContext = new GuideQQPimSecureDialog(paramContext, localj.a, localj.b, localArrayList, localj.h);
-      try
-      {
-        paramContext.show();
-        localh.a(localj.a);
-        this.e = localj.a;
-        TmsLog.w("GuideMgr", "@tryShowGuideDialog() show sucess.");
-        c();
-        TMSDKContext.SaveStringData(1150161, localj.a);
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-      }
     }
   }
   
@@ -168,136 +186,133 @@ public class i
       localIntent.putExtra("imgurl", (String)paramArrayList.get(4));
       localIntent.putExtra("pkg", paramString);
       paramContext.startActivity(localIntent);
-    }
-    do
-    {
       return;
-      if ("com.tencent.qqpimsecure".equals(paramString))
-      {
-        paramContext.startActivity(new Intent(paramContext, DownloadQQSecureActivity.class));
-        return;
-      }
-      if ("com.tencent.qqpim".equals(paramString))
-      {
-        paramContext.startActivity(new Intent(paramContext, QQPimNewActivity.class));
-        return;
-      }
-    } while (!"com.tencent.gallerymanager".equals(paramString));
-    paramContext.startActivity(new Intent(paramContext, GalleryActivity.class));
+    }
+    if ("com.tencent.qqpimsecure".equals(paramString))
+    {
+      paramContext.startActivity(new Intent(paramContext, DownloadQQSecureActivity.class));
+      return;
+    }
+    if ("com.tencent.qqpim".equals(paramString))
+    {
+      paramContext.startActivity(new Intent(paramContext, QQPimNewActivity.class));
+      return;
+    }
+    if ("com.tencent.gallerymanager".equals(paramString))
+    {
+      paramContext.startActivity(new Intent(paramContext, GalleryActivity.class));
+      return;
+    }
   }
   
   public void a(final View paramView, ImageView paramImageView, TextView paramTextView1, TextView paramTextView2)
   {
     TmsLog.i("GuideMgr", "invoke tryShowEvalGuide()");
-    h localh;
-    Object localObject;
     try
     {
-      localh = a("key_eval_cofig_6348");
-      if ((localh == null) || (!localh.a()))
+      h localh = a("key_eval_cofig_6348");
+      if ((localh != null) && (localh.a()))
       {
-        TmsLog.w("GuideMgr", "@tryShowEvalGuide() json data invalid, or time is not ok.");
+        Object localObject = new HashSet();
+        if (!TextUtils.isEmpty(this.e)) {
+          ((HashSet)localObject).add(this.e);
+        }
+        if (!TextUtils.isEmpty(this.f)) {
+          ((HashSet)localObject).add(this.f);
+        }
+        if (!TextUtils.isEmpty(this.g)) {
+          ((HashSet)localObject).add(this.g);
+        }
+        localObject = localh.a(paramView.getContext(), (HashSet)localObject);
+        if (localObject == null)
+        {
+          TmsLog.w("GuideMgr", "@tryShowEvalGuide() no pkg matched.");
+          return;
+        }
+        if (TextUtils.isEmpty(((j)localObject).a)) {
+          return;
+        }
+        if ((!TextUtils.isEmpty(((j)localObject).d)) && (!TextUtils.isEmpty(((j)localObject).e)) && (!TextUtils.isEmpty(((j)localObject).b)))
+        {
+          if ("com.tencent.qqpim".equals(((j)localObject).a)) {
+            TMSDKContext.saveActionData(170019);
+          }
+          if (!TextUtils.isEmpty(((j)localObject).c)) {
+            ((j)localObject).h.add(((j)localObject).c);
+          }
+          paramView.setVisibility(0);
+          paramView.setOnClickListener(new View.OnClickListener()
+          {
+            public void onClick(View paramAnonymousView)
+            {
+              if ("com.tencent.qqpim".equals(this.a.a)) {
+                TMSDKContext.saveActionData(170020);
+              }
+              i.this.a(paramView.getContext(), this.a.a, this.a.h);
+              TMSDKContext.SaveStringData(1150168, this.a.a);
+            }
+          });
+          paramTextView1.setText(((j)localObject).d);
+          paramTextView2.setText(((j)localObject).e);
+          new a(paramImageView).execute(new String[] { ((j)localObject).b });
+          localh.a(((j)localObject).a);
+          TmsLog.w("GuideMgr", "@tryShowEvalGuide() show sucess.");
+          TMSDKContext.SaveStringData(1150167, ((j)localObject).a);
+          c();
+          return;
+        }
+        TmsLog.w("GuideMgr", "@tryShowEvalGuide() ui data illegal.");
         return;
       }
-      localObject = new HashSet();
-      if (!TextUtils.isEmpty(this.e)) {
-        ((HashSet)localObject).add(this.e);
-      }
-      if (!TextUtils.isEmpty(this.f)) {
-        ((HashSet)localObject).add(this.f);
-      }
-      if (!TextUtils.isEmpty(this.g)) {
-        ((HashSet)localObject).add(this.g);
-      }
-      localObject = localh.a(paramView.getContext(), (HashSet)localObject);
-      if (localObject == null)
-      {
-        TmsLog.w("GuideMgr", "@tryShowEvalGuide() no pkg matched.");
-        return;
-      }
+      TmsLog.w("GuideMgr", "@tryShowEvalGuide() json data invalid, or time is not ok.");
+      return;
     }
     catch (Exception paramView)
     {
       TmsLog.e("GuideMgr", "", paramView);
-      return;
-    }
-    if (!TextUtils.isEmpty(((j)localObject).a))
-    {
-      if ((TextUtils.isEmpty(((j)localObject).d)) || (TextUtils.isEmpty(((j)localObject).e)) || (TextUtils.isEmpty(((j)localObject).b)))
-      {
-        TmsLog.w("GuideMgr", "@tryShowEvalGuide() ui data illegal.");
-        return;
-      }
-      if ("com.tencent.qqpim".equals(((j)localObject).a)) {
-        TMSDKContext.saveActionData(170019);
-      }
-      if (!TextUtils.isEmpty(((j)localObject).c)) {
-        ((j)localObject).h.add(((j)localObject).c);
-      }
-      paramView.setVisibility(0);
-      paramView.setOnClickListener(new View.OnClickListener()
-      {
-        public void onClick(View paramAnonymousView)
-        {
-          if ("com.tencent.qqpim".equals(this.a.a)) {
-            TMSDKContext.saveActionData(170020);
-          }
-          i.this.a(paramView.getContext(), this.a.a, this.a.h);
-          TMSDKContext.SaveStringData(1150168, this.a.a);
-        }
-      });
-      paramTextView1.setText(((j)localObject).d);
-      paramTextView2.setText(((j)localObject).e);
-      new a(paramImageView).execute(new String[] { ((j)localObject).b });
-      localh.a(((j)localObject).a);
-      TmsLog.w("GuideMgr", "@tryShowEvalGuide() show sucess.");
-      TMSDKContext.SaveStringData(1150167, ((j)localObject).a);
-      c();
     }
   }
   
   public void a(GuideQQPimSecureTipsView paramGuideQQPimSecureTipsView)
   {
     TmsLog.i("GuideMgr", "invoke tryShowTips1()");
-    h localh;
-    j localj;
     try
     {
-      localh = a("key_tips1_cofig_6348");
-      if ((localh == null) || (!localh.a()))
+      h localh = a("key_tips1_cofig_6348");
+      if ((localh != null) && (localh.a()))
       {
-        TmsLog.w("GuideMgr", "@tryShowTips1() json data invalid, or time is not ok.");
+        j localj = localh.a(paramGuideQQPimSecureTipsView.getContext(), null);
+        if (localj == null)
+        {
+          TmsLog.w("GuideMgr", "@tryShowTips1() no pkg matched.");
+          return;
+        }
+        if (TextUtils.isEmpty(localj.a)) {
+          return;
+        }
+        if ((!TextUtils.isEmpty(localj.d)) && (!TextUtils.isEmpty(localj.e)))
+        {
+          if (!TextUtils.isEmpty(localj.c)) {
+            localj.h.add(localj.c);
+          }
+          paramGuideQQPimSecureTipsView.a(localj.a, localj.d, localj.e, localj.b, localj.h, false);
+          paramGuideQQPimSecureTipsView.setVisibility(0);
+          localh.a(localj.a);
+          this.f = localj.a;
+          TmsLog.w("GuideMgr", "@tryShowTips1() show sucess.");
+          c();
+          TMSDKContext.SaveStringData(1150163, localj.a);
+          return;
+        }
+        TmsLog.w("GuideMgr", "@tryShowGuideDialog() ui data illegal.");
         return;
       }
-      localj = localh.a(paramGuideQQPimSecureTipsView.getContext(), null);
-      if (localj == null)
-      {
-        TmsLog.w("GuideMgr", "@tryShowTips1() no pkg matched.");
-        return;
-      }
+      TmsLog.w("GuideMgr", "@tryShowTips1() json data invalid, or time is not ok.");
+      return;
     }
     catch (Exception paramGuideQQPimSecureTipsView)
     {
       TmsLog.e("GuideMgr", "", paramGuideQQPimSecureTipsView);
-      return;
-    }
-    if (!TextUtils.isEmpty(localj.a))
-    {
-      if ((TextUtils.isEmpty(localj.d)) || (TextUtils.isEmpty(localj.e)))
-      {
-        TmsLog.w("GuideMgr", "@tryShowGuideDialog() ui data illegal.");
-        return;
-      }
-      if (!TextUtils.isEmpty(localj.c)) {
-        localj.h.add(localj.c);
-      }
-      paramGuideQQPimSecureTipsView.a(localj.a, localj.d, localj.e, localj.b, localj.h, false);
-      paramGuideQQPimSecureTipsView.setVisibility(0);
-      localh.a(localj.a);
-      this.f = localj.a;
-      TmsLog.w("GuideMgr", "@tryShowTips1() show sucess.");
-      c();
-      TMSDKContext.SaveStringData(1150163, localj.a);
     }
   }
   
@@ -309,370 +324,423 @@ public class i
       public void run()
       {
         // Byte code:
-        //   0: aconst_null
-        //   1: astore 4
-        //   3: ldc 25
-        //   5: ldc 27
-        //   7: invokestatic 33	com/tmsdk/common/util/TmsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-        //   10: ldc 35
-        //   12: ldc 37
-        //   14: invokestatic 43	com/tencent/token/ed:c	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-        //   17: astore_1
-        //   18: new 45	java/io/File
-        //   21: dup
-        //   22: new 47	java/lang/StringBuilder
-        //   25: dup
-        //   26: invokespecial 48	java/lang/StringBuilder:<init>	()V
-        //   29: invokestatic 54	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-        //   32: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-        //   35: getstatic 62	java/io/File:separator	Ljava/lang/String;
-        //   38: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   41: ldc 67
-        //   43: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   46: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   49: ldc 73
-        //   51: invokespecial 75	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-        //   54: astore 6
-        //   56: aload_1
-        //   57: invokestatic 81	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-        //   60: ifne +136 -> 196
-        //   63: ldc 25
-        //   65: new 47	java/lang/StringBuilder
-        //   68: dup
-        //   69: invokespecial 48	java/lang/StringBuilder:<init>	()V
-        //   72: ldc 83
-        //   74: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   77: aload_1
-        //   78: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   81: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   84: invokestatic 33	com/tmsdk/common/util/TmsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-        //   87: new 45	java/io/File
-        //   90: dup
-        //   91: new 47	java/lang/StringBuilder
-        //   94: dup
-        //   95: invokespecial 48	java/lang/StringBuilder:<init>	()V
-        //   98: invokestatic 54	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-        //   101: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-        //   104: getstatic 62	java/io/File:separator	Ljava/lang/String;
-        //   107: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   110: ldc 67
-        //   112: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   115: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   118: invokespecial 86	java/io/File:<init>	(Ljava/lang/String;)V
-        //   121: astore_2
+        //   0: ldc 25
+        //   2: ldc 27
+        //   4: invokestatic 33	com/tmsdk/common/util/TmsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   7: ldc 35
+        //   9: ldc 37
+        //   11: invokestatic 43	com/tencent/token/ed:c	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+        //   14: astore_1
+        //   15: new 45	java/lang/StringBuilder
+        //   18: dup
+        //   19: invokespecial 46	java/lang/StringBuilder:<init>	()V
+        //   22: astore_2
+        //   23: aload_2
+        //   24: invokestatic 52	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+        //   27: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+        //   30: pop
+        //   31: aload_2
+        //   32: getstatic 62	java/io/File:separator	Ljava/lang/String;
+        //   35: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   38: pop
+        //   39: aload_2
+        //   40: ldc 67
+        //   42: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   45: pop
+        //   46: new 58	java/io/File
+        //   49: dup
+        //   50: aload_2
+        //   51: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   54: ldc 73
+        //   56: invokespecial 75	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+        //   59: astore 7
+        //   61: aload_1
+        //   62: invokestatic 81	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+        //   65: ifne +210 -> 275
+        //   68: new 45	java/lang/StringBuilder
+        //   71: dup
+        //   72: invokespecial 46	java/lang/StringBuilder:<init>	()V
+        //   75: astore_2
+        //   76: aload_2
+        //   77: ldc 83
+        //   79: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   82: pop
+        //   83: aload_2
+        //   84: aload_1
+        //   85: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   88: pop
+        //   89: ldc 25
+        //   91: aload_2
+        //   92: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   95: invokestatic 33	com/tmsdk/common/util/TmsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   98: new 45	java/lang/StringBuilder
+        //   101: dup
+        //   102: invokespecial 46	java/lang/StringBuilder:<init>	()V
+        //   105: astore_2
+        //   106: aload_2
+        //   107: invokestatic 52	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+        //   110: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+        //   113: pop
+        //   114: aload_2
+        //   115: getstatic 62	java/io/File:separator	Ljava/lang/String;
+        //   118: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   121: pop
         //   122: aload_2
-        //   123: invokevirtual 90	java/io/File:exists	()Z
-        //   126: ifne +8 -> 134
-        //   129: aload_2
-        //   130: invokevirtual 93	java/io/File:mkdirs	()Z
-        //   133: pop
-        //   134: new 95	com/tencent/token/ez
-        //   137: dup
-        //   138: invokespecial 96	com/tencent/token/ez:<init>	()V
-        //   141: aload_1
-        //   142: invokevirtual 99	com/tencent/token/ez:a	(Ljava/lang/String;)[B
-        //   145: astore_3
-        //   146: aload_3
-        //   147: ifnull +49 -> 196
-        //   150: new 101	java/io/FileOutputStream
-        //   153: dup
-        //   154: aload 6
-        //   156: invokespecial 104	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-        //   159: astore_2
-        //   160: aload_2
-        //   161: astore_1
-        //   162: aload_2
-        //   163: aload_3
-        //   164: iconst_0
+        //   123: ldc 67
+        //   125: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   128: pop
+        //   129: new 58	java/io/File
+        //   132: dup
+        //   133: aload_2
+        //   134: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   137: invokespecial 86	java/io/File:<init>	(Ljava/lang/String;)V
+        //   140: astore_2
+        //   141: aload_2
+        //   142: invokevirtual 90	java/io/File:exists	()Z
+        //   145: ifne +8 -> 153
+        //   148: aload_2
+        //   149: invokevirtual 93	java/io/File:mkdirs	()Z
+        //   152: pop
+        //   153: new 95	com/tencent/token/ez
+        //   156: dup
+        //   157: invokespecial 96	com/tencent/token/ez:<init>	()V
+        //   160: aload_1
+        //   161: invokevirtual 99	com/tencent/token/ez:a	(Ljava/lang/String;)[B
+        //   164: astore_3
         //   165: aload_3
-        //   166: arraylength
-        //   167: invokevirtual 108	java/io/FileOutputStream:write	([BII)V
-        //   170: aload_2
-        //   171: astore_1
-        //   172: ldc 25
-        //   174: ldc 110
-        //   176: invokestatic 33	com/tmsdk/common/util/TmsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   166: ifnull +109 -> 275
+        //   169: new 101	java/io/FileOutputStream
+        //   172: dup
+        //   173: aload 7
+        //   175: invokespecial 104	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+        //   178: astore_2
         //   179: aload_2
         //   180: astore_1
-        //   181: ldc 35
-        //   183: ldc 37
-        //   185: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
-        //   188: aload_2
-        //   189: ifnull +7 -> 196
-        //   192: aload_2
-        //   193: invokevirtual 115	java/io/FileOutputStream:close	()V
-        //   196: new 117	java/util/ArrayList
-        //   199: dup
-        //   200: invokespecial 118	java/util/ArrayList:<init>	()V
-        //   203: astore 7
-        //   205: aload 6
-        //   207: invokevirtual 90	java/io/File:exists	()Z
-        //   210: ifeq +156 -> 366
-        //   213: ldc 25
-        //   215: ldc 120
-        //   217: invokestatic 33	com/tmsdk/common/util/TmsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-        //   220: new 122	java/io/FileReader
-        //   223: dup
-        //   224: aload 6
-        //   226: invokespecial 123	java/io/FileReader:<init>	(Ljava/io/File;)V
-        //   229: astore_3
-        //   230: new 125	java/io/BufferedReader
-        //   233: dup
-        //   234: aload_3
-        //   235: invokespecial 128	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-        //   238: astore_2
-        //   239: aload_2
-        //   240: invokevirtual 131	java/io/BufferedReader:readLine	()Ljava/lang/String;
-        //   243: astore_1
-        //   244: aload_1
-        //   245: ifnull +99 -> 344
-        //   248: aload 7
-        //   250: aload_1
-        //   251: invokevirtual 135	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-        //   254: pop
-        //   255: ldc 25
-        //   257: new 47	java/lang/StringBuilder
-        //   260: dup
-        //   261: invokespecial 48	java/lang/StringBuilder:<init>	()V
-        //   264: ldc 137
-        //   266: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   269: aload_1
-        //   270: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   273: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   276: invokestatic 33	com/tmsdk/common/util/TmsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-        //   279: aload_2
-        //   280: invokevirtual 131	java/io/BufferedReader:readLine	()Ljava/lang/String;
-        //   283: astore_1
-        //   284: goto -40 -> 244
-        //   287: astore_1
-        //   288: aload_1
-        //   289: invokevirtual 140	java/lang/Exception:printStackTrace	()V
-        //   292: goto -96 -> 196
-        //   295: astore_3
-        //   296: aconst_null
-        //   297: astore_2
-        //   298: aload_2
-        //   299: astore_1
-        //   300: aload_3
-        //   301: invokevirtual 140	java/lang/Exception:printStackTrace	()V
-        //   304: aload_2
-        //   305: ifnull -109 -> 196
-        //   308: aload_2
-        //   309: invokevirtual 115	java/io/FileOutputStream:close	()V
-        //   312: goto -116 -> 196
-        //   315: astore_1
-        //   316: aload_1
-        //   317: invokevirtual 140	java/lang/Exception:printStackTrace	()V
-        //   320: goto -124 -> 196
-        //   323: astore_2
-        //   324: aconst_null
-        //   325: astore_1
-        //   326: aload_1
-        //   327: ifnull +7 -> 334
-        //   330: aload_1
-        //   331: invokevirtual 115	java/io/FileOutputStream:close	()V
-        //   334: aload_2
-        //   335: athrow
-        //   336: astore_1
-        //   337: aload_1
-        //   338: invokevirtual 140	java/lang/Exception:printStackTrace	()V
-        //   341: goto -7 -> 334
-        //   344: aload_3
-        //   345: ifnull +7 -> 352
-        //   348: aload_3
-        //   349: invokevirtual 141	java/io/FileReader:close	()V
-        //   352: aload_2
-        //   353: ifnull +7 -> 360
-        //   356: aload_2
-        //   357: invokevirtual 142	java/io/BufferedReader:close	()V
-        //   360: aload 6
-        //   362: invokevirtual 145	java/io/File:delete	()Z
-        //   365: pop
-        //   366: aload 7
-        //   368: invokevirtual 149	java/util/ArrayList:size	()I
-        //   371: iconst_3
-        //   372: if_icmple +156 -> 528
-        //   375: ldc 151
-        //   377: aload 7
-        //   379: iconst_0
-        //   380: invokevirtual 155	java/util/ArrayList:get	(I)Ljava/lang/Object;
-        //   383: checkcast 157	java/lang/String
-        //   386: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
-        //   389: ldc 159
-        //   391: aload 7
-        //   393: iconst_1
-        //   394: invokevirtual 155	java/util/ArrayList:get	(I)Ljava/lang/Object;
-        //   397: checkcast 157	java/lang/String
-        //   400: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
-        //   403: ldc 161
-        //   405: aload 7
-        //   407: iconst_2
-        //   408: invokevirtual 155	java/util/ArrayList:get	(I)Ljava/lang/Object;
-        //   411: checkcast 157	java/lang/String
-        //   414: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
-        //   417: ldc 163
-        //   419: aload 7
-        //   421: iconst_3
-        //   422: invokevirtual 155	java/util/ArrayList:get	(I)Ljava/lang/Object;
-        //   425: checkcast 157	java/lang/String
-        //   428: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
-        //   431: aload_0
-        //   432: getfield 17	com/tencent/token/i$1:a	Lcom/tencent/token/i;
-        //   435: iconst_1
-        //   436: invokestatic 166	com/tencent/token/i:a	(Lcom/tencent/token/i;Z)V
-        //   439: return
-        //   440: astore_1
-        //   441: aload_1
-        //   442: invokevirtual 140	java/lang/Exception:printStackTrace	()V
-        //   445: goto -85 -> 360
-        //   448: astore_2
-        //   449: aconst_null
-        //   450: astore_1
-        //   451: aload 4
-        //   453: astore_3
-        //   454: aload_2
-        //   455: invokevirtual 140	java/lang/Exception:printStackTrace	()V
-        //   458: aload_1
-        //   459: ifnull +7 -> 466
-        //   462: aload_1
-        //   463: invokevirtual 141	java/io/FileReader:close	()V
-        //   466: aload_3
-        //   467: ifnull +7 -> 474
-        //   470: aload_3
-        //   471: invokevirtual 142	java/io/BufferedReader:close	()V
-        //   474: aload 6
-        //   476: invokevirtual 145	java/io/File:delete	()Z
-        //   479: pop
-        //   480: goto -114 -> 366
-        //   483: astore_1
-        //   484: aload_1
-        //   485: invokevirtual 140	java/lang/Exception:printStackTrace	()V
-        //   488: goto -14 -> 474
-        //   491: astore_1
-        //   492: aconst_null
-        //   493: astore_2
-        //   494: aconst_null
-        //   495: astore_3
-        //   496: aload_3
-        //   497: ifnull +7 -> 504
-        //   500: aload_3
-        //   501: invokevirtual 141	java/io/FileReader:close	()V
-        //   504: aload_2
-        //   505: ifnull +7 -> 512
-        //   508: aload_2
-        //   509: invokevirtual 142	java/io/BufferedReader:close	()V
-        //   512: aload 6
-        //   514: invokevirtual 145	java/io/File:delete	()Z
-        //   517: pop
-        //   518: aload_1
-        //   519: athrow
-        //   520: astore_2
-        //   521: aload_2
-        //   522: invokevirtual 140	java/lang/Exception:printStackTrace	()V
-        //   525: goto -13 -> 512
-        //   528: ldc 25
-        //   530: ldc 168
-        //   532: invokestatic 171	com/tmsdk/common/util/TmsLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-        //   535: return
-        //   536: astore_1
-        //   537: aconst_null
-        //   538: astore_2
-        //   539: goto -43 -> 496
-        //   542: astore_1
-        //   543: goto -47 -> 496
-        //   546: astore 5
-        //   548: aload_1
-        //   549: astore 4
-        //   551: aload_3
-        //   552: astore_2
-        //   553: aload 5
-        //   555: astore_1
-        //   556: aload 4
-        //   558: astore_3
-        //   559: goto -63 -> 496
-        //   562: astore_2
-        //   563: aload_3
-        //   564: astore_1
-        //   565: aload 4
-        //   567: astore_3
-        //   568: goto -114 -> 454
-        //   571: astore 5
-        //   573: aload_2
-        //   574: astore 4
-        //   576: aload_3
-        //   577: astore_1
-        //   578: aload 5
-        //   580: astore_2
-        //   581: aload 4
-        //   583: astore_3
-        //   584: goto -130 -> 454
-        //   587: astore_2
-        //   588: goto -262 -> 326
-        //   591: astore_3
-        //   592: goto -294 -> 298
+        //   181: aload_2
+        //   182: aload_3
+        //   183: iconst_0
+        //   184: aload_3
+        //   185: arraylength
+        //   186: invokevirtual 108	java/io/FileOutputStream:write	([BII)V
+        //   189: aload_2
+        //   190: astore_1
+        //   191: ldc 25
+        //   193: ldc 110
+        //   195: invokestatic 33	com/tmsdk/common/util/TmsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   198: aload_2
+        //   199: astore_1
+        //   200: ldc 35
+        //   202: ldc 37
+        //   204: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
+        //   207: aload_2
+        //   208: invokevirtual 115	java/io/FileOutputStream:close	()V
+        //   211: goto +64 -> 275
+        //   214: astore_3
+        //   215: goto +12 -> 227
+        //   218: astore_1
+        //   219: aconst_null
+        //   220: astore_2
+        //   221: goto +36 -> 257
+        //   224: astore_3
+        //   225: aconst_null
+        //   226: astore_2
+        //   227: aload_2
+        //   228: astore_1
+        //   229: aload_3
+        //   230: invokevirtual 118	java/lang/Exception:printStackTrace	()V
+        //   233: aload_2
+        //   234: ifnull +41 -> 275
+        //   237: aload_2
+        //   238: invokevirtual 115	java/io/FileOutputStream:close	()V
+        //   241: goto +34 -> 275
+        //   244: astore_1
+        //   245: aload_1
+        //   246: invokevirtual 118	java/lang/Exception:printStackTrace	()V
+        //   249: goto +26 -> 275
+        //   252: astore_3
+        //   253: aload_1
+        //   254: astore_2
+        //   255: aload_3
+        //   256: astore_1
+        //   257: aload_2
+        //   258: ifnull +15 -> 273
+        //   261: aload_2
+        //   262: invokevirtual 115	java/io/FileOutputStream:close	()V
+        //   265: goto +8 -> 273
+        //   268: astore_2
+        //   269: aload_2
+        //   270: invokevirtual 118	java/lang/Exception:printStackTrace	()V
+        //   273: aload_1
+        //   274: athrow
+        //   275: new 120	java/util/ArrayList
+        //   278: dup
+        //   279: invokespecial 121	java/util/ArrayList:<init>	()V
+        //   282: astore 8
+        //   284: aload 7
+        //   286: invokevirtual 90	java/io/File:exists	()Z
+        //   289: ifeq +278 -> 567
+        //   292: ldc 25
+        //   294: ldc 123
+        //   296: invokestatic 33	com/tmsdk/common/util/TmsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   299: new 125	java/io/FileReader
+        //   302: dup
+        //   303: aload 7
+        //   305: invokespecial 126	java/io/FileReader:<init>	(Ljava/io/File;)V
+        //   308: astore_1
+        //   309: new 128	java/io/BufferedReader
+        //   312: dup
+        //   313: aload_1
+        //   314: invokespecial 131	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+        //   317: astore 6
+        //   319: aload_1
+        //   320: astore_2
+        //   321: aload 6
+        //   323: astore_3
+        //   324: aload 6
+        //   326: invokevirtual 134	java/io/BufferedReader:readLine	()Ljava/lang/String;
+        //   329: astore 4
+        //   331: aload 4
+        //   333: ifnull +86 -> 419
+        //   336: aload_1
+        //   337: astore_2
+        //   338: aload 6
+        //   340: astore_3
+        //   341: aload 8
+        //   343: aload 4
+        //   345: invokevirtual 138	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+        //   348: pop
+        //   349: aload_1
+        //   350: astore_2
+        //   351: aload 6
+        //   353: astore_3
+        //   354: new 45	java/lang/StringBuilder
+        //   357: dup
+        //   358: invokespecial 46	java/lang/StringBuilder:<init>	()V
+        //   361: astore 5
+        //   363: aload_1
+        //   364: astore_2
+        //   365: aload 6
+        //   367: astore_3
+        //   368: aload 5
+        //   370: ldc 140
+        //   372: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   375: pop
+        //   376: aload_1
+        //   377: astore_2
+        //   378: aload 6
+        //   380: astore_3
+        //   381: aload 5
+        //   383: aload 4
+        //   385: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   388: pop
+        //   389: aload_1
+        //   390: astore_2
+        //   391: aload 6
+        //   393: astore_3
+        //   394: ldc 25
+        //   396: aload 5
+        //   398: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   401: invokestatic 33	com/tmsdk/common/util/TmsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   404: aload_1
+        //   405: astore_2
+        //   406: aload 6
+        //   408: astore_3
+        //   409: aload 6
+        //   411: invokevirtual 134	java/io/BufferedReader:readLine	()Ljava/lang/String;
+        //   414: astore 4
+        //   416: goto -85 -> 331
+        //   419: aload_1
+        //   420: invokevirtual 141	java/io/FileReader:close	()V
+        //   423: aload 6
+        //   425: invokevirtual 142	java/io/BufferedReader:close	()V
+        //   428: goto +89 -> 517
+        //   431: astore_1
+        //   432: goto +81 -> 513
+        //   435: astore 5
+        //   437: aload_1
+        //   438: astore 4
+        //   440: aload 6
+        //   442: astore_1
+        //   443: goto +36 -> 479
+        //   446: astore_2
+        //   447: aconst_null
+        //   448: astore_3
+        //   449: goto +84 -> 533
+        //   452: astore 5
+        //   454: aconst_null
+        //   455: astore_2
+        //   456: aload_1
+        //   457: astore 4
+        //   459: aload_2
+        //   460: astore_1
+        //   461: goto +18 -> 479
+        //   464: astore_2
+        //   465: aconst_null
+        //   466: astore_1
+        //   467: aload_1
+        //   468: astore_3
+        //   469: goto +64 -> 533
+        //   472: astore 5
+        //   474: aconst_null
+        //   475: astore_1
+        //   476: aload_1
+        //   477: astore 4
+        //   479: aload 4
+        //   481: astore_2
+        //   482: aload_1
+        //   483: astore_3
+        //   484: aload 5
+        //   486: invokevirtual 118	java/lang/Exception:printStackTrace	()V
+        //   489: aload 4
+        //   491: ifnull +11 -> 502
+        //   494: aload 4
+        //   496: invokevirtual 141	java/io/FileReader:close	()V
+        //   499: goto +3 -> 502
+        //   502: aload_1
+        //   503: ifnull +14 -> 517
+        //   506: aload_1
+        //   507: invokevirtual 142	java/io/BufferedReader:close	()V
+        //   510: goto +7 -> 517
+        //   513: aload_1
+        //   514: invokevirtual 118	java/lang/Exception:printStackTrace	()V
+        //   517: aload 7
+        //   519: invokevirtual 145	java/io/File:delete	()Z
+        //   522: pop
+        //   523: goto +44 -> 567
+        //   526: astore 4
+        //   528: aload_2
+        //   529: astore_1
+        //   530: aload 4
+        //   532: astore_2
+        //   533: aload_1
+        //   534: ifnull +10 -> 544
+        //   537: aload_1
+        //   538: invokevirtual 141	java/io/FileReader:close	()V
+        //   541: goto +3 -> 544
+        //   544: aload_3
+        //   545: ifnull +14 -> 559
+        //   548: aload_3
+        //   549: invokevirtual 142	java/io/BufferedReader:close	()V
+        //   552: goto +7 -> 559
+        //   555: aload_1
+        //   556: invokevirtual 118	java/lang/Exception:printStackTrace	()V
+        //   559: aload 7
+        //   561: invokevirtual 145	java/io/File:delete	()Z
+        //   564: pop
+        //   565: aload_2
+        //   566: athrow
+        //   567: aload 8
+        //   569: invokevirtual 149	java/util/ArrayList:size	()I
+        //   572: iconst_3
+        //   573: if_icmple +68 -> 641
+        //   576: ldc 151
+        //   578: aload 8
+        //   580: iconst_0
+        //   581: invokevirtual 155	java/util/ArrayList:get	(I)Ljava/lang/Object;
+        //   584: checkcast 157	java/lang/String
+        //   587: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
+        //   590: ldc 159
+        //   592: aload 8
+        //   594: iconst_1
+        //   595: invokevirtual 155	java/util/ArrayList:get	(I)Ljava/lang/Object;
+        //   598: checkcast 157	java/lang/String
+        //   601: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
+        //   604: ldc 161
+        //   606: aload 8
+        //   608: iconst_2
+        //   609: invokevirtual 155	java/util/ArrayList:get	(I)Ljava/lang/Object;
+        //   612: checkcast 157	java/lang/String
+        //   615: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
+        //   618: ldc 163
+        //   620: aload 8
+        //   622: iconst_3
+        //   623: invokevirtual 155	java/util/ArrayList:get	(I)Ljava/lang/Object;
+        //   626: checkcast 157	java/lang/String
+        //   629: invokestatic 112	com/tencent/token/ed:b	(Ljava/lang/String;Ljava/lang/String;)V
+        //   632: aload_0
+        //   633: getfield 17	com/tencent/token/i$1:a	Lcom/tencent/token/i;
+        //   636: iconst_1
+        //   637: invokestatic 166	com/tencent/token/i:a	(Lcom/tencent/token/i;Z)V
+        //   640: return
+        //   641: ldc 25
+        //   643: ldc 168
+        //   645: invokestatic 171	com/tmsdk/common/util/TmsLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+        //   648: return
+        //   649: astore_1
+        //   650: goto -137 -> 513
+        //   653: astore_1
+        //   654: goto -99 -> 555
         // Local variable table:
         //   start	length	slot	name	signature
-        //   0	595	0	this	1
-        //   17	267	1	localObject1	Object
-        //   287	2	1	localException1	Exception
-        //   299	1	1	localObject2	Object
-        //   315	2	1	localException2	Exception
-        //   325	6	1	localObject3	Object
-        //   336	2	1	localException3	Exception
-        //   440	2	1	localException4	Exception
-        //   450	13	1	localObject4	Object
-        //   483	2	1	localException5	Exception
-        //   491	28	1	localObject5	Object
-        //   536	1	1	localObject6	Object
-        //   542	7	1	localObject7	Object
-        //   555	23	1	localObject8	Object
-        //   121	188	2	localObject9	Object
-        //   323	34	2	localObject10	Object
-        //   448	7	2	localException6	Exception
-        //   493	16	2	localObject11	Object
-        //   520	2	2	localException7	Exception
-        //   538	15	2	localObject12	Object
-        //   562	12	2	localException8	Exception
-        //   580	1	2	localObject13	Object
-        //   587	1	2	localObject14	Object
-        //   145	90	3	localObject15	Object
-        //   295	54	3	localException9	Exception
-        //   453	131	3	localObject16	Object
-        //   591	1	3	localException10	Exception
-        //   1	581	4	localObject17	Object
-        //   546	8	5	localObject18	Object
-        //   571	8	5	localException11	Exception
-        //   54	459	6	localFile	java.io.File
-        //   203	217	7	localArrayList	ArrayList
+        //   0	657	0	this	1
+        //   14	186	1	localObject1	Object
+        //   218	1	1	localObject2	Object
+        //   228	1	1	localObject3	Object
+        //   244	10	1	localException1	Exception
+        //   256	164	1	localObject4	Object
+        //   431	7	1	localException2	Exception
+        //   442	114	1	localObject5	Object
+        //   649	1	1	localException3	Exception
+        //   653	1	1	localException4	Exception
+        //   22	240	2	localObject6	Object
+        //   268	2	2	localException5	Exception
+        //   320	86	2	localObject7	Object
+        //   446	1	2	localObject8	Object
+        //   455	5	2	localObject9	Object
+        //   464	1	2	localObject10	Object
+        //   481	85	2	localObject11	Object
+        //   164	21	3	arrayOfByte	byte[]
+        //   214	1	3	localException6	Exception
+        //   224	6	3	localException7	Exception
+        //   252	4	3	localObject12	Object
+        //   323	226	3	localObject13	Object
+        //   329	166	4	localObject14	Object
+        //   526	5	4	localObject15	Object
+        //   361	36	5	localStringBuilder	StringBuilder
+        //   435	1	5	localException8	Exception
+        //   452	1	5	localException9	Exception
+        //   472	13	5	localException10	Exception
+        //   317	124	6	localBufferedReader	java.io.BufferedReader
+        //   59	501	7	localFile	java.io.File
+        //   282	339	8	localArrayList	ArrayList
         // Exception table:
         //   from	to	target	type
-        //   192	196	287	java/lang/Exception
-        //   150	160	295	java/lang/Exception
-        //   308	312	315	java/lang/Exception
-        //   150	160	323	finally
-        //   330	334	336	java/lang/Exception
-        //   348	352	440	java/lang/Exception
-        //   356	360	440	java/lang/Exception
-        //   220	230	448	java/lang/Exception
-        //   462	466	483	java/lang/Exception
-        //   470	474	483	java/lang/Exception
-        //   220	230	491	finally
-        //   500	504	520	java/lang/Exception
-        //   508	512	520	java/lang/Exception
-        //   230	239	536	finally
-        //   239	244	542	finally
-        //   248	284	542	finally
-        //   454	458	546	finally
-        //   230	239	562	java/lang/Exception
-        //   239	244	571	java/lang/Exception
-        //   248	284	571	java/lang/Exception
-        //   162	170	587	finally
-        //   172	179	587	finally
-        //   181	188	587	finally
-        //   300	304	587	finally
-        //   162	170	591	java/lang/Exception
-        //   172	179	591	java/lang/Exception
-        //   181	188	591	java/lang/Exception
+        //   181	189	214	java/lang/Exception
+        //   191	198	214	java/lang/Exception
+        //   200	207	214	java/lang/Exception
+        //   169	179	218	finally
+        //   169	179	224	java/lang/Exception
+        //   207	211	244	java/lang/Exception
+        //   237	241	244	java/lang/Exception
+        //   181	189	252	finally
+        //   191	198	252	finally
+        //   200	207	252	finally
+        //   229	233	252	finally
+        //   261	265	268	java/lang/Exception
+        //   419	428	431	java/lang/Exception
+        //   324	331	435	java/lang/Exception
+        //   341	349	435	java/lang/Exception
+        //   354	363	435	java/lang/Exception
+        //   368	376	435	java/lang/Exception
+        //   381	389	435	java/lang/Exception
+        //   394	404	435	java/lang/Exception
+        //   409	416	435	java/lang/Exception
+        //   309	319	446	finally
+        //   309	319	452	java/lang/Exception
+        //   299	309	464	finally
+        //   299	309	472	java/lang/Exception
+        //   324	331	526	finally
+        //   341	349	526	finally
+        //   354	363	526	finally
+        //   368	376	526	finally
+        //   381	389	526	finally
+        //   394	404	526	finally
+        //   409	416	526	finally
+        //   484	489	526	finally
+        //   494	499	649	java/lang/Exception
+        //   506	510	649	java/lang/Exception
+        //   537	541	653	java/lang/Exception
+        //   548	552	653	java/lang/Exception
       }
     }).start();
   }
@@ -680,45 +748,43 @@ public class i
   public void b(GuideQQPimSecureTipsView paramGuideQQPimSecureTipsView)
   {
     TmsLog.i("GuideMgr", "invoke tryShowTips2()");
-    h localh;
-    j localj;
     try
     {
-      localh = a("key_tips2_cofig_6348");
-      if ((localh == null) || (!localh.a()))
+      h localh = a("key_tips2_cofig_6348");
+      if ((localh != null) && (localh.a()))
       {
-        TmsLog.w("GuideMgr", "@tryShowTips2() json data invalid, or time is not ok.");
+        j localj = localh.a(paramGuideQQPimSecureTipsView.getContext(), null);
+        if (localj == null)
+        {
+          TmsLog.w("GuideMgr", "@tryShowTips2() no pkg matched.");
+          return;
+        }
+        if (TextUtils.isEmpty(localj.a)) {
+          return;
+        }
+        if ((!TextUtils.isEmpty(localj.d)) && (!TextUtils.isEmpty(localj.e)))
+        {
+          if (!TextUtils.isEmpty(localj.c)) {
+            localj.h.add(localj.c);
+          }
+          paramGuideQQPimSecureTipsView.a(localj.a, localj.d, localj.e, localj.b, localj.h, true);
+          paramGuideQQPimSecureTipsView.setVisibility(0);
+          localh.a(localj.a);
+          this.g = localj.a;
+          TmsLog.w("GuideMgr", "@tryShowTips2() show sucess.");
+          c();
+          TMSDKContext.SaveStringData(1150165, localj.a);
+          return;
+        }
+        TmsLog.w("GuideMgr", "@tryShowTips2() ui data illegal.");
         return;
       }
-      localj = localh.a(paramGuideQQPimSecureTipsView.getContext(), null);
-      if (localj == null)
-      {
-        TmsLog.w("GuideMgr", "@tryShowTips2() no pkg matched.");
-        return;
-      }
+      TmsLog.w("GuideMgr", "@tryShowTips2() json data invalid, or time is not ok.");
+      return;
     }
     catch (Exception paramGuideQQPimSecureTipsView)
     {
       TmsLog.e("GuideMgr", "", paramGuideQQPimSecureTipsView);
-      return;
-    }
-    if (!TextUtils.isEmpty(localj.a))
-    {
-      if ((TextUtils.isEmpty(localj.d)) || (TextUtils.isEmpty(localj.e)))
-      {
-        TmsLog.w("GuideMgr", "@tryShowTips2() ui data illegal.");
-        return;
-      }
-      if (!TextUtils.isEmpty(localj.c)) {
-        localj.h.add(localj.c);
-      }
-      paramGuideQQPimSecureTipsView.a(localj.a, localj.d, localj.e, localj.b, localj.h, true);
-      paramGuideQQPimSecureTipsView.setVisibility(0);
-      localh.a(localj.a);
-      this.g = localj.a;
-      TmsLog.w("GuideMgr", "@tryShowTips2() show sucess.");
-      c();
-      TMSDKContext.SaveStringData(1150165, localj.a);
     }
   }
   
@@ -735,22 +801,27 @@ public class i
     {
       public void onRecvPush(ConchService.ConchPushInfo paramAnonymousConchPushInfo)
       {
-        if ((paramAnonymousConchPushInfo == null) || (paramAnonymousConchPushInfo.mConch == null)) {
+        if (paramAnonymousConchPushInfo != null)
+        {
+          if (paramAnonymousConchPushInfo.mConch == null) {
+            return;
+          }
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("receive cmd ");
+          ((StringBuilder)localObject).append(paramAnonymousConchPushInfo.mConch.cmdId);
+          TmsLog.i("GuideMgr", ((StringBuilder)localObject).toString());
+          if (paramAnonymousConchPushInfo.mConch.cmdId != 6348) {
+            return;
+          }
+          localObject = (ad)cp.a(paramAnonymousConchPushInfo.mConch.aZ, new ad(), false);
+          if ((((ad)localObject).bm != null) && (((ad)localObject).bm.size() >= 1))
+          {
+            ed.b("key_guide_cofig_file_url", (String)((ad)localObject).bm.get(0));
+            i.this.b();
+          }
+          ConchServiceProxy.getInstance().reportConchResult(paramAnonymousConchPushInfo, 10, 1);
           return;
         }
-        TmsLog.i("GuideMgr", "receive cmd " + paramAnonymousConchPushInfo.mConch.cmdId);
-        switch (paramAnonymousConchPushInfo.mConch.cmdId)
-        {
-        default: 
-          return;
-        }
-        ad localad = (ad)cp.a(paramAnonymousConchPushInfo.mConch.aZ, new ad(), false);
-        if ((localad.bm != null) && (localad.bm.size() >= 1))
-        {
-          ed.b("key_guide_cofig_file_url", (String)localad.bm.get(0));
-          i.this.b();
-        }
-        ConchServiceProxy.getInstance().reportConchResult(paramAnonymousConchPushInfo, 10, 1);
       }
     });
   }

@@ -30,53 +30,37 @@ public class SafeIterableMap<K, V>
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
     if (paramObject == this) {
-      bool1 = true;
+      return true;
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (!(paramObject instanceof SafeIterableMap));
-      localObject1 = (SafeIterableMap)paramObject;
-      bool1 = bool2;
-    } while (size() != ((SafeIterableMap)localObject1).size());
+    if (!(paramObject instanceof SafeIterableMap)) {
+      return false;
+    }
+    Object localObject1 = (SafeIterableMap)paramObject;
+    if (size() != ((SafeIterableMap)localObject1).size()) {
+      return false;
+    }
     paramObject = iterator();
-    Object localObject1 = ((SafeIterableMap)localObject1).iterator();
-    for (;;)
+    localObject1 = ((SafeIterableMap)localObject1).iterator();
+    while ((paramObject.hasNext()) && (((Iterator)localObject1).hasNext()))
     {
-      if ((paramObject.hasNext()) && (((Iterator)localObject1).hasNext()))
-      {
-        Map.Entry localEntry = (Map.Entry)paramObject.next();
-        Object localObject2 = ((Iterator)localObject1).next();
-        if (localEntry == null)
-        {
-          bool1 = bool2;
-          if (localObject2 != null) {
-            break;
-          }
-        }
-        if ((localEntry != null) && (!localEntry.equals(localObject2))) {
-          return false;
-        }
+      Map.Entry localEntry = (Map.Entry)paramObject.next();
+      Object localObject2 = ((Iterator)localObject1).next();
+      if (((localEntry == null) && (localObject2 != null)) || ((localEntry != null) && (!localEntry.equals(localObject2)))) {
+        return false;
       }
     }
-    if ((!paramObject.hasNext()) && (!((Iterator)localObject1).hasNext())) {}
-    for (boolean bool1 = true;; bool1 = false) {
-      return bool1;
-    }
+    return (!paramObject.hasNext()) && (!((Iterator)localObject1).hasNext());
   }
   
   protected Entry<K, V> get(K paramK)
   {
-    for (Entry localEntry = this.mStart;; localEntry = localEntry.mNext) {
-      if ((localEntry == null) || (localEntry.mKey.equals(paramK))) {
+    for (Entry localEntry = this.mStart; localEntry != null; localEntry = localEntry.mNext) {
+      if (localEntry.mKey.equals(paramK)) {
         return localEntry;
       }
     }
+    return localEntry;
   }
   
   @NonNull
@@ -103,14 +87,15 @@ public class SafeIterableMap<K, V>
   {
     paramK = new Entry(paramK, paramV);
     this.mSize += 1;
-    if (this.mEnd == null)
+    paramV = this.mEnd;
+    if (paramV == null)
     {
       this.mStart = paramK;
       this.mEnd = this.mStart;
       return paramK;
     }
-    this.mEnd.mNext = paramK;
-    paramK.mPrevious = this.mEnd;
+    paramV.mNext = paramK;
+    paramK.mPrevious = paramV;
     this.mEnd = paramK;
     return paramK;
   }
@@ -139,24 +124,19 @@ public class SafeIterableMap<K, V>
         ((SupportRemove)localIterator.next()).supportRemove(paramK);
       }
     }
-    if (paramK.mPrevious != null)
-    {
+    if (paramK.mPrevious != null) {
       paramK.mPrevious.mNext = paramK.mNext;
-      if (paramK.mNext == null) {
-        break label134;
-      }
-      paramK.mNext.mPrevious = paramK.mPrevious;
-    }
-    for (;;)
-    {
-      paramK.mNext = null;
-      paramK.mPrevious = null;
-      return paramK.mValue;
+    } else {
       this.mStart = paramK.mNext;
-      break;
-      label134:
+    }
+    if (paramK.mNext != null) {
+      paramK.mNext.mPrevious = paramK.mPrevious;
+    } else {
       this.mEnd = paramK.mPrevious;
     }
+    paramK.mNext = null;
+    paramK.mPrevious = null;
+    return paramK.mValue;
   }
   
   public int size()
@@ -236,16 +216,14 @@ public class SafeIterableMap<K, V>
     
     public boolean equals(Object paramObject)
     {
-      if (paramObject == this) {}
-      do
-      {
+      if (paramObject == this) {
         return true;
-        if (!(paramObject instanceof Entry)) {
-          return false;
-        }
-        paramObject = (Entry)paramObject;
-      } while ((this.mKey.equals(paramObject.mKey)) && (this.mValue.equals(paramObject.mValue)));
-      return false;
+      }
+      if (!(paramObject instanceof Entry)) {
+        return false;
+      }
+      paramObject = (Entry)paramObject;
+      return (this.mKey.equals(paramObject.mKey)) && (this.mValue.equals(paramObject.mValue));
     }
     
     @NonNull
@@ -267,7 +245,11 @@ public class SafeIterableMap<K, V>
     
     public String toString()
     {
-      return this.mKey + "=" + this.mValue;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.mKey);
+      localStringBuilder.append("=");
+      localStringBuilder.append(this.mValue);
+      return localStringBuilder.toString();
     }
   }
   
@@ -282,14 +264,10 @@ public class SafeIterableMap<K, V>
     public boolean hasNext()
     {
       if (this.mBeforeStart) {
-        if (SafeIterableMap.this.mStart == null) {}
+        return SafeIterableMap.this.mStart != null;
       }
-      while ((this.mCurrent != null) && (this.mCurrent.mNext != null))
-      {
-        return true;
-        return false;
-      }
-      return false;
+      SafeIterableMap.Entry localEntry = this.mCurrent;
+      return (localEntry != null) && (localEntry.mNext != null);
     }
     
     public Map.Entry<K, V> next()
@@ -298,30 +276,33 @@ public class SafeIterableMap<K, V>
       {
         this.mBeforeStart = false;
         this.mCurrent = SafeIterableMap.this.mStart;
-        return this.mCurrent;
       }
-      if (this.mCurrent != null) {}
-      for (SafeIterableMap.Entry localEntry = this.mCurrent.mNext;; localEntry = null)
+      else
       {
+        SafeIterableMap.Entry localEntry = this.mCurrent;
+        if (localEntry != null) {
+          localEntry = localEntry.mNext;
+        } else {
+          localEntry = null;
+        }
         this.mCurrent = localEntry;
-        break;
       }
+      return this.mCurrent;
     }
     
     public void supportRemove(@NonNull SafeIterableMap.Entry<K, V> paramEntry)
     {
-      if (paramEntry == this.mCurrent)
+      SafeIterableMap.Entry localEntry = this.mCurrent;
+      if (paramEntry == localEntry)
       {
-        this.mCurrent = this.mCurrent.mPrevious;
-        if (this.mCurrent != null) {
-          break label34;
+        this.mCurrent = localEntry.mPrevious;
+        boolean bool;
+        if (this.mCurrent == null) {
+          bool = true;
+        } else {
+          bool = false;
         }
-      }
-      label34:
-      for (boolean bool = true;; bool = false)
-      {
         this.mBeforeStart = bool;
-        return;
       }
     }
   }
@@ -340,10 +321,12 @@ public class SafeIterableMap<K, V>
     
     private SafeIterableMap.Entry<K, V> nextNode()
     {
-      if ((this.mNext == this.mExpectedEnd) || (this.mExpectedEnd == null)) {
-        return null;
+      SafeIterableMap.Entry localEntry1 = this.mNext;
+      SafeIterableMap.Entry localEntry2 = this.mExpectedEnd;
+      if ((localEntry1 != localEntry2) && (localEntry2 != null)) {
+        return forward(localEntry1);
       }
-      return forward(this.mNext);
+      return null;
     }
     
     abstract SafeIterableMap.Entry<K, V> backward(SafeIterableMap.Entry<K, V> paramEntry);
@@ -369,8 +352,9 @@ public class SafeIterableMap<K, V>
         this.mNext = null;
         this.mExpectedEnd = null;
       }
-      if (this.mExpectedEnd == paramEntry) {
-        this.mExpectedEnd = backward(this.mExpectedEnd);
+      SafeIterableMap.Entry localEntry = this.mExpectedEnd;
+      if (localEntry == paramEntry) {
+        this.mExpectedEnd = backward(localEntry);
       }
       if (this.mNext == paramEntry) {
         this.mNext = nextNode();

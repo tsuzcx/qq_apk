@@ -12,21 +12,21 @@ public abstract class aa
 {
   public static aa a(@Nullable u paramu, final long paramLong, e parame)
   {
-    if (parame == null) {
-      throw new NullPointerException("source == null");
+    if (parame != null) {
+      new aa()
+      {
+        public long a()
+        {
+          return paramLong;
+        }
+        
+        public e c()
+        {
+          return this.c;
+        }
+      };
     }
-    new aa()
-    {
-      public long a()
-      {
-        return paramLong;
-      }
-      
-      public e c()
-      {
-        return this.c;
-      }
-    };
+    throw new NullPointerException("source == null");
   }
   
   public static aa a(@Nullable u paramu, byte[] paramArrayOfByte)

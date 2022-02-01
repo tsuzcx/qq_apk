@@ -71,41 +71,41 @@ public class CircularProgressDrawable
   private void applyFinishTranslation(float paramFloat, Ring paramRing)
   {
     updateRingColor(paramFloat, paramRing);
-    float f1 = (float)(Math.floor(paramRing.getStartingRotation() / 0.8F) + 1.0D);
+    float f = (float)(Math.floor(paramRing.getStartingRotation() / 0.8F) + 1.0D);
     paramRing.setStartTrim(paramRing.getStartingStartTrim() + (paramRing.getStartingEndTrim() - 0.01F - paramRing.getStartingStartTrim()) * paramFloat);
     paramRing.setEndTrim(paramRing.getStartingEndTrim());
-    float f2 = paramRing.getStartingRotation();
-    paramRing.setRotation((f1 - paramRing.getStartingRotation()) * paramFloat + f2);
+    paramRing.setRotation(paramRing.getStartingRotation() + (f - paramRing.getStartingRotation()) * paramFloat);
   }
   
   private void applyTransformation(float paramFloat, Ring paramRing, boolean paramBoolean)
   {
-    if (this.mFinishing) {
+    if (this.mFinishing)
+    {
       applyFinishTranslation(paramFloat, paramRing);
-    }
-    while ((paramFloat == 1.0F) && (!paramBoolean)) {
       return;
     }
-    float f3 = paramRing.getStartingRotation();
-    float f1;
-    float f2;
-    if (paramFloat < 0.5F)
+    if ((paramFloat != 1.0F) || (paramBoolean))
     {
-      f1 = paramFloat / 0.5F;
-      f2 = paramRing.getStartingStartTrim();
-      f1 = MATERIAL_INTERPOLATOR.getInterpolation(f1) * 0.79F + 0.01F + f2;
-    }
-    for (;;)
-    {
+      float f3 = paramRing.getStartingRotation();
+      float f2;
+      float f1;
+      if (paramFloat < 0.5F)
+      {
+        f2 = paramFloat / 0.5F;
+        f1 = paramRing.getStartingStartTrim();
+        f2 = MATERIAL_INTERPOLATOR.getInterpolation(f2) * 0.79F + 0.01F + f1;
+      }
+      else
+      {
+        f1 = (paramFloat - 0.5F) / 0.5F;
+        f2 = paramRing.getStartingStartTrim() + 0.79F;
+        f1 = f2 - ((1.0F - MATERIAL_INTERPOLATOR.getInterpolation(f1)) * 0.79F + 0.01F);
+      }
       float f4 = this.mRotationCount;
-      paramRing.setStartTrim(f2);
-      paramRing.setEndTrim(f1);
+      paramRing.setStartTrim(f1);
+      paramRing.setEndTrim(f2);
       paramRing.setRotation(f3 + 0.21F * paramFloat);
-      setRotation(216.0F * (f4 + paramFloat));
-      return;
-      f2 = (paramFloat - 0.5F) / 0.5F;
-      f1 = paramRing.getStartingStartTrim() + 0.79F;
-      f2 = f1 - ((1.0F - MATERIAL_INTERPOLATOR.getInterpolation(f2)) * 0.79F + 0.01F);
+      setRotation((paramFloat + f4) * 216.0F);
     }
   }
   
@@ -115,7 +115,7 @@ public class CircularProgressDrawable
     int j = paramInt1 >> 16 & 0xFF;
     int k = paramInt1 >> 8 & 0xFF;
     paramInt1 &= 0xFF;
-    return i + (int)(((paramInt2 >> 24 & 0xFF) - i) * paramFloat) << 24 | j + (int)(((paramInt2 >> 16 & 0xFF) - j) * paramFloat) << 16 | (int)(((paramInt2 >> 8 & 0xFF) - k) * paramFloat) + k << 8 | (int)(((paramInt2 & 0xFF) - paramInt1) * paramFloat) + paramInt1;
+    return i + (int)(((paramInt2 >> 24 & 0xFF) - i) * paramFloat) << 24 | j + (int)(((paramInt2 >> 16 & 0xFF) - j) * paramFloat) << 16 | k + (int)(((paramInt2 >> 8 & 0xFF) - k) * paramFloat) << 8 | paramInt1 + (int)(paramFloat * ((paramInt2 & 0xFF) - paramInt1));
   }
   
   private float getRotation()
@@ -135,7 +135,7 @@ public class CircularProgressDrawable
     localRing.setStrokeWidth(paramFloat2 * f);
     localRing.setCenterRadius(paramFloat1 * f);
     localRing.setColorIndex(0);
-    localRing.setArrowDimensions(paramFloat3 * f, f * paramFloat4);
+    localRing.setArrowDimensions(paramFloat3 * f, paramFloat4 * f);
   }
   
   private void setupAnimators()
@@ -175,7 +175,8 @@ public class CircularProgressDrawable
           localRing.setShowArrow(false);
           return;
         }
-        CircularProgressDrawable.access$202(CircularProgressDrawable.this, CircularProgressDrawable.this.mRotationCount + 1.0F);
+        paramAnonymousAnimator = CircularProgressDrawable.this;
+        CircularProgressDrawable.access$202(paramAnonymousAnimator, paramAnonymousAnimator.mRotationCount + 1.0F);
       }
       
       public void onAnimationStart(Animator paramAnonymousAnimator)
@@ -360,13 +361,10 @@ public class CircularProgressDrawable
   {
     if (paramInt == 0) {
       setSizeParameters(11.0F, 3.0F, 12.0F, 6.0F);
-    }
-    for (;;)
-    {
-      invalidateSelf();
-      return;
+    } else {
       setSizeParameters(7.5F, 2.5F, 10.0F, 5.0F);
     }
+    invalidateSelf();
   }
   
   public void start()
@@ -437,19 +435,23 @@ public class CircularProgressDrawable
     void draw(Canvas paramCanvas, Rect paramRect)
     {
       RectF localRectF = this.mTempBounds;
-      float f1 = this.mRingCenterRadius + this.mStrokeWidth / 2.0F;
-      if (this.mRingCenterRadius <= 0.0F) {
+      float f2 = this.mRingCenterRadius;
+      float f1 = this.mStrokeWidth / 2.0F + f2;
+      if (f2 <= 0.0F) {
         f1 = Math.min(paramRect.width(), paramRect.height()) / 2.0F - Math.max(this.mArrowWidth * this.mArrowScale / 2.0F, this.mStrokeWidth / 2.0F);
       }
-      localRectF.set(paramRect.centerX() - f1, paramRect.centerY() - f1, paramRect.centerX() + f1, f1 + paramRect.centerY());
-      f1 = (this.mStartTrim + this.mRotation) * 360.0F;
-      float f2 = (this.mEndTrim + this.mRotation) * 360.0F - f1;
+      localRectF.set(paramRect.centerX() - f1, paramRect.centerY() - f1, paramRect.centerX() + f1, paramRect.centerY() + f1);
+      f1 = this.mStartTrim;
+      f2 = this.mRotation;
+      f1 = (f1 + f2) * 360.0F;
+      f2 = (this.mEndTrim + f2) * 360.0F - f1;
       this.mPaint.setColor(this.mCurrentColor);
       this.mPaint.setAlpha(this.mAlpha);
       float f3 = this.mStrokeWidth / 2.0F;
       localRectF.inset(f3, f3);
       paramCanvas.drawCircle(localRectF.centerX(), localRectF.centerY(), localRectF.width() / 2.0F, this.mCirclePaint);
-      localRectF.inset(-f3, -f3);
+      f3 = -f3;
+      localRectF.inset(f3, f3);
       paramCanvas.drawArc(localRectF, f1, f2, false, this.mPaint);
       drawTriangle(paramCanvas, f1, f2, localRectF);
     }
@@ -458,19 +460,24 @@ public class CircularProgressDrawable
     {
       if (this.mShowArrow)
       {
-        if (this.mArrow != null) {
-          break label220;
+        Path localPath = this.mArrow;
+        if (localPath == null)
+        {
+          this.mArrow = new Path();
+          this.mArrow.setFillType(Path.FillType.EVEN_ODD);
         }
-        this.mArrow = new Path();
-        this.mArrow.setFillType(Path.FillType.EVEN_ODD);
-      }
-      for (;;)
-      {
+        else
+        {
+          localPath.reset();
+        }
         float f1 = Math.min(paramRectF.width(), paramRectF.height()) / 2.0F;
         float f2 = this.mArrowWidth * this.mArrowScale / 2.0F;
         this.mArrow.moveTo(0.0F, 0.0F);
         this.mArrow.lineTo(this.mArrowWidth * this.mArrowScale, 0.0F);
-        this.mArrow.lineTo(this.mArrowWidth * this.mArrowScale / 2.0F, this.mArrowHeight * this.mArrowScale);
+        localPath = this.mArrow;
+        float f3 = this.mArrowWidth;
+        float f4 = this.mArrowScale;
+        localPath.lineTo(f3 * f4 / 2.0F, this.mArrowHeight * f4);
         this.mArrow.offset(f1 + paramRectF.centerX() - f2, paramRectF.centerY() + this.mStrokeWidth / 2.0F);
         this.mArrow.close();
         this.mArrowPaint.setColor(this.mCurrentColor);
@@ -479,9 +486,6 @@ public class CircularProgressDrawable
         paramCanvas.rotate(paramFloat1 + paramFloat2, paramRectF.centerX(), paramRectF.centerY());
         paramCanvas.drawPath(this.mArrow, this.mArrowPaint);
         paramCanvas.restore();
-        return;
-        label220:
-        this.mArrow.reset();
       }
     }
     

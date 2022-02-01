@@ -20,16 +20,6 @@ public final class DeviceInfo
   public String product = "";
   public int sdkversion = 0;
   
-  static
-  {
-    if (!DeviceInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public DeviceInfo()
   {
     setImei(this.imei);
@@ -65,29 +55,67 @@ public final class DeviceInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (DeviceInfo)paramObject;
-    } while ((!JceUtil.equals(this.imei, paramObject.imei)) || (!JceUtil.equals(this.imsi, paramObject.imsi)) || (!JceUtil.equals(this.mac, paramObject.mac)) || (!JceUtil.equals(this.iccid, paramObject.iccid)) || (!JceUtil.equals(this.androidid, paramObject.androidid)) || (!JceUtil.equals(this.sdkversion, paramObject.sdkversion)) || (!JceUtil.equals(this.model, paramObject.model)) || (!JceUtil.equals(this.product, paramObject.product)) || (!JceUtil.equals(this.netfile, paramObject.netfile)) || (!JceUtil.equals(this.lguid, paramObject.lguid)));
-    return true;
+    }
+    paramObject = (DeviceInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.imei, paramObject.imei))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.imsi, paramObject.imsi))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.mac, paramObject.mac))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.iccid, paramObject.iccid))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.androidid, paramObject.androidid))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.sdkversion, paramObject.sdkversion))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.model, paramObject.model))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.product, paramObject.product))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.netfile, paramObject.netfile))
+                    {
+                      bool1 = bool2;
+                      if (JceUtil.equals(this.lguid, paramObject.lguid)) {
+                        bool1 = true;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -225,30 +253,38 @@ public final class DeviceInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.imei, 0);
-    if (this.imsi != null) {
-      paramJceOutputStream.write(this.imsi, 1);
+    String str = this.imsi;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.mac != null) {
-      paramJceOutputStream.write(this.mac, 2);
+    str = this.mac;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.iccid != null) {
-      paramJceOutputStream.write(this.iccid, 3);
+    str = this.iccid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.androidid != null) {
-      paramJceOutputStream.write(this.androidid, 4);
+    str = this.androidid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.sdkversion, 5);
-    if (this.model != null) {
-      paramJceOutputStream.write(this.model, 6);
+    str = this.model;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.product != null) {
-      paramJceOutputStream.write(this.product, 7);
+    str = this.product;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.netfile != null) {
-      paramJceOutputStream.write(this.netfile, 8);
+    str = this.netfile;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.lguid != null) {
-      paramJceOutputStream.write(this.lguid, 9);
+    str = this.lguid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }

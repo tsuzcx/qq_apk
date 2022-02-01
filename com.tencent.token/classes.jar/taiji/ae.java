@@ -20,12 +20,15 @@ public class ae
   
   public boolean b()
   {
-    return !this.a.isEmpty();
+    return this.a.isEmpty() ^ true;
   }
   
   public String toString()
   {
-    return "initialPoint=" + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initialPoint=");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

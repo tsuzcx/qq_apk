@@ -100,30 +100,30 @@ public final class CompoundButtonCompat
     
     public Drawable getButtonDrawable(CompoundButton paramCompoundButton)
     {
-      if (!sButtonDrawableFieldFetched) {}
-      try
+      if (!sButtonDrawableFieldFetched)
       {
-        sButtonDrawableField = CompoundButton.class.getDeclaredField("mButtonDrawable");
-        sButtonDrawableField.setAccessible(true);
-        sButtonDrawableFieldFetched = true;
-        if (sButtonDrawableField == null) {}
-      }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        for (;;)
+        try
         {
-          try
-          {
-            paramCompoundButton = (Drawable)sButtonDrawableField.get(paramCompoundButton);
-            return paramCompoundButton;
-          }
-          catch (IllegalAccessException paramCompoundButton)
-          {
-            Log.i("CompoundButtonCompat", "Failed to get button drawable via reflection", paramCompoundButton);
-            sButtonDrawableField = null;
-          }
-          localNoSuchFieldException = localNoSuchFieldException;
+          sButtonDrawableField = CompoundButton.class.getDeclaredField("mButtonDrawable");
+          sButtonDrawableField.setAccessible(true);
+        }
+        catch (NoSuchFieldException localNoSuchFieldException)
+        {
           Log.i("CompoundButtonCompat", "Failed to retrieve mButtonDrawable field", localNoSuchFieldException);
+        }
+        sButtonDrawableFieldFetched = true;
+      }
+      Field localField = sButtonDrawableField;
+      if (localField != null) {
+        try
+        {
+          paramCompoundButton = (Drawable)localField.get(paramCompoundButton);
+          return paramCompoundButton;
+        }
+        catch (IllegalAccessException paramCompoundButton)
+        {
+          Log.i("CompoundButtonCompat", "Failed to get button drawable via reflection", paramCompoundButton);
+          sButtonDrawableField = null;
         }
       }
       return null;

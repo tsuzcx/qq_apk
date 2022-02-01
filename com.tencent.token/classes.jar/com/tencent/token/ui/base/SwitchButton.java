@@ -21,7 +21,7 @@ import com.tencent.token.utils.ImageCache;
 public class SwitchButton
   extends CheckBox
 {
-  private static ImageCache g = null;
+  private static ImageCache g;
   private a A;
   private CompoundButton.OnCheckedChangeListener B = null;
   private CompoundButton.OnCheckedChangeListener C = null;
@@ -58,11 +58,6 @@ public class SwitchButton
   private boolean y;
   private boolean z;
   
-  public SwitchButton(Context paramContext)
-  {
-    this(paramContext, null);
-  }
-  
   public SwitchButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 16842860);
@@ -82,8 +77,9 @@ public class SwitchButton
   private void a()
   {
     this.b = getParent();
-    if (this.b != null) {
-      this.b.requestDisallowInterceptTouchEvent(true);
+    ViewParent localViewParent = this.b;
+    if (localViewParent != null) {
+      localViewParent.requestDisallowInterceptTouchEvent(true);
     }
   }
   
@@ -94,63 +90,66 @@ public class SwitchButton
     Resources localResources = paramContext.getResources();
     this.t = (ViewConfiguration.getPressedStateDuration() + ViewConfiguration.getTapTimeout());
     this.u = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    if (g == null)
+    paramContext = g;
+    if (paramContext == null)
     {
       g = new ImageCache("", 10, getContext());
-      if (this.c == null)
-      {
-        this.c = BitmapFactory.decodeResource(localResources, 2130838000);
-        g.b("key_switch_button_bottom", this.c);
-      }
-      if (this.e == null)
-      {
-        this.e = BitmapFactory.decodeResource(localResources, 2130838001);
-        g.b("key_switch_button_normal", this.e);
-      }
-      if (this.f == null)
-      {
-        this.f = BitmapFactory.decodeResource(localResources, 2130838002);
-        g.b("key_switch_button_mask", this.f);
-      }
-      this.d = this.e;
-      this.r = this.e.getWidth();
-      this.p = this.f.getWidth();
-      this.q = this.f.getHeight();
-      this.o = (this.r / 2.0F);
-      this.n = (this.p - this.r / 2.0F);
-      if (!this.x) {
-        break label386;
-      }
     }
-    label386:
-    for (float f1 = this.n;; f1 = this.o)
+    else
     {
-      this.m = f1;
-      this.l = a(this.m);
-      f1 = getResources().getDisplayMetrics().density;
-      this.F = ((int)(350.0F * f1 + 0.5F));
-      this.H = ((int)(f1 * 15.0F + 0.5F));
-      this.h = new RectF(0.0F, this.H, this.f.getWidth(), this.f.getHeight() + this.H);
-      this.i = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
-      return;
-      this.c = g.a("key_switch_button_bottom");
+      this.c = paramContext.a("key_switch_button_bottom");
       this.e = g.a("key_switch_button_normal");
       this.f = g.a("key_switch_button_mask");
-      break;
     }
+    if (this.c == null)
+    {
+      this.c = BitmapFactory.decodeResource(localResources, 2131100149);
+      g.b("key_switch_button_bottom", this.c);
+    }
+    if (this.e == null)
+    {
+      this.e = BitmapFactory.decodeResource(localResources, 2131100150);
+      g.b("key_switch_button_normal", this.e);
+    }
+    if (this.f == null)
+    {
+      this.f = BitmapFactory.decodeResource(localResources, 2131100151);
+      g.b("key_switch_button_mask", this.f);
+    }
+    paramContext = this.e;
+    this.d = paramContext;
+    this.r = paramContext.getWidth();
+    this.p = this.f.getWidth();
+    this.q = this.f.getHeight();
+    float f1 = this.r;
+    this.o = (f1 / 2.0F);
+    this.n = (this.p - f1 / 2.0F);
+    if (this.x) {
+      f1 = this.n;
+    } else {
+      f1 = this.o;
+    }
+    this.m = f1;
+    this.l = a(this.m);
+    f1 = getResources().getDisplayMetrics().density;
+    this.F = ((int)(350.0F * f1 + 0.5F));
+    this.H = ((int)(f1 * 15.0F + 0.5F));
+    this.h = new RectF(0.0F, this.H, this.f.getWidth(), this.f.getHeight() + this.H);
+    this.i = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
   }
   
   private void a(boolean paramBoolean)
   {
     this.D = true;
-    if (paramBoolean) {}
-    for (float f1 = -this.F;; f1 = this.F)
-    {
-      this.J = f1;
-      this.I = this.m;
-      new b(null).run();
-      return;
+    float f1;
+    if (paramBoolean) {
+      f1 = -this.F;
+    } else {
+      f1 = this.F;
     }
+    this.J = f1;
+    this.I = this.m;
+    new b(null).run();
   }
   
   private void b()
@@ -168,23 +167,20 @@ public class SwitchButton
   private void c()
   {
     this.I += this.J * 16.0F / 1000.0F;
-    if (this.I <= this.n)
+    float f1 = this.I;
+    if (f1 <= this.n)
     {
       b();
       this.I = this.n;
       setCheckedDelayed(true);
     }
-    for (;;)
+    else if (f1 >= this.o)
     {
-      b(this.I);
-      return;
-      if (this.I >= this.o)
-      {
-        b();
-        this.I = this.o;
-        setCheckedDelayed(false);
-      }
+      b();
+      this.I = this.o;
+      setCheckedDelayed(false);
     }
+    b(this.I);
   }
   
   private void setCheckedDelayed(final boolean paramBoolean)
@@ -203,32 +199,32 @@ public class SwitchButton
     if (this.x != paramBoolean1)
     {
       this.x = paramBoolean1;
-      if (!paramBoolean1) {
-        break label51;
+      float f1;
+      if (paramBoolean1) {
+        f1 = this.n;
+      } else {
+        f1 = this.o;
       }
-    }
-    label51:
-    for (float f1 = this.n;; f1 = this.o)
-    {
       this.m = f1;
       this.l = a(this.m);
       invalidate();
-      if (!this.y) {
-        break;
+      if (this.y) {
+        return;
       }
-      return;
+      this.y = true;
+      if (paramBoolean2)
+      {
+        CompoundButton.OnCheckedChangeListener localOnCheckedChangeListener = this.B;
+        if (localOnCheckedChangeListener != null) {
+          localOnCheckedChangeListener.onCheckedChanged(this, this.x);
+        }
+        localOnCheckedChangeListener = this.C;
+        if (localOnCheckedChangeListener != null) {
+          localOnCheckedChangeListener.onCheckedChanged(this, this.x);
+        }
+      }
+      this.y = false;
     }
-    this.y = true;
-    if (paramBoolean2)
-    {
-      if (this.B != null) {
-        this.B.onCheckedChanged(this, this.x);
-      }
-      if (this.C != null) {
-        this.C.onCheckedChanged(this, this.x);
-      }
-    }
-    this.y = false;
   }
   
   public CompoundButton.OnCheckedChangeListener getOnCheckedChangeListener()
@@ -255,89 +251,92 @@ public class SwitchButton
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    setMeasuredDimension((int)this.p, (int)(this.q + 2.0F * this.H));
+    setMeasuredDimension((int)this.p, (int)(this.q + this.H * 2.0F));
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     int i1 = paramMotionEvent.getAction();
     float f3 = paramMotionEvent.getX();
     float f4 = paramMotionEvent.getY();
     float f1 = Math.abs(f3 - this.k);
     float f2 = Math.abs(f4 - this.j);
+    boolean bool = true;
     switch (i1)
     {
-    }
-    for (;;)
-    {
-      invalidate();
-      return isEnabled();
+    default: 
+      break;
+    case 2: 
+      this.m = (this.s + paramMotionEvent.getX() - this.k);
+      f1 = this.m;
+      f2 = this.o;
+      if (f1 >= f2) {
+        this.m = f2;
+      }
+      f1 = this.m;
+      f2 = this.n;
+      if (f1 <= f2) {
+        this.m = f2;
+      }
+      f1 = this.m;
+      f2 = this.o;
+      f3 = this.n;
+      if (f1 <= (f2 - f3) / 2.0F + f3) {
+        bool = false;
+      }
+      this.z = bool;
+      this.l = a(this.m);
+      break;
+    case 1: 
+      this.d = this.e;
+      f3 = (float)(paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime());
+      i1 = this.u;
+      if ((f2 < i1) && (f1 < i1) && (f3 < this.t))
+      {
+        if (this.A == null) {
+          this.A = new a(null);
+        }
+        if (!post(this.A)) {
+          performClick();
+        }
+      }
+      else
+      {
+        a(this.z ^ true);
+      }
+      break;
+    case 0: 
       a();
       this.k = f3;
       this.j = f4;
       this.d = this.e;
-      if (this.x) {}
-      for (f1 = this.n;; f1 = this.o)
-      {
-        this.s = f1;
-        break;
+      if (this.x) {
+        f1 = this.n;
+      } else {
+        f1 = this.o;
       }
-      this.m = (this.s + paramMotionEvent.getX() - this.k);
-      if (this.m >= this.o) {
-        this.m = this.o;
-      }
-      if (this.m <= this.n) {
-        this.m = this.n;
-      }
-      if (this.m > (this.o - this.n) / 2.0F + this.n) {}
-      for (;;)
-      {
-        this.z = bool1;
-        this.l = a(this.m);
-        break;
-        bool1 = false;
-      }
-      this.d = this.e;
-      f3 = (float)(paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime());
-      if ((f2 >= this.u) || (f1 >= this.u) || (f3 >= this.t)) {
-        break;
-      }
-      if (this.A == null) {
-        this.A = new a(null);
-      }
-      if (!post(this.A)) {
-        performClick();
-      }
+      this.s = f1;
     }
-    if (!this.z) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      a(bool1);
-      break;
-    }
+    invalidate();
+    return isEnabled();
   }
   
   public boolean performClick()
   {
-    if (!this.x) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool);
-      return true;
-    }
+    a(this.x ^ true);
+    return true;
   }
   
   public void setEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i1 = 255;; i1 = 127)
-    {
-      this.w = i1;
-      super.setEnabled(paramBoolean);
-      return;
+    int i1;
+    if (paramBoolean) {
+      i1 = 255;
+    } else {
+      i1 = 127;
     }
+    this.w = i1;
+    super.setEnabled(paramBoolean);
   }
   
   public void setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
@@ -352,12 +351,7 @@ public class SwitchButton
   
   public void toggle()
   {
-    if (!this.x) {}
-    for (boolean bool = true;; bool = false)
-    {
-      setChecked(bool);
-      return;
-    }
+    setChecked(this.x ^ true);
   }
   
   private final class a

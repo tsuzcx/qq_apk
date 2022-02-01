@@ -22,24 +22,21 @@ public class d
     setDither(true);
     setShape(0);
     mutate();
-    if (l.n() >= 16) {}
-    for (;;)
-    {
+    if (l.n() >= 16) {
       try
       {
         getClass().getMethod("setOrientation", new Class[] { GradientDrawable.Orientation.class }).invoke(this, new Object[] { paramOrientation });
         getClass().getMethod("setColors", new Class[] { [I.class }).invoke(this, new Object[] { { paramInt1, paramInt2 } });
-        this.d = paramInt1;
-        this.e = paramInt2;
-        return;
       }
       catch (Exception paramOrientation)
       {
         paramOrientation.printStackTrace();
-        continue;
       }
+    } else {
       setColor(paramInt1);
     }
+    this.d = paramInt1;
+    this.e = paramInt2;
   }
   
   private int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -50,7 +47,7 @@ public class d
     int i = paramInt1 >> 16 & 0xFF;
     int j = paramInt1 >> 8 & 0xFF;
     paramInt1 &= 0xFF;
-    return (i + ((paramInt2 >> 16 & 0xFF) - i) / paramInt4 * paramInt3 << 16 | j + ((paramInt2 >> 8 & 0xFF) - j) / paramInt4 * paramInt3 << 8 | paramInt1 + ((paramInt2 & 0xFF) - paramInt1) / paramInt4 * paramInt3) & 0xFFFFFF | 0xFF000000;
+    return (((paramInt2 >> 16 & 0xFF) - i) / paramInt4 * paramInt3 + i << 16 | ((paramInt2 >> 8 & 0xFF) - j) / paramInt4 * paramInt3 + j << 8 | ((paramInt2 & 0xFF) - paramInt1) / paramInt4 * paramInt3 + paramInt1) & 0xFFFFFF | 0xFF000000;
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -78,34 +75,28 @@ public class d
     {
       mutate();
       this.a += 1;
-      if (this.a > this.b) {}
-    }
-    else
-    {
-      try
+      if (this.a <= this.b)
       {
-        if (l.n() >= 16) {
-          getClass().getMethod("setColors", new Class[] { [I.class }).invoke(this, new Object[] { { a(this.d, this.f, this.a, this.b), a(this.e, this.g, this.a, this.b) } });
-        }
-        for (;;)
+        try
         {
-          invalidateSelf();
-          return;
-          setColor(a(this.d, this.f, this.a, this.b));
+          if (l.n() >= 16) {
+            getClass().getMethod("setColors", new Class[] { [I.class }).invoke(this, new Object[] { { a(this.d, this.f, this.a, this.b), a(this.e, this.g, this.a, this.b) } });
+          } else {
+            setColor(a(this.d, this.f, this.a, this.b));
+          }
         }
-      }
-      catch (Exception paramCanvas)
-      {
-        for (;;)
+        catch (Exception paramCanvas)
         {
           paramCanvas.printStackTrace();
         }
+        invalidateSelf();
+        return;
       }
+      this.d = this.f;
+      this.e = this.g;
+      this.c = false;
+      this.a = 0;
     }
-    this.d = this.f;
-    this.e = this.g;
-    this.c = false;
-    this.a = 0;
   }
 }
 

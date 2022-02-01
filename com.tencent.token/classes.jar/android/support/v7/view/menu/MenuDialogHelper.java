@@ -30,8 +30,9 @@ class MenuDialogHelper
   
   public void dismiss()
   {
-    if (this.mDialog != null) {
-      this.mDialog.dismiss();
+    AlertDialog localAlertDialog = this.mDialog;
+    if (localAlertDialog != null) {
+      localAlertDialog.dismiss();
     }
   }
   
@@ -45,8 +46,9 @@ class MenuDialogHelper
     if ((paramBoolean) || (paramMenuBuilder == this.mMenu)) {
       dismiss();
     }
-    if (this.mPresenterCallback != null) {
-      this.mPresenterCallback.onCloseMenu(paramMenuBuilder, paramBoolean);
+    MenuPresenter.Callback localCallback = this.mPresenterCallback;
+    if (localCallback != null) {
+      localCallback.onCloseMenu(paramMenuBuilder, paramBoolean);
     }
   }
   
@@ -99,8 +101,9 @@ class MenuDialogHelper
   
   public boolean onOpenSubMenu(MenuBuilder paramMenuBuilder)
   {
-    if (this.mPresenterCallback != null) {
-      return this.mPresenterCallback.onOpenSubMenu(paramMenuBuilder);
+    MenuPresenter.Callback localCallback = this.mPresenterCallback;
+    if (localCallback != null) {
+      return localCallback.onOpenSubMenu(paramMenuBuilder);
     }
     return false;
   }
@@ -121,22 +124,19 @@ class MenuDialogHelper
     View localView = ((MenuBuilder)localObject).getHeaderView();
     if (localView != null) {
       localBuilder.setCustomTitle(localView);
-    }
-    for (;;)
-    {
-      localBuilder.setOnKeyListener(this);
-      this.mDialog = localBuilder.create();
-      this.mDialog.setOnDismissListener(this);
-      localObject = this.mDialog.getWindow().getAttributes();
-      ((WindowManager.LayoutParams)localObject).type = 1003;
-      if (paramIBinder != null) {
-        ((WindowManager.LayoutParams)localObject).token = paramIBinder;
-      }
-      ((WindowManager.LayoutParams)localObject).flags |= 0x20000;
-      this.mDialog.show();
-      return;
+    } else {
       localBuilder.setIcon(((MenuBuilder)localObject).getHeaderIcon()).setTitle(((MenuBuilder)localObject).getHeaderTitle());
     }
+    localBuilder.setOnKeyListener(this);
+    this.mDialog = localBuilder.create();
+    this.mDialog.setOnDismissListener(this);
+    localObject = this.mDialog.getWindow().getAttributes();
+    ((WindowManager.LayoutParams)localObject).type = 1003;
+    if (paramIBinder != null) {
+      ((WindowManager.LayoutParams)localObject).token = paramIBinder;
+    }
+    ((WindowManager.LayoutParams)localObject).flags |= 0x20000;
+    this.mDialog.show();
   }
 }
 

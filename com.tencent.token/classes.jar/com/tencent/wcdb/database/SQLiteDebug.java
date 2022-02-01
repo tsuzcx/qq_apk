@@ -18,19 +18,22 @@ public final class SQLiteDebug
     try
     {
       sLastErrorLine = nativeGetLastErrorLine();
-      ArrayList localArrayList = new ArrayList();
+      localObject = new ArrayList();
       long l = paramSQLiteConnection.getNativeHandle(null);
       if (l != 0L)
       {
-        nativeGetIOTraceStats(l, localArrayList);
+        nativeGetIOTraceStats(l, (ArrayList)localObject);
         paramSQLiteConnection.endNativeHandle(null);
       }
-      sLastIOTraceStats = localArrayList;
+      sLastIOTraceStats = (ArrayList)localObject;
       return;
     }
     catch (RuntimeException paramSQLiteConnection)
     {
-      Log.e("WCDB.SQLiteDebug", "Cannot collect I/O trace statistics: " + paramSQLiteConnection.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Cannot collect I/O trace statistics: ");
+      ((StringBuilder)localObject).append(paramSQLiteConnection.getMessage());
+      Log.e("WCDB.SQLiteDebug", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -39,26 +42,29 @@ public final class SQLiteDebug
     try
     {
       sLastErrorLine = nativeGetLastErrorLine();
-      ArrayList localArrayList = new ArrayList();
+      localObject = new ArrayList();
       long l = paramSQLiteDatabase.acquireNativeConnectionHandle("collectIoStat", false, false);
       if (l != 0L) {
-        nativeGetIOTraceStats(l, localArrayList);
+        nativeGetIOTraceStats(l, (ArrayList)localObject);
       }
       paramSQLiteDatabase.releaseNativeConnection(l, null);
-      sLastIOTraceStats = localArrayList;
+      sLastIOTraceStats = (ArrayList)localObject;
       return;
     }
     catch (RuntimeException paramSQLiteDatabase)
     {
-      Log.e("WCDB.SQLiteDebug", "Cannot collect I/O trace statistics: " + paramSQLiteDatabase.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Cannot collect I/O trace statistics: ");
+      ((StringBuilder)localObject).append(paramSQLiteDatabase.getMessage());
+      Log.e("WCDB.SQLiteDebug", ((StringBuilder)localObject).toString());
     }
   }
   
   public static void dump(Printer paramPrinter, String[] paramArrayOfString)
   {
-    boolean bool = false;
     int j = paramArrayOfString.length;
     int i = 0;
+    boolean bool = false;
     while (i < j)
     {
       if (paramArrayOfString[i].equals("-v")) {
@@ -119,7 +125,13 @@ public final class SQLiteDebug
       this.pageSize = (paramLong2 / 1024L);
       this.dbSize = (paramLong1 * paramLong2 / 1024L);
       this.lookaside = paramInt1;
-      this.cache = (paramInt2 + "/" + paramInt3 + "/" + paramInt4);
+      paramString = new StringBuilder();
+      paramString.append(paramInt2);
+      paramString.append("/");
+      paramString.append(paramInt3);
+      paramString.append("/");
+      paramString.append(paramInt4);
+      this.cache = paramString.toString();
     }
   }
   

@@ -22,7 +22,16 @@ public class w
     String str1 = String.format("% 6d", new Object[] { Integer.valueOf(this.a) });
     String str2 = String.format("% 6d", new Object[] { Integer.valueOf(this.b) });
     String str3 = String.format("% 6d", new Object[] { Integer.valueOf(this.c) });
-    return "" + str1 + "    " + str2 + "    " + str3 + "    " + this.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(str1);
+    localStringBuilder.append("    ");
+    localStringBuilder.append(str2);
+    localStringBuilder.append("    ");
+    localStringBuilder.append(str3);
+    localStringBuilder.append("    ");
+    localStringBuilder.append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

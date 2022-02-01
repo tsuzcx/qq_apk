@@ -15,16 +15,6 @@ public final class ServerCmdInfo
   public String newtipsid = "";
   public int nextcheckinterval = 0;
   
-  static
-  {
-    if (!ServerCmdInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public ServerCmdInfo()
   {
     setCloudinfos(this.cloudinfos);
@@ -46,29 +36,39 @@ public final class ServerCmdInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ServerCmdInfo)paramObject;
-    } while ((!JceUtil.equals(this.cloudinfos, paramObject.cloudinfos)) || (!JceUtil.equals(this.nextcheckinterval, paramObject.nextcheckinterval)) || (!JceUtil.equals(this.newtipsid, paramObject.newtipsid)));
-    return true;
+    }
+    paramObject = (ServerCmdInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.cloudinfos, paramObject.cloudinfos))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.nextcheckinterval, paramObject.nextcheckinterval))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.newtipsid, paramObject.newtipsid)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -136,8 +136,9 @@ public final class ServerCmdInfo
   {
     paramJceOutputStream.write(this.cloudinfos, 1);
     paramJceOutputStream.write(this.nextcheckinterval, 2);
-    if (this.newtipsid != null) {
-      paramJceOutputStream.write(this.newtipsid, 3);
+    String str = this.newtipsid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }

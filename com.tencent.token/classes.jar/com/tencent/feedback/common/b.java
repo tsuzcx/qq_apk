@@ -19,7 +19,9 @@ public abstract class b
   {
     try
     {
-      e.a("rqdp{  AsyncTaskHandlerAbs setInstance} " + paramb, new Object[0]);
+      StringBuilder localStringBuilder = new StringBuilder("rqdp{  AsyncTaskHandlerAbs setInstance} ");
+      localStringBuilder.append(paramb);
+      e.a(localStringBuilder.toString(), new Object[0]);
       if ((a != null) && (a != paramb)) {
         a.a();
       }
@@ -62,11 +64,13 @@ public abstract class b
     
     public a(ScheduledExecutorService paramScheduledExecutorService)
     {
-      if ((paramScheduledExecutorService == null) || (paramScheduledExecutorService.isShutdown())) {
-        throw new IllegalArgumentException("ScheduledExecutorService is not valiable!");
+      if ((paramScheduledExecutorService != null) && (!paramScheduledExecutorService.isShutdown()))
+      {
+        this.a = paramScheduledExecutorService;
+        this.b = new SparseArray();
+        return;
       }
-      this.a = paramScheduledExecutorService;
-      this.b = new SparseArray();
+      throw new IllegalArgumentException("ScheduledExecutorService is not valiable!");
     }
     
     /* Error */
@@ -108,122 +112,68 @@ public abstract class b
       //   2	19	34	finally
     }
     
-    /* Error */
     public final boolean a()
     {
-      // Byte code:
-      //   0: iconst_0
-      //   1: istore_1
-      //   2: aload_0
-      //   3: monitorenter
-      //   4: ldc 46
-      //   6: iconst_0
-      //   7: anewarray 48	java/lang/Object
-      //   10: invokestatic 53	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
-      //   13: pop
-      //   14: aload_0
-      //   15: invokespecial 55	com/tencent/feedback/common/b$a:c	()Z
-      //   18: ifne +17 -> 35
-      //   21: ldc 57
-      //   23: iconst_0
-      //   24: anewarray 48	java/lang/Object
-      //   27: invokestatic 60	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-      //   30: pop
-      //   31: aload_0
-      //   32: monitorexit
-      //   33: iload_1
-      //   34: ireturn
-      //   35: ldc 62
-      //   37: iconst_0
-      //   38: anewarray 48	java/lang/Object
-      //   41: invokestatic 64	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
-      //   44: pop
-      //   45: aload_0
-      //   46: getfield 25	com/tencent/feedback/common/b$a:a	Ljava/util/concurrent/ScheduledExecutorService;
-      //   49: invokeinterface 67 1 0
-      //   54: aload_0
-      //   55: aconst_null
-      //   56: putfield 25	com/tencent/feedback/common/b$a:a	Ljava/util/concurrent/ScheduledExecutorService;
-      //   59: aload_0
-      //   60: getfield 27	com/tencent/feedback/common/b$a:b	Landroid/util/SparseArray;
-      //   63: invokevirtual 70	android/util/SparseArray:clear	()V
-      //   66: aload_0
-      //   67: aconst_null
-      //   68: putfield 27	com/tencent/feedback/common/b$a:b	Landroid/util/SparseArray;
-      //   71: ldc 72
-      //   73: iconst_0
-      //   74: anewarray 48	java/lang/Object
-      //   77: invokestatic 53	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
-      //   80: pop
-      //   81: iconst_1
-      //   82: istore_1
-      //   83: goto -52 -> 31
-      //   86: astore_2
-      //   87: aload_0
-      //   88: monitorexit
-      //   89: aload_2
-      //   90: athrow
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	91	0	this	a
-      //   1	82	1	bool	boolean
-      //   86	4	2	localObject	Object
-      // Exception table:
-      //   from	to	target	type
-      //   4	31	86	finally
-      //   35	81	86	finally
+      try
+      {
+        e.a("rqdp{  stopAllScheduleTasks start}", new Object[0]);
+        if (!c())
+        {
+          e.d("rqdp{  ScheduleTaskHandlerImp was closed , should all stopped!}", new Object[0]);
+          return false;
+        }
+        e.b("rqdp{  stop All ScheduleTasks!}", new Object[0]);
+        this.a.shutdown();
+        this.a = null;
+        this.b.clear();
+        this.b = null;
+        e.a("rqdp{  stopAllScheduleTasks end}", new Object[0]);
+        return true;
+      }
+      finally {}
     }
     
     public final boolean a(Runnable paramRunnable)
     {
-      boolean bool = false;
-      for (;;)
+      try
       {
-        try
+        if (!c())
         {
-          if (!c())
-          {
-            e.d("rqdp{  ScheduleTaskHandlerImp was closed , should not post!}", new Object[0]);
-            return bool;
-          }
-          if (paramRunnable == null)
-          {
-            e.d("rqdp{  task runner should not be null}", new Object[0]);
-            continue;
-          }
-          this.a.execute(paramRunnable);
+          e.d("rqdp{  ScheduleTaskHandlerImp was closed , should not post!}", new Object[0]);
+          return false;
         }
-        finally {}
-        bool = true;
+        if (paramRunnable == null)
+        {
+          e.d("rqdp{  task runner should not be null}", new Object[0]);
+          return false;
+        }
+        this.a.execute(paramRunnable);
+        return true;
       }
+      finally {}
     }
     
     public final boolean a(Runnable paramRunnable, long paramLong)
     {
-      boolean bool = false;
       try
       {
-        if (!c()) {
-          e.d("rqdp{  ScheduleTaskHandlerImp was closed , should not post!}", new Object[0]);
-        }
-        for (;;)
+        if (!c())
         {
-          return bool;
-          if (paramRunnable != null) {
-            break;
-          }
-          e.d("rqdp{  task runner should not be null}", new Object[0]);
+          e.d("rqdp{  ScheduleTaskHandlerImp was closed , should not post!}", new Object[0]);
+          return false;
         }
-        if (paramLong <= 0L) {}
+        if (paramRunnable == null)
+        {
+          e.d("rqdp{  task runner should not be null}", new Object[0]);
+          return false;
+        }
+        if (paramLong <= 0L) {
+          paramLong = 0L;
+        }
+        this.a.schedule(paramRunnable, paramLong, TimeUnit.MILLISECONDS);
+        return true;
       }
       finally {}
-      for (;;)
-      {
-        this.a.schedule(paramRunnable, paramLong, TimeUnit.MILLISECONDS);
-        bool = true;
-        break;
-        paramLong = 0L;
-      }
     }
   }
 }

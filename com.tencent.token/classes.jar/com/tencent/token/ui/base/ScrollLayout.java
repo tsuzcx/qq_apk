@@ -58,8 +58,9 @@ public class ScrollLayout
       int n = getScrollX();
       this.a.startScroll(getScrollX(), getTop(), m * paramInt - n, getTop(), 200);
       this.c = paramInt;
-      if (this.j != null) {
-        this.j.a(this.c);
+      a locala = this.j;
+      if (locala != null) {
+        locala.a(this.c);
       }
       invalidate();
     }
@@ -92,60 +93,56 @@ public class ScrollLayout
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     int m = paramMotionEvent.getAction();
-    if ((m == 2) && (this.e != 0)) {}
-    for (;;)
-    {
+    if ((m == 2) && (this.e != 0)) {
       return true;
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      switch (m)
-      {
-      }
-      while (this.e == 0)
-      {
-        return false;
-        if ((int)Math.abs(this.g - f1) > this.f)
-        {
-          this.e = 1;
-          continue;
-          this.g = f1;
-          this.h = f2;
-          if (this.a.isFinished()) {}
-          for (m = 0;; m = 1)
-          {
-            this.e = m;
-            break;
-          }
-          this.e = 0;
-        }
-      }
     }
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    switch (m)
+    {
+    default: 
+      break;
+    case 2: 
+      if ((int)Math.abs(this.g - f1) > this.f) {
+        this.e = 1;
+      }
+      break;
+    case 1: 
+    case 3: 
+      this.e = 0;
+      break;
+    case 0: 
+      this.g = f1;
+      this.h = f2;
+      this.e = (this.a.isFinished() ^ true);
+    }
+    return this.e != 0;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramInt2 = 0;
     if (paramBoolean)
     {
       paramInt4 = getChildCount();
-      paramInt1 = getScreenHeight();
-      if (this.l) {}
-      for (this.i = 0;; this.i = (paramInt1 * 12 / 100))
+      paramInt2 = getScreenHeight();
+      paramBoolean = this.l;
+      paramInt1 = 0;
+      if (paramBoolean) {
+        this.i = 0;
+      } else {
+        this.i = (paramInt2 * 12 / 100);
+      }
+      for (paramInt2 = 0; paramInt1 < paramInt4; paramInt2 = paramInt3)
       {
-        paramInt1 = 0;
-        while (paramInt1 < paramInt4)
+        View localView = getChildAt(paramInt1);
+        paramInt3 = paramInt2;
+        if (localView.getVisibility() != 8)
         {
-          View localView = getChildAt(paramInt1);
-          paramInt3 = paramInt2;
-          if (localView.getVisibility() != 8)
-          {
-            this.k = localView.getMeasuredHeight();
-            localView.layout(paramInt2, this.i, getWidth() + paramInt2, this.i + this.k);
-            paramInt3 = paramInt2 + getWidth();
-          }
-          paramInt1 += 1;
-          paramInt2 = paramInt3;
+          this.k = localView.getMeasuredHeight();
+          localView.layout(paramInt2, this.i, getWidth() + paramInt2, this.i + this.k);
+          paramInt3 = paramInt2 + getWidth();
         }
+        paramInt1 += 1;
       }
     }
   }
@@ -172,50 +169,65 @@ public class ScrollLayout
     int m = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    if ((f2 < this.i) || (f2 > this.i + this.k)) {
-      return false;
-    }
-    switch (m)
+    int n = this.i;
+    if (f2 >= n)
     {
-    }
-    for (;;)
-    {
-      return true;
-      if (!this.a.isFinished()) {
-        this.a.abortAnimation();
+      if (f2 > n + this.k) {
+        return false;
       }
-      this.g = f1;
-      continue;
-      m = (int)(this.g - f1);
-      if (((this.c == 0) && (m < 0) && (getScrollX() < -getWidth() / 5)) || ((this.c == getChildCount() - 1) && (m > 0) && (getScrollX() > getWidth() / 5 + getWidth() * (getChildCount() - 1)))) {
-        break;
-      }
-      this.g = f1;
-      scrollBy(m, 0);
-      continue;
-      paramMotionEvent = this.b;
-      paramMotionEvent.computeCurrentVelocity(1000);
-      m = (int)paramMotionEvent.getXVelocity();
-      if ((m > 600) && (this.c > 0)) {
-        a(this.c - 1);
-      }
-      for (;;)
+      switch (m)
       {
-        if (this.b != null)
-        {
-          this.b.recycle();
-          this.b = null;
-        }
+      default: 
+        return true;
+      case 3: 
         this.e = 0;
-        break;
+        return true;
+      case 2: 
+        m = (int)(this.g - f1);
+        if ((this.c == 0) && (m < 0) && (getScrollX() < -getWidth() / 5)) {
+          return false;
+        }
+        if ((this.c == getChildCount() - 1) && (m > 0) && (getScrollX() > getWidth() / 5 + getWidth() * (getChildCount() - 1))) {
+          return false;
+        }
+        this.g = f1;
+        scrollBy(m, 0);
+        return true;
+      case 1: 
+        paramMotionEvent = this.b;
+        paramMotionEvent.computeCurrentVelocity(1000);
+        m = (int)paramMotionEvent.getXVelocity();
+        if (m > 600)
+        {
+          n = this.c;
+          if (n > 0)
+          {
+            a(n - 1);
+            break label292;
+          }
+        }
         if ((m < -600) && (this.c < getChildCount() - 1)) {
           a(this.c + 1);
         } else {
           a();
         }
+        label292:
+        paramMotionEvent = this.b;
+        if (paramMotionEvent != null)
+        {
+          paramMotionEvent.recycle();
+          this.b = null;
+        }
+        this.e = 0;
+        return true;
       }
-      this.e = 0;
+      if (!this.a.isFinished()) {
+        this.a.abortAnimation();
+      }
+      this.g = f1;
+      return true;
     }
+    return false;
   }
   
   public void setOnScrollListner(a parama)

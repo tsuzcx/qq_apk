@@ -33,65 +33,66 @@ public class m
   
   public int a(Context paramContext, a<String> parama)
   {
-    if (paramContext == null) {
-      throw new NullPointerException("Context can not be null.");
-    }
-    this.mContext = paramContext;
-    this.al = parama;
-    this.ak = new ServiceConnection()
+    if (paramContext != null)
     {
-      public void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
+      this.mContext = paramContext;
+      this.al = parama;
+      this.ak = new ServiceConnection()
       {
-        try
+        public void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
         {
-          m.a(m.this, l.a.b(paramAnonymousIBinder));
-          if (m.a(m.this) != null) {
-            m.a(m.this).a("Deviceid Service Connected", m.this);
+          try
+          {
+            m.a(m.this, l.a.b(paramAnonymousIBinder));
+            if (m.a(m.this) != null) {
+              m.a(m.this).a("Deviceid Service Connected", m.this);
+            }
+            m.a(m.this, "Service onServiceConnected");
+            return;
           }
-          m.a(m.this, "Service onServiceConnected");
-          return;
+          finally {}
         }
-        finally {}
-      }
-      
-      public void onServiceDisconnected(ComponentName paramAnonymousComponentName)
+        
+        public void onServiceDisconnected(ComponentName paramAnonymousComponentName)
+        {
+          m.a(m.this, null);
+          m.a(m.this, "Service onServiceDisconnected");
+        }
+      };
+      paramContext = new Intent();
+      paramContext.setClassName("com.zui.deviceidservice", "com.zui.deviceidservice.DeviceidService");
+      if (this.mContext.bindService(paramContext, this.ak, 1))
       {
-        m.a(m.this, null);
-        m.a(m.this, "Service onServiceDisconnected");
+        h("bindService Successful!");
+        return 1;
       }
-    };
-    paramContext = new Intent();
-    paramContext.setClassName("com.zui.deviceidservice", "com.zui.deviceidservice.DeviceidService");
-    if (this.mContext.bindService(paramContext, this.ak, 1))
-    {
-      h("bindService Successful!");
-      return 1;
+      h("bindService Failed!");
+      return -1;
     }
-    h("bindService Failed!");
-    return -1;
+    throw new NullPointerException("Context can not be null.");
   }
   
   public String g()
   {
-    if (this.mContext == null)
+    if (this.mContext != null)
     {
-      i("Context is null.");
-      throw new IllegalArgumentException("Context is null, must be new OpenDeviceId first");
-    }
-    try
-    {
-      if (this.ai != null)
+      try
       {
-        String str = this.ai.g();
-        return str;
+        if (this.ai != null)
+        {
+          String str = this.ai.g();
+          return str;
+        }
       }
+      catch (RemoteException localRemoteException)
+      {
+        i("getOAID error, RemoteException!");
+        localRemoteException.printStackTrace();
+      }
+      return null;
     }
-    catch (RemoteException localRemoteException)
-    {
-      i("getOAID error, RemoteException!");
-      localRemoteException.printStackTrace();
-    }
-    return null;
+    i("Context is null.");
+    throw new IllegalArgumentException("Context is null, must be new OpenDeviceId first");
   }
   
   public static abstract interface a<T>

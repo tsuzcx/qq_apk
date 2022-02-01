@@ -48,28 +48,38 @@ public final class TextUtilsCompat
     }
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    if (i < paramString.length())
+    while (i < paramString.length())
     {
       char c = paramString.charAt(i);
-      switch (c)
+      if (c != '"')
       {
-      default: 
-        localStringBuilder.append(c);
+        if (c != '<')
+        {
+          if (c != '>') {
+            switch (c)
+            {
+            default: 
+              localStringBuilder.append(c);
+              break;
+            case '\'': 
+              localStringBuilder.append("&#39;");
+              break;
+            case '&': 
+              localStringBuilder.append("&amp;");
+              break;
+            }
+          } else {
+            localStringBuilder.append("&gt;");
+          }
+        }
+        else {
+          localStringBuilder.append("&lt;");
+        }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append("&lt;");
-        continue;
-        localStringBuilder.append("&gt;");
-        continue;
-        localStringBuilder.append("&amp;");
-        continue;
-        localStringBuilder.append("&#39;");
-        continue;
+      else {
         localStringBuilder.append("&quot;");
       }
+      i += 1;
     }
     return localStringBuilder.toString();
   }

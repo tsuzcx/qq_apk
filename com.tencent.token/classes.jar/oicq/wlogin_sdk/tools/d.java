@@ -46,7 +46,13 @@ public class d
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(util.getDate()).append(util.getThreadId()).append(util.getLineInfo(3)).append(util.getSdkVersion()).append(util.getUser(paramString2)).append(paramString1).append("\n");
+    localStringBuilder.append(util.getDate());
+    localStringBuilder.append(util.getThreadId());
+    localStringBuilder.append(util.getLineInfo(3));
+    localStringBuilder.append(util.getSdkVersion());
+    localStringBuilder.append(util.getUser(paramString2));
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("\n");
     paramString1 = new Bundle();
     paramString1.putString("msg", localStringBuilder.toString());
     paramString2 = new Message();
@@ -70,44 +76,36 @@ public class d
             return;
           }
           localFile.mkdirs();
-          if (localFile.isDirectory()) {
-            ((File)localObject).createNewFile();
+          if (!localFile.isDirectory()) {
+            return;
           }
+          ((File)localObject).createNewFile();
         }
-        else
-        {
-          e = new BufferedWriter(new FileWriter((File)localObject, true));
-        }
+        e = new BufferedWriter(new FileWriter((File)localObject, true));
       }
-      else
+      for (;;)
       {
-        for (;;)
-        {
-          localObject = (String)b.removeFirst();
-          e.write((String)localObject);
-        }
+        localObject = (String)b.removeFirst();
+        e.write((String)localObject);
       }
+    }
+    catch (NoSuchElementException|Exception localNoSuchElementException)
+    {
       label91:
-      return;
-    }
-    catch (NoSuchElementException localNoSuchElementException)
-    {
-      try
-      {
-        e.close();
-        e = null;
-        return;
-      }
-      catch (Exception localException1)
-      {
-        e = null;
-        return;
-      }
-    }
-    catch (Exception localException2)
-    {
+      label102:
       break label91;
     }
+    try
+    {
+      e.close();
+      e = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label102;
+    }
+    e = null;
   }
   
   static class a

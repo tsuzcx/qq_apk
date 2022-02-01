@@ -40,45 +40,49 @@ class q
   {
     public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
     {
-      TextView localTextView1 = (TextView)paramAnonymousView.findViewById(2131558539);
-      TextView localTextView2 = (TextView)paramAnonymousView.findViewById(2131558540);
-      TextView localTextView3 = (TextView)paramAnonymousView.findViewById(2131558541);
+      TextView localTextView1 = (TextView)paramAnonymousView.findViewById(2131166068);
+      TextView localTextView2 = (TextView)paramAnonymousView.findViewById(2131166067);
+      TextView localTextView3 = (TextView)paramAnonymousView.findViewById(2131165752);
       SafeMsgItem localSafeMsgItem = (SafeMsgItem)paramAnonymousView.getTag();
-      if ((localSafeMsgItem.b() & 0x80) == 128) {}
-      for (int i = 1;; i = 0) {
-        switch (paramAnonymousMotionEvent.getAction())
+      int i;
+      if ((localSafeMsgItem.b() & 0x80) == 128) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      switch (paramAnonymousMotionEvent.getAction())
+      {
+      default: 
+        return false;
+      case 2: 
+        if (paramAnonymousView.isPressed())
         {
-        default: 
+          localTextView1.setTextColor(q.this.e);
+          localTextView2.setTextColor(q.this.e);
+          localTextView3.setTextColor(q.this.e);
           return false;
         }
+      case 1: 
+      case 3: 
+        if ((localSafeMsgItem != null) && (!localSafeMsgItem.mIsRead))
+        {
+          if (i != 0) {
+            localTextView1.setTextColor(q.this.g);
+          } else {
+            localTextView1.setTextColor(q.this.c);
+          }
+          localTextView3.setTextColor(q.this.c);
+          localTextView2.setTextColor(q.this.d);
+          return false;
+        }
+        localTextView1.setTextColor(q.this.f);
+        localTextView3.setTextColor(q.this.f);
+        localTextView2.setTextColor(q.this.f);
+        return false;
       }
       localTextView1.setTextColor(q.this.e);
       localTextView2.setTextColor(q.this.e);
       localTextView3.setTextColor(q.this.e);
-      return false;
-      if (paramAnonymousView.isPressed())
-      {
-        localTextView1.setTextColor(q.this.e);
-        localTextView2.setTextColor(q.this.e);
-        localTextView3.setTextColor(q.this.e);
-        return false;
-      }
-      if ((localSafeMsgItem != null) && (!localSafeMsgItem.mIsRead))
-      {
-        if (i != 0) {
-          localTextView1.setTextColor(q.this.g);
-        }
-        for (;;)
-        {
-          localTextView3.setTextColor(q.this.c);
-          localTextView2.setTextColor(q.this.d);
-          return false;
-          localTextView1.setTextColor(q.this.c);
-        }
-      }
-      localTextView1.setTextColor(q.this.f);
-      localTextView3.setTextColor(q.this.f);
-      localTextView2.setTextColor(q.this.f);
       return false;
     }
   };
@@ -88,22 +92,27 @@ class q
     this.h = paramOpreateMsgActivity;
     this.i = LayoutInflater.from(paramOpreateMsgActivity);
     this.b = cv.a().f;
-    this.c = this.h.getResources().getColor(2131493067);
-    this.d = this.h.getResources().getColor(2131493067);
-    this.e = this.h.getResources().getColor(2131492933);
-    this.f = this.h.getResources().getColor(2131492930);
-    this.g = this.h.getResources().getColor(2131493049);
+    this.c = this.h.getResources().getColor(2130968803);
+    this.d = this.h.getResources().getColor(2130968803);
+    this.e = this.h.getResources().getColor(2130968665);
+    this.f = this.h.getResources().getColor(2130968662);
+    this.g = this.h.getResources().getColor(2130968785);
   }
   
   private String a(long paramLong)
   {
-    return l.a(paramLong).replace("-", this.h.getString(2131231248)) + this.h.getString(2131231247) + " " + l.d(paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(l.a(paramLong).replace("-", this.h.getString(2131493390)));
+    localStringBuilder.append(this.h.getString(2131493389));
+    localStringBuilder.append(" ");
+    localStringBuilder.append(l.d(paramLong));
+    return localStringBuilder.toString();
   }
   
   public void a()
   {
-    this.j.findViewById(2131559039).setVisibility(8);
-    this.j.findViewById(2131559038).setVisibility(8);
+    this.j.findViewById(2131166086).setVisibility(8);
+    this.j.findViewById(2131165595).setVisibility(8);
   }
   
   public void a(View paramView)
@@ -113,86 +122,85 @@ class q
   
   protected void a(View paramView, SafeMsgItem paramSafeMsgItem)
   {
-    TextView localTextView1 = (TextView)paramView.findViewById(2131558539);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131558540);
-    TextView localTextView3 = (TextView)paramView.findViewById(2131558541);
-    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131559037);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131166068);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131166067);
+    TextView localTextView3 = (TextView)paramView.findViewById(2131165752);
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131165361);
     localCheckBox.setOnCheckedChangeListener(new a(paramSafeMsgItem));
-    ImageView localImageView1 = (ImageView)paramView.findViewById(2131559000);
-    ImageView localImageView2 = (ImageView)paramView.findViewById(2131559036);
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131165283);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131165748);
     paramView.setTag(paramSafeMsgItem);
-    boolean bool;
     if (paramSafeMsgItem.mIsRead)
     {
       localTextView3.setTextColor(this.f);
       localTextView1.setTextColor(this.f);
       localTextView2.setTextColor(this.f);
-      paramView.setBackgroundResource(2130837788);
+      paramView.setBackgroundResource(2131099934);
       localImageView2.setVisibility(4);
-      if ((paramSafeMsgItem.b() & 0x80) != 128) {
-        break label329;
-      }
+    }
+    else
+    {
+      localTextView3.setTextColor(this.c);
+      localTextView2.setTextColor(this.d);
+      localImageView2.setVisibility(0);
+    }
+    boolean bool;
+    if ((paramSafeMsgItem.b() & 0x80) == 128) {
       bool = true;
-      label147:
-      if (!bool) {
-        break label334;
-      }
-      localImageView2.setImageResource(2130837742);
-      paramView.setBackgroundResource(2130837831);
+    } else {
+      bool = false;
+    }
+    if (bool)
+    {
+      localImageView2.setImageResource(2131099888);
+      paramView.setBackgroundResource(2131099977);
       localTextView1.setTextColor(this.g);
-      label173:
-      g.c("opreate msg exp: " + bool + ", flag=" + paramSafeMsgItem.b());
-      if (!this.h.isListEdit()) {
-        break label359;
-      }
+    }
+    else
+    {
+      localImageView2.setImageResource(2131099891);
+      paramView.setBackgroundResource(2131099976);
+      localTextView1.setTextColor(this.c);
+    }
+    paramView = new StringBuilder();
+    paramView.append("opreate msg exp: ");
+    paramView.append(bool);
+    paramView.append(", flag=");
+    paramView.append(paramSafeMsgItem.b());
+    g.c(paramView.toString());
+    if (this.h.isListEdit())
+    {
       localCheckBox.setVisibility(0);
       localImageView1.setVisibility(8);
       localTextView3.setVisibility(8);
     }
-    for (;;)
+    else
     {
-      localCheckBox.setChecked(paramSafeMsgItem.mIsChecked);
-      if (paramSafeMsgItem.c() != null) {
-        localTextView1.setText(Html.fromHtml(paramSafeMsgItem.c()));
-      }
-      if (paramSafeMsgItem.d() != null) {
-        localTextView2.setText(Html.fromHtml(paramSafeMsgItem.d()));
-      }
-      localTextView3.setText(a(paramSafeMsgItem.e() * 1000L));
-      return;
-      localTextView3.setTextColor(this.c);
-      localTextView2.setTextColor(this.d);
-      localImageView2.setVisibility(0);
-      break;
-      label329:
-      bool = false;
-      break label147;
-      label334:
-      localImageView2.setImageResource(2130837745);
-      paramView.setBackgroundResource(2130837830);
-      localTextView1.setTextColor(this.c);
-      break label173;
-      label359:
       paramSafeMsgItem.mIsChecked = false;
       localCheckBox.setVisibility(8);
       localImageView1.setVisibility(0);
       localTextView3.setVisibility(0);
     }
+    localCheckBox.setChecked(paramSafeMsgItem.mIsChecked);
+    if (paramSafeMsgItem.c() != null) {
+      localTextView1.setText(Html.fromHtml(paramSafeMsgItem.c()));
+    }
+    if (paramSafeMsgItem.d() != null) {
+      localTextView2.setText(Html.fromHtml(paramSafeMsgItem.d()));
+    }
+    localTextView3.setText(a(paramSafeMsgItem.e() * 1000L));
   }
   
   public void a(String paramString)
   {
-    TextView localTextView = (TextView)this.j.findViewById(2131559039);
+    TextView localTextView = (TextView)this.j.findViewById(2131166086);
     if ((paramString != null) && (paramString.length() > 0)) {
       localTextView.setText(paramString);
+    } else {
+      localTextView.setText(2131493414);
     }
-    for (;;)
-    {
-      localTextView.setVisibility(0);
-      this.j.findViewById(2131559038).setVisibility(0);
-      return;
-      localTextView.setText(2131231272);
-    }
+    localTextView.setVisibility(0);
+    this.j.findViewById(2131165595).setVisibility(0);
   }
   
   public void a(boolean paramBoolean)
@@ -207,12 +215,8 @@ class q
       a(null);
       c();
     }
-    for (;;)
+    else
     {
-      this.h.finishRefresh(paramBoolean);
-      notifyDataSetChanged();
-      this.h.checkTimeZoneFlag();
-      return;
       a();
       if (n >= this.l * 15) {
         b();
@@ -220,6 +224,9 @@ class q
         c();
       }
     }
+    this.h.finishRefresh(paramBoolean);
+    notifyDataSetChanged();
+    this.h.checkTimeZoneFlag();
   }
   
   public boolean areAllItemsEnabled()
@@ -229,7 +236,7 @@ class q
   
   public void b()
   {
-    this.k.findViewById(2131559029).setVisibility(0);
+    this.k.findViewById(2131165744).setVisibility(0);
   }
   
   public void b(View paramView)
@@ -247,13 +254,15 @@ class q
   
   public void c()
   {
-    this.k.findViewById(2131559029).setVisibility(8);
+    this.k.findViewById(2131165744).setVisibility(8);
   }
   
   public int getCount()
   {
-    if (this.b.g() >= this.l * 15) {
-      return this.l * 15;
+    int n = this.b.g();
+    int i1 = this.l;
+    if (n >= i1 * 15) {
+      return i1 * 15;
     }
     return this.b.g();
   }
@@ -277,7 +286,7 @@ class q
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = this.i.inflate(2130968697, paramViewGroup, false);
+      localView = this.i.inflate(2131296378, paramViewGroup, false);
     }
     paramView = (SafeMsgItem)getItem(paramInt);
     if (paramView != null)
@@ -312,10 +321,12 @@ class q
         if (q.this.b.d()) {
           q.b(q.this).setSelectState(true);
         }
-        return;
       }
-      this.a.mIsChecked = false;
-      q.b(q.this).setSelectState(false);
+      else
+      {
+        this.a.mIsChecked = false;
+        q.b(q.this).setSelectState(false);
+      }
     }
   }
   
@@ -349,17 +360,17 @@ class q
     
     public void onClick(View paramView)
     {
-      if (q.b(q.this).isListEdit()) {}
-      do
-      {
+      if (q.b(q.this).isListEdit()) {
         return;
-        Intent localIntent = new Intent(q.b(q.this), OpMsgDisplayActivity.class);
-        localIntent.putExtra("position", this.b);
-        localIntent.putExtra("type", 2);
-        localIntent.putExtra("abnormmsg", this.a.p());
-        q.b(q.this).startActivity(localIntent);
-      } while (this.a.mIsRead);
-      paramView.postDelayed(new q.b(q.this, this.a), 5L);
+      }
+      Intent localIntent = new Intent(q.b(q.this), OpMsgDisplayActivity.class);
+      localIntent.putExtra("position", this.b);
+      localIntent.putExtra("type", 2);
+      localIntent.putExtra("abnormmsg", this.a.p());
+      q.b(q.this).startActivity(localIntent);
+      if (!this.a.mIsRead) {
+        paramView.postDelayed(new q.b(q.this, this.a), 5L);
+      }
     }
   }
 }

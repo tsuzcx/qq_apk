@@ -41,68 +41,65 @@ public class NetworkUtil
     case 17: 
     default: 
       return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    case 3: 
-      return 3;
-    case 4: 
-      return 4;
-    case 5: 
-      return 5;
-    case 6: 
-      return 6;
-    case 7: 
-      return 7;
-    case 8: 
-      return 8;
-    case 9: 
-      return 9;
-    case 10: 
-      return 10;
-    case 11: 
-      return 11;
-    case 12: 
-      return 12;
-    case 13: 
-      return 13;
-    case 14: 
-      return 14;
+    case 16: 
+      return 16;
     case 15: 
       return 15;
+    case 14: 
+      return 14;
+    case 13: 
+      return 13;
+    case 12: 
+      return 12;
+    case 11: 
+      return 11;
+    case 10: 
+      return 10;
+    case 9: 
+      return 9;
+    case 8: 
+      return 8;
+    case 7: 
+      return 7;
+    case 6: 
+      return 6;
+    case 5: 
+      return 5;
+    case 4: 
+      return 4;
+    case 3: 
+      return 3;
+    case 2: 
+      return 2;
     }
-    return 16;
+    return 1;
   }
   
   public static ConnectType getNetworkType()
   {
+    String str;
     try
     {
       NetworkInfo localNetworkInfo = ((ConnectivityManager)bc.n().getSystemService("connectivity")).getActiveNetworkInfo();
-      if (localNetworkInfo == null) {
-        return ConnectType.CT_NONE;
-      }
     }
     catch (Throwable localThrowable)
     {
-      String str;
-      for (;;)
-      {
-        eg.g("getActiveNetworkInfo", localThrowable.getMessage());
-        str = null;
+      eg.g("getActiveNetworkInfo", localThrowable.getMessage());
+      str = null;
+    }
+    if (str == null) {
+      return ConnectType.CT_NONE;
+    }
+    if (str.getType() == 1) {
+      return ConnectType.CT_WIFI;
+    }
+    if (str.getType() == 0)
+    {
+      str = getProxyHost();
+      if ((str != null) && (str.length() > 0) && (getProxyPort() > 0)) {
+        return ConnectType.CT_GPRS_WAP;
       }
-      if (str.getType() == 1) {
-        return ConnectType.CT_WIFI;
-      }
-      if (str.getType() == 0)
-      {
-        str = getProxyHost();
-        if ((str != null) && (str.length() > 0) && (getProxyPort() > 0)) {
-          return ConnectType.CT_GPRS_WAP;
-        }
-        return ConnectType.CT_GPRS_NET;
-      }
+      return ConnectType.CT_GPRS_NET;
     }
     return ConnectType.CT_GPRS_NET;
   }
@@ -117,17 +114,18 @@ public class NetworkUtil
   
   public static int getProxyPort()
   {
-    if (Build.VERSION.SDK_INT >= 14) {
-      try
-      {
-        int i = Integer.parseInt(System.getProperty("http.proxyPort"));
-        return i;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        return -1;
-      }
+    if (Build.VERSION.SDK_INT >= 14) {}
+    try
+    {
+      int i = Integer.parseInt(System.getProperty("http.proxyPort"));
+      return i;
     }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label19:
+      break label19;
+    }
+    return -1;
     return Proxy.getPort(bc.n());
   }
   
@@ -148,48 +146,48 @@ public class NetworkUtil
     }
     catch (Throwable localThrowable)
     {
-      eg.h("WifiUtil", "getSSID: " + localThrowable);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSSID: ");
+      localStringBuilder.append(localThrowable);
+      eg.h("WifiUtil", localStringBuilder.toString());
     }
     return "";
   }
   
   public static boolean is2GNetWork()
   {
-    Object localObject = null;
+    Object localObject;
     try
     {
       NetworkInfo localNetworkInfo = getActiveNetworkInfo();
-      localObject = localNetworkInfo;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        eg.g("getActiveNetworkInfo", " getActiveNetworkInfo NullPointerException--- \n" + localThrowable.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" getActiveNetworkInfo NullPointerException--- \n");
+      localStringBuilder.append(localThrowable.getMessage());
+      eg.g("getActiveNetworkInfo", localStringBuilder.toString());
+      localObject = null;
     }
     return (localObject != null) && (localObject.getType() == 0) && ((localObject.getSubtype() == 1) || (localObject.getSubtype() == 4) || (localObject.getSubtype() == 2));
   }
   
   public static boolean isNetworkConnected()
   {
+    Object localObject;
     try
     {
       NetworkInfo localNetworkInfo = ((ConnectivityManager)bc.n().getSystemService("connectivity")).getActiveNetworkInfo();
-      if (localNetworkInfo == null) {
-        return false;
-      }
     }
     catch (Throwable localThrowable)
     {
-      Object localObject;
-      for (;;)
-      {
-        eg.h("NetworkUtil", localThrowable.toString());
-        localObject = null;
-      }
-      return localObject.isConnected();
+      eg.h("NetworkUtil", localThrowable.toString());
+      localObject = null;
     }
+    if (localObject == null) {
+      return false;
+    }
+    return localObject.isConnected();
   }
   
   public static boolean isWifiConnected()
@@ -201,14 +199,9 @@ public class NetworkUtil
         return false;
       }
       boolean bool = localNetworkInfo.isConnected();
-      if (bool) {
-        return true;
-      }
+      return bool;
     }
-    catch (Exception localException)
-    {
-      return false;
-    }
+    catch (Exception localException) {}
     return false;
   }
 }

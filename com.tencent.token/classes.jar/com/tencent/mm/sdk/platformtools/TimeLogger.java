@@ -31,19 +31,36 @@ public class TimeLogger
     if (this.bo) {
       return;
     }
-    Log.d(this.bm, this.bn + ": begin");
+    String str = this.bm;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.bn);
+    ((StringBuilder)localObject).append(": begin");
+    Log.d(str, ((StringBuilder)localObject).toString());
     long l2 = ((Long)this.bp.get(0)).longValue();
     int i = 1;
     long l1 = l2;
     while (i < this.bp.size())
     {
       l1 = ((Long)this.bp.get(i)).longValue();
-      String str = (String)this.bq.get(i);
+      str = (String)this.bq.get(i);
       long l3 = ((Long)this.bp.get(i - 1)).longValue();
-      Log.d(this.bm, this.bn + ":      " + (l1 - l3) + " ms, " + str);
+      localObject = this.bm;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.bn);
+      localStringBuilder.append(":      ");
+      localStringBuilder.append(l1 - l3);
+      localStringBuilder.append(" ms, ");
+      localStringBuilder.append(str);
+      Log.d((String)localObject, localStringBuilder.toString());
       i += 1;
     }
-    Log.d(this.bm, this.bn + ": end, " + (l1 - l2) + " ms");
+    str = this.bm;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.bn);
+    ((StringBuilder)localObject).append(": end, ");
+    ((StringBuilder)localObject).append(l1 - l2);
+    ((StringBuilder)localObject).append(" ms");
+    Log.d(str, ((StringBuilder)localObject).toString());
   }
   
   public void reset()
@@ -52,18 +69,18 @@ public class TimeLogger
     if (this.bo) {
       return;
     }
-    if (this.bp == null)
+    ArrayList localArrayList = this.bp;
+    if (localArrayList == null)
     {
       this.bp = new ArrayList();
       this.bq = new ArrayList();
     }
-    for (;;)
+    else
     {
-      addSplit(null);
-      return;
-      this.bp.clear();
+      localArrayList.clear();
       this.bq.clear();
     }
+    addSplit(null);
   }
   
   public void reset(String paramString1, String paramString2)

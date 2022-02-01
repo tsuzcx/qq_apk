@@ -13,22 +13,23 @@ import java.util.Map;
 public class by
   extends cl
 {
-  private static by gZ = null;
+  private static by gZ;
   private boolean gW = true;
   private boolean gX = false;
   private boolean gY = false;
   
   public static by aw()
   {
-    if (gZ == null) {}
-    try
-    {
-      if (gZ == null) {
-        gZ = new by();
+    if (gZ == null) {
+      try
+      {
+        if (gZ == null) {
+          gZ = new by();
+        }
       }
-      return gZ;
+      finally {}
     }
-    finally {}
+    return gZ;
   }
   
   public void a(int paramInt1, long paramLong1, int paramInt2, int paramInt3, long paramLong2, int paramInt4, byte[] paramArrayOfByte, int paramInt5, long paramLong3, long paramLong4, long paramLong5) {}
@@ -40,7 +41,10 @@ public class by
     if (paramString == null) {
       return;
     }
-    eg.f("SharkOutlet", "onSaveGuidToPhone() guid: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSaveGuidToPhone() guid: ");
+    localStringBuilder.append(paramString);
+    eg.f("SharkOutlet", localStringBuilder.toString());
     bw.ah().n(paramString);
   }
   
@@ -61,7 +65,10 @@ public class by
   public String aB()
   {
     String str = bw.ah().aj();
-    eg.f("SharkOutlet", "onGetGuidFromPhone() guid: " + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGetGuidFromPhone() guid: ");
+    localStringBuilder.append(str);
+    eg.f("SharkOutlet", localStringBuilder.toString());
     return str;
   }
   
@@ -101,7 +108,10 @@ public class by
   public long aJ()
   {
     long l = bw.ah().am();
-    eg.f("SharkOutlet", "onGetGuidUpdateCheckTimeMillis() tm: " + l);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGetGuidUpdateCheckTimeMillis() tm: ");
+    localStringBuilder.append(l);
+    eg.f("SharkOutlet", localStringBuilder.toString());
     return l;
   }
   
@@ -170,7 +180,10 @@ public class by
   
   public void c(long paramLong)
   {
-    eg.f("SharkOutlet", "onSaveGuidUpdateCheckTimeMillis() timeMillis: " + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSaveGuidUpdateCheckTimeMillis() timeMillis: ");
+    localStringBuilder.append(paramLong);
+    eg.f("SharkOutlet", localStringBuilder.toString());
     bw.ah().b(paramLong);
   }
   
@@ -190,7 +203,6 @@ public class by
     localan.cP = bc.o().getDeviceId2();
     localan.cQ = bc.o().getDeviceId3();
     localan.cR = bc.o().getDeviceId4();
-    Object localObject;
     if (bc.o().isAllowImei())
     {
       localan.imei = PhoneInfoFetcher.getIMEI(localContext);
@@ -199,97 +211,92 @@ public class by
       localan.cM = ((String)((Map)localObject).get("imei2"));
       localan.cN = ((String)((Map)localObject).get("meid"));
     }
-    int i;
-    int j;
-    int k;
     if (bc.o().isAllowMac())
     {
       localObject = ea.j(localContext);
-      if (localObject != null) {
-        localan.mac = ((String)localObject);
+      if (localObject == null) {
+        localObject = "";
       }
+      localan.mac = ((String)localObject);
     }
-    else
+    if (bc.o().isAllowImsi())
     {
-      if (bc.o().isAllowImsi())
+      localan.imsi = PhoneInfoFetcher.getIMSI(localContext);
+      localan.co = "";
+      localan.bU = 1;
+    }
+    if (bc.o().isAllowAndroidID()) {
+      localan.androidid = PhoneInfoFetcher.getAndoidId(localContext);
+    }
+    if (bc.o().isAllowOther())
+    {
+      int j = PhoneInfoFetcher.getScreenWidth(localContext);
+      int i = PhoneInfoFetcher.getScreenHeight(localContext);
+      int k;
+      if (j < i)
       {
-        localan.imsi = PhoneInfoFetcher.getIMSI(localContext);
-        localan.co = "";
-        localan.bU = 1;
+        k = i;
       }
-      if (bc.o().isAllowAndroidID()) {
-        localan.androidid = PhoneInfoFetcher.getAndoidId(localContext);
-      }
-      if (bc.o().isAllowOther())
+      else
       {
-        i = PhoneInfoFetcher.getScreenWidth(localContext);
-        j = PhoneInfoFetcher.getScreenHeight(localContext);
-        if (i >= j) {
-          break label642;
-        }
         k = j;
         j = i;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append("*");
+      ((StringBuilder)localObject).append(j);
+      localan.bY = ((StringBuilder)localObject).toString();
+      localan.bV = Build.CPU_ABI;
+      localan.cy = Build.CPU_ABI2;
+      localan.bW = PhoneInfoFetcher.getMaxCpuFreq();
+      localan.bX = PhoneInfoFetcher.getCpuNum();
+      localan.cc = Build.BRAND;
+      localan.cz = Build.FINGERPRINT;
+      localan.cE = PhoneInfoFetcher.getSystemProperties("ro.mediatek.platform");
+      localan.cj = PhoneInfoFetcher.getSystemProperties("ro.sf.lcd_density");
+      localan.cf = Build.PRODUCT;
+      localan.cF = PhoneInfoFetcher.getKernelVersion();
     }
-    for (;;)
+    localan.bZ = PhoneInfoFetcher.getTotalMemery();
+    localan.ca = PhoneInfoFetcher.getSystemAndDataSize();
+    Object localObject = new PhoneInfoFetcher.SizeInfo();
+    PhoneInfoFetcher.getStorageCardSize((PhoneInfoFetcher.SizeInfo)localObject);
+    localan.cb = ((PhoneInfoFetcher.SizeInfo)localObject).totalSize;
+    localObject = new PhoneInfoFetcher.SizeInfo();
+    PhoneInfoFetcher.getPhoneStorageSize((PhoneInfoFetcher.SizeInfo)localObject);
+    localan.cD = ((PhoneInfoFetcher.SizeInfo)localObject).totalSize;
+    localan.ch = Build.MANUFACTURER;
+    try
     {
-      for (;;)
-      {
-        localan.bY = (k + "*" + j);
-        localan.bV = Build.CPU_ABI;
-        localan.cy = Build.CPU_ABI2;
-        localan.bW = PhoneInfoFetcher.getMaxCpuFreq();
-        localan.bX = PhoneInfoFetcher.getCpuNum();
-        localan.cc = Build.BRAND;
-        localan.cz = Build.FINGERPRINT;
-        localan.cE = PhoneInfoFetcher.getSystemProperties("ro.mediatek.platform");
-        localan.cj = PhoneInfoFetcher.getSystemProperties("ro.sf.lcd_density");
-        localan.cf = Build.PRODUCT;
-        localan.cF = PhoneInfoFetcher.getKernelVersion();
-        localan.bZ = PhoneInfoFetcher.getTotalMemery();
-        localan.ca = PhoneInfoFetcher.getSystemAndDataSize();
-        localObject = new PhoneInfoFetcher.SizeInfo();
-        PhoneInfoFetcher.getStorageCardSize((PhoneInfoFetcher.SizeInfo)localObject);
-        localan.cb = ((PhoneInfoFetcher.SizeInfo)localObject).totalSize;
-        localObject = new PhoneInfoFetcher.SizeInfo();
-        PhoneInfoFetcher.getPhoneStorageSize((PhoneInfoFetcher.SizeInfo)localObject);
-        localan.cD = ((PhoneInfoFetcher.SizeInfo)localObject).totalSize;
-        localan.ch = Build.MANUFACTURER;
-        try
-        {
-          localan.pkgname = bc.n().getPackageName();
-          label445:
-          localan.ua = Build.MODEL;
-          localan.bT = SDKUtil.getSDKVersion();
-          localan.lang = 2052;
-          localan.version = bc.o().getVersion();
-          localan.cs = 1;
-          localan.cA = PhoneInfoFetcher.getSystemProperties("ro.product.locale.language");
-          localan.cB = PhoneInfoFetcher.getSystemProperties("ro.product.locale.region");
-          localan.cg = PhoneInfoFetcher.getSystemProperties("ro.build.version.release");
-          localan.cm = false;
-          localan.cG = 0;
-          localan.cI = PhoneInfoFetcher.getSDCid(true);
-          localan.cJ = PhoneInfoFetcher.getSDCid(false);
-          localan.qq = "0";
-          localan.phone = "0";
-          localan.product = bc.o().getProductId();
-          localan.lc = bc.o().getLC();
-          localan.buildno = bc.o().getBuildNo();
-          localan.channelid = bc.getChannel();
-          localan.bR = 2;
-          localan.subplatform = 201;
-          localan.bS = false;
-          return localan;
-          localObject = "";
-        }
-        catch (Throwable localThrowable)
-        {
-          break label445;
-        }
-      }
-      label642:
-      k = i;
+      localan.pkgname = bc.n().getPackageName();
+      label470:
+      localan.ua = Build.MODEL;
+      localan.bT = SDKUtil.getSDKVersion();
+      localan.lang = 2052;
+      localan.version = bc.o().getVersion();
+      localan.cs = 1;
+      localan.cA = PhoneInfoFetcher.getSystemProperties("ro.product.locale.language");
+      localan.cB = PhoneInfoFetcher.getSystemProperties("ro.product.locale.region");
+      localan.cg = PhoneInfoFetcher.getSystemProperties("ro.build.version.release");
+      localan.cm = false;
+      localan.cG = 0;
+      localan.cI = PhoneInfoFetcher.getSDCid(true);
+      localan.cJ = PhoneInfoFetcher.getSDCid(false);
+      localan.qq = "0";
+      localan.phone = "0";
+      localan.product = bc.o().getProductId();
+      localan.lc = bc.o().getLC();
+      localan.buildno = bc.o().getBuildNo();
+      localan.channelid = bc.getChannel();
+      localan.bR = 2;
+      localan.subplatform = 201;
+      localan.bS = false;
+      return localan;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label470;
     }
   }
   

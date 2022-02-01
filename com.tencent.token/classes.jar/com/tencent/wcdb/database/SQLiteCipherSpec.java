@@ -43,18 +43,21 @@ public class SQLiteCipherSpec
     switch (paramInt)
     {
     default: 
-      throw new IllegalArgumentException("Unsupported SQLCipher version: " + paramInt);
-    case 1: 
-      this.hmacEnabled = false;
-      this.kdfIteration = 4000;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unsupported SQLCipher version: ");
+      localStringBuilder.append(paramInt);
+      throw new IllegalArgumentException(localStringBuilder.toString());
+    case 3: 
+      this.hmacEnabled = true;
+      this.kdfIteration = 64000;
       return this;
     case 2: 
       this.hmacEnabled = true;
       this.kdfIteration = 4000;
       return this;
     }
-    this.hmacEnabled = true;
-    this.kdfIteration = 64000;
+    this.hmacEnabled = false;
+    this.kdfIteration = 4000;
     return this;
   }
   

@@ -43,20 +43,25 @@ public final class o
   {
     paramJceOutputStream.write(this.ar, 0);
     paramJceOutputStream.write(this.timestamp, 1);
-    if (this.count != 1) {
-      paramJceOutputStream.write(this.count, 2);
+    int i = this.count;
+    if (i != 1) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.as != null) {
-      paramJceOutputStream.write(this.as, 3);
+    ArrayList localArrayList = this.as;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
-    if (this.at != null) {
-      paramJceOutputStream.write(this.at, 4);
+    localArrayList = this.at;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
-    if (this.pluginId != 0) {
-      paramJceOutputStream.write(this.pluginId, 5);
+    i = this.pluginId;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
-    if (this.au != 0) {
-      paramJceOutputStream.write(this.au, 6);
+    i = this.au;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 6);
     }
   }
 }

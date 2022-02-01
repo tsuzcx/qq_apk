@@ -50,20 +50,22 @@ public class ResultReceiver
   
   public void send(int paramInt, Bundle paramBundle)
   {
-    if (this.mLocal) {
-      if (this.mHandler != null) {
-        this.mHandler.post(new MyRunnable(paramInt, paramBundle));
-      }
-    }
-    while (this.mReceiver == null)
+    if (this.mLocal)
     {
-      return;
+      localObject = this.mHandler;
+      if (localObject != null)
+      {
+        ((Handler)localObject).post(new MyRunnable(paramInt, paramBundle));
+        return;
+      }
       onReceiveResult(paramInt, paramBundle);
       return;
     }
+    Object localObject = this.mReceiver;
+    if (localObject != null) {}
     try
     {
-      this.mReceiver.send(paramInt, paramBundle);
+      ((IResultReceiver)localObject).send(paramInt, paramBundle);
       return;
     }
     catch (RemoteException paramBundle) {}

@@ -58,12 +58,11 @@ public class MenuItemWrapperICS
   
   public View getActionView()
   {
-    View localView2 = ((SupportMenuItem)this.mWrappedObject).getActionView();
-    View localView1 = localView2;
-    if ((localView2 instanceof CollapsibleActionViewWrapper)) {
-      localView1 = ((CollapsibleActionViewWrapper)localView2).getWrappedView();
+    View localView = ((SupportMenuItem)this.mWrappedObject).getActionView();
+    if ((localView instanceof CollapsibleActionViewWrapper)) {
+      return ((CollapsibleActionViewWrapper)localView).getWrappedView();
     }
-    return localView1;
+    return localView;
   }
   
   public int getAlphabeticModifiers()
@@ -184,12 +183,13 @@ public class MenuItemWrapperICS
   public MenuItem setActionProvider(android.view.ActionProvider paramActionProvider)
   {
     SupportMenuItem localSupportMenuItem = (SupportMenuItem)this.mWrappedObject;
-    if (paramActionProvider != null) {}
-    for (paramActionProvider = createActionProviderWrapper(paramActionProvider);; paramActionProvider = null)
-    {
-      localSupportMenuItem.setSupportActionProvider(paramActionProvider);
-      return this;
+    if (paramActionProvider != null) {
+      paramActionProvider = createActionProviderWrapper(paramActionProvider);
+    } else {
+      paramActionProvider = null;
     }
+    localSupportMenuItem.setSupportActionProvider(paramActionProvider);
+    return this;
   }
   
   public MenuItem setActionView(int paramInt)
@@ -309,23 +309,25 @@ public class MenuItemWrapperICS
   public MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener paramOnActionExpandListener)
   {
     SupportMenuItem localSupportMenuItem = (SupportMenuItem)this.mWrappedObject;
-    if (paramOnActionExpandListener != null) {}
-    for (paramOnActionExpandListener = new OnActionExpandListenerWrapper(paramOnActionExpandListener);; paramOnActionExpandListener = null)
-    {
-      localSupportMenuItem.setOnActionExpandListener(paramOnActionExpandListener);
-      return this;
+    if (paramOnActionExpandListener != null) {
+      paramOnActionExpandListener = new OnActionExpandListenerWrapper(paramOnActionExpandListener);
+    } else {
+      paramOnActionExpandListener = null;
     }
+    localSupportMenuItem.setOnActionExpandListener(paramOnActionExpandListener);
+    return this;
   }
   
   public MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
     SupportMenuItem localSupportMenuItem = (SupportMenuItem)this.mWrappedObject;
-    if (paramOnMenuItemClickListener != null) {}
-    for (paramOnMenuItemClickListener = new OnMenuItemClickListenerWrapper(paramOnMenuItemClickListener);; paramOnMenuItemClickListener = null)
-    {
-      localSupportMenuItem.setOnMenuItemClickListener(paramOnMenuItemClickListener);
-      return this;
+    if (paramOnMenuItemClickListener != null) {
+      paramOnMenuItemClickListener = new OnMenuItemClickListenerWrapper(paramOnMenuItemClickListener);
+    } else {
+      paramOnMenuItemClickListener = null;
     }
+    localSupportMenuItem.setOnMenuItemClickListener(paramOnMenuItemClickListener);
+    return this;
   }
   
   public MenuItem setShortcut(char paramChar1, char paramChar2)

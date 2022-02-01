@@ -27,9 +27,10 @@ public class DetectIDPhotoPreview
   
   public void a()
   {
-    if (this.c != null)
+    e locale = this.c;
+    if (locale != null)
     {
-      this.c.b();
+      locale.b();
       this.c = null;
     }
   }
@@ -50,19 +51,22 @@ public class DetectIDPhotoPreview
   
   public void setStop(boolean paramBoolean)
   {
-    if (this.c != null) {
-      this.c.a(paramBoolean);
+    e locale = this.c;
+    if (locale != null) {
+      locale.a(paramBoolean);
     }
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.b.getSurface() == null) {}
-    while (this.c != null) {
+    if (this.b.getSurface() == null) {
       return;
     }
-    this.c = new e(getContext(), paramSurfaceHolder, this.d, this.e);
-    this.c.a();
+    if (this.c == null)
+    {
+      this.c = new e(getContext(), paramSurfaceHolder, this.d, this.e);
+      this.c.a();
+    }
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder) {}

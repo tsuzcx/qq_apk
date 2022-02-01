@@ -40,14 +40,17 @@ public final class ClientConfInfo
     paramJceOutputStream.write(this.fileId, 0);
     paramJceOutputStream.write(this.md5Bin, 1);
     paramJceOutputStream.write(this.timestamp, 2);
-    if (this.PFUTimestamp != 0) {
-      paramJceOutputStream.write(this.PFUTimestamp, 3);
+    int i = this.PFUTimestamp;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
-    if (this.getType != 0) {
-      paramJceOutputStream.write(this.getType, 4);
+    i = this.getType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
-    if (this.version != 0) {
-      paramJceOutputStream.write(this.version, 5);
+    i = this.version;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
   }
 }

@@ -9,7 +9,7 @@ import com.tencent.token.v;
 
 public class DownloaderFactory
 {
-  private static a a = null;
+  private static a a;
   
   public static void a(DownloaderConfig paramDownloaderConfig)
   {
@@ -26,10 +26,11 @@ public class DownloaderFactory
   
   public static a getDownloader()
   {
-    if (a == null) {
-      throw new HalleyInitException("Downloader is not inited, call HalleyAgent#init and make sure Class DownloaderFactory was not obfused.");
+    a locala = a;
+    if (locala != null) {
+      return locala;
     }
-    return a;
+    throw new HalleyInitException("Downloader is not inited, call HalleyAgent#init and make sure Class DownloaderFactory was not obfused.");
   }
 }
 

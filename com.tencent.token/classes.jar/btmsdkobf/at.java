@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import tmsdk.Protocol.MCommon.Sharkfin;
 
 public final class at
@@ -39,20 +40,25 @@ public final class at
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.dc != 0) {
-      paramJceOutputStream.write(this.dc, 0);
+    int i = this.dc;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.dd != 0) {
-      paramJceOutputStream.write(this.dd, 1);
+    i = this.dd;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.dl != 1) {
-      paramJceOutputStream.write(this.dl, 2);
+    i = this.dl;
+    if (i != 1) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.dm != null) {
-      paramJceOutputStream.write(this.dm, 3);
+    Object localObject = this.dm;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.dn != null) {
-      paramJceOutputStream.write(this.dn, 4);
+    localObject = this.dn;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }

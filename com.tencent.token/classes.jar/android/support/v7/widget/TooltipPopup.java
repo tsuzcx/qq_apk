@@ -40,11 +40,12 @@ class TooltipPopup
     this.mMessageView = ((TextView)this.mContentView.findViewById(R.id.message));
     this.mLayoutParams.setTitle(getClass().getSimpleName());
     this.mLayoutParams.packageName = this.mContext.getPackageName();
-    this.mLayoutParams.type = 1002;
-    this.mLayoutParams.width = -2;
-    this.mLayoutParams.height = -2;
-    this.mLayoutParams.format = -3;
-    this.mLayoutParams.windowAnimations = R.style.Animation_AppCompat_Tooltip;
+    paramContext = this.mLayoutParams;
+    paramContext.type = 1002;
+    paramContext.width = -2;
+    paramContext.height = -2;
+    paramContext.format = -3;
+    paramContext.windowAnimations = R.style.Animation_AppCompat_Tooltip;
     this.mLayoutParams.flags = 24;
   }
   
@@ -52,82 +53,73 @@ class TooltipPopup
   {
     paramLayoutParams.token = paramView.getApplicationWindowToken();
     int i = this.mContext.getResources().getDimensionPixelOffset(R.dimen.tooltip_precise_anchor_threshold);
-    label76:
-    Object localObject1;
-    if (paramView.getWidth() >= i)
+    if (paramView.getWidth() < i) {
+      paramInt1 = paramView.getWidth() / 2;
+    }
+    if (paramView.getHeight() >= i)
     {
-      if (paramView.getHeight() < i) {
-        break label141;
-      }
       j = this.mContext.getResources().getDimensionPixelOffset(R.dimen.tooltip_precise_anchor_extra_offset);
       i = paramInt2 + j;
       j = paramInt2 - j;
       paramInt2 = i;
       i = j;
-      paramLayoutParams.gravity = 49;
-      localObject1 = this.mContext.getResources();
-      if (!paramBoolean) {
-        break label152;
-      }
     }
-    int k;
-    label141:
-    label152:
-    for (int j = R.dimen.tooltip_y_offset_touch;; j = R.dimen.tooltip_y_offset_non_touch)
+    else
     {
-      k = ((Resources)localObject1).getDimensionPixelOffset(j);
-      localObject1 = getAppRootView(paramView);
-      if (localObject1 != null) {
-        break label160;
-      }
-      Log.e("TooltipPopup", "Cannot find app view");
-      return;
-      paramInt1 = paramView.getWidth() / 2;
-      break;
       paramInt2 = paramView.getHeight();
       i = 0;
-      break label76;
     }
-    label160:
+    paramLayoutParams.gravity = 49;
+    Object localObject1 = this.mContext.getResources();
+    if (paramBoolean) {
+      j = R.dimen.tooltip_y_offset_touch;
+    } else {
+      j = R.dimen.tooltip_y_offset_non_touch;
+    }
+    int k = ((Resources)localObject1).getDimensionPixelOffset(j);
+    localObject1 = getAppRootView(paramView);
+    if (localObject1 == null)
+    {
+      Log.e("TooltipPopup", "Cannot find app view");
+      return;
+    }
     ((View)localObject1).getWindowVisibleDisplayFrame(this.mTmpDisplayFrame);
-    Object localObject2;
     if ((this.mTmpDisplayFrame.left < 0) && (this.mTmpDisplayFrame.top < 0))
     {
       localObject2 = this.mContext.getResources();
       j = ((Resources)localObject2).getIdentifier("status_bar_height", "dimen", "android");
-      if (j == 0) {
-        break label395;
+      if (j != 0) {
+        j = ((Resources)localObject2).getDimensionPixelSize(j);
+      } else {
+        j = 0;
       }
-    }
-    label395:
-    for (j = ((Resources)localObject2).getDimensionPixelSize(j);; j = 0)
-    {
       localObject2 = ((Resources)localObject2).getDisplayMetrics();
       this.mTmpDisplayFrame.set(0, j, ((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
-      ((View)localObject1).getLocationOnScreen(this.mTmpAppPos);
-      paramView.getLocationOnScreen(this.mTmpAnchorPos);
-      paramView = this.mTmpAnchorPos;
-      paramView[0] -= this.mTmpAppPos[0];
-      paramView = this.mTmpAnchorPos;
-      paramView[1] -= this.mTmpAppPos[1];
-      paramLayoutParams.x = (this.mTmpAnchorPos[0] + paramInt1 - ((View)localObject1).getWidth() / 2);
-      paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
-      this.mContentView.measure(paramInt1, paramInt1);
-      paramInt1 = this.mContentView.getMeasuredHeight();
-      i = i + this.mTmpAnchorPos[1] - k - paramInt1;
-      paramInt2 = paramInt2 + this.mTmpAnchorPos[1] + k;
-      if (!paramBoolean) {
-        break label408;
+    }
+    ((View)localObject1).getLocationOnScreen(this.mTmpAppPos);
+    paramView.getLocationOnScreen(this.mTmpAnchorPos);
+    paramView = this.mTmpAnchorPos;
+    int j = paramView[0];
+    Object localObject2 = this.mTmpAppPos;
+    paramView[0] = (j - localObject2[0]);
+    paramView[1] -= localObject2[1];
+    paramLayoutParams.x = (paramView[0] + paramInt1 - ((View)localObject1).getWidth() / 2);
+    paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
+    this.mContentView.measure(paramInt1, paramInt1);
+    paramInt1 = this.mContentView.getMeasuredHeight();
+    paramView = this.mTmpAnchorPos;
+    i = paramView[1] + i - k - paramInt1;
+    paramInt2 = paramView[1] + paramInt2 + k;
+    if (paramBoolean)
+    {
+      if (i >= 0)
+      {
+        paramLayoutParams.y = i;
+        return;
       }
-      if (i < 0) {
-        break;
-      }
-      paramLayoutParams.y = i;
+      paramLayoutParams.y = paramInt2;
       return;
     }
-    paramLayoutParams.y = paramInt2;
-    return;
-    label408:
     if (paramInt1 + paramInt2 <= this.mTmpDisplayFrame.height())
     {
       paramLayoutParams.y = paramInt2;

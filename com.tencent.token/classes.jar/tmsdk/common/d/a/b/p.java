@@ -10,14 +10,24 @@ class p
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
+    Object localObject = new ArrayList();
     AtomicReference localAtomicReference = new AtomicReference();
-    int i = this.a.a(null, localArrayList, localAtomicReference);
-    if ((-10 == i) || (i == 0)) {
+    int i = this.a.a(null, (ArrayList)localObject, localAtomicReference);
+    if (-10 != i)
+    {
+      if (i == 0) {
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkDoRegist() 首次注册失败，ret: ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkDoRegist() 首次注册失败，ret: ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).toString();
       return;
     }
-    new StringBuilder().append("checkDoRegist() 首次注册失败，ret: ").append(i).toString();
-    new StringBuilder().append("checkDoRegist() 首次注册失败，ret: ").append(i).toString();
   }
 }
 

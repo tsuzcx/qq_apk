@@ -16,10 +16,11 @@ import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
 import com.tencent.token.global.e;
-import com.tencent.token.global.g;
 import com.tencent.token.utils.l;
 import com.tencent.token.utils.m;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -68,18 +69,16 @@ public class ProtoGetMessage
   {
     long l1 = cc.c().s();
     long l2 = System.currentTimeMillis();
-    if (l1 > l2) {}
-    String str;
-    for (;;)
+    if (l1 <= l2) {
+      l1 = l2;
+    }
+    l2 = l1 / 1000L + 300L;
+    String str = ca.a().b();
+    Object localObject1 = null;
+    if (str == null)
     {
-      l2 = 300L + l1 / 1000L;
-      str = ca.a().b();
-      if (str != null) {
-        break;
-      }
       this.a.b(104);
       return null;
-      l1 = l2;
     }
     l1 = 0L;
     if (this.j != 1) {
@@ -87,45 +86,56 @@ public class ProtoGetMessage
     }
     try
     {
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("uin", this.f);
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("uin", this.f);
       int i1 = cb.a + 1;
       cb.a = i1;
       this.q = i1;
-      ((JSONObject)localObject1).put("seq_id", this.q);
-      ((JSONObject)localObject1).put("op_time", cc.c().s() / 1000L);
-      ((JSONObject)localObject1).put("msg_type", this.i);
-      ((JSONObject)localObject1).put("req_msg_num", this.h);
-      ((JSONObject)localObject1).put("start_time", l1);
-      ((JSONObject)localObject1).put("end_time", l2);
-      ((JSONObject)localObject1).put("source", l2);
-      ((JSONObject)localObject1).put("end_time", l2);
-      ((JSONObject)localObject1).put("source", this.g);
-      ((JSONObject)localObject1).put("filter_type", this.j);
-      ((JSONObject)localObject1).put("filter_type", this.j);
+      ((JSONObject)localObject2).put("seq_id", this.q);
+      ((JSONObject)localObject2).put("op_time", cc.c().s() / 1000L);
+      ((JSONObject)localObject2).put("msg_type", this.i);
+      ((JSONObject)localObject2).put("req_msg_num", this.h);
+      ((JSONObject)localObject2).put("start_time", l1);
+      ((JSONObject)localObject2).put("end_time", l2);
+      ((JSONObject)localObject2).put("source", l2);
+      ((JSONObject)localObject2).put("end_time", l2);
+      ((JSONObject)localObject2).put("source", this.g);
+      ((JSONObject)localObject2).put("filter_type", this.j);
+      ((JSONObject)localObject2).put("filter_type", this.j);
       if ((this.j == 0) && (this.i == 1))
       {
-        ((JSONObject)localObject1).put("guid", this.l);
-        ((JSONObject)localObject1).put("appid", this.m);
-        ((JSONObject)localObject1).put("subappid", this.n);
-        ((JSONObject)localObject1).put("appname", this.o);
-        ((JSONObject)localObject1).put("A2", this.p);
+        ((JSONObject)localObject2).put("guid", this.l);
+        ((JSONObject)localObject2).put("appid", this.m);
+        ((JSONObject)localObject2).put("subappid", this.n);
+        ((JSONObject)localObject2).put("appname", this.o);
+        ((JSONObject)localObject2).put("A2", this.p);
       }
-      localObject1 = ((JSONObject)localObject1).toString();
-      g.a("plain:" + (String)localObject1);
-      localObject1 = l.b(((String)localObject1).getBytes());
+      localObject2 = ((JSONObject)localObject2).toString();
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("plain:");
+      localStringBuilder2.append((String)localObject2);
+      com.tencent.token.global.g.a(localStringBuilder2.toString());
+      localObject2 = l.b(((String)localObject2).getBytes());
+      localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        Object localObject1;
-        g.c("JSONException:" + localJSONException.getMessage());
-        Object localObject2 = null;
-      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("JSONException:");
+      localStringBuilder2.append(localJSONException.getMessage());
+      com.tencent.token.global.g.c(localStringBuilder2.toString());
     }
-    localObject1 = "?aq_base_sid=" + str + "&data=" + (String)localObject1;
-    return c.e() + "/cn/mbtoken3/mbtoken3_get_message_v2" + (String)localObject1;
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("?aq_base_sid=");
+    localStringBuilder1.append(str);
+    localStringBuilder1.append("&data=");
+    localStringBuilder1.append((String)localObject1);
+    localObject1 = localStringBuilder1.toString();
+    localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append(c.e());
+    localStringBuilder1.append("/cn/mbtoken3/mbtoken3_get_message_v2");
+    localStringBuilder1.append((String)localObject1);
+    return localStringBuilder1.toString();
   }
   
   protected void a(do paramdo)
@@ -161,18 +171,30 @@ public class ProtoGetMessage
       if (i1 != this.q)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i1 + ",right = " + this.q);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i1);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.q);
+        com.tencent.token.global.g.c(paramJSONObject.toString());
         return;
       }
       long l1 = paramJSONObject.getLong("uin");
-      if (l1 != this.f)
+      long l2 = this.f;
+      if (l1 != l2)
       {
-        this.a.a(10000, "uin not match=" + l1 + ":" + this.f);
+        paramJSONObject = this.a;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("uin not match=");
+        ((StringBuilder)localObject).append(l1);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(this.f);
+        paramJSONObject.a(10000, ((StringBuilder)localObject).toString());
         return;
       }
       if (this.i == 1)
       {
-        this.d.a(this.f);
+        this.d.a(l2);
         if (this.j == 1)
         {
           this.k = new AbnormalLoginMsgResult(paramJSONObject);
@@ -180,18 +202,28 @@ public class ProtoGetMessage
           return;
         }
         this.d.b = null;
-        if (paramJSONObject.has("devs")) {
+        localObject = new ArrayList();
+        if (paramJSONObject.has("devs"))
+        {
+          OnlineDeviceResult localOnlineDeviceResult = new OnlineDeviceResult(paramJSONObject.getJSONArray("devs"));
+          if (localOnlineDeviceResult.mDevicesList != null) {
+            ((ArrayList)localObject).addAll(localOnlineDeviceResult.mDevicesList);
+          }
           this.d.b = new OnlineDeviceResult(paramJSONObject.getJSONArray("devs"));
         }
+        com.tencent.service.g.a().a(this.f, (List)localObject);
         this.a = this.d.f.a(paramJSONObject, l1, this.i);
         return;
       }
-      this.e.a(this.f);
+      this.e.a(l2);
       this.a = this.e.f.a(paramJSONObject, l1, this.i);
       return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseJSON error decodeData=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    com.tencent.token.global.g.c(((StringBuilder)localObject).toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

@@ -22,16 +22,6 @@ public final class AnalyseInfo
   public int softState = 0;
   public UploadFileInfo uploadFileInfo = null;
   
-  static
-  {
-    if (!AnalyseInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public AnalyseInfo()
   {
     setFeatureKey(this.featureKey);
@@ -63,29 +53,59 @@ public final class AnalyseInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (AnalyseInfo)paramObject;
-    } while ((!JceUtil.equals(this.featureKey, paramObject.featureKey)) || (!JceUtil.equals(this.softInfo, paramObject.softInfo)) || (!JceUtil.equals(this.cloudCheck, paramObject.cloudCheck)) || (!JceUtil.equals(this.report_feature, paramObject.report_feature)) || (!JceUtil.equals(this.uploadFileInfo, paramObject.uploadFileInfo)) || (!JceUtil.equals(this.softState, paramObject.softState)) || (!JceUtil.equals(this.actionLevel, paramObject.actionLevel)) || (!JceUtil.equals(this.actionID, paramObject.actionID)));
-    return true;
+    }
+    paramObject = (AnalyseInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.featureKey, paramObject.featureKey))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.softInfo, paramObject.softInfo))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.cloudCheck, paramObject.cloudCheck))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.report_feature, paramObject.report_feature))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.uploadFileInfo, paramObject.uploadFileInfo))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.softState, paramObject.softState))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.actionLevel, paramObject.actionLevel))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.actionID, paramObject.actionID)) {
+                    bool1 = true;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -216,8 +236,9 @@ public final class AnalyseInfo
     paramJceOutputStream.write(this.softInfo, 1);
     paramJceOutputStream.write(this.cloudCheck, 2);
     paramJceOutputStream.write(this.report_feature, 3);
-    if (this.uploadFileInfo != null) {
-      paramJceOutputStream.write(this.uploadFileInfo, 4);
+    UploadFileInfo localUploadFileInfo = this.uploadFileInfo;
+    if (localUploadFileInfo != null) {
+      paramJceOutputStream.write(localUploadFileInfo, 4);
     }
     paramJceOutputStream.write(this.softState, 5);
     paramJceOutputStream.write(this.actionLevel, 6);

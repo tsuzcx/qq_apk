@@ -22,14 +22,15 @@ public class LVBuffer
   
   public byte[] buildFinish()
   {
-    if (!this.V) {
-      throw new Exception("Buffer For Parse");
+    if (this.V)
+    {
+      b(1);
+      this.U.put((byte)125);
+      byte[] arrayOfByte = new byte[this.U.position()];
+      System.arraycopy(this.U.array(), 0, arrayOfByte, 0, arrayOfByte.length);
+      return arrayOfByte;
     }
-    b(1);
-    this.U.put((byte)125);
-    byte[] arrayOfByte = new byte[this.U.position()];
-    System.arraycopy(this.U.array(), 0, arrayOfByte, 0, arrayOfByte.length);
-    return arrayOfByte;
+    throw new Exception("Buffer For Parse");
   }
   
   public boolean checkGetFinish()
@@ -39,37 +40,38 @@ public class LVBuffer
   
   public int getInt()
   {
-    if (this.V) {
-      throw new Exception("Buffer For Build");
+    if (!this.V) {
+      return this.U.getInt();
     }
-    return this.U.getInt();
+    throw new Exception("Buffer For Build");
   }
   
   public long getLong()
   {
-    if (this.V) {
-      throw new Exception("Buffer For Build");
+    if (!this.V) {
+      return this.U.getLong();
     }
-    return this.U.getLong();
+    throw new Exception("Buffer For Build");
   }
   
   public String getString()
   {
-    if (this.V) {
-      throw new Exception("Buffer For Build");
-    }
-    int i = this.U.getShort();
-    if (i > 2048)
+    if (!this.V)
     {
+      int i = this.U.getShort();
+      if (i <= 2048)
+      {
+        if (i == 0) {
+          return "";
+        }
+        byte[] arrayOfByte = new byte[i];
+        this.U.get(arrayOfByte, 0, i);
+        return new String(arrayOfByte);
+      }
       this.U = null;
       throw new Exception("Buffer String Length Error");
     }
-    if (i == 0) {
-      return "";
-    }
-    byte[] arrayOfByte = new byte[i];
-    this.U.get(arrayOfByte, 0, i);
-    return new String(arrayOfByte);
+    throw new Exception("Buffer For Build");
   }
   
   public int initBuild()
@@ -83,13 +85,8 @@ public class LVBuffer
   public int initParse(byte[] paramArrayOfByte)
   {
     int i;
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      i = -1;
-    }
-    while (i != 0)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      this.U = null;
-      return -1;
       if (paramArrayOfByte[0] != 123) {
         i = -2;
       } else if (paramArrayOfByte[(paramArrayOfByte.length - 1)] != 125) {
@@ -97,6 +94,14 @@ public class LVBuffer
       } else {
         i = 0;
       }
+    }
+    else {
+      i = -1;
+    }
+    if (i != 0)
+    {
+      this.U = null;
+      return -1;
     }
     this.U = ByteBuffer.wrap(paramArrayOfByte);
     this.U.position(1);
@@ -106,46 +111,50 @@ public class LVBuffer
   
   public int putInt(int paramInt)
   {
-    if (!this.V) {
-      throw new Exception("Buffer For Parse");
+    if (this.V)
+    {
+      b(4);
+      this.U.putInt(paramInt);
+      return 0;
     }
-    b(4);
-    this.U.putInt(paramInt);
-    return 0;
+    throw new Exception("Buffer For Parse");
   }
   
   public int putLong(long paramLong)
   {
-    if (!this.V) {
-      throw new Exception("Buffer For Parse");
+    if (this.V)
+    {
+      b(8);
+      this.U.putLong(paramLong);
+      return 0;
     }
-    b(8);
-    this.U.putLong(paramLong);
-    return 0;
+    throw new Exception("Buffer For Parse");
   }
   
   public int putString(String paramString)
   {
-    if (!this.V) {
-      throw new Exception("Buffer For Parse");
-    }
-    byte[] arrayOfByte = null;
-    if (paramString != null) {
-      arrayOfByte = paramString.getBytes();
-    }
-    paramString = arrayOfByte;
-    if (arrayOfByte == null) {
-      paramString = new byte[0];
-    }
-    if (paramString.length > 2048) {
+    if (this.V)
+    {
+      byte[] arrayOfByte = null;
+      if (paramString != null) {
+        arrayOfByte = paramString.getBytes();
+      }
+      paramString = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramString = new byte[0];
+      }
+      if (paramString.length <= 2048)
+      {
+        b(paramString.length + 2);
+        this.U.putShort((short)paramString.length);
+        if (paramString.length > 0) {
+          this.U.put(paramString);
+        }
+        return 0;
+      }
       throw new Exception("Buffer String Length Error");
     }
-    b(paramString.length + 2);
-    this.U.putShort((short)paramString.length);
-    if (paramString.length > 0) {
-      this.U.put(paramString);
-    }
-    return 0;
+    throw new Exception("Buffer For Parse");
   }
 }
 

@@ -31,104 +31,87 @@ class NotificationCompatBuilder
   NotificationCompatBuilder(NotificationCompat.Builder paramBuilder)
   {
     this.mBuilderCompat = paramBuilder;
-    Object localObject1;
-    Object localObject2;
-    label138:
-    label158:
-    label178:
-    PendingIntent localPendingIntent;
-    if (Build.VERSION.SDK_INT >= 26)
-    {
+    if (Build.VERSION.SDK_INT >= 26) {
       this.mBuilder = new Notification.Builder(paramBuilder.mContext, paramBuilder.mChannelId);
-      localObject1 = paramBuilder.mNotification;
-      localObject2 = this.mBuilder.setWhen(((Notification)localObject1).when).setSmallIcon(((Notification)localObject1).icon, ((Notification)localObject1).iconLevel).setContent(((Notification)localObject1).contentView).setTicker(((Notification)localObject1).tickerText, paramBuilder.mTickerView).setVibrate(((Notification)localObject1).vibrate).setLights(((Notification)localObject1).ledARGB, ((Notification)localObject1).ledOnMS, ((Notification)localObject1).ledOffMS);
-      if ((((Notification)localObject1).flags & 0x2) == 0) {
-        break label397;
-      }
-      bool = true;
-      localObject2 = ((Notification.Builder)localObject2).setOngoing(bool);
-      if ((((Notification)localObject1).flags & 0x8) == 0) {
-        break label402;
-      }
-      bool = true;
-      localObject2 = ((Notification.Builder)localObject2).setOnlyAlertOnce(bool);
-      if ((((Notification)localObject1).flags & 0x10) == 0) {
-        break label407;
-      }
-      bool = true;
-      localObject2 = ((Notification.Builder)localObject2).setAutoCancel(bool).setDefaults(((Notification)localObject1).defaults).setContentTitle(paramBuilder.mContentTitle).setContentText(paramBuilder.mContentText).setContentInfo(paramBuilder.mContentInfo).setContentIntent(paramBuilder.mContentIntent).setDeleteIntent(((Notification)localObject1).deleteIntent);
-      localPendingIntent = paramBuilder.mFullScreenIntent;
-      if ((((Notification)localObject1).flags & 0x80) == 0) {
-        break label412;
-      }
+    } else {
+      this.mBuilder = new Notification.Builder(paramBuilder.mContext);
     }
-    label397:
-    label402:
-    label407:
-    label412:
-    for (boolean bool = true;; bool = false)
+    Object localObject1 = paramBuilder.mNotification;
+    Object localObject2 = this.mBuilder.setWhen(((Notification)localObject1).when).setSmallIcon(((Notification)localObject1).icon, ((Notification)localObject1).iconLevel).setContent(((Notification)localObject1).contentView).setTicker(((Notification)localObject1).tickerText, paramBuilder.mTickerView).setVibrate(((Notification)localObject1).vibrate).setLights(((Notification)localObject1).ledARGB, ((Notification)localObject1).ledOnMS, ((Notification)localObject1).ledOffMS);
+    boolean bool;
+    if ((((Notification)localObject1).flags & 0x2) != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localObject2 = ((Notification.Builder)localObject2).setOngoing(bool);
+    if ((((Notification)localObject1).flags & 0x8) != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localObject2 = ((Notification.Builder)localObject2).setOnlyAlertOnce(bool);
+    if ((((Notification)localObject1).flags & 0x10) != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localObject2 = ((Notification.Builder)localObject2).setAutoCancel(bool).setDefaults(((Notification)localObject1).defaults).setContentTitle(paramBuilder.mContentTitle).setContentText(paramBuilder.mContentText).setContentInfo(paramBuilder.mContentInfo).setContentIntent(paramBuilder.mContentIntent).setDeleteIntent(((Notification)localObject1).deleteIntent);
+    PendingIntent localPendingIntent = paramBuilder.mFullScreenIntent;
+    if ((((Notification)localObject1).flags & 0x80) != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((Notification.Builder)localObject2).setFullScreenIntent(localPendingIntent, bool).setLargeIcon(paramBuilder.mLargeIcon).setNumber(paramBuilder.mNumber).setProgress(paramBuilder.mProgressMax, paramBuilder.mProgress, paramBuilder.mProgressIndeterminate);
+    if (Build.VERSION.SDK_INT < 21) {
+      this.mBuilder.setSound(((Notification)localObject1).sound, ((Notification)localObject1).audioStreamType);
+    }
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      ((Notification.Builder)localObject2).setFullScreenIntent(localPendingIntent, bool).setLargeIcon(paramBuilder.mLargeIcon).setNumber(paramBuilder.mNumber).setProgress(paramBuilder.mProgressMax, paramBuilder.mProgress, paramBuilder.mProgressIndeterminate);
-      if (Build.VERSION.SDK_INT < 21) {
-        this.mBuilder.setSound(((Notification)localObject1).sound, ((Notification)localObject1).audioStreamType);
-      }
-      if (Build.VERSION.SDK_INT < 16) {
-        break label537;
-      }
       this.mBuilder.setSubText(paramBuilder.mSubText).setUsesChronometer(paramBuilder.mUseChronometer).setPriority(paramBuilder.mPriority);
       localObject2 = paramBuilder.mActions.iterator();
       while (((Iterator)localObject2).hasNext()) {
         addAction((NotificationCompat.Action)((Iterator)localObject2).next());
       }
-      this.mBuilder = new Notification.Builder(paramBuilder.mContext);
-      break;
-      bool = false;
-      break label138;
-      bool = false;
-      break label158;
-      bool = false;
-      break label178;
-    }
-    if (paramBuilder.mExtras != null) {
-      this.mExtras.putAll(paramBuilder.mExtras);
-    }
-    if (Build.VERSION.SDK_INT < 20)
-    {
-      if (paramBuilder.mLocalOnly) {
-        this.mExtras.putBoolean("android.support.localOnly", true);
+      if (paramBuilder.mExtras != null) {
+        this.mExtras.putAll(paramBuilder.mExtras);
       }
-      if (paramBuilder.mGroupKey != null)
+      if (Build.VERSION.SDK_INT < 20)
       {
-        this.mExtras.putString("android.support.groupKey", paramBuilder.mGroupKey);
-        if (!paramBuilder.mGroupSummary) {
-          break label754;
+        if (paramBuilder.mLocalOnly) {
+          this.mExtras.putBoolean("android.support.localOnly", true);
         }
-        this.mExtras.putBoolean("android.support.isGroupSummary", true);
-      }
-    }
-    for (;;)
-    {
-      if (paramBuilder.mSortKey != null) {
-        this.mExtras.putString("android.support.sortKey", paramBuilder.mSortKey);
+        if (paramBuilder.mGroupKey != null)
+        {
+          this.mExtras.putString("android.support.groupKey", paramBuilder.mGroupKey);
+          if (paramBuilder.mGroupSummary) {
+            this.mExtras.putBoolean("android.support.isGroupSummary", true);
+          } else {
+            this.mExtras.putBoolean("android.support.useSideChannel", true);
+          }
+        }
+        if (paramBuilder.mSortKey != null) {
+          this.mExtras.putString("android.support.sortKey", paramBuilder.mSortKey);
+        }
       }
       this.mContentView = paramBuilder.mContentView;
       this.mBigContentView = paramBuilder.mBigContentView;
-      label537:
-      if (Build.VERSION.SDK_INT >= 19)
-      {
-        this.mBuilder.setShowWhen(paramBuilder.mShowWhen);
-        if ((Build.VERSION.SDK_INT < 21) && (paramBuilder.mPeople != null) && (!paramBuilder.mPeople.isEmpty())) {
-          this.mExtras.putStringArray("android.people", (String[])paramBuilder.mPeople.toArray(new String[paramBuilder.mPeople.size()]));
-        }
+    }
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      this.mBuilder.setShowWhen(paramBuilder.mShowWhen);
+      if ((Build.VERSION.SDK_INT < 21) && (paramBuilder.mPeople != null) && (!paramBuilder.mPeople.isEmpty())) {
+        this.mExtras.putStringArray("android.people", (String[])paramBuilder.mPeople.toArray(new String[paramBuilder.mPeople.size()]));
       }
-      if (Build.VERSION.SDK_INT >= 20)
-      {
-        this.mBuilder.setLocalOnly(paramBuilder.mLocalOnly).setGroup(paramBuilder.mGroupKey).setGroupSummary(paramBuilder.mGroupSummary).setSortKey(paramBuilder.mSortKey);
-        this.mGroupAlertBehavior = paramBuilder.mGroupAlertBehavior;
-      }
-      if (Build.VERSION.SDK_INT < 21) {
-        break label776;
-      }
+    }
+    if (Build.VERSION.SDK_INT >= 20)
+    {
+      this.mBuilder.setLocalOnly(paramBuilder.mLocalOnly).setGroup(paramBuilder.mGroupKey).setGroupSummary(paramBuilder.mGroupSummary).setSortKey(paramBuilder.mSortKey);
+      this.mGroupAlertBehavior = paramBuilder.mGroupAlertBehavior;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       this.mBuilder.setCategory(paramBuilder.mCategory).setColor(paramBuilder.mColor).setVisibility(paramBuilder.mVisibility).setPublicVersion(paramBuilder.mPublicVersion).setSound(((Notification)localObject1).sound, ((Notification)localObject1).audioAttributes);
       localObject1 = paramBuilder.mPeople.iterator();
       while (((Iterator)localObject1).hasNext())
@@ -136,11 +119,8 @@ class NotificationCompatBuilder
         localObject2 = (String)((Iterator)localObject1).next();
         this.mBuilder.addPerson((String)localObject2);
       }
-      label754:
-      this.mExtras.putBoolean("android.support.useSideChannel", true);
+      this.mHeadsUpContentView = paramBuilder.mHeadsUpContentView;
     }
-    this.mHeadsUpContentView = paramBuilder.mHeadsUpContentView;
-    label776:
     if (Build.VERSION.SDK_INT >= 24)
     {
       this.mBuilder.setExtras(paramBuilder.mExtras).setRemoteInputHistory(paramBuilder.mRemoteInputHistory);
@@ -170,40 +150,35 @@ class NotificationCompatBuilder
   {
     if (Build.VERSION.SDK_INT >= 20)
     {
-      localBuilder = new Notification.Action.Builder(paramAction.getIcon(), paramAction.getTitle(), paramAction.getActionIntent());
+      Notification.Action.Builder localBuilder = new Notification.Action.Builder(paramAction.getIcon(), paramAction.getTitle(), paramAction.getActionIntent());
+      Object localObject;
       if (paramAction.getRemoteInputs() != null)
       {
         localObject = RemoteInput.fromCompat(paramAction.getRemoteInputs());
-        j = localObject.length;
-        i = 0;
+        int j = localObject.length;
+        int i = 0;
         while (i < j)
         {
           localBuilder.addRemoteInput(localObject[i]);
           i += 1;
         }
       }
-      if (paramAction.getExtras() != null)
-      {
+      if (paramAction.getExtras() != null) {
         localObject = new Bundle(paramAction.getExtras());
-        ((Bundle)localObject).putBoolean("android.support.allowGeneratedReplies", paramAction.getAllowGeneratedReplies());
-        if (Build.VERSION.SDK_INT >= 24) {
-          localBuilder.setAllowGeneratedReplies(paramAction.getAllowGeneratedReplies());
-        }
-        localBuilder.addExtras((Bundle)localObject);
-        this.mBuilder.addAction(localBuilder.build());
+      } else {
+        localObject = new Bundle();
       }
-    }
-    while (Build.VERSION.SDK_INT < 16) {
-      for (;;)
-      {
-        Notification.Action.Builder localBuilder;
-        int j;
-        int i;
-        return;
-        Object localObject = new Bundle();
+      ((Bundle)localObject).putBoolean("android.support.allowGeneratedReplies", paramAction.getAllowGeneratedReplies());
+      if (Build.VERSION.SDK_INT >= 24) {
+        localBuilder.setAllowGeneratedReplies(paramAction.getAllowGeneratedReplies());
       }
+      localBuilder.addExtras((Bundle)localObject);
+      this.mBuilder.addAction(localBuilder.build());
+      return;
     }
-    this.mActionExtrasList.add(NotificationCompatJellybean.writeActionAndGetExtras(this.mBuilder, paramAction));
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.mActionExtrasList.add(NotificationCompatJellybean.writeActionAndGetExtras(this.mBuilder, paramAction));
+    }
   }
   
   private void removeSoundAndVibration(Notification paramNotification)
@@ -221,167 +196,130 @@ class NotificationCompatBuilder
       localStyle.apply(this);
     }
     Object localObject;
-    Notification localNotification;
-    if (localStyle != null)
-    {
+    if (localStyle != null) {
       localObject = localStyle.makeContentView(this);
-      localNotification = buildInternal();
-      if (localObject == null) {
-        break label134;
-      }
-      localNotification.contentView = ((RemoteViews)localObject);
-    }
-    for (;;)
-    {
-      if ((Build.VERSION.SDK_INT >= 16) && (localStyle != null))
-      {
-        localObject = localStyle.makeBigContentView(this);
-        if (localObject != null) {
-          localNotification.bigContentView = ((RemoteViews)localObject);
-        }
-      }
-      if ((Build.VERSION.SDK_INT >= 21) && (localStyle != null))
-      {
-        localObject = this.mBuilderCompat.mStyle.makeHeadsUpContentView(this);
-        if (localObject != null) {
-          localNotification.headsUpContentView = ((RemoteViews)localObject);
-        }
-      }
-      if ((Build.VERSION.SDK_INT >= 16) && (localStyle != null))
-      {
-        localObject = NotificationCompat.getExtras(localNotification);
-        if (localObject != null) {
-          localStyle.addCompatExtras((Bundle)localObject);
-        }
-      }
-      return localNotification;
+    } else {
       localObject = null;
-      break;
-      label134:
-      if (this.mBuilderCompat.mContentView != null) {
-        localNotification.contentView = this.mBuilderCompat.mContentView;
+    }
+    Notification localNotification = buildInternal();
+    if (localObject != null) {
+      localNotification.contentView = ((RemoteViews)localObject);
+    } else if (this.mBuilderCompat.mContentView != null) {
+      localNotification.contentView = this.mBuilderCompat.mContentView;
+    }
+    if ((Build.VERSION.SDK_INT >= 16) && (localStyle != null))
+    {
+      localObject = localStyle.makeBigContentView(this);
+      if (localObject != null) {
+        localNotification.bigContentView = ((RemoteViews)localObject);
       }
     }
+    if ((Build.VERSION.SDK_INT >= 21) && (localStyle != null))
+    {
+      localObject = this.mBuilderCompat.mStyle.makeHeadsUpContentView(this);
+      if (localObject != null) {
+        localNotification.headsUpContentView = ((RemoteViews)localObject);
+      }
+    }
+    if ((Build.VERSION.SDK_INT >= 16) && (localStyle != null))
+    {
+      localObject = NotificationCompat.getExtras(localNotification);
+      if (localObject != null) {
+        localStyle.addCompatExtras((Bundle)localObject);
+      }
+    }
+    return localNotification;
   }
   
   protected Notification buildInternal()
   {
-    Object localObject1;
     if (Build.VERSION.SDK_INT >= 26) {
+      return this.mBuilder.build();
+    }
+    Object localObject1;
+    if (Build.VERSION.SDK_INT >= 24)
+    {
       localObject1 = this.mBuilder.build();
+      if (this.mGroupAlertBehavior != 0)
+      {
+        if ((((Notification)localObject1).getGroup() != null) && ((((Notification)localObject1).flags & 0x200) != 0) && (this.mGroupAlertBehavior == 2)) {
+          removeSoundAndVibration((Notification)localObject1);
+        }
+        if ((((Notification)localObject1).getGroup() != null) && ((((Notification)localObject1).flags & 0x200) == 0) && (this.mGroupAlertBehavior == 1)) {
+          removeSoundAndVibration((Notification)localObject1);
+        }
+      }
+      return localObject1;
     }
     Object localObject2;
-    do
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              return localObject1;
-                              if (Build.VERSION.SDK_INT < 24) {
-                                break;
-                              }
-                              localObject2 = this.mBuilder.build();
-                              localObject1 = localObject2;
-                            } while (this.mGroupAlertBehavior == 0);
-                            if ((((Notification)localObject2).getGroup() != null) && ((((Notification)localObject2).flags & 0x200) != 0) && (this.mGroupAlertBehavior == 2)) {
-                              removeSoundAndVibration((Notification)localObject2);
-                            }
-                            localObject1 = localObject2;
-                          } while (((Notification)localObject2).getGroup() == null);
-                          localObject1 = localObject2;
-                        } while ((((Notification)localObject2).flags & 0x200) != 0);
-                        localObject1 = localObject2;
-                      } while (this.mGroupAlertBehavior != 1);
-                      removeSoundAndVibration((Notification)localObject2);
-                      return localObject2;
-                      if (Build.VERSION.SDK_INT < 21) {
-                        break;
-                      }
-                      this.mBuilder.setExtras(this.mExtras);
-                      localObject2 = this.mBuilder.build();
-                      if (this.mContentView != null) {
-                        ((Notification)localObject2).contentView = this.mContentView;
-                      }
-                      if (this.mBigContentView != null) {
-                        ((Notification)localObject2).bigContentView = this.mBigContentView;
-                      }
-                      if (this.mHeadsUpContentView != null) {
-                        ((Notification)localObject2).headsUpContentView = this.mHeadsUpContentView;
-                      }
-                      localObject1 = localObject2;
-                    } while (this.mGroupAlertBehavior == 0);
-                    if ((((Notification)localObject2).getGroup() != null) && ((((Notification)localObject2).flags & 0x200) != 0) && (this.mGroupAlertBehavior == 2)) {
-                      removeSoundAndVibration((Notification)localObject2);
-                    }
-                    localObject1 = localObject2;
-                  } while (((Notification)localObject2).getGroup() == null);
-                  localObject1 = localObject2;
-                } while ((((Notification)localObject2).flags & 0x200) != 0);
-                localObject1 = localObject2;
-              } while (this.mGroupAlertBehavior != 1);
-              removeSoundAndVibration((Notification)localObject2);
-              return localObject2;
-              if (Build.VERSION.SDK_INT < 20) {
-                break;
-              }
-              this.mBuilder.setExtras(this.mExtras);
-              localObject2 = this.mBuilder.build();
-              if (this.mContentView != null) {
-                ((Notification)localObject2).contentView = this.mContentView;
-              }
-              if (this.mBigContentView != null) {
-                ((Notification)localObject2).bigContentView = this.mBigContentView;
-              }
-              localObject1 = localObject2;
-            } while (this.mGroupAlertBehavior == 0);
-            if ((((Notification)localObject2).getGroup() != null) && ((((Notification)localObject2).flags & 0x200) != 0) && (this.mGroupAlertBehavior == 2)) {
-              removeSoundAndVibration((Notification)localObject2);
-            }
-            localObject1 = localObject2;
-          } while (((Notification)localObject2).getGroup() == null);
-          localObject1 = localObject2;
-        } while ((((Notification)localObject2).flags & 0x200) != 0);
-        localObject1 = localObject2;
-      } while (this.mGroupAlertBehavior != 1);
-      removeSoundAndVibration((Notification)localObject2);
-      return localObject2;
-      if (Build.VERSION.SDK_INT < 19) {
-        break;
+      this.mBuilder.setExtras(this.mExtras);
+      localObject1 = this.mBuilder.build();
+      localObject2 = this.mContentView;
+      if (localObject2 != null) {
+        ((Notification)localObject1).contentView = ((RemoteViews)localObject2);
       }
+      localObject2 = this.mBigContentView;
+      if (localObject2 != null) {
+        ((Notification)localObject1).bigContentView = ((RemoteViews)localObject2);
+      }
+      localObject2 = this.mHeadsUpContentView;
+      if (localObject2 != null) {
+        ((Notification)localObject1).headsUpContentView = ((RemoteViews)localObject2);
+      }
+      if (this.mGroupAlertBehavior != 0)
+      {
+        if ((((Notification)localObject1).getGroup() != null) && ((((Notification)localObject1).flags & 0x200) != 0) && (this.mGroupAlertBehavior == 2)) {
+          removeSoundAndVibration((Notification)localObject1);
+        }
+        if ((((Notification)localObject1).getGroup() != null) && ((((Notification)localObject1).flags & 0x200) == 0) && (this.mGroupAlertBehavior == 1)) {
+          removeSoundAndVibration((Notification)localObject1);
+        }
+      }
+      return localObject1;
+    }
+    if (Build.VERSION.SDK_INT >= 20)
+    {
+      this.mBuilder.setExtras(this.mExtras);
+      localObject1 = this.mBuilder.build();
+      localObject2 = this.mContentView;
+      if (localObject2 != null) {
+        ((Notification)localObject1).contentView = ((RemoteViews)localObject2);
+      }
+      localObject2 = this.mBigContentView;
+      if (localObject2 != null) {
+        ((Notification)localObject1).bigContentView = ((RemoteViews)localObject2);
+      }
+      if (this.mGroupAlertBehavior != 0)
+      {
+        if ((((Notification)localObject1).getGroup() != null) && ((((Notification)localObject1).flags & 0x200) != 0) && (this.mGroupAlertBehavior == 2)) {
+          removeSoundAndVibration((Notification)localObject1);
+        }
+        if ((((Notification)localObject1).getGroup() != null) && ((((Notification)localObject1).flags & 0x200) == 0) && (this.mGroupAlertBehavior == 1)) {
+          removeSoundAndVibration((Notification)localObject1);
+        }
+      }
+      return localObject1;
+    }
+    if (Build.VERSION.SDK_INT >= 19)
+    {
       localObject1 = NotificationCompatJellybean.buildActionExtrasMap(this.mActionExtrasList);
       if (localObject1 != null) {
         this.mExtras.putSparseParcelableArray("android.support.actionExtras", (SparseArray)localObject1);
       }
       this.mBuilder.setExtras(this.mExtras);
-      localObject2 = this.mBuilder.build();
-      if (this.mContentView != null) {
-        ((Notification)localObject2).contentView = this.mContentView;
+      localObject1 = this.mBuilder.build();
+      localObject2 = this.mContentView;
+      if (localObject2 != null) {
+        ((Notification)localObject1).contentView = ((RemoteViews)localObject2);
       }
-      localObject1 = localObject2;
-    } while (this.mBigContentView == null);
-    ((Notification)localObject2).bigContentView = this.mBigContentView;
-    return localObject2;
+      localObject2 = this.mBigContentView;
+      if (localObject2 != null) {
+        ((Notification)localObject1).bigContentView = ((RemoteViews)localObject2);
+      }
+      return localObject1;
+    }
     if (Build.VERSION.SDK_INT >= 16)
     {
       localObject1 = this.mBuilder.build();
@@ -400,11 +338,13 @@ class NotificationCompatBuilder
       if (localObject2 != null) {
         NotificationCompat.getExtras((Notification)localObject1).putSparseParcelableArray("android.support.actionExtras", (SparseArray)localObject2);
       }
-      if (this.mContentView != null) {
-        ((Notification)localObject1).contentView = this.mContentView;
+      localObject2 = this.mContentView;
+      if (localObject2 != null) {
+        ((Notification)localObject1).contentView = ((RemoteViews)localObject2);
       }
-      if (this.mBigContentView != null) {
-        ((Notification)localObject1).bigContentView = this.mBigContentView;
+      localObject2 = this.mBigContentView;
+      if (localObject2 != null) {
+        ((Notification)localObject1).bigContentView = ((RemoteViews)localObject2);
       }
       return localObject1;
     }

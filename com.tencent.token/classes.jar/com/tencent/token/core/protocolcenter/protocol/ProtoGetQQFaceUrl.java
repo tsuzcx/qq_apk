@@ -26,8 +26,8 @@ public class ProtoGetQQFaceUrl
   
   protected String a()
   {
-    Object localObject1 = null;
     String str = ca.a().b();
+    Object localObject1 = null;
     if (str == null)
     {
       this.a.b(104);
@@ -43,19 +43,31 @@ public class ProtoGetQQFaceUrl
       ((JSONObject)localObject2).put("seq_id", this.f);
       ((JSONObject)localObject2).put("op_time", cc.c().s() / 1000L);
       localObject2 = ((JSONObject)localObject2).toString();
-      g.a("plain:" + (String)localObject2);
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("plain:");
+      localStringBuilder2.append((String)localObject2);
+      g.a(localStringBuilder2.toString());
       localObject2 = l.b(((String)localObject2).getBytes());
       localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        g.c("JSONException:" + localJSONException.getMessage());
-      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("JSONException:");
+      localStringBuilder2.append(localJSONException.getMessage());
+      g.c(localStringBuilder2.toString());
     }
-    localObject1 = "?aq_base_sid=" + str + "&data=" + (String)localObject1;
-    return c.e() + "/cn/mbtoken3/mbtoken3_get_photo_v3" + (String)localObject1;
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("?aq_base_sid=");
+    localStringBuilder1.append(str);
+    localStringBuilder1.append("&data=");
+    localStringBuilder1.append((String)localObject1);
+    localObject1 = localStringBuilder1.toString();
+    localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append(c.e());
+    localStringBuilder1.append("/cn/mbtoken3/mbtoken3_get_photo_v3");
+    localStringBuilder1.append((String)localObject1);
+    return localStringBuilder1.toString();
   }
   
   protected void a(do paramdo)
@@ -77,14 +89,22 @@ public class ProtoGetQQFaceUrl
       if (i != this.f)
       {
         this.a.b(10030);
-        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + cb.a().b());
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(cb.a().b());
+        g.c(paramJSONObject.toString());
         return;
       }
       this.e = paramJSONObject.getString("photo_url");
       return;
     }
-    g.c("parseJSON error decodeData=" + arrayOfByte);
-    a(10022, RqdApplication.l().getString(2131230925));
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("parseJSON error decodeData=");
+    paramJSONObject.append(arrayOfByte);
+    g.c(paramJSONObject.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

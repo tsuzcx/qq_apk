@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SoftFeature
   extends JceStruct
@@ -89,8 +90,9 @@ public final class SoftFeature
     paramJceOutputStream.write(this.featureKey, 0);
     paramJceOutputStream.write(this.softDescTimestamp, 1);
     paramJceOutputStream.write(this.virusDescTimestamp, 2);
-    if (this.vecFeatureItem != null) {
-      paramJceOutputStream.write(this.vecFeatureItem, 3);
+    Object localObject = this.vecFeatureItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.requestType, 4);
     paramJceOutputStream.write(this.isBuildIn, 5);
@@ -98,17 +100,20 @@ public final class SoftFeature
     paramJceOutputStream.write(this.position, 7);
     paramJceOutputStream.write(this.engineVersion, 8);
     paramJceOutputStream.write(this.localSafeType, 9);
-    if (this.localVirusName != null) {
-      paramJceOutputStream.write(this.localVirusName, 10);
+    localObject = this.localVirusName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.localVirusID, 11);
     paramJceOutputStream.write(this.appid, 12);
     paramJceOutputStream.write(this.virusVersion, 13);
-    if (this.dexSha1 != null) {
-      paramJceOutputStream.write(this.dexSha1, 14);
+    localObject = this.dexSha1;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
-    if (this.pluginIds != null) {
-      paramJceOutputStream.write(this.pluginIds, 15);
+    localObject = this.pluginIds;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 15);
     }
   }
 }

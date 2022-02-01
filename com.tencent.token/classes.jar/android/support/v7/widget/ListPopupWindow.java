@@ -27,7 +27,6 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
@@ -99,32 +98,31 @@ public class ListPopupWindow
     }
     catch (NoSuchMethodException localNoSuchMethodException1)
     {
-      try
-      {
-        for (;;)
-        {
-          sGetMaxAvailableHeightMethod = PopupWindow.class.getDeclaredMethod("getMaxAvailableHeight", new Class[] { View.class, Integer.TYPE, Boolean.TYPE });
-          try
-          {
-            sSetEpicenterBoundsMethod = PopupWindow.class.getDeclaredMethod("setEpicenterBounds", new Class[] { Rect.class });
-            return;
-          }
-          catch (NoSuchMethodException localNoSuchMethodException3)
-          {
-            Log.i("ListPopupWindow", "Could not find method setEpicenterBounds(Rect) on PopupWindow. Oh well.");
-          }
-          localNoSuchMethodException1 = localNoSuchMethodException1;
-          Log.i("ListPopupWindow", "Could not find method setClipToScreenEnabled() on PopupWindow. Oh well.");
-        }
-      }
-      catch (NoSuchMethodException localNoSuchMethodException2)
-      {
-        for (;;)
-        {
-          Log.i("ListPopupWindow", "Could not find method getMaxAvailableHeight(View, int, boolean) on PopupWindow. Oh well.");
-        }
-      }
+      label23:
+      label65:
+      label93:
+      break label23;
     }
+    Log.i("ListPopupWindow", "Could not find method setClipToScreenEnabled() on PopupWindow. Oh well.");
+    try
+    {
+      sGetMaxAvailableHeightMethod = PopupWindow.class.getDeclaredMethod("getMaxAvailableHeight", new Class[] { View.class, Integer.TYPE, Boolean.TYPE });
+    }
+    catch (NoSuchMethodException localNoSuchMethodException2)
+    {
+      break label65;
+    }
+    Log.i("ListPopupWindow", "Could not find method getMaxAvailableHeight(View, int, boolean) on PopupWindow. Oh well.");
+    try
+    {
+      sSetEpicenterBoundsMethod = PopupWindow.class.getDeclaredMethod("setEpicenterBounds", new Class[] { Rect.class });
+      return;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException3)
+    {
+      break label93;
+    }
+    Log.i("ListPopupWindow", "Could not find method setEpicenterBounds(Rect) on PopupWindow. Oh well.");
   }
   
   public ListPopupWindow(@NonNull Context paramContext)
@@ -159,18 +157,14 @@ public class ListPopupWindow
   
   private int buildDropDown()
   {
-    boolean bool2 = true;
+    Object localObject1 = this.mDropDownList;
+    boolean bool = true;
     Object localObject2;
-    boolean bool1;
-    Object localObject1;
-    View localView;
-    LinearLayout.LayoutParams localLayoutParams;
-    label253:
-    int j;
     int i;
-    if (this.mDropDownList == null)
+    int j;
+    if (localObject1 == null)
     {
-      localObject2 = this.mContext;
+      localObject1 = this.mContext;
       this.mShowDropDownRunnable = new Runnable()
       {
         public void run()
@@ -181,159 +175,154 @@ public class ListPopupWindow
           }
         }
       };
-      if (!this.mModal)
+      this.mDropDownList = createDropDownListView((Context)localObject1, this.mModal ^ true);
+      localObject2 = this.mDropDownListHighlight;
+      if (localObject2 != null) {
+        this.mDropDownList.setSelector((Drawable)localObject2);
+      }
+      this.mDropDownList.setAdapter(this.mAdapter);
+      this.mDropDownList.setOnItemClickListener(this.mItemClickListener);
+      this.mDropDownList.setFocusable(true);
+      this.mDropDownList.setFocusableInTouchMode(true);
+      this.mDropDownList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
       {
-        bool1 = true;
-        this.mDropDownList = createDropDownListView((Context)localObject2, bool1);
-        if (this.mDropDownListHighlight != null) {
-          this.mDropDownList.setSelector(this.mDropDownListHighlight);
-        }
-        this.mDropDownList.setAdapter(this.mAdapter);
-        this.mDropDownList.setOnItemClickListener(this.mItemClickListener);
-        this.mDropDownList.setFocusable(true);
-        this.mDropDownList.setFocusableInTouchMode(true);
-        this.mDropDownList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        public void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
-          public void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+          if (paramAnonymousInt != -1)
           {
-            if (paramAnonymousInt != -1)
-            {
-              paramAnonymousAdapterView = ListPopupWindow.this.mDropDownList;
-              if (paramAnonymousAdapterView != null) {
-                paramAnonymousAdapterView.setListSelectionHidden(false);
-              }
+            paramAnonymousAdapterView = ListPopupWindow.this.mDropDownList;
+            if (paramAnonymousAdapterView != null) {
+              paramAnonymousAdapterView.setListSelectionHidden(false);
             }
           }
-          
-          public void onNothingSelected(AdapterView<?> paramAnonymousAdapterView) {}
-        });
-        this.mDropDownList.setOnScrollListener(this.mScrollListener);
-        if (this.mItemSelectedListener != null) {
-          this.mDropDownList.setOnItemSelectedListener(this.mItemSelectedListener);
         }
-        localObject1 = this.mDropDownList;
-        localView = this.mPromptView;
-        if (localView == null) {
-          break label734;
-        }
-        localObject2 = new LinearLayout((Context)localObject2);
-        ((LinearLayout)localObject2).setOrientation(1);
-        localLayoutParams = new LinearLayout.LayoutParams(-1, 0, 1.0F);
+        
+        public void onNothingSelected(AdapterView<?> paramAnonymousAdapterView) {}
+      });
+      this.mDropDownList.setOnScrollListener(this.mScrollListener);
+      localObject2 = this.mItemSelectedListener;
+      if (localObject2 != null) {
+        this.mDropDownList.setOnItemSelectedListener((AdapterView.OnItemSelectedListener)localObject2);
+      }
+      localObject2 = this.mDropDownList;
+      View localView = this.mPromptView;
+      if (localView != null)
+      {
+        localObject1 = new LinearLayout((Context)localObject1);
+        ((LinearLayout)localObject1).setOrientation(1);
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 0, 1.0F);
         switch (this.mPromptPosition)
         {
         default: 
-          Log.e("ListPopupWindow", "Invalid hint position " + this.mPromptPosition);
-          if (this.mDropDownWidth >= 0)
-          {
-            j = this.mDropDownWidth;
-            i = -2147483648;
-            label269:
-            localView.measure(View.MeasureSpec.makeMeasureSpec(j, i), 0);
-            localObject1 = (LinearLayout.LayoutParams)localView.getLayoutParams();
-            i = localView.getMeasuredHeight();
-            j = ((LinearLayout.LayoutParams)localObject1).topMargin;
-            i = ((LinearLayout.LayoutParams)localObject1).bottomMargin + (i + j);
-            localObject1 = localObject2;
-          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("Invalid hint position ");
+          ((StringBuilder)localObject2).append(this.mPromptPosition);
+          Log.e("ListPopupWindow", ((StringBuilder)localObject2).toString());
           break;
+        case 1: 
+          ((LinearLayout)localObject1).addView((View)localObject2, localLayoutParams);
+          ((LinearLayout)localObject1).addView(localView);
+          break;
+        case 0: 
+          ((LinearLayout)localObject1).addView(localView);
+          ((LinearLayout)localObject1).addView((View)localObject2, localLayoutParams);
         }
+        i = this.mDropDownWidth;
+        if (i >= 0)
+        {
+          j = -2147483648;
+        }
+        else
+        {
+          i = 0;
+          j = 0;
+        }
+        localView.measure(View.MeasureSpec.makeMeasureSpec(i, j), 0);
+        localObject2 = (LinearLayout.LayoutParams)localView.getLayoutParams();
+        i = localView.getMeasuredHeight() + ((LinearLayout.LayoutParams)localObject2).topMargin + ((LinearLayout.LayoutParams)localObject2).bottomMargin;
       }
-    }
-    for (;;)
-    {
-      this.mPopup.setContentView((View)localObject1);
-      for (;;)
+      else
       {
-        label325:
-        localObject1 = this.mPopup.getBackground();
-        if (localObject1 != null)
-        {
-          ((Drawable)localObject1).getPadding(this.mTempRect);
-          j = this.mTempRect.top + this.mTempRect.bottom;
-          if (this.mDropDownVerticalOffsetSet) {
-            break label726;
-          }
-          this.mDropDownVerticalOffset = (-this.mTempRect.top);
-        }
-        label384:
-        label562:
-        label726:
-        for (;;)
-        {
-          if (this.mPopup.getInputMethodMode() == 2) {}
-          int m;
-          for (bool1 = bool2;; bool1 = false)
-          {
-            m = getMaxAvailableHeight(getAnchorView(), this.mDropDownVerticalOffset, bool1);
-            if ((!this.mDropDownAlwaysVisible) && (this.mDropDownHeight != -1)) {
-              break label562;
-            }
-            return m + j;
-            bool1 = false;
-            break;
-            ((LinearLayout)localObject2).addView((View)localObject1, localLayoutParams);
-            ((LinearLayout)localObject2).addView(localView);
-            break label253;
-            ((LinearLayout)localObject2).addView(localView);
-            ((LinearLayout)localObject2).addView((View)localObject1, localLayoutParams);
-            break label253;
-            i = 0;
-            j = 0;
-            break label269;
-            localObject1 = (ViewGroup)this.mPopup.getContentView();
-            localObject1 = this.mPromptView;
-            if (localObject1 == null) {
-              break label729;
-            }
-            localObject2 = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
-            i = ((View)localObject1).getMeasuredHeight();
-            j = ((LinearLayout.LayoutParams)localObject2).topMargin;
-            i = ((LinearLayout.LayoutParams)localObject2).bottomMargin + (i + j);
-            break label325;
-            this.mTempRect.setEmpty();
-            j = 0;
-            break label384;
-          }
-          int k;
-          switch (this.mDropDownWidth)
-          {
-          default: 
-            k = View.MeasureSpec.makeMeasureSpec(this.mDropDownWidth, 1073741824);
-          }
-          for (;;)
-          {
-            m = this.mDropDownList.measureHeightOfChildrenCompat(k, 0, -1, m - i, -1);
-            k = i;
-            if (m > 0) {
-              k = i + (this.mDropDownList.getPaddingTop() + this.mDropDownList.getPaddingBottom() + j);
-            }
-            return m + k;
-            k = View.MeasureSpec.makeMeasureSpec(this.mContext.getResources().getDisplayMetrics().widthPixels - (this.mTempRect.left + this.mTempRect.right), -2147483648);
-            continue;
-            k = View.MeasureSpec.makeMeasureSpec(this.mContext.getResources().getDisplayMetrics().widthPixels - (this.mTempRect.left + this.mTempRect.right), 1073741824);
-          }
-        }
-        label729:
+        i = 0;
+        localObject1 = localObject2;
+      }
+      this.mPopup.setContentView((View)localObject1);
+    }
+    else
+    {
+      localObject1 = (ViewGroup)this.mPopup.getContentView();
+      localObject1 = this.mPromptView;
+      if (localObject1 != null)
+      {
+        localObject2 = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
+        i = ((View)localObject1).getMeasuredHeight() + ((LinearLayout.LayoutParams)localObject2).topMargin + ((LinearLayout.LayoutParams)localObject2).bottomMargin;
+      }
+      else
+      {
         i = 0;
       }
-      label734:
-      i = 0;
     }
+    localObject1 = this.mPopup.getBackground();
+    int k;
+    if (localObject1 != null)
+    {
+      ((Drawable)localObject1).getPadding(this.mTempRect);
+      j = this.mTempRect.top + this.mTempRect.bottom;
+      k = j;
+      if (!this.mDropDownVerticalOffsetSet)
+      {
+        this.mDropDownVerticalOffset = (-this.mTempRect.top);
+        k = j;
+      }
+    }
+    else
+    {
+      this.mTempRect.setEmpty();
+      k = 0;
+    }
+    if (this.mPopup.getInputMethodMode() != 2) {
+      bool = false;
+    }
+    int m = getMaxAvailableHeight(getAnchorView(), this.mDropDownVerticalOffset, bool);
+    if ((!this.mDropDownAlwaysVisible) && (this.mDropDownHeight != -1))
+    {
+      j = this.mDropDownWidth;
+      switch (j)
+      {
+      default: 
+        j = View.MeasureSpec.makeMeasureSpec(j, 1073741824);
+        break;
+      case -1: 
+        j = View.MeasureSpec.makeMeasureSpec(this.mContext.getResources().getDisplayMetrics().widthPixels - (this.mTempRect.left + this.mTempRect.right), 1073741824);
+        break;
+      case -2: 
+        j = View.MeasureSpec.makeMeasureSpec(this.mContext.getResources().getDisplayMetrics().widthPixels - (this.mTempRect.left + this.mTempRect.right), -2147483648);
+      }
+      m = this.mDropDownList.measureHeightOfChildrenCompat(j, 0, -1, m - i, -1);
+      j = i;
+      if (m > 0) {
+        j = i + (k + (this.mDropDownList.getPaddingTop() + this.mDropDownList.getPaddingBottom()));
+      }
+      return m + j;
+    }
+    return m + k;
   }
   
   private int getMaxAvailableHeight(View paramView, int paramInt, boolean paramBoolean)
   {
-    if (sGetMaxAvailableHeightMethod != null) {
-      try
-      {
-        int i = ((Integer)sGetMaxAvailableHeightMethod.invoke(this.mPopup, new Object[] { paramView, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) })).intValue();
-        return i;
-      }
-      catch (Exception localException)
-      {
-        Log.i("ListPopupWindow", "Could not call getMaxAvailableHeightMethod(View, int, boolean) on PopupWindow. Using the public version.");
-      }
+    Method localMethod = sGetMaxAvailableHeightMethod;
+    if (localMethod != null) {}
+    try
+    {
+      int i = ((Integer)localMethod.invoke(this.mPopup, new Object[] { paramView, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) })).intValue();
+      return i;
     }
+    catch (Exception localException)
+    {
+      label52:
+      break label52;
+    }
+    Log.i("ListPopupWindow", "Could not call getMaxAvailableHeightMethod(View, int, boolean) on PopupWindow. Using the public version.");
     return this.mPopup.getMaxAvailableHeight(paramView, paramInt);
   }
   
@@ -344,27 +333,31 @@ public class ListPopupWindow
   
   private void removePromptView()
   {
-    if (this.mPromptView != null)
+    Object localObject = this.mPromptView;
+    if (localObject != null)
     {
-      ViewParent localViewParent = this.mPromptView.getParent();
-      if ((localViewParent instanceof ViewGroup)) {
-        ((ViewGroup)localViewParent).removeView(this.mPromptView);
+      localObject = ((View)localObject).getParent();
+      if ((localObject instanceof ViewGroup)) {
+        ((ViewGroup)localObject).removeView(this.mPromptView);
       }
     }
   }
   
   private void setPopupClipToScreenEnabled(boolean paramBoolean)
   {
-    if (sClipToWindowEnabledMethod != null) {}
+    Method localMethod = sClipToWindowEnabledMethod;
+    if (localMethod != null) {}
     try
     {
-      sClipToWindowEnabledMethod.invoke(this.mPopup, new Object[] { Boolean.valueOf(paramBoolean) });
+      localMethod.invoke(this.mPopup, new Object[] { Boolean.valueOf(paramBoolean) });
       return;
     }
     catch (Exception localException)
     {
-      Log.i("ListPopupWindow", "Could not call setClipToScreenEnabled() on PopupWindow. Oh well.");
+      label29:
+      break label29;
     }
+    Log.i("ListPopupWindow", "Could not call setClipToScreenEnabled() on PopupWindow. Oh well.");
   }
   
   public void clearListSelection()
@@ -522,74 +515,64 @@ public class ListPopupWindow
   
   public boolean onKeyDown(int paramInt, @NonNull KeyEvent paramKeyEvent)
   {
-    int m;
-    int k;
-    int i;
-    int j;
     if ((isShowing()) && (paramInt != 62) && ((this.mDropDownList.getSelectedItemPosition() >= 0) || (!isConfirmKey(paramInt))))
     {
-      m = this.mDropDownList.getSelectedItemPosition();
-      ListAdapter localListAdapter;
-      if (!this.mPopup.isAboveAnchor())
+      int k = this.mDropDownList.getSelectedItemPosition();
+      boolean bool1 = this.mPopup.isAboveAnchor() ^ true;
+      ListAdapter localListAdapter = this.mAdapter;
+      int i = 2147483647;
+      int j;
+      if (localListAdapter != null)
       {
-        k = 1;
-        localListAdapter = this.mAdapter;
-        i = 2147483647;
-        j = -2147483648;
-        if (localListAdapter != null)
-        {
-          boolean bool = localListAdapter.areAllItemsEnabled();
-          if (!bool) {
-            break label162;
-          }
+        boolean bool2 = localListAdapter.areAllItemsEnabled();
+        if (bool2) {
           i = 0;
-          label87:
-          if (!bool) {
-            break label175;
-          }
+        } else {
+          i = this.mDropDownList.lookForSelectablePosition(0, true);
+        }
+        if (bool2) {
+          j = localListAdapter.getCount() - 1;
+        } else {
+          j = this.mDropDownList.lookForSelectablePosition(localListAdapter.getCount() - 1, false);
         }
       }
-      label162:
-      label175:
-      for (j = localListAdapter.getCount() - 1;; j = this.mDropDownList.lookForSelectablePosition(localListAdapter.getCount() - 1, false))
+      else
       {
-        if (((k == 0) || (paramInt != 19) || (m > i)) && ((k != 0) || (paramInt != 20) || (m < j))) {
-          break label197;
-        }
+        j = -2147483648;
+      }
+      if (((bool1) && (paramInt == 19) && (k <= i)) || ((!bool1) && (paramInt == 20) && (k >= j)))
+      {
         clearListSelection();
         this.mPopup.setInputMethodMode(1);
         show();
         return true;
-        k = 0;
-        break;
-        i = this.mDropDownList.lookForSelectablePosition(0, true);
-        break label87;
       }
-      label197:
       this.mDropDownList.setListSelectionHidden(false);
-      if (!this.mDropDownList.onKeyDown(paramInt, paramKeyEvent)) {
-        break label282;
-      }
-      this.mPopup.setInputMethodMode(2);
-      this.mDropDownList.requestFocusFromTouch();
-      show();
-      switch (paramInt)
+      if (this.mDropDownList.onKeyDown(paramInt, paramKeyEvent))
       {
+        this.mPopup.setInputMethodMode(2);
+        this.mDropDownList.requestFocusFromTouch();
+        show();
+        if ((paramInt != 23) && (paramInt != 66)) {
+          switch (paramInt)
+          {
+          default: 
+            return false;
+          }
+        }
+        return true;
+      }
+      if ((bool1) && (paramInt == 20))
+      {
+        if (k == j) {
+          return true;
+        }
+      }
+      else if ((!bool1) && (paramInt == 19) && (k == i)) {
+        return true;
       }
     }
-    label282:
-    do
-    {
-      do
-      {
-        return false;
-        if ((k == 0) || (paramInt != 20)) {
-          break;
-        }
-      } while (m != j);
-      return true;
-    } while ((k != 0) || (paramInt != 19) || (m != i));
-    return true;
+    return false;
   }
   
   public boolean onKeyPreIme(int paramInt, @NonNull KeyEvent paramKeyEvent)
@@ -657,22 +640,25 @@ public class ListPopupWindow
   
   public void setAdapter(@Nullable ListAdapter paramListAdapter)
   {
-    if (this.mObserver == null) {
+    DataSetObserver localDataSetObserver = this.mObserver;
+    if (localDataSetObserver == null)
+    {
       this.mObserver = new PopupDataSetObserver();
     }
-    for (;;)
+    else
     {
-      this.mAdapter = paramListAdapter;
-      if (paramListAdapter != null) {
-        paramListAdapter.registerDataSetObserver(this.mObserver);
+      ListAdapter localListAdapter = this.mAdapter;
+      if (localListAdapter != null) {
+        localListAdapter.unregisterDataSetObserver(localDataSetObserver);
       }
-      if (this.mDropDownList != null) {
-        this.mDropDownList.setAdapter(this.mAdapter);
-      }
-      return;
-      if (this.mAdapter != null) {
-        this.mAdapter.unregisterDataSetObserver(this.mObserver);
-      }
+    }
+    this.mAdapter = paramListAdapter;
+    if (paramListAdapter != null) {
+      paramListAdapter.registerDataSetObserver(this.mObserver);
+    }
+    paramListAdapter = this.mDropDownList;
+    if (paramListAdapter != null) {
+      paramListAdapter.setAdapter(this.mAdapter);
     }
   }
   
@@ -835,162 +821,130 @@ public class ListPopupWindow
   
   public void show()
   {
-    boolean bool1 = true;
-    boolean bool2 = false;
-    int m = -1;
-    int i = buildDropDown();
-    boolean bool3 = isInputMethodNotNeeded();
+    int j = buildDropDown();
+    boolean bool2 = isInputMethodNotNeeded();
     PopupWindowCompat.setWindowLayoutType(this.mPopup, this.mDropDownWindowLayoutType);
-    if (this.mPopup.isShowing()) {
-      if (ViewCompat.isAttachedToWindow(getAnchorView())) {}
-    }
-    for (;;)
+    boolean bool3 = this.mPopup.isShowing();
+    boolean bool1 = true;
+    int i;
+    if (bool3)
     {
-      return;
-      int j;
-      label75:
-      PopupWindow localPopupWindow;
-      int k;
-      label96:
-      label110:
-      View localView;
-      int n;
-      int i1;
-      if (this.mDropDownWidth == -1)
-      {
-        j = -1;
-        if (this.mDropDownHeight != -1) {
-          break label277;
-        }
-        if (!bool3) {
-          break label229;
-        }
-        if (!bool3) {
-          break label239;
-        }
-        localPopupWindow = this.mPopup;
-        if (this.mDropDownWidth != -1) {
-          break label234;
-        }
-        k = -1;
-        localPopupWindow.setWidth(k);
-        this.mPopup.setHeight(0);
-        localPopupWindow = this.mPopup;
-        bool1 = bool2;
-        if (!this.mForceIgnoreOutsideTouch)
-        {
-          bool1 = bool2;
-          if (!this.mDropDownAlwaysVisible) {
-            bool1 = true;
-          }
-        }
-        localPopupWindow.setOutsideTouchable(bool1);
-        localPopupWindow = this.mPopup;
-        localView = getAnchorView();
-        n = this.mDropDownHorizontalOffset;
-        i1 = this.mDropDownVerticalOffset;
-        k = j;
-        if (j < 0) {
-          k = -1;
-        }
-        if (i >= 0) {
-          break label297;
-        }
-        i = m;
-      }
-      label277:
-      label297:
-      for (;;)
-      {
-        localPopupWindow.update(localView, n, i1, k, i);
+      if (!ViewCompat.isAttachedToWindow(getAnchorView())) {
         return;
-        if (this.mDropDownWidth == -2)
-        {
-          j = getAnchorView().getWidth();
-          break;
-        }
-        j = this.mDropDownWidth;
-        break;
-        label229:
-        i = -1;
-        break label75;
-        label234:
-        k = 0;
-        break label96;
-        label239:
-        localPopupWindow = this.mPopup;
-        if (this.mDropDownWidth == -1) {}
-        for (k = -1;; k = 0)
-        {
-          localPopupWindow.setWidth(k);
-          this.mPopup.setHeight(-1);
-          break;
-        }
-        if (this.mDropDownHeight == -2) {
-          break label110;
-        }
-        i = this.mDropDownHeight;
-        break label110;
       }
-      if (this.mDropDownWidth == -1)
+      k = this.mDropDownWidth;
+      if (k == -1)
       {
-        j = -1;
-        label310:
-        if (this.mDropDownHeight != -1) {
-          break label525;
-        }
         i = -1;
-        label320:
-        this.mPopup.setWidth(j);
-        this.mPopup.setHeight(i);
-        setPopupClipToScreenEnabled(true);
-        localPopupWindow = this.mPopup;
-        if ((this.mForceIgnoreOutsideTouch) || (this.mDropDownAlwaysVisible)) {
-          break label542;
-        }
-        localPopupWindow.setOutsideTouchable(bool1);
-        this.mPopup.setTouchInterceptor(this.mTouchInterceptor);
-        if (this.mOverlapAnchorSet) {
-          PopupWindowCompat.setOverlapAnchor(this.mPopup, this.mOverlapAnchor);
-        }
-        if (sSetEpicenterBoundsMethod == null) {}
       }
+      else
+      {
+        i = k;
+        if (k == -2) {
+          i = getAnchorView().getWidth();
+        }
+      }
+      k = this.mDropDownHeight;
+      if (k == -1)
+      {
+        if (!bool2) {
+          j = -1;
+        }
+        if (bool2)
+        {
+          localObject = this.mPopup;
+          if (this.mDropDownWidth == -1) {
+            k = -1;
+          } else {
+            k = 0;
+          }
+          ((PopupWindow)localObject).setWidth(k);
+          this.mPopup.setHeight(0);
+        }
+        else
+        {
+          localObject = this.mPopup;
+          if (this.mDropDownWidth == -1) {
+            k = -1;
+          } else {
+            k = 0;
+          }
+          ((PopupWindow)localObject).setWidth(k);
+          this.mPopup.setHeight(-1);
+        }
+      }
+      else if (k != -2)
+      {
+        j = k;
+      }
+      localObject = this.mPopup;
+      if ((this.mForceIgnoreOutsideTouch) || (this.mDropDownAlwaysVisible)) {
+        bool1 = false;
+      }
+      ((PopupWindow)localObject).setOutsideTouchable(bool1);
+      localObject = this.mPopup;
+      View localView = getAnchorView();
+      k = this.mDropDownHorizontalOffset;
+      int m = this.mDropDownVerticalOffset;
+      if (i < 0) {
+        i = -1;
+      }
+      if (j < 0) {
+        j = -1;
+      }
+      ((PopupWindow)localObject).update(localView, k, m, i, j);
+      return;
+    }
+    int k = this.mDropDownWidth;
+    if (k == -1)
+    {
+      i = -1;
+    }
+    else
+    {
+      i = k;
+      if (k == -2) {
+        i = getAnchorView().getWidth();
+      }
+    }
+    k = this.mDropDownHeight;
+    if (k == -1) {
+      j = -1;
+    } else if (k != -2) {
+      j = k;
+    }
+    this.mPopup.setWidth(i);
+    this.mPopup.setHeight(j);
+    setPopupClipToScreenEnabled(true);
+    Object localObject = this.mPopup;
+    if ((!this.mForceIgnoreOutsideTouch) && (!this.mDropDownAlwaysVisible)) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    ((PopupWindow)localObject).setOutsideTouchable(bool1);
+    this.mPopup.setTouchInterceptor(this.mTouchInterceptor);
+    if (this.mOverlapAnchorSet) {
+      PopupWindowCompat.setOverlapAnchor(this.mPopup, this.mOverlapAnchor);
+    }
+    localObject = sSetEpicenterBoundsMethod;
+    if (localObject != null) {
       try
       {
-        sSetEpicenterBoundsMethod.invoke(this.mPopup, new Object[] { this.mEpicenterBounds });
-        PopupWindowCompat.showAsDropDown(this.mPopup, getAnchorView(), this.mDropDownHorizontalOffset, this.mDropDownVerticalOffset, this.mDropDownGravity);
-        this.mDropDownList.setSelection(-1);
-        if ((!this.mModal) || (this.mDropDownList.isInTouchMode())) {
-          clearListSelection();
-        }
-        if (this.mModal) {
-          continue;
-        }
-        this.mHandler.post(this.mHideSelector);
-        return;
-        if (this.mDropDownWidth == -2)
-        {
-          j = getAnchorView().getWidth();
-          break label310;
-        }
-        j = this.mDropDownWidth;
-        break label310;
-        label525:
-        if (this.mDropDownHeight == -2) {
-          break label320;
-        }
-        i = this.mDropDownHeight;
-        break label320;
-        label542:
-        bool1 = false;
+        ((Method)localObject).invoke(this.mPopup, new Object[] { this.mEpicenterBounds });
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          Log.e("ListPopupWindow", "Could not invoke setEpicenterBounds on PopupWindow", localException);
-        }
+        Log.e("ListPopupWindow", "Could not invoke setEpicenterBounds on PopupWindow", localException);
       }
+    }
+    PopupWindowCompat.showAsDropDown(this.mPopup, getAnchorView(), this.mDropDownHorizontalOffset, this.mDropDownVerticalOffset, this.mDropDownGravity);
+    this.mDropDownList.setSelection(-1);
+    if ((!this.mModal) || (this.mDropDownList.isInTouchMode())) {
+      clearListSelection();
+    }
+    if (!this.mModal) {
+      this.mHandler.post(this.mHideSelector);
     }
   }
   
@@ -1052,14 +1006,10 @@ public class ListPopupWindow
       int k = (int)paramMotionEvent.getY();
       if ((i == 0) && (ListPopupWindow.this.mPopup != null) && (ListPopupWindow.this.mPopup.isShowing()) && (j >= 0) && (j < ListPopupWindow.this.mPopup.getWidth()) && (k >= 0) && (k < ListPopupWindow.this.mPopup.getHeight())) {
         ListPopupWindow.this.mHandler.postDelayed(ListPopupWindow.this.mResizePopupRunnable, 250L);
+      } else if (i == 1) {
+        ListPopupWindow.this.mHandler.removeCallbacks(ListPopupWindow.this.mResizePopupRunnable);
       }
-      for (;;)
-      {
-        return false;
-        if (i == 1) {
-          ListPopupWindow.this.mHandler.removeCallbacks(ListPopupWindow.this.mResizePopupRunnable);
-        }
-      }
+      return false;
     }
   }
   

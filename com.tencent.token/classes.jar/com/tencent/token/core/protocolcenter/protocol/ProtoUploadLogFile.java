@@ -22,7 +22,10 @@ public class ProtoUploadLogFile
   
   protected String a()
   {
-    return c.e() + "/cn/mbtoken3/mbtoken3_log_upload";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c.e());
+    localStringBuilder.append("/cn/mbtoken3/mbtoken3_log_upload");
+    return localStringBuilder.toString();
   }
   
   protected void a(do paramdo) {}
@@ -40,7 +43,10 @@ public class ProtoUploadLogFile
       g.a("log upload success");
       return;
     }
-    g.a("log upload fail errCode=" + i);
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("log upload fail errCode=");
+    paramJSONObject.append(i);
+    g.a(paramJSONObject.toString());
   }
 }
 

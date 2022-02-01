@@ -13,48 +13,45 @@ public class g
 {
   public static double a(Context paramContext, int paramInt)
   {
-    label115:
-    for (;;)
+    try
     {
-      try
+      double d1 = f.b;
+      double d2 = f.b;
+      LocationManager localLocationManager = (LocationManager)paramContext.getSystemService("location");
+      paramContext = localLocationManager.getProviders(true);
+      if (paramContext.contains("gps"))
       {
-        double d1 = f.b;
-        double d2 = f.b;
-        LocationManager localLocationManager = (LocationManager)paramContext.getSystemService("location");
-        paramContext = localLocationManager.getProviders(true);
-        if (paramContext.contains("gps"))
-        {
-          paramContext = "gps";
-          paramContext = localLocationManager.getLastKnownLocation(paramContext);
-          if (paramContext == null) {
-            break label115;
-          }
-          d1 = paramContext.getLatitude();
-          d2 = paramContext.getLongitude();
-          if (paramInt == f.c) {
-            return d1;
-          }
-        }
-        else
-        {
-          if (!paramContext.contains("network")) {
-            break;
-          }
-          paramContext = "network";
-          continue;
-        }
-        int i = f.d;
-        if (paramInt == i) {
-          return d2;
-        }
+        paramContext = "gps";
       }
-      catch (Exception paramContext)
+      else
       {
-        paramContext.printStackTrace();
+        if (!paramContext.contains("network")) {
+          break label105;
+        }
+        paramContext = "network";
       }
-      return f.b;
+      paramContext = localLocationManager.getLastKnownLocation(paramContext);
+      if (paramContext != null)
+      {
+        d1 = paramContext.getLatitude();
+        d2 = paramContext.getLongitude();
+      }
+      if (paramInt == f.c) {
+        return d1;
+      }
+      int i = f.d;
+      if (paramInt == i)
+      {
+        return d2;
+        label105:
+        return 0.0D;
+      }
     }
-    return 0.0D;
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return f.b;
   }
   
   public static int a(Context paramContext)
@@ -97,45 +94,49 @@ public class g
   
   public static int c(Context paramContext)
   {
+    int m = 0;
+    int n = 0;
     int k = 0;
-    int i = 0;
-    int j = k;
+    int i = m;
+    int j;
     try
     {
       paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getNeighboringCellInfo();
+      j = n;
       if (paramContext != null)
       {
-        j = k;
+        i = m;
+        j = n;
         if (paramContext.size() > 0)
         {
-          j = k;
+          i = m;
           Iterator localIterator = paramContext.iterator();
+          j = k;
           for (;;)
           {
-            j = i;
+            i = j;
             if (!localIterator.hasNext()) {
               break;
             }
-            j = i;
-            i += ((NeighboringCellInfo)localIterator.next()).getRssi() * 2 - 133;
+            i = j;
+            j += ((NeighboringCellInfo)localIterator.next()).getRssi() * 2 - 133;
           }
-          j = i;
-          i /= paramContext.size();
-          return i;
+          i = j;
+          j /= paramContext.size();
+          return j;
         }
       }
     }
     catch (Exception paramContext)
     {
       paramContext.printStackTrace();
-      return j;
+      j = i;
     }
-    return 0;
+    return j;
   }
   
   public static int d(Context paramContext)
   {
-    int j = 1;
     try
     {
       paramContext = (LocationManager)paramContext.getSystemService("location");
@@ -144,26 +145,15 @@ public class g
       }
       boolean bool1 = paramContext.isProviderEnabled("gps");
       boolean bool2 = paramContext.isProviderEnabled("network");
-      if ((!bool1) && (!bool2)) {
-        break label57;
+      if ((bool1) || (bool2)) {
+        return 1;
       }
-      i = 1;
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-        int i = 0;
-        continue;
-        i = 0;
-      }
+      paramContext.printStackTrace();
     }
-    if (i != 0)
-    {
-      i = j;
-      return i;
-    }
+    return 0;
   }
 }
 

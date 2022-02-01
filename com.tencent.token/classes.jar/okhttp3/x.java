@@ -76,7 +76,15 @@ public final class x
   
   public String toString()
   {
-    return "Request{method=" + this.b + ", url=" + this.a + ", tags=" + this.e + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Request{method=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", url=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", tags=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public static class a
@@ -98,32 +106,42 @@ public final class x
       this.a = paramx.a;
       this.b = paramx.b;
       this.d = paramx.d;
-      if (paramx.e.isEmpty()) {}
-      for (Object localObject = Collections.emptyMap();; localObject = new LinkedHashMap(paramx.e))
-      {
-        this.e = ((Map)localObject);
-        this.c = paramx.c.b();
-        return;
+      Object localObject;
+      if (paramx.e.isEmpty()) {
+        localObject = Collections.emptyMap();
+      } else {
+        localObject = new LinkedHashMap(paramx.e);
       }
+      this.e = ((Map)localObject);
+      this.c = paramx.c.b();
     }
     
     public a a(String paramString)
     {
-      if (paramString == null) {
-        throw new NullPointerException("url == null");
-      }
-      String str;
-      if (paramString.regionMatches(true, 0, "ws:", 0, 3)) {
-        str = "http:" + paramString.substring(3);
-      }
-      for (;;)
+      if (paramString != null)
       {
-        return a(s.e(str));
-        str = paramString;
-        if (paramString.regionMatches(true, 0, "wss:", 0, 4)) {
-          str = "https:" + paramString.substring(4);
+        Object localObject;
+        if (paramString.regionMatches(true, 0, "ws:", 0, 3))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("http:");
+          ((StringBuilder)localObject).append(paramString.substring(3));
+          localObject = ((StringBuilder)localObject).toString();
         }
+        else
+        {
+          localObject = paramString;
+          if (paramString.regionMatches(true, 0, "wss:", 0, 4))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("https:");
+            ((StringBuilder)localObject).append(paramString.substring(4));
+            localObject = ((StringBuilder)localObject).toString();
+          }
+        }
+        return a(s.e((String)localObject));
       }
+      throw new NullPointerException("url == null");
     }
     
     public a a(String paramString1, String paramString2)
@@ -134,21 +152,33 @@ public final class x
     
     public a a(String paramString, @Nullable y paramy)
     {
-      if (paramString == null) {
-        throw new NullPointerException("method == null");
-      }
-      if (paramString.length() == 0) {
+      if (paramString != null)
+      {
+        if (paramString.length() != 0)
+        {
+          if ((paramy != null) && (!fo.c(paramString)))
+          {
+            paramy = new StringBuilder();
+            paramy.append("method ");
+            paramy.append(paramString);
+            paramy.append(" must not have a request body.");
+            throw new IllegalArgumentException(paramy.toString());
+          }
+          if ((paramy == null) && (fo.b(paramString)))
+          {
+            paramy = new StringBuilder();
+            paramy.append("method ");
+            paramy.append(paramString);
+            paramy.append(" must have a request body.");
+            throw new IllegalArgumentException(paramy.toString());
+          }
+          this.b = paramString;
+          this.d = paramy;
+          return this;
+        }
         throw new IllegalArgumentException("method.length() == 0");
       }
-      if ((paramy != null) && (!fo.c(paramString))) {
-        throw new IllegalArgumentException("method " + paramString + " must not have a request body.");
-      }
-      if ((paramy == null) && (fo.b(paramString))) {
-        throw new IllegalArgumentException("method " + paramString + " must have a request body.");
-      }
-      this.b = paramString;
-      this.d = paramy;
-      return this;
+      throw new NullPointerException("method == null");
     }
     
     public a a(r paramr)
@@ -159,19 +189,20 @@ public final class x
     
     public a a(s params)
     {
-      if (params == null) {
-        throw new NullPointerException("url == null");
+      if (params != null)
+      {
+        this.a = params;
+        return this;
       }
-      this.a = params;
-      return this;
+      throw new NullPointerException("url == null");
     }
     
     public x a()
     {
-      if (this.a == null) {
-        throw new IllegalStateException("url == null");
+      if (this.a != null) {
+        return new x(this);
       }
-      return new x(this);
+      throw new IllegalStateException("url == null");
     }
     
     public a b(String paramString)

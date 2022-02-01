@@ -3,6 +3,7 @@ package btmsdkobf;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
 import com.tmsdk.base.utils.ConvertUtil;
 import java.security.Key;
 import java.security.KeyFactory;
@@ -26,13 +27,18 @@ public class cs
   
   private void C()
   {
-    b localb = this.hF.bL().aA();
-    if (localb != null) {
+    Object localObject2 = this.hF.bL().aA();
+    if (localObject2 != null) {
       synchronized (this.V)
       {
-        this.im.is = localb.is;
-        this.im.ir = localb.ir;
-        eh.f("RsaKeyCertifier", "[rsa_key]load(), mEncodeKey: " + this.im.is + " mSessionId: " + this.im.ir);
+        this.im.is = ((b)localObject2).is;
+        this.im.ir = ((b)localObject2).ir;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[rsa_key]load(), mEncodeKey: ");
+        ((StringBuilder)localObject2).append(this.im.is);
+        ((StringBuilder)localObject2).append(" mSessionId: ");
+        ((StringBuilder)localObject2).append(this.im.ir);
+        eh.f("RsaKeyCertifier", ((StringBuilder)localObject2).toString());
         return;
       }
     }
@@ -56,24 +62,30 @@ public class cs
     }
     catch (Throwable paramContext)
     {
-      eh.a("RsaKeyCertifier", "[rsa_key]sendBroadcast(): " + paramContext, paramContext);
+      paramb = new StringBuilder();
+      paramb.append("[rsa_key]sendBroadcast(): ");
+      paramb.append(paramContext);
+      eh.a("RsaKeyCertifier", paramb.toString(), paramContext);
     }
   }
   
   private void c(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      eh.h("RsaKeyCertifier", "[rsa_key] saveRsaKey(), argument is null! encodeKey: " + paramString1 + " sessionId: " + paramString2);
-      return;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      synchronized (this.V)
+      {
+        this.im.is = paramString1;
+        this.im.ir = paramString2;
+        this.hF.bL().b(this.im);
+        return;
+      }
     }
-    synchronized (this.V)
-    {
-      this.im.is = paramString1;
-      this.im.ir = paramString2;
-      this.hF.bL().b(this.im);
-      return;
-    }
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("[rsa_key] saveRsaKey(), argument is null! encodeKey: ");
+    ((StringBuilder)???).append(paramString1);
+    ((StringBuilder)???).append(" sessionId: ");
+    ((StringBuilder)???).append(paramString2);
+    eh.h("RsaKeyCertifier", ((StringBuilder)???).toString());
   }
   
   static void g(Context paramContext)
@@ -81,14 +93,17 @@ public class cs
     try
     {
       eh.f("RsaKeyCertifier", "[rsa_key]requestSendProcessUpdateRsaKey()");
-      Intent localIntent = new Intent(String.format("action.up.rsa:%s", new Object[] { paramContext.getPackageName() }));
-      localIntent.setPackage(paramContext.getPackageName());
-      paramContext.sendBroadcast(localIntent);
+      localObject = new Intent(String.format("action.up.rsa:%s", new Object[] { paramContext.getPackageName() }));
+      ((Intent)localObject).setPackage(paramContext.getPackageName());
+      paramContext.sendBroadcast((Intent)localObject);
       return;
     }
     catch (Throwable paramContext)
     {
-      eh.a("RsaKeyCertifier", "[rsa_key]requestSendProcessUpdateRsaKey(): " + paramContext, paramContext);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[rsa_key]requestSendProcessUpdateRsaKey(): ");
+      ((StringBuilder)localObject).append(paramContext);
+      eh.a("RsaKeyCertifier", ((StringBuilder)localObject).toString(), paramContext);
     }
   }
   
@@ -140,7 +155,10 @@ public class cs
     }
     al localal = new al();
     localal.bP = ((byte[])localObject);
-    eh.f("RsaKeyCertifier", "[rsa_key]updateRsaKey() reqRSA.enc: " + ConvertUtil.bytesToHexString(localal.bP));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[rsa_key]updateRsaKey() reqRSA.enc: ");
+    ((StringBuilder)localObject).append(ConvertUtil.bytesToHexString(localal.bP));
+    eh.f("RsaKeyCertifier", ((StringBuilder)localObject).toString());
     localObject = new ArrayList();
     final as localas = new as();
     localas.dc = i;
@@ -153,10 +171,20 @@ public class cs
     {
       public void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, ArrayList<ba> paramAnonymousArrayList)
       {
-        eh.f("RsaKeyCertifier", "[rsa_key]updateRsaKey(), isTcpChannel: " + paramAnonymousBoolean + ", seqNo " + localas.dc + ", retCode: " + paramAnonymousInt1);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[rsa_key]updateRsaKey(), isTcpChannel: ");
+        ((StringBuilder)localObject).append(paramAnonymousBoolean);
+        ((StringBuilder)localObject).append(", seqNo ");
+        ((StringBuilder)localObject).append(localas.dc);
+        ((StringBuilder)localObject).append(", retCode: ");
+        ((StringBuilder)localObject).append(paramAnonymousInt1);
+        eh.f("RsaKeyCertifier", ((StringBuilder)localObject).toString());
         if (paramAnonymousInt1 != 0)
         {
-          eh.h("RsaKeyCertifier", "[rsa_key]updateRsaKey(), retCode: " + paramAnonymousInt1);
+          paramAnonymousArrayList = new StringBuilder();
+          paramAnonymousArrayList.append("[rsa_key]updateRsaKey(), retCode: ");
+          paramAnonymousArrayList.append(paramAnonymousInt1);
+          eh.h("RsaKeyCertifier", paramAnonymousArrayList.toString());
           parama.a(i, 152, paramAnonymousInt1);
           return;
         }
@@ -181,13 +209,19 @@ public class cs
         }
         if (paramAnonymousArrayList.df != 0)
         {
-          eh.h("RsaKeyCertifier", "[rsa_key]updateRsaKey(), mazu error: " + paramAnonymousArrayList.df);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[rsa_key]updateRsaKey(), mazu error: ");
+          ((StringBuilder)localObject).append(paramAnonymousArrayList.df);
+          eh.h("RsaKeyCertifier", ((StringBuilder)localObject).toString());
           parama.a(i, 152, paramAnonymousArrayList.df);
           return;
         }
         if (paramAnonymousArrayList.dg != 0)
         {
-          eh.h("RsaKeyCertifier", "[rsa_key]updateRsaKey(), rs.dataRetCode: " + paramAnonymousArrayList.dg);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[rsa_key]updateRsaKey(), rs.dataRetCode: ");
+          ((StringBuilder)localObject).append(paramAnonymousArrayList.dg);
+          eh.h("RsaKeyCertifier", ((StringBuilder)localObject).toString());
           parama.a(i, 152, -21300000);
           return;
         }
@@ -197,33 +231,41 @@ public class cs
           parama.a(i, 152, -21000005);
           return;
         }
-        am localam = new am();
+        localObject = new am();
         try
         {
-          paramAnonymousArrayList = cd.a(null, this.e.getBytes(), paramAnonymousArrayList.data, localam, false, paramAnonymousArrayList.di);
+          paramAnonymousArrayList = cd.a(null, this.e.getBytes(), paramAnonymousArrayList.data, (JceStruct)localObject, false, paramAnonymousArrayList.di);
           if (paramAnonymousArrayList == null)
           {
             eh.h("RsaKeyCertifier", "[rsa_key]updateRsaKey(), decode jce failed: null == js");
             parama.a(i, 152, -21000400);
             return;
           }
+          paramAnonymousArrayList = (am)paramAnonymousArrayList;
+          if (TextUtils.isEmpty(paramAnonymousArrayList.sessionId))
+          {
+            eh.h("RsaKeyCertifier", "[rsa_key]updateRsaKey(), ret.sessionId is null");
+            parama.a(i, 152, -21280000);
+            return;
+          }
+          cs.a(cs.this, this.e, paramAnonymousArrayList.sessionId);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[rsa_key]updateRsaKey(), encodeKey: ");
+          ((StringBuilder)localObject).append(this.e);
+          ((StringBuilder)localObject).append(" sessionId: ");
+          ((StringBuilder)localObject).append(paramAnonymousArrayList.sessionId);
+          eh.f("RsaKeyCertifier", ((StringBuilder)localObject).toString());
+          parama.a(i, 152, 0);
+          return;
         }
         catch (Exception paramAnonymousArrayList)
         {
-          eh.h("RsaKeyCertifier", "[rsa_key]updateRsaKey(), decode jce exception: " + paramAnonymousArrayList);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[rsa_key]updateRsaKey(), decode jce exception: ");
+          ((StringBuilder)localObject).append(paramAnonymousArrayList);
+          eh.h("RsaKeyCertifier", ((StringBuilder)localObject).toString());
           parama.a(i, 152, -21000400);
-          return;
         }
-        paramAnonymousArrayList = (am)paramAnonymousArrayList;
-        if (TextUtils.isEmpty(paramAnonymousArrayList.sessionId))
-        {
-          eh.h("RsaKeyCertifier", "[rsa_key]updateRsaKey(), ret.sessionId is null");
-          parama.a(i, 152, -21280000);
-          return;
-        }
-        cs.a(cs.this, this.e, paramAnonymousArrayList.sessionId);
-        eh.f("RsaKeyCertifier", "[rsa_key]updateRsaKey(), encodeKey: " + this.e + " sessionId: " + paramAnonymousArrayList.sessionId);
-        parama.a(i, 152, 0);
       }
     });
   }

@@ -31,8 +31,9 @@ public final class STTrafficTemplate_Optional
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.matchRules_optional != null) {
-      paramJceOutputStream.write(this.matchRules_optional, 0);
+    ArrayList localArrayList = this.matchRules_optional;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }

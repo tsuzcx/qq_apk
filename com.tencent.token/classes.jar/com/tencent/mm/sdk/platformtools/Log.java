@@ -29,23 +29,51 @@ public class Log
   
   static
   {
-    X = null;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("VERSION.RELEASE:[" + Build.VERSION.RELEASE);
-    localStringBuilder.append("] VERSION.CODENAME:[" + Build.VERSION.CODENAME);
-    localStringBuilder.append("] VERSION.INCREMENTAL:[" + Build.VERSION.INCREMENTAL);
-    localStringBuilder.append("] BOARD:[" + Build.BOARD);
-    localStringBuilder.append("] DEVICE:[" + Build.DEVICE);
-    localStringBuilder.append("] DISPLAY:[" + Build.DISPLAY);
-    localStringBuilder.append("] FINGERPRINT:[" + Build.FINGERPRINT);
-    localStringBuilder.append("] HOST:[" + Build.HOST);
-    localStringBuilder.append("] MANUFACTURER:[" + Build.MANUFACTURER);
-    localStringBuilder.append("] MODEL:[" + Build.MODEL);
-    localStringBuilder.append("] PRODUCT:[" + Build.PRODUCT);
-    localStringBuilder.append("] TAGS:[" + Build.TAGS);
-    localStringBuilder.append("] TYPE:[" + Build.TYPE);
-    localStringBuilder.append("] USER:[" + Build.USER + "]");
-    Y = localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder("VERSION.RELEASE:[");
+    localStringBuilder2.append(Build.VERSION.RELEASE);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] VERSION.CODENAME:[");
+    localStringBuilder2.append(Build.VERSION.CODENAME);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] VERSION.INCREMENTAL:[");
+    localStringBuilder2.append(Build.VERSION.INCREMENTAL);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] BOARD:[");
+    localStringBuilder2.append(Build.BOARD);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] DEVICE:[");
+    localStringBuilder2.append(Build.DEVICE);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] DISPLAY:[");
+    localStringBuilder2.append(Build.DISPLAY);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] FINGERPRINT:[");
+    localStringBuilder2.append(Build.FINGERPRINT);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] HOST:[");
+    localStringBuilder2.append(Build.HOST);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] MANUFACTURER:[");
+    localStringBuilder2.append(Build.MANUFACTURER);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] MODEL:[");
+    localStringBuilder2.append(Build.MODEL);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] PRODUCT:[");
+    localStringBuilder2.append(Build.PRODUCT);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] TAGS:[");
+    localStringBuilder2.append(Build.TAGS);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] TYPE:[");
+    localStringBuilder2.append(Build.TYPE);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] USER:[");
+    localStringBuilder2.append(Build.USER);
+    localStringBuilder2.append("]");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    Y = localStringBuilder1.toString();
   }
   
   public static void d(String paramString1, String paramString2)
@@ -55,18 +83,17 @@ public class Log
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (level <= 1) {
-      if (paramVarArgs != null) {
-        break label44;
-      }
-    }
-    for (;;)
+    if (level <= 1)
     {
+      if (paramVarArgs != null) {
+        paramString2 = String.format(paramString2, paramVarArgs);
+      }
       android.util.Log.d(paramString1, paramString2);
-      LogHelper.writeToStream(W, X, "D/" + paramString1, paramString2);
-      return;
-      label44:
-      paramString2 = String.format(paramString2, paramVarArgs);
+      paramVarArgs = W;
+      byte[] arrayOfByte = X;
+      StringBuilder localStringBuilder = new StringBuilder("D/");
+      localStringBuilder.append(paramString1);
+      LogHelper.writeToStream(paramVarArgs, arrayOfByte, localStringBuilder.toString(), paramString2);
     }
   }
   
@@ -77,18 +104,17 @@ public class Log
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (level <= 4) {
-      if (paramVarArgs != null) {
-        break label44;
-      }
-    }
-    for (;;)
+    if (level <= 4)
     {
+      if (paramVarArgs != null) {
+        paramString2 = String.format(paramString2, paramVarArgs);
+      }
       android.util.Log.e(paramString1, paramString2);
-      LogHelper.writeToStream(W, X, "E/" + paramString1, paramString2);
-      return;
-      label44:
-      paramString2 = String.format(paramString2, paramVarArgs);
+      paramVarArgs = W;
+      byte[] arrayOfByte = X;
+      StringBuilder localStringBuilder = new StringBuilder("E/");
+      localStringBuilder.append(paramString1);
+      LogHelper.writeToStream(paramVarArgs, arrayOfByte, localStringBuilder.toString(), paramString2);
     }
   }
   
@@ -99,19 +125,18 @@ public class Log
   
   public static void f(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (level <= 5) {
-      if (paramVarArgs != null) {
-        break label55;
-      }
-    }
-    for (;;)
+    if (level <= 5)
     {
+      if (paramVarArgs != null) {
+        paramString2 = String.format(paramString2, paramVarArgs);
+      }
       android.util.Log.e(paramString1, paramString2);
-      LogHelper.writeToStream(W, X, "F/" + paramString1, paramString2);
+      paramVarArgs = W;
+      byte[] arrayOfByte = X;
+      StringBuilder localStringBuilder = new StringBuilder("F/");
+      localStringBuilder.append(paramString1);
+      LogHelper.writeToStream(paramVarArgs, arrayOfByte, localStringBuilder.toString(), paramString2);
       MMHandlerThread.postToMainThread(new Log.1(paramString2));
-      return;
-      label55:
-      paramString2 = String.format(paramString2, paramVarArgs);
     }
   }
   
@@ -132,18 +157,17 @@ public class Log
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (level <= 2) {
-      if (paramVarArgs != null) {
-        break label44;
-      }
-    }
-    for (;;)
+    if (level <= 2)
     {
+      if (paramVarArgs != null) {
+        paramString2 = String.format(paramString2, paramVarArgs);
+      }
       android.util.Log.i(paramString1, paramString2);
-      LogHelper.writeToStream(W, X, "I/" + paramString1, paramString2);
-      return;
-      label44:
-      paramString2 = String.format(paramString2, paramVarArgs);
+      paramVarArgs = W;
+      byte[] arrayOfByte = X;
+      StringBuilder localStringBuilder = new StringBuilder("I/");
+      localStringBuilder.append(paramString1);
+      LogHelper.writeToStream(paramVarArgs, arrayOfByte, localStringBuilder.toString(), paramString2);
     }
   }
   
@@ -156,7 +180,9 @@ public class Log
   public static void setLevel(int paramInt, boolean paramBoolean)
   {
     level = paramInt;
-    android.util.Log.w("MicroMsg.SDK.Log", "new log level: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder("new log level: ");
+    localStringBuilder.append(paramInt);
+    android.util.Log.w("MicroMsg.SDK.Log", localStringBuilder.toString());
     if (paramBoolean) {
       android.util.Log.e("MicroMsg.SDK.Log", "no jni log level support");
     }
@@ -164,8 +190,10 @@ public class Log
   
   public static void setOutputPath(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    if ((paramString1 == null) || (paramString1.length() == 0) || (paramString3 == null) || (paramString3.length() == 0)) {
-      return;
+    if ((paramString1 != null) && (paramString1.length() != 0) && (paramString3 != null)) {
+      if (paramString3.length() == 0) {
+        return;
+      }
     }
     for (;;)
     {
@@ -173,24 +201,24 @@ public class Log
       {
         localObject = new File(paramString1);
         if (!((File)localObject).exists()) {
-          break;
-        }
-        if (((File)localObject).length() > 0L)
-        {
-          localObject = new FileInputStream(paramString1);
-          setOutputStream((InputStream)localObject, new FileOutputStream(paramString1, true), paramString2, paramString3, paramInt);
-          if (localObject == null) {
-            break;
-          }
-          ((InputStream)localObject).close();
           return;
         }
+        if (((File)localObject).length() <= 0L) {
+          break label99;
+        }
+        localObject = new FileInputStream(paramString1);
+        setOutputStream((InputStream)localObject, new FileOutputStream(paramString1, true), paramString2, paramString3, paramInt);
+        if (localObject != null) {
+          ((InputStream)localObject).close();
+        }
+        return;
       }
       catch (Exception paramString1)
       {
         paramString1.printStackTrace();
-        return;
       }
+      return;
+      label99:
       Object localObject = null;
     }
   }
@@ -209,18 +237,17 @@ public class Log
         l = Util.getLong(Util.nullAsNil(paramInputStream.readLine()).trim().substring(2), 0L);
         d("MicroMsg.SDK.Log", "using provided info, type=%s, user=%s, createtime=%d", new Object[] { paramOutputStream, paramString2, Long.valueOf(l) });
       }
-      for (;;)
+      else
       {
-        paramInputStream = new StringBuffer();
-        paramInputStream.append(paramString2);
-        paramInputStream.append(l);
-        paramInputStream.append("dfdhgc");
-        X = MD5.getMessageDigest(paramInputStream.toString().getBytes()).substring(7, 21).getBytes();
-        android.util.Log.d("MicroMsg.SDK.Log", "set up out put stream");
-        return;
         l = System.currentTimeMillis();
         LogHelper.initLogHeader(W, paramString1, paramString2, l, paramInt);
       }
+      paramInputStream = new StringBuffer();
+      paramInputStream.append(paramString2);
+      paramInputStream.append(l);
+      paramInputStream.append("dfdhgc");
+      X = MD5.getMessageDigest(paramInputStream.toString().getBytes()).substring(7, 21).getBytes();
+      android.util.Log.d("MicroMsg.SDK.Log", "set up out put stream");
       return;
     }
     catch (Exception paramInputStream)
@@ -236,18 +263,17 @@ public class Log
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (level <= 0) {
-      if (paramVarArgs != null) {
-        break label44;
-      }
-    }
-    for (;;)
+    if (level <= 0)
     {
+      if (paramVarArgs != null) {
+        paramString2 = String.format(paramString2, paramVarArgs);
+      }
       android.util.Log.v(paramString1, paramString2);
-      LogHelper.writeToStream(W, X, "V/" + paramString1, paramString2);
-      return;
-      label44:
-      paramString2 = String.format(paramString2, paramVarArgs);
+      paramVarArgs = W;
+      byte[] arrayOfByte = X;
+      StringBuilder localStringBuilder = new StringBuilder("V/");
+      localStringBuilder.append(paramString1);
+      LogHelper.writeToStream(paramVarArgs, arrayOfByte, localStringBuilder.toString(), paramString2);
     }
   }
   
@@ -258,18 +284,17 @@ public class Log
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (level <= 3) {
-      if (paramVarArgs != null) {
-        break label45;
-      }
-    }
-    for (;;)
+    if (level <= 3)
     {
+      if (paramVarArgs != null) {
+        paramString2 = String.format(paramString2, paramVarArgs);
+      }
       android.util.Log.w(paramString1, paramString2);
-      LogHelper.writeToStream(W, X, "W/" + paramString1, paramString2);
-      return;
-      label45:
-      paramString2 = String.format(paramString2, paramVarArgs);
+      paramVarArgs = W;
+      byte[] arrayOfByte = X;
+      StringBuilder localStringBuilder = new StringBuilder("W/");
+      localStringBuilder.append(paramString1);
+      LogHelper.writeToStream(paramVarArgs, arrayOfByte, localStringBuilder.toString(), paramString2);
     }
   }
 }

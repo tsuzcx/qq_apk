@@ -249,8 +249,9 @@ class ResourcesWrapper
   public void updateConfiguration(Configuration paramConfiguration, DisplayMetrics paramDisplayMetrics)
   {
     super.updateConfiguration(paramConfiguration, paramDisplayMetrics);
-    if (this.mResources != null) {
-      this.mResources.updateConfiguration(paramConfiguration, paramDisplayMetrics);
+    Resources localResources = this.mResources;
+    if (localResources != null) {
+      localResources.updateConfiguration(paramConfiguration, paramDisplayMetrics);
     }
   }
 }

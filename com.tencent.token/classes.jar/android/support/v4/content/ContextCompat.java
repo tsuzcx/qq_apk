@@ -14,6 +14,7 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.util.TypedValue;
 import java.io.File;
 
@@ -27,33 +28,31 @@ public class ContextCompat
   {
     int j = paramVarArgs.length;
     int i = 0;
-    String str;
-    if (i < j)
+    for (File localFile = paramFile; i < j; localFile = paramFile)
     {
-      str = paramVarArgs[i];
-      if (paramFile == null) {
+      String str = paramVarArgs[i];
+      if (localFile == null)
+      {
         paramFile = new File(str);
       }
-    }
-    for (;;)
-    {
-      i += 1;
-      break;
-      if (str != null)
+      else
       {
-        paramFile = new File(paramFile, str);
-        continue;
-        return paramFile;
+        paramFile = localFile;
+        if (str != null) {
+          paramFile = new File(localFile, str);
+        }
       }
+      i += 1;
     }
+    return localFile;
   }
   
   public static int checkSelfPermission(@NonNull Context paramContext, @NonNull String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("permission is null");
+    if (paramString != null) {
+      return paramContext.checkPermission(paramString, Process.myPid(), Process.myUid());
     }
-    return paramContext.checkPermission(paramString, Process.myPid(), Process.myUid());
+    throw new IllegalArgumentException("permission is null");
   }
   
   @Nullable
@@ -65,63 +64,25 @@ public class ContextCompat
     return null;
   }
   
-  /* Error */
   private static File createFilesDir(File paramFile)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: astore_2
-    //   5: aload_0
-    //   6: invokevirtual 73	java/io/File:exists	()Z
-    //   9: ifne +23 -> 32
-    //   12: aload_0
-    //   13: astore_2
-    //   14: aload_0
-    //   15: invokevirtual 76	java/io/File:mkdirs	()Z
-    //   18: ifne +14 -> 32
-    //   21: aload_0
-    //   22: invokevirtual 73	java/io/File:exists	()Z
-    //   25: istore_1
-    //   26: iload_1
-    //   27: ifeq +10 -> 37
-    //   30: aload_0
-    //   31: astore_2
-    //   32: ldc 2
-    //   34: monitorexit
-    //   35: aload_2
-    //   36: areturn
-    //   37: ldc 8
-    //   39: new 78	java/lang/StringBuilder
-    //   42: dup
-    //   43: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   46: ldc 81
-    //   48: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: aload_0
-    //   52: invokevirtual 89	java/io/File:getPath	()Ljava/lang/String;
-    //   55: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   61: invokestatic 98	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
-    //   64: pop
-    //   65: aconst_null
-    //   66: astore_2
-    //   67: goto -35 -> 32
-    //   70: astore_0
-    //   71: ldc 2
-    //   73: monitorexit
-    //   74: aload_0
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	paramFile	File
-    //   25	2	1	bool	boolean
-    //   4	63	2	localFile	File
-    // Exception table:
-    //   from	to	target	type
-    //   5	12	70	finally
-    //   14	26	70	finally
-    //   37	65	70	finally
+    try
+    {
+      if ((!paramFile.exists()) && (!paramFile.mkdirs()))
+      {
+        boolean bool = paramFile.exists();
+        if (bool) {
+          return paramFile;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Unable to create files subdir ");
+        localStringBuilder.append(paramFile.getPath());
+        Log.w("ContextCompat", localStringBuilder.toString());
+        return null;
+      }
+      return paramFile;
+    }
+    finally {}
   }
   
   public static File getCodeCacheDir(@NonNull Context paramContext)
@@ -236,12 +197,10 @@ public class ContextCompat
   {
     if (Build.VERSION.SDK_INT >= 16) {
       paramContext.startActivities(paramArrayOfIntent, paramBundle);
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       paramContext.startActivities(paramArrayOfIntent);
     }
+    return true;
   }
   
   public static void startActivity(@NonNull Context paramContext, @NonNull Intent paramIntent, @Nullable Bundle paramBundle)

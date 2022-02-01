@@ -28,27 +28,33 @@ public class r
     if (localtlv_t104 == null) {
       localtlv_t104 = new tlv_t104();
     }
+    int i = 0;
     for (;;)
     {
-      int i = 0;
-      for (;;)
-      {
-        byte[] arrayOfByte = a(localtlv_t104.get_data(), paramInt1, paramInt2, paramArrayOfLong);
-        a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, arrayOfByte);
-        int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
-        if (k != 0) {
-          return k;
-        }
-        k = b();
-        util.LOGI("retry num:" + i + " ret:" + k, "" + this.x.f);
-        if (k != 180) {
-          return k;
-        }
-        if (i >= 1) {
-          return k;
-        }
-        i += 1;
+      Object localObject = a(localtlv_t104.get_data(), paramInt1, paramInt2, paramArrayOfLong);
+      a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, (byte[])localObject);
+      int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
+      if (k != 0) {
+        return k;
       }
+      k = b();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("retry num:");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" ret:");
+      ((StringBuilder)localObject).append(k);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(this.x.f);
+      util.LOGI((String)localObject, localStringBuilder.toString());
+      if (k != 180) {
+        return k;
+      }
+      if (i >= 1) {
+        return k;
+      }
+      i += 1;
     }
   }
   
@@ -64,8 +70,7 @@ public class r
     System.arraycopy(localObject1, 0, localObject2, 0, localObject1.length);
     paramInt1 = localObject1.length + 0;
     System.arraycopy(paramArrayOfByte, 0, localObject2, paramInt1, paramArrayOfByte.length);
-    paramInt1 += paramArrayOfByte.length;
-    System.arraycopy(paramArrayOfLong, 0, localObject2, paramInt1, paramArrayOfLong.length);
+    System.arraycopy(paramArrayOfLong, 0, localObject2, paramInt1 + paramArrayOfByte.length, paramArrayOfLong.length);
     paramInt1 = paramArrayOfLong.length;
     return b((byte[])localObject2, this.u, 3);
   }
@@ -78,41 +83,48 @@ public class r
     tlv_t161 localtlv_t161 = new tlv_t161();
     async_context localasync_context = t.b(this.x.h);
     paramInt2 = c(paramArrayOfByte, paramInt1 + 2);
-    util.LOGD(getClass().getName(), "type=" + paramInt2);
-    int j = paramInt1 + 5;
-    switch (paramInt2)
-    {
-    default: 
-      c(paramArrayOfByte, j, this.c - j - 1);
-      paramInt1 = paramInt2;
-    }
+    String str = getClass().getName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("type=");
+    localStringBuilder.append(paramInt2);
+    util.LOGD(str, localStringBuilder.toString());
+    paramInt1 += 5;
     int i;
-    do
+    if (paramInt2 != 2)
     {
-      do
+      if (paramInt2 != 180)
       {
-        do
-        {
-          return paramInt1;
-          i = localtlv_t104.get_tlv(paramArrayOfByte, j, this.c - j);
-          paramInt1 = i;
-        } while (i < 0);
-        localasync_context._t104 = localtlv_t104;
-        i = localtlv_t105.get_tlv(paramArrayOfByte, j, this.c - j);
-        paramInt1 = i;
-      } while (i < 0);
-      localasync_context._t105 = localtlv_t105;
-      if (localtlv_t165.get_tlv(paramArrayOfByte, j, this.c - j) >= 0) {}
-      for (localasync_context._t165 = localtlv_t165;; localasync_context._t165 = new tlv_t165())
-      {
-        a((ErrMsg)null);
-        return paramInt2;
+        c(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
       }
-      i = localtlv_t161.get_tlv(paramArrayOfByte, j, this.c - j - 1);
-      paramInt1 = i;
-    } while (i < 0);
-    a(localtlv_t161);
-    c(paramArrayOfByte, j, this.c - j - 1);
+      else
+      {
+        i = localtlv_t161.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+        if (i < 0) {
+          return i;
+        }
+        a(localtlv_t161);
+        c(paramArrayOfByte, paramInt1, this.c - paramInt1 - 1);
+      }
+    }
+    else
+    {
+      i = localtlv_t104.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1);
+      if (i < 0) {
+        return i;
+      }
+      localasync_context._t104 = localtlv_t104;
+      i = localtlv_t105.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1);
+      if (i < 0) {
+        return i;
+      }
+      localasync_context._t105 = localtlv_t105;
+      if (localtlv_t165.get_tlv(paramArrayOfByte, paramInt1, this.c - paramInt1) >= 0) {
+        localasync_context._t165 = localtlv_t165;
+      } else {
+        localasync_context._t165 = new tlv_t165();
+      }
+      a((ErrMsg)null);
+    }
     return paramInt2;
   }
 }

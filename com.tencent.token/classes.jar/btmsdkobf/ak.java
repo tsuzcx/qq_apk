@@ -32,11 +32,13 @@ public final class ak
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.bM, 0);
-    if (this.bN != null) {
-      paramJceOutputStream.write(this.bN, 1);
+    byte[] arrayOfByte = this.bN;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
-    if (this.status != 0) {
-      paramJceOutputStream.write(this.status, 2);
+    int i = this.status;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
   }
 }

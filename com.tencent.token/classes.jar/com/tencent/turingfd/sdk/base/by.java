@@ -20,18 +20,17 @@ public final class by
       paramString = new String(paramString);
       paramString = (String)localMethod.invoke(localObject, new Object[] { paramString, new String("") });
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        Object localObject;
-        paramString = "";
-      }
-    }
     catch (IllegalArgumentException paramString)
     {
+      Object localObject;
       throw paramString;
     }
+    catch (Exception paramString)
+    {
+      label76:
+      break label76;
+    }
+    paramString = "";
     localObject = paramString;
     if (paramString == null) {
       localObject = "";

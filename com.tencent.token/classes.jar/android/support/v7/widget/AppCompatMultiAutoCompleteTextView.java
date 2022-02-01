@@ -51,11 +51,13 @@ public class AppCompatMultiAutoCompleteTextView
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.applySupportBackgroundTint();
+    Object localObject = this.mBackgroundTintHelper;
+    if (localObject != null) {
+      ((AppCompatBackgroundHelper)localObject).applySupportBackgroundTint();
     }
-    if (this.mTextHelper != null) {
-      this.mTextHelper.applyCompoundDrawablesTints();
+    localObject = this.mTextHelper;
+    if (localObject != null) {
+      ((AppCompatTextHelper)localObject).applyCompoundDrawablesTints();
     }
   }
   
@@ -63,8 +65,9 @@ public class AppCompatMultiAutoCompleteTextView
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (this.mBackgroundTintHelper != null) {
-      return this.mBackgroundTintHelper.getSupportBackgroundTintList();
+    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
+    if (localAppCompatBackgroundHelper != null) {
+      return localAppCompatBackgroundHelper.getSupportBackgroundTintList();
     }
     return null;
   }
@@ -73,8 +76,9 @@ public class AppCompatMultiAutoCompleteTextView
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.mBackgroundTintHelper != null) {
-      return this.mBackgroundTintHelper.getSupportBackgroundTintMode();
+    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
+    if (localAppCompatBackgroundHelper != null) {
+      return localAppCompatBackgroundHelper.getSupportBackgroundTintMode();
     }
     return null;
   }
@@ -87,16 +91,18 @@ public class AppCompatMultiAutoCompleteTextView
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.onSetBackgroundDrawable(paramDrawable);
+    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
+    if (localAppCompatBackgroundHelper != null) {
+      localAppCompatBackgroundHelper.onSetBackgroundDrawable(paramDrawable);
     }
   }
   
   public void setBackgroundResource(@DrawableRes int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.onSetBackgroundResource(paramInt);
+    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
+    if (localAppCompatBackgroundHelper != null) {
+      localAppCompatBackgroundHelper.onSetBackgroundResource(paramInt);
     }
   }
   
@@ -108,24 +114,27 @@ public class AppCompatMultiAutoCompleteTextView
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void setSupportBackgroundTintList(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.setSupportBackgroundTintList(paramColorStateList);
+    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
+    if (localAppCompatBackgroundHelper != null) {
+      localAppCompatBackgroundHelper.setSupportBackgroundTintList(paramColorStateList);
     }
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void setSupportBackgroundTintMode(@Nullable PorterDuff.Mode paramMode)
   {
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.setSupportBackgroundTintMode(paramMode);
+    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
+    if (localAppCompatBackgroundHelper != null) {
+      localAppCompatBackgroundHelper.setSupportBackgroundTintMode(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    if (this.mTextHelper != null) {
-      this.mTextHelper.onSetTextAppearance(paramContext, paramInt);
+    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
+    if (localAppCompatTextHelper != null) {
+      localAppCompatTextHelper.onSetTextAppearance(paramContext, paramInt);
     }
   }
 }

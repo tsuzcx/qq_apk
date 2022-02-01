@@ -19,10 +19,12 @@ public final class w
     this.b.append(3, new a(3));
     this.b = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("S(@L@L").append("@)");
+    localStringBuilder.append("S(@L@L");
+    localStringBuilder.append("@)");
     this.g = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    localStringBuilder.append("*^@K#K").append("@!");
+    localStringBuilder.append("*^@K#K");
+    localStringBuilder.append("@!");
     this.f = localStringBuilder.toString();
   }
   
@@ -102,13 +104,8 @@ public final class w
     try
     {
       this.e = paramInt;
-      return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   public final void b(boolean paramBoolean)
@@ -139,42 +136,22 @@ public final class w
     }
   }
   
-  /* Error */
   public final a c(int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 30	com/tencent/feedback/proguard/w:b	Landroid/util/SparseArray;
-    //   6: ifnull +19 -> 25
-    //   9: aload_0
-    //   10: getfield 30	com/tencent/feedback/proguard/w:b	Landroid/util/SparseArray;
-    //   13: iload_1
-    //   14: invokevirtual 87	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   17: checkcast 6	com/tencent/feedback/proguard/w$a
-    //   20: astore_2
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: aload_2
-    //   24: areturn
-    //   25: aconst_null
-    //   26: astore_2
-    //   27: goto -6 -> 21
-    //   30: astore_2
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: aload_2
-    //   34: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	35	0	this	w
-    //   0	35	1	paramInt	int
-    //   20	7	2	locala	a
-    //   30	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	21	30	finally
+    try
+    {
+      if (this.b != null)
+      {
+        a locala = (a)this.b.get(paramInt);
+        return locala;
+      }
+      return null;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public final String d()

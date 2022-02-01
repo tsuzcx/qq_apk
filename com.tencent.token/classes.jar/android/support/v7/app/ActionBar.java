@@ -206,23 +206,26 @@ public abstract class ActionBar
   
   public void setElevation(float paramFloat)
   {
-    if (paramFloat != 0.0F) {
-      throw new UnsupportedOperationException("Setting a non-zero elevation is not supported in this action bar configuration.");
+    if (paramFloat == 0.0F) {
+      return;
     }
+    throw new UnsupportedOperationException("Setting a non-zero elevation is not supported in this action bar configuration.");
   }
   
   public void setHideOffset(int paramInt)
   {
-    if (paramInt != 0) {
-      throw new UnsupportedOperationException("Setting an explicit action bar hide offset is not supported in this action bar configuration.");
+    if (paramInt == 0) {
+      return;
     }
+    throw new UnsupportedOperationException("Setting an explicit action bar hide offset is not supported in this action bar configuration.");
   }
   
   public void setHideOnContentScrollEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {
-      throw new UnsupportedOperationException("Hide on content scroll is not supported in this action bar configuration.");
+    if (!paramBoolean) {
+      return;
     }
+    throw new UnsupportedOperationException("Hide on content scroll is not supported in this action bar configuration.");
   }
   
   public void setHomeActionContentDescription(@StringRes int paramInt) {}

@@ -31,13 +31,16 @@ public class ByteString
     if ((paramChar >= 'A') && (paramChar <= 'F')) {
       return paramChar - 'A' + 10;
     }
-    throw new IllegalArgumentException("Unexpected hex digit: " + paramChar);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Unexpected hex digit: ");
+    localStringBuilder.append(paramChar);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   static int a(String paramString, int paramInt)
   {
-    int i = 0;
     int k = paramString.length();
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -56,38 +59,45 @@ public class ByteString
   
   public static ByteString a(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("s == null");
+    if (paramString != null)
+    {
+      ByteString localByteString = new ByteString(paramString.getBytes(s.a));
+      localByteString.utf8 = paramString;
+      return localByteString;
     }
-    ByteString localByteString = new ByteString(paramString.getBytes(s.a));
-    localByteString.utf8 = paramString;
-    return localByteString;
+    throw new IllegalArgumentException("s == null");
   }
   
   public static ByteString a(byte... paramVarArgs)
   {
-    if (paramVarArgs == null) {
-      throw new IllegalArgumentException("data == null");
+    if (paramVarArgs != null) {
+      return new ByteString((byte[])paramVarArgs.clone());
     }
-    return new ByteString((byte[])paramVarArgs.clone());
+    throw new IllegalArgumentException("data == null");
   }
   
   public static ByteString b(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("hex == null");
-    }
-    if (paramString.length() % 2 != 0) {
-      throw new IllegalArgumentException("Unexpected hex string: " + paramString);
-    }
-    byte[] arrayOfByte = new byte[paramString.length() / 2];
-    int i = 0;
-    while (i < arrayOfByte.length)
+    if (paramString != null)
     {
-      arrayOfByte[i] = ((byte)((a(paramString.charAt(i * 2)) << 4) + a(paramString.charAt(i * 2 + 1))));
-      i += 1;
+      if (paramString.length() % 2 == 0)
+      {
+        localObject = new byte[paramString.length() / 2];
+        int i = 0;
+        while (i < localObject.length)
+        {
+          int j = i * 2;
+          localObject[i] = ((byte)((a(paramString.charAt(j)) << 4) + a(paramString.charAt(j + 1))));
+          i += 1;
+        }
+        return a((byte[])localObject);
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Unexpected hex string: ");
+      ((StringBuilder)localObject).append(paramString);
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
-    return a(arrayOfByte);
+    throw new IllegalArgumentException("hex == null");
   }
   
   private ByteString c(String paramString)
@@ -121,27 +131,36 @@ public class ByteString
   
   public ByteString a(int paramInt1, int paramInt2)
   {
-    if (paramInt1 < 0) {
-      throw new IllegalArgumentException("beginIndex < 0");
+    if (paramInt1 >= 0)
+    {
+      Object localObject = this.data;
+      if (paramInt2 <= localObject.length)
+      {
+        int i = paramInt2 - paramInt1;
+        if (i >= 0)
+        {
+          if ((paramInt1 == 0) && (paramInt2 == localObject.length)) {
+            return this;
+          }
+          localObject = new byte[i];
+          System.arraycopy(this.data, paramInt1, localObject, 0, i);
+          return new ByteString((byte[])localObject);
+        }
+        throw new IllegalArgumentException("endIndex < beginIndex");
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("endIndex > length(");
+      ((StringBuilder)localObject).append(this.data.length);
+      ((StringBuilder)localObject).append(")");
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
-    if (paramInt2 > this.data.length) {
-      throw new IllegalArgumentException("endIndex > length(" + this.data.length + ")");
-    }
-    int i = paramInt2 - paramInt1;
-    if (i < 0) {
-      throw new IllegalArgumentException("endIndex < beginIndex");
-    }
-    if ((paramInt1 == 0) && (paramInt2 == this.data.length)) {
-      return this;
-    }
-    byte[] arrayOfByte = new byte[i];
-    System.arraycopy(this.data, paramInt1, arrayOfByte, 0, i);
-    return new ByteString(arrayOfByte);
+    throw new IllegalArgumentException("beginIndex < 0");
   }
   
   void a(c paramc)
   {
-    paramc.b(this.data, 0, this.data.length);
+    byte[] arrayOfByte = this.data;
+    paramc.b(arrayOfByte, 0, arrayOfByte.length);
   }
   
   public boolean a(int paramInt1, ByteString paramByteString, int paramInt2, int paramInt3)
@@ -151,7 +170,14 @@ public class ByteString
   
   public boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
   {
-    return (paramInt1 >= 0) && (paramInt1 <= this.data.length - paramInt3) && (paramInt2 >= 0) && (paramInt2 <= paramArrayOfByte.length - paramInt3) && (s.a(this.data, paramInt1, paramArrayOfByte, paramInt2, paramInt3));
+    if (paramInt1 >= 0)
+    {
+      byte[] arrayOfByte = this.data;
+      if ((paramInt1 <= arrayOfByte.length - paramInt3) && (paramInt2 >= 0) && (paramInt2 <= paramArrayOfByte.length - paramInt3) && (s.a(arrayOfByte, paramInt1, paramArrayOfByte, paramInt2, paramInt3))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public final boolean a(ByteString paramByteString)
@@ -165,29 +191,28 @@ public class ByteString
     int k = paramByteString.g();
     int m = Math.min(j, k);
     int i = 0;
-    for (;;)
+    while (i < m)
     {
-      if (i < m)
+      int n = a(i) & 0xFF;
+      int i1 = paramByteString.a(i) & 0xFF;
+      if (n == i1)
       {
-        int n = a(i) & 0xFF;
-        int i1 = paramByteString.a(i) & 0xFF;
-        if (n == i1) {
-          i += 1;
-        } else {
-          if (n >= i1) {
-            break;
-          }
+        i += 1;
+      }
+      else
+      {
+        if (n < i1) {
+          return -1;
         }
+        return 1;
       }
     }
-    do
-    {
+    if (j == k) {
+      return 0;
+    }
+    if (j < k) {
       return -1;
-      return 1;
-      if (j == k) {
-        return 0;
-      }
-    } while (j < k);
+    }
     return 1;
   }
   
@@ -208,21 +233,22 @@ public class ByteString
   
   public String e()
   {
-    int i = 0;
-    char[] arrayOfChar = new char[this.data.length * 2];
     byte[] arrayOfByte = this.data;
+    char[] arrayOfChar1 = new char[arrayOfByte.length * 2];
     int k = arrayOfByte.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
       int m = arrayOfByte[i];
       int n = j + 1;
-      arrayOfChar[j] = HEX_DIGITS[(m >> 4 & 0xF)];
+      char[] arrayOfChar2 = HEX_DIGITS;
+      arrayOfChar1[j] = arrayOfChar2[(m >> 4 & 0xF)];
       j = n + 1;
-      arrayOfChar[n] = HEX_DIGITS[(m & 0xF)];
+      arrayOfChar1[n] = arrayOfChar2[(m & 0xF)];
       i += 1;
     }
-    return new String(arrayOfChar);
+    return new String(arrayOfChar1);
   }
   
   public boolean equals(Object paramObject)
@@ -230,44 +256,47 @@ public class ByteString
     if (paramObject == this) {
       return true;
     }
-    if (((paramObject instanceof ByteString)) && (((ByteString)paramObject).g() == this.data.length) && (((ByteString)paramObject).a(0, this.data, 0, this.data.length))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if ((paramObject instanceof ByteString))
+    {
+      paramObject = (ByteString)paramObject;
+      int i = paramObject.g();
+      byte[] arrayOfByte = this.data;
+      if ((i == arrayOfByte.length) && (paramObject.a(0, arrayOfByte, 0, arrayOfByte.length))) {
+        return true;
+      }
     }
+    return false;
   }
   
   public ByteString f()
   {
     int i = 0;
-    int j;
     for (;;)
     {
-      localObject = this;
-      if (i >= this.data.length) {
-        return localObject;
-      }
-      j = this.data[i];
-      if ((j >= 65) && (j <= 90)) {
+      byte[] arrayOfByte = this.data;
+      if (i >= arrayOfByte.length) {
         break;
+      }
+      int k = arrayOfByte[i];
+      if ((k >= 65) && (k <= 90))
+      {
+        arrayOfByte = (byte[])arrayOfByte.clone();
+        int j = i + 1;
+        arrayOfByte[i] = ((byte)(k + 32));
+        i = j;
+        while (i < arrayOfByte.length)
+        {
+          j = arrayOfByte[i];
+          if ((j >= 65) && (j <= 90)) {
+            arrayOfByte[i] = ((byte)(j + 32));
+          }
+          i += 1;
+        }
+        return new ByteString(arrayOfByte);
       }
       i += 1;
     }
-    Object localObject = (byte[])this.data.clone();
-    localObject[i] = ((byte)(j + 32));
-    i += 1;
-    if (i < localObject.length)
-    {
-      j = localObject[i];
-      if ((j < 65) || (j > 90)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localObject[i] = ((byte)(j + 32));
-      }
-    }
-    localObject = new ByteString((byte[])localObject);
-    return localObject;
+    return this;
   }
   
   public int g()
@@ -296,20 +325,42 @@ public class ByteString
     if (this.data.length == 0) {
       return "[size=0]";
     }
-    String str1 = a();
-    int i = a(str1, 64);
+    Object localObject2 = a();
+    int i = a((String)localObject2, 64);
     if (i == -1)
     {
-      if (this.data.length <= 64) {
-        return "[hex=" + e() + "]";
+      if (this.data.length <= 64)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[hex=");
+        ((StringBuilder)localObject1).append(e());
+        ((StringBuilder)localObject1).append("]");
+        return ((StringBuilder)localObject1).toString();
       }
-      return "[size=" + this.data.length + " hex=" + a(0, 64).e() + "…]";
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[size=");
+      ((StringBuilder)localObject1).append(this.data.length);
+      ((StringBuilder)localObject1).append(" hex=");
+      ((StringBuilder)localObject1).append(a(0, 64).e());
+      ((StringBuilder)localObject1).append("…]");
+      return ((StringBuilder)localObject1).toString();
     }
-    String str2 = str1.substring(0, i).replace("\\", "\\\\").replace("\n", "\\n").replace("\r", "\\r");
-    if (i < str1.length()) {
-      return "[size=" + this.data.length + " text=" + str2 + "…]";
+    Object localObject1 = ((String)localObject2).substring(0, i).replace("\\", "\\\\").replace("\n", "\\n").replace("\r", "\\r");
+    if (i < ((String)localObject2).length())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[size=");
+      ((StringBuilder)localObject2).append(this.data.length);
+      ((StringBuilder)localObject2).append(" text=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("…]");
+      return ((StringBuilder)localObject2).toString();
     }
-    return "[text=" + str2 + "]";
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[text=");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("]");
+    return ((StringBuilder)localObject2).toString();
   }
 }
 

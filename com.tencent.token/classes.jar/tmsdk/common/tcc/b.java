@@ -17,7 +17,11 @@ public class b
     try
     {
       String str = bc.o().getTccSoName();
-      eg.e("TccUtil", "loadLibraryIfNot libraryName:[" + str + "]");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadLibraryIfNot libraryName:[");
+      localStringBuilder.append(str);
+      localStringBuilder.append("]");
+      eg.e("TccUtil", localStringBuilder.toString());
       if (TextUtils.isEmpty(str)) {
         return false;
       }
@@ -26,23 +30,23 @@ public class b
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        eg.h("TccUtil", "loadLibraryIfNot e:[" + localThrowable.getMessage() + "]");
-        localThrowable.printStackTrace();
-        nA = false;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadLibraryIfNot e:[");
+      localStringBuilder.append(localThrowable.getMessage());
+      localStringBuilder.append("]");
+      eg.h("TccUtil", localStringBuilder.toString());
+      localThrowable.printStackTrace();
+      nA = false;
     }
     return nA;
   }
   
   public static boolean cP()
   {
-    if (bc.o().isJavaTCC()) {}
-    while (TccCryptor.getProcBitStatus() == 109) {
+    if (bc.o().isJavaTCC()) {
       return true;
     }
-    return false;
+    return TccCryptor.getProcBitStatus() == 109;
   }
   
   public static byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)

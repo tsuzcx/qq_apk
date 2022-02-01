@@ -63,21 +63,33 @@ public class ProtoReportLocation
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    String str2 = l.a(new Object[] { "uin", Long.valueOf(this.d), "data", this.e });
-    if (str2 == null)
+    Object localObject = l.a(new Object[] { "uin", Long.valueOf(this.d), "data", this.e });
+    if (localObject == null)
     {
       this.a.a(10000, "encrypt  failed");
       return null;
     }
-    str1 = "?data=" + str2 + "&aq_base_sid=" + str1;
-    g.c("params: " + str1);
-    return c.e() + "/cn/mbtoken3/mbtoken3_report_location_v2" + str1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?data=");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("&aq_base_sid=");
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("params: ");
+    ((StringBuilder)localObject).append(str);
+    g.c(((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_report_location_v2");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -101,20 +113,20 @@ public class ProtoReportLocation
       try
       {
         this.f = paramJSONObject.getInt("is_priv_ip_user");
-        this.a.c();
-        return;
       }
       catch (JSONException paramJSONObject)
       {
-        for (;;)
-        {
-          this.f = -1;
-          paramJSONObject.printStackTrace();
-        }
+        this.f = -1;
+        paramJSONObject.printStackTrace();
       }
+      this.a.c();
+      return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseJSON error decodeData=");
+    localStringBuilder.append(paramJSONObject);
+    g.c(localStringBuilder.toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
   
   protected void b()

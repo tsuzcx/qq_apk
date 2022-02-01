@@ -90,29 +90,29 @@ public class SearchView
   {
     public void onClick(View paramAnonymousView)
     {
-      if (paramAnonymousView == SearchView.this.mSearchButton) {
-        SearchView.this.onSearchClicked();
-      }
-      do
+      if (paramAnonymousView == SearchView.this.mSearchButton)
       {
+        SearchView.this.onSearchClicked();
         return;
-        if (paramAnonymousView == SearchView.this.mCloseButton)
-        {
-          SearchView.this.onCloseClicked();
-          return;
-        }
-        if (paramAnonymousView == SearchView.this.mGoButton)
-        {
-          SearchView.this.onSubmitQuery();
-          return;
-        }
-        if (paramAnonymousView == SearchView.this.mVoiceButton)
-        {
-          SearchView.this.onVoiceClicked();
-          return;
-        }
-      } while (paramAnonymousView != SearchView.this.mSearchSrcTextView);
-      SearchView.this.forceSuggestionQuery();
+      }
+      if (paramAnonymousView == SearchView.this.mCloseButton)
+      {
+        SearchView.this.onCloseClicked();
+        return;
+      }
+      if (paramAnonymousView == SearchView.this.mGoButton)
+      {
+        SearchView.this.onSubmitQuery();
+        return;
+      }
+      if (paramAnonymousView == SearchView.this.mVoiceButton)
+      {
+        SearchView.this.onVoiceClicked();
+        return;
+      }
+      if (paramAnonymousView == SearchView.this.mSearchSrcTextView) {
+        SearchView.this.forceSuggestionQuery();
+      }
     }
   };
   private OnCloseListener mOnCloseListener;
@@ -175,17 +175,20 @@ public class SearchView
   {
     public boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
     {
-      if (SearchView.this.mSearchable == null) {}
-      do
-      {
+      if (SearchView.this.mSearchable == null) {
         return false;
-        if ((SearchView.this.mSearchSrcTextView.isPopupShowing()) && (SearchView.this.mSearchSrcTextView.getListSelection() != -1)) {
-          return SearchView.this.onSuggestionsKey(paramAnonymousView, paramAnonymousInt, paramAnonymousKeyEvent);
-        }
-      } while ((SearchView.SearchAutoComplete.access$100(SearchView.this.mSearchSrcTextView)) || (!paramAnonymousKeyEvent.hasNoModifiers()) || (paramAnonymousKeyEvent.getAction() != 1) || (paramAnonymousInt != 66));
-      paramAnonymousView.cancelLongPress();
-      SearchView.this.launchQuerySearch(0, null, SearchView.this.mSearchSrcTextView.getText().toString());
-      return true;
+      }
+      if ((SearchView.this.mSearchSrcTextView.isPopupShowing()) && (SearchView.this.mSearchSrcTextView.getListSelection() != -1)) {
+        return SearchView.this.onSuggestionsKey(paramAnonymousView, paramAnonymousInt, paramAnonymousKeyEvent);
+      }
+      if ((!SearchView.SearchAutoComplete.access$100(SearchView.this.mSearchSrcTextView)) && (paramAnonymousKeyEvent.hasNoModifiers()) && (paramAnonymousKeyEvent.getAction() == 1) && (paramAnonymousInt == 66))
+      {
+        paramAnonymousView.cancelLongPress();
+        paramAnonymousView = SearchView.this;
+        paramAnonymousView.launchQuerySearch(0, null, paramAnonymousView.mSearchSrcTextView.getText().toString());
+        return true;
+      }
+      return false;
     }
   };
   private TextWatcher mTextWatcher = new TextWatcher()
@@ -291,8 +294,9 @@ public class SearchView
     this.mVoiceAppSearchIntent = new Intent("android.speech.action.RECOGNIZE_SPEECH");
     this.mVoiceAppSearchIntent.addFlags(268435456);
     this.mDropDownAnchor = findViewById(this.mSearchSrcTextView.getDropDownAnchor());
-    if (this.mDropDownAnchor != null) {
-      this.mDropDownAnchor.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
+    paramContext = this.mDropDownAnchor;
+    if (paramContext != null) {
+      paramContext.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
       {
         public void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
         {
@@ -318,8 +322,9 @@ public class SearchView
     if (paramString2 != null) {
       paramString1.putExtra("intent_extra_data_key", paramString2);
     }
-    if (this.mAppSearchData != null) {
-      paramString1.putExtra("app_data", this.mAppSearchData);
+    paramUri = this.mAppSearchData;
+    if (paramUri != null) {
+      paramString1.putExtra("app_data", paramUri);
     }
     if (paramInt != 0)
     {
@@ -337,7 +342,7 @@ public class SearchView
       localObject2 = SuggestionsAdapter.getColumnString(paramCursor, "suggest_intent_action");
       localObject1 = localObject2;
       if (localObject2 != null) {
-        break label206;
+        break label229;
       }
       localObject1 = this.mSearchable.getSuggestIntentAction();
     }
@@ -345,27 +350,35 @@ public class SearchView
     {
       for (;;)
       {
+        Object localObject2;
         Object localObject1;
         Object localObject3;
         try
         {
           String str;
           paramInt = paramCursor.getPosition();
-          Log.w("SearchView", "Search suggestions cursor at row " + paramInt + " returned exception.", paramString);
-          return null;
         }
         catch (RuntimeException paramCursor)
         {
-          paramInt = -1;
           continue;
         }
-        label206:
-        Object localObject2 = localObject1;
+        paramInt = -1;
+        paramCursor = new StringBuilder();
+        paramCursor.append("Search suggestions cursor at row ");
+        paramCursor.append(paramInt);
+        paramCursor.append(" returned exception.");
+        Log.w("SearchView", paramCursor.toString(), paramString);
+        return null;
+        label229:
         if (localObject1 == null)
         {
           localObject2 = "android.intent.action.SEARCH";
+        }
+        else
+        {
+          localObject2 = localObject1;
           continue;
-          label223:
+          label249:
           if (localObject3 == null) {
             localObject1 = null;
           }
@@ -384,28 +397,30 @@ public class SearchView
       localObject3 = localObject1;
       if (str != null)
       {
-        localObject3 = (String)localObject1 + "/" + Uri.encode(str);
-        break label223;
-        for (;;)
-        {
-          localObject3 = SuggestionsAdapter.getColumnString(paramCursor, "suggest_intent_query");
-          return createIntent((String)localObject2, (Uri)localObject1, SuggestionsAdapter.getColumnString(paramCursor, "suggest_intent_extra_data"), (String)localObject3, paramInt, paramString);
-          localObject1 = Uri.parse((String)localObject3);
-        }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append("/");
+        ((StringBuilder)localObject3).append(Uri.encode(str));
+        localObject3 = ((StringBuilder)localObject3).toString();
+        break label249;
+        localObject1 = Uri.parse((String)localObject3);
+        localObject3 = SuggestionsAdapter.getColumnString(paramCursor, "suggest_intent_query");
+        paramString = createIntent((String)localObject2, (Uri)localObject1, SuggestionsAdapter.getColumnString(paramCursor, "suggest_intent_extra_data"), (String)localObject3, paramInt, paramString);
+        return paramString;
       }
     }
   }
   
   private Intent createVoiceAppSearchIntent(Intent paramIntent, SearchableInfo paramSearchableInfo)
   {
-    Object localObject3 = null;
     ComponentName localComponentName = paramSearchableInfo.getSearchActivity();
     Object localObject1 = new Intent("android.intent.action.SEARCH");
     ((Intent)localObject1).setComponent(localComponentName);
     PendingIntent localPendingIntent = PendingIntent.getActivity(getContext(), 0, (Intent)localObject1, 1073741824);
     Bundle localBundle = new Bundle();
-    if (this.mAppSearchData != null) {
-      localBundle.putParcelable("app_data", this.mAppSearchData);
+    localObject1 = this.mAppSearchData;
+    if (localObject1 != null) {
+      localBundle.putParcelable("app_data", (Parcelable)localObject1);
     }
     Intent localIntent = new Intent(paramIntent);
     paramIntent = "free_form";
@@ -414,41 +429,47 @@ public class SearchView
     if (paramSearchableInfo.getVoiceLanguageModeId() != 0) {
       paramIntent = ((Resources)localObject2).getString(paramSearchableInfo.getVoiceLanguageModeId());
     }
-    if (paramSearchableInfo.getVoicePromptTextId() != 0) {}
-    for (localObject1 = ((Resources)localObject2).getString(paramSearchableInfo.getVoicePromptTextId());; localObject1 = null)
-    {
-      if (paramSearchableInfo.getVoiceLanguageId() != 0) {}
-      for (localObject2 = ((Resources)localObject2).getString(paramSearchableInfo.getVoiceLanguageId());; localObject2 = null)
-      {
-        if (paramSearchableInfo.getVoiceMaxResults() != 0) {
-          i = paramSearchableInfo.getVoiceMaxResults();
-        }
-        localIntent.putExtra("android.speech.extra.LANGUAGE_MODEL", paramIntent);
-        localIntent.putExtra("android.speech.extra.PROMPT", (String)localObject1);
-        localIntent.putExtra("android.speech.extra.LANGUAGE", (String)localObject2);
-        localIntent.putExtra("android.speech.extra.MAX_RESULTS", i);
-        if (localComponentName == null) {}
-        for (paramIntent = localObject3;; paramIntent = localComponentName.flattenToShortString())
-        {
-          localIntent.putExtra("calling_package", paramIntent);
-          localIntent.putExtra("android.speech.extra.RESULTS_PENDINGINTENT", localPendingIntent);
-          localIntent.putExtra("android.speech.extra.RESULTS_PENDINGINTENT_BUNDLE", localBundle);
-          return localIntent;
-        }
-      }
+    int j = paramSearchableInfo.getVoicePromptTextId();
+    Object localObject3 = null;
+    if (j != 0) {
+      localObject1 = ((Resources)localObject2).getString(paramSearchableInfo.getVoicePromptTextId());
+    } else {
+      localObject1 = null;
     }
+    if (paramSearchableInfo.getVoiceLanguageId() != 0) {
+      localObject2 = ((Resources)localObject2).getString(paramSearchableInfo.getVoiceLanguageId());
+    } else {
+      localObject2 = null;
+    }
+    if (paramSearchableInfo.getVoiceMaxResults() != 0) {
+      i = paramSearchableInfo.getVoiceMaxResults();
+    }
+    localIntent.putExtra("android.speech.extra.LANGUAGE_MODEL", paramIntent);
+    localIntent.putExtra("android.speech.extra.PROMPT", (String)localObject1);
+    localIntent.putExtra("android.speech.extra.LANGUAGE", (String)localObject2);
+    localIntent.putExtra("android.speech.extra.MAX_RESULTS", i);
+    if (localComponentName == null) {
+      paramIntent = localObject3;
+    } else {
+      paramIntent = localComponentName.flattenToShortString();
+    }
+    localIntent.putExtra("calling_package", paramIntent);
+    localIntent.putExtra("android.speech.extra.RESULTS_PENDINGINTENT", localPendingIntent);
+    localIntent.putExtra("android.speech.extra.RESULTS_PENDINGINTENT_BUNDLE", localBundle);
+    return localIntent;
   }
   
   private Intent createVoiceWebSearchIntent(Intent paramIntent, SearchableInfo paramSearchableInfo)
   {
     Intent localIntent = new Intent(paramIntent);
     paramIntent = paramSearchableInfo.getSearchActivity();
-    if (paramIntent == null) {}
-    for (paramIntent = null;; paramIntent = paramIntent.flattenToShortString())
-    {
-      localIntent.putExtra("calling_package", paramIntent);
-      return localIntent;
+    if (paramIntent == null) {
+      paramIntent = null;
+    } else {
+      paramIntent = paramIntent.flattenToShortString();
     }
+    localIntent.putExtra("calling_package", paramIntent);
+    return localIntent;
   }
   
   private void dismissSuggestions()
@@ -460,22 +481,31 @@ public class SearchView
   {
     paramView.getLocationInWindow(this.mTemp);
     getLocationInWindow(this.mTemp2);
-    int i = this.mTemp[1] - this.mTemp2[1];
-    int j = this.mTemp[0] - this.mTemp2[0];
+    int[] arrayOfInt1 = this.mTemp;
+    int i = arrayOfInt1[1];
+    int[] arrayOfInt2 = this.mTemp2;
+    i -= arrayOfInt2[1];
+    int j = arrayOfInt1[0] - arrayOfInt2[0];
     paramRect.set(j, i, paramView.getWidth() + j, paramView.getHeight() + i);
   }
   
   private CharSequence getDecoratedHint(CharSequence paramCharSequence)
   {
-    if ((!this.mIconifiedByDefault) || (this.mSearchHintIcon == null)) {
-      return paramCharSequence;
+    if (this.mIconifiedByDefault)
+    {
+      if (this.mSearchHintIcon == null) {
+        return paramCharSequence;
+      }
+      double d = this.mSearchSrcTextView.getTextSize();
+      Double.isNaN(d);
+      int i = (int)(d * 1.25D);
+      this.mSearchHintIcon.setBounds(0, 0, i, i);
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder("   ");
+      localSpannableStringBuilder.setSpan(new ImageSpan(this.mSearchHintIcon), 1, 2, 33);
+      localSpannableStringBuilder.append(paramCharSequence);
+      return localSpannableStringBuilder;
     }
-    int i = (int)(this.mSearchSrcTextView.getTextSize() * 1.25D);
-    this.mSearchHintIcon.setBounds(0, 0, i, i);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder("   ");
-    localSpannableStringBuilder.setSpan(new ImageSpan(this.mSearchHintIcon), 1, 2, 33);
-    localSpannableStringBuilder.append(paramCharSequence);
-    return localSpannableStringBuilder;
+    return paramCharSequence;
   }
   
   private int getPreferredHeight()
@@ -490,37 +520,25 @@ public class SearchView
   
   private boolean hasVoiceSearch()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    Intent localIntent;
-    if (this.mSearchable != null)
+    Object localObject = this.mSearchable;
+    boolean bool = false;
+    if ((localObject != null) && (((SearchableInfo)localObject).getVoiceSearchEnabled()))
     {
-      bool1 = bool2;
-      if (this.mSearchable.getVoiceSearchEnabled())
+      localObject = null;
+      if (this.mSearchable.getVoiceSearchLaunchWebSearch()) {
+        localObject = this.mVoiceWebSearchIntent;
+      } else if (this.mSearchable.getVoiceSearchLaunchRecognizer()) {
+        localObject = this.mVoiceAppSearchIntent;
+      }
+      if (localObject != null)
       {
-        localIntent = null;
-        if (!this.mSearchable.getVoiceSearchLaunchWebSearch()) {
-          break label69;
+        if (getContext().getPackageManager().resolveActivity((Intent)localObject, 65536) != null) {
+          bool = true;
         }
-        localIntent = this.mVoiceWebSearchIntent;
+        return bool;
       }
     }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (localIntent != null)
-      {
-        bool1 = bool2;
-        if (getContext().getPackageManager().resolveActivity(localIntent, 65536) != null) {
-          bool1 = true;
-        }
-      }
-      return bool1;
-      label69:
-      if (this.mSearchable.getVoiceSearchLaunchRecognizer()) {
-        localIntent = this.mVoiceAppSearchIntent;
-      }
-    }
+    return false;
   }
   
   static boolean isLandscapeMode(Context paramContext)
@@ -545,7 +563,10 @@ public class SearchView
     }
     catch (RuntimeException localRuntimeException)
     {
-      Log.e("SearchView", "Failed launch activity: " + paramIntent, localRuntimeException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Failed launch activity: ");
+      localStringBuilder.append(paramIntent);
+      Log.e("SearchView", localStringBuilder.toString(), localRuntimeException);
     }
   }
   
@@ -590,60 +611,45 @@ public class SearchView
   {
     this.mSearchSrcTextView.setText(paramCharSequence);
     SearchAutoComplete localSearchAutoComplete = this.mSearchSrcTextView;
-    if (TextUtils.isEmpty(paramCharSequence)) {}
-    for (int i = 0;; i = paramCharSequence.length())
-    {
-      localSearchAutoComplete.setSelection(i);
-      return;
+    int i;
+    if (TextUtils.isEmpty(paramCharSequence)) {
+      i = 0;
+    } else {
+      i = paramCharSequence.length();
     }
+    localSearchAutoComplete.setSelection(i);
   }
   
   private void updateCloseButton()
   {
-    int m = 1;
-    int k = 0;
-    int i;
-    int j;
-    label44:
-    label56:
-    Drawable localDrawable;
-    if (!TextUtils.isEmpty(this.mSearchSrcTextView.getText()))
-    {
-      i = 1;
-      j = m;
-      if (i == 0)
-      {
-        if ((!this.mIconifiedByDefault) || (this.mExpandedInActionView)) {
-          break label99;
-        }
-        j = m;
-      }
-      localObject = this.mCloseButton;
-      if (j == 0) {
-        break label104;
-      }
-      j = k;
-      ((ImageView)localObject).setVisibility(j);
-      localDrawable = this.mCloseButton.getDrawable();
-      if (localDrawable != null) {
-        if (i == 0) {
-          break label110;
-        }
+    boolean bool = TextUtils.isEmpty(this.mSearchSrcTextView.getText());
+    int k = 1;
+    int m = bool ^ true;
+    int j = 0;
+    int i = k;
+    if (m == 0) {
+      if ((this.mIconifiedByDefault) && (!this.mExpandedInActionView)) {
+        i = k;
+      } else {
+        i = 0;
       }
     }
-    label99:
-    label104:
-    label110:
-    for (Object localObject = ENABLED_STATE_SET;; localObject = EMPTY_STATE_SET)
+    Object localObject = this.mCloseButton;
+    if (i != 0) {
+      i = j;
+    } else {
+      i = 8;
+    }
+    ((ImageView)localObject).setVisibility(i);
+    Drawable localDrawable = this.mCloseButton.getDrawable();
+    if (localDrawable != null)
     {
+      if (m != 0) {
+        localObject = ENABLED_STATE_SET;
+      } else {
+        localObject = EMPTY_STATE_SET;
+      }
       localDrawable.setState((int[])localObject);
-      return;
-      i = 0;
-      break;
-      j = 0;
-      break label44;
-      j = 8;
-      break label56;
     }
   }
   
@@ -660,10 +666,10 @@ public class SearchView
   
   private void updateSearchAutoComplete()
   {
-    int j = 1;
     this.mSearchSrcTextView.setThreshold(this.mSearchable.getSuggestThreshold());
     this.mSearchSrcTextView.setImeOptions(this.mSearchable.getImeOptions());
     int k = this.mSearchable.getInputType();
+    int j = 1;
     int i = k;
     if ((k & 0xF) == 1)
     {
@@ -674,123 +680,81 @@ public class SearchView
       }
     }
     this.mSearchSrcTextView.setInputType(i);
-    if (this.mSuggestionsAdapter != null) {
-      this.mSuggestionsAdapter.changeCursor(null);
+    Object localObject = this.mSuggestionsAdapter;
+    if (localObject != null) {
+      ((CursorAdapter)localObject).changeCursor(null);
     }
     if (this.mSearchable.getSuggestAuthority() != null)
     {
       this.mSuggestionsAdapter = new SuggestionsAdapter(getContext(), this, this.mSearchable, this.mOutsideDrawablesCache);
       this.mSearchSrcTextView.setAdapter(this.mSuggestionsAdapter);
-      SuggestionsAdapter localSuggestionsAdapter = (SuggestionsAdapter)this.mSuggestionsAdapter;
+      localObject = (SuggestionsAdapter)this.mSuggestionsAdapter;
       i = j;
       if (this.mQueryRefinement) {
         i = 2;
       }
-      localSuggestionsAdapter.setQueryRefinement(i);
+      ((SuggestionsAdapter)localObject).setQueryRefinement(i);
     }
   }
   
   private void updateSubmitArea()
   {
-    int j = 8;
-    int i = j;
-    if (isSubmitAreaEnabled()) {
-      if (this.mGoButton.getVisibility() != 0)
-      {
-        i = j;
-        if (this.mVoiceButton.getVisibility() != 0) {}
-      }
-      else
-      {
-        i = 0;
-      }
+    int i;
+    if ((isSubmitAreaEnabled()) && ((this.mGoButton.getVisibility() == 0) || (this.mVoiceButton.getVisibility() == 0))) {
+      i = 0;
+    } else {
+      i = 8;
     }
     this.mSubmitArea.setVisibility(i);
   }
   
   private void updateSubmitButton(boolean paramBoolean)
   {
-    int j = 8;
-    int i = j;
-    if (this.mSubmitButtonEnabled)
-    {
-      i = j;
-      if (isSubmitAreaEnabled())
-      {
-        i = j;
-        if (hasFocus()) {
-          if (!paramBoolean)
-          {
-            i = j;
-            if (this.mVoiceButtonEnabled) {}
-          }
-          else
-          {
-            i = 0;
-          }
-        }
-      }
+    int i;
+    if ((this.mSubmitButtonEnabled) && (isSubmitAreaEnabled()) && (hasFocus()) && ((paramBoolean) || (!this.mVoiceButtonEnabled))) {
+      i = 0;
+    } else {
+      i = 8;
     }
     this.mGoButton.setVisibility(i);
   }
   
   private void updateViewsVisibility(boolean paramBoolean)
   {
-    boolean bool2 = true;
-    int j = 8;
     this.mIconified = paramBoolean;
-    int i;
-    boolean bool1;
-    if (paramBoolean)
-    {
+    int j = 8;
+    boolean bool1 = false;
+    if (paramBoolean) {
       i = 0;
-      if (TextUtils.isEmpty(this.mSearchSrcTextView.getText())) {
-        break label123;
-      }
-      bool1 = true;
-      label33:
-      this.mSearchButton.setVisibility(i);
-      updateSubmitButton(bool1);
-      View localView = this.mSearchEditFrame;
-      if (!paramBoolean) {
-        break label129;
-      }
+    } else {
       i = 8;
-      label60:
-      localView.setVisibility(i);
-      i = j;
-      if (this.mCollapsedIcon.getDrawable() != null)
-      {
-        if (!this.mIconifiedByDefault) {
-          break label134;
-        }
+    }
+    boolean bool2 = TextUtils.isEmpty(this.mSearchSrcTextView.getText()) ^ true;
+    this.mSearchButton.setVisibility(i);
+    updateSubmitButton(bool2);
+    View localView = this.mSearchEditFrame;
+    if (paramBoolean) {
+      i = 8;
+    } else {
+      i = 0;
+    }
+    localView.setVisibility(i);
+    int i = j;
+    if (this.mCollapsedIcon.getDrawable() != null) {
+      if (this.mIconifiedByDefault) {
         i = j;
-      }
-      label87:
-      this.mCollapsedIcon.setVisibility(i);
-      updateCloseButton();
-      if (bool1) {
-        break label139;
+      } else {
+        i = 0;
       }
     }
-    label129:
-    label134:
-    label139:
-    for (paramBoolean = bool2;; paramBoolean = false)
-    {
-      updateVoiceButton(paramBoolean);
-      updateSubmitArea();
-      return;
-      i = 8;
-      break;
-      label123:
-      bool1 = false;
-      break label33;
-      i = 0;
-      break label60;
-      i = 0;
-      break label87;
+    this.mCollapsedIcon.setVisibility(i);
+    updateCloseButton();
+    paramBoolean = bool1;
+    if (!bool2) {
+      paramBoolean = true;
     }
+    updateVoiceButton(paramBoolean);
+    updateSubmitArea();
   }
   
   private void updateVoiceButton(boolean paramBoolean)
@@ -801,47 +765,38 @@ public class SearchView
       i = 0;
       this.mGoButton.setVisibility(8);
     }
-    for (;;)
+    else
     {
-      this.mVoiceButton.setVisibility(i);
-      return;
       i = 8;
     }
+    this.mVoiceButton.setVisibility(i);
   }
   
   void adjustDropDownSizeAndPosition()
   {
-    int k;
-    Rect localRect;
-    int i;
     if (this.mDropDownAnchor.getWidth() > 1)
     {
       Resources localResources = getContext().getResources();
-      k = this.mSearchPlate.getPaddingLeft();
-      localRect = new Rect();
+      int k = this.mSearchPlate.getPaddingLeft();
+      Rect localRect = new Rect();
       boolean bool = ViewUtils.isLayoutRtl(this);
-      if (!this.mIconifiedByDefault) {
-        break label144;
+      int i;
+      if (this.mIconifiedByDefault) {
+        i = localResources.getDimensionPixelSize(R.dimen.abc_dropdownitem_icon_width) + localResources.getDimensionPixelSize(R.dimen.abc_dropdownitem_text_padding_left);
+      } else {
+        i = 0;
       }
-      i = localResources.getDimensionPixelSize(R.dimen.abc_dropdownitem_icon_width);
-      i = localResources.getDimensionPixelSize(R.dimen.abc_dropdownitem_text_padding_left) + i;
       this.mSearchSrcTextView.getDropDownBackground().getPadding(localRect);
-      if (!bool) {
-        break label149;
+      if (bool) {
+        j = -localRect.left;
+      } else {
+        j = k - (localRect.left + i);
       }
-    }
-    label144:
-    label149:
-    for (int j = -localRect.left;; j = k - (localRect.left + i))
-    {
       this.mSearchSrcTextView.setDropDownHorizontalOffset(j);
-      j = this.mDropDownAnchor.getWidth();
+      int j = this.mDropDownAnchor.getWidth();
       int m = localRect.left;
       int n = localRect.right;
-      this.mSearchSrcTextView.setDropDownWidth(i + (j + m + n) - k);
-      return;
-      i = 0;
-      break;
+      this.mSearchSrcTextView.setDropDownWidth(j + m + n + i - k);
     }
   }
   
@@ -883,10 +838,12 @@ public class SearchView
   @Nullable
   public CharSequence getQueryHint()
   {
-    if (this.mQueryHint != null) {
-      return this.mQueryHint;
+    Object localObject = this.mQueryHint;
+    if (localObject != null) {
+      return localObject;
     }
-    if ((this.mSearchable != null) && (this.mSearchable.getHintId() != 0)) {
+    localObject = this.mSearchable;
+    if ((localObject != null) && (((SearchableInfo)localObject).getHintId() != 0)) {
       return getContext().getText(this.mSearchable.getHintId());
     }
     return this.mDefaultQueryHint;
@@ -958,16 +915,22 @@ public class SearchView
   {
     if (TextUtils.isEmpty(this.mSearchSrcTextView.getText()))
     {
-      if ((this.mIconifiedByDefault) && ((this.mOnCloseListener == null) || (!this.mOnCloseListener.onClose())))
+      if (this.mIconifiedByDefault)
       {
-        clearFocus();
-        updateViewsVisibility(true);
+        OnCloseListener localOnCloseListener = this.mOnCloseListener;
+        if ((localOnCloseListener == null) || (!localOnCloseListener.onClose()))
+        {
+          clearFocus();
+          updateViewsVisibility(true);
+        }
       }
-      return;
     }
-    this.mSearchSrcTextView.setText("");
-    this.mSearchSrcTextView.requestFocus();
-    this.mSearchSrcTextView.setImeVisibility(true);
+    else
+    {
+      this.mSearchSrcTextView.setText("");
+      this.mSearchSrcTextView.requestFocus();
+      this.mSearchSrcTextView.setImeVisibility(true);
+    }
   }
   
   protected void onDetachedFromWindow()
@@ -979,25 +942,24 @@ public class SearchView
   
   boolean onItemClicked(int paramInt1, int paramInt2, String paramString)
   {
-    boolean bool = false;
-    if ((this.mOnSuggestionListener == null) || (!this.mOnSuggestionListener.onSuggestionClick(paramInt1)))
-    {
-      launchSuggestion(paramInt1, 0, null);
-      this.mSearchSrcTextView.setImeVisibility(false);
-      dismissSuggestions();
-      bool = true;
+    paramString = this.mOnSuggestionListener;
+    if ((paramString != null) && (paramString.onSuggestionClick(paramInt1))) {
+      return false;
     }
-    return bool;
+    launchSuggestion(paramInt1, 0, null);
+    this.mSearchSrcTextView.setImeVisibility(false);
+    dismissSuggestions();
+    return true;
   }
   
   boolean onItemSelected(int paramInt)
   {
-    if ((this.mOnSuggestionListener == null) || (!this.mOnSuggestionListener.onSuggestionSelect(paramInt)))
-    {
-      rewriteQueryFromSuggestion(paramInt);
-      return true;
+    OnSuggestionListener localOnSuggestionListener = this.mOnSuggestionListener;
+    if ((localOnSuggestionListener != null) && (localOnSuggestionListener.onSuggestionSelect(paramInt))) {
+      return false;
     }
-    return false;
+    rewriteQueryFromSuggestion(paramInt);
+    return true;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -1007,17 +969,15 @@ public class SearchView
     {
       getChildBoundsWithinSearchView(this.mSearchSrcTextView, this.mSearchSrcTextViewBounds);
       this.mSearchSrtTextViewBoundsExpanded.set(this.mSearchSrcTextViewBounds.left, 0, this.mSearchSrcTextViewBounds.right, paramInt4 - paramInt2);
-      if (this.mTouchDelegate == null)
+      UpdatableTouchDelegate localUpdatableTouchDelegate = this.mTouchDelegate;
+      if (localUpdatableTouchDelegate == null)
       {
         this.mTouchDelegate = new UpdatableTouchDelegate(this.mSearchSrtTextViewBoundsExpanded, this.mSearchSrcTextViewBounds, this.mSearchSrcTextView);
         setTouchDelegate(this.mTouchDelegate);
+        return;
       }
+      localUpdatableTouchDelegate.setBounds(this.mSearchSrtTextViewBoundsExpanded, this.mSearchSrcTextViewBounds);
     }
-    else
-    {
-      return;
-    }
-    this.mTouchDelegate.setBounds(this.mSearchSrtTextViewBoundsExpanded, this.mSearchSrcTextViewBounds);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -1029,45 +989,52 @@ public class SearchView
     }
     int j = View.MeasureSpec.getMode(paramInt1);
     int i = View.MeasureSpec.getSize(paramInt1);
-    switch (j)
+    if (j != -2147483648)
     {
-    default: 
-      paramInt1 = i;
-      i = View.MeasureSpec.getMode(paramInt2);
-      paramInt2 = View.MeasureSpec.getSize(paramInt2);
-      switch (i)
+      if (j != 0)
       {
+        if (j != 1073741824)
+        {
+          paramInt1 = i;
+        }
+        else
+        {
+          j = this.mMaxWidth;
+          paramInt1 = i;
+          if (j > 0) {
+            paramInt1 = Math.min(j, i);
+          }
+        }
       }
-      break;
-    }
-    for (;;)
-    {
-      super.onMeasure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
-      return;
-      if (this.mMaxWidth > 0)
-      {
-        paramInt1 = Math.min(this.mMaxWidth, i);
-        break;
-      }
-      paramInt1 = Math.min(getPreferredWidth(), i);
-      break;
-      paramInt1 = i;
-      if (this.mMaxWidth <= 0) {
-        break;
-      }
-      paramInt1 = Math.min(this.mMaxWidth, i);
-      break;
-      if (this.mMaxWidth > 0)
+      else
       {
         paramInt1 = this.mMaxWidth;
-        break;
+        if (paramInt1 <= 0) {
+          paramInt1 = getPreferredWidth();
+        }
       }
-      paramInt1 = getPreferredWidth();
-      break;
-      paramInt2 = Math.min(getPreferredHeight(), paramInt2);
-      continue;
-      paramInt2 = getPreferredHeight();
     }
+    else
+    {
+      paramInt1 = this.mMaxWidth;
+      if (paramInt1 > 0) {
+        paramInt1 = Math.min(paramInt1, i);
+      } else {
+        paramInt1 = Math.min(getPreferredWidth(), i);
+      }
+    }
+    i = View.MeasureSpec.getMode(paramInt2);
+    paramInt2 = View.MeasureSpec.getSize(paramInt2);
+    if (i != -2147483648)
+    {
+      if (i == 0) {
+        paramInt2 = getPreferredHeight();
+      }
+    }
+    else {
+      paramInt2 = Math.min(getPreferredHeight(), paramInt2);
+    }
+    super.onMeasure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
   }
   
   void onQueryRefine(CharSequence paramCharSequence)
@@ -1100,41 +1067,53 @@ public class SearchView
     updateViewsVisibility(false);
     this.mSearchSrcTextView.requestFocus();
     this.mSearchSrcTextView.setImeVisibility(true);
-    if (this.mOnSearchClickListener != null) {
-      this.mOnSearchClickListener.onClick(this);
+    View.OnClickListener localOnClickListener = this.mOnSearchClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(this);
     }
   }
   
   void onSubmitQuery()
   {
     Editable localEditable = this.mSearchSrcTextView.getText();
-    if ((localEditable != null) && (TextUtils.getTrimmedLength(localEditable) > 0) && ((this.mOnQueryChangeListener == null) || (!this.mOnQueryChangeListener.onQueryTextSubmit(localEditable.toString()))))
+    if ((localEditable != null) && (TextUtils.getTrimmedLength(localEditable) > 0))
     {
-      if (this.mSearchable != null) {
-        launchQuerySearch(0, null, localEditable.toString());
+      OnQueryTextListener localOnQueryTextListener = this.mOnQueryChangeListener;
+      if ((localOnQueryTextListener == null) || (!localOnQueryTextListener.onQueryTextSubmit(localEditable.toString())))
+      {
+        if (this.mSearchable != null) {
+          launchQuerySearch(0, null, localEditable.toString());
+        }
+        this.mSearchSrcTextView.setImeVisibility(false);
+        dismissSuggestions();
       }
-      this.mSearchSrcTextView.setImeVisibility(false);
-      dismissSuggestions();
     }
   }
   
   boolean onSuggestionsKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.mSearchable == null) {}
-    do
-    {
-      do
+    if (this.mSearchable == null) {
+      return false;
+    }
+    if (this.mSuggestionsAdapter == null) {
+      return false;
+    }
+    if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.hasNoModifiers())) {
+      if ((paramInt != 66) && (paramInt != 84) && (paramInt != 61))
       {
-        return false;
-      } while ((this.mSuggestionsAdapter == null) || (paramKeyEvent.getAction() != 0) || (!paramKeyEvent.hasNoModifiers()));
-      if ((paramInt == 66) || (paramInt == 84) || (paramInt == 61)) {
-        return onItemClicked(this.mSearchSrcTextView.getListSelection(), 0, null);
-      }
-      if ((paramInt == 21) || (paramInt == 22))
-      {
-        if (paramInt == 21) {}
-        for (paramInt = 0;; paramInt = this.mSearchSrcTextView.length())
+        if ((paramInt != 21) && (paramInt != 22))
         {
+          if ((paramInt == 19) && (this.mSearchSrcTextView.getListSelection() == 0)) {
+            return false;
+          }
+        }
+        else
+        {
+          if (paramInt == 21) {
+            paramInt = 0;
+          } else {
+            paramInt = this.mSearchSrcTextView.length();
+          }
           this.mSearchSrcTextView.setSelection(paramInt);
           this.mSearchSrcTextView.setListSelection(0);
           this.mSearchSrcTextView.clearListSelection();
@@ -1142,37 +1121,31 @@ public class SearchView
           return true;
         }
       }
-    } while ((paramInt != 19) || (this.mSearchSrcTextView.getListSelection() != 0));
+      else {
+        return onItemClicked(this.mSearchSrcTextView.getListSelection(), 0, null);
+      }
+    }
     return false;
   }
   
   void onTextChanged(CharSequence paramCharSequence)
   {
-    boolean bool2 = true;
     Editable localEditable = this.mSearchSrcTextView.getText();
     this.mUserQuery = localEditable;
-    if (!TextUtils.isEmpty(localEditable))
-    {
-      bool1 = true;
-      updateSubmitButton(bool1);
-      if (bool1) {
-        break label101;
-      }
-    }
-    label101:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      updateVoiceButton(bool1);
-      updateCloseButton();
-      updateSubmitArea();
-      if ((this.mOnQueryChangeListener != null) && (!TextUtils.equals(paramCharSequence, this.mOldQueryText))) {
-        this.mOnQueryChangeListener.onQueryTextChange(paramCharSequence.toString());
-      }
-      this.mOldQueryText = paramCharSequence.toString();
-      return;
+    boolean bool2 = TextUtils.isEmpty(localEditable);
+    boolean bool1 = true;
+    bool2 ^= true;
+    updateSubmitButton(bool2);
+    if (bool2) {
       bool1 = false;
-      break;
     }
+    updateVoiceButton(bool1);
+    updateCloseButton();
+    updateSubmitArea();
+    if ((this.mOnQueryChangeListener != null) && (!TextUtils.equals(paramCharSequence, this.mOldQueryText))) {
+      this.mOnQueryChangeListener.onQueryTextChange(paramCharSequence.toString());
+    }
+    this.mOldQueryText = paramCharSequence.toString();
   }
   
   void onTextFocusChanged()
@@ -1186,28 +1159,32 @@ public class SearchView
   
   void onVoiceClicked()
   {
-    if (this.mSearchable == null) {}
-    do
-    {
+    Object localObject = this.mSearchable;
+    if (localObject == null) {
       return;
-      Object localObject = this.mSearchable;
-      try
+    }
+    try
+    {
+      if (((SearchableInfo)localObject).getVoiceSearchLaunchWebSearch())
       {
-        if (((SearchableInfo)localObject).getVoiceSearchLaunchWebSearch())
-        {
-          localObject = createVoiceWebSearchIntent(this.mVoiceWebSearchIntent, (SearchableInfo)localObject);
-          getContext().startActivity((Intent)localObject);
-          return;
-        }
-      }
-      catch (ActivityNotFoundException localActivityNotFoundException)
-      {
-        Log.w("SearchView", "Could not find voice search activity");
+        localObject = createVoiceWebSearchIntent(this.mVoiceWebSearchIntent, (SearchableInfo)localObject);
+        getContext().startActivity((Intent)localObject);
         return;
       }
-    } while (!localActivityNotFoundException.getVoiceSearchLaunchRecognizer());
-    Intent localIntent = createVoiceAppSearchIntent(this.mVoiceAppSearchIntent, localActivityNotFoundException);
-    getContext().startActivity(localIntent);
+      if (!((SearchableInfo)localObject).getVoiceSearchLaunchRecognizer()) {
+        break label71;
+      }
+      localObject = createVoiceAppSearchIntent(this.mVoiceAppSearchIntent, (SearchableInfo)localObject);
+      getContext().startActivity((Intent)localObject);
+      return;
+    }
+    catch (ActivityNotFoundException localActivityNotFoundException)
+    {
+      label62:
+      label71:
+      break label62;
+    }
+    Log.w("SearchView", "Could not find voice search activity");
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -1218,8 +1195,10 @@ public class SearchView
   
   public boolean requestFocus(int paramInt, Rect paramRect)
   {
-    if (this.mClearingFocus) {}
-    while (!isFocusable()) {
+    if (this.mClearingFocus) {
+      return false;
+    }
+    if (!isFocusable()) {
       return false;
     }
     if (!isIconified())
@@ -1305,7 +1284,8 @@ public class SearchView
     this.mSearchSrcTextView.setText(paramCharSequence);
     if (paramCharSequence != null)
     {
-      this.mSearchSrcTextView.setSelection(this.mSearchSrcTextView.length());
+      SearchAutoComplete localSearchAutoComplete = this.mSearchSrcTextView;
+      localSearchAutoComplete.setSelection(localSearchAutoComplete.length());
       this.mUserQuery = paramCharSequence;
     }
     if ((paramBoolean) && (!TextUtils.isEmpty(paramCharSequence))) {
@@ -1322,19 +1302,17 @@ public class SearchView
   public void setQueryRefinementEnabled(boolean paramBoolean)
   {
     this.mQueryRefinement = paramBoolean;
-    SuggestionsAdapter localSuggestionsAdapter;
-    if ((this.mSuggestionsAdapter instanceof SuggestionsAdapter))
+    Object localObject = this.mSuggestionsAdapter;
+    if ((localObject instanceof SuggestionsAdapter))
     {
-      localSuggestionsAdapter = (SuggestionsAdapter)this.mSuggestionsAdapter;
-      if (!paramBoolean) {
-        break label35;
+      localObject = (SuggestionsAdapter)localObject;
+      int i;
+      if (paramBoolean) {
+        i = 2;
+      } else {
+        i = 1;
       }
-    }
-    label35:
-    for (int i = 2;; i = 1)
-    {
-      localSuggestionsAdapter.setQueryRefinement(i);
-      return;
+      ((SuggestionsAdapter)localObject).setQueryRefinement(i);
     }
   }
   
@@ -1367,20 +1345,21 @@ public class SearchView
   
   void updateFocusedState()
   {
-    if (this.mSearchSrcTextView.hasFocus()) {}
-    for (int[] arrayOfInt = FOCUSED_STATE_SET;; arrayOfInt = EMPTY_STATE_SET)
-    {
-      Drawable localDrawable = this.mSearchPlate.getBackground();
-      if (localDrawable != null) {
-        localDrawable.setState(arrayOfInt);
-      }
-      localDrawable = this.mSubmitArea.getBackground();
-      if (localDrawable != null) {
-        localDrawable.setState(arrayOfInt);
-      }
-      invalidate();
-      return;
+    int[] arrayOfInt;
+    if (this.mSearchSrcTextView.hasFocus()) {
+      arrayOfInt = FOCUSED_STATE_SET;
+    } else {
+      arrayOfInt = EMPTY_STATE_SET;
     }
+    Drawable localDrawable = this.mSearchPlate.getBackground();
+    if (localDrawable != null) {
+      localDrawable.setState(arrayOfInt);
+    }
+    localDrawable = this.mSubmitArea.getBackground();
+    if (localDrawable != null) {
+      localDrawable.setState(arrayOfInt);
+    }
+    invalidate();
   }
   
   private static class AutoCompleteTextViewReflector
@@ -1396,37 +1375,40 @@ public class SearchView
       {
         this.doBeforeTextChanged = AutoCompleteTextView.class.getDeclaredMethod("doBeforeTextChanged", new Class[0]);
         this.doBeforeTextChanged.setAccessible(true);
+      }
+      catch (NoSuchMethodException localNoSuchMethodException1)
+      {
         try
         {
-          label27:
-          this.doAfterTextChanged = AutoCompleteTextView.class.getDeclaredMethod("doAfterTextChanged", new Class[0]);
-          this.doAfterTextChanged.setAccessible(true);
-          try
+          for (;;)
           {
-            label50:
-            this.ensureImeVisible = AutoCompleteTextView.class.getMethod("ensureImeVisible", new Class[] { Boolean.TYPE });
-            this.ensureImeVisible.setAccessible(true);
-            return;
+            this.doAfterTextChanged = AutoCompleteTextView.class.getDeclaredMethod("doAfterTextChanged", new Class[0]);
+            this.doAfterTextChanged.setAccessible(true);
+            try
+            {
+              label50:
+              this.ensureImeVisible = AutoCompleteTextView.class.getMethod("ensureImeVisible", new Class[] { Boolean.TYPE });
+              this.ensureImeVisible.setAccessible(true);
+              return;
+            }
+            catch (NoSuchMethodException localNoSuchMethodException3) {}
+            localNoSuchMethodException1 = localNoSuchMethodException1;
           }
-          catch (NoSuchMethodException localNoSuchMethodException1) {}
         }
         catch (NoSuchMethodException localNoSuchMethodException2)
         {
           break label50;
         }
       }
-      catch (NoSuchMethodException localNoSuchMethodException3)
-      {
-        break label27;
-      }
     }
     
     void doAfterTextChanged(AutoCompleteTextView paramAutoCompleteTextView)
     {
-      if (this.doAfterTextChanged != null) {}
+      Method localMethod = this.doAfterTextChanged;
+      if (localMethod != null) {}
       try
       {
-        this.doAfterTextChanged.invoke(paramAutoCompleteTextView, new Object[0]);
+        localMethod.invoke(paramAutoCompleteTextView, new Object[0]);
         return;
       }
       catch (Exception paramAutoCompleteTextView) {}
@@ -1434,10 +1416,11 @@ public class SearchView
     
     void doBeforeTextChanged(AutoCompleteTextView paramAutoCompleteTextView)
     {
-      if (this.doBeforeTextChanged != null) {}
+      Method localMethod = this.doBeforeTextChanged;
+      if (localMethod != null) {}
       try
       {
-        this.doBeforeTextChanged.invoke(paramAutoCompleteTextView, new Object[0]);
+        localMethod.invoke(paramAutoCompleteTextView, new Object[0]);
         return;
       }
       catch (Exception paramAutoCompleteTextView) {}
@@ -1445,10 +1428,11 @@ public class SearchView
     
     void ensureImeVisible(AutoCompleteTextView paramAutoCompleteTextView, boolean paramBoolean)
     {
-      if (this.ensureImeVisible != null) {}
+      Method localMethod = this.ensureImeVisible;
+      if (localMethod != null) {}
       try
       {
-        this.ensureImeVisible.invoke(paramAutoCompleteTextView, new Object[] { Boolean.valueOf(paramBoolean) });
+        localMethod.invoke(paramAutoCompleteTextView, new Object[] { Boolean.valueOf(paramBoolean) });
         return;
       }
       catch (Exception paramAutoCompleteTextView) {}
@@ -1509,7 +1493,13 @@ public class SearchView
     
     public String toString()
     {
-      return "SearchView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " isIconified=" + this.isIconified + "}";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SearchView.SavedState{");
+      localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+      localStringBuilder.append(" isIconified=");
+      localStringBuilder.append(this.isIconified);
+      localStringBuilder.append("}");
+      return localStringBuilder.toString();
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -1557,10 +1547,10 @@ public class SearchView
       if ((i >= 960) && (j >= 720) && (localConfiguration.orientation == 2)) {
         return 256;
       }
-      if ((i >= 600) || ((i >= 640) && (j >= 480))) {
-        return 192;
+      if ((i < 600) && ((i < 640) || (j < 480))) {
+        return 160;
       }
-      return 160;
+      return 192;
     }
     
     private boolean isEmpty()
@@ -1707,66 +1697,67 @@ public class SearchView
     
     public boolean onTouchEvent(MotionEvent paramMotionEvent)
     {
-      int j = 1;
-      boolean bool2 = false;
       int k = (int)paramMotionEvent.getX();
       int m = (int)paramMotionEvent.getY();
-      boolean bool1;
-      int i;
-      switch (paramMotionEvent.getAction())
+      int i = paramMotionEvent.getAction();
+      int j = 1;
+      boolean bool2 = false;
+      switch (i)
       {
       default: 
-        bool1 = false;
-        i = j;
-        label57:
-        if (bool1)
-        {
-          if ((i == 0) || (this.mActualBounds.contains(k, m))) {
-            break label206;
-          }
-          paramMotionEvent.setLocation(this.mDelegateView.getWidth() / 2, this.mDelegateView.getHeight() / 2);
-        }
         break;
-      }
-      for (;;)
-      {
-        bool2 = this.mDelegateView.dispatchTouchEvent(paramMotionEvent);
-        return bool2;
-        if (!this.mTargetBounds.contains(k, m)) {
-          break;
-        }
-        this.mDelegateTargeted = true;
-        bool1 = true;
-        i = j;
-        break label57;
-        boolean bool3 = this.mDelegateTargeted;
-        i = j;
-        bool1 = bool3;
-        if (!bool3) {
-          break label57;
-        }
-        i = j;
-        bool1 = bool3;
-        if (this.mSlopBounds.contains(k, m)) {
-          break label57;
-        }
-        i = 0;
-        bool1 = bool3;
-        break label57;
+      case 3: 
         bool1 = this.mDelegateTargeted;
         this.mDelegateTargeted = false;
         i = j;
-        break label57;
-        label206:
-        paramMotionEvent.setLocation(k - this.mActualBounds.left, m - this.mActualBounds.top);
+        break;
+      case 1: 
+      case 2: 
+        boolean bool3 = this.mDelegateTargeted;
+        bool1 = bool3;
+        i = j;
+        if (!bool3) {
+          break label153;
+        }
+        bool1 = bool3;
+        i = j;
+        if (this.mSlopBounds.contains(k, m)) {
+          break label153;
+        }
+        i = 0;
+        bool1 = bool3;
+        break;
+      case 0: 
+        if (this.mTargetBounds.contains(k, m))
+        {
+          this.mDelegateTargeted = true;
+          bool1 = true;
+          i = j;
+        }
+        break;
       }
+      boolean bool1 = false;
+      i = j;
+      label153:
+      if (bool1)
+      {
+        if ((i != 0) && (!this.mActualBounds.contains(k, m))) {
+          paramMotionEvent.setLocation(this.mDelegateView.getWidth() / 2, this.mDelegateView.getHeight() / 2);
+        } else {
+          paramMotionEvent.setLocation(k - this.mActualBounds.left, m - this.mActualBounds.top);
+        }
+        bool2 = this.mDelegateView.dispatchTouchEvent(paramMotionEvent);
+      }
+      return bool2;
     }
     
     public void setBounds(Rect paramRect1, Rect paramRect2)
     {
       this.mTargetBounds.set(paramRect1);
       this.mSlopBounds.set(paramRect1);
-      this.mSlopBounds.inset(-this.mSlop, -this.mSlop);
+      paramRect1 = this.mSlopBounds;
+      int i = this.mSlop;
+      paramRect1.inset(-i, -i);
       this.mActualBounds.set(paramRect2);
     }
   }

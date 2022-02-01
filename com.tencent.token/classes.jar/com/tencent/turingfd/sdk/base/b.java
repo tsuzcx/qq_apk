@@ -13,11 +13,21 @@ import java.io.File;
 
 public class b
 {
-  public static final String a = cv.a + "_" + "baseFull";
+  public static final String a;
   public static String b = "";
+  
+  static
+  {
+    StringBuilder localStringBuilder = ci.a("turingfd_shark_");
+    localStringBuilder.append(cv.a);
+    localStringBuilder.append("_");
+    localStringBuilder.append("baseFull");
+    a = localStringBuilder.toString();
+  }
   
   public static o a(Context paramContext)
   {
+    j = -1;
     try
     {
       localObject1 = (WindowManager)paramContext.getSystemService("window");
@@ -32,40 +42,51 @@ public class b
         localObject1 = (WindowManager)paramContext.getSystemService("window");
         localObject2 = new DisplayMetrics();
         ((WindowManager)localObject1).getDefaultDisplay().getMetrics((DisplayMetrics)localObject2);
-        j = ((DisplayMetrics)localObject2).heightPixels;
-        if (i < j)
-        {
-          localif = new if();
-          localObject2 = cm.e(paramContext);
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = "";
-          }
-          localif.H = ((String)localObject1);
-          localObject2 = cm.f(paramContext);
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = "";
-          }
-          localif.I = ((String)localObject1);
-          localif.Ba = "";
-          localif.K = "0";
-          localif.Q = "0";
-          localif.R = 92;
-          localif.S = "09AEBC42447E1917";
-          localif.B = 49;
-          localif.U = cv.a;
-          localif.W = 2;
-          localif.aa = 201;
-          localif.ba = false;
+        k = ((DisplayMetrics)localObject2).heightPixels;
+        j = k;
+        m = i;
+        k = j;
+        if (i >= j) {
+          break label100;
         }
+        k = i;
+        m = j;
+        localif = new if();
+        localObject2 = cm.e(paramContext);
+        localObject1 = localObject2;
+        if (localObject2 != null) {
+          break label128;
+        }
+        localObject1 = "";
+        localif.H = ((String)localObject1);
+        localObject2 = cm.f(paramContext);
+        localObject1 = localObject2;
+        if (localObject2 != null) {
+          break label154;
+        }
+        localObject1 = "";
+        localif.I = ((String)localObject1);
+        localif.Ba = "";
+        localif.K = "0";
+        localif.Q = "0";
+        localif.R = 92;
+        localif.S = "09AEBC42447E1917";
+        localif.B = 49;
+        localObject1 = ci.a("");
+        ((StringBuilder)localObject1).append(cv.a);
+        localif.U = ((StringBuilder)localObject1).toString();
+        localif.W = 2;
+        localif.aa = 201;
+        localif.ba = false;
       }
       catch (Throwable localThrowable2)
       {
-        for (;;)
+        try
         {
-          try
+          for (;;)
           {
+            int k;
+            int m;
             if localif;
             localif.ca = paramContext.getPackageName();
             Object localObject2 = Build.MODEL;
@@ -82,12 +103,9 @@ public class b
             }
             catch (Throwable paramContext)
             {
-              paramContext = "";
-              continue;
-              u.b = Integer.valueOf(paramContext.length);
-              k = u.b.intValue();
-              continue;
+              break label306;
             }
+            paramContext = "";
             localObject1 = paramContext;
             if (paramContext == null) {
               localObject1 = "";
@@ -108,16 +126,22 @@ public class b
               paramContext = new p();
               paramContext = new File("/sys/devices/system/cpu/").listFiles(paramContext);
               if (paramContext != null) {
-                continue;
+                u.b = Integer.valueOf(paramContext.length);
               }
             }
             catch (Throwable paramContext)
             {
-              continue;
+              break label419;
             }
-            k = 1;
-            localif.ka = k;
-            localif.la = (j + "*" + i);
+            int i = 1;
+            break label431;
+            i = u.b.intValue();
+            localif.ka = i;
+            paramContext = new StringBuilder();
+            paramContext.append(m);
+            paramContext.append("*");
+            paramContext.append(k);
+            localif.la = paramContext.toString();
             localif.na = u.b();
             localObject1 = Build.BRAND;
             paramContext = (Context)localObject1;
@@ -206,28 +230,26 @@ public class b
             paramContext.f = new try();
             return paramContext.a();
             localThrowable1 = localThrowable1;
-            i = -1;
-            continue;
-            localThrowable2 = localThrowable2;
-            j = -1;
           }
-          catch (Throwable localThrowable3)
-          {
-            continue;
-          }
-          int k = j;
-          int j = i;
-          int i = k;
+          localThrowable2 = localThrowable2;
+        }
+        catch (Throwable localThrowable3)
+        {
+          break label258;
         }
       }
     }
+    i = -1;
   }
   
   public static void a(Context paramContext, String paramString)
   {
     try
     {
-      paramContext = paramContext.getSharedPreferences(b + a, 0).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(b);
+      localStringBuilder.append(a);
+      paramContext = paramContext.getSharedPreferences(localStringBuilder.toString(), 0).edit();
       paramContext.putString("g", paramString).commit();
       return;
     }
@@ -238,7 +260,10 @@ public class b
   {
     try
     {
-      paramContext = paramContext.getSharedPreferences(b + a, 0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(b);
+      localStringBuilder.append(a);
+      paramContext = paramContext.getSharedPreferences(localStringBuilder.toString(), 0);
       paramContext = paramContext.getString("g", "");
       return paramContext;
     }

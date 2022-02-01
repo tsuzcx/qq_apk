@@ -43,8 +43,9 @@ public final class a
     paramb.a(this.b, 1);
     paramb.a(this.c, 2);
     paramb.a(this.d, 3);
-    if (this.e != null) {
-      paramb.a(this.e, 4);
+    Map localMap = this.e;
+    if (localMap != null) {
+      paramb.a(localMap, 4);
     }
   }
 }

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class b
   extends JceStruct
@@ -37,20 +38,25 @@ public final class b
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.a != 0) {
-      paramJceOutputStream.write(this.a, 0);
+    int i = this.a;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.b != 0) {
-      paramJceOutputStream.write(this.b, 1);
+    i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 2);
+    Object localObject = this.c;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.d != null) {
-      paramJceOutputStream.write(this.d, 3);
+    localObject = this.d;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.e != 0) {
-      paramJceOutputStream.write(this.e, 4);
+    i = this.e;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
   }
 }

@@ -1,74 +1,115 @@
 package com.tencent.token;
 
+import android.graphics.Matrix;
 import android.graphics.Path;
-import android.graphics.PointF;
-import java.util.List;
-import taiji.aa;
-import taiji.ao;
+import android.graphics.PathMeasure;
+import taiji.k;
+import taiji.l;
+import uilib.doraemon.g;
 
-public class gn
+public final class gn
 {
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  private static final PathMeasure a = new PathMeasure();
+  private static final Path b = new Path();
+  private static final Path c = new Path();
+  private static final float[] d = new float[4];
+  private static final float e = (float)Math.sqrt(2.0D);
+  
+  public static float a(Matrix paramMatrix)
   {
-    return (paramFloat2 - paramFloat1) * paramFloat3 + paramFloat1;
+    float[] arrayOfFloat = d;
+    arrayOfFloat[0] = 0.0F;
+    arrayOfFloat[1] = 0.0F;
+    float f1 = e;
+    arrayOfFloat[2] = f1;
+    arrayOfFloat[3] = f1;
+    paramMatrix.mapPoints(arrayOfFloat);
+    paramMatrix = d;
+    f1 = paramMatrix[2];
+    float f2 = paramMatrix[0];
+    float f3 = paramMatrix[3];
+    float f4 = paramMatrix[1];
+    return (float)Math.hypot(f1 - f2, f3 - f4) / 2.0F;
   }
   
-  static int a(float paramFloat1, float paramFloat2)
+  public static void a(Path paramPath, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return a((int)paramFloat1, (int)paramFloat2);
-  }
-  
-  static int a(int paramInt1, int paramInt2)
-  {
-    return paramInt1 - b(paramInt1, paramInt2) * paramInt2;
-  }
-  
-  public static int a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
-  }
-  
-  public static void a(ao paramao, Path paramPath)
-  {
-    paramPath.reset();
-    PointF localPointF1 = paramao.a();
-    paramPath.moveTo(localPointF1.x, localPointF1.y);
-    localPointF1 = new PointF(localPointF1.x, localPointF1.y);
-    int i = 0;
-    if (i < paramao.c().size())
+    g.a("applyTrimPathIfNeeded");
+    a.setPath(paramPath, false);
+    float f2 = a.getLength();
+    if ((paramFloat1 == 1.0F) && (paramFloat2 == 0.0F)) {}
+    for (;;)
     {
-      Object localObject = (aa)paramao.c().get(i);
-      PointF localPointF2 = ((aa)localObject).a();
-      PointF localPointF3 = ((aa)localObject).b();
-      localObject = ((aa)localObject).c();
-      if ((localPointF2.equals(localPointF1)) && (localPointF3.equals(localObject))) {
-        paramPath.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
-      }
-      for (;;)
+      g.b("applyTrimPathIfNeeded");
+      return;
+      if ((f2 >= 1.0F) && (Math.abs(paramFloat2 - paramFloat1 - 1.0F) >= 0.01D))
       {
-        localPointF1.set(((PointF)localObject).x, ((PointF)localObject).y);
-        i += 1;
-        break;
-        paramPath.cubicTo(localPointF2.x, localPointF2.y, localPointF3.x, localPointF3.y, ((PointF)localObject).x, ((PointF)localObject).y);
+        float f1 = paramFloat1 * f2;
+        paramFloat2 *= f2;
+        paramFloat1 = Math.min(f1, paramFloat2);
+        f1 = Math.max(f1, paramFloat2);
+        paramFloat3 *= f2;
+        paramFloat2 = paramFloat1 + paramFloat3;
+        f1 += paramFloat3;
+        paramFloat3 = paramFloat2;
+        paramFloat1 = f1;
+        if (paramFloat2 >= f2)
+        {
+          paramFloat3 = paramFloat2;
+          paramFloat1 = f1;
+          if (f1 >= f2)
+          {
+            paramFloat3 = gm.a(paramFloat2, f2);
+            paramFloat1 = gm.a(f1, f2);
+          }
+        }
+        paramFloat2 = paramFloat3;
+        if (paramFloat3 < 0.0F) {
+          paramFloat2 = gm.a(paramFloat3, f2);
+        }
+        paramFloat3 = paramFloat1;
+        if (paramFloat1 < 0.0F) {
+          paramFloat3 = gm.a(paramFloat1, f2);
+        }
+        if (paramFloat2 == paramFloat3)
+        {
+          paramPath.reset();
+        }
+        else
+        {
+          paramFloat1 = paramFloat2;
+          if (paramFloat2 >= paramFloat3) {
+            paramFloat1 = paramFloat2 - f2;
+          }
+          b.reset();
+          a.getSegment(paramFloat1, paramFloat3, b, true);
+          if (paramFloat3 > f2)
+          {
+            c.reset();
+            a.getSegment(0.0F, paramFloat3 % f2, c, true);
+          }
+          for (;;)
+          {
+            b.addPath(c);
+            break;
+            if (paramFloat1 >= 0.0F) {
+              break;
+            }
+            c.reset();
+            a.getSegment(paramFloat1 + f2, f2, c, true);
+          }
+          paramPath.set(b);
+        }
       }
-    }
-    if (paramao.b()) {
-      paramPath.close();
     }
   }
   
-  private static int b(int paramInt1, int paramInt2)
+  public static void a(Path paramPath, k paramk)
   {
-    int j = paramInt1 / paramInt2;
-    int i = j;
-    if ((paramInt1 ^ paramInt2) < 0)
-    {
-      i = j;
-      if (j * paramInt2 != paramInt1) {
-        i = j - 1;
-      }
+    if (paramk == null) {
+      return;
     }
-    return i;
+    a(paramPath, ((Float)paramk.d().b()).floatValue() / 100.0F, ((Float)paramk.e().b()).floatValue() / 100.0F, ((Float)paramk.f().b()).floatValue() / 360.0F);
   }
 }
 

@@ -54,27 +54,20 @@ public final class SoftKey
   
   public int compareTo(SoftKey paramSoftKey)
   {
-    int k = 0;
     int[] arrayOfInt = new int[4];
     arrayOfInt[0] = JceUtil.compareTo(this.uid, paramSoftKey.uid);
     arrayOfInt[1] = JceUtil.compareTo(this.softname, paramSoftKey.softname);
     arrayOfInt[2] = JceUtil.compareTo(this.version, paramSoftKey.version);
     arrayOfInt[3] = JceUtil.compareTo(this.producttime, paramSoftKey.producttime);
     int i = 0;
-    for (;;)
+    while (i < arrayOfInt.length)
     {
-      int j = k;
-      if (i < arrayOfInt.length)
-      {
-        if (arrayOfInt[i] != 0) {
-          j = arrayOfInt[i];
-        }
-      }
-      else {
-        return j;
+      if (arrayOfInt[i] != 0) {
+        return arrayOfInt[i];
       }
       i += 1;
     }
+    return 0;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -104,19 +97,23 @@ public final class SoftKey
     paramJceOutputStream.write(this.uid, 0);
     paramJceOutputStream.write(this.softname, 1);
     paramJceOutputStream.write(this.version, 2);
-    if (this.producttime != null) {
-      paramJceOutputStream.write(this.producttime, 3);
+    String str = this.producttime;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.cert != null) {
-      paramJceOutputStream.write(this.cert, 4);
+    str = this.cert;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.versioncode, 5);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 6);
+    str = this.name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.isbuildin, 7);
-    if (this.newest_version != null) {
-      paramJceOutputStream.write(this.newest_version, 8);
+    str = this.newest_version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.old_versioncode, 9);
     paramJceOutputStream.write(this.categorytype, 10);
@@ -126,8 +123,9 @@ public final class SoftKey
     paramJceOutputStream.write(this.sdk_version, 14);
     paramJceOutputStream.write(this.appid, 15);
     paramJceOutputStream.write(this.filesize, 16);
-    if (this.apkFileMd5 != null) {
-      paramJceOutputStream.write(this.apkFileMd5, 17);
+    str = this.apkFileMd5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 17);
     }
   }
 }

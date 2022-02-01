@@ -21,17 +21,17 @@ public class r
   public r(boolean paramBoolean)
   {
     this.c = paramBoolean;
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       this.a.add(new i("mazutest.3g.qq.com", 8080, 100));
     }
-    for (;;)
+    else
     {
-      this.b = d();
-      return;
       this.a.add(new i("mazu.3g.qq.com", 14000, 100));
       this.a.add(new i("mazu.3g.qq.com", 443, 100));
       this.a.add(new i("mazu.3g.qq.com", 8080, 100));
     }
+    this.b = d();
   }
   
   private int d()
@@ -46,11 +46,18 @@ public class r
   
   public i a()
   {
-    if ((this.b < 0) || (this.b >= this.a.size())) {
-      return (i)this.a.get(0);
+    int i = this.b;
+    if ((i >= 0) && (i < this.a.size()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ip ");
+      localStringBuilder.append(((i)this.a.get(this.b)).b());
+      localStringBuilder.append(" port : ");
+      localStringBuilder.append(((i)this.a.get(this.b)).a());
+      localStringBuilder.toString();
+      return (i)this.a.get(this.b);
     }
-    new StringBuilder().append("ip ").append(((i)this.a.get(this.b)).b()).append(" port : ").append(((i)this.a.get(this.b)).a()).toString();
-    return (i)this.a.get(this.b);
+    return (i)this.a.get(0);
   }
   
   public void a(int paramInt)

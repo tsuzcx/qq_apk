@@ -37,8 +37,9 @@ public class AppCompatCheckedTextView
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.mTextHelper != null) {
-      this.mTextHelper.applyCompoundDrawablesTints();
+    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
+    if (localAppCompatTextHelper != null) {
+      localAppCompatTextHelper.applyCompoundDrawablesTints();
     }
   }
   
@@ -55,8 +56,9 @@ public class AppCompatCheckedTextView
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    if (this.mTextHelper != null) {
-      this.mTextHelper.onSetTextAppearance(paramContext, paramInt);
+    AppCompatTextHelper localAppCompatTextHelper = this.mTextHelper;
+    if (localAppCompatTextHelper != null) {
+      localAppCompatTextHelper.onSetTextAppearance(paramContext, paramInt);
     }
   }
 }

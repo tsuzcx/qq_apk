@@ -11,10 +11,12 @@ final class l
   
   l(p paramp)
   {
-    if (paramp == null) {
-      throw new NullPointerException("sink == null");
+    if (paramp != null)
+    {
+      this.b = paramp;
+      return;
     }
-    this.b = paramp;
+    throw new NullPointerException("sink == null");
   }
   
   public r a()
@@ -24,20 +26,23 @@ final class l
   
   public void a_(c paramc, long paramLong)
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
+    if (!this.c)
+    {
+      this.a.a_(paramc, paramLong);
+      u();
+      return;
     }
-    this.a.a_(paramc, paramLong);
-    u();
+    throw new IllegalStateException("closed");
   }
   
   public d b(String paramString)
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
+    if (!this.c)
+    {
+      this.a.a(paramString);
+      return u();
     }
-    this.a.a(paramString);
-    return u();
+    throw new IllegalStateException("closed");
   }
   
   public c c()
@@ -47,149 +52,160 @@ final class l
   
   public d c(byte[] paramArrayOfByte)
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
+    if (!this.c)
+    {
+      this.a.b(paramArrayOfByte);
+      return u();
     }
-    this.a.b(paramArrayOfByte);
-    return u();
+    throw new IllegalStateException("closed");
   }
   
   public d c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
+    if (!this.c)
+    {
+      this.a.b(paramArrayOfByte, paramInt1, paramInt2);
+      return u();
     }
-    this.a.b(paramArrayOfByte, paramInt1, paramInt2);
-    return u();
+    throw new IllegalStateException("closed");
   }
   
   public void close()
   {
-    if (this.c) {}
-    do
-    {
+    if (this.c) {
       return;
-      localObject2 = null;
-      localObject1 = localObject2;
-      for (;;)
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    try
+    {
+      if (this.a.b > 0L)
       {
-        try
-        {
-          if (this.a.b > 0L)
-          {
-            this.b.a_(this.a, this.a.b);
-            localObject1 = localObject2;
-          }
-        }
-        catch (Throwable localThrowable1)
-        {
-          continue;
-        }
-        try
-        {
-          this.b.close();
-          localObject2 = localObject1;
-        }
-        catch (Throwable localThrowable2)
-        {
-          localObject2 = localObject1;
-          if (localObject1 != null) {
-            continue;
-          }
-          localObject2 = localThrowable2;
-        }
+        this.b.a_(this.a, this.a.b);
+        localObject1 = localObject2;
       }
-      this.c = true;
-    } while (localObject2 == null);
-    s.a(localObject2);
+    }
+    catch (Throwable localThrowable1) {}
+    try
+    {
+      this.b.close();
+      localObject2 = localThrowable1;
+    }
+    catch (Throwable localThrowable2)
+    {
+      localObject2 = localThrowable1;
+      if (localThrowable1 == null) {
+        localObject2 = localThrowable2;
+      }
+    }
+    this.c = true;
+    if (localObject2 != null) {
+      s.a(localObject2);
+    }
   }
   
   public void flush()
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
+    if (!this.c)
+    {
+      if (this.a.b > 0L)
+      {
+        p localp = this.b;
+        c localc = this.a;
+        localp.a_(localc, localc.b);
+      }
+      this.b.flush();
+      return;
     }
-    if (this.a.b > 0L) {
-      this.b.a_(this.a, this.a.b);
-    }
-    this.b.flush();
+    throw new IllegalStateException("closed");
   }
   
   public d g(int paramInt)
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
+    if (!this.c)
+    {
+      this.a.d(paramInt);
+      return u();
     }
-    this.a.d(paramInt);
-    return u();
+    throw new IllegalStateException("closed");
   }
   
   public d h(int paramInt)
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
+    if (!this.c)
+    {
+      this.a.c(paramInt);
+      return u();
     }
-    this.a.c(paramInt);
-    return u();
+    throw new IllegalStateException("closed");
   }
   
   public d i(int paramInt)
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
+    if (!this.c)
+    {
+      this.a.b(paramInt);
+      return u();
     }
-    this.a.b(paramInt);
-    return u();
+    throw new IllegalStateException("closed");
   }
   
   public boolean isOpen()
   {
-    return !this.c;
+    return this.c ^ true;
   }
   
   public d k(long paramLong)
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
+    if (!this.c)
+    {
+      this.a.j(paramLong);
+      return u();
     }
-    this.a.j(paramLong);
-    return u();
+    throw new IllegalStateException("closed");
   }
   
   public d l(long paramLong)
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
+    if (!this.c)
+    {
+      this.a.i(paramLong);
+      return u();
     }
-    this.a.i(paramLong);
-    return u();
+    throw new IllegalStateException("closed");
   }
   
   public String toString()
   {
-    return "buffer(" + this.b + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("buffer(");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public d u()
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
+    if (!this.c)
+    {
+      long l = this.a.g();
+      if (l > 0L) {
+        this.b.a_(this.a, l);
+      }
+      return this;
     }
-    long l = this.a.g();
-    if (l > 0L) {
-      this.b.a_(this.a, l);
-    }
-    return this;
+    throw new IllegalStateException("closed");
   }
   
   public int write(ByteBuffer paramByteBuffer)
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
+    if (!this.c)
+    {
+      int i = this.a.write(paramByteBuffer);
+      u();
+      return i;
     }
-    int i = this.a.write(paramByteBuffer);
-    u();
-    return i;
+    throw new IllegalStateException("closed");
   }
 }
 

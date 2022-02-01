@@ -7,7 +7,6 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.RestrictTo;
 import android.support.v4.view.ActionProvider;
@@ -36,7 +35,6 @@ import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 
@@ -81,18 +79,16 @@ public class ActivityChooserView
     {
       if (ActivityChooserView.this.isShowingPopup())
       {
-        if (ActivityChooserView.this.isShown()) {
-          break label31;
+        if (!ActivityChooserView.this.isShown())
+        {
+          ActivityChooserView.this.getListPopupWindow().dismiss();
+          return;
         }
-        ActivityChooserView.this.getListPopupWindow().dismiss();
-      }
-      label31:
-      do
-      {
-        return;
         ActivityChooserView.this.getListPopupWindow().show();
-      } while (ActivityChooserView.this.mProvider == null);
-      ActivityChooserView.this.mProvider.subUiVisibilityChanged(true);
+        if (ActivityChooserView.this.mProvider != null) {
+          ActivityChooserView.this.mProvider.subUiVisibilityChanged(true);
+        }
+      }
     }
   };
   ActionProvider mProvider;
@@ -294,81 +290,38 @@ public class ActivityChooserView
   
   public boolean showPopup()
   {
-    if ((isShowingPopup()) || (!this.mIsAttachedToWindow)) {
-      return false;
+    if (!isShowingPopup())
+    {
+      if (!this.mIsAttachedToWindow) {
+        return false;
+      }
+      this.mIsSelectingDefaultActivity = false;
+      showPopupUnchecked(this.mInitialActivityCount);
+      return true;
     }
-    this.mIsSelectingDefaultActivity = false;
-    showPopupUnchecked(this.mInitialActivityCount);
-    return true;
+    return false;
   }
   
   void showPopupUnchecked(int paramInt)
   {
-    if (this.mAdapter.getDataModel() == null) {
-      throw new IllegalStateException("No data model. Did you call #setDataModel?");
-    }
-    getViewTreeObserver().addOnGlobalLayoutListener(this.mOnGlobalLayoutListener);
-    boolean bool;
-    int i;
-    label60:
-    label92:
-    ListPopupWindow localListPopupWindow;
-    if (this.mDefaultActivityButton.getVisibility() == 0)
-    {
-      bool = true;
-      int j = this.mAdapter.getActivityCount();
-      if (!bool) {
-        break label208;
-      }
-      i = 1;
-      if ((paramInt == 2147483647) || (j <= i + paramInt)) {
-        break label213;
-      }
-      this.mAdapter.setShowFooterView(true);
-      this.mAdapter.setMaxActivityCount(paramInt - 1);
-      localListPopupWindow = getListPopupWindow();
-      if (!localListPopupWindow.isShowing())
-      {
-        if ((!this.mIsSelectingDefaultActivity) && (bool)) {
-          break label232;
-        }
-        this.mAdapter.setShowDefaultActivity(true, bool);
-      }
-    }
-    for (;;)
-    {
-      localListPopupWindow.setContentWidth(Math.min(this.mAdapter.measureContentWidth(), this.mListPopupMaxWidth));
-      localListPopupWindow.show();
-      if (this.mProvider != null) {
-        this.mProvider.subUiVisibilityChanged(true);
-      }
-      localListPopupWindow.getListView().setContentDescription(getContext().getString(R.string.abc_activitychooserview_choose_application));
-      localListPopupWindow.getListView().setSelector(new ColorDrawable(0));
-      return;
-      bool = false;
-      break;
-      label208:
-      i = 0;
-      break label60;
-      label213:
-      this.mAdapter.setShowFooterView(false);
-      this.mAdapter.setMaxActivityCount(paramInt);
-      break label92;
-      label232:
-      this.mAdapter.setShowDefaultActivity(false, false);
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   void updateAppearance()
   {
-    if (this.mAdapter.getCount() > 0)
-    {
+    if (this.mAdapter.getCount() > 0) {
       this.mExpandActivityOverflowButton.setEnabled(true);
-      int i = this.mAdapter.getActivityCount();
-      int j = this.mAdapter.getHistorySize();
-      if ((i != 1) && ((i <= 1) || (j <= 0))) {
-        break label161;
-      }
+    } else {
+      this.mExpandActivityOverflowButton.setEnabled(false);
+    }
+    int i = this.mAdapter.getActivityCount();
+    int j = this.mAdapter.getHistorySize();
+    if ((i != 1) && ((i <= 1) || (j <= 0)))
+    {
+      this.mDefaultActivityButton.setVisibility(8);
+    }
+    else
+    {
       this.mDefaultActivityButton.setVisibility(0);
       Object localObject = this.mAdapter.getDefaultActivity();
       PackageManager localPackageManager = getContext().getPackageManager();
@@ -380,19 +333,11 @@ public class ActivityChooserView
         this.mDefaultActivityButton.setContentDescription((CharSequence)localObject);
       }
     }
-    for (;;)
+    if (this.mDefaultActivityButton.getVisibility() == 0)
     {
-      if (this.mDefaultActivityButton.getVisibility() != 0) {
-        break label173;
-      }
       this.mActivityChooserContent.setBackgroundDrawable(this.mActivityChooserContentBackground);
       return;
-      this.mExpandActivityOverflowButton.setEnabled(false);
-      break;
-      label161:
-      this.mDefaultActivityButton.setVisibility(8);
     }
-    label173:
     this.mActivityChooserContent.setBackgroundDrawable(null);
   }
   
@@ -540,9 +485,9 @@ public class ActivityChooserView
     
     public int measureContentWidth()
     {
-      int i = 0;
       int k = this.mMaxActivityCount;
       this.mMaxActivityCount = 2147483647;
+      int i = 0;
       int m = View.MeasureSpec.makeMeasureSpec(0, 0);
       int n = View.MeasureSpec.makeMeasureSpec(0, 0);
       int i1 = getCount();
@@ -626,14 +571,18 @@ public class ActivityChooserView
           paramView.addFlags(524288);
           ActivityChooserView.this.getContext().startActivity(paramView);
         }
-        return;
       }
-      if (paramView == ActivityChooserView.this.mExpandActivityOverflowButton)
+      else
       {
-        ActivityChooserView.this.mIsSelectingDefaultActivity = false;
-        ActivityChooserView.this.showPopupUnchecked(ActivityChooserView.this.mInitialActivityCount);
-        return;
+        if (paramView != ActivityChooserView.this.mExpandActivityOverflowButton) {
+          break label113;
+        }
+        paramView = ActivityChooserView.this;
+        paramView.mIsSelectingDefaultActivity = false;
+        paramView.showPopupUnchecked(paramView.mInitialActivityCount);
       }
+      return;
+      label113:
       throw new IllegalArgumentException();
     }
     
@@ -653,28 +602,26 @@ public class ActivityChooserView
         throw new IllegalArgumentException();
       case 1: 
         ActivityChooserView.this.showPopupUnchecked(2147483647);
+        return;
       }
-      do
+      ActivityChooserView.this.dismissPopup();
+      if (ActivityChooserView.this.mIsSelectingDefaultActivity)
       {
-        return;
-        ActivityChooserView.this.dismissPopup();
-        if (!ActivityChooserView.this.mIsSelectingDefaultActivity) {
-          break;
+        if (paramInt > 0) {
+          ActivityChooserView.this.mAdapter.getDataModel().setDefaultActivity(paramInt);
         }
-      } while (paramInt <= 0);
-      ActivityChooserView.this.mAdapter.getDataModel().setDefaultActivity(paramInt);
-      return;
-      if (ActivityChooserView.this.mAdapter.getShowDefaultActivity()) {}
-      for (;;)
+      }
+      else
       {
+        if (!ActivityChooserView.this.mAdapter.getShowDefaultActivity()) {
+          paramInt += 1;
+        }
         paramAdapterView = ActivityChooserView.this.mAdapter.getDataModel().chooseActivity(paramInt);
-        if (paramAdapterView == null) {
-          break;
+        if (paramAdapterView != null)
+        {
+          paramAdapterView.addFlags(524288);
+          ActivityChooserView.this.getContext().startActivity(paramAdapterView);
         }
-        paramAdapterView.addFlags(524288);
-        ActivityChooserView.this.getContext().startActivity(paramAdapterView);
-        return;
-        paramInt += 1;
       }
     }
     
@@ -684,8 +631,9 @@ public class ActivityChooserView
       {
         if (ActivityChooserView.this.mAdapter.getCount() > 0)
         {
-          ActivityChooserView.this.mIsSelectingDefaultActivity = true;
-          ActivityChooserView.this.showPopupUnchecked(ActivityChooserView.this.mInitialActivityCount);
+          paramView = ActivityChooserView.this;
+          paramView.mIsSelectingDefaultActivity = true;
+          paramView.showPopupUnchecked(paramView.mInitialActivityCount);
         }
         return true;
       }

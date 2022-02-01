@@ -49,9 +49,9 @@ class s
   {
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = this.b.inflate(2130968757, null);
+      paramViewGroup = this.b.inflate(2131296438, null);
     }
-    ((TextView)paramViewGroup.findViewById(2131559252)).setText((String)((Map)this.c.get(paramInt)).get("setting_op_name"));
+    ((TextView)paramViewGroup.findViewById(2131165985)).setText((String)((Map)this.c.get(paramInt)).get("setting_op_name"));
     paramViewGroup.setOnClickListener(new a(paramInt));
     paramViewGroup.setOnTouchListener(new b());
     return paramViewGroup;
@@ -71,24 +71,27 @@ class s
     
     public void onClick(View paramView)
     {
-      g.a("conf modify onClick=" + this.d);
+      paramView = new StringBuilder();
+      paramView.append("conf modify onClick=");
+      paramView.append(this.d);
+      g.a(paramView.toString());
       paramView = (StartPwdDigitSelActivity)s.a(s.this);
       paramView.finish();
       switch (this.d)
       {
       default: 
         return;
-      case 0: 
+      case 1: 
         localIntent = new Intent(paramView, StartPwdDigitVerifyActivity.class);
         localBundle = new Bundle();
-        localBundle.putInt("enter_type", 2);
+        localBundle.putInt("enter_type", 3);
         localIntent.putExtra("com.tencent.input_param", localBundle);
         paramView.startActivity(localIntent);
         return;
       }
       Intent localIntent = new Intent(paramView, StartPwdDigitVerifyActivity.class);
       Bundle localBundle = new Bundle();
-      localBundle.putInt("enter_type", 3);
+      localBundle.putInt("enter_type", 2);
       localIntent.putExtra("com.tencent.input_param", localBundle);
       paramView.startActivity(localIntent);
     }
@@ -101,19 +104,23 @@ class s
     
     public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
-      paramView = (TextView)paramView.findViewById(2131559252);
-      int i = s.a(s.this).getResources().getColor(2131492925);
-      int j = s.a(s.this).getResources().getColor(2131492933);
-      switch (paramMotionEvent.getAction())
-      {
-      }
-      for (;;)
-      {
-        return false;
-        paramView.setTextColor(j);
-        continue;
+      paramView = (TextView)paramView.findViewById(2131165985);
+      int i = s.a(s.this).getResources().getColor(2130968657);
+      int j = s.a(s.this).getResources().getColor(2130968665);
+      int k = paramMotionEvent.getAction();
+      if (k != 3) {
+        switch (k)
+        {
+        default: 
+          break;
+        case 0: 
+          paramView.setTextColor(j);
+          break;
+        }
+      } else {
         paramView.setTextColor(i);
       }
+      return false;
     }
   }
 }

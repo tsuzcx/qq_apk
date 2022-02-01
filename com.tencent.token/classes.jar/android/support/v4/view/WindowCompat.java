@@ -15,10 +15,10 @@ public final class WindowCompat
   public static <T extends View> T requireViewById(@NonNull Window paramWindow, @IdRes int paramInt)
   {
     paramWindow = paramWindow.findViewById(paramInt);
-    if (paramWindow == null) {
-      throw new IllegalArgumentException("ID does not reference a View inside this Window");
+    if (paramWindow != null) {
+      return paramWindow;
     }
-    return paramWindow;
+    throw new IllegalArgumentException("ID does not reference a View inside this Window");
   }
 }
 

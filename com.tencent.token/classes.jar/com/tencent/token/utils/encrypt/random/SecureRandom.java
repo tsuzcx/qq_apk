@@ -35,10 +35,10 @@ public class SecureRandom
   
   protected final int next(int paramInt)
   {
-    int i = 0;
     int k = (paramInt + 7) / 8;
     byte[] arrayOfByte = new byte[k];
     nextBytes(arrayOfByte);
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -55,9 +55,9 @@ public class SecureRandom
   
   public int nextInt()
   {
-    int i = 0;
     byte[] arrayOfByte = new byte[4];
     nextBytes(arrayOfByte);
+    int i = 0;
     int j = 0;
     while (i < 4)
     {

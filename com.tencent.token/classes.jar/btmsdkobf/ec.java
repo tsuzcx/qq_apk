@@ -9,11 +9,15 @@ public class ec
   
   public ec(String paramString)
   {
-    String str = paramString;
-    if (bc.o().getProductId() != 13) {
-      str = bc.o().getProductId() + paramString;
+    Object localObject = paramString;
+    if (bc.o().getProductId() != 13)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(bc.o().getProductId());
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    this.ob = new ej(bc.n(), str);
+    this.ob = new ej(bc.n(), (String)localObject);
   }
   
   public static ec cS()

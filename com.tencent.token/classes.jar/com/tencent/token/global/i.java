@@ -85,46 +85,44 @@ public class i
     if (paramView == null)
     {
       paramViewGroup = new a();
-      paramView = LayoutInflater.from(this.c).inflate(2130968739, null);
-      paramViewGroup.a = ((TextView)paramView.findViewById(2131559009));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131559007));
-      paramViewGroup.c = paramView.findViewById(2131559008);
+      paramView = LayoutInflater.from(this.c).inflate(2131296420, null);
+      paramViewGroup.a = ((TextView)paramView.findViewById(2131165761));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131165274));
+      paramViewGroup.c = paramView.findViewById(2131165762);
       paramView.setTag(paramViewGroup);
-      int i = getSectionForPosition(paramInt);
-      if ((paramInt <= 9) || (paramInt != getPositionForSection(i))) {
-        break label225;
-      }
+    }
+    else
+    {
+      paramViewGroup = (a)paramView.getTag();
+    }
+    int i = getSectionForPosition(paramInt);
+    if ((paramInt > 9) && (paramInt == getPositionForSection(i)))
+    {
       paramViewGroup.b.setVisibility(0);
       paramViewGroup.b.setText(((j)localObject).c());
       localObject = new RelativeLayout.LayoutParams(-1, -2);
       ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)IndexActivity.S_DENSITY * 13, 0, (int)IndexActivity.S_DENSITY * 13);
       paramViewGroup.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    for (;;)
+    else if (paramInt == 0)
     {
-      paramViewGroup.c.setOnClickListener(this.a);
-      paramViewGroup.c.setTag(Integer.valueOf(paramInt));
-      paramViewGroup.a.setText(((j)this.b.get(paramInt)).b());
-      return paramView;
-      paramViewGroup = (a)paramView.getTag();
-      break;
-      label225:
-      if (paramInt == 0)
+      paramViewGroup.b.setVisibility(0);
+      paramViewGroup.b.setText(this.c.getString(2131493298));
+      if ((paramViewGroup.b.getText() != null) && (paramViewGroup.b.getText().toString().equals(this.c.getString(2131493298))))
       {
-        paramViewGroup.b.setVisibility(0);
-        paramViewGroup.b.setText(this.c.getString(2131231156));
-        if ((paramViewGroup.b.getText() != null) && (paramViewGroup.b.getText().toString().equals(this.c.getString(2131231156))))
-        {
-          localObject = new RelativeLayout.LayoutParams(-1, -2);
-          ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)IndexActivity.S_DENSITY * 20, 0, (int)IndexActivity.S_DENSITY * 7);
-          paramViewGroup.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-      }
-      else
-      {
-        paramViewGroup.b.setVisibility(8);
+        localObject = new RelativeLayout.LayoutParams(-1, -2);
+        ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)IndexActivity.S_DENSITY * 20, 0, (int)IndexActivity.S_DENSITY * 7);
+        paramViewGroup.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
+    else
+    {
+      paramViewGroup.b.setVisibility(8);
+    }
+    paramViewGroup.c.setOnClickListener(this.a);
+    paramViewGroup.c.setTag(Integer.valueOf(paramInt));
+    paramViewGroup.a.setText(((j)this.b.get(paramInt)).b());
+    return paramView;
   }
   
   static final class a

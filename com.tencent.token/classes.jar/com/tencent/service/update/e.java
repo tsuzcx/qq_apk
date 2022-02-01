@@ -5,7 +5,7 @@ import com.tencent.token.global.RqdApplication;
 
 public class e
 {
-  private static e a = null;
+  private static e a;
   private final String A = "conch_update_cloud_conchseqno";
   private final String B = "conch_update_cloud_task_for_active";
   private final String C = "meri_silent_update_switch_user";
@@ -52,15 +52,16 @@ public class e
   
   public static e a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new e();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new e();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public void a(int paramInt)

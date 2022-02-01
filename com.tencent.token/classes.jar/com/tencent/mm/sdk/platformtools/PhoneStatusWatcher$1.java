@@ -20,11 +20,12 @@ class PhoneStatusWatcher$1
     {
     default: 
       return;
-    case 0: 
-      PhoneStatusWatcher.a(false);
+    case 1: 
+    case 2: 
+      PhoneStatusWatcher.a(true);
       return;
     }
-    PhoneStatusWatcher.a(true);
+    PhoneStatusWatcher.a(false);
   }
 }
 

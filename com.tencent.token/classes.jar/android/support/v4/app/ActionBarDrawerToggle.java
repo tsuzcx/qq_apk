@@ -49,34 +49,34 @@ public class ActionBarDrawerToggle
   private SetIndicatorInfo mSetIndicatorInfo;
   private SlideDrawable mSlider;
   
-  public ActionBarDrawerToggle(Activity paramActivity, DrawerLayout paramDrawerLayout, @DrawableRes int paramInt1, @StringRes int paramInt2, @StringRes int paramInt3) {}
+  public ActionBarDrawerToggle(Activity paramActivity, DrawerLayout paramDrawerLayout, @DrawableRes int paramInt1, @StringRes int paramInt2, @StringRes int paramInt3)
+  {
+    this(paramActivity, paramDrawerLayout, assumeMaterial(paramActivity) ^ true, paramInt1, paramInt2, paramInt3);
+  }
   
   public ActionBarDrawerToggle(Activity paramActivity, DrawerLayout paramDrawerLayout, boolean paramBoolean, @DrawableRes int paramInt1, @StringRes int paramInt2, @StringRes int paramInt3)
   {
     this.mActivity = paramActivity;
-    if ((paramActivity instanceof DelegateProvider))
-    {
+    if ((paramActivity instanceof DelegateProvider)) {
       this.mActivityImpl = ((DelegateProvider)paramActivity).getDrawerToggleDelegate();
-      this.mDrawerLayout = paramDrawerLayout;
-      this.mDrawerImageResource = paramInt1;
-      this.mOpenDrawerContentDescRes = paramInt2;
-      this.mCloseDrawerContentDescRes = paramInt3;
-      this.mHomeAsUpIndicator = getThemeUpIndicator();
-      this.mDrawerImage = ContextCompat.getDrawable(paramActivity, paramInt1);
-      this.mSlider = new SlideDrawable(this.mDrawerImage);
-      paramActivity = this.mSlider;
-      if (!paramBoolean) {
-        break label119;
-      }
-    }
-    label119:
-    for (float f = 0.3333333F;; f = 0.0F)
-    {
-      paramActivity.setOffset(f);
-      return;
+    } else {
       this.mActivityImpl = null;
-      break;
     }
+    this.mDrawerLayout = paramDrawerLayout;
+    this.mDrawerImageResource = paramInt1;
+    this.mOpenDrawerContentDescRes = paramInt2;
+    this.mCloseDrawerContentDescRes = paramInt3;
+    this.mHomeAsUpIndicator = getThemeUpIndicator();
+    this.mDrawerImage = ContextCompat.getDrawable(paramActivity, paramInt1);
+    this.mSlider = new SlideDrawable(this.mDrawerImage);
+    paramActivity = this.mSlider;
+    float f;
+    if (paramBoolean) {
+      f = 0.3333333F;
+    } else {
+      f = 0.0F;
+    }
+    paramActivity.setOffset(f);
   }
   
   private static boolean assumeMaterial(Context paramContext)
@@ -86,22 +86,24 @@ public class ActionBarDrawerToggle
   
   private Drawable getThemeUpIndicator()
   {
-    if (this.mActivityImpl != null) {
-      return this.mActivityImpl.getThemeUpIndicator();
+    Object localObject = this.mActivityImpl;
+    if (localObject != null) {
+      return ((Delegate)localObject).getThemeUpIndicator();
     }
     if (Build.VERSION.SDK_INT >= 18)
     {
       localObject = this.mActivity.getActionBar();
-      if (localObject != null) {}
-      for (localObject = ((ActionBar)localObject).getThemedContext();; localObject = this.mActivity)
-      {
-        localObject = ((Context)localObject).obtainStyledAttributes(null, THEME_ATTRS, 16843470, 0);
-        localDrawable = ((TypedArray)localObject).getDrawable(0);
-        ((TypedArray)localObject).recycle();
-        return localDrawable;
+      if (localObject != null) {
+        localObject = ((ActionBar)localObject).getThemedContext();
+      } else {
+        localObject = this.mActivity;
       }
+      localObject = ((Context)localObject).obtainStyledAttributes(null, THEME_ATTRS, 16843470, 0);
+      localDrawable = ((TypedArray)localObject).getDrawable(0);
+      ((TypedArray)localObject).recycle();
+      return localDrawable;
     }
-    Object localObject = this.mActivity.obtainStyledAttributes(THEME_ATTRS);
+    localObject = this.mActivity.obtainStyledAttributes(THEME_ATTRS);
     Drawable localDrawable = ((TypedArray)localObject).getDrawable(0);
     ((TypedArray)localObject).recycle();
     return localDrawable;
@@ -109,79 +111,83 @@ public class ActionBarDrawerToggle
   
   private void setActionBarDescription(int paramInt)
   {
-    if (this.mActivityImpl != null) {
-      this.mActivityImpl.setActionBarDescription(paramInt);
-    }
-    ActionBar localActionBar;
-    do
+    Object localObject = this.mActivityImpl;
+    if (localObject != null)
     {
-      do
-      {
-        return;
-        if (Build.VERSION.SDK_INT < 18) {
-          break;
-        }
-        localActionBar = this.mActivity.getActionBar();
-      } while (localActionBar == null);
-      localActionBar.setHomeActionContentDescription(paramInt);
+      ((Delegate)localObject).setActionBarDescription(paramInt);
       return;
+    }
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      localObject = this.mActivity.getActionBar();
+      if (localObject != null) {
+        ((ActionBar)localObject).setHomeActionContentDescription(paramInt);
+      }
+    }
+    else
+    {
       if (this.mSetIndicatorInfo == null) {
         this.mSetIndicatorInfo = new SetIndicatorInfo(this.mActivity);
       }
-    } while (this.mSetIndicatorInfo.mSetHomeAsUpIndicator == null);
-    try
-    {
-      localActionBar = this.mActivity.getActionBar();
-      this.mSetIndicatorInfo.mSetHomeActionContentDescription.invoke(localActionBar, new Object[] { Integer.valueOf(paramInt) });
-      localActionBar.setSubtitle(localActionBar.getSubtitle());
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.w("ActionBarDrawerToggle", "Couldn't set content description via JB-MR2 API", localException);
+      if (this.mSetIndicatorInfo.mSetHomeAsUpIndicator != null) {
+        try
+        {
+          localObject = this.mActivity.getActionBar();
+          this.mSetIndicatorInfo.mSetHomeActionContentDescription.invoke(localObject, new Object[] { Integer.valueOf(paramInt) });
+          ((ActionBar)localObject).setSubtitle(((ActionBar)localObject).getSubtitle());
+          return;
+        }
+        catch (Exception localException)
+        {
+          Log.w("ActionBarDrawerToggle", "Couldn't set content description via JB-MR2 API", localException);
+        }
+      }
     }
   }
   
   private void setActionBarUpIndicator(Drawable paramDrawable, int paramInt)
   {
-    if (this.mActivityImpl != null) {
-      this.mActivityImpl.setActionBarUpIndicator(paramDrawable, paramInt);
-    }
-    ActionBar localActionBar;
-    do
+    Object localObject = this.mActivityImpl;
+    if (localObject != null)
     {
-      return;
-      if (Build.VERSION.SDK_INT < 18) {
-        break;
-      }
-      localActionBar = this.mActivity.getActionBar();
-    } while (localActionBar == null);
-    localActionBar.setHomeAsUpIndicator(paramDrawable);
-    localActionBar.setHomeActionContentDescription(paramInt);
-    return;
-    if (this.mSetIndicatorInfo == null) {
-      this.mSetIndicatorInfo = new SetIndicatorInfo(this.mActivity);
-    }
-    if (this.mSetIndicatorInfo.mSetHomeAsUpIndicator != null) {
-      try
-      {
-        localActionBar = this.mActivity.getActionBar();
-        this.mSetIndicatorInfo.mSetHomeAsUpIndicator.invoke(localActionBar, new Object[] { paramDrawable });
-        this.mSetIndicatorInfo.mSetHomeActionContentDescription.invoke(localActionBar, new Object[] { Integer.valueOf(paramInt) });
-        return;
-      }
-      catch (Exception paramDrawable)
-      {
-        Log.w("ActionBarDrawerToggle", "Couldn't set home-as-up indicator via JB-MR2 API", paramDrawable);
-        return;
-      }
-    }
-    if (this.mSetIndicatorInfo.mUpIndicatorView != null)
-    {
-      this.mSetIndicatorInfo.mUpIndicatorView.setImageDrawable(paramDrawable);
+      ((Delegate)localObject).setActionBarUpIndicator(paramDrawable, paramInt);
       return;
     }
-    Log.w("ActionBarDrawerToggle", "Couldn't set home-as-up indicator");
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      localObject = this.mActivity.getActionBar();
+      if (localObject != null)
+      {
+        ((ActionBar)localObject).setHomeAsUpIndicator(paramDrawable);
+        ((ActionBar)localObject).setHomeActionContentDescription(paramInt);
+      }
+    }
+    else
+    {
+      if (this.mSetIndicatorInfo == null) {
+        this.mSetIndicatorInfo = new SetIndicatorInfo(this.mActivity);
+      }
+      if (this.mSetIndicatorInfo.mSetHomeAsUpIndicator != null) {
+        try
+        {
+          localObject = this.mActivity.getActionBar();
+          this.mSetIndicatorInfo.mSetHomeAsUpIndicator.invoke(localObject, new Object[] { paramDrawable });
+          this.mSetIndicatorInfo.mSetHomeActionContentDescription.invoke(localObject, new Object[] { Integer.valueOf(paramInt) });
+          return;
+        }
+        catch (Exception paramDrawable)
+        {
+          Log.w("ActionBarDrawerToggle", "Couldn't set home-as-up indicator via JB-MR2 API", paramDrawable);
+          return;
+        }
+      }
+      if (this.mSetIndicatorInfo.mUpIndicatorView != null)
+      {
+        this.mSetIndicatorInfo.mUpIndicatorView.setImageDrawable(paramDrawable);
+        return;
+      }
+      Log.w("ActionBarDrawerToggle", "Couldn't set home-as-up indicator");
+    }
   }
   
   public boolean isDrawerIndicatorEnabled()
@@ -217,12 +223,12 @@ public class ActionBarDrawerToggle
   public void onDrawerSlide(View paramView, float paramFloat)
   {
     float f = this.mSlider.getPosition();
-    if (paramFloat > 0.5F) {}
-    for (paramFloat = Math.max(f, Math.max(0.0F, paramFloat - 0.5F) * 2.0F);; paramFloat = Math.min(f, paramFloat * 2.0F))
-    {
-      this.mSlider.setPosition(paramFloat);
-      return;
+    if (paramFloat > 0.5F) {
+      paramFloat = Math.max(f, Math.max(0.0F, paramFloat - 0.5F) * 2.0F);
+    } else {
+      paramFloat = Math.min(f, paramFloat * 2.0F);
     }
+    this.mSlider.setPosition(paramFloat);
   }
   
   public void onDrawerStateChanged(int paramInt) {}
@@ -233,88 +239,82 @@ public class ActionBarDrawerToggle
     {
       if (this.mDrawerLayout.isDrawerVisible(8388611)) {
         this.mDrawerLayout.closeDrawer(8388611);
-      }
-      for (;;)
-      {
-        return true;
+      } else {
         this.mDrawerLayout.openDrawer(8388611);
       }
+      return true;
     }
     return false;
   }
   
   public void setDrawerIndicatorEnabled(boolean paramBoolean)
   {
-    int i;
     if (paramBoolean != this.mDrawerIndicatorEnabled)
     {
-      if (!paramBoolean) {
-        break label55;
+      if (paramBoolean)
+      {
+        SlideDrawable localSlideDrawable = this.mSlider;
+        int i;
+        if (this.mDrawerLayout.isDrawerOpen(8388611)) {
+          i = this.mCloseDrawerContentDescRes;
+        } else {
+          i = this.mOpenDrawerContentDescRes;
+        }
+        setActionBarUpIndicator(localSlideDrawable, i);
       }
-      SlideDrawable localSlideDrawable = this.mSlider;
-      if (!this.mDrawerLayout.isDrawerOpen(8388611)) {
-        break label47;
+      else
+      {
+        setActionBarUpIndicator(this.mHomeAsUpIndicator, 0);
       }
-      i = this.mCloseDrawerContentDescRes;
-      setActionBarUpIndicator(localSlideDrawable, i);
-    }
-    for (;;)
-    {
       this.mDrawerIndicatorEnabled = paramBoolean;
-      return;
-      label47:
-      i = this.mOpenDrawerContentDescRes;
-      break;
-      label55:
-      setActionBarUpIndicator(this.mHomeAsUpIndicator, 0);
     }
   }
   
   public void setHomeAsUpIndicator(int paramInt)
   {
-    Drawable localDrawable = null;
+    Drawable localDrawable;
     if (paramInt != 0) {
       localDrawable = ContextCompat.getDrawable(this.mActivity, paramInt);
+    } else {
+      localDrawable = null;
     }
     setHomeAsUpIndicator(localDrawable);
   }
   
   public void setHomeAsUpIndicator(Drawable paramDrawable)
   {
-    if (paramDrawable == null) {
-      this.mHomeAsUpIndicator = getThemeUpIndicator();
-    }
-    for (this.mHasCustomUpIndicator = false;; this.mHasCustomUpIndicator = true)
+    if (paramDrawable == null)
     {
-      if (!this.mDrawerIndicatorEnabled) {
-        setActionBarUpIndicator(this.mHomeAsUpIndicator, 0);
-      }
-      return;
+      this.mHomeAsUpIndicator = getThemeUpIndicator();
+      this.mHasCustomUpIndicator = false;
+    }
+    else
+    {
       this.mHomeAsUpIndicator = paramDrawable;
+      this.mHasCustomUpIndicator = true;
+    }
+    if (!this.mDrawerIndicatorEnabled) {
+      setActionBarUpIndicator(this.mHomeAsUpIndicator, 0);
     }
   }
   
   public void syncState()
   {
-    SlideDrawable localSlideDrawable;
-    if (this.mDrawerLayout.isDrawerOpen(8388611))
-    {
+    if (this.mDrawerLayout.isDrawerOpen(8388611)) {
       this.mSlider.setPosition(1.0F);
-      if (this.mDrawerIndicatorEnabled)
-      {
-        localSlideDrawable = this.mSlider;
-        if (!this.mDrawerLayout.isDrawerOpen(8388611)) {
-          break label69;
-        }
-      }
-    }
-    label69:
-    for (int i = this.mCloseDrawerContentDescRes;; i = this.mOpenDrawerContentDescRes)
-    {
-      setActionBarUpIndicator(localSlideDrawable, i);
-      return;
+    } else {
       this.mSlider.setPosition(0.0F);
-      break;
+    }
+    if (this.mDrawerIndicatorEnabled)
+    {
+      SlideDrawable localSlideDrawable = this.mSlider;
+      int i;
+      if (this.mDrawerLayout.isDrawerOpen(8388611)) {
+        i = this.mCloseDrawerContentDescRes;
+      } else {
+        i = this.mOpenDrawerContentDescRes;
+      }
+      setActionBarUpIndicator(localSlideDrawable, i);
     }
   }
   
@@ -344,38 +344,33 @@ public class ActionBarDrawerToggle
     
     SetIndicatorInfo(Activity paramActivity)
     {
-      for (;;)
+      try
       {
+        this.mSetHomeAsUpIndicator = ActionBar.class.getDeclaredMethod("setHomeAsUpIndicator", new Class[] { Drawable.class });
+        this.mSetHomeActionContentDescription = ActionBar.class.getDeclaredMethod("setHomeActionContentDescription", new Class[] { Integer.TYPE });
+        return;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        label46:
         Object localObject;
-        try
-        {
-          this.mSetHomeAsUpIndicator = ActionBar.class.getDeclaredMethod("setHomeAsUpIndicator", new Class[] { Drawable.class });
-          this.mSetHomeActionContentDescription = ActionBar.class.getDeclaredMethod("setHomeActionContentDescription", new Class[] { Integer.TYPE });
-          return;
-        }
-        catch (NoSuchMethodException localNoSuchMethodException)
-        {
-          paramActivity = paramActivity.findViewById(16908332);
-          if (paramActivity == null) {
-            continue;
-          }
-          localObject = (ViewGroup)paramActivity.getParent();
-          if (((ViewGroup)localObject).getChildCount() != 2) {
-            continue;
-          }
-          paramActivity = ((ViewGroup)localObject).getChildAt(0);
-          localObject = ((ViewGroup)localObject).getChildAt(1);
-          if (paramActivity.getId() != 16908332) {
-            break label113;
-          }
-        }
+        break label46;
+      }
+      paramActivity = paramActivity.findViewById(16908332);
+      if (paramActivity == null) {
+        return;
+      }
+      localObject = (ViewGroup)paramActivity.getParent();
+      if (((ViewGroup)localObject).getChildCount() != 2) {
+        return;
+      }
+      paramActivity = ((ViewGroup)localObject).getChildAt(0);
+      localObject = ((ViewGroup)localObject).getChildAt(1);
+      if (paramActivity.getId() == 16908332) {
         paramActivity = (Activity)localObject;
-        label113:
-        while ((paramActivity instanceof ImageView))
-        {
-          this.mUpIndicatorView = ((ImageView)paramActivity);
-          return;
-        }
+      }
+      if ((paramActivity instanceof ImageView)) {
+        this.mUpIndicatorView = ((ImageView)paramActivity);
       }
     }
   }
@@ -401,29 +396,29 @@ public class ActionBarDrawerToggle
     
     public void draw(@NonNull Canvas paramCanvas)
     {
-      int j = 1;
       copyBounds(this.mTmpRect);
       paramCanvas.save();
-      if (ViewCompat.getLayoutDirection(ActionBarDrawerToggle.this.mActivity.getWindow().getDecorView()) == 1) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          j = -1;
-        }
-        int k = this.mTmpRect.width();
-        float f1 = -this.mOffset;
-        float f2 = k;
-        float f3 = this.mPosition;
-        paramCanvas.translate(j * (f1 * f2 * f3), 0.0F);
-        if ((i != 0) && (!this.mHasMirroring))
-        {
-          paramCanvas.translate(k, 0.0F);
-          paramCanvas.scale(-1.0F, 1.0F);
-        }
-        super.draw(paramCanvas);
-        paramCanvas.restore();
-        return;
+      int i = ViewCompat.getLayoutDirection(ActionBarDrawerToggle.this.mActivity.getWindow().getDecorView());
+      int j = 1;
+      if (i == 1) {
+        i = 1;
+      } else {
+        i = 0;
       }
+      if (i != 0) {
+        j = -1;
+      }
+      int k = this.mTmpRect.width();
+      float f1 = -this.mOffset;
+      float f2 = k;
+      paramCanvas.translate(f1 * f2 * this.mPosition * j, 0.0F);
+      if ((i != 0) && (!this.mHasMirroring))
+      {
+        paramCanvas.translate(f2, 0.0F);
+        paramCanvas.scale(-1.0F, 1.0F);
+      }
+      super.draw(paramCanvas);
+      paramCanvas.restore();
     }
     
     public float getPosition()

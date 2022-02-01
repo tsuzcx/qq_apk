@@ -42,45 +42,42 @@ public class k
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject;
     if (paramView == null)
     {
-      localObject = new a();
-      paramView = LayoutInflater.from(this.a).inflate(2130968678, paramViewGroup, false);
-      ((a)localObject).d = paramView.findViewById(2131558970);
-      ((a)localObject).a = ((TextView)paramView.findViewById(2131558973));
-      ((a)localObject).b = ((ImageView)paramView.findViewById(2131558971));
-      ((a)localObject).c = ((ImageView)paramView.findViewById(2131558972));
-      paramView.setTag(localObject);
-      paramViewGroup = (ViewGroup)localObject;
-      localObject = (e)this.b.get(paramInt);
-      if ((localObject != null) && (((e)localObject).f()))
-      {
-        if (!TextUtils.isEmpty(((e)localObject).c())) {
-          paramViewGroup.a.setText(((e)localObject).c());
-        }
-        paramViewGroup.d.setOnClickListener(((e)localObject).d());
-        if (((e)localObject).b() <= 0) {
-          break label201;
-        }
-        paramViewGroup.b.setImageResource(((e)localObject).b());
-      }
+      paramView = new a();
+      paramViewGroup = LayoutInflater.from(this.a).inflate(2131296359, paramViewGroup, false);
+      paramView.d = paramViewGroup.findViewById(2131165611);
+      paramView.a = ((TextView)paramViewGroup.findViewById(2131166156));
+      paramView.b = ((ImageView)paramViewGroup.findViewById(2131165609));
+      paramView.c = ((ImageView)paramViewGroup.findViewById(2131165610));
+      paramViewGroup.setTag(paramView);
     }
-    for (;;)
+    else
     {
-      if (!((e)localObject).e()) {
-        break label231;
-      }
-      paramViewGroup.c.setVisibility(0);
-      return paramView;
-      paramViewGroup = (a)paramView.getTag();
-      break;
-      label201:
-      new a(paramViewGroup.b).execute(new String[] { ((e)localObject).a() });
+      localObject = (a)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
     }
-    label231:
-    paramViewGroup.c.setVisibility(4);
-    return paramView;
+    Object localObject = (e)this.b.get(paramInt);
+    if ((localObject != null) && (((e)localObject).f()))
+    {
+      if (!TextUtils.isEmpty(((e)localObject).c())) {
+        paramView.a.setText(((e)localObject).c());
+      }
+      paramView.d.setOnClickListener(((e)localObject).d());
+      if (((e)localObject).b() > 0) {
+        paramView.b.setImageResource(((e)localObject).b());
+      } else {
+        new a(paramView.b).execute(new String[] { ((e)localObject).a() });
+      }
+      if (((e)localObject).e())
+      {
+        paramView.c.setVisibility(0);
+        return paramViewGroup;
+      }
+      paramView.c.setVisibility(4);
+    }
+    return paramViewGroup;
   }
   
   class a

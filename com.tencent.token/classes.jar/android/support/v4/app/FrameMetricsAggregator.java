@@ -95,39 +95,57 @@ public class FrameMetricsAggregator
   {
     private static final int NANOS_PER_MS = 1000000;
     private static final int NANOS_ROUNDING_VALUE = 500000;
-    private static Handler sHandler = null;
-    private static HandlerThread sHandlerThread = null;
+    private static Handler sHandler;
+    private static HandlerThread sHandlerThread;
     private ArrayList<WeakReference<Activity>> mActivities = new ArrayList();
     Window.OnFrameMetricsAvailableListener mListener = new Window.OnFrameMetricsAvailableListener()
     {
       public void onFrameMetricsAvailable(Window paramAnonymousWindow, FrameMetrics paramAnonymousFrameMetrics, int paramAnonymousInt)
       {
-        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x1) != 0) {
-          FrameMetricsAggregator.FrameMetricsApi24Impl.this.addDurationItem(FrameMetricsAggregator.FrameMetricsApi24Impl.this.mMetrics[0], paramAnonymousFrameMetrics.getMetric(8));
+        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x1) != 0)
+        {
+          paramAnonymousWindow = FrameMetricsAggregator.FrameMetricsApi24Impl.this;
+          paramAnonymousWindow.addDurationItem(paramAnonymousWindow.mMetrics[0], paramAnonymousFrameMetrics.getMetric(8));
         }
-        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x2) != 0) {
-          FrameMetricsAggregator.FrameMetricsApi24Impl.this.addDurationItem(FrameMetricsAggregator.FrameMetricsApi24Impl.this.mMetrics[1], paramAnonymousFrameMetrics.getMetric(1));
+        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x2) != 0)
+        {
+          paramAnonymousWindow = FrameMetricsAggregator.FrameMetricsApi24Impl.this;
+          paramAnonymousWindow.addDurationItem(paramAnonymousWindow.mMetrics[1], paramAnonymousFrameMetrics.getMetric(1));
         }
-        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x4) != 0) {
-          FrameMetricsAggregator.FrameMetricsApi24Impl.this.addDurationItem(FrameMetricsAggregator.FrameMetricsApi24Impl.this.mMetrics[2], paramAnonymousFrameMetrics.getMetric(3));
+        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x4) != 0)
+        {
+          paramAnonymousWindow = FrameMetricsAggregator.FrameMetricsApi24Impl.this;
+          paramAnonymousWindow.addDurationItem(paramAnonymousWindow.mMetrics[2], paramAnonymousFrameMetrics.getMetric(3));
         }
-        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x8) != 0) {
-          FrameMetricsAggregator.FrameMetricsApi24Impl.this.addDurationItem(FrameMetricsAggregator.FrameMetricsApi24Impl.this.mMetrics[3], paramAnonymousFrameMetrics.getMetric(4));
+        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x8) != 0)
+        {
+          paramAnonymousWindow = FrameMetricsAggregator.FrameMetricsApi24Impl.this;
+          paramAnonymousWindow.addDurationItem(paramAnonymousWindow.mMetrics[3], paramAnonymousFrameMetrics.getMetric(4));
         }
-        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x10) != 0) {
-          FrameMetricsAggregator.FrameMetricsApi24Impl.this.addDurationItem(FrameMetricsAggregator.FrameMetricsApi24Impl.this.mMetrics[4], paramAnonymousFrameMetrics.getMetric(5));
+        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x10) != 0)
+        {
+          paramAnonymousWindow = FrameMetricsAggregator.FrameMetricsApi24Impl.this;
+          paramAnonymousWindow.addDurationItem(paramAnonymousWindow.mMetrics[4], paramAnonymousFrameMetrics.getMetric(5));
         }
-        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x40) != 0) {
-          FrameMetricsAggregator.FrameMetricsApi24Impl.this.addDurationItem(FrameMetricsAggregator.FrameMetricsApi24Impl.this.mMetrics[6], paramAnonymousFrameMetrics.getMetric(7));
+        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x40) != 0)
+        {
+          paramAnonymousWindow = FrameMetricsAggregator.FrameMetricsApi24Impl.this;
+          paramAnonymousWindow.addDurationItem(paramAnonymousWindow.mMetrics[6], paramAnonymousFrameMetrics.getMetric(7));
         }
-        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x20) != 0) {
-          FrameMetricsAggregator.FrameMetricsApi24Impl.this.addDurationItem(FrameMetricsAggregator.FrameMetricsApi24Impl.this.mMetrics[5], paramAnonymousFrameMetrics.getMetric(6));
+        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x20) != 0)
+        {
+          paramAnonymousWindow = FrameMetricsAggregator.FrameMetricsApi24Impl.this;
+          paramAnonymousWindow.addDurationItem(paramAnonymousWindow.mMetrics[5], paramAnonymousFrameMetrics.getMetric(6));
         }
-        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x80) != 0) {
-          FrameMetricsAggregator.FrameMetricsApi24Impl.this.addDurationItem(FrameMetricsAggregator.FrameMetricsApi24Impl.this.mMetrics[7], paramAnonymousFrameMetrics.getMetric(0));
+        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x80) != 0)
+        {
+          paramAnonymousWindow = FrameMetricsAggregator.FrameMetricsApi24Impl.this;
+          paramAnonymousWindow.addDurationItem(paramAnonymousWindow.mMetrics[7], paramAnonymousFrameMetrics.getMetric(0));
         }
-        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x100) != 0) {
-          FrameMetricsAggregator.FrameMetricsApi24Impl.this.addDurationItem(FrameMetricsAggregator.FrameMetricsApi24Impl.this.mMetrics[8], paramAnonymousFrameMetrics.getMetric(2));
+        if ((FrameMetricsAggregator.FrameMetricsApi24Impl.this.mTrackingFlags & 0x100) != 0)
+        {
+          paramAnonymousWindow = FrameMetricsAggregator.FrameMetricsApi24Impl.this;
+          paramAnonymousWindow.addDurationItem(paramAnonymousWindow.mMetrics[8], paramAnonymousFrameMetrics.getMetric(2));
         }
       }
     };
@@ -151,8 +169,9 @@ public class FrameMetricsAggregator
       int i = 0;
       while (i <= 8)
       {
-        if ((this.mMetrics[i] == null) && ((this.mTrackingFlags & 1 << i) != 0)) {
-          this.mMetrics[i] = new SparseIntArray();
+        SparseIntArray[] arrayOfSparseIntArray = this.mMetrics;
+        if ((arrayOfSparseIntArray[i] == null) && ((this.mTrackingFlags & 1 << i) != 0)) {
+          arrayOfSparseIntArray[i] = new SparseIntArray();
         }
         i += 1;
       }

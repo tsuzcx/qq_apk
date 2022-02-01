@@ -43,24 +43,30 @@ public final class ba
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.bM, 0);
-    if (this.dc != 0) {
-      paramJceOutputStream.write(this.dc, 1);
+    int i = this.dc;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.dd != 0) {
-      paramJceOutputStream.write(this.dd, 2);
+    i = this.dd;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
     paramJceOutputStream.write(this.df, 3);
-    if (this.dg != 0) {
-      paramJceOutputStream.write(this.dg, 4);
+    i = this.dg;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 5);
+    Object localObject = this.data;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
-    if (this.ds != null) {
-      paramJceOutputStream.write(this.ds, 6);
+    localObject = this.ds;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.di != 0) {
-      paramJceOutputStream.write(this.di, 7);
+    i = this.di;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 7);
     }
   }
 }

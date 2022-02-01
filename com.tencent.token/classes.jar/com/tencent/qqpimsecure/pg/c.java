@@ -40,49 +40,53 @@ public class c
     MSolution localMSolution = new MSolution();
     Intent localIntent = new Intent();
     localIntent.setComponent(new ComponentName("com.android.settings", "com.android.settings.ChooseLockGeneric"));
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    Object localObject = null;
-    paramContext = localObject;
-    if (localPackageManager != null) {}
+    paramContext = paramContext.getPackageManager();
+    if (paramContext != null) {}
     try
     {
-      paramContext = localPackageManager.queryIntentActivities(localIntent, 65536);
-      if ((paramContext == null) || (paramContext.size() == 0) || (!((ResolveInfo)paramContext.get(0)).activityInfo.exported)) {
-        localMIntent.mAction = "android.settings.SETTINGS";
-      }
-      for (localMSolution.mIntentCheck = 1;; localMSolution.mIntentCheck = 8)
-      {
-        localMIntent.mFlags = 276856832;
-        localMSolution.mJumpIntent = localMIntent;
-        localMSolution.mHelpInfo = "取消系统锁屏获得更好体验\n关闭后可设置新锁屏的密码";
-        localMSolution.mHelpStyle = 2;
-        localMSolution.mVersion = 1;
-        return localMSolution;
-        localMIntent.mPackage = "com.android.settings";
-        localMIntent.mClass = "com.android.settings.ChooseLockGeneric";
-      }
+      paramContext = paramContext.queryIntentActivities(localIntent, 65536);
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        paramContext = localObject;
-      }
+      label60:
+      break label60;
     }
+    paramContext = null;
+    if ((paramContext != null) && (paramContext.size() != 0) && (((ResolveInfo)paramContext.get(0)).activityInfo.exported))
+    {
+      localMIntent.mPackage = "com.android.settings";
+      localMIntent.mClass = "com.android.settings.ChooseLockGeneric";
+      localMSolution.mIntentCheck = 8;
+    }
+    else
+    {
+      localMIntent.mAction = "android.settings.SETTINGS";
+      localMSolution.mIntentCheck = 1;
+    }
+    localMIntent.mFlags = 276856832;
+    localMSolution.mJumpIntent = localMIntent;
+    localMSolution.mHelpInfo = "取消系统锁屏获得更好体验\n关闭后可设置新锁屏的密码";
+    localMSolution.mHelpStyle = 2;
+    localMSolution.mVersion = 1;
+    return localMSolution;
   }
   
   public static MSolution a(Context paramContext, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 30104)
     {
-    default: 
-      return null;
-    case 30118: 
+      if (paramInt != 30118)
+      {
+        if (paramInt != 30123)
+        {
+          if (paramInt != 30125) {
+            return null;
+          }
+          return b(paramContext);
+        }
+        return a();
+      }
       return a(paramContext);
-    case 30123: 
-      return a();
-    case 30125: 
-      return b(paramContext);
     }
     return c(paramContext);
   }
@@ -93,120 +97,113 @@ public class c
     if (paramArrayOfString == null) {
       arrayOfString = new String[0];
     }
+    paramArrayOfString = null;
     try
     {
-      paramArrayOfString = Build.MANUFACTURER.toLowerCase(Locale.getDefault());
+      localObject1 = Build.MANUFACTURER.toLowerCase(Locale.getDefault());
     }
-    catch (Throwable paramArrayOfString)
+    catch (Throwable localThrowable1)
     {
-      for (;;)
-      {
-        Object localObject2;
-        label46:
-        int j;
-        int i;
-        paramArrayOfString = null;
-        Object localObject1 = paramArrayOfString;
-        paramArrayOfString = null;
-        continue;
-        i += 1;
-      }
+      Object localObject1;
+      Object localObject2;
+      label42:
+      int j;
+      int i;
+      break label42;
     }
     try
     {
       localObject2 = Build.BRAND.toLowerCase(Locale.getDefault());
-      localObject1 = paramArrayOfString;
       paramArrayOfString = (String[])localObject2;
-      if (localObject1 != null) {
-        break label130;
-      }
-      localObject1 = "";
     }
-    catch (Throwable localThrowable)
+    catch (Throwable localThrowable2)
     {
-      break label110;
-      break label46;
+      break label44;
     }
-    localObject2 = paramArrayOfString;
-    if (paramArrayOfString == null) {
+    localObject1 = null;
+    label44:
+    localObject2 = localObject1;
+    if (localObject1 == null) {
       localObject2 = "";
+    }
+    localObject1 = paramArrayOfString;
+    if (paramArrayOfString == null) {
+      localObject1 = "";
     }
     j = arrayOfString.length;
     i = 0;
-    if (i < j)
+    while (i < j)
     {
       paramArrayOfString = arrayOfString[i];
       if (!TextUtils.isEmpty(paramArrayOfString))
       {
         paramArrayOfString = paramArrayOfString.toLowerCase(Locale.getDefault());
-        if ((((String)localObject1).contains(paramArrayOfString)) || (((String)localObject2).contains(paramArrayOfString))) {
+        if ((((String)localObject2).contains(paramArrayOfString)) || (((String)localObject1).contains(paramArrayOfString))) {
           return true;
         }
       }
+      i += 1;
     }
-    label110:
     return false;
   }
   
   private static MSolution b(Context paramContext)
   {
-    if ((paramContext == null) || (Build.VERSION.SDK_INT < 14)) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        paramContext = VpnService.prepare(paramContext);
-        if (paramContext == null) {
-          continue;
-        }
-        MIntent localMIntent = new MIntent();
-        localMIntent.mAction = paramContext.getAction();
-        localMIntent.mUri = paramContext.getDataString();
-        localMIntent.mType = paramContext.getType();
-        localMIntent.mPackage = paramContext.getComponent().getPackageName();
-        localMIntent.mClass = paramContext.getComponent().getClassName();
-        localMIntent.mFlags = paramContext.getFlags();
-        paramContext = new MSolution();
-        paramContext.mJumpIntent = localMIntent;
-        paramContext.mHelpStyle = 0;
-        paramContext.mIntentCheck = 0;
-        paramContext.mVersion = 1;
-        return paramContext;
-      }
-      catch (Throwable paramContext)
-      {
-        for (;;)
-        {
-          paramContext = null;
-        }
+    if (paramContext != null) {
+      if (Build.VERSION.SDK_INT < 14) {
+        return null;
       }
     }
+    try
+    {
+      paramContext = VpnService.prepare(paramContext);
+    }
+    catch (Throwable paramContext)
+    {
+      label22:
+      MIntent localMIntent;
+      break label22;
+    }
+    paramContext = null;
+    if (paramContext == null) {
+      return null;
+    }
+    localMIntent = new MIntent();
+    localMIntent.mAction = paramContext.getAction();
+    localMIntent.mUri = paramContext.getDataString();
+    localMIntent.mType = paramContext.getType();
+    localMIntent.mPackage = paramContext.getComponent().getPackageName();
+    localMIntent.mClass = paramContext.getComponent().getClassName();
+    localMIntent.mFlags = paramContext.getFlags();
+    paramContext = new MSolution();
+    paramContext.mJumpIntent = localMIntent;
+    paramContext.mHelpStyle = 0;
+    paramContext.mIntentCheck = 0;
+    paramContext.mVersion = 1;
+    return paramContext;
+    return null;
   }
   
   private static MSolution c(Context paramContext)
   {
-    Object localObject;
-    if ((!a(new String[] { "xiaomi" })) || (Build.VERSION.SDK_INT >= 23)) {
-      localObject = null;
-    }
-    do
+    if (a(new String[] { "xiaomi" }))
     {
-      MSolution localMSolution;
-      do
-      {
-        do
-        {
-          return localObject;
-          localMSolution = d(paramContext);
-          localObject = localMSolution;
-        } while (localMSolution != null);
-        localMSolution = e(paramContext);
-        localObject = localMSolution;
-      } while (localMSolution != null);
+      if (Build.VERSION.SDK_INT >= 23) {
+        return null;
+      }
+      MSolution localMSolution = d(paramContext);
+      if (localMSolution != null) {
+        return localMSolution;
+      }
+      localMSolution = e(paramContext);
+      if (localMSolution != null) {
+        return localMSolution;
+      }
       paramContext = f(paramContext);
-      localObject = paramContext;
-    } while (paramContext != null);
+      if (paramContext != null) {
+        return paramContext;
+      }
+    }
     return null;
   }
   
@@ -261,7 +258,11 @@ public class c
       ((MSolution)localObject2).mIntentCheck = 8;
       ((MSolution)localObject2).mVersion = 1;
       ((MSolution)localObject2).mHelpStyle = 2;
-      ((MSolution)localObject2).mHelpInfo = ("1、找到“" + paramContext + "”，点击进入\r\n2、然后点击“自定义配置”，选择“保持联网”");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("1、找到“");
+      ((StringBuilder)localObject1).append(paramContext);
+      ((StringBuilder)localObject1).append("”，点击进入\r\n2、然后点击“自定义配置”，选择“保持联网”");
+      ((MSolution)localObject2).mHelpInfo = ((StringBuilder)localObject1).toString();
       return localObject2;
     }
     return null;
@@ -292,7 +293,11 @@ public class c
       ((MSolution)localObject2).mIntentCheck = 8;
       ((MSolution)localObject2).mVersion = 1;
       ((MSolution)localObject2).mHelpStyle = 2;
-      ((MSolution)localObject2).mHelpInfo = ("1、找到“" + paramContext + "”，取消右边的“√”\r\n2、点击右上角“确定”");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("1、找到“");
+      ((StringBuilder)localObject1).append(paramContext);
+      ((StringBuilder)localObject1).append("”，取消右边的“√”\r\n2、点击右上角“确定”");
+      ((MSolution)localObject2).mHelpInfo = ((StringBuilder)localObject1).toString();
       return localObject2;
     }
     return null;

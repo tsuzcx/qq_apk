@@ -74,83 +74,63 @@ public class MMSharedPreferences
   {
     try
     {
-      Cursor localCursor = this.i.query(MMPluginProviderConstants.SharedPref.CONTENT_URI, this.columns, null, null, null);
-      if (localCursor == null) {
+      Object localObject1 = this.i.query(MMPluginProviderConstants.SharedPref.CONTENT_URI, this.columns, null, null, null);
+      if (localObject1 == null) {
         return null;
       }
-      int m = localCursor.getColumnIndex("key");
-      int n = localCursor.getColumnIndex("type");
-      int i1 = localCursor.getColumnIndex("value");
-      while (localCursor.moveToNext())
+      int m = ((Cursor)localObject1).getColumnIndex("key");
+      int n = ((Cursor)localObject1).getColumnIndex("type");
+      int i1 = ((Cursor)localObject1).getColumnIndex("value");
+      while (((Cursor)localObject1).moveToNext())
       {
-        Object localObject = MMPluginProviderConstants.Resolver.resolveObj(localCursor.getInt(n), localCursor.getString(i1));
-        this.j.put(localCursor.getString(m), localObject);
+        Object localObject2 = MMPluginProviderConstants.Resolver.resolveObj(((Cursor)localObject1).getInt(n), ((Cursor)localObject1).getString(i1));
+        this.j.put(((Cursor)localObject1).getString(m), localObject2);
       }
-      localException.close();
+      ((Cursor)localObject1).close();
+      localObject1 = this.j;
+      return localObject1;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      return this.j;
     }
-    HashMap localHashMap = this.j;
-    return localHashMap;
+    return this.j;
   }
   
   public boolean getBoolean(String paramString, boolean paramBoolean)
   {
     paramString = getValue(paramString);
-    boolean bool = paramBoolean;
-    if (paramString != null)
-    {
-      bool = paramBoolean;
-      if ((paramString instanceof Boolean)) {
-        bool = ((Boolean)paramString).booleanValue();
-      }
+    if ((paramString != null) && ((paramString instanceof Boolean))) {
+      return ((Boolean)paramString).booleanValue();
     }
-    return bool;
+    return paramBoolean;
   }
   
   public float getFloat(String paramString, float paramFloat)
   {
     paramString = getValue(paramString);
-    float f = paramFloat;
-    if (paramString != null)
-    {
-      f = paramFloat;
-      if ((paramString instanceof Float)) {
-        f = ((Float)paramString).floatValue();
-      }
+    if ((paramString != null) && ((paramString instanceof Float))) {
+      return ((Float)paramString).floatValue();
     }
-    return f;
+    return paramFloat;
   }
   
   public int getInt(String paramString, int paramInt)
   {
     paramString = getValue(paramString);
-    int m = paramInt;
-    if (paramString != null)
-    {
-      m = paramInt;
-      if ((paramString instanceof Integer)) {
-        m = ((Integer)paramString).intValue();
-      }
+    if ((paramString != null) && ((paramString instanceof Integer))) {
+      return ((Integer)paramString).intValue();
     }
-    return m;
+    return paramInt;
   }
   
   public long getLong(String paramString, long paramLong)
   {
     paramString = getValue(paramString);
-    long l = paramLong;
-    if (paramString != null)
-    {
-      l = paramLong;
-      if ((paramString instanceof Long)) {
-        l = ((Long)paramString).longValue();
-      }
+    if ((paramString != null) && ((paramString instanceof Long))) {
+      return ((Long)paramString).longValue();
     }
-    return l;
+    return paramLong;
   }
   
   public String getString(String paramString1, String paramString2)

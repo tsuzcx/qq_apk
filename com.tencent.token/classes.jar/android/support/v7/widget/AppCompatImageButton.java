@@ -43,11 +43,13 @@ public class AppCompatImageButton
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.applySupportBackgroundTint();
+    Object localObject = this.mBackgroundTintHelper;
+    if (localObject != null) {
+      ((AppCompatBackgroundHelper)localObject).applySupportBackgroundTint();
     }
-    if (this.mImageHelper != null) {
-      this.mImageHelper.applySupportImageTint();
+    localObject = this.mImageHelper;
+    if (localObject != null) {
+      ((AppCompatImageHelper)localObject).applySupportImageTint();
     }
   }
   
@@ -55,8 +57,9 @@ public class AppCompatImageButton
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (this.mBackgroundTintHelper != null) {
-      return this.mBackgroundTintHelper.getSupportBackgroundTintList();
+    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
+    if (localAppCompatBackgroundHelper != null) {
+      return localAppCompatBackgroundHelper.getSupportBackgroundTintList();
     }
     return null;
   }
@@ -65,8 +68,9 @@ public class AppCompatImageButton
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.mBackgroundTintHelper != null) {
-      return this.mBackgroundTintHelper.getSupportBackgroundTintMode();
+    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
+    if (localAppCompatBackgroundHelper != null) {
+      return localAppCompatBackgroundHelper.getSupportBackgroundTintMode();
     }
     return null;
   }
@@ -75,8 +79,9 @@ public class AppCompatImageButton
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public ColorStateList getSupportImageTintList()
   {
-    if (this.mImageHelper != null) {
-      return this.mImageHelper.getSupportImageTintList();
+    AppCompatImageHelper localAppCompatImageHelper = this.mImageHelper;
+    if (localAppCompatImageHelper != null) {
+      return localAppCompatImageHelper.getSupportImageTintList();
     }
     return null;
   }
@@ -85,8 +90,9 @@ public class AppCompatImageButton
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public PorterDuff.Mode getSupportImageTintMode()
   {
-    if (this.mImageHelper != null) {
-      return this.mImageHelper.getSupportImageTintMode();
+    AppCompatImageHelper localAppCompatImageHelper = this.mImageHelper;
+    if (localAppCompatImageHelper != null) {
+      return localAppCompatImageHelper.getSupportImageTintMode();
     }
     return null;
   }
@@ -99,32 +105,36 @@ public class AppCompatImageButton
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.onSetBackgroundDrawable(paramDrawable);
+    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
+    if (localAppCompatBackgroundHelper != null) {
+      localAppCompatBackgroundHelper.onSetBackgroundDrawable(paramDrawable);
     }
   }
   
   public void setBackgroundResource(@DrawableRes int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.onSetBackgroundResource(paramInt);
+    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
+    if (localAppCompatBackgroundHelper != null) {
+      localAppCompatBackgroundHelper.onSetBackgroundResource(paramInt);
     }
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
     super.setImageBitmap(paramBitmap);
-    if (this.mImageHelper != null) {
-      this.mImageHelper.applySupportImageTint();
+    paramBitmap = this.mImageHelper;
+    if (paramBitmap != null) {
+      paramBitmap.applySupportImageTint();
     }
   }
   
   public void setImageDrawable(@Nullable Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    if (this.mImageHelper != null) {
-      this.mImageHelper.applySupportImageTint();
+    paramDrawable = this.mImageHelper;
+    if (paramDrawable != null) {
+      paramDrawable.applySupportImageTint();
     }
   }
   
@@ -136,40 +146,45 @@ public class AppCompatImageButton
   public void setImageURI(@Nullable Uri paramUri)
   {
     super.setImageURI(paramUri);
-    if (this.mImageHelper != null) {
-      this.mImageHelper.applySupportImageTint();
+    paramUri = this.mImageHelper;
+    if (paramUri != null) {
+      paramUri.applySupportImageTint();
     }
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void setSupportBackgroundTintList(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.setSupportBackgroundTintList(paramColorStateList);
+    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
+    if (localAppCompatBackgroundHelper != null) {
+      localAppCompatBackgroundHelper.setSupportBackgroundTintList(paramColorStateList);
     }
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void setSupportBackgroundTintMode(@Nullable PorterDuff.Mode paramMode)
   {
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.setSupportBackgroundTintMode(paramMode);
+    AppCompatBackgroundHelper localAppCompatBackgroundHelper = this.mBackgroundTintHelper;
+    if (localAppCompatBackgroundHelper != null) {
+      localAppCompatBackgroundHelper.setSupportBackgroundTintMode(paramMode);
     }
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void setSupportImageTintList(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.mImageHelper != null) {
-      this.mImageHelper.setSupportImageTintList(paramColorStateList);
+    AppCompatImageHelper localAppCompatImageHelper = this.mImageHelper;
+    if (localAppCompatImageHelper != null) {
+      localAppCompatImageHelper.setSupportImageTintList(paramColorStateList);
     }
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void setSupportImageTintMode(@Nullable PorterDuff.Mode paramMode)
   {
-    if (this.mImageHelper != null) {
-      this.mImageHelper.setSupportImageTintMode(paramMode);
+    AppCompatImageHelper localAppCompatImageHelper = this.mImageHelper;
+    if (localAppCompatImageHelper != null) {
+      localAppCompatImageHelper.setSupportImageTintMode(paramMode);
     }
   }
 }

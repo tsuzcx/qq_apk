@@ -1,6 +1,6 @@
 package com.tencent.mm.sdk.openapi;
 
-interface package-info {}
+abstract interface package-info {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

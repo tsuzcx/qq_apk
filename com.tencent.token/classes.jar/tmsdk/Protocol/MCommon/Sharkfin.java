@@ -41,29 +41,37 @@ public final class Sharkfin
   {
     paramJceOutputStream.write(this.apn, 0);
     paramJceOutputStream.write(this.authType, 1);
-    if (this.guid != null) {
-      paramJceOutputStream.write(this.guid, 2);
+    String str = this.guid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.ext1 != null) {
-      paramJceOutputStream.write(this.ext1, 3);
+    str = this.ext1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.sessionId != null) {
-      paramJceOutputStream.write(this.sessionId, 4);
+    str = this.sessionId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.buildno != 0) {
-      paramJceOutputStream.write(this.buildno, 5);
+    int i = this.buildno;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
-    if (this.netType != 0) {
-      paramJceOutputStream.write(this.netType, 6);
+    i = this.netType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 6);
     }
-    if (this.accountId != 0L) {
-      paramJceOutputStream.write(this.accountId, 7);
+    long l = this.accountId;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 7);
     }
-    if (this.bootType != 0) {
-      paramJceOutputStream.write(this.bootType, 8);
+    i = this.bootType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 8);
     }
-    if (this.wsGuid != null) {
-      paramJceOutputStream.write(this.wsGuid, 9);
+    str = this.wsGuid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }

@@ -25,8 +25,9 @@ public class FitWindowsLinearLayout
   
   protected boolean fitSystemWindows(Rect paramRect)
   {
-    if (this.mListener != null) {
-      this.mListener.onFitSystemWindows(paramRect);
+    FitWindowsViewGroup.OnFitSystemWindowsListener localOnFitSystemWindowsListener = this.mListener;
+    if (localOnFitSystemWindowsListener != null) {
+      localOnFitSystemWindowsListener.onFitSystemWindows(paramRect);
     }
     return super.fitSystemWindows(paramRect);
   }

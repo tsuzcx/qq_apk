@@ -33,7 +33,7 @@ public final class SQLiteDatabase
   public static final int CONFLICT_NONE = 0;
   public static final int CONFLICT_REPLACE = 5;
   public static final int CONFLICT_ROLLBACK = 1;
-  private static final String[] CONFLICT_VALUES;
+  private static final String[] CONFLICT_VALUES = { "", " OR ROLLBACK ", " OR ABORT ", " OR FAIL ", " OR IGNORE ", " OR REPLACE " };
   public static final int CREATE_IF_NECESSARY = 268435456;
   public static final int ENABLE_IO_TRACE = 256;
   public static final int ENABLE_WRITE_AHEAD_LOGGING = 536870912;
@@ -65,73 +65,41 @@ public final class SQLiteDatabase
   
   static
   {
-    if (!SQLiteDatabase.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      SQLiteGlobal.loadLib();
-      sActiveDatabases = new WeakHashMap();
-      CONFLICT_VALUES = new String[] { "", " OR ROLLBACK ", " OR ABORT ", " OR FAIL ", " OR IGNORE ", " OR REPLACE " };
-      return;
-    }
+    SQLiteGlobal.loadLib();
+    sActiveDatabases = new WeakHashMap();
   }
   
   private SQLiteDatabase(String paramString, int paramInt, CursorFactory paramCursorFactory, DatabaseErrorHandler paramDatabaseErrorHandler)
   {
     this.mCursorFactory = paramCursorFactory;
-    if (paramDatabaseErrorHandler != null) {}
-    for (;;)
-    {
-      this.mErrorHandler = paramDatabaseErrorHandler;
-      this.mConfigurationLocked = new SQLiteDatabaseConfiguration(paramString, paramInt);
-      return;
+    if (paramDatabaseErrorHandler == null) {
       paramDatabaseErrorHandler = new DefaultDatabaseErrorHandler(true);
     }
+    this.mErrorHandler = paramDatabaseErrorHandler;
+    this.mConfigurationLocked = new SQLiteDatabaseConfiguration(paramString, paramInt);
   }
   
-  /* Error */
   private void beginTransaction(SQLiteTransactionListener paramSQLiteTransactionListener, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 143	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
-    //   4: aload_0
-    //   5: invokevirtual 147	com/tencent/wcdb/database/SQLiteDatabase:getThreadSession	()Lcom/tencent/wcdb/database/SQLiteSession;
-    //   8: astore 4
-    //   10: iload_2
-    //   11: ifeq +23 -> 34
-    //   14: iconst_2
-    //   15: istore_3
-    //   16: aload 4
-    //   18: iload_3
-    //   19: aload_1
-    //   20: aload_0
-    //   21: iconst_0
-    //   22: invokevirtual 151	com/tencent/wcdb/database/SQLiteDatabase:getThreadDefaultConnectionFlags	(Z)I
-    //   25: aconst_null
-    //   26: invokevirtual 156	com/tencent/wcdb/database/SQLiteSession:beginTransaction	(ILcom/tencent/wcdb/database/SQLiteTransactionListener;ILcom/tencent/wcdb/support/CancellationSignal;)V
-    //   29: aload_0
-    //   30: invokevirtual 159	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-    //   33: return
-    //   34: iconst_1
-    //   35: istore_3
-    //   36: goto -20 -> 16
-    //   39: astore_1
-    //   40: aload_0
-    //   41: invokevirtual 159	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-    //   44: aload_1
-    //   45: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	46	0	this	SQLiteDatabase
-    //   0	46	1	paramSQLiteTransactionListener	SQLiteTransactionListener
-    //   0	46	2	paramBoolean	boolean
-    //   15	21	3	i	int
-    //   8	9	4	localSQLiteSession	SQLiteSession
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	39	finally
-    //   16	29	39	finally
+    acquireReference();
+    for (;;)
+    {
+      try
+      {
+        SQLiteSession localSQLiteSession = getThreadSession();
+        if (paramBoolean)
+        {
+          i = 2;
+          localSQLiteSession.beginTransaction(i, paramSQLiteTransactionListener, getThreadDefaultConnectionFlags(false), null);
+          return;
+        }
+      }
+      finally
+      {
+        releaseReference();
+      }
+      int i = 1;
+    }
   }
   
   private void collectDbStats(ArrayList<SQLiteDebug.DbStats> paramArrayList)
@@ -152,59 +120,74 @@ public final class SQLiteDatabase
   
   public static boolean deleteDatabase(File paramFile)
   {
-    if (paramFile == null) {
-      throw new IllegalArgumentException("file must not be null");
-    }
-    boolean bool1 = paramFile.delete() | new File(paramFile.getPath() + "-journal").delete() | new File(paramFile.getPath() + "-shm").delete() | new File(paramFile.getPath() + "-wal").delete();
-    File localFile = paramFile.getParentFile();
-    boolean bool2 = bool1;
-    if (localFile != null)
+    if (paramFile != null)
     {
-      paramFile = localFile.listFiles(new FileFilter()
-      {
-        public boolean accept(File paramAnonymousFile)
-        {
-          return paramAnonymousFile.getName().startsWith(this.val$prefix);
-        }
-      });
+      boolean bool1 = paramFile.delete();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramFile.getPath());
+      ((StringBuilder)localObject).append("-journal");
+      boolean bool2 = new File(((StringBuilder)localObject).toString()).delete();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramFile.getPath());
+      ((StringBuilder)localObject).append("-shm");
+      boolean bool3 = new File(((StringBuilder)localObject).toString()).delete();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramFile.getPath());
+      ((StringBuilder)localObject).append("-wal");
+      bool1 = bool1 | bool2 | bool3 | new File(((StringBuilder)localObject).toString()).delete();
+      localObject = paramFile.getParentFile();
       bool2 = bool1;
-      if (paramFile != null)
+      if (localObject != null)
       {
-        int j = paramFile.length;
-        int i = 0;
-        for (;;)
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramFile.getName());
+        localStringBuilder.append("-mj");
+        paramFile = ((File)localObject).listFiles(new FileFilter()
         {
-          bool2 = bool1;
-          if (i >= j) {
-            break;
+          public boolean accept(File paramAnonymousFile)
+          {
+            return paramAnonymousFile.getName().startsWith(this.val$prefix);
           }
-          bool2 = paramFile[i].delete();
-          i += 1;
-          bool1 = bool2 | bool1;
+        });
+        bool2 = bool1;
+        if (paramFile != null)
+        {
+          int j = paramFile.length;
+          int i = 0;
+          for (;;)
+          {
+            bool2 = bool1;
+            if (i >= j) {
+              break;
+            }
+            bool1 |= paramFile[i].delete();
+            i += 1;
+          }
         }
       }
+      return bool2;
     }
-    return bool2;
+    throw new IllegalArgumentException("file must not be null");
   }
   
   private void dispose(boolean paramBoolean)
   {
-    SQLiteConnectionPool localSQLiteConnectionPool;
     synchronized (this.mLock)
     {
-      localSQLiteConnectionPool = this.mConnectionPoolLocked;
+      SQLiteConnectionPool localSQLiteConnectionPool = this.mConnectionPoolLocked;
       this.mConnectionPoolLocked = null;
-      if (paramBoolean) {}
-    }
-    synchronized (sActiveDatabases)
-    {
-      sActiveDatabases.remove(this);
-      if (localSQLiteConnectionPool != null) {
-        localSQLiteConnectionPool.close();
+      if (!paramBoolean) {
+        synchronized (sActiveDatabases)
+        {
+          sActiveDatabases.remove(this);
+          if (localSQLiteConnectionPool != null)
+          {
+            localSQLiteConnectionPool.close();
+            return;
+          }
+        }
       }
       return;
-      localObject2 = finally;
-      throw localObject2;
     }
   }
   
@@ -216,33 +199,90 @@ public final class SQLiteDatabase
     }
   }
   
+  /* Error */
   private int executeSql(String paramString, Object[] paramArrayOfObject, CancellationSignal paramCancellationSignal)
   {
-    int i = 1;
-    acquireReference();
-    for (;;)
-    {
-      try
-      {
-        if (DatabaseUtils.getSqlStatementType(paramString) == 3) {}
-        synchronized (this.mLock)
-        {
-          if (!this.mHasAttachedDbsLocked)
-          {
-            this.mHasAttachedDbsLocked = true;
-            if (i != 0) {
-              disableWriteAheadLogging();
-            }
-            paramString = new SQLiteStatement(this, paramString, paramArrayOfObject);
-          }
-        }
-        i = 0;
-      }
-      finally
-      {
-        releaseReference();
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 135	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
+    //   4: aload_1
+    //   5: invokestatic 259	com/tencent/wcdb/DatabaseUtils:getSqlStatementType	(Ljava/lang/String;)I
+    //   8: iconst_3
+    //   9: if_icmpne +51 -> 60
+    //   12: iconst_0
+    //   13: istore 4
+    //   15: aload_0
+    //   16: getfield 114	com/tencent/wcdb/database/SQLiteDatabase:mLock	Ljava/lang/Object;
+    //   19: astore 5
+    //   21: aload 5
+    //   23: monitorenter
+    //   24: aload_0
+    //   25: getfield 261	com/tencent/wcdb/database/SQLiteDatabase:mHasAttachedDbsLocked	Z
+    //   28: ifne +11 -> 39
+    //   31: aload_0
+    //   32: iconst_1
+    //   33: putfield 261	com/tencent/wcdb/database/SQLiteDatabase:mHasAttachedDbsLocked	Z
+    //   36: iconst_1
+    //   37: istore 4
+    //   39: aload 5
+    //   41: monitorexit
+    //   42: iload 4
+    //   44: ifeq +16 -> 60
+    //   47: aload_0
+    //   48: invokevirtual 264	com/tencent/wcdb/database/SQLiteDatabase:disableWriteAheadLogging	()V
+    //   51: goto +9 -> 60
+    //   54: astore_1
+    //   55: aload 5
+    //   57: monitorexit
+    //   58: aload_1
+    //   59: athrow
+    //   60: new 266	com/tencent/wcdb/database/SQLiteStatement
+    //   63: dup
+    //   64: aload_0
+    //   65: aload_1
+    //   66: aload_2
+    //   67: invokespecial 269	com/tencent/wcdb/database/SQLiteStatement:<init>	(Lcom/tencent/wcdb/database/SQLiteDatabase;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   70: astore_1
+    //   71: aload_1
+    //   72: aload_3
+    //   73: invokevirtual 273	com/tencent/wcdb/database/SQLiteStatement:executeUpdateDelete	(Lcom/tencent/wcdb/support/CancellationSignal;)I
+    //   76: istore 4
+    //   78: aload_1
+    //   79: invokevirtual 274	com/tencent/wcdb/database/SQLiteStatement:close	()V
+    //   82: aload_0
+    //   83: invokevirtual 151	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   86: iload 4
+    //   88: ireturn
+    //   89: astore_2
+    //   90: aload_1
+    //   91: invokevirtual 274	com/tencent/wcdb/database/SQLiteStatement:close	()V
+    //   94: aload_2
+    //   95: athrow
+    //   96: astore_1
+    //   97: aload_0
+    //   98: invokevirtual 151	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   101: aload_1
+    //   102: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	103	0	this	SQLiteDatabase
+    //   0	103	1	paramString	String
+    //   0	103	2	paramArrayOfObject	Object[]
+    //   0	103	3	paramCancellationSignal	CancellationSignal
+    //   13	74	4	i	int
+    // Exception table:
+    //   from	to	target	type
+    //   24	36	54	finally
+    //   39	42	54	finally
+    //   55	58	54	finally
+    //   71	78	89	finally
+    //   4	12	96	finally
+    //   15	24	96	finally
+    //   47	51	96	finally
+    //   58	60	96	finally
+    //   60	71	96	finally
+    //   78	82	96	finally
+    //   90	96	96	finally
   }
   
   public static String findEditTable(String paramString)
@@ -251,23 +291,13 @@ public final class SQLiteDatabase
     {
       int i = paramString.indexOf(' ');
       int j = paramString.indexOf(',');
-      String str;
       if ((i > 0) && ((i < j) || (j < 0))) {
-        str = paramString.substring(0, i);
+        return paramString.substring(0, i);
       }
-      do
-      {
-        do
-        {
-          return str;
-          str = paramString;
-        } while (j <= 0);
-        if (j < i) {
-          break;
-        }
-        str = paramString;
-      } while (i >= 0);
-      return paramString.substring(0, j);
+      if ((j > 0) && ((j < i) || (i < 0))) {
+        return paramString.substring(0, j);
+      }
+      return paramString;
     }
     throw new IllegalStateException("Invalid tables");
   }
@@ -328,17 +358,25 @@ public final class SQLiteDatabase
       openInner(paramArrayOfByte, paramSQLiteCipherSpec, paramInt);
       return;
     }
-    catch (SQLiteDatabaseCorruptException localSQLiteDatabaseCorruptException)
+    catch (SQLiteException paramArrayOfByte)
     {
+      break label24;
       onCorruption();
       openInner(paramArrayOfByte, paramSQLiteCipherSpec, paramInt);
       return;
-    }
-    catch (SQLiteException paramArrayOfByte)
-    {
-      Log.e("WCDB.SQLiteDatabase", "Failed to open database '" + getLabel() + "'.", new Object[] { paramArrayOfByte });
+      paramSQLiteCipherSpec = new StringBuilder();
+      paramSQLiteCipherSpec.append("Failed to open database '");
+      paramSQLiteCipherSpec.append(getLabel());
+      paramSQLiteCipherSpec.append("'.");
+      Log.e("WCDB.SQLiteDatabase", paramSQLiteCipherSpec.toString(), new Object[] { paramArrayOfByte });
       close();
       throw paramArrayOfByte;
+    }
+    catch (SQLiteDatabaseCorruptException localSQLiteDatabaseCorruptException)
+    {
+      label12:
+      label24:
+      break label12;
     }
   }
   
@@ -373,15 +411,13 @@ public final class SQLiteDatabase
   {
     synchronized (this.mLock)
     {
-      if ((!$assertionsDisabled) && (this.mConnectionPoolLocked != null)) {
-        throw new AssertionError();
+      this.mConnectionPoolLocked = SQLiteConnectionPool.open(this, this.mConfigurationLocked, ???, paramSQLiteCipherSpec, paramInt);
+      synchronized (sActiveDatabases)
+      {
+        sActiveDatabases.put(this, null);
+        return;
       }
-    }
-    this.mConnectionPoolLocked = SQLiteConnectionPool.open(this, this.mConfigurationLocked, ???, paramSQLiteCipherSpec, paramInt);
-    synchronized (sActiveDatabases)
-    {
-      sActiveDatabases.put(this, null);
-      return;
+      throw ???;
     }
   }
   
@@ -427,9 +463,11 @@ public final class SQLiteDatabase
   
   public static SQLiteDatabase openOrCreateDatabase(String paramString, CursorFactory paramCursorFactory, boolean paramBoolean)
   {
-    int i = 268435456;
+    int i;
     if (paramBoolean) {
       i = 805306368;
+    } else {
+      i = 268435456;
     }
     return openDatabase(paramString, null, null, paramCursorFactory, i, null, 0);
   }
@@ -481,9 +519,14 @@ public final class SQLiteDatabase
   
   private void throwIfNotOpenLocked()
   {
-    if (this.mConnectionPoolLocked == null) {
-      throw new IllegalStateException("The database '" + this.mConfigurationLocked.label + "' is not open.");
+    if (this.mConnectionPoolLocked != null) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("The database '");
+    localStringBuilder.append(this.mConfigurationLocked.label);
+    localStringBuilder.append("' is not open.");
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   private boolean yieldIfContendedHelper(boolean paramBoolean, long paramLong)
@@ -506,21 +549,21 @@ public final class SQLiteDatabase
     if (paramString == null) {
       str = "unnamedNative";
     }
-    if (paramBoolean1) {}
-    long l;
-    for (int i = 1;; i = 2)
-    {
-      int j = i;
-      if (paramBoolean2) {
-        j = i | 0x4;
-      }
-      l = getThreadSession().acquireConnectionForNativeHandle(j).getNativeHandle(str);
-      if (l != 0L) {
-        break;
-      }
-      throw new IllegalStateException("SQLiteConnection native handle not initialized.");
+    int i;
+    if (paramBoolean1) {
+      i = 1;
+    } else {
+      i = 2;
     }
-    return l;
+    int j = i;
+    if (paramBoolean2) {
+      j = i | 0x4;
+    }
+    long l = getThreadSession().acquireConnectionForNativeHandle(j).getNativeHandle(str);
+    if (l != 0L) {
+      return l;
+    }
+    throw new IllegalStateException("SQLiteConnection native handle not initialized.");
   }
   
   public void addCustomFunction(String arg1, int paramInt, CustomFunction paramCustomFunction)
@@ -587,79 +630,38 @@ public final class SQLiteDatabase
     }
   }
   
-  /* Error */
   public int delete(String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 143	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
-    //   4: new 193	java/lang/StringBuilder
-    //   7: dup
-    //   8: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   11: ldc_w 508
-    //   14: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: aload_1
-    //   18: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: astore 5
-    //   23: aload_2
-    //   24: invokestatic 289	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   27: ifne +60 -> 87
-    //   30: new 193	java/lang/StringBuilder
-    //   33: dup
-    //   34: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   37: ldc_w 510
-    //   40: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: aload_2
-    //   44: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: astore_1
-    //   51: new 273	com/tencent/wcdb/database/SQLiteStatement
-    //   54: dup
-    //   55: aload_0
-    //   56: aload 5
-    //   58: aload_1
-    //   59: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: aload_3
-    //   66: invokespecial 276	com/tencent/wcdb/database/SQLiteStatement:<init>	(Lcom/tencent/wcdb/database/SQLiteDatabase;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   69: astore_1
-    //   70: aload_1
-    //   71: invokevirtual 512	com/tencent/wcdb/database/SQLiteStatement:executeUpdateDelete	()I
-    //   74: istore 4
-    //   76: aload_1
-    //   77: invokevirtual 281	com/tencent/wcdb/database/SQLiteStatement:close	()V
-    //   80: aload_0
-    //   81: invokevirtual 159	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-    //   84: iload 4
-    //   86: ireturn
-    //   87: ldc 97
-    //   89: astore_1
-    //   90: goto -39 -> 51
-    //   93: astore_2
-    //   94: aload_1
-    //   95: invokevirtual 281	com/tencent/wcdb/database/SQLiteStatement:close	()V
-    //   98: aload_2
-    //   99: athrow
-    //   100: astore_1
-    //   101: aload_0
-    //   102: invokevirtual 159	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-    //   105: aload_1
-    //   106: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	107	0	this	SQLiteDatabase
-    //   0	107	1	paramString1	String
-    //   0	107	2	paramString2	String
-    //   0	107	3	paramArrayOfString	String[]
-    //   74	11	4	i	int
-    //   21	36	5	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   70	76	93	finally
-    //   4	51	100	finally
-    //   51	70	100	finally
-    //   76	80	100	finally
-    //   94	100	100	finally
+    acquireReference();
+    for (;;)
+    {
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("DELETE FROM ");
+        localStringBuilder.append(paramString1);
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append(" WHERE ");
+          paramString1.append(paramString2);
+          paramString1 = paramString1.toString();
+          localStringBuilder.append(paramString1);
+          paramString1 = new SQLiteStatement(this, localStringBuilder.toString(), paramArrayOfString);
+          try
+          {
+            int i = paramString1.executeUpdateDelete();
+            return i;
+          }
+          finally {}
+        }
+        paramString1 = "";
+      }
+      finally
+      {
+        releaseReference();
+      }
+    }
   }
   
   public void disableWriteAheadLogging()
@@ -672,6 +674,17 @@ public final class SQLiteDatabase
       }
       SQLiteDatabaseConfiguration localSQLiteDatabaseConfiguration1 = this.mConfigurationLocked;
       localSQLiteDatabaseConfiguration1.openFlags &= 0xDFFFFFFF;
+      try
+      {
+        this.mConnectionPoolLocked.reconfigure(this.mConfigurationLocked);
+        return;
+      }
+      catch (RuntimeException localRuntimeException)
+      {
+        SQLiteDatabaseConfiguration localSQLiteDatabaseConfiguration2 = this.mConfigurationLocked;
+        localSQLiteDatabaseConfiguration2.openFlags = (0x20000000 | localSQLiteDatabaseConfiguration2.openFlags);
+        throw localRuntimeException;
+      }
     }
   }
   
@@ -704,11 +717,26 @@ public final class SQLiteDatabase
       }
       if (this.mHasAttachedDbsLocked)
       {
-        Log.i("WCDB.SQLiteDatabase", "this database: " + this.mConfigurationLocked.label + " has attached databases. can't  enable WAL.");
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("this database: ");
+        ((StringBuilder)localObject2).append(this.mConfigurationLocked.label);
+        ((StringBuilder)localObject2).append(" has attached databases. can't  enable WAL.");
+        Log.i("WCDB.SQLiteDatabase", ((StringBuilder)localObject2).toString());
         return false;
       }
-      SQLiteDatabaseConfiguration localSQLiteDatabaseConfiguration1 = this.mConfigurationLocked;
-      localSQLiteDatabaseConfiguration1.openFlags |= 0x20000000;
+      Object localObject2 = this.mConfigurationLocked;
+      ((SQLiteDatabaseConfiguration)localObject2).openFlags = (0x20000000 | ((SQLiteDatabaseConfiguration)localObject2).openFlags);
+      try
+      {
+        this.mConnectionPoolLocked.reconfigure(this.mConfigurationLocked);
+        return true;
+      }
+      catch (RuntimeException localRuntimeException)
+      {
+        SQLiteDatabaseConfiguration localSQLiteDatabaseConfiguration = this.mConfigurationLocked;
+        localSQLiteDatabaseConfiguration.openFlags &= 0xDFFFFFFF;
+        throw localRuntimeException;
+      }
     }
   }
   
@@ -764,113 +792,120 @@ public final class SQLiteDatabase
   public java.util.List<Pair<String, String>> getAttachedDbs()
   {
     // Byte code:
-    //   0: new 242	java/util/ArrayList
+    //   0: new 235	java/util/ArrayList
     //   3: dup
-    //   4: invokespecial 303	java/util/ArrayList:<init>	()V
-    //   7: astore_1
+    //   4: invokespecial 296	java/util/ArrayList:<init>	()V
+    //   7: astore_3
     //   8: aload_0
-    //   9: getfield 122	com/tencent/wcdb/database/SQLiteDatabase:mLock	Ljava/lang/Object;
+    //   9: getfield 114	com/tencent/wcdb/database/SQLiteDatabase:mLock	Ljava/lang/Object;
     //   12: astore_2
     //   13: aload_2
     //   14: monitorenter
     //   15: aload_0
-    //   16: getfield 163	com/tencent/wcdb/database/SQLiteDatabase:mConnectionPoolLocked	Lcom/tencent/wcdb/database/SQLiteConnectionPool;
-    //   19: ifnonnull +7 -> 26
-    //   22: aload_2
-    //   23: monitorexit
-    //   24: aconst_null
-    //   25: areturn
-    //   26: aload_0
-    //   27: getfield 268	com/tencent/wcdb/database/SQLiteDatabase:mHasAttachedDbsLocked	Z
-    //   30: ifne +29 -> 59
-    //   33: aload_1
-    //   34: new 555	android/util/Pair
-    //   37: dup
-    //   38: ldc_w 557
-    //   41: aload_0
-    //   42: getfield 133	com/tencent/wcdb/database/SQLiteDatabase:mConfigurationLocked	Lcom/tencent/wcdb/database/SQLiteDatabaseConfiguration;
-    //   45: getfield 560	com/tencent/wcdb/database/SQLiteDatabaseConfiguration:path	Ljava/lang/String;
-    //   48: invokespecial 563	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   51: invokevirtual 487	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   54: pop
-    //   55: aload_2
-    //   56: monitorexit
-    //   57: aload_1
-    //   58: areturn
-    //   59: aload_0
-    //   60: invokevirtual 143	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
-    //   63: aload_2
-    //   64: monitorexit
+    //   16: getfield 155	com/tencent/wcdb/database/SQLiteDatabase:mConnectionPoolLocked	Lcom/tencent/wcdb/database/SQLiteConnectionPool;
+    //   19: astore 4
+    //   21: aconst_null
+    //   22: astore_1
+    //   23: aload 4
+    //   25: ifnonnull +7 -> 32
+    //   28: aload_2
+    //   29: monitorexit
+    //   30: aconst_null
+    //   31: areturn
+    //   32: aload_0
+    //   33: getfield 261	com/tencent/wcdb/database/SQLiteDatabase:mHasAttachedDbsLocked	Z
+    //   36: ifne +29 -> 65
+    //   39: aload_3
+    //   40: new 547	android/util/Pair
+    //   43: dup
+    //   44: ldc_w 549
+    //   47: aload_0
+    //   48: getfield 130	com/tencent/wcdb/database/SQLiteDatabase:mConfigurationLocked	Lcom/tencent/wcdb/database/SQLiteDatabaseConfiguration;
+    //   51: getfield 552	com/tencent/wcdb/database/SQLiteDatabaseConfiguration:path	Ljava/lang/String;
+    //   54: invokespecial 555	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   57: invokevirtual 479	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   60: pop
+    //   61: aload_2
+    //   62: monitorexit
+    //   63: aload_3
+    //   64: areturn
     //   65: aload_0
-    //   66: ldc_w 565
-    //   69: aconst_null
-    //   70: invokevirtual 569	com/tencent/wcdb/database/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/wcdb/Cursor;
-    //   73: astore_2
-    //   74: aload_2
-    //   75: invokeinterface 574 1 0
-    //   80: ifeq +57 -> 137
-    //   83: aload_1
-    //   84: new 555	android/util/Pair
-    //   87: dup
-    //   88: aload_2
-    //   89: iconst_1
-    //   90: invokeinterface 578 2 0
-    //   95: aload_2
-    //   96: iconst_2
-    //   97: invokeinterface 578 2 0
-    //   102: invokespecial 563	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   105: invokevirtual 487	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   108: pop
-    //   109: goto -35 -> 74
-    //   112: astore_1
-    //   113: aload_2
-    //   114: ifnull +9 -> 123
-    //   117: aload_2
-    //   118: invokeinterface 579 1 0
-    //   123: aload_1
-    //   124: athrow
-    //   125: astore_1
-    //   126: aload_0
-    //   127: invokevirtual 159	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-    //   130: aload_1
-    //   131: athrow
-    //   132: astore_1
-    //   133: aload_2
-    //   134: monitorexit
-    //   135: aload_1
-    //   136: athrow
-    //   137: aload_2
-    //   138: ifnull +9 -> 147
-    //   141: aload_2
-    //   142: invokeinterface 579 1 0
-    //   147: aload_0
-    //   148: invokevirtual 159	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-    //   151: aload_1
-    //   152: areturn
-    //   153: astore_1
-    //   154: aconst_null
-    //   155: astore_2
-    //   156: goto -43 -> 113
+    //   66: invokevirtual 135	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
+    //   69: aload_2
+    //   70: monitorexit
+    //   71: aload_0
+    //   72: ldc_w 557
+    //   75: aconst_null
+    //   76: invokevirtual 561	com/tencent/wcdb/database/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/wcdb/Cursor;
+    //   79: astore_2
+    //   80: aload_2
+    //   81: astore_1
+    //   82: aload_2
+    //   83: invokeinterface 566 1 0
+    //   88: ifeq +34 -> 122
+    //   91: aload_2
+    //   92: astore_1
+    //   93: aload_3
+    //   94: new 547	android/util/Pair
+    //   97: dup
+    //   98: aload_2
+    //   99: iconst_1
+    //   100: invokeinterface 570 2 0
+    //   105: aload_2
+    //   106: iconst_2
+    //   107: invokeinterface 570 2 0
+    //   112: invokespecial 555	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   115: invokevirtual 479	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   118: pop
+    //   119: goto -39 -> 80
+    //   122: aload_2
+    //   123: ifnull +9 -> 132
+    //   126: aload_2
+    //   127: invokeinterface 571 1 0
+    //   132: aload_0
+    //   133: invokevirtual 151	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   136: aload_3
+    //   137: areturn
+    //   138: astore_2
+    //   139: aload_1
+    //   140: ifnull +9 -> 149
+    //   143: aload_1
+    //   144: invokeinterface 571 1 0
+    //   149: aload_2
+    //   150: athrow
+    //   151: astore_1
+    //   152: aload_0
+    //   153: invokevirtual 151	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   156: aload_1
+    //   157: athrow
+    //   158: astore_1
+    //   159: aload_2
+    //   160: monitorexit
+    //   161: aload_1
+    //   162: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	159	0	this	SQLiteDatabase
-    //   7	77	1	localArrayList	ArrayList
-    //   112	12	1	localObject1	Object
-    //   125	6	1	localObject2	Object
-    //   132	20	1	localList	java.util.List<Pair<String, String>>
-    //   153	1	1	localObject3	Object
-    //   12	144	2	localObject4	Object
+    //   0	163	0	this	SQLiteDatabase
+    //   22	122	1	localObject1	Object
+    //   151	6	1	localObject2	Object
+    //   158	4	1	localObject3	Object
+    //   12	115	2	localObject4	Object
+    //   138	22	2	localObject5	Object
+    //   7	130	3	localArrayList	ArrayList
+    //   19	5	4	localSQLiteConnectionPool	SQLiteConnectionPool
     // Exception table:
     //   from	to	target	type
-    //   74	109	112	finally
-    //   117	123	125	finally
-    //   123	125	125	finally
-    //   141	147	125	finally
-    //   15	24	132	finally
-    //   26	57	132	finally
-    //   59	65	132	finally
-    //   133	135	132	finally
-    //   65	74	153	finally
+    //   71	80	138	finally
+    //   82	91	138	finally
+    //   93	119	138	finally
+    //   126	132	151	finally
+    //   143	149	151	finally
+    //   149	151	151	finally
+    //   15	21	158	finally
+    //   28	30	158	finally
+    //   32	63	158	finally
+    //   65	71	158	finally
+    //   159	161	158	finally
   }
   
   public SQLiteChangeListener getChangeListener()
@@ -942,15 +977,17 @@ public final class SQLiteDatabase
   
   int getThreadDefaultConnectionFlags(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      int j = i;
-      if (isMainThread()) {
-        j = i | 0x4;
-      }
-      return j;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    int j = i;
+    if (isMainThread()) {
+      j = i | 0x4;
+    }
+    return j;
   }
   
   SQLiteSession getThreadSession()
@@ -994,15 +1031,15 @@ public final class SQLiteDatabase
       long l = insertWithOnConflict(paramString1, paramString2, paramContentValues, 0);
       return l;
     }
+    catch (SQLException paramString1)
+    {
+      Log.e("WCDB.SQLiteDatabase", "Error inserting %s: %s", new Object[] { paramContentValues, paramString1 });
+      return -1L;
+    }
     catch (SQLiteDatabaseCorruptException paramString1)
     {
       throw paramString1;
     }
-    catch (SQLException paramString1)
-    {
-      Log.e("WCDB.SQLiteDatabase", "Error inserting %s: %s", new Object[] { paramContentValues, paramString1 });
-    }
-    return -1L;
   }
   
   public long insertOrThrow(String paramString1, String paramString2, ContentValues paramContentValues)
@@ -1012,89 +1049,80 @@ public final class SQLiteDatabase
   
   public long insertWithOnConflict(String paramString1, String paramString2, ContentValues paramContentValues, int paramInt)
   {
-    int j = 0;
     acquireReference();
     for (;;)
     {
       int i;
       try
       {
-        localStringBuilder = new StringBuilder();
+        StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("INSERT");
         localStringBuilder.append(CONFLICT_VALUES[paramInt]);
         localStringBuilder.append(" INTO ");
         localStringBuilder.append(paramString1);
         localStringBuilder.append('(');
         paramString1 = null;
-        if ((paramContentValues == null) || (paramContentValues.size() <= 0)) {
-          break label294;
-        }
-        paramInt = paramContentValues.size();
-        if (paramInt > 0)
+        int j = 0;
+        if ((paramContentValues != null) && (paramContentValues.size() > 0))
         {
-          paramString2 = new Object[paramInt];
-          Iterator localIterator = keySet(paramContentValues).iterator();
-          i = 0;
-          if (localIterator.hasNext())
+          paramInt = paramContentValues.size();
+          if (paramInt > 0)
           {
-            String str = (String)localIterator.next();
-            if (i <= 0) {
-              break label300;
+            paramString2 = new Object[paramInt];
+            Iterator localIterator = keySet(paramContentValues).iterator();
+            i = 0;
+            if (localIterator.hasNext())
+            {
+              String str = (String)localIterator.next();
+              if (i <= 0) {
+                break label309;
+              }
+              paramString1 = ",";
+              localStringBuilder.append(paramString1);
+              localStringBuilder.append(str);
+              paramString2[i] = paramContentValues.get(str);
+              i += 1;
+              continue;
             }
-            paramString1 = ",";
+            localStringBuilder.append(')');
+            localStringBuilder.append(" VALUES (");
+            i = j;
+            break label315;
             localStringBuilder.append(paramString1);
-            localStringBuilder.append(str);
-            paramString2[i] = paramContentValues.get(str);
             i += 1;
-            continue;
+            break label315;
           }
-          localStringBuilder.append(')');
-          localStringBuilder.append(" VALUES (");
-          i = j;
-          break label306;
-          localStringBuilder.append(paramString1);
-          i += 1;
-          break label306;
+          paramContentValues = new StringBuilder();
+          paramContentValues.append(paramString2);
+          paramContentValues.append(") VALUES (NULL");
+          localStringBuilder.append(paramContentValues.toString());
           localStringBuilder.append(')');
           paramString1 = new SQLiteStatement(this, localStringBuilder.toString(), paramString1);
+          try
+          {
+            long l = paramString1.executeInsert();
+            return l;
+          }
+          finally {}
         }
+        paramInt = 0;
       }
       finally
       {
-        StringBuilder localStringBuilder;
-        long l;
         releaseReference();
       }
-      try
-      {
-        l = paramString1.executeInsert();
-        paramString1.close();
-        releaseReference();
-        return l;
-      }
-      finally
-      {
-        paramString1.close();
-      }
-      localStringBuilder.append(paramString2 + ") VALUES (NULL");
       continue;
-      label294:
-      paramInt = 0;
-      continue;
-      label300:
+      label309:
       paramString1 = "";
       continue;
-      label306:
-      if (i < paramInt)
-      {
+      label315:
+      paramString1 = paramString2;
+      if (i < paramInt) {
         if (i > 0) {
           paramString1 = ",?";
         } else {
           paramString1 = "?";
         }
-      }
-      else {
-        paramString1 = paramString2;
       }
     }
   }
@@ -1104,159 +1132,221 @@ public final class SQLiteDatabase
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 143	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
+    //   1: invokevirtual 135	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
     //   4: aload_0
-    //   5: invokevirtual 688	com/tencent/wcdb/database/SQLiteDatabase:getAttachedDbs	()Ljava/util/List;
+    //   5: invokevirtual 680	com/tencent/wcdb/database/SQLiteDatabase:getAttachedDbs	()Ljava/util/List;
     //   8: astore_3
     //   9: aload_3
-    //   10: ifnonnull +207 -> 217
-    //   13: new 299	java/lang/IllegalStateException
-    //   16: dup
-    //   17: new 193	java/lang/StringBuilder
-    //   20: dup
-    //   21: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   24: ldc_w 690
-    //   27: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: aload_0
-    //   31: invokevirtual 691	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
-    //   34: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: ldc_w 693
-    //   40: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   46: invokespecial 302	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
-    //   49: athrow
-    //   50: astore_2
-    //   51: new 242	java/util/ArrayList
-    //   54: dup
-    //   55: invokespecial 303	java/util/ArrayList:<init>	()V
-    //   58: astore_3
-    //   59: aload_3
-    //   60: new 555	android/util/Pair
-    //   63: dup
-    //   64: ldc_w 557
-    //   67: aload_0
-    //   68: invokevirtual 691	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
-    //   71: invokespecial 563	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   74: invokeinterface 696 2 0
-    //   79: pop
-    //   80: goto +178 -> 258
-    //   83: iload_1
-    //   84: aload_3
-    //   85: invokeinterface 697 1 0
-    //   90: if_icmpge +158 -> 248
-    //   93: aload_3
-    //   94: iload_1
-    //   95: invokeinterface 700 2 0
-    //   100: checkcast 555	android/util/Pair
-    //   103: astore 4
-    //   105: aload_0
-    //   106: new 193	java/lang/StringBuilder
-    //   109: dup
-    //   110: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   113: ldc_w 702
-    //   116: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: aload 4
-    //   121: getfield 705	android/util/Pair:first	Ljava/lang/Object;
-    //   124: checkcast 95	java/lang/String
-    //   127: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   130: ldc_w 707
-    //   133: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   136: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   139: invokevirtual 709	com/tencent/wcdb/database/SQLiteDatabase:compileStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteStatement;
-    //   142: astore_2
-    //   143: aload_2
-    //   144: invokevirtual 712	com/tencent/wcdb/database/SQLiteStatement:simpleQueryForString	()Ljava/lang/String;
-    //   147: astore 5
-    //   149: aload 5
-    //   151: ldc_w 714
-    //   154: invokestatic 718	com/tencent/wcdb/DatabaseUtils:objectEquals	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   157: ifne +63 -> 220
-    //   160: ldc 54
-    //   162: new 193	java/lang/StringBuilder
-    //   165: dup
-    //   166: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   169: ldc_w 720
-    //   172: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10: ifnull +6 -> 16
+    //   13: goto +327 -> 340
+    //   16: new 179	java/lang/StringBuilder
+    //   19: dup
+    //   20: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   23: astore_2
+    //   24: aload_2
+    //   25: ldc_w 682
+    //   28: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: pop
+    //   32: aload_2
+    //   33: aload_0
+    //   34: invokevirtual 683	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
+    //   37: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: pop
+    //   41: aload_2
+    //   42: ldc_w 685
+    //   45: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: pop
+    //   49: new 292	java/lang/IllegalStateException
+    //   52: dup
+    //   53: aload_2
+    //   54: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: invokespecial 295	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   60: athrow
+    //   61: astore_2
+    //   62: goto +268 -> 330
+    //   65: new 235	java/util/ArrayList
+    //   68: dup
+    //   69: invokespecial 296	java/util/ArrayList:<init>	()V
+    //   72: astore_3
+    //   73: aload_3
+    //   74: new 547	android/util/Pair
+    //   77: dup
+    //   78: ldc_w 549
+    //   81: aload_0
+    //   82: invokevirtual 683	com/tencent/wcdb/database/SQLiteDatabase:getPath	()Ljava/lang/String;
+    //   85: invokespecial 555	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   88: invokeinterface 688 2 0
+    //   93: pop
+    //   94: goto +246 -> 340
+    //   97: iload_1
+    //   98: aload_3
+    //   99: invokeinterface 689 1 0
+    //   104: if_icmpge +220 -> 324
+    //   107: aload_3
+    //   108: iload_1
+    //   109: invokeinterface 692 2 0
+    //   114: checkcast 547	android/util/Pair
+    //   117: astore 5
+    //   119: aconst_null
+    //   120: astore 4
+    //   122: aload 4
+    //   124: astore_2
+    //   125: new 179	java/lang/StringBuilder
+    //   128: dup
+    //   129: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   132: astore 6
+    //   134: aload 4
+    //   136: astore_2
+    //   137: aload 6
+    //   139: ldc_w 694
+    //   142: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   145: pop
+    //   146: aload 4
+    //   148: astore_2
+    //   149: aload 6
+    //   151: aload 5
+    //   153: getfield 697	android/util/Pair:first	Ljava/lang/Object;
+    //   156: checkcast 87	java/lang/String
+    //   159: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: pop
+    //   163: aload 4
+    //   165: astore_2
+    //   166: aload 6
+    //   168: ldc_w 699
+    //   171: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: pop
     //   175: aload 4
-    //   177: getfield 723	android/util/Pair:second	Ljava/lang/Object;
-    //   180: checkcast 95	java/lang/String
-    //   183: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   186: ldc_w 725
-    //   189: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: aload 5
-    //   194: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   200: invokestatic 727	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   203: aload_2
-    //   204: ifnull +7 -> 211
-    //   207: aload_2
-    //   208: invokevirtual 281	com/tencent/wcdb/database/SQLiteStatement:close	()V
-    //   211: aload_0
-    //   212: invokevirtual 159	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-    //   215: iconst_0
-    //   216: ireturn
-    //   217: goto +41 -> 258
-    //   220: aload_2
-    //   221: ifnull +42 -> 263
-    //   224: aload_2
-    //   225: invokevirtual 281	com/tencent/wcdb/database/SQLiteStatement:close	()V
-    //   228: goto +35 -> 263
-    //   231: aload_2
-    //   232: ifnull +7 -> 239
-    //   235: aload_2
-    //   236: invokevirtual 281	com/tencent/wcdb/database/SQLiteStatement:close	()V
-    //   239: aload_3
-    //   240: athrow
-    //   241: astore_2
-    //   242: aload_0
-    //   243: invokevirtual 159	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-    //   246: aload_2
-    //   247: athrow
-    //   248: aload_0
-    //   249: invokevirtual 159	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-    //   252: iconst_1
-    //   253: ireturn
-    //   254: astore_3
-    //   255: goto -24 -> 231
-    //   258: iconst_0
-    //   259: istore_1
-    //   260: goto -177 -> 83
-    //   263: iload_1
-    //   264: iconst_1
-    //   265: iadd
-    //   266: istore_1
-    //   267: goto -184 -> 83
-    //   270: astore_3
-    //   271: aconst_null
-    //   272: astore_2
-    //   273: goto -42 -> 231
+    //   177: astore_2
+    //   178: aload_0
+    //   179: aload 6
+    //   181: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   184: invokevirtual 701	com/tencent/wcdb/database/SQLiteDatabase:compileStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteStatement;
+    //   187: astore 4
+    //   189: aload 4
+    //   191: astore_2
+    //   192: aload 4
+    //   194: invokevirtual 704	com/tencent/wcdb/database/SQLiteStatement:simpleQueryForString	()Ljava/lang/String;
+    //   197: astore 6
+    //   199: aload 4
+    //   201: astore_2
+    //   202: aload 6
+    //   204: ldc_w 706
+    //   207: invokestatic 710	com/tencent/wcdb/DatabaseUtils:objectEquals	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   210: ifne +90 -> 300
+    //   213: aload 4
+    //   215: astore_2
+    //   216: new 179	java/lang/StringBuilder
+    //   219: dup
+    //   220: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   223: astore_3
+    //   224: aload 4
+    //   226: astore_2
+    //   227: aload_3
+    //   228: ldc_w 712
+    //   231: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: pop
+    //   235: aload 4
+    //   237: astore_2
+    //   238: aload_3
+    //   239: aload 5
+    //   241: getfield 715	android/util/Pair:second	Ljava/lang/Object;
+    //   244: checkcast 87	java/lang/String
+    //   247: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   250: pop
+    //   251: aload 4
+    //   253: astore_2
+    //   254: aload_3
+    //   255: ldc_w 717
+    //   258: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: pop
+    //   262: aload 4
+    //   264: astore_2
+    //   265: aload_3
+    //   266: aload 6
+    //   268: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: pop
+    //   272: aload 4
+    //   274: astore_2
+    //   275: ldc 54
+    //   277: aload_3
+    //   278: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   281: invokestatic 719	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   284: aload 4
+    //   286: ifnull +8 -> 294
+    //   289: aload 4
+    //   291: invokevirtual 274	com/tencent/wcdb/database/SQLiteStatement:close	()V
+    //   294: aload_0
+    //   295: invokevirtual 151	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   298: iconst_0
+    //   299: ireturn
+    //   300: aload 4
+    //   302: ifnull +43 -> 345
+    //   305: aload 4
+    //   307: invokevirtual 274	com/tencent/wcdb/database/SQLiteStatement:close	()V
+    //   310: goto +35 -> 345
+    //   313: astore_3
+    //   314: aload_2
+    //   315: ifnull +7 -> 322
+    //   318: aload_2
+    //   319: invokevirtual 274	com/tencent/wcdb/database/SQLiteStatement:close	()V
+    //   322: aload_3
+    //   323: athrow
+    //   324: aload_0
+    //   325: invokevirtual 151	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   328: iconst_1
+    //   329: ireturn
+    //   330: aload_0
+    //   331: invokevirtual 151	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
+    //   334: aload_2
+    //   335: athrow
+    //   336: astore_2
+    //   337: goto -272 -> 65
+    //   340: iconst_0
+    //   341: istore_1
+    //   342: goto -245 -> 97
+    //   345: iload_1
+    //   346: iconst_1
+    //   347: iadd
+    //   348: istore_1
+    //   349: goto -252 -> 97
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	276	0	this	SQLiteDatabase
-    //   83	184	1	i	int
-    //   50	1	2	localSQLiteException	SQLiteException
-    //   142	94	2	localSQLiteStatement	SQLiteStatement
-    //   241	6	2	localObject1	Object
-    //   272	1	2	localObject2	Object
-    //   8	232	3	localObject3	Object
-    //   254	1	3	localObject4	Object
-    //   270	1	3	localObject5	Object
-    //   103	73	4	localPair	Pair
-    //   147	46	5	str	String
+    //   0	352	0	this	SQLiteDatabase
+    //   97	252	1	i	int
+    //   23	31	2	localStringBuilder	StringBuilder
+    //   61	1	2	localObject1	Object
+    //   124	211	2	localObject2	Object
+    //   336	1	2	localSQLiteException	SQLiteException
+    //   8	270	3	localObject3	Object
+    //   313	10	3	localObject4	Object
+    //   120	186	4	localSQLiteStatement	SQLiteStatement
+    //   117	123	5	localPair	Pair
+    //   132	135	6	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   4	9	50	com/tencent/wcdb/database/SQLiteException
-    //   13	50	50	com/tencent/wcdb/database/SQLiteException
-    //   4	9	241	finally
-    //   13	50	241	finally
-    //   51	80	241	finally
-    //   83	105	241	finally
-    //   207	211	241	finally
-    //   224	228	241	finally
-    //   235	239	241	finally
-    //   239	241	241	finally
-    //   143	203	254	finally
-    //   105	143	270	finally
+    //   4	9	61	finally
+    //   16	61	61	finally
+    //   65	94	61	finally
+    //   97	119	61	finally
+    //   289	294	61	finally
+    //   305	310	61	finally
+    //   318	322	61	finally
+    //   322	324	61	finally
+    //   125	134	313	finally
+    //   137	146	313	finally
+    //   149	163	313	finally
+    //   166	175	313	finally
+    //   178	189	313	finally
+    //   192	199	313	finally
+    //   202	213	313	finally
+    //   216	224	313	finally
+    //   227	235	313	finally
+    //   238	251	313	finally
+    //   254	262	313	finally
+    //   265	272	313	finally
+    //   275	284	313	finally
+    //   4	9	336	com/tencent/wcdb/database/SQLiteException
+    //   16	61	336	com/tencent/wcdb/database/SQLiteException
   }
   
   public boolean isDbLockedByCurrentThread()
@@ -1405,53 +1495,22 @@ public final class SQLiteDatabase
     return rawQueryWithFactory(paramCursorFactory, paramString1, paramArrayOfString, paramString2, null);
   }
   
-  /* Error */
   public Cursor rawQueryWithFactory(CursorFactory paramCursorFactory, String paramString1, String[] paramArrayOfString, String paramString2, CancellationSignal paramCancellationSignal)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 143	com/tencent/wcdb/database/SQLiteDatabase:acquireReference	()V
-    //   4: new 775	com/tencent/wcdb/database/SQLiteDirectCursorDriver
-    //   7: dup
-    //   8: aload_0
-    //   9: aload_2
-    //   10: aload 4
-    //   12: aload 5
-    //   14: invokespecial 778	com/tencent/wcdb/database/SQLiteDirectCursorDriver:<init>	(Lcom/tencent/wcdb/database/SQLiteDatabase;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/wcdb/support/CancellationSignal;)V
-    //   17: astore_2
-    //   18: aload_1
-    //   19: ifnull +18 -> 37
-    //   22: aload_2
-    //   23: aload_1
-    //   24: aload_3
-    //   25: invokeinterface 783 3 0
-    //   30: astore_1
-    //   31: aload_0
-    //   32: invokevirtual 159	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-    //   35: aload_1
-    //   36: areturn
-    //   37: aload_0
-    //   38: getfield 124	com/tencent/wcdb/database/SQLiteDatabase:mCursorFactory	Lcom/tencent/wcdb/database/SQLiteDatabase$CursorFactory;
-    //   41: astore_1
-    //   42: goto -20 -> 22
-    //   45: astore_1
-    //   46: aload_0
-    //   47: invokevirtual 159	com/tencent/wcdb/database/SQLiteDatabase:releaseReference	()V
-    //   50: aload_1
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	52	0	this	SQLiteDatabase
-    //   0	52	1	paramCursorFactory	CursorFactory
-    //   0	52	2	paramString1	String
-    //   0	52	3	paramArrayOfString	String[]
-    //   0	52	4	paramString2	String
-    //   0	52	5	paramCancellationSignal	CancellationSignal
-    // Exception table:
-    //   from	to	target	type
-    //   4	18	45	finally
-    //   22	31	45	finally
-    //   37	42	45	finally
+    acquireReference();
+    try
+    {
+      paramString1 = new SQLiteDirectCursorDriver(this, paramString1, paramString2, paramCancellationSignal);
+      if (paramCursorFactory == null) {
+        paramCursorFactory = this.mCursorFactory;
+      }
+      paramCursorFactory = paramString1.query(paramCursorFactory, paramArrayOfString);
+      return paramCursorFactory;
+    }
+    finally
+    {
+      releaseReference();
+    }
   }
   
   public void releaseNativeConnection(long paramLong, Exception paramException)
@@ -1467,8 +1526,18 @@ public final class SQLiteDatabase
       if (!isReadOnlyLocked()) {
         return;
       }
-      i = this.mConfigurationLocked.openFlags;
+      int i = this.mConfigurationLocked.openFlags;
       this.mConfigurationLocked.openFlags = (this.mConfigurationLocked.openFlags & 0xFFFFFFFE | 0x0);
+      try
+      {
+        this.mConnectionPoolLocked.reconfigure(this.mConfigurationLocked);
+        return;
+      }
+      catch (RuntimeException localRuntimeException)
+      {
+        this.mConfigurationLocked.openFlags = i;
+        throw localRuntimeException;
+      }
     }
   }
   
@@ -1479,15 +1548,18 @@ public final class SQLiteDatabase
       long l = insertWithOnConflict(paramString1, paramString2, paramContentValues, 5);
       return l;
     }
+    catch (SQLException paramString1)
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("Error inserting ");
+      paramString2.append(paramContentValues);
+      Log.e("WCDB.SQLiteDatabase", paramString2.toString(), new Object[] { paramString1 });
+      return -1L;
+    }
     catch (SQLiteDatabaseCorruptException paramString1)
     {
       throw paramString1;
     }
-    catch (SQLException paramString1)
-    {
-      Log.e("WCDB.SQLiteDatabase", "Error inserting " + paramContentValues, new Object[] { paramString1 });
-    }
-    return -1L;
   }
   
   public long replaceOrThrow(String paramString1, String paramString2, ContentValues paramContentValues)
@@ -1497,12 +1569,13 @@ public final class SQLiteDatabase
   
   public void setAsyncCheckpointEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (SQLiteAsyncCheckpointer localSQLiteAsyncCheckpointer = new SQLiteAsyncCheckpointer();; localSQLiteAsyncCheckpointer = null)
-    {
-      setCheckpointCallback(localSQLiteAsyncCheckpointer);
-      return;
+    SQLiteAsyncCheckpointer localSQLiteAsyncCheckpointer;
+    if (paramBoolean) {
+      localSQLiteAsyncCheckpointer = new SQLiteAsyncCheckpointer();
+    } else {
+      localSQLiteAsyncCheckpointer = null;
     }
+    setCheckpointCallback(localSQLiteAsyncCheckpointer);
   }
   
   public void setChangeListener(SQLiteChangeListener paramSQLiteChangeListener, boolean paramBoolean)
@@ -1518,94 +1591,92 @@ public final class SQLiteDatabase
   public void setCheckpointCallback(SQLiteCheckpointListener paramSQLiteCheckpointListener)
   {
     boolean bool2 = true;
-    if (paramSQLiteCheckpointListener != null) {}
-    for (boolean bool1 = true;; bool1 = false) {
-      for (;;)
+    if (paramSQLiteCheckpointListener != null) {
+      bool1 = true;
+    }
+    for (boolean bool1 = false;; bool1 = false) {
+      synchronized (this.mLock)
       {
-        synchronized (this.mLock)
+        throwIfNotOpenLocked();
+        if (this.mConfigurationLocked.customWALHookEnabled != bool1)
         {
-          throwIfNotOpenLocked();
-          if (this.mConfigurationLocked.customWALHookEnabled != bool1) {
-            this.mConfigurationLocked.customWALHookEnabled = bool1;
-          }
+          this.mConfigurationLocked.customWALHookEnabled = bool1;
           SQLiteDatabaseConfiguration localSQLiteDatabaseConfiguration;
           try
           {
             this.mConnectionPoolLocked.reconfigure(this.mConfigurationLocked);
-            this.mConnectionPoolLocked.setCheckpointListener(paramSQLiteCheckpointListener);
-            return;
           }
           catch (RuntimeException paramSQLiteCheckpointListener)
           {
             localSQLiteDatabaseConfiguration = this.mConfigurationLocked;
             if (bool1) {
-              break label90;
+              continue;
             }
           }
           bool1 = bool2;
           localSQLiteDatabaseConfiguration.customWALHookEnabled = bool1;
           throw paramSQLiteCheckpointListener;
         }
-        label90:
-        bool1 = false;
+        this.mConnectionPoolLocked.setCheckpointListener(paramSQLiteCheckpointListener);
+        return;
       }
     }
   }
   
   public void setForeignKeyConstraintsEnabled(boolean paramBoolean)
   {
-    synchronized (this.mLock)
+    for (;;)
     {
-      throwIfNotOpenLocked();
-      if (this.mConfigurationLocked.foreignKeyConstraintsEnabled == paramBoolean) {
-        return;
+      synchronized (this.mLock)
+      {
+        throwIfNotOpenLocked();
+        if (this.mConfigurationLocked.foreignKeyConstraintsEnabled == paramBoolean) {
+          return;
+        }
+        this.mConfigurationLocked.foreignKeyConstraintsEnabled = paramBoolean;
+        SQLiteDatabaseConfiguration localSQLiteDatabaseConfiguration;
+        try
+        {
+          this.mConnectionPoolLocked.reconfigure(this.mConfigurationLocked);
+          return;
+        }
+        catch (RuntimeException localRuntimeException)
+        {
+          localSQLiteDatabaseConfiguration = this.mConfigurationLocked;
+          if (paramBoolean) {
+            break label76;
+          }
+        }
+        paramBoolean = true;
+        localSQLiteDatabaseConfiguration.foreignKeyConstraintsEnabled = paramBoolean;
+        throw localRuntimeException;
       }
-      this.mConfigurationLocked.foreignKeyConstraintsEnabled = paramBoolean;
-    }
-    try
-    {
-      this.mConnectionPoolLocked.reconfigure(this.mConfigurationLocked);
-      return;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      localSQLiteDatabaseConfiguration = this.mConfigurationLocked;
-      if (paramBoolean) {
-        break label73;
-      }
-    }
-    localObject2 = finally;
-    throw localObject2;
-    SQLiteDatabaseConfiguration localSQLiteDatabaseConfiguration;
-    label73:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localSQLiteDatabaseConfiguration.foreignKeyConstraintsEnabled = paramBoolean;
-      throw localRuntimeException;
+      label76:
+      paramBoolean = false;
     }
   }
   
   public void setLocale(Locale paramLocale)
   {
-    if (paramLocale == null) {
-      throw new IllegalArgumentException("locale must not be null.");
-    }
-    synchronized (this.mLock)
-    {
-      throwIfNotOpenLocked();
-      Locale localLocale = this.mConfigurationLocked.locale;
-      this.mConfigurationLocked.locale = paramLocale;
-      try
+    if (paramLocale != null) {
+      synchronized (this.mLock)
       {
-        this.mConnectionPoolLocked.reconfigure(this.mConfigurationLocked);
-        return;
-      }
-      catch (RuntimeException paramLocale)
-      {
-        this.mConfigurationLocked.locale = localLocale;
-        throw paramLocale;
+        throwIfNotOpenLocked();
+        Locale localLocale = this.mConfigurationLocked.locale;
+        this.mConfigurationLocked.locale = paramLocale;
+        try
+        {
+          this.mConnectionPoolLocked.reconfigure(this.mConfigurationLocked);
+          return;
+        }
+        catch (RuntimeException paramLocale)
+        {
+          this.mConfigurationLocked.locale = localLocale;
+          throw paramLocale;
+        }
       }
     }
+    throw new IllegalArgumentException("locale must not be null.");
   }
   
   @Deprecated
@@ -1613,25 +1684,25 @@ public final class SQLiteDatabase
   
   public void setMaxSqlCacheSize(int paramInt)
   {
-    if ((paramInt > 100) || (paramInt < 0)) {
-      throw new IllegalStateException("expected value between 0 and 100");
-    }
-    synchronized (this.mLock)
-    {
-      throwIfNotOpenLocked();
-      int i = this.mConfigurationLocked.maxSqlCacheSize;
-      this.mConfigurationLocked.maxSqlCacheSize = paramInt;
-      try
+    if ((paramInt <= 100) && (paramInt >= 0)) {
+      synchronized (this.mLock)
       {
-        this.mConnectionPoolLocked.reconfigure(this.mConfigurationLocked);
-        return;
-      }
-      catch (RuntimeException localRuntimeException)
-      {
-        this.mConfigurationLocked.maxSqlCacheSize = i;
-        throw localRuntimeException;
+        throwIfNotOpenLocked();
+        int i = this.mConfigurationLocked.maxSqlCacheSize;
+        this.mConfigurationLocked.maxSqlCacheSize = paramInt;
+        try
+        {
+          this.mConnectionPoolLocked.reconfigure(this.mConfigurationLocked);
+          return;
+        }
+        catch (RuntimeException localRuntimeException)
+        {
+          this.mConfigurationLocked.maxSqlCacheSize = i;
+          throw localRuntimeException;
+        }
       }
     }
+    throw new IllegalStateException("expected value between 0 and 100");
   }
   
   public long setMaximumSize(long paramLong)
@@ -1642,12 +1713,18 @@ public final class SQLiteDatabase
     if (paramLong % l3 != 0L) {
       l1 = l2 + 1L;
     }
-    return DatabaseUtils.longForQuery(this, "PRAGMA max_page_count = " + l1, null) * l3;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PRAGMA max_page_count = ");
+    localStringBuilder.append(l1);
+    return DatabaseUtils.longForQuery(this, localStringBuilder.toString(), null) * l3;
   }
   
   public void setPageSize(long paramLong)
   {
-    execSQL("PRAGMA page_size = " + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PRAGMA page_size = ");
+    localStringBuilder.append(paramLong);
+    execSQL(localStringBuilder.toString());
   }
   
   public void setSynchronousMode(int paramInt)
@@ -1656,19 +1733,20 @@ public final class SQLiteDatabase
     {
       throwIfNotOpenLocked();
       int i = this.mConfigurationLocked.synchronousMode;
-      if (i != paramInt) {
+      if (i != paramInt)
+      {
         this.mConfigurationLocked.synchronousMode = paramInt;
+        try
+        {
+          this.mConnectionPoolLocked.reconfigure(this.mConfigurationLocked);
+        }
+        catch (RuntimeException localRuntimeException)
+        {
+          this.mConfigurationLocked.synchronousMode = i;
+          throw localRuntimeException;
+        }
       }
-      try
-      {
-        this.mConnectionPoolLocked.reconfigure(this.mConfigurationLocked);
-        return;
-      }
-      catch (RuntimeException localRuntimeException)
-      {
-        this.mConfigurationLocked.synchronousMode = i;
-        throw localRuntimeException;
-      }
+      return;
     }
   }
   
@@ -1698,12 +1776,18 @@ public final class SQLiteDatabase
   
   public void setVersion(int paramInt)
   {
-    execSQL("PRAGMA user_version = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PRAGMA user_version = ");
+    localStringBuilder.append(paramInt);
+    execSQL(localStringBuilder.toString());
   }
   
   public String toString()
   {
-    return "SQLiteDatabase: " + getPath();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SQLiteDatabase: ");
+    localStringBuilder.append(getPath());
+    return localStringBuilder.toString();
   }
   
   public int update(String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString)
@@ -1713,10 +1797,9 @@ public final class SQLiteDatabase
   
   public int updateWithOnConflict(String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, int paramInt)
   {
-    if ((paramContentValues == null) || (paramContentValues.size() == 0)) {
-      throw new IllegalArgumentException("Empty values");
+    if ((paramContentValues != null) && (paramContentValues.size() != 0)) {
+      acquireReference();
     }
-    acquireReference();
     for (;;)
     {
       int i;
@@ -1730,30 +1813,26 @@ public final class SQLiteDatabase
         localStringBuilder.append(paramString1);
         localStringBuilder.append(" SET ");
         paramInt = paramContentValues.size();
-        if (paramArrayOfString == null)
-        {
+        if (paramArrayOfString == null) {
           i = paramInt;
-          arrayOfObject = new Object[i];
-          Iterator localIterator = keySet(paramContentValues).iterator();
-          j = 0;
-          if (!localIterator.hasNext()) {
-            break label273;
-          }
-          String str = (String)localIterator.next();
-          if (j > 0)
-          {
-            paramString1 = ",";
-            localStringBuilder.append(paramString1);
-            localStringBuilder.append(str);
-            arrayOfObject[j] = paramContentValues.get(str);
-            localStringBuilder.append("=?");
-            j += 1;
-            continue;
-          }
-        }
-        else
-        {
+        } else {
           i = paramArrayOfString.length + paramInt;
+        }
+        arrayOfObject = new Object[i];
+        j = 0;
+        Iterator localIterator = keySet(paramContentValues).iterator();
+        if (!localIterator.hasNext()) {
+          break label276;
+        }
+        String str = (String)localIterator.next();
+        if (j > 0)
+        {
+          paramString1 = ",";
+          localStringBuilder.append(paramString1);
+          localStringBuilder.append(str);
+          arrayOfObject[j] = paramContentValues.get(str);
+          localStringBuilder.append("=?");
+          j += 1;
           continue;
           if (!TextUtils.isEmpty(paramString2))
           {
@@ -1767,15 +1846,16 @@ public final class SQLiteDatabase
             return paramInt;
           }
           finally {}
+          throw new IllegalArgumentException("Empty values");
         }
-        paramString1 = "";
       }
       finally
       {
         releaseReference();
       }
+      paramString1 = "";
       continue;
-      label273:
+      label276:
       if (paramArrayOfString != null)
       {
         j = paramInt;
@@ -1791,17 +1871,20 @@ public final class SQLiteDatabase
   public Pair<Integer, Integer> walCheckpoint(String paramString, boolean paramBoolean)
   {
     acquireReference();
-    if (paramBoolean) {}
-    for (int i = 2;; i = 0) {
-      try
-      {
-        paramString = getThreadSession().walCheckpoint(paramString, i);
-        return paramString;
-      }
-      finally
-      {
-        releaseReference();
-      }
+    int i;
+    if (paramBoolean) {
+      i = 2;
+    } else {
+      i = 0;
+    }
+    try
+    {
+      paramString = getThreadSession().walCheckpoint(paramString, i);
+      return paramString;
+    }
+    finally
+    {
+      releaseReference();
     }
   }
   

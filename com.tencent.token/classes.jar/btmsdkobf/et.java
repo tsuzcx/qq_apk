@@ -11,32 +11,21 @@ public class et
 {
   public static String a(Context paramContext, String paramString1, String paramString2)
   {
-    Object localObject = null;
-    paramString1 = c(paramContext, paramString1);
-    paramContext = localObject;
-    int j;
-    int i;
-    if (paramString1 != null)
+    paramContext = c(paramContext, paramString1);
+    if (paramContext != null)
     {
-      j = paramString1.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      paramContext = localObject;
-      if (i < j)
+      int j = paramContext.length;
+      int i = 0;
+      while (i < j)
       {
-        paramContext = paramString1[i];
+        paramString1 = paramContext[i];
         if ("SHA1".equals(paramString2)) {
-          paramContext = a(paramContext, "SHA1");
+          return a(paramString1, "SHA1");
         }
+        i += 1;
       }
-      else
-      {
-        return paramContext;
-      }
-      i += 1;
     }
+    return null;
   }
   
   public static String a(Signature paramSignature, String paramString)
@@ -74,7 +63,11 @@ public class et
       paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 64).signatures;
       return paramContext;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label16:
+      break label16;
+    }
     return null;
   }
 }

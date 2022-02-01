@@ -17,16 +17,16 @@ public final class ae
       if (this.a.size() == 0) {
         return "";
       }
-      StringBuilder localStringBuilder = new StringBuilder();
+      Object localObject1 = new StringBuilder();
       Iterator localIterator = this.a.iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
-        localStringBuilder.append(((a)localIterator.next()).a());
-        localStringBuilder.append(";");
+        ((StringBuilder)localObject1).append(((a)localIterator.next()).a());
+        ((StringBuilder)localObject1).append(";");
       }
+      localObject1 = ((StringBuilder)localObject1).toString();
+      return localObject1;
     }
-    String str = localObject.toString();
-    return str;
   }
   
   public final void a(a parama)
@@ -50,17 +50,23 @@ public final class ae
     {
       this.a = paramLong;
       this.b = paramInt;
-      if (TextUtils.isEmpty(paramString))
+      if (TextUtils.isEmpty(paramString)) {}
+      for (paramString = "";; paramString = h.b(paramString))
       {
-        this.c = "";
+        this.c = paramString;
         return;
       }
-      this.c = h.b(paramString);
     }
     
     public final String a()
     {
-      return this.a + "," + this.b + "," + this.c;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.c);
+      return localStringBuilder.toString();
     }
   }
 }

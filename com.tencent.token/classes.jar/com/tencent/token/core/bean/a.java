@@ -48,7 +48,10 @@ public class a
     }
     catch (JSONException paramJSONObject)
     {
-      g.c("JSONException: " + paramJSONObject.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("JSONException: ");
+      localStringBuilder.append(paramJSONObject.getMessage());
+      g.c(localStringBuilder.toString());
     }
     return false;
   }

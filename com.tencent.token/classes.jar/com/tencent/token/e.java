@@ -13,15 +13,16 @@ public class e
   public e(long paramLong)
   {
     this.a = paramLong;
-    if (b == null) {}
-    try
-    {
-      if (b == null) {
-        b = new y(paramLong);
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new y(paramLong);
+        }
+        return;
       }
-      return;
+      finally {}
     }
-    finally {}
   }
   
   public eg a(int paramInt1, int paramInt2)

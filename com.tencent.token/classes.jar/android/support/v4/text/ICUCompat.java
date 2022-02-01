@@ -15,9 +15,7 @@ public final class ICUCompat
   
   static
   {
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (;;)
-    {
+    if (Build.VERSION.SDK_INT >= 21) {
       try
       {
         sAddLikelySubtagsMethod = Class.forName("libcore.icu.ICU").getMethod("addLikelySubtags", new Class[] { Locale.class });
@@ -27,22 +25,22 @@ public final class ICUCompat
       {
         throw new IllegalStateException(localException1);
       }
-      try
+    }
+    try
+    {
+      Class localClass = Class.forName("libcore.icu.ICU");
+      if (localClass != null)
       {
-        Class localClass = Class.forName("libcore.icu.ICU");
-        if (localClass != null)
-        {
-          sGetScriptMethod = localClass.getMethod("getScript", new Class[] { String.class });
-          sAddLikelySubtagsMethod = localClass.getMethod("addLikelySubtags", new Class[] { String.class });
-          return;
-        }
+        sGetScriptMethod = localClass.getMethod("getScript", new Class[] { String.class });
+        sAddLikelySubtagsMethod = localClass.getMethod("addLikelySubtags", new Class[] { String.class });
+        return;
       }
-      catch (Exception localException2)
-      {
-        sGetScriptMethod = null;
-        sAddLikelySubtagsMethod = null;
-        Log.w("ICUCompat", localException2);
-      }
+    }
+    catch (Exception localException2)
+    {
+      sGetScriptMethod = null;
+      sAddLikelySubtagsMethod = null;
+      Log.w("ICUCompat", localException2);
     }
   }
   
@@ -57,18 +55,16 @@ public final class ICUCompat
         return str;
       }
     }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      Log.w("ICUCompat", localInvocationTargetException);
+      return paramLocale;
+    }
     catch (IllegalAccessException localIllegalAccessException)
     {
       Log.w("ICUCompat", localIllegalAccessException);
-      return paramLocale;
     }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      for (;;)
-      {
-        Log.w("ICUCompat", localInvocationTargetException);
-      }
-    }
+    return paramLocale;
   }
   
   private static String getScript(String paramString)
@@ -81,50 +77,43 @@ public final class ICUCompat
         return paramString;
       }
     }
-    catch (IllegalAccessException paramString)
+    catch (InvocationTargetException paramString)
     {
       Log.w("ICUCompat", paramString);
       return null;
     }
-    catch (InvocationTargetException paramString)
+    catch (IllegalAccessException paramString)
     {
-      for (;;)
-      {
-        Log.w("ICUCompat", paramString);
-      }
+      Log.w("ICUCompat", paramString);
     }
+    return null;
   }
   
   @Nullable
   public static String maximizeAndGetScript(Locale paramLocale)
   {
-    String str1 = null;
-    if (Build.VERSION.SDK_INT >= 21) {}
-    String str2;
-    do
+    if (Build.VERSION.SDK_INT >= 21)
     {
       try
       {
-        str1 = ((Locale)sAddLikelySubtagsMethod.invoke(null, new Object[] { paramLocale })).getScript();
-        paramLocale = str1;
-        return paramLocale;
+        String str = ((Locale)sAddLikelySubtagsMethod.invoke(null, new Object[] { paramLocale })).getScript();
+        return str;
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        Log.w("ICUCompat", localIllegalAccessException);
       }
       catch (InvocationTargetException localInvocationTargetException)
       {
         Log.w("ICUCompat", localInvocationTargetException);
-        return paramLocale.getScript();
       }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        for (;;)
-        {
-          Log.w("ICUCompat", localIllegalAccessException);
-        }
-      }
-      str2 = addLikelySubtags(paramLocale);
-      paramLocale = localIllegalAccessException;
-    } while (str2 == null);
-    return getScript(str2);
+      return paramLocale.getScript();
+    }
+    paramLocale = addLikelySubtags(paramLocale);
+    if (paramLocale != null) {
+      return getScript(paramLocale);
+    }
+    return null;
   }
 }
 

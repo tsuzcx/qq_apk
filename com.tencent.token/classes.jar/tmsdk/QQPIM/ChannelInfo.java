@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ChannelInfo
   extends JceStruct
@@ -16,16 +17,6 @@ public final class ChannelInfo
   public int isbuildin = 0;
   public int product = EProduct.EP_None.value();
   public String token = "";
-  
-  static
-  {
-    if (!ChannelInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
   
   public ChannelInfo()
   {
@@ -52,29 +43,47 @@ public final class ChannelInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ChannelInfo)paramObject;
-    } while ((!JceUtil.equals(this.id, paramObject.id)) || (!JceUtil.equals(this.product, paramObject.product)) || (!JceUtil.equals(this.isbuildin, paramObject.isbuildin)) || (!JceUtil.equals(this.token, paramObject.token)) || (!JceUtil.equals(this.checksoft, paramObject.checksoft)));
-    return true;
+    }
+    paramObject = (ChannelInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.id, paramObject.id))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.product, paramObject.product))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.isbuildin, paramObject.isbuildin))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.token, paramObject.token))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.checksoft, paramObject.checksoft)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -165,11 +174,13 @@ public final class ChannelInfo
     paramJceOutputStream.write(this.id, 0);
     paramJceOutputStream.write(this.product, 1);
     paramJceOutputStream.write(this.isbuildin, 2);
-    if (this.token != null) {
-      paramJceOutputStream.write(this.token, 3);
+    Object localObject = this.token;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.checksoft != null) {
-      paramJceOutputStream.write(this.checksoft, 4);
+    localObject = this.checksoft;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }

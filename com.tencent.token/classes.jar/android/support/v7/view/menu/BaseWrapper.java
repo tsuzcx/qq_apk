@@ -6,10 +6,12 @@ class BaseWrapper<T>
   
   BaseWrapper(T paramT)
   {
-    if (paramT == null) {
-      throw new IllegalArgumentException("Wrapped Object can not be null.");
+    if (paramT != null)
+    {
+      this.mWrappedObject = paramT;
+      return;
     }
-    this.mWrappedObject = paramT;
+    throw new IllegalArgumentException("Wrapped Object can not be null.");
   }
   
   public T getWrappedObject()

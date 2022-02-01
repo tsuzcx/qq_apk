@@ -25,14 +25,17 @@ public final class t
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.aD != 0) {
-      paramJceOutputStream.write(this.aD, 0);
+    int i = this.aD;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.aE != 0) {
-      paramJceOutputStream.write(this.aE, 1);
+    i = this.aE;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.aF != 0) {
-      paramJceOutputStream.write(this.aF, 2);
+    i = this.aF;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
   }
 }

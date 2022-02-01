@@ -43,30 +43,38 @@ public final class KeyValueProfile
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.valueType != 0) {
-      paramJceOutputStream.write(this.valueType, 0);
+    int j = this.valueType;
+    if (j != 0) {
+      paramJceOutputStream.write(j, 0);
     }
-    if (this.keyid != 0) {
-      paramJceOutputStream.write(this.keyid, 1);
+    j = this.keyid;
+    if (j != 0) {
+      paramJceOutputStream.write(j, 1);
     }
-    if (this.i != 0) {
-      paramJceOutputStream.write(this.i, 2);
+    j = this.i;
+    if (j != 0) {
+      paramJceOutputStream.write(j, 2);
     }
-    if (this.lng != 0L) {
-      paramJceOutputStream.write(this.lng, 3);
+    long l = this.lng;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 3);
     }
-    if (this.str != null) {
-      paramJceOutputStream.write(this.str, 4);
+    Object localObject = this.str;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.byt != null) {
-      paramJceOutputStream.write(this.byt, 5);
+    localObject = this.byt;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
     paramJceOutputStream.write(this.bl, 6);
-    if (this.sht != 0) {
-      paramJceOutputStream.write(this.sht, 7);
+    short s = this.sht;
+    if (s != 0) {
+      paramJceOutputStream.write(s, 7);
     }
-    if (this.updateTime != 0L) {
-      paramJceOutputStream.write(this.updateTime, 8);
+    l = this.updateTime;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 8);
     }
   }
 }

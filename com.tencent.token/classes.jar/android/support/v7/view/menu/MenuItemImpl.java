@@ -120,21 +120,26 @@ public final class MenuItemImpl
   
   public boolean collapseActionView()
   {
-    if ((this.mShowAsAction & 0x8) == 0) {}
-    do
-    {
+    if ((this.mShowAsAction & 0x8) == 0) {
       return false;
-      if (this.mActionView == null) {
-        return true;
-      }
-    } while ((this.mOnActionExpandListener != null) && (!this.mOnActionExpandListener.onMenuItemActionCollapse(this)));
+    }
+    if (this.mActionView == null) {
+      return true;
+    }
+    MenuItem.OnActionExpandListener localOnActionExpandListener = this.mOnActionExpandListener;
+    if ((localOnActionExpandListener != null) && (!localOnActionExpandListener.onMenuItemActionCollapse(this))) {
+      return false;
+    }
     return this.mMenu.collapseItemActionView(this);
   }
   
   public boolean expandActionView()
   {
-    if (!hasCollapsibleActionView()) {}
-    while ((this.mOnActionExpandListener != null) && (!this.mOnActionExpandListener.onMenuItemActionExpand(this))) {
+    if (!hasCollapsibleActionView()) {
+      return false;
+    }
+    MenuItem.OnActionExpandListener localOnActionExpandListener = this.mOnActionExpandListener;
+    if ((localOnActionExpandListener != null) && (!localOnActionExpandListener.onMenuItemActionExpand(this))) {
       return false;
     }
     return this.mMenu.expandItemActionView(this);
@@ -147,12 +152,14 @@ public final class MenuItemImpl
   
   public View getActionView()
   {
-    if (this.mActionView != null) {
-      return this.mActionView;
+    Object localObject = this.mActionView;
+    if (localObject != null) {
+      return localObject;
     }
-    if (this.mActionProvider != null)
+    localObject = this.mActionProvider;
+    if (localObject != null)
     {
-      this.mActionView = this.mActionProvider.onCreateActionView(this);
+      this.mActionView = ((android.support.v4.view.ActionProvider)localObject).onCreateActionView(this);
       return this.mActionView;
     }
     return null;
@@ -185,12 +192,13 @@ public final class MenuItemImpl
   
   public Drawable getIcon()
   {
-    if (this.mIconDrawable != null) {
-      return applyIconTintIfNecessary(this.mIconDrawable);
+    Drawable localDrawable = this.mIconDrawable;
+    if (localDrawable != null) {
+      return applyIconTintIfNecessary(localDrawable);
     }
     if (this.mIconResId != 0)
     {
-      Drawable localDrawable = AppCompatResources.getDrawable(this.mMenu.getContext(), this.mIconResId);
+      localDrawable = AppCompatResources.getDrawable(this.mMenu.getContext(), this.mIconResId);
       this.mIconResId = 0;
       this.mIconDrawable = localDrawable;
       return applyIconTintIfNecessary(localDrawable);
@@ -259,20 +267,24 @@ public final class MenuItemImpl
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder(sPrependShortcutLabel);
-    switch (c)
+    if (c != '\b')
     {
-    default: 
-      localStringBuilder.append(c);
+      if (c != '\n')
+      {
+        if (c != ' ') {
+          localStringBuilder.append(c);
+        } else {
+          localStringBuilder.append(sSpaceShortcutLabel);
+        }
+      }
+      else {
+        localStringBuilder.append(sEnterShortcutLabel);
+      }
     }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append(sEnterShortcutLabel);
-      continue;
+    else {
       localStringBuilder.append(sDeleteShortcutLabel);
-      continue;
-      localStringBuilder.append(sSpaceShortcutLabel);
     }
+    return localStringBuilder.toString();
   }
   
   public SubMenu getSubMenu()
@@ -293,23 +305,14 @@ public final class MenuItemImpl
   
   public CharSequence getTitleCondensed()
   {
-    if (this.mTitleCondensed != null) {}
-    for (CharSequence localCharSequence = this.mTitleCondensed;; localCharSequence = this.mTitle)
-    {
-      Object localObject = localCharSequence;
-      if (Build.VERSION.SDK_INT < 18)
-      {
-        localObject = localCharSequence;
-        if (localCharSequence != null)
-        {
-          localObject = localCharSequence;
-          if (!(localCharSequence instanceof String)) {
-            localObject = localCharSequence.toString();
-          }
-        }
-      }
-      return localObject;
+    CharSequence localCharSequence = this.mTitleCondensed;
+    if (localCharSequence == null) {
+      localCharSequence = this.mTitle;
     }
+    if ((Build.VERSION.SDK_INT < 18) && (localCharSequence != null) && (!(localCharSequence instanceof String))) {
+      return localCharSequence.toString();
+    }
+    return localCharSequence;
   }
   
   CharSequence getTitleForItemView(MenuView.ItemView paramItemView)
@@ -327,19 +330,23 @@ public final class MenuItemImpl
   
   public boolean hasCollapsibleActionView()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((this.mShowAsAction & 0x8) != 0)
+    int i = this.mShowAsAction;
+    boolean bool = false;
+    if ((i & 0x8) != 0)
     {
-      if ((this.mActionView == null) && (this.mActionProvider != null)) {
-        this.mActionView = this.mActionProvider.onCreateActionView(this);
+      if (this.mActionView == null)
+      {
+        android.support.v4.view.ActionProvider localActionProvider = this.mActionProvider;
+        if (localActionProvider != null) {
+          this.mActionView = localActionProvider.onCreateActionView(this);
+        }
       }
-      bool1 = bool2;
       if (this.mActionView != null) {
-        bool1 = true;
+        bool = true;
       }
+      return bool;
     }
-    return bool1;
+    return false;
   }
   
   public boolean hasSubMenu()
@@ -349,31 +356,33 @@ public final class MenuItemImpl
   
   public boolean invoke()
   {
-    if ((this.mClickListener != null) && (this.mClickListener.onMenuItemClick(this))) {}
-    do
+    Object localObject = this.mClickListener;
+    if ((localObject != null) && (((MenuItem.OnMenuItemClickListener)localObject).onMenuItemClick(this))) {
+      return true;
+    }
+    localObject = this.mMenu;
+    if (((MenuBuilder)localObject).dispatchMenuItemSelected((MenuBuilder)localObject, this)) {
+      return true;
+    }
+    localObject = this.mItemCallback;
+    if (localObject != null)
     {
-      do
+      ((Runnable)localObject).run();
+      return true;
+    }
+    if (this.mIntent != null) {
+      try
       {
-        return true;
-      } while (this.mMenu.dispatchMenuItemSelected(this.mMenu, this));
-      if (this.mItemCallback != null)
-      {
-        this.mItemCallback.run();
+        this.mMenu.getContext().startActivity(this.mIntent);
         return true;
       }
-      if (this.mIntent != null) {
-        try
-        {
-          this.mMenu.getContext().startActivity(this.mIntent);
-          return true;
-        }
-        catch (ActivityNotFoundException localActivityNotFoundException)
-        {
-          Log.e("MenuItemImpl", "Can't find activity to handle intent; ignoring", localActivityNotFoundException);
-        }
+      catch (ActivityNotFoundException localActivityNotFoundException)
+      {
+        Log.e("MenuItemImpl", "Can't find activity to handle intent; ignoring", localActivityNotFoundException);
       }
-    } while ((this.mActionProvider != null) && (this.mActionProvider.onPerformDefaultAction()));
-    return false;
+    }
+    android.support.v4.view.ActionProvider localActionProvider = this.mActionProvider;
+    return (localActionProvider != null) && (localActionProvider.onPerformDefaultAction());
   }
   
   public boolean isActionButton()
@@ -408,15 +417,11 @@ public final class MenuItemImpl
   
   public boolean isVisible()
   {
-    if ((this.mActionProvider != null) && (this.mActionProvider.overridesItemVisibility())) {
-      if (((this.mFlags & 0x8) != 0) || (!this.mActionProvider.isVisible())) {}
+    android.support.v4.view.ActionProvider localActionProvider = this.mActionProvider;
+    if ((localActionProvider != null) && (localActionProvider.overridesItemVisibility())) {
+      return ((this.mFlags & 0x8) == 0) && (this.mActionProvider.isVisible());
     }
-    while ((this.mFlags & 0x8) == 0)
-    {
-      return true;
-      return false;
-    }
-    return false;
+    return (this.mFlags & 0x8) == 0;
   }
   
   public boolean requestsActionButton()
@@ -445,8 +450,12 @@ public final class MenuItemImpl
   {
     this.mActionView = paramView;
     this.mActionProvider = null;
-    if ((paramView != null) && (paramView.getId() == -1) && (this.mId > 0)) {
-      paramView.setId(this.mId);
+    if ((paramView != null) && (paramView.getId() == -1))
+    {
+      int i = this.mId;
+      if (i > 0) {
+        paramView.setId(i);
+      }
     }
     this.mMenu.onItemActionRequestChanged(this);
     return this;
@@ -487,17 +496,12 @@ public final class MenuItemImpl
   
   public MenuItem setCheckable(boolean paramBoolean)
   {
-    int j = this.mFlags;
-    int k = this.mFlags;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.mFlags = (i | k & 0xFFFFFFFE);
-      if (j != this.mFlags) {
-        this.mMenu.onItemsChanged(false);
-      }
-      return this;
+    int i = this.mFlags;
+    this.mFlags = (paramBoolean | i & 0xFFFFFFFE);
+    if (i != this.mFlags) {
+      this.mMenu.onItemsChanged(false);
     }
+    return this;
   }
   
   public MenuItem setChecked(boolean paramBoolean)
@@ -514,15 +518,15 @@ public final class MenuItemImpl
   void setCheckedInt(boolean paramBoolean)
   {
     int j = this.mFlags;
-    int k = this.mFlags;
-    if (paramBoolean) {}
-    for (int i = 2;; i = 0)
-    {
-      this.mFlags = (i | k & 0xFFFFFFFD);
-      if (j != this.mFlags) {
-        this.mMenu.onItemsChanged(false);
-      }
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 2;
+    } else {
+      i = 0;
+    }
+    this.mFlags = (i | j & 0xFFFFFFFD);
+    if (j != this.mFlags) {
+      this.mMenu.onItemsChanged(false);
     }
   }
   
@@ -535,23 +539,25 @@ public final class MenuItemImpl
   
   public MenuItem setEnabled(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (this.mFlags |= 0x10;; this.mFlags &= 0xFFFFFFEF)
-    {
-      this.mMenu.onItemsChanged(false);
-      return this;
+    if (paramBoolean) {
+      this.mFlags |= 0x10;
+    } else {
+      this.mFlags &= 0xFFFFFFEF;
     }
+    this.mMenu.onItemsChanged(false);
+    return this;
   }
   
   public void setExclusiveCheckable(boolean paramBoolean)
   {
     int j = this.mFlags;
-    if (paramBoolean) {}
-    for (int i = 4;; i = 0)
-    {
-      this.mFlags = (i | j & 0xFFFFFFFB);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 4;
+    } else {
+      i = 0;
     }
+    this.mFlags = (i | j & 0xFFFFFFFB);
   }
   
   public MenuItem setIcon(int paramInt)
@@ -687,14 +693,16 @@ public final class MenuItemImpl
   
   public SupportMenuItem setSupportActionProvider(android.support.v4.view.ActionProvider paramActionProvider)
   {
-    if (this.mActionProvider != null) {
-      this.mActionProvider.reset();
+    android.support.v4.view.ActionProvider localActionProvider = this.mActionProvider;
+    if (localActionProvider != null) {
+      localActionProvider.reset();
     }
     this.mActionView = null;
     this.mActionProvider = paramActionProvider;
     this.mMenu.onItemsChanged(true);
-    if (this.mActionProvider != null) {
-      this.mActionProvider.setVisibilityListener(new ActionProvider.VisibilityListener()
+    paramActionProvider = this.mActionProvider;
+    if (paramActionProvider != null) {
+      paramActionProvider.setVisibilityListener(new ActionProvider.VisibilityListener()
       {
         public void onActionProviderVisibilityChanged(boolean paramAnonymousBoolean)
         {
@@ -714,8 +722,9 @@ public final class MenuItemImpl
   {
     this.mTitle = paramCharSequence;
     this.mMenu.onItemsChanged(false);
-    if (this.mSubMenu != null) {
-      this.mSubMenu.setHeaderTitle(paramCharSequence);
+    SubMenuBuilder localSubMenuBuilder = this.mSubMenu;
+    if (localSubMenuBuilder != null) {
+      localSubMenuBuilder.setHeaderTitle(paramCharSequence);
     }
     return this;
   }
@@ -747,19 +756,20 @@ public final class MenuItemImpl
   
   boolean setVisibleInt(boolean paramBoolean)
   {
-    boolean bool = false;
     int j = this.mFlags;
-    int k = this.mFlags;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      this.mFlags = (i | k & 0xFFFFFFF7);
-      paramBoolean = bool;
-      if (j != this.mFlags) {
-        paramBoolean = true;
-      }
-      return paramBoolean;
+    boolean bool = false;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    this.mFlags = (i | j & 0xFFFFFFF7);
+    paramBoolean = bool;
+    if (j != this.mFlags) {
+      paramBoolean = true;
+    }
+    return paramBoolean;
   }
   
   public boolean shouldShowIcon()
@@ -779,8 +789,9 @@ public final class MenuItemImpl
   
   public String toString()
   {
-    if (this.mTitle != null) {
-      return this.mTitle.toString();
+    CharSequence localCharSequence = this.mTitle;
+    if (localCharSequence != null) {
+      return localCharSequence.toString();
     }
     return null;
   }

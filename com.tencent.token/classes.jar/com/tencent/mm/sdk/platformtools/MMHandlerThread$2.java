@@ -11,8 +11,9 @@ class MMHandlerThread$2
   {
     Log.d("MicroMsg.MMHandlerThread", "syncReset doInBackground");
     MMHandlerThread.a(this.ar).quit();
-    if (this.as != null) {
-      this.as.callback();
+    ??? = this.as;
+    if (??? != null) {
+      ((MMHandlerThread.ResetCallback)???).callback();
     }
     MMHandlerThread.b(this.ar);
     synchronized (this.at)

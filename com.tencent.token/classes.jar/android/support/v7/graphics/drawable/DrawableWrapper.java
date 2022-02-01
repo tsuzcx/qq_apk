@@ -185,8 +185,9 @@ public class DrawableWrapper
   
   public void setWrappedDrawable(Drawable paramDrawable)
   {
-    if (this.mDrawable != null) {
-      this.mDrawable.setCallback(null);
+    Drawable localDrawable = this.mDrawable;
+    if (localDrawable != null) {
+      localDrawable.setCallback(null);
     }
     this.mDrawable = paramDrawable;
     if (paramDrawable != null) {

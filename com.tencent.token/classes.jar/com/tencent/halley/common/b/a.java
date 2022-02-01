@@ -34,22 +34,24 @@ public final class a
   {
     if (a(paramInt))
     {
-      locala = new a();
+      a locala = new a();
       a(locala, this.a);
-      switch (locala.a)
+      paramInt = locala.a;
+      if (paramInt != 12)
       {
-      default: 
-        throw new RuntimeException("type mismatch.");
-      case 12: 
-        paramDouble = 0.0D;
+        switch (paramInt)
+        {
+        default: 
+          throw new RuntimeException("type mismatch.");
+        case 5: 
+          return this.a.getDouble();
+        }
+        return this.a.getFloat();
       }
+      return 0.0D;
     }
-    while (!paramBoolean)
-    {
-      a locala;
+    if (!paramBoolean) {
       return paramDouble;
-      return this.a.getFloat();
-      return this.a.getDouble();
     }
     throw new RuntimeException("require field not exist.");
   }
@@ -58,21 +60,20 @@ public final class a
   {
     if (a(paramInt))
     {
-      locala = new a();
+      a locala = new a();
       a(locala, this.a);
-      switch (locala.a)
+      paramInt = locala.a;
+      if (paramInt != 4)
       {
-      default: 
+        if (paramInt == 12) {
+          return 0.0F;
+        }
         throw new RuntimeException("type mismatch.");
-      case 12: 
-        paramFloat = 0.0F;
       }
-    }
-    while (!paramBoolean)
-    {
-      a locala;
-      return paramFloat;
       return this.a.getFloat();
+    }
+    if (!paramBoolean) {
+      return paramFloat;
     }
     throw new RuntimeException("require field not exist.");
   }
@@ -92,42 +93,39 @@ public final class a
   
   private Map a(Map paramMap1, Map paramMap2, int paramInt, boolean paramBoolean)
   {
-    if ((paramMap2 == null) || (paramMap2.isEmpty())) {
-      paramMap2 = new HashMap();
-    }
-    do
+    if ((paramMap2 != null) && (!paramMap2.isEmpty()))
     {
-      return paramMap2;
-      paramMap2 = (Map.Entry)paramMap2.entrySet().iterator().next();
-      Object localObject1 = paramMap2.getKey();
-      Object localObject2 = paramMap2.getValue();
+      Object localObject = (Map.Entry)paramMap2.entrySet().iterator().next();
+      paramMap2 = ((Map.Entry)localObject).getKey();
+      localObject = ((Map.Entry)localObject).getValue();
       if (a(paramInt))
       {
-        paramMap2 = new a();
-        a(paramMap2, this.a);
-        switch (paramMap2.a)
+        a locala = new a();
+        a(locala, this.a);
+        if (locala.a == 8)
         {
-        default: 
-          throw new RuntimeException("type mismatch.");
-        }
-        int i = a(0, 0, true);
-        if (i < 0) {
-          throw new RuntimeException("size invalid: " + i);
-        }
-        paramInt = 0;
-        for (;;)
-        {
-          paramMap2 = paramMap1;
-          if (paramInt >= i) {
-            break;
+          int i = a(0, 0, true);
+          if (i >= 0)
+          {
+            paramInt = 0;
+            while (paramInt < i)
+            {
+              paramMap1.put(a(paramMap2, 0, true), a(localObject, 1, true));
+              paramInt += 1;
+            }
           }
-          paramMap1.put(a(localObject1, 0, true), a(localObject2, 1, true));
-          paramInt += 1;
+          paramMap1 = new StringBuilder("size invalid: ");
+          paramMap1.append(i);
+          throw new RuntimeException(paramMap1.toString());
         }
+        throw new RuntimeException("type mismatch.");
       }
-      paramMap2 = paramMap1;
-    } while (!paramBoolean);
-    throw new RuntimeException("require field not exist.");
+      if (!paramBoolean) {
+        return paramMap1;
+      }
+      throw new RuntimeException("require field not exist.");
+    }
+    return new HashMap();
   }
   
   private void a()
@@ -144,30 +142,57 @@ public final class a
   {
     byte b2 = 0;
     byte b1 = 0;
-    a locala;
     switch (paramByte)
     {
     default: 
       throw new RuntimeException("invalid type.");
-    case 0: 
-      this.a.position(this.a.position() + 1);
+    case 13: 
+      localObject = new a();
+      a((a)localObject, this.a);
+      if (((a)localObject).a == 0)
+      {
+        paramByte = a(0, 0, true);
+        localObject = this.a;
+        ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + paramByte);
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder("skipField with invalid type, type value: ");
+      localStringBuilder.append(paramByte);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(((a)localObject).a);
+      throw new RuntimeException(localStringBuilder.toString());
     case 11: 
     case 12: 
       return;
-    case 1: 
-      this.a.position(2 + this.a.position());
+    case 10: 
+      a();
       return;
-    case 2: 
-      this.a.position(this.a.position() + 4);
+    case 9: 
+      b2 = a(0, 0, true);
+      paramByte = b1;
+      while (paramByte < b2)
+      {
+        localObject = new a();
+        a((a)localObject, this.a);
+        a(((a)localObject).a);
+        paramByte += 1;
+      }
       return;
-    case 3: 
-      this.a.position(this.a.position() + 8);
+    case 8: 
+      b1 = a(0, 0, true);
+      paramByte = b2;
+      while (paramByte < b1 << 1)
+      {
+        localObject = new a();
+        a((a)localObject, this.a);
+        a(((a)localObject).a);
+        paramByte += 1;
+      }
       return;
-    case 4: 
-      this.a.position(this.a.position() + 4);
-      return;
-    case 5: 
-      this.a.position(this.a.position() + 8);
+    case 7: 
+      paramByte = this.a.getInt();
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + paramByte);
       return;
     case 6: 
       b1 = this.a.get();
@@ -175,43 +200,32 @@ public final class a
       if (b1 < 0) {
         paramByte = b1 + 256;
       }
-      this.a.position(paramByte + this.a.position());
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + paramByte);
       return;
-    case 7: 
-      paramByte = this.a.getInt();
-      this.a.position(paramByte + this.a.position());
+    case 5: 
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + 8);
       return;
-    case 8: 
-      b2 = a(0, 0, true);
-      paramByte = b1;
-      while (paramByte < b2 << 1)
-      {
-        locala = new a();
-        a(locala, this.a);
-        a(locala.a);
-        paramByte += 1;
-      }
-    case 9: 
-      b1 = a(0, 0, true);
-      paramByte = b2;
-      while (paramByte < b1)
-      {
-        locala = new a();
-        a(locala, this.a);
-        a(locala.a);
-        paramByte += 1;
-      }
-    case 13: 
-      locala = new a();
-      a(locala, this.a);
-      if (locala.a != 0) {
-        throw new RuntimeException("skipField with invalid type, type value: " + paramByte + ", " + locala.a);
-      }
-      paramByte = a(0, 0, true);
-      this.a.position(paramByte + this.a.position());
+    case 4: 
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + 4);
+      return;
+    case 3: 
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + 8);
+      return;
+    case 2: 
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + 4);
+      return;
+    case 1: 
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + 2);
       return;
     }
-    a();
+    Object localObject = this.a;
+    ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + 1);
   }
   
   private boolean a(int paramInt)
@@ -232,84 +246,87 @@ public final class a
           }
           return true;
         }
-        this.a.position(i + this.a.position());
+        this.a.position(this.a.position() + i);
         a(locala.a);
       }
       return false;
     }
-    catch (BufferUnderflowException localBufferUnderflowException)
+    catch (BufferUnderflowException|RuntimeException localBufferUnderflowException)
     {
       return false;
     }
-    catch (RuntimeException localRuntimeException) {}
   }
   
   private Object[] b(Object paramObject, int paramInt, boolean paramBoolean)
   {
     if (a(paramInt))
     {
-      localObject = new a();
+      Object localObject = new a();
       a((a)localObject, this.a);
-      switch (((a)localObject).a)
+      if (((a)localObject).a == 9)
       {
-      default: 
-        throw new RuntimeException("type mismatch.");
-      }
-      int i = a(0, 0, true);
-      if (i < 0) {
-        throw new RuntimeException("size invalid: " + i);
-      }
-      Object[] arrayOfObject = (Object[])Array.newInstance(paramObject.getClass(), i);
-      paramInt = 0;
-      for (;;)
-      {
-        localObject = arrayOfObject;
-        if (paramInt >= i) {
-          break;
+        int i = a(0, 0, true);
+        if (i >= 0)
+        {
+          localObject = (Object[])Array.newInstance(paramObject.getClass(), i);
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject[paramInt] = a(paramObject, 0, true);
+            paramInt += 1;
+          }
+          return localObject;
         }
-        arrayOfObject[paramInt] = a(paramObject, 0, true);
-        paramInt += 1;
+        paramObject = new StringBuilder("size invalid: ");
+        paramObject.append(i);
+        throw new RuntimeException(paramObject.toString());
       }
+      throw new RuntimeException("type mismatch.");
     }
-    if (paramBoolean) {
-      throw new RuntimeException("require field not exist.");
+    if (!paramBoolean) {
+      return null;
     }
-    Object localObject = null;
-    return localObject;
+    throw new RuntimeException("require field not exist.");
   }
   
   private boolean[] c(int paramInt, boolean paramBoolean)
   {
-    Object localObject = null;
+    Object localObject;
     if (a(paramInt))
     {
       localObject = new a();
       a((a)localObject, this.a);
-      switch (((a)localObject).a)
+      if (((a)localObject).a == 9)
       {
-      default: 
-        throw new RuntimeException("type mismatch.");
-      }
-      i = a(0, 0, true);
-      if (i < 0) {
-        throw new RuntimeException("size invalid: " + i);
-      }
-      localObject = new boolean[i];
-      paramInt = 0;
-      if (paramInt < i)
-      {
-        if (a((byte)0, 0, true) != 0) {}
-        for (paramBoolean = true;; paramBoolean = false)
+        int i = a(0, 0, true);
+        if (i >= 0)
         {
-          localObject[paramInt] = paramBoolean;
-          paramInt += 1;
-          break;
+          boolean[] arrayOfBoolean = new boolean[i];
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = arrayOfBoolean;
+            if (paramInt >= i) {
+              break;
+            }
+            if (a((byte)0, 0, true) != 0) {
+              paramBoolean = true;
+            } else {
+              paramBoolean = false;
+            }
+            arrayOfBoolean[paramInt] = paramBoolean;
+            paramInt += 1;
+          }
         }
+        localObject = new StringBuilder("size invalid: ");
+        ((StringBuilder)localObject).append(i);
+        throw new RuntimeException(((StringBuilder)localObject).toString());
       }
+      throw new RuntimeException("type mismatch.");
     }
-    while (!paramBoolean)
+    if (!paramBoolean)
     {
-      int i;
+      localObject = null;
       return localObject;
     }
     throw new RuntimeException("require field not exist.");
@@ -317,193 +334,212 @@ public final class a
   
   private short[] d(int paramInt, boolean paramBoolean)
   {
-    Object localObject = null;
+    Object localObject;
     if (a(paramInt))
     {
       localObject = new a();
       a((a)localObject, this.a);
-      switch (((a)localObject).a)
+      if (((a)localObject).a == 9)
       {
-      default: 
-        throw new RuntimeException("type mismatch.");
-      }
-      int i = a(0, 0, true);
-      if (i < 0) {
-        throw new RuntimeException("size invalid: " + i);
-      }
-      short[] arrayOfShort = new short[i];
-      paramInt = 0;
-      for (;;)
-      {
-        localObject = arrayOfShort;
-        if (paramInt >= i) {
-          break;
+        int i = a(0, 0, true);
+        if (i >= 0)
+        {
+          short[] arrayOfShort = new short[i];
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = arrayOfShort;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfShort[paramInt] = a(arrayOfShort[0], 0, true);
+            paramInt += 1;
+          }
         }
-        arrayOfShort[paramInt] = a(arrayOfShort[0], 0, true);
-        paramInt += 1;
+        localObject = new StringBuilder("size invalid: ");
+        ((StringBuilder)localObject).append(i);
+        throw new RuntimeException(((StringBuilder)localObject).toString());
       }
+      throw new RuntimeException("type mismatch.");
     }
-    if (paramBoolean) {
-      throw new RuntimeException("require field not exist.");
+    if (!paramBoolean)
+    {
+      localObject = null;
+      return localObject;
     }
-    return localObject;
+    throw new RuntimeException("require field not exist.");
   }
   
   private int[] e(int paramInt, boolean paramBoolean)
   {
-    Object localObject = null;
+    Object localObject;
     if (a(paramInt))
     {
       localObject = new a();
       a((a)localObject, this.a);
-      switch (((a)localObject).a)
+      if (((a)localObject).a == 9)
       {
-      default: 
-        throw new RuntimeException("type mismatch.");
-      }
-      int i = a(0, 0, true);
-      if (i < 0) {
-        throw new RuntimeException("size invalid: " + i);
-      }
-      int[] arrayOfInt = new int[i];
-      paramInt = 0;
-      for (;;)
-      {
-        localObject = arrayOfInt;
-        if (paramInt >= i) {
-          break;
+        int i = a(0, 0, true);
+        if (i >= 0)
+        {
+          int[] arrayOfInt = new int[i];
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = arrayOfInt;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfInt[paramInt] = a(arrayOfInt[0], 0, true);
+            paramInt += 1;
+          }
         }
-        arrayOfInt[paramInt] = a(arrayOfInt[0], 0, true);
-        paramInt += 1;
+        localObject = new StringBuilder("size invalid: ");
+        ((StringBuilder)localObject).append(i);
+        throw new RuntimeException(((StringBuilder)localObject).toString());
       }
+      throw new RuntimeException("type mismatch.");
     }
-    if (paramBoolean) {
-      throw new RuntimeException("require field not exist.");
+    if (!paramBoolean)
+    {
+      localObject = null;
+      return localObject;
     }
-    return localObject;
+    throw new RuntimeException("require field not exist.");
   }
   
   private long[] f(int paramInt, boolean paramBoolean)
   {
-    Object localObject = null;
+    Object localObject;
     if (a(paramInt))
     {
       localObject = new a();
       a((a)localObject, this.a);
-      switch (((a)localObject).a)
+      if (((a)localObject).a == 9)
       {
-      default: 
-        throw new RuntimeException("type mismatch.");
-      }
-      int i = a(0, 0, true);
-      if (i < 0) {
-        throw new RuntimeException("size invalid: " + i);
-      }
-      long[] arrayOfLong = new long[i];
-      paramInt = 0;
-      for (;;)
-      {
-        localObject = arrayOfLong;
-        if (paramInt >= i) {
-          break;
+        int i = a(0, 0, true);
+        if (i >= 0)
+        {
+          long[] arrayOfLong = new long[i];
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = arrayOfLong;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfLong[paramInt] = a(arrayOfLong[0], 0, true);
+            paramInt += 1;
+          }
         }
-        arrayOfLong[paramInt] = a(arrayOfLong[0], 0, true);
-        paramInt += 1;
+        localObject = new StringBuilder("size invalid: ");
+        ((StringBuilder)localObject).append(i);
+        throw new RuntimeException(((StringBuilder)localObject).toString());
       }
+      throw new RuntimeException("type mismatch.");
     }
-    if (paramBoolean) {
-      throw new RuntimeException("require field not exist.");
+    if (!paramBoolean)
+    {
+      localObject = null;
+      return localObject;
     }
-    return localObject;
+    throw new RuntimeException("require field not exist.");
   }
   
   private float[] g(int paramInt, boolean paramBoolean)
   {
-    Object localObject = null;
+    Object localObject;
     if (a(paramInt))
     {
       localObject = new a();
       a((a)localObject, this.a);
-      switch (((a)localObject).a)
+      if (((a)localObject).a == 9)
       {
-      default: 
-        throw new RuntimeException("type mismatch.");
-      }
-      int i = a(0, 0, true);
-      if (i < 0) {
-        throw new RuntimeException("size invalid: " + i);
-      }
-      float[] arrayOfFloat = new float[i];
-      paramInt = 0;
-      for (;;)
-      {
-        localObject = arrayOfFloat;
-        if (paramInt >= i) {
-          break;
+        int i = a(0, 0, true);
+        if (i >= 0)
+        {
+          float[] arrayOfFloat = new float[i];
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = arrayOfFloat;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfFloat[paramInt] = a(arrayOfFloat[0], 0, true);
+            paramInt += 1;
+          }
         }
-        arrayOfFloat[paramInt] = a(arrayOfFloat[0], 0, true);
-        paramInt += 1;
+        localObject = new StringBuilder("size invalid: ");
+        ((StringBuilder)localObject).append(i);
+        throw new RuntimeException(((StringBuilder)localObject).toString());
       }
+      throw new RuntimeException("type mismatch.");
     }
-    if (paramBoolean) {
-      throw new RuntimeException("require field not exist.");
+    if (!paramBoolean)
+    {
+      localObject = null;
+      return localObject;
     }
-    return localObject;
+    throw new RuntimeException("require field not exist.");
   }
   
   private double[] h(int paramInt, boolean paramBoolean)
   {
-    Object localObject = null;
+    Object localObject;
     if (a(paramInt))
     {
       localObject = new a();
       a((a)localObject, this.a);
-      switch (((a)localObject).a)
+      if (((a)localObject).a == 9)
       {
-      default: 
-        throw new RuntimeException("type mismatch.");
-      }
-      int i = a(0, 0, true);
-      if (i < 0) {
-        throw new RuntimeException("size invalid: " + i);
-      }
-      double[] arrayOfDouble = new double[i];
-      paramInt = 0;
-      for (;;)
-      {
-        localObject = arrayOfDouble;
-        if (paramInt >= i) {
-          break;
+        int i = a(0, 0, true);
+        if (i >= 0)
+        {
+          double[] arrayOfDouble = new double[i];
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = arrayOfDouble;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfDouble[paramInt] = a(arrayOfDouble[0], 0, true);
+            paramInt += 1;
+          }
         }
-        arrayOfDouble[paramInt] = a(arrayOfDouble[0], 0, true);
-        paramInt += 1;
+        localObject = new StringBuilder("size invalid: ");
+        ((StringBuilder)localObject).append(i);
+        throw new RuntimeException(((StringBuilder)localObject).toString());
       }
+      throw new RuntimeException("type mismatch.");
     }
-    if (paramBoolean) {
-      throw new RuntimeException("require field not exist.");
+    if (!paramBoolean)
+    {
+      localObject = null;
+      return localObject;
     }
-    return localObject;
+    throw new RuntimeException("require field not exist.");
   }
   
   public final byte a(byte paramByte, int paramInt, boolean paramBoolean)
   {
     if (a(paramInt))
     {
-      locala = new a();
+      a locala = new a();
       a(locala, this.a);
-      switch (locala.a)
+      paramInt = locala.a;
+      if (paramInt != 0)
       {
-      default: 
+        if (paramInt == 12) {
+          return 0;
+        }
         throw new RuntimeException("type mismatch.");
-      case 12: 
-        paramByte = 0;
       }
-    }
-    while (!paramBoolean)
-    {
-      a locala;
-      return paramByte;
       return this.a.get();
+    }
+    if (!paramBoolean) {
+      return paramByte;
     }
     throw new RuntimeException("require field not exist.");
   }
@@ -512,23 +548,26 @@ public final class a
   {
     if (a(paramInt2))
     {
-      locala = new a();
+      a locala = new a();
       a(locala, this.a);
-      switch (locala.a)
+      paramInt1 = locala.a;
+      if (paramInt1 != 12)
       {
-      default: 
-        throw new RuntimeException("type mismatch.");
-      case 12: 
-        paramInt1 = 0;
+        switch (paramInt1)
+        {
+        default: 
+          throw new RuntimeException("type mismatch.");
+        case 2: 
+          return this.a.getInt();
+        case 1: 
+          return this.a.getShort();
+        }
+        return this.a.get();
       }
+      return 0;
     }
-    while (!paramBoolean)
-    {
-      a locala;
+    if (!paramBoolean) {
       return paramInt1;
-      return this.a.get();
-      return this.a.getShort();
-      return this.a.getInt();
     }
     throw new RuntimeException("require field not exist.");
   }
@@ -543,70 +582,77 @@ public final class a
   {
     if (a(paramInt))
     {
-      locala = new a();
+      a locala = new a();
       a(locala, this.a);
-      switch (locala.a)
+      paramInt = locala.a;
+      if (paramInt != 12)
       {
-      default: 
-        throw new RuntimeException("type mismatch.");
-      case 12: 
-        paramLong = 0L;
+        switch (paramInt)
+        {
+        default: 
+          throw new RuntimeException("type mismatch.");
+        case 3: 
+          return this.a.getLong();
+        case 2: 
+          paramInt = this.a.getInt();
+          break;
+        case 1: 
+          paramInt = this.a.getShort();
+          break;
+        case 0: 
+          paramInt = this.a.get();
+        }
+        return paramInt;
       }
+      return 0L;
     }
-    while (!paramBoolean)
-    {
-      a locala;
+    if (!paramBoolean) {
       return paramLong;
-      return this.a.get();
-      return this.a.getShort();
-      return this.a.getInt();
-      return this.a.getLong();
     }
     throw new RuntimeException("require field not exist.");
   }
   
   public final c a(c paramc, int paramInt, boolean paramBoolean)
   {
-    a locala = null;
-    if (a(paramInt))
-    {
+    if (a(paramInt)) {
       try
       {
         paramc = (c)paramc.getClass().newInstance();
-        locala = new a();
+        a locala = new a();
         a(locala, this.a);
-        if (locala.a != 10) {
-          throw new RuntimeException("type mismatch.");
+        if (locala.a == 10)
+        {
+          paramc.a(this);
+          a();
+          return paramc;
         }
+        throw new RuntimeException("type mismatch.");
       }
       catch (Exception paramc)
       {
         throw new RuntimeException(paramc.getMessage());
       }
-      paramc.a(this);
-      a();
     }
-    do
-    {
-      return paramc;
-      paramc = locala;
-    } while (!paramBoolean);
+    if (!paramBoolean) {
+      return null;
+    }
     throw new RuntimeException("require field not exist.");
   }
   
   public final Object a(Object paramObject, int paramInt, boolean paramBoolean)
   {
+    boolean bool2 = paramObject instanceof Byte;
     int i = 0;
-    boolean bool = false;
-    if ((paramObject instanceof Byte)) {
+    boolean bool1 = false;
+    if (bool2) {
       return Byte.valueOf(a((byte)0, paramInt, paramBoolean));
     }
     if ((paramObject instanceof Boolean))
     {
       if (a((byte)0, paramInt, paramBoolean) != 0) {
-        bool = true;
+        bool1 = true;
       }
-      return Boolean.valueOf(bool);
+      return Boolean.valueOf(bool1);
     }
     if ((paramObject instanceof Short)) {
       return Short.valueOf(a((short)0, paramInt, paramBoolean));
@@ -634,106 +680,115 @@ public final class a
     if ((paramObject instanceof List))
     {
       paramObject = (List)paramObject;
-      if ((paramObject == null) || (paramObject.isEmpty())) {
-        return new ArrayList();
-      }
-      paramObject = b(paramObject.get(0), paramInt, paramBoolean);
-      if (paramObject == null) {
-        return null;
-      }
-      ArrayList localArrayList = new ArrayList();
-      paramInt = i;
-      while (paramInt < paramObject.length)
+      if ((paramObject != null) && (!paramObject.isEmpty()))
       {
-        localArrayList.add(paramObject[paramInt]);
-        paramInt += 1;
+        paramObject = b(paramObject.get(0), paramInt, paramBoolean);
+        if (paramObject == null) {
+          return null;
+        }
+        ArrayList localArrayList = new ArrayList();
+        paramInt = i;
+        while (paramInt < paramObject.length)
+        {
+          localArrayList.add(paramObject[paramInt]);
+          paramInt += 1;
+        }
+        return localArrayList;
       }
-      return localArrayList;
+      return new ArrayList();
     }
     if ((paramObject instanceof c)) {
       return a((c)paramObject, paramInt, paramBoolean);
     }
     if (paramObject.getClass().isArray())
     {
-      if (((paramObject instanceof byte[])) || ((paramObject instanceof Byte[]))) {
-        return b(paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof boolean[])) {
-        return c(paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof short[])) {
-        return d(paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof int[])) {
-        return e(paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof long[])) {
-        return f(paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof float[])) {
-        return g(paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof double[])) {
-        return h(paramInt, paramBoolean);
-      }
-      paramObject = (Object[])paramObject;
-      if ((paramObject == null) || (paramObject.length == 0)) {
+      if ((!(paramObject instanceof byte[])) && (!(paramObject instanceof Byte[])))
+      {
+        if ((paramObject instanceof boolean[])) {
+          return c(paramInt, paramBoolean);
+        }
+        if ((paramObject instanceof short[])) {
+          return d(paramInt, paramBoolean);
+        }
+        if ((paramObject instanceof int[])) {
+          return e(paramInt, paramBoolean);
+        }
+        if ((paramObject instanceof long[])) {
+          return f(paramInt, paramBoolean);
+        }
+        if ((paramObject instanceof float[])) {
+          return g(paramInt, paramBoolean);
+        }
+        if ((paramObject instanceof double[])) {
+          return h(paramInt, paramBoolean);
+        }
+        paramObject = (Object[])paramObject;
+        if ((paramObject != null) && (paramObject.length != 0)) {
+          return b(paramObject[0], paramInt, paramBoolean);
+        }
         throw new RuntimeException("unable to get type of key and value.");
       }
-      return b(paramObject[0], paramInt, paramBoolean);
+      return b(paramInt, paramBoolean);
     }
     throw new RuntimeException("read object error: unsupport type.");
   }
   
   public final String a(int paramInt, boolean paramBoolean)
   {
-    Object localObject1 = null;
     if (a(paramInt))
     {
-      localObject1 = new a();
-      a((a)localObject1, this.a);
-      switch (((a)localObject1).a)
+      localObject = new a();
+      a((a)localObject, this.a);
+      switch (((a)localObject).a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
-      case 6: 
-        i = this.a.get();
-        paramInt = i;
-        if (i < 0) {
-          paramInt = i + 256;
+      case 7: 
+        paramInt = this.a.getInt();
+        if ((paramInt <= 104857600) && (paramInt >= 0) && (paramInt <= this.a.capacity()))
+        {
+          localObject = new byte[paramInt];
+          this.a.get((byte[])localObject);
         }
-        localObject2 = new byte[paramInt];
-        this.a.get((byte[])localObject2);
+        break;
       }
     }
-    while (!paramBoolean)
+    try
     {
-      Object localObject2;
-      try
-      {
-        int i;
-        localObject1 = new String((byte[])localObject2, this.b);
-        return localObject1;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException1)
-      {
-        return new String((byte[])localObject2);
-      }
-      paramInt = this.a.getInt();
-      if ((paramInt > 104857600) || (paramInt < 0) || (paramInt > this.a.capacity())) {
-        throw new RuntimeException("String too long: " + paramInt);
-      }
-      byte[] arrayOfByte = new byte[paramInt];
-      this.a.get(arrayOfByte);
-      try
-      {
-        localObject2 = new String(arrayOfByte, this.b);
-        return localObject2;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException2)
-      {
-        return new String(arrayOfByte);
-      }
+      str = new String((byte[])localObject, this.b);
+      return str;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException1)
+    {
+      String str;
+      label129:
+      int i;
+      break label129;
+    }
+    return new String((byte[])localObject);
+    Object localObject = new StringBuilder("String too long: ");
+    ((StringBuilder)localObject).append(paramInt);
+    throw new RuntimeException(((StringBuilder)localObject).toString());
+    i = this.a.get();
+    paramInt = i;
+    if (i < 0) {
+      paramInt = i + 256;
+    }
+    localObject = new byte[paramInt];
+    this.a.get((byte[])localObject);
+    try
+    {
+      str = new String((byte[])localObject, this.b);
+      return str;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException2)
+    {
+      label224:
+      break label224;
+    }
+    return new String((byte[])localObject);
+    if (!paramBoolean) {
+      return null;
     }
     throw new RuntimeException("require field not exist.");
   }
@@ -747,22 +802,24 @@ public final class a
   {
     if (a(paramInt))
     {
-      locala = new a();
+      a locala = new a();
       a(locala, this.a);
-      switch (locala.a)
+      paramInt = locala.a;
+      if (paramInt != 12)
       {
-      default: 
-        throw new RuntimeException("type mismatch.");
-      case 12: 
-        paramShort = 0;
+        switch (paramInt)
+        {
+        default: 
+          throw new RuntimeException("type mismatch.");
+        case 1: 
+          return this.a.getShort();
+        }
+        return (short)this.a.get();
       }
+      return 0;
     }
-    while (!paramBoolean)
-    {
-      a locala;
+    if (!paramBoolean) {
       return paramShort;
-      return (short)this.a.get();
-      return this.a.getShort();
     }
     throw new RuntimeException("require field not exist.");
   }
@@ -774,47 +831,64 @@ public final class a
   
   public final byte[] b(int paramInt, boolean paramBoolean)
   {
-    Object localObject1 = null;
     if (a(paramInt))
     {
-      localObject1 = new a();
-      a((a)localObject1, this.a);
-      switch (((a)localObject1).a)
+      Object localObject = new a();
+      a((a)localObject, this.a);
+      int i = ((a)localObject).a;
+      if (i != 9)
       {
-      default: 
+        if (i == 13)
+        {
+          a locala = new a();
+          a(locala, this.a);
+          if (locala.a == 0)
+          {
+            i = a(0, 0, true);
+            if ((i >= 0) && (i <= this.a.capacity()))
+            {
+              localObject = new byte[i];
+              this.a.get((byte[])localObject);
+              return localObject;
+            }
+            localStringBuilder = new StringBuilder("invalid size, tag: ");
+            localStringBuilder.append(paramInt);
+            localStringBuilder.append(", type: ");
+            localStringBuilder.append(((a)localObject).a);
+            localStringBuilder.append(", ");
+            localStringBuilder.append(locala.a);
+            localStringBuilder.append(", size: ");
+            localStringBuilder.append(i);
+            throw new RuntimeException(localStringBuilder.toString());
+          }
+          StringBuilder localStringBuilder = new StringBuilder("type mismatch, tag: ");
+          localStringBuilder.append(paramInt);
+          localStringBuilder.append(", type: ");
+          localStringBuilder.append(((a)localObject).a);
+          localStringBuilder.append(", ");
+          localStringBuilder.append(locala.a);
+          throw new RuntimeException(localStringBuilder.toString());
+        }
         throw new RuntimeException("type mismatch.");
-      case 13: 
-        localObject2 = new a();
-        a((a)localObject2, this.a);
-        if (((a)localObject2).a != 0) {
-          throw new RuntimeException("type mismatch, tag: " + paramInt + ", type: " + ((a)localObject1).a + ", " + ((a)localObject2).a);
-        }
-        i = a(0, 0, true);
-        if ((i < 0) || (i > this.a.capacity())) {
-          throw new RuntimeException("invalid size, tag: " + paramInt + ", type: " + ((a)localObject1).a + ", " + ((a)localObject2).a + ", size: " + i);
-        }
-        localObject1 = new byte[i];
-        this.a.get((byte[])localObject1);
       }
-    }
-    while (!paramBoolean)
-    {
-      return localObject1;
-      int i = a(0, 0, true);
-      if ((i < 0) || (i > this.a.capacity())) {
-        throw new RuntimeException("size invalid: " + i);
-      }
-      Object localObject2 = new byte[i];
-      paramInt = 0;
-      for (;;)
+      i = a(0, 0, true);
+      if ((i >= 0) && (i <= this.a.capacity()))
       {
-        localObject1 = localObject2;
-        if (paramInt >= i) {
-          break;
+        localObject = new byte[i];
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject[paramInt] = a(localObject[0], 0, true);
+          paramInt += 1;
         }
-        localObject2[paramInt] = a(localObject2[0], 0, true);
-        paramInt += 1;
+        return localObject;
       }
+      localObject = new StringBuilder("size invalid: ");
+      ((StringBuilder)localObject).append(i);
+      throw new RuntimeException(((StringBuilder)localObject).toString());
+    }
+    if (!paramBoolean) {
+      return null;
     }
     throw new RuntimeException("require field not exist.");
   }

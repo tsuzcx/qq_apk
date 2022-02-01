@@ -118,34 +118,28 @@ public final class AppCompatDrawableManager
   
   private static boolean arrayContains(int[] paramArrayOfInt, int paramInt)
   {
-    boolean bool2 = false;
     int j = paramArrayOfInt.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramArrayOfInt[i] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (paramArrayOfInt[i] == paramInt) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   private void checkVectorDrawableSetup(@NonNull Context paramContext)
   {
-    if (this.mHasCheckedVectorDrawableSetup) {}
-    do
-    {
+    if (this.mHasCheckedVectorDrawableSetup) {
       return;
-      this.mHasCheckedVectorDrawableSetup = true;
-      paramContext = getDrawable(paramContext, R.drawable.abc_vector_test);
-    } while ((paramContext != null) && (isVectorDrawable(paramContext)));
+    }
+    this.mHasCheckedVectorDrawableSetup = true;
+    paramContext = getDrawable(paramContext, R.drawable.abc_vector_test);
+    if ((paramContext != null) && (isVectorDrawable(paramContext))) {
+      return;
+    }
     this.mHasCheckedVectorDrawableSetup = false;
     throw new IllegalStateException("This app has been built with an incorrect configuration. Please configure your build for VectorDrawableCompat.");
   }
@@ -190,22 +184,19 @@ public final class AppCompatDrawableManager
     TypedValue localTypedValue = this.mTypedValue;
     paramContext.getResources().getValue(paramInt, localTypedValue, true);
     long l = createCacheKey(localTypedValue);
-    Object localObject1 = getCachedDrawable(paramContext, l);
-    Object localObject2;
-    if (localObject1 != null) {
-      localObject2 = localObject1;
+    Object localObject = getCachedDrawable(paramContext, l);
+    if (localObject != null) {
+      return localObject;
     }
-    do
+    if (paramInt == R.drawable.abc_cab_background_top_material) {
+      localObject = new LayerDrawable(new Drawable[] { getDrawable(paramContext, R.drawable.abc_cab_background_internal_bg), getDrawable(paramContext, R.drawable.abc_cab_background_top_mtrl_alpha) });
+    }
+    if (localObject != null)
     {
-      return localObject2;
-      if (paramInt == R.drawable.abc_cab_background_top_material) {
-        localObject1 = new LayerDrawable(new Drawable[] { getDrawable(paramContext, R.drawable.abc_cab_background_internal_bg), getDrawable(paramContext, R.drawable.abc_cab_background_top_mtrl_alpha) });
-      }
-      localObject2 = localObject1;
-    } while (localObject1 == null);
-    ((Drawable)localObject1).setChangingConfigurations(localTypedValue.changingConfigurations);
-    addDrawableToCache(paramContext, l, (Drawable)localObject1);
-    return localObject1;
+      ((Drawable)localObject).setChangingConfigurations(localTypedValue.changingConfigurations);
+      addDrawableToCache(paramContext, l, (Drawable)localObject);
+    }
+    return localObject;
   }
   
   private ColorStateList createSwitchThumbColorStateList(Context paramContext)
@@ -222,9 +213,8 @@ public final class AppCompatDrawableManager
       arrayOfInt[2] = ThemeUtils.EMPTY_STATE_SET;
       arrayOfInt1[2] = localColorStateList.getDefaultColor();
     }
-    for (;;)
+    else
     {
-      return new ColorStateList(arrayOfInt, arrayOfInt1);
       arrayOfInt[0] = ThemeUtils.DISABLED_STATE_SET;
       arrayOfInt1[0] = ThemeUtils.getDisabledThemeAttrColor(paramContext, R.attr.colorSwitchThumbNormal);
       arrayOfInt[1] = ThemeUtils.CHECKED_STATE_SET;
@@ -232,14 +222,15 @@ public final class AppCompatDrawableManager
       arrayOfInt[2] = ThemeUtils.EMPTY_STATE_SET;
       arrayOfInt1[2] = ThemeUtils.getThemeAttrColor(paramContext, R.attr.colorSwitchThumbNormal);
     }
+    return new ColorStateList(arrayOfInt, arrayOfInt1);
   }
   
   private static PorterDuffColorFilter createTintFilter(ColorStateList paramColorStateList, PorterDuff.Mode paramMode, int[] paramArrayOfInt)
   {
-    if ((paramColorStateList == null) || (paramMode == null)) {
-      return null;
+    if ((paramColorStateList != null) && (paramMode != null)) {
+      return getPorterDuffColorFilter(paramColorStateList.getColorForState(paramArrayOfInt, 0), paramMode);
     }
-    return getPorterDuffColorFilter(paramColorStateList.getColorForState(paramArrayOfInt, 0), paramMode);
+    return null;
   }
   
   public static AppCompatDrawableManager get()
@@ -254,27 +245,25 @@ public final class AppCompatDrawableManager
   
   private Drawable getCachedDrawable(@NonNull Context paramContext, long paramLong)
   {
-    LongSparseArray localLongSparseArray;
     synchronized (this.mDrawableCacheLock)
     {
-      localLongSparseArray = (LongSparseArray)this.mDrawableCaches.get(paramContext);
+      LongSparseArray localLongSparseArray = (LongSparseArray)this.mDrawableCaches.get(paramContext);
       if (localLongSparseArray == null) {
         return null;
       }
       Object localObject2 = (WeakReference)localLongSparseArray.get(paramLong);
-      if (localObject2 == null) {
-        break label90;
-      }
-      localObject2 = (Drawable.ConstantState)((WeakReference)localObject2).get();
       if (localObject2 != null)
       {
-        paramContext = ((Drawable.ConstantState)localObject2).newDrawable(paramContext.getResources());
-        return paramContext;
+        localObject2 = (Drawable.ConstantState)((WeakReference)localObject2).get();
+        if (localObject2 != null)
+        {
+          paramContext = ((Drawable.ConstantState)localObject2).newDrawable(paramContext.getResources());
+          return paramContext;
+        }
+        localLongSparseArray.delete(paramLong);
       }
+      return null;
     }
-    localLongSparseArray.delete(paramLong);
-    label90:
-    return null;
   }
   
   public static PorterDuffColorFilter getPorterDuffColorFilter(int paramInt, PorterDuff.Mode paramMode)
@@ -291,24 +280,26 @@ public final class AppCompatDrawableManager
   
   private ColorStateList getTintListFromCache(@NonNull Context paramContext, @DrawableRes int paramInt)
   {
-    if (this.mTintLists != null)
+    Object localObject2 = this.mTintLists;
+    Object localObject1 = null;
+    if (localObject2 != null)
     {
-      paramContext = (SparseArrayCompat)this.mTintLists.get(paramContext);
-      if (paramContext != null) {
-        return (ColorStateList)paramContext.get(paramInt);
+      localObject2 = (SparseArrayCompat)((WeakHashMap)localObject2).get(paramContext);
+      paramContext = localObject1;
+      if (localObject2 != null) {
+        paramContext = (ColorStateList)((SparseArrayCompat)localObject2).get(paramInt);
       }
-      return null;
+      return paramContext;
     }
     return null;
   }
   
   static PorterDuff.Mode getTintMode(int paramInt)
   {
-    PorterDuff.Mode localMode = null;
     if (paramInt == R.drawable.abc_switch_thumb_material) {
-      localMode = PorterDuff.Mode.MULTIPLY;
+      return PorterDuff.Mode.MULTIPLY;
     }
-    return localMode;
+    return null;
   }
   
   private static void installDefaultInflateDelegates(@NonNull AppCompatDrawableManager paramAppCompatDrawableManager)
@@ -327,15 +318,15 @@ public final class AppCompatDrawableManager
   
   private Drawable loadDrawableFromDelegates(@NonNull Context paramContext, @DrawableRes int paramInt)
   {
-    if ((this.mDelegates != null) && (!this.mDelegates.isEmpty()))
+    Object localObject1 = this.mDelegates;
+    if ((localObject1 != null) && (!((ArrayMap)localObject1).isEmpty()))
     {
-      if (this.mKnownDrawableIdTags != null)
+      localObject1 = this.mKnownDrawableIdTags;
+      if (localObject1 != null)
       {
-        localObject1 = (String)this.mKnownDrawableIdTags.get(paramInt);
-        if (("appcompat_skip_skip".equals(localObject1)) || ((localObject1 != null) && (this.mDelegates.get(localObject1) == null)))
-        {
-          localObject1 = null;
-          return localObject1;
+        localObject1 = (String)((SparseArrayCompat)localObject1).get(paramInt);
+        if (("appcompat_skip_skip".equals(localObject1)) || ((localObject1 != null) && (this.mDelegates.get(localObject1) == null))) {
+          return null;
         }
       }
       else
@@ -346,7 +337,7 @@ public final class AppCompatDrawableManager
         this.mTypedValue = new TypedValue();
       }
       TypedValue localTypedValue = this.mTypedValue;
-      Object localObject1 = paramContext.getResources();
+      localObject1 = paramContext.getResources();
       ((Resources)localObject1).getValue(paramInt, localTypedValue, true);
       long l = createCacheKey(localTypedValue);
       Drawable localDrawable = getCachedDrawable(paramContext, l);
@@ -354,8 +345,6 @@ public final class AppCompatDrawableManager
         return localDrawable;
       }
       Object localObject2 = localDrawable;
-      XmlResourceParser localXmlResourceParser;
-      AttributeSet localAttributeSet;
       if (localTypedValue.string != null)
       {
         localObject2 = localDrawable;
@@ -364,16 +353,40 @@ public final class AppCompatDrawableManager
           localObject2 = localDrawable;
           try
           {
-            localXmlResourceParser = ((Resources)localObject1).getXml(paramInt);
+            XmlResourceParser localXmlResourceParser = ((Resources)localObject1).getXml(paramInt);
             localObject2 = localDrawable;
-            localAttributeSet = Xml.asAttributeSet(localXmlResourceParser);
+            AttributeSet localAttributeSet = Xml.asAttributeSet(localXmlResourceParser);
             int i;
             do
             {
               localObject2 = localDrawable;
               i = localXmlResourceParser.next();
             } while ((i != 2) && (i != 1));
-            if (i != 2)
+            if (i == 2)
+            {
+              localObject2 = localDrawable;
+              localObject1 = localXmlResourceParser.getName();
+              localObject2 = localDrawable;
+              this.mKnownDrawableIdTags.append(paramInt, localObject1);
+              localObject2 = localDrawable;
+              InflateDelegate localInflateDelegate = (InflateDelegate)this.mDelegates.get(localObject1);
+              localObject1 = localDrawable;
+              if (localInflateDelegate != null)
+              {
+                localObject2 = localDrawable;
+                localObject1 = localInflateDelegate.createFromXmlInner(paramContext, localXmlResourceParser, localAttributeSet, paramContext.getTheme());
+              }
+              localObject2 = localObject1;
+              if (localObject1 != null)
+              {
+                localObject2 = localObject1;
+                ((Drawable)localObject1).setChangingConfigurations(localTypedValue.changingConfigurations);
+                localObject2 = localObject1;
+                addDrawableToCache(paramContext, l, (Drawable)localObject1);
+                localObject2 = localObject1;
+              }
+            }
+            else
             {
               localObject2 = localDrawable;
               throw new XmlPullParserException("No start tag found");
@@ -385,42 +398,18 @@ public final class AppCompatDrawableManager
           }
         }
       }
-      for (paramContext = (Context)localObject2;; paramContext = (Context)localObject1)
-      {
-        localObject1 = paramContext;
-        if (paramContext != null) {
-          break;
-        }
+      if (localObject2 == null) {
         this.mKnownDrawableIdTags.append(paramInt, "appcompat_skip_skip");
-        return paramContext;
-        localObject2 = localDrawable;
-        localObject1 = localXmlResourceParser.getName();
-        localObject2 = localDrawable;
-        this.mKnownDrawableIdTags.append(paramInt, localObject1);
-        localObject2 = localDrawable;
-        InflateDelegate localInflateDelegate = (InflateDelegate)this.mDelegates.get(localObject1);
-        localObject1 = localDrawable;
-        if (localInflateDelegate != null)
-        {
-          localObject2 = localDrawable;
-          localObject1 = localInflateDelegate.createFromXmlInner(paramContext, localXmlResourceParser, localAttributeSet, paramContext.getTheme());
-        }
-        if (localObject1 != null)
-        {
-          localObject2 = localObject1;
-          ((Drawable)localObject1).setChangingConfigurations(localTypedValue.changingConfigurations);
-          localObject2 = localObject1;
-          boolean bool = addDrawableToCache(paramContext, l, (Drawable)localObject1);
-          if (!bool) {}
-        }
       }
+      return localObject2;
     }
     return null;
   }
   
   private void removeDelegate(@NonNull String paramString, @NonNull InflateDelegate paramInflateDelegate)
   {
-    if ((this.mDelegates != null) && (this.mDelegates.get(paramString) == paramInflateDelegate)) {
+    ArrayMap localArrayMap = this.mDelegates;
+    if ((localArrayMap != null) && (localArrayMap.get(paramString) == paramInflateDelegate)) {
       this.mDelegates.remove(paramString);
     }
   }
@@ -454,137 +443,127 @@ public final class AppCompatDrawableManager
       if (paramDrawable != null)
       {
         DrawableCompat.setTintMode(paramContext, paramDrawable);
-        localObject = paramContext;
+        return paramContext;
       }
     }
-    do
+    else
     {
-      do
+      if (paramInt == R.drawable.abc_seekbar_track_material)
       {
-        return localObject;
-        if (paramInt == R.drawable.abc_seekbar_track_material)
-        {
-          localObject = (LayerDrawable)paramDrawable;
-          setPorterDuffColorFilter(((LayerDrawable)localObject).findDrawableByLayerId(16908288), ThemeUtils.getThemeAttrColor(paramContext, R.attr.colorControlNormal), DEFAULT_MODE);
-          setPorterDuffColorFilter(((LayerDrawable)localObject).findDrawableByLayerId(16908303), ThemeUtils.getThemeAttrColor(paramContext, R.attr.colorControlNormal), DEFAULT_MODE);
-          setPorterDuffColorFilter(((LayerDrawable)localObject).findDrawableByLayerId(16908301), ThemeUtils.getThemeAttrColor(paramContext, R.attr.colorControlActivated), DEFAULT_MODE);
-          return paramDrawable;
-        }
-        if ((paramInt == R.drawable.abc_ratingbar_material) || (paramInt == R.drawable.abc_ratingbar_indicator_material) || (paramInt == R.drawable.abc_ratingbar_small_material))
-        {
-          localObject = (LayerDrawable)paramDrawable;
-          setPorterDuffColorFilter(((LayerDrawable)localObject).findDrawableByLayerId(16908288), ThemeUtils.getDisabledThemeAttrColor(paramContext, R.attr.colorControlNormal), DEFAULT_MODE);
-          setPorterDuffColorFilter(((LayerDrawable)localObject).findDrawableByLayerId(16908303), ThemeUtils.getThemeAttrColor(paramContext, R.attr.colorControlActivated), DEFAULT_MODE);
-          setPorterDuffColorFilter(((LayerDrawable)localObject).findDrawableByLayerId(16908301), ThemeUtils.getThemeAttrColor(paramContext, R.attr.colorControlActivated), DEFAULT_MODE);
-          return paramDrawable;
-        }
+        localObject = (LayerDrawable)paramDrawable;
+        setPorterDuffColorFilter(((LayerDrawable)localObject).findDrawableByLayerId(16908288), ThemeUtils.getThemeAttrColor(paramContext, R.attr.colorControlNormal), DEFAULT_MODE);
+        setPorterDuffColorFilter(((LayerDrawable)localObject).findDrawableByLayerId(16908303), ThemeUtils.getThemeAttrColor(paramContext, R.attr.colorControlNormal), DEFAULT_MODE);
+        setPorterDuffColorFilter(((LayerDrawable)localObject).findDrawableByLayerId(16908301), ThemeUtils.getThemeAttrColor(paramContext, R.attr.colorControlActivated), DEFAULT_MODE);
+        return paramDrawable;
+      }
+      if ((paramInt != R.drawable.abc_ratingbar_material) && (paramInt != R.drawable.abc_ratingbar_indicator_material) && (paramInt != R.drawable.abc_ratingbar_small_material))
+      {
         localObject = paramDrawable;
-      } while (tintDrawableUsingColorFilter(paramContext, paramInt, paramDrawable));
-      localObject = paramDrawable;
-    } while (!paramBoolean);
-    return null;
+        if (!tintDrawableUsingColorFilter(paramContext, paramInt, paramDrawable))
+        {
+          localObject = paramDrawable;
+          if (paramBoolean) {
+            return null;
+          }
+        }
+      }
+      else
+      {
+        localObject = (LayerDrawable)paramDrawable;
+        setPorterDuffColorFilter(((LayerDrawable)localObject).findDrawableByLayerId(16908288), ThemeUtils.getDisabledThemeAttrColor(paramContext, R.attr.colorControlNormal), DEFAULT_MODE);
+        setPorterDuffColorFilter(((LayerDrawable)localObject).findDrawableByLayerId(16908303), ThemeUtils.getThemeAttrColor(paramContext, R.attr.colorControlActivated), DEFAULT_MODE);
+        setPorterDuffColorFilter(((LayerDrawable)localObject).findDrawableByLayerId(16908301), ThemeUtils.getThemeAttrColor(paramContext, R.attr.colorControlActivated), DEFAULT_MODE);
+        localObject = paramDrawable;
+      }
+    }
+    return localObject;
   }
   
   static void tintDrawable(Drawable paramDrawable, TintInfo paramTintInfo, int[] paramArrayOfInt)
   {
-    if ((DrawableUtils.canSafelyMutateDrawable(paramDrawable)) && (paramDrawable.mutate() != paramDrawable)) {
-      Log.d("AppCompatDrawableManag", "Mutated drawable is not the same instance as the input.");
-    }
-    label63:
-    label91:
-    label103:
-    for (;;)
+    if ((DrawableUtils.canSafelyMutateDrawable(paramDrawable)) && (paramDrawable.mutate() != paramDrawable))
     {
+      Log.d("AppCompatDrawableManag", "Mutated drawable is not the same instance as the input.");
       return;
+    }
+    if ((!paramTintInfo.mHasTintList) && (!paramTintInfo.mHasTintMode))
+    {
+      paramDrawable.clearColorFilter();
+    }
+    else
+    {
       ColorStateList localColorStateList;
-      if ((paramTintInfo.mHasTintList) || (paramTintInfo.mHasTintMode)) {
-        if (paramTintInfo.mHasTintList)
-        {
-          localColorStateList = paramTintInfo.mTintList;
-          if (!paramTintInfo.mHasTintMode) {
-            break label91;
-          }
-          paramTintInfo = paramTintInfo.mTintMode;
-          paramDrawable.setColorFilter(createTintFilter(localColorStateList, paramTintInfo, paramArrayOfInt));
-        }
-      }
-      for (;;)
-      {
-        if (Build.VERSION.SDK_INT > 23) {
-          break label103;
-        }
-        paramDrawable.invalidateSelf();
-        return;
+      if (paramTintInfo.mHasTintList) {
+        localColorStateList = paramTintInfo.mTintList;
+      } else {
         localColorStateList = null;
-        break;
-        paramTintInfo = DEFAULT_MODE;
-        break label63;
-        paramDrawable.clearColorFilter();
       }
+      if (paramTintInfo.mHasTintMode) {
+        paramTintInfo = paramTintInfo.mTintMode;
+      } else {
+        paramTintInfo = DEFAULT_MODE;
+      }
+      paramDrawable.setColorFilter(createTintFilter(localColorStateList, paramTintInfo, paramArrayOfInt));
+    }
+    if (Build.VERSION.SDK_INT <= 23) {
+      paramDrawable.invalidateSelf();
     }
   }
   
   static boolean tintDrawableUsingColorFilter(@NonNull Context paramContext, @DrawableRes int paramInt, @NonNull Drawable paramDrawable)
   {
     PorterDuff.Mode localMode = DEFAULT_MODE;
+    boolean bool = arrayContains(COLORFILTER_TINT_COLOR_CONTROL_NORMAL, paramInt);
+    int j = 16842801;
     int i;
-    int j;
-    if (arrayContains(COLORFILTER_TINT_COLOR_CONTROL_NORMAL, paramInt))
+    if (bool)
     {
-      i = R.attr.colorControlNormal;
-      j = 1;
+      j = R.attr.colorControlNormal;
+      i = 1;
       paramInt = -1;
     }
-    for (;;)
+    else if (arrayContains(COLORFILTER_COLOR_CONTROL_ACTIVATED, paramInt))
     {
-      if (j != 0)
-      {
-        Drawable localDrawable = paramDrawable;
-        if (DrawableUtils.canSafelyMutateDrawable(paramDrawable)) {
-          localDrawable = paramDrawable.mutate();
-        }
-        localDrawable.setColorFilter(getPorterDuffColorFilter(ThemeUtils.getThemeAttrColor(paramContext, i), localMode));
-        if (paramInt != -1) {
-          localDrawable.setAlpha(paramInt);
-        }
-        return true;
-        if (arrayContains(COLORFILTER_COLOR_CONTROL_ACTIVATED, paramInt))
-        {
-          i = R.attr.colorControlActivated;
-          j = 1;
-          paramInt = -1;
-          continue;
-        }
-        if (arrayContains(COLORFILTER_COLOR_BACKGROUND_MULTIPLY, paramInt))
-        {
-          localMode = PorterDuff.Mode.MULTIPLY;
-          j = 1;
-          i = 16842801;
-          paramInt = -1;
-          continue;
-        }
-        if (paramInt == R.drawable.abc_list_divider_mtrl_alpha)
-        {
-          i = 16842800;
-          paramInt = Math.round(40.799999F);
-          j = 1;
-          continue;
-        }
-        if (paramInt == R.drawable.abc_dialog_material_background)
-        {
-          i = 16842801;
-          j = 1;
-          paramInt = -1;
-        }
-      }
-      else
-      {
-        return false;
-      }
+      j = R.attr.colorControlActivated;
+      i = 1;
       paramInt = -1;
+    }
+    else if (arrayContains(COLORFILTER_COLOR_BACKGROUND_MULTIPLY, paramInt))
+    {
+      localMode = PorterDuff.Mode.MULTIPLY;
+      i = 1;
+      paramInt = -1;
+    }
+    else if (paramInt == R.drawable.abc_list_divider_mtrl_alpha)
+    {
+      j = 16842800;
+      paramInt = Math.round(40.799999F);
+      i = 1;
+    }
+    else if (paramInt == R.drawable.abc_dialog_material_background)
+    {
+      i = 1;
+      paramInt = -1;
+    }
+    else
+    {
       i = 0;
+      paramInt = -1;
       j = 0;
     }
+    if (i != 0)
+    {
+      Drawable localDrawable = paramDrawable;
+      if (DrawableUtils.canSafelyMutateDrawable(paramDrawable)) {
+        localDrawable = paramDrawable.mutate();
+      }
+      localDrawable.setColorFilter(getPorterDuffColorFilter(ThemeUtils.getThemeAttrColor(paramContext, j), localMode));
+      if (paramInt != -1) {
+        localDrawable.setAlpha(paramInt);
+      }
+      return true;
+    }
+    return false;
   }
   
   public Drawable getDrawable(@NonNull Context paramContext, @DrawableRes int paramInt)
@@ -620,22 +599,9 @@ public final class AppCompatDrawableManager
     ColorStateList localColorStateList2 = localColorStateList1;
     if (localColorStateList1 == null)
     {
-      if (paramInt != R.drawable.abc_edit_text_material) {
-        break label49;
-      }
-      localColorStateList1 = AppCompatResources.getColorStateList(paramContext, R.color.abc_tint_edittext);
-    }
-    for (;;)
-    {
-      localColorStateList2 = localColorStateList1;
-      if (localColorStateList1 != null)
-      {
-        addTintListToCache(paramContext, paramInt, localColorStateList1);
-        localColorStateList2 = localColorStateList1;
-      }
-      return localColorStateList2;
-      label49:
-      if (paramInt == R.drawable.abc_switch_track_mtrl_alpha) {
+      if (paramInt == R.drawable.abc_edit_text_material) {
+        localColorStateList1 = AppCompatResources.getColorStateList(paramContext, R.color.abc_tint_edittext);
+      } else if (paramInt == R.drawable.abc_switch_track_mtrl_alpha) {
         localColorStateList1 = AppCompatResources.getColorStateList(paramContext, R.color.abc_tint_switch_track);
       } else if (paramInt == R.drawable.abc_switch_thumb_material) {
         localColorStateList1 = createSwitchThumbColorStateList(paramContext);
@@ -645,18 +611,29 @@ public final class AppCompatDrawableManager
         localColorStateList1 = createBorderlessButtonColorStateList(paramContext);
       } else if (paramInt == R.drawable.abc_btn_colored_material) {
         localColorStateList1 = createColoredButtonColorStateList(paramContext);
-      } else if ((paramInt == R.drawable.abc_spinner_mtrl_am_alpha) || (paramInt == R.drawable.abc_spinner_textfield_background_material)) {
+      } else if ((paramInt != R.drawable.abc_spinner_mtrl_am_alpha) && (paramInt != R.drawable.abc_spinner_textfield_background_material))
+      {
+        if (arrayContains(TINT_COLOR_CONTROL_NORMAL, paramInt)) {
+          localColorStateList1 = ThemeUtils.getThemeAttrColorStateList(paramContext, R.attr.colorControlNormal);
+        } else if (arrayContains(TINT_COLOR_CONTROL_STATE_LIST, paramInt)) {
+          localColorStateList1 = AppCompatResources.getColorStateList(paramContext, R.color.abc_tint_default);
+        } else if (arrayContains(TINT_CHECKABLE_BUTTON_LIST, paramInt)) {
+          localColorStateList1 = AppCompatResources.getColorStateList(paramContext, R.color.abc_tint_btn_checkable);
+        } else if (paramInt == R.drawable.abc_seekbar_thumb_material) {
+          localColorStateList1 = AppCompatResources.getColorStateList(paramContext, R.color.abc_tint_seek_thumb);
+        }
+      }
+      else {
         localColorStateList1 = AppCompatResources.getColorStateList(paramContext, R.color.abc_tint_spinner);
-      } else if (arrayContains(TINT_COLOR_CONTROL_NORMAL, paramInt)) {
-        localColorStateList1 = ThemeUtils.getThemeAttrColorStateList(paramContext, R.attr.colorControlNormal);
-      } else if (arrayContains(TINT_COLOR_CONTROL_STATE_LIST, paramInt)) {
-        localColorStateList1 = AppCompatResources.getColorStateList(paramContext, R.color.abc_tint_default);
-      } else if (arrayContains(TINT_CHECKABLE_BUTTON_LIST, paramInt)) {
-        localColorStateList1 = AppCompatResources.getColorStateList(paramContext, R.color.abc_tint_btn_checkable);
-      } else if (paramInt == R.drawable.abc_seekbar_thumb_material) {
-        localColorStateList1 = AppCompatResources.getColorStateList(paramContext, R.color.abc_tint_seek_thumb);
+      }
+      localColorStateList2 = localColorStateList1;
+      if (localColorStateList1 != null)
+      {
+        addTintListToCache(paramContext, paramInt, localColorStateList1);
+        localColorStateList2 = localColorStateList1;
       }
     }
+    return localColorStateList2;
   }
   
   public void onConfigurationChanged(@NonNull Context paramContext)

@@ -36,143 +36,198 @@ public class k
   {
     public void handleMessage(Message paramAnonymousMessage)
     {
-      boolean bool2 = true;
-      boolean bool1 = true;
-      if ((k.a(k.this) == null) || (k.a(k.this).isFinishing())) {}
-      int i;
-      do
+      if (k.a(k.this) != null)
       {
-        do
-        {
+        if (k.a(k.this).isFinishing()) {
           return;
-          i = paramAnonymousMessage.arg1;
-          switch (paramAnonymousMessage.what)
+        }
+        int i = paramAnonymousMessage.arg1;
+        int j = paramAnonymousMessage.what;
+        boolean bool2 = false;
+        boolean bool1 = false;
+        Object localObject;
+        StringBuilder localStringBuilder;
+        switch (j)
+        {
+        default: 
+          return;
+        case 4104: 
+          k.a(k.this).dismissDialog();
+          if ((paramAnonymousMessage.getData() != null) && (paramAnonymousMessage.getData().getString("exception") != null))
           {
-          default: 
+            localObject = k.a(k.this);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(k.this.getResources().getString(2131493553));
+            localStringBuilder.append(":");
+            localStringBuilder.append(paramAnonymousMessage.getData().getString("exception"));
+            ((BaseActivity)localObject).showToast(localStringBuilder.toString());
             return;
-          case 1019: 
-            paramAnonymousMessage = (byte[])paramAnonymousMessage.obj;
           }
-        } while (paramAnonymousMessage == null);
-        k.a(k.this, paramAnonymousMessage);
-        cb.a().a(k.b(k.this), paramAnonymousMessage, k.this.a, k.c(k.this));
-        return;
-        k.a(k.this).dismissDialog();
-        if (paramAnonymousMessage.arg1 == 0)
-        {
-          postDelayed(new Runnable()
+          k.a(k.this).showToast(2131493553);
+          return;
+        case 4097: 
+        case 4098: 
+          localObject = (byte[])paramAnonymousMessage.obj;
+          k.a(k.this, (byte[])localObject);
+          if ((i == 0) && (localObject != null))
           {
-            public void run()
-            {
-              u.a().a(k.a(k.this), this.a, k.this.a);
+            cb.a().a(k.b(k.this), (byte[])localObject, k.this.a, k.c(k.this));
+            return;
+          }
+          if (i == 2)
+          {
+            if (k.a(k.this).isFinishing()) {
+              return;
             }
-          }, 10L);
-          return;
-        }
-        paramAnonymousMessage = (e)paramAnonymousMessage.obj;
-        g.c("err " + paramAnonymousMessage.a);
-        e.a(k.this.getResources(), paramAnonymousMessage);
-        g.c("query up flow failed:" + paramAnonymousMessage.a + "-" + paramAnonymousMessage.b + "-" + paramAnonymousMessage.c);
-        k.a(k.this).showUserDialog(2131230843, paramAnonymousMessage.c, 2131230897, null);
-        return;
-        byte[] arrayOfByte = (byte[])paramAnonymousMessage.obj;
-        k.a(k.this, arrayOfByte);
-        if ((i == 0) && (arrayOfByte != null))
-        {
-          cb.a().a(k.b(k.this), arrayOfByte, k.this.a, k.c(k.this));
-          return;
-        }
-        if (i != 2) {
-          break;
-        }
-      } while (k.a(k.this).isFinishing());
-      new WtloginCaptchaDialog(k.a(k.this), 2131362182, k.this.a, Long.toString(k.b(k.this))).show();
-      return;
-      if (i == -1000)
-      {
-        k.a(k.this).dismissDialog();
-        k.a(k.this).showToast(2131230960);
-        return;
-      }
-      if (i == 8192)
-      {
-        k.a(k.this).dismissDialog();
-        k.a(k.this).showToast(2131231407);
-        return;
-      }
-      if ((i == 1) || (i == 15) || (i == 16))
-      {
-        k.a(k.this).dismissDialog();
-        k.a(k.this).showUserDialog(2131231654, k.this.getResources().getString(2131231653), 2131230897, new DialogInterface.OnClickListener()
-        {
-          public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-          {
-            k.d(k.this);
+            new WtloginCaptchaDialog(k.a(k.this), 2131558791, k.this.a, Long.toString(k.b(k.this))).show();
+            return;
           }
-        });
-        return;
-      }
-      if ((i == 40) || (i == 42) || (i == 64))
-      {
-        k.a(k.this).dismissDialog();
-        k.a(k.this).goToRemoveProtectH5(k.a(k.this), paramAnonymousMessage, i);
-        return;
-      }
-      k.a(k.this).dismissDialog();
-      if ((paramAnonymousMessage.getData() != null) && (paramAnonymousMessage.getData().getString("loginerror") != null))
-      {
-        k.a(k.this).showToast(k.this.getResources().getString(2131231411) + ":" + paramAnonymousMessage.getData().getString("loginerror"));
-        return;
-      }
-      k.a(k.this).showToast(2131231411);
-      return;
-      if (i == 0)
-      {
-        cb.a().a(k.b(k.this), k.e(k.this), k.this.a, k.c(k.this), 1);
-        return;
-      }
-      paramAnonymousMessage = (e)paramAnonymousMessage.obj;
-      g.c("err " + paramAnonymousMessage.a);
-      e.a(k.this.getResources(), paramAnonymousMessage);
-      g.c("query up flow failed:" + paramAnonymousMessage.a + "-" + paramAnonymousMessage.b + "-" + paramAnonymousMessage.c);
-      k.a(k.this).showToast(paramAnonymousMessage.c);
-      return;
-      k.a(k.this).dismissDialog();
-      if ((paramAnonymousMessage.getData() != null) && (paramAnonymousMessage.getData().getString("exception") != null))
-      {
-        k.a(k.this).showToast(k.this.getResources().getString(2131231411) + ":" + paramAnonymousMessage.getData().getString("exception"));
-        return;
-      }
-      k.a(k.this).showToast(2131231411);
-      return;
-      if (paramAnonymousMessage.arg1 == 0)
-      {
-        if (paramAnonymousMessage.arg2 == 1) {}
-        for (;;)
-        {
-          k.a(k.this, bool1);
+          if (i == -1000)
+          {
+            k.a(k.this).dismissDialog();
+            k.a(k.this).showToast(2131493102);
+            return;
+          }
+          if (i == 8192)
+          {
+            k.a(k.this).dismissDialog();
+            k.a(k.this).showToast(2131493549);
+            return;
+          }
+          if ((i != 1) && (i != 15) && (i != 16))
+          {
+            if ((i != 40) && (i != 42) && (i != 64))
+            {
+              k.a(k.this).dismissDialog();
+              if ((paramAnonymousMessage.getData() != null) && (paramAnonymousMessage.getData().getString("loginerror") != null))
+              {
+                localObject = k.a(k.this);
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append(k.this.getResources().getString(2131493553));
+                localStringBuilder.append(":");
+                localStringBuilder.append(paramAnonymousMessage.getData().getString("loginerror"));
+                ((BaseActivity)localObject).showToast(localStringBuilder.toString());
+                return;
+              }
+              k.a(k.this).showToast(2131493553);
+              return;
+            }
+            k.a(k.this).dismissDialog();
+            k.a(k.this).goToRemoveProtectH5(k.a(k.this), paramAnonymousMessage, i);
+            return;
+          }
+          k.a(k.this).dismissDialog();
+          k.a(k.this).showUserDialog(2131493798, k.this.getResources().getString(2131493797), 2131493039, new DialogInterface.OnClickListener()
+          {
+            public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+            {
+              k.d(k.this);
+            }
+          });
           return;
-          bool1 = false;
-        }
-      }
-      paramAnonymousMessage = (e)paramAnonymousMessage.obj;
-      e.a(k.this.getResources(), paramAnonymousMessage);
-      g.c("query up flow failed:" + paramAnonymousMessage.a + "-" + paramAnonymousMessage.b + "-" + paramAnonymousMessage.c);
-      k.a(k.this).showUserDialog(2131230779, paramAnonymousMessage.c, 2131230897, null);
-      return;
-      if (paramAnonymousMessage.arg1 == 0)
-      {
-        if (paramAnonymousMessage.arg2 == 1) {}
-        for (bool1 = bool2;; bool1 = false)
-        {
-          k.a(k.this, bool1);
+        case 4004: 
+          if (paramAnonymousMessage.arg1 == 0)
+          {
+            if (paramAnonymousMessage.arg2 == 1) {
+              bool1 = true;
+            }
+            k.a(k.this, bool1);
+            return;
+          }
+          paramAnonymousMessage = (e)paramAnonymousMessage.obj;
+          e.a(k.this.getResources(), paramAnonymousMessage);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("query up flow failed:");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.a);
+          ((StringBuilder)localObject).append("-");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.b);
+          ((StringBuilder)localObject).append("-");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.c);
+          g.c(((StringBuilder)localObject).toString());
+          k.a(k.this).showUserDialog(2131492921, paramAnonymousMessage.c, 2131493039, null);
+          return;
+        case 4003: 
+          k.a(k.this).dismissDialog();
+          if (paramAnonymousMessage.arg1 == 0)
+          {
+            postDelayed(new Runnable()
+            {
+              public void run()
+              {
+                u.a().a(k.a(k.this), this.a, k.this.a);
+              }
+            }, 10L);
+            return;
+          }
+          paramAnonymousMessage = (e)paramAnonymousMessage.obj;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("err ");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.a);
+          g.c(((StringBuilder)localObject).toString());
+          e.a(k.this.getResources(), paramAnonymousMessage);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("query up flow failed:");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.a);
+          ((StringBuilder)localObject).append("-");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.b);
+          ((StringBuilder)localObject).append("-");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.c);
+          g.c(((StringBuilder)localObject).toString());
+          k.a(k.this).showUserDialog(2131492985, paramAnonymousMessage.c, 2131493039, null);
+          return;
+        case 3026: 
+          if (paramAnonymousMessage.arg1 == 0)
+          {
+            bool1 = bool2;
+            if (paramAnonymousMessage.arg2 == 1) {
+              bool1 = true;
+            }
+            k.a(k.this, bool1);
+            return;
+          }
+          paramAnonymousMessage = (e)paramAnonymousMessage.obj;
+          e.a(k.this.getResources(), paramAnonymousMessage);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("query up flow failed:");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.a);
+          ((StringBuilder)localObject).append("-");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.b);
+          ((StringBuilder)localObject).append("-");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.c);
+          g.c(((StringBuilder)localObject).toString());
+          k.a(k.this).showUserDialog(2131492921, paramAnonymousMessage.c, 2131493039, null);
+          return;
+        case 3024: 
+          if (i == 0)
+          {
+            cb.a().a(k.b(k.this), k.e(k.this), k.this.a, k.c(k.this), 1);
+            return;
+          }
+          paramAnonymousMessage = (e)paramAnonymousMessage.obj;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("err ");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.a);
+          g.c(((StringBuilder)localObject).toString());
+          e.a(k.this.getResources(), paramAnonymousMessage);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("query up flow failed:");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.a);
+          ((StringBuilder)localObject).append("-");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.b);
+          ((StringBuilder)localObject).append("-");
+          ((StringBuilder)localObject).append(paramAnonymousMessage.c);
+          g.c(((StringBuilder)localObject).toString());
+          k.a(k.this).showToast(paramAnonymousMessage.c);
           return;
         }
+        paramAnonymousMessage = (byte[])paramAnonymousMessage.obj;
+        if (paramAnonymousMessage != null)
+        {
+          k.a(k.this, paramAnonymousMessage);
+          cb.a().a(k.b(k.this), paramAnonymousMessage, k.this.a, k.c(k.this));
+        }
+        return;
       }
-      paramAnonymousMessage = (e)paramAnonymousMessage.obj;
-      e.a(k.this.getResources(), paramAnonymousMessage);
-      g.c("query up flow failed:" + paramAnonymousMessage.a + "-" + paramAnonymousMessage.b + "-" + paramAnonymousMessage.c);
-      k.a(k.this).showUserDialog(2131230779, paramAnonymousMessage.c, 2131230897, null);
     }
   };
   private BaseActivity b;
@@ -189,10 +244,10 @@ public class k
   private boolean m = false;
   private byte[] n;
   private long o;
-  private int[] p = { 2131231552, 2131231546, 2131231562, 2131231597, 2131231528, 2131231543, 2131231360, 2131231536, 2131231602, 2131230954, 2131231304, 2131231061 };
+  private int[] p = { 2131493696, 2131493690, 2131493706, 2131493741, 2131493672, 2131493687, 2131493502, 2131493680, 2131493746, 2131493096, 2131493446, 2131493203 };
   private int[] q = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20 };
-  private int[] r = { 2131231533, 2131231548, 2131231534, 2131231598, 2131231122, 2131231123, 2131231331, 2131231243, 2131231602, 2131230954, 2131231304, 2131231061 };
-  private int[] s = { 2130837770, 2130837755, 2130837758, 2130837768, 2130837749, 2130837754, 2130837775, 2130837760, 2130837776, 2130837751, 2130837751 };
+  private int[] r = { 2131493677, 2131493692, 2131493678, 2131493742, 2131493264, 2131493265, 2131493473, 2131493385, 2131493746, 2131493096, 2131493446, 2131493203 };
+  private int[] s = { 2131099916, 2131099901, 2131099904, 2131099914, 2131099895, 2131099900, 2131099921, 2131099906, 2131099922, 2131099897, 2131099897 };
   private View.OnClickListener t = new View.OnClickListener()
   {
     public void onClick(View paramAnonymousView)
@@ -201,16 +256,19 @@ public class k
       if (paramAnonymousView == null) {
         return;
       }
-      paramAnonymousView = "" + paramAnonymousView.mRealUin;
-      bz localbz = bz.a(RqdApplication.l());
-      if (!localbz.b(paramAnonymousView, 523005419L))
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramAnonymousView.mRealUin);
+      paramAnonymousView = ((StringBuilder)localObject).toString();
+      localObject = bz.a(RqdApplication.l());
+      if (!((bz)localObject).b(paramAnonymousView, 523005419L))
       {
-        localbz.a(paramAnonymousView, k.this.a, 523005419L);
-        k.a(k.this).showProDialog(k.a(k.this), 2131230843, 2131231298, null);
+        ((bz)localObject).a(paramAnonymousView, k.this.a, 523005419L);
+        k.a(k.this).showProDialog(k.a(k.this), 2131492985, 2131493440, null);
         k.a(k.this, 1);
         return;
       }
-      k.a(k.this).showUserDialog(2131231654, k.this.getResources().getString(2131231653), 2131230897, new DialogInterface.OnClickListener()
+      k.a(k.this).showUserDialog(2131493798, k.this.getResources().getString(2131493797), 2131493039, new DialogInterface.OnClickListener()
       {
         public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
         {
@@ -239,64 +297,93 @@ public class k
   private void b()
   {
     QQUser localQQUser = cr.a().e();
-    if ((localQQUser == null) || (localQQUser.mRealUin <= 0L)) {
+    if (localQQUser != null)
+    {
+      if (localQQUser.mRealUin <= 0L) {
+        return;
+      }
+      bz localbz = bz.a(this.b);
+      BaseActivity localBaseActivity = this.b;
+      Handler localHandler = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(localQQUser.b());
+      localbz.a(localBaseActivity, 523005419L, localHandler, localStringBuilder.toString());
       return;
     }
-    bz.a(this.b).a(this.b, 523005419L, this.a, "" + localQQUser.b());
   }
   
   private void c()
   {
     this.c = ((LayoutInflater)this.b.getSystemService("layout_inflater"));
-    this.d = this.c.inflate(2130968812, null);
+    this.d = this.c.inflate(2131296493, null);
     removeAllViews();
     addView(this.d, new LinearLayout.LayoutParams(-1, -1));
-    this.f = ((ImageView)findViewById(2131559389));
-    this.g = ((TextView)findViewById(2131559390));
-    this.h = ((TextView)findViewById(2131559391));
-    this.i = ((TextView)findViewById(2131559392));
-    this.j = ((Button)findViewById(2131559450));
-    Object localObject = getResources().getString(2131231609);
-    g.a("flag show scene id: " + this.e);
+    this.f = ((ImageView)findViewById(2131166225));
+    this.g = ((TextView)findViewById(2131166226));
+    this.h = ((TextView)findViewById(2131166232));
+    this.i = ((TextView)findViewById(2131166231));
+    this.j = ((Button)findViewById(2131166230));
+    Object localObject1 = getResources().getString(2131493753);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("flag show scene id: ");
+    ((StringBuilder)localObject2).append(this.e);
+    g.a(((StringBuilder)localObject2).toString());
     int i1 = 0;
     int i3 = -1;
     int i2 = -1;
-    while (i1 < this.q.length)
+    for (;;)
     {
-      if (this.q[i1] == this.e)
+      localObject2 = this.q;
+      if (i1 >= localObject2.length) {
+        break;
+      }
+      if (localObject2[i1] == this.e)
       {
-        i2 = this.s[i1];
-        i3 = this.r[i1];
+        i3 = this.s[i1];
+        i2 = this.r[i1];
       }
       i1 += 1;
     }
-    String str;
-    if ((i2 != -1) && (i3 != -1))
+    StringBuilder localStringBuilder;
+    if ((i3 != -1) && (i2 != -1))
     {
-      this.f.setImageDrawable(getResources().getDrawable(i2));
+      this.f.setImageDrawable(getResources().getDrawable(i3));
       this.g.setText(this.p[this.e]);
-      str = getResources().getString(2131231607) + getResources().getString(i3) + "?";
-      localObject = getResources().getString(2131231606) + getResources().getString(i3) + (String)localObject;
-      this.h.setText(str);
-      this.i.setText((CharSequence)localObject);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(getResources().getString(2131493751));
+      ((StringBuilder)localObject2).append(getResources().getString(i2));
+      ((StringBuilder)localObject2).append("?");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getResources().getString(2131493750));
+      localStringBuilder.append(getResources().getString(i2));
+      localStringBuilder.append((String)localObject1);
+      localObject1 = localStringBuilder.toString();
+      this.h.setText((CharSequence)localObject2);
+      this.i.setText((CharSequence)localObject1);
     }
-    for (;;)
+    else if (this.e == -1)
     {
-      this.j.setOnClickListener(this.t);
-      localObject = cr.a().e();
-      if (localObject != null) {
-        this.o = ((QQUser)localObject).mRealUin;
-      }
-      return;
-      if (this.e == -1)
-      {
-        this.f.setImageDrawable(getResources().getDrawable(2130837759));
-        this.g.setText(2131231569);
-        str = getResources().getString(2131231607) + getResources().getString(2131231564) + "?";
-        localObject = getResources().getString(2131231606) + getResources().getString(2131231564) + (String)localObject;
-        this.h.setText(str);
-        this.i.setText((CharSequence)localObject);
-      }
+      this.f.setImageDrawable(getResources().getDrawable(2131099905));
+      this.g.setText(2131493713);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(getResources().getString(2131493751));
+      ((StringBuilder)localObject2).append(getResources().getString(2131493708));
+      ((StringBuilder)localObject2).append("?");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getResources().getString(2131493750));
+      localStringBuilder.append(getResources().getString(2131493708));
+      localStringBuilder.append((String)localObject1);
+      localObject1 = localStringBuilder.toString();
+      this.h.setText((CharSequence)localObject2);
+      this.i.setText((CharSequence)localObject1);
+    }
+    this.j.setOnClickListener(this.t);
+    localObject1 = cr.a().e();
+    if (localObject1 != null) {
+      this.o = ((QQUser)localObject1).mRealUin;
     }
   }
   
@@ -313,25 +400,23 @@ public class k
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    boolean bool = true;
-    for (;;)
+    try
     {
-      try
-      {
-        if ((this.m) && (paramKeyEvent.getAction() == 0)) {}
-        switch (paramKeyEvent.getKeyCode())
-        {
-        case 4: 
-          bool = super.dispatchKeyEvent(paramKeyEvent);
-          return bool;
+      if ((this.m) && (paramKeyEvent.getAction() == 0)) {
+        if (paramKeyEvent.getKeyCode() == 4) {
+          break label40;
         }
       }
-      catch (Exception paramKeyEvent)
-      {
-        paramKeyEvent.printStackTrace();
-        return true;
-      }
+      boolean bool = super.dispatchKeyEvent(paramKeyEvent);
+      return bool;
     }
+    catch (Exception paramKeyEvent)
+    {
+      paramKeyEvent.printStackTrace();
+      return true;
+    }
+    label40:
+    return true;
   }
 }
 

@@ -135,70 +135,75 @@ public class NotificationCompat
   
   public static Action getAction(Notification paramNotification, int paramInt)
   {
-    Object localObject = null;
-    Notification.Action localAction = null;
     if (Build.VERSION.SDK_INT >= 20) {
-      localObject = getActionCompatFromAction(paramNotification.actions[paramInt]);
+      return getActionCompatFromAction(paramNotification.actions[paramInt]);
     }
-    do
+    int i = Build.VERSION.SDK_INT;
+    Object localObject = null;
+    if (i >= 19)
     {
-      return localObject;
-      if (Build.VERSION.SDK_INT >= 19)
-      {
-        localAction = paramNotification.actions[paramInt];
-        SparseArray localSparseArray = paramNotification.extras.getSparseParcelableArray("android.support.actionExtras");
-        paramNotification = (Notification)localObject;
-        if (localSparseArray != null) {
-          paramNotification = (Bundle)localSparseArray.get(paramInt);
-        }
-        return NotificationCompatJellybean.readAction(localAction.icon, localAction.title, localAction.actionIntent, paramNotification);
+      Notification.Action localAction = paramNotification.actions[paramInt];
+      SparseArray localSparseArray = paramNotification.extras.getSparseParcelableArray("android.support.actionExtras");
+      paramNotification = localObject;
+      if (localSparseArray != null) {
+        paramNotification = (Bundle)localSparseArray.get(paramInt);
       }
-      localObject = localAction;
-    } while (Build.VERSION.SDK_INT < 16);
-    return NotificationCompatJellybean.getAction(paramNotification, paramInt);
+      return NotificationCompatJellybean.readAction(localAction.icon, localAction.title, localAction.actionIntent, paramNotification);
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      return NotificationCompatJellybean.getAction(paramNotification, paramInt);
+    }
+    return null;
   }
   
   @RequiresApi(20)
   static Action getActionCompatFromAction(Notification.Action paramAction)
   {
-    boolean bool = false;
     android.app.RemoteInput[] arrayOfRemoteInput1 = paramAction.getRemoteInputs();
+    boolean bool = false;
     RemoteInput[] arrayOfRemoteInput;
-    if (arrayOfRemoteInput1 == null) {
+    if (arrayOfRemoteInput1 == null)
+    {
       arrayOfRemoteInput = null;
     }
-    for (;;)
+    else
     {
-      if (Build.VERSION.SDK_INT >= 24) {
-        if ((!paramAction.getExtras().getBoolean("android.support.allowGeneratedReplies")) && (!paramAction.getAllowGeneratedReplies())) {}
-      }
-      for (bool = true;; bool = paramAction.getExtras().getBoolean("android.support.allowGeneratedReplies"))
+      arrayOfRemoteInput = new RemoteInput[arrayOfRemoteInput1.length];
+      int i = 0;
+      while (i < arrayOfRemoteInput1.length)
       {
-        return new Action(paramAction.icon, paramAction.title, paramAction.actionIntent, paramAction.getExtras(), arrayOfRemoteInput, null, bool);
-        arrayOfRemoteInput = new RemoteInput[arrayOfRemoteInput1.length];
-        int i = 0;
-        while (i < arrayOfRemoteInput1.length)
-        {
-          android.app.RemoteInput localRemoteInput = arrayOfRemoteInput1[i];
-          arrayOfRemoteInput[i] = new RemoteInput(localRemoteInput.getResultKey(), localRemoteInput.getLabel(), localRemoteInput.getChoices(), localRemoteInput.getAllowFreeFormInput(), localRemoteInput.getExtras(), null);
-          i += 1;
-        }
+        android.app.RemoteInput localRemoteInput = arrayOfRemoteInput1[i];
+        arrayOfRemoteInput[i] = new RemoteInput(localRemoteInput.getResultKey(), localRemoteInput.getLabel(), localRemoteInput.getChoices(), localRemoteInput.getAllowFreeFormInput(), localRemoteInput.getExtras(), null);
+        i += 1;
       }
     }
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      if ((paramAction.getExtras().getBoolean("android.support.allowGeneratedReplies")) || (paramAction.getAllowGeneratedReplies())) {
+        bool = true;
+      }
+    }
+    else {
+      bool = paramAction.getExtras().getBoolean("android.support.allowGeneratedReplies");
+    }
+    return new Action(paramAction.icon, paramAction.title, paramAction.actionIntent, paramAction.getExtras(), arrayOfRemoteInput, null, bool);
   }
   
   public static int getActionCount(Notification paramNotification)
   {
+    int j = Build.VERSION.SDK_INT;
     int i = 0;
-    if (Build.VERSION.SDK_INT >= 19) {
+    if (j >= 19)
+    {
       if (paramNotification.actions != null) {
         i = paramNotification.actions.length;
       }
-    }
-    while (Build.VERSION.SDK_INT < 16) {
       return i;
     }
-    return NotificationCompatJellybean.getActionCount(paramNotification);
+    if (Build.VERSION.SDK_INT >= 16) {
+      return NotificationCompatJellybean.getActionCount(paramNotification);
+    }
+    return 0;
   }
   
   public static int getBadgeIconType(Notification paramNotification)
@@ -260,37 +265,40 @@ public class NotificationCompat
   
   public static boolean getLocalOnly(Notification paramNotification)
   {
+    int i = Build.VERSION.SDK_INT;
     boolean bool = false;
-    if (Build.VERSION.SDK_INT >= 20) {
+    if (i >= 20)
+    {
       if ((paramNotification.flags & 0x100) != 0) {
         bool = true;
       }
-    }
-    do
-    {
       return bool;
-      if (Build.VERSION.SDK_INT >= 19) {
-        return paramNotification.extras.getBoolean("android.support.localOnly");
-      }
-    } while (Build.VERSION.SDK_INT < 16);
-    return NotificationCompatJellybean.getExtras(paramNotification).getBoolean("android.support.localOnly");
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramNotification.extras.getBoolean("android.support.localOnly");
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      return NotificationCompatJellybean.getExtras(paramNotification).getBoolean("android.support.localOnly");
+    }
+    return false;
   }
   
   static Notification[] getNotificationArrayFromBundle(Bundle paramBundle, String paramString)
   {
     Parcelable[] arrayOfParcelable = paramBundle.getParcelableArray(paramString);
-    if (((arrayOfParcelable instanceof Notification[])) || (arrayOfParcelable == null)) {
-      return (Notification[])arrayOfParcelable;
-    }
-    Notification[] arrayOfNotification = new Notification[arrayOfParcelable.length];
-    int i = 0;
-    while (i < arrayOfParcelable.length)
+    if ((!(arrayOfParcelable instanceof Notification[])) && (arrayOfParcelable != null))
     {
-      arrayOfNotification[i] = ((Notification)arrayOfParcelable[i]);
-      i += 1;
+      Notification[] arrayOfNotification = new Notification[arrayOfParcelable.length];
+      int i = 0;
+      while (i < arrayOfParcelable.length)
+      {
+        arrayOfNotification[i] = ((Notification)arrayOfParcelable[i]);
+        i += 1;
+      }
+      paramBundle.putParcelableArray(paramString, arrayOfNotification);
+      return arrayOfNotification;
     }
-    paramBundle.putParcelableArray(paramString, arrayOfNotification);
-    return arrayOfNotification;
+    return (Notification[])arrayOfParcelable;
   }
   
   public static String getShortcutId(Notification paramNotification)
@@ -325,20 +333,22 @@ public class NotificationCompat
   
   public static boolean isGroupSummary(Notification paramNotification)
   {
+    int i = Build.VERSION.SDK_INT;
     boolean bool = false;
-    if (Build.VERSION.SDK_INT >= 20) {
+    if (i >= 20)
+    {
       if ((paramNotification.flags & 0x200) != 0) {
         bool = true;
       }
-    }
-    do
-    {
       return bool;
-      if (Build.VERSION.SDK_INT >= 19) {
-        return paramNotification.extras.getBoolean("android.support.isGroupSummary");
-      }
-    } while (Build.VERSION.SDK_INT < 16);
-    return NotificationCompatJellybean.getExtras(paramNotification).getBoolean("android.support.isGroupSummary");
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramNotification.extras.getBoolean("android.support.isGroupSummary");
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      return NotificationCompatJellybean.getExtras(paramNotification).getBoolean("android.support.isGroupSummary");
+    }
+    return false;
   }
   
   public static class Action
@@ -361,16 +371,13 @@ public class NotificationCompat
       this.icon = paramInt;
       this.title = NotificationCompat.Builder.limitCharSequenceLength(paramCharSequence);
       this.actionIntent = paramPendingIntent;
-      if (paramBundle != null) {}
-      for (;;)
-      {
-        this.mExtras = paramBundle;
-        this.mRemoteInputs = paramArrayOfRemoteInput1;
-        this.mDataOnlyRemoteInputs = paramArrayOfRemoteInput2;
-        this.mAllowGeneratedReplies = paramBoolean;
-        return;
+      if (paramBundle == null) {
         paramBundle = new Bundle();
       }
+      this.mExtras = paramBundle;
+      this.mRemoteInputs = paramArrayOfRemoteInput1;
+      this.mDataOnlyRemoteInputs = paramArrayOfRemoteInput2;
+      this.mAllowGeneratedReplies = paramBoolean;
     }
     
     public PendingIntent getActionIntent()
@@ -428,13 +435,13 @@ public class NotificationCompat
         this.mTitle = NotificationCompat.Builder.limitCharSequenceLength(paramCharSequence);
         this.mIntent = paramPendingIntent;
         this.mExtras = paramBundle;
-        if (paramArrayOfRemoteInput == null) {}
-        for (paramCharSequence = null;; paramCharSequence = new ArrayList(Arrays.asList(paramArrayOfRemoteInput)))
-        {
-          this.mRemoteInputs = paramCharSequence;
-          this.mAllowGeneratedReplies = paramBoolean;
-          return;
+        if (paramArrayOfRemoteInput == null) {
+          paramCharSequence = null;
+        } else {
+          paramCharSequence = new ArrayList(Arrays.asList(paramArrayOfRemoteInput));
         }
+        this.mRemoteInputs = paramCharSequence;
+        this.mAllowGeneratedReplies = paramBoolean;
       }
       
       public Builder(NotificationCompat.Action paramAction)
@@ -463,12 +470,13 @@ public class NotificationCompat
       {
         Object localObject1 = new ArrayList();
         Object localObject2 = new ArrayList();
-        if (this.mRemoteInputs != null)
+        Object localObject3 = this.mRemoteInputs;
+        if (localObject3 != null)
         {
-          Iterator localIterator = this.mRemoteInputs.iterator();
-          while (localIterator.hasNext())
+          localObject3 = ((ArrayList)localObject3).iterator();
+          while (((Iterator)localObject3).hasNext())
           {
-            RemoteInput localRemoteInput = (RemoteInput)localIterator.next();
+            RemoteInput localRemoteInput = (RemoteInput)((Iterator)localObject3).next();
             if (localRemoteInput.isDataOnly()) {
               ((List)localObject1).add(localRemoteInput);
             } else {
@@ -476,20 +484,17 @@ public class NotificationCompat
             }
           }
         }
-        if (((List)localObject1).isEmpty())
-        {
+        if (((List)localObject1).isEmpty()) {
           localObject1 = null;
-          if (!((List)localObject2).isEmpty()) {
-            break label157;
-          }
-        }
-        label157:
-        for (localObject2 = null;; localObject2 = (RemoteInput[])((List)localObject2).toArray(new RemoteInput[((List)localObject2).size()]))
-        {
-          return new NotificationCompat.Action(this.mIcon, this.mTitle, this.mIntent, this.mExtras, (RemoteInput[])localObject2, (RemoteInput[])localObject1, this.mAllowGeneratedReplies);
+        } else {
           localObject1 = (RemoteInput[])((List)localObject1).toArray(new RemoteInput[((List)localObject1).size()]);
-          break;
         }
+        if (((List)localObject2).isEmpty()) {
+          localObject2 = null;
+        } else {
+          localObject2 = (RemoteInput[])((List)localObject2).toArray(new RemoteInput[((List)localObject2).size()]);
+        }
+        return new NotificationCompat.Action(this.mIcon, this.mTitle, this.mIntent, this.mExtras, (RemoteInput[])localObject2, (RemoteInput[])localObject1, this.mAllowGeneratedReplies);
       }
       
       public Builder extend(NotificationCompat.Action.Extender paramExtender)
@@ -550,10 +555,10 @@ public class NotificationCompat
       {
         if (paramBoolean)
         {
-          this.mFlags |= paramInt;
+          this.mFlags = (paramInt | this.mFlags);
           return;
         }
-        this.mFlags &= (paramInt ^ 0xFFFFFFFF);
+        this.mFlags = ((paramInt ^ 0xFFFFFFFF) & this.mFlags);
       }
       
       public WearableExtender clone()
@@ -569,17 +574,21 @@ public class NotificationCompat
       public NotificationCompat.Action.Builder extend(NotificationCompat.Action.Builder paramBuilder)
       {
         Bundle localBundle = new Bundle();
-        if (this.mFlags != 1) {
-          localBundle.putInt("flags", this.mFlags);
+        int i = this.mFlags;
+        if (i != 1) {
+          localBundle.putInt("flags", i);
         }
-        if (this.mInProgressLabel != null) {
-          localBundle.putCharSequence("inProgressLabel", this.mInProgressLabel);
+        CharSequence localCharSequence = this.mInProgressLabel;
+        if (localCharSequence != null) {
+          localBundle.putCharSequence("inProgressLabel", localCharSequence);
         }
-        if (this.mConfirmLabel != null) {
-          localBundle.putCharSequence("confirmLabel", this.mConfirmLabel);
+        localCharSequence = this.mConfirmLabel;
+        if (localCharSequence != null) {
+          localBundle.putCharSequence("confirmLabel", localCharSequence);
         }
-        if (this.mCancelLabel != null) {
-          localBundle.putCharSequence("cancelLabel", this.mCancelLabel);
+        localCharSequence = this.mCancelLabel;
+        if (localCharSequence != null) {
+          localBundle.putCharSequence("cancelLabel", localCharSequence);
         }
         paramBuilder.getExtras().putBundle("android.wearable.EXTENSIONS", localBundle);
         return paramBuilder;
@@ -822,11 +831,14 @@ public class NotificationCompat
     
     protected static CharSequence limitCharSequenceLength(CharSequence paramCharSequence)
     {
-      if (paramCharSequence == null) {}
-      while (paramCharSequence.length() <= 5120) {
+      if (paramCharSequence == null) {
         return paramCharSequence;
       }
-      return paramCharSequence.subSequence(0, 5120);
+      CharSequence localCharSequence = paramCharSequence;
+      if (paramCharSequence.length() > 5120) {
+        localCharSequence = paramCharSequence.subSequence(0, 5120);
+      }
+      return localCharSequence;
     }
     
     private void setFlag(int paramInt, boolean paramBoolean)
@@ -834,11 +846,11 @@ public class NotificationCompat
       if (paramBoolean)
       {
         localNotification = this.mNotification;
-        localNotification.flags |= paramInt;
+        localNotification.flags = (paramInt | localNotification.flags);
         return;
       }
       Notification localNotification = this.mNotification;
-      localNotification.flags &= (paramInt ^ 0xFFFFFFFF);
+      localNotification.flags = ((paramInt ^ 0xFFFFFFFF) & localNotification.flags);
     }
     
     public Builder addAction(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent)
@@ -857,14 +869,14 @@ public class NotificationCompat
     {
       if (paramBundle != null)
       {
-        if (this.mExtras == null) {
+        Bundle localBundle = this.mExtras;
+        if (localBundle == null)
+        {
           this.mExtras = new Bundle(paramBundle);
+          return this;
         }
+        localBundle.putAll(paramBundle);
       }
-      else {
-        return this;
-      }
-      this.mExtras.putAll(paramBundle);
       return this;
     }
     
@@ -1025,10 +1037,9 @@ public class NotificationCompat
     
     public Builder setDefaults(int paramInt)
     {
-      this.mNotification.defaults = paramInt;
-      if ((paramInt & 0x4) != 0)
-      {
-        Notification localNotification = this.mNotification;
+      Notification localNotification = this.mNotification;
+      localNotification.defaults = paramInt;
+      if ((paramInt & 0x4) != 0) {
         localNotification.flags |= 0x1;
       }
       return this;
@@ -1079,28 +1090,18 @@ public class NotificationCompat
     
     public Builder setLights(@ColorInt int paramInt1, int paramInt2, int paramInt3)
     {
-      int i = 1;
-      this.mNotification.ledARGB = paramInt1;
-      this.mNotification.ledOnMS = paramInt2;
-      this.mNotification.ledOffMS = paramInt3;
-      Notification localNotification;
-      if ((this.mNotification.ledOnMS != 0) && (this.mNotification.ledOffMS != 0))
-      {
+      Notification localNotification = this.mNotification;
+      localNotification.ledARGB = paramInt1;
+      localNotification.ledOnMS = paramInt2;
+      localNotification.ledOffMS = paramInt3;
+      if ((localNotification.ledOnMS != 0) && (this.mNotification.ledOffMS != 0)) {
         paramInt1 = 1;
-        localNotification = this.mNotification;
-        paramInt2 = this.mNotification.flags;
-        if (paramInt1 == 0) {
-          break label88;
-        }
-      }
-      label88:
-      for (paramInt1 = i;; paramInt1 = 0)
-      {
-        localNotification.flags = (paramInt2 & 0xFFFFFFFE | paramInt1);
-        return this;
+      } else {
         paramInt1 = 0;
-        break;
       }
+      localNotification = this.mNotification;
+      localNotification.flags = (paramInt1 | localNotification.flags & 0xFFFFFFFE);
+      return this;
     }
     
     public Builder setLocalOnly(boolean paramBoolean)
@@ -1173,8 +1174,9 @@ public class NotificationCompat
     
     public Builder setSmallIcon(int paramInt1, int paramInt2)
     {
-      this.mNotification.icon = paramInt1;
-      this.mNotification.iconLevel = paramInt2;
+      Notification localNotification = this.mNotification;
+      localNotification.icon = paramInt1;
+      localNotification.iconLevel = paramInt2;
       return this;
     }
     
@@ -1186,8 +1188,9 @@ public class NotificationCompat
     
     public Builder setSound(Uri paramUri)
     {
-      this.mNotification.sound = paramUri;
-      this.mNotification.audioStreamType = -1;
+      Notification localNotification = this.mNotification;
+      localNotification.sound = paramUri;
+      localNotification.audioStreamType = -1;
       if (Build.VERSION.SDK_INT >= 21) {
         this.mNotification.audioAttributes = new AudioAttributes.Builder().setContentType(4).setUsage(5).build();
       }
@@ -1196,8 +1199,9 @@ public class NotificationCompat
     
     public Builder setSound(Uri paramUri, int paramInt)
     {
-      this.mNotification.sound = paramUri;
-      this.mNotification.audioStreamType = paramInt;
+      Notification localNotification = this.mNotification;
+      localNotification.sound = paramUri;
+      localNotification.audioStreamType = paramInt;
       if (Build.VERSION.SDK_INT >= 21) {
         this.mNotification.audioAttributes = new AudioAttributes.Builder().setContentType(4).setLegacyStreamType(paramInt).build();
       }
@@ -1209,8 +1213,9 @@ public class NotificationCompat
       if (this.mStyle != paramStyle)
       {
         this.mStyle = paramStyle;
-        if (this.mStyle != null) {
-          this.mStyle.setBuilder(this);
+        paramStyle = this.mStyle;
+        if (paramStyle != null) {
+          paramStyle.setBuilder(this);
         }
       }
       return this;
@@ -1289,36 +1294,34 @@ public class NotificationCompat
     
     public CarExtender(Notification paramNotification)
     {
-      if (Build.VERSION.SDK_INT < 21) {}
-      for (;;)
-      {
+      if (Build.VERSION.SDK_INT < 21) {
         return;
-        if (NotificationCompat.getExtras(paramNotification) == null) {}
-        for (paramNotification = null; paramNotification != null; paramNotification = NotificationCompat.getExtras(paramNotification).getBundle("android.car.EXTENSIONS"))
-        {
-          this.mLargeIcon = ((Bitmap)paramNotification.getParcelable("large_icon"));
-          this.mColor = paramNotification.getInt("app_color", 0);
-          this.mUnreadConversation = getUnreadConversationFromBundle(paramNotification.getBundle("car_conversation"));
-          return;
-        }
+      }
+      if (NotificationCompat.getExtras(paramNotification) == null) {
+        paramNotification = null;
+      } else {
+        paramNotification = NotificationCompat.getExtras(paramNotification).getBundle("android.car.EXTENSIONS");
+      }
+      if (paramNotification != null)
+      {
+        this.mLargeIcon = ((Bitmap)paramNotification.getParcelable("large_icon"));
+        this.mColor = paramNotification.getInt("app_color", 0);
+        this.mUnreadConversation = getUnreadConversationFromBundle(paramNotification.getBundle("car_conversation"));
       }
     }
     
     @RequiresApi(21)
     private static Bundle getBundleForUnreadConversation(@NonNull UnreadConversation paramUnreadConversation)
     {
-      int i = 0;
       Bundle localBundle1 = new Bundle();
-      Parcelable[] arrayOfParcelable = null;
-      Object localObject = arrayOfParcelable;
-      if (paramUnreadConversation.getParticipants() != null)
-      {
-        localObject = arrayOfParcelable;
-        if (paramUnreadConversation.getParticipants().length > 1) {
-          localObject = paramUnreadConversation.getParticipants()[0];
-        }
+      Object localObject = paramUnreadConversation.getParticipants();
+      int i = 0;
+      if ((localObject != null) && (paramUnreadConversation.getParticipants().length > 1)) {
+        localObject = paramUnreadConversation.getParticipants()[0];
+      } else {
+        localObject = null;
       }
-      arrayOfParcelable = new Parcelable[paramUnreadConversation.getMessages().length];
+      Parcelable[] arrayOfParcelable = new Parcelable[paramUnreadConversation.getMessages().length];
       while (i < arrayOfParcelable.length)
       {
         Bundle localBundle2 = new Bundle();
@@ -1342,56 +1345,57 @@ public class NotificationCompat
     @RequiresApi(21)
     private static UnreadConversation getUnreadConversationFromBundle(@Nullable Bundle paramBundle)
     {
-      int k = 0;
+      RemoteInput localRemoteInput = null;
       if (paramBundle == null) {
         return null;
       }
       Object localObject = paramBundle.getParcelableArray("messages");
       String[] arrayOfString1;
-      int i;
-      int j;
       if (localObject != null)
       {
         arrayOfString1 = new String[localObject.length];
-        i = 0;
-        if (i < arrayOfString1.length) {
+        int j = 0;
+        int i = 0;
+        while (i < arrayOfString1.length)
+        {
           if (!(localObject[i] instanceof Bundle))
           {
-            j = k;
-            label50:
-            if (j == 0) {
-              break label212;
-            }
+            i = j;
+            break label89;
           }
-        }
-      }
-      for (;;)
-      {
-        PendingIntent localPendingIntent1 = (PendingIntent)paramBundle.getParcelable("on_read");
-        PendingIntent localPendingIntent2 = (PendingIntent)paramBundle.getParcelable("on_reply");
-        localObject = (android.app.RemoteInput)paramBundle.getParcelable("remote_input");
-        String[] arrayOfString2 = paramBundle.getStringArray("participants");
-        if ((arrayOfString2 == null) || (arrayOfString2.length != 1)) {
-          break;
-        }
-        if (localObject != null) {}
-        for (localObject = new RemoteInput(((android.app.RemoteInput)localObject).getResultKey(), ((android.app.RemoteInput)localObject).getLabel(), ((android.app.RemoteInput)localObject).getChoices(), ((android.app.RemoteInput)localObject).getAllowFreeFormInput(), ((android.app.RemoteInput)localObject).getExtras(), null);; localObject = null)
-        {
-          return new UnreadConversation(arrayOfString1, (RemoteInput)localObject, localPendingIntent2, localPendingIntent1, arrayOfString2, paramBundle.getLong("timestamp"));
           arrayOfString1[i] = ((Bundle)localObject[i]).getString("text");
-          j = k;
-          if (arrayOfString1[i] == null) {
-            break label50;
+          if (arrayOfString1[i] == null)
+          {
+            i = j;
+            break label89;
           }
           i += 1;
-          break;
         }
-        j = 1;
-        break label50;
-        label212:
-        break;
+        i = 1;
+        label89:
+        if (i == 0) {
+          return null;
+        }
+      }
+      else
+      {
         arrayOfString1 = null;
       }
+      localObject = (PendingIntent)paramBundle.getParcelable("on_read");
+      PendingIntent localPendingIntent = (PendingIntent)paramBundle.getParcelable("on_reply");
+      android.app.RemoteInput localRemoteInput1 = (android.app.RemoteInput)paramBundle.getParcelable("remote_input");
+      String[] arrayOfString2 = paramBundle.getStringArray("participants");
+      if (arrayOfString2 != null)
+      {
+        if (arrayOfString2.length != 1) {
+          return null;
+        }
+        if (localRemoteInput1 != null) {
+          localRemoteInput = new RemoteInput(localRemoteInput1.getResultKey(), localRemoteInput1.getLabel(), localRemoteInput1.getChoices(), localRemoteInput1.getAllowFreeFormInput(), localRemoteInput1.getExtras(), null);
+        }
+        return new UnreadConversation(arrayOfString1, localRemoteInput, localPendingIntent, (PendingIntent)localObject, arrayOfString2, paramBundle.getLong("timestamp"));
+      }
+      return null;
     }
     
     public NotificationCompat.Builder extend(NotificationCompat.Builder paramBuilder)
@@ -1400,14 +1404,17 @@ public class NotificationCompat
         return paramBuilder;
       }
       Bundle localBundle = new Bundle();
-      if (this.mLargeIcon != null) {
-        localBundle.putParcelable("large_icon", this.mLargeIcon);
+      Object localObject = this.mLargeIcon;
+      if (localObject != null) {
+        localBundle.putParcelable("large_icon", (Parcelable)localObject);
       }
-      if (this.mColor != 0) {
-        localBundle.putInt("app_color", this.mColor);
+      int i = this.mColor;
+      if (i != 0) {
+        localBundle.putInt("app_color", i);
       }
-      if (this.mUnreadConversation != null) {
-        localBundle.putBundle("car_conversation", getBundleForUnreadConversation(this.mUnreadConversation));
+      localObject = this.mUnreadConversation;
+      if (localObject != null) {
+        localBundle.putBundle("car_conversation", getBundleForUnreadConversation((UnreadConversation)localObject));
       }
       paramBuilder.getExtras().putBundle("android.car.EXTENSIONS", localBundle);
       return paramBuilder;
@@ -1478,8 +1485,9 @@ public class NotificationCompat
       
       public String getParticipant()
       {
-        if (this.mParticipants.length > 0) {
-          return this.mParticipants[0];
+        String[] arrayOfString = this.mParticipants;
+        if (arrayOfString.length > 0) {
+          return arrayOfString[0];
         }
         return null;
       }
@@ -1526,13 +1534,14 @@ public class NotificationCompat
         
         public NotificationCompat.CarExtender.UnreadConversation build()
         {
-          String[] arrayOfString = (String[])this.mMessages.toArray(new String[this.mMessages.size()]);
+          Object localObject = this.mMessages;
+          localObject = (String[])((List)localObject).toArray(new String[((List)localObject).size()]);
           String str = this.mParticipant;
           RemoteInput localRemoteInput = this.mRemoteInput;
           PendingIntent localPendingIntent1 = this.mReplyPendingIntent;
           PendingIntent localPendingIntent2 = this.mReadPendingIntent;
           long l = this.mLatestTimestamp;
-          return new NotificationCompat.CarExtender.UnreadConversation(arrayOfString, localRemoteInput, localPendingIntent1, localPendingIntent2, new String[] { str }, l);
+          return new NotificationCompat.CarExtender.UnreadConversation((String[])localObject, localRemoteInput, localPendingIntent1, localPendingIntent2, new String[] { str }, l);
         }
         
         public Builder setLatestTimestamp(long paramLong)
@@ -1564,63 +1573,66 @@ public class NotificationCompat
     
     private RemoteViews createRemoteViews(RemoteViews paramRemoteViews, boolean paramBoolean)
     {
-      RemoteViews localRemoteViews1 = applyStandardTemplate(true, R.layout.notification_template_custom_big, false);
+      int i = R.layout.notification_template_custom_big;
+      int m = 1;
+      int k = 0;
+      RemoteViews localRemoteViews1 = applyStandardTemplate(true, i, false);
       localRemoteViews1.removeAllViews(R.id.actions);
       if ((paramBoolean) && (this.mBuilder.mActions != null))
       {
-        int j = Math.min(this.mBuilder.mActions.size(), 3);
-        if (j > 0)
+        int n = Math.min(this.mBuilder.mActions.size(), 3);
+        if (n > 0)
         {
           i = 0;
-          while (i < j)
+          for (;;)
           {
+            j = m;
+            if (i >= n) {
+              break;
+            }
             RemoteViews localRemoteViews2 = generateActionButton((NotificationCompat.Action)this.mBuilder.mActions.get(i));
             localRemoteViews1.addView(R.id.actions, localRemoteViews2);
             i += 1;
           }
         }
       }
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {}
-        for (i = 0;; i = 8)
-        {
-          localRemoteViews1.setViewVisibility(R.id.actions, i);
-          localRemoteViews1.setViewVisibility(R.id.action_divider, i);
-          buildIntoRemoteViews(localRemoteViews1, paramRemoteViews);
-          return localRemoteViews1;
-        }
+      int j = 0;
+      if (j != 0) {
+        i = k;
+      } else {
+        i = 8;
       }
+      localRemoteViews1.setViewVisibility(R.id.actions, i);
+      localRemoteViews1.setViewVisibility(R.id.action_divider, i);
+      buildIntoRemoteViews(localRemoteViews1, paramRemoteViews);
+      return localRemoteViews1;
     }
     
     private RemoteViews generateActionButton(NotificationCompat.Action paramAction)
     {
       int i;
-      Object localObject;
-      if (paramAction.actionIntent == null)
-      {
+      if (paramAction.actionIntent == null) {
         i = 1;
-        localObject = this.mBuilder.mContext.getPackageName();
-        if (i == 0) {
-          break label129;
-        }
-      }
-      label129:
-      for (int j = R.layout.notification_action_tombstone;; j = R.layout.notification_action)
-      {
-        localObject = new RemoteViews((String)localObject, j);
-        ((RemoteViews)localObject).setImageViewBitmap(R.id.action_image, createColoredBitmap(paramAction.getIcon(), this.mBuilder.mContext.getResources().getColor(R.color.notification_action_color_filter)));
-        ((RemoteViews)localObject).setTextViewText(R.id.action_text, paramAction.title);
-        if (i == 0) {
-          ((RemoteViews)localObject).setOnClickPendingIntent(R.id.action_container, paramAction.actionIntent);
-        }
-        if (Build.VERSION.SDK_INT >= 15) {
-          ((RemoteViews)localObject).setContentDescription(R.id.action_container, paramAction.title);
-        }
-        return localObject;
+      } else {
         i = 0;
-        break;
       }
+      Object localObject = this.mBuilder.mContext.getPackageName();
+      int j;
+      if (i != 0) {
+        j = R.layout.notification_action_tombstone;
+      } else {
+        j = R.layout.notification_action;
+      }
+      localObject = new RemoteViews((String)localObject, j);
+      ((RemoteViews)localObject).setImageViewBitmap(R.id.action_image, createColoredBitmap(paramAction.getIcon(), this.mBuilder.mContext.getResources().getColor(R.color.notification_action_color_filter)));
+      ((RemoteViews)localObject).setTextViewText(R.id.action_text, paramAction.title);
+      if (i == 0) {
+        ((RemoteViews)localObject).setOnClickPendingIntent(R.id.action_container, paramAction.actionIntent);
+      }
+      if (Build.VERSION.SDK_INT >= 15) {
+        ((RemoteViews)localObject).setContentDescription(R.id.action_container, paramAction.title);
+      }
+      return localObject;
     }
     
     @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
@@ -1634,25 +1646,26 @@ public class NotificationCompat
     @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
     public RemoteViews makeBigContentView(NotificationBuilderWithBuilderAccessor paramNotificationBuilderWithBuilderAccessor)
     {
-      if (Build.VERSION.SDK_INT >= 24) {}
-      for (;;)
-      {
+      if (Build.VERSION.SDK_INT >= 24) {
         return null;
-        paramNotificationBuilderWithBuilderAccessor = this.mBuilder.getBigContentView();
-        if (paramNotificationBuilderWithBuilderAccessor != null) {}
-        while (paramNotificationBuilderWithBuilderAccessor != null)
-        {
-          return createRemoteViews(paramNotificationBuilderWithBuilderAccessor, true);
-          paramNotificationBuilderWithBuilderAccessor = this.mBuilder.getContentView();
-        }
       }
+      paramNotificationBuilderWithBuilderAccessor = this.mBuilder.getBigContentView();
+      if (paramNotificationBuilderWithBuilderAccessor == null) {
+        paramNotificationBuilderWithBuilderAccessor = this.mBuilder.getContentView();
+      }
+      if (paramNotificationBuilderWithBuilderAccessor == null) {
+        return null;
+      }
+      return createRemoteViews(paramNotificationBuilderWithBuilderAccessor, true);
     }
     
     @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
     public RemoteViews makeContentView(NotificationBuilderWithBuilderAccessor paramNotificationBuilderWithBuilderAccessor)
     {
-      if (Build.VERSION.SDK_INT >= 24) {}
-      while (this.mBuilder.getContentView() == null) {
+      if (Build.VERSION.SDK_INT >= 24) {
+        return null;
+      }
+      if (this.mBuilder.getContentView() == null) {
         return null;
       }
       return createRemoteViews(this.mBuilder.getContentView(), false);
@@ -1661,16 +1674,19 @@ public class NotificationCompat
     @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
     public RemoteViews makeHeadsUpContentView(NotificationBuilderWithBuilderAccessor paramNotificationBuilderWithBuilderAccessor)
     {
-      if (Build.VERSION.SDK_INT >= 24) {}
-      for (;;)
-      {
+      if (Build.VERSION.SDK_INT >= 24) {
         return null;
-        RemoteViews localRemoteViews = this.mBuilder.getHeadsUpContentView();
-        if (localRemoteViews != null) {}
-        for (paramNotificationBuilderWithBuilderAccessor = localRemoteViews; localRemoteViews != null; paramNotificationBuilderWithBuilderAccessor = this.mBuilder.getContentView()) {
-          return createRemoteViews(paramNotificationBuilderWithBuilderAccessor, true);
-        }
       }
+      RemoteViews localRemoteViews = this.mBuilder.getHeadsUpContentView();
+      if (localRemoteViews != null) {
+        paramNotificationBuilderWithBuilderAccessor = localRemoteViews;
+      } else {
+        paramNotificationBuilderWithBuilderAccessor = this.mBuilder.getContentView();
+      }
+      if (localRemoteViews == null) {
+        return null;
+      }
+      return createRemoteViews(paramNotificationBuilderWithBuilderAccessor, true);
     }
   }
   
@@ -1766,16 +1782,19 @@ public class NotificationCompat
     private Message findLatestIncomingMessage()
     {
       int i = this.mMessages.size() - 1;
+      Object localObject;
       while (i >= 0)
       {
-        Message localMessage = (Message)this.mMessages.get(i);
-        if (!TextUtils.isEmpty(localMessage.getSender())) {
-          return localMessage;
+        localObject = (Message)this.mMessages.get(i);
+        if (!TextUtils.isEmpty(((Message)localObject).getSender())) {
+          return localObject;
         }
         i -= 1;
       }
-      if (!this.mMessages.isEmpty()) {
-        return (Message)this.mMessages.get(this.mMessages.size() - 1);
+      if (!this.mMessages.isEmpty())
+      {
+        localObject = this.mMessages;
+        return (Message)((List)localObject).get(((List)localObject).size() - 1);
       }
       return null;
     }
@@ -1803,64 +1822,62 @@ public class NotificationCompat
     {
       BidiFormatter localBidiFormatter = BidiFormatter.getInstance();
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-      int k;
+      int j;
+      if (Build.VERSION.SDK_INT >= 21) {
+        j = 1;
+      } else {
+        j = 0;
+      }
       int i;
-      label33:
-      Object localObject;
-      if (Build.VERSION.SDK_INT >= 21)
-      {
-        k = 1;
-        if (k == 0) {
-          break label170;
-        }
+      if (j != 0) {
         i = -16777216;
-        localObject = paramMessage.getSender();
-        if (!TextUtils.isEmpty(paramMessage.getSender())) {
-          break label192;
-        }
-        if (this.mUserDisplayName != null) {
-          break label175;
-        }
-        localObject = "";
-        label60:
-        j = i;
-        if (k != 0)
-        {
-          j = i;
-          if (this.mBuilder.getColor() == 0) {}
-        }
+      } else {
+        i = -1;
       }
-      label170:
-      label175:
-      label192:
-      for (int j = this.mBuilder.getColor();; j = i)
+      Object localObject2 = paramMessage.getSender();
+      int k = i;
+      if (TextUtils.isEmpty(paramMessage.getSender()))
       {
-        localObject = localBidiFormatter.unicodeWrap((CharSequence)localObject);
-        localSpannableStringBuilder.append((CharSequence)localObject);
-        localSpannableStringBuilder.setSpan(makeFontColorSpan(j), localSpannableStringBuilder.length() - ((CharSequence)localObject).length(), localSpannableStringBuilder.length(), 33);
-        if (paramMessage.getText() == null) {}
-        for (paramMessage = "";; paramMessage = paramMessage.getText())
+        localObject2 = this.mUserDisplayName;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        k = i;
+        localObject2 = localObject1;
+        if (j != 0)
         {
-          localSpannableStringBuilder.append("  ").append(localBidiFormatter.unicodeWrap(paramMessage));
-          return localSpannableStringBuilder;
-          k = 0;
-          break;
-          i = -1;
-          break label33;
-          localObject = this.mUserDisplayName;
-          break label60;
+          k = i;
+          localObject2 = localObject1;
+          if (this.mBuilder.getColor() != 0)
+          {
+            k = this.mBuilder.getColor();
+            localObject2 = localObject1;
+          }
         }
       }
+      Object localObject1 = localBidiFormatter.unicodeWrap((CharSequence)localObject2);
+      localSpannableStringBuilder.append((CharSequence)localObject1);
+      localSpannableStringBuilder.setSpan(makeFontColorSpan(k), localSpannableStringBuilder.length() - ((CharSequence)localObject1).length(), localSpannableStringBuilder.length(), 33);
+      if (paramMessage.getText() == null) {
+        paramMessage = "";
+      } else {
+        paramMessage = paramMessage.getText();
+      }
+      localSpannableStringBuilder.append("  ").append(localBidiFormatter.unicodeWrap(paramMessage));
+      return localSpannableStringBuilder;
     }
     
     public void addCompatExtras(Bundle paramBundle)
     {
       super.addCompatExtras(paramBundle);
-      if (this.mUserDisplayName != null) {
-        paramBundle.putCharSequence("android.selfDisplayName", this.mUserDisplayName);
+      CharSequence localCharSequence = this.mUserDisplayName;
+      if (localCharSequence != null) {
+        paramBundle.putCharSequence("android.selfDisplayName", localCharSequence);
       }
-      if (this.mConversationTitle != null) {
-        paramBundle.putCharSequence("android.conversationTitle", this.mConversationTitle);
+      localCharSequence = this.mConversationTitle;
+      if (localCharSequence != null) {
+        paramBundle.putCharSequence("android.conversationTitle", localCharSequence);
       }
       if (!this.mMessages.isEmpty()) {
         paramBundle.putParcelableArray("android.messages", Message.getBundleArrayForMessages(this.mMessages));
@@ -1888,6 +1905,7 @@ public class NotificationCompat
     @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
     public void apply(NotificationBuilderWithBuilderAccessor paramNotificationBuilderWithBuilderAccessor)
     {
+      Object localObject2;
       if (Build.VERSION.SDK_INT >= 24)
       {
         localObject1 = new Notification.MessagingStyle(this.mUserDisplayName).setConversationTitle(this.mConversationTitle);
@@ -1902,65 +1920,50 @@ public class NotificationCompat
           ((Notification.MessagingStyle)localObject1).addMessage(localMessage1);
         }
         ((Notification.MessagingStyle)localObject1).setBuilder(paramNotificationBuilderWithBuilderAccessor.getBuilder());
-      }
-      label187:
-      do
-      {
         return;
-        localObject1 = findLatestIncomingMessage();
-        if (this.mConversationTitle == null) {
-          break;
-        }
+      }
+      Object localObject1 = findLatestIncomingMessage();
+      if (this.mConversationTitle != null) {
         paramNotificationBuilderWithBuilderAccessor.getBuilder().setContentTitle(this.mConversationTitle);
-        if (localObject1 != null)
-        {
-          localObject2 = paramNotificationBuilderWithBuilderAccessor.getBuilder();
-          if (this.mConversationTitle == null) {
-            break label335;
-          }
-          localObject1 = makeMessageLine((Message)localObject1);
-          ((Notification.Builder)localObject2).setContentText((CharSequence)localObject1);
-        }
-      } while (Build.VERSION.SDK_INT < 16);
-      Object localObject2 = new SpannableStringBuilder();
-      int i;
-      label228:
-      int j;
-      if ((this.mConversationTitle != null) || (hasMessagesWithoutSender()))
-      {
-        i = 1;
-        j = this.mMessages.size() - 1;
-        label240:
-        if (j < 0) {
-          break label360;
-        }
-        localObject1 = (Message)this.mMessages.get(j);
-        if (i == 0) {
-          break label350;
-        }
-      }
-      label335:
-      label350:
-      for (Object localObject1 = makeMessageLine((Message)localObject1);; localObject1 = ((Message)localObject1).getText())
-      {
-        if (j != this.mMessages.size() - 1) {
-          ((SpannableStringBuilder)localObject2).insert(0, "\n");
-        }
-        ((SpannableStringBuilder)localObject2).insert(0, (CharSequence)localObject1);
-        j -= 1;
-        break label240;
-        if (localObject1 == null) {
-          break;
-        }
+      } else if (localObject1 != null) {
         paramNotificationBuilderWithBuilderAccessor.getBuilder().setContentTitle(((Message)localObject1).getSender());
-        break;
-        localObject1 = ((Message)localObject1).getText();
-        break label187;
-        i = 0;
-        break label228;
       }
-      label360:
-      new Notification.BigTextStyle(paramNotificationBuilderWithBuilderAccessor.getBuilder()).setBigContentTitle(null).bigText((CharSequence)localObject2);
+      if (localObject1 != null)
+      {
+        localObject2 = paramNotificationBuilderWithBuilderAccessor.getBuilder();
+        if (this.mConversationTitle != null) {
+          localObject1 = makeMessageLine((Message)localObject1);
+        } else {
+          localObject1 = ((Message)localObject1).getText();
+        }
+        ((Notification.Builder)localObject2).setContentText((CharSequence)localObject1);
+      }
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        localObject2 = new SpannableStringBuilder();
+        int i;
+        if ((this.mConversationTitle == null) && (!hasMessagesWithoutSender())) {
+          i = 0;
+        } else {
+          i = 1;
+        }
+        int j = this.mMessages.size() - 1;
+        while (j >= 0)
+        {
+          localObject1 = (Message)this.mMessages.get(j);
+          if (i != 0) {
+            localObject1 = makeMessageLine((Message)localObject1);
+          } else {
+            localObject1 = ((Message)localObject1).getText();
+          }
+          if (j != this.mMessages.size() - 1) {
+            ((SpannableStringBuilder)localObject2).insert(0, "\n");
+          }
+          ((SpannableStringBuilder)localObject2).insert(0, (CharSequence)localObject1);
+          j -= 1;
+        }
+        new Notification.BigTextStyle(paramNotificationBuilderWithBuilderAccessor.getBuilder()).setBigContentTitle(null).bigText((CharSequence)localObject2);
+      }
     }
     
     public CharSequence getConversationTitle()
@@ -2035,8 +2038,11 @@ public class NotificationCompat
       {
         try
         {
-          if ((paramBundle.containsKey("text")) && (paramBundle.containsKey("time")))
+          if (paramBundle.containsKey("text"))
           {
+            if (!paramBundle.containsKey("time")) {
+              return null;
+            }
             Message localMessage = new Message(paramBundle.getCharSequence("text"), paramBundle.getLong("time"), paramBundle.getCharSequence("sender"));
             if ((paramBundle.containsKey("type")) && (paramBundle.containsKey("uri"))) {
               localMessage.setData(paramBundle.getString("type"), (Uri)paramBundle.getParcelable("uri"));
@@ -2046,11 +2052,9 @@ public class NotificationCompat
             }
             return localMessage;
           }
-        }
-        catch (ClassCastException paramBundle)
-        {
           return null;
         }
+        catch (ClassCastException paramBundle) {}
         return null;
       }
       
@@ -2075,21 +2079,26 @@ public class NotificationCompat
       private Bundle toBundle()
       {
         Bundle localBundle = new Bundle();
-        if (this.mText != null) {
-          localBundle.putCharSequence("text", this.mText);
+        Object localObject = this.mText;
+        if (localObject != null) {
+          localBundle.putCharSequence("text", (CharSequence)localObject);
         }
         localBundle.putLong("time", this.mTimestamp);
-        if (this.mSender != null) {
-          localBundle.putCharSequence("sender", this.mSender);
+        localObject = this.mSender;
+        if (localObject != null) {
+          localBundle.putCharSequence("sender", (CharSequence)localObject);
         }
-        if (this.mDataMimeType != null) {
-          localBundle.putString("type", this.mDataMimeType);
+        localObject = this.mDataMimeType;
+        if (localObject != null) {
+          localBundle.putString("type", (String)localObject);
         }
-        if (this.mDataUri != null) {
-          localBundle.putParcelable("uri", this.mDataUri);
+        localObject = this.mDataUri;
+        if (localObject != null) {
+          localBundle.putParcelable("uri", (Parcelable)localObject);
         }
-        if (this.mExtras != null) {
-          localBundle.putBundle("extras", this.mExtras);
+        localObject = this.mExtras;
+        if (localObject != null) {
+          localBundle.putBundle("extras", (Bundle)localObject);
         }
         return localBundle;
       }
@@ -2154,9 +2163,8 @@ public class NotificationCompat
       Resources localResources = this.mBuilder.mContext.getResources();
       int i = localResources.getDimensionPixelSize(R.dimen.notification_top_pad);
       int j = localResources.getDimensionPixelSize(R.dimen.notification_top_pad_large_text);
-      float f1 = (constrain(localResources.getConfiguration().fontScale, 1.0F, 1.3F) - 1.0F) / 0.3F;
-      float f2 = i;
-      return Math.round(f1 * j + f2 * (1.0F - f1));
+      float f = (constrain(localResources.getConfiguration().fontScale, 1.0F, 1.3F) - 1.0F) / 0.3F;
+      return Math.round((1.0F - f) * i + f * j);
     }
     
     private static float constrain(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -2164,30 +2172,32 @@ public class NotificationCompat
       if (paramFloat1 < paramFloat2) {
         return paramFloat2;
       }
+      paramFloat2 = paramFloat1;
       if (paramFloat1 > paramFloat3) {
-        return paramFloat3;
+        paramFloat2 = paramFloat3;
       }
-      return paramFloat1;
+      return paramFloat2;
     }
     
     private Bitmap createColoredBitmap(int paramInt1, int paramInt2, int paramInt3)
     {
       Drawable localDrawable = this.mBuilder.mContext.getResources().getDrawable(paramInt1);
-      if (paramInt3 == 0) {}
-      for (paramInt1 = localDrawable.getIntrinsicWidth();; paramInt1 = paramInt3)
-      {
-        int i = paramInt3;
-        if (paramInt3 == 0) {
-          i = localDrawable.getIntrinsicHeight();
-        }
-        Bitmap localBitmap = Bitmap.createBitmap(paramInt1, i, Bitmap.Config.ARGB_8888);
-        localDrawable.setBounds(0, 0, paramInt1, i);
-        if (paramInt2 != 0) {
-          localDrawable.mutate().setColorFilter(new PorterDuffColorFilter(paramInt2, PorterDuff.Mode.SRC_IN));
-        }
-        localDrawable.draw(new Canvas(localBitmap));
-        return localBitmap;
+      if (paramInt3 == 0) {
+        paramInt1 = localDrawable.getIntrinsicWidth();
+      } else {
+        paramInt1 = paramInt3;
       }
+      int i = paramInt3;
+      if (paramInt3 == 0) {
+        i = localDrawable.getIntrinsicHeight();
+      }
+      Bitmap localBitmap = Bitmap.createBitmap(paramInt1, i, Bitmap.Config.ARGB_8888);
+      localDrawable.setBounds(0, 0, paramInt1, i);
+      if (paramInt2 != 0) {
+        localDrawable.mutate().setColorFilter(new PorterDuffColorFilter(paramInt2, PorterDuff.Mode.SRC_IN));
+      }
+      localDrawable.draw(new Canvas(localBitmap));
+      return localBitmap;
     }
     
     private Bitmap createIconWithBackground(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -2202,7 +2212,8 @@ public class NotificationCompat
       Drawable localDrawable = this.mBuilder.mContext.getResources().getDrawable(paramInt1).mutate();
       localDrawable.setFilterBitmap(true);
       paramInt1 = (paramInt2 - paramInt3) / 2;
-      localDrawable.setBounds(paramInt1, paramInt1, paramInt3 + paramInt1, paramInt3 + paramInt1);
+      paramInt2 = paramInt3 + paramInt1;
+      localDrawable.setBounds(paramInt1, paramInt1, paramInt2, paramInt2);
       localDrawable.setColorFilter(new PorterDuffColorFilter(-1, PorterDuff.Mode.SRC_ATOP));
       localDrawable.draw(localCanvas);
       return localBitmap;
@@ -2226,181 +2237,180 @@ public class NotificationCompat
     {
       Resources localResources = this.mBuilder.mContext.getResources();
       RemoteViews localRemoteViews = new RemoteViews(this.mBuilder.mContext.getPackageName(), paramInt);
-      label91:
-      int i;
-      label133:
-      Object localObject;
-      if (this.mBuilder.getPriority() < -1)
-      {
+      paramInt = this.mBuilder.getPriority();
+      int k = 0;
+      if (paramInt < -1) {
         paramInt = 1;
-        if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT < 21))
+      } else {
+        paramInt = 0;
+      }
+      if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT < 21)) {
+        if (paramInt != 0)
         {
-          if (paramInt == 0) {
-            break label585;
-          }
           localRemoteViews.setInt(R.id.notification_background, "setBackgroundResource", R.drawable.notification_bg_low);
           localRemoteViews.setInt(R.id.icon, "setBackgroundResource", R.drawable.notification_template_icon_low_bg);
         }
-        if (this.mBuilder.mLargeIcon == null) {
-          break label653;
+        else
+        {
+          localRemoteViews.setInt(R.id.notification_background, "setBackgroundResource", R.drawable.notification_bg);
+          localRemoteViews.setInt(R.id.icon, "setBackgroundResource", R.drawable.notification_template_icon_bg);
         }
-        if (Build.VERSION.SDK_INT < 16) {
-          break label614;
+      }
+      int i;
+      Object localObject;
+      if (this.mBuilder.mLargeIcon != null)
+      {
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          localRemoteViews.setViewVisibility(R.id.icon, 0);
+          localRemoteViews.setImageViewBitmap(R.id.icon, this.mBuilder.mLargeIcon);
         }
-        localRemoteViews.setViewVisibility(R.id.icon, 0);
-        localRemoteViews.setImageViewBitmap(R.id.icon, this.mBuilder.mLargeIcon);
+        else
+        {
+          localRemoteViews.setViewVisibility(R.id.icon, 8);
+        }
         if ((paramBoolean1) && (this.mBuilder.mNotification.icon != 0))
         {
           paramInt = localResources.getDimensionPixelSize(R.dimen.notification_right_icon_size);
           i = localResources.getDimensionPixelSize(R.dimen.notification_small_icon_background_padding);
-          if (Build.VERSION.SDK_INT < 21) {
-            break label627;
+          if (Build.VERSION.SDK_INT >= 21)
+          {
+            localObject = createIconWithBackground(this.mBuilder.mNotification.icon, paramInt, paramInt - i * 2, this.mBuilder.getColor());
+            localRemoteViews.setImageViewBitmap(R.id.right_icon, (Bitmap)localObject);
           }
-          localObject = createIconWithBackground(this.mBuilder.mNotification.icon, paramInt, paramInt - i * 2, this.mBuilder.getColor());
-          localRemoteViews.setImageViewBitmap(R.id.right_icon, (Bitmap)localObject);
-          label217:
+          else
+          {
+            localRemoteViews.setImageViewBitmap(R.id.right_icon, createColoredBitmap(this.mBuilder.mNotification.icon, -1));
+          }
           localRemoteViews.setViewVisibility(R.id.right_icon, 0);
         }
-        label226:
-        if (this.mBuilder.mContentTitle != null) {
-          localRemoteViews.setTextViewText(R.id.title, this.mBuilder.mContentTitle);
-        }
-        if (this.mBuilder.mContentText == null) {
-          break label963;
-        }
-        localRemoteViews.setTextViewText(R.id.text, this.mBuilder.mContentText);
       }
-      label299:
-      label951:
-      label957:
-      label963:
-      for (paramInt = 1;; paramInt = 0)
+      else if ((paramBoolean1) && (this.mBuilder.mNotification.icon != 0))
       {
-        label338:
-        int j;
-        if ((Build.VERSION.SDK_INT < 21) && (this.mBuilder.mLargeIcon != null))
+        localRemoteViews.setViewVisibility(R.id.icon, 0);
+        if (Build.VERSION.SDK_INT >= 21)
         {
-          i = 1;
-          if (this.mBuilder.mContentInfo == null) {
-            break label790;
-          }
-          localRemoteViews.setTextViewText(R.id.info, this.mBuilder.mContentInfo);
-          localRemoteViews.setViewVisibility(R.id.info, 0);
-          paramInt = 1;
-          i = 1;
-          if ((this.mBuilder.mSubText == null) || (Build.VERSION.SDK_INT < 16)) {
-            break label915;
-          }
-          localRemoteViews.setTextViewText(R.id.text, this.mBuilder.mSubText);
-          if (this.mBuilder.mContentText == null) {
-            break label905;
-          }
+          paramInt = localResources.getDimensionPixelSize(R.dimen.notification_large_icon_width);
+          i = localResources.getDimensionPixelSize(R.dimen.notification_big_circle_margin);
+          j = localResources.getDimensionPixelSize(R.dimen.notification_small_icon_size_as_large);
+          localObject = createIconWithBackground(this.mBuilder.mNotification.icon, paramInt - i, j, this.mBuilder.getColor());
+          localRemoteViews.setImageViewBitmap(R.id.icon, (Bitmap)localObject);
+        }
+        else
+        {
+          localRemoteViews.setImageViewBitmap(R.id.icon, createColoredBitmap(this.mBuilder.mNotification.icon, -1));
+        }
+      }
+      if (this.mBuilder.mContentTitle != null) {
+        localRemoteViews.setTextViewText(R.id.title, this.mBuilder.mContentTitle);
+      }
+      if (this.mBuilder.mContentText != null)
+      {
+        localRemoteViews.setTextViewText(R.id.text, this.mBuilder.mContentText);
+        i = 1;
+      }
+      else
+      {
+        i = 0;
+      }
+      if ((Build.VERSION.SDK_INT < 21) && (this.mBuilder.mLargeIcon != null)) {
+        paramInt = 1;
+      } else {
+        paramInt = 0;
+      }
+      if (this.mBuilder.mContentInfo != null)
+      {
+        localRemoteViews.setTextViewText(R.id.info, this.mBuilder.mContentInfo);
+        localRemoteViews.setViewVisibility(R.id.info, 0);
+        i = 1;
+        paramInt = 1;
+      }
+      else if (this.mBuilder.mNumber > 0)
+      {
+        paramInt = localResources.getInteger(R.integer.status_bar_notification_info_maxnum);
+        if (this.mBuilder.mNumber > paramInt)
+        {
+          localRemoteViews.setTextViewText(R.id.info, localResources.getString(R.string.status_bar_notification_info_overflow));
+        }
+        else
+        {
+          localObject = NumberFormat.getIntegerInstance();
+          localRemoteViews.setTextViewText(R.id.info, ((NumberFormat)localObject).format(this.mBuilder.mNumber));
+        }
+        localRemoteViews.setViewVisibility(R.id.info, 0);
+        i = 1;
+        paramInt = 1;
+      }
+      else
+      {
+        localRemoteViews.setViewVisibility(R.id.info, 8);
+      }
+      if ((this.mBuilder.mSubText != null) && (Build.VERSION.SDK_INT >= 16))
+      {
+        localRemoteViews.setTextViewText(R.id.text, this.mBuilder.mSubText);
+        if (this.mBuilder.mContentText != null)
+        {
           localRemoteViews.setTextViewText(R.id.text2, this.mBuilder.mContentText);
           localRemoteViews.setViewVisibility(R.id.text2, 0);
           j = 1;
-          if ((j != 0) && (Build.VERSION.SDK_INT >= 16))
-          {
-            if (paramBoolean2)
-            {
-              float f = localResources.getDimensionPixelSize(R.dimen.notification_subtext_size);
-              localRemoteViews.setTextViewTextSize(R.id.text, 0, f);
-            }
-            localRemoteViews.setViewPadding(R.id.line1, 0, 0, 0, 0);
-          }
-          if (this.mBuilder.getWhenIfShowing() != 0L)
-          {
-            if ((!this.mBuilder.mUseChronometer) || (Build.VERSION.SDK_INT < 16)) {
-              break label921;
-            }
-            localRemoteViews.setViewVisibility(R.id.chronometer, 0);
-            localRemoteViews.setLong(R.id.chronometer, "setBase", this.mBuilder.getWhenIfShowing() + (SystemClock.elapsedRealtime() - System.currentTimeMillis()));
-            localRemoteViews.setBoolean(R.id.chronometer, "setStarted", true);
-            paramInt = 1;
-          }
-          j = R.id.right_side;
-          if (paramInt == 0) {
-            break label951;
-          }
-          paramInt = 0;
-          localRemoteViews.setViewVisibility(j, paramInt);
-          j = R.id.line3;
-          if (i == 0) {
-            break label957;
-          }
         }
-        for (paramInt = 0;; paramInt = 8)
+        else
         {
-          localRemoteViews.setViewVisibility(j, paramInt);
-          return localRemoteViews;
-          paramInt = 0;
-          break;
-          label585:
-          localRemoteViews.setInt(R.id.notification_background, "setBackgroundResource", R.drawable.notification_bg);
-          localRemoteViews.setInt(R.id.icon, "setBackgroundResource", R.drawable.notification_template_icon_bg);
-          break label91;
-          label614:
-          localRemoteViews.setViewVisibility(R.id.icon, 8);
-          break label133;
-          label627:
-          localRemoteViews.setImageViewBitmap(R.id.right_icon, createColoredBitmap(this.mBuilder.mNotification.icon, -1));
-          break label217;
-          if ((!paramBoolean1) || (this.mBuilder.mNotification.icon == 0)) {
-            break label226;
-          }
-          localRemoteViews.setViewVisibility(R.id.icon, 0);
-          if (Build.VERSION.SDK_INT >= 21)
-          {
-            paramInt = localResources.getDimensionPixelSize(R.dimen.notification_large_icon_width);
-            i = localResources.getDimensionPixelSize(R.dimen.notification_big_circle_margin);
-            j = localResources.getDimensionPixelSize(R.dimen.notification_small_icon_size_as_large);
-            localObject = createIconWithBackground(this.mBuilder.mNotification.icon, paramInt - i, j, this.mBuilder.getColor());
-            localRemoteViews.setImageViewBitmap(R.id.icon, (Bitmap)localObject);
-            break label226;
-          }
-          localRemoteViews.setImageViewBitmap(R.id.icon, createColoredBitmap(this.mBuilder.mNotification.icon, -1));
-          break label226;
-          i = 0;
-          break label299;
-          if (this.mBuilder.mNumber > 0)
-          {
-            paramInt = localResources.getInteger(R.integer.status_bar_notification_info_maxnum);
-            if (this.mBuilder.mNumber > paramInt) {
-              localRemoteViews.setTextViewText(R.id.info, localResources.getString(R.string.status_bar_notification_info_overflow));
-            }
-            for (;;)
-            {
-              localRemoteViews.setViewVisibility(R.id.info, 0);
-              paramInt = 1;
-              i = 1;
-              break;
-              localObject = NumberFormat.getIntegerInstance();
-              localRemoteViews.setTextViewText(R.id.info, ((NumberFormat)localObject).format(this.mBuilder.mNumber));
-            }
-          }
-          localRemoteViews.setViewVisibility(R.id.info, 8);
-          j = paramInt;
-          paramInt = i;
-          i = j;
-          break label338;
           localRemoteViews.setViewVisibility(R.id.text2, 8);
-          j = 0;
-          break label408;
-          localRemoteViews.setViewVisibility(R.id.time, 0);
-          localRemoteViews.setLong(R.id.time, "setTime", this.mBuilder.getWhenIfShowing());
-          break label536;
-          paramInt = 8;
-          break label549;
         }
       }
+      else
+      {
+        j = 0;
+      }
+      if ((j != 0) && (Build.VERSION.SDK_INT >= 16))
+      {
+        if (paramBoolean2)
+        {
+          float f = localResources.getDimensionPixelSize(R.dimen.notification_subtext_size);
+          localRemoteViews.setTextViewTextSize(R.id.text, 0, f);
+        }
+        localRemoteViews.setViewPadding(R.id.line1, 0, 0, 0, 0);
+      }
+      if (this.mBuilder.getWhenIfShowing() != 0L)
+      {
+        if ((this.mBuilder.mUseChronometer) && (Build.VERSION.SDK_INT >= 16))
+        {
+          localRemoteViews.setViewVisibility(R.id.chronometer, 0);
+          localRemoteViews.setLong(R.id.chronometer, "setBase", this.mBuilder.getWhenIfShowing() + (SystemClock.elapsedRealtime() - System.currentTimeMillis()));
+          localRemoteViews.setBoolean(R.id.chronometer, "setStarted", true);
+        }
+        else
+        {
+          localRemoteViews.setViewVisibility(R.id.time, 0);
+          localRemoteViews.setLong(R.id.time, "setTime", this.mBuilder.getWhenIfShowing());
+        }
+        paramInt = 1;
+      }
+      int j = R.id.right_side;
+      if (paramInt != 0) {
+        paramInt = 0;
+      } else {
+        paramInt = 8;
+      }
+      localRemoteViews.setViewVisibility(j, paramInt);
+      j = R.id.line3;
+      if (i != 0) {
+        paramInt = k;
+      } else {
+        paramInt = 8;
+      }
+      localRemoteViews.setViewVisibility(j, paramInt);
+      return localRemoteViews;
     }
     
     public Notification build()
     {
-      Notification localNotification = null;
-      if (this.mBuilder != null) {
-        localNotification = this.mBuilder.build();
+      NotificationCompat.Builder localBuilder = this.mBuilder;
+      if (localBuilder != null) {
+        return localBuilder.build();
       }
-      return localNotification;
+      return null;
     }
     
     @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
@@ -2447,8 +2457,9 @@ public class NotificationCompat
       if (this.mBuilder != paramBuilder)
       {
         this.mBuilder = paramBuilder;
-        if (this.mBuilder != null) {
-          this.mBuilder.setStyle(this);
+        paramBuilder = this.mBuilder;
+        if (paramBuilder != null) {
+          paramBuilder.setStyle(this);
         }
       }
     }
@@ -2511,77 +2522,66 @@ public class NotificationCompat
     public WearableExtender(Notification paramNotification)
     {
       paramNotification = NotificationCompat.getExtras(paramNotification);
-      NotificationCompat.Action[] arrayOfAction;
-      int i;
+      if (paramNotification != null) {
+        paramNotification = paramNotification.getBundle("android.wearable.EXTENSIONS");
+      } else {
+        paramNotification = null;
+      }
       if (paramNotification != null)
       {
-        paramNotification = paramNotification.getBundle("android.wearable.EXTENSIONS");
-        if (paramNotification == null) {
-          return;
+        Object localObject = paramNotification.getParcelableArrayList("actions");
+        if ((Build.VERSION.SDK_INT >= 16) && (localObject != null))
+        {
+          NotificationCompat.Action[] arrayOfAction = new NotificationCompat.Action[((ArrayList)localObject).size()];
+          int i = 0;
+          while (i < arrayOfAction.length)
+          {
+            if (Build.VERSION.SDK_INT >= 20) {
+              arrayOfAction[i] = NotificationCompat.getActionCompatFromAction((Notification.Action)((ArrayList)localObject).get(i));
+            } else if (Build.VERSION.SDK_INT >= 16) {
+              arrayOfAction[i] = NotificationCompatJellybean.getActionFromBundle((Bundle)((ArrayList)localObject).get(i));
+            }
+            i += 1;
+          }
+          Collections.addAll(this.mActions, (NotificationCompat.Action[])arrayOfAction);
         }
-        localObject = paramNotification.getParcelableArrayList("actions");
-        if ((Build.VERSION.SDK_INT < 16) || (localObject == null)) {
-          break label184;
+        this.mFlags = paramNotification.getInt("flags", 1);
+        this.mDisplayIntent = ((PendingIntent)paramNotification.getParcelable("displayIntent"));
+        localObject = NotificationCompat.getNotificationArrayFromBundle(paramNotification, "pages");
+        if (localObject != null) {
+          Collections.addAll(this.mPages, (Object[])localObject);
         }
-        arrayOfAction = new NotificationCompat.Action[((ArrayList)localObject).size()];
-        i = 0;
-        label103:
-        if (i >= arrayOfAction.length) {
-          break label171;
-        }
-        if (Build.VERSION.SDK_INT < 20) {
-          break label145;
-        }
-        arrayOfAction[i] = NotificationCompat.getActionCompatFromAction((Notification.Action)((ArrayList)localObject).get(i));
+        this.mBackground = ((Bitmap)paramNotification.getParcelable("background"));
+        this.mContentIcon = paramNotification.getInt("contentIcon");
+        this.mContentIconGravity = paramNotification.getInt("contentIconGravity", 8388613);
+        this.mContentActionIndex = paramNotification.getInt("contentActionIndex", -1);
+        this.mCustomSizePreset = paramNotification.getInt("customSizePreset", 0);
+        this.mCustomContentHeight = paramNotification.getInt("customContentHeight");
+        this.mGravity = paramNotification.getInt("gravity", 80);
+        this.mHintScreenTimeout = paramNotification.getInt("hintScreenTimeout");
+        this.mDismissalId = paramNotification.getString("dismissalId");
+        this.mBridgeTag = paramNotification.getString("bridgeTag");
       }
-      for (;;)
-      {
-        i += 1;
-        break label103;
-        paramNotification = null;
-        break;
-        label145:
-        if (Build.VERSION.SDK_INT >= 16) {
-          arrayOfAction[i] = NotificationCompatJellybean.getActionFromBundle((Bundle)((ArrayList)localObject).get(i));
-        }
-      }
-      label171:
-      Collections.addAll(this.mActions, (NotificationCompat.Action[])arrayOfAction);
-      label184:
-      this.mFlags = paramNotification.getInt("flags", 1);
-      this.mDisplayIntent = ((PendingIntent)paramNotification.getParcelable("displayIntent"));
-      Object localObject = NotificationCompat.getNotificationArrayFromBundle(paramNotification, "pages");
-      if (localObject != null) {
-        Collections.addAll(this.mPages, (Object[])localObject);
-      }
-      this.mBackground = ((Bitmap)paramNotification.getParcelable("background"));
-      this.mContentIcon = paramNotification.getInt("contentIcon");
-      this.mContentIconGravity = paramNotification.getInt("contentIconGravity", 8388613);
-      this.mContentActionIndex = paramNotification.getInt("contentActionIndex", -1);
-      this.mCustomSizePreset = paramNotification.getInt("customSizePreset", 0);
-      this.mCustomContentHeight = paramNotification.getInt("customContentHeight");
-      this.mGravity = paramNotification.getInt("gravity", 80);
-      this.mHintScreenTimeout = paramNotification.getInt("hintScreenTimeout");
-      this.mDismissalId = paramNotification.getString("dismissalId");
-      this.mBridgeTag = paramNotification.getString("bridgeTag");
     }
     
     @RequiresApi(20)
     private static Notification.Action getActionFromActionCompat(NotificationCompat.Action paramAction)
     {
       Notification.Action.Builder localBuilder = new Notification.Action.Builder(paramAction.getIcon(), paramAction.getTitle(), paramAction.getActionIntent());
-      if (paramAction.getExtras() != null) {}
-      for (Bundle localBundle = new Bundle(paramAction.getExtras());; localBundle = new Bundle())
+      Bundle localBundle;
+      if (paramAction.getExtras() != null) {
+        localBundle = new Bundle(paramAction.getExtras());
+      } else {
+        localBundle = new Bundle();
+      }
+      localBundle.putBoolean("android.support.allowGeneratedReplies", paramAction.getAllowGeneratedReplies());
+      if (Build.VERSION.SDK_INT >= 24) {
+        localBuilder.setAllowGeneratedReplies(paramAction.getAllowGeneratedReplies());
+      }
+      localBuilder.addExtras(localBundle);
+      paramAction = paramAction.getRemoteInputs();
+      if (paramAction != null)
       {
-        localBundle.putBoolean("android.support.allowGeneratedReplies", paramAction.getAllowGeneratedReplies());
-        if (Build.VERSION.SDK_INT >= 24) {
-          localBuilder.setAllowGeneratedReplies(paramAction.getAllowGeneratedReplies());
-        }
-        localBuilder.addExtras(localBundle);
-        paramAction = paramAction.getRemoteInputs();
-        if (paramAction == null) {
-          break;
-        }
         paramAction = RemoteInput.fromCompat(paramAction);
         int j = paramAction.length;
         int i = 0;
@@ -2598,10 +2598,10 @@ public class NotificationCompat
     {
       if (paramBoolean)
       {
-        this.mFlags |= paramInt;
+        this.mFlags = (paramInt | this.mFlags);
         return;
       }
-      this.mFlags &= (paramInt ^ 0xFFFFFFFF);
+      this.mFlags = ((paramInt ^ 0xFFFFFFFF) & this.mFlags);
     }
     
     public WearableExtender addAction(NotificationCompat.Action paramAction)
@@ -2663,70 +2663,82 @@ public class NotificationCompat
     public NotificationCompat.Builder extend(NotificationCompat.Builder paramBuilder)
     {
       Bundle localBundle = new Bundle();
-      if (!this.mActions.isEmpty())
-      {
-        if (Build.VERSION.SDK_INT < 16) {
-          break label379;
-        }
-        ArrayList localArrayList = new ArrayList(this.mActions.size());
-        Iterator localIterator = this.mActions.iterator();
-        while (localIterator.hasNext())
+      if (!this.mActions.isEmpty()) {
+        if (Build.VERSION.SDK_INT >= 16)
         {
-          NotificationCompat.Action localAction = (NotificationCompat.Action)localIterator.next();
-          if (Build.VERSION.SDK_INT >= 20) {
-            localArrayList.add(getActionFromActionCompat(localAction));
-          } else if (Build.VERSION.SDK_INT >= 16) {
-            localArrayList.add(NotificationCompatJellybean.getBundleForAction(localAction));
+          localObject = new ArrayList(this.mActions.size());
+          Iterator localIterator = this.mActions.iterator();
+          while (localIterator.hasNext())
+          {
+            NotificationCompat.Action localAction = (NotificationCompat.Action)localIterator.next();
+            if (Build.VERSION.SDK_INT >= 20) {
+              ((ArrayList)localObject).add(getActionFromActionCompat(localAction));
+            } else if (Build.VERSION.SDK_INT >= 16) {
+              ((ArrayList)localObject).add(NotificationCompatJellybean.getBundleForAction(localAction));
+            }
           }
+          localBundle.putParcelableArrayList("actions", (ArrayList)localObject);
         }
-        localBundle.putParcelableArrayList("actions", localArrayList);
+        else
+        {
+          localBundle.putParcelableArrayList("actions", null);
+        }
       }
-      for (;;)
+      int i = this.mFlags;
+      if (i != 1) {
+        localBundle.putInt("flags", i);
+      }
+      Object localObject = this.mDisplayIntent;
+      if (localObject != null) {
+        localBundle.putParcelable("displayIntent", (Parcelable)localObject);
+      }
+      if (!this.mPages.isEmpty())
       {
-        if (this.mFlags != 1) {
-          localBundle.putInt("flags", this.mFlags);
-        }
-        if (this.mDisplayIntent != null) {
-          localBundle.putParcelable("displayIntent", this.mDisplayIntent);
-        }
-        if (!this.mPages.isEmpty()) {
-          localBundle.putParcelableArray("pages", (Parcelable[])this.mPages.toArray(new Notification[this.mPages.size()]));
-        }
-        if (this.mBackground != null) {
-          localBundle.putParcelable("background", this.mBackground);
-        }
-        if (this.mContentIcon != 0) {
-          localBundle.putInt("contentIcon", this.mContentIcon);
-        }
-        if (this.mContentIconGravity != 8388613) {
-          localBundle.putInt("contentIconGravity", this.mContentIconGravity);
-        }
-        if (this.mContentActionIndex != -1) {
-          localBundle.putInt("contentActionIndex", this.mContentActionIndex);
-        }
-        if (this.mCustomSizePreset != 0) {
-          localBundle.putInt("customSizePreset", this.mCustomSizePreset);
-        }
-        if (this.mCustomContentHeight != 0) {
-          localBundle.putInt("customContentHeight", this.mCustomContentHeight);
-        }
-        if (this.mGravity != 80) {
-          localBundle.putInt("gravity", this.mGravity);
-        }
-        if (this.mHintScreenTimeout != 0) {
-          localBundle.putInt("hintScreenTimeout", this.mHintScreenTimeout);
-        }
-        if (this.mDismissalId != null) {
-          localBundle.putString("dismissalId", this.mDismissalId);
-        }
-        if (this.mBridgeTag != null) {
-          localBundle.putString("bridgeTag", this.mBridgeTag);
-        }
-        paramBuilder.getExtras().putBundle("android.wearable.EXTENSIONS", localBundle);
-        return paramBuilder;
-        label379:
-        localBundle.putParcelableArrayList("actions", null);
+        localObject = this.mPages;
+        localBundle.putParcelableArray("pages", (Parcelable[])((ArrayList)localObject).toArray(new Notification[((ArrayList)localObject).size()]));
       }
+      localObject = this.mBackground;
+      if (localObject != null) {
+        localBundle.putParcelable("background", (Parcelable)localObject);
+      }
+      i = this.mContentIcon;
+      if (i != 0) {
+        localBundle.putInt("contentIcon", i);
+      }
+      i = this.mContentIconGravity;
+      if (i != 8388613) {
+        localBundle.putInt("contentIconGravity", i);
+      }
+      i = this.mContentActionIndex;
+      if (i != -1) {
+        localBundle.putInt("contentActionIndex", i);
+      }
+      i = this.mCustomSizePreset;
+      if (i != 0) {
+        localBundle.putInt("customSizePreset", i);
+      }
+      i = this.mCustomContentHeight;
+      if (i != 0) {
+        localBundle.putInt("customContentHeight", i);
+      }
+      i = this.mGravity;
+      if (i != 80) {
+        localBundle.putInt("gravity", i);
+      }
+      i = this.mHintScreenTimeout;
+      if (i != 0) {
+        localBundle.putInt("hintScreenTimeout", i);
+      }
+      localObject = this.mDismissalId;
+      if (localObject != null) {
+        localBundle.putString("dismissalId", (String)localObject);
+      }
+      localObject = this.mBridgeTag;
+      if (localObject != null) {
+        localBundle.putString("bridgeTag", (String)localObject);
+      }
+      paramBuilder.getExtras().putBundle("android.wearable.EXTENSIONS", localBundle);
+      return paramBuilder;
     }
     
     public List<NotificationCompat.Action> getActions()

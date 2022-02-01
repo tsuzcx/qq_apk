@@ -25,14 +25,17 @@ public final class AuthDataRes
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.policyId != null) {
-      paramJceOutputStream.write(this.policyId, 0);
+    String str = this.policyId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.commSoluId != 0L) {
-      paramJceOutputStream.write(this.commSoluId, 1);
+    long l = this.commSoluId;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 1);
     }
-    if (this.extSoluId != 0L) {
-      paramJceOutputStream.write(this.extSoluId, 2);
+    l = this.extSoluId;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 2);
     }
   }
 }

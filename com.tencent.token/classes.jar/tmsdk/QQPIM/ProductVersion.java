@@ -13,16 +13,6 @@ public final class ProductVersion
   public int hotfix = 0;
   public int pversion = 0;
   
-  static
-  {
-    if (!ProductVersion.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public ProductVersion()
   {
     setPversion(this.pversion);
@@ -44,29 +34,39 @@ public final class ProductVersion
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ProductVersion)paramObject;
-    } while ((!JceUtil.equals(this.pversion, paramObject.pversion)) || (!JceUtil.equals(this.cversion, paramObject.cversion)) || (!JceUtil.equals(this.hotfix, paramObject.hotfix)));
-    return true;
+    }
+    paramObject = (ProductVersion)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.pversion, paramObject.pversion))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.cversion, paramObject.cversion))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.hotfix, paramObject.hotfix)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

@@ -28,17 +28,13 @@ public abstract class IAutoDBItem
   {
     String[] arrayOfString = new String[paramArrayOfField.length + 1];
     int i = 0;
-    if (i < paramArrayOfField.length)
+    while (i < paramArrayOfField.length)
     {
       arrayOfString[i] = getColName(paramArrayOfField[i]);
-      String str = "getFullColumns failed:" + paramArrayOfField[i].getName();
-      if (!Util.isNullOrNil(arrayOfString[i])) {}
-      for (boolean bool = true;; bool = false)
-      {
-        Assert.assertTrue(str, bool);
-        i += 1;
-        break;
-      }
+      StringBuilder localStringBuilder = new StringBuilder("getFullColumns failed:");
+      localStringBuilder.append(paramArrayOfField[i].getName());
+      Assert.assertTrue(localStringBuilder.toString(), Util.isNullOrNil(arrayOfString[i]) ^ true);
+      i += 1;
     }
     arrayOfString[paramArrayOfField.length] = "rowid";
     return arrayOfString;
@@ -48,22 +44,25 @@ public abstract class IAutoDBItem
   {
     HashMap localHashMap = new HashMap();
     int i = 0;
-    if (i < paramArrayOfField.length)
+    while (i < paramArrayOfField.length)
     {
-      Object localObject = paramArrayOfField[i];
-      String str = CursorFieldHelper.type(((Field)localObject).getType());
-      if (str == null) {
-        Log.e("MicroMsg.SDK.IAutoDBItem", "failed identify on column: " + ((Field)localObject).getName() + ", skipped");
-      }
-      for (;;)
+      Object localObject1 = paramArrayOfField[i];
+      Object localObject2 = CursorFieldHelper.type(((Field)localObject1).getType());
+      if (localObject2 == null)
       {
-        i += 1;
-        break;
-        localObject = getColName((Field)localObject);
-        if (!Util.isNullOrNil((String)localObject)) {
-          localHashMap.put(localObject, str);
+        localObject2 = new StringBuilder("failed identify on column: ");
+        ((StringBuilder)localObject2).append(((Field)localObject1).getName());
+        ((StringBuilder)localObject2).append(", skipped");
+        Log.e("MicroMsg.SDK.IAutoDBItem", ((StringBuilder)localObject2).toString());
+      }
+      else
+      {
+        localObject1 = getColName((Field)localObject1);
+        if (!Util.isNullOrNil((String)localObject1)) {
+          localHashMap.put(localObject1, localObject2);
         }
       }
+      i += 1;
     }
     return localHashMap;
   }
@@ -72,52 +71,60 @@ public abstract class IAutoDBItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    Field localField;
-    Object localObject;
-    String str2;
-    String str1;
-    if (i < paramArrayOfField.length)
+    while (i < paramArrayOfField.length)
     {
-      localField = paramArrayOfField[i];
-      localObject = CursorFieldHelper.type(localField.getType());
-      if (localObject == null) {
-        Log.e("MicroMsg.SDK.IAutoDBItem", "failed identify on column: " + localField.getName() + ", skipped");
-      }
-      do
+      Object localObject2 = paramArrayOfField[i];
+      String str1 = CursorFieldHelper.type(((Field)localObject2).getType());
+      Object localObject1;
+      if (str1 == null)
       {
-        i += 1;
-        break;
-        str2 = getColName(localField);
-      } while (Util.isNullOrNil(str2));
-      if (!localField.isAnnotationPresent(MAutoDBFieldAnnotation.class)) {
-        break label241;
+        localObject1 = new StringBuilder("failed identify on column: ");
+        ((StringBuilder)localObject1).append(((Field)localObject2).getName());
+        ((StringBuilder)localObject1).append(", skipped");
+        Log.e("MicroMsg.SDK.IAutoDBItem", ((StringBuilder)localObject1).toString());
       }
-      str1 = " default '" + ((MAutoDBFieldAnnotation)localField.getAnnotation(MAutoDBFieldAnnotation.class)).defValue() + "' ";
-    }
-    for (int j = ((MAutoDBFieldAnnotation)localField.getAnnotation(MAutoDBFieldAnnotation.class)).primaryKey();; j = 0)
-    {
-      localObject = new StringBuilder().append(str2).append(" ").append((String)localObject).append(str1);
-      if (j == 1)
+      else
       {
-        str1 = " PRIMARY KEY ";
-        label187:
-        localStringBuilder.append(str1);
-        if (i != paramArrayOfField.length - 1) {
-          break label229;
+        String str2 = getColName((Field)localObject2);
+        if (!Util.isNullOrNil(str2))
+        {
+          localObject1 = "";
+          int j;
+          if (((Field)localObject2).isAnnotationPresent(MAutoDBFieldAnnotation.class))
+          {
+            localObject1 = new StringBuilder(" default '");
+            ((StringBuilder)localObject1).append(((MAutoDBFieldAnnotation)((Field)localObject2).getAnnotation(MAutoDBFieldAnnotation.class)).defValue());
+            ((StringBuilder)localObject1).append("' ");
+            localObject1 = ((StringBuilder)localObject1).toString();
+            j = ((MAutoDBFieldAnnotation)((Field)localObject2).getAnnotation(MAutoDBFieldAnnotation.class)).primaryKey();
+          }
+          else
+          {
+            j = 0;
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(str2);
+          ((StringBuilder)localObject2).append(" ");
+          ((StringBuilder)localObject2).append(str1);
+          ((StringBuilder)localObject2).append((String)localObject1);
+          if (j == 1) {
+            localObject1 = " PRIMARY KEY ";
+          } else {
+            localObject1 = "";
+          }
+          ((StringBuilder)localObject2).append((String)localObject1);
+          localStringBuilder.append(((StringBuilder)localObject2).toString());
+          if (i == paramArrayOfField.length - 1) {
+            localObject1 = "";
+          } else {
+            localObject1 = ", ";
+          }
+          localStringBuilder.append((String)localObject1);
         }
       }
-      label229:
-      for (str1 = "";; str1 = ", ")
-      {
-        localStringBuilder.append(str1);
-        break;
-        str1 = "";
-        break label187;
-      }
-      return localStringBuilder.toString();
-      label241:
-      str1 = "";
+      i += 1;
     }
+    return localStringBuilder.toString();
   }
   
   public static boolean checkIOEqual(ContentValues paramContentValues, Cursor paramCursor)
@@ -125,123 +132,129 @@ public abstract class IAutoDBItem
     if (paramContentValues == null) {
       return paramCursor == null;
     }
-    if ((paramCursor == null) || (paramCursor.getCount() != 1)) {
-      return false;
-    }
-    paramCursor.moveToFirst();
-    int k = paramCursor.getColumnCount();
-    int j = paramContentValues.size();
-    int i = j;
-    if (paramContentValues.containsKey("rowid")) {
-      i = j - 1;
-    }
-    j = k;
-    if (paramCursor.getColumnIndex("rowid") != -1) {
-      j = k - 1;
-    }
-    if (i != j) {
-      return false;
-    }
-    label216:
-    label346:
-    label353:
-    label356:
-    for (;;)
+    int i;
+    if (paramCursor != null)
     {
-      Object localObject;
-      byte[] arrayOfByte;
-      try
-      {
-        Iterator localIterator = paramContentValues.valueSet().iterator();
-        if (localIterator.hasNext())
-        {
-          localObject = (String)((Map.Entry)localIterator.next()).getKey();
-          if (((String)localObject).equals("rowid")) {
-            continue;
-          }
-          i = paramCursor.getColumnIndex((String)localObject);
-          if (i == -1) {
-            return false;
-          }
-          if ((paramContentValues.get((String)localObject) instanceof byte[]))
-          {
-            localObject = (byte[])paramContentValues.get((String)localObject);
-            arrayOfByte = paramCursor.getBlob(i);
-            if (localObject != null) {
-              break label308;
-            }
-            if (arrayOfByte == null) {
-              break label353;
-            }
-            break label308;
-            if (localObject.length == arrayOfByte.length) {
-              break label341;
-            }
-            i = 0;
-            break label320;
-            if (i >= localObject.length) {
-              break label353;
-            }
-            if (localObject[i] == arrayOfByte[i]) {
-              break label346;
-            }
-            i = 0;
-            break label320;
-          }
-          if ((paramCursor.getString(i) == null) && (paramContentValues.get((String)localObject) != null)) {
-            return false;
-          }
-          if (paramContentValues.get((String)localObject) == null) {
-            return false;
-          }
-          boolean bool = paramContentValues.get((String)localObject).toString().equals(paramCursor.getString(i));
-          if (bool) {
-            continue;
-          }
-          return false;
-        }
-      }
-      catch (Exception paramContentValues)
-      {
-        paramContentValues.printStackTrace();
+      if (paramCursor.getCount() != 1) {
         return false;
       }
-      return true;
-      if ((localObject == null) && (arrayOfByte != null)) {
-        i = 0;
+      paramCursor.moveToFirst();
+      int k = paramCursor.getColumnCount();
+      int j = paramContentValues.size();
+      i = j;
+      if (paramContentValues.containsKey("rowid")) {
+        i = j - 1;
       }
+      j = k;
+      if (paramCursor.getColumnIndex("rowid") != -1) {
+        j = k - 1;
+      }
+      if (i != j) {
+        return false;
+      }
+    }
+    label304:
+    label314:
+    label332:
+    label337:
+    label346:
+    do
+    {
       for (;;)
       {
-        if (i != 0) {
-          break label356;
+        Object localObject;
+        byte[] arrayOfByte;
+        try
+        {
+          Iterator localIterator = paramContentValues.valueSet().iterator();
+          if (localIterator.hasNext())
+          {
+            localObject = (String)((Map.Entry)localIterator.next()).getKey();
+            if (((String)localObject).equals("rowid")) {
+              continue;
+            }
+            i = paramCursor.getColumnIndex((String)localObject);
+            if (i == -1) {
+              return false;
+            }
+            if ((paramContentValues.get((String)localObject) instanceof byte[]))
+            {
+              localObject = (byte[])paramContentValues.get((String)localObject);
+              arrayOfByte = paramCursor.getBlob(i);
+              if (localObject != null) {
+                break label304;
+              }
+              if (arrayOfByte == null) {
+                break;
+              }
+              break label304;
+              if (localObject.length == arrayOfByte.length) {
+                break label332;
+              }
+              break label314;
+              if (i >= localObject.length) {
+                break;
+              }
+              if (localObject[i] == arrayOfByte[i]) {
+                break label337;
+              }
+              break label314;
+            }
+            if ((paramCursor.getString(i) == null) && (paramContentValues.get((String)localObject) != null)) {
+              return false;
+            }
+            if (paramContentValues.get((String)localObject) == null) {
+              return false;
+            }
+            boolean bool = paramContentValues.get((String)localObject).toString().equals(paramCursor.getString(i));
+            if (bool) {
+              continue;
+            }
+            return false;
+          }
+          return true;
+        }
+        catch (Exception paramContentValues)
+        {
+          paramContentValues.printStackTrace();
         }
         return false;
-        if ((localObject == null) || (arrayOfByte != null)) {
-          break;
+        if ((localObject == null) && (arrayOfByte != null)) {}
+        for (;;)
+        {
+          i = 0;
+          break label346;
+          if ((localObject == null) || (arrayOfByte != null)) {
+            break;
+          }
         }
         i = 0;
         continue;
-        i = 0;
-        break label216;
         i += 1;
-        break label216;
-        i = 1;
       }
-    }
+      i = 1;
+    } while (i != 0);
+    return false;
   }
   
   public static String getColName(Field paramField)
   {
-    if (paramField == null) {}
-    do
-    {
+    if (paramField == null) {
       return null;
-      paramField = paramField.getName();
-    } while ((paramField == null) || (paramField.length() <= 0));
-    if (paramField.startsWith("field_")) {
-      return paramField.substring(6);
     }
-    return paramField;
+    String str = paramField.getName();
+    if (str != null)
+    {
+      if (str.length() <= 0) {
+        return null;
+      }
+      paramField = str;
+      if (str.startsWith("field_")) {
+        paramField = str.substring(6);
+      }
+      return paramField;
+    }
+    return null;
   }
   
   public static Cursor getCursorForProjection(ContentValues paramContentValues, String[] paramArrayOfString)
@@ -270,27 +283,29 @@ public abstract class IAutoDBItem
     Field[] arrayOfField = paramClass.getDeclaredFields();
     int j = arrayOfField.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Field localField = arrayOfField[i];
       int k = localField.getModifiers();
       String str = localField.getName();
       if ((str != null) && (Modifier.isPublic(k)) && (!Modifier.isFinal(k)))
       {
-        if (!str.startsWith("field_")) {
-          break label166;
+        if (str.startsWith("field_")) {
+          paramClass = str.substring(6);
+        } else {
+          paramClass = str;
         }
-        paramClass = str.substring(6);
-        label91:
-        if (!localField.isAnnotationPresent(MAutoDBFieldAnnotation.class)) {
-          break label172;
+        if (localField.isAnnotationPresent(MAutoDBFieldAnnotation.class))
+        {
+          if (((MAutoDBFieldAnnotation)localField.getAnnotation(MAutoDBFieldAnnotation.class)).primaryKey() == 1) {
+            localMAutoDBInfo.primaryKey = paramClass;
+          }
         }
-        if (((MAutoDBFieldAnnotation)localField.getAnnotation(MAutoDBFieldAnnotation.class)).primaryKey() == 1) {
-          localMAutoDBInfo.primaryKey = paramClass;
+        else {
+          if (!str.startsWith("field_")) {
+            break label178;
+          }
         }
-      }
-      for (;;)
-      {
         if (!Util.isNullOrNil(paramClass))
         {
           if (paramClass.equals("rowid")) {
@@ -298,16 +313,9 @@ public abstract class IAutoDBItem
           }
           localLinkedList.add(localField);
         }
-        label166:
-        label172:
-        do
-        {
-          i += 1;
-          break;
-          paramClass = str;
-          break label91;
-        } while (!str.startsWith("field_"));
       }
+      label178:
+      i += 1;
     }
     localMAutoDBInfo.fields = ((Field[])localLinkedList.toArray(new Field[0]));
     localMAutoDBInfo.columns = a(localMAutoDBInfo.fields);

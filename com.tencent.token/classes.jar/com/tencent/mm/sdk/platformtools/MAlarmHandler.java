@@ -38,57 +38,54 @@ public class MAlarmHandler
   
   public static long fire()
   {
-    LinkedList localLinkedList = new LinkedList();
-    Object localObject = new HashSet();
-    ((Set)localObject).addAll(ah.keySet());
-    localObject = ((Set)localObject).iterator();
+    Object localObject1 = new LinkedList();
+    Object localObject2 = new HashSet();
+    ((Set)localObject2).addAll(ah.keySet());
+    localObject2 = ((Set)localObject2).iterator();
     long l1 = 9223372036854775807L;
-    if (((Iterator)localObject).hasNext())
+    while (((Iterator)localObject2).hasNext())
     {
-      Integer localInteger = (Integer)((Iterator)localObject).next();
+      Integer localInteger = (Integer)((Iterator)localObject2).next();
       MAlarmHandler localMAlarmHandler = (MAlarmHandler)ah.get(localInteger);
-      if (localMAlarmHandler == null) {
-        break label263;
-      }
-      long l3 = Util.ticksToNow(localMAlarmHandler.af);
-      long l2 = l3;
-      if (l3 < 0L) {
-        l2 = 0L;
-      }
-      if (l2 > localMAlarmHandler.ag)
+      if (localMAlarmHandler != null)
       {
-        if ((!localMAlarmHandler.ai.onTimerExpired()) || (!localMAlarmHandler.ae)) {
-          localLinkedList.add(localInteger);
+        long l3 = Util.ticksToNow(localMAlarmHandler.af);
+        long l2 = l3;
+        if (l3 < 0L) {
+          l2 = 0L;
         }
-        for (;;)
+        l3 = localMAlarmHandler.ag;
+        if (l2 > l3)
         {
+          if ((localMAlarmHandler.ai.onTimerExpired()) && (localMAlarmHandler.ae)) {
+            l1 = localMAlarmHandler.ag;
+          } else {
+            ((List)localObject1).add(localInteger);
+          }
           localMAlarmHandler.af = Util.currentTicks();
-          break;
-          l1 = localMAlarmHandler.ag;
+        }
+        else if (l3 - l2 < l1)
+        {
+          l1 = l3 - l2;
         }
       }
-      if (localMAlarmHandler.ag - l2 >= l1) {
-        break label263;
-      }
-      l1 = localMAlarmHandler.ag - l2;
     }
-    label263:
-    for (;;)
+    int i = 0;
+    while (i < ((List)localObject1).size())
     {
-      break;
-      int i = 0;
-      while (i < localLinkedList.size())
+      ah.remove(((List)localObject1).get(i));
+      i += 1;
+    }
+    if (l1 == 9223372036854775807L)
+    {
+      localObject1 = aj;
+      if (localObject1 != null)
       {
-        ah.remove(localLinkedList.get(i));
-        i += 1;
-      }
-      if ((l1 == 9223372036854775807L) && (aj != null))
-      {
-        aj.cancel();
+        ((IBumper)localObject1).cancel();
         Log.v("MicroMsg.MAlarmHandler", "cancel bumper for no more handler");
       }
-      return l1;
     }
+    return l1;
   }
   
   public static void initAlarmBumper(IBumper paramIBumper)
@@ -108,48 +105,45 @@ public class MAlarmHandler
     this.ag = paramLong;
     this.af = Util.currentTicks();
     long l3 = this.ag;
-    Log.d("MicroMsg.MAlarmHandler", "check need prepare: check=" + l3);
-    Iterator localIterator = ah.entrySet().iterator();
+    Object localObject = new StringBuilder("check need prepare: check=");
+    ((StringBuilder)localObject).append(l3);
+    Log.d("MicroMsg.MAlarmHandler", ((StringBuilder)localObject).toString());
+    localObject = ah.entrySet().iterator();
     paramLong = 9223372036854775807L;
-    while (localIterator.hasNext())
+    label163:
+    while (((Iterator)localObject).hasNext())
     {
-      MAlarmHandler localMAlarmHandler = (MAlarmHandler)((Map.Entry)localIterator.next()).getValue();
-      if (localMAlarmHandler == null) {
-        break label224;
-      }
-      long l2 = Util.ticksToNow(localMAlarmHandler.af);
-      long l1 = l2;
-      if (l2 < 0L) {
-        l1 = 0L;
-      }
-      if (l1 > localMAlarmHandler.ag)
+      MAlarmHandler localMAlarmHandler = (MAlarmHandler)((Map.Entry)((Iterator)localObject).next()).getValue();
+      if (localMAlarmHandler != null)
       {
-        paramLong = localMAlarmHandler.ag;
-      }
-      else
-      {
-        if (localMAlarmHandler.ag - l1 >= paramLong) {
-          break label224;
+        long l2 = Util.ticksToNow(localMAlarmHandler.af);
+        long l1 = l2;
+        if (l2 < 0L) {
+          l1 = 0L;
         }
-        paramLong = localMAlarmHandler.ag - l1;
+        l2 = localMAlarmHandler.ag;
+        if (l1 > l2) {}
+        for (paramLong = l2;; paramLong = l2 - l1)
+        {
+          break;
+          if (l2 - l1 >= paramLong) {
+            break label163;
+          }
+        }
       }
     }
-    label224:
-    for (;;)
+    int i;
+    if (paramLong > l3) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    stopTimer();
+    ah.put(Integer.valueOf(this.ad), this);
+    if ((aj != null) && (i != 0))
     {
-      break;
-      if (paramLong > l3) {}
-      for (int i = 1;; i = 0)
-      {
-        stopTimer();
-        ah.put(Integer.valueOf(this.ad), this);
-        if ((aj != null) && (i != 0))
-        {
-          Log.v("MicroMsg.MAlarmHandler", "prepare bumper");
-          aj.prepare();
-        }
-        return;
-      }
+      Log.v("MicroMsg.MAlarmHandler", "prepare bumper");
+      aj.prepare();
     }
   }
   

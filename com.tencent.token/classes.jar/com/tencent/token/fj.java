@@ -39,7 +39,9 @@ public final class fj
         localStringBuilder.append("; ");
       }
       l locall = (l)paramList.get(i);
-      localStringBuilder.append(locall.a()).append('=').append(locall.b());
+      localStringBuilder.append(locall.a());
+      localStringBuilder.append('=');
+      localStringBuilder.append(locall.b());
       i += 1;
     }
     return localStringBuilder.toString();
@@ -47,7 +49,6 @@ public final class fj
   
   public z a(t.a parama)
   {
-    int j = 0;
     Object localObject1 = parama.a();
     Object localObject2 = ((x)localObject1).e();
     Object localObject3 = ((x)localObject1).d();
@@ -58,51 +59,52 @@ public final class fj
         ((x.a)localObject2).a("Content-Type", localu.toString());
       }
       long l = ((y)localObject3).b();
-      if (l == -1L) {
-        break label374;
+      if (l != -1L)
+      {
+        ((x.a)localObject2).a("Content-Length", Long.toString(l));
+        ((x.a)localObject2).b("Transfer-Encoding");
       }
-      ((x.a)localObject2).a("Content-Length", Long.toString(l));
-      ((x.a)localObject2).b("Transfer-Encoding");
+      else
+      {
+        ((x.a)localObject2).a("Transfer-Encoding", "chunked");
+        ((x.a)localObject2).b("Content-Length");
+      }
     }
-    for (;;)
+    localObject3 = ((x)localObject1).a("Host");
+    int j = 0;
+    if (localObject3 == null) {
+      ((x.a)localObject2).a("Host", fc.a(((x)localObject1).a(), false));
+    }
+    if (((x)localObject1).a("Connection") == null) {
+      ((x.a)localObject2).a("Connection", "Keep-Alive");
+    }
+    int i = j;
+    if (((x)localObject1).a("Accept-Encoding") == null)
     {
-      if (((x)localObject1).a("Host") == null) {
-        ((x.a)localObject2).a("Host", fc.a(((x)localObject1).a(), false));
-      }
-      if (((x)localObject1).a("Connection") == null) {
-        ((x.a)localObject2).a("Connection", "Keep-Alive");
-      }
-      int i = j;
-      if (((x)localObject1).a("Accept-Encoding") == null)
+      i = j;
+      if (((x)localObject1).a("Range") == null)
       {
-        i = j;
-        if (((x)localObject1).a("Range") == null)
-        {
-          i = 1;
-          ((x.a)localObject2).a("Accept-Encoding", "gzip");
-        }
+        i = 1;
+        ((x.a)localObject2).a("Accept-Encoding", "gzip");
       }
-      localObject3 = this.a.a(((x)localObject1).a());
-      if (!((List)localObject3).isEmpty()) {
-        ((x.a)localObject2).a("Cookie", a((List)localObject3));
-      }
-      if (((x)localObject1).a("User-Agent") == null) {
-        ((x.a)localObject2).a("User-Agent", fd.a());
-      }
-      parama = parama.a(((x.a)localObject2).a());
-      fn.a(this.a, ((x)localObject1).a(), parama.d());
-      localObject1 = parama.f().a((x)localObject1);
-      if ((i != 0) && ("gzip".equalsIgnoreCase(parama.a("Content-Encoding"))) && (fn.b(parama)))
-      {
-        localObject2 = new i(parama.e().c());
-        ((z.a)localObject1).a(parama.d().b().b("Content-Encoding").b("Content-Length").a());
-        ((z.a)localObject1).a(new fq(parama.a("Content-Type"), -1L, k.a((q)localObject2)));
-      }
-      return ((z.a)localObject1).a();
-      label374:
-      ((x.a)localObject2).a("Transfer-Encoding", "chunked");
-      ((x.a)localObject2).b("Content-Length");
     }
+    localObject3 = this.a.a(((x)localObject1).a());
+    if (!((List)localObject3).isEmpty()) {
+      ((x.a)localObject2).a("Cookie", a((List)localObject3));
+    }
+    if (((x)localObject1).a("User-Agent") == null) {
+      ((x.a)localObject2).a("User-Agent", fd.a());
+    }
+    parama = parama.a(((x.a)localObject2).a());
+    fn.a(this.a, ((x)localObject1).a(), parama.d());
+    localObject1 = parama.f().a((x)localObject1);
+    if ((i != 0) && ("gzip".equalsIgnoreCase(parama.a("Content-Encoding"))) && (fn.b(parama)))
+    {
+      localObject2 = new i(parama.e().c());
+      ((z.a)localObject1).a(parama.d().b().b("Content-Encoding").b("Content-Length").a());
+      ((z.a)localObject1).a(new fq(parama.a("Content-Type"), -1L, k.a((q)localObject2)));
+    }
+    return ((z.a)localObject1).a();
   }
 }
 

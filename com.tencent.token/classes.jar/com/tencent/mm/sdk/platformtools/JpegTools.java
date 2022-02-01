@@ -31,226 +31,237 @@ public class JpegTools
   
   public static String byte2HexString(byte paramByte)
   {
-    String str2 = Integer.toHexString(paramByte & 0xFF);
-    String str1 = str2;
-    if (str2.length() == 1) {
-      str1 = "0" + str2;
+    Object localObject2 = Integer.toHexString(paramByte & 0xFF);
+    Object localObject1 = localObject2;
+    if (((String)localObject2).length() == 1)
+    {
+      localObject1 = new StringBuilder("0");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
-    return "" + str1.toUpperCase();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(((String)localObject1).toUpperCase());
+    return ((StringBuilder)localObject2).toString();
   }
   
   public int getOreiValue()
   {
-    if (this.C != -1) {}
-    switch (this.C)
+    int i = this.C;
+    if (i != -1)
     {
-    case 2: 
-    case 4: 
-    case 5: 
-    case 7: 
-    default: 
-      return -1;
-    case 6: 
-      return 90;
-    case 3: 
-      return 180;
-    case 8: 
-      return 270;
+      if (i != 1)
+      {
+        if (i != 3)
+        {
+          if (i != 6)
+          {
+            if (i != 8) {
+              return -1;
+            }
+            return 270;
+          }
+          return 90;
+        }
+        return 180;
+      }
+      return 0;
     }
-    return 0;
+    return -1;
   }
   
   public int parserJpeg()
   {
-    int k = 0;
     try
     {
       b1 = this.B.getBuffer().get();
       b2 = this.B.getBuffer().get();
-      if ((!byte2HexString(b1).equals("FF")) || (!byte2HexString(b2).equals("D8"))) {
-        break label892;
+      bool = byte2HexString(b1).equals("FF");
+      j = 0;
+      if ((!bool) || (!byte2HexString(b2).equals("D8"))) {
+        break label946;
       }
       i = 1;
-      if (i != 0) {
-        break label897;
-      }
-      Log.w("MicroMsg.JpegTools", "this is not jpeg or no exif data!!!");
-      return -1;
     }
     catch (Exception localException)
     {
-      byte b1;
-      byte b2;
-      label64:
-      int n;
-      String str1;
-      boolean bool;
-      Log.e("MicroMsg.JpegTools", "parser jpeg error");
-      return -1;
-    }
-    b1 = this.B.getBuffer().get();
-    b2 = this.B.getBuffer().get();
-    this.B.getBuffer().get();
-    int j = this.B.getBuffer().get();
-    if (!byte2HexString(b1).equals("FF")) {
-      i = -1;
-    }
-    for (;;)
-    {
-      if (i >= 0) {
-        break label255;
-      }
-      Log.w("MicroMsg.JpegTools", "datalen is error ");
-      return -1;
-      if ((byte2HexString(b1).equals("FF")) && (byte2HexString(b2).equals("E1")))
+      for (;;)
       {
-        i = (j & 0xFF) - 2;
-      }
-      else if ((byte2HexString(b1).equals("FF")) && (byte2HexString(b2).equals("D9")))
-      {
+        byte b1;
+        byte b2;
+        boolean bool;
+        int j;
+        int k;
+        int m;
+        int n;
+        Object localObject;
+        StringBuilder localStringBuilder;
+        continue;
+        label946:
+        int i = 0;
+        continue;
+        i = 0;
+        continue;
+        label956:
         i = -1;
+        continue;
+        label961:
+        String str;
+        if ((k == 73) && ((char)i == 'I'))
+        {
+          str = "II";
+        }
+        else
+        {
+          str = "";
+          continue;
+          label989:
+          i = 1;
+          continue;
+          label994:
+          m = 0;
+          continue;
+          label1000:
+          k = 1;
+          continue;
+          label1006:
+          i &= 0xFF;
+        }
       }
-      else
+    }
+    if (i == 0)
+    {
+      Log.w("MicroMsg.JpegTools", "this is not jpeg or no exif data!!!");
+      return -1;
+      do
       {
-        m = this.B.getOffset();
-        this.B.getBuffer().position(m + j - 2);
-        j = i + 1;
-        i = j;
-        if (j <= 100) {
+        b1 = this.B.getBuffer().get();
+        b2 = this.B.getBuffer().get();
+        this.B.getBuffer().get();
+        k = this.B.getBuffer().get();
+        if (!byte2HexString(b1).equals("FF")) {
+          break label956;
+        }
+        if ((byte2HexString(b1).equals("FF")) && (byte2HexString(b2).equals("E1")))
+        {
+          i = (k & 0xFF) - 2;
           break;
         }
-        Log.e("MicroMsg.JpegTools", "error while!");
-        i = -1;
+        if ((byte2HexString(b1).equals("FF")) && (byte2HexString(b2).equals("D9"))) {
+          break label956;
+        }
+        m = this.B.getOffset();
+        this.B.getBuffer().position(m + k - 2);
+        k = i + 1;
+        i = k;
+      } while (k <= 100);
+      Log.e("MicroMsg.JpegTools", "error while!");
+      break label956;
+      if (i < 0)
+      {
+        Log.w("MicroMsg.JpegTools", "datalen is error ");
+        return -1;
       }
-    }
-    label255:
-    int i = this.B.getBuffer().get();
-    j = this.B.getBuffer().get();
-    int m = this.B.getBuffer().get();
-    n = this.B.getBuffer().get();
-    if (((char)i + (char)j + (char)m + (char)n).equals("Exif"))
-    {
-      i = 1;
-      label345:
-      if (i == 0)
+      i = this.B.getBuffer().get();
+      k = this.B.getBuffer().get();
+      m = this.B.getBuffer().get();
+      n = this.B.getBuffer().get();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append((char)i);
+      ((StringBuilder)localObject).append((char)k);
+      ((StringBuilder)localObject).append((char)m);
+      ((StringBuilder)localObject).append((char)n);
+      if (!((StringBuilder)localObject).toString().equals("Exif"))
       {
         Log.w("MicroMsg.JpegTools", "checkExifTag is error");
         return -1;
       }
       a(2);
+      k = this.B.getBuffer().get();
       i = this.B.getBuffer().get();
-      j = this.B.getBuffer().get();
-      if (((char)i != 'M') || ((char)j != 'M')) {
-        break label907;
+      k = (char)k;
+      if ((k != 77) || ((char)i != 'M')) {
+        break label961;
       }
-      str1 = "MM";
-      label405:
-      if ((!str1.equals("MM")) && (!str1.equals("II")))
+      localObject = "MM";
+      if ((!((String)localObject).equals("MM")) && (!((String)localObject).equals("II")))
       {
-        Log.w("MicroMsg.JpegTools", "byteOrder  is error " + str1);
+        localStringBuilder = new StringBuilder("byteOrder  is error ");
+        localStringBuilder.append((String)localObject);
+        Log.w("MicroMsg.JpegTools", localStringBuilder.toString());
         return -1;
       }
-      this.D = str1.equals("MM");
+      this.D = ((String)localObject).equals("MM");
       bool = this.D;
       b1 = this.B.getBuffer().get();
       b2 = this.B.getBuffer().get();
-      if ((bool) && (byte2HexString(b1).equals("00")) && (byte2HexString(b2).equals("2A"))) {
-        i = 1;
+      if (((bool) && (byte2HexString(b1).equals("00")) && (byte2HexString(b2).equals("2A"))) || ((byte2HexString(b1).equals("2A")) && (byte2HexString(b2).equals("00")))) {
+        break label989;
       }
-      while (i == 0)
+      localObject = new StringBuilder("checkTiffTag: ");
+      ((StringBuilder)localObject).append(byte2HexString(b1));
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(byte2HexString(b2));
+      Log.w("MicroMsg.JpegTools", ((StringBuilder)localObject).toString());
+      i = 0;
+      if (i == 0)
       {
         Log.w("MicroMsg.JpegTools", "checkTiffTag  is error ");
         return -1;
-        if ((byte2HexString(b1).equals("2A")) && (byte2HexString(b2).equals("00")))
-        {
-          i = 1;
-        }
-        else
-        {
-          Log.w("MicroMsg.JpegTools", "checkTiffTag: " + byte2HexString(b1) + " " + byte2HexString(b2));
-          i = 0;
-        }
       }
       a(4);
-      j = this.B.getBuffer().get();
       i = this.B.getBuffer().get();
-      j &= 0xFF;
+      k = this.B.getBuffer().get();
+      i &= 0xFF;
       if (!this.D) {
-        break label936;
+        break label994;
       }
-      j = i & 0xFF;
-      break label936;
-      label655:
-      if ((m < j) && (m < 255))
+      i = k & 0xFF;
+      break label994;
+      while ((j < i) && (j < 255))
       {
         b1 = this.B.getBuffer().get();
         b2 = this.B.getBuffer().get();
-        if ((!this.D) || (!byte2HexString(b1).equals("01")) || (!byte2HexString(b2).equals("12"))) {
-          break label819;
+        if ((this.D) && (byte2HexString(b1).equals("01")) && (byte2HexString(b2).equals("12"))) {
+          break label1000;
         }
-        i = 1;
-        label725:
+        k = m;
+        if (!this.D)
+        {
+          k = m;
+          if (byte2HexString(b1).equals("12"))
+          {
+            k = m;
+            if (byte2HexString(b2).equals("01")) {
+              break label1000;
+            }
+          }
+        }
         a(2);
         a(4);
-        if (i == 0) {
-          break label864;
+        if (k != 0)
+        {
+          bool = this.D;
+          i = this.B.getBuffer().get();
+          j = this.B.getBuffer().get();
+          a(2);
+          if (!bool) {
+            break label1006;
+          }
+          i = j & 0xFF;
+          this.C = i;
+          break;
         }
-        bool = this.D;
-        i = this.B.getBuffer().get();
-        j = this.B.getBuffer().get();
-        a(2);
-        if (!bool) {
-          break label942;
-        }
-        i = j & 0xFF;
+        a(4);
+        j += 1;
+        m = k;
       }
-    }
-    for (;;)
-    {
-      this.C = i;
-      Log.d("MicroMsg.JpegTools", "orei " + this.C);
+      localObject = new StringBuilder("orei ");
+      ((StringBuilder)localObject).append(this.C);
+      Log.d("MicroMsg.JpegTools", ((StringBuilder)localObject).toString());
       return getOreiValue();
-      label819:
-      i = k;
-      if (this.D) {
-        break label725;
-      }
-      i = k;
-      if (!byte2HexString(b1).equals("12")) {
-        break label725;
-      }
-      i = k;
-      if (!byte2HexString(b2).equals("01")) {
-        break label725;
-      }
-      i = 1;
-      break label725;
-      label864:
-      a(4);
-      m += 1;
-      k = i;
-      break label655;
-      label892:
-      i = 0;
-      break;
-      label897:
-      i = 0;
-      break label64;
-      i = 0;
-      break label345;
-      label907:
-      if (((char)i == 'I') && ((char)j == 'I'))
-      {
-        str2 = "II";
-        break label405;
-      }
-      String str2 = "";
-      break label405;
-      label936:
-      m = 0;
-      break label655;
-      label942:
-      i &= 0xFF;
+      Log.e("MicroMsg.JpegTools", "parser jpeg error");
+      return -1;
     }
   }
 }

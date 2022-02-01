@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 public class h
 {
-  private static h k = null;
+  private static h k;
   public int a = 0;
   public int b = 0;
   public String c = "";
@@ -51,7 +51,14 @@ public class h
     ((SharedPreferences.Editor)localObject).putInt("remind_times", this.h);
     ((SharedPreferences.Editor)localObject).putBoolean("remind_start", this.j);
     ((SharedPreferences.Editor)localObject).commit();
-    g.a("save reminder: " + this.g + "-" + this.i + "-" + this.h);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("save reminder: ");
+    ((StringBuilder)localObject).append(this.g);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(this.i);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(this.h);
+    g.a(((StringBuilder)localObject).toString());
     return true;
   }
   
@@ -70,7 +77,11 @@ public class h
       SharedPreferences localSharedPreferences = RqdApplication.l().getSharedPreferences("com.tencent.token.com", 0);
       return localSharedPreferences;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label12:
+      break label12;
+    }
     return null;
   }
   
@@ -87,25 +98,37 @@ public class h
   
   private void h()
   {
-    SharedPreferences localSharedPreferences = f();
-    if (localSharedPreferences == null) {
+    Object localObject = f();
+    if (localObject == null) {
       return;
     }
-    this.g = localSharedPreferences.getInt("remind_version", 0);
-    this.i = localSharedPreferences.getLong("remind_lasttime", 0L);
-    this.h = localSharedPreferences.getInt("remind_times", 0);
-    this.j = localSharedPreferences.getBoolean("remind_start", true);
-    this.m = localSharedPreferences.getLong("query_time", 0L);
-    g.c("loadUpdateInfo" + this.m);
-    this.a = localSharedPreferences.getInt("update_type", 0);
-    this.b = localSharedPreferences.getInt("vestion", 0);
-    this.c = localSharedPreferences.getString("vestion_name", "");
-    this.d = localSharedPreferences.getString("downLoad_url", "");
-    this.e = localSharedPreferences.getString("market_url", "");
-    this.f = localSharedPreferences.getString("new_feature", "");
+    this.g = ((SharedPreferences)localObject).getInt("remind_version", 0);
+    this.i = ((SharedPreferences)localObject).getLong("remind_lasttime", 0L);
+    this.h = ((SharedPreferences)localObject).getInt("remind_times", 0);
+    this.j = ((SharedPreferences)localObject).getBoolean("remind_start", true);
+    this.m = ((SharedPreferences)localObject).getLong("query_time", 0L);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loadUpdateInfo");
+    localStringBuilder.append(this.m);
+    g.c(localStringBuilder.toString());
+    this.a = ((SharedPreferences)localObject).getInt("update_type", 0);
+    this.b = ((SharedPreferences)localObject).getInt("vestion", 0);
+    this.c = ((SharedPreferences)localObject).getString("vestion_name", "");
+    this.d = ((SharedPreferences)localObject).getString("downLoad_url", "");
+    this.e = ((SharedPreferences)localObject).getString("market_url", "");
+    this.f = ((SharedPreferences)localObject).getString("new_feature", "");
     this.n = System.currentTimeMillis();
     i();
-    g.a("remind his info:[remind_version]" + this.g + "[remind_lasttime]" + this.i + "[remind_times]" + this.h + "[signature]" + this.l);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("remind his info:[remind_version]");
+    ((StringBuilder)localObject).append(this.g);
+    ((StringBuilder)localObject).append("[remind_lasttime]");
+    ((StringBuilder)localObject).append(this.i);
+    ((StringBuilder)localObject).append("[remind_times]");
+    ((StringBuilder)localObject).append(this.h);
+    ((StringBuilder)localObject).append("[signature]");
+    ((StringBuilder)localObject).append(this.l);
+    g.a(((StringBuilder)localObject).toString());
   }
   
   private void i()
@@ -113,37 +136,49 @@ public class h
     try
     {
       Context localContext = RqdApplication.l();
-      if (localContext != null) {
+      if (localContext != null)
+      {
         this.l = cj.a(com.tencent.token.utils.encrypt.c.b(localContext.getPackageManager().getPackageInfo(localContext.getPackageName(), 64).signatures[0].toByteArray()));
+        return;
       }
+    }
+    catch (Exception localException)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Exception:");
+      localStringBuilder.append(localException.toString());
+      g.c(localStringBuilder.toString());
       return;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      g.c("NameNotFoundException:" + localNameNotFoundException.toString());
-      return;
-    }
-    catch (Exception localException)
-    {
-      g.c("Exception:" + localException.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("NameNotFoundException:");
+      localStringBuilder.append(localNameNotFoundException.toString());
+      g.c(localStringBuilder.toString());
     }
   }
   
   public boolean a()
   {
-    if ((this.a == 0) || (1 == this.a) || ((this.j) && (3 != this.a)) || (this.b <= com.tencent.token.global.c.d())) {
-      return false;
+    int i1 = this.a;
+    if ((i1 != 0) && (1 != i1) && ((!this.j) || (3 == i1)) && (this.b > com.tencent.token.global.c.d()))
+    {
+      this.j = true;
+      a(this.b);
+      return true;
     }
-    this.j = true;
-    a(this.b);
-    return true;
+    return false;
   }
   
   public boolean a(JSONObject paramJSONObject)
   {
     g();
     this.m = System.currentTimeMillis();
-    g.c("parseUpdateInfo" + this.m);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseUpdateInfo");
+    localStringBuilder.append(this.m);
+    g.c(localStringBuilder.toString());
     try
     {
       this.a = paramJSONObject.getInt("type");
@@ -167,27 +202,41 @@ public class h
       this.j = false;
       paramJSONObject.putLong("query_time", this.m);
       paramJSONObject.commit();
-      if ((this.a != 0) && (this.a != 1)) {
+      int i1 = this.a;
+      if ((i1 != 0) && (i1 != 1)) {
         e();
       }
-      g.a("update:[type]" + this.a + "[version]" + this.b + "[name]" + this.c + "[url]" + this.d + "[market_url]" + this.e + "[feature]" + this.f);
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("update:[type]");
+      paramJSONObject.append(this.a);
+      paramJSONObject.append("[version]");
+      paramJSONObject.append(this.b);
+      paramJSONObject.append("[name]");
+      paramJSONObject.append(this.c);
+      paramJSONObject.append("[url]");
+      paramJSONObject.append(this.d);
+      paramJSONObject.append("[market_url]");
+      paramJSONObject.append(this.e);
+      paramJSONObject.append("[feature]");
+      paramJSONObject.append(this.f);
+      g.a(paramJSONObject.toString());
       return true;
     }
     catch (JSONException paramJSONObject)
     {
       g();
-      g.c("parseUpdate info json error: " + paramJSONObject.getMessage());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseUpdate info json error: ");
+      localStringBuilder.append(paramJSONObject.getMessage());
+      g.c(localStringBuilder.toString());
     }
     return false;
   }
   
   public boolean c()
   {
-    boolean bool = true;
-    if ((this.a == 0) || (1 == this.a)) {
-      bool = false;
-    }
-    return bool;
+    int i1 = this.a;
+    return (i1 != 0) && (1 != i1);
   }
   
   public void d()

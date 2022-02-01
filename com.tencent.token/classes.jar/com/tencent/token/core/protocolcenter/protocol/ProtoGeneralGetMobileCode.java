@@ -35,15 +35,26 @@ public class ProtoGeneralGetMobileCode
   
   protected String a()
   {
-    String str1 = ca.a().b();
-    if (str1 == null)
+    String str = ca.a().b();
+    if (str == null)
     {
       this.a.b(104);
       return null;
     }
-    String str2 = l.a(new Object[] { "real_uin", Long.valueOf(this.h), "scene_id", Integer.valueOf(this.j), "seq_id", Integer.valueOf(this.i), "op_time", Long.valueOf(cc.c().s() / 1000L) });
-    str1 = "?uin=" + this.g + "&aq_base_sid=" + str1 + "&data=" + str2;
-    return c.e() + "/cn/mbtoken3/mbtoken3_general_get_mobile_code" + str1;
+    Object localObject = l.a(new Object[] { "real_uin", Long.valueOf(this.h), "scene_id", Integer.valueOf(this.j), "seq_id", Integer.valueOf(this.i), "op_time", Long.valueOf(cc.c().s() / 1000L) });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?uin=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("&aq_base_sid=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&data=");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c.e());
+    ((StringBuilder)localObject).append("/cn/mbtoken3/mbtoken3_general_get_mobile_code");
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
   
   protected void a(do paramdo)
@@ -59,7 +70,7 @@ public class ProtoGeneralGetMobileCode
     int m = paramJSONObject.getInt("err");
     if (m != 0)
     {
-      String str = paramJSONObject.getString("info");
+      localObject = paramJSONObject.getString("info");
       if (m == 124)
       {
         paramJSONObject = l.c(paramJSONObject.getString("data"));
@@ -68,32 +79,42 @@ public class ProtoGeneralGetMobileCode
           paramJSONObject = new JSONObject(new String(paramJSONObject));
           d = paramJSONObject.getString("sms_port");
           e = paramJSONObject.getString("sms_up_code");
+          try
+          {
+            f = paramJSONObject.getString("mobile_sms_prefix");
+          }
+          catch (Exception paramJSONObject)
+          {
+            paramJSONObject.printStackTrace();
+          }
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append("realname port=");
+          paramJSONObject.append(d);
+          paramJSONObject.append(", content=");
+          paramJSONObject.append(e);
+          g.b(paramJSONObject.toString());
         }
       }
-      try
-      {
-        f = paramJSONObject.getString("mobile_sms_prefix");
-        g.b("realname port=" + d + ", content=" + e);
-        a(m, str);
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
-      }
+      a(m, (String)localObject);
+      return;
     }
     paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      g.a("json" + paramJSONObject.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("json");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      g.a(((StringBuilder)localObject).toString());
       m = paramJSONObject.getInt("seq_id");
       if (m != this.i)
       {
-        g.c("parseJSON error seq is wrong seq=" + m + ",right = " + this.i);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(m);
+        paramJSONObject.append(",right = ");
+        paramJSONObject.append(this.i);
+        g.c(paramJSONObject.toString());
         this.a.b(10030);
         return;
       }
@@ -102,20 +123,25 @@ public class ProtoGeneralGetMobileCode
       try
       {
         f = paramJSONObject.getString("mobile_sms_prefix");
-        g.b("realname port=" + d + ", content=" + e);
-        this.a.c();
-        return;
       }
       catch (Exception paramJSONObject)
       {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
+        paramJSONObject.printStackTrace();
       }
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("realname port=");
+      paramJSONObject.append(d);
+      paramJSONObject.append(", content=");
+      paramJSONObject.append(e);
+      g.b(paramJSONObject.toString());
+      this.a.c();
+      return;
     }
-    g.c("parseJSON error decodeData=" + paramJSONObject);
-    a(10022, RqdApplication.l().getString(2131230925));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("parseJSON error decodeData=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    g.c(((StringBuilder)localObject).toString());
+    a(10022, RqdApplication.l().getString(2131493067));
   }
 }
 

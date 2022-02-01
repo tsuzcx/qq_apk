@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import com.tencent.token.gj;
+import com.tencent.token.gi;
 import uilib.doraemon.e;
 
 public class j
@@ -24,16 +24,13 @@ public class j
   
   public void a(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
   {
-    gj localgj = this.a.k();
-    if (localgj != null) {
-      this.b.setColor(localgj.a(this.c, ((Integer)this.d.b()).intValue()));
-    }
-    for (;;)
-    {
-      super.a(paramCanvas, paramMatrix, paramInt);
-      return;
+    gi localgi = this.a.k();
+    if (localgi != null) {
+      this.b.setColor(localgi.a(this.c, ((Integer)this.d.b()).intValue()));
+    } else {
       this.b.setColor(((Integer)this.d.b()).intValue());
     }
+    super.a(paramCanvas, paramMatrix, paramInt);
   }
   
   public void a(String paramString1, String paramString2, ColorFilter paramColorFilter)

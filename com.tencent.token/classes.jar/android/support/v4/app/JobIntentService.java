@@ -48,16 +48,16 @@ public abstract class JobIntentService
   
   public static void enqueueWork(@NonNull Context paramContext, @NonNull ComponentName paramComponentName, int paramInt, @NonNull Intent paramIntent)
   {
-    if (paramIntent == null) {
-      throw new IllegalArgumentException("work must not be null");
+    if (paramIntent != null) {
+      synchronized (sLock)
+      {
+        paramContext = getWorkEnqueuer(paramContext, paramComponentName, true, paramInt);
+        paramContext.ensureJobId(paramInt);
+        paramContext.enqueueWork(paramIntent);
+        return;
+      }
     }
-    synchronized (sLock)
-    {
-      paramContext = getWorkEnqueuer(paramContext, paramComponentName, true, paramInt);
-      paramContext.ensureJobId(paramInt);
-      paramContext.enqueueWork(paramIntent);
-      return;
-    }
+    throw new IllegalArgumentException("work must not be null");
   }
   
   public static void enqueueWork(@NonNull Context paramContext, @NonNull Class paramClass, int paramInt, @NonNull Intent paramIntent)
@@ -71,26 +71,28 @@ public abstract class JobIntentService
     Object localObject = localWorkEnqueuer;
     if (localWorkEnqueuer == null)
     {
-      if (Build.VERSION.SDK_INT < 26) {
-        break label69;
+      if (Build.VERSION.SDK_INT >= 26)
+      {
+        if (paramBoolean) {
+          paramContext = new JobWorkEnqueuer(paramContext, paramComponentName, paramInt);
+        } else {
+          throw new IllegalArgumentException("Can't be here without a job id");
+        }
       }
-      if (!paramBoolean) {
-        throw new IllegalArgumentException("Can't be here without a job id");
+      else {
+        paramContext = new CompatWorkEnqueuer(paramContext, paramComponentName);
       }
-    }
-    label69:
-    for (paramContext = new JobWorkEnqueuer(paramContext, paramComponentName, paramInt);; paramContext = new CompatWorkEnqueuer(paramContext, paramComponentName))
-    {
       sClassWorkEnqueuer.put(paramComponentName, paramContext);
       localObject = paramContext;
-      return localObject;
     }
+    return localObject;
   }
   
   GenericWorkItem dequeueWork()
   {
-    if (this.mJobImpl != null) {
-      return this.mJobImpl.dequeueWork();
+    ??? = this.mJobImpl;
+    if (??? != null) {
+      return ((CompatJobEngine)???).dequeueWork();
     }
     synchronized (this.mCompatQueue)
     {
@@ -99,14 +101,15 @@ public abstract class JobIntentService
         GenericWorkItem localGenericWorkItem = (GenericWorkItem)this.mCompatQueue.remove(0);
         return localGenericWorkItem;
       }
+      return null;
     }
-    return null;
   }
   
   boolean doStopCurrentWork()
   {
-    if (this.mCurProcessor != null) {
-      this.mCurProcessor.cancel(this.mInterruptIfStopped);
+    CommandProcessor localCommandProcessor = this.mCurProcessor;
+    if (localCommandProcessor != null) {
+      localCommandProcessor.cancel(this.mInterruptIfStopped);
     }
     this.mStopped = true;
     return onStopCurrentWork();
@@ -117,8 +120,9 @@ public abstract class JobIntentService
     if (this.mCurProcessor == null)
     {
       this.mCurProcessor = new CommandProcessor();
-      if ((this.mCompatWorkEnqueuer != null) && (paramBoolean)) {
-        this.mCompatWorkEnqueuer.serviceProcessingStarted();
+      WorkEnqueuer localWorkEnqueuer = this.mCompatWorkEnqueuer;
+      if ((localWorkEnqueuer != null) && (paramBoolean)) {
+        localWorkEnqueuer.serviceProcessingStarted();
       }
       this.mCurProcessor.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
     }
@@ -131,8 +135,9 @@ public abstract class JobIntentService
   
   public IBinder onBind(@NonNull Intent paramIntent)
   {
-    if (this.mJobImpl != null) {
-      return this.mJobImpl.compatGetBinder();
+    paramIntent = this.mJobImpl;
+    if (paramIntent != null) {
+      return paramIntent.compatGetBinder();
     }
     return null;
   }
@@ -153,13 +158,15 @@ public abstract class JobIntentService
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.mCompatQueue != null) {
-      synchronized (this.mCompatQueue)
+    ArrayList localArrayList = this.mCompatQueue;
+    if (localArrayList != null) {
+      try
       {
         this.mDestroyed = true;
         this.mCompatWorkEnqueuer.serviceProcessingFinished();
         return;
       }
+      finally {}
     }
   }
   
@@ -173,13 +180,12 @@ public abstract class JobIntentService
       synchronized (this.mCompatQueue)
       {
         ArrayList localArrayList2 = this.mCompatQueue;
-        if (paramIntent != null)
-        {
-          localArrayList2.add(new CompatWorkItem(paramIntent, paramInt2));
-          ensureProcessorRunningLocked(true);
-          return 3;
+        if (paramIntent == null) {
+          paramIntent = new Intent();
         }
-        paramIntent = new Intent();
+        localArrayList2.add(new CompatWorkItem(paramIntent, paramInt2));
+        ensureProcessorRunningLocked(true);
+        return 3;
       }
     }
     return 2;
@@ -192,18 +198,19 @@ public abstract class JobIntentService
   
   void processorFinished()
   {
-    if (this.mCompatQueue != null) {
-      synchronized (this.mCompatQueue)
+    ArrayList localArrayList = this.mCompatQueue;
+    if (localArrayList != null) {
+      try
       {
         this.mCurProcessor = null;
         if ((this.mCompatQueue != null) && (this.mCompatQueue.size() > 0)) {
           ensureProcessorRunningLocked(false);
+        } else if (!this.mDestroyed) {
+          this.mCompatWorkEnqueuer.serviceProcessingFinished();
         }
-        while (this.mDestroyed) {
-          return;
-        }
-        this.mCompatWorkEnqueuer.serviceProcessingFinished();
+        return;
       }
+      finally {}
     }
   }
   
@@ -263,9 +270,15 @@ public abstract class JobIntentService
       super(paramComponentName);
       this.mContext = paramContext.getApplicationContext();
       paramContext = (PowerManager)paramContext.getSystemService("power");
-      this.mLaunchWakeLock = paramContext.newWakeLock(1, paramComponentName.getClassName() + ":launch");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramComponentName.getClassName());
+      localStringBuilder.append(":launch");
+      this.mLaunchWakeLock = paramContext.newWakeLock(1, localStringBuilder.toString());
       this.mLaunchWakeLock.setReferenceCounted(false);
-      this.mRunWakeLock = paramContext.newWakeLock(1, paramComponentName.getClassName() + ":run");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramComponentName.getClassName());
+      localStringBuilder.append(":run");
+      this.mRunWakeLock = paramContext.newWakeLock(1, localStringBuilder.toString());
       this.mRunWakeLock.setReferenceCounted(false);
     }
     
@@ -397,8 +410,8 @@ public abstract class JobIntentService
           localJobWorkItem.getIntent().setExtrasClassLoader(this.mService.getClassLoader());
           return new WrapperWorkItem(localJobWorkItem);
         }
+        return null;
       }
-      return null;
     }
     
     public boolean onStartJob(JobParameters paramJobParameters)
@@ -486,11 +499,17 @@ public abstract class JobIntentService
       {
         this.mHasJobId = true;
         this.mJobId = paramInt;
-      }
-      while (this.mJobId == paramInt) {
         return;
       }
-      throw new IllegalArgumentException("Given job ID " + paramInt + " is different than previous " + this.mJobId);
+      if (this.mJobId == paramInt) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Given job ID ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" is different than previous ");
+      localStringBuilder.append(this.mJobId);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
     
     public void serviceProcessingFinished() {}

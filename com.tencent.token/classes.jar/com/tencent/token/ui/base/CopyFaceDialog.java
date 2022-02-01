@@ -35,15 +35,18 @@ public class CopyFaceDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968630);
+    setContentView(2131296310);
     paramBundle = getWindow();
     WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
-    localLayoutParams.width = ((int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - 46.0F * IndexActivity.S_DENSITY));
+    localLayoutParams.width = ((int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
     paramBundle.setAttributes(localLayoutParams);
-    this.b = ((TextView)findViewById(2131558760));
-    paramBundle = this.a + this.c.getResources().getString(2131230984);
-    this.b.setText(m.a(paramBundle, this.c.getResources().getDimension(2131296399), (int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - 80.0F * IndexActivity.S_DENSITY)));
-    ((Button)findViewById(2131558761)).setOnClickListener(new View.OnClickListener()
+    this.b = ((TextView)findViewById(2131165411));
+    paramBundle = new StringBuilder();
+    paramBundle.append(this.a);
+    paramBundle.append(this.c.getResources().getString(2131493126));
+    paramBundle = paramBundle.toString();
+    this.b.setText(m.a(paramBundle, this.c.getResources().getDimension(2131034249), (int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 80.0F)));
+    ((Button)findViewById(2131165345)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {

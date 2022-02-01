@@ -16,7 +16,10 @@ public class g
     if (b())
     {
       str = c();
-      str = str + paramString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(paramString);
+      str = localStringBuilder.toString();
     }
     if (a()) {
       Log.d("TokenLog", str);
@@ -28,19 +31,23 @@ public class g
   {
     if (!paramBoolean)
     {
-      if (!b()) {
-        break label56;
+      String str;
+      if (b())
+      {
+        str = c();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("assert failed");
+        str = localStringBuilder.toString();
       }
-      str = c();
-    }
-    label56:
-    for (String str = str + "assert failed";; str = "assert failed")
-    {
+      else
+      {
+        str = "assert failed";
+      }
       if (a()) {
         Log.e("TokenLog", str);
       }
       a(16, "TokenLog", str);
-      return;
     }
   }
   
@@ -55,7 +62,10 @@ public class g
     if (b())
     {
       str = c();
-      str = str + paramString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(paramString);
+      str = localStringBuilder.toString();
     }
     if (a()) {
       Log.i("TokenLog", str);
@@ -75,8 +85,19 @@ public class g
     if (localObject.length > 2)
     {
       str = localObject[2];
-      localObject = "" + "[" + str.getFileName() + ":" + str.getLineNumber() + "|";
-      str = (String)localObject + str.getMethodName() + "()] ";
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(str.getFileName());
+      ((StringBuilder)localObject).append(":");
+      ((StringBuilder)localObject).append(str.getLineNumber());
+      ((StringBuilder)localObject).append("|");
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(str.getMethodName());
+      localStringBuilder.append("()] ");
+      str = localStringBuilder.toString();
     }
     return str;
   }
@@ -87,7 +108,10 @@ public class g
     if (b())
     {
       str = c();
-      str = str + paramString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(paramString);
+      str = localStringBuilder.toString();
     }
     if (a()) {
       Log.e("TokenLog", str);

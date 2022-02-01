@@ -64,21 +64,33 @@ public class DragStartHelper
     switch (paramMotionEvent.getAction())
     {
     default: 
-    case 0: 
+      return false;
     case 2: 
-      do
+      if (MotionEventCompat.isFromSource(paramMotionEvent, 8194))
       {
-        return false;
+        if ((paramMotionEvent.getButtonState() & 0x1) == 0) {
+          return false;
+        }
+        if (this.mDragging) {
+          return false;
+        }
+        if ((this.mLastTouchX == i) && (this.mLastTouchY == j)) {
+          return false;
+        }
         this.mLastTouchX = i;
         this.mLastTouchY = j;
-        return false;
-      } while ((!MotionEventCompat.isFromSource(paramMotionEvent, 8194)) || ((paramMotionEvent.getButtonState() & 0x1) == 0) || (this.mDragging) || ((this.mLastTouchX == i) && (this.mLastTouchY == j)));
+        this.mDragging = this.mListener.onDragStart(paramView, this);
+        return this.mDragging;
+      }
+      break;
+    case 1: 
+    case 3: 
+      this.mDragging = false;
+      return false;
+    case 0: 
       this.mLastTouchX = i;
       this.mLastTouchY = j;
-      this.mDragging = this.mListener.onDragStart(paramView, this);
-      return this.mDragging;
     }
-    this.mDragging = false;
     return false;
   }
   

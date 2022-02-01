@@ -84,33 +84,30 @@ public class c
         paramString[3] = Long.TYPE;
         paramString[4] = Long.TYPE;
       }
-      for (;;)
+      else
       {
-        paramString[0] = localObject2.getClass();
-        paramString[1] = [I.class;
-        paramString[2] = Integer.TYPE;
-        paramString = localClass.getDeclaredMethod(this.f, paramString);
-        if (localObject2 == null) {
-          break label372;
-        }
+        paramString = new Class[3];
+      }
+      paramString[0] = localObject2.getClass();
+      paramString[1] = [I.class;
+      paramString[2] = Integer.TYPE;
+      paramString = localClass.getDeclaredMethod(this.f, paramString);
+      if (localObject2 != null)
+      {
         if ((paramInt & 0x40) != 0) {
           ((Method)localObject3).invoke(localObject1, new Object[] { localObject2, Integer.valueOf(0) });
         }
-        if (this.k <= 8) {
-          break;
+        if (this.k > 8) {}
+        for (paramString = paramString.invoke(localObject1, new Object[] { localObject2, null, Integer.valueOf(paramInt), Integer.valueOf(0), Integer.valueOf(0) });; paramString = paramString.invoke(localObject1, new Object[] { localObject2, null, Integer.valueOf(paramInt) })) {
+          return (PackageInfo)paramString;
         }
-        return (PackageInfo)paramString.invoke(localObject1, new Object[] { localObject2, null, Integer.valueOf(paramInt), Integer.valueOf(0), Integer.valueOf(0) });
-        paramString = new Class[3];
       }
-      paramString = (PackageInfo)paramString.invoke(localObject1, new Object[] { localObject2, null, Integer.valueOf(paramInt) });
-      return paramString;
+      return null;
     }
     catch (Throwable paramString)
     {
       a(paramString);
     }
-    label372:
-    return null;
   }
   
   private PublicKey b(InputStream paramInputStream)
@@ -156,14 +153,14 @@ public class c
   
   public PublicKey b()
   {
-    PublicKey localPublicKey = null;
     try
     {
-      Signature[] arrayOfSignature = this.a.getPackageManager().getPackageInfo(this.a.getPackageName(), 64).signatures;
-      if (arrayOfSignature != null) {
-        localPublicKey = a(new ByteArrayInputStream(arrayOfSignature[0].toByteArray()));
+      Object localObject = this.a.getPackageManager().getPackageInfo(this.a.getPackageName(), 64).signatures;
+      if (localObject != null)
+      {
+        localObject = a(new ByteArrayInputStream(localObject[0].toByteArray()));
+        return localObject;
       }
-      return localPublicKey;
     }
     catch (Throwable localThrowable)
     {
@@ -176,21 +173,23 @@ public class c
   {
     try
     {
-      if (this.k > 13) {}
-      for (paramString = this.a.getPackageManager().getPackageArchiveInfo(paramString, 65);; paramString = b(paramString, 65))
-      {
-        paramString = paramString.signatures;
-        if (paramString == null) {
-          break;
-        }
-        return a(new ByteArrayInputStream(paramString[0].toByteArray()));
+      if (this.k > 13) {
+        paramString = this.a.getPackageManager().getPackageArchiveInfo(paramString, 65);
+      } else {
+        paramString = b(paramString, 65);
       }
-      return null;
+      paramString = paramString.signatures;
+      if (paramString != null)
+      {
+        paramString = a(new ByteArrayInputStream(paramString[0].toByteArray()));
+        return paramString;
+      }
     }
     catch (Throwable paramString)
     {
       a(paramString);
     }
+    return null;
   }
   
   public String c(String paramString)
@@ -234,89 +233,52 @@ public class c
     return "";
   }
   
-  /* Error */
   public PublicKey f(String paramString)
   {
-    // Byte code:
-    //   0: new 241	java/util/jar/JarFile
-    //   3: dup
-    //   4: aload_1
-    //   5: invokespecial 242	java/util/jar/JarFile:<init>	(Ljava/lang/String;)V
-    //   8: astore_3
-    //   9: aload_3
-    //   10: invokevirtual 246	java/util/jar/JarFile:entries	()Ljava/util/Enumeration;
-    //   13: astore_1
-    //   14: aload_1
-    //   15: invokeinterface 251 1 0
-    //   20: istore_2
-    //   21: iload_2
-    //   22: ifne +11 -> 33
-    //   25: aconst_null
-    //   26: astore_1
-    //   27: aload_3
-    //   28: invokevirtual 254	java/util/jar/JarFile:close	()V
-    //   31: aload_1
-    //   32: areturn
-    //   33: aload_1
-    //   34: invokeinterface 257 1 0
-    //   39: checkcast 259	java/util/jar/JarEntry
-    //   42: astore 4
-    //   44: aload 4
-    //   46: invokevirtual 262	java/util/jar/JarEntry:isDirectory	()Z
-    //   49: ifne -35 -> 14
-    //   52: aload 4
-    //   54: invokevirtual 265	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   57: aload_0
-    //   58: getfield 60	com/android/safeguard/c:g	Ljava/lang/String;
-    //   61: invokevirtual 269	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   64: ifeq -50 -> 14
-    //   67: aload 4
-    //   69: invokevirtual 265	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   72: invokevirtual 272	java/lang/String:toUpperCase	()Ljava/lang/String;
-    //   75: aload_0
-    //   76: getfield 68	com/android/safeguard/c:i	Ljava/lang/String;
-    //   79: invokevirtual 275	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   82: ifeq -68 -> 14
-    //   85: aload_3
-    //   86: aload 4
-    //   88: invokevirtual 279	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   91: astore 4
-    //   93: aload_0
-    //   94: aload 4
-    //   96: invokespecial 281	com/android/safeguard/c:b	(Ljava/io/InputStream;)Ljava/security/PublicKey;
-    //   99: astore_1
-    //   100: aload 4
-    //   102: invokevirtual 284	java/io/InputStream:close	()V
-    //   105: goto -78 -> 27
-    //   108: astore_3
-    //   109: aconst_null
-    //   110: astore_1
-    //   111: aload_0
-    //   112: aload_3
-    //   113: invokevirtual 91	com/android/safeguard/c:a	(Ljava/lang/Throwable;)V
-    //   116: aload_1
-    //   117: areturn
-    //   118: astore_3
-    //   119: goto -8 -> 111
-    //   122: astore_3
-    //   123: goto -12 -> 111
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	126	0	this	c
-    //   0	126	1	paramString	String
-    //   20	2	2	bool	boolean
-    //   8	78	3	localJarFile	JarFile
-    //   108	5	3	localThrowable1	Throwable
-    //   118	1	3	localThrowable2	Throwable
-    //   122	1	3	localThrowable3	Throwable
-    //   42	59	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	14	108	java/lang/Throwable
-    //   14	21	108	java/lang/Throwable
-    //   33	100	108	java/lang/Throwable
-    //   100	105	118	java/lang/Throwable
-    //   27	31	122	java/lang/Throwable
+    Object localObject2 = null;
+    InputStream localInputStream = null;
+    Object localObject1 = localObject2;
+    try
+    {
+      JarFile localJarFile = new JarFile(paramString);
+      localObject1 = localObject2;
+      paramString = localJarFile.entries();
+      JarEntry localJarEntry;
+      do
+      {
+        do
+        {
+          do
+          {
+            localObject1 = localObject2;
+            if (!paramString.hasMoreElements())
+            {
+              paramString = localInputStream;
+              break;
+            }
+            localObject1 = localObject2;
+            localJarEntry = (JarEntry)paramString.nextElement();
+            localObject1 = localObject2;
+          } while (localJarEntry.isDirectory());
+          localObject1 = localObject2;
+        } while (!localJarEntry.getName().startsWith(this.g));
+        localObject1 = localObject2;
+      } while (!localJarEntry.getName().toUpperCase().endsWith(this.i));
+      localObject1 = localObject2;
+      localInputStream = localJarFile.getInputStream(localJarEntry);
+      localObject1 = localObject2;
+      paramString = b(localInputStream);
+      localObject1 = paramString;
+      localInputStream.close();
+      localObject1 = paramString;
+      localJarFile.close();
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      a(paramString);
+    }
+    return localObject1;
   }
   
   public String g(String paramString)
@@ -335,25 +297,28 @@ public class c
       byte[] arrayOfByte = new byte[this.j];
       JarFile localJarFile = new JarFile(paramString);
       Object localObject = localJarFile.entries();
-      if (!((Enumeration)localObject).hasMoreElements()) {}
-      for (paramString = null;; paramString = paramString.getCertificates())
+      do
       {
-        localJarFile.close();
-        return paramString[0].getPublicKey();
-        paramString = (JarEntry)((Enumeration)localObject).nextElement();
-        if ((paramString.isDirectory()) || (paramString.getName().startsWith(this.g))) {
+        if (!((Enumeration)localObject).hasMoreElements())
+        {
+          paramString = null;
           break;
         }
-        localObject = localJarFile.getInputStream(paramString);
-        while (((InputStream)localObject).read(arrayOfByte, 0, arrayOfByte.length) != -1) {}
-        ((InputStream)localObject).close();
-      }
-      return null;
+        paramString = (JarEntry)((Enumeration)localObject).nextElement();
+      } while ((paramString.isDirectory()) || (paramString.getName().startsWith(this.g)));
+      localObject = localJarFile.getInputStream(paramString);
+      while (((InputStream)localObject).read(arrayOfByte, 0, arrayOfByte.length) != -1) {}
+      ((InputStream)localObject).close();
+      paramString = paramString.getCertificates();
+      localJarFile.close();
+      paramString = paramString[0].getPublicKey();
+      return paramString;
     }
     catch (Throwable paramString)
     {
       a(paramString);
     }
+    return null;
   }
 }
 

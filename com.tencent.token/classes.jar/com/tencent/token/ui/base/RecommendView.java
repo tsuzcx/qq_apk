@@ -40,11 +40,6 @@ public class RecommendView
     }
   };
   
-  public RecommendView(Context paramContext)
-  {
-    this(paramContext, null);
-  }
-  
   public RecommendView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
@@ -57,12 +52,12 @@ public class RecommendView
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, br.a.RecommendView, 0, 0);
     try
     {
-      this.b = paramContext.getDimension(0, this.a);
+      this.b = paramContext.getDimension(2, this.a);
       this.f = paramContext.getColor(1, 2303799);
-      this.g = paramContext.getColor(2, 16764211);
+      this.g = paramContext.getColor(4, 16764211);
       this.h = paramContext.getString(3);
-      this.k = paramContext.getDimension(4, 20.0F);
-      this.n = paramContext.getInt(5, 3000);
+      this.k = paramContext.getDimension(5, 20.0F);
+      this.n = paramContext.getInt(0, 3000);
       return;
     }
     finally
@@ -76,18 +71,18 @@ public class RecommendView
     int i1 = View.MeasureSpec.getMode(paramInt);
     paramInt = View.MeasureSpec.getSize(paramInt);
     float f1;
-    if (i1 == 1073741824) {
+    if (i1 == 1073741824)
+    {
       f1 = paramInt;
     }
-    for (;;)
+    else
     {
-      return (int)f1;
-      float f2 = 3.7F * this.b;
-      f1 = f2;
+      f1 = 3.7F * this.b;
       if (i1 == -2147483648) {
-        f1 = Math.min(f2, paramInt);
+        f1 = Math.min(f1, paramInt);
       }
     }
+    return (int)f1;
   }
   
   private int b(int paramInt)
@@ -95,18 +90,18 @@ public class RecommendView
     int i1 = View.MeasureSpec.getMode(paramInt);
     paramInt = View.MeasureSpec.getSize(paramInt);
     float f1;
-    if (i1 == 1073741824) {
+    if (i1 == 1073741824)
+    {
       f1 = paramInt;
     }
-    for (;;)
+    else
     {
-      return (int)f1;
-      float f2 = this.b * 1.5F;
-      f1 = f2;
+      f1 = this.b * 1.5F;
       if (i1 == -2147483648) {
-        f1 = Math.min(f2, paramInt);
+        f1 = Math.min(f1, paramInt);
       }
     }
+    return (int)f1;
   }
   
   public void a()
@@ -140,14 +135,23 @@ public class RecommendView
     super.onDraw(paramCanvas);
     this.e.setColor(this.f);
     this.e.setStyle(Paint.Style.FILL);
-    paramCanvas.drawRect(this.b, this.c - this.b, this.d, this.c, this.e);
-    this.i = new RectF(this.b / 2.0F + 3.0F, this.c - this.b, this.b + this.b / 2.0F, this.c);
+    float f1 = this.b;
+    float f2 = this.c;
+    paramCanvas.drawRect(f1, f2 - f1, this.d, f2, this.e);
+    f1 = this.b;
+    f2 = f1 / 2.0F;
+    float f3 = this.c;
+    this.i = new RectF(f2 + 3.0F, f3 - f1, f1 + f1 / 2.0F, f3);
     paramCanvas.drawArc(this.i, 90.0F, 180.0F, true, this.e);
     this.e.setColor(this.g);
     this.e.setTextSize(this.k);
     this.j = new Rect();
-    this.e.getTextBounds(this.h, 0, this.h.length(), this.j);
-    paramCanvas.drawText(this.h, this.b, this.c - this.b + this.b / 2.0F + this.j.height() / 2, this.e);
+    Object localObject = this.e;
+    String str = this.h;
+    ((Paint)localObject).getTextBounds(str, 0, str.length(), this.j);
+    localObject = this.h;
+    f1 = this.b;
+    paramCanvas.drawText((String)localObject, f1, this.c - f1 + f1 / 2.0F + this.j.height() / 2, this.e);
     if (this.m)
     {
       this.e.setColor(this.f);
@@ -157,23 +161,27 @@ public class RecommendView
       this.e.setStyle(Paint.Style.FILL);
       this.e.setTextSize(this.k * 1.0F);
       this.e.setStrokeWidth(2.0F);
-      paramCanvas.drawText("+", this.b / 2.0F, this.c - this.b - this.b / 2.0F / 2.0F / 2.0F / 2.0F, this.e);
+      f1 = this.b;
+      paramCanvas.drawText("+", f1 / 2.0F, this.c - f1 - f1 / 2.0F / 2.0F / 2.0F / 2.0F, this.e);
       this.e.setTextSize(this.k);
       if (this.l) {
         this.e.setAlpha((int)(Math.random() * 255.0D));
       }
       this.e.setStyle(Paint.Style.STROKE);
       this.e.setStrokeWidth(1.0F);
-      paramCanvas.drawCircle(this.b / 2.0F / 2.0F / 2.0F, this.c - this.b + this.b / 2.0F / 2.0F / 2.0F, 6.0F * this.b / 50.0F, this.e);
+      f1 = this.b;
+      paramCanvas.drawCircle(f1 / 2.0F / 2.0F / 2.0F, this.c - f1 + f1 / 2.0F / 2.0F / 2.0F, f1 * 6.0F / 50.0F, this.e);
       if (this.l) {
         this.e.setAlpha((int)(Math.random() * 255.0D));
       }
       this.e.setStyle(Paint.Style.FILL);
-      paramCanvas.drawCircle(this.b / 2.0F / 2.0F, this.b + this.b / 2.0F / 2.0F / 2.0F / 2.0F, 4.0F * this.b / 50.0F, this.e);
+      f1 = this.b;
+      paramCanvas.drawCircle(f1 / 2.0F / 2.0F, f1 / 2.0F / 2.0F / 2.0F / 2.0F + f1, f1 * 4.0F / 50.0F, this.e);
       if (this.l) {
         this.e.setAlpha((int)(Math.random() * 255.0D));
       }
-      paramCanvas.drawCircle(this.b / 2.0F, this.b / 2.0F + this.b / 2.0F / 2.0F / 2.0F, this.b * 2.0F / 50.0F, this.e);
+      f1 = this.b;
+      paramCanvas.drawCircle(f1 / 2.0F, f1 / 2.0F + f1 / 2.0F / 2.0F / 2.0F, f1 * 2.0F / 50.0F, this.e);
       this.e.setAlpha(255);
       if (this.l) {
         postInvalidateDelayed(100L);

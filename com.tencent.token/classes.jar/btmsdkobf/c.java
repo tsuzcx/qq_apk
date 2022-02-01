@@ -15,7 +15,16 @@ public class c
   
   public String toString()
   {
-    return "ValueData{value='" + this.value + '\'' + ", code=" + this.b + ", expired=" + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ValueData{value='");
+    localStringBuilder.append(this.value);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", code=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", expired=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

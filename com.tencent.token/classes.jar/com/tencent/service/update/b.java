@@ -43,8 +43,10 @@ public class b
     if (a) {
       Log.d("DownloadController", "invoke deleteDownloadTask");
     }
-    if (parama == null) {
+    if (parama == null)
+    {
       Log.e("DownloadController", "error when deleteDownloadTask, task is null!");
+      return;
     }
   }
   

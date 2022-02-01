@@ -9,8 +9,9 @@ class MMHandlerThread$1
   
   public boolean doInBackground()
   {
-    if (this.aq != null) {
-      return this.aq.doInBackground();
+    MMHandlerThread.IWaitWorkThread localIWaitWorkThread = this.aq;
+    if (localIWaitWorkThread != null) {
+      return localIWaitWorkThread.doInBackground();
     }
     MMHandlerThread.a(this.ar).quit();
     MMHandlerThread.b(this.ar);
@@ -19,8 +20,9 @@ class MMHandlerThread$1
   
   public boolean onPostExecute()
   {
-    if (this.aq != null) {
-      return this.aq.onPostExecute();
+    MMHandlerThread.IWaitWorkThread localIWaitWorkThread = this.aq;
+    if (localIWaitWorkThread != null) {
+      return localIWaitWorkThread.onPostExecute();
     }
     return true;
   }

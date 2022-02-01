@@ -15,8 +15,8 @@ import android.os.Build.VERSION;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+import com.tencent.token.gi;
 import com.tencent.token.gj;
-import com.tencent.token.gk;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -32,14 +32,14 @@ public class e
   extends Drawable
   implements Drawable.Callback
 {
-  private static final String d = e.class.getSimpleName();
+  private static final String d = "e";
   f a;
   d b;
-  gj c;
+  gi c;
   private final Matrix e = new Matrix();
   private final Matrix f = new Matrix();
   private a g;
-  private final gk h = new gk();
+  private final gj h = new gj();
   private float i = 1.0F;
   private float j = 0.0F;
   private float k = 1.0F;
@@ -80,81 +80,77 @@ public class e
   
   private boolean a(Canvas paramCanvas)
   {
-    float f5 = 0.0F;
-    float f7 = this.g.b().width() * this.k;
-    float f6 = this.g.b().height() * this.k;
-    float f4;
+    float f6 = this.g.b().width() * this.k;
+    float f7 = this.g.b().height() * this.k;
+    View localView = this.x;
+    float f4 = 0.0F;
+    float f1;
     float f3;
-    if (this.x != null)
+    if (localView != null)
     {
-      f4 = this.x.getWidth() / f7;
-      f3 = this.x.getHeight() / f6;
+      f1 = localView.getWidth() / f6;
+      f3 = this.x.getHeight() / f7;
     }
-    for (;;)
+    else
     {
-      float f8 = Math.min(f4, f3);
-      float f9 = Math.max(f4, f3);
-      if (((f4 == 1.0F) && (f3 == 1.0F)) || (f8 == 0.0F)) {
-        return false;
-      }
-      paramCanvas.save();
-      float f1 = f7 / 2.0F;
-      float f2 = f6 / 2.0F;
-      if (f4 > f3) {
-        if (this.w == DoraemonAnimationView.a.b)
-        {
-          f6 = 0.0F;
-          f2 = 0.0F;
-          f3 = f1;
-          f4 = f5;
-          f1 = f6;
-        }
-      }
-      for (;;)
-      {
-        paramCanvas.scale(f9 / f8, f9 / f8, f3, f2);
-        this.f.reset();
-        this.f.setTranslate(f1, f4);
-        this.f.preScale(f9, f9);
-        return true;
-        if (this.w == DoraemonAnimationView.a.c)
-        {
-          f4 = paramCanvas.getHeight();
-          f2 = f6;
-          f3 = f1;
-          f1 = 0.0F;
-          f4 -= f6 * f9;
-        }
-        else
-        {
-          f4 = (paramCanvas.getHeight() - f6 * f9) / 2.0F;
-          f3 = f1;
-          f1 = 0.0F;
-          continue;
-          if (this.w == DoraemonAnimationView.a.d)
-          {
-            f1 = 0.0F;
-            f3 = 0.0F;
-            f4 = f5;
-          }
-          else if (this.w == DoraemonAnimationView.a.e)
-          {
-            f1 = paramCanvas.getWidth() - f7 * f9;
-            f3 = f7;
-            f4 = f5;
-          }
-          else
-          {
-            f4 = (paramCanvas.getWidth() - f7 * f9) / 2.0F;
-            f3 = f1;
-            f1 = f4;
-            f4 = f5;
-          }
-        }
-      }
+      f1 = 0.0F;
       f3 = 0.0F;
-      f4 = 0.0F;
     }
+    float f9 = Math.min(f1, f3);
+    float f8 = Math.max(f1, f3);
+    if (((f1 == 1.0F) && (f3 == 1.0F)) || (f9 == 0.0F)) {
+      return false;
+    }
+    paramCanvas.save();
+    float f2 = f6 / 2.0F;
+    float f5 = f7 / 2.0F;
+    if (f1 > f3)
+    {
+      if (this.w == DoraemonAnimationView.a.b)
+      {
+        f1 = 0.0F;
+        f3 = 0.0F;
+      }
+      else if (this.w == DoraemonAnimationView.a.c)
+      {
+        f1 = paramCanvas.getHeight() - f7 * f8;
+        f3 = f7;
+      }
+      else
+      {
+        f1 = (paramCanvas.getHeight() - f7 * f8) / 2.0F;
+        f3 = f5;
+      }
+    }
+    else if (this.w == DoraemonAnimationView.a.d)
+    {
+      f1 = 0.0F;
+      f2 = 0.0F;
+      f3 = f5;
+    }
+    else
+    {
+      if (this.w == DoraemonAnimationView.a.e)
+      {
+        f1 = paramCanvas.getWidth();
+        f2 = f6;
+        f1 -= f6 * f8;
+      }
+      else
+      {
+        f1 = (paramCanvas.getWidth() - f6 * f8) / 2.0F;
+      }
+      f6 = 0.0F;
+      f3 = f5;
+      f4 = f1;
+      f1 = f6;
+    }
+    f5 = f8 / f9;
+    paramCanvas.scale(f5, f5, f2, f3);
+    this.f.reset();
+    this.f.setTranslate(f4, f1);
+    this.f.preScale(f8, f8);
+    return true;
   }
   
   private void d(boolean paramBoolean)
@@ -170,37 +166,36 @@ public class e
       });
       return;
     }
-    if (paramBoolean) {}
-    for (long l1 = (this.j * (float)this.h.getDuration());; l1 = 0L)
-    {
-      this.h.start();
-      if (!paramBoolean) {
-        break;
-      }
+    long l1;
+    if (paramBoolean) {
+      l1 = (this.j * (float)this.h.getDuration());
+    } else {
+      l1 = 0L;
+    }
+    this.h.start();
+    if (paramBoolean) {
       this.h.setCurrentPlayTime(l1);
-      return;
     }
   }
   
   private void o()
   {
-    if (this.g != null) {
-      this.t = new as(this, cs.a.a(this.g), this.g.e(), this.g);
+    a locala = this.g;
+    if (locala != null) {
+      this.t = new as(this, cs.a.a(locala), this.g.e(), this.g);
     }
   }
   
   private void p()
   {
-    if (this.t == null) {}
-    for (;;)
-    {
+    if (this.t == null) {
       return;
-      Iterator localIterator = this.l.iterator();
-      while (localIterator.hasNext())
-      {
-        a locala = (a)localIterator.next();
-        this.t.a(locala.a, locala.b, locala.c);
-      }
+    }
+    Iterator localIterator = this.l.iterator();
+    while (localIterator.hasNext())
+    {
+      a locala = (a)localIterator.next();
+      this.t.a(locala.a, locala.b, locala.c);
     }
   }
   
@@ -218,7 +213,7 @@ public class e
       return;
     }
     float f1 = l();
-    setBounds(0, 0, (int)(this.g.b().width() * f1), (int)(f1 * this.g.b().height()));
+    setBounds(0, 0, (int)(this.g.b().width() * f1), (int)(this.g.b().height() * f1));
   }
   
   private z s()
@@ -226,7 +221,8 @@ public class e
     if (getCallback() == null) {
       return null;
     }
-    if ((this.n != null) && (!this.n.a(t())))
+    z localz = this.n;
+    if ((localz != null) && (!localz.a(t())))
     {
       this.n.a();
       this.n = null;
@@ -256,7 +252,8 @@ public class e
   
   public void a(final int paramInt)
   {
-    if (this.g == null)
+    a locala = this.g;
+    if (locala == null)
     {
       this.m.add(new b()
       {
@@ -267,12 +264,12 @@ public class e
       });
       return;
     }
-    a(paramInt / this.g.i());
+    a(paramInt / locala.i());
   }
   
-  public void a(gj paramgj)
+  public void a(gi paramgi)
   {
-    this.c = paramgj;
+    this.c = paramgi;
   }
   
   public void a(String paramString)
@@ -288,8 +285,9 @@ public class e
   public void a(c paramc)
   {
     this.p = paramc;
-    if (this.n != null) {
-      this.n.a(paramc);
+    z localz = this.n;
+    if (localz != null) {
+      localz.a(paramc);
     }
   }
   
@@ -301,22 +299,23 @@ public class e
   public void a(f paramf)
   {
     this.a = paramf;
-    if (this.q != null) {
-      this.q.a(paramf);
+    y localy = this.q;
+    if (localy != null) {
+      localy.a(paramf);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (Build.VERSION.SDK_INT < 19) {
-      Log.w(d, "Merge paths are not supported pre-Kit Kat.");
-    }
-    do
+    if (Build.VERSION.SDK_INT < 19)
     {
+      Log.w(d, "Merge paths are not supported pre-Kit Kat.");
       return;
-      this.s = paramBoolean;
-    } while (this.g == null);
-    o();
+    }
+    this.s = paramBoolean;
+    if (this.g != null) {
+      o();
+    }
   }
   
   public boolean a()
@@ -369,7 +368,8 @@ public class e
   
   public void b(final int paramInt)
   {
-    if (this.g == null)
+    a locala = this.g;
+    if (locala == null)
     {
       this.m.add(new b()
       {
@@ -380,54 +380,60 @@ public class e
       });
       return;
     }
-    b(paramInt / this.g.i());
+    b(paramInt / locala.i());
   }
   
   public void b(boolean paramBoolean)
   {
     this.v = paramBoolean;
-    if (this.g != null) {
-      this.g.a(paramBoolean);
+    a locala = this.g;
+    if (locala != null) {
+      locala.a(paramBoolean);
     }
   }
   
   public void c()
   {
-    if (this.n != null) {
-      this.n.a();
+    z localz = this.n;
+    if (localz != null) {
+      localz.a();
     }
   }
   
   public void c(float paramFloat)
   {
     this.i = paramFloat;
-    gk localgk = this.h;
-    if (paramFloat < 0.0F) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localgk.a(bool);
-      if (this.g != null) {
-        this.h.setDuration(((float)this.g.c() / Math.abs(paramFloat)));
-      }
-      return;
+    Object localObject = this.h;
+    boolean bool;
+    if (paramFloat < 0.0F) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((gj)localObject).a(bool);
+    localObject = this.g;
+    if (localObject != null) {
+      this.h.setDuration(((float)((a)localObject).c() / Math.abs(paramFloat)));
     }
   }
   
   public void c(boolean paramBoolean)
   {
-    gk localgk = this.h;
-    if (paramBoolean) {}
-    for (int i1 = -1;; i1 = 0)
-    {
-      localgk.setRepeatCount(i1);
-      return;
+    gj localgj = this.h;
+    int i1;
+    if (paramBoolean) {
+      i1 = -1;
+    } else {
+      i1 = 0;
     }
+    localgj.setRepeatCount(i1);
   }
   
   public h d()
   {
-    if (this.g != null) {
-      return this.g.a();
+    a locala = this.g;
+    if (locala != null) {
+      return locala.a();
     }
     return null;
   }
@@ -435,26 +441,28 @@ public class e
   public void d(float paramFloat)
   {
     this.j = paramFloat;
-    if (this.t != null) {
-      this.t.a(paramFloat);
+    as localas = this.t;
+    if (localas != null) {
+      localas.a(paramFloat);
     }
   }
   
   public void draw(Canvas paramCanvas)
   {
     g.a("Drawable#draw");
-    if (this.t == null) {}
-    boolean bool;
-    do
-    {
+    if (this.t == null) {
       return;
-      bool = a(paramCanvas);
-      this.e.reset();
-      this.e.preScale(this.k, this.k);
-      this.t.a(paramCanvas, this.e, this.u);
-      g.b("Drawable#draw");
-    } while (!bool);
-    paramCanvas.restore();
+    }
+    boolean bool = a(paramCanvas);
+    this.e.reset();
+    Matrix localMatrix = this.e;
+    float f1 = this.k;
+    localMatrix.preScale(f1, f1);
+    this.t.a(paramCanvas, this.e, this.u);
+    g.b("Drawable#draw");
+    if (bool) {
+      paramCanvas.restore();
+    }
   }
   
   void e()
@@ -475,12 +483,14 @@ public class e
   
   public void g()
   {
-    if ((this.j > 0.0D) && (this.j < 1.0D)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      d(bool);
-      return;
+    float f1 = this.j;
+    boolean bool;
+    if ((f1 > 0.0D) && (f1 < 1.0D)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    d(bool);
   }
   
   public int getAlpha()
@@ -490,18 +500,20 @@ public class e
   
   public int getIntrinsicHeight()
   {
-    if (this.g == null) {
+    a locala = this.g;
+    if (locala == null) {
       return -1;
     }
-    return (int)(this.g.b().height() * this.k);
+    return (int)(locala.b().height() * this.k);
   }
   
   public int getIntrinsicWidth()
   {
-    if (this.g == null) {
+    a locala = this.g;
+    if (locala == null) {
       return -1;
     }
-    return (int)(this.g.b().width() * this.k);
+    return (int)(locala.b().width() * this.k);
   }
   
   public int getOpacity()
@@ -541,7 +553,7 @@ public class e
     return (this.b == null) && (this.g.f().size() > 0);
   }
   
-  public gj k()
+  public gi k()
   {
     return this.c;
   }
@@ -595,27 +607,29 @@ public class e
     
     public boolean equals(Object paramObject)
     {
-      if (this == paramObject) {}
-      do
-      {
+      if (this == paramObject) {
         return true;
-        if (!(paramObject instanceof a)) {
-          return false;
-        }
-        paramObject = (a)paramObject;
-      } while ((hashCode() == paramObject.hashCode()) && (this.c == paramObject.c));
-      return false;
+      }
+      if (!(paramObject instanceof a)) {
+        return false;
+      }
+      paramObject = (a)paramObject;
+      return (hashCode() == paramObject.hashCode()) && (this.c == paramObject.c);
     }
     
     public int hashCode()
     {
-      int i = 17;
-      if (this.a != null) {
-        i = this.a.hashCode() * 527;
+      String str = this.a;
+      int i;
+      if (str != null) {
+        i = 527 * str.hashCode();
+      } else {
+        i = 17;
       }
+      str = this.b;
       int j = i;
-      if (this.b != null) {
-        j = i * 31 * this.b.hashCode();
+      if (str != null) {
+        j = i * 31 * str.hashCode();
       }
       return j;
     }

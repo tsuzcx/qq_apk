@@ -39,46 +39,66 @@ public class WXImageObject
   
   public boolean checkArgs()
   {
-    if (((this.imageData == null) || (this.imageData.length == 0)) && ((this.imagePath == null) || (this.imagePath.length() == 0)) && ((this.imageUrl == null) || (this.imageUrl.length() == 0)))
+    Object localObject = this.imageData;
+    if ((localObject == null) || (localObject.length == 0))
     {
-      Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, all arguments are null");
-      return false;
-    }
-    if ((this.imageData != null) && (this.imageData.length > 10485760))
-    {
-      Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, content is too large");
-      return false;
-    }
-    if ((this.imagePath != null) && (this.imagePath.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, path is invalid");
-      return false;
-    }
-    if (this.imagePath != null)
-    {
-      Object localObject = this.imagePath;
-      int i;
-      if ((localObject == null) || (((String)localObject).length() == 0)) {
-        i = 0;
-      }
-      while (i > 10485760)
+      localObject = this.imagePath;
+      if ((localObject == null) || (((String)localObject).length() == 0))
       {
-        Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, image content is too large");
-        return false;
-        localObject = new File((String)localObject);
-        if (!((File)localObject).exists()) {
-          i = 0;
-        } else {
-          i = (int)((File)localObject).length();
+        localObject = this.imageUrl;
+        if ((localObject == null) || (((String)localObject).length() == 0)) {
+          break label193;
         }
       }
     }
-    if ((this.imageUrl != null) && (this.imageUrl.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, url is invalid");
-      return false;
+    localObject = this.imageData;
+    if ((localObject != null) && (localObject.length > 10485760)) {
+      localObject = "checkArgs fail, content is too large";
     }
-    return true;
+    for (;;)
+    {
+      Log.e("MicroMsg.SDK.WXImageObject", (String)localObject);
+      return false;
+      localObject = this.imagePath;
+      if ((localObject != null) && (((String)localObject).length() > 10240))
+      {
+        localObject = "checkArgs fail, path is invalid";
+      }
+      else
+      {
+        localObject = this.imagePath;
+        if (localObject != null)
+        {
+          if ((localObject != null) && (((String)localObject).length() != 0))
+          {
+            localObject = new File((String)localObject);
+            if (((File)localObject).exists())
+            {
+              i = (int)((File)localObject).length();
+              break label154;
+            }
+          }
+          int i = 0;
+          label154:
+          if (i > 10485760)
+          {
+            localObject = "checkArgs fail, image content is too large";
+            continue;
+          }
+        }
+        localObject = this.imageUrl;
+        if ((localObject != null) && (((String)localObject).length() > 10240))
+        {
+          localObject = "checkArgs fail, url is invalid";
+        }
+        else
+        {
+          return true;
+          label193:
+          localObject = "checkArgs fail, all arguments are null";
+        }
+      }
+    }
   }
   
   public void serialize(Bundle paramBundle)

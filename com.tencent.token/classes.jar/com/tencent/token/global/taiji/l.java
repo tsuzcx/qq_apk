@@ -40,17 +40,18 @@ public class l
   
   private boolean a(SharedPreferences.Editor paramEditor)
   {
-    if ((Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) && (SDKUtil.getSDKVersion() >= 9)) {
-      try
-      {
-        paramEditor.getClass().getMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
-        return true;
-      }
-      catch (Throwable localThrowable)
-      {
-        return paramEditor.commit();
-      }
+    if ((Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) && (SDKUtil.getSDKVersion() >= 9)) {}
+    try
+    {
+      paramEditor.getClass().getMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
+      return true;
     }
+    catch (Throwable localThrowable)
+    {
+      label51:
+      break label51;
+    }
+    return paramEditor.commit();
     return paramEditor.commit();
   }
   
@@ -68,8 +69,9 @@ public class l
   
   public boolean contains(String paramString)
   {
-    if (this.a != null) {
-      return this.a.contains(paramString);
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.contains(paramString);
     }
     return false;
   }
@@ -77,101 +79,108 @@ public class l
   public boolean endTransaction()
   {
     this.c = false;
-    if (this.b != null) {
-      return a(this.b);
+    SharedPreferences.Editor localEditor = this.b;
+    if (localEditor != null) {
+      return a(localEditor);
     }
     return true;
   }
   
   public Map<String, ?> getAll()
   {
-    if (this.a != null) {
-      return this.a.getAll();
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getAll();
     }
     return null;
   }
   
   public boolean getBoolean(String paramString)
   {
-    boolean bool = false;
-    if (this.a != null) {
-      bool = this.a.getBoolean(paramString, false);
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getBoolean(paramString, false);
     }
-    return bool;
+    return false;
   }
   
   public boolean getBoolean(String paramString, boolean paramBoolean)
   {
-    if (this.a != null) {
-      return this.a.getBoolean(paramString, paramBoolean);
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getBoolean(paramString, paramBoolean);
     }
     return false;
   }
   
   public float getFloat(String paramString)
   {
-    float f = 0.0F;
-    if (this.a != null) {
-      f = this.a.getFloat(paramString, 0.0F);
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getFloat(paramString, 0.0F);
     }
-    return f;
+    return 0.0F;
   }
   
   public float getFloat(String paramString, float paramFloat)
   {
-    if (this.a != null) {
-      return this.a.getFloat(paramString, paramFloat);
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getFloat(paramString, paramFloat);
     }
     return 0.0F;
   }
   
   public int getInt(String paramString)
   {
-    int i = 0;
-    if (this.a != null) {
-      i = this.a.getInt(paramString, 0);
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getInt(paramString, 0);
     }
-    return i;
+    return 0;
   }
   
   public int getInt(String paramString, int paramInt)
   {
-    if (this.a != null) {
-      return this.a.getInt(paramString, paramInt);
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getInt(paramString, paramInt);
     }
     return 0;
   }
   
   public long getLong(String paramString)
   {
-    long l = 0L;
-    if (this.a != null) {
-      l = this.a.getLong(paramString, 0L);
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getLong(paramString, 0L);
     }
-    return l;
+    return 0L;
   }
   
   public long getLong(String paramString, long paramLong)
   {
-    if (this.a != null) {
-      return this.a.getLong(paramString, paramLong);
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getLong(paramString, paramLong);
     }
     return 0L;
   }
   
   public String getString(String paramString)
   {
-    String str = null;
-    if (this.a != null) {
-      str = this.a.getString(paramString, null);
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString(paramString, null);
     }
-    return str;
+    return null;
   }
   
   public String getString(String paramString1, String paramString2)
   {
-    if (this.a != null) {
-      return this.a.getString(paramString1, paramString2);
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString(paramString1, paramString2);
     }
     return null;
   }

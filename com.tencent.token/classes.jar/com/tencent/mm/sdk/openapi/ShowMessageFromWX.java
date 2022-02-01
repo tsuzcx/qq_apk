@@ -18,10 +18,11 @@ public class ShowMessageFromWX
     
     final boolean checkArgs()
     {
-      if (this.message == null) {
+      WXMediaMessage localWXMediaMessage = this.message;
+      if (localWXMediaMessage == null) {
         return false;
       }
-      return this.message.checkArgs();
+      return localWXMediaMessage.checkArgs();
     }
     
     public void fromBundle(Bundle paramBundle)

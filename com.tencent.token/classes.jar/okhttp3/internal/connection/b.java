@@ -43,37 +43,62 @@ public final class b
   {
     int i = this.b;
     int j = this.a.size();
-    k localk;
-    if (i < j)
+    while (i < j)
     {
-      localk = (k)this.a.get(i);
-      if (localk.a(paramSSLSocket)) {
-        this.b = (i + 1);
-      }
-    }
-    for (;;)
-    {
-      if (localk == null)
+      localObject = (k)this.a.get(i);
+      if (((k)localObject).a(paramSSLSocket))
       {
-        throw new UnknownServiceException("Unable to find acceptable protocols. isFallback=" + this.d + ", modes=" + this.a + ", supported protocols=" + Arrays.toString(paramSSLSocket.getEnabledProtocols()));
-        i += 1;
-        break;
+        this.b = (i + 1);
+        break label64;
       }
-      this.c = b(paramSSLSocket);
-      fa.a.a(localk, paramSSLSocket, this.d);
-      return localk;
-      localk = null;
+      i += 1;
     }
+    Object localObject = null;
+    label64:
+    if (localObject != null)
+    {
+      this.c = b(paramSSLSocket);
+      fa.a.a((k)localObject, paramSSLSocket, this.d);
+      return localObject;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Unable to find acceptable protocols. isFallback=");
+    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(", modes=");
+    ((StringBuilder)localObject).append(this.a);
+    ((StringBuilder)localObject).append(", supported protocols=");
+    ((StringBuilder)localObject).append(Arrays.toString(paramSSLSocket.getEnabledProtocols()));
+    throw new UnknownServiceException(((StringBuilder)localObject).toString());
   }
   
   public boolean a(IOException paramIOException)
   {
+    boolean bool1 = true;
     this.d = true;
-    if (!this.c) {}
-    while (((paramIOException instanceof ProtocolException)) || ((paramIOException instanceof InterruptedIOException)) || (((paramIOException instanceof SSLHandshakeException)) && ((paramIOException.getCause() instanceof CertificateException))) || ((paramIOException instanceof SSLPeerUnverifiedException)) || ((!(paramIOException instanceof SSLHandshakeException)) && (!(paramIOException instanceof SSLProtocolException)))) {
+    if (!this.c) {
       return false;
     }
-    return true;
+    if ((paramIOException instanceof ProtocolException)) {
+      return false;
+    }
+    if ((paramIOException instanceof InterruptedIOException)) {
+      return false;
+    }
+    boolean bool2 = paramIOException instanceof SSLHandshakeException;
+    if ((bool2) && ((paramIOException.getCause() instanceof CertificateException))) {
+      return false;
+    }
+    if ((paramIOException instanceof SSLPeerUnverifiedException)) {
+      return false;
+    }
+    if (!bool2)
+    {
+      if ((paramIOException instanceof SSLProtocolException)) {
+        return true;
+      }
+      bool1 = false;
+    }
+    return bool1;
   }
 }
 

@@ -46,15 +46,17 @@ final class w
   {
     try
     {
-      if (this.f) {
-        throw new IllegalStateException("Already Executed");
+      if (!this.f)
+      {
+        this.f = true;
+        f();
+        this.e.a(this);
+        this.a.t().a(new a(paramf));
+        return;
       }
+      throw new IllegalStateException("Already Executed");
     }
     finally {}
-    this.f = true;
-    f();
-    this.e.a(this);
-    this.a.t().a(new a(paramf));
   }
   
   public boolean a()
@@ -70,21 +72,22 @@ final class w
   String c()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (a())
-    {
+    String str;
+    if (a()) {
       str = "canceled ";
-      localStringBuilder = localStringBuilder.append(str);
-      if (!this.d) {
-        break label61;
-      }
-    }
-    label61:
-    for (String str = "web socket";; str = "call")
-    {
-      return str + " to " + d();
+    } else {
       str = "";
-      break;
     }
+    localStringBuilder.append(str);
+    if (this.d) {
+      str = "web socket";
+    } else {
+      str = "call";
+    }
+    localStringBuilder.append(str);
+    localStringBuilder.append(" to ");
+    localStringBuilder.append(d());
+    return localStringBuilder.toString();
   }
   
   String d()
@@ -144,7 +147,7 @@ final class w
       //   17: invokevirtual 58	com/tencent/token/fs:a	()Z
       //   20: istore_2
       //   21: iload_2
-      //   22: ifeq +40 -> 62
+      //   22: ifeq +28 -> 50
       //   25: aload_0
       //   26: getfield 27	okhttp3/w$a:c	Lokhttp3/f;
       //   29: aload_0
@@ -154,90 +157,95 @@ final class w
       //   37: ldc 60
       //   39: invokespecial 63	java/io/IOException:<init>	(Ljava/lang/String;)V
       //   42: invokeinterface 68 3 0
-      //   47: aload_0
-      //   48: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
-      //   51: getfield 71	okhttp3/w:a	Lokhttp3/v;
-      //   54: invokevirtual 77	okhttp3/v:t	()Lokhttp3/n;
-      //   57: aload_0
-      //   58: invokevirtual 82	okhttp3/n:b	(Lokhttp3/w$a;)V
-      //   61: return
-      //   62: aload_0
-      //   63: getfield 27	okhttp3/w$a:c	Lokhttp3/f;
-      //   66: aload_0
-      //   67: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
-      //   70: aload_3
-      //   71: invokeinterface 85 3 0
-      //   76: goto -29 -> 47
+      //   47: goto +17 -> 64
+      //   50: aload_0
+      //   51: getfield 27	okhttp3/w$a:c	Lokhttp3/f;
+      //   54: aload_0
+      //   55: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
+      //   58: aload_3
+      //   59: invokeinterface 71 3 0
+      //   64: aload_0
+      //   65: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
+      //   68: getfield 74	okhttp3/w:a	Lokhttp3/v;
+      //   71: invokevirtual 80	okhttp3/v:t	()Lokhttp3/n;
+      //   74: aload_0
+      //   75: invokevirtual 85	okhttp3/n:b	(Lokhttp3/w$a;)V
+      //   78: return
       //   79: astore_3
-      //   80: iload_1
-      //   81: ifeq +51 -> 132
-      //   84: invokestatic 90	com/tencent/token/gc:c	()Lcom/tencent/token/gc;
-      //   87: iconst_4
-      //   88: new 92	java/lang/StringBuilder
-      //   91: dup
-      //   92: invokespecial 94	java/lang/StringBuilder:<init>	()V
-      //   95: ldc 96
-      //   97: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   100: aload_0
-      //   101: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
-      //   104: invokevirtual 102	okhttp3/w:c	()Ljava/lang/String;
-      //   107: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   110: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   113: aload_3
-      //   114: invokevirtual 108	com/tencent/token/gc:a	(ILjava/lang/String;Ljava/lang/Throwable;)V
-      //   117: aload_0
-      //   118: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
-      //   121: getfield 71	okhttp3/w:a	Lokhttp3/v;
-      //   124: invokevirtual 77	okhttp3/v:t	()Lokhttp3/n;
-      //   127: aload_0
-      //   128: invokevirtual 82	okhttp3/n:b	(Lokhttp3/w$a;)V
-      //   131: return
-      //   132: aload_0
-      //   133: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
-      //   136: invokestatic 111	okhttp3/w:a	(Lokhttp3/w;)Lokhttp3/p;
-      //   139: aload_0
-      //   140: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
-      //   143: aload_3
-      //   144: invokevirtual 114	okhttp3/p:a	(Lokhttp3/e;Ljava/io/IOException;)V
-      //   147: aload_0
-      //   148: getfield 27	okhttp3/w$a:c	Lokhttp3/f;
+      //   80: goto +10 -> 90
+      //   83: astore_3
+      //   84: goto +92 -> 176
+      //   87: astore_3
+      //   88: iconst_0
+      //   89: istore_1
+      //   90: iload_1
+      //   91: ifeq +53 -> 144
+      //   94: invokestatic 90	com/tencent/token/gc:c	()Lcom/tencent/token/gc;
+      //   97: astore 4
+      //   99: new 92	java/lang/StringBuilder
+      //   102: dup
+      //   103: invokespecial 94	java/lang/StringBuilder:<init>	()V
+      //   106: astore 5
+      //   108: aload 5
+      //   110: ldc 96
+      //   112: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   115: pop
+      //   116: aload 5
+      //   118: aload_0
+      //   119: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
+      //   122: invokevirtual 102	okhttp3/w:c	()Ljava/lang/String;
+      //   125: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   128: pop
+      //   129: aload 4
+      //   131: iconst_4
+      //   132: aload 5
+      //   134: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   137: aload_3
+      //   138: invokevirtual 108	com/tencent/token/gc:a	(ILjava/lang/String;Ljava/lang/Throwable;)V
+      //   141: goto -77 -> 64
+      //   144: aload_0
+      //   145: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
+      //   148: invokestatic 111	okhttp3/w:a	(Lokhttp3/w;)Lokhttp3/p;
       //   151: aload_0
       //   152: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
       //   155: aload_3
-      //   156: invokeinterface 68 3 0
-      //   161: goto -44 -> 117
-      //   164: astore_3
-      //   165: aload_0
-      //   166: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
-      //   169: getfield 71	okhttp3/w:a	Lokhttp3/v;
-      //   172: invokevirtual 77	okhttp3/v:t	()Lokhttp3/n;
-      //   175: aload_0
-      //   176: invokevirtual 82	okhttp3/n:b	(Lokhttp3/w$a;)V
-      //   179: aload_3
-      //   180: athrow
-      //   181: astore_3
-      //   182: iconst_0
-      //   183: istore_1
-      //   184: goto -104 -> 80
+      //   156: invokevirtual 114	okhttp3/p:a	(Lokhttp3/e;Ljava/io/IOException;)V
+      //   159: aload_0
+      //   160: getfield 27	okhttp3/w$a:c	Lokhttp3/f;
+      //   163: aload_0
+      //   164: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
+      //   167: aload_3
+      //   168: invokeinterface 68 3 0
+      //   173: goto -109 -> 64
+      //   176: aload_0
+      //   177: getfield 14	okhttp3/w$a:a	Lokhttp3/w;
+      //   180: getfield 74	okhttp3/w:a	Lokhttp3/v;
+      //   183: invokevirtual 80	okhttp3/v:t	()Lokhttp3/n;
+      //   186: aload_0
+      //   187: invokevirtual 85	okhttp3/n:b	(Lokhttp3/w$a;)V
+      //   190: aload_3
+      //   191: athrow
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	187	0	this	a
-      //   1	183	1	i	int
+      //   0	192	0	this	a
+      //   1	90	1	i	int
       //   20	2	2	bool	boolean
-      //   9	62	3	localz	z
-      //   79	77	3	localIOException1	java.io.IOException
-      //   164	16	3	localObject	Object
-      //   181	1	3	localIOException2	java.io.IOException
+      //   9	50	3	localz	z
+      //   79	1	3	localIOException1	java.io.IOException
+      //   83	1	3	localObject	Object
+      //   87	104	3	localIOException2	java.io.IOException
+      //   97	33	4	localgc	gc
+      //   106	27	5	localStringBuilder	StringBuilder
       // Exception table:
       //   from	to	target	type
       //   25	47	79	java/io/IOException
-      //   62	76	79	java/io/IOException
-      //   2	21	164	finally
-      //   25	47	164	finally
-      //   62	76	164	finally
-      //   84	117	164	finally
-      //   132	161	164	finally
-      //   2	21	181	java/io/IOException
+      //   50	64	79	java/io/IOException
+      //   2	21	83	finally
+      //   25	47	83	finally
+      //   50	64	83	finally
+      //   94	141	83	finally
+      //   144	173	83	finally
+      //   2	21	87	java/io/IOException
     }
   }
 }

@@ -11,11 +11,12 @@ class b
   
   private boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if (paramArrayOfByte1 == paramArrayOfByte2) {}
-    for (;;)
-    {
+    if (paramArrayOfByte1 == paramArrayOfByte2) {
       return true;
-      if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
+    }
+    if (paramArrayOfByte1 != null)
+    {
+      if (paramArrayOfByte2 == null) {
         return false;
       }
       if (paramArrayOfByte1.length != paramArrayOfByte2.length) {
@@ -30,7 +31,9 @@ class b
         }
         i += 1;
       }
+      return true;
     }
+    return false;
   }
   
   public boolean equals(Object paramObject)

@@ -46,7 +46,11 @@ class SingleDocumentFile
       boolean bool = DocumentsContract.deleteDocument(this.mContext.getContentResolver(), this.mUri);
       return bool;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label17:
+      break label17;
+    }
     return false;
   }
   

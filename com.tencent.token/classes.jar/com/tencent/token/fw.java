@@ -9,17 +9,30 @@ public abstract interface fw
   {
     public void a(File paramAnonymousFile)
     {
-      if ((!paramAnonymousFile.delete()) && (paramAnonymousFile.exists())) {
-        throw new IOException("failed to delete " + paramAnonymousFile);
+      if (!paramAnonymousFile.delete())
+      {
+        if (!paramAnonymousFile.exists()) {
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("failed to delete ");
+        localStringBuilder.append(paramAnonymousFile);
+        throw new IOException(localStringBuilder.toString());
       }
     }
     
     public void a(File paramAnonymousFile1, File paramAnonymousFile2)
     {
       a(paramAnonymousFile2);
-      if (!paramAnonymousFile1.renameTo(paramAnonymousFile2)) {
-        throw new IOException("failed to rename " + paramAnonymousFile1 + " to " + paramAnonymousFile2);
+      if (paramAnonymousFile1.renameTo(paramAnonymousFile2)) {
+        return;
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to rename ");
+      localStringBuilder.append(paramAnonymousFile1);
+      localStringBuilder.append(" to ");
+      localStringBuilder.append(paramAnonymousFile2);
+      throw new IOException(localStringBuilder.toString());
     }
     
     public boolean b(File paramAnonymousFile)

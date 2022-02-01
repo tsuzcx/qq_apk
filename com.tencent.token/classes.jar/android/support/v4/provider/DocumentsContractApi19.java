@@ -14,34 +14,29 @@ class DocumentsContractApi19
   
   public static boolean canRead(Context paramContext, Uri paramUri)
   {
-    if (paramContext.checkCallingOrSelfUriPermission(paramUri, 1) != 0) {}
-    while (TextUtils.isEmpty(getRawType(paramContext, paramUri))) {
+    if (paramContext.checkCallingOrSelfUriPermission(paramUri, 1) != 0) {
       return false;
     }
-    return true;
+    return !TextUtils.isEmpty(getRawType(paramContext, paramUri));
   }
   
   public static boolean canWrite(Context paramContext, Uri paramUri)
   {
-    if (paramContext.checkCallingOrSelfUriPermission(paramUri, 2) != 0) {}
-    String str;
-    int i;
-    do
-    {
-      do
-      {
-        return false;
-        str = getRawType(paramContext, paramUri);
-        i = queryForInt(paramContext, paramUri, "flags", 0);
-      } while (TextUtils.isEmpty(str));
-      if ((i & 0x4) != 0) {
-        return true;
-      }
-      if (("vnd.android.document/directory".equals(str)) && ((i & 0x8) != 0)) {
-        return true;
-      }
-    } while ((TextUtils.isEmpty(str)) || ((i & 0x2) == 0));
-    return true;
+    if (paramContext.checkCallingOrSelfUriPermission(paramUri, 2) != 0) {
+      return false;
+    }
+    String str = getRawType(paramContext, paramUri);
+    int i = queryForInt(paramContext, paramUri, "flags", 0);
+    if (TextUtils.isEmpty(str)) {
+      return false;
+    }
+    if ((i & 0x4) != 0) {
+      return true;
+    }
+    if (("vnd.android.document/directory".equals(str)) && ((i & 0x8) != 0)) {
+      return true;
+    }
+    return (!TextUtils.isEmpty(str)) && ((i & 0x2) != 0);
   }
   
   private static void closeQuietly(AutoCloseable paramAutoCloseable)
@@ -55,6 +50,7 @@ class DocumentsContractApi19
     catch (RuntimeException paramAutoCloseable)
     {
       throw paramAutoCloseable;
+      return;
     }
     catch (Exception paramAutoCloseable) {}
   }
@@ -65,82 +61,96 @@ class DocumentsContractApi19
     // Byte code:
     //   0: aload_0
     //   1: invokevirtual 68	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   4: astore_0
-    //   5: aload_0
-    //   6: aload_1
-    //   7: iconst_1
-    //   8: anewarray 48	java/lang/String
-    //   11: dup
-    //   12: iconst_0
-    //   13: ldc 70
-    //   15: aastore
-    //   16: aconst_null
-    //   17: aconst_null
-    //   18: aconst_null
-    //   19: invokevirtual 76	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   22: astore_1
-    //   23: aload_1
-    //   24: astore_0
-    //   25: aload_1
-    //   26: invokeinterface 82 1 0
-    //   31: istore_2
-    //   32: iload_2
-    //   33: ifle +11 -> 44
-    //   36: iconst_1
-    //   37: istore_3
-    //   38: aload_1
-    //   39: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   42: iload_3
-    //   43: ireturn
-    //   44: iconst_0
-    //   45: istore_3
-    //   46: goto -8 -> 38
-    //   49: astore 4
-    //   51: aconst_null
-    //   52: astore_1
+    //   4: astore 5
+    //   6: iconst_1
+    //   7: istore_3
+    //   8: aconst_null
+    //   9: astore 4
+    //   11: aconst_null
+    //   12: astore_0
+    //   13: aload 5
+    //   15: aload_1
+    //   16: iconst_1
+    //   17: anewarray 48	java/lang/String
+    //   20: dup
+    //   21: iconst_0
+    //   22: ldc 70
+    //   24: aastore
+    //   25: aconst_null
+    //   26: aconst_null
+    //   27: aconst_null
+    //   28: invokevirtual 76	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   31: astore_1
+    //   32: aload_1
+    //   33: astore_0
+    //   34: aload_1
+    //   35: astore 4
+    //   37: aload_1
+    //   38: invokeinterface 82 1 0
+    //   43: istore_2
+    //   44: iload_2
+    //   45: ifle +6 -> 51
+    //   48: goto +5 -> 53
+    //   51: iconst_0
+    //   52: istore_3
     //   53: aload_1
-    //   54: astore_0
-    //   55: ldc 14
-    //   57: new 86	java/lang/StringBuilder
-    //   60: dup
-    //   61: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   64: ldc 89
-    //   66: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: aload 4
-    //   71: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   74: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   77: invokestatic 106	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
-    //   80: pop
-    //   81: aload_1
-    //   82: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   85: iconst_0
-    //   86: ireturn
-    //   87: astore_1
-    //   88: aconst_null
+    //   54: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
+    //   57: iload_3
+    //   58: ireturn
+    //   59: astore_1
+    //   60: goto +58 -> 118
+    //   63: astore_1
+    //   64: aload 4
+    //   66: astore_0
+    //   67: new 86	java/lang/StringBuilder
+    //   70: dup
+    //   71: invokespecial 87	java/lang/StringBuilder:<init>	()V
+    //   74: astore 5
+    //   76: aload 4
+    //   78: astore_0
+    //   79: aload 5
+    //   81: ldc 89
+    //   83: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: pop
+    //   87: aload 4
     //   89: astore_0
-    //   90: aload_0
-    //   91: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   94: aload_1
-    //   95: athrow
-    //   96: astore_1
-    //   97: goto -7 -> 90
-    //   100: astore 4
-    //   102: goto -49 -> 53
+    //   90: aload 5
+    //   92: aload_1
+    //   93: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   96: pop
+    //   97: aload 4
+    //   99: astore_0
+    //   100: ldc 14
+    //   102: aload 5
+    //   104: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   107: invokestatic 106	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
+    //   110: pop
+    //   111: aload 4
+    //   113: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
+    //   116: iconst_0
+    //   117: ireturn
+    //   118: aload_0
+    //   119: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
+    //   122: aload_1
+    //   123: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	105	0	paramContext	Context
-    //   0	105	1	paramUri	Uri
-    //   31	2	2	i	int
-    //   37	9	3	bool	boolean
-    //   49	21	4	localException1	Exception
-    //   100	1	4	localException2	Exception
+    //   0	124	0	paramContext	Context
+    //   0	124	1	paramUri	Uri
+    //   43	2	2	i	int
+    //   7	51	3	bool	boolean
+    //   9	103	4	localUri	Uri
+    //   4	99	5	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   5	23	49	java/lang/Exception
-    //   5	23	87	finally
-    //   25	32	96	finally
-    //   55	81	96	finally
-    //   25	32	100	java/lang/Exception
+    //   13	32	59	finally
+    //   37	44	59	finally
+    //   67	76	59	finally
+    //   79	87	59	finally
+    //   90	97	59	finally
+    //   100	111	59	finally
+    //   13	32	63	java/lang/Exception
+    //   37	44	63	java/lang/Exception
   }
   
   public static long getFlags(Context paramContext, Uri paramUri)
@@ -160,10 +170,9 @@ class DocumentsContractApi19
   
   public static String getType(Context paramContext, Uri paramUri)
   {
-    paramUri = getRawType(paramContext, paramUri);
-    paramContext = paramUri;
-    if ("vnd.android.document/directory".equals(paramUri)) {
-      paramContext = null;
+    paramContext = getRawType(paramContext, paramUri);
+    if ("vnd.android.document/directory".equals(paramContext)) {
+      return null;
     }
     return paramContext;
   }
@@ -186,11 +195,15 @@ class DocumentsContractApi19
   
   public static boolean isVirtual(Context paramContext, Uri paramUri)
   {
-    if (!isDocumentUri(paramContext, paramUri)) {}
-    while ((getFlags(paramContext, paramUri) & 0x200) == 0L) {
+    boolean bool2 = isDocumentUri(paramContext, paramUri);
+    boolean bool1 = false;
+    if (!bool2) {
       return false;
     }
-    return true;
+    if ((getFlags(paramContext, paramUri) & 0x200) != 0L) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public static long lastModified(Context paramContext, Uri paramUri)
@@ -214,94 +227,114 @@ class DocumentsContractApi19
     // Byte code:
     //   0: aload_0
     //   1: invokevirtual 68	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   4: astore_0
-    //   5: aload_0
-    //   6: aload_1
-    //   7: iconst_1
-    //   8: anewarray 48	java/lang/String
-    //   11: dup
-    //   12: iconst_0
-    //   13: aload_2
-    //   14: aastore
-    //   15: aconst_null
-    //   16: aconst_null
-    //   17: aconst_null
-    //   18: invokevirtual 76	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   21: astore_1
-    //   22: aload_1
-    //   23: astore_0
-    //   24: aload_1
-    //   25: invokeinterface 145 1 0
-    //   30: ifeq +33 -> 63
-    //   33: aload_1
-    //   34: astore_0
-    //   35: aload_1
-    //   36: iconst_0
-    //   37: invokeinterface 149 2 0
-    //   42: ifne +21 -> 63
+    //   4: astore 8
+    //   6: aconst_null
+    //   7: astore 7
+    //   9: aconst_null
+    //   10: astore_0
+    //   11: aload 8
+    //   13: aload_1
+    //   14: iconst_1
+    //   15: anewarray 48	java/lang/String
+    //   18: dup
+    //   19: iconst_0
+    //   20: aload_2
+    //   21: aastore
+    //   22: aconst_null
+    //   23: aconst_null
+    //   24: aconst_null
+    //   25: invokevirtual 76	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   28: astore_1
+    //   29: aload_1
+    //   30: astore_0
+    //   31: aload_1
+    //   32: astore 7
+    //   34: aload_1
+    //   35: invokeinterface 145 1 0
+    //   40: ifeq +39 -> 79
+    //   43: aload_1
+    //   44: astore_0
     //   45: aload_1
-    //   46: astore_0
-    //   47: aload_1
-    //   48: iconst_0
-    //   49: invokeinterface 153 2 0
-    //   54: lstore 5
-    //   56: aload_1
-    //   57: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   60: lload 5
-    //   62: lreturn
+    //   46: astore 7
+    //   48: aload_1
+    //   49: iconst_0
+    //   50: invokeinterface 149 2 0
+    //   55: ifne +24 -> 79
+    //   58: aload_1
+    //   59: astore_0
+    //   60: aload_1
+    //   61: astore 7
     //   63: aload_1
-    //   64: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   67: lload_3
-    //   68: lreturn
-    //   69: astore_2
-    //   70: aconst_null
-    //   71: astore_1
+    //   64: iconst_0
+    //   65: invokeinterface 153 2 0
+    //   70: lstore 5
     //   72: aload_1
-    //   73: astore_0
-    //   74: ldc 14
-    //   76: new 86	java/lang/StringBuilder
-    //   79: dup
-    //   80: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   83: ldc 89
-    //   85: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: aload_2
-    //   89: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   92: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   95: invokestatic 106	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
-    //   98: pop
-    //   99: aload_1
-    //   100: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   103: lload_3
-    //   104: lreturn
-    //   105: astore_1
-    //   106: aconst_null
-    //   107: astore_0
-    //   108: aload_0
-    //   109: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   112: aload_1
-    //   113: athrow
-    //   114: astore_1
-    //   115: goto -7 -> 108
-    //   118: astore_2
-    //   119: goto -47 -> 72
+    //   73: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
+    //   76: lload 5
+    //   78: lreturn
+    //   79: aload_1
+    //   80: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
+    //   83: lload_3
+    //   84: lreturn
+    //   85: astore_1
+    //   86: goto +54 -> 140
+    //   89: astore_1
+    //   90: aload 7
+    //   92: astore_0
+    //   93: new 86	java/lang/StringBuilder
+    //   96: dup
+    //   97: invokespecial 87	java/lang/StringBuilder:<init>	()V
+    //   100: astore_2
+    //   101: aload 7
+    //   103: astore_0
+    //   104: aload_2
+    //   105: ldc 89
+    //   107: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: pop
+    //   111: aload 7
+    //   113: astore_0
+    //   114: aload_2
+    //   115: aload_1
+    //   116: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   119: pop
+    //   120: aload 7
+    //   122: astore_0
+    //   123: ldc 14
+    //   125: aload_2
+    //   126: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   129: invokestatic 106	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
+    //   132: pop
+    //   133: aload 7
+    //   135: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
+    //   138: lload_3
+    //   139: lreturn
+    //   140: aload_0
+    //   141: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
+    //   144: aload_1
+    //   145: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	122	0	paramContext	Context
-    //   0	122	1	paramUri	Uri
-    //   0	122	2	paramString	String
-    //   0	122	3	paramLong	long
-    //   54	7	5	l	long
+    //   0	146	0	paramContext	Context
+    //   0	146	1	paramUri	Uri
+    //   0	146	2	paramString	String
+    //   0	146	3	paramLong	long
+    //   70	7	5	l	long
+    //   7	127	7	localUri	Uri
+    //   4	8	8	localContentResolver	android.content.ContentResolver
     // Exception table:
     //   from	to	target	type
-    //   5	22	69	java/lang/Exception
-    //   5	22	105	finally
-    //   24	33	114	finally
-    //   35	45	114	finally
-    //   47	56	114	finally
-    //   74	99	114	finally
-    //   24	33	118	java/lang/Exception
-    //   35	45	118	java/lang/Exception
-    //   47	56	118	java/lang/Exception
+    //   11	29	85	finally
+    //   34	43	85	finally
+    //   48	58	85	finally
+    //   63	72	85	finally
+    //   93	101	85	finally
+    //   104	111	85	finally
+    //   114	120	85	finally
+    //   123	133	85	finally
+    //   11	29	89	java/lang/Exception
+    //   34	43	89	java/lang/Exception
+    //   48	58	89	java/lang/Exception
+    //   63	72	89	java/lang/Exception
   }
   
   /* Error */
@@ -310,93 +343,113 @@ class DocumentsContractApi19
     // Byte code:
     //   0: aload_0
     //   1: invokevirtual 68	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   4: astore_0
-    //   5: aload_0
-    //   6: aload_1
-    //   7: iconst_1
-    //   8: anewarray 48	java/lang/String
-    //   11: dup
-    //   12: iconst_0
-    //   13: aload_2
-    //   14: aastore
-    //   15: aconst_null
-    //   16: aconst_null
-    //   17: aconst_null
-    //   18: invokevirtual 76	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   21: astore_1
-    //   22: aload_1
-    //   23: astore_0
-    //   24: aload_1
-    //   25: invokeinterface 145 1 0
-    //   30: ifeq +31 -> 61
-    //   33: aload_1
-    //   34: astore_0
-    //   35: aload_1
-    //   36: iconst_0
-    //   37: invokeinterface 149 2 0
-    //   42: ifne +19 -> 61
+    //   4: astore 5
+    //   6: aconst_null
+    //   7: astore 4
+    //   9: aconst_null
+    //   10: astore_0
+    //   11: aload 5
+    //   13: aload_1
+    //   14: iconst_1
+    //   15: anewarray 48	java/lang/String
+    //   18: dup
+    //   19: iconst_0
+    //   20: aload_2
+    //   21: aastore
+    //   22: aconst_null
+    //   23: aconst_null
+    //   24: aconst_null
+    //   25: invokevirtual 76	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   28: astore_1
+    //   29: aload_1
+    //   30: astore_0
+    //   31: aload_1
+    //   32: astore 4
+    //   34: aload_1
+    //   35: invokeinterface 145 1 0
+    //   40: ifeq +37 -> 77
+    //   43: aload_1
+    //   44: astore_0
     //   45: aload_1
-    //   46: astore_0
-    //   47: aload_1
-    //   48: iconst_0
-    //   49: invokeinterface 157 2 0
-    //   54: astore_2
-    //   55: aload_1
-    //   56: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   59: aload_2
-    //   60: areturn
-    //   61: aload_1
-    //   62: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   65: aload_3
-    //   66: areturn
-    //   67: astore_2
-    //   68: aconst_null
-    //   69: astore_1
-    //   70: aload_1
-    //   71: astore_0
-    //   72: ldc 14
-    //   74: new 86	java/lang/StringBuilder
-    //   77: dup
-    //   78: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   81: ldc 89
-    //   83: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: aload_2
-    //   87: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   90: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   93: invokestatic 106	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
-    //   96: pop
-    //   97: aload_1
-    //   98: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   101: aload_3
-    //   102: areturn
-    //   103: astore_1
-    //   104: aconst_null
-    //   105: astore_0
-    //   106: aload_0
-    //   107: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
-    //   110: aload_1
-    //   111: athrow
-    //   112: astore_1
-    //   113: goto -7 -> 106
-    //   116: astore_2
-    //   117: goto -47 -> 70
+    //   46: astore 4
+    //   48: aload_1
+    //   49: iconst_0
+    //   50: invokeinterface 149 2 0
+    //   55: ifne +22 -> 77
+    //   58: aload_1
+    //   59: astore_0
+    //   60: aload_1
+    //   61: astore 4
+    //   63: aload_1
+    //   64: iconst_0
+    //   65: invokeinterface 157 2 0
+    //   70: astore_2
+    //   71: aload_1
+    //   72: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
+    //   75: aload_2
+    //   76: areturn
+    //   77: aload_1
+    //   78: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
+    //   81: aload_3
+    //   82: areturn
+    //   83: astore_1
+    //   84: goto +54 -> 138
+    //   87: astore_1
+    //   88: aload 4
+    //   90: astore_0
+    //   91: new 86	java/lang/StringBuilder
+    //   94: dup
+    //   95: invokespecial 87	java/lang/StringBuilder:<init>	()V
+    //   98: astore_2
+    //   99: aload 4
+    //   101: astore_0
+    //   102: aload_2
+    //   103: ldc 89
+    //   105: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: pop
+    //   109: aload 4
+    //   111: astore_0
+    //   112: aload_2
+    //   113: aload_1
+    //   114: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   117: pop
+    //   118: aload 4
+    //   120: astore_0
+    //   121: ldc 14
+    //   123: aload_2
+    //   124: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   127: invokestatic 106	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
+    //   130: pop
+    //   131: aload 4
+    //   133: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
+    //   136: aload_3
+    //   137: areturn
+    //   138: aload_0
+    //   139: invokestatic 84	android/support/v4/provider/DocumentsContractApi19:closeQuietly	(Ljava/lang/AutoCloseable;)V
+    //   142: aload_1
+    //   143: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	120	0	paramContext	Context
-    //   0	120	1	paramUri	Uri
-    //   0	120	2	paramString1	String
-    //   0	120	3	paramString2	String
+    //   0	144	0	paramContext	Context
+    //   0	144	1	paramUri	Uri
+    //   0	144	2	paramString1	String
+    //   0	144	3	paramString2	String
+    //   7	125	4	localUri	Uri
+    //   4	8	5	localContentResolver	android.content.ContentResolver
     // Exception table:
     //   from	to	target	type
-    //   5	22	67	java/lang/Exception
-    //   5	22	103	finally
-    //   24	33	112	finally
-    //   35	45	112	finally
-    //   47	55	112	finally
-    //   72	97	112	finally
-    //   24	33	116	java/lang/Exception
-    //   35	45	116	java/lang/Exception
-    //   47	55	116	java/lang/Exception
+    //   11	29	83	finally
+    //   34	43	83	finally
+    //   48	58	83	finally
+    //   63	71	83	finally
+    //   91	99	83	finally
+    //   102	109	83	finally
+    //   112	118	83	finally
+    //   121	131	83	finally
+    //   11	29	87	java/lang/Exception
+    //   34	43	87	java/lang/Exception
+    //   48	58	87	java/lang/Exception
+    //   63	71	87	java/lang/Exception
   }
 }
 

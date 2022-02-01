@@ -1,13 +1,15 @@
 package btmsdkobf;
 
 import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.util.Log;
 
 public class e
 {
   public static volatile e d;
-  public static boolean e;
+  public static boolean e = false;
   public a f = new a("udid");
   public a g = new a("oaid");
   public a h = new a("aaid");
@@ -18,54 +20,48 @@ public class e
   public static c a(Cursor paramCursor)
   {
     c localc = new c(null, 0);
-    if (paramCursor == null)
+    if (paramCursor == null) {}
+    for (paramCursor = "parseValue fail, cursor is null.";; paramCursor = "parseValue fail, cursor is closed.")
     {
-      b("parseValue fail, cursor is null.");
+      b(paramCursor);
       return localc;
-    }
-    if (paramCursor.isClosed())
-    {
-      b("parseValue fail, cursor is closed.");
-      return localc;
+      if (!paramCursor.isClosed()) {
+        break;
+      }
     }
     paramCursor.moveToFirst();
     int m = paramCursor.getColumnIndex("value");
-    if (m >= 0)
-    {
+    if (m >= 0) {
       localc.value = paramCursor.getString(m);
-      m = paramCursor.getColumnIndex("code");
-      if (m < 0) {
-        break label126;
-      }
-      localc.b = paramCursor.getInt(m);
-    }
-    for (;;)
-    {
-      m = paramCursor.getColumnIndex("expired");
-      if (m < 0) {
-        break label134;
-      }
-      localc.c = paramCursor.getLong(m);
-      return localc;
+    } else {
       b("parseValue fail, index < 0.");
-      break;
-      label126:
+    }
+    m = paramCursor.getColumnIndex("code");
+    if (m >= 0) {
+      localc.b = paramCursor.getInt(m);
+    } else {
       b("parseCode fail, index < 0.");
     }
-    label134:
+    m = paramCursor.getColumnIndex("expired");
+    if (m >= 0)
+    {
+      localc.c = paramCursor.getLong(m);
+      return localc;
+    }
     b("parseExpired fail, index < 0.");
     return localc;
   }
   
   public static final e b()
   {
-    if (d == null) {}
-    try
-    {
-      d = new e();
-      return d;
+    if (d == null) {
+      try
+      {
+        d = new e();
+      }
+      finally {}
     }
-    finally {}
+    return d;
   }
   
   public static void b(String paramString)
@@ -76,487 +72,544 @@ public class e
   }
   
   /* Error */
-  public final String a(android.content.Context paramContext, a parama)
+  public final String a(Context paramContext, a parama)
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 6
-    //   3: aload_2
-    //   4: ifnonnull +7 -> 11
-    //   7: aconst_null
-    //   8: astore_2
-    //   9: aload_2
-    //   10: areturn
-    //   11: aload_2
-    //   12: invokevirtual 123	btmsdkobf/a:isValid	()Z
-    //   15: ifeq +8 -> 23
-    //   18: aload_2
-    //   19: getfield 124	btmsdkobf/a:value	Ljava/lang/String;
-    //   22: areturn
-    //   23: new 126	java/lang/StringBuilder
-    //   26: dup
-    //   27: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   30: ldc 129
-    //   32: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: aload_2
-    //   36: getfield 136	btmsdkobf/a:type	Ljava/lang/String;
-    //   39: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokestatic 55	btmsdkobf/e:b	(Ljava/lang/String;)V
-    //   48: ldc 142
-    //   50: invokestatic 148	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   53: astore 4
-    //   55: aload_1
-    //   56: invokevirtual 154	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   59: aload 4
-    //   61: aconst_null
-    //   62: aconst_null
-    //   63: iconst_1
-    //   64: anewarray 156	java/lang/String
-    //   67: dup
-    //   68: iconst_0
-    //   69: aload_2
-    //   70: getfield 136	btmsdkobf/a:type	Ljava/lang/String;
-    //   73: aastore
-    //   74: aconst_null
-    //   75: invokevirtual 162	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   78: astore 4
-    //   80: aload 4
-    //   82: ifnull +245 -> 327
-    //   85: aload 4
-    //   87: astore 5
-    //   89: aload 4
-    //   91: invokestatic 164	btmsdkobf/e:a	(Landroid/database/Cursor;)Lbtmsdkobf/c;
-    //   94: astore 8
-    //   96: aload 4
+    //   1: astore 9
+    //   3: aconst_null
+    //   4: astore 7
+    //   6: aconst_null
+    //   7: astore 4
+    //   9: aconst_null
+    //   10: astore 8
+    //   12: aconst_null
+    //   13: astore 6
+    //   15: aload_2
+    //   16: ifnonnull +5 -> 21
+    //   19: aconst_null
+    //   20: areturn
+    //   21: aload_2
+    //   22: invokevirtual 124	btmsdkobf/a:isValid	()Z
+    //   25: ifeq +8 -> 33
+    //   28: aload_2
+    //   29: getfield 125	btmsdkobf/a:value	Ljava/lang/String;
+    //   32: areturn
+    //   33: new 127	java/lang/StringBuilder
+    //   36: dup
+    //   37: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   40: astore 5
+    //   42: aload 5
+    //   44: ldc 130
+    //   46: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: pop
+    //   50: aload 5
+    //   52: aload_2
+    //   53: getfield 137	btmsdkobf/a:type	Ljava/lang/String;
+    //   56: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: pop
+    //   60: aload 5
+    //   62: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   65: invokestatic 56	btmsdkobf/e:b	(Ljava/lang/String;)V
+    //   68: ldc 143
+    //   70: invokestatic 149	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   73: astore 5
+    //   75: aload_1
+    //   76: invokevirtual 155	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   79: aload 5
+    //   81: aconst_null
+    //   82: aconst_null
+    //   83: iconst_1
+    //   84: anewarray 157	java/lang/String
+    //   87: dup
+    //   88: iconst_0
+    //   89: aload_2
+    //   90: getfield 137	btmsdkobf/a:type	Ljava/lang/String;
+    //   93: aastore
+    //   94: aconst_null
+    //   95: invokevirtual 163	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   98: astore 5
-    //   100: aload 8
-    //   102: getfield 79	btmsdkobf/c:value	Ljava/lang/String;
-    //   105: astore 7
-    //   107: aload 7
-    //   109: astore 6
-    //   111: aload 4
-    //   113: astore 5
-    //   115: aload_2
+    //   100: aload 5
+    //   102: ifnull +219 -> 321
+    //   105: aload 7
+    //   107: astore 4
+    //   109: aload 5
+    //   111: invokestatic 165	btmsdkobf/e:a	(Landroid/database/Cursor;)Lbtmsdkobf/c;
+    //   114: astore 8
     //   116: aload 7
-    //   118: invokevirtual 166	btmsdkobf/a:a	(Ljava/lang/String;)V
-    //   121: aload 7
-    //   123: astore 6
-    //   125: aload 4
-    //   127: astore 5
-    //   129: aload_2
-    //   130: aload 8
-    //   132: getfield 98	btmsdkobf/c:c	J
-    //   135: invokevirtual 169	btmsdkobf/a:a	(J)V
-    //   138: aload 7
-    //   140: astore 6
-    //   142: aload 4
-    //   144: astore 5
-    //   146: aload_2
-    //   147: aload 8
-    //   149: getfield 88	btmsdkobf/c:b	I
-    //   152: invokevirtual 172	btmsdkobf/a:a	(I)V
-    //   155: aload 7
-    //   157: astore 6
-    //   159: aload 4
-    //   161: astore 5
-    //   163: new 126	java/lang/StringBuilder
-    //   166: dup
-    //   167: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   170: aload_2
-    //   171: getfield 136	btmsdkobf/a:type	Ljava/lang/String;
-    //   174: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   177: ldc 174
-    //   179: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: astore 4
+    //   120: aload 8
+    //   122: getfield 80	btmsdkobf/c:value	Ljava/lang/String;
+    //   125: astore 6
+    //   127: aload 6
+    //   129: astore 4
+    //   131: aload_2
+    //   132: aload 6
+    //   134: invokevirtual 167	btmsdkobf/a:a	(Ljava/lang/String;)V
+    //   137: aload 6
+    //   139: astore 4
+    //   141: aload_2
+    //   142: aload 8
+    //   144: getfield 103	btmsdkobf/c:c	J
+    //   147: invokevirtual 170	btmsdkobf/a:a	(J)V
+    //   150: aload 6
+    //   152: astore 4
+    //   154: aload_2
+    //   155: aload 8
+    //   157: getfield 91	btmsdkobf/c:b	I
+    //   160: invokevirtual 173	btmsdkobf/a:a	(I)V
+    //   163: aload 6
+    //   165: astore 4
+    //   167: new 127	java/lang/StringBuilder
+    //   170: dup
+    //   171: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   174: astore 7
+    //   176: aload 6
+    //   178: astore 4
+    //   180: aload 7
     //   182: aload_2
-    //   183: getfield 175	btmsdkobf/a:b	I
-    //   186: invokevirtual 178	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   189: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   192: invokestatic 55	btmsdkobf/e:b	(Ljava/lang/String;)V
-    //   195: aload 7
-    //   197: astore_2
-    //   198: aload 7
-    //   200: astore 6
-    //   202: aload 4
-    //   204: astore 5
-    //   206: aload 8
-    //   208: getfield 88	btmsdkobf/c:b	I
-    //   211: sipush 1000
-    //   214: if_icmpeq +95 -> 309
-    //   217: aload 7
-    //   219: astore 6
-    //   221: aload 4
-    //   223: astore 5
-    //   225: aload_0
-    //   226: aload_1
-    //   227: invokevirtual 181	btmsdkobf/e:b	(Landroid/content/Context;)V
-    //   230: aload 7
-    //   232: astore_2
-    //   233: aload 7
-    //   235: astore 6
-    //   237: aload 4
-    //   239: astore 5
-    //   241: aload_0
-    //   242: aload_1
-    //   243: iconst_0
-    //   244: invokevirtual 184	btmsdkobf/e:a	(Landroid/content/Context;Z)Z
-    //   247: ifne +62 -> 309
-    //   250: aload 7
-    //   252: astore 6
-    //   254: aload 4
-    //   256: astore 5
-    //   258: aload_0
-    //   259: aload_1
-    //   260: iconst_1
-    //   261: invokevirtual 184	btmsdkobf/e:a	(Landroid/content/Context;Z)Z
-    //   264: istore_3
-    //   265: aload 7
-    //   267: astore 6
-    //   269: aload 4
-    //   271: astore 5
-    //   273: new 126	java/lang/StringBuilder
-    //   276: dup
-    //   277: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   280: ldc 186
-    //   282: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   285: iload_3
-    //   286: invokevirtual 189	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   289: astore_2
-    //   290: aload 7
-    //   292: astore_1
-    //   293: aload_1
-    //   294: astore 6
-    //   296: aload 4
-    //   298: astore 5
-    //   300: aload_2
-    //   301: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   304: invokestatic 55	btmsdkobf/e:b	(Ljava/lang/String;)V
-    //   307: aload_1
-    //   308: astore_2
-    //   309: aload_2
-    //   310: astore_1
-    //   311: aload_1
-    //   312: astore_2
-    //   313: aload 4
-    //   315: ifnull -306 -> 9
-    //   318: aload 4
-    //   320: invokeinterface 192 1 0
-    //   325: aload_1
-    //   326: areturn
-    //   327: aload 4
-    //   329: astore 5
-    //   331: aload_0
-    //   332: aload_1
-    //   333: iconst_0
-    //   334: invokevirtual 184	btmsdkobf/e:a	(Landroid/content/Context;Z)Z
-    //   337: ifeq +121 -> 458
-    //   340: aload 4
-    //   342: astore 5
-    //   344: aload_0
-    //   345: aload_1
-    //   346: iconst_1
-    //   347: invokevirtual 184	btmsdkobf/e:a	(Landroid/content/Context;Z)Z
-    //   350: istore_3
-    //   351: aload 4
-    //   353: astore 5
-    //   355: new 126	java/lang/StringBuilder
-    //   358: dup
-    //   359: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   362: ldc 194
-    //   364: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   367: iload_3
-    //   368: invokevirtual 189	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   371: astore_2
-    //   372: aload 6
-    //   374: astore_1
-    //   375: goto -82 -> 293
-    //   378: astore_2
-    //   379: aconst_null
-    //   380: astore 4
-    //   382: aconst_null
-    //   383: astore_1
-    //   384: aload 4
-    //   386: astore 5
-    //   388: new 126	java/lang/StringBuilder
-    //   391: dup
-    //   392: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   395: ldc 196
-    //   397: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   400: aload_2
-    //   401: invokevirtual 199	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   404: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   407: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   410: invokestatic 55	btmsdkobf/e:b	(Ljava/lang/String;)V
-    //   413: aload_1
-    //   414: astore_2
-    //   415: aload 4
-    //   417: ifnull -408 -> 9
-    //   420: goto -102 -> 318
-    //   423: astore_1
-    //   424: aconst_null
-    //   425: astore 5
-    //   427: aload 5
-    //   429: ifnull +10 -> 439
-    //   432: aload 5
-    //   434: invokeinterface 192 1 0
-    //   439: aload_1
-    //   440: athrow
-    //   441: astore_2
-    //   442: aconst_null
-    //   443: astore_1
-    //   444: goto -60 -> 384
-    //   447: astore_2
-    //   448: aload 6
-    //   450: astore_1
-    //   451: goto -67 -> 384
-    //   454: astore_1
-    //   455: goto -28 -> 427
-    //   458: aconst_null
-    //   459: astore_1
-    //   460: goto -149 -> 311
+    //   183: getfield 137	btmsdkobf/a:type	Ljava/lang/String;
+    //   186: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   189: pop
+    //   190: aload 6
+    //   192: astore 4
+    //   194: aload 7
+    //   196: ldc 175
+    //   198: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   201: pop
+    //   202: aload 6
+    //   204: astore 4
+    //   206: aload 7
+    //   208: aload_2
+    //   209: getfield 176	btmsdkobf/a:b	I
+    //   212: invokevirtual 179	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   215: pop
+    //   216: aload 6
+    //   218: astore 4
+    //   220: aload 7
+    //   222: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   225: invokestatic 56	btmsdkobf/e:b	(Ljava/lang/String;)V
+    //   228: aload 6
+    //   230: astore_2
+    //   231: aload 6
+    //   233: astore 4
+    //   235: aload 8
+    //   237: getfield 91	btmsdkobf/c:b	I
+    //   240: sipush 1000
+    //   243: if_icmpeq +151 -> 394
+    //   246: aload 6
+    //   248: astore 4
+    //   250: aload_0
+    //   251: aload_1
+    //   252: invokevirtual 182	btmsdkobf/e:b	(Landroid/content/Context;)V
+    //   255: aload 6
+    //   257: astore_2
+    //   258: aload 6
+    //   260: astore 4
+    //   262: aload_0
+    //   263: aload_1
+    //   264: iconst_0
+    //   265: invokevirtual 185	btmsdkobf/e:a	(Landroid/content/Context;Z)Z
+    //   268: ifne +126 -> 394
+    //   271: aload 6
+    //   273: astore 4
+    //   275: aload_0
+    //   276: aload_1
+    //   277: iconst_1
+    //   278: invokevirtual 185	btmsdkobf/e:a	(Landroid/content/Context;Z)Z
+    //   281: istore_3
+    //   282: aload 6
+    //   284: astore 4
+    //   286: new 127	java/lang/StringBuilder
+    //   289: dup
+    //   290: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   293: astore_1
+    //   294: aload 6
+    //   296: astore 4
+    //   298: aload_1
+    //   299: ldc 187
+    //   301: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   304: pop
+    //   305: aload 6
+    //   307: astore 4
+    //   309: aload_1
+    //   310: iload_3
+    //   311: invokevirtual 190	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   314: pop
+    //   315: aload 6
+    //   317: astore_2
+    //   318: goto +66 -> 384
+    //   321: aload 9
+    //   323: astore_2
+    //   324: aload 7
+    //   326: astore 4
+    //   328: aload_0
+    //   329: aload_1
+    //   330: iconst_0
+    //   331: invokevirtual 185	btmsdkobf/e:a	(Landroid/content/Context;Z)Z
+    //   334: ifeq +60 -> 394
+    //   337: aload 7
+    //   339: astore 4
+    //   341: aload_0
+    //   342: aload_1
+    //   343: iconst_1
+    //   344: invokevirtual 185	btmsdkobf/e:a	(Landroid/content/Context;Z)Z
+    //   347: istore_3
+    //   348: aload 7
+    //   350: astore 4
+    //   352: new 127	java/lang/StringBuilder
+    //   355: dup
+    //   356: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   359: astore_1
+    //   360: aload 7
+    //   362: astore 4
+    //   364: aload_1
+    //   365: ldc 192
+    //   367: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   370: pop
+    //   371: aload 7
+    //   373: astore 4
+    //   375: aload_1
+    //   376: iload_3
+    //   377: invokevirtual 190	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   380: pop
+    //   381: aload 6
+    //   383: astore_2
+    //   384: aload_2
+    //   385: astore 4
+    //   387: aload_1
+    //   388: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   391: invokestatic 56	btmsdkobf/e:b	(Ljava/lang/String;)V
+    //   394: aload 5
+    //   396: ifnull +9 -> 405
+    //   399: aload 5
+    //   401: astore_1
+    //   402: goto +94 -> 496
+    //   405: aload_2
+    //   406: areturn
+    //   407: astore_1
+    //   408: goto +100 -> 508
+    //   411: astore 6
+    //   413: aload 4
+    //   415: astore_2
+    //   416: aload 5
+    //   418: astore_1
+    //   419: aload 6
+    //   421: astore 5
+    //   423: goto +18 -> 441
+    //   426: astore_1
+    //   427: aload 4
+    //   429: astore 5
+    //   431: goto +77 -> 508
+    //   434: astore 5
+    //   436: aconst_null
+    //   437: astore_2
+    //   438: aload 8
+    //   440: astore_1
+    //   441: aload_1
+    //   442: astore 4
+    //   444: new 127	java/lang/StringBuilder
+    //   447: dup
+    //   448: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   451: astore 6
+    //   453: aload_1
+    //   454: astore 4
+    //   456: aload 6
+    //   458: ldc 194
+    //   460: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   463: pop
+    //   464: aload_1
+    //   465: astore 4
+    //   467: aload 6
+    //   469: aload 5
+    //   471: invokevirtual 197	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   474: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   477: pop
+    //   478: aload_1
+    //   479: astore 4
+    //   481: aload 6
+    //   483: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   486: invokestatic 56	btmsdkobf/e:b	(Ljava/lang/String;)V
+    //   489: aload_2
+    //   490: astore 4
+    //   492: aload_1
+    //   493: ifnull +12 -> 505
+    //   496: aload_1
+    //   497: invokeinterface 200 1 0
+    //   502: aload_2
+    //   503: astore 4
+    //   505: aload 4
+    //   507: areturn
+    //   508: aload 5
+    //   510: ifnull +10 -> 520
+    //   513: aload 5
+    //   515: invokeinterface 200 1 0
+    //   520: aload_1
+    //   521: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	463	0	this	e
-    //   0	463	1	paramContext	android.content.Context
-    //   0	463	2	parama	a
-    //   264	104	3	bool	boolean
-    //   53	363	4	localObject1	Object
-    //   87	346	5	localObject2	Object
-    //   1	448	6	localObject3	Object
-    //   105	186	7	str	String
-    //   94	113	8	localc	c
+    //   0	522	0	this	e
+    //   0	522	1	paramContext	Context
+    //   0	522	2	parama	a
+    //   281	96	3	bool	boolean
+    //   7	499	4	localObject1	Object
+    //   40	390	5	localObject2	Object
+    //   434	80	5	localException1	java.lang.Exception
+    //   13	369	6	str	String
+    //   411	9	6	localException2	java.lang.Exception
+    //   451	31	6	localStringBuilder1	java.lang.StringBuilder
+    //   4	368	7	localStringBuilder2	java.lang.StringBuilder
+    //   10	429	8	localc	c
+    //   1	321	9	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   55	80	378	java/lang/Exception
-    //   55	80	423	finally
-    //   89	96	441	java/lang/Exception
-    //   100	107	441	java/lang/Exception
-    //   331	340	441	java/lang/Exception
-    //   344	351	441	java/lang/Exception
-    //   355	372	441	java/lang/Exception
-    //   115	121	447	java/lang/Exception
-    //   129	138	447	java/lang/Exception
-    //   146	155	447	java/lang/Exception
-    //   163	195	447	java/lang/Exception
-    //   206	217	447	java/lang/Exception
-    //   225	230	447	java/lang/Exception
-    //   241	250	447	java/lang/Exception
-    //   258	265	447	java/lang/Exception
-    //   273	290	447	java/lang/Exception
-    //   300	307	447	java/lang/Exception
-    //   89	96	454	finally
-    //   100	107	454	finally
-    //   115	121	454	finally
-    //   129	138	454	finally
-    //   146	155	454	finally
-    //   163	195	454	finally
-    //   206	217	454	finally
-    //   225	230	454	finally
-    //   241	250	454	finally
-    //   258	265	454	finally
-    //   273	290	454	finally
-    //   300	307	454	finally
-    //   331	340	454	finally
-    //   344	351	454	finally
-    //   355	372	454	finally
-    //   388	413	454	finally
+    //   109	116	407	finally
+    //   120	127	407	finally
+    //   131	137	407	finally
+    //   141	150	407	finally
+    //   154	163	407	finally
+    //   167	176	407	finally
+    //   180	190	407	finally
+    //   194	202	407	finally
+    //   206	216	407	finally
+    //   220	228	407	finally
+    //   235	246	407	finally
+    //   250	255	407	finally
+    //   262	271	407	finally
+    //   275	282	407	finally
+    //   286	294	407	finally
+    //   298	305	407	finally
+    //   309	315	407	finally
+    //   328	337	407	finally
+    //   341	348	407	finally
+    //   352	360	407	finally
+    //   364	371	407	finally
+    //   375	381	407	finally
+    //   387	394	407	finally
+    //   109	116	411	java/lang/Exception
+    //   120	127	411	java/lang/Exception
+    //   131	137	411	java/lang/Exception
+    //   141	150	411	java/lang/Exception
+    //   154	163	411	java/lang/Exception
+    //   167	176	411	java/lang/Exception
+    //   180	190	411	java/lang/Exception
+    //   194	202	411	java/lang/Exception
+    //   206	216	411	java/lang/Exception
+    //   220	228	411	java/lang/Exception
+    //   235	246	411	java/lang/Exception
+    //   250	255	411	java/lang/Exception
+    //   262	271	411	java/lang/Exception
+    //   275	282	411	java/lang/Exception
+    //   286	294	411	java/lang/Exception
+    //   298	305	411	java/lang/Exception
+    //   309	315	411	java/lang/Exception
+    //   328	337	411	java/lang/Exception
+    //   341	348	411	java/lang/Exception
+    //   352	360	411	java/lang/Exception
+    //   364	371	411	java/lang/Exception
+    //   375	381	411	java/lang/Exception
+    //   387	394	411	java/lang/Exception
+    //   75	100	426	finally
+    //   444	453	426	finally
+    //   456	464	426	finally
+    //   467	478	426	finally
+    //   481	489	426	finally
+    //   75	100	434	java/lang/Exception
   }
   
   /* Error */
-  public final boolean a(android.content.Context paramContext, boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aconst_null
-    //   3: astore 4
-    //   5: aload_0
-    //   6: getfield 201	btmsdkobf/e:j	Ljava/lang/Boolean;
-    //   9: astore 5
-    //   11: aload 5
-    //   13: ifnull +13 -> 26
-    //   16: iload_2
-    //   17: ifne +9 -> 26
-    //   20: aload 5
-    //   22: invokevirtual 206	java/lang/Boolean:booleanValue	()Z
-    //   25: ireturn
-    //   26: aload_1
-    //   27: ifnull +14 -> 41
-    //   30: aload_1
-    //   31: invokevirtual 210	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
-    //   34: astore 5
-    //   36: aload 5
-    //   38: ifnonnull +24 -> 62
-    //   41: iconst_0
-    //   42: istore_3
-    //   43: iload_3
-    //   44: ifne +32 -> 76
-    //   47: ldc 212
-    //   49: invokestatic 55	btmsdkobf/e:b	(Ljava/lang/String;)V
-    //   52: aload_0
-    //   53: iconst_0
-    //   54: invokestatic 216	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   57: putfield 201	btmsdkobf/e:j	Ljava/lang/Boolean;
-    //   60: iconst_0
-    //   61: ireturn
-    //   62: aload 5
-    //   64: ldc 218
-    //   66: iconst_0
-    //   67: invokevirtual 224	android/content/pm/PackageManager:resolveContentProvider	(Ljava/lang/String;I)Landroid/content/pm/ProviderInfo;
-    //   70: ifnull -29 -> 41
-    //   73: goto -30 -> 43
-    //   76: ldc 142
-    //   78: invokestatic 148	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   81: astore 5
-    //   83: aload_1
-    //   84: invokevirtual 154	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   87: aload 5
-    //   89: aconst_null
-    //   90: aconst_null
-    //   91: iconst_1
-    //   92: anewarray 156	java/lang/String
-    //   95: dup
-    //   96: iconst_0
-    //   97: ldc 226
-    //   99: aastore
-    //   100: aconst_null
-    //   101: invokevirtual 162	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   104: astore_1
-    //   105: aload_1
-    //   106: ifnull +67 -> 173
-    //   109: aload_1
-    //   110: astore 4
-    //   112: aload_1
-    //   113: invokestatic 164	btmsdkobf/e:a	(Landroid/database/Cursor;)Lbtmsdkobf/c;
-    //   116: getfield 79	btmsdkobf/c:value	Ljava/lang/String;
-    //   119: astore 5
-    //   121: aload_1
-    //   122: invokeinterface 192 1 0
-    //   127: aload 5
-    //   129: astore_1
-    //   130: new 126	java/lang/StringBuilder
-    //   133: dup
-    //   134: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   137: ldc 228
-    //   139: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   142: aload_1
-    //   143: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   149: invokestatic 55	btmsdkobf/e:b	(Ljava/lang/String;)V
-    //   152: aload_0
-    //   153: ldc 230
-    //   155: aload_1
-    //   156: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   159: invokestatic 216	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   162: putfield 201	btmsdkobf/e:j	Ljava/lang/Boolean;
-    //   165: aload_0
-    //   166: getfield 201	btmsdkobf/e:j	Ljava/lang/Boolean;
-    //   169: invokevirtual 206	java/lang/Boolean:booleanValue	()Z
-    //   172: ireturn
-    //   173: aload_1
-    //   174: ifnull +9 -> 183
-    //   177: aload_1
-    //   178: invokeinterface 192 1 0
-    //   183: aconst_null
-    //   184: astore_1
-    //   185: goto -55 -> 130
-    //   188: astore 5
-    //   190: aconst_null
-    //   191: astore_1
-    //   192: aload_1
-    //   193: astore 4
-    //   195: new 126	java/lang/StringBuilder
-    //   198: dup
-    //   199: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   202: ldc 236
-    //   204: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   207: aload 5
-    //   209: invokevirtual 199	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   212: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   215: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   218: invokestatic 55	btmsdkobf/e:b	(Ljava/lang/String;)V
-    //   221: aload_1
-    //   222: ifnull -39 -> 183
-    //   225: goto -48 -> 177
-    //   228: astore_1
-    //   229: aload 4
-    //   231: ifnull +10 -> 241
-    //   234: aload 4
-    //   236: invokeinterface 192 1 0
-    //   241: aload_1
-    //   242: athrow
-    //   243: astore 5
-    //   245: goto -53 -> 192
-    //   248: astore_1
-    //   249: goto -20 -> 229
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	252	0	this	e
-    //   0	252	1	paramContext	android.content.Context
-    //   0	252	2	paramBoolean	boolean
-    //   1	43	3	m	int
-    //   3	232	4	localContext	android.content.Context
-    //   9	119	5	localObject	Object
-    //   188	20	5	localException1	java.lang.Exception
-    //   243	1	5	localException2	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   83	105	188	java/lang/Exception
-    //   83	105	228	finally
-    //   112	121	243	java/lang/Exception
-    //   112	121	248	finally
-    //   195	221	248	finally
-  }
-  
-  /* Error */
-  public final void b(android.content.Context paramContext)
+  public final boolean a(Context paramContext, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 238	btmsdkobf/e:k	Landroid/content/BroadcastReceiver;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: ifnull +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: new 240	android/content/IntentFilter
-    //   17: dup
-    //   18: invokespecial 241	android/content/IntentFilter:<init>	()V
-    //   21: astore_2
-    //   22: aload_2
-    //   23: ldc 243
-    //   25: invokevirtual 246	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   28: aload_0
-    //   29: new 248	btmsdkobf/d
-    //   32: dup
-    //   33: invokespecial 249	btmsdkobf/d:<init>	()V
-    //   36: putfield 238	btmsdkobf/e:k	Landroid/content/BroadcastReceiver;
-    //   39: aload_1
-    //   40: aload_0
-    //   41: getfield 238	btmsdkobf/e:k	Landroid/content/BroadcastReceiver;
-    //   44: aload_2
-    //   45: ldc 251
-    //   47: aconst_null
-    //   48: invokevirtual 255	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
-    //   51: pop
-    //   52: goto -41 -> 11
-    //   55: astore_1
-    //   56: aload_0
-    //   57: monitorexit
-    //   58: aload_1
-    //   59: athrow
+    //   1: getfield 202	btmsdkobf/e:j	Ljava/lang/Boolean;
+    //   4: astore 4
+    //   6: aload 4
+    //   8: ifnull +13 -> 21
+    //   11: iload_2
+    //   12: ifne +9 -> 21
+    //   15: aload 4
+    //   17: invokevirtual 207	java/lang/Boolean:booleanValue	()Z
+    //   20: ireturn
+    //   21: aload_1
+    //   22: ifnull +33 -> 55
+    //   25: aload_1
+    //   26: invokevirtual 211	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   29: astore 4
+    //   31: aload 4
+    //   33: ifnonnull +6 -> 39
+    //   36: goto +19 -> 55
+    //   39: aload 4
+    //   41: ldc 213
+    //   43: iconst_0
+    //   44: invokevirtual 219	android/content/pm/PackageManager:resolveContentProvider	(Ljava/lang/String;I)Landroid/content/pm/ProviderInfo;
+    //   47: ifnull +8 -> 55
+    //   50: iconst_1
+    //   51: istore_3
+    //   52: goto +5 -> 57
+    //   55: iconst_0
+    //   56: istore_3
+    //   57: iload_3
+    //   58: ifne +18 -> 76
+    //   61: ldc 221
+    //   63: invokestatic 56	btmsdkobf/e:b	(Ljava/lang/String;)V
+    //   66: aload_0
+    //   67: iconst_0
+    //   68: invokestatic 225	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   71: putfield 202	btmsdkobf/e:j	Ljava/lang/Boolean;
+    //   74: iconst_0
+    //   75: ireturn
+    //   76: ldc 143
+    //   78: invokestatic 149	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   81: astore 4
+    //   83: aconst_null
+    //   84: astore 7
+    //   86: aconst_null
+    //   87: astore 6
+    //   89: aload_1
+    //   90: invokevirtual 155	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   93: aload 4
+    //   95: aconst_null
+    //   96: aconst_null
+    //   97: iconst_1
+    //   98: anewarray 157	java/lang/String
+    //   101: dup
+    //   102: iconst_0
+    //   103: ldc 227
+    //   105: aastore
+    //   106: aconst_null
+    //   107: invokevirtual 163	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   110: astore_1
+    //   111: aload_1
+    //   112: ifnull +33 -> 145
+    //   115: aload_1
+    //   116: astore 4
+    //   118: aload_1
+    //   119: invokestatic 165	btmsdkobf/e:a	(Landroid/database/Cursor;)Lbtmsdkobf/c;
+    //   122: getfield 80	btmsdkobf/c:value	Ljava/lang/String;
+    //   125: astore 5
+    //   127: aload 5
+    //   129: astore 4
+    //   131: aload_1
+    //   132: invokeinterface 200 1 0
+    //   137: goto +93 -> 230
+    //   140: astore 5
+    //   142: goto +25 -> 167
+    //   145: aload 7
+    //   147: astore 4
+    //   149: aload_1
+    //   150: ifnull +80 -> 230
+    //   153: goto +70 -> 223
+    //   156: astore_1
+    //   157: aconst_null
+    //   158: astore 4
+    //   160: goto +122 -> 282
+    //   163: astore 5
+    //   165: aconst_null
+    //   166: astore_1
+    //   167: aload_1
+    //   168: astore 4
+    //   170: new 127	java/lang/StringBuilder
+    //   173: dup
+    //   174: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   177: astore 8
+    //   179: aload_1
+    //   180: astore 4
+    //   182: aload 8
+    //   184: ldc 229
+    //   186: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   189: pop
+    //   190: aload_1
+    //   191: astore 4
+    //   193: aload 8
+    //   195: aload 5
+    //   197: invokevirtual 197	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   200: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   203: pop
+    //   204: aload_1
+    //   205: astore 4
+    //   207: aload 8
+    //   209: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   212: invokestatic 56	btmsdkobf/e:b	(Ljava/lang/String;)V
+    //   215: aload 7
+    //   217: astore 4
+    //   219: aload_1
+    //   220: ifnull +10 -> 230
+    //   223: aload 6
+    //   225: astore 4
+    //   227: goto -96 -> 131
+    //   230: new 127	java/lang/StringBuilder
+    //   233: dup
+    //   234: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   237: astore_1
+    //   238: aload_1
+    //   239: ldc 231
+    //   241: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   244: pop
+    //   245: aload_1
+    //   246: aload 4
+    //   248: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   251: pop
+    //   252: aload_1
+    //   253: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   256: invokestatic 56	btmsdkobf/e:b	(Ljava/lang/String;)V
+    //   259: aload_0
+    //   260: ldc 233
+    //   262: aload 4
+    //   264: invokevirtual 237	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   267: invokestatic 225	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   270: putfield 202	btmsdkobf/e:j	Ljava/lang/Boolean;
+    //   273: aload_0
+    //   274: getfield 202	btmsdkobf/e:j	Ljava/lang/Boolean;
+    //   277: invokevirtual 207	java/lang/Boolean:booleanValue	()Z
+    //   280: ireturn
+    //   281: astore_1
+    //   282: aload 4
+    //   284: ifnull +10 -> 294
+    //   287: aload 4
+    //   289: invokeinterface 200 1 0
+    //   294: aload_1
+    //   295: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	60	0	this	e
-    //   0	60	1	paramContext	android.content.Context
-    //   6	39	2	localObject	Object
+    //   0	296	0	this	e
+    //   0	296	1	paramContext	Context
+    //   0	296	2	paramBoolean	boolean
+    //   51	7	3	m	int
+    //   4	284	4	localObject1	Object
+    //   125	3	5	str	String
+    //   140	1	5	localException1	java.lang.Exception
+    //   163	33	5	localException2	java.lang.Exception
+    //   87	137	6	localObject2	Object
+    //   84	132	7	localObject3	Object
+    //   177	31	8	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   2	7	55	finally
-    //   14	52	55	finally
+    //   118	127	140	java/lang/Exception
+    //   89	111	156	finally
+    //   89	111	163	java/lang/Exception
+    //   118	127	281	finally
+    //   170	179	281	finally
+    //   182	190	281	finally
+    //   193	204	281	finally
+    //   207	215	281	finally
+  }
+  
+  public final void b(Context paramContext)
+  {
+    try
+    {
+      Object localObject = this.k;
+      if (localObject != null) {
+        return;
+      }
+      localObject = new IntentFilter();
+      ((IntentFilter)localObject).addAction("com.meizu.flyme.openid.ACTION_OPEN_ID_CHANGE");
+      this.k = new d();
+      paramContext.registerReceiver(this.k, (IntentFilter)localObject, "com.meizu.flyme.openid.permission.OPEN_ID_CHANGE", null);
+      return;
+    }
+    finally {}
   }
   
   public a c(String paramString)

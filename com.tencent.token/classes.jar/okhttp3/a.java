@@ -30,40 +30,48 @@ public final class a
   public a(String paramString, int paramInt, o paramo, SocketFactory paramSocketFactory, @Nullable SSLSocketFactory paramSSLSocketFactory, @Nullable HostnameVerifier paramHostnameVerifier, @Nullable g paramg, b paramb, @Nullable Proxy paramProxy, List<Protocol> paramList, List<k> paramList1, ProxySelector paramProxySelector)
   {
     s.a locala = new s.a();
-    if (paramSSLSocketFactory != null) {}
-    for (String str = "https";; str = "http")
-    {
-      this.a = locala.a(str).d(paramString).a(paramInt).c();
-      if (paramo != null) {
-        break;
-      }
-      throw new NullPointerException("dns == null");
+    String str;
+    if (paramSSLSocketFactory != null) {
+      str = "https";
+    } else {
+      str = "http";
     }
-    this.b = paramo;
-    if (paramSocketFactory == null) {
+    this.a = locala.a(str).d(paramString).a(paramInt).c();
+    if (paramo != null)
+    {
+      this.b = paramo;
+      if (paramSocketFactory != null)
+      {
+        this.c = paramSocketFactory;
+        if (paramb != null)
+        {
+          this.d = paramb;
+          if (paramList != null)
+          {
+            this.e = fc.a(paramList);
+            if (paramList1 != null)
+            {
+              this.f = fc.a(paramList1);
+              if (paramProxySelector != null)
+              {
+                this.g = paramProxySelector;
+                this.h = paramProxy;
+                this.i = paramSSLSocketFactory;
+                this.j = paramHostnameVerifier;
+                this.k = paramg;
+                return;
+              }
+              throw new NullPointerException("proxySelector == null");
+            }
+            throw new NullPointerException("connectionSpecs == null");
+          }
+          throw new NullPointerException("protocols == null");
+        }
+        throw new NullPointerException("proxyAuthenticator == null");
+      }
       throw new NullPointerException("socketFactory == null");
     }
-    this.c = paramSocketFactory;
-    if (paramb == null) {
-      throw new NullPointerException("proxyAuthenticator == null");
-    }
-    this.d = paramb;
-    if (paramList == null) {
-      throw new NullPointerException("protocols == null");
-    }
-    this.e = fc.a(paramList);
-    if (paramList1 == null) {
-      throw new NullPointerException("connectionSpecs == null");
-    }
-    this.f = fc.a(paramList1);
-    if (paramProxySelector == null) {
-      throw new NullPointerException("proxySelector == null");
-    }
-    this.g = paramProxySelector;
-    this.h = paramProxy;
-    this.i = paramSSLSocketFactory;
-    this.j = paramHostnameVerifier;
-    this.k = paramg;
+    throw new NullPointerException("dns == null");
   }
   
   public s a()
@@ -98,7 +106,15 @@ public final class a
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof a)) && (this.a.equals(((a)paramObject).a)) && (a((a)paramObject));
+    if ((paramObject instanceof a))
+    {
+      s locals = this.a;
+      paramObject = (a)paramObject;
+      if ((locals.equals(paramObject.a)) && (a(paramObject))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public List<k> f()
@@ -119,40 +135,39 @@ public final class a
   
   public int hashCode()
   {
-    int i2 = 0;
     int i3 = this.a.hashCode();
     int i4 = this.b.hashCode();
     int i5 = this.d.hashCode();
     int i6 = this.e.hashCode();
     int i7 = this.f.hashCode();
     int i8 = this.g.hashCode();
+    Object localObject = this.h;
+    int i2 = 0;
     int m;
-    int n;
-    if (this.h != null)
-    {
-      m = this.h.hashCode();
-      if (this.i == null) {
-        break label185;
-      }
-      n = this.i.hashCode();
-      label91:
-      if (this.j == null) {
-        break label190;
-      }
-    }
-    label185:
-    label190:
-    for (int i1 = this.j.hashCode();; i1 = 0)
-    {
-      if (this.k != null) {
-        i2 = this.k.hashCode();
-      }
-      return (i1 + (n + (m + ((((((i3 + 527) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31 + i8) * 31) * 31) * 31) * 31 + i2;
+    if (localObject != null) {
+      m = ((Proxy)localObject).hashCode();
+    } else {
       m = 0;
-      break;
-      n = 0;
-      break label91;
     }
+    localObject = this.i;
+    int n;
+    if (localObject != null) {
+      n = localObject.hashCode();
+    } else {
+      n = 0;
+    }
+    localObject = this.j;
+    int i1;
+    if (localObject != null) {
+      i1 = localObject.hashCode();
+    } else {
+      i1 = 0;
+    }
+    localObject = this.k;
+    if (localObject != null) {
+      i2 = ((g)localObject).hashCode();
+    }
+    return (((((((((527 + i3) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31 + i8) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2;
   }
   
   @Nullable
@@ -175,16 +190,23 @@ public final class a
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("Address{").append(this.a.f()).append(":").append(this.a.g());
-    if (this.h != null) {
-      localStringBuilder.append(", proxy=").append(this.h);
-    }
-    for (;;)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Address{");
+    localStringBuilder.append(this.a.f());
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.a.g());
+    if (this.h != null)
     {
-      localStringBuilder.append("}");
-      return localStringBuilder.toString();
-      localStringBuilder.append(", proxySelector=").append(this.g);
+      localStringBuilder.append(", proxy=");
+      localStringBuilder.append(this.h);
     }
+    else
+    {
+      localStringBuilder.append(", proxySelector=");
+      localStringBuilder.append(this.g);
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

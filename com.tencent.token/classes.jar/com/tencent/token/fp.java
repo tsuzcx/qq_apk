@@ -54,29 +54,54 @@ public final class fp
   
   public z a(x paramx, f paramf, fl paramfl, c paramc)
   {
-    if (this.e >= this.a.size()) {
-      throw new AssertionError();
+    if (this.e < this.a.size())
+    {
+      this.l += 1;
+      if ((this.c != null) && (!this.d.a(paramx.a())))
+      {
+        paramx = new StringBuilder();
+        paramx.append("network interceptor ");
+        paramx.append(this.a.get(this.e - 1));
+        paramx.append(" must retain the same host and port");
+        throw new IllegalStateException(paramx.toString());
+      }
+      if ((this.c != null) && (this.l > 1))
+      {
+        paramx = new StringBuilder();
+        paramx.append("network interceptor ");
+        paramx.append(this.a.get(this.e - 1));
+        paramx.append(" must call proceed() exactly once");
+        throw new IllegalStateException(paramx.toString());
+      }
+      paramf = new fp(this.a, paramf, paramfl, paramc, this.e + 1, paramx, this.g, this.h, this.i, this.j, this.k);
+      paramx = (t)this.a.get(this.e);
+      paramc = paramx.a(paramf);
+      if ((paramfl != null) && (this.e + 1 < this.a.size()) && (paramf.l != 1))
+      {
+        paramf = new StringBuilder();
+        paramf.append("network interceptor ");
+        paramf.append(paramx);
+        paramf.append(" must call proceed() exactly once");
+        throw new IllegalStateException(paramf.toString());
+      }
+      if (paramc != null)
+      {
+        if (paramc.e() != null) {
+          return paramc;
+        }
+        paramf = new StringBuilder();
+        paramf.append("interceptor ");
+        paramf.append(paramx);
+        paramf.append(" returned a response with no body");
+        throw new IllegalStateException(paramf.toString());
+      }
+      paramf = new StringBuilder();
+      paramf.append("interceptor ");
+      paramf.append(paramx);
+      paramf.append(" returned null");
+      throw new NullPointerException(paramf.toString());
     }
-    this.l += 1;
-    if ((this.c != null) && (!this.d.a(paramx.a()))) {
-      throw new IllegalStateException("network interceptor " + this.a.get(this.e - 1) + " must retain the same host and port");
-    }
-    if ((this.c != null) && (this.l > 1)) {
-      throw new IllegalStateException("network interceptor " + this.a.get(this.e - 1) + " must call proceed() exactly once");
-    }
-    paramx = new fp(this.a, paramf, paramfl, paramc, this.e + 1, paramx, this.g, this.h, this.i, this.j, this.k);
-    paramf = (t)this.a.get(this.e);
-    paramc = paramf.a(paramx);
-    if ((paramfl != null) && (this.e + 1 < this.a.size()) && (paramx.l != 1)) {
-      throw new IllegalStateException("network interceptor " + paramf + " must call proceed() exactly once");
-    }
-    if (paramc == null) {
-      throw new NullPointerException("interceptor " + paramf + " returned null");
-    }
-    if (paramc.e() == null) {
-      throw new IllegalStateException("interceptor " + paramf + " returned a response with no body");
-    }
-    return paramc;
+    throw new AssertionError();
   }
   
   public int b()

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class a
   extends JceStruct
@@ -89,65 +90,84 @@ public final class a
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.a, 0);
-    if (this.b != null) {
-      paramJceOutputStream.write(this.b, 1);
+    Object localObject = this.b;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.c, 2);
-    if (this.d != null) {
-      paramJceOutputStream.write(this.d, 3);
+    localObject = this.d;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.e != null) {
-      paramJceOutputStream.write(this.e, 4);
+    localObject = this.e;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.f != null) {
-      paramJceOutputStream.write(this.f, 5);
+    localObject = this.f;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.g != null) {
-      paramJceOutputStream.write(this.g, 6);
+    localObject = this.g;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.h != null) {
-      paramJceOutputStream.write(this.h, 7);
+    localObject = this.h;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
-    if (this.i != 0) {
-      paramJceOutputStream.write(this.i, 8);
+    int i1 = this.i;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 8);
     }
     paramJceOutputStream.write(this.j, 9);
-    if (this.k != null) {
-      paramJceOutputStream.write(this.k, 10);
+    localObject = this.k;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 10);
     }
-    if (this.l != 0) {
-      paramJceOutputStream.write(this.l, 11);
+    i1 = this.l;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 11);
     }
-    if (this.m != null) {
-      paramJceOutputStream.write(this.m, 12);
+    localObject = this.m;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.n != null) {
-      paramJceOutputStream.write(this.n, 13);
+    localObject = this.n;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.o, 14);
-    if (this.p != null) {
-      paramJceOutputStream.write(this.p, 15);
+    localObject = this.p;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
-    if (this.q != 0) {
-      paramJceOutputStream.write(this.q, 16);
+    i1 = this.q;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 16);
     }
-    if (this.r != null) {
-      paramJceOutputStream.write(this.r, 17);
+    localObject = this.r;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 17);
     }
-    if (this.s != 0) {
-      paramJceOutputStream.write(this.s, 18);
+    i1 = this.s;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 18);
     }
-    if (this.t != null) {
-      paramJceOutputStream.write(this.t, 19);
+    localObject = this.t;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 19);
     }
-    if (this.u != 0) {
-      paramJceOutputStream.write(this.u, 20);
+    i1 = this.u;
+    if (i1 != 0) {
+      paramJceOutputStream.write(i1, 20);
     }
-    if (this.v != null) {
-      paramJceOutputStream.write(this.v, 21);
+    localObject = this.v;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 21);
     }
-    if (this.w != null) {
-      paramJceOutputStream.write(this.w, 22);
+    localObject = this.w;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 22);
     }
   }
 }

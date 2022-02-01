@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.tencent.token" platformBuildVersionCode="27" platformBuildVersionName="8.1.0">
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.tencent.token">
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -143,6 +143,7 @@
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:label="@string/downline_notice_title" android:name="com.tencent.token.ui.DownLineNoticeActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.DownloadAppActivity" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.token.ui.DownloadQQSecureActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="false" android:name="com.tencent.push.PActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
         <receiver android:exported="false" android:label="@string/app_name" android:name="com.tencent.token.widget.TokenWidgetProvider">
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/xmltokenwidget_provider"/>
             <intent-filter>
@@ -155,6 +156,7 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </service>
+        <service android:exported="true" android:name="com.tencent.service.ActivateService"/>
         <service android:exported="false" android:name="com.tencent.token.core.gamelogin.GameLoginService"/>
         <service android:exported="false" android:name="com.tencent.token.upload.NetInfoService">
             <intent-filter android:priority="1000">

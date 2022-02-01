@@ -9,25 +9,40 @@ public class d
     if (paramInt <= 42) {
       return -1;
     }
-    if ((paramArrayOfByte[0] != 2) || (paramArrayOfByte[(paramInt - 1)] != 3)) {
-      return -2;
+    if ((paramArrayOfByte[0] == 2) && (paramArrayOfByte[(paramInt - 1)] == 3))
+    {
+      paramc.a = cj.a(paramArrayOfByte, 1);
+      if (paramc.a != paramInt) {
+        return -3;
+      }
+      paramc.b = cj.a(paramArrayOfByte, 3);
+      paramc.c = cj.b(paramArrayOfByte, 5);
+      c.d = cj.b(paramArrayOfByte, 9);
+      paramc.e = cj.a(paramArrayOfByte, 13);
+      paramc.f = cj.a(paramArrayOfByte, 15);
+      paramc.g = cj.a(paramArrayOfByte, 17);
+      paramc.h = cj.b(paramArrayOfByte, 19);
+      paramc.i = paramArrayOfByte[23];
+      paramc.j = paramArrayOfByte[24];
+      cj.b(paramArrayOfByte, 25, c.k, 16);
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("socket parse msg head: totallen[");
+      paramArrayOfByte.append(paramc.a);
+      paramArrayOfByte.append("] msgtype[");
+      paramArrayOfByte.append(paramc.b);
+      paramArrayOfByte.append("] seq[");
+      paramArrayOfByte.append(paramc.c);
+      paramArrayOfByte.append("] traceID[");
+      paramArrayOfByte.append(c.d);
+      paramArrayOfByte.append("] version[");
+      paramArrayOfByte.append(paramc.g);
+      paramArrayOfByte.append("] echo[");
+      paramArrayOfByte.append(c.k);
+      paramArrayOfByte.append("]");
+      com.tencent.token.global.g.a(paramArrayOfByte.toString());
+      return 0;
     }
-    paramc.a = cj.a(paramArrayOfByte, 1);
-    if (paramc.a != paramInt) {
-      return -3;
-    }
-    paramc.b = cj.a(paramArrayOfByte, 3);
-    paramc.c = cj.b(paramArrayOfByte, 5);
-    c.d = cj.b(paramArrayOfByte, 9);
-    paramc.e = cj.a(paramArrayOfByte, 13);
-    paramc.f = cj.a(paramArrayOfByte, 15);
-    paramc.g = cj.a(paramArrayOfByte, 17);
-    paramc.h = cj.b(paramArrayOfByte, 19);
-    paramc.i = paramArrayOfByte[23];
-    paramc.j = paramArrayOfByte[24];
-    cj.b(paramArrayOfByte, 25, c.k, 16);
-    com.tencent.token.global.g.a("socket parse msg head: totallen[" + paramc.a + "] msgtype[" + paramc.b + "] seq[" + paramc.c + "] traceID[" + c.d + "] version[" + paramc.g + "] echo[" + c.k + "]");
-    return 0;
+    return -2;
   }
   
   public static int a(byte[] paramArrayOfByte, int paramInt, e parame)
@@ -39,11 +54,19 @@ public class d
     paramInt = cj.a(paramArrayOfByte, 45);
     parame.o = new byte[paramInt];
     cj.b(paramArrayOfByte, 47, parame.o, paramInt);
-    paramInt += 47;
+    paramInt = 47 + paramInt;
     int i = cj.a(paramArrayOfByte, paramInt);
     parame.m = new byte[i];
     cj.b(paramArrayOfByte, paramInt + 2, parame.m, i);
-    com.tencent.token.global.g.a("socket parse exchange key: ret[" + parame.n + "] spKeyLen[" + i + "] spKey[" + new String(parame.m) + "]");
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("socket parse exchange key: ret[");
+    paramArrayOfByte.append(parame.n);
+    paramArrayOfByte.append("] spKeyLen[");
+    paramArrayOfByte.append(i);
+    paramArrayOfByte.append("] spKey[");
+    paramArrayOfByte.append(new String(parame.m));
+    paramArrayOfByte.append("]");
+    com.tencent.token.global.g.a(paramArrayOfByte.toString());
     return (int)parame.n;
   }
   
@@ -68,11 +91,21 @@ public class d
     paramInt = cj.a(paramArrayOfByte, 49);
     paramh.o = new byte[paramInt];
     cj.b(paramArrayOfByte, 51, paramh.o, paramInt);
-    paramInt += 51;
+    paramInt = 51 + paramInt;
     int i = cj.a(paramArrayOfByte, paramInt);
     paramh.p = new byte[i];
     cj.b(paramArrayOfByte, paramInt + 2, paramh.p, i);
-    com.tencent.token.global.g.a("socket parse client verify: ret[" + paramh.m + "] server_time[" + paramh.n + "] sig_len[" + i + "] sig[" + new String(paramh.p) + "]");
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("socket parse client verify: ret[");
+    paramArrayOfByte.append(paramh.m);
+    paramArrayOfByte.append("] server_time[");
+    paramArrayOfByte.append(paramh.n);
+    paramArrayOfByte.append("] sig_len[");
+    paramArrayOfByte.append(i);
+    paramArrayOfByte.append("] sig[");
+    paramArrayOfByte.append(new String(paramh.p));
+    paramArrayOfByte.append("]");
+    com.tencent.token.global.g.a(paramArrayOfByte.toString());
     return (int)paramh.m;
   }
   
@@ -101,7 +134,12 @@ public class d
   {
     c localc = new c((short)1, (byte)0, (byte)0);
     int i = paramString.length();
-    com.tencent.token.global.g.a("socket make exchange key req pubkey: " + paramString + ", len:" + paramString.length());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("socket make exchange key req pubkey: ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", len:");
+    localStringBuilder.append(paramString.length());
+    com.tencent.token.global.g.a(localStringBuilder.toString());
     localc.l = new byte[i + 6];
     localc.l[0] = ((byte)com.tencent.token.global.c.b());
     localc.l[1] = ((byte)com.tencent.token.global.c.c());

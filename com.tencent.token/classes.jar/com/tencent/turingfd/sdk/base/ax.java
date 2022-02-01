@@ -3,16 +3,22 @@ package com.tencent.turingfd.sdk.base;
 public class ax
 {
   public String a = "";
-  public boolean b = false;
-  public long c = 0L;
-  public long d = 0L;
+  public boolean b;
+  public long c;
+  public long d;
   
   public ax(String paramString)
   {
+    boolean bool = false;
+    this.b = false;
+    this.c = 0L;
+    this.d = 0L;
     this.a = paramString;
     paramString = paramString.split(":");
-    if ((paramString == null) || (paramString.length < 4)) {
-      return;
+    if (paramString != null) {
+      if (paramString.length < 4) {
+        return;
+      }
     }
     for (;;)
     {

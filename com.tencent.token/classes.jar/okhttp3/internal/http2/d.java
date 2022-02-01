@@ -52,49 +52,71 @@ public final class d
     this.l = parama;
     this.a = paramf;
     this.m = parame;
-    if (paramv.u().contains(Protocol.H2_PRIOR_KNOWLEDGE)) {}
-    for (paramv = Protocol.H2_PRIOR_KNOWLEDGE;; paramv = Protocol.HTTP_2)
-    {
-      this.o = paramv;
-      return;
+    if (paramv.u().contains(Protocol.H2_PRIOR_KNOWLEDGE)) {
+      paramv = Protocol.H2_PRIOR_KNOWLEDGE;
+    } else {
+      paramv = Protocol.HTTP_2;
     }
+    this.o = paramv;
   }
   
   public static z.a a(List<a> paramList, Protocol paramProtocol)
   {
-    r.a locala = new r.a();
+    Object localObject2 = new r.a();
     int i2 = paramList.size();
     int i1 = 0;
-    ft localft = null;
-    if (i1 < i2)
+    Object localObject3 = null;
+    while (i1 < i2)
     {
-      Object localObject = (a)paramList.get(i1);
-      if (localObject == null)
+      Object localObject1 = (a)paramList.get(i1);
+      Object localObject4;
+      if (localObject1 == null)
       {
-        if ((localft == null) || (localft.b != 100)) {
-          break label161;
-        }
-        locala = new r.a();
-        localft = null;
-      }
-      label161:
-      for (;;)
-      {
-        i1 += 1;
-        break;
-        ByteString localByteString = ((a)localObject).g;
-        localObject = ((a)localObject).h.a();
-        if (localByteString.equals(a.b)) {
-          localft = ft.a("HTTP/1.1 " + (String)localObject);
-        } else if (!k.contains(localByteString)) {
-          fa.a.a(locala, localByteString.a(), (String)localObject);
+        localObject1 = localObject3;
+        localObject4 = localObject2;
+        if (localObject3 != null)
+        {
+          localObject1 = localObject3;
+          localObject4 = localObject2;
+          if (localObject3.b == 100)
+          {
+            localObject4 = new r.a();
+            localObject1 = null;
+          }
         }
       }
+      else
+      {
+        ByteString localByteString = ((a)localObject1).g;
+        String str = ((a)localObject1).h.a();
+        if (localByteString.equals(a.b))
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("HTTP/1.1 ");
+          ((StringBuilder)localObject1).append(str);
+          localObject1 = ft.a(((StringBuilder)localObject1).toString());
+          localObject4 = localObject2;
+        }
+        else
+        {
+          localObject1 = localObject3;
+          localObject4 = localObject2;
+          if (!k.contains(localByteString))
+          {
+            fa.a.a((r.a)localObject2, localByteString.a(), str);
+            localObject4 = localObject2;
+            localObject1 = localObject3;
+          }
+        }
+      }
+      i1 += 1;
+      localObject3 = localObject1;
+      localObject2 = localObject4;
     }
-    if (localft == null) {
-      throw new ProtocolException("Expected ':status' header not present");
+    if (localObject3 != null) {
+      return new z.a().a(paramProtocol).a(localObject3.b).a(localObject3.c).a(((r.a)localObject2).a());
     }
-    return new z.a().a(paramProtocol).a(localft.b).a(localft.c).a(locala.a());
+    throw new ProtocolException("Expected ':status' header not present");
   }
   
   public static List<a> b(x paramx)
@@ -129,16 +151,11 @@ public final class d
   
   public z.a a(boolean paramBoolean)
   {
-    z.a locala2 = a(this.n.d(), this.o);
-    z.a locala1 = locala2;
-    if (paramBoolean)
-    {
-      locala1 = locala2;
-      if (fa.a.a(locala2) == 100) {
-        locala1 = null;
-      }
+    z.a locala = a(this.n.d(), this.o);
+    if ((paramBoolean) && (fa.a.a(locala) == 100)) {
+      return null;
     }
-    return locala1;
+    return locala;
   }
   
   public okio.p a(x paramx, long paramLong)
@@ -156,15 +173,16 @@ public final class d
     if (this.n != null) {
       return;
     }
-    if (paramx.d() != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramx = b(paramx);
-      this.n = this.m.a(paramx, bool);
-      this.n.e().a(this.l.c(), TimeUnit.MILLISECONDS);
-      this.n.f().a(this.l.d(), TimeUnit.MILLISECONDS);
-      return;
+    boolean bool;
+    if (paramx.d() != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramx = b(paramx);
+    this.n = this.m.a(paramx, bool);
+    this.n.e().a(this.l.c(), TimeUnit.MILLISECONDS);
+    this.n.f().a(this.l.d(), TimeUnit.MILLISECONDS);
   }
   
   public void b()

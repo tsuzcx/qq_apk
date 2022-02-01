@@ -8,7 +8,7 @@ import com.tencent.token.global.g;
 
 public class cd
 {
-  private static cd b = null;
+  private static cd b;
   public int a = 0;
   private Context c = null;
   private String d = null;
@@ -34,44 +34,34 @@ public class cd
   
   private void d(Context paramContext)
   {
-    if (this.c == paramContext) {}
-    label36:
-    label105:
-    label110:
-    label124:
-    for (;;)
-    {
+    if (this.c == paramContext) {
       return;
-      this.c = paramContext;
-      boolean bool;
-      if (paramContext != null)
-      {
-        bool = true;
-        g.a(bool);
-        paramContext = c(paramContext);
-        if (paramContext == null) {
-          break label105;
-        }
-        bool = true;
-        g.a(bool);
-        this.a = paramContext.getInt("pwd_type", 0);
-        if (this.a != 2) {
-          break label110;
-        }
-      }
-      for (this.d = paramContext.getString("pwd3g", null);; this.d = paramContext.getString("pwd", null))
-      {
-        if (this.a != 0) {
-          break label124;
-        }
-        a(this.c, this.d);
-        this.a = 1;
-        return;
-        bool = false;
-        break;
-        bool = false;
-        break label36;
-      }
+    }
+    this.c = paramContext;
+    boolean bool;
+    if (paramContext != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    g.a(bool);
+    paramContext = c(paramContext);
+    if (paramContext != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    g.a(bool);
+    this.a = paramContext.getInt("pwd_type", 0);
+    if (this.a == 2) {
+      this.d = paramContext.getString("pwd3g", null);
+    } else {
+      this.d = paramContext.getString("pwd", null);
+    }
+    if (this.a == 0)
+    {
+      a(this.c, this.d);
+      this.a = 1;
     }
   }
   
@@ -84,78 +74,87 @@ public class cd
   public void a(Context paramContext, int paramInt)
   {
     paramContext = c(paramContext);
-    if (paramContext != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      g.a(bool);
-      paramContext = paramContext.edit();
-      paramContext.putInt("lock_time", paramInt);
-      paramContext.commit();
-      return;
+    boolean bool;
+    if (paramContext != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    g.a(bool);
+    paramContext = paramContext.edit();
+    paramContext.putInt("lock_time", paramInt);
+    paramContext.commit();
   }
   
   public void a(Context paramContext, long paramLong)
   {
     paramContext = c(paramContext);
-    if (paramContext != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      g.a(bool);
-      paramContext = paramContext.edit();
-      paramContext.putLong("last_lock", paramLong);
-      paramContext.commit();
-      return;
+    boolean bool;
+    if (paramContext != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    g.a(bool);
+    paramContext = paramContext.edit();
+    paramContext.putLong("last_lock", paramLong);
+    paramContext.commit();
   }
   
   public boolean a(Context paramContext, String paramString)
   {
     paramContext = c(paramContext);
     boolean bool;
-    if (paramContext != null)
-    {
+    if (paramContext != null) {
       bool = true;
-      g.a(bool);
-      paramContext = paramContext.edit();
-      if ((paramString != null) && (paramString.length() > 0)) {
-        break label62;
-      }
-      this.d = null;
-      paramContext.remove("pwd");
-    }
-    for (;;)
-    {
-      paramContext.commit();
-      return true;
+    } else {
       bool = false;
-      break;
-      label62:
+    }
+    g.a(bool);
+    paramContext = paramContext.edit();
+    if ((paramString != null) && (paramString.length() > 0))
+    {
       this.d = c(paramString);
       paramContext.putString("pwd", this.d);
       paramContext.putInt("pwd_type", 1);
       this.a = 1;
     }
+    else
+    {
+      this.d = null;
+      paramContext.remove("pwd");
+    }
+    paramContext.commit();
+    return true;
   }
   
   public boolean a(String paramString)
   {
-    if ((paramString == null) || (this.d == null)) {}
-    while (1 > this.a) {
+    if (paramString != null)
+    {
+      String str = this.d;
+      if (str == null) {
+        return false;
+      }
+      if (1 <= this.a) {
+        return str.equals(c(paramString));
+      }
       return false;
     }
-    return this.d.equals(c(paramString));
+    return false;
   }
   
   public int b(Context paramContext)
   {
     paramContext = c(paramContext);
-    if (paramContext != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      g.a(bool);
-      return paramContext.getInt("lock_time", 0);
+    boolean bool;
+    if (paramContext != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    g.a(bool);
+    return paramContext.getInt("lock_time", 0);
   }
   
   public void b(String paramString)
@@ -169,24 +168,15 @@ public class cd
   {
     Object localObject = c(paramContext);
     boolean bool;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       bool = true;
-      g.a(bool);
-      localObject = ((SharedPreferences)localObject).edit();
-      if ((paramString != null) && (paramString.length() > 0)) {
-        break label68;
-      }
-      this.d = null;
-      ((SharedPreferences.Editor)localObject).remove("pwd3g");
-    }
-    for (;;)
-    {
-      ((SharedPreferences.Editor)localObject).commit();
-      return true;
+    } else {
       bool = false;
-      break;
-      label68:
+    }
+    g.a(bool);
+    localObject = ((SharedPreferences)localObject).edit();
+    if ((paramString != null) && (paramString.length() > 0))
+    {
       if (this.a == 1) {
         a(paramContext, null);
       }
@@ -195,6 +185,13 @@ public class cd
       ((SharedPreferences.Editor)localObject).putString("pwd3g", this.d);
       ((SharedPreferences.Editor)localObject).putInt("pwd_type", 2);
     }
+    else
+    {
+      this.d = null;
+      ((SharedPreferences.Editor)localObject).remove("pwd3g");
+    }
+    ((SharedPreferences.Editor)localObject).commit();
+    return true;
   }
   
   public SharedPreferences c(Context paramContext)
@@ -203,24 +200,26 @@ public class cd
     {
     default: 
       return RqdApplication.l().getSharedPreferences("token_pwd_file", 0);
-    case 0: 
-      return RqdApplication.l().getSharedPreferences("token_pwd_file_test", 0);
-    case 1: 
-      return RqdApplication.l().getSharedPreferences("token_pwd_file", 0);
+    case 3: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file_gray", 0);
     case 2: 
       return RqdApplication.l().getSharedPreferences("token_pwd_file_exp", 0);
+    case 1: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file", 0);
     }
-    return RqdApplication.l().getSharedPreferences("token_pwd_file_gray", 0);
+    return RqdApplication.l().getSharedPreferences("token_pwd_file_test", 0);
   }
   
   public boolean c()
   {
-    return (this.d != null) && (this.d.length() > 0);
+    String str = this.d;
+    return (str != null) && (str.length() > 0);
   }
   
   public boolean d()
   {
-    return (this.d != null) && (this.d.length() > 0) && (this.a == 2);
+    String str = this.d;
+    return (str != null) && (str.length() > 0) && (this.a == 2);
   }
   
   public int e()

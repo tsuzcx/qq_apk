@@ -10,24 +10,25 @@ public class DBDumpUtil
   
   public static String buildColumnsString(ArrayList<String> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("(");
-    int i = 0;
-    while (i < paramArrayList.size())
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      localStringBuilder.append((String)paramArrayList.get(i));
-      if (i != paramArrayList.size() - 1) {
-        localStringBuilder.append(",");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("(");
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        localStringBuilder.append((String)paramArrayList.get(i));
+        if (i != paramArrayList.size() - 1) {
+          localStringBuilder.append(",");
+        }
+        i += 1;
       }
-      i += 1;
+      localStringBuilder.append(")");
+      paramArrayList = localStringBuilder.toString();
+      System.out.println(paramArrayList);
+      return paramArrayList;
     }
-    localStringBuilder.append(")");
-    paramArrayList = localStringBuilder.toString();
-    System.out.println(paramArrayList);
-    return paramArrayList;
+    return "";
   }
   
   public static boolean doRecoveryDb(SQLiteDatabase paramSQLiteDatabase, String paramString1, String paramString2, String paramString3)
@@ -40,505 +41,567 @@ public class DBDumpUtil
   {
     // Byte code:
     //   0: aload_0
-    //   1: ifnull +10 -> 11
+    //   1: ifnull +887 -> 888
     //   4: aload_0
     //   5: invokevirtual 80	com/tencent/wcdb/database/SQLiteDatabase:isOpen	()Z
-    //   8: ifne +12 -> 20
-    //   11: ldc 11
-    //   13: ldc 82
-    //   15: invokestatic 88	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   18: iconst_0
-    //   19: ireturn
-    //   20: aload_1
-    //   21: aload_2
-    //   22: aload_3
-    //   23: invokestatic 92	com/tencent/wcdb/repair/DBDumpUtil:nativeDumpDB	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
-    //   26: ifne +5 -> 31
-    //   29: iconst_0
-    //   30: ireturn
-    //   31: new 94	java/io/BufferedReader
-    //   34: dup
-    //   35: new 96	java/io/FileReader
-    //   38: dup
-    //   39: aload_3
-    //   40: invokespecial 98	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   43: invokespecial 101	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   46: astore 17
+    //   8: ifne +6 -> 14
+    //   11: goto +877 -> 888
+    //   14: aload_1
+    //   15: aload_2
+    //   16: aload_3
+    //   17: invokestatic 84	com/tencent/wcdb/repair/DBDumpUtil:nativeDumpDB	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   20: ifne +5 -> 25
+    //   23: iconst_0
+    //   24: ireturn
+    //   25: new 86	java/io/BufferedReader
+    //   28: dup
+    //   29: new 88	java/io/FileReader
+    //   32: dup
+    //   33: aload_3
+    //   34: invokespecial 90	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   37: invokespecial 93	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   40: astore 15
+    //   42: aload_0
+    //   43: ldc 95
+    //   45: invokevirtual 98	com/tencent/wcdb/database/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
     //   48: aload_0
-    //   49: ldc 103
-    //   51: invokevirtual 106	com/tencent/wcdb/database/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
-    //   54: aload_0
-    //   55: invokevirtual 109	com/tencent/wcdb/database/SQLiteDatabase:beginTransaction	()V
-    //   58: iconst_0
-    //   59: istore 11
-    //   61: iconst_0
-    //   62: istore 10
-    //   64: iconst_0
-    //   65: istore 8
-    //   67: aconst_null
-    //   68: astore_2
-    //   69: new 111	java/util/HashMap
-    //   72: dup
-    //   73: invokespecial 112	java/util/HashMap:<init>	()V
-    //   76: astore 18
-    //   78: iconst_0
-    //   79: istore 9
-    //   81: aload 17
-    //   83: invokevirtual 115	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   86: astore 15
-    //   88: aload 15
-    //   90: ifnull +562 -> 652
-    //   93: iload 9
-    //   95: ifeq +168 -> 263
-    //   98: new 28	java/lang/StringBuilder
-    //   101: dup
-    //   102: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   105: aload_2
-    //   106: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: ldc 117
-    //   111: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   114: aload 15
-    //   116: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   122: astore 15
-    //   124: aload 15
-    //   126: astore_2
-    //   127: aload 15
-    //   129: ldc 119
-    //   131: invokevirtual 123	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   134: ifeq -53 -> 81
-    //   137: aload 15
-    //   139: astore_2
-    //   140: aload 15
-    //   142: invokestatic 126	com/tencent/wcdb/repair/DBDumpUtil:nativeIsSqlComplete	(Ljava/lang/String;)Z
-    //   145: ifeq -64 -> 81
-    //   148: aload 15
-    //   150: astore_2
-    //   151: iconst_0
-    //   152: istore 9
-    //   154: aload 5
-    //   156: ifnull +186 -> 342
-    //   159: aload 5
-    //   161: invokeinterface 129 1 0
-    //   166: ifle +176 -> 342
-    //   169: aload_2
-    //   170: invokestatic 133	com/tencent/wcdb/repair/DBDumpUtil:getTableNameFromSql	(Ljava/lang/String;)Ljava/lang/String;
-    //   173: astore 16
-    //   175: aload 5
-    //   177: invokeinterface 137 1 0
-    //   182: astore 15
-    //   184: aload 15
-    //   186: invokeinterface 142 1 0
-    //   191: ifeq +672 -> 863
-    //   194: aload 16
-    //   196: aload 15
-    //   198: invokeinterface 146 1 0
-    //   203: checkcast 41	java/lang/String
-    //   206: invokevirtual 150	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   209: ifeq -25 -> 184
-    //   212: iconst_0
-    //   213: istore 9
-    //   215: goto +651 -> 866
-    //   218: iload 9
-    //   220: ifeq +189 -> 409
-    //   223: ldc 11
-    //   225: ldc 152
-    //   227: iconst_1
-    //   228: anewarray 4	java/lang/Object
-    //   231: dup
-    //   232: iconst_0
-    //   233: aload 16
-    //   235: aastore
-    //   236: invokestatic 156	com/tencent/wcdb/support/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   239: iconst_0
-    //   240: istore 9
-    //   242: goto -161 -> 81
-    //   245: astore_0
-    //   246: ldc 11
-    //   248: ldc 158
-    //   250: iconst_1
-    //   251: anewarray 4	java/lang/Object
-    //   254: dup
-    //   255: iconst_0
-    //   256: aload_3
-    //   257: aastore
-    //   258: invokestatic 160	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   261: iconst_0
-    //   262: ireturn
-    //   263: aload 15
-    //   265: ldc 162
-    //   267: invokevirtual 165	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   270: ifne +13 -> 283
-    //   273: aload 15
-    //   275: ldc 167
-    //   277: invokevirtual 165	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   280: ifeq -199 -> 81
-    //   283: aload 15
-    //   285: ldc 119
-    //   287: invokevirtual 123	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   290: ifeq +11 -> 301
-    //   293: aload 15
-    //   295: invokestatic 126	com/tencent/wcdb/repair/DBDumpUtil:nativeIsSqlComplete	(Ljava/lang/String;)Z
-    //   298: ifne +577 -> 875
-    //   301: aload_2
-    //   302: invokestatic 173	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   305: ifeq +9 -> 314
-    //   308: aload 15
-    //   310: astore_2
-    //   311: goto +558 -> 869
-    //   314: new 28	java/lang/StringBuilder
-    //   317: dup
-    //   318: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   321: aload_2
-    //   322: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: ldc 117
-    //   327: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   330: aload 15
-    //   332: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   335: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   338: astore_2
-    //   339: goto +530 -> 869
-    //   342: aload 4
-    //   344: ifnull +513 -> 857
-    //   347: aload 4
-    //   349: invokeinterface 129 1 0
-    //   354: ifle +503 -> 857
-    //   357: aload_2
-    //   358: invokestatic 133	com/tencent/wcdb/repair/DBDumpUtil:getTableNameFromSql	(Ljava/lang/String;)Ljava/lang/String;
-    //   361: astore 16
-    //   363: aload 4
-    //   365: invokeinterface 137 1 0
-    //   370: astore 15
-    //   372: aload 15
-    //   374: invokeinterface 142 1 0
-    //   379: ifeq +472 -> 851
-    //   382: aload 16
-    //   384: aload 15
-    //   386: invokeinterface 146 1 0
-    //   391: checkcast 41	java/lang/String
-    //   394: invokevirtual 150	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   397: ifeq -25 -> 372
-    //   400: iconst_1
-    //   401: istore 9
-    //   403: ldc 26
-    //   405: astore_2
-    //   406: goto -188 -> 218
-    //   409: aload_2
-    //   410: ldc 167
-    //   412: invokevirtual 165	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   415: ifeq +128 -> 543
-    //   418: aload 18
-    //   420: aload 16
-    //   422: aload_2
-    //   423: invokestatic 177	com/tencent/wcdb/repair/DBDumpUtil:getColumnNamesFromSql	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   426: invokestatic 179	com/tencent/wcdb/repair/DBDumpUtil:buildColumnsString	(Ljava/util/ArrayList;)Ljava/lang/String;
-    //   429: invokevirtual 183	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   432: pop
-    //   433: aload_2
-    //   434: astore 15
-    //   436: aconst_null
-    //   437: astore_2
-    //   438: aload 6
-    //   440: ifnull +13 -> 453
-    //   443: aload 6
-    //   445: aload 15
-    //   447: invokeinterface 186 2 0
-    //   452: astore_2
-    //   453: aload_2
-    //   454: invokestatic 173	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   457: istore 14
-    //   459: iload 14
-    //   461: ifne +384 -> 845
-    //   464: iload 10
-    //   466: iconst_1
-    //   467: iadd
-    //   468: istore 12
-    //   470: aload_0
-    //   471: aload_2
-    //   472: invokevirtual 106	com/tencent/wcdb/database/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
-    //   475: iload 8
-    //   477: iconst_1
-    //   478: iadd
-    //   479: istore 13
-    //   481: iload 13
-    //   483: istore 8
-    //   485: iload 12
-    //   487: istore 9
-    //   489: iload 11
-    //   491: istore 10
-    //   493: iload 13
-    //   495: bipush 100
-    //   497: if_icmplt +26 -> 523
-    //   500: aload_0
-    //   501: invokevirtual 189	com/tencent/wcdb/database/SQLiteDatabase:setTransactionSuccessful	()V
-    //   504: aload_0
-    //   505: invokevirtual 192	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
-    //   508: aload_0
-    //   509: invokevirtual 109	com/tencent/wcdb/database/SQLiteDatabase:beginTransaction	()V
-    //   512: iconst_0
-    //   513: istore 8
-    //   515: iload 11
-    //   517: istore 10
-    //   519: iload 12
-    //   521: istore 9
-    //   523: aconst_null
-    //   524: astore_2
-    //   525: iload 9
-    //   527: istore 12
-    //   529: iconst_0
-    //   530: istore 9
-    //   532: iload 10
-    //   534: istore 11
-    //   536: iload 12
-    //   538: istore 10
-    //   540: goto -459 -> 81
-    //   543: aload_2
-    //   544: astore 15
-    //   546: aload_2
-    //   547: ldc 194
-    //   549: invokevirtual 165	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   552: ifeq -116 -> 436
-    //   555: aload 18
-    //   557: aload 16
-    //   559: invokevirtual 197	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   562: checkcast 41	java/lang/String
-    //   565: astore 19
-    //   567: aload_2
-    //   568: astore 15
-    //   570: aload 19
-    //   572: invokestatic 173	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   575: ifne -139 -> 436
-    //   578: new 28	java/lang/StringBuilder
-    //   581: dup
-    //   582: ldc 199
-    //   584: invokespecial 200	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   587: astore 15
-    //   589: aload 15
-    //   591: ldc 202
-    //   593: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   596: aload 16
-    //   598: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   601: ldc 202
-    //   603: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   606: pop
-    //   607: aload 15
-    //   609: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   612: astore 16
-    //   614: aload 15
-    //   616: aload 19
-    //   618: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   621: pop
-    //   622: aload_2
-    //   623: aload 16
-    //   625: aload 15
-    //   627: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   630: invokevirtual 206	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   633: astore 15
-    //   635: goto -199 -> 436
-    //   638: astore_2
-    //   639: iload 10
-    //   641: istore 9
-    //   643: iload 11
-    //   645: iconst_1
-    //   646: iadd
-    //   647: istore 10
-    //   649: goto -126 -> 523
-    //   652: aload 17
-    //   654: ifnull +8 -> 662
-    //   657: aload 17
-    //   659: invokevirtual 209	java/io/BufferedReader:close	()V
-    //   662: iload 10
-    //   664: iload 11
-    //   666: if_icmple +157 -> 823
-    //   669: aload_0
-    //   670: invokevirtual 212	com/tencent/wcdb/database/SQLiteDatabase:inTransaction	()Z
-    //   673: ifeq +7 -> 680
-    //   676: aload_0
-    //   677: invokevirtual 189	com/tencent/wcdb/database/SQLiteDatabase:setTransactionSuccessful	()V
-    //   680: aload_0
-    //   681: invokevirtual 212	com/tencent/wcdb/database/SQLiteDatabase:inTransaction	()Z
-    //   684: ifeq +7 -> 691
-    //   687: aload_0
-    //   688: invokevirtual 192	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
-    //   691: iload 7
-    //   693: ifeq +45 -> 738
-    //   696: new 214	java/io/File
-    //   699: dup
-    //   700: aload_3
-    //   701: invokespecial 215	java/io/File:<init>	(Ljava/lang/String;)V
-    //   704: astore_0
-    //   705: aload_0
-    //   706: invokevirtual 218	java/io/File:exists	()Z
-    //   709: ifeq +8 -> 717
-    //   712: aload_0
-    //   713: invokevirtual 221	java/io/File:delete	()Z
-    //   716: pop
-    //   717: new 214	java/io/File
-    //   720: dup
-    //   721: aload_1
-    //   722: invokespecial 215	java/io/File:<init>	(Ljava/lang/String;)V
-    //   725: astore_0
-    //   726: aload_0
-    //   727: invokevirtual 218	java/io/File:exists	()Z
-    //   730: ifeq +8 -> 738
-    //   733: aload_0
-    //   734: invokevirtual 221	java/io/File:delete	()Z
-    //   737: pop
-    //   738: ldc 11
-    //   740: ldc 223
-    //   742: iconst_2
-    //   743: anewarray 4	java/lang/Object
-    //   746: dup
-    //   747: iconst_0
-    //   748: iload 10
-    //   750: invokestatic 229	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   753: aastore
-    //   754: dup
-    //   755: iconst_1
-    //   756: iload 11
-    //   758: invokestatic 229	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   761: aastore
-    //   762: invokestatic 156	com/tencent/wcdb/support/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   765: iconst_1
-    //   766: ireturn
-    //   767: astore_2
-    //   768: aload_2
-    //   769: invokevirtual 232	java/io/IOException:printStackTrace	()V
-    //   772: goto -110 -> 662
-    //   775: astore_0
-    //   776: ldc 11
-    //   778: ldc 234
-    //   780: invokestatic 88	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   783: aload 17
-    //   785: ifnull -767 -> 18
-    //   788: aload 17
-    //   790: invokevirtual 209	java/io/BufferedReader:close	()V
-    //   793: iconst_0
-    //   794: ireturn
-    //   795: astore_0
-    //   796: aload_0
-    //   797: invokevirtual 232	java/io/IOException:printStackTrace	()V
-    //   800: iconst_0
-    //   801: ireturn
-    //   802: astore_0
-    //   803: aload 17
-    //   805: ifnull +8 -> 813
-    //   808: aload 17
-    //   810: invokevirtual 209	java/io/BufferedReader:close	()V
-    //   813: aload_0
-    //   814: athrow
-    //   815: astore_1
-    //   816: aload_1
-    //   817: invokevirtual 232	java/io/IOException:printStackTrace	()V
-    //   820: goto -7 -> 813
-    //   823: iconst_0
-    //   824: ireturn
-    //   825: astore_2
-    //   826: iload 12
-    //   828: istore 9
-    //   830: goto -187 -> 643
-    //   833: astore_2
-    //   834: iload 13
-    //   836: istore 8
-    //   838: iload 12
-    //   840: istore 9
-    //   842: goto -199 -> 643
-    //   845: aload 15
-    //   847: astore_2
-    //   848: goto -384 -> 464
-    //   851: iconst_0
-    //   852: istore 9
-    //   854: goto -636 -> 218
-    //   857: aconst_null
-    //   858: astore 16
-    //   860: goto -642 -> 218
-    //   863: iconst_1
-    //   864: istore 9
-    //   866: goto -648 -> 218
-    //   869: iconst_1
-    //   870: istore 9
-    //   872: goto -791 -> 81
-    //   875: aload 15
-    //   877: astore_2
-    //   878: goto -727 -> 151
+    //   49: invokevirtual 101	com/tencent/wcdb/database/SQLiteDatabase:beginTransaction	()V
+    //   52: new 103	java/util/HashMap
+    //   55: dup
+    //   56: invokespecial 104	java/util/HashMap:<init>	()V
+    //   59: astore 16
+    //   61: aconst_null
+    //   62: astore_2
+    //   63: iconst_0
+    //   64: istore 8
+    //   66: iconst_0
+    //   67: istore 12
+    //   69: iconst_0
+    //   70: istore 10
+    //   72: iconst_0
+    //   73: istore 9
+    //   75: aload 15
+    //   77: invokevirtual 107	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   80: astore 13
+    //   82: aload 13
+    //   84: ifnull +627 -> 711
+    //   87: iload 8
+    //   89: ifeq +72 -> 161
+    //   92: new 26	java/lang/StringBuilder
+    //   95: dup
+    //   96: invokespecial 27	java/lang/StringBuilder:<init>	()V
+    //   99: astore 14
+    //   101: aload 14
+    //   103: aload_2
+    //   104: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: pop
+    //   108: aload 14
+    //   110: ldc 109
+    //   112: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: pop
+    //   116: aload 14
+    //   118: aload 13
+    //   120: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: pop
+    //   124: aload 14
+    //   126: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   129: astore 13
+    //   131: aload 13
+    //   133: astore_2
+    //   134: aload 13
+    //   136: ldc 111
+    //   138: invokevirtual 115	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   141: ifeq -66 -> 75
+    //   144: aload 13
+    //   146: astore_2
+    //   147: aload 13
+    //   149: invokestatic 118	com/tencent/wcdb/repair/DBDumpUtil:nativeIsSqlComplete	(Ljava/lang/String;)Z
+    //   152: ifne +50 -> 202
+    //   155: aload 13
+    //   157: astore_2
+    //   158: goto -83 -> 75
+    //   161: aload 13
+    //   163: ldc 120
+    //   165: invokevirtual 123	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   168: ifne +13 -> 181
+    //   171: aload 13
+    //   173: ldc 125
+    //   175: invokevirtual 123	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   178: ifeq -103 -> 75
+    //   181: aload 13
+    //   183: ldc 111
+    //   185: invokevirtual 115	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   188: ifeq +466 -> 654
+    //   191: aload 13
+    //   193: invokestatic 118	com/tencent/wcdb/repair/DBDumpUtil:nativeIsSqlComplete	(Ljava/lang/String;)Z
+    //   196: ifne +721 -> 917
+    //   199: goto +455 -> 654
+    //   202: aload 5
+    //   204: ifnull +62 -> 266
+    //   207: aload 5
+    //   209: invokeinterface 128 1 0
+    //   214: ifle +52 -> 266
+    //   217: aload_2
+    //   218: invokestatic 132	com/tencent/wcdb/repair/DBDumpUtil:getTableNameFromSql	(Ljava/lang/String;)Ljava/lang/String;
+    //   221: astore 13
+    //   223: aload 5
+    //   225: invokeinterface 136 1 0
+    //   230: astore 14
+    //   232: aload 14
+    //   234: invokeinterface 141 1 0
+    //   239: ifeq +684 -> 923
+    //   242: aload 13
+    //   244: aload 14
+    //   246: invokeinterface 145 1 0
+    //   251: checkcast 39	java/lang/String
+    //   254: invokevirtual 149	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   257: ifeq -25 -> 232
+    //   260: iconst_0
+    //   261: istore 8
+    //   263: goto +70 -> 333
+    //   266: aload 4
+    //   268: ifnull +667 -> 935
+    //   271: aload 4
+    //   273: invokeinterface 128 1 0
+    //   278: ifle +657 -> 935
+    //   281: aload_2
+    //   282: invokestatic 132	com/tencent/wcdb/repair/DBDumpUtil:getTableNameFromSql	(Ljava/lang/String;)Ljava/lang/String;
+    //   285: astore 13
+    //   287: aload 4
+    //   289: invokeinterface 136 1 0
+    //   294: astore 14
+    //   296: aload 14
+    //   298: invokeinterface 141 1 0
+    //   303: ifeq +626 -> 929
+    //   306: aload 13
+    //   308: aload 14
+    //   310: invokeinterface 145 1 0
+    //   315: checkcast 39	java/lang/String
+    //   318: invokevirtual 149	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   321: ifeq -25 -> 296
+    //   324: ldc 61
+    //   326: astore_2
+    //   327: iconst_1
+    //   328: istore 8
+    //   330: goto +3 -> 333
+    //   333: iload 8
+    //   335: ifeq +25 -> 360
+    //   338: ldc 11
+    //   340: ldc 151
+    //   342: iconst_1
+    //   343: anewarray 4	java/lang/Object
+    //   346: dup
+    //   347: iconst_0
+    //   348: aload 13
+    //   350: aastore
+    //   351: invokestatic 157	com/tencent/wcdb/support/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   354: iconst_0
+    //   355: istore 8
+    //   357: goto -282 -> 75
+    //   360: iload 10
+    //   362: istore 11
+    //   364: aload_2
+    //   365: ldc 125
+    //   367: invokevirtual 123	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   370: ifeq +28 -> 398
+    //   373: iload 10
+    //   375: istore 11
+    //   377: aload 16
+    //   379: aload 13
+    //   381: aload_2
+    //   382: invokestatic 161	com/tencent/wcdb/repair/DBDumpUtil:getColumnNamesFromSql	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   385: invokestatic 163	com/tencent/wcdb/repair/DBDumpUtil:buildColumnsString	(Ljava/util/ArrayList;)Ljava/lang/String;
+    //   388: invokevirtual 167	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   391: pop
+    //   392: aload_2
+    //   393: astore 14
+    //   395: goto +141 -> 536
+    //   398: aload_2
+    //   399: astore 14
+    //   401: iload 10
+    //   403: istore 11
+    //   405: aload_2
+    //   406: ldc 169
+    //   408: invokevirtual 123	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   411: ifeq +125 -> 536
+    //   414: iload 10
+    //   416: istore 11
+    //   418: aload 16
+    //   420: aload 13
+    //   422: invokevirtual 172	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   425: checkcast 39	java/lang/String
+    //   428: astore 17
+    //   430: aload_2
+    //   431: astore 14
+    //   433: iload 10
+    //   435: istore 11
+    //   437: aload 17
+    //   439: invokestatic 178	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   442: ifne +94 -> 536
+    //   445: iload 10
+    //   447: istore 11
+    //   449: new 26	java/lang/StringBuilder
+    //   452: dup
+    //   453: ldc 180
+    //   455: invokespecial 181	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   458: astore 14
+    //   460: iload 10
+    //   462: istore 11
+    //   464: aload 14
+    //   466: ldc 183
+    //   468: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   471: pop
+    //   472: iload 10
+    //   474: istore 11
+    //   476: aload 14
+    //   478: aload 13
+    //   480: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   483: pop
+    //   484: iload 10
+    //   486: istore 11
+    //   488: aload 14
+    //   490: ldc 183
+    //   492: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   495: pop
+    //   496: iload 10
+    //   498: istore 11
+    //   500: aload 14
+    //   502: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   505: astore 13
+    //   507: iload 10
+    //   509: istore 11
+    //   511: aload 14
+    //   513: aload 17
+    //   515: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   518: pop
+    //   519: iload 10
+    //   521: istore 11
+    //   523: aload_2
+    //   524: aload 13
+    //   526: aload 14
+    //   528: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   531: invokevirtual 187	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   534: astore 14
+    //   536: aload 6
+    //   538: ifnull +406 -> 944
+    //   541: iload 10
+    //   543: istore 11
+    //   545: aload 6
+    //   547: aload 14
+    //   549: invokeinterface 190 2 0
+    //   554: astore_2
+    //   555: goto +3 -> 558
+    //   558: iload 10
+    //   560: istore 11
+    //   562: aload_2
+    //   563: invokestatic 178	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   566: ifne +383 -> 949
+    //   569: goto +3 -> 572
+    //   572: iload 10
+    //   574: iconst_1
+    //   575: iadd
+    //   576: istore 8
+    //   578: iload 8
+    //   580: istore 11
+    //   582: aload_0
+    //   583: aload_2
+    //   584: invokevirtual 98	com/tencent/wcdb/database/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
+    //   587: iload 9
+    //   589: iconst_1
+    //   590: iadd
+    //   591: istore 10
+    //   593: iload 10
+    //   595: istore 9
+    //   597: iload 10
+    //   599: bipush 100
+    //   601: if_icmplt +28 -> 629
+    //   604: aload_0
+    //   605: invokevirtual 193	com/tencent/wcdb/database/SQLiteDatabase:setTransactionSuccessful	()V
+    //   608: aload_0
+    //   609: invokevirtual 196	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
+    //   612: aload_0
+    //   613: invokevirtual 101	com/tencent/wcdb/database/SQLiteDatabase:beginTransaction	()V
+    //   616: iconst_0
+    //   617: istore 9
+    //   619: goto +10 -> 629
+    //   622: iload 10
+    //   624: istore 9
+    //   626: goto +10 -> 636
+    //   629: iload 8
+    //   631: istore 10
+    //   633: goto +13 -> 646
+    //   636: iload 12
+    //   638: iconst_1
+    //   639: iadd
+    //   640: istore 12
+    //   642: iload 8
+    //   644: istore 10
+    //   646: aconst_null
+    //   647: astore_2
+    //   648: iconst_0
+    //   649: istore 8
+    //   651: goto -576 -> 75
+    //   654: aload_2
+    //   655: invokestatic 178	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   658: ifeq +9 -> 667
+    //   661: aload 13
+    //   663: astore_2
+    //   664: goto +41 -> 705
+    //   667: new 26	java/lang/StringBuilder
+    //   670: dup
+    //   671: invokespecial 27	java/lang/StringBuilder:<init>	()V
+    //   674: astore 14
+    //   676: aload 14
+    //   678: aload_2
+    //   679: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   682: pop
+    //   683: aload 14
+    //   685: ldc 109
+    //   687: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   690: pop
+    //   691: aload 14
+    //   693: aload 13
+    //   695: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   698: pop
+    //   699: aload 14
+    //   701: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   704: astore_2
+    //   705: iconst_1
+    //   706: istore 8
+    //   708: goto -633 -> 75
+    //   711: aload 15
+    //   713: invokevirtual 199	java/io/BufferedReader:close	()V
+    //   716: goto +8 -> 724
+    //   719: astore_2
+    //   720: aload_2
+    //   721: invokevirtual 202	java/io/IOException:printStackTrace	()V
+    //   724: iload 10
+    //   726: iload 12
+    //   728: if_icmple +101 -> 829
+    //   731: aload_0
+    //   732: invokevirtual 205	com/tencent/wcdb/database/SQLiteDatabase:inTransaction	()Z
+    //   735: ifeq +7 -> 742
+    //   738: aload_0
+    //   739: invokevirtual 193	com/tencent/wcdb/database/SQLiteDatabase:setTransactionSuccessful	()V
+    //   742: aload_0
+    //   743: invokevirtual 205	com/tencent/wcdb/database/SQLiteDatabase:inTransaction	()Z
+    //   746: ifeq +7 -> 753
+    //   749: aload_0
+    //   750: invokevirtual 196	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
+    //   753: iload 7
+    //   755: ifeq +45 -> 800
+    //   758: new 207	java/io/File
+    //   761: dup
+    //   762: aload_3
+    //   763: invokespecial 208	java/io/File:<init>	(Ljava/lang/String;)V
+    //   766: astore_0
+    //   767: aload_0
+    //   768: invokevirtual 211	java/io/File:exists	()Z
+    //   771: ifeq +8 -> 779
+    //   774: aload_0
+    //   775: invokevirtual 214	java/io/File:delete	()Z
+    //   778: pop
+    //   779: new 207	java/io/File
+    //   782: dup
+    //   783: aload_1
+    //   784: invokespecial 208	java/io/File:<init>	(Ljava/lang/String;)V
+    //   787: astore_0
+    //   788: aload_0
+    //   789: invokevirtual 211	java/io/File:exists	()Z
+    //   792: ifeq +8 -> 800
+    //   795: aload_0
+    //   796: invokevirtual 214	java/io/File:delete	()Z
+    //   799: pop
+    //   800: ldc 11
+    //   802: ldc 216
+    //   804: iconst_2
+    //   805: anewarray 4	java/lang/Object
+    //   808: dup
+    //   809: iconst_0
+    //   810: iload 10
+    //   812: invokestatic 222	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   815: aastore
+    //   816: dup
+    //   817: iconst_1
+    //   818: iload 12
+    //   820: invokestatic 222	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   823: aastore
+    //   824: invokestatic 157	com/tencent/wcdb/support/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   827: iconst_1
+    //   828: ireturn
+    //   829: iconst_0
+    //   830: ireturn
+    //   831: astore_0
+    //   832: goto +24 -> 856
+    //   835: ldc 11
+    //   837: ldc 224
+    //   839: invokestatic 228	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   842: aload 15
+    //   844: invokevirtual 199	java/io/BufferedReader:close	()V
+    //   847: iconst_0
+    //   848: ireturn
+    //   849: astore_0
+    //   850: aload_0
+    //   851: invokevirtual 202	java/io/IOException:printStackTrace	()V
+    //   854: iconst_0
+    //   855: ireturn
+    //   856: aload 15
+    //   858: invokevirtual 199	java/io/BufferedReader:close	()V
+    //   861: goto +8 -> 869
+    //   864: astore_1
+    //   865: aload_1
+    //   866: invokevirtual 202	java/io/IOException:printStackTrace	()V
+    //   869: aload_0
+    //   870: athrow
+    //   871: ldc 11
+    //   873: ldc 230
+    //   875: iconst_1
+    //   876: anewarray 4	java/lang/Object
+    //   879: dup
+    //   880: iconst_0
+    //   881: aload_3
+    //   882: aastore
+    //   883: invokestatic 232	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   886: iconst_0
+    //   887: ireturn
+    //   888: ldc 11
+    //   890: ldc 234
+    //   892: invokestatic 228	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   895: iconst_0
+    //   896: ireturn
+    //   897: astore_0
+    //   898: goto -27 -> 871
+    //   901: astore_0
+    //   902: goto -67 -> 835
+    //   905: astore_2
+    //   906: iload 11
+    //   908: istore 8
+    //   910: goto -274 -> 636
+    //   913: astore_2
+    //   914: goto -292 -> 622
+    //   917: aload 13
+    //   919: astore_2
+    //   920: goto -718 -> 202
+    //   923: iconst_1
+    //   924: istore 8
+    //   926: goto -593 -> 333
+    //   929: iconst_0
+    //   930: istore 8
+    //   932: goto -599 -> 333
+    //   935: aconst_null
+    //   936: astore 13
+    //   938: iconst_0
+    //   939: istore 8
+    //   941: goto -608 -> 333
+    //   944: aconst_null
+    //   945: astore_2
+    //   946: goto -388 -> 558
+    //   949: aload 14
+    //   951: astore_2
+    //   952: goto -380 -> 572
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	881	0	paramSQLiteDatabase	SQLiteDatabase
-    //   0	881	1	paramString1	String
-    //   0	881	2	paramString2	String
-    //   0	881	3	paramString3	String
-    //   0	881	4	paramList1	java.util.List<String>
-    //   0	881	5	paramList2	java.util.List<String>
-    //   0	881	6	paramExecuteSqlCallback	ExecuteSqlCallback
-    //   0	881	7	paramBoolean	boolean
-    //   65	772	8	i	int
-    //   79	792	9	j	int
-    //   62	687	10	k	int
-    //   59	698	11	m	int
-    //   468	371	12	n	int
-    //   479	356	13	i1	int
-    //   457	3	14	bool	boolean
-    //   86	790	15	localObject	Object
-    //   173	686	16	str1	String
-    //   46	763	17	localBufferedReader	java.io.BufferedReader
-    //   76	480	18	localHashMap	java.util.HashMap
-    //   565	52	19	str2	String
+    //   0	955	0	paramSQLiteDatabase	SQLiteDatabase
+    //   0	955	1	paramString1	String
+    //   0	955	2	paramString2	String
+    //   0	955	3	paramString3	String
+    //   0	955	4	paramList1	java.util.List<String>
+    //   0	955	5	paramList2	java.util.List<String>
+    //   0	955	6	paramExecuteSqlCallback	ExecuteSqlCallback
+    //   0	955	7	paramBoolean	boolean
+    //   64	876	8	i	int
+    //   73	552	9	j	int
+    //   70	741	10	k	int
+    //   362	545	11	m	int
+    //   67	752	12	n	int
+    //   80	857	13	str1	String
+    //   99	851	14	localObject	Object
+    //   40	817	15	localBufferedReader	java.io.BufferedReader
+    //   59	360	16	localHashMap	java.util.HashMap
+    //   428	86	17	str2	String
     // Exception table:
     //   from	to	target	type
-    //   31	48	245	java/io/FileNotFoundException
-    //   409	433	638	java/lang/Exception
-    //   443	453	638	java/lang/Exception
-    //   453	459	638	java/lang/Exception
-    //   546	567	638	java/lang/Exception
-    //   570	635	638	java/lang/Exception
-    //   657	662	767	java/io/IOException
-    //   69	78	775	java/io/IOException
-    //   81	88	775	java/io/IOException
-    //   98	124	775	java/io/IOException
-    //   127	137	775	java/io/IOException
-    //   140	148	775	java/io/IOException
-    //   159	184	775	java/io/IOException
-    //   184	212	775	java/io/IOException
-    //   223	239	775	java/io/IOException
-    //   263	283	775	java/io/IOException
-    //   283	301	775	java/io/IOException
-    //   301	308	775	java/io/IOException
-    //   314	339	775	java/io/IOException
-    //   347	372	775	java/io/IOException
-    //   372	400	775	java/io/IOException
-    //   409	433	775	java/io/IOException
-    //   443	453	775	java/io/IOException
-    //   453	459	775	java/io/IOException
-    //   470	475	775	java/io/IOException
-    //   500	512	775	java/io/IOException
-    //   546	567	775	java/io/IOException
-    //   570	635	775	java/io/IOException
-    //   788	793	795	java/io/IOException
-    //   69	78	802	finally
-    //   81	88	802	finally
-    //   98	124	802	finally
-    //   127	137	802	finally
-    //   140	148	802	finally
-    //   159	184	802	finally
-    //   184	212	802	finally
-    //   223	239	802	finally
-    //   263	283	802	finally
-    //   283	301	802	finally
-    //   301	308	802	finally
-    //   314	339	802	finally
-    //   347	372	802	finally
-    //   372	400	802	finally
-    //   409	433	802	finally
-    //   443	453	802	finally
-    //   453	459	802	finally
-    //   470	475	802	finally
-    //   500	512	802	finally
-    //   546	567	802	finally
-    //   570	635	802	finally
-    //   776	783	802	finally
-    //   808	813	815	java/io/IOException
-    //   470	475	825	java/lang/Exception
-    //   500	512	833	java/lang/Exception
+    //   711	716	719	java/io/IOException
+    //   52	61	831	finally
+    //   75	82	831	finally
+    //   92	131	831	finally
+    //   134	144	831	finally
+    //   147	155	831	finally
+    //   161	181	831	finally
+    //   181	199	831	finally
+    //   207	232	831	finally
+    //   232	260	831	finally
+    //   271	296	831	finally
+    //   296	324	831	finally
+    //   338	354	831	finally
+    //   364	373	831	finally
+    //   377	392	831	finally
+    //   405	414	831	finally
+    //   418	430	831	finally
+    //   437	445	831	finally
+    //   449	460	831	finally
+    //   464	472	831	finally
+    //   476	484	831	finally
+    //   488	496	831	finally
+    //   500	507	831	finally
+    //   511	519	831	finally
+    //   523	536	831	finally
+    //   545	555	831	finally
+    //   562	569	831	finally
+    //   582	587	831	finally
+    //   604	616	831	finally
+    //   654	661	831	finally
+    //   667	705	831	finally
+    //   835	842	831	finally
+    //   842	847	849	java/io/IOException
+    //   856	861	864	java/io/IOException
+    //   25	42	897	java/io/FileNotFoundException
+    //   52	61	901	java/io/IOException
+    //   75	82	901	java/io/IOException
+    //   92	131	901	java/io/IOException
+    //   134	144	901	java/io/IOException
+    //   147	155	901	java/io/IOException
+    //   161	181	901	java/io/IOException
+    //   181	199	901	java/io/IOException
+    //   207	232	901	java/io/IOException
+    //   232	260	901	java/io/IOException
+    //   271	296	901	java/io/IOException
+    //   296	324	901	java/io/IOException
+    //   338	354	901	java/io/IOException
+    //   364	373	901	java/io/IOException
+    //   377	392	901	java/io/IOException
+    //   405	414	901	java/io/IOException
+    //   418	430	901	java/io/IOException
+    //   437	445	901	java/io/IOException
+    //   449	460	901	java/io/IOException
+    //   464	472	901	java/io/IOException
+    //   476	484	901	java/io/IOException
+    //   488	496	901	java/io/IOException
+    //   500	507	901	java/io/IOException
+    //   511	519	901	java/io/IOException
+    //   523	536	901	java/io/IOException
+    //   545	555	901	java/io/IOException
+    //   562	569	901	java/io/IOException
+    //   582	587	901	java/io/IOException
+    //   604	616	901	java/io/IOException
+    //   654	661	901	java/io/IOException
+    //   667	705	901	java/io/IOException
+    //   364	373	905	java/lang/Exception
+    //   377	392	905	java/lang/Exception
+    //   405	414	905	java/lang/Exception
+    //   418	430	905	java/lang/Exception
+    //   437	445	905	java/lang/Exception
+    //   449	460	905	java/lang/Exception
+    //   464	472	905	java/lang/Exception
+    //   476	484	905	java/lang/Exception
+    //   488	496	905	java/lang/Exception
+    //   500	507	905	java/lang/Exception
+    //   511	519	905	java/lang/Exception
+    //   523	536	905	java/lang/Exception
+    //   545	555	905	java/lang/Exception
+    //   562	569	905	java/lang/Exception
+    //   582	587	905	java/lang/Exception
+    //   604	616	913	java/lang/Exception
   }
   
   public static ArrayList<String> getColumnNamesFromSql(String paramString)
@@ -577,13 +640,13 @@ public class DBDumpUtil
   public static byte[] readFromFile(String paramString)
   {
     // Byte code:
-    //   0: new 214	java/io/File
+    //   0: new 207	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 215	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 208	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_3
     //   9: aload_3
-    //   10: invokevirtual 218	java/io/File:exists	()Z
+    //   10: invokevirtual 211	java/io/File:exists	()Z
     //   13: ifne +21 -> 34
     //   16: ldc 11
     //   18: ldc_w 273
@@ -593,7 +656,7 @@ public class DBDumpUtil
     //   26: iconst_0
     //   27: aload_0
     //   28: aastore
-    //   29: invokestatic 160	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   29: invokestatic 232	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   32: aconst_null
     //   33: areturn
     //   34: aload_3
@@ -618,7 +681,7 @@ public class DBDumpUtil
     //   68: istore_2
     //   69: iload_2
     //   70: iload_1
-    //   71: if_icmpeq +55 -> 126
+    //   71: if_icmpeq +50 -> 121
     //   74: aload 4
     //   76: astore_3
     //   77: ldc 11
@@ -632,100 +695,100 @@ public class DBDumpUtil
     //   90: dup
     //   91: iconst_1
     //   92: iload_1
-    //   93: invokestatic 229	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   93: invokestatic 222	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   96: aastore
     //   97: dup
     //   98: iconst_2
     //   99: iload_2
-    //   100: invokestatic 229	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   100: invokestatic 222	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   103: aastore
-    //   104: invokestatic 160	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   104: invokestatic 232	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   107: aload 4
-    //   109: ifnull -77 -> 32
-    //   112: aload 4
-    //   114: invokevirtual 288	java/io/FileInputStream:close	()V
-    //   117: aconst_null
-    //   118: areturn
-    //   119: astore_0
-    //   120: aload_0
-    //   121: invokevirtual 232	java/io/IOException:printStackTrace	()V
-    //   124: aconst_null
-    //   125: areturn
-    //   126: aload 4
-    //   128: ifnull +8 -> 136
-    //   131: aload 4
-    //   133: invokevirtual 288	java/io/FileInputStream:close	()V
-    //   136: aload 5
-    //   138: areturn
-    //   139: astore_0
-    //   140: aload_0
-    //   141: invokevirtual 232	java/io/IOException:printStackTrace	()V
-    //   144: goto -8 -> 136
-    //   147: astore 5
-    //   149: aconst_null
-    //   150: astore_0
-    //   151: aload_0
-    //   152: astore_3
-    //   153: aload 5
-    //   155: invokevirtual 289	java/lang/Exception:printStackTrace	()V
-    //   158: aload_0
-    //   159: ifnull +7 -> 166
-    //   162: aload_0
-    //   163: invokevirtual 288	java/io/FileInputStream:close	()V
-    //   166: ldc 11
-    //   168: ldc_w 291
-    //   171: invokestatic 294	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   174: aconst_null
-    //   175: areturn
-    //   176: astore_0
-    //   177: aload_0
-    //   178: invokevirtual 232	java/io/IOException:printStackTrace	()V
-    //   181: goto -15 -> 166
-    //   184: astore_0
-    //   185: aconst_null
-    //   186: astore_3
-    //   187: aload_3
-    //   188: ifnull +7 -> 195
+    //   109: invokevirtual 288	java/io/FileInputStream:close	()V
+    //   112: aconst_null
+    //   113: areturn
+    //   114: astore_0
+    //   115: aload_0
+    //   116: invokevirtual 202	java/io/IOException:printStackTrace	()V
+    //   119: aconst_null
+    //   120: areturn
+    //   121: aload 4
+    //   123: invokevirtual 288	java/io/FileInputStream:close	()V
+    //   126: aload 5
+    //   128: areturn
+    //   129: astore_0
+    //   130: aload_0
+    //   131: invokevirtual 202	java/io/IOException:printStackTrace	()V
+    //   134: aload 5
+    //   136: areturn
+    //   137: astore_3
+    //   138: aload 4
+    //   140: astore_0
+    //   141: aload_3
+    //   142: astore 4
+    //   144: goto +13 -> 157
+    //   147: astore_0
+    //   148: aconst_null
+    //   149: astore_3
+    //   150: goto +41 -> 191
+    //   153: astore 4
+    //   155: aconst_null
+    //   156: astore_0
+    //   157: aload_0
+    //   158: astore_3
+    //   159: aload 4
+    //   161: invokevirtual 289	java/lang/Exception:printStackTrace	()V
+    //   164: aload_0
+    //   165: ifnull +15 -> 180
+    //   168: aload_0
+    //   169: invokevirtual 288	java/io/FileInputStream:close	()V
+    //   172: goto +8 -> 180
+    //   175: astore_0
+    //   176: aload_0
+    //   177: invokevirtual 202	java/io/IOException:printStackTrace	()V
+    //   180: ldc 11
+    //   182: ldc_w 291
+    //   185: invokestatic 294	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   188: aconst_null
+    //   189: areturn
+    //   190: astore_0
     //   191: aload_3
-    //   192: invokevirtual 288	java/io/FileInputStream:close	()V
-    //   195: aload_0
-    //   196: athrow
-    //   197: astore_3
-    //   198: aload_3
-    //   199: invokevirtual 232	java/io/IOException:printStackTrace	()V
-    //   202: goto -7 -> 195
-    //   205: astore_0
-    //   206: goto -19 -> 187
-    //   209: astore 5
-    //   211: aload 4
-    //   213: astore_0
-    //   214: goto -63 -> 151
+    //   192: ifnull +15 -> 207
+    //   195: aload_3
+    //   196: invokevirtual 288	java/io/FileInputStream:close	()V
+    //   199: goto +8 -> 207
+    //   202: astore_3
+    //   203: aload_3
+    //   204: invokevirtual 202	java/io/IOException:printStackTrace	()V
+    //   207: aload_0
+    //   208: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	217	0	paramString	String
+    //   0	209	0	paramString	String
     //   39	54	1	i	int
     //   68	32	2	j	int
-    //   8	184	3	localObject	Object
-    //   197	2	3	localIOException	java.io.IOException
-    //   48	164	4	localFileInputStream	java.io.FileInputStream
-    //   56	81	5	arrayOfByte	byte[]
-    //   147	7	5	localException1	java.lang.Exception
-    //   209	1	5	localException2	java.lang.Exception
+    //   8	69	3	localObject1	Object
+    //   137	5	3	localException1	java.lang.Exception
+    //   149	47	3	str	String
+    //   202	2	3	localIOException	java.io.IOException
+    //   48	95	4	localObject2	Object
+    //   153	7	4	localException2	java.lang.Exception
+    //   56	79	5	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   112	117	119	java/io/IOException
-    //   131	136	139	java/io/IOException
-    //   34	50	147	java/lang/Exception
-    //   162	166	176	java/io/IOException
-    //   34	50	184	finally
-    //   191	195	197	java/io/IOException
-    //   53	58	205	finally
-    //   61	69	205	finally
-    //   77	107	205	finally
-    //   153	158	205	finally
-    //   53	58	209	java/lang/Exception
-    //   61	69	209	java/lang/Exception
-    //   77	107	209	java/lang/Exception
+    //   107	112	114	java/io/IOException
+    //   121	126	129	java/io/IOException
+    //   53	58	137	java/lang/Exception
+    //   61	69	137	java/lang/Exception
+    //   77	107	137	java/lang/Exception
+    //   34	50	147	finally
+    //   34	50	153	java/lang/Exception
+    //   168	172	175	java/io/IOException
+    //   53	58	190	finally
+    //   61	69	190	finally
+    //   77	107	190	finally
+    //   159	164	190	finally
+    //   195	199	202	java/io/IOException
   }
   
   public static abstract interface ExecuteSqlCallback

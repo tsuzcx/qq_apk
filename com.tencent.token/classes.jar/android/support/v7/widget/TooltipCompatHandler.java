@@ -62,23 +62,22 @@ class TooltipCompatHandler
     if (sActiveHandler == this)
     {
       sActiveHandler = null;
-      if (this.mPopup == null) {
-        break label62;
+      TooltipPopup localTooltipPopup = this.mPopup;
+      if (localTooltipPopup != null)
+      {
+        localTooltipPopup.hide();
+        this.mPopup = null;
+        this.mAnchor.removeOnAttachStateChangeListener(this);
       }
-      this.mPopup.hide();
-      this.mPopup = null;
-      this.mAnchor.removeOnAttachStateChangeListener(this);
-    }
-    for (;;)
-    {
-      if (sPendingHandler == this) {
-        setPendingHandler(null);
+      else
+      {
+        Log.e("TooltipCompatHandler", "sActiveHandler.mPopup == null");
       }
-      this.mAnchor.removeCallbacks(this.mHideRunnable);
-      return;
-      label62:
-      Log.e("TooltipCompatHandler", "sActiveHandler.mPopup == null");
     }
+    if (sPendingHandler == this) {
+      setPendingHandler(null);
+    }
+    this.mAnchor.removeCallbacks(this.mHideRunnable);
   }
   
   private void scheduleShow()
@@ -88,24 +87,28 @@ class TooltipCompatHandler
   
   private static void setPendingHandler(TooltipCompatHandler paramTooltipCompatHandler)
   {
-    if (sPendingHandler != null) {
-      sPendingHandler.cancelPendingShow();
+    TooltipCompatHandler localTooltipCompatHandler = sPendingHandler;
+    if (localTooltipCompatHandler != null) {
+      localTooltipCompatHandler.cancelPendingShow();
     }
     sPendingHandler = paramTooltipCompatHandler;
-    if (sPendingHandler != null) {
-      sPendingHandler.scheduleShow();
+    paramTooltipCompatHandler = sPendingHandler;
+    if (paramTooltipCompatHandler != null) {
+      paramTooltipCompatHandler.scheduleShow();
     }
   }
   
   public static void setTooltipText(View paramView, CharSequence paramCharSequence)
   {
-    if ((sPendingHandler != null) && (sPendingHandler.mAnchor == paramView)) {
+    TooltipCompatHandler localTooltipCompatHandler = sPendingHandler;
+    if ((localTooltipCompatHandler != null) && (localTooltipCompatHandler.mAnchor == paramView)) {
       setPendingHandler(null);
     }
     if (TextUtils.isEmpty(paramCharSequence))
     {
-      if ((sActiveHandler != null) && (sActiveHandler.mAnchor == paramView)) {
-        sActiveHandler.hide();
+      paramCharSequence = sActiveHandler;
+      if ((paramCharSequence != null) && (paramCharSequence.mAnchor == paramView)) {
+        paramCharSequence.hide();
       }
       paramView.setOnLongClickListener(null);
       paramView.setLongClickable(false);
@@ -121,8 +124,9 @@ class TooltipCompatHandler
       return;
     }
     setPendingHandler(null);
-    if (sActiveHandler != null) {
-      sActiveHandler.hide();
+    TooltipCompatHandler localTooltipCompatHandler = sActiveHandler;
+    if (localTooltipCompatHandler != null) {
+      localTooltipCompatHandler.hide();
     }
     sActiveHandler = this;
     this.mFromTouch = paramBoolean;
@@ -132,43 +136,39 @@ class TooltipCompatHandler
     long l;
     if (this.mFromTouch) {
       l = 2500L;
+    } else if ((ViewCompat.getWindowSystemUiVisibility(this.mAnchor) & 0x1) == 1) {
+      l = 3000L - ViewConfiguration.getLongPressTimeout();
+    } else {
+      l = 15000L - ViewConfiguration.getLongPressTimeout();
     }
-    for (;;)
-    {
-      this.mAnchor.removeCallbacks(this.mHideRunnable);
-      this.mAnchor.postDelayed(this.mHideRunnable, l);
-      return;
-      if ((ViewCompat.getWindowSystemUiVisibility(this.mAnchor) & 0x1) == 1) {
-        l = 3000L - ViewConfiguration.getLongPressTimeout();
-      } else {
-        l = 15000L - ViewConfiguration.getLongPressTimeout();
-      }
-    }
+    this.mAnchor.removeCallbacks(this.mHideRunnable);
+    this.mAnchor.postDelayed(this.mHideRunnable, l);
   }
   
   public boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.mPopup != null) && (this.mFromTouch)) {}
-    do
+    if ((this.mPopup != null) && (this.mFromTouch)) {
+      return false;
+    }
+    paramView = (AccessibilityManager)this.mAnchor.getContext().getSystemService("accessibility");
+    if ((paramView.isEnabled()) && (paramView.isTouchExplorationEnabled())) {
+      return false;
+    }
+    int i = paramMotionEvent.getAction();
+    if (i != 7)
     {
-      do
-      {
-        return false;
-        paramView = (AccessibilityManager)this.mAnchor.getContext().getSystemService("accessibility");
-      } while ((paramView.isEnabled()) && (paramView.isTouchExplorationEnabled()));
-      switch (paramMotionEvent.getAction())
-      {
-      case 8: 
-      case 9: 
-      default: 
+      if (i != 10) {
         return false;
       }
-    } while ((!this.mAnchor.isEnabled()) || (this.mPopup != null));
-    this.mAnchorX = ((int)paramMotionEvent.getX());
-    this.mAnchorY = ((int)paramMotionEvent.getY());
-    setPendingHandler(this);
-    return false;
-    hide();
+      hide();
+      return false;
+    }
+    if ((this.mAnchor.isEnabled()) && (this.mPopup == null))
+    {
+      this.mAnchorX = ((int)paramMotionEvent.getX());
+      this.mAnchorY = ((int)paramMotionEvent.getY());
+      setPendingHandler(this);
+    }
     return false;
   }
   

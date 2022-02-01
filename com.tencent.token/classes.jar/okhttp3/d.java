@@ -58,77 +58,53 @@ public final class d
   
   public static d a(r paramr)
   {
-    boolean bool6 = false;
-    int i6 = -1;
-    int i5 = -1;
+    int i12 = paramr.a();
+    int i7 = 0;
+    int i1 = 1;
+    Object localObject1 = null;
     boolean bool8 = false;
     boolean bool7 = false;
+    int i6 = -1;
+    int i5 = -1;
+    boolean bool6 = false;
     boolean bool5 = false;
+    boolean bool4 = false;
     int i4 = -1;
     int i3 = -1;
-    boolean bool4 = false;
     boolean bool3 = false;
     boolean bool2 = false;
-    int i1 = 1;
-    int i13 = paramr.a();
-    int i7 = 0;
-    Object localObject1 = null;
     boolean bool1 = false;
-    while (i7 < i13)
+    for (;;)
     {
-      Object localObject2 = paramr.a(i7);
-      String str1 = paramr.b(i7);
-      int i8;
-      if (((String)localObject2).equalsIgnoreCase("Cache-Control")) {
-        if (localObject1 != null)
-        {
+      Object localObject2 = paramr;
+      if (i7 >= i12) {
+        break;
+      }
+      String str2 = ((r)localObject2).a(i7);
+      String str1 = ((r)localObject2).b(i7);
+      if (str2.equalsIgnoreCase("Cache-Control"))
+      {
+        if (localObject1 != null) {
           i1 = 0;
-          i8 = 0;
+        } else {
+          localObject1 = str1;
         }
       }
-      for (;;)
+      else
       {
-        label92:
-        localObject2 = localObject1;
-        bool16 = bool6;
-        i12 = i6;
-        i11 = i5;
-        bool15 = bool8;
-        bool14 = bool7;
-        bool13 = bool5;
-        i10 = i4;
-        i9 = i3;
-        bool12 = bool4;
-        bool11 = bool3;
-        bool10 = bool2;
-        i2 = i1;
-        bool9 = bool1;
-        if (i8 >= str1.length()) {
-          break label633;
+        if (!str2.equalsIgnoreCase("Pragma")) {
+          break label1062;
         }
-        i2 = fn.a(str1, i8, "=,;");
-        String str2 = str1.substring(i8, i2).trim();
-        if ((i2 == str1.length()) || (str1.charAt(i2) == ',') || (str1.charAt(i2) == ';'))
+        i1 = 0;
+      }
+      int i2 = 0;
+      while (i2 < str1.length())
+      {
+        int i8 = fn.a(str1, i2, "=,;");
+        str2 = str1.substring(i2, i8).trim();
+        if ((i8 != str1.length()) && (str1.charAt(i8) != ',') && (str1.charAt(i8) != ';'))
         {
-          i2 += 1;
-          localObject2 = null;
-        }
-        for (;;)
-        {
-          if (!"no-cache".equalsIgnoreCase(str2)) {
-            break label348;
-          }
-          bool1 = true;
-          i8 = i2;
-          break label92;
-          localObject1 = str1;
-          break;
-          if (!((String)localObject2).equalsIgnoreCase("Pragma")) {
-            break label580;
-          }
-          i1 = 0;
-          break;
-          i8 = fn.a(str1, i2 + 1);
+          i8 = fn.a(str1, i8 + 1);
           if ((i8 < str1.length()) && (str1.charAt(i8) == '"'))
           {
             i2 = i8 + 1;
@@ -142,103 +118,223 @@ public final class d
             localObject2 = str1.substring(i8, i2).trim();
           }
         }
-        label348:
-        if ("no-store".equalsIgnoreCase(str2))
+        else
         {
-          bool6 = true;
-          i8 = i2;
+          i2 = i8 + 1;
+          localObject2 = null;
+        }
+        boolean bool9;
+        boolean bool10;
+        int i9;
+        boolean bool11;
+        boolean bool12;
+        boolean bool13;
+        int i10;
+        int i11;
+        boolean bool14;
+        boolean bool15;
+        if ("no-cache".equalsIgnoreCase(str2))
+        {
+          bool9 = true;
+          bool10 = bool7;
+          i8 = i6;
+          i9 = i5;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i10 = i4;
+          i11 = i3;
+          bool14 = bool3;
+          bool15 = bool2;
+        }
+        else if ("no-store".equalsIgnoreCase(str2))
+        {
+          bool10 = true;
+          bool9 = bool8;
+          i8 = i6;
+          i9 = i5;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i10 = i4;
+          i11 = i3;
+          bool14 = bool3;
+          bool15 = bool2;
         }
         else if ("max-age".equalsIgnoreCase(str2))
         {
-          i6 = fn.b((String)localObject2, -1);
-          i8 = i2;
+          i8 = fn.b((String)localObject2, -1);
+          bool9 = bool8;
+          bool10 = bool7;
+          i9 = i5;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i10 = i4;
+          i11 = i3;
+          bool14 = bool3;
+          bool15 = bool2;
         }
         else if ("s-maxage".equalsIgnoreCase(str2))
         {
-          i5 = fn.b((String)localObject2, -1);
-          i8 = i2;
+          i9 = fn.b((String)localObject2, -1);
+          bool9 = bool8;
+          bool10 = bool7;
+          i8 = i6;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i10 = i4;
+          i11 = i3;
+          bool14 = bool3;
+          bool15 = bool2;
         }
         else if ("private".equalsIgnoreCase(str2))
         {
-          bool8 = true;
-          i8 = i2;
+          bool11 = true;
+          bool9 = bool8;
+          bool10 = bool7;
+          i8 = i6;
+          i9 = i5;
+          bool12 = bool5;
+          bool13 = bool4;
+          i10 = i4;
+          i11 = i3;
+          bool14 = bool3;
+          bool15 = bool2;
         }
         else if ("public".equalsIgnoreCase(str2))
         {
-          bool7 = true;
-          i8 = i2;
+          bool12 = true;
+          bool9 = bool8;
+          bool10 = bool7;
+          i8 = i6;
+          i9 = i5;
+          bool11 = bool6;
+          bool13 = bool4;
+          i10 = i4;
+          i11 = i3;
+          bool14 = bool3;
+          bool15 = bool2;
         }
         else if ("must-revalidate".equalsIgnoreCase(str2))
         {
-          bool5 = true;
-          i8 = i2;
+          bool13 = true;
+          bool9 = bool8;
+          bool10 = bool7;
+          i8 = i6;
+          i9 = i5;
+          bool11 = bool6;
+          bool12 = bool5;
+          i10 = i4;
+          i11 = i3;
+          bool14 = bool3;
+          bool15 = bool2;
         }
         else if ("max-stale".equalsIgnoreCase(str2))
         {
-          i4 = fn.b((String)localObject2, 2147483647);
-          i8 = i2;
+          i10 = fn.b((String)localObject2, 2147483647);
+          bool9 = bool8;
+          bool10 = bool7;
+          i8 = i6;
+          i9 = i5;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i11 = i3;
+          bool14 = bool3;
+          bool15 = bool2;
         }
         else if ("min-fresh".equalsIgnoreCase(str2))
         {
-          i3 = fn.b((String)localObject2, -1);
-          i8 = i2;
+          i11 = fn.b((String)localObject2, -1);
+          bool9 = bool8;
+          bool10 = bool7;
+          i8 = i6;
+          i9 = i5;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i10 = i4;
+          bool14 = bool3;
+          bool15 = bool2;
         }
         else if ("only-if-cached".equalsIgnoreCase(str2))
         {
-          bool4 = true;
-          i8 = i2;
+          bool14 = true;
+          bool9 = bool8;
+          bool10 = bool7;
+          i8 = i6;
+          i9 = i5;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i10 = i4;
+          i11 = i3;
+          bool15 = bool2;
         }
         else if ("no-transform".equalsIgnoreCase(str2))
         {
-          bool3 = true;
-          i8 = i2;
+          bool15 = true;
+          bool9 = bool8;
+          bool10 = bool7;
+          i8 = i6;
+          i9 = i5;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i10 = i4;
+          i11 = i3;
+          bool14 = bool3;
         }
         else
         {
-          i8 = i2;
+          bool9 = bool8;
+          bool10 = bool7;
+          i8 = i6;
+          i9 = i5;
+          bool11 = bool6;
+          bool12 = bool5;
+          bool13 = bool4;
+          i10 = i4;
+          i11 = i3;
+          bool14 = bool3;
+          bool15 = bool2;
           if ("immutable".equalsIgnoreCase(str2))
           {
-            bool2 = true;
-            i8 = i2;
+            bool1 = true;
+            bool15 = bool2;
+            bool14 = bool3;
+            i11 = i3;
+            i10 = i4;
+            bool13 = bool4;
+            bool12 = bool5;
+            bool11 = bool6;
+            i9 = i5;
+            i8 = i6;
+            bool10 = bool7;
+            bool9 = bool8;
           }
         }
+        bool8 = bool9;
+        bool7 = bool10;
+        i6 = i8;
+        i5 = i9;
+        bool6 = bool11;
+        bool5 = bool12;
+        bool4 = bool13;
+        i4 = i10;
+        i3 = i11;
+        bool3 = bool14;
+        bool2 = bool15;
       }
-      label580:
-      boolean bool9 = bool1;
-      int i2 = i1;
-      boolean bool10 = bool2;
-      boolean bool11 = bool3;
-      boolean bool12 = bool4;
-      int i9 = i3;
-      int i10 = i4;
-      boolean bool13 = bool5;
-      boolean bool14 = bool7;
-      boolean bool15 = bool8;
-      int i11 = i5;
-      int i12 = i6;
-      boolean bool16 = bool6;
-      localObject2 = localObject1;
-      label633:
+      label1062:
       i7 += 1;
-      bool1 = bool9;
-      localObject1 = localObject2;
-      bool6 = bool16;
-      i6 = i12;
-      i5 = i11;
-      bool8 = bool15;
-      bool7 = bool14;
-      bool5 = bool13;
-      i4 = i10;
-      i3 = i9;
-      bool4 = bool12;
-      bool3 = bool11;
-      bool2 = bool10;
-      i1 = i2;
     }
-    if (i1 == 0) {}
-    for (paramr = null;; paramr = localObject1) {
-      return new d(bool1, bool6, i6, i5, bool8, bool7, bool5, i4, i3, bool4, bool3, bool2, paramr);
+    if (i1 == 0) {
+      localObject1 = null;
     }
+    return new d(bool8, bool7, i6, i5, bool6, bool5, bool4, i4, i3, bool3, bool2, bool1, localObject1);
   }
   
   private String k()
@@ -250,11 +346,17 @@ public final class d
     if (this.e) {
       localStringBuilder.append("no-store, ");
     }
-    if (this.f != -1) {
-      localStringBuilder.append("max-age=").append(this.f).append(", ");
+    if (this.f != -1)
+    {
+      localStringBuilder.append("max-age=");
+      localStringBuilder.append(this.f);
+      localStringBuilder.append(", ");
     }
-    if (this.g != -1) {
-      localStringBuilder.append("s-maxage=").append(this.g).append(", ");
+    if (this.g != -1)
+    {
+      localStringBuilder.append("s-maxage=");
+      localStringBuilder.append(this.g);
+      localStringBuilder.append(", ");
     }
     if (this.h) {
       localStringBuilder.append("private, ");
@@ -265,11 +367,17 @@ public final class d
     if (this.j) {
       localStringBuilder.append("must-revalidate, ");
     }
-    if (this.k != -1) {
-      localStringBuilder.append("max-stale=").append(this.k).append(", ");
+    if (this.k != -1)
+    {
+      localStringBuilder.append("max-stale=");
+      localStringBuilder.append(this.k);
+      localStringBuilder.append(", ");
     }
-    if (this.l != -1) {
-      localStringBuilder.append("min-fresh=").append(this.l).append(", ");
+    if (this.l != -1)
+    {
+      localStringBuilder.append("min-fresh=");
+      localStringBuilder.append(this.l);
+      localStringBuilder.append(", ");
     }
     if (this.m) {
       localStringBuilder.append("only-if-cached, ");
@@ -367,16 +475,21 @@ public final class d
     
     public a a(int paramInt, TimeUnit paramTimeUnit)
     {
-      if (paramInt < 0) {
-        throw new IllegalArgumentException("maxStale < 0: " + paramInt);
-      }
-      long l = paramTimeUnit.toSeconds(paramInt);
-      if (l > 2147483647L) {}
-      for (paramInt = 2147483647;; paramInt = (int)l)
+      if (paramInt >= 0)
       {
+        long l = paramTimeUnit.toSeconds(paramInt);
+        if (l > 2147483647L) {
+          paramInt = 2147483647;
+        } else {
+          paramInt = (int)l;
+        }
         this.d = paramInt;
         return this;
       }
+      paramTimeUnit = new StringBuilder();
+      paramTimeUnit.append("maxStale < 0: ");
+      paramTimeUnit.append(paramInt);
+      throw new IllegalArgumentException(paramTimeUnit.toString());
     }
     
     public a b()

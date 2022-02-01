@@ -60,10 +60,10 @@ public abstract interface ConchService
     
     private static z a(byte[] paramArrayOfByte)
     {
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-        return null;
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
+        return (z)cp.a(paramArrayOfByte, new z(), false);
       }
-      return (z)cp.a(paramArrayOfByte, new z(), false);
+      return null;
     }
     
     private static ConchPushInfo a(Parcel paramParcel)
@@ -71,13 +71,16 @@ public abstract interface ConchService
       long l1 = paramParcel.readLong();
       long l2 = paramParcel.readLong();
       int i = paramParcel.readInt();
-      Object localObject = null;
       if (i > 0)
       {
         localObject = new byte[i];
         paramParcel.readByteArray((byte[])localObject);
       }
-      localObject = new ConchPushInfo(l1, l2, a((byte[])localObject));
+      else
+      {
+        localObject = null;
+      }
+      Object localObject = new ConchPushInfo(l1, l2, a((byte[])localObject));
       if (paramParcel.readByte() == 1) {
         ((ConchPushInfo)localObject).mRevokeInfo = new ConchService.RevokeTaskInfo(paramParcel.readInt(), paramParcel.readInt());
       }
@@ -171,10 +174,10 @@ public abstract interface ConchService
     
     private static aa b(byte[] paramArrayOfByte)
     {
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-        return null;
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
+        return (aa)cp.a(paramArrayOfByte, new aa(), false);
       }
-      return (aa)cp.a(paramArrayOfByte, new aa(), false);
+      return null;
     }
     
     private static ConchPushResp c(Parcel paramParcel)
@@ -203,22 +206,21 @@ public abstract interface ConchService
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      if (this.mConchPushResults == null) {
-        paramParcel.writeInt(0);
-      }
-      for (;;)
+      Object localObject = this.mConchPushResults;
+      paramInt = 0;
+      if (localObject == null)
       {
+        paramParcel.writeInt(0);
         return;
-        int i = this.mConchPushResults.size();
-        paramParcel.writeInt(i);
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          byte[] arrayOfByte = a((aa)this.mConchPushResults.get(paramInt));
-          paramParcel.writeInt(arrayOfByte.length);
-          paramParcel.writeByteArray(arrayOfByte);
-          paramInt += 1;
-        }
+      }
+      int i = ((List)localObject).size();
+      paramParcel.writeInt(i);
+      while (paramInt < i)
+      {
+        localObject = a((aa)this.mConchPushResults.get(paramInt));
+        paramParcel.writeInt(localObject.length);
+        paramParcel.writeByteArray((byte[])localObject);
+        paramInt += 1;
       }
     }
   }

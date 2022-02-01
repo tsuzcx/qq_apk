@@ -2,7 +2,7 @@ package com.tencent.token;
 
 public class ev
 {
-  private static ew a = null;
+  private static ew a;
   
   public static ew a()
   {

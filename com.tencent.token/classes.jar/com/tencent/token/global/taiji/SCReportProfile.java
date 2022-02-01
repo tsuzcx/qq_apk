@@ -23,11 +23,13 @@ public final class SCReportProfile
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 0);
+    String str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.retCode != 0) {
-      paramJceOutputStream.write(this.retCode, 1);
+    int i = this.retCode;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
   }
 }

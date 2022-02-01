@@ -11,8 +11,13 @@ public final class fr
     String str1 = params.h();
     String str2 = params.j();
     params = str1;
-    if (str2 != null) {
-      params = str1 + '?' + str2;
+    if (str2 != null)
+    {
+      params = new StringBuilder();
+      params.append(str1);
+      params.append('?');
+      params.append(str2);
+      params = params.toString();
     }
     return params;
   }
@@ -24,13 +29,11 @@ public final class fr
     localStringBuilder.append(' ');
     if (b(paramx, paramType)) {
       localStringBuilder.append(paramx.a());
-    }
-    for (;;)
-    {
-      localStringBuilder.append(" HTTP/1.1");
-      return localStringBuilder.toString();
+    } else {
       localStringBuilder.append(a(paramx.a()));
     }
+    localStringBuilder.append(" HTTP/1.1");
+    return localStringBuilder.toString();
   }
   
   private static boolean b(x paramx, Proxy.Type paramType)

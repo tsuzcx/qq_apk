@@ -62,17 +62,21 @@ public final class e
     paramb.a(this.f, 0);
     paramb.a(this.g, 1);
     paramb.a(this.a, 2);
-    if (this.b != null) {
-      paramb.a(this.b, 3);
+    Object localObject = this.b;
+    if (localObject != null) {
+      paramb.a((com.tencent.halley.common.b.c)localObject, 3);
     }
-    if (this.c != null) {
-      paramb.a(this.c, 4);
+    localObject = this.c;
+    if (localObject != null) {
+      paramb.a((com.tencent.halley.common.b.c)localObject, 4);
     }
-    if (this.d != null) {
-      paramb.a(this.d, 5);
+    localObject = this.d;
+    if (localObject != null) {
+      paramb.a((Map)localObject, 5);
     }
-    if (this.e != null) {
-      paramb.a(this.e, 6);
+    localObject = this.e;
+    if (localObject != null) {
+      paramb.a((Map)localObject, 6);
     }
   }
 }

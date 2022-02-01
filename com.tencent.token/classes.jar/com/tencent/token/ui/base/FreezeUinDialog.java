@@ -38,19 +38,19 @@ public class FreezeUinDialog
   protected void onCreate(final Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968669);
+    setContentView(2131296349);
     paramBundle = getWindow();
     WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
-    localLayoutParams.width = ((int)(((Activity)this.e).getWindowManager().getDefaultDisplay().getWidth() - 46.0F * IndexActivity.S_DENSITY));
+    localLayoutParams.width = ((int)(((Activity)this.e).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
     paramBundle.setAttributes(localLayoutParams);
-    this.c = ((TextView)findViewById(2131558933));
-    paramBundle = String.format(this.e.getString(2131231046), new Object[] { this.b });
+    this.c = ((TextView)findViewById(2131165534));
+    paramBundle = String.format(this.e.getString(2131493188), new Object[] { this.b });
     this.c.setText(paramBundle);
-    this.d = ((TextView)findViewById(2131558934));
-    paramBundle = String.format(this.e.getString(2131231044), new Object[] { Integer.valueOf(this.a) });
+    this.d = ((TextView)findViewById(2131165533));
+    paramBundle = String.format(this.e.getString(2131493186), new Object[] { Integer.valueOf(this.a) });
     this.d.setText(paramBundle);
-    paramBundle = (CheckBox)findViewById(2131558935);
-    ((TextView)findViewById(2131558937)).setOnClickListener(new View.OnClickListener()
+    paramBundle = (CheckBox)findViewById(2131165538);
+    ((TextView)findViewById(2131165531)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -59,21 +59,16 @@ public class FreezeUinDialog
         {
           g.a("freeze: msg=4009");
           paramAnonymousView = FreezeUinDialog.a(FreezeUinDialog.this).obtainMessage(4009);
-          if (!paramBundle.isChecked()) {
-            break label64;
+          if (paramBundle.isChecked()) {
+            paramAnonymousView.arg1 = 1;
+          } else {
+            paramAnonymousView.arg2 = 0;
           }
-          paramAnonymousView.arg1 = 1;
-        }
-        for (;;)
-        {
           FreezeUinDialog.a(FreezeUinDialog.this).sendMessage(paramAnonymousView);
-          return;
-          label64:
-          paramAnonymousView.arg2 = 0;
         }
       }
     });
-    ((TextView)findViewById(2131558936)).setOnClickListener(new View.OnClickListener()
+    ((TextView)findViewById(2131165530)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {

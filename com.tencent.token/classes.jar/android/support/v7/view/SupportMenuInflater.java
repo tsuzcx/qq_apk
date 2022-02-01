@@ -12,7 +12,6 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.appcompat.R.styleable;
 import android.support.v7.view.menu.MenuItemImpl;
 import android.support.v7.view.menu.MenuItemWrapperICS;
-import android.support.v7.widget.DrawableUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.InflateException;
@@ -52,103 +51,148 @@ public class SupportMenuInflater
   
   private Object findRealOwner(Object paramObject)
   {
-    if ((paramObject instanceof Activity)) {}
-    while (!(paramObject instanceof ContextWrapper)) {
+    if ((paramObject instanceof Activity)) {
       return paramObject;
     }
-    return findRealOwner(((ContextWrapper)paramObject).getBaseContext());
+    if ((paramObject instanceof ContextWrapper)) {
+      return findRealOwner(((ContextWrapper)paramObject).getBaseContext());
+    }
+    return paramObject;
   }
   
   private void parseMenu(XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Menu paramMenu)
   {
     MenuState localMenuState = new MenuState(paramMenu);
     int i = paramXmlPullParser.getEventType();
-    label49:
-    int k;
-    int j;
-    if (i == 2)
+    do
     {
-      paramMenu = paramXmlPullParser.getName();
-      if (paramMenu.equals("menu"))
+      if (i == 2)
       {
-        i = paramXmlPullParser.next();
-        paramMenu = null;
-        int m = 0;
-        k = i;
-        j = 0;
-        i = m;
-        label65:
-        if (j != 0) {
-          return;
-        }
-      }
-    }
-    switch (k)
-    {
-    default: 
-    case 2: 
-    case 3: 
-      for (;;)
-      {
-        k = paramXmlPullParser.next();
-        break label65;
-        throw new RuntimeException("Expecting menu, got " + paramMenu);
-        j = paramXmlPullParser.next();
-        i = j;
-        if (j != 1) {
+        paramMenu = paramXmlPullParser.getName();
+        if (paramMenu.equals("menu"))
+        {
+          i = paramXmlPullParser.next();
           break;
         }
-        i = j;
-        break label49;
-        if (i == 0)
+        paramXmlPullParser = new StringBuilder();
+        paramXmlPullParser.append("Expecting menu, got ");
+        paramXmlPullParser.append(paramMenu);
+        throw new RuntimeException(paramXmlPullParser.toString());
+      }
+      j = paramXmlPullParser.next();
+      i = j;
+    } while (j != 1);
+    i = j;
+    Object localObject = null;
+    int j = 0;
+    int k = 0;
+    int n = i;
+    while (j == 0)
+    {
+      int m;
+      switch (n)
+      {
+      default: 
+        i = k;
+        paramMenu = (Menu)localObject;
+        m = j;
+        break;
+      case 3: 
+        String str = paramXmlPullParser.getName();
+        if ((k != 0) && (str.equals(localObject)))
         {
-          String str = paramXmlPullParser.getName();
-          if (str.equals("group"))
+          paramMenu = null;
+          i = 0;
+          m = j;
+        }
+        else if (str.equals("group"))
+        {
+          localMenuState.resetGroup();
+          i = k;
+          paramMenu = (Menu)localObject;
+          m = j;
+        }
+        else if (str.equals("item"))
+        {
+          i = k;
+          paramMenu = (Menu)localObject;
+          m = j;
+          if (!localMenuState.hasAddedItem()) {
+            if ((localMenuState.itemActionProvider != null) && (localMenuState.itemActionProvider.hasSubMenu()))
+            {
+              localMenuState.addSubMenuItem();
+              i = k;
+              paramMenu = (Menu)localObject;
+              m = j;
+            }
+            else
+            {
+              localMenuState.addItem();
+              i = k;
+              paramMenu = (Menu)localObject;
+              m = j;
+            }
+          }
+        }
+        else
+        {
+          i = k;
+          paramMenu = (Menu)localObject;
+          m = j;
+          if (str.equals("menu"))
+          {
+            m = 1;
+            i = k;
+            paramMenu = (Menu)localObject;
+          }
+        }
+        break;
+      case 2: 
+        if (k != 0)
+        {
+          i = k;
+          paramMenu = (Menu)localObject;
+          m = j;
+        }
+        else
+        {
+          paramMenu = paramXmlPullParser.getName();
+          if (paramMenu.equals("group"))
           {
             localMenuState.readGroup(paramAttributeSet);
+            i = k;
+            paramMenu = (Menu)localObject;
+            m = j;
           }
-          else if (str.equals("item"))
+          else if (paramMenu.equals("item"))
           {
             localMenuState.readItem(paramAttributeSet);
+            i = k;
+            paramMenu = (Menu)localObject;
+            m = j;
           }
-          else if (str.equals("menu"))
+          else if (paramMenu.equals("menu"))
           {
             parseMenu(paramXmlPullParser, paramAttributeSet, localMenuState.addSubMenuItem());
+            i = k;
+            paramMenu = (Menu)localObject;
+            m = j;
           }
           else
           {
-            paramMenu = str;
             i = 1;
-            continue;
-            str = paramXmlPullParser.getName();
-            if ((i != 0) && (str.equals(paramMenu)))
-            {
-              paramMenu = null;
-              i = 0;
-            }
-            else if (str.equals("group"))
-            {
-              localMenuState.resetGroup();
-            }
-            else if (str.equals("item"))
-            {
-              if (!localMenuState.hasAddedItem()) {
-                if ((localMenuState.itemActionProvider != null) && (localMenuState.itemActionProvider.hasSubMenu())) {
-                  localMenuState.addSubMenuItem();
-                } else {
-                  localMenuState.addItem();
-                }
-              }
-            }
-            else if (str.equals("menu"))
-            {
-              j = 1;
-            }
+            m = j;
           }
         }
+        break;
+      case 1: 
+        throw new RuntimeException("Unexpected end of document");
       }
+      n = paramXmlPullParser.next();
+      k = i;
+      localObject = paramMenu;
+      j = m;
     }
-    throw new RuntimeException("Unexpected end of document");
   }
   
   Object getRealOwner()
@@ -172,11 +216,11 @@ public class SupportMenuInflater
     //   10: invokespecial 167	android/view/MenuInflater:inflate	(ILandroid/view/Menu;)V
     //   13: return
     //   14: aconst_null
-    //   15: astore_3
-    //   16: aconst_null
-    //   17: astore 5
-    //   19: aconst_null
-    //   20: astore 4
+    //   15: astore 4
+    //   17: aconst_null
+    //   18: astore 5
+    //   20: aconst_null
+    //   21: astore_3
     //   22: aload_0
     //   23: getfield 58	android/support/v7/view/SupportMenuInflater:mContext	Landroid/content/Context;
     //   26: invokevirtual 171	android/content/Context:getResources	()Landroid/content/res/Resources;
@@ -184,9 +228,9 @@ public class SupportMenuInflater
     //   30: invokevirtual 177	android/content/res/Resources:getLayout	(I)Landroid/content/res/XmlResourceParser;
     //   33: astore 6
     //   35: aload 6
-    //   37: astore 4
-    //   39: aload 6
-    //   41: astore_3
+    //   37: astore_3
+    //   38: aload 6
+    //   40: astore 4
     //   42: aload 6
     //   44: astore 5
     //   46: aload_0
@@ -194,56 +238,57 @@ public class SupportMenuInflater
     //   49: aload 6
     //   51: invokestatic 183	android/util/Xml:asAttributeSet	(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
     //   54: aload_2
-    //   55: invokespecial 131	android/support/v7/view/SupportMenuInflater:parseMenu	(Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Landroid/view/Menu;)V
+    //   55: invokespecial 150	android/support/v7/view/SupportMenuInflater:parseMenu	(Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Landroid/view/Menu;)V
     //   58: aload 6
-    //   60: ifnull -47 -> 13
+    //   60: ifnull +10 -> 70
     //   63: aload 6
     //   65: invokeinterface 188 1 0
     //   70: return
     //   71: astore_2
-    //   72: aload 4
-    //   74: astore_3
-    //   75: new 190	android/view/InflateException
-    //   78: dup
-    //   79: ldc 192
-    //   81: aload_2
-    //   82: invokespecial 195	android/view/InflateException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   85: athrow
-    //   86: astore_2
-    //   87: aload_3
-    //   88: ifnull +9 -> 97
-    //   91: aload_3
-    //   92: invokeinterface 188 1 0
-    //   97: aload_2
-    //   98: athrow
-    //   99: astore_2
-    //   100: aload 5
-    //   102: astore_3
-    //   103: new 190	android/view/InflateException
-    //   106: dup
-    //   107: ldc 192
-    //   109: aload_2
-    //   110: invokespecial 195	android/view/InflateException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   113: athrow
+    //   72: goto +33 -> 105
+    //   75: astore_2
+    //   76: aload 4
+    //   78: astore_3
+    //   79: new 190	android/view/InflateException
+    //   82: dup
+    //   83: ldc 192
+    //   85: aload_2
+    //   86: invokespecial 195	android/view/InflateException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   89: athrow
+    //   90: astore_2
+    //   91: aload 5
+    //   93: astore_3
+    //   94: new 190	android/view/InflateException
+    //   97: dup
+    //   98: ldc 192
+    //   100: aload_2
+    //   101: invokespecial 195	android/view/InflateException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   104: athrow
+    //   105: aload_3
+    //   106: ifnull +9 -> 115
+    //   109: aload_3
+    //   110: invokeinterface 188 1 0
+    //   115: aload_2
+    //   116: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	114	0	this	SupportMenuInflater
-    //   0	114	1	paramInt	int
-    //   0	114	2	paramMenu	Menu
-    //   15	88	3	localObject1	Object
-    //   20	53	4	localObject2	Object
-    //   17	84	5	localObject3	Object
+    //   0	117	0	this	SupportMenuInflater
+    //   0	117	1	paramInt	int
+    //   0	117	2	paramMenu	Menu
+    //   21	89	3	localObject1	Object
+    //   15	62	4	localObject2	Object
+    //   18	74	5	localObject3	Object
     //   33	31	6	localXmlResourceParser	android.content.res.XmlResourceParser
     // Exception table:
     //   from	to	target	type
-    //   22	35	71	org/xmlpull/v1/XmlPullParserException
-    //   46	58	71	org/xmlpull/v1/XmlPullParserException
-    //   22	35	86	finally
-    //   46	58	86	finally
-    //   75	86	86	finally
-    //   103	114	86	finally
-    //   22	35	99	java/io/IOException
-    //   46	58	99	java/io/IOException
+    //   22	35	71	finally
+    //   46	58	71	finally
+    //   79	90	71	finally
+    //   94	105	71	finally
+    //   22	35	75	java/io/IOException
+    //   46	58	75	java/io/IOException
+    //   22	35	90	org/xmlpull/v1/XmlPullParserException
+    //   46	58	90	org/xmlpull/v1/XmlPullParserException
   }
   
   private static class InflatedOnMenuItemClickListener
@@ -264,7 +309,12 @@ public class SupportMenuInflater
       }
       catch (Exception paramObject)
       {
-        paramString = new InflateException("Couldn't resolve menu item onClick handler " + paramString + " in class " + localClass.getName());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Couldn't resolve menu item onClick handler ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" in class ");
+        localStringBuilder.append(localClass.getName());
+        paramString = new InflateException(localStringBuilder.toString());
         paramString.initCause(paramObject);
         throw paramString;
       }
@@ -354,83 +404,76 @@ public class SupportMenuInflater
       }
       catch (Exception paramArrayOfClass)
       {
-        Log.w("SupportMenuInflater", "Cannot instantiate class: " + paramString, paramArrayOfClass);
+        paramArrayOfObject = new StringBuilder();
+        paramArrayOfObject.append("Cannot instantiate class: ");
+        paramArrayOfObject.append(paramString);
+        Log.w("SupportMenuInflater", paramArrayOfObject.toString(), paramArrayOfClass);
       }
       return null;
     }
     
     private void setItem(MenuItem paramMenuItem)
     {
-      int i = 1;
       Object localObject = paramMenuItem.setChecked(this.itemChecked).setVisible(this.itemVisible).setEnabled(this.itemEnabled);
-      if (this.itemCheckable >= 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ((MenuItem)localObject).setCheckable(bool).setTitleCondensed(this.itemTitleCondensed).setIcon(this.itemIconResId);
-        if (this.itemShowAsAction >= 0) {
-          paramMenuItem.setShowAsAction(this.itemShowAsAction);
-        }
-        if (this.itemListenerMethodName == null) {
-          break label146;
-        }
-        if (!SupportMenuInflater.this.mContext.isRestricted()) {
-          break;
-        }
-        throw new IllegalStateException("The android:onClick attribute cannot be used within a restricted context");
+      int j = this.itemCheckable;
+      int i = 0;
+      if (j >= 1) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      paramMenuItem.setOnMenuItemClickListener(new SupportMenuInflater.InflatedOnMenuItemClickListener(SupportMenuInflater.this.getRealOwner(), this.itemListenerMethodName));
-      label146:
-      if ((paramMenuItem instanceof MenuItemImpl)) {
+      ((MenuItem)localObject).setCheckable(bool).setTitleCondensed(this.itemTitleCondensed).setIcon(this.itemIconResId);
+      j = this.itemShowAsAction;
+      if (j >= 0) {
+        paramMenuItem.setShowAsAction(j);
+      }
+      if (this.itemListenerMethodName != null) {
+        if (!SupportMenuInflater.this.mContext.isRestricted()) {
+          paramMenuItem.setOnMenuItemClickListener(new SupportMenuInflater.InflatedOnMenuItemClickListener(SupportMenuInflater.this.getRealOwner(), this.itemListenerMethodName));
+        } else {
+          throw new IllegalStateException("The android:onClick attribute cannot be used within a restricted context");
+        }
+      }
+      boolean bool = paramMenuItem instanceof MenuItemImpl;
+      if (bool) {
         localObject = (MenuItemImpl)paramMenuItem;
       }
-      if (this.itemCheckable >= 2)
-      {
-        if ((paramMenuItem instanceof MenuItemImpl)) {
+      if (this.itemCheckable >= 2) {
+        if (bool) {
           ((MenuItemImpl)paramMenuItem).setExclusiveCheckable(true);
-        }
-      }
-      else
-      {
-        if (this.itemActionViewClassName == null) {
-          break label356;
-        }
-        paramMenuItem.setActionView((View)newInstance(this.itemActionViewClassName, SupportMenuInflater.ACTION_VIEW_CONSTRUCTOR_SIGNATURE, SupportMenuInflater.this.mActionViewConstructorArguments));
-      }
-      for (;;)
-      {
-        if (this.itemActionViewLayout > 0)
-        {
-          if (i != 0) {
-            break label344;
-          }
-          paramMenuItem.setActionView(this.itemActionViewLayout);
-        }
-        for (;;)
-        {
-          if (this.itemActionProvider != null) {
-            MenuItemCompat.setActionProvider(paramMenuItem, this.itemActionProvider);
-          }
-          MenuItemCompat.setContentDescription(paramMenuItem, this.itemContentDescription);
-          MenuItemCompat.setTooltipText(paramMenuItem, this.itemTooltipText);
-          MenuItemCompat.setAlphabeticShortcut(paramMenuItem, this.itemAlphabeticShortcut, this.itemAlphabeticModifiers);
-          MenuItemCompat.setNumericShortcut(paramMenuItem, this.itemNumericShortcut, this.itemNumericModifiers);
-          if (this.itemIconTintMode != null) {
-            MenuItemCompat.setIconTintMode(paramMenuItem, this.itemIconTintMode);
-          }
-          if (this.itemIconTintList != null) {
-            MenuItemCompat.setIconTintList(paramMenuItem, this.itemIconTintList);
-          }
-          return;
-          if (!(paramMenuItem instanceof MenuItemWrapperICS)) {
-            break;
-          }
+        } else if ((paramMenuItem instanceof MenuItemWrapperICS)) {
           ((MenuItemWrapperICS)paramMenuItem).setExclusiveCheckable(true);
-          break;
-          label344:
+        }
+      }
+      localObject = this.itemActionViewClassName;
+      if (localObject != null)
+      {
+        paramMenuItem.setActionView((View)newInstance((String)localObject, SupportMenuInflater.ACTION_VIEW_CONSTRUCTOR_SIGNATURE, SupportMenuInflater.this.mActionViewConstructorArguments));
+        i = 1;
+      }
+      j = this.itemActionViewLayout;
+      if (j > 0) {
+        if (i == 0) {
+          paramMenuItem.setActionView(j);
+        } else {
           Log.w("SupportMenuInflater", "Ignoring attribute 'itemActionViewLayout'. Action view already specified.");
         }
-        label356:
-        i = 0;
+      }
+      localObject = this.itemActionProvider;
+      if (localObject != null) {
+        MenuItemCompat.setActionProvider(paramMenuItem, (ActionProvider)localObject);
+      }
+      MenuItemCompat.setContentDescription(paramMenuItem, this.itemContentDescription);
+      MenuItemCompat.setTooltipText(paramMenuItem, this.itemTooltipText);
+      MenuItemCompat.setAlphabeticShortcut(paramMenuItem, this.itemAlphabeticShortcut, this.itemAlphabeticModifiers);
+      MenuItemCompat.setNumericShortcut(paramMenuItem, this.itemNumericShortcut, this.itemNumericModifiers);
+      localObject = this.itemIconTintMode;
+      if (localObject != null) {
+        MenuItemCompat.setIconTintMode(paramMenuItem, (PorterDuff.Mode)localObject);
+      }
+      localObject = this.itemIconTintList;
+      if (localObject != null) {
+        MenuItemCompat.setIconTintList(paramMenuItem, (ColorStateList)localObject);
       }
     }
     
@@ -467,77 +510,7 @@ public class SupportMenuInflater
     
     public void readItem(AttributeSet paramAttributeSet)
     {
-      int j = 1;
-      paramAttributeSet = SupportMenuInflater.this.mContext.obtainStyledAttributes(paramAttributeSet, R.styleable.MenuItem);
-      this.itemId = paramAttributeSet.getResourceId(R.styleable.MenuItem_android_id, 0);
-      this.itemCategoryOrder = (paramAttributeSet.getInt(R.styleable.MenuItem_android_menuCategory, this.groupCategory) & 0xFFFF0000 | paramAttributeSet.getInt(R.styleable.MenuItem_android_orderInCategory, this.groupOrder) & 0xFFFF);
-      this.itemTitle = paramAttributeSet.getText(R.styleable.MenuItem_android_title);
-      this.itemTitleCondensed = paramAttributeSet.getText(R.styleable.MenuItem_android_titleCondensed);
-      this.itemIconResId = paramAttributeSet.getResourceId(R.styleable.MenuItem_android_icon, 0);
-      this.itemAlphabeticShortcut = getShortcut(paramAttributeSet.getString(R.styleable.MenuItem_android_alphabeticShortcut));
-      this.itemAlphabeticModifiers = paramAttributeSet.getInt(R.styleable.MenuItem_alphabeticModifiers, 4096);
-      this.itemNumericShortcut = getShortcut(paramAttributeSet.getString(R.styleable.MenuItem_android_numericShortcut));
-      this.itemNumericModifiers = paramAttributeSet.getInt(R.styleable.MenuItem_numericModifiers, 4096);
-      int i;
-      if (paramAttributeSet.hasValue(R.styleable.MenuItem_android_checkable)) {
-        if (paramAttributeSet.getBoolean(R.styleable.MenuItem_android_checkable, false))
-        {
-          i = 1;
-          this.itemCheckable = i;
-          label184:
-          this.itemChecked = paramAttributeSet.getBoolean(R.styleable.MenuItem_android_checked, false);
-          this.itemVisible = paramAttributeSet.getBoolean(R.styleable.MenuItem_android_visible, this.groupVisible);
-          this.itemEnabled = paramAttributeSet.getBoolean(R.styleable.MenuItem_android_enabled, this.groupEnabled);
-          this.itemShowAsAction = paramAttributeSet.getInt(R.styleable.MenuItem_showAsAction, -1);
-          this.itemListenerMethodName = paramAttributeSet.getString(R.styleable.MenuItem_android_onClick);
-          this.itemActionViewLayout = paramAttributeSet.getResourceId(R.styleable.MenuItem_actionLayout, 0);
-          this.itemActionViewClassName = paramAttributeSet.getString(R.styleable.MenuItem_actionViewClass);
-          this.itemActionProviderClassName = paramAttributeSet.getString(R.styleable.MenuItem_actionProviderClass);
-          if (this.itemActionProviderClassName == null) {
-            break label433;
-          }
-          i = j;
-          label292:
-          if ((i == 0) || (this.itemActionViewLayout != 0) || (this.itemActionViewClassName != null)) {
-            break label438;
-          }
-          this.itemActionProvider = ((ActionProvider)newInstance(this.itemActionProviderClassName, SupportMenuInflater.ACTION_PROVIDER_CONSTRUCTOR_SIGNATURE, SupportMenuInflater.this.mActionProviderConstructorArguments));
-          label335:
-          this.itemContentDescription = paramAttributeSet.getText(R.styleable.MenuItem_contentDescription);
-          this.itemTooltipText = paramAttributeSet.getText(R.styleable.MenuItem_tooltipText);
-          if (!paramAttributeSet.hasValue(R.styleable.MenuItem_iconTintMode)) {
-            break label459;
-          }
-          this.itemIconTintMode = DrawableUtils.parseTintMode(paramAttributeSet.getInt(R.styleable.MenuItem_iconTintMode, -1), this.itemIconTintMode);
-          label386:
-          if (!paramAttributeSet.hasValue(R.styleable.MenuItem_iconTint)) {
-            break label467;
-          }
-        }
-      }
-      label433:
-      label438:
-      label459:
-      label467:
-      for (this.itemIconTintList = paramAttributeSet.getColorStateList(R.styleable.MenuItem_iconTint);; this.itemIconTintList = null)
-      {
-        paramAttributeSet.recycle();
-        this.itemAdded = false;
-        return;
-        i = 0;
-        break;
-        this.itemCheckable = this.groupCheckable;
-        break label184;
-        i = 0;
-        break label292;
-        if (i != 0) {
-          Log.w("SupportMenuInflater", "Ignoring attribute 'actionProviderClass'. Action view already specified.");
-        }
-        this.itemActionProvider = null;
-        break label335;
-        this.itemIconTintMode = null;
-        break label386;
-      }
+      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
     }
     
     public void resetGroup()

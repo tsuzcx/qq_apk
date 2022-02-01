@@ -93,15 +93,19 @@ public class AnimatedVectorDrawableCompat
   
   public static void clearAnimationCallbacks(Drawable paramDrawable)
   {
-    if ((paramDrawable == null) || (!(paramDrawable instanceof Animatable))) {
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 24)
+    if (paramDrawable != null)
     {
-      ((AnimatedVectorDrawable)paramDrawable).clearAnimationCallbacks();
+      if (!(paramDrawable instanceof Animatable)) {
+        return;
+      }
+      if (Build.VERSION.SDK_INT >= 24)
+      {
+        ((AnimatedVectorDrawable)paramDrawable).clearAnimationCallbacks();
+        return;
+      }
+      ((AnimatedVectorDrawableCompat)paramDrawable).clearAnimationCallbacks();
       return;
     }
-    ((AnimatedVectorDrawableCompat)paramDrawable).clearAnimationCallbacks();
   }
   
   @Nullable
@@ -119,30 +123,25 @@ public class AnimatedVectorDrawableCompat
     try
     {
       localObject = ((Resources)localObject).getXml(paramInt);
-      localAttributeSet = Xml.asAttributeSet((XmlPullParser)localObject);
+      AttributeSet localAttributeSet = Xml.asAttributeSet((XmlPullParser)localObject);
       do
       {
         paramInt = ((XmlPullParser)localObject).next();
       } while ((paramInt != 2) && (paramInt != 1));
-      if (paramInt != 2) {
-        throw new XmlPullParserException("No start tag found");
+      if (paramInt == 2) {
+        return createFromXmlInner(paramContext, paramContext.getResources(), (XmlPullParser)localObject, localAttributeSet, paramContext.getTheme());
       }
-    }
-    catch (XmlPullParserException paramContext)
-    {
-      AttributeSet localAttributeSet;
-      Log.e("AnimatedVDCompat", "parser error", paramContext);
-      return null;
-      paramContext = createFromXmlInner(paramContext, paramContext.getResources(), (XmlPullParser)localObject, localAttributeSet, paramContext.getTheme());
-      return paramContext;
+      throw new XmlPullParserException("No start tag found");
     }
     catch (IOException paramContext)
     {
-      for (;;)
-      {
-        Log.e("AnimatedVDCompat", "parser error", paramContext);
-      }
+      Log.e("AnimatedVDCompat", "parser error", paramContext);
     }
+    catch (XmlPullParserException paramContext)
+    {
+      Log.e("AnimatedVDCompat", "parser error", paramContext);
+    }
+    return null;
   }
   
   public static AnimatedVectorDrawableCompat createFromXmlInner(Context paramContext, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
@@ -154,16 +153,22 @@ public class AnimatedVectorDrawableCompat
   
   public static void registerAnimationCallback(Drawable paramDrawable, Animatable2Compat.AnimationCallback paramAnimationCallback)
   {
-    if ((paramDrawable == null) || (paramAnimationCallback == null)) {}
-    while (!(paramDrawable instanceof Animatable)) {
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 24)
+    if (paramDrawable != null)
     {
-      registerPlatformCallback((AnimatedVectorDrawable)paramDrawable, paramAnimationCallback);
+      if (paramAnimationCallback == null) {
+        return;
+      }
+      if (!(paramDrawable instanceof Animatable)) {
+        return;
+      }
+      if (Build.VERSION.SDK_INT >= 24)
+      {
+        registerPlatformCallback((AnimatedVectorDrawable)paramDrawable, paramAnimationCallback);
+        return;
+      }
+      ((AnimatedVectorDrawableCompat)paramDrawable).registerAnimationCallback(paramAnimationCallback);
       return;
     }
-    ((AnimatedVectorDrawableCompat)paramDrawable).registerAnimationCallback(paramAnimationCallback);
   }
   
   @RequiresApi(23)
@@ -228,14 +233,20 @@ public class AnimatedVectorDrawableCompat
   
   public static boolean unregisterAnimationCallback(Drawable paramDrawable, Animatable2Compat.AnimationCallback paramAnimationCallback)
   {
-    if ((paramDrawable == null) || (paramAnimationCallback == null)) {}
-    while (!(paramDrawable instanceof Animatable)) {
-      return false;
+    if (paramDrawable != null)
+    {
+      if (paramAnimationCallback == null) {
+        return false;
+      }
+      if (!(paramDrawable instanceof Animatable)) {
+        return false;
+      }
+      if (Build.VERSION.SDK_INT >= 24) {
+        return unregisterPlatformCallback((AnimatedVectorDrawable)paramDrawable, paramAnimationCallback);
+      }
+      return ((AnimatedVectorDrawableCompat)paramDrawable).unregisterAnimationCallback(paramAnimationCallback);
     }
-    if (Build.VERSION.SDK_INT >= 24) {
-      return unregisterPlatformCallback((AnimatedVectorDrawable)paramDrawable, paramAnimationCallback);
-    }
-    return ((AnimatedVectorDrawableCompat)paramDrawable).unregisterAnimationCallback(paramAnimationCallback);
+    return false;
   }
   
   @RequiresApi(23)
@@ -246,8 +257,10 @@ public class AnimatedVectorDrawableCompat
   
   public void applyTheme(Resources.Theme paramTheme)
   {
-    if (this.mDelegateDrawable != null) {
+    if (this.mDelegateDrawable != null)
+    {
       DrawableCompat.applyTheme(this.mDelegateDrawable, paramTheme);
+      return;
     }
   }
   
@@ -261,28 +274,30 @@ public class AnimatedVectorDrawableCompat
   
   public void clearAnimationCallbacks()
   {
-    if (this.mDelegateDrawable != null) {
-      ((AnimatedVectorDrawable)this.mDelegateDrawable).clearAnimationCallbacks();
-    }
-    do
+    if (this.mDelegateDrawable != null)
     {
+      ((AnimatedVectorDrawable)this.mDelegateDrawable).clearAnimationCallbacks();
       return;
-      removeAnimatorSetListener();
-    } while (this.mAnimationCallbacks == null);
-    this.mAnimationCallbacks.clear();
+    }
+    removeAnimatorSetListener();
+    ArrayList localArrayList = this.mAnimationCallbacks;
+    if (localArrayList == null) {
+      return;
+    }
+    localArrayList.clear();
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.mDelegateDrawable != null) {
-      this.mDelegateDrawable.draw(paramCanvas);
-    }
-    do
+    if (this.mDelegateDrawable != null)
     {
+      this.mDelegateDrawable.draw(paramCanvas);
       return;
-      this.mAnimatedVectorState.mVectorDrawable.draw(paramCanvas);
-    } while (!this.mAnimatedVectorState.mAnimatorSet.isStarted());
-    invalidateSelf();
+    }
+    this.mAnimatedVectorState.mVectorDrawable.draw(paramCanvas);
+    if (this.mAnimatedVectorState.mAnimatorSet.isStarted()) {
+      invalidateSelf();
+    }
   }
   
   public int getAlpha()
@@ -347,53 +362,50 @@ public class AnimatedVectorDrawableCompat
     }
     int i = paramXmlPullParser.getEventType();
     int j = paramXmlPullParser.getDepth();
-    if ((i != 1) && ((paramXmlPullParser.getDepth() >= j + 1) || (i != 3)))
+    while ((i != 1) && ((paramXmlPullParser.getDepth() >= j + 1) || (i != 3)))
     {
-      Object localObject1;
-      Object localObject2;
       if (i == 2)
       {
-        localObject1 = paramXmlPullParser.getName();
-        if (!"animated-vector".equals(localObject1)) {
-          break label182;
-        }
-        localObject1 = TypedArrayUtils.obtainAttributes(paramResources, paramTheme, paramAttributeSet, AndroidResources.STYLEABLE_ANIMATED_VECTOR_DRAWABLE);
-        i = ((TypedArray)localObject1).getResourceId(0, 0);
-        if (i != 0)
+        Object localObject1 = paramXmlPullParser.getName();
+        Object localObject2;
+        if ("animated-vector".equals(localObject1))
         {
-          localObject2 = VectorDrawableCompat.create(paramResources, i, paramTheme);
-          ((VectorDrawableCompat)localObject2).setAllowCaching(false);
-          ((VectorDrawableCompat)localObject2).setCallback(this.mCallback);
-          if (this.mAnimatedVectorState.mVectorDrawable != null) {
-            this.mAnimatedVectorState.mVectorDrawable.setCallback(null);
+          localObject1 = TypedArrayUtils.obtainAttributes(paramResources, paramTheme, paramAttributeSet, AndroidResources.STYLEABLE_ANIMATED_VECTOR_DRAWABLE);
+          i = ((TypedArray)localObject1).getResourceId(0, 0);
+          if (i != 0)
+          {
+            localObject2 = VectorDrawableCompat.create(paramResources, i, paramTheme);
+            ((VectorDrawableCompat)localObject2).setAllowCaching(false);
+            ((VectorDrawableCompat)localObject2).setCallback(this.mCallback);
+            if (this.mAnimatedVectorState.mVectorDrawable != null) {
+              this.mAnimatedVectorState.mVectorDrawable.setCallback(null);
+            }
+            this.mAnimatedVectorState.mVectorDrawable = ((VectorDrawableCompat)localObject2);
           }
-          this.mAnimatedVectorState.mVectorDrawable = ((VectorDrawableCompat)localObject2);
+          ((TypedArray)localObject1).recycle();
         }
-        ((TypedArray)localObject1).recycle();
-      }
-      for (;;)
-      {
-        i = paramXmlPullParser.next();
-        break;
-        label182:
-        if ("target".equals(localObject1))
+        else if ("target".equals(localObject1))
         {
           localObject1 = paramResources.obtainAttributes(paramAttributeSet, AndroidResources.STYLEABLE_ANIMATED_VECTOR_DRAWABLE_TARGET);
           localObject2 = ((TypedArray)localObject1).getString(0);
           i = ((TypedArray)localObject1).getResourceId(1, 0);
           if (i != 0)
           {
-            if (this.mContext == null) {
-              break label254;
+            Context localContext = this.mContext;
+            if (localContext != null)
+            {
+              setupAnimatorsForTarget((String)localObject2, AnimatorInflaterCompat.loadAnimator(localContext, i));
             }
-            setupAnimatorsForTarget((String)localObject2, AnimatorInflaterCompat.loadAnimator(this.mContext, i));
+            else
+            {
+              ((TypedArray)localObject1).recycle();
+              throw new IllegalStateException("Context can't be null when inflating animators");
+            }
           }
           ((TypedArray)localObject1).recycle();
         }
       }
-      label254:
-      ((TypedArray)localObject1).recycle();
-      throw new IllegalStateException("Context can't be null when inflating animators");
+      i = paramXmlPullParser.next();
     }
     this.mAnimatedVectorState.setupAnimatorSet();
   }
@@ -458,19 +470,20 @@ public class AnimatedVectorDrawableCompat
   
   public void registerAnimationCallback(@NonNull Animatable2Compat.AnimationCallback paramAnimationCallback)
   {
-    if (this.mDelegateDrawable != null) {
-      registerPlatformCallback((AnimatedVectorDrawable)this.mDelegateDrawable, paramAnimationCallback);
-    }
-    do
+    if (this.mDelegateDrawable != null)
     {
-      do
-      {
-        return;
-      } while (paramAnimationCallback == null);
-      if (this.mAnimationCallbacks == null) {
-        this.mAnimationCallbacks = new ArrayList();
-      }
-    } while (this.mAnimationCallbacks.contains(paramAnimationCallback));
+      registerPlatformCallback((AnimatedVectorDrawable)this.mDelegateDrawable, paramAnimationCallback);
+      return;
+    }
+    if (paramAnimationCallback == null) {
+      return;
+    }
+    if (this.mAnimationCallbacks == null) {
+      this.mAnimationCallbacks = new ArrayList();
+    }
+    if (this.mAnimationCallbacks.contains(paramAnimationCallback)) {
+      return;
+    }
     this.mAnimationCallbacks.add(paramAnimationCallback);
     if (this.mAnimatorListener == null) {
       this.mAnimatorListener = new AnimatorListenerAdapter()
@@ -574,10 +587,12 @@ public class AnimatedVectorDrawableCompat
   
   public void start()
   {
-    if (this.mDelegateDrawable != null) {
+    if (this.mDelegateDrawable != null)
+    {
       ((AnimatedVectorDrawable)this.mDelegateDrawable).start();
+      return;
     }
-    while (this.mAnimatedVectorState.mAnimatorSet.isStarted()) {
+    if (this.mAnimatedVectorState.mAnimatorSet.isStarted()) {
       return;
     }
     this.mAnimatedVectorState.mAnimatorSet.start();
@@ -599,19 +614,16 @@ public class AnimatedVectorDrawableCompat
     if (this.mDelegateDrawable != null) {
       unregisterPlatformCallback((AnimatedVectorDrawable)this.mDelegateDrawable, paramAnimationCallback);
     }
-    boolean bool1;
-    if ((this.mAnimationCallbacks == null) || (paramAnimationCallback == null)) {
-      bool1 = false;
-    }
-    boolean bool2;
-    do
+    ArrayList localArrayList = this.mAnimationCallbacks;
+    if ((localArrayList != null) && (paramAnimationCallback != null))
     {
-      return bool1;
-      bool2 = this.mAnimationCallbacks.remove(paramAnimationCallback);
-      bool1 = bool2;
-    } while (this.mAnimationCallbacks.size() != 0);
-    removeAnimatorSetListener();
-    return bool2;
+      boolean bool = localArrayList.remove(paramAnimationCallback);
+      if (this.mAnimationCallbacks.size() == 0) {
+        removeAnimatorSetListener();
+      }
+      return bool;
+    }
+    return false;
   }
   
   private static class AnimatedVectorDrawableCompatState
@@ -628,24 +640,25 @@ public class AnimatedVectorDrawableCompat
       if (paramAnimatedVectorDrawableCompatState != null)
       {
         this.mChangingConfigurations = paramAnimatedVectorDrawableCompatState.mChangingConfigurations;
-        if (paramAnimatedVectorDrawableCompatState.mVectorDrawable != null)
+        paramContext = paramAnimatedVectorDrawableCompatState.mVectorDrawable;
+        int i = 0;
+        if (paramContext != null)
         {
-          paramContext = paramAnimatedVectorDrawableCompatState.mVectorDrawable.getConstantState();
-          if (paramResources == null) {
-            break label215;
+          paramContext = paramContext.getConstantState();
+          if (paramResources != null) {
+            this.mVectorDrawable = ((VectorDrawableCompat)paramContext.newDrawable(paramResources));
+          } else {
+            this.mVectorDrawable = ((VectorDrawableCompat)paramContext.newDrawable());
           }
-        }
-        label215:
-        for (this.mVectorDrawable = ((VectorDrawableCompat)paramContext.newDrawable(paramResources));; this.mVectorDrawable = ((VectorDrawableCompat)paramContext.newDrawable()))
-        {
           this.mVectorDrawable = ((VectorDrawableCompat)this.mVectorDrawable.mutate());
           this.mVectorDrawable.setCallback(paramCallback);
           this.mVectorDrawable.setBounds(paramAnimatedVectorDrawableCompatState.mVectorDrawable.getBounds());
           this.mVectorDrawable.setAllowCaching(false);
-          if (paramAnimatedVectorDrawableCompatState.mAnimators == null) {
-            return;
-          }
-          int j = paramAnimatedVectorDrawableCompatState.mAnimators.size();
+        }
+        paramContext = paramAnimatedVectorDrawableCompatState.mAnimators;
+        if (paramContext != null)
+        {
+          int j = paramContext.size();
           this.mAnimators = new ArrayList(j);
           this.mTargetNameMap = new ArrayMap(j);
           while (i < j)
@@ -658,8 +671,8 @@ public class AnimatedVectorDrawableCompat
             this.mTargetNameMap.put(paramContext, paramCallback);
             i += 1;
           }
+          setupAnimatorSet();
         }
-        setupAnimatorSet();
       }
     }
     

@@ -12,16 +12,6 @@ public final class UserActionTime
   public int time = 0;
   public int userAction = 0;
   
-  static
-  {
-    if (!UserActionTime.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public UserActionTime()
   {
     setUserAction(this.userAction);
@@ -41,29 +31,35 @@ public final class UserActionTime
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (UserActionTime)paramObject;
-    } while ((!JceUtil.equals(this.userAction, paramObject.userAction)) || (!JceUtil.equals(this.time, paramObject.time)));
-    return true;
+    }
+    paramObject = (UserActionTime)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.userAction, paramObject.userAction))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.time, paramObject.time)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()

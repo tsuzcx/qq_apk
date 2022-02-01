@@ -23,14 +23,20 @@ public final class FontRequest
     this.mProviderPackage = ((String)Preconditions.checkNotNull(paramString2));
     this.mQuery = ((String)Preconditions.checkNotNull(paramString3));
     this.mCertificates = null;
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Preconditions.checkArgument(bool);
-      this.mCertificatesArray = paramInt;
-      this.mIdentifier = (this.mProviderAuthority + "-" + this.mProviderPackage + "-" + this.mQuery);
-      return;
+    boolean bool;
+    if (paramInt != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Preconditions.checkArgument(bool);
+    this.mCertificatesArray = paramInt;
+    paramString1 = new StringBuilder(this.mProviderAuthority);
+    paramString1.append("-");
+    paramString1.append(this.mProviderPackage);
+    paramString1.append("-");
+    paramString1.append(this.mQuery);
+    this.mIdentifier = paramString1.toString();
   }
   
   public FontRequest(@NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3, @NonNull List<List<byte[]>> paramList)
@@ -40,7 +46,12 @@ public final class FontRequest
     this.mQuery = ((String)Preconditions.checkNotNull(paramString3));
     this.mCertificates = ((List)Preconditions.checkNotNull(paramList));
     this.mCertificatesArray = 0;
-    this.mIdentifier = (this.mProviderAuthority + "-" + this.mProviderPackage + "-" + this.mQuery);
+    paramString1 = new StringBuilder(this.mProviderAuthority);
+    paramString1.append("-");
+    paramString1.append(this.mProviderPackage);
+    paramString1.append("-");
+    paramString1.append(this.mQuery);
+    this.mIdentifier = paramString1.toString();
   }
   
   @Nullable
@@ -82,17 +93,25 @@ public final class FontRequest
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("FontRequest {mProviderAuthority: " + this.mProviderAuthority + ", mProviderPackage: " + this.mProviderPackage + ", mQuery: " + this.mQuery + ", mCertificates:");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("FontRequest {mProviderAuthority: ");
+    ((StringBuilder)localObject).append(this.mProviderAuthority);
+    ((StringBuilder)localObject).append(", mProviderPackage: ");
+    ((StringBuilder)localObject).append(this.mProviderPackage);
+    ((StringBuilder)localObject).append(", mQuery: ");
+    ((StringBuilder)localObject).append(this.mQuery);
+    ((StringBuilder)localObject).append(", mCertificates:");
+    localStringBuilder.append(((StringBuilder)localObject).toString());
     int i = 0;
     while (i < this.mCertificates.size())
     {
       localStringBuilder.append(" [");
-      List localList = (List)this.mCertificates.get(i);
+      localObject = (List)this.mCertificates.get(i);
       int j = 0;
-      while (j < localList.size())
+      while (j < ((List)localObject).size())
       {
         localStringBuilder.append(" \"");
-        localStringBuilder.append(Base64.encodeToString((byte[])localList.get(j), 0));
+        localStringBuilder.append(Base64.encodeToString((byte[])((List)localObject).get(j), 0));
         localStringBuilder.append("\"");
         j += 1;
       }
@@ -100,7 +119,10 @@ public final class FontRequest
       i += 1;
     }
     localStringBuilder.append("}");
-    localStringBuilder.append("mCertificatesArray: " + this.mCertificatesArray);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mCertificatesArray: ");
+    ((StringBuilder)localObject).append(this.mCertificatesArray);
+    localStringBuilder.append(((StringBuilder)localObject).toString());
     return localStringBuilder.toString();
   }
 }

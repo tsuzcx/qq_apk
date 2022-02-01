@@ -12,27 +12,25 @@ import java.util.List;
 public final class f
   implements UploadHandleListener
 {
-  private static f d = null;
+  private static f d;
   private p a;
   private p b;
   private Context c = null;
   
   private f(Context paramContext)
   {
-    if (paramContext == null) {}
-    for (;;)
+    if (paramContext != null)
     {
-      this.c = paramContext;
-      com.tencent.feedback.upload.f.a(this.c).a(this);
-      c();
-      if (d() > 0) {
-        e();
-      }
-      return;
       Context localContext = paramContext.getApplicationContext();
       if (localContext != null) {
         paramContext = localContext;
       }
+    }
+    this.c = paramContext;
+    com.tencent.feedback.upload.f.a(this.c).a(this);
+    c();
+    if (d() > 0) {
+      e();
     }
   }
   
@@ -67,43 +65,38 @@ public final class f
   {
     for (;;)
     {
-      long l3;
       long l2;
-      long l1;
       try
       {
         l3 = new Date().getTime();
         l2 = paramLong1 + paramLong2;
-        if (paramBoolean)
-        {
-          l1 = l2;
-          break label277;
-          if (this.b == null)
-          {
-            this.b = new p(1, l3, 1L, l1, l2, paramLong1, paramLong2);
-            if (this.a != null) {
-              break label190;
-            }
-            this.a = new p(0, l3, 1L, l1, l2, paramLong1, paramLong2);
-          }
+        if (!paramBoolean) {
+          break label271;
         }
-        else
-        {
-          l1 = 0L;
-          break label277;
-        }
-        long l4 = this.b.a();
-        this.b = new p(1, this.b.b, 1L + this.b.c, this.b.d + l1, this.b.e + l2, this.b.f + paramLong1, this.b.g + paramLong2);
-        this.b.a(l4);
-        continue;
-        l3 = this.a.a();
+        l1 = l2;
       }
       finally {}
-      label190:
-      this.a = new p(0, this.a.b, this.a.c + 1L, l1 + this.a.d, l2 + this.a.e, this.a.f + paramLong1, this.a.g + paramLong2);
+      if (this.b == null)
+      {
+        this.b = new p(1, l3, 1L, l1, l2, paramLong1, paramLong2);
+      }
+      else
+      {
+        long l4 = this.b.a();
+        this.b = new p(1, this.b.b, this.b.c + 1L, this.b.d + l1, this.b.e + l2, this.b.f + paramLong1, this.b.g + paramLong2);
+        this.b.a(l4);
+      }
+      if (this.a == null)
+      {
+        this.a = new p(0, l3, 1L, l1, l2, paramLong1, paramLong2);
+        return;
+      }
+      long l3 = this.a.a();
+      this.a = new p(0, this.a.b, this.a.c + 1L, this.a.d + l1, this.a.e + l2, this.a.f + paramLong1, this.a.g + paramLong2);
       this.a.a(l3);
-      continue;
-      label277:
+      return;
+      label271:
+      long l1 = 0L;
       if (paramBoolean) {
         l2 = 0L;
       }
@@ -189,27 +182,25 @@ public final class f
   
   private int d()
   {
-    for (;;)
+    try
     {
-      try
+      long l1 = a.c();
+      long l2 = new Date().getTime();
+      int i = 0;
+      if ((this.b == null) || (this.b.b < l1))
       {
-        long l1 = a.c();
-        long l2 = new Date().getTime();
-        int i = 0;
-        if ((this.b == null) || (this.b.b < l1))
-        {
-          this.b = new p(1, l2, 0L, 0L, 0L, 0L, 0L);
-          i = 1;
-        }
-        if (this.a == null)
-        {
-          this.a = new p(0, l2, 0L, 0L, 0L, 0L, 0L);
-          i += 1;
-          return i;
-        }
+        this.b = new p(1, l2, 0L, 0L, 0L, 0L, 0L);
+        i = 1;
       }
-      finally {}
+      int j = i;
+      if (this.a == null)
+      {
+        this.a = new p(0, l2, 0L, 0L, 0L, 0L, 0L);
+        j = i + 1;
+      }
+      return j;
     }
+    finally {}
   }
   
   private void e()

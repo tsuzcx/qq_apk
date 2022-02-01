@@ -16,8 +16,7 @@ public class h
     while (i < j)
     {
       LockPatternView.a locala = (LockPatternView.a)paramList.get(i);
-      int k = locala.a();
-      arrayOfByte[i] = ((byte)(locala.b() + k * 3));
+      arrayOfByte[i] = ((byte)(locala.a() * 3 + locala.b()));
       i += 1;
     }
     return a(arrayOfByte);

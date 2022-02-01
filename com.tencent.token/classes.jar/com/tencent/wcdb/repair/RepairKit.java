@@ -28,20 +28,25 @@ public class RepairKit
   
   public RepairKit(String paramString, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, MasterInfo paramMasterInfo)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException();
-    }
-    if (paramMasterInfo == null) {}
-    for (byte[] arrayOfByte = null;; arrayOfByte = paramMasterInfo.mKDFSalt)
+    if (paramString != null)
     {
+      byte[] arrayOfByte;
+      if (paramMasterInfo == null) {
+        arrayOfByte = null;
+      } else {
+        arrayOfByte = paramMasterInfo.mKDFSalt;
+      }
       this.mNativePtr = nativeInit(paramString, paramArrayOfByte, paramSQLiteCipherSpec, arrayOfByte);
-      if (this.mNativePtr != 0L) {
-        break;
+      long l = this.mNativePtr;
+      if (l != 0L)
+      {
+        this.mIntegrityFlags = nativeIntegrityFlags(l);
+        this.mMasterInfo = paramMasterInfo;
+        return;
       }
       throw new SQLiteException("Failed initialize RepairKit.");
     }
-    this.mIntegrityFlags = nativeIntegrityFlags(this.mNativePtr);
-    this.mMasterInfo = paramMasterInfo;
+    throw new IllegalArgumentException();
   }
   
   public static String lastError()
@@ -77,8 +82,9 @@ public class RepairKit
     if (this.mCurrentCursor == null) {
       this.mCurrentCursor = new RepairCursor(null);
     }
-    this.mCurrentCursor.mPtr = paramLong;
-    return this.mCallback.onProgress(paramString, paramInt, this.mCurrentCursor);
+    RepairCursor localRepairCursor = this.mCurrentCursor;
+    localRepairCursor.mPtr = paramLong;
+    return this.mCallback.onProgress(paramString, paramInt, localRepairCursor);
   }
   
   protected void finalize()
@@ -109,29 +115,31 @@ public class RepairKit
   
   public void onCancel()
   {
-    if (this.mNativePtr == 0L) {
+    long l = this.mNativePtr;
+    if (l == 0L) {
       return;
     }
-    nativeCancel(this.mNativePtr);
+    nativeCancel(l);
   }
   
   public int output(SQLiteDatabase paramSQLiteDatabase, int paramInt)
   {
+    long l2 = this.mNativePtr;
     long l1 = 0L;
-    if (this.mNativePtr == 0L) {
-      throw new IllegalArgumentException();
-    }
-    if (this.mMasterInfo == null) {}
-    for (;;)
+    if (l2 != 0L)
     {
-      long l2 = paramSQLiteDatabase.acquireNativeConnectionHandle("repair", false, false);
+      MasterInfo localMasterInfo = this.mMasterInfo;
+      if (localMasterInfo != null) {
+        l1 = localMasterInfo.mMasterPtr;
+      }
+      l2 = paramSQLiteDatabase.acquireNativeConnectionHandle("repair", false, false);
       paramInt = nativeOutput(this.mNativePtr, l2, l1, paramInt);
       paramSQLiteDatabase.releaseNativeConnection(l2, null);
       this.mCurrentCursor = null;
       this.mIntegrityFlags = nativeIntegrityFlags(this.mNativePtr);
       return paramInt;
-      l1 = this.mMasterInfo.mMasterPtr;
     }
+    throw new IllegalArgumentException();
   }
   
   public int output(SQLiteDatabase paramSQLiteDatabase, int paramInt, CancellationSignal paramCancellationSignal)
@@ -147,14 +155,16 @@ public class RepairKit
   
   public void release()
   {
-    if (this.mMasterInfo != null)
+    MasterInfo localMasterInfo = this.mMasterInfo;
+    if (localMasterInfo != null)
     {
-      this.mMasterInfo.release();
+      localMasterInfo.release();
       this.mMasterInfo = null;
     }
-    if (this.mNativePtr != 0L)
+    long l = this.mNativePtr;
+    if (l != 0L)
     {
-      nativeFini(this.mNativePtr);
+      nativeFini(l);
       this.mNativePtr = 0L;
     }
   }
@@ -187,19 +197,19 @@ public class RepairKit
       }
       byte[] arrayOfByte = new byte[16];
       long l = RepairKit.nativeLoadMaster(paramString, paramArrayOfByte, paramArrayOfString, arrayOfByte);
-      if (l == 0L) {
-        throw new SQLiteException("Cannot create MasterInfo.");
+      if (l != 0L) {
+        return new MasterInfo(l, arrayOfByte);
       }
-      return new MasterInfo(l, arrayOfByte);
+      throw new SQLiteException("Cannot create MasterInfo.");
     }
     
     public static MasterInfo make(String[] paramArrayOfString)
     {
       long l = RepairKit.nativeMakeMaster(paramArrayOfString);
-      if (l == 0L) {
-        throw new SQLiteException("Cannot create MasterInfo.");
+      if (l != 0L) {
+        return new MasterInfo(l, null);
       }
-      return new MasterInfo(l, null);
+      throw new SQLiteException("Cannot create MasterInfo.");
     }
     
     public static boolean save(SQLiteDatabase paramSQLiteDatabase, String paramString, byte[] paramArrayOfByte)
@@ -218,10 +228,11 @@ public class RepairKit
     
     public void release()
     {
-      if (this.mMasterPtr == 0L) {
+      long l = this.mMasterPtr;
+      if (l == 0L) {
         return;
       }
-      RepairKit.nativeFreeMaster(this.mMasterPtr);
+      RepairKit.nativeFreeMaster(l);
       this.mMasterPtr = 0L;
     }
   }

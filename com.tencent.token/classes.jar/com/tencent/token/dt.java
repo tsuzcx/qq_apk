@@ -21,17 +21,20 @@ abstract class dt
     this.d = paramdt.d;
     this.e = paramdt.e;
     this.f = paramdt.f;
-    if (paramdt.a == null) {
+    byte[] arrayOfByte1 = paramdt.a;
+    if (arrayOfByte1 == null)
+    {
       this.a = null;
     }
-    for (;;)
+    else
     {
-      this.g = paramdt.g;
-      this.b = paramdt.b;
-      return;
-      this.a = new byte[paramdt.a.length];
-      System.arraycopy(paramdt.a, 0, this.a, 0, this.a.length);
+      this.a = new byte[arrayOfByte1.length];
+      arrayOfByte1 = paramdt.a;
+      byte[] arrayOfByte2 = this.a;
+      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte2.length);
     }
+    this.g = paramdt.g;
+    this.b = paramdt.b;
   }
   
   dt(String paramString, int paramInt1, int paramInt2)
@@ -56,24 +59,21 @@ abstract class dt
   
   protected final void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (paramInt2 == 0) {}
-    int i;
-    int j;
-    do
-    {
+    if (paramInt2 == 0) {
       return;
-      if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt1 > paramArrayOfByte.length - paramInt2)) {
-        throw new ArrayIndexOutOfBoundsException();
-      }
+    }
+    if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt1 <= paramArrayOfByte.length - paramInt2))
+    {
       if (this.b < 0L) {
         a();
       }
       this.b += paramInt2;
-      i = paramInt1;
-      j = paramInt2;
-      if (this.g != 0)
+      int k = this.g;
+      int i = paramInt1;
+      int j = paramInt2;
+      if (k != 0)
       {
-        i = Math.min(paramInt2, this.f - this.g);
+        i = Math.min(paramInt2, this.f - k);
         System.arraycopy(paramArrayOfByte, paramInt1, this.a, this.g, i);
         this.g += i;
         paramInt1 += i;
@@ -91,12 +91,18 @@ abstract class dt
       while (j >= this.f)
       {
         a(paramArrayOfByte, i);
-        j -= this.f;
-        i += this.f;
+        paramInt1 = this.f;
+        j -= paramInt1;
+        i += paramInt1;
       }
-    } while (j <= 0);
-    System.arraycopy(paramArrayOfByte, i, this.a, 0, j);
-    this.g = j;
+      if (j > 0)
+      {
+        System.arraycopy(paramArrayOfByte, i, this.a, 0, j);
+        this.g = j;
+      }
+      return;
+    }
+    throw new ArrayIndexOutOfBoundsException();
   }
   
   public byte[] a(byte[] paramArrayOfByte)
@@ -107,18 +113,26 @@ abstract class dt
   
   protected final int b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (paramInt2 < this.e) {
-      throw new Exception("Length must be at least " + this.e + " for " + this.d + "digests");
-    }
-    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt1 > paramArrayOfByte.length - paramInt2)) {
+    if (paramInt2 >= this.e)
+    {
+      if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt1 <= paramArrayOfByte.length - paramInt2))
+      {
+        if (this.b < 0L) {
+          a();
+        }
+        b(paramArrayOfByte, paramInt1);
+        this.b = -1L;
+        return this.e;
+      }
       throw new Exception("Buffer too short to store digest");
     }
-    if (this.b < 0L) {
-      a();
-    }
-    b(paramArrayOfByte, paramInt1);
-    this.b = -1L;
-    return this.e;
+    paramArrayOfByte = new StringBuffer();
+    paramArrayOfByte.append("Length must be at least ");
+    paramArrayOfByte.append(this.e);
+    paramArrayOfByte.append(" for ");
+    paramArrayOfByte.append(this.d);
+    paramArrayOfByte.append("digests");
+    throw new Exception(paramArrayOfByte.toString());
   }
   
   abstract void b(byte[] paramArrayOfByte, int paramInt);
@@ -131,7 +145,11 @@ abstract class dt
       b(arrayOfByte, 0, arrayOfByte.length);
       return arrayOfByte;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label18:
+      break label18;
+    }
     return null;
   }
   

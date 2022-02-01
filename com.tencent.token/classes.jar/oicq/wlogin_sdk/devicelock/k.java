@@ -32,8 +32,7 @@ public class k
     this.c = util.buf_to_int32(this._buf, i);
     i += 4;
     this.d = util.buf_to_int16(this._buf, i);
-    i += 2;
-    this.e = util.buf_to_int16(this._buf, i);
+    this.e = util.buf_to_int16(this._buf, i + 2);
   }
 }
 

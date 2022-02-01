@@ -15,17 +15,26 @@ public class eh
     if (paramString2 == null) {
       str = "(null)";
     }
-    Log.println(paramInt, "TMSDK_SK_" + paramString1, str);
+    paramString2 = new StringBuilder();
+    paramString2.append("TMSDK_SK_");
+    paramString2.append(paramString1);
+    Log.println(paramInt, paramString2.toString(), str);
   }
   
   public static void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    a(6, paramString1, paramString2 + paramThrowable.getMessage());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(paramThrowable.getMessage());
+    a(6, paramString1, localStringBuilder.toString());
   }
   
   public static void b(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    a(6, paramString1, paramString2 + paramThrowable.getMessage());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(paramThrowable.getMessage());
+    a(6, paramString1, localStringBuilder.toString());
   }
   
   public static void e(String paramString1, String paramString2)

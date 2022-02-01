@@ -21,7 +21,6 @@ public class bn
   
   static boolean J()
   {
-    boolean bool = true;
     long l4 = System.currentTimeMillis();
     long l3 = ec.cS().getLong("rs_rt", -1L);
     if (l3 < 0L)
@@ -29,32 +28,30 @@ public class bn
       ec.cS().putLong("rs_rt", l4);
       return false;
     }
-    if (l4 > l3) {
-      if (l4 - l3 < 86400000L) {}
-    }
-    for (;;)
+    if (l4 > l3)
     {
-      return bool;
+      if (l4 - l3 >= 86400000L) {
+        return true;
+      }
       Calendar localCalendar = Calendar.getInstance();
       localCalendar.set(11, 0);
       localCalendar.set(12, 0);
       localCalendar.set(13, 0);
       int i = K();
-      long l1 = localCalendar.getTimeInMillis();
-      long l2 = i * 1000L + l1;
-      l1 = l2;
+      long l2 = localCalendar.getTimeInMillis() + i * 1000L;
+      long l1 = l2;
       if (l2 > l4) {
         l1 = l2 - 86400000L;
       }
-      if (l3 > l1)
-      {
-        bool = false;
-        continue;
-        if (Math.abs(l4 - l3) < 86400000L) {
-          bool = false;
-        }
+      if (l3 <= l1) {
+        return true;
       }
     }
+    else if (Math.abs(l4 - l3) >= 86400000L)
+    {
+      return true;
+    }
+    return false;
   }
   
   static int K()
@@ -74,25 +71,25 @@ public class bn
     synchronized (gh)
     {
       eg.e("ReportService", "checkPullReport");
-      if ((!J()) || (!NetworkUtil.isNetworkConnected()))
+      if ((J()) && (NetworkUtil.isNetworkConnected()))
       {
-        eg.e("ReportService", "checkPullReport, isNeedReport or isNetworkConnected [false]");
+        ee.cT().addTask(new Runnable()
+        {
+          public void run()
+          {
+            if (System.currentTimeMillis() - bn.gi < 600000L) {
+              return;
+            }
+            bn.gi = System.currentTimeMillis();
+            be.w();
+            bn.N();
+            ec.cS().putLong("rs_rt", System.currentTimeMillis());
+            bc.setAutoConnectionSwitch(bc.n(), true);
+          }
+        }, "xxx");
         return;
       }
-      ee.cT().addTask(new Runnable()
-      {
-        public void run()
-        {
-          if (System.currentTimeMillis() - bn.gi < 600000L) {
-            return;
-          }
-          bn.gi = System.currentTimeMillis();
-          be.w();
-          bn.N();
-          ec.cS().putLong("rs_rt", System.currentTimeMillis());
-          bc.setAutoConnectionSwitch(bc.n(), true);
-        }
-      }, "xxx");
+      eg.e("ReportService", "checkPullReport, isNeedReport or isNetworkConnected [false]");
       return;
     }
   }
@@ -123,13 +120,13 @@ public class bn
     //   19: aload_0
     //   20: monitorexit
     //   21: aload_1
-    //   22: ifnull +41 -> 63
+    //   22: ifnull +51 -> 73
     //   25: aload_1
     //   26: invokevirtual 160	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   29: astore_0
     //   30: aload_0
     //   31: invokeinterface 165 1 0
-    //   36: ifeq +27 -> 63
+    //   36: ifeq +37 -> 73
     //   39: aload_0
     //   40: invokeinterface 168 1 0
     //   45: checkcast 170	com/tmsdk/base/TMSDKBaseContext$IReportListener
@@ -139,40 +136,41 @@ public class bn
     //   53: aload_1
     //   54: invokeinterface 173 1 0
     //   59: goto -29 -> 30
-    //   62: astore_0
-    //   63: ldc 2
-    //   65: monitorexit
-    //   66: return
-    //   67: astore_1
-    //   68: aload_0
-    //   69: monitorexit
-    //   70: aload_1
-    //   71: athrow
-    //   72: astore_0
+    //   62: astore_1
+    //   63: aload_0
+    //   64: monitorexit
+    //   65: aload_1
+    //   66: athrow
+    //   67: astore_0
+    //   68: ldc 2
+    //   70: monitorexit
+    //   71: aload_0
+    //   72: athrow
     //   73: ldc 2
     //   75: monitorexit
-    //   76: aload_0
-    //   77: athrow
+    //   76: return
+    //   77: astore_0
+    //   78: goto -5 -> 73
     // Local variable table:
     //   start	length	slot	name	signature
-    //   62	7	0	localThrowable	java.lang.Throwable
-    //   72	5	0	localObject2	Object
+    //   67	5	0	localObject2	Object
+    //   77	1	0	localThrowable	java.lang.Throwable
     //   18	36	1	localObject3	Object
-    //   67	4	1	localObject4	Object
+    //   62	4	1	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   3	9	62	java/lang/Throwable
-    //   25	30	62	java/lang/Throwable
-    //   30	49	62	java/lang/Throwable
-    //   53	59	62	java/lang/Throwable
-    //   70	72	62	java/lang/Throwable
-    //   9	21	67	finally
-    //   68	70	67	finally
-    //   3	9	72	finally
-    //   25	30	72	finally
-    //   30	49	72	finally
-    //   53	59	72	finally
-    //   70	72	72	finally
+    //   9	21	62	finally
+    //   63	65	62	finally
+    //   3	9	67	finally
+    //   25	30	67	finally
+    //   30	49	67	finally
+    //   53	59	67	finally
+    //   65	67	67	finally
+    //   3	9	77	java/lang/Throwable
+    //   25	30	77	java/lang/Throwable
+    //   30	49	77	java/lang/Throwable
+    //   53	59	77	java/lang/Throwable
+    //   65	67	77	java/lang/Throwable
   }
   
   public static void addReportListener(TMSDKBaseContext.IReportListener paramIReportListener)
@@ -192,7 +190,10 @@ public class bn
     }
     Random localRandom = new Random();
     localRandom.setSeed(System.currentTimeMillis() + System.identityHashCode(localRandom));
-    return ((int)(localRandom.nextDouble() * paramInt2) + paramInt1) * 3600 + (int)(localRandom.nextDouble() * 60.0D) * 60 + (int)(localRandom.nextDouble() * 60.0D);
+    double d1 = localRandom.nextDouble();
+    double d2 = paramInt2;
+    Double.isNaN(d2);
+    return ((int)(d1 * d2) + paramInt1) * 3600 + (int)(localRandom.nextDouble() * 60.0D) * 60 + (int)(localRandom.nextDouble() * 60.0D);
   }
   
   public static void removeReportListener(TMSDKBaseContext.IReportListener paramIReportListener)
@@ -248,16 +249,17 @@ public class bn
     
     public void onReceive(Context paramContext, Intent paramIntent)
     {
-      if (paramIntent == null) {}
-      for (;;)
-      {
+      if (paramIntent == null) {
         return;
-        if ("android.intent.action.USER_PRESENT".equals(paramIntent.getAction())) {}
-        for (int i = 3; (i != -1) && (bc.m()); i = -1)
-        {
-          bn.L();
-          return;
-        }
+      }
+      int i;
+      if ("android.intent.action.USER_PRESENT".equals(paramIntent.getAction())) {
+        i = 3;
+      } else {
+        i = -1;
+      }
+      if ((i != -1) && (bc.m())) {
+        bn.L();
       }
     }
   }

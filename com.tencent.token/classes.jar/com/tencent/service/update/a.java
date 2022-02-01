@@ -21,17 +21,18 @@ public class a
   
   private boolean a(SharedPreferences.Editor paramEditor)
   {
-    if ((Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) && (Build.VERSION.SDK_INT >= 9)) {
-      try
-      {
-        paramEditor.getClass().getMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
-        return true;
-      }
-      catch (Throwable localThrowable)
-      {
-        return paramEditor.commit();
-      }
+    if ((Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) && (Build.VERSION.SDK_INT >= 9)) {}
+    try
+    {
+      paramEditor.getClass().getMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
+      return true;
     }
+    catch (Throwable localThrowable)
+    {
+      label51:
+      break label51;
+    }
+    return paramEditor.commit();
     return paramEditor.commit();
   }
   
@@ -124,8 +125,9 @@ public class a
   public boolean b()
   {
     this.c = false;
-    if (this.b != null) {
-      return a(this.b);
+    SharedPreferences.Editor localEditor = this.b;
+    if (localEditor != null) {
+      return a(localEditor);
     }
     return true;
   }

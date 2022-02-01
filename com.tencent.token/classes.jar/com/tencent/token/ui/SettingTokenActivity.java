@@ -20,26 +20,31 @@ public class SettingTokenActivity
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131165968)
     {
-    case 2131559260: 
-    default: 
-      return;
-    case 2131559259: 
-      bu.a().a(System.currentTimeMillis(), 6);
-      com.tencent.token.global.h.a();
-      if ((cd.a().c()) && (cd.a().e() == 1)) {}
-      for (paramView = new Intent(this, StartPwdDigitSelActivity.class);; paramView = new Intent(this, StartPwdGestureIndexActivity.class))
+      if (i != 2131165970)
       {
-        startActivity(paramView);
-        cd.a().b("startpwd_tip_newflag");
+        if (i != 2131165975)
+        {
+          if (i != 2131165978) {
+            return;
+          }
+          bu.a().a(System.currentTimeMillis(), 6);
+          com.tencent.token.global.h.a();
+          if ((cd.a().c()) && (cd.a().e() == 1)) {
+            paramView = new Intent(this, StartPwdDigitSelActivity.class);
+          } else {
+            paramView = new Intent(this, StartPwdGestureIndexActivity.class);
+          }
+          startActivity(paramView);
+          cd.a().b("startpwd_tip_newflag");
+          return;
+        }
+        startActivity(new Intent(this, AssistantRecommendFriendQrcode.class));
         return;
       }
-    case 2131559261: 
       startActivity(new Intent(this, CorrectTokenActivity.class));
-      return;
-    case 2131559262: 
-      startActivity(new Intent(this, AssistantRecommendFriendQrcode.class));
       return;
     }
     startActivity(new Intent(this, AboutActivity.class));
@@ -48,33 +53,32 @@ public class SettingTokenActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968760);
-    findViewById(2131559259).setOnClickListener(this);
-    findViewById(2131559261).setOnClickListener(this);
-    findViewById(2131559262).setOnClickListener(this);
-    findViewById(2131559263).setOnClickListener(this);
-    this.mTokenPwdTxt = ((TextView)findViewById(2131559260));
+    setContentView(2131296441);
+    findViewById(2131165978).setOnClickListener(this);
+    findViewById(2131165970).setOnClickListener(this);
+    findViewById(2131165975).setOnClickListener(this);
+    findViewById(2131165968).setOnClickListener(this);
+    this.mTokenPwdTxt = ((TextView)findViewById(2131165979));
   }
   
   public void onResume()
   {
     super.onResume();
     if (!com.tencent.token.core.bean.h.b().c()) {
-      findViewById(2131559265).setVisibility(4);
+      findViewById(2131165765).setVisibility(4);
     }
     QQUser localQQUser = m.f();
-    if ((cd.a().c()) || ((cr.a().h()) && (localQQUser != null) && (localQQUser.mIsRegisterFacePwd)))
+    if ((!cd.a().c()) && ((!cr.a().h()) || (localQQUser == null) || (!localQQUser.mIsRegisterFacePwd)))
     {
-      this.mTokenPwdTxt.setText(2131231443);
-      this.mTokenPwdTxt.setTextColor(getResources().getColor(2131492937));
+      this.mTokenPwdTxt.setText(2131493585);
+      this.mTokenPwdTxt.setTextColor(getResources().getColor(2130968769));
     }
-    for (;;)
+    else
     {
-      com.tencent.token.core.bean.h.b().d();
-      return;
-      this.mTokenPwdTxt.setText(2131231442);
-      this.mTokenPwdTxt.setTextColor(getResources().getColor(2131493035));
+      this.mTokenPwdTxt.setText(2131493586);
+      this.mTokenPwdTxt.setTextColor(getResources().getColor(2130968669));
     }
+    com.tencent.token.core.bean.h.b().d();
   }
 }
 

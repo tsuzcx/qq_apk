@@ -27,14 +27,18 @@ public class dc
   
   public f a(int paramInt, boolean paramBoolean)
   {
-    if ((paramInt < 0) || (paramInt >= b(paramBoolean))) {}
-    List localList;
-    do
+    if (paramInt >= 0)
     {
-      return null;
-      localList = a(paramBoolean);
-    } while (localList == null);
-    return (f)localList.get(paramInt);
+      if (paramInt >= b(paramBoolean)) {
+        return null;
+      }
+      List localList = a(paramBoolean);
+      if (localList == null) {
+        return null;
+      }
+      return (f)localList.get(paramInt);
+    }
+    return null;
   }
   
   public List<f> a(boolean paramBoolean)
@@ -52,83 +56,90 @@ public class dc
   
   public void a(List<f> paramList, boolean paramBoolean)
   {
-    Object localObject;
-    f localf;
     try
     {
       if (this.c == null) {
         this.c = cs.a().h.a("account_lock");
       }
-      if (this.c.mClientVersion <= this.c.mClickVersion) {
-        break label317;
-      }
-      if (this.c.mClickVersion == -1)
+      if (this.c.mClientVersion > this.c.mClickVersion)
       {
-        if (this.c.mConfIDs == null) {
-          break label317;
-        }
-        localObject = this.c.mConfIDs.iterator();
-        while (((Iterator)localObject).hasNext())
+        Object localObject;
+        Iterator localIterator;
+        f localf;
+        if (this.c.mClickVersion == -1)
         {
-          int i = ((Integer)((Iterator)localObject).next()).intValue();
+          if (this.c.mConfIDs != null)
+          {
+            localObject = this.c.mConfIDs.iterator();
+            while (((Iterator)localObject).hasNext())
+            {
+              int i = ((Integer)((Iterator)localObject).next()).intValue();
+              localIterator = paramList.iterator();
+              while (localIterator.hasNext())
+              {
+                localf = (f)localIterator.next();
+                if (i == localf.a) {
+                  localf.f = true;
+                }
+              }
+            }
+          }
+        }
+        else
+        {
+          localObject = new HashSet();
+          if (paramBoolean)
+          {
+            localIterator = this.a.iterator();
+            while (localIterator.hasNext()) {
+              ((Set)localObject).add(Integer.valueOf(((f)localIterator.next()).a));
+            }
+          }
+          localIterator = this.b.iterator();
+          while (localIterator.hasNext()) {
+            ((Set)localObject).add(Integer.valueOf(((f)localIterator.next()).a));
+          }
           localIterator = paramList.iterator();
           while (localIterator.hasNext())
           {
             localf = (f)localIterator.next();
-            if (i == localf.a) {
+            if (!((Set)localObject).contains(Integer.valueOf(localf.a))) {
               localf.f = true;
             }
           }
         }
       }
-      localObject = new HashSet();
-    }
-    finally {}
-    if (paramBoolean)
-    {
-      localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        ((Set)localObject).add(Integer.valueOf(((f)localIterator.next()).a));
+      if (paramBoolean)
+      {
+        this.a.clear();
+        this.a.addAll(paramList);
       }
-    }
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      ((Set)localObject).add(Integer.valueOf(((f)localIterator.next()).a));
-    }
-    localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      localf = (f)localIterator.next();
-      if (!((Set)localObject).contains(Integer.valueOf(localf.a))) {
-        localf.f = true;
+      else
+      {
+        this.b.clear();
+        this.b.addAll(paramList);
       }
-    }
-    label317:
-    if (paramBoolean)
-    {
-      this.a.clear();
-      this.a.addAll(paramList);
-    }
-    for (;;)
-    {
       this.d = cr.c;
       if (cr.a().e() != null) {
         this.e = cr.a().e().mUin;
       }
       return;
-      this.b.clear();
-      this.b.addAll(paramList);
     }
+    finally {}
   }
   
   public boolean a()
   {
     QQUser localQQUser = cr.a().e();
-    if ((this.d == null) || (localQQUser == null)) {}
-    while ((!this.d.equals(cr.c)) || (this.e != localQQUser.mUin) || (!this.f)) {
-      return false;
+    String str = this.d;
+    if (str != null)
+    {
+      if (localQQUser == null) {
+        return false;
+      }
+      return (str.equals(cr.c)) && (this.e == localQQUser.mUin) && (this.f);
     }
-    return true;
+    return false;
   }
   
   public boolean a(JSONArray paramJSONArray)
@@ -136,27 +147,24 @@ public class dc
     if (paramJSONArray.length() < 2) {
       return false;
     }
-    if (paramJSONArray != null) {}
-    for (boolean bool = true;; bool = false) {
-      for (;;)
-      {
-        g.a(bool);
-        try
-        {
-          if (!a(paramJSONArray.getJSONArray(0), true)) {
-            break;
-          }
-          bool = a(paramJSONArray.getJSONArray(1), false);
-          if (!bool) {
-            break;
-          }
-          return true;
-        }
-        catch (JSONException paramJSONArray)
-        {
-          paramJSONArray.printStackTrace();
-        }
+    boolean bool;
+    if (paramJSONArray != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    g.a(bool);
+    try
+    {
+      if (!a(paramJSONArray.getJSONArray(0), true)) {
+        return false;
       }
+      bool = a(paramJSONArray.getJSONArray(1), false);
+      return bool;
+    }
+    catch (JSONException paramJSONArray)
+    {
+      paramJSONArray.printStackTrace();
     }
     return false;
   }
@@ -165,33 +173,44 @@ public class dc
   {
     ArrayList localArrayList = new ArrayList();
     if (paramJSONArray != null) {}
-    try
+    for (;;)
     {
-      if (paramJSONArray.length() > 0)
+      try
       {
-        int i = 0;
-        if (i < paramJSONArray.length())
+        if (paramJSONArray.length() > 0)
         {
-          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-          if (localJSONObject != null) {}
-          for (boolean bool = true;; bool = false)
+          int i = 0;
+          if (i < paramJSONArray.length())
           {
+            Object localObject = paramJSONArray.getJSONObject(i);
+            if (localObject == null) {
+              break label133;
+            }
+            bool = true;
             g.a(bool);
             f localf = new f();
-            if (!localf.b(localJSONObject)) {
-              g.c("object item parse failed: " + i);
+            if (!localf.b((JSONObject)localObject))
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("object item parse failed: ");
+              ((StringBuilder)localObject).append(i);
+              g.c(((StringBuilder)localObject).toString());
             }
             localArrayList.add(localf);
             i += 1;
-            break;
+            continue;
           }
         }
+        a(localArrayList, paramBoolean);
+        return true;
       }
-      a(localArrayList, paramBoolean);
-      return true;
+      catch (JSONException paramJSONArray)
+      {
+        return false;
+      }
+      label133:
+      boolean bool = false;
     }
-    catch (JSONException paramJSONArray) {}
-    return false;
   }
   
   public int b(boolean paramBoolean)

@@ -46,6 +46,8 @@ public class ao
       return null;
     }
     Object localObject1 = new com.tencent.halley.common.b.d();
+    Object localObject2;
+    int i1;
     if (paramBoolean)
     {
       this.f = bq.b(this.j.toString());
@@ -61,40 +63,10 @@ public class ao
       ((com.tencent.halley.common.b.d)localObject1).b("#halley-proxy.HalleyDispatchService");
       ((com.tencent.halley.common.b.d)localObject1).a("resDispatch");
       ((com.tencent.halley.common.b.d)localObject1).a("request", localObject2);
+      i1 = this.w;
     }
-    for (int i1 = this.w;; i1 = 22)
+    else
     {
-      localObject1 = com.tencent.halley.common.e.a((com.tencent.halley.common.b.d)localObject1);
-      ((bi)localObject1).a(i1);
-      this.q = bp.f();
-      this.p = ((bi)localObject1).d();
-      this.r = ((bi)localObject1).g();
-      this.s = ((bi)localObject1).e();
-      this.t = ((bi)localObject1).h();
-      this.u = ((bi)localObject1).f();
-      if ((((bi)localObject1).b() != 0) || (((bi)localObject1).a() == null)) {
-        break label1130;
-      }
-      localObject1 = ((bi)localObject1).a();
-      localObject2 = new com.tencent.halley.scheduler.c.e();
-      try
-      {
-        localObject1 = (com.tencent.halley.scheduler.c.e)((com.tencent.halley.common.b.d)localObject1).b("response", localObject2);
-        if (localObject1 != null) {
-          break;
-        }
-        this.m = -8;
-        this.n = "Response is Null";
-        return null;
-      }
-      catch (Exception localException1)
-      {
-        b.a("ScheduleRequestImpl", "wup decode fail.", localException1);
-        this.m = -8;
-        this.o = localException1.getClass().getSimpleName();
-        this.n = bq.a(localException1);
-        return null;
-      }
       this.f = bq.b(this.j.toString());
       localObject2 = new HashMap();
       ((Map)localObject2).put("taskVersionCode", bd.a().c.a);
@@ -106,87 +78,125 @@ public class ao
       ((com.tencent.halley.common.b.d)localObject1).b("#halley-proxy.HalleyDispatchService");
       ((com.tencent.halley.common.b.d)localObject1).a("srvDispatch");
       ((com.tencent.halley.common.b.d)localObject1).a("request", localObject2);
+      i1 = 22;
     }
-    Object localObject2 = new ap();
-    Object localObject3 = bp.a();
-    long l2 = System.currentTimeMillis();
-    Object localObject4;
-    if ((!((String)localObject3).equals("unkonwn")) && (((String)localObject3).equals(this.g)))
+    localObject1 = com.tencent.halley.common.e.a((com.tencent.halley.common.b.d)localObject1);
+    ((bi)localObject1).a(i1);
+    this.q = bp.f();
+    this.p = ((bi)localObject1).d();
+    this.r = ((bi)localObject1).g();
+    this.s = ((bi)localObject1).e();
+    this.t = ((bi)localObject1).h();
+    this.u = ((bi)localObject1).f();
+    if ((((bi)localObject1).b() == 0) && (((bi)localObject1).a() != null))
     {
-      localObject3 = localException1.a;
-      if ((localObject3 != null) && (((Map)localObject3).size() > 0))
-      {
-        if (paramBoolean)
-        {
-          localObject3 = localException1.a.keySet().iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            localObject4 = (String)((Iterator)localObject3).next();
-            if (localException1.a.get(localObject4) != null) {
-              ((ap)localObject2).a(((f)localException1.a.get(localObject4)).a);
-            }
-          }
-        }
-        localObject4 = new az(this.g);
-        Iterator localIterator = ((Map)localObject3).keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject5 = (String)localIterator.next();
-          if (((Map)localObject3).get(localObject5) != null)
-          {
-            Object localObject6 = ((f)((Map)localObject3).get(localObject5)).a;
-            localObject5 = new az.a((String)localObject5, l2, ((f)localException1.a.get(localObject5)).b);
-            localObject6 = ((ArrayList)localObject6).iterator();
-            while (((Iterator)localObject6).hasNext())
-            {
-              String str = (String)((Iterator)localObject6).next();
-              ay localay = new ay();
-              if (localay.a(str)) {
-                ((az.a)localObject5).a(localay);
-              } else {
-                b.c("ScheduleRequestImpl", "parse ipPort fail. ipPort:" + str);
-              }
-            }
-            ((az)localObject4).a((az.a)localObject5);
-          }
-        }
-        ((ap)localObject2).a((az)localObject4);
-      }
-    }
-    for (;;)
-    {
+      localObject1 = ((bi)localObject1).a();
+      localObject2 = new com.tencent.halley.scheduler.c.e();
       try
       {
-        localObject3 = (byte[])localException1.e.get("detectTask");
-        if (localObject3 != null) {
-          g.a((byte[])localObject3);
+        localObject1 = (com.tencent.halley.scheduler.c.e)((com.tencent.halley.common.b.d)localObject1).b("response", localObject2);
+        if (localObject1 == null)
+        {
+          this.m = -8;
+          this.n = "Response is Null";
+          return null;
         }
+        localObject2 = new ap();
+        Object localObject3 = bp.a();
+        long l2 = System.currentTimeMillis();
+        if ((!((String)localObject3).equals("unkonwn")) && (((String)localObject3).equals(this.g)))
+        {
+          localObject3 = ((com.tencent.halley.scheduler.c.e)localObject1).a;
+          if ((localObject3 != null) && (((Map)localObject3).size() > 0))
+          {
+            if (paramBoolean)
+            {
+              localObject3 = ((com.tencent.halley.scheduler.c.e)localObject1).a.keySet().iterator();
+              while (((Iterator)localObject3).hasNext())
+              {
+                localObject4 = (String)((Iterator)localObject3).next();
+                if (((com.tencent.halley.scheduler.c.e)localObject1).a.get(localObject4) != null) {
+                  ((ap)localObject2).a(((f)((com.tencent.halley.scheduler.c.e)localObject1).a.get(localObject4)).a);
+                }
+              }
+            }
+            localObject4 = new az(this.g);
+            Iterator localIterator = ((Map)localObject3).keySet().iterator();
+            while (localIterator.hasNext())
+            {
+              Object localObject5 = (String)localIterator.next();
+              if (((Map)localObject3).get(localObject5) != null)
+              {
+                Object localObject6 = ((f)((Map)localObject3).get(localObject5)).a;
+                localObject5 = new az.a((String)localObject5, l2, ((f)((com.tencent.halley.scheduler.c.e)localObject1).a.get(localObject5)).b);
+                localObject6 = ((ArrayList)localObject6).iterator();
+                while (((Iterator)localObject6).hasNext())
+                {
+                  String str2 = (String)((Iterator)localObject6).next();
+                  Object localObject7 = new ay();
+                  if (((ay)localObject7).a(str2))
+                  {
+                    ((az.a)localObject5).a((ay)localObject7);
+                  }
+                  else
+                  {
+                    localObject7 = new StringBuilder("parse ipPort fail. ipPort:");
+                    ((StringBuilder)localObject7).append(str2);
+                    b.c("ScheduleRequestImpl", ((StringBuilder)localObject7).toString());
+                  }
+                }
+                ((az)localObject4).a((az.a)localObject5);
+              }
+            }
+            ((ap)localObject2).a((az)localObject4);
+          }
+        }
+        else
+        {
+          ((ap)localObject2).a(null);
+          this.m = -9;
+          localObject4 = new StringBuilder("req apn:");
+          ((StringBuilder)localObject4).append(this.g);
+          ((StringBuilder)localObject4).append(",current apn:");
+          ((StringBuilder)localObject4).append((String)localObject3);
+          this.n = ((StringBuilder)localObject4).toString();
+        }
+        try
+        {
+          localObject3 = (byte[])((com.tencent.halley.scheduler.c.e)localObject1).e.get("detectTask");
+          if (localObject3 != null) {
+            g.a((byte[])localObject3);
+          }
+        }
+        catch (Exception localException2)
+        {
+          localException2.printStackTrace();
+        }
+        Object localObject4 = bd.a();
+        String str1 = (String)((com.tencent.halley.scheduler.c.e)localObject1).d.get("ipinfo");
+        if ((str1 == null) || (!"".equals(str1)))
+        {
+          localObject4 = ((bd)localObject4).c;
+          be.a("ipInfo", str1);
+        }
+        if (((com.tencent.halley.scheduler.c.e)localObject1).c != null) {
+          ((ap)localObject2).a(new bg(((com.tencent.halley.scheduler.c.e)localObject1).c));
+        }
+        if (((com.tencent.halley.scheduler.c.e)localObject1).b != null) {
+          ((ap)localObject2).a(new bf(((com.tencent.halley.scheduler.c.e)localObject1).b));
+        }
+        this.v = ((int)(System.currentTimeMillis() - l1));
+        return localObject2;
       }
-      catch (Exception localException2)
+      catch (Exception localException1)
       {
-        localException2.printStackTrace();
-        continue;
+        b.a("ScheduleRequestImpl", "wup decode fail.", localException1);
+        this.m = -8;
+        this.o = localException1.getClass().getSimpleName();
+        this.n = bq.a(localException1);
+        return null;
       }
-      localObject4 = bd.a();
-      localObject3 = (String)localException1.d.get("ipinfo");
-      if ((localObject3 == null) || (!"".equals(localObject3)))
-      {
-        localObject4 = ((bd)localObject4).c;
-        be.a("ipInfo", (String)localObject3);
-      }
-      if (localException1.c != null) {
-        ((ap)localObject2).a(new bg(localException1.c));
-      }
-      if (localException1.b != null) {
-        ((ap)localObject2).a(new bf(localException1.b));
-      }
-      this.v = ((int)(System.currentTimeMillis() - l1));
-      return localObject2;
-      ((ap)localObject2).a(null);
-      this.m = -9;
-      this.n = ("req apn:" + this.g + ",current apn:" + (String)localObject3);
     }
-    label1130:
     this.m = localException1.b();
     this.o = localException1.c();
     return null;

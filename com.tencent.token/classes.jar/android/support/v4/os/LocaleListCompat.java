@@ -33,25 +33,26 @@ public final class LocaleListCompat
   @NonNull
   public static LocaleListCompat forLanguageTags(@Nullable String paramString)
   {
-    if ((paramString == null) || (paramString.isEmpty())) {
-      return getEmptyLocaleList();
-    }
-    String[] arrayOfString = paramString.split(",");
-    Locale[] arrayOfLocale = new Locale[arrayOfString.length];
-    int i = 0;
-    if (i < arrayOfLocale.length)
+    if ((paramString != null) && (!paramString.isEmpty()))
     {
-      if (Build.VERSION.SDK_INT >= 21) {}
-      for (paramString = Locale.forLanguageTag(arrayOfString[i]);; paramString = LocaleHelper.forLanguageTag(arrayOfString[i]))
+      String[] arrayOfString = paramString.split(",");
+      Locale[] arrayOfLocale = new Locale[arrayOfString.length];
+      int i = 0;
+      while (i < arrayOfLocale.length)
       {
+        if (Build.VERSION.SDK_INT >= 21) {
+          paramString = Locale.forLanguageTag(arrayOfString[i]);
+        } else {
+          paramString = LocaleHelper.forLanguageTag(arrayOfString[i]);
+        }
         arrayOfLocale[i] = paramString;
         i += 1;
-        break;
       }
+      paramString = new LocaleListCompat();
+      paramString.setLocaleListArray(arrayOfLocale);
+      return paramString;
     }
-    paramString = new LocaleListCompat();
-    paramString.setLocaleListArray(arrayOfLocale);
-    return paramString;
+    return getEmptyLocaleList();
   }
   
   @NonNull
@@ -185,8 +186,9 @@ public final class LocaleListCompat
     @Nullable
     public Locale getFirstMatch(String[] paramArrayOfString)
     {
-      if (this.mLocaleList != null) {
-        return this.mLocaleList.getFirstMatch(paramArrayOfString);
+      LocaleList localLocaleList = this.mLocaleList;
+      if (localLocaleList != null) {
+        return localLocaleList.getFirstMatch(paramArrayOfString);
       }
       return null;
     }
@@ -252,8 +254,9 @@ public final class LocaleListCompat
     @Nullable
     public Locale getFirstMatch(String[] paramArrayOfString)
     {
-      if (this.mLocaleList != null) {
-        return this.mLocaleList.getFirstMatch(paramArrayOfString);
+      LocaleListHelper localLocaleListHelper = this.mLocaleList;
+      if (localLocaleListHelper != null) {
+        return localLocaleListHelper.getFirstMatch(paramArrayOfString);
       }
       return null;
     }

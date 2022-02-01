@@ -16,17 +16,23 @@ public final class MMEntryLock
   {
     if (isLocked(paramString))
     {
-      Log.d("MicroMsg.MMEntryLock", "locked-" + paramString);
+      localStringBuilder = new StringBuilder("locked-");
+      localStringBuilder.append(paramString);
+      Log.d("MicroMsg.MMEntryLock", localStringBuilder.toString());
       return false;
     }
-    Log.d("MicroMsg.MMEntryLock", "lock-" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder("lock-");
+    localStringBuilder.append(paramString);
+    Log.d("MicroMsg.MMEntryLock", localStringBuilder.toString());
     return an.add(paramString);
   }
   
   public static void unlock(String paramString)
   {
     an.remove(paramString);
-    Log.d("MicroMsg.MMEntryLock", "unlock-" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder("unlock-");
+    localStringBuilder.append(paramString);
+    Log.d("MicroMsg.MMEntryLock", localStringBuilder.toString());
   }
 }
 

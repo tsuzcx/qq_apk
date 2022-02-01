@@ -1,9 +1,5 @@
 package com.tmsdk.base.utils;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 public class ConvertUtil
 {
   private static byte a(char paramChar)
@@ -13,30 +9,40 @@ public class ConvertUtil
   
   public static final String bytesToHexString(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return "";
-    }
-    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      if (str.length() < 2) {
-        localStringBuffer.append(0);
+      StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
+      int i = 0;
+      while (i < paramArrayOfByte.length)
+      {
+        String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+        if (str.length() < 2) {
+          localStringBuffer.append(0);
+        }
+        localStringBuffer.append(str.toUpperCase());
+        i += 1;
       }
-      localStringBuffer.append(str.toUpperCase());
-      i += 1;
+      return localStringBuffer.toString();
     }
-    return localStringBuffer.toString();
+    return "";
   }
   
   public static int bytesToInt(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {}
-    while (paramArrayOfByte.length != 4) {
-      return 0;
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length <= 0) {
+        return 0;
+      }
+      if (paramArrayOfByte.length != 4) {
+        return 0;
+      }
+      int i = paramArrayOfByte[0];
+      int j = paramArrayOfByte[1];
+      int k = paramArrayOfByte[2];
+      return (paramArrayOfByte[3] & 0xFF) << 24 | i & 0xFF | (j & 0xFF) << 8 | (k & 0xFF) << 16;
     }
-    return paramArrayOfByte[0] & 0xFF | (paramArrayOfByte[1] & 0xFF) << 8 | (paramArrayOfByte[2] & 0xFF) << 16 | (paramArrayOfByte[3] & 0xFF) << 24;
+    return 0;
   }
   
   public static final String bytesToString(byte[] paramArrayOfByte)
@@ -57,85 +63,112 @@ public class ConvertUtil
   public static byte[] hexStringToByte(String paramString)
   {
     int i = 0;
-    if ((paramString == null) || (paramString.trim().length() <= 0))
+    if ((paramString != null) && (paramString.trim().length() > 0))
     {
-      paramString = new byte[0];
-      return paramString;
-    }
-    int j = paramString.length() / 2;
-    byte[] arrayOfByte = new byte[j];
-    char[] arrayOfChar = paramString.toCharArray();
-    for (;;)
-    {
-      paramString = arrayOfByte;
-      if (i >= j) {
-        break;
+      int j = paramString.length() / 2;
+      byte[] arrayOfByte = new byte[j];
+      paramString = paramString.toCharArray();
+      while (i < j)
+      {
+        int k = i * 2;
+        int m = a(paramString[k]);
+        arrayOfByte[i] = ((byte)(a(paramString[(k + 1)]) | m << 4));
+        i += 1;
       }
-      int k = i * 2;
-      int m = a(arrayOfChar[k]);
-      arrayOfByte[i] = ((byte)(a(arrayOfChar[(k + 1)]) | m << 4));
-      i += 1;
+      return arrayOfByte;
     }
+    return new byte[0];
   }
   
-  public static byte[] inputStreamToBytes(InputStream paramInputStream)
+  /* Error */
+  public static byte[] inputStreamToBytes(java.io.InputStream paramInputStream)
   {
-    if (paramInputStream == null) {
-      return new byte[0];
-    }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    try
-    {
-      byte[] arrayOfByte = new byte[1024];
-      for (;;)
-      {
-        int i = paramInputStream.read(arrayOfByte);
-        if (i == -1) {
-          break;
-        }
-        localByteArrayOutputStream.write(arrayOfByte, 0, i);
-      }
-      try
-      {
-        localIOException2.close();
-        throw paramInputStream;
-      }
-      catch (IOException localIOException3)
-      {
-        for (;;)
-        {
-          localIOException3.printStackTrace();
-        }
-      }
-    }
-    catch (IOException paramInputStream)
-    {
-      paramInputStream = paramInputStream;
-      paramInputStream.printStackTrace();
-      paramInputStream = new byte[0];
-      try
-      {
-        localByteArrayOutputStream.close();
-        return paramInputStream;
-      }
-      catch (IOException localIOException1)
-      {
-        localIOException1.printStackTrace();
-        return paramInputStream;
-      }
-      paramInputStream = localIOException1.toByteArray();
-      try
-      {
-        localIOException1.close();
-        return paramInputStream;
-      }
-      catch (IOException localIOException2)
-      {
-        localIOException2.printStackTrace();
-        return paramInputStream;
-      }
-    }
-    finally {}
+    // Byte code:
+    //   0: aload_0
+    //   1: ifnonnull +7 -> 8
+    //   4: iconst_0
+    //   5: newarray byte
+    //   7: areturn
+    //   8: new 75	java/io/ByteArrayOutputStream
+    //   11: dup
+    //   12: invokespecial 76	java/io/ByteArrayOutputStream:<init>	()V
+    //   15: astore_2
+    //   16: sipush 1024
+    //   19: newarray byte
+    //   21: astore_3
+    //   22: aload_0
+    //   23: aload_3
+    //   24: invokevirtual 81	java/io/InputStream:read	([B)I
+    //   27: istore_1
+    //   28: iload_1
+    //   29: iconst_m1
+    //   30: if_icmpeq +13 -> 43
+    //   33: aload_2
+    //   34: aload_3
+    //   35: iconst_0
+    //   36: iload_1
+    //   37: invokevirtual 85	java/io/ByteArrayOutputStream:write	([BII)V
+    //   40: goto -18 -> 22
+    //   43: aload_2
+    //   44: invokevirtual 89	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   47: astore_0
+    //   48: aload_2
+    //   49: invokevirtual 92	java/io/ByteArrayOutputStream:close	()V
+    //   52: aload_0
+    //   53: areturn
+    //   54: astore_2
+    //   55: aload_2
+    //   56: invokevirtual 95	java/io/IOException:printStackTrace	()V
+    //   59: aload_0
+    //   60: areturn
+    //   61: astore_0
+    //   62: goto +25 -> 87
+    //   65: astore_0
+    //   66: aload_0
+    //   67: invokevirtual 95	java/io/IOException:printStackTrace	()V
+    //   70: iconst_0
+    //   71: newarray byte
+    //   73: astore_0
+    //   74: aload_2
+    //   75: invokevirtual 92	java/io/ByteArrayOutputStream:close	()V
+    //   78: aload_0
+    //   79: areturn
+    //   80: astore_2
+    //   81: aload_2
+    //   82: invokevirtual 95	java/io/IOException:printStackTrace	()V
+    //   85: aload_0
+    //   86: areturn
+    //   87: aload_2
+    //   88: invokevirtual 92	java/io/ByteArrayOutputStream:close	()V
+    //   91: goto +8 -> 99
+    //   94: astore_2
+    //   95: aload_2
+    //   96: invokevirtual 95	java/io/IOException:printStackTrace	()V
+    //   99: aload_0
+    //   100: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	101	0	paramInputStream	java.io.InputStream
+    //   27	10	1	i	int
+    //   15	34	2	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   54	21	2	localIOException1	java.io.IOException
+    //   80	8	2	localIOException2	java.io.IOException
+    //   94	2	2	localIOException3	java.io.IOException
+    //   21	14	3	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   48	52	54	java/io/IOException
+    //   16	22	61	finally
+    //   22	28	61	finally
+    //   33	40	61	finally
+    //   43	48	61	finally
+    //   66	74	61	finally
+    //   16	22	65	java/io/IOException
+    //   22	28	65	java/io/IOException
+    //   33	40	65	java/io/IOException
+    //   43	48	65	java/io/IOException
+    //   74	78	80	java/io/IOException
+    //   87	91	94	java/io/IOException
   }
   
   public static byte[] intToBytes(int paramInt)
@@ -145,17 +178,15 @@ public class ConvertUtil
   
   public static byte stringToByte(String paramString)
   {
-    byte b2 = -1;
-    byte b1 = b2;
-    if (paramString != null) {
-      b1 = b2;
-    }
+    if (paramString != null) {}
     try
     {
-      if (paramString.trim().length() > 0) {
-        b1 = Byte.valueOf(paramString).byteValue();
+      if (paramString.trim().length() > 0)
+      {
+        byte b = Byte.valueOf(paramString).byteValue();
+        return b;
       }
-      return b1;
+      return -1;
     }
     catch (Throwable paramString) {}
     return -1;
@@ -176,17 +207,15 @@ public class ConvertUtil
   
   public static int stringToInt(String paramString)
   {
-    int j = -1;
-    int i = j;
-    if (paramString != null) {
-      i = j;
-    }
+    if (paramString != null) {}
     try
     {
-      if (paramString.trim().length() > 0) {
-        i = Integer.valueOf(paramString).intValue();
+      if (paramString.trim().length() > 0)
+      {
+        int i = Integer.valueOf(paramString).intValue();
+        return i;
       }
-      return i;
+      return -1;
     }
     catch (Throwable paramString) {}
     return -1;

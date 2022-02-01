@@ -72,8 +72,9 @@ abstract class AbsActionBarView
   
   public void dismissPopupMenus()
   {
-    if (this.mActionMenuPresenter != null) {
-      this.mActionMenuPresenter.dismissPopupMenus();
+    ActionMenuPresenter localActionMenuPresenter = this.mActionMenuPresenter;
+    if (localActionMenuPresenter != null) {
+      localActionMenuPresenter.dismissPopupMenus();
     }
   }
   
@@ -92,31 +93,35 @@ abstract class AbsActionBarView
   
   public boolean hideOverflowMenu()
   {
-    if (this.mActionMenuPresenter != null) {
-      return this.mActionMenuPresenter.hideOverflowMenu();
+    ActionMenuPresenter localActionMenuPresenter = this.mActionMenuPresenter;
+    if (localActionMenuPresenter != null) {
+      return localActionMenuPresenter.hideOverflowMenu();
     }
     return false;
   }
   
   public boolean isOverflowMenuShowPending()
   {
-    if (this.mActionMenuPresenter != null) {
-      return this.mActionMenuPresenter.isOverflowMenuShowPending();
+    ActionMenuPresenter localActionMenuPresenter = this.mActionMenuPresenter;
+    if (localActionMenuPresenter != null) {
+      return localActionMenuPresenter.isOverflowMenuShowPending();
     }
     return false;
   }
   
   public boolean isOverflowMenuShowing()
   {
-    if (this.mActionMenuPresenter != null) {
-      return this.mActionMenuPresenter.isOverflowMenuShowing();
+    ActionMenuPresenter localActionMenuPresenter = this.mActionMenuPresenter;
+    if (localActionMenuPresenter != null) {
+      return localActionMenuPresenter.isOverflowMenuShowing();
     }
     return false;
   }
   
   public boolean isOverflowReserved()
   {
-    return (this.mActionMenuPresenter != null) && (this.mActionMenuPresenter.isOverflowReserved());
+    ActionMenuPresenter localActionMenuPresenter = this.mActionMenuPresenter;
+    return (localActionMenuPresenter != null) && (localActionMenuPresenter.isOverflowReserved());
   }
   
   protected int measureChildView(View paramView, int paramInt1, int paramInt2, int paramInt3)
@@ -128,11 +133,12 @@ abstract class AbsActionBarView
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    TypedArray localTypedArray = getContext().obtainStyledAttributes(null, R.styleable.ActionBar, R.attr.actionBarStyle, 0);
-    setContentHeight(localTypedArray.getLayoutDimension(R.styleable.ActionBar_height, 0));
-    localTypedArray.recycle();
-    if (this.mActionMenuPresenter != null) {
-      this.mActionMenuPresenter.onConfigurationChanged(paramConfiguration);
+    Object localObject = getContext().obtainStyledAttributes(null, R.styleable.ActionBar, R.attr.actionBarStyle, 0);
+    setContentHeight(((TypedArray)localObject).getLayoutDimension(R.styleable.ActionBar_height, 0));
+    ((TypedArray)localObject).recycle();
+    localObject = this.mActionMenuPresenter;
+    if (localObject != null) {
+      ((ActionMenuPresenter)localObject).onConfigurationChanged(paramConfiguration);
     }
   }
   
@@ -178,19 +184,17 @@ abstract class AbsActionBarView
   {
     int i = paramView.getMeasuredWidth();
     int j = paramView.getMeasuredHeight();
-    paramInt2 = (paramInt3 - j) / 2 + paramInt2;
+    paramInt2 += (paramInt3 - j) / 2;
     if (paramBoolean) {
       paramView.layout(paramInt1 - i, paramInt2, paramInt1, j + paramInt2);
-    }
-    for (;;)
-    {
-      paramInt1 = i;
-      if (paramBoolean) {
-        paramInt1 = -i;
-      }
-      return paramInt1;
+    } else {
       paramView.layout(paramInt1, paramInt2, paramInt1 + i, j + paramInt2);
     }
+    paramInt1 = i;
+    if (paramBoolean) {
+      paramInt1 = -i;
+    }
+    return paramInt1;
   }
   
   public void postShowOverflowMenu()
@@ -214,8 +218,9 @@ abstract class AbsActionBarView
   {
     if (paramInt != getVisibility())
     {
-      if (this.mVisibilityAnim != null) {
-        this.mVisibilityAnim.cancel();
+      ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat = this.mVisibilityAnim;
+      if (localViewPropertyAnimatorCompat != null) {
+        localViewPropertyAnimatorCompat.cancel();
       }
       super.setVisibility(paramInt);
     }
@@ -223,8 +228,9 @@ abstract class AbsActionBarView
   
   public ViewPropertyAnimatorCompat setupAnimatorToVisibility(int paramInt, long paramLong)
   {
-    if (this.mVisibilityAnim != null) {
-      this.mVisibilityAnim.cancel();
+    ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat = this.mVisibilityAnim;
+    if (localViewPropertyAnimatorCompat != null) {
+      localViewPropertyAnimatorCompat.cancel();
     }
     if (paramInt == 0)
     {
@@ -236,7 +242,7 @@ abstract class AbsActionBarView
       localViewPropertyAnimatorCompat.setListener(this.mVisAnimListener.withFinalVisibility(localViewPropertyAnimatorCompat, paramInt));
       return localViewPropertyAnimatorCompat;
     }
-    ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat = ViewCompat.animate(this).alpha(0.0F);
+    localViewPropertyAnimatorCompat = ViewCompat.animate(this).alpha(0.0F);
     localViewPropertyAnimatorCompat.setDuration(paramLong);
     localViewPropertyAnimatorCompat.setListener(this.mVisAnimListener.withFinalVisibility(localViewPropertyAnimatorCompat, paramInt));
     return localViewPropertyAnimatorCompat;
@@ -244,8 +250,9 @@ abstract class AbsActionBarView
   
   public boolean showOverflowMenu()
   {
-    if (this.mActionMenuPresenter != null) {
-      return this.mActionMenuPresenter.showOverflowMenu();
+    ActionMenuPresenter localActionMenuPresenter = this.mActionMenuPresenter;
+    if (localActionMenuPresenter != null) {
+      return localActionMenuPresenter.showOverflowMenu();
     }
     return false;
   }
@@ -268,8 +275,9 @@ abstract class AbsActionBarView
       if (this.mCanceled) {
         return;
       }
-      AbsActionBarView.this.mVisibilityAnim = null;
-      AbsActionBarView.this.setVisibility(this.mFinalVisibility);
+      paramView = AbsActionBarView.this;
+      paramView.mVisibilityAnim = null;
+      paramView.setVisibility(this.mFinalVisibility);
     }
     
     public void onAnimationStart(View paramView)

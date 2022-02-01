@@ -112,13 +112,10 @@ public abstract class AsyncTaskLoader<D>
       {
         this.mTask.waiting = true;
         this.mHandler.postAtTime(this.mTask, this.mLastLoadCompleteTime + this.mUpdateThrottle);
+        return;
       }
+      this.mTask.executeOnExecutor(this.mExecutor, (Void[])null);
     }
-    else
-    {
-      return;
-    }
-    this.mTask.executeOnExecutor(this.mExecutor, (Void[])null);
   }
   
   public boolean isLoadInBackgroundCanceled()
@@ -144,27 +141,25 @@ public abstract class AsyncTaskLoader<D>
           this.mHandler.removeCallbacks(this.mTask);
         }
         this.mTask = null;
+        return false;
       }
-    }
-    else
-    {
-      return false;
-    }
-    if (this.mTask.waiting)
-    {
-      this.mTask.waiting = false;
-      this.mHandler.removeCallbacks(this.mTask);
+      if (this.mTask.waiting)
+      {
+        this.mTask.waiting = false;
+        this.mHandler.removeCallbacks(this.mTask);
+        this.mTask = null;
+        return false;
+      }
+      boolean bool = this.mTask.cancel(false);
+      if (bool)
+      {
+        this.mCancellingTask = this.mTask;
+        cancelLoadInBackground();
+      }
       this.mTask = null;
-      return false;
+      return bool;
     }
-    boolean bool = this.mTask.cancel(false);
-    if (bool)
-    {
-      this.mCancellingTask = this.mTask;
-      cancelLoadInBackground();
-    }
-    this.mTask = null;
-    return bool;
+    return false;
   }
   
   public void onCanceled(@Nullable D paramD) {}
@@ -218,11 +213,11 @@ public abstract class AsyncTaskLoader<D>
       }
       catch (OperationCanceledException paramVarArgs)
       {
-        if (!isCancelled()) {
-          throw paramVarArgs;
+        if (isCancelled()) {
+          return null;
         }
+        throw paramVarArgs;
       }
-      return null;
     }
     
     protected void onCancelled(D paramD)

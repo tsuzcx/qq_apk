@@ -52,11 +52,14 @@ public class StructField
       paramInt += 1;
     }
     arrayOfJceField[i] = paramJceField;
-    paramInt = i;
-    while (paramInt < this.data.length)
+    for (paramInt = i;; paramInt = i)
     {
-      arrayOfJceField[(paramInt + 1)] = this.data[paramInt];
-      paramInt += 1;
+      paramJceField = this.data;
+      if (paramInt >= paramJceField.length) {
+        break;
+      }
+      i = paramInt + 1;
+      arrayOfJceField[i] = paramJceField[paramInt];
     }
     return false;
   }

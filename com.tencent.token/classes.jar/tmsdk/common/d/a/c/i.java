@@ -32,13 +32,11 @@ public class i
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      paramObject = (i)paramObject;
-    } while ((!paramObject.c.equals(this.c)) || (paramObject.b != this.b));
-    return true;
+    }
+    paramObject = (i)paramObject;
+    return (paramObject.c.equals(this.c)) && (paramObject.b == this.b);
   }
   
   public int hashCode()
@@ -48,8 +46,13 @@ public class i
   
   public String toString()
   {
-    if (this.b >= 0) {
-      return this.c + ":" + this.b;
+    if (this.b >= 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(":");
+      localStringBuilder.append(this.b);
+      return localStringBuilder.toString();
     }
     return this.c;
   }

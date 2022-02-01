@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class WXAPIFactory
 {
-  private static WXAPIFactory p = null;
+  private static WXAPIFactory p;
   
   public static IWXAPI createWXAPI(Context paramContext, String paramString)
   {

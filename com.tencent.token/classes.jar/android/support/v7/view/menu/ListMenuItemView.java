@@ -87,19 +87,16 @@ public class ListMenuItemView
   
   private void setSubMenuArrowVisible(boolean paramBoolean)
   {
-    ImageView localImageView;
-    if (this.mSubMenuArrowView != null)
+    ImageView localImageView = this.mSubMenuArrowView;
+    if (localImageView != null)
     {
-      localImageView = this.mSubMenuArrowView;
-      if (!paramBoolean) {
-        break label24;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
       localImageView.setVisibility(i);
-      return;
     }
   }
   
@@ -112,19 +109,19 @@ public class ListMenuItemView
   {
     this.mItemData = paramMenuItemImpl;
     this.mMenuType = paramInt;
-    if (paramMenuItemImpl.isVisible()) {}
-    for (paramInt = 0;; paramInt = 8)
-    {
-      setVisibility(paramInt);
-      setTitle(paramMenuItemImpl.getTitleForItemView(this));
-      setCheckable(paramMenuItemImpl.isCheckable());
-      setShortcut(paramMenuItemImpl.shouldShowShortcut(), paramMenuItemImpl.getShortcut());
-      setIcon(paramMenuItemImpl.getIcon());
-      setEnabled(paramMenuItemImpl.isEnabled());
-      setSubMenuArrowVisible(paramMenuItemImpl.hasSubMenu());
-      setContentDescription(paramMenuItemImpl.getContentDescription());
-      return;
+    if (paramMenuItemImpl.isVisible()) {
+      paramInt = 0;
+    } else {
+      paramInt = 8;
     }
+    setVisibility(paramInt);
+    setTitle(paramMenuItemImpl.getTitleForItemView(this));
+    setCheckable(paramMenuItemImpl.isCheckable());
+    setShortcut(paramMenuItemImpl.shouldShowShortcut(), paramMenuItemImpl.getShortcut());
+    setIcon(paramMenuItemImpl.getIcon());
+    setEnabled(paramMenuItemImpl.isEnabled());
+    setSubMenuArrowVisible(paramMenuItemImpl.hasSubMenu());
+    setContentDescription(paramMenuItemImpl.getContentDescription());
   }
   
   protected void onFinishInflate()
@@ -132,13 +129,15 @@ public class ListMenuItemView
     super.onFinishInflate();
     ViewCompat.setBackground(this, this.mBackground);
     this.mTitleView = ((TextView)findViewById(R.id.title));
-    if (this.mTextAppearance != -1) {
-      this.mTitleView.setTextAppearance(this.mTextAppearanceContext, this.mTextAppearance);
+    int i = this.mTextAppearance;
+    if (i != -1) {
+      this.mTitleView.setTextAppearance(this.mTextAppearanceContext, i);
     }
     this.mShortcutView = ((TextView)findViewById(R.id.shortcut));
     this.mSubMenuArrowView = ((ImageView)findViewById(R.id.submenuarrow));
-    if (this.mSubMenuArrowView != null) {
-      this.mSubMenuArrowView.setImageDrawable(this.mSubMenuArrow);
+    ImageView localImageView = this.mSubMenuArrowView;
+    if (localImageView != null) {
+      localImageView.setImageDrawable(this.mSubMenuArrow);
     }
   }
   
@@ -162,69 +161,74 @@ public class ListMenuItemView
   
   public void setCheckable(boolean paramBoolean)
   {
-    if ((!paramBoolean) && (this.mRadioButton == null) && (this.mCheckBox == null)) {}
-    label51:
-    do
-    {
+    if ((!paramBoolean) && (this.mRadioButton == null) && (this.mCheckBox == null)) {
       return;
-      Object localObject1;
-      Object localObject2;
-      if (this.mItemData.isExclusiveCheckable())
-      {
-        if (this.mRadioButton == null) {
-          insertRadioButton();
-        }
-        localObject1 = this.mRadioButton;
-        localObject2 = this.mCheckBox;
-        if (!paramBoolean) {
-          break label139;
-        }
-        ((CompoundButton)localObject1).setChecked(this.mItemData.isChecked());
-        if (!paramBoolean) {
-          break label133;
-        }
+    }
+    Object localObject1;
+    Object localObject2;
+    if (this.mItemData.isExclusiveCheckable())
+    {
+      if (this.mRadioButton == null) {
+        insertRadioButton();
       }
-      for (int i = 0;; i = 8)
-      {
-        if (((CompoundButton)localObject1).getVisibility() != i) {
-          ((CompoundButton)localObject1).setVisibility(i);
-        }
-        if ((localObject2 == null) || (((CompoundButton)localObject2).getVisibility() == 8)) {
-          break;
-        }
+      localObject1 = this.mRadioButton;
+      localObject2 = this.mCheckBox;
+    }
+    else
+    {
+      if (this.mCheckBox == null) {
+        insertCheckBox();
+      }
+      localObject1 = this.mCheckBox;
+      localObject2 = this.mRadioButton;
+    }
+    if (paramBoolean)
+    {
+      ((CompoundButton)localObject1).setChecked(this.mItemData.isChecked());
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
+      }
+      if (((CompoundButton)localObject1).getVisibility() != i) {
+        ((CompoundButton)localObject1).setVisibility(i);
+      }
+      if ((localObject2 != null) && (((CompoundButton)localObject2).getVisibility() != 8)) {
         ((CompoundButton)localObject2).setVisibility(8);
-        return;
-        if (this.mCheckBox == null) {
-          insertCheckBox();
-        }
-        localObject1 = this.mCheckBox;
-        localObject2 = this.mRadioButton;
-        break label51;
       }
-      if (this.mCheckBox != null) {
-        this.mCheckBox.setVisibility(8);
+    }
+    else
+    {
+      localObject1 = this.mCheckBox;
+      if (localObject1 != null) {
+        ((CheckBox)localObject1).setVisibility(8);
       }
-    } while (this.mRadioButton == null);
-    label133:
-    label139:
-    this.mRadioButton.setVisibility(8);
+      localObject1 = this.mRadioButton;
+      if (localObject1 != null) {
+        ((RadioButton)localObject1).setVisibility(8);
+      }
+    }
   }
   
   public void setChecked(boolean paramBoolean)
   {
-    if (this.mItemData.isExclusiveCheckable()) {
+    Object localObject;
+    if (this.mItemData.isExclusiveCheckable())
+    {
       if (this.mRadioButton == null) {
         insertRadioButton();
       }
+      localObject = this.mRadioButton;
     }
-    for (Object localObject = this.mRadioButton;; localObject = this.mCheckBox)
+    else
     {
-      ((CompoundButton)localObject).setChecked(paramBoolean);
-      return;
       if (this.mCheckBox == null) {
         insertCheckBox();
       }
+      localObject = this.mCheckBox;
     }
+    ((CompoundButton)localObject).setChecked(paramBoolean);
   }
   
   public void setForceShowIcon(boolean paramBoolean)
@@ -236,53 +240,47 @@ public class ListMenuItemView
   public void setIcon(Drawable paramDrawable)
   {
     int i;
-    if ((this.mItemData.shouldShowIcon()) || (this.mForceShowIcon))
-    {
-      i = 1;
-      if ((i != 0) || (this.mPreserveIconSpacing)) {
-        break label36;
-      }
-    }
-    label36:
-    while ((this.mIconView == null) && (paramDrawable == null) && (!this.mPreserveIconSpacing))
-    {
-      return;
+    if ((!this.mItemData.shouldShowIcon()) && (!this.mForceShowIcon)) {
       i = 0;
-      break;
+    } else {
+      i = 1;
+    }
+    if ((i == 0) && (!this.mPreserveIconSpacing)) {
+      return;
+    }
+    if ((this.mIconView == null) && (paramDrawable == null) && (!this.mPreserveIconSpacing)) {
+      return;
     }
     if (this.mIconView == null) {
       insertIconView();
     }
-    if ((paramDrawable != null) || (this.mPreserveIconSpacing))
+    if ((paramDrawable == null) && (!this.mPreserveIconSpacing))
     {
-      ImageView localImageView = this.mIconView;
-      if (i != 0) {}
-      for (;;)
-      {
-        localImageView.setImageDrawable(paramDrawable);
-        if (this.mIconView.getVisibility() == 0) {
-          break;
-        }
-        this.mIconView.setVisibility(0);
-        return;
-        paramDrawable = null;
-      }
+      this.mIconView.setVisibility(8);
+      return;
     }
-    this.mIconView.setVisibility(8);
+    ImageView localImageView = this.mIconView;
+    if (i == 0) {
+      paramDrawable = null;
+    }
+    localImageView.setImageDrawable(paramDrawable);
+    if (this.mIconView.getVisibility() != 0) {
+      this.mIconView.setVisibility(0);
+    }
   }
   
   public void setShortcut(boolean paramBoolean, char paramChar)
   {
-    if ((paramBoolean) && (this.mItemData.shouldShowShortcut())) {}
-    for (paramChar = '\000';; paramChar = '\b')
-    {
-      if (paramChar == 0) {
-        this.mShortcutView.setText(this.mItemData.getShortcutLabel());
-      }
-      if (this.mShortcutView.getVisibility() != paramChar) {
-        this.mShortcutView.setVisibility(paramChar);
-      }
-      return;
+    if ((paramBoolean) && (this.mItemData.shouldShowShortcut())) {
+      paramChar = '\000';
+    } else {
+      paramChar = '\b';
+    }
+    if (paramChar == 0) {
+      this.mShortcutView.setText(this.mItemData.getShortcutLabel());
+    }
+    if (this.mShortcutView.getVisibility() != paramChar) {
+      this.mShortcutView.setVisibility(paramChar);
     }
   }
   
@@ -295,10 +293,10 @@ public class ListMenuItemView
         this.mTitleView.setVisibility(0);
       }
     }
-    while (this.mTitleView.getVisibility() == 8) {
-      return;
+    else if (this.mTitleView.getVisibility() != 8)
+    {
+      this.mTitleView.setVisibility(8);
     }
-    this.mTitleView.setVisibility(8);
   }
   
   public boolean showsIcon()

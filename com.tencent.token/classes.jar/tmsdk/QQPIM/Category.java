@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class Category
   extends JceStruct
@@ -28,16 +29,6 @@ public final class Category
   public ArrayList<String> vecSubtitle = null;
   public int viewtimes = 0;
   public String welcome = "";
-  
-  static
-  {
-    if (!Category.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
   
   public Category()
   {
@@ -86,29 +77,91 @@ public final class Category
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (Category)paramObject;
-    } while ((!JceUtil.equals(this.id, paramObject.id)) || (!JceUtil.equals(this.name, paramObject.name)) || (!JceUtil.equals(this.icon, paramObject.icon)) || (!JceUtil.equals(this.count, paramObject.count)) || (!JceUtil.equals(this.welcome, paramObject.welcome)) || (!JceUtil.equals(this.autoalert, paramObject.autoalert)) || (!JceUtil.equals(this.endtime, paramObject.endtime)) || (!JceUtil.equals(this.categorytype, paramObject.categorytype)) || (!JceUtil.equals(this.source, paramObject.source)) || (!JceUtil.equals(this.vecSubtitle, paramObject.vecSubtitle)) || (!JceUtil.equals(this.description, paramObject.description)) || (!JceUtil.equals(this.sign, paramObject.sign)) || (!JceUtil.equals(this.state, paramObject.state)) || (!JceUtil.equals(this.viewtimes, paramObject.viewtimes)) || (!JceUtil.equals(this.expand, paramObject.expand)) || (!JceUtil.equals(this.rank, paramObject.rank)));
-    return true;
+    }
+    paramObject = (Category)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.id, paramObject.id))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.name, paramObject.name))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.icon, paramObject.icon))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.count, paramObject.count))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.welcome, paramObject.welcome))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.autoalert, paramObject.autoalert))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.endtime, paramObject.endtime))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.categorytype, paramObject.categorytype))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.source, paramObject.source))
+                    {
+                      bool1 = bool2;
+                      if (JceUtil.equals(this.vecSubtitle, paramObject.vecSubtitle))
+                      {
+                        bool1 = bool2;
+                        if (JceUtil.equals(this.description, paramObject.description))
+                        {
+                          bool1 = bool2;
+                          if (JceUtil.equals(this.sign, paramObject.sign))
+                          {
+                            bool1 = bool2;
+                            if (JceUtil.equals(this.state, paramObject.state))
+                            {
+                              bool1 = bool2;
+                              if (JceUtil.equals(this.viewtimes, paramObject.viewtimes))
+                              {
+                                bool1 = bool2;
+                                if (JceUtil.equals(this.expand, paramObject.expand))
+                                {
+                                  bool1 = bool2;
+                                  if (JceUtil.equals(this.rank, paramObject.rank)) {
+                                    bool1 = true;
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -325,24 +378,28 @@ public final class Category
     paramJceOutputStream.write(this.name, 1);
     paramJceOutputStream.write(this.icon, 2);
     paramJceOutputStream.write(this.count, 3);
-    if (this.welcome != null) {
-      paramJceOutputStream.write(this.welcome, 4);
+    Object localObject = this.welcome;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.autoalert, 5);
     paramJceOutputStream.write(this.endtime, 6);
     paramJceOutputStream.write(this.categorytype, 7);
     paramJceOutputStream.write(this.source, 8);
-    if (this.vecSubtitle != null) {
-      paramJceOutputStream.write(this.vecSubtitle, 9);
+    localObject = this.vecSubtitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
     }
-    if (this.description != null) {
-      paramJceOutputStream.write(this.description, 10);
+    localObject = this.description;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.sign, 11);
     paramJceOutputStream.write(this.state, 12);
     paramJceOutputStream.write(this.viewtimes, 13);
-    if (this.expand != null) {
-      paramJceOutputStream.write(this.expand, 14);
+    localObject = this.expand;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 14);
     }
     paramJceOutputStream.write(this.rank, 15);
   }

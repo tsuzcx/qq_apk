@@ -49,20 +49,18 @@ public class LifecycleRegistry
   private Lifecycle.State calculateTargetState(LifecycleObserver paramLifecycleObserver)
   {
     paramLifecycleObserver = this.mObserverMap.ceil(paramLifecycleObserver);
-    if (paramLifecycleObserver != null)
-    {
+    Object localObject = null;
+    if (paramLifecycleObserver != null) {
       paramLifecycleObserver = ((ObserverWithState)paramLifecycleObserver.getValue()).mState;
-      if (this.mParentStates.isEmpty()) {
-        break label74;
-      }
-    }
-    label74:
-    for (Lifecycle.State localState = (Lifecycle.State)this.mParentStates.get(this.mParentStates.size() - 1);; localState = null)
-    {
-      return min(min(this.mState, paramLifecycleObserver), localState);
+    } else {
       paramLifecycleObserver = null;
-      break;
     }
+    if (!this.mParentStates.isEmpty())
+    {
+      localObject = this.mParentStates;
+      localObject = (Lifecycle.State)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
+    }
+    return min(min(this.mState, paramLifecycleObserver), (Lifecycle.State)localObject);
   }
   
   private static Lifecycle.Event downEvent(Lifecycle.State paramState)
@@ -70,15 +68,18 @@ public class LifecycleRegistry
     switch (1.$SwitchMap$android$arch$lifecycle$Lifecycle$State[paramState.ordinal()])
     {
     default: 
-      throw new IllegalArgumentException("Unexpected state value " + paramState);
-    case 1: 
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unexpected state value ");
+      localStringBuilder.append(paramState);
+      throw new IllegalArgumentException(localStringBuilder.toString());
+    case 5: 
       throw new IllegalArgumentException();
-    case 2: 
-      return Lifecycle.Event.ON_DESTROY;
-    case 3: 
-      return Lifecycle.Event.ON_STOP;
     case 4: 
       return Lifecycle.Event.ON_PAUSE;
+    case 3: 
+      return Lifecycle.Event.ON_STOP;
+    case 2: 
+      return Lifecycle.Event.ON_DESTROY;
     }
     throw new IllegalArgumentException();
   }
@@ -104,17 +105,19 @@ public class LifecycleRegistry
     switch (1.$SwitchMap$android$arch$lifecycle$Lifecycle$Event[paramEvent.ordinal()])
     {
     default: 
-      throw new IllegalArgumentException("Unexpected event value " + paramEvent);
-    case 1: 
-    case 2: 
-      return Lifecycle.State.CREATED;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unexpected event value ");
+      localStringBuilder.append(paramEvent);
+      throw new IllegalArgumentException(localStringBuilder.toString());
+    case 6: 
+      return Lifecycle.State.DESTROYED;
+    case 5: 
+      return Lifecycle.State.RESUMED;
     case 3: 
     case 4: 
       return Lifecycle.State.STARTED;
-    case 5: 
-      return Lifecycle.State.RESUMED;
     }
-    return Lifecycle.State.DESTROYED;
+    return Lifecycle.State.CREATED;
   }
   
   private boolean isSynced()
@@ -124,18 +127,20 @@ public class LifecycleRegistry
     }
     Lifecycle.State localState1 = ((ObserverWithState)this.mObserverMap.eldest().getValue()).mState;
     Lifecycle.State localState2 = ((ObserverWithState)this.mObserverMap.newest().getValue()).mState;
-    if ((localState1 == localState2) && (this.mState == localState2)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return (localState1 == localState2) && (this.mState == localState2);
   }
   
   static Lifecycle.State min(@NonNull Lifecycle.State paramState1, @Nullable Lifecycle.State paramState2)
   {
-    if ((paramState2 != null) && (paramState2.compareTo(paramState1) < 0)) {
-      return paramState2;
+    Lifecycle.State localState = paramState1;
+    if (paramState2 != null)
+    {
+      localState = paramState1;
+      if (paramState2.compareTo(paramState1) < 0) {
+        localState = paramState2;
+      }
     }
-    return paramState1;
+    return localState;
   }
   
   private void moveToState(Lifecycle.State paramState)
@@ -144,19 +149,20 @@ public class LifecycleRegistry
       return;
     }
     this.mState = paramState;
-    if ((this.mHandlingEvent) || (this.mAddingObserverCounter != 0))
+    if ((!this.mHandlingEvent) && (this.mAddingObserverCounter == 0))
     {
-      this.mNewEventOccurred = true;
+      this.mHandlingEvent = true;
+      sync();
+      this.mHandlingEvent = false;
       return;
     }
-    this.mHandlingEvent = true;
-    sync();
-    this.mHandlingEvent = false;
+    this.mNewEventOccurred = true;
   }
   
   private void popParentState()
   {
-    this.mParentStates.remove(this.mParentStates.size() - 1);
+    ArrayList localArrayList = this.mParentStates;
+    localArrayList.remove(localArrayList.size() - 1);
   }
   
   private void pushParentState(Lifecycle.State paramState)
@@ -191,51 +197,49 @@ public class LifecycleRegistry
     switch (1.$SwitchMap$android$arch$lifecycle$Lifecycle$State[paramState.ordinal()])
     {
     default: 
-      throw new IllegalArgumentException("Unexpected state value " + paramState);
-    case 1: 
-    case 5: 
-      return Lifecycle.Event.ON_CREATE;
-    case 2: 
-      return Lifecycle.Event.ON_START;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unexpected state value ");
+      localStringBuilder.append(paramState);
+      throw new IllegalArgumentException(localStringBuilder.toString());
+    case 4: 
+      throw new IllegalArgumentException();
     case 3: 
       return Lifecycle.Event.ON_RESUME;
+    case 2: 
+      return Lifecycle.Event.ON_START;
     }
-    throw new IllegalArgumentException();
+    return Lifecycle.Event.ON_CREATE;
   }
   
   public void addObserver(@NonNull LifecycleObserver paramLifecycleObserver)
   {
-    Lifecycle.State localState;
-    ObserverWithState localObserverWithState;
-    if (this.mState == Lifecycle.State.DESTROYED)
-    {
+    if (this.mState == Lifecycle.State.DESTROYED) {
       localState = Lifecycle.State.DESTROYED;
-      localObserverWithState = new ObserverWithState(paramLifecycleObserver, localState);
-      if ((ObserverWithState)this.mObserverMap.putIfAbsent(paramLifecycleObserver, localObserverWithState) == null) {
-        break label49;
-      }
-    }
-    label49:
-    LifecycleOwner localLifecycleOwner;
-    do
-    {
-      return;
+    } else {
       localState = Lifecycle.State.INITIALIZED;
-      break;
-      localLifecycleOwner = (LifecycleOwner)this.mLifecycleOwner.get();
-    } while (localLifecycleOwner == null);
-    if ((this.mAddingObserverCounter != 0) || (this.mHandlingEvent)) {}
-    for (int i = 1;; i = 0)
+    }
+    ObserverWithState localObserverWithState = new ObserverWithState(paramLifecycleObserver, localState);
+    if ((ObserverWithState)this.mObserverMap.putIfAbsent(paramLifecycleObserver, localObserverWithState) != null) {
+      return;
+    }
+    LifecycleOwner localLifecycleOwner = (LifecycleOwner)this.mLifecycleOwner.get();
+    if (localLifecycleOwner == null) {
+      return;
+    }
+    int i;
+    if ((this.mAddingObserverCounter == 0) && (!this.mHandlingEvent)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    Lifecycle.State localState = calculateTargetState(paramLifecycleObserver);
+    this.mAddingObserverCounter += 1;
+    while ((localObserverWithState.mState.compareTo(localState) < 0) && (this.mObserverMap.contains(paramLifecycleObserver)))
     {
+      pushParentState(localObserverWithState.mState);
+      localObserverWithState.dispatchEvent(localLifecycleOwner, upEvent(localObserverWithState.mState));
+      popParentState();
       localState = calculateTargetState(paramLifecycleObserver);
-      this.mAddingObserverCounter += 1;
-      while ((localObserverWithState.mState.compareTo(localState) < 0) && (this.mObserverMap.contains(paramLifecycleObserver)))
-      {
-        pushParentState(localObserverWithState.mState);
-        localObserverWithState.dispatchEvent(localLifecycleOwner, upEvent(localObserverWithState.mState));
-        popParentState();
-        localState = calculateTargetState(paramLifecycleObserver);
-      }
     }
     if (i == 0) {
       sync();

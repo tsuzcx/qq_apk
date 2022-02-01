@@ -17,7 +17,11 @@ public final class be
   
   public final String toString()
   {
-    return "detectTaskCode:" + this.a + "ipInfo:" + this.b;
+    StringBuilder localStringBuilder = new StringBuilder("detectTaskCode:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("ipInfo:");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

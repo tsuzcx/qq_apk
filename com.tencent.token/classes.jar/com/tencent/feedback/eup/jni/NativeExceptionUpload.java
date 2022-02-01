@@ -22,20 +22,22 @@ public class NativeExceptionUpload
   
   public static void enableNativeEUP(boolean paramBoolean)
   {
-    if (!a.get()) {
-      e.c("rqdp{  n enable disable!!}", new Object[0]);
-    }
-    do
+    if (!a.get())
     {
+      e.c("rqdp{  n enable disable!!}", new Object[0]);
       return;
-      try
-      {
-        enableHandler(paramBoolean);
-        return;
+    }
+    try
+    {
+      enableHandler(paramBoolean);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (!e.a(localThrowable)) {
+        localThrowable.printStackTrace();
       }
-      catch (Throwable localThrowable) {}
-    } while (e.a(localThrowable));
-    localThrowable.printStackTrace();
+    }
   }
   
   public static NativeExceptionHandler getmHandler()
@@ -52,146 +54,129 @@ public class NativeExceptionUpload
     }
   }
   
+  /* Error */
   public static boolean loadRQDNativeLib()
   {
-    boolean bool = true;
-    try
-    {
-      System.loadLibrary("NativeRQD");
-      a.set(true);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (!e.a(localThrowable)) {
-          localThrowable.printStackTrace();
-        }
-        e.d("rqdp{  load library fail! see detail ,will turn off native eup function!}", new Object[0]);
-        bool = false;
-      }
-    }
-    finally {}
-  }
-  
-  /* Error */
-  public static boolean loadRQDNativeLib(File paramFile)
-  {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: aload_0
-    //   6: ifnull +82 -> 88
-    //   9: aload_0
-    //   10: invokevirtual 84	java/io/File:exists	()Z
-    //   13: ifeq +75 -> 88
-    //   16: aload_0
-    //   17: invokevirtual 87	java/io/File:canRead	()Z
-    //   20: istore_2
-    //   21: iload_2
-    //   22: ifeq +66 -> 88
-    //   25: ldc 89
-    //   27: iconst_1
-    //   28: anewarray 4	java/lang/Object
-    //   31: dup
-    //   32: iconst_0
-    //   33: aload_0
-    //   34: invokevirtual 93	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   37: aastore
-    //   38: invokestatic 95	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   41: pop
-    //   42: aload_0
-    //   43: invokevirtual 93	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   46: invokestatic 98	java/lang/System:load	(Ljava/lang/String;)V
-    //   49: getstatic 29	com/tencent/feedback/eup/jni/NativeExceptionUpload:a	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   52: iconst_1
-    //   53: invokevirtual 73	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   56: ldc 2
-    //   58: monitorexit
-    //   59: iload_1
-    //   60: ireturn
-    //   61: astore_0
-    //   62: aload_0
-    //   63: invokestatic 56	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
-    //   66: ifne +7 -> 73
-    //   69: aload_0
-    //   70: invokevirtual 59	java/lang/Throwable:printStackTrace	()V
-    //   73: ldc 75
-    //   75: iconst_0
-    //   76: anewarray 4	java/lang/Object
-    //   79: invokestatic 78	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   82: pop
-    //   83: iconst_0
-    //   84: istore_1
-    //   85: goto -29 -> 56
-    //   88: iconst_0
-    //   89: istore_1
-    //   90: goto -34 -> 56
-    //   93: astore_0
-    //   94: ldc 2
-    //   96: monitorexit
-    //   97: aload_0
-    //   98: athrow
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc 64
+    //   5: invokestatic 70	java/lang/System:loadLibrary	(Ljava/lang/String;)V
+    //   8: getstatic 29	com/tencent/feedback/eup/jni/NativeExceptionUpload:a	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   11: iconst_1
+    //   12: invokevirtual 73	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   15: ldc 2
+    //   17: monitorexit
+    //   18: iconst_1
+    //   19: ireturn
+    //   20: astore_0
+    //   21: goto +30 -> 51
+    //   24: astore_0
+    //   25: aload_0
+    //   26: invokestatic 56	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   29: ifne +7 -> 36
+    //   32: aload_0
+    //   33: invokevirtual 59	java/lang/Throwable:printStackTrace	()V
+    //   36: ldc 75
+    //   38: iconst_0
+    //   39: anewarray 4	java/lang/Object
+    //   42: invokestatic 78	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   45: pop
+    //   46: ldc 2
+    //   48: monitorexit
+    //   49: iconst_0
+    //   50: ireturn
+    //   51: ldc 2
+    //   53: monitorexit
+    //   54: aload_0
+    //   55: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	99	0	paramFile	File
-    //   1	89	1	bool1	boolean
-    //   20	2	2	bool2	boolean
+    //   20	1	0	localObject	Object
+    //   24	31	0	localThrowable	Throwable
     // Exception table:
     //   from	to	target	type
-    //   25	56	61	java/lang/Throwable
-    //   9	21	93	finally
-    //   25	56	93	finally
-    //   62	73	93	finally
-    //   73	83	93	finally
+    //   3	15	20	finally
+    //   25	36	20	finally
+    //   36	46	20	finally
+    //   3	15	24	java/lang/Throwable
   }
   
-  public static boolean loadRQDNativeLib(List<File> paramList)
+  public static boolean loadRQDNativeLib(File paramFile)
   {
-    if (paramList != null) {}
-    for (;;)
-    {
+    if (paramFile != null) {
       try
       {
-        Iterator localIterator = paramList.iterator();
-        if (localIterator.hasNext())
+        if (paramFile.exists())
         {
-          paramList = (File)localIterator.next();
-          if ((paramList.exists()) && (paramList.isFile()) && (paramList.getName().equals("libNativeRQD.so")))
-          {
-            if (paramList != null)
+          boolean bool = paramFile.canRead();
+          if (bool) {
+            try
             {
-              bool = loadRQDNativeLib(paramList);
-              return bool;
+              e.b("load %s", new Object[] { paramFile.getAbsolutePath() });
+              System.load(paramFile.getAbsolutePath());
+              a.set(true);
+              return true;
             }
-            boolean bool = false;
+            catch (Throwable paramFile)
+            {
+              if (!e.a(paramFile)) {
+                paramFile.printStackTrace();
+              }
+              e.d("rqdp{  load library fail! see detail ,will turn off native eup function!}", new Object[0]);
+              return false;
+            }
           }
-        }
-        else
-        {
-          paramList = null;
         }
       }
       finally {}
     }
+    return false;
+  }
+  
+  public static boolean loadRQDNativeLib(List<File> paramList)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramList != null) {}
+    try
+    {
+      paramList = paramList.iterator();
+      for (;;)
+      {
+        localObject1 = localObject2;
+        if (paramList.hasNext())
+        {
+          localObject1 = (File)paramList.next();
+          if ((((File)localObject1).exists()) && (((File)localObject1).isFile()) && (((File)localObject1).getName().equals("libNativeRQD.so"))) {
+            break;
+          }
+        }
+      }
+      if (localObject1 == null) {
+        break label87;
+      }
+      boolean bool = loadRQDNativeLib((File)localObject1);
+      return bool;
+    }
+    finally
+    {
+      label82:
+      break label82;
+    }
+    throw paramList;
+    label87:
+    return false;
   }
   
   public static boolean registEUP(String paramString1, String paramString2, int paramInt)
   {
-    if (!a.get()) {
-      e.c("rqdp{  nreg disable!}", new Object[0]);
-    }
-    do
+    if (!a.get())
     {
+      e.c("rqdp{  nreg disable!}", new Object[0]);
       return false;
-      if ((paramString1 == null) || (paramString1.trim().length() <= 0))
-      {
-        e.c("rqdp{  nreg param!}", new Object[0]);
-        return false;
-      }
+    }
+    if ((paramString1 != null) && (paramString1.trim().length() > 0)) {
       try
       {
         e.a("jarV:%d nativeV:%s", new Object[] { Integer.valueOf(1), registNativeExceptionHandler2(paramString1, paramString2, paramInt, 1) });
@@ -211,10 +196,14 @@ public class NativeExceptionUpload
           if (!e.a(localThrowable)) {
             localThrowable.printStackTrace();
           }
+          if (!e.a(paramString1)) {
+            paramString1.printStackTrace();
+          }
+          return false;
         }
       }
-    } while (e.a(paramString1));
-    paramString1.printStackTrace();
+    }
+    e.c("rqdp{  nreg param!}", new Object[0]);
     return false;
   }
   
@@ -226,20 +215,22 @@ public class NativeExceptionUpload
   
   public static void setNativeLogMode(int paramInt)
   {
-    if (!a.get()) {
-      e.c("rqdp{  n sNL disable!!}", new Object[0]);
-    }
-    do
+    if (!a.get())
     {
+      e.c("rqdp{  n sNL disable!!}", new Object[0]);
       return;
-      try
-      {
-        setLogMode(paramInt);
-        return;
+    }
+    try
+    {
+      setLogMode(paramInt);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (!e.a(localThrowable)) {
+        localThrowable.printStackTrace();
       }
-      catch (Throwable localThrowable) {}
-    } while (e.a(localThrowable));
-    localThrowable.printStackTrace();
+    }
   }
   
   public static void setmHandler(NativeExceptionHandler paramNativeExceptionHandler)

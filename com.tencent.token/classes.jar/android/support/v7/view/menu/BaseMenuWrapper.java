@@ -65,41 +65,42 @@ abstract class BaseMenuWrapper<T>
   
   final void internalClear()
   {
-    if (this.mMenuItems != null) {
-      this.mMenuItems.clear();
+    Map localMap = this.mMenuItems;
+    if (localMap != null) {
+      localMap.clear();
     }
-    if (this.mSubMenus != null) {
-      this.mSubMenus.clear();
+    localMap = this.mSubMenus;
+    if (localMap != null) {
+      localMap.clear();
     }
   }
   
   final void internalRemoveGroup(int paramInt)
   {
-    if (this.mMenuItems == null) {}
-    for (;;)
-    {
+    Object localObject = this.mMenuItems;
+    if (localObject == null) {
       return;
-      Iterator localIterator = this.mMenuItems.keySet().iterator();
-      while (localIterator.hasNext()) {
-        if (paramInt == ((MenuItem)localIterator.next()).getGroupId()) {
-          localIterator.remove();
-        }
+    }
+    localObject = ((Map)localObject).keySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (paramInt == ((MenuItem)((Iterator)localObject).next()).getGroupId()) {
+        ((Iterator)localObject).remove();
       }
     }
   }
   
   final void internalRemoveItem(int paramInt)
   {
-    if (this.mMenuItems == null) {}
-    Iterator localIterator;
-    do
-    {
+    Object localObject = this.mMenuItems;
+    if (localObject == null) {
       return;
-      while (!localIterator.hasNext()) {
-        localIterator = this.mMenuItems.keySet().iterator();
+    }
+    localObject = ((Map)localObject).keySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (paramInt == ((MenuItem)((Iterator)localObject).next()).getItemId()) {
+        ((Iterator)localObject).remove();
       }
-    } while (paramInt != ((MenuItem)localIterator.next()).getItemId());
-    localIterator.remove();
+    }
   }
 }
 

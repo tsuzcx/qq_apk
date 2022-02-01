@@ -46,7 +46,7 @@ public final class GravityCompat
     if (Build.VERSION.SDK_INT >= 17) {
       return Gravity.getAbsoluteGravity(paramInt1, paramInt2);
     }
-    return 0xFF7FFFFF & paramInt1;
+    return paramInt1 & 0xFF7FFFFF;
   }
 }
 

@@ -28,43 +28,44 @@ public final class fm
   
   public static Date a(String paramString)
   {
-    int i = 0;
-    Object localObject;
     if (paramString.length() == 0) {
-      localObject = null;
+      return null;
     }
-    ParsePosition localParsePosition;
-    do
-    {
+    ParsePosition localParsePosition = new ParsePosition(0);
+    Object localObject = ((DateFormat)a.get()).parse(paramString, localParsePosition);
+    if (localParsePosition.getIndex() == paramString.length()) {
       return localObject;
-      localParsePosition = new ParsePosition(0);
-      localObject = ((DateFormat)a.get()).parse(paramString, localParsePosition);
-    } while (localParsePosition.getIndex() == paramString.length());
+    }
     for (;;)
     {
+      int i;
       synchronized (b)
       {
         int j = b.length;
-        if (i >= j) {
-          break;
-        }
-        DateFormat localDateFormat = c[i];
-        localObject = localDateFormat;
-        if (localDateFormat == null)
+        i = 0;
+        if (i < j)
         {
-          localObject = new SimpleDateFormat(b[i], Locale.US);
-          ((DateFormat)localObject).setTimeZone(fc.g);
-          c[i] = localObject;
+          DateFormat localDateFormat = c[i];
+          localObject = localDateFormat;
+          if (localDateFormat == null)
+          {
+            localObject = new SimpleDateFormat(b[i], Locale.US);
+            ((DateFormat)localObject).setTimeZone(fc.g);
+            c[i] = localObject;
+          }
+          localParsePosition.setIndex(0);
+          localObject = ((DateFormat)localObject).parse(paramString, localParsePosition);
+          if (localParsePosition.getIndex() != 0) {
+            return localObject;
+          }
         }
-        localParsePosition.setIndex(0);
-        localObject = ((DateFormat)localObject).parse(paramString, localParsePosition);
-        if (localParsePosition.getIndex() != 0) {
-          return localObject;
+        else
+        {
+          return null;
         }
       }
       i += 1;
     }
-    return null;
   }
 }
 

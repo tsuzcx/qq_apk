@@ -9,9 +9,13 @@ public class InternationMsg
   public static String a(MSG_TYPE paramMSG_TYPE)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if ((paramMSG_TYPE == a[i].b) && (t.u == a[i].a)) {
+      a[] arrayOfa = a;
+      if (i >= arrayOfa.length) {
+        break;
+      }
+      if ((paramMSG_TYPE == arrayOfa[i].b) && (t.u == a[i].a)) {
         return a[i].c;
       }
       i += 1;

@@ -53,56 +53,53 @@ class l
   {
     if (paramView == null)
     {
-      paramView = this.a.inflate(2130968688, null);
+      paramView = this.a.inflate(2131296369, null);
       paramViewGroup = new a(null);
-      paramViewGroup.a = ((TextView)paramView.findViewById(2131559007));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131559009));
-      paramViewGroup.c = ((RelativeLayout)paramView.findViewById(2131559008));
-      paramViewGroup.d = ((ImageView)paramView.findViewById(2131558830));
+      paramViewGroup.a = ((TextView)paramView.findViewById(2131165274));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131165761));
+      paramViewGroup.c = ((RelativeLayout)paramView.findViewById(2131165762));
+      paramViewGroup.d = ((ImageView)paramView.findViewById(2131165965));
       paramView.setTag(paramViewGroup);
     }
-    while (paramInt >= this.c.length)
+    else
     {
-      return paramView;
       paramViewGroup = (a)paramView.getTag();
+    }
+    if (paramInt >= this.c.length) {
+      return paramView;
     }
     paramViewGroup.b.setText(this.c[paramInt]);
     paramViewGroup.a.setVisibility(8);
     String[] arrayOfString = bt.a().f;
     int[] arrayOfInt = bt.a().g;
     int i = 0;
-    for (;;)
+    while (i < arrayOfInt.length)
     {
-      if (i < arrayOfInt.length)
+      if (paramInt == arrayOfInt[i])
       {
-        if (paramInt == arrayOfInt[i])
-        {
-          paramViewGroup.a.setVisibility(0);
-          paramViewGroup.a.setText(arrayOfString[i]);
-        }
-      }
-      else
-      {
-        paramViewGroup.c.setOnClickListener(new View.OnClickListener()
-        {
-          public void onClick(View paramAnonymousView)
-          {
-            l.a(l.this, paramInt);
-            l.b(l.this).checkMenuBtnEnable(l.a(l.this));
-            l.this.notifyDataSetChanged();
-          }
-        });
-        if (this.e != paramInt) {
-          break;
-        }
-        paramViewGroup.d.setVisibility(0);
-        paramViewGroup.c.setBackgroundColor(this.d.getResources().getColor(2131492959));
-        return paramView;
+        paramViewGroup.a.setVisibility(0);
+        paramViewGroup.a.setText(arrayOfString[i]);
+        break;
       }
       i += 1;
     }
+    paramViewGroup.c.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        l.a(l.this, paramInt);
+        l.b(l.this).checkMenuBtnEnable(l.a(l.this));
+        l.this.notifyDataSetChanged();
+      }
+    });
+    if (this.e == paramInt)
+    {
+      paramViewGroup.d.setVisibility(0);
+      paramViewGroup.c.setBackgroundColor(this.d.getResources().getColor(2130968691));
+      return paramView;
+    }
     paramViewGroup.d.setVisibility(8);
-    paramViewGroup.c.setBackgroundColor(this.d.getResources().getColor(2131492954));
+    paramViewGroup.c.setBackgroundColor(this.d.getResources().getColor(2130968686));
     return paramView;
   }
   

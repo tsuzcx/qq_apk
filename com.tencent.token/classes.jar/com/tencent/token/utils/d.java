@@ -14,11 +14,15 @@ public class d
   {
     public boolean accept(File paramAnonymousFile)
     {
-      if (!paramAnonymousFile.isDirectory()) {}
-      while (d.a(paramAnonymousFile) <= 0L) {
+      boolean bool2 = paramAnonymousFile.isDirectory();
+      boolean bool1 = false;
+      if (!bool2) {
         return false;
       }
-      return true;
+      if (d.a(paramAnonymousFile) > 0L) {
+        bool1 = true;
+      }
+      return bool1;
     }
   };
   private String b = "Tracer.File";
@@ -34,11 +38,15 @@ public class d
   {
     public boolean accept(File paramAnonymousFile)
     {
-      if (!paramAnonymousFile.getName().endsWith(d.this.j())) {}
-      while (d.d(paramAnonymousFile) == -1) {
+      boolean bool2 = paramAnonymousFile.getName().endsWith(d.this.j());
+      boolean bool1 = false;
+      if (!bool2) {
         return false;
       }
-      return true;
+      if (d.d(paramAnonymousFile) != -1) {
+        bool1 = true;
+      }
+      return bool1;
     }
   };
   private Comparator<? super File> l = new Comparator()
@@ -69,7 +77,11 @@ public class d
       long l1 = new SimpleDateFormat("yyyy-MM-dd").parse(paramFile.getName()).getTime();
       return l1;
     }
-    catch (Exception paramFile) {}
+    catch (Exception paramFile)
+    {
+      label22:
+      break label22;
+    }
     return -1L;
   }
   
@@ -81,32 +93,34 @@ public class d
   private File e(File paramFile)
   {
     File[] arrayOfFile = b(paramFile);
-    if ((arrayOfFile == null) || (arrayOfFile.length == 0))
+    if ((arrayOfFile != null) && (arrayOfFile.length != 0))
     {
-      paramFile = new File(paramFile, "1" + j());
-      return paramFile;
-    }
-    a(arrayOfFile);
-    File localFile2 = arrayOfFile[(arrayOfFile.length - 1)];
-    int n = arrayOfFile.length - e();
-    int m = n;
-    File localFile1 = localFile2;
-    if ((int)localFile2.length() > d())
-    {
-      m = f(localFile2);
-      localFile1 = new File(paramFile, m + 1 + j());
-      m = n + 1;
-    }
-    n = 0;
-    for (;;)
-    {
-      paramFile = localFile1;
-      if (n >= m) {
-        break;
+      a(arrayOfFile);
+      File localFile = arrayOfFile[(arrayOfFile.length - 1)];
+      int n = arrayOfFile.length - e();
+      localObject = localFile;
+      int m = n;
+      if ((int)localFile.length() > d())
+      {
+        m = f(localFile);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(m + 1);
+        ((StringBuilder)localObject).append(j());
+        localObject = new File(paramFile, ((StringBuilder)localObject).toString());
+        m = n + 1;
       }
-      arrayOfFile[n].delete();
-      n += 1;
+      n = 0;
+      while (n < m)
+      {
+        arrayOfFile[n].delete();
+        n += 1;
+      }
+      return localObject;
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("1");
+    ((StringBuilder)localObject).append(j());
+    return new File(paramFile, ((StringBuilder)localObject).toString());
   }
   
   private static int f(File paramFile)
@@ -117,7 +131,11 @@ public class d
       int m = Integer.parseInt(paramFile.substring(0, paramFile.indexOf('.')));
       return m;
     }
-    catch (Exception paramFile) {}
+    catch (Exception paramFile)
+    {
+      label22:
+      break label22;
+    }
     return -1;
   }
   
@@ -151,25 +169,23 @@ public class d
   
   public void b()
   {
-    if (h() == null) {}
-    for (;;)
-    {
+    if (h() == null) {
       return;
-      File[] arrayOfFile = h().listFiles(a);
-      if (arrayOfFile != null)
-      {
-        int n = arrayOfFile.length;
-        int m = 0;
-        while (m < n)
-        {
-          File localFile = arrayOfFile[m];
-          long l1 = a(localFile);
-          if (System.currentTimeMillis() - l1 > k()) {
-            e.a(localFile);
-          }
-          m += 1;
-        }
+    }
+    File[] arrayOfFile = h().listFiles(a);
+    if (arrayOfFile == null) {
+      return;
+    }
+    int n = arrayOfFile.length;
+    int m = 0;
+    while (m < n)
+    {
+      File localFile = arrayOfFile[m];
+      long l1 = a(localFile);
+      if (System.currentTimeMillis() - l1 > k()) {
+        e.a(localFile);
       }
+      m += 1;
     }
   }
   

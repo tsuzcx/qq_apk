@@ -39,30 +39,30 @@ public final class h
   {
     public int a(String paramAnonymousString1, String paramAnonymousString2)
     {
-      int i = 4;
       int j = Math.min(paramAnonymousString1.length(), paramAnonymousString2.length());
-      if (i < j)
+      int i = 4;
+      while (i < j)
       {
         int k = paramAnonymousString1.charAt(i);
         int m = paramAnonymousString2.charAt(i);
-        if (k != m) {
-          if (k >= m) {}
+        if (k != m)
+        {
+          if (k < m) {
+            return -1;
+          }
+          return 1;
         }
-      }
-      do
-      {
-        return -1;
-        return 1;
         i += 1;
-        break;
-        i = paramAnonymousString1.length();
-        j = paramAnonymousString2.length();
-        if (i == j) {
-          break label85;
+      }
+      i = paramAnonymousString1.length();
+      j = paramAnonymousString2.length();
+      if (i != j)
+      {
+        if (i < j) {
+          return -1;
         }
-      } while (i < j);
-      return 1;
-      label85:
+        return 1;
+      }
       return 0;
     }
   };
@@ -239,10 +239,12 @@ public final class h
   
   private h(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException();
+    if (paramString != null)
+    {
+      this.bk = paramString;
+      return;
     }
-    this.bk = paramString;
+    throw new NullPointerException();
   }
   
   static List<h> a(String... paramVarArgs)

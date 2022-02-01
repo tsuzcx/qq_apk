@@ -63,7 +63,10 @@ public class en
   
   public en(Context paramContext)
   {
-    eg.f("ThreadPool", "core pool size: " + this.oC);
+    paramContext = new StringBuilder();
+    paramContext.append("core pool size: ");
+    paramContext.append(this.oC);
+    eg.f("ThreadPool", paramContext.toString());
     this.oD = new el(0, this.oC + 2, 3L, TimeUnit.SECONDS, this.oy, new ThreadPoolExecutor.CallerRunsPolicy());
     this.oD.a(this);
     this.oF = new HandlerThread("TMS_THREAD_POOL_HANDLER");
@@ -73,9 +76,10 @@ public class en
   
   private int cU()
   {
-    int i = Runtime.getRuntime().availableProcessors() * 4 + 2;
-    if (i > 16) {
-      return 16;
+    int j = Runtime.getRuntime().availableProcessors() * 4 + 2;
+    int i = j;
+    if (j > 16) {
+      i = 16;
     }
     return i;
   }
@@ -101,30 +105,35 @@ public class en
             cX();
             this.oD.execute(locala);
             localIterator = ox.iterator();
-            if (localIterator.hasNext()) {
+            while (localIterator.hasNext()) {
               ((es.a)localIterator.next()).a(locala.a(), this.oD.getActiveCount());
             }
           }
         }
+        if (!this.oz.isEmpty()) {
+          this.oG.sendEmptyMessage(1);
+        }
+        return;
       }
-      if (this.oz.isEmpty()) {
-        break label163;
-      }
+      StringBuilder localStringBuilder;
+      return;
     }
     catch (Throwable localThrowable)
     {
-      eg.h("ThreadPool", "executeTask (Throwable):" + localThrowable.toString());
-      return;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("executeTask (Throwable):");
+      localStringBuilder.append(localThrowable.toString());
+      eg.h("ThreadPool", localStringBuilder.toString());
     }
-    this.oG.sendEmptyMessage(1);
-    label163:
   }
   
   private void cX()
   {
-    if (this.oD.getCorePoolSize() < this.oC)
+    int i = this.oD.getCorePoolSize();
+    int j = this.oC;
+    if (i < j)
     {
-      this.oD.setCorePoolSize(this.oC);
+      this.oD.setCorePoolSize(j);
       this.oD.setMaximumPoolSize(this.oC);
     }
   }
@@ -172,7 +181,7 @@ public class en
         if (localIterator != null)
         {
           if (!localIterator.hasNext()) {
-            break label294;
+            break label297;
           }
           a locala = (a)localIterator.next();
           if ((locala == null) || (!locala.equals(paramRunnable))) {
@@ -189,120 +198,126 @@ public class en
             l2 = paramRunnable.a().oW;
             paramRunnable.a().oW = (l1 - l2);
             localIterator = ox.iterator();
-            if (localIterator.hasNext()) {
+            if (localIterator.hasNext())
+            {
               ((es.a)localIterator.next()).b(paramRunnable.a());
+              continue;
             }
           }
         }
-      }
-      int i = this.oD.getActiveCount();
-      int j = this.oD.getQueue().size();
-      int k = this.oD.getCorePoolSize();
-      if ((i == 1) && (j == 0))
-      {
-        if (k > 0)
+        i = this.oD.getActiveCount();
+        int j = this.oD.getQueue().size();
+        int k = this.oD.getCorePoolSize();
+        if ((i == 1) && (j == 0))
         {
-          this.oC = cU();
-          this.oD.setCorePoolSize(0);
-          this.oD.setMaximumPoolSize(this.oC + 2);
+          if (k > 0)
+          {
+            this.oC = cU();
+            this.oD.setCorePoolSize(0);
+            this.oD.setMaximumPoolSize(this.oC + 2);
+          }
+          paramRunnable = this.ow.iterator();
+          if (paramRunnable.hasNext())
+          {
+            ((es.b)paramRunnable.next()).dm();
+            continue;
+          }
+          this.oE = false;
         }
-        paramRunnable = this.ow.iterator();
-        while (paramRunnable.hasNext()) {
-          ((es.b)paramRunnable.next()).dm();
-        }
-        this.oE = false;
+        return;
       }
-      return;
-      label294:
-      i = 0;
+      label297:
+      int i = 0;
     }
   }
   
   public void b(Runnable paramRunnable, String paramString, long paramLong, boolean paramBoolean, Object paramObject)
   {
-    for (;;)
+    synchronized (this.V)
     {
-      synchronized (this.V)
+      paramRunnable = new a(2147483647, paramRunnable, paramString, paramLong, paramBoolean, paramObject);
+      this.oA.add(paramRunnable);
+      this.oD.execute(paramRunnable);
+      if ((this.oD.getActiveCount() >= this.oC) && (this.oC < cV()))
       {
-        paramRunnable = new a(2147483647, paramRunnable, paramString, paramLong, paramBoolean, paramObject);
-        this.oA.add(paramRunnable);
-        this.oD.execute(paramRunnable);
-        if ((this.oD.getActiveCount() >= this.oC) && (this.oC < cV()))
-        {
-          this.oC += 1;
-          this.oD.setCorePoolSize(this.oC);
-          this.oD.setMaximumPoolSize(this.oC);
-          eg.f("ThreadPool", "expand urgent core pool size: " + this.oC);
-          paramString = ox.iterator();
-          if (!paramString.hasNext()) {
-            break;
-          }
-          ((es.a)paramString.next()).a(paramRunnable.a(), this.oD.getActiveCount());
-        }
+        this.oC += 1;
+        this.oD.setCorePoolSize(this.oC);
+        this.oD.setMaximumPoolSize(this.oC);
+        paramString = new StringBuilder();
+        paramString.append("expand urgent core pool size: ");
+        paramString.append(this.oC);
+        eg.f("ThreadPool", paramString.toString());
       }
-      cX();
+      else
+      {
+        cX();
+      }
+      paramString = ox.iterator();
+      while (paramString.hasNext()) {
+        ((es.a)paramString.next()).a(paramRunnable.a(), this.oD.getActiveCount());
+      }
+      return;
     }
   }
   
   public void beforeExecute(Thread paramThread, Runnable paramRunnable)
   {
-    int i = 10;
     for (;;)
     {
-      Iterator localIterator;
       int j;
       synchronized (this.V)
       {
-        localIterator = this.oA.iterator();
-        if (localIterator == null) {
-          break label251;
-        }
-        paramRunnable = (a)paramRunnable;
-        j = paramRunnable.a().priority;
-        if (j < 1)
+        Iterator localIterator = this.oA.iterator();
+        if (localIterator != null)
         {
+          paramRunnable = (a)paramRunnable;
+          j = paramRunnable.a().priority;
+          if (j >= 1) {
+            break label248;
+          }
           i = 1;
           paramThread.setPriority(i);
-          if (!localIterator.hasNext()) {
-            break label255;
+          j = 0;
+          i = j;
+          if (localIterator.hasNext())
+          {
+            a locala = (a)localIterator.next();
+            if ((locala == null) || (!locala.equals(paramRunnable))) {
+              continue;
+            }
+            localIterator.remove();
+            i = 1;
           }
-          a locala = (a)localIterator.next();
-          if ((locala == null) || (!locala.equals(paramRunnable))) {
-            continue;
+          if (i != 0)
+          {
+            if (!this.oE)
+            {
+              localIterator = this.ow.iterator();
+              if (localIterator.hasNext())
+              {
+                ((es.b)localIterator.next()).dl();
+                continue;
+              }
+            }
+            localIterator = ox.iterator();
+            if (localIterator.hasNext())
+            {
+              ((es.a)localIterator.next()).a(paramRunnable.a());
+              continue;
+            }
+            paramRunnable.a().oV = System.currentTimeMillis();
+            paramRunnable.a().oW = Debug.threadCpuTimeNanos();
+            this.oB.put(paramRunnable, paramThread);
+            paramThread.setName(paramRunnable.a().name);
+            this.oE = true;
           }
-          localIterator.remove();
-          i = 1;
-          if (i == 0) {
-            break label251;
-          }
-          if (this.oE) {
-            break label165;
-          }
-          localIterator = this.ow.iterator();
-          if (!localIterator.hasNext()) {
-            break label165;
-          }
-          ((es.b)localIterator.next()).dl();
         }
-      }
-      if (j <= 10)
-      {
-        i = j;
-        continue;
-        label165:
-        localIterator = ox.iterator();
-        while (localIterator.hasNext()) {
-          ((es.a)localIterator.next()).a(paramRunnable.a());
-        }
-        paramRunnable.a().oV = System.currentTimeMillis();
-        paramRunnable.a().oW = Debug.threadCpuTimeNanos();
-        this.oB.put(paramRunnable, paramThread);
-        paramThread.setName(paramRunnable.a().name);
-        this.oE = true;
-        label251:
         return;
-        label255:
-        i = 0;
+      }
+      label248:
+      int i = j;
+      if (j > 10) {
+        i = 10;
       }
     }
   }
@@ -335,14 +350,15 @@ public class en
       {
         this$1 = paramRunnable.getClass().getName();
       }
-      this.b.oT = 1;
-      this.b.priority = paramInt;
-      this.b.name = en.this;
-      this.b.de = paramLong;
-      this.b.oY = paramRunnable;
-      this.b.oX = paramBoolean;
-      this.b.oZ = paramObject;
-      this.b.oU = System.currentTimeMillis();
+      paramString = this.b;
+      paramString.oT = 1;
+      paramString.priority = paramInt;
+      paramString.name = en.this;
+      paramString.de = paramLong;
+      paramString.oY = paramRunnable;
+      paramString.oX = paramBoolean;
+      paramString.oZ = paramObject;
+      paramString.oU = System.currentTimeMillis();
     }
     
     public int a(a parama)
@@ -365,14 +381,18 @@ public class en
     {
       try
       {
-        if ((this.b != null) && (this.b.oY != null)) {
+        if ((this.b != null) && (this.b.oY != null))
+        {
           this.b.oY.run();
+          return;
         }
-        return;
       }
       catch (Throwable localThrowable)
       {
-        eg.h("ThreadPool", "run (Throwable):" + localThrowable.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("run (Throwable):");
+        localStringBuilder.append(localThrowable.toString());
+        eg.h("ThreadPool", localStringBuilder.toString());
       }
     }
   }
@@ -387,9 +407,7 @@ public class en
     
     public void handleMessage(Message paramMessage)
     {
-      switch (paramMessage.what)
-      {
-      default: 
+      if (paramMessage.what != 1) {
         return;
       }
       removeMessages(paramMessage.what);

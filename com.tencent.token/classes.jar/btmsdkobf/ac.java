@@ -33,14 +33,17 @@ public final class ac
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bg != 0L) {
-      paramJceOutputStream.write(this.bg, 0);
+    long l = this.bg;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 0);
     }
-    if (this.bh != 0L) {
-      paramJceOutputStream.write(this.bh, 1);
+    l = this.bh;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 1);
     }
-    if (this.bk != null) {
-      paramJceOutputStream.write(this.bk, 2);
+    ArrayList localArrayList = this.bk;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }

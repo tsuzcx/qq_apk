@@ -29,8 +29,9 @@ public final class GameConfigReport
   {
     paramJceOutputStream.write(this.fileName, 0);
     paramJceOutputStream.write(this.fileMd5, 1);
-    if (1 != this.type) {
-      paramJceOutputStream.write(this.type, 2);
+    int i = this.type;
+    if (1 != i) {
+      paramJceOutputStream.write(i, 2);
     }
     paramJceOutputStream.write(this.success, 3);
   }
